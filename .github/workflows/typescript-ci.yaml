@@ -1,0 +1,100 @@
+name: Protobuf CI
+
+on:
+  workflow_call:
+    inputs:
+      github_ref:
+        type: string
+        description: 'GitHub Ref'
+        required: true
+        default: 'refs/heads/main'
+  workflow_dispatch:
+    inputs:
+      github_ref:
+        type: string
+        description: 'GitHub Ref'
+        required: true
+        default: 'refs/heads/main'
+
+jobs:
+  generate_protobuf:
+    name: Generate Protobuf Definitions
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/cosmos/proto-builder:0.15.2
+      options: --user root
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout Xion Repository
+        uses: actions/checkout@master
+        with:
+          repository: burnt-labs/xion
+          ref: ${{ github.event.inputs.github_ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      
+      - run: |
+          pwd
+          ls -la
+          ls -la proto
+          ls -la /go/pkg/mod
+      
+      - name: Generate Protobuf Definitions
+        run: |
+          mkdir -p ./dist
+          proto_dir=./proto
+          deps=$(egrep '^\s*github.com/(cosmos/(cosmos-sdk|ibc-go\/v|ibc-apps\/middle)|CosmWasm/wasmd)' go.mod | cut -d ' ' -f 1)
+          go mod download
+          proto_paths=$(go list -f '{{ .Dir }}' -m ${deps} | sed "s/$/\/proto/")
+          proto_dirs=$(find $proto_dir $proto_paths -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort -u)
+          set -x
+          npx protoc \
+            --ts_out=./dist/types \
+            --proto_path="/go/pkg/mod/" \
+            $(find ./proto/xion -name '*.proto')
+
+      - name: Verify TypeScript Compilation
+        run: |
+          tsc --noEmit
+
+      - name: Upload Protobuf Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: protobuf-definitions
+          path: ./dist/types
+
+      - name: Prepare TypeScript Definitions Package
+        run: |
+          cp ./package.json ./dist/package.json
+          cp ./README.md ./dist/
+
+      - name: Publish TypeScript Definitions Package
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+        run: |
+          cd ./dist && npm publish --access public
+
+  validate_compatibility:
+    name: Validate Compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+
+      - name: Run Compatibility Tests
+        run: |
+          npm run test:compatibility
+
+
