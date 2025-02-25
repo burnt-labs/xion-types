@@ -39,11 +39,11 @@ ENV GOLANG_PROTOBUF_VERSION=1.28.1 \
   GRPC_GATEWAY_VERSION=1.16.0 \
   GRPC_GATEWAY_PROTOC_GEN_OPENAPIV2_VERSION=2.20.0
 
-ENV GOPATH=/usr/local/go
-ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+ENV GOPATH=/workspace/go
+ENV PATH=$GOPATH/bin:/usr/local/go/bin:/workspace/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"
 
-WORKDIR $GOPATH
+WORKDIR /workspace
 
 RUN go install github.com/cosmos/cosmos-proto/cmd/protoc-gen-go-pulsar@latest && \
   go install google.golang.org/protobuf/cmd/protoc-gen-go@v${GOLANG_PROTOBUF_VERSION} && \
@@ -57,5 +57,3 @@ RUN git clone https://github.com/cosmos/gogoproto.git; \
   cd gogoproto; \
   go mod download; \
   make install
-
-WORKDIR /workspace

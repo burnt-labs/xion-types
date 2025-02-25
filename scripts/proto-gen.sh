@@ -20,15 +20,17 @@ deps=$(cat <<EOF
   github.com/cosmos/cosmos-sdk
   github.com/cosmos/cosmos-proto
   github.com/cosmos/ibc-go/v8
-  github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8
   github.com/CosmWasm/wasmd
 EOF
 )
+#   github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8
+# for some reason generation for pfm doesn't work
 
 # Install selected dependencies from go.mod
 echo "installing dependencies"
 cd xion
 echo go mod download $deps
+go mod download $deps
 
 # Get dependency paths
 echo "getting paths for $deps"
