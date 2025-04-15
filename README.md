@@ -73,13 +73,7 @@ processData(sampleData);
 
 If you want to modify or regenerate the TypeScript definitions from Protobuf files, follow these steps:
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/burnt-labs/xion.git
-   cd xion
-   ```
-
-2. **Initialize and Update Submodules**
+1. **Initialize and Update Submodules**
    ```bash
    # Initialize and update all submodules
    make submodules
@@ -89,24 +83,24 @@ If you want to modify or regenerate the TypeScript definitions from Protobuf fil
    git submodule update --init
    ```
 
-3. **Build Docker Image**
+2. **Build Docker Image**
    ```bash
    # Build the Swift protobuf builder image
    make build-swiftbuilder-image
 
    # Alternatively, you can run these commands manually:
-   	cd docker && docker build . --tag swiftbuilder
+   cd docker && docker build . --tag swiftbuilder
 
    # You can verify the image was built successfully with:
    docker images | grep swiftbuilder
    ```
 
-4. **Install Dependencies**
+3. **Install Dependencies**
    ```bash
    npm install
    ```
 
-5. **Generate TypeScript Definitions**
+4. **Generate TypeScript Definitions**
    ```bash
    npx protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts \
      --ts_out=./generated \
@@ -114,7 +108,7 @@ If you want to modify or regenerate the TypeScript definitions from Protobuf fil
      $(find ./proto -name '*.proto')
    ```
 
-6. **Compile TypeScript Files**
+5. **Compile TypeScript Files**
    ```bash
    tsc --noEmit
    ```
