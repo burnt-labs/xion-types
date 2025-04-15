@@ -11,25 +11,31 @@ HTTPS_GIT := https://github.com/burnt-labs/xion.git
 
 proto-all: proto-format proto-lint proto-gen proto-format
 
-proto-gen:
+submodules:
+	@echo "Initializing and updating git submodules"
+	git submodule init
+	git submodule update --init
+
+build-swiftbuilder-image:
+	cd docker && $(DOCKER) build . --tag $(protoImageName)
+
+proto-gen: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen.sh
 
-proto-gen-ts:
+proto-gen-ts: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen.sh --ts
 
-# should this be changed to use docker like the rest? we would need a custom image
-proto-gen-swift:
+proto-gen-swift: build-swiftbuilder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen.sh --swift
 
-# should this be changed to use docker like the rest? we would need a custom image
-proto-gen-kotlin:
+proto-gen-kotlin: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen.sh --kotlin
 
-proto-gen-swagger:
+proto-gen-swagger: submodules
 	@echo "Generating Protobuf Swagger"
 	@$(protoImage) scripts/proto-gen.sh --swagger
 
@@ -46,4 +52,5 @@ proto-check-breaking:
 .PHONY: all install install-debug \
 	go-mod-cache draw-deps clean build format \
 	test test-all test-build test-cover test-unit test-race \
-	test-sim-import-export build-windows-client \
+	test-sim-import-export build-windows-client submodules \
+

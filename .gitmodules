@@ -1,3 +1,4 @@
 [submodule "xion"]
 	path = xion
 	url = git@github.com:burnt-labs/xion.git
+	branch = main
