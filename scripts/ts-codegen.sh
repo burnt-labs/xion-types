@@ -29,6 +29,7 @@ cd $base_dir
 for contract in "account" "treasury"
 do
     echo $contract
-    echo ts-codegen generate --plugin client --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle
-    ts-codegen generate --plugin client --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle
+    echo ts-codegen generate --plugin client --plugin react-query --plugin message-composer --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle --version v4 --optionalClient --mutations --queryKeys --queryFactory
+    ts-codegen generate --plugin client --plugin react-query --plugin message-composer --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle --version v4 --optionalClient --mutations --queryKeys --queryFactory
+
 done
