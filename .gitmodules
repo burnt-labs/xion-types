@@ -2,3 +2,6 @@
 	path = xion
 	url = git@github.com:burnt-labs/xion.git
 	branch = main
+[submodule "contracts"]
+	path = contracts
+	url = git@github.com:burnt-labs/contracts.git

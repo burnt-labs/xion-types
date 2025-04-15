@@ -19,7 +19,12 @@ RUN apt-get update  \
     golang \
     protobuf-compiler
 
-RUN npm install -g swagger-combine ts-proto
+RUN npm install -g swagger-combine ts-proto @cosmwasm/ts-codegen
+
+COPY rustup.sh rustup.sh
+RUN chmod +777 rustup.sh
+RUN ./rustup.sh -y
+RUN . "$HOME/.cargo/env"
 
 COPY --link extramoduleimports.patch /app/extramoduleimports.patch
 WORKDIR /app
