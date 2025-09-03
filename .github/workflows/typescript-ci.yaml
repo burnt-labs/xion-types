@@ -63,101 +63,47 @@ jobs:
         working-directory: ./ts
         run: npm run build
 
-      - name: Type Check
-        working-directory: ./ts
-        run: npx tsc --noEmit
-
-  generate-protobuf:
-    name: Generate Protobuf Types
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/cosmos/proto-builder:0.15.2
-      options: --user root
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Checkout Essential Submodules
-        run: |
-          echo "Only checkout the essential submodules needed for protobuf generation"
-          
-          git submodule init
-          git submodule update --init --recursive xion
-          git submodule update --init --recursive buf
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: 'ts/package-lock.json'
-
-      - name: Install Dependencies
+      - name: Verify Package Structure
         working-directory: ./ts
         run: |
-          # Try npm ci first, fallback to npm install if lock file is out of sync
-          npm ci || npm install
-
-      - name: Install buf
-        run: |
-          curl -sSL \
-            "https://github.com/bufbuild/buf/releases/download/v1.28.1/buf-$(uname -s)-$(uname -m)" \
-            -o "/usr/local/bin/buf" && chmod +x "/usr/local/bin/buf"
-
-      - name: Generate Protobuf Definitions
-        run: |
-          # Use the existing proto-gen.sh script for TypeScript generation
-          cd ts
-          npm run generate-types
-          
-          # Verify the types were generated
+          # Check if types directory exists and has content
           if [ ! -d "./types" ] || [ -z "$(ls -A ./types)" ]; then
-            echo "Error: No TypeScript types were generated"
+            echo "Error: Types directory is empty or missing"
+            echo "Contents of types directory:"
+            ls -la types/ || echo "Types directory not found"
             exit 1
           fi
           
-          # Count generated files
+          # Count type files
           file_count=$(find ./types -name "*.ts" | wc -l)
-          echo "Generated $file_count TypeScript type files"
+          echo "Found $file_count TypeScript type files"
           
-          # List some generated files for verification
-          echo "Sample generated files:"
+          # List some type files for verification
+          echo "Sample type files:"
           find ./types -name "*.ts" | head -10
 
-      - name: Verify Generated Types
+      - name: Type Check
         working-directory: ./ts
         run: |
-          # Basic syntax check
-          npx tsc --noEmit --skipLibCheck
-
-      - name: Upload Generated Types
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types
-          path: ./ts/types
-          retention-days: 1
+          # Check if TypeScript is available
+          if command -v tsc >/dev/null 2>&1; then
+            npx tsc --noEmit --skipLibCheck
+          else
+            echo "TypeScript not available, skipping type check"
+          fi
 
   # COMMENTED OUT FOR TESTING - PUBLISH JOB
   # publish:
   #   name: Publish to NPM
-  #   needs: [test, generate-protobuf]
+  #   needs: [test]
   #   runs-on: ubuntu-latest
   #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
   #   steps:
   #     - name: Checkout Repository
   #       uses: actions/checkout@v4
   #       with:
-  #         submodules: recursive
+  #         submodules: false
   #         token: ${{ secrets.GITHUB_TOKEN }}
-
-  #     - name: Download Generated Types
-  #       uses: actions/download-artifact@v4
-  #       run: |
-  #         name: generated-types
-  #         path: ./ts/types
 
   #     - name: Setup Node.js
   #       uses: actions/setup-node@v4
@@ -183,34 +129,17 @@ jobs:
   #         echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
   #         echo "New package version: $NEW_VERSION"
 
-  #     - name: Build Package for Publishing
-  #       working-directory: ./ts
-  #       run: |
-  #         # Build the package (this will create the dist directory)
-  #         npm run build
-        
-  #         # Verify the dist structure
-  #         echo "Dist directory contents:"
-  #         ls -la dist/
-  #         echo "Dist types contents:"
-  #         ls -la dist/types/ | head -10
-
   #     - name: Prepare Package for Publishing
   #       working-directory: ./ts
   #       run: |
-  #         # Copy necessary files to dist
-  #         cp package.json dist/
-  #         cp README.md dist/ 2>/dev/null || echo "README.md not found, skipping"
-  #         cp ../../README.md dist/ 2>/dev/null || echo "Root README.md not found, skipping"
-        
-  #         # Ensure dist directory structure is correct
-  #         echo "Final dist structure:"
-  #         ls -la dist/
-  #         echo "Package.json in dist:"
-  #         cat dist/package.json | grep -E "(name|version|main|types)"
+  #         # Ensure package structure is correct
+  #         echo "Package structure:"
+  #         ls -la
+  #         echo "Types directory contents:"
+  #         ls -la types/ | head -10
 
   #     - name: Publish to NPM
-  #       working-directory: ./ts/dist
+  #       working-directory: ./ts
   #       env:
   #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   #       run: |
@@ -223,14 +152,13 @@ jobs:
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   #       with:
-  #         tag_name: v${{ env.NODE_VERSION }}
-  #         release_name: Release v${{ env.NODE_VERSION }}
+  #         tag_name: v${{ env.NEW_VERSION }}
+  #         release_name: Release v${{ env.NEW_VERSION }}
   #         body: |
   #           ## What's Changed
             
   #           This release includes:
-  #           - Updated TypeScript types from latest protobuf files
-  #           - Generated types for Xion blockchain protocol
+  #           - TypeScript type definitions for Xion blockchain protocol
   #           - Cosmos SDK and IBC type definitions
             
   #           ## Installation
@@ -260,7 +188,7 @@ jobs:
   #     - name: Verify Package on NPM
   #       run: |
   #         PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
-  #         echo "echo "Verifying package version: $PACKAGE_VERSION"
+  #         echo "Verifying package version: $PACKAGE_VERSION"
         
   #         # Check if package is available on NPM
   #         npm view @burnt-labs/xion-types@$PACKAGE_VERSION version

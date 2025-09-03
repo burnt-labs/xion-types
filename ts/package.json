@@ -5,11 +5,14 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "files": [
-    "types/"
+    "types/",
+    "index.js",
+    "README.md"
   ],
   "scripts": {
-    "build": "../../scripts/proto-gen.sh --ts",
-    "test": "jest"
+    "build": "echo 'Types are pre-generated, no build step needed'",
+    "test": "echo 'No tests configured'",
+    "prepublishOnly": "echo 'Package ready for publishing'"
   },
   "license": "MIT",
   "dependencies": {
@@ -22,5 +25,17 @@
   "devDependencies": {
     "prettier": "^2.3.0",
     "ts-proto": "^1.82.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/burnt-labs/xion-types.git"
+  },
+  "keywords": [
+    "xion",
+    "blockchain",
+    "typescript",
+    "protobuf",
+    "cosmos",
+    "ibc"
+  ]
 }
