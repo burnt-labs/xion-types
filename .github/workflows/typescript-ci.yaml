@@ -1,4 +1,4 @@
-name: TypeScript Package CI/CD
+name: Xion-Types Package CI/CD
 
 on:
   push:
@@ -32,8 +32,8 @@ env:
   REGISTRY_URL: 'https://registry.npmjs.org'
 
 jobs:
-  test:
-    name: Publish Xion Types into NPM
+  build-and-publish:
+    name: Build 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -54,10 +54,6 @@ jobs:
         run: |
           # Try npm ci first, fallback to npm install if lock file is out of sync
           npm ci || npm install
-
-      # - name: Run Tests
-      #   working-directory: ./ts
-      #   run: npm run test:ci
 
       - name: Build Package
         working-directory: ./ts
