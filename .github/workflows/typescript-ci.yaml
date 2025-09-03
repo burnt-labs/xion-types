@@ -39,7 +39,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
@@ -75,9 +75,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout Essential Submodules
+        run: |
+          echo "Only checkout the essential submodules needed for protobuf generation"
+          
+          git submodule init
+          git submodule update --init --recursive xion
+          git submodule update --init --recursive buf
+          
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -165,7 +173,7 @@ jobs:
   #         else
   #           npm version patch --no-git-tag-version
   #         fi
-          
+        
   #         # Get the new version
   #         NEW_VERSION=$(node -p "require('./package.json').version")
   #         echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
@@ -176,7 +184,7 @@ jobs:
   #       run: |
   #         # Build the package (this will create the dist directory)
   #         npm run build
-          
+        
   #         # Verify the dist structure
   #         echo "Dist directory contents:"
   #         ls -la dist/
@@ -190,7 +198,7 @@ jobs:
   #         cp package.json dist/
   #         cp README.md dist/ 2>/dev/null || echo "README.md not found, skipping"
   #         cp ../../README.md dist/ 2>/dev/null || echo "Root README.md not found, skipping"
-          
+        
   #         # Ensure dist directory structure is correct
   #         echo "Final dist structure:"
   #         ls -la dist/
@@ -249,10 +257,10 @@ jobs:
   #       run: |
   #         PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
   #         echo "echo "Verifying package version: $PACKAGE_VERSION"
-          
+        
   #         # Check if package is available on NPM
   #         npm view @burnt-labs/xion-types@$PACKAGE_VERSION version
-          
+        
   #         echo "✅ Package successfully published to NPM"
 
 
