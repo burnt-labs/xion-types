@@ -85,12 +85,10 @@ jobs:
       - name: Type Check
         working-directory: ./ts
         run: |
-          # Check if TypeScript is available
-          if command -v tsc >/dev/null 2>&1; then
-            npx tsc --noEmit --skipLibCheck
-          else
-            echo "TypeScript not available, skipping type check"
-          fi
+          # Check if TypeScript is available and run type checking
+          echo "Running TypeScript type check..."
+          npx tsc --noEmit --skipLibCheck
+          echo "Type check completed successfully"
 
   # COMMENTED OUT FOR TESTING - PUBLISH JOB
   # publish:

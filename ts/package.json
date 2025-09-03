@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "prettier": "^2.3.0",
-    "ts-proto": "^1.82.5"
+    "ts-proto": "^1.82.5",
+    "typescript": "^5.0.0"
   },
   "repository": {
     "type": "git",
