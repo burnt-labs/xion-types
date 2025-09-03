@@ -33,7 +33,7 @@ env:
 
 jobs:
   test:
-    name: Test and Build
+    name: Publish Xion Types into NPM
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
