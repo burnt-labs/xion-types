@@ -1,6 +1,37 @@
 # @burnt-labs/xion-types
 
-TypeScript definitions for Xion Protobuf files. This package provides TypeScript type definitions generated from the Protobuf files used in the Xion project, enabling developers to work with Xion-related data structures in a type-safe way.
+## What is xion-types?
+
+The `xion-types` repository is a **type definition package** that acts as a bridge between different programming languages and the Xion blockchain. Think of it as a "translator" that helps developers work with Xion blockchain data in their preferred programming language.
+
+## The Core Problem It Solves
+
+Blockchains like Xion use a data format called **Protocol Buffers (Protobuf)** to define their data structures. However, most developers don't write code directly in Protobuf - they use languages like TypeScript, Swift, or Kotlin.
+
+Without `xion-types`, developers would have to:
+- Manually write type definitions for every blockchain data structure
+- Risk making errors when handling blockchain data
+- Spend time figuring out what fields exist and what types they should be
+
+## What It Provides
+
+The repository generates **type-safe definitions** for multiple programming languages:
+- **TypeScript/JavaScript** - For web apps and Node.js projects
+- **Swift** - For iOS/macOS apps
+- **Kotlin** - For Android apps
+
+These type definitions ensure that when developers work with Xion blockchain data (like transactions, account information, or smart contract calls), they get:
+- **Autocomplete** in their code editor
+- **Error checking** if they try to use wrong data types
+- **Documentation** of what fields are available
+
+## Benefits
+
+1. **Reduced Development Time** - No need to manually write type definitions
+2. **Fewer Bugs** - Type safety catches errors at compile time
+3. **Better Developer Experience** - Autocomplete and IntelliSense support
+4. **Consistency** - Same types across different languages and projects
+5. **Maintainability** - Types automatically update when the blockchain protocol changes
 
 ## Table of Contents
 

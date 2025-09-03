@@ -3,14 +3,14 @@ name: TypeScript Package CI/CD
 on:
   push:
     branches: 
-      # - main
+      # - main #TODO: Uncomment this when we want to publish to main
       - feat/do-99-package-releasing-automation
     paths:
       - 'ts/**'
       - 'proto/**'
       - '.github/workflows/typescript-ci.yaml'
   pull_request:
-    branches: [main, develop]
+    branches: [main] #TODO : is it enough ?
     paths:
       - 'ts/**'
       - 'proto/**'
@@ -90,7 +90,6 @@ jobs:
           npx tsc --noEmit --skipLibCheck
           echo "Type check completed successfully"
 
-  # COMMENTED OUT FOR TESTING - PUBLISH JOB
   # publish:
   #   name: Publish to NPM
   #   needs: [test]
@@ -173,7 +172,6 @@ jobs:
   #         draft: false
   #         prerelease: false
 
-  # COMMENTED OUT FOR TESTING - VALIDATE RELEASE JOB
   # validate-release:
   #   name: Validate Release
   #   needs: publish
