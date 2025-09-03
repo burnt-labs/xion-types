@@ -57,7 +57,7 @@ jobs:
 
       - name: Run Tests
         working-directory: ./ts
-        run: npm test
+        run: npm run test:ci
 
       - name: Build Package
         working-directory: ./ts
@@ -155,7 +155,7 @@ jobs:
 
   #     - name: Download Generated Types
   #       uses: actions/download-artifact@v4
-  #       with:
+  #       run: |
   #         name: generated-types
   #         path: ./ts/types
 
@@ -229,7 +229,7 @@ jobs:
   #           ## What's Changed
             
   #           This release includes:
-  #           - Updated TypeScript type definitions from latest protobuf files
+  #           - Updated TypeScript types from latest protobuf files
   #           - Generated types for Xion blockchain protocol
   #           - Cosmos SDK and IBC type definitions
             
