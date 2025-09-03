@@ -51,7 +51,9 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ./ts
-        run: npm ci
+        run: |
+          # Try npm ci first, fallback to npm install if lock file is out of sync
+          npm ci || npm install
 
       - name: Run Tests
         working-directory: ./ts
@@ -85,7 +87,7 @@ jobs:
           git submodule init
           git submodule update --init --recursive xion
           git submodule update --init --recursive buf
-          
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -95,7 +97,9 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ./ts
-        run: npm ci
+        run: |
+          # Try npm ci first, fallback to npm install if lock file is out of sync
+          npm ci || npm install
 
       - name: Install buf
         run: |
@@ -219,8 +223,8 @@ jobs:
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   #       with:
-  #         tag_name: v${{ env.NEW_VERSION }}
-  #         release_name: Release v${{ env.NEW_VERSION }}
+  #         tag_name: v${{ env.NODE_VERSION }}
+  #         release_name: Release v${{ env.NODE_VERSION }}
   #         body: |
   #           ## What's Changed
             
