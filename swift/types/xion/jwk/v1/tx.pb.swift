@@ -119,6 +119,8 @@ struct Xion_Jwk_V1_MsgUpdateAudience: Sendable {
 
   var key: String = String()
 
+  var newAud: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -374,6 +376,7 @@ extension Xion_Jwk_V1_MsgUpdateAudience: SwiftProtobuf.Message, SwiftProtobuf._M
     2: .standard(proto: "new_admin"),
     3: .same(proto: "aud"),
     4: .same(proto: "key"),
+    5: .standard(proto: "new_aud"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -386,6 +389,7 @@ extension Xion_Jwk_V1_MsgUpdateAudience: SwiftProtobuf.Message, SwiftProtobuf._M
       case 2: try { try decoder.decodeSingularStringField(value: &self.newAdmin) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.aud) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.key) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.newAud) }()
       default: break
       }
     }
@@ -404,6 +408,9 @@ extension Xion_Jwk_V1_MsgUpdateAudience: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.key.isEmpty {
       try visitor.visitSingularStringField(value: self.key, fieldNumber: 4)
     }
+    if !self.newAud.isEmpty {
+      try visitor.visitSingularStringField(value: self.newAud, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -412,6 +419,7 @@ extension Xion_Jwk_V1_MsgUpdateAudience: SwiftProtobuf.Message, SwiftProtobuf._M
     if lhs.newAdmin != rhs.newAdmin {return false}
     if lhs.aud != rhs.aud {return false}
     if lhs.key != rhs.key {return false}
+    if lhs.newAud != rhs.newAud {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

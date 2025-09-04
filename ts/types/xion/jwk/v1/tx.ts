@@ -44,6 +44,7 @@ export interface MsgUpdateAudience {
   newAdmin: string;
   aud: string;
   key: string;
+  newAud: string;
 }
 
 export interface MsgUpdateAudienceResponse {
@@ -441,7 +442,7 @@ export const MsgCreateAudienceResponse = {
 };
 
 function createBaseMsgUpdateAudience(): MsgUpdateAudience {
-  return { admin: "", newAdmin: "", aud: "", key: "" };
+  return { admin: "", newAdmin: "", aud: "", key: "", newAud: "" };
 }
 
 export const MsgUpdateAudience = {
@@ -457,6 +458,9 @@ export const MsgUpdateAudience = {
     }
     if (message.key !== "") {
       writer.uint32(34).string(message.key);
+    }
+    if (message.newAud !== "") {
+      writer.uint32(42).string(message.newAud);
     }
     return writer;
   },
@@ -496,6 +500,13 @@ export const MsgUpdateAudience = {
 
           message.key = reader.string();
           continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.newAud = reader.string();
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -511,6 +522,7 @@ export const MsgUpdateAudience = {
       newAdmin: isSet(object.newAdmin) ? globalThis.String(object.newAdmin) : "",
       aud: isSet(object.aud) ? globalThis.String(object.aud) : "",
       key: isSet(object.key) ? globalThis.String(object.key) : "",
+      newAud: isSet(object.newAud) ? globalThis.String(object.newAud) : "",
     };
   },
 
@@ -528,6 +540,9 @@ export const MsgUpdateAudience = {
     if (message.key !== "") {
       obj.key = message.key;
     }
+    if (message.newAud !== "") {
+      obj.newAud = message.newAud;
+    }
     return obj;
   },
 
@@ -540,6 +555,7 @@ export const MsgUpdateAudience = {
     message.newAdmin = object.newAdmin ?? "";
     message.aud = object.aud ?? "";
     message.key = object.key ?? "";
+    message.newAud = object.newAud ?? "";
     return message;
   },
 };

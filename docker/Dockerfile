@@ -1,64 +1,40 @@
-FROM bufbuild/buf:1.36.0 as builder
 
-FROM swift:6.0.3-noble as swift-protoc-builder
+ARG PROTO_VERSION=0.17.1
 
-RUN apt-get update  \
-    && apt-get install -y software-properties-common
-RUN add-apt-repository ppa:longsleep/golang-backports
-RUN apt-get update  \
-    && apt-get install -y  \
-    libstdc++-12-dev  \
-    nodejs \
-    npm \
-    git \
-    make \
-    wget \
-    clangd \
-    g++ \
-    jq \
-    golang \
-    protobuf-compiler
+FROM swift:5.10-jammy AS swift-builder
 
-RUN npm install -g swagger-combine ts-proto @cosmwasm/ts-codegen
+# Clone and build swift-protobuf
+WORKDIR /build
+RUN git clone --depth 1 --branch 1.28.2 https://github.com/apple/swift-protobuf --recursive .
+COPY extramoduleimports.patch /build/extramoduleimports.patch
+RUN git apply /build/extramoduleimports.patch
 
-COPY rustup.sh rustup.sh
-RUN chmod +777 rustup.sh
-RUN ./rustup.sh -y
-RUN . "$HOME/.cargo/env"
+# Build swift-protobuf with maximum static linking
+ENV SWIFTPM_USE_IMPLICT_DEPENDENCIES=true
+RUN swift build -c release \
+    --static-swift-stdlib \
+    -Xlinker -static \
+    -Xlinker -static-libgcc \
+    || swift build -c release --static-swift-stdlib
 
-COPY --link extramoduleimports.patch /app/extramoduleimports.patch
-WORKDIR /app
-RUN git clone --depth 1 --branch 1.28.2 https://github.com/apple/swift-protobuf --recursive
-WORKDIR /app/swift-protobuf
-RUN git apply /app/extramoduleimports.patch
-RUN swift build -c release --static-swift-stdlib -Xlinker -s
-COPY --from=builder /usr/local/bin /usr/local/bin
-RUN mv /app/swift-protobuf/.build/release/protoc-gen-swift /usr/local/bin
+FROM ghcr.io/cosmos/proto-builder:${PROTO_VERSION} AS final
 
-#ARG UNAME=protobuild
-#ARG UID=10000
-#RUN adduser --uid $UID --shell /bin/sh $UNAME --disabled-password
-#USER $UNAME
+# Install comprehensive glibc compatibility and required libraries
+USER root
+RUN apk add --no-cache \
+    gcompat \
+    libc6-compat \
+    libstdc++ \
+    libgcc \
+    musl-fts \
+    musl-fts-dev
 
-ENV GOLANG_PROTOBUF_VERSION=1.28.1 \
-  GRPC_GATEWAY_VERSION=1.16.0 \
-  GRPC_GATEWAY_PROTOC_GEN_OPENAPIV2_VERSION=2.20.0
+# Create symlinks for fts functions to be available
+RUN ln -sf /usr/lib/libfts.so.0.0.0 /usr/lib/libfts.so.1
 
-ENV GOPATH=/workspace/go
-ENV PATH=$GOPATH/bin:/usr/local/go/bin:/workspace/go/bin:$PATH
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"
+COPY --from=swift-builder /build/.build/release/protoc-gen-swift /usr/local/bin/protoc-gen-swift-binary
 
-WORKDIR /workspace
-
-RUN go install github.com/cosmos/cosmos-proto/cmd/protoc-gen-go-pulsar@latest && \
-  go install google.golang.org/protobuf/cmd/protoc-gen-go@v${GOLANG_PROTOBUF_VERSION} && \
-  go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v${GRPC_GATEWAY_VERSION} && \
-  go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@v${GRPC_GATEWAY_PROTOC_GEN_OPENAPIV2_VERSION} && \
-  go install cosmossdk.io/orm/cmd/protoc-gen-go-cosmos-orm@v1.0.0-beta.3 && \
-  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-
-# install all gogo protobuf binaries
-RUN git clone https://github.com/cosmos/gogoproto.git; \
-  cd gogoproto; \
-  go mod download; \
-  make install
+# Create a wrapper script that sets up the environment for protoc-gen-swift
+RUN echo '#!/bin/sh' > /usr/local/bin/protoc-gen-swift && \
+    echo 'LD_PRELOAD=/usr/lib/libfts.so.0.0.0 exec /usr/local/bin/protoc-gen-swift-binary "$@"' >> /usr/local/bin/protoc-gen-swift && \
+    chmod +x /usr/local/bin/protoc-gen-swift
