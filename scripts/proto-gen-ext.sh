@@ -16,7 +16,7 @@ cd $xion_types_dir
 
 
 gen_ts() {
-  local dirs=$(get_proto_dirs $proto_dir)  # Only use local proto_dir, not external paths
+  local dirs=$(get_proto_dirs "$proto_dir" $proto_paths)  # Use both local and dependency paths
   ts_dir=$xion_types_dir/ts
   types_dir=$ts_dir/types
   mkdir -p $types_dir
@@ -27,18 +27,22 @@ gen_ts() {
 
   # Work from the proto directory where buf.yaml has dependencies defined
   cd $proto_dir
+  export PATH="$ts_dir/node_modules/.bin:$PATH"
 
   # # Generate ts for local proto files only, with include-imports to get dependencies
   for dir in $dirs; do
     for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
       echo "generating for file $file"
-      buf generate --template "$buf_dir/buf.gen.ts.yaml" --include-imports "$file"
+      buf generate $file \
+        --include-imports \
+        --template "$buf_dir/buf.gen.ts.yaml" \
+        --output $xion_types_dir
     done
   done
 }
 
 gen_swift() {
-  local dirs=$(get_proto_dirs $proto_dir)  # Only use local proto_dir, not external paths
+  local dirs=$(get_proto_dirs "$proto_dir" $proto_paths)  # Use both local and dependency paths
   swift_dir=$xion_types_dir/swift
   types_dir=$swift_dir/types
   mkdir -p $types_dir
@@ -46,32 +50,52 @@ gen_swift() {
   # Work from the proto directory where buf.yaml has dependencies defined
   cd $proto_dir
   
-  # Update the Swift template to use absolute output path
-  sed -i "s|out: types|out: $swift_dir/types|g" "$buf_dir/buf.gen.swift.yaml"
-
   # Generate swift for local proto files only, with include-imports to get dependencies
   for dir in $dirs; do
     for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
       echo "generating for file $file"
-      buf generate --template "$buf_dir/buf.gen.swift.yaml" --include-imports "$file"
+      buf generate $file \
+        --include-imports \
+        --template "$buf_dir/buf.gen.swift.yaml" \
+        --output $xion_types_dir
     done
   done
 }
 
 gen_kotlin() {
-  local dirs=$(get_proto_dirs $proto_dir $proto_paths)
+  local dirs=$(get_proto_dirs "$proto_dir" $proto_paths)  # Use both local and dependency paths
   kotlin_dir=$xion_types_dir/kotlin
   types_dir=$kotlin_dir/types
   mkdir -p $types_dir
 
-  cd $kotlin_dir
-  # Generate kotlin for each path
-    for dir in $dirs; do
-      for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
-        echo "generating for file $file"
-        buf generate --template $buf_dir/buf.gen.kotlin.yaml $file
-      done
+  # Install protoc if not available (for Alpine Linux in Docker)
+  if ! command -v protoc >/dev/null 2>&1; then
+    echo "Installing protoc for Kotlin generation..."
+    if command -v apk >/dev/null 2>&1; then
+      apk add --no-cache protobuf-dev
+    fi
+  fi
+
+  # Work from the proto directory where buf.yaml has dependencies defined
+  cd $proto_dir
+
+  # Generate kotlin for all proto files, with error handling for problematic ones
+  for dir in $dirs; do
+    for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
+      echo "generating for file $file"
+      if ! buf generate $file \
+        --include-imports \
+        --template "$buf_dir/buf.gen.kotlin.yaml" \
+        --output $xion_types_dir 2>/dev/null; then
+        echo "failed to generate $file (likely due to gogoproto or missing imports), skipping"
+        continue
+      fi
     done
+  done
+  
+  # Clean up any .proto.kt files (keep only .kt files)
+  echo "Cleaning up .proto.kt files..."
+  find "$kotlin_dir/types" -name "*.proto.kt" -delete 2>/dev/null || true
 }
 
 show_help() {

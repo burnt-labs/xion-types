@@ -70,7 +70,8 @@ struct Xion_V1_ContractsAllowance: Sendable {
   fileprivate var _allowance: SwiftProtobuf.Google_Protobuf_Any? = nil
 }
 
-/// MultiAnyAllowance creates an allowance that pays if any of the internal allowances are met
+/// MultiAnyAllowance creates an allowance that pays if any of the internal
+/// allowances are met
 struct Xion_V1_MultiAnyAllowance: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

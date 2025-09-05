@@ -6,7 +6,7 @@ XION_VERSION ?= $(shell scripts/get-xion-latest.sh)
 ################################################################################
 protoVer=0.17.1
 protoImageName=ghcr.io/cosmos/proto-builder:$(protoVer)
-protoImage=$(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace -e GOTOOLCHAIN=auto $(protoImageName)
+protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspace -e GOTOOLCHAIN=auto $(protoImageName)
 HTTPS_GIT := https://github.com/burnt-labs/xion.git
 
 proto-all: proto-gen prot-gen-ts proto-gen-swift proto-gen-kotlin
