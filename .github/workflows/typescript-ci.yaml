@@ -186,5 +186,3 @@ jobs:
   #         npm view @burnt-labs/xion-types@$PACKAGE_VERSION version
         
   #         echo "✅ Package successfully published to NPM"
-
-
