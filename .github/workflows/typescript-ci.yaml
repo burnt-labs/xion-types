@@ -17,24 +17,39 @@ on:
       - '.github/workflows/typescript-ci.yaml'
   workflow_dispatch:
     inputs:
-      version_bump:
-        description: 'Version bump type (patch, minor, major)'
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). If empty, will use the latest Git tag.'
         required: false
-        default: 'patch'
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
+        type: string
 
 env:
   NODE_VERSION: '18'
   REGISTRY_URL: 'https://registry.npmjs.org'
 
 jobs:
-  build-and-publish:
-    name: Build 
+  validate:
+    name: Validate Package
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify Types Directory
+        run: |
+          if [ ! -d "./ts/types" ] || [ -z "$(ls -A ./ts/types)" ]; then
+            echo "Error: Types directory is empty or missing"
+            exit 1
+          fi
+          echo "✅ Types directory validated"
+
+  publish:
+    name: Publish to NPM
+    needs: [validate]
+    runs-on: ubuntu-latest
+    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -46,90 +61,42 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: 'ts/package-lock.json'
+          registry-url: ${{ env.REGISTRY_URL }}
 
-      - name: Install Dependencies
+      - name: Bump Version
         working-directory: ./ts
         run: |
-          # Try npm ci first, fallback to npm install if lock file is out of sync
-          npm ci || npm install
-
-      - name: Build Package
-        working-directory: ./ts
-        run: npm run build
-
-      - name: Verify Package Structure
-        working-directory: ./ts
-        run: |
-          # Check if types directory exists and has content
-          if [ ! -d "./types" ] || [ -z "$(ls -A ./types)" ]; then
-            echo "Error: Types directory is empty or missing"
-            echo "Contents of types directory:"
-            ls -la types/ || echo "Types directory not found"
-            exit 1
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            # Set specific version from manual input
+            npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
+            echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+          else
+            # Get version from latest Git tag
+            echo "No manual version specified, using latest Git tag..."
+            
+            # Fetch all tags
+            git fetch --tags
+            
+            # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
+            LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+            
+            if [ -z "$LATEST_TAG" ]; then
+              echo "❌ No version tags found. Please either:"
+              echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
+              echo "   2. Provide next_version input in workflow_dispatch"
+              exit 1
+            else
+              # Remove 'v' prefix if present
+              CLEAN_TAG=${LATEST_TAG#v}
+              echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
+              npm version $CLEAN_TAG --no-git-tag-version
+            fi
           fi
-          
-          # Count type files
-          file_count=$(find ./types -name "*.ts" | wc -l)
-          echo "Found $file_count TypeScript type files"
-          
-          # List some type files for verification
-          echo "Sample type files:"
-          find ./types -name "*.ts" | head -10
-
-      - name: Type Check
-        working-directory: ./ts
-        run: |
-          # Check if TypeScript is available and run type checking
-          echo "Running TypeScript type check..."
-          npx tsc --noEmit --skipLibCheck
-          echo "Type check completed successfully"
-
-  # publish:
-  #   name: Publish to NPM
-  #   needs: [test]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v4
-  #       with:
-  #         submodules: false
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ env.NODE_VERSION }}
-  #         registry-url: ${{ env.REGISTRY_URL }}
-
-  #     - name: Install Dependencies
-  #       working-directory: ./ts
-  #       run: npm ci
-
-  #     - name: Bump Version
-  #       working-directory: ./ts
-  #       run: |
-  #         if [ "${{ github.event.inputs.version_bump }}" != "" ]; then
-  #           npm version ${{ github.event.inputs.version_bump }} --no-git-tag-version
-  #         else
-  #           npm version patch --no-git-tag-version
-  #         fi
         
-  #         # Get the new version
-  #         NEW_VERSION=$(node -p "require('./package.json').version")
-  #         echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-  #         echo "New package version: $NEW_VERSION"
-
-  #     - name: Prepare Package for Publishing
-  #       working-directory: ./ts
-  #       run: |
-  #         # Ensure package structure is correct
-  #         echo "Package structure:"
-  #         ls -la
-  #         echo "Types directory contents:"
-  #         ls -la types/ | head -10
+          # Get the new version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "New package version: $NEW_VERSION"
 
   #     - name: Publish to NPM
   #       working-directory: ./ts
@@ -140,49 +107,45 @@ jobs:
   #         npm publish --access public
   #         echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
-  #     - name: Create Release
-  #       uses: actions/create-release@v1
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       with:
-  #         tag_name: v${{ env.NEW_VERSION }}
-  #         release_name: Release v${{ env.NEW_VERSION }}
-  #         body: |
-  #           ## What's Changed
-            
-  #           This release includes:
-  #           - TypeScript type definitions for Xion blockchain protocol
-  #           - Cosmos SDK and IBC type definitions
-            
-  #           ## Installation
-            
-  #           ```bash
-  #           npm install @burnt-labs/xion-types@${{ env.NEW_VERSION }}
-  #           ```
-            
-  #           ## Usage
-            
-  #           ```typescript
-  #           import { MsgSend } from '@burnt-labs/xion-types/cosmos/bank/v1beta1/tx';
-  #           ```
-  #         draft: false
-  #         prerelease: false
-
-  # validate-release:
-  #   name: Validate Release
+  # validate-package:
+  #   name: Validate NPM Package
   #   needs: publish
   #   runs-on: ubuntu-latest
   #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
   #   steps:
-  #     - name: Wait for NPM
-  #       run: sleep 30
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #         registry-url: ${{ env.REGISTRY_URL }}
 
   #     - name: Verify Package on NPM
   #       run: |
   #         PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
   #         echo "Verifying package version: $PACKAGE_VERSION"
-        
-  #         # Check if package is available on NPM
-  #         npm view @burnt-labs/xion-types@$PACKAGE_VERSION version
-        
-  #         echo "✅ Package successfully published to NPM"
+          
+  #         # Retry logic for NPM verification
+  #         MAX_ATTEMPTS=10
+  #         ATTEMPT=1
+          
+  #         while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+  #           echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+            
+  #           if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
+  #             echo "✅ Package successfully published to NPM"
+  #             echo "Package version $PACKAGE_VERSION is available on NPM"
+  #             exit 0
+  #           else
+  #             echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+              
+  #             if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+  #               echo "Waiting 10 seconds before retry..."
+  #               sleep 10
+  #             fi
+  #           fi
+            
+  #           ATTEMPT=$((ATTEMPT + 1))
+  #         done
+          
+  #         echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+  #         exit 1
