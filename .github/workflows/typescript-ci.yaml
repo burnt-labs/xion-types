@@ -49,7 +49,7 @@ jobs:
     name: Publish to NPM
     needs: [validate]
     runs-on: ubuntu-latest
-    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -98,7 +98,8 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "New package version: $NEW_VERSION"
 
-  #     - name: Publish to NPM
+# TODO: Uncomment this when we want to publish to main
+  #     - name: Publish to NPM 
   #       working-directory: ./ts
   #       env:
   #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -107,45 +108,45 @@ jobs:
   #         npm publish --access public
   #         echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
-  # validate-package:
-  #   name: Validate NPM Package
-  #   needs: publish
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-  #   steps:
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ env.NODE_VERSION }}
-  #         registry-url: ${{ env.REGISTRY_URL }}
+  validate-package:
+    name: Validate NPM Package
+    needs: publish
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
 
-  #     - name: Verify Package on NPM
-  #       run: |
-  #         PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
-  #         echo "Verifying package version: $PACKAGE_VERSION"
+      - name: Verify Package on NPM
+        run: |
+          PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
+          echo "Verifying package version: $PACKAGE_VERSION"
           
-  #         # Retry logic for NPM verification
-  #         MAX_ATTEMPTS=10
-  #         ATTEMPT=1
+          # Retry logic for NPM verification
+          MAX_ATTEMPTS=10
+          ATTEMPT=1
           
-  #         while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-  #           echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-  #           if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
-  #             echo "✅ Package successfully published to NPM"
-  #             echo "Package version $PACKAGE_VERSION is available on NPM"
-  #             exit 0
-  #           else
-  #             echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+            if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
+              echo "✅ Package successfully published to NPM"
+              echo "Package version $PACKAGE_VERSION is available on NPM"
+              exit 0
+            else
+              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-  #             if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-  #               echo "Waiting 10 seconds before retry..."
-  #               sleep 10
-  #             fi
-  #           fi
+              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting 10 seconds before retry..."
+                sleep 10
+              fi
+            fi
             
-  #           ATTEMPT=$((ATTEMPT + 1))
-  #         done
+            ATTEMPT=$((ATTEMPT + 1))
+          done
           
-  #         echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-  #         exit 1
+          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+          exit 1
