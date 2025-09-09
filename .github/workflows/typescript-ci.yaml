@@ -49,7 +49,7 @@ jobs:
     name: Publish to NPM
     needs: [validate]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
+    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -99,20 +99,20 @@ jobs:
           echo "New package version: $NEW_VERSION"
 
 # TODO: Uncomment this when we want to publish to main
-  #     - name: Publish to NPM 
-  #       working-directory: ./ts
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #       run: |
-  #         echo "Publishing package version: ${{ env.NEW_VERSION }}"
-  #         npm publish --access public
-  #         echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+      - name: Publish to NPM 
+        working-directory: ./ts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "Publishing package version: ${{ env.NEW_VERSION }}"
+          npm publish --access public
+          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
   validate-package:
     name: Validate NPM Package
     needs: publish
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v4
