@@ -37,10 +37,17 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install buf
+        uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generate TypeScript Definitions
         run: |
           cd ts
           npm install
+          npm run build
+
           # Generate TypeScript from protobuf files
           npm run build
           # Verify the generation worked
