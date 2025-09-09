@@ -6,7 +6,7 @@ on:
       # - main #TODO: Uncomment this when we want to publish to main
       - feat/do-99-package-releasing-automation
     paths:
-      - 'ts/**'
+      #- 'ts/**'
       - 'proto/**'
       - '.github/workflows/typescript-ci.yaml'
   pull_request:
@@ -37,6 +37,13 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # - name: Generate TypeScript Definitions
+      #   run: |
+      #     cd ts
+      #     npm install
+      #     npm run build
+      #     git diff --exit-code || (echo "Generated types are out of sync" && exit 1)
+
       - name: Verify Types Directory
         run: |
           if [ ! -d "./ts/types" ] || [ -z "$(ls -A ./ts/types)" ]; then
@@ -49,6 +56,9 @@ jobs:
     name: Publish to NPM
     needs: [validate]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
     steps:
       - name: Checkout Repository
@@ -104,7 +114,7 @@ jobs:
         working-directory: ./ts
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }}"
-          npm publish --access public
+          npm publish --provenance --access public
           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
   validate-package:
