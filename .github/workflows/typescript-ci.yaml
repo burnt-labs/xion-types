@@ -62,7 +62,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
-          token: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Bump Version
         working-directory: ./ts
@@ -102,8 +102,6 @@ jobs:
 # TODO: Uncomment this when we want to publish to main
       - name: Publish to NPM 
         working-directory: ./ts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }}"
           npm publish --access public
