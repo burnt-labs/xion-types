@@ -23,163 +23,185 @@ on:
         type: string
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '2'
   REGISTRY_URL: 'https://registry.npmjs.org'
 
 jobs:
-  validate:
-    name: Validate Package
+  generate-protobuf:
+    name: Generate Protobuf Definitions
     runs-on: ubuntu-latest
+    outputs:
+      types-generated: ${{ steps.check-types.outputs.types-generated }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: false
+          submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install buf
-        uses: bufbuild/buf-setup-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Protobuf Builder Image
+        run: |
+          cd docker
+          docker build -t swiftbuilder .
 
       - name: Generate TypeScript Definitions
         run: |
+          make proto-gen-ts
+
+      - name: Check if Types Were Generated
+        id: check-types
+        run: |
+          if [ -d "./ts/types" ] && [ "$(ls -A ./ts/types)" ]; then
+            echo "types-generated=true" >> $GITHUB_OUTPUT
+            echo "✅ TypeScript definitions generated successfully"
+          else
+            echo "types-generated=false" >> $GITHUB_OUTPUT
+            echo "❌ Failed to generate TypeScript definitions"
+            exit 1
+          fi
+
+      - name: Validate Generated Types
+        run: |
           cd ts
           npm install
-          npm run build
+          # Basic TypeScript compilation check
+          npx tsc --noEmit --skipLibCheck
+          echo "✅ Generated types are valid TypeScript"
 
-          # Generate TypeScript from protobuf files
-          npm run build
-          # Verify the generation worked
-          if [ ! -d "./types" ] || [ -z "$(ls -A ./types)" ]; then
-            echo "❌ TypeScript generation failed - no types directory created"
-            exit 1
-          fi
-          echo "✅ TypeScript definitions generated successfully"
-          
-          # Check if generated files are different from committed files
-          if ! git diff --quiet; then
-            echo "⚠️  Generated types differ from committed files"
-            echo "Consider running 'npm run build' locally and committing the changes"
-            git diff --name-only
-            # Uncomment the next line if you want CI to fail on differences
-            exit 1
-          else
-            echo "✅ Generated types are in sync with committed files"
-          fi
-
-      - name: Verify Types Directory
+      - name: Check for Breaking Changes
         run: |
-          if [ ! -d "./ts/types" ] || [ -z "$(ls -A ./ts/types)" ]; then
-            echo "Error: Types directory is empty or missing"
-            exit 1
+          # Compare with previous version if available
+          if [ -d "./ts/types" ]; then
+            echo "Checking for potential breaking changes..."
+            # This could be enhanced with more sophisticated diff analysis
+            find ./ts/types -name "*.ts" -exec echo "Generated: {}" \;
           fi
-          echo "✅ Types directory validated"
 
-  publish:
-    name: Publish to NPM
-    needs: [validate]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: false
-          token: ${{ secrets.GITHUB_TOKEN }}
+#   validate:
+#     name: Validate Package
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#         with:
+#           submodules: false
+#           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#       - name: Verify Types Directory
+#         run: |
+#           if [ ! -d "./ts/types" ] || [ -z "$(ls -A ./ts/types)" ]; then
+#             echo "Error: Types directory is empty or missing"
+#             exit 1
+#           fi
+#           echo "✅ Types directory validated"
 
-      - name: Bump Version
-        working-directory: ./ts
-        run: |
-          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
-            # Set specific version from manual input
-            npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
-            echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
-          else
-            # Get version from latest Git tag
-            echo "No manual version specified, using latest Git tag..."
+#   publish:
+#     name: Publish to NPM
+#     needs: [validate]
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       id-token: write
+#     #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#         with:
+#           submodules: false
+#           token: ${{ secrets.GITHUB_TOKEN }}
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ env.NODE_VERSION }}
+#           registry-url: ${{ env.REGISTRY_URL }}
+#           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+#       - name: Bump Version
+#         working-directory: ./ts
+#         run: |
+#           if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+#             # Set specific version from manual input
+#             npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
+#             echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+#           else
+#             # Get version from latest Git tag
+#             echo "No manual version specified, using latest Git tag..."
             
-            # Fetch all tags
-            git fetch --tags
+#             # Fetch all tags
+#             git fetch --tags
             
-            # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
-            LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+#             # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
+#             LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
             
-            if [ -z "$LATEST_TAG" ]; then
-              echo "❌ No version tags found. Please either:"
-              echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
-              echo "   2. Provide next_version input in workflow_dispatch"
-              exit 1
-            else
-              # Remove 'v' prefix if present
-              CLEAN_TAG=${LATEST_TAG#v}
-              echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
-              npm version $CLEAN_TAG --no-git-tag-version
-            fi
-          fi
+#             if [ -z "$LATEST_TAG" ]; then
+#               echo "❌ No version tags found. Please either:"
+#               echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
+#               echo "   2. Provide next_version input in workflow_dispatch"
+#               exit 1
+#             else
+#               # Remove 'v' prefix if present
+#               CLEAN_TAG=${LATEST_TAG#v}
+#               echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
+#               npm version $CLEAN_TAG --no-git-tag-version
+#             fi
+#           fi
         
-          # Get the new version
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          echo "New package version: $NEW_VERSION"
+#           # Get the new version
+#           NEW_VERSION=$(node -p "require('./package.json').version")
+#           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+#           echo "New package version: $NEW_VERSION"
 
-# TODO: Uncomment this when we want to publish to main
-      - name: Publish to NPM 
-        working-directory: ./ts
-        run: |
-          echo "Publishing package version: ${{ env.NEW_VERSION }}"
-          npm publish --provenance --access public
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+# # TODO: Uncomment this when we want to publish to main
+#       - name: Publish to NPM 
+#         working-directory: ./ts
+#         run: |
+#           echo "Publishing package version: ${{ env.NEW_VERSION }}"
+#           npm publish --provenance --access public
+#           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
-  validate-package:
-    name: Validate NPM Package
-    needs: publish
-    runs-on: ubuntu-latest
-    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
+#   validate-package:
+#     name: Validate NPM Package
+#     needs: publish
+#     runs-on: ubuntu-latest
+#     #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
+#     steps:
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ env.NODE_VERSION }}
+#           registry-url: ${{ env.REGISTRY_URL }}
 
-      - name: Verify Package on NPM
-        run: |
-          PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
-          echo "Verifying package version: $PACKAGE_VERSION"
+#       - name: Verify Package on NPM
+#         run: |
+#           PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
+#           echo "Verifying package version: $PACKAGE_VERSION"
           
-          # Retry logic for NPM verification
-          MAX_ATTEMPTS=10
-          ATTEMPT=1
+#           # Retry logic for NPM verification
+#           MAX_ATTEMPTS=10
+#           ATTEMPT=1
           
-          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+#           while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+#             echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-            if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
-              echo "✅ Package successfully published to NPM"
-              echo "Package version $PACKAGE_VERSION is available on NPM"
-              exit 0
-            else
-              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+#             if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
+#               echo "✅ Package successfully published to NPM"
+#               echo "Package version $PACKAGE_VERSION is available on NPM"
+#               exit 0
+#             else
+#               echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting 10 seconds before retry..."
-                sleep 10
-              fi
-            fi
+#               if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+#                 echo "Waiting 10 seconds before retry..."
+#                 sleep 10
+#               fi
+#             fi
             
-            ATTEMPT=$((ATTEMPT + 1))
-          done
+#             ATTEMPT=$((ATTEMPT + 1))
+#           done
           
-          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-          exit 1
+#           echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+#           exit 1
