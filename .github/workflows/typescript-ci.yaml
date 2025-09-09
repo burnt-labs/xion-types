@@ -62,6 +62,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Bump Version
         working-directory: ./ts
