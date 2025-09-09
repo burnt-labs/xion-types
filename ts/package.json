@@ -10,9 +10,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "echo 'Types are pre-generated, no build step needed'",
+    "build": "buf generate --template ../buf/buf.gen.ts.yaml",
+    "build:clean": "rm -rf types && npm run build",
     "test": "echo 'No tests configured'",
-    "prepublishOnly": "echo 'Package ready for publishing'"
+    "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "dependencies": {

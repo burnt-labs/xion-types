@@ -23,7 +23,7 @@ on:
         type: string
 
 env:
-  NODE_VERSION: '18'
+  NODE_VERSION: '20'
   REGISTRY_URL: 'https://registry.npmjs.org'
 
 jobs:
@@ -37,12 +37,29 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Generate TypeScript Definitions
-      #   run: |
-      #     cd ts
-      #     npm install
-      #     npm run build
-      #     git diff --exit-code || (echo "Generated types are out of sync" && exit 1)
+      - name: Generate TypeScript Definitions
+        run: |
+          cd ts
+          npm install
+          # Generate TypeScript from protobuf files
+          npm run build
+          # Verify the generation worked
+          if [ ! -d "./types" ] || [ -z "$(ls -A ./types)" ]; then
+            echo "❌ TypeScript generation failed - no types directory created"
+            exit 1
+          fi
+          echo "✅ TypeScript definitions generated successfully"
+          
+          # Check if generated files are different from committed files
+          if ! git diff --quiet; then
+            echo "⚠️  Generated types differ from committed files"
+            echo "Consider running 'npm run build' locally and committing the changes"
+            git diff --name-only
+            # Uncomment the next line if you want CI to fail on differences
+            exit 1
+          else
+            echo "✅ Generated types are in sync with committed files"
+          fi
 
       - name: Verify Types Directory
         run: |
