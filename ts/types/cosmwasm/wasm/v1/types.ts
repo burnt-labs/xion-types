@@ -151,6 +151,7 @@ export interface ContractInfo {
   /** Created Tx position when the contract was instantiated. */
   created?: AbsoluteTxPosition | undefined;
   ibcPortId: string;
+  ibc2PortId: string;
   /**
    * Extension is an extension point to store custom metadata within the
    * persistence model.
@@ -500,6 +501,7 @@ function createBaseContractInfo(): ContractInfo {
     label: "",
     created: undefined,
     ibcPortId: "",
+    ibc2PortId: "",
     extension: undefined,
   };
 }
@@ -524,8 +526,11 @@ export const ContractInfo = {
     if (message.ibcPortId !== "") {
       writer.uint32(50).string(message.ibcPortId);
     }
+    if (message.ibc2PortId !== "") {
+      writer.uint32(58).string(message.ibc2PortId);
+    }
     if (message.extension !== undefined) {
-      Any.encode(message.extension, writer.uint32(58).fork()).ldelim();
+      Any.encode(message.extension, writer.uint32(66).fork()).ldelim();
     }
     return writer;
   },
@@ -584,6 +589,13 @@ export const ContractInfo = {
             break;
           }
 
+          message.ibc2PortId = reader.string();
+          continue;
+        case 8:
+          if (tag !== 66) {
+            break;
+          }
+
           message.extension = Any.decode(reader, reader.uint32());
           continue;
       }
@@ -603,6 +615,7 @@ export const ContractInfo = {
       label: isSet(object.label) ? globalThis.String(object.label) : "",
       created: isSet(object.created) ? AbsoluteTxPosition.fromJSON(object.created) : undefined,
       ibcPortId: isSet(object.ibcPortId) ? globalThis.String(object.ibcPortId) : "",
+      ibc2PortId: isSet(object.ibc2PortId) ? globalThis.String(object.ibc2PortId) : "",
       extension: isSet(object.extension) ? Any.fromJSON(object.extension) : undefined,
     };
   },
@@ -627,6 +640,9 @@ export const ContractInfo = {
     if (message.ibcPortId !== "") {
       obj.ibcPortId = message.ibcPortId;
     }
+    if (message.ibc2PortId !== "") {
+      obj.ibc2PortId = message.ibc2PortId;
+    }
     if (message.extension !== undefined) {
       obj.extension = Any.toJSON(message.extension);
     }
@@ -648,6 +664,7 @@ export const ContractInfo = {
       ? AbsoluteTxPosition.fromPartial(object.created)
       : undefined;
     message.ibcPortId = object.ibcPortId ?? "";
+    message.ibc2PortId = object.ibc2PortId ?? "";
     message.extension = (object.extension !== undefined && object.extension !== null)
       ? Any.fromPartial(object.extension)
       : undefined;

@@ -13,13 +13,7 @@ import { Plan } from "./upgrade";
 
 export const protobufPackage = "cosmos.upgrade.v1beta1";
 
-/** Since: cosmos-sdk 0.46 */
-
-/**
- * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
- *
- * Since: cosmos-sdk 0.46
- */
+/** MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type. */
 export interface MsgSoftwareUpgrade {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
@@ -27,29 +21,17 @@ export interface MsgSoftwareUpgrade {
   plan?: Plan | undefined;
 }
 
-/**
- * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
- *
- * Since: cosmos-sdk 0.46
- */
+/** MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type. */
 export interface MsgSoftwareUpgradeResponse {
 }
 
-/**
- * MsgCancelUpgrade is the Msg/CancelUpgrade request type.
- *
- * Since: cosmos-sdk 0.46
- */
+/** MsgCancelUpgrade is the Msg/CancelUpgrade request type. */
 export interface MsgCancelUpgrade {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
 }
 
-/**
- * MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
- *
- * Since: cosmos-sdk 0.46
- */
+/** MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type. */
 export interface MsgCancelUpgradeResponse {
 }
 
@@ -272,11 +254,7 @@ export const MsgCancelUpgradeResponse = {
 
 /** Msg defines the upgrade Msg service. */
 export interface Msg {
-  /**
-   * SoftwareUpgrade is a governance operation for initiating a software upgrade.
-   *
-   * Since: cosmos-sdk 0.46
-   */
+  /** SoftwareUpgrade is a governance operation for initiating a software upgrade. */
   SoftwareUpgrade(
     request: DeepPartial<MsgSoftwareUpgrade>,
     metadata?: grpc.Metadata,
@@ -284,8 +262,6 @@ export interface Msg {
   /**
    * CancelUpgrade is a governance operation for cancelling a previously
    * approved software upgrade.
-   *
-   * Since: cosmos-sdk 0.46
    */
   CancelUpgrade(request: DeepPartial<MsgCancelUpgrade>, metadata?: grpc.Metadata): Promise<MsgCancelUpgradeResponse>;
 }
