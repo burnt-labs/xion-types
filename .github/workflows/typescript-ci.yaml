@@ -145,7 +145,7 @@ jobs:
     strategy:
       matrix:
         project: 
-          - xion-dashboard-app # is private TODO
+          #- xion-dashboard-app # is private TODO
           - xion-explorer
           - xion-faucet
           - xion-staking
