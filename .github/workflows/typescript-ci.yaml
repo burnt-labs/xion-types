@@ -36,8 +36,26 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Initialize and Update Submodules
+        run: |
+          # Initialize only the required submodules
+          git submodule init xion
+          git submodule init contracts
+          
+          # Update submodules without recursive cloning
+          git submodule update --init xion
+          git submodule update --init contracts
+          
+          # Verify xion submodule is available
+          if [ ! -d "xion" ] || [ -z "$(ls -A xion)" ]; then
+            echo "❌ xion submodule not available"
+            exit 1
+          fi
+          
+          echo "✅ Required submodules initialized"
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
