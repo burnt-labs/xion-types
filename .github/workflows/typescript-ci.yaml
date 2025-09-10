@@ -278,7 +278,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }}"
-          npm publish --verbose --provenance --access public
+          npm publish --verbose --access public
           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
 #   validate-package:
