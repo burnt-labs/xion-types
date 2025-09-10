@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.46
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -80,8 +78,6 @@ struct Cosmos_Gov_V1_GenesisState: Sendable {
   mutating func clearTallyParams() {self._tallyParams = nil}
 
   /// params defines all the paramaters of x/gov module.
-  ///
-  /// Since: cosmos-sdk 0.47
   var params: Cosmos_Gov_V1_Params {
     get {return _params ?? Cosmos_Gov_V1_Params()}
     set {_params = newValue}
@@ -95,8 +91,6 @@ struct Cosmos_Gov_V1_GenesisState: Sendable {
   /// This is an immutable string set in genesis.
   /// There are no amendments, to go outside of scope, just fork.
   /// constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
-  ///
-  /// Since: cosmos-sdk 0.50
   var constitution: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

@@ -47,8 +47,6 @@ struct Cosmos_Bank_V1beta1_GenesisState: Sendable {
   var denomMetadata: [Cosmos_Bank_V1beta1_Metadata] = []
 
   /// send_enabled defines the denoms where send is enabled or disabled.
-  ///
-  /// Since: cosmos-sdk 0.47
   var sendEnabled: [Cosmos_Bank_V1beta1_SendEnabled] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

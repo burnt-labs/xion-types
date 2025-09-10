@@ -66,8 +66,6 @@ struct Cosmos_Store_Snapshots_V1_Metadata: @unchecked Sendable {
 }
 
 /// SnapshotItem is an item contained in a rootmulti.Store snapshot.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Store_Snapshots_V1_SnapshotItem: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -123,8 +121,6 @@ struct Cosmos_Store_Snapshots_V1_SnapshotItem: Sendable {
 }
 
 /// SnapshotStoreItem contains metadata about a snapshotted store.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Store_Snapshots_V1_SnapshotStoreItem: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -138,8 +134,6 @@ struct Cosmos_Store_Snapshots_V1_SnapshotStoreItem: Sendable {
 }
 
 /// SnapshotIAVLItem is an exported IAVL node.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Store_Snapshots_V1_SnapshotIAVLItem: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -161,8 +155,6 @@ struct Cosmos_Store_Snapshots_V1_SnapshotIAVLItem: @unchecked Sendable {
 }
 
 /// SnapshotExtensionMeta contains metadata about an external snapshotter.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Store_Snapshots_V1_SnapshotExtensionMeta: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -178,8 +170,6 @@ struct Cosmos_Store_Snapshots_V1_SnapshotExtensionMeta: Sendable {
 }
 
 /// SnapshotExtensionPayload contains payloads of an external snapshotter.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Store_Snapshots_V1_SnapshotExtensionPayload: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

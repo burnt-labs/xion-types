@@ -35,6 +35,11 @@ struct Cosmos_Auth_Module_V1_Module: Sendable {
   /// authority defines the custom module authority. If not set, defaults to the governance module.
   var authority: String = String()
 
+  /// enable_unordered_transactions determines whether unordered transactions should be supported or not.
+  /// When true, unordered transactions will be validated and processed.
+  /// When false, unordered transactions will be rejected.
+  var enableUnorderedTransactions: Bool = false
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -68,6 +73,7 @@ extension Cosmos_Auth_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._Me
     1: .standard(proto: "bech32_prefix"),
     2: .standard(proto: "module_account_permissions"),
     3: .same(proto: "authority"),
+    4: .standard(proto: "enable_unordered_transactions"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -79,6 +85,7 @@ extension Cosmos_Auth_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._Me
       case 1: try { try decoder.decodeSingularStringField(value: &self.bech32Prefix) }()
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.moduleAccountPermissions) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.authority) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.enableUnorderedTransactions) }()
       default: break
       }
     }
@@ -94,6 +101,9 @@ extension Cosmos_Auth_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._Me
     if !self.authority.isEmpty {
       try visitor.visitSingularStringField(value: self.authority, fieldNumber: 3)
     }
+    if self.enableUnorderedTransactions != false {
+      try visitor.visitSingularBoolField(value: self.enableUnorderedTransactions, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -101,6 +111,7 @@ extension Cosmos_Auth_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._Me
     if lhs.bech32Prefix != rhs.bech32Prefix {return false}
     if lhs.moduleAccountPermissions != rhs.moduleAccountPermissions {return false}
     if lhs.authority != rhs.authority {return false}
+    if lhs.enableUnorderedTransactions != rhs.enableUnorderedTransactions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

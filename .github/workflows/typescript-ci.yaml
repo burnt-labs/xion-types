@@ -3,18 +3,11 @@ name: Xion-Types Package CI/CD
 on:
   push:
     branches: 
-      # - main #TODO: Uncomment this when we want to publish to main
-      - feat/do-99-package-releasing-automation
-    paths:
-      #- 'ts/**'
-      - 'proto/**'
-      - '.github/workflows/typescript-ci.yaml'
+      - main 
   pull_request:
-    branches: [main] #TODO : is it enough ?
-    paths:
-      - 'ts/**'
-      - 'proto/**'
-      - '.github/workflows/typescript-ci.yaml'
+    branches: 
+      - main
+      
   workflow_dispatch:
     inputs:
       next_version:
@@ -30,6 +23,19 @@ jobs:
   generate-protobuf:
     name: Generate Protobuf Definitions
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language:
+          - ts
+          - java
+          - kotlin
+          - python
+          - rust
+          - dart
+          - ruby
+          - php
+          - swift
+      fail-fast: false
     outputs:
       types-generated: ${{ steps.check-types.outputs.types-generated }}
     steps:
@@ -39,27 +45,27 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate TypeScript Definitions
+      - name: Generate ${{ matrix.language }} Definitions
         run: |
-          make proto-gen-ts
+          make proto-gen-${{ matrix.language }}
 
       - name: Check if Types Were Generated
         id: check-types
         run: |
-          if [ -d "./ts/types" ] && [ "$(ls -A ./ts/types)" ]; then
+          if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
             echo "types-generated=true" >> $GITHUB_OUTPUT
-            echo "✅ TypeScript definitions generated successfully"
+            echo "✅ ${{ matrix.language }} definitions generated successfully"
           else
             echo "types-generated=false" >> $GITHUB_OUTPUT
-            echo "❌ Failed to generate TypeScript definitions"
+            echo "❌ Failed to generate ${{ matrix.language }} definitions"
             exit 1
           fi
 
       - name: Upload Generated Types
         uses: actions/upload-artifact@v4
         with:
-          name: generated-types
-          path: ts/types
+          name: generated-types-${{ matrix.language }}
+          path: ${{ matrix.language }}/types
           retention-days: 1
 
   # test-dependent-projects:
@@ -140,18 +146,24 @@ jobs:
 
   publish:
     name: Publish to NPM
-    needs: generate-protobuf # TODO [test-dependent-projects]
+    needs: generate-protobuf
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
-    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
         with:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download TypeScript Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: ts/types
 
       - name: Setup Node.js
         uses: actions/setup-node@v5

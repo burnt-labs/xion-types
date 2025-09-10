@@ -21,8 +21,6 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// AuthorizationType defines the type of staking module authorization type
-///
-/// Since: cosmos-sdk 0.43
 enum Cosmos_Staking_V1beta1_AuthorizationType: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
 
@@ -80,8 +78,6 @@ enum Cosmos_Staking_V1beta1_AuthorizationType: SwiftProtobuf.Enum, Swift.CaseIte
 }
 
 /// StakeAuthorization defines authorization for delegate/undelegate/redelegate.
-///
-/// Since: cosmos-sdk 0.43
 struct Cosmos_Staking_V1beta1_StakeAuthorization: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

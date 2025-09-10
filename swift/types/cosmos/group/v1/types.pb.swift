@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.46
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -589,16 +587,12 @@ struct Cosmos_Group_V1_Proposal: @unchecked Sendable {
   }
 
   /// title is the title of the proposal
-  ///
-  /// Since: cosmos-sdk 0.47
   var title: String {
     get {return _storage._title}
     set {_uniqueStorage()._title = newValue}
   }
 
   /// summary is a short summary of the proposal
-  ///
-  /// Since: cosmos-sdk 0.47
   var summary: String {
     get {return _storage._summary}
     set {_uniqueStorage()._summary = newValue}

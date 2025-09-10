@@ -80,8 +80,6 @@ struct Cosmos_Bank_V1beta1_QueryAllBalancesRequest: Sendable {
   mutating func clearPagination() {self._pagination = nil}
 
   /// resolve_denom is the flag to resolve the denom into a human-readable form from the metadata.
-  ///
-  /// Since: cosmos-sdk 0.50
   var resolveDenom: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -120,8 +118,6 @@ struct Cosmos_Bank_V1beta1_QueryAllBalancesResponse: Sendable {
 
 /// QuerySpendableBalancesRequest defines the gRPC request structure for querying
 /// an account's spendable balances.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Bank_V1beta1_QuerySpendableBalancesRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -149,8 +145,6 @@ struct Cosmos_Bank_V1beta1_QuerySpendableBalancesRequest: Sendable {
 
 /// QuerySpendableBalancesResponse defines the gRPC response structure for querying
 /// an account's spendable balances.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Bank_V1beta1_QuerySpendableBalancesResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -178,8 +172,6 @@ struct Cosmos_Bank_V1beta1_QuerySpendableBalancesResponse: Sendable {
 
 /// QuerySpendableBalanceByDenomRequest defines the gRPC request structure for
 /// querying an account's spendable balance for a specific denom.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_QuerySpendableBalanceByDenomRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -198,8 +190,6 @@ struct Cosmos_Bank_V1beta1_QuerySpendableBalanceByDenomRequest: Sendable {
 
 /// QuerySpendableBalanceByDenomResponse defines the gRPC response structure for
 /// querying an account's spendable balance for a specific denom.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_QuerySpendableBalanceByDenomResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -230,8 +220,6 @@ struct Cosmos_Bank_V1beta1_QueryTotalSupplyRequest: Sendable {
   // methods supported on all messages.
 
   /// pagination defines an optional pagination for the request.
-  ///
-  /// Since: cosmos-sdk 0.43
   var pagination: Cosmos_Base_Query_V1beta1_PageRequest {
     get {return _pagination ?? Cosmos_Base_Query_V1beta1_PageRequest()}
     set {_pagination = newValue}
@@ -259,8 +247,6 @@ struct Cosmos_Bank_V1beta1_QueryTotalSupplyResponse: Sendable {
   var supply: [Cosmos_Base_V1beta1_Coin] = []
 
   /// pagination defines the pagination in the response.
-  ///
-  /// Since: cosmos-sdk 0.43
   var pagination: Cosmos_Base_Query_V1beta1_PageResponse {
     get {return _pagination ?? Cosmos_Base_Query_V1beta1_PageResponse()}
     set {_pagination = newValue}
@@ -506,8 +492,6 @@ struct Cosmos_Bank_V1beta1_QueryDenomOwnersRequest: Sendable {
 /// DenomOwner defines structure representing an account that owns or holds a
 /// particular denominated token. It contains the account address and account
 /// balance of the denominated token.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Bank_V1beta1_DenomOwner: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -534,8 +518,6 @@ struct Cosmos_Bank_V1beta1_DenomOwner: Sendable {
 }
 
 /// QueryDenomOwnersResponse defines the RPC response of a DenomOwners RPC query.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Bank_V1beta1_QueryDenomOwnersResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -563,8 +545,6 @@ struct Cosmos_Bank_V1beta1_QueryDenomOwnersResponse: Sendable {
 /// QueryDenomOwnersByQueryRequest defines the request type for the DenomOwnersByQuery RPC query,
 /// which queries for a paginated set of all account holders of a particular
 /// denomination.
-///
-/// Since: cosmos-sdk 0.50.3
 struct Cosmos_Bank_V1beta1_QueryDenomOwnersByQueryRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -591,8 +571,6 @@ struct Cosmos_Bank_V1beta1_QueryDenomOwnersByQueryRequest: Sendable {
 }
 
 /// QueryDenomOwnersByQueryResponse defines the RPC response of a DenomOwnersByQuery RPC query.
-///
-/// Since: cosmos-sdk 0.50.3
 struct Cosmos_Bank_V1beta1_QueryDenomOwnersByQueryResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -618,8 +596,6 @@ struct Cosmos_Bank_V1beta1_QueryDenomOwnersByQueryResponse: Sendable {
 }
 
 /// QuerySendEnabledRequest defines the RPC request for looking up SendEnabled entries.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_QuerySendEnabledRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -647,8 +623,6 @@ struct Cosmos_Bank_V1beta1_QuerySendEnabledRequest: Sendable {
 }
 
 /// QuerySendEnabledResponse defines the RPC response of a SendEnable query.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_QuerySendEnabledResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
