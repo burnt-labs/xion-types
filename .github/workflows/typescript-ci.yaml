@@ -31,7 +31,6 @@ jobs:
           - kotlin
           - python
           - rust
-          - dart
           - ruby
           - php
           - swift
