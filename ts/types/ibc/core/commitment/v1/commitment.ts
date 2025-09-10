@@ -29,6 +29,15 @@ export interface MerklePrefix {
 }
 
 /**
+ * MerklePath is the path used to verify commitment proofs, which can be an
+ * arbitrary structured object (defined by a commitment type).
+ * MerklePath is represented from root-to-leaf
+ */
+export interface MerklePath {
+  keyPath: string[];
+}
+
+/**
  * MerkleProof is a wrapper type over a chain of CommitmentProofs.
  * It demonstrates membership or non-membership for an element or set of
  * elements, verifiable in conjunction with a known commitment root. Proofs
@@ -149,6 +158,65 @@ export const MerklePrefix = {
   fromPartial<I extends Exact<DeepPartial<MerklePrefix>, I>>(object: I): MerklePrefix {
     const message = createBaseMerklePrefix();
     message.keyPrefix = object.keyPrefix ?? new Uint8Array(0);
+    return message;
+  },
+};
+
+function createBaseMerklePath(): MerklePath {
+  return { keyPath: [] };
+}
+
+export const MerklePath = {
+  encode(message: MerklePath, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.keyPath) {
+      writer.uint32(10).string(v!);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MerklePath {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMerklePath();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.keyPath.push(reader.string());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MerklePath {
+    return {
+      keyPath: globalThis.Array.isArray(object?.keyPath) ? object.keyPath.map((e: any) => globalThis.String(e)) : [],
+    };
+  },
+
+  toJSON(message: MerklePath): unknown {
+    const obj: any = {};
+    if (message.keyPath?.length) {
+      obj.keyPath = message.keyPath;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<MerklePath>, I>>(base?: I): MerklePath {
+    return MerklePath.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<MerklePath>, I>>(object: I): MerklePath {
+    const message = createBaseMerklePath();
+    message.keyPath = object.keyPath?.map((e) => e) || [];
     return message;
   },
 };

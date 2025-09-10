@@ -8,15 +8,14 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Denom } from "./token";
-import { Params } from "./transfer";
+import { DenomTrace, Params } from "./transfer";
 
 export const protobufPackage = "ibc.applications.transfer.v1";
 
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisState {
   portId: string;
-  denoms: Denom[];
+  denomTraces: DenomTrace[];
   params?:
     | Params
     | undefined;
@@ -28,7 +27,7 @@ export interface GenesisState {
 }
 
 function createBaseGenesisState(): GenesisState {
-  return { portId: "", denoms: [], params: undefined, totalEscrowed: [] };
+  return { portId: "", denomTraces: [], params: undefined, totalEscrowed: [] };
 }
 
 export const GenesisState = {
@@ -36,8 +35,8 @@ export const GenesisState = {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
     }
-    for (const v of message.denoms) {
-      Denom.encode(v!, writer.uint32(18).fork()).ldelim();
+    for (const v of message.denomTraces) {
+      DenomTrace.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(26).fork()).ldelim();
@@ -67,7 +66,7 @@ export const GenesisState = {
             break;
           }
 
-          message.denoms.push(Denom.decode(reader, reader.uint32()));
+          message.denomTraces.push(DenomTrace.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
@@ -95,7 +94,9 @@ export const GenesisState = {
   fromJSON(object: any): GenesisState {
     return {
       portId: isSet(object.portId) ? globalThis.String(object.portId) : "",
-      denoms: globalThis.Array.isArray(object?.denoms) ? object.denoms.map((e: any) => Denom.fromJSON(e)) : [],
+      denomTraces: globalThis.Array.isArray(object?.denomTraces)
+        ? object.denomTraces.map((e: any) => DenomTrace.fromJSON(e))
+        : [],
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
       totalEscrowed: globalThis.Array.isArray(object?.totalEscrowed)
         ? object.totalEscrowed.map((e: any) => Coin.fromJSON(e))
@@ -108,8 +109,8 @@ export const GenesisState = {
     if (message.portId !== "") {
       obj.portId = message.portId;
     }
-    if (message.denoms?.length) {
-      obj.denoms = message.denoms.map((e) => Denom.toJSON(e));
+    if (message.denomTraces?.length) {
+      obj.denomTraces = message.denomTraces.map((e) => DenomTrace.toJSON(e));
     }
     if (message.params !== undefined) {
       obj.params = Params.toJSON(message.params);
@@ -126,7 +127,7 @@ export const GenesisState = {
   fromPartial<I extends Exact<DeepPartial<GenesisState>, I>>(object: I): GenesisState {
     const message = createBaseGenesisState();
     message.portId = object.portId ?? "";
-    message.denoms = object.denoms?.map((e) => Denom.fromPartial(e)) || [];
+    message.denomTraces = object.denomTraces?.map((e) => DenomTrace.fromPartial(e)) || [];
     message.params = (object.params !== undefined && object.params !== null)
       ? Params.fromPartial(object.params)
       : undefined;

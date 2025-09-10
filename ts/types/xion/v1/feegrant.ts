@@ -25,10 +25,7 @@ export interface ContractsAllowance {
   contractAddresses: string[];
 }
 
-/**
- * MultiAnyAllowance creates an allowance that pays if any of the internal
- * allowances are met
- */
+/** MultiAnyAllowance creates an allowance that pays if any of the internal allowances are met */
 export interface MultiAnyAllowance {
   /** allowance can be any allowance interface type. */
   allowances: Any[];

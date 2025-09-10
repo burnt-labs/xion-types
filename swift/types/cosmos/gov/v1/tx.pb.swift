@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+/// Since: cosmos-sdk 0.46
+
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -40,12 +42,18 @@ struct Cosmos_Gov_V1_MsgSubmitProposal: Sendable {
   var metadata: String = String()
 
   /// title is the title of the proposal.
+  ///
+  /// Since: cosmos-sdk 0.47
   var title: String = String()
 
   /// summary is the summary of the proposal
+  ///
+  /// Since: cosmos-sdk 0.47
   var summary: String = String()
 
   /// expedited defines if the proposal is expedited or not
+  ///
+  /// Since: cosmos-sdk 0.50
   var expedited: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -205,6 +213,8 @@ struct Cosmos_Gov_V1_MsgDepositResponse: Sendable {
 }
 
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Gov_V1_MsgUpdateParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -234,6 +244,8 @@ struct Cosmos_Gov_V1_MsgUpdateParams: Sendable {
 
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Gov_V1_MsgUpdateParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -245,6 +257,8 @@ struct Cosmos_Gov_V1_MsgUpdateParamsResponse: Sendable {
 }
 
 /// MsgCancelProposal is the Msg/CancelProposal request type.
+///
+/// Since: cosmos-sdk 0.50
 struct Cosmos_Gov_V1_MsgCancelProposal: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -263,6 +277,8 @@ struct Cosmos_Gov_V1_MsgCancelProposal: Sendable {
 
 /// MsgCancelProposalResponse defines the response structure for executing a
 /// MsgCancelProposal message.
+///
+/// Since: cosmos-sdk 0.50
 struct Cosmos_Gov_V1_MsgCancelProposalResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

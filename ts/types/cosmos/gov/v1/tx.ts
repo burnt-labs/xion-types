@@ -16,6 +16,8 @@ import { Params, VoteOption, voteOptionFromJSON, voteOptionToJSON, WeightedVoteO
 
 export const protobufPackage = "cosmos.gov.v1";
 
+/** Since: cosmos-sdk 0.46 */
+
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -29,11 +31,23 @@ export interface MsgSubmitProposal {
   proposer: string;
   /** metadata is any arbitrary metadata attached to the proposal. */
   metadata: string;
-  /** title is the title of the proposal. */
+  /**
+   * title is the title of the proposal.
+   *
+   * Since: cosmos-sdk 0.47
+   */
   title: string;
-  /** summary is the summary of the proposal */
+  /**
+   * summary is the summary of the proposal
+   *
+   * Since: cosmos-sdk 0.47
+   */
   summary: string;
-  /** expedited defines if the proposal is expedited or not */
+  /**
+   * expedited defines if the proposal is expedited or not
+   *
+   * Since: cosmos-sdk 0.50
+   */
   expedited: boolean;
 }
 
@@ -106,7 +120,11 @@ export interface MsgDeposit {
 export interface MsgDepositResponse {
 }
 
-/** MsgUpdateParams is the Msg/UpdateParams request type. */
+/**
+ * MsgUpdateParams is the Msg/UpdateParams request type.
+ *
+ * Since: cosmos-sdk 0.47
+ */
 export interface MsgUpdateParams {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
@@ -121,11 +139,17 @@ export interface MsgUpdateParams {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
+ *
+ * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponse {
 }
 
-/** MsgCancelProposal is the Msg/CancelProposal request type. */
+/**
+ * MsgCancelProposal is the Msg/CancelProposal request type.
+ *
+ * Since: cosmos-sdk 0.50
+ */
 export interface MsgCancelProposal {
   /** proposal_id defines the unique id of the proposal. */
   proposalId: Long;
@@ -136,6 +160,8 @@ export interface MsgCancelProposal {
 /**
  * MsgCancelProposalResponse defines the response structure for executing a
  * MsgCancelProposal message.
+ *
+ * Since: cosmos-sdk 0.50
  */
 export interface MsgCancelProposalResponse {
   /** proposal_id defines the unique id of the proposal. */
@@ -1220,9 +1246,15 @@ export interface Msg {
   /**
    * UpdateParams defines a governance operation for updating the x/gov module
    * parameters. The authority is defined in the keeper.
+   *
+   * Since: cosmos-sdk 0.47
    */
   UpdateParams(request: DeepPartial<MsgUpdateParams>, metadata?: grpc.Metadata): Promise<MsgUpdateParamsResponse>;
-  /** CancelProposal defines a method to cancel governance proposal */
+  /**
+   * CancelProposal defines a method to cancel governance proposal
+   *
+   * Since: cosmos-sdk 0.50
+   */
   CancelProposal(request: DeepPartial<MsgCancelProposal>, metadata?: grpc.Metadata): Promise<MsgCancelProposalResponse>;
 }
 

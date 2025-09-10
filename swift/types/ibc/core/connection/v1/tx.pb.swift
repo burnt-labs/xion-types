@@ -92,8 +92,6 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenTry: @unchecked Sendable {
     set {_uniqueStorage()._previousConnectionID = newValue}
   }
 
-  /// Deprecated: this field is unused.
-  ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var clientState: SwiftProtobuf.Google_Protobuf_Any {
     get {return _storage._clientState ?? SwiftProtobuf.Google_Protobuf_Any()}
@@ -132,14 +130,14 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenTry: @unchecked Sendable {
   /// Clears the value of `proofHeight`. Subsequent reads from it will return its default value.
   mutating func clearProofHeight() {_uniqueStorage()._proofHeight = nil}
 
-  /// proof of the initialization the connection on Chain A: `UNINITIALIZED ->
+  /// proof of the initialization the connection on Chain A: `UNITIALIZED ->
   /// INIT`
   var proofInit: Data {
     get {return _storage._proofInit}
     set {_uniqueStorage()._proofInit = newValue}
   }
 
-  /// Deprecated: this field is unused.
+  /// proof of client state included in message
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var proofClient: Data {
@@ -147,7 +145,7 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenTry: @unchecked Sendable {
     set {_uniqueStorage()._proofClient = newValue}
   }
 
-  /// Deprecated: this field is unused.
+  /// proof of client consensus state
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var proofConsensus: Data {
@@ -155,8 +153,6 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenTry: @unchecked Sendable {
     set {_uniqueStorage()._proofConsensus = newValue}
   }
 
-  /// Deprecated: this field is unused.
-  ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var consensusHeight: Ibc_Core_Client_V1_Height {
     get {return _storage._consensusHeight ?? Ibc_Core_Client_V1_Height()}
@@ -172,7 +168,7 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenTry: @unchecked Sendable {
     set {_uniqueStorage()._signer = newValue}
   }
 
-  /// Deprecated: this field is unused.
+  /// optional proof data for host state machines that are unable to introspect their own consensus state
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var hostConsensusStateProof: Data {
@@ -218,8 +214,6 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenAck: @unchecked Sendable {
   /// Clears the value of `version`. Subsequent reads from it will return its default value.
   mutating func clearVersion() {self._version = nil}
 
-  /// Deprecated: this field is unused.
-  ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var clientState: SwiftProtobuf.Google_Protobuf_Any {
     get {return _clientState ?? SwiftProtobuf.Google_Protobuf_Any()}
@@ -239,22 +233,20 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenAck: @unchecked Sendable {
   /// Clears the value of `proofHeight`. Subsequent reads from it will return its default value.
   mutating func clearProofHeight() {self._proofHeight = nil}
 
-  /// proof of the initialization the connection on Chain B: `UNINITIALIZED ->
+  /// proof of the initialization the connection on Chain B: `UNITIALIZED ->
   /// TRYOPEN`
   var proofTry: Data = Data()
 
-  /// Deprecated: this field is unused.
+  /// proof of client state included in message
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var proofClient: Data = Data()
 
-  /// Deprecated: this field is unused.
+  /// proof of client consensus state
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var proofConsensus: Data = Data()
 
-  /// Deprecated: this field is unused.
-  ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var consensusHeight: Ibc_Core_Client_V1_Height {
     get {return _consensusHeight ?? Ibc_Core_Client_V1_Height()}
@@ -267,7 +259,7 @@ struct Ibc_Core_Connection_V1_MsgConnectionOpenAck: @unchecked Sendable {
 
   var signer: String = String()
 
-  /// Deprecated: this field is unused.
+  /// optional proof data for host state machines that are unable to introspect their own consensus state
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var hostConsensusStateProof: Data = Data()

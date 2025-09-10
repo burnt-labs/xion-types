@@ -30,6 +30,8 @@ export interface QueryParamsResponse {
 /**
  * QuerySubspacesRequest defines a request type for querying for all registered
  * subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesRequest {
 }
@@ -37,6 +39,8 @@ export interface QuerySubspacesRequest {
 /**
  * QuerySubspacesResponse defines the response types for querying for all
  * registered subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesResponse {
   subspaces: Subspace[];
@@ -45,6 +49,8 @@ export interface QuerySubspacesResponse {
 /**
  * Subspace defines a parameter subspace name and all the keys that exist for
  * the subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface Subspace {
   subspace: string;
@@ -369,7 +375,11 @@ export interface Query {
    * key.
    */
   Params(request: DeepPartial<QueryParamsRequest>, metadata?: grpc.Metadata): Promise<QueryParamsResponse>;
-  /** Subspaces queries for all registered subspaces and all keys for a subspace. */
+  /**
+   * Subspaces queries for all registered subspaces and all keys for a subspace.
+   *
+   * Since: cosmos-sdk 0.46
+   */
   Subspaces(request: DeepPartial<QuerySubspacesRequest>, metadata?: grpc.Metadata): Promise<QuerySubspacesResponse>;
 }
 

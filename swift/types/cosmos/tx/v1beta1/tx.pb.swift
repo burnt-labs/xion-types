@@ -118,6 +118,8 @@ struct Cosmos_Tx_V1beta1_SignDoc: @unchecked Sendable {
 
 /// SignDocDirectAux is the type used for generating sign bytes for
 /// SIGN_MODE_DIRECT_AUX.
+///
+/// Since: cosmos-sdk 0.46
 struct Cosmos_Tx_V1beta1_SignDocDirectAux: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -185,43 +187,12 @@ struct Cosmos_Tx_V1beta1_TxBody: Sendable {
 
   /// memo is any arbitrary note/comment to be added to the transaction.
   /// WARNING: in clients, any publicly exposed text should not be called memo,
-  /// but should be called `note` instead (see
-  /// https://github.com/cosmos/cosmos-sdk/issues/9122).
+  /// but should be called `note` instead (see https://github.com/cosmos/cosmos-sdk/issues/9122).
   var memo: String = String()
 
-  /// timeout_height is the block height after which this transaction will not
-  /// be processed by the chain.
+  /// timeout is the block height after which this transaction will not
+  /// be processed by the chain
   var timeoutHeight: UInt64 = 0
-
-  /// unordered, when set to true, indicates that the transaction signer(s)
-  /// intend for the transaction to be evaluated and executed in an un-ordered
-  /// fashion. Specifically, the account's nonce will NOT be checked or
-  /// incremented, which allows for fire-and-forget as well as concurrent
-  /// transaction execution.
-  ///
-  /// Note, when set to true, the existing 'timeout_timestamp' value must
-  /// be set and will be used to correspond to a timestamp in which the transaction is deemed
-  /// valid.
-  ///
-  /// When true, the sequence value MUST be 0, and any transaction with unordered=true and a non-zero sequence value will
-  /// be rejected.
-  /// External services that make assumptions about sequence values may need to be updated because of this.
-  var unordered: Bool = false
-
-  /// timeout_timestamp is the block time after which this transaction will not
-  /// be processed by the chain.
-  ///
-  /// Note, if unordered=true this value MUST be set
-  /// and will act as a short-lived TTL in which the transaction is deemed valid
-  /// and kept in memory to prevent duplicates.
-  var timeoutTimestamp: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _timeoutTimestamp ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_timeoutTimestamp = newValue}
-  }
-  /// Returns true if `timeoutTimestamp` has been explicitly set.
-  var hasTimeoutTimestamp: Bool {return self._timeoutTimestamp != nil}
-  /// Clears the value of `timeoutTimestamp`. Subsequent reads from it will return its default value.
-  mutating func clearTimeoutTimestamp() {self._timeoutTimestamp = nil}
 
   /// extension_options are arbitrary options that can be added by chains
   /// when the default options are not sufficient. If any of these are present
@@ -236,8 +207,6 @@ struct Cosmos_Tx_V1beta1_TxBody: Sendable {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
-
-  fileprivate var _timeoutTimestamp: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 /// AuthInfo describes the fee and signer modes that are used to sign a
@@ -270,6 +239,8 @@ struct Cosmos_Tx_V1beta1_AuthInfo: Sendable {
   ///
   /// This field is ignored if the chain didn't enable tips, i.e. didn't add the
   /// `TipDecorator` in its posthandler.
+  ///
+  /// Since: cosmos-sdk 0.46
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var tip: Cosmos_Tx_V1beta1_Tip {
@@ -433,16 +404,14 @@ struct Cosmos_Tx_V1beta1_Fee: Sendable {
   /// before an out of gas error occurs
   var gasLimit: UInt64 = 0
 
-  /// if unset, the first signer is responsible for paying the fees. If set, the
-  /// specified account must pay the fees. the payer must be a tx signer (and
-  /// thus have signed this field in AuthInfo). setting this field does *not*
-  /// change the ordering of required signers for the transaction.
+  /// if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
+  /// the payer must be a tx signer (and thus have signed this field in AuthInfo).
+  /// setting this field does *not* change the ordering of required signers for the transaction.
   var payer: String = String()
 
-  /// if set, the fee payer (either the first signer or the value of the payer
-  /// field) requests that a fee grant be used to pay fees instead of the fee
-  /// payer's own balance. If an appropriate fee grant does not exist or the
-  /// chain does not support fee grants, this will fail
+  /// if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used
+  /// to pay fees instead of the fee payer's own balance. If an appropriate fee grant does not exist or the chain does
+  /// not support fee grants, this will fail
   var granter: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -451,6 +420,8 @@ struct Cosmos_Tx_V1beta1_Fee: Sendable {
 }
 
 /// Tip is the tip used for meta-transactions.
+///
+/// Since: cosmos-sdk 0.46
 ///
 /// NOTE: This message was marked as deprecated in the .proto file.
 struct Cosmos_Tx_V1beta1_Tip: Sendable {
@@ -473,6 +444,8 @@ struct Cosmos_Tx_V1beta1_Tip: Sendable {
 /// tipper) builds and sends to the fee payer (who will build and broadcast the
 /// actual tx). AuxSignerData is not a valid tx in itself, and will be rejected
 /// by the node if sent directly as-is.
+///
+/// Since: cosmos-sdk 0.46
 struct Cosmos_Tx_V1beta1_AuxSignerData: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -726,8 +699,6 @@ extension Cosmos_Tx_V1beta1_TxBody: SwiftProtobuf.Message, SwiftProtobuf._Messag
     1: .same(proto: "messages"),
     2: .same(proto: "memo"),
     3: .standard(proto: "timeout_height"),
-    4: .same(proto: "unordered"),
-    5: .standard(proto: "timeout_timestamp"),
     1023: .standard(proto: "extension_options"),
     2047: .standard(proto: "non_critical_extension_options"),
   ]
@@ -741,8 +712,6 @@ extension Cosmos_Tx_V1beta1_TxBody: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 1: try { try decoder.decodeRepeatedMessageField(value: &self.messages) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.memo) }()
       case 3: try { try decoder.decodeSingularUInt64Field(value: &self.timeoutHeight) }()
-      case 4: try { try decoder.decodeSingularBoolField(value: &self.unordered) }()
-      case 5: try { try decoder.decodeSingularMessageField(value: &self._timeoutTimestamp) }()
       case 1023: try { try decoder.decodeRepeatedMessageField(value: &self.extensionOptions) }()
       case 2047: try { try decoder.decodeRepeatedMessageField(value: &self.nonCriticalExtensionOptions) }()
       default: break
@@ -751,10 +720,6 @@ extension Cosmos_Tx_V1beta1_TxBody: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.messages.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.messages, fieldNumber: 1)
     }
@@ -764,12 +729,6 @@ extension Cosmos_Tx_V1beta1_TxBody: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.timeoutHeight != 0 {
       try visitor.visitSingularUInt64Field(value: self.timeoutHeight, fieldNumber: 3)
     }
-    if self.unordered != false {
-      try visitor.visitSingularBoolField(value: self.unordered, fieldNumber: 4)
-    }
-    try { if let v = self._timeoutTimestamp {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-    } }()
     if !self.extensionOptions.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.extensionOptions, fieldNumber: 1023)
     }
@@ -783,8 +742,6 @@ extension Cosmos_Tx_V1beta1_TxBody: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if lhs.messages != rhs.messages {return false}
     if lhs.memo != rhs.memo {return false}
     if lhs.timeoutHeight != rhs.timeoutHeight {return false}
-    if lhs.unordered != rhs.unordered {return false}
-    if lhs._timeoutTimestamp != rhs._timeoutTimestamp {return false}
     if lhs.extensionOptions != rhs.extensionOptions {return false}
     if lhs.nonCriticalExtensionOptions != rhs.nonCriticalExtensionOptions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

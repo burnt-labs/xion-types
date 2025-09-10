@@ -34,7 +34,6 @@ export interface MsgCreateClient {
 
 /** MsgCreateClientResponse defines the Msg/CreateClient response type. */
 export interface MsgCreateClientResponse {
-  clientId: string;
 }
 
 /**
@@ -170,18 +169,6 @@ export interface MsgUpdateParams {
 export interface MsgUpdateParamsResponse {
 }
 
-/** MsgDeleteClientCreator defines a message to delete the client creator of a client */
-export interface MsgDeleteClientCreator {
-  /** client identifier */
-  clientId: string;
-  /** signer address */
-  signer: string;
-}
-
-/** MsgDeleteClientCreatorResponse defines the Msg/DeleteClientCreator response type. */
-export interface MsgDeleteClientCreatorResponse {
-}
-
 function createBaseMsgCreateClient(): MsgCreateClient {
   return { clientState: undefined, consensusState: undefined, signer: "" };
 }
@@ -276,14 +263,11 @@ export const MsgCreateClient = {
 };
 
 function createBaseMsgCreateClientResponse(): MsgCreateClientResponse {
-  return { clientId: "" };
+  return {};
 }
 
 export const MsgCreateClientResponse = {
-  encode(message: MsgCreateClientResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.clientId !== "") {
-      writer.uint32(10).string(message.clientId);
-    }
+  encode(_: MsgCreateClientResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
 
@@ -294,13 +278,6 @@ export const MsgCreateClientResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.clientId = reader.string();
-          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -310,24 +287,20 @@ export const MsgCreateClientResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateClientResponse {
-    return { clientId: isSet(object.clientId) ? globalThis.String(object.clientId) : "" };
+  fromJSON(_: any): MsgCreateClientResponse {
+    return {};
   },
 
-  toJSON(message: MsgCreateClientResponse): unknown {
+  toJSON(_: MsgCreateClientResponse): unknown {
     const obj: any = {};
-    if (message.clientId !== "") {
-      obj.clientId = message.clientId;
-    }
     return obj;
   },
 
   create<I extends Exact<DeepPartial<MsgCreateClientResponse>, I>>(base?: I): MsgCreateClientResponse {
     return MsgCreateClientResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<MsgCreateClientResponse>, I>>(object: I): MsgCreateClientResponse {
+  fromPartial<I extends Exact<DeepPartial<MsgCreateClientResponse>, I>>(_: I): MsgCreateClientResponse {
     const message = createBaseMsgCreateClientResponse();
-    message.clientId = object.clientId ?? "";
     return message;
   },
 };
@@ -1177,123 +1150,6 @@ export const MsgUpdateParamsResponse = {
   },
 };
 
-function createBaseMsgDeleteClientCreator(): MsgDeleteClientCreator {
-  return { clientId: "", signer: "" };
-}
-
-export const MsgDeleteClientCreator = {
-  encode(message: MsgDeleteClientCreator, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.clientId !== "") {
-      writer.uint32(10).string(message.clientId);
-    }
-    if (message.signer !== "") {
-      writer.uint32(18).string(message.signer);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteClientCreator {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgDeleteClientCreator();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.clientId = reader.string();
-          continue;
-        case 2:
-          if (tag !== 18) {
-            break;
-          }
-
-          message.signer = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): MsgDeleteClientCreator {
-    return {
-      clientId: isSet(object.clientId) ? globalThis.String(object.clientId) : "",
-      signer: isSet(object.signer) ? globalThis.String(object.signer) : "",
-    };
-  },
-
-  toJSON(message: MsgDeleteClientCreator): unknown {
-    const obj: any = {};
-    if (message.clientId !== "") {
-      obj.clientId = message.clientId;
-    }
-    if (message.signer !== "") {
-      obj.signer = message.signer;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<MsgDeleteClientCreator>, I>>(base?: I): MsgDeleteClientCreator {
-    return MsgDeleteClientCreator.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<MsgDeleteClientCreator>, I>>(object: I): MsgDeleteClientCreator {
-    const message = createBaseMsgDeleteClientCreator();
-    message.clientId = object.clientId ?? "";
-    message.signer = object.signer ?? "";
-    return message;
-  },
-};
-
-function createBaseMsgDeleteClientCreatorResponse(): MsgDeleteClientCreatorResponse {
-  return {};
-}
-
-export const MsgDeleteClientCreatorResponse = {
-  encode(_: MsgDeleteClientCreatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteClientCreatorResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgDeleteClientCreatorResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(_: any): MsgDeleteClientCreatorResponse {
-    return {};
-  },
-
-  toJSON(_: MsgDeleteClientCreatorResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<MsgDeleteClientCreatorResponse>, I>>(base?: I): MsgDeleteClientCreatorResponse {
-    return MsgDeleteClientCreatorResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<MsgDeleteClientCreatorResponse>, I>>(_: I): MsgDeleteClientCreatorResponse {
-    const message = createBaseMsgDeleteClientCreatorResponse();
-    return message;
-  },
-};
-
 /** Msg defines the ibc/client Msg service. */
 export interface Msg {
   /** CreateClient defines a rpc handler method for MsgCreateClient. */
@@ -1316,11 +1172,6 @@ export interface Msg {
   ): Promise<MsgIBCSoftwareUpgradeResponse>;
   /** UpdateClientParams defines a rpc handler method for MsgUpdateParams. */
   UpdateClientParams(request: DeepPartial<MsgUpdateParams>, metadata?: grpc.Metadata): Promise<MsgUpdateParamsResponse>;
-  /** DeleteClientCreator defines a rpc handler method for MsgDeleteClientCreator. */
-  DeleteClientCreator(
-    request: DeepPartial<MsgDeleteClientCreator>,
-    metadata?: grpc.Metadata,
-  ): Promise<MsgDeleteClientCreatorResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -1335,7 +1186,6 @@ export class MsgClientImpl implements Msg {
     this.RecoverClient = this.RecoverClient.bind(this);
     this.IBCSoftwareUpgrade = this.IBCSoftwareUpgrade.bind(this);
     this.UpdateClientParams = this.UpdateClientParams.bind(this);
-    this.DeleteClientCreator = this.DeleteClientCreator.bind(this);
   }
 
   CreateClient(request: DeepPartial<MsgCreateClient>, metadata?: grpc.Metadata): Promise<MsgCreateClientResponse> {
@@ -1373,13 +1223,6 @@ export class MsgClientImpl implements Msg {
     metadata?: grpc.Metadata,
   ): Promise<MsgUpdateParamsResponse> {
     return this.rpc.unary(MsgUpdateClientParamsDesc, MsgUpdateParams.fromPartial(request), metadata);
-  }
-
-  DeleteClientCreator(
-    request: DeepPartial<MsgDeleteClientCreator>,
-    metadata?: grpc.Metadata,
-  ): Promise<MsgDeleteClientCreatorResponse> {
-    return this.rpc.unary(MsgDeleteClientCreatorDesc, MsgDeleteClientCreator.fromPartial(request), metadata);
   }
 }
 
@@ -1536,29 +1379,6 @@ export const MsgUpdateClientParamsDesc: UnaryMethodDefinitionish = {
   responseType: {
     deserializeBinary(data: Uint8Array) {
       const value = MsgUpdateParamsResponse.decode(data);
-      return {
-        ...value,
-        toObject() {
-          return value;
-        },
-      };
-    },
-  } as any,
-};
-
-export const MsgDeleteClientCreatorDesc: UnaryMethodDefinitionish = {
-  methodName: "DeleteClientCreator",
-  service: MsgDesc,
-  requestStream: false,
-  responseStream: false,
-  requestType: {
-    serializeBinary() {
-      return MsgDeleteClientCreator.encode(this).finish();
-    },
-  } as any,
-  responseType: {
-    deserializeBinary(data: Uint8Array) {
-      const value = MsgDeleteClientCreatorResponse.decode(data);
       return {
         ...value,
         toObject() {

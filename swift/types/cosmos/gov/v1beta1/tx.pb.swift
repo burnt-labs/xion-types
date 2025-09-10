@@ -96,6 +96,8 @@ struct Cosmos_Gov_V1beta1_MsgVoteResponse: Sendable {
 }
 
 /// MsgVoteWeighted defines a message to cast a vote.
+///
+/// Since: cosmos-sdk 0.43
 struct Cosmos_Gov_V1beta1_MsgVoteWeighted: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -116,6 +118,8 @@ struct Cosmos_Gov_V1beta1_MsgVoteWeighted: Sendable {
 }
 
 /// MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
+///
+/// Since: cosmos-sdk 0.43
 struct Cosmos_Gov_V1beta1_MsgVoteWeightedResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

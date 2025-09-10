@@ -13,6 +13,8 @@ import { ABCIParams, BlockParams, EvidenceParams, ValidatorParams } from "../../
 
 export const protobufPackage = "cosmos.consensus.v1";
 
+/** Since: cosmos-sdk 0.47 */
+
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
@@ -26,7 +28,10 @@ export interface MsgUpdateParams {
    */
   block?: BlockParams | undefined;
   evidence?: EvidenceParams | undefined;
-  validator?: ValidatorParams | undefined;
+  validator?:
+    | ValidatorParams
+    | undefined;
+  /** Since: cosmos-sdk 0.50 */
   abci?: ABCIParams | undefined;
 }
 
@@ -212,6 +217,8 @@ export interface Msg {
   /**
    * UpdateParams defines a governance operation for updating the x/consensus module parameters.
    * The authority is defined in the keeper.
+   *
+   * Since: cosmos-sdk 0.47
    */
   UpdateParams(request: DeepPartial<MsgUpdateParams>, metadata?: grpc.Metadata): Promise<MsgUpdateParamsResponse>;
 }

@@ -21,6 +21,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Mint_V1beta1_MsgUpdateParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -50,6 +52,8 @@ struct Cosmos_Mint_V1beta1_MsgUpdateParams: Sendable {
 
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Mint_V1beta1_MsgUpdateParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

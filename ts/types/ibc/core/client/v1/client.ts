@@ -7,6 +7,7 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { Plan } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import { Any } from "../../../../google/protobuf/any";
 
 export const protobufPackage = "ibc.core.client.v1";
@@ -57,9 +58,6 @@ export interface ClientConsensusStates {
  * breaking changes In these cases, the RevisionNumber is incremented so that
  * height continues to be monitonically increasing even as the RevisionHeight
  * gets reset
- *
- * Please note that json tags for generated Go code are overridden to explicitly exclude the omitempty jsontag.
- * This enforces the Go json marshaller to always emit zero values for both revision_number and revision_height.
  */
 export interface Height {
   /** the revision that the client is currently on */
@@ -76,6 +74,55 @@ export interface Params {
    * of this client will be disabled until it is added again to the list.
    */
   allowedClients: string[];
+}
+
+/**
+ * ClientUpdateProposal is a legacy governance proposal. If it passes, the substitute
+ * client's latest consensus state is copied over to the subject client. The proposal
+ * handler may fail if the subject and the substitute do not match in client and
+ * chain parameters (with exception to latest height, frozen height, and chain-id).
+ *
+ * Deprecated: Please use MsgRecoverClient in favour of this message type.
+ *
+ * @deprecated
+ */
+export interface ClientUpdateProposal {
+  /** the title of the update proposal */
+  title: string;
+  /** the description of the proposal */
+  description: string;
+  /** the client identifier for the client to be updated if the proposal passes */
+  subjectClientId: string;
+  /**
+   * the substitute client identifier for the client standing in for the subject
+   * client
+   */
+  substituteClientId: string;
+}
+
+/**
+ * UpgradeProposal is a gov Content type for initiating an IBC breaking
+ * upgrade.
+ *
+ * Deprecated: Please use MsgIBCSoftwareUpgrade in favour of this message type.
+ *
+ * @deprecated
+ */
+export interface UpgradeProposal {
+  title: string;
+  description: string;
+  plan?:
+    | Plan
+    | undefined;
+  /**
+   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
+   * This will make the chain commit to the correct upgraded (self) client state
+   * before the upgrade occurs, so that connecting chains can verify that the
+   * new upgraded client is valid by verifying a proof on the previous version
+   * of the chain. This will allow IBC connections to persist smoothly across
+   * planned chain upgrades
+   */
+  upgradedClientState?: Any | undefined;
 }
 
 function createBaseIdentifiedClientState(): IdentifiedClientState {
@@ -443,6 +490,216 @@ export const Params = {
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
     message.allowedClients = object.allowedClients?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseClientUpdateProposal(): ClientUpdateProposal {
+  return { title: "", description: "", subjectClientId: "", substituteClientId: "" };
+}
+
+export const ClientUpdateProposal = {
+  encode(message: ClientUpdateProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.subjectClientId !== "") {
+      writer.uint32(26).string(message.subjectClientId);
+    }
+    if (message.substituteClientId !== "") {
+      writer.uint32(34).string(message.substituteClientId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ClientUpdateProposal {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseClientUpdateProposal();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.title = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.subjectClientId = reader.string();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.substituteClientId = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ClientUpdateProposal {
+    return {
+      title: isSet(object.title) ? globalThis.String(object.title) : "",
+      description: isSet(object.description) ? globalThis.String(object.description) : "",
+      subjectClientId: isSet(object.subjectClientId) ? globalThis.String(object.subjectClientId) : "",
+      substituteClientId: isSet(object.substituteClientId) ? globalThis.String(object.substituteClientId) : "",
+    };
+  },
+
+  toJSON(message: ClientUpdateProposal): unknown {
+    const obj: any = {};
+    if (message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== "") {
+      obj.description = message.description;
+    }
+    if (message.subjectClientId !== "") {
+      obj.subjectClientId = message.subjectClientId;
+    }
+    if (message.substituteClientId !== "") {
+      obj.substituteClientId = message.substituteClientId;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<ClientUpdateProposal>, I>>(base?: I): ClientUpdateProposal {
+    return ClientUpdateProposal.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<ClientUpdateProposal>, I>>(object: I): ClientUpdateProposal {
+    const message = createBaseClientUpdateProposal();
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.subjectClientId = object.subjectClientId ?? "";
+    message.substituteClientId = object.substituteClientId ?? "";
+    return message;
+  },
+};
+
+function createBaseUpgradeProposal(): UpgradeProposal {
+  return { title: "", description: "", plan: undefined, upgradedClientState: undefined };
+}
+
+export const UpgradeProposal = {
+  encode(message: UpgradeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.plan !== undefined) {
+      Plan.encode(message.plan, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.upgradedClientState !== undefined) {
+      Any.encode(message.upgradedClientState, writer.uint32(34).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeProposal {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpgradeProposal();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.title = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.plan = Plan.decode(reader, reader.uint32());
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.upgradedClientState = Any.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpgradeProposal {
+    return {
+      title: isSet(object.title) ? globalThis.String(object.title) : "",
+      description: isSet(object.description) ? globalThis.String(object.description) : "",
+      plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined,
+      upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined,
+    };
+  },
+
+  toJSON(message: UpgradeProposal): unknown {
+    const obj: any = {};
+    if (message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== "") {
+      obj.description = message.description;
+    }
+    if (message.plan !== undefined) {
+      obj.plan = Plan.toJSON(message.plan);
+    }
+    if (message.upgradedClientState !== undefined) {
+      obj.upgradedClientState = Any.toJSON(message.upgradedClientState);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UpgradeProposal>, I>>(base?: I): UpgradeProposal {
+    return UpgradeProposal.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UpgradeProposal>, I>>(object: I): UpgradeProposal {
+    const message = createBaseUpgradeProposal();
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.plan = (object.plan !== undefined && object.plan !== null) ? Plan.fromPartial(object.plan) : undefined;
+    message.upgradedClientState = (object.upgradedClientState !== undefined && object.upgradedClientState !== null)
+      ? Any.fromPartial(object.upgradedClientState)
+      : undefined;
     return message;
   },
 };

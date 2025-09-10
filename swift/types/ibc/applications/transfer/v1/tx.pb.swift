@@ -34,7 +34,7 @@ struct Ibc_Applications_Transfer_V1_MsgTransfer: Sendable {
   /// the channel by which the packet will be sent
   var sourceChannel: String = String()
 
-  /// token to be transferred
+  /// the tokens to be transferred
   var token: Cosmos_Base_V1beta1_Coin {
     get {return _token ?? Cosmos_Base_V1beta1_Coin()}
     set {_token = newValue}
@@ -51,8 +51,7 @@ struct Ibc_Applications_Transfer_V1_MsgTransfer: Sendable {
   var receiver: String = String()
 
   /// Timeout height relative to the current block height.
-  /// If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
-  /// If you are sending with IBC v2 protocol, timeout_timestamp must be set, and timeout_height must be omitted.
+  /// The timeout is disabled when set to 0.
   var timeoutHeight: Ibc_Core_Client_V1_Height {
     get {return _timeoutHeight ?? Ibc_Core_Client_V1_Height()}
     set {_timeoutHeight = newValue}
@@ -63,15 +62,11 @@ struct Ibc_Applications_Transfer_V1_MsgTransfer: Sendable {
   mutating func clearTimeoutHeight() {self._timeoutHeight = nil}
 
   /// Timeout timestamp in absolute nanoseconds since unix epoch.
-  /// If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
-  /// If you are sending with IBC v2 protocol, timeout_timestamp must be set.
+  /// The timeout is disabled when set to 0.
   var timeoutTimestamp: UInt64 = 0
 
   /// optional memo
   var memo: String = String()
-
-  /// optional encoding
-  var encoding: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -150,7 +145,6 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
     6: .standard(proto: "timeout_height"),
     7: .standard(proto: "timeout_timestamp"),
     8: .same(proto: "memo"),
-    9: .same(proto: "encoding"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -167,7 +161,6 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
       case 6: try { try decoder.decodeSingularMessageField(value: &self._timeoutHeight) }()
       case 7: try { try decoder.decodeSingularUInt64Field(value: &self.timeoutTimestamp) }()
       case 8: try { try decoder.decodeSingularStringField(value: &self.memo) }()
-      case 9: try { try decoder.decodeSingularStringField(value: &self.encoding) }()
       default: break
       }
     }
@@ -202,9 +195,6 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
     if !self.memo.isEmpty {
       try visitor.visitSingularStringField(value: self.memo, fieldNumber: 8)
     }
-    if !self.encoding.isEmpty {
-      try visitor.visitSingularStringField(value: self.encoding, fieldNumber: 9)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -217,7 +207,6 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
     if lhs._timeoutHeight != rhs._timeoutHeight {return false}
     if lhs.timeoutTimestamp != rhs.timeoutTimestamp {return false}
     if lhs.memo != rhs.memo {return false}
-    if lhs.encoding != rhs.encoding {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

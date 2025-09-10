@@ -19,6 +19,8 @@ import {
 
 export const protobufPackage = "cosmos.group.v1";
 
+/** Since: cosmos-sdk 0.46 */
+
 /** EventCreateGroup is an event emitted when a group is created. */
 export interface EventCreateGroup {
   /** group_id is the unique ID of the group. */
@@ -87,14 +89,6 @@ export interface EventProposalPruned {
   status: ProposalStatus;
   /** tally_result is the proposal tally result (when applicable). */
   tallyResult?: TallyResult | undefined;
-}
-
-/** EventTallyError is an event emitted when a proposal tally failed with an error. */
-export interface EventTallyError {
-  /** proposal_id is the unique ID of the proposal. */
-  proposalId: Long;
-  /** error_message is the raw error output */
-  errorMessage: string;
 }
 
 function createBaseEventCreateGroup(): EventCreateGroup {
@@ -762,82 +756,6 @@ export const EventProposalPruned = {
     message.tallyResult = (object.tallyResult !== undefined && object.tallyResult !== null)
       ? TallyResult.fromPartial(object.tallyResult)
       : undefined;
-    return message;
-  },
-};
-
-function createBaseEventTallyError(): EventTallyError {
-  return { proposalId: Long.UZERO, errorMessage: "" };
-}
-
-export const EventTallyError = {
-  encode(message: EventTallyError, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.proposalId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.proposalId);
-    }
-    if (message.errorMessage !== "") {
-      writer.uint32(18).string(message.errorMessage);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): EventTallyError {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseEventTallyError();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 8) {
-            break;
-          }
-
-          message.proposalId = reader.uint64() as Long;
-          continue;
-        case 2:
-          if (tag !== 18) {
-            break;
-          }
-
-          message.errorMessage = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): EventTallyError {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
-      errorMessage: isSet(object.errorMessage) ? globalThis.String(object.errorMessage) : "",
-    };
-  },
-
-  toJSON(message: EventTallyError): unknown {
-    const obj: any = {};
-    if (!message.proposalId.equals(Long.UZERO)) {
-      obj.proposalId = (message.proposalId || Long.UZERO).toString();
-    }
-    if (message.errorMessage !== "") {
-      obj.errorMessage = message.errorMessage;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<EventTallyError>, I>>(base?: I): EventTallyError {
-    return EventTallyError.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<EventTallyError>, I>>(object: I): EventTallyError {
-    const message = createBaseEventTallyError();
-    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
-      ? Long.fromValue(object.proposalId)
-      : Long.UZERO;
-    message.errorMessage = object.errorMessage ?? "";
     return message;
   },
 };

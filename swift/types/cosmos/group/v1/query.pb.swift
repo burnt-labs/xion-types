@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+/// Since: cosmos-sdk 0.46
+
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -625,6 +627,8 @@ struct Cosmos_Group_V1_QueryTallyResultResponse: Sendable {
 }
 
 /// QueryGroupsRequest is the Query/Groups request type.
+///
+/// Since: cosmos-sdk 0.47.1
 struct Cosmos_Group_V1_QueryGroupsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -648,6 +652,8 @@ struct Cosmos_Group_V1_QueryGroupsRequest: Sendable {
 }
 
 /// QueryGroupsResponse is the Query/Groups response type.
+///
+/// Since: cosmos-sdk 0.47.1
 struct Cosmos_Group_V1_QueryGroupsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

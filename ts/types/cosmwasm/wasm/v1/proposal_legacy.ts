@@ -268,7 +268,7 @@ export interface UpdateInstantiateConfigProposal {
   /** Description is a human readable text */
   description: string;
   /**
-   * AccessConfigUpdates contains the list of code ids and the access config
+   * AccessConfigUpdate contains the list of code ids and the access config
    * to be applied.
    */
   accessConfigUpdates: AccessConfigUpdate[];

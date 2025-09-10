@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+/// Since: cosmos-sdk 0.43
+
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -90,6 +92,8 @@ struct Cosmos_Feegrant_V1beta1_MsgRevokeAllowanceResponse: Sendable {
 }
 
 /// MsgPruneAllowances prunes expired fee allowances.
+///
+/// Since cosmos-sdk 0.50
 struct Cosmos_Feegrant_V1beta1_MsgPruneAllowances: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -104,6 +108,8 @@ struct Cosmos_Feegrant_V1beta1_MsgPruneAllowances: Sendable {
 }
 
 /// MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
+///
+/// Since cosmos-sdk 0.50
 struct Cosmos_Feegrant_V1beta1_MsgPruneAllowancesResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

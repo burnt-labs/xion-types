@@ -314,6 +314,8 @@ struct Cosmos_Staking_V1beta1_Validator: @unchecked Sendable {
   mutating func clearCommission() {_uniqueStorage()._commission = nil}
 
   /// min_self_delegation is the validator's self declared minimum self delegation.
+  ///
+  /// Since: cosmos-sdk 0.46
   var minSelfDelegation: String {
     get {return _storage._minSelfDelegation}
     set {_uniqueStorage()._minSelfDelegation = newValue}

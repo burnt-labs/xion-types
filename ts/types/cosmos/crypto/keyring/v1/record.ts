@@ -12,6 +12,8 @@ import { BIP44Params } from "../../hd/v1/hd";
 
 export const protobufPackage = "cosmos.crypto.keyring.v1";
 
+/** Since: cosmos-sdk 0.46 */
+
 /** Record is used for representing a key in the keyring. */
 export interface Record {
   /** name represents a name of Record */

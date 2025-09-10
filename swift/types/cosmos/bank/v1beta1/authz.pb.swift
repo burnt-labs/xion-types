@@ -22,6 +22,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 
 /// SendAuthorization allows the grantee to spend up to spend_limit coins from
 /// the granter's account.
+///
+/// Since: cosmos-sdk 0.43
 struct Cosmos_Bank_V1beta1_SendAuthorization: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -31,6 +33,8 @@ struct Cosmos_Bank_V1beta1_SendAuthorization: Sendable {
 
   /// allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
   /// granter. If omitted, any recipient is allowed.
+  ///
+  /// Since: cosmos-sdk 0.47
   var allowList: [String] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

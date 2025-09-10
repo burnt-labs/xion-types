@@ -14,6 +14,8 @@ import { Grant, GrantAuthorization } from "./authz";
 
 export const protobufPackage = "cosmos.authz.v1beta1";
 
+/** Since: cosmos-sdk 0.43 */
+
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 export interface QueryGrantsRequest {
   granter: string;
@@ -556,12 +558,20 @@ export const QueryGranteeGrantsResponse = {
 export interface Query {
   /** Returns list of `Authorization`, granted to the grantee by the granter. */
   Grants(request: DeepPartial<QueryGrantsRequest>, metadata?: grpc.Metadata): Promise<QueryGrantsResponse>;
-  /** GranterGrants returns list of `GrantAuthorization`, granted by granter. */
+  /**
+   * GranterGrants returns list of `GrantAuthorization`, granted by granter.
+   *
+   * Since: cosmos-sdk 0.46
+   */
   GranterGrants(
     request: DeepPartial<QueryGranterGrantsRequest>,
     metadata?: grpc.Metadata,
   ): Promise<QueryGranterGrantsResponse>;
-  /** GranteeGrants returns a list of `GrantAuthorization` by grantee. */
+  /**
+   * GranteeGrants returns a list of `GrantAuthorization` by grantee.
+   *
+   * Since: cosmos-sdk 0.46
+   */
   GranteeGrants(
     request: DeepPartial<QueryGranteeGrantsRequest>,
     metadata?: grpc.Metadata,

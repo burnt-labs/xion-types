@@ -147,6 +147,8 @@ enum Cosmos_Gov_V1beta1_ProposalStatus: SwiftProtobuf.Enum, Swift.CaseIterable {
 }
 
 /// WeightedVoteOption defines a unit of vote for vote split.
+///
+/// Since: cosmos-sdk 0.43
 struct Cosmos_Gov_V1beta1_WeightedVoteOption: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -335,6 +337,8 @@ struct Cosmos_Gov_V1beta1_Vote: Sendable {
   var option: Cosmos_Gov_V1beta1_VoteOption = .unspecified
 
   /// options is the weighted vote options.
+  ///
+  /// Since: cosmos-sdk 0.43
   var options: [Cosmos_Gov_V1beta1_WeightedVoteOption] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

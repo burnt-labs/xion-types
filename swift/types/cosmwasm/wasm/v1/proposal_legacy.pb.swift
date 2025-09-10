@@ -402,7 +402,7 @@ struct Cosmwasm_Wasm_V1_UpdateInstantiateConfigProposal: Sendable {
   /// Description is a human readable text
   var description_p: String = String()
 
-  /// AccessConfigUpdates contains the list of code ids and the access config
+  /// AccessConfigUpdate contains the list of code ids and the access config
   /// to be applied.
   var accessConfigUpdates: [Cosmwasm_Wasm_V1_AccessConfigUpdate] = []
 

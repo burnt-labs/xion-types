@@ -28,7 +28,7 @@ struct Ibc_Applications_Transfer_V1_GenesisState: Sendable {
 
   var portID: String = String()
 
-  var denoms: [Ibc_Applications_Transfer_V1_Denom] = []
+  var denomTraces: [Ibc_Applications_Transfer_V1_DenomTrace] = []
 
   var params: Ibc_Applications_Transfer_V1_Params {
     get {return _params ?? Ibc_Applications_Transfer_V1_Params()}
@@ -58,7 +58,7 @@ extension Ibc_Applications_Transfer_V1_GenesisState: SwiftProtobuf.Message, Swif
   static let protoMessageName: String = _protobuf_package + ".GenesisState"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "port_id"),
-    2: .same(proto: "denoms"),
+    2: .standard(proto: "denom_traces"),
     3: .same(proto: "params"),
     4: .standard(proto: "total_escrowed"),
   ]
@@ -70,7 +70,7 @@ extension Ibc_Applications_Transfer_V1_GenesisState: SwiftProtobuf.Message, Swif
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.portID) }()
-      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.denoms) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.denomTraces) }()
       case 3: try { try decoder.decodeSingularMessageField(value: &self._params) }()
       case 4: try { try decoder.decodeRepeatedMessageField(value: &self.totalEscrowed) }()
       default: break
@@ -86,8 +86,8 @@ extension Ibc_Applications_Transfer_V1_GenesisState: SwiftProtobuf.Message, Swif
     if !self.portID.isEmpty {
       try visitor.visitSingularStringField(value: self.portID, fieldNumber: 1)
     }
-    if !self.denoms.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.denoms, fieldNumber: 2)
+    if !self.denomTraces.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.denomTraces, fieldNumber: 2)
     }
     try { if let v = self._params {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
@@ -100,7 +100,7 @@ extension Ibc_Applications_Transfer_V1_GenesisState: SwiftProtobuf.Message, Swif
 
   static func ==(lhs: Ibc_Applications_Transfer_V1_GenesisState, rhs: Ibc_Applications_Transfer_V1_GenesisState) -> Bool {
     if lhs.portID != rhs.portID {return false}
-    if lhs.denoms != rhs.denoms {return false}
+    if lhs.denomTraces != rhs.denomTraces {return false}
     if lhs._params != rhs._params {return false}
     if lhs.totalEscrowed != rhs.totalEscrowed {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

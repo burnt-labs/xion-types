@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+/// Since: cosmos-sdk 0.46
+
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -182,23 +184,6 @@ struct Cosmos_Group_V1_EventProposalPruned: Sendable {
   init() {}
 
   fileprivate var _tallyResult: Cosmos_Group_V1_TallyResult? = nil
-}
-
-/// EventTallyError is an event emitted when a proposal tally failed with an error.
-struct Cosmos_Group_V1_EventTallyError: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  /// proposal_id is the unique ID of the proposal.
-  var proposalID: UInt64 = 0
-
-  /// error_message is the raw error output
-  var errorMessage: String = String()
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -554,44 +539,6 @@ extension Cosmos_Group_V1_EventProposalPruned: SwiftProtobuf.Message, SwiftProto
     if lhs.proposalID != rhs.proposalID {return false}
     if lhs.status != rhs.status {return false}
     if lhs._tallyResult != rhs._tallyResult {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Cosmos_Group_V1_EventTallyError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".EventTallyError"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "proposal_id"),
-    2: .standard(proto: "error_message"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.proposalID) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.errorMessage) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.proposalID != 0 {
-      try visitor.visitSingularUInt64Field(value: self.proposalID, fieldNumber: 1)
-    }
-    if !self.errorMessage.isEmpty {
-      try visitor.visitSingularStringField(value: self.errorMessage, fieldNumber: 2)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Cosmos_Group_V1_EventTallyError, rhs: Cosmos_Group_V1_EventTallyError) -> Bool {
-    if lhs.proposalID != rhs.proposalID {return false}
-    if lhs.errorMessage != rhs.errorMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

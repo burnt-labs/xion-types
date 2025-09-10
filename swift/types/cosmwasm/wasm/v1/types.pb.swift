@@ -234,8 +234,6 @@ struct Cosmwasm_Wasm_V1_ContractInfo: Sendable {
 
   var ibcPortID: String = String()
 
-  var ibc2PortID: String = String()
-
   /// Extension is an extension point to store custom metadata within the
   /// persistence model.
   var `extension`: SwiftProtobuf.Google_Protobuf_Any {
@@ -512,8 +510,7 @@ extension Cosmwasm_Wasm_V1_ContractInfo: SwiftProtobuf.Message, SwiftProtobuf._M
     4: .same(proto: "label"),
     5: .same(proto: "created"),
     6: .standard(proto: "ibc_port_id"),
-    7: .standard(proto: "ibc2_port_id"),
-    8: .same(proto: "extension"),
+    7: .same(proto: "extension"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -528,8 +525,7 @@ extension Cosmwasm_Wasm_V1_ContractInfo: SwiftProtobuf.Message, SwiftProtobuf._M
       case 4: try { try decoder.decodeSingularStringField(value: &self.label) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._created) }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.ibcPortID) }()
-      case 7: try { try decoder.decodeSingularStringField(value: &self.ibc2PortID) }()
-      case 8: try { try decoder.decodeSingularMessageField(value: &self._extension) }()
+      case 7: try { try decoder.decodeSingularMessageField(value: &self._extension) }()
       default: break
       }
     }
@@ -558,11 +554,8 @@ extension Cosmwasm_Wasm_V1_ContractInfo: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.ibcPortID.isEmpty {
       try visitor.visitSingularStringField(value: self.ibcPortID, fieldNumber: 6)
     }
-    if !self.ibc2PortID.isEmpty {
-      try visitor.visitSingularStringField(value: self.ibc2PortID, fieldNumber: 7)
-    }
     try { if let v = self._extension {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
     } }()
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -574,7 +567,6 @@ extension Cosmwasm_Wasm_V1_ContractInfo: SwiftProtobuf.Message, SwiftProtobuf._M
     if lhs.label != rhs.label {return false}
     if lhs._created != rhs._created {return false}
     if lhs.ibcPortID != rhs.ibcPortID {return false}
-    if lhs.ibc2PortID != rhs.ibc2PortID {return false}
     if lhs._extension != rhs._extension {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

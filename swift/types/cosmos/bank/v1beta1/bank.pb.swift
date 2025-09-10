@@ -150,17 +150,25 @@ struct Cosmos_Bank_V1beta1_Metadata: Sendable {
   var display: String = String()
 
   /// name defines the name of the token (eg: Cosmos Atom)
+  ///
+  /// Since: cosmos-sdk 0.43
   var name: String = String()
 
   /// symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
   /// be the same as the display.
+  ///
+  /// Since: cosmos-sdk 0.43
   var symbol: String = String()
 
   /// URI to a document (on or off-chain) that contains additional information. Optional.
+  ///
+  /// Since: cosmos-sdk 0.46
   var uri: String = String()
 
   /// URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
   /// the document didn't change. Optional.
+  ///
+  /// Since: cosmos-sdk 0.46
   var uriHash: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

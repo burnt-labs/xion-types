@@ -54,6 +54,8 @@ struct Cosmos_Base_Query_V1beta1_PageRequest: @unchecked Sendable {
   var countTotal: Bool = false
 
   /// reverse is set to true if results are to be returned in the descending order.
+  ///
+  /// Since: cosmos-sdk 0.43
   var reverse: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

@@ -50,7 +50,11 @@ export interface MsgVote {
 export interface MsgVoteResponse {
 }
 
-/** MsgVoteWeighted defines a message to cast a vote. */
+/**
+ * MsgVoteWeighted defines a message to cast a vote.
+ *
+ * Since: cosmos-sdk 0.43
+ */
 export interface MsgVoteWeighted {
   /** proposal_id defines the unique id of the proposal. */
   proposalId: Long;
@@ -60,7 +64,11 @@ export interface MsgVoteWeighted {
   options: WeightedVoteOption[];
 }
 
-/** MsgVoteWeightedResponse defines the Msg/VoteWeighted response type. */
+/**
+ * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
+ *
+ * Since: cosmos-sdk 0.43
+ */
 export interface MsgVoteWeightedResponse {
 }
 
@@ -640,7 +648,11 @@ export interface Msg {
   SubmitProposal(request: DeepPartial<MsgSubmitProposal>, metadata?: grpc.Metadata): Promise<MsgSubmitProposalResponse>;
   /** Vote defines a method to add a vote on a specific proposal. */
   Vote(request: DeepPartial<MsgVote>, metadata?: grpc.Metadata): Promise<MsgVoteResponse>;
-  /** VoteWeighted defines a method to add a weighted vote on a specific proposal. */
+  /**
+   * VoteWeighted defines a method to add a weighted vote on a specific proposal.
+   *
+   * Since: cosmos-sdk 0.43
+   */
   VoteWeighted(request: DeepPartial<MsgVoteWeighted>, metadata?: grpc.Metadata): Promise<MsgVoteWeightedResponse>;
   /** Deposit defines a method to add deposit on a specific proposal. */
   Deposit(request: DeepPartial<MsgDeposit>, metadata?: grpc.Metadata): Promise<MsgDepositResponse>;

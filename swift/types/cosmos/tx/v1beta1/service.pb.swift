@@ -163,6 +163,8 @@ struct Cosmos_Tx_V1beta1_GetTxsEventRequest: Sendable {
 
   /// query defines the transaction event query that is proxied to Tendermint's
   /// TxSearch RPC method. The query must be valid.
+  ///
+  /// Since cosmos-sdk 0.50
   var query: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -261,25 +263,24 @@ struct Cosmos_Tx_V1beta1_SimulateRequest: @unchecked Sendable {
   ///
   /// NOTE: This field was marked as deprecated in the .proto file.
   var tx: Cosmos_Tx_V1beta1_Tx {
-    get {return _storage._tx ?? Cosmos_Tx_V1beta1_Tx()}
-    set {_uniqueStorage()._tx = newValue}
+    get {return _tx ?? Cosmos_Tx_V1beta1_Tx()}
+    set {_tx = newValue}
   }
   /// Returns true if `tx` has been explicitly set.
-  var hasTx: Bool {return _storage._tx != nil}
+  var hasTx: Bool {return self._tx != nil}
   /// Clears the value of `tx`. Subsequent reads from it will return its default value.
-  mutating func clearTx() {_uniqueStorage()._tx = nil}
+  mutating func clearTx() {self._tx = nil}
 
   /// tx_bytes is the raw transaction.
-  var txBytes: Data {
-    get {return _storage._txBytes}
-    set {_uniqueStorage()._txBytes = newValue}
-  }
+  ///
+  /// Since: cosmos-sdk 0.43
+  var txBytes: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _storage = _StorageClass.defaultInstance
+  fileprivate var _tx: Cosmos_Tx_V1beta1_Tx? = nil
 }
 
 /// SimulateResponse is the response type for the
@@ -367,6 +368,8 @@ struct Cosmos_Tx_V1beta1_GetTxResponse: @unchecked Sendable {
 
 /// GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.45.2
 struct Cosmos_Tx_V1beta1_GetBlockWithTxsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -394,6 +397,8 @@ struct Cosmos_Tx_V1beta1_GetBlockWithTxsRequest: Sendable {
 
 /// GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs
 /// method.
+///
+/// Since: cosmos-sdk 0.45.2
 struct Cosmos_Tx_V1beta1_GetBlockWithTxsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -441,6 +446,8 @@ struct Cosmos_Tx_V1beta1_GetBlockWithTxsResponse: Sendable {
 
 /// TxDecodeRequest is the request type for the Service.TxDecode
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxDecodeRequest: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -456,6 +463,8 @@ struct Cosmos_Tx_V1beta1_TxDecodeRequest: @unchecked Sendable {
 
 /// TxDecodeResponse is the response type for the
 /// Service.TxDecode method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxDecodeResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -480,6 +489,8 @@ struct Cosmos_Tx_V1beta1_TxDecodeResponse: Sendable {
 
 /// TxEncodeRequest is the request type for the Service.TxEncode
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxEncodeRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -504,6 +515,8 @@ struct Cosmos_Tx_V1beta1_TxEncodeRequest: Sendable {
 
 /// TxEncodeResponse is the response type for the
 /// Service.TxEncode method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxEncodeResponse: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -519,6 +532,8 @@ struct Cosmos_Tx_V1beta1_TxEncodeResponse: @unchecked Sendable {
 
 /// TxEncodeAminoRequest is the request type for the Service.TxEncodeAmino
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxEncodeAminoRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -533,6 +548,8 @@ struct Cosmos_Tx_V1beta1_TxEncodeAminoRequest: Sendable {
 
 /// TxEncodeAminoResponse is the response type for the Service.TxEncodeAmino
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxEncodeAminoResponse: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -547,6 +564,8 @@ struct Cosmos_Tx_V1beta1_TxEncodeAminoResponse: @unchecked Sendable {
 
 /// TxDecodeAminoRequest is the request type for the Service.TxDecodeAmino
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxDecodeAminoRequest: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -561,6 +580,8 @@ struct Cosmos_Tx_V1beta1_TxDecodeAminoRequest: @unchecked Sendable {
 
 /// TxDecodeAminoResponse is the response type for the Service.TxDecodeAmino
 /// RPC method.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Tx_V1beta1_TxDecodeAminoResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -795,78 +816,36 @@ extension Cosmos_Tx_V1beta1_SimulateRequest: SwiftProtobuf.Message, SwiftProtobu
     2: .standard(proto: "tx_bytes"),
   ]
 
-  fileprivate class _StorageClass {
-    var _tx: Cosmos_Tx_V1beta1_Tx? = nil
-    var _txBytes: Data = Data()
-
-    #if swift(>=5.10)
-      // This property is used as the initial default value for new instances of the type.
-      // The type itself is protecting the reference to its storage via CoW semantics.
-      // This will force a copy to be made of this reference when the first mutation occurs;
-      // hence, it is safe to mark this as `nonisolated(unsafe)`.
-      static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _tx = source._tx
-      _txBytes = source._txBytes
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._tx) }()
-        case 2: try { try decoder.decodeSingularBytesField(value: &_storage._txBytes) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._tx) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.txBytes) }()
+      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every if/case branch local when no optimizations
-      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-      // https://github.com/apple/swift-protobuf/issues/1182
-      try { if let v = _storage._tx {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-      } }()
-      if !_storage._txBytes.isEmpty {
-        try visitor.visitSingularBytesField(value: _storage._txBytes, fieldNumber: 2)
-      }
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._tx {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.txBytes.isEmpty {
+      try visitor.visitSingularBytesField(value: self.txBytes, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Cosmos_Tx_V1beta1_SimulateRequest, rhs: Cosmos_Tx_V1beta1_SimulateRequest) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._tx != rhs_storage._tx {return false}
-        if _storage._txBytes != rhs_storage._txBytes {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._tx != rhs._tx {return false}
+    if lhs.txBytes != rhs.txBytes {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

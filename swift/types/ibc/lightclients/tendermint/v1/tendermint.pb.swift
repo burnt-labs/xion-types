@@ -42,7 +42,7 @@ struct Ibc_Lightclients_Tendermint_V1_ClientState: @unchecked Sendable {
   /// Clears the value of `trustLevel`. Subsequent reads from it will return its default value.
   mutating func clearTrustLevel() {_uniqueStorage()._trustLevel = nil}
 
-  /// duration of the period since the LatestTimestamp during which the
+  /// duration of the period since the LastestTimestamp during which the
   /// submitted headers are valid for upgrade
   var trustingPeriod: SwiftProtobuf.Google_Protobuf_Duration {
     get {return _storage._trustingPeriod ?? SwiftProtobuf.Google_Protobuf_Duration()}

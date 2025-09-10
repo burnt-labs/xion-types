@@ -14,6 +14,8 @@ import { Grant } from "./feegrant";
 
 export const protobufPackage = "cosmos.feegrant.v1beta1";
 
+/** Since: cosmos-sdk 0.43 */
+
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 export interface QueryAllowanceRequest {
   /** granter is the address of the user granting an allowance of their funds. */
@@ -43,14 +45,22 @@ export interface QueryAllowancesResponse {
   pagination?: PageResponse | undefined;
 }
 
-/** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
+/**
+ * QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
+ *
+ * Since: cosmos-sdk 0.46
+ */
 export interface QueryAllowancesByGranterRequest {
   granter: string;
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest | undefined;
 }
 
-/** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
+/**
+ * QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
+ *
+ * Since: cosmos-sdk 0.46
+ */
 export interface QueryAllowancesByGranterResponse {
   /** allowances that have been issued by the granter. */
   allowances: Grant[];
@@ -511,7 +521,11 @@ export interface Query {
   Allowance(request: DeepPartial<QueryAllowanceRequest>, metadata?: grpc.Metadata): Promise<QueryAllowanceResponse>;
   /** Allowances returns all the grants for the given grantee address. */
   Allowances(request: DeepPartial<QueryAllowancesRequest>, metadata?: grpc.Metadata): Promise<QueryAllowancesResponse>;
-  /** AllowancesByGranter returns all the grants given by an address */
+  /**
+   * AllowancesByGranter returns all the grants given by an address
+   *
+   * Since: cosmos-sdk 0.46
+   */
   AllowancesByGranter(
     request: DeepPartial<QueryAllowancesByGranterRequest>,
     metadata?: grpc.Metadata,

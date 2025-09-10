@@ -1569,11 +1569,7 @@ export interface Query {
     request: DeepPartial<QueryDelegatorWithdrawAddressRequest>,
     metadata?: grpc.Metadata,
   ): Promise<QueryDelegatorWithdrawAddressResponse>;
-  /**
-   * CommunityPool queries the community pool coins.
-   *
-   * WARNING: This query will fail if an external community pool is used.
-   */
+  /** CommunityPool queries the community pool coins. */
   CommunityPool(
     request: DeepPartial<QueryCommunityPoolRequest>,
     metadata?: grpc.Metadata,

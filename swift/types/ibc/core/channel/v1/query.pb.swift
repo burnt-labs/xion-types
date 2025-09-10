@@ -808,6 +808,142 @@ struct Ibc_Core_Channel_V1_QueryNextSequenceSendResponse: @unchecked Sendable {
   fileprivate var _proofHeight: Ibc_Core_Client_V1_Height? = nil
 }
 
+/// QueryUpgradeErrorRequest is the request type for the Query/QueryUpgradeError RPC method
+struct Ibc_Core_Channel_V1_QueryUpgradeErrorRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var portID: String = String()
+
+  var channelID: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// QueryUpgradeErrorResponse is the response type for the Query/QueryUpgradeError RPC method
+struct Ibc_Core_Channel_V1_QueryUpgradeErrorResponse: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var errorReceipt: Ibc_Core_Channel_V1_ErrorReceipt {
+    get {return _errorReceipt ?? Ibc_Core_Channel_V1_ErrorReceipt()}
+    set {_errorReceipt = newValue}
+  }
+  /// Returns true if `errorReceipt` has been explicitly set.
+  var hasErrorReceipt: Bool {return self._errorReceipt != nil}
+  /// Clears the value of `errorReceipt`. Subsequent reads from it will return its default value.
+  mutating func clearErrorReceipt() {self._errorReceipt = nil}
+
+  /// merkle proof of existence
+  var proof: Data = Data()
+
+  /// height at which the proof was retrieved
+  var proofHeight: Ibc_Core_Client_V1_Height {
+    get {return _proofHeight ?? Ibc_Core_Client_V1_Height()}
+    set {_proofHeight = newValue}
+  }
+  /// Returns true if `proofHeight` has been explicitly set.
+  var hasProofHeight: Bool {return self._proofHeight != nil}
+  /// Clears the value of `proofHeight`. Subsequent reads from it will return its default value.
+  mutating func clearProofHeight() {self._proofHeight = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _errorReceipt: Ibc_Core_Channel_V1_ErrorReceipt? = nil
+  fileprivate var _proofHeight: Ibc_Core_Client_V1_Height? = nil
+}
+
+/// QueryUpgradeRequest is the request type for the QueryUpgradeRequest RPC method
+struct Ibc_Core_Channel_V1_QueryUpgradeRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var portID: String = String()
+
+  var channelID: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// QueryUpgradeResponse is the response type for the QueryUpgradeResponse RPC method
+struct Ibc_Core_Channel_V1_QueryUpgradeResponse: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var upgrade: Ibc_Core_Channel_V1_Upgrade {
+    get {return _upgrade ?? Ibc_Core_Channel_V1_Upgrade()}
+    set {_upgrade = newValue}
+  }
+  /// Returns true if `upgrade` has been explicitly set.
+  var hasUpgrade: Bool {return self._upgrade != nil}
+  /// Clears the value of `upgrade`. Subsequent reads from it will return its default value.
+  mutating func clearUpgrade() {self._upgrade = nil}
+
+  /// merkle proof of existence
+  var proof: Data = Data()
+
+  /// height at which the proof was retrieved
+  var proofHeight: Ibc_Core_Client_V1_Height {
+    get {return _proofHeight ?? Ibc_Core_Client_V1_Height()}
+    set {_proofHeight = newValue}
+  }
+  /// Returns true if `proofHeight` has been explicitly set.
+  var hasProofHeight: Bool {return self._proofHeight != nil}
+  /// Clears the value of `proofHeight`. Subsequent reads from it will return its default value.
+  mutating func clearProofHeight() {self._proofHeight = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _upgrade: Ibc_Core_Channel_V1_Upgrade? = nil
+  fileprivate var _proofHeight: Ibc_Core_Client_V1_Height? = nil
+}
+
+/// QueryChannelParamsRequest is the request type for the Query/ChannelParams RPC method.
+struct Ibc_Core_Channel_V1_QueryChannelParamsRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// QueryChannelParamsResponse is the response type for the Query/ChannelParams RPC method.
+struct Ibc_Core_Channel_V1_QueryChannelParamsResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// params defines the parameters of the module.
+  var params: Ibc_Core_Channel_V1_Params {
+    get {return _params ?? Ibc_Core_Channel_V1_Params()}
+    set {_params = newValue}
+  }
+  /// Returns true if `params` has been explicitly set.
+  var hasParams: Bool {return self._params != nil}
+  /// Clears the value of `params`. Subsequent reads from it will return its default value.
+  mutating func clearParams() {self._params = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _params: Ibc_Core_Channel_V1_Params? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "ibc.core.channel.v1"
@@ -2075,6 +2211,233 @@ extension Ibc_Core_Channel_V1_QueryNextSequenceSendResponse: SwiftProtobuf.Messa
     if lhs.nextSequenceSend != rhs.nextSequenceSend {return false}
     if lhs.proof != rhs.proof {return false}
     if lhs._proofHeight != rhs._proofHeight {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Ibc_Core_Channel_V1_QueryUpgradeErrorRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryUpgradeErrorRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "port_id"),
+    2: .standard(proto: "channel_id"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.portID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.channelID) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.portID.isEmpty {
+      try visitor.visitSingularStringField(value: self.portID, fieldNumber: 1)
+    }
+    if !self.channelID.isEmpty {
+      try visitor.visitSingularStringField(value: self.channelID, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Ibc_Core_Channel_V1_QueryUpgradeErrorRequest, rhs: Ibc_Core_Channel_V1_QueryUpgradeErrorRequest) -> Bool {
+    if lhs.portID != rhs.portID {return false}
+    if lhs.channelID != rhs.channelID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Ibc_Core_Channel_V1_QueryUpgradeErrorResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryUpgradeErrorResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "error_receipt"),
+    2: .same(proto: "proof"),
+    3: .standard(proto: "proof_height"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._errorReceipt) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.proof) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._proofHeight) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._errorReceipt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.proof.isEmpty {
+      try visitor.visitSingularBytesField(value: self.proof, fieldNumber: 2)
+    }
+    try { if let v = self._proofHeight {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Ibc_Core_Channel_V1_QueryUpgradeErrorResponse, rhs: Ibc_Core_Channel_V1_QueryUpgradeErrorResponse) -> Bool {
+    if lhs._errorReceipt != rhs._errorReceipt {return false}
+    if lhs.proof != rhs.proof {return false}
+    if lhs._proofHeight != rhs._proofHeight {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Ibc_Core_Channel_V1_QueryUpgradeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryUpgradeRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "port_id"),
+    2: .standard(proto: "channel_id"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.portID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.channelID) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.portID.isEmpty {
+      try visitor.visitSingularStringField(value: self.portID, fieldNumber: 1)
+    }
+    if !self.channelID.isEmpty {
+      try visitor.visitSingularStringField(value: self.channelID, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Ibc_Core_Channel_V1_QueryUpgradeRequest, rhs: Ibc_Core_Channel_V1_QueryUpgradeRequest) -> Bool {
+    if lhs.portID != rhs.portID {return false}
+    if lhs.channelID != rhs.channelID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Ibc_Core_Channel_V1_QueryUpgradeResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryUpgradeResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "upgrade"),
+    2: .same(proto: "proof"),
+    3: .standard(proto: "proof_height"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._upgrade) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.proof) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._proofHeight) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._upgrade {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.proof.isEmpty {
+      try visitor.visitSingularBytesField(value: self.proof, fieldNumber: 2)
+    }
+    try { if let v = self._proofHeight {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Ibc_Core_Channel_V1_QueryUpgradeResponse, rhs: Ibc_Core_Channel_V1_QueryUpgradeResponse) -> Bool {
+    if lhs._upgrade != rhs._upgrade {return false}
+    if lhs.proof != rhs.proof {return false}
+    if lhs._proofHeight != rhs._proofHeight {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Ibc_Core_Channel_V1_QueryChannelParamsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryChannelParamsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Ibc_Core_Channel_V1_QueryChannelParamsRequest, rhs: Ibc_Core_Channel_V1_QueryChannelParamsRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Ibc_Core_Channel_V1_QueryChannelParamsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryChannelParamsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "params"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._params) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._params {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Ibc_Core_Channel_V1_QueryChannelParamsResponse, rhs: Ibc_Core_Channel_V1_QueryChannelParamsResponse) -> Bool {
+    if lhs._params != rhs._params {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

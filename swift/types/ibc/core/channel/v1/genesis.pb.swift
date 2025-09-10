@@ -43,9 +43,20 @@ struct Ibc_Core_Channel_V1_GenesisState: Sendable {
   /// the sequence for the next generated channel identifier
   var nextChannelSequence: UInt64 = 0
 
+  var params: Ibc_Core_Channel_V1_Params {
+    get {return _params ?? Ibc_Core_Channel_V1_Params()}
+    set {_params = newValue}
+  }
+  /// Returns true if `params` has been explicitly set.
+  var hasParams: Bool {return self._params != nil}
+  /// Clears the value of `params`. Subsequent reads from it will return its default value.
+  mutating func clearParams() {self._params = nil}
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+
+  fileprivate var _params: Ibc_Core_Channel_V1_Params? = nil
 }
 
 /// PacketSequence defines the genesis type necessary to retrieve and store
@@ -81,6 +92,7 @@ extension Ibc_Core_Channel_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf
     6: .standard(proto: "recv_sequences"),
     7: .standard(proto: "ack_sequences"),
     8: .standard(proto: "next_channel_sequence"),
+    9: .same(proto: "params"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -97,12 +109,17 @@ extension Ibc_Core_Channel_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf
       case 6: try { try decoder.decodeRepeatedMessageField(value: &self.recvSequences) }()
       case 7: try { try decoder.decodeRepeatedMessageField(value: &self.ackSequences) }()
       case 8: try { try decoder.decodeSingularUInt64Field(value: &self.nextChannelSequence) }()
+      case 9: try { try decoder.decodeSingularMessageField(value: &self._params) }()
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.channels.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.channels, fieldNumber: 1)
     }
@@ -127,6 +144,9 @@ extension Ibc_Core_Channel_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf
     if self.nextChannelSequence != 0 {
       try visitor.visitSingularUInt64Field(value: self.nextChannelSequence, fieldNumber: 8)
     }
+    try { if let v = self._params {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -139,6 +159,7 @@ extension Ibc_Core_Channel_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf
     if lhs.recvSequences != rhs.recvSequences {return false}
     if lhs.ackSequences != rhs.ackSequences {return false}
     if lhs.nextChannelSequence != rhs.nextChannelSequence {return false}
+    if lhs._params != rhs._params {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

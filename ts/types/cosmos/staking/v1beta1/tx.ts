@@ -101,11 +101,19 @@ export interface MsgUndelegateResponse {
   completionTime?:
     | Date
     | undefined;
-  /** amount returns the amount of undelegated coins */
+  /**
+   * amount returns the amount of undelegated coins
+   *
+   * Since: cosmos-sdk 0.50
+   */
   amount?: Coin | undefined;
 }
 
-/** MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator */
+/**
+ * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
+ *
+ * Since: cosmos-sdk 0.46
+ */
 export interface MsgCancelUnbondingDelegation {
   delegatorAddress: string;
   validatorAddress: string;
@@ -117,11 +125,19 @@ export interface MsgCancelUnbondingDelegation {
   creationHeight: Long;
 }
 
-/** MsgCancelUnbondingDelegationResponse */
+/**
+ * MsgCancelUnbondingDelegationResponse
+ *
+ * Since: cosmos-sdk 0.46
+ */
 export interface MsgCancelUnbondingDelegationResponse {
 }
 
-/** MsgUpdateParams is the Msg/UpdateParams request type. */
+/**
+ * MsgUpdateParams is the Msg/UpdateParams request type.
+ *
+ * Since: cosmos-sdk 0.47
+ */
 export interface MsgUpdateParams {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
@@ -136,6 +152,8 @@ export interface MsgUpdateParams {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
+ *
+ * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponse {
 }
@@ -1263,6 +1281,8 @@ export interface Msg {
   /**
    * CancelUnbondingDelegation defines a method for performing canceling the unbonding delegation
    * and delegate back to previous validator.
+   *
+   * Since: cosmos-sdk 0.46
    */
   CancelUnbondingDelegation(
     request: DeepPartial<MsgCancelUnbondingDelegation>,
@@ -1271,6 +1291,7 @@ export interface Msg {
   /**
    * UpdateParams defines an operation for updating the x/staking module
    * parameters.
+   * Since: cosmos-sdk 0.47
    */
   UpdateParams(request: DeepPartial<MsgUpdateParams>, metadata?: grpc.Metadata): Promise<MsgUpdateParamsResponse>;
 }

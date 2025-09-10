@@ -71,6 +71,7 @@ struct Cosmos_Distribution_V1beta1_MsgWithdrawDelegatorRewardResponse: Sendable 
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// Since: cosmos-sdk 0.46
   var amount: [Cosmos_Base_V1beta1_Coin] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -99,6 +100,7 @@ struct Cosmos_Distribution_V1beta1_MsgWithdrawValidatorCommissionResponse: Senda
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// Since: cosmos-sdk 0.46
   var amount: [Cosmos_Base_V1beta1_Coin] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -134,6 +136,8 @@ struct Cosmos_Distribution_V1beta1_MsgFundCommunityPoolResponse: Sendable {
 }
 
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Distribution_V1beta1_MsgUpdateParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -163,6 +167,8 @@ struct Cosmos_Distribution_V1beta1_MsgUpdateParams: Sendable {
 
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Distribution_V1beta1_MsgUpdateParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -176,6 +182,8 @@ struct Cosmos_Distribution_V1beta1_MsgUpdateParamsResponse: Sendable {
 /// MsgCommunityPoolSpend defines a message for sending tokens from the community
 /// pool to another account. This message is typically executed via a governance
 /// proposal with the governance module being the executing authority.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Distribution_V1beta1_MsgCommunityPoolSpend: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -195,6 +203,8 @@ struct Cosmos_Distribution_V1beta1_MsgCommunityPoolSpend: Sendable {
 
 /// MsgCommunityPoolSpendResponse defines the response to executing a
 /// MsgCommunityPoolSpend message.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Distribution_V1beta1_MsgCommunityPoolSpendResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -207,6 +217,8 @@ struct Cosmos_Distribution_V1beta1_MsgCommunityPoolSpendResponse: Sendable {
 
 /// DepositValidatorRewardsPool defines the request structure to provide
 /// additional rewards to delegators from a specific validator.
+///
+/// Since: cosmos-sdk 0.50
 struct Cosmos_Distribution_V1beta1_MsgDepositValidatorRewardsPool: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -225,6 +237,8 @@ struct Cosmos_Distribution_V1beta1_MsgDepositValidatorRewardsPool: Sendable {
 
 /// MsgDepositValidatorRewardsPoolResponse defines the response to executing a
 /// MsgDepositValidatorRewardsPool message.
+///
+/// Since: cosmos-sdk 0.50
 struct Cosmos_Distribution_V1beta1_MsgDepositValidatorRewardsPoolResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

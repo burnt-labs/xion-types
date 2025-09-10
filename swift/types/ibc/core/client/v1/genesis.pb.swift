@@ -61,8 +61,8 @@ struct Ibc_Core_Client_V1_GenesisState: Sendable {
   fileprivate var _params: Ibc_Core_Client_V1_Params? = nil
 }
 
-/// GenesisMetadata defines the genesis type for metadata that will be used
-/// to export all client store keys that are not client or consensus states.
+/// GenesisMetadata defines the genesis type for metadata that clients may return
+/// with ExportMetadata
 struct Ibc_Core_Client_V1_GenesisMetadata: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

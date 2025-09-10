@@ -24,6 +24,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 /// StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
 /// It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
 /// Deletes
+///
+/// Since: cosmos-sdk 0.43
 struct Cosmos_Store_V1beta1_StoreKVPair: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

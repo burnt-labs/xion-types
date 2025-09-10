@@ -77,6 +77,8 @@ struct Cosmos_Bank_V1beta1_MsgMultiSendResponse: Sendable {
 }
 
 /// MsgUpdateParams is the Msg/UpdateParams request type.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_MsgUpdateParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -106,6 +108,8 @@ struct Cosmos_Bank_V1beta1_MsgUpdateParams: Sendable {
 
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_MsgUpdateParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -121,6 +125,8 @@ struct Cosmos_Bank_V1beta1_MsgUpdateParamsResponse: Sendable {
 /// Only entries to add/update/delete need to be included.
 /// Existing SendEnabled entries that are not included in this
 /// message are left unchanged.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_MsgSetSendEnabled: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -144,6 +150,8 @@ struct Cosmos_Bank_V1beta1_MsgSetSendEnabled: Sendable {
 }
 
 /// MsgSetSendEnabledResponse defines the Msg/SetSendEnabled response type.
+///
+/// Since: cosmos-sdk 0.47
 struct Cosmos_Bank_V1beta1_MsgSetSendEnabledResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

@@ -31,7 +31,7 @@ struct Cosmos_App_V1alpha1_QueryConfigRequest: Sendable {
   init() {}
 }
 
-/// QueryConfigResponse is the Query/Config response type.
+/// QueryConfigRequest is the Query/Config response type.
 struct Cosmos_App_V1alpha1_QueryConfigResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

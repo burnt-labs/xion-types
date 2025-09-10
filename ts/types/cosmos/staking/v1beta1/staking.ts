@@ -196,7 +196,11 @@ export interface Validator {
   commission?:
     | Commission
     | undefined;
-  /** min_self_delegation is the validator's self declared minimum self delegation. */
+  /**
+   * min_self_delegation is the validator's self declared minimum self delegation.
+   *
+   * Since: cosmos-sdk 0.46
+   */
   minSelfDelegation: string;
   /** strictly positive if this validator's unbonding has been stopped by external modules */
   unbondingOnHoldRefCount: Long;

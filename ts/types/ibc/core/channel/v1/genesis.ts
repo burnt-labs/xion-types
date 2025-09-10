@@ -7,7 +7,7 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { IdentifiedChannel, PacketState } from "./channel";
+import { IdentifiedChannel, PacketState, Params } from "./channel";
 
 export const protobufPackage = "ibc.core.channel.v1";
 
@@ -22,6 +22,7 @@ export interface GenesisState {
   ackSequences: PacketSequence[];
   /** the sequence for the next generated channel identifier */
   nextChannelSequence: Long;
+  params?: Params | undefined;
 }
 
 /**
@@ -44,6 +45,7 @@ function createBaseGenesisState(): GenesisState {
     recvSequences: [],
     ackSequences: [],
     nextChannelSequence: Long.UZERO,
+    params: undefined,
   };
 }
 
@@ -72,6 +74,9 @@ export const GenesisState = {
     }
     if (!message.nextChannelSequence.equals(Long.UZERO)) {
       writer.uint32(64).uint64(message.nextChannelSequence);
+    }
+    if (message.params !== undefined) {
+      Params.encode(message.params, writer.uint32(74).fork()).ldelim();
     }
     return writer;
   },
@@ -139,6 +144,13 @@ export const GenesisState = {
 
           message.nextChannelSequence = reader.uint64() as Long;
           continue;
+        case 9:
+          if (tag !== 74) {
+            break;
+          }
+
+          message.params = Params.decode(reader, reader.uint32());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -172,6 +184,7 @@ export const GenesisState = {
         ? object.ackSequences.map((e: any) => PacketSequence.fromJSON(e))
         : [],
       nextChannelSequence: isSet(object.nextChannelSequence) ? Long.fromValue(object.nextChannelSequence) : Long.UZERO,
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
     };
   },
 
@@ -201,6 +214,9 @@ export const GenesisState = {
     if (!message.nextChannelSequence.equals(Long.UZERO)) {
       obj.nextChannelSequence = (message.nextChannelSequence || Long.UZERO).toString();
     }
+    if (message.params !== undefined) {
+      obj.params = Params.toJSON(message.params);
+    }
     return obj;
   },
 
@@ -219,6 +235,9 @@ export const GenesisState = {
     message.nextChannelSequence = (object.nextChannelSequence !== undefined && object.nextChannelSequence !== null)
       ? Long.fromValue(object.nextChannelSequence)
       : Long.UZERO;
+    message.params = (object.params !== undefined && object.params !== null)
+      ? Params.fromPartial(object.params)
+      : undefined;
     return message;
   },
 };

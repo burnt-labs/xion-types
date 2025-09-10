@@ -65,8 +65,6 @@ struct Ibc_Core_Client_V1_MsgCreateClientResponse: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var clientID: String = String()
-
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -342,34 +340,6 @@ struct Ibc_Core_Client_V1_MsgUpdateParamsResponse: Sendable {
   init() {}
 }
 
-/// MsgDeleteClientCreator defines a message to delete the client creator of a client
-struct Ibc_Core_Client_V1_MsgDeleteClientCreator: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  /// client identifier
-  var clientID: String = String()
-
-  /// signer address
-  var signer: String = String()
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-/// MsgDeleteClientCreatorResponse defines the Msg/DeleteClientCreator response type.
-struct Ibc_Core_Client_V1_MsgDeleteClientCreatorResponse: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "ibc.core.client.v1"
@@ -424,31 +394,18 @@ extension Ibc_Core_Client_V1_MsgCreateClient: SwiftProtobuf.Message, SwiftProtob
 
 extension Ibc_Core_Client_V1_MsgCreateClientResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".MsgCreateClientResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "client_id"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.clientID) }()
-      default: break
-      }
-    }
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.clientID.isEmpty {
-      try visitor.visitSingularStringField(value: self.clientID, fieldNumber: 1)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Ibc_Core_Client_V1_MsgCreateClientResponse, rhs: Ibc_Core_Client_V1_MsgCreateClientResponse) -> Bool {
-    if lhs.clientID != rhs.clientID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -859,63 +816,6 @@ extension Ibc_Core_Client_V1_MsgUpdateParamsResponse: SwiftProtobuf.Message, Swi
   }
 
   static func ==(lhs: Ibc_Core_Client_V1_MsgUpdateParamsResponse, rhs: Ibc_Core_Client_V1_MsgUpdateParamsResponse) -> Bool {
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Ibc_Core_Client_V1_MsgDeleteClientCreator: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MsgDeleteClientCreator"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "client_id"),
-    2: .same(proto: "signer"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.clientID) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.signer) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.clientID.isEmpty {
-      try visitor.visitSingularStringField(value: self.clientID, fieldNumber: 1)
-    }
-    if !self.signer.isEmpty {
-      try visitor.visitSingularStringField(value: self.signer, fieldNumber: 2)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Ibc_Core_Client_V1_MsgDeleteClientCreator, rhs: Ibc_Core_Client_V1_MsgDeleteClientCreator) -> Bool {
-    if lhs.clientID != rhs.clientID {return false}
-    if lhs.signer != rhs.signer {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Ibc_Core_Client_V1_MsgDeleteClientCreatorResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MsgDeleteClientCreatorResponse"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Ibc_Core_Client_V1_MsgDeleteClientCreatorResponse, rhs: Ibc_Core_Client_V1_MsgDeleteClientCreatorResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

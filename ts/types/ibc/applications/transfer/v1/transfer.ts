@@ -11,6 +11,20 @@ import _m0 from "protobufjs/minimal";
 export const protobufPackage = "ibc.applications.transfer.v1";
 
 /**
+ * DenomTrace contains the base denomination for ICS20 fungible tokens and the
+ * source tracing information path.
+ */
+export interface DenomTrace {
+  /**
+   * path defines the chain of port/channel identifiers used for tracing the
+   * source of the fungible token.
+   */
+  path: string;
+  /** base denomination of the relayed fungible token. */
+  baseDenom: string;
+}
+
+/**
  * Params defines the set of IBC transfer parameters.
  * NOTE: To prevent a single token from being transferred, set the
  * TransfersEnabled parameter to true and then set the bank module's SendEnabled
@@ -28,6 +42,80 @@ export interface Params {
    */
   receiveEnabled: boolean;
 }
+
+function createBaseDenomTrace(): DenomTrace {
+  return { path: "", baseDenom: "" };
+}
+
+export const DenomTrace = {
+  encode(message: DenomTrace, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.path !== "") {
+      writer.uint32(10).string(message.path);
+    }
+    if (message.baseDenom !== "") {
+      writer.uint32(18).string(message.baseDenom);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DenomTrace {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomTrace();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.path = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.baseDenom = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): DenomTrace {
+    return {
+      path: isSet(object.path) ? globalThis.String(object.path) : "",
+      baseDenom: isSet(object.baseDenom) ? globalThis.String(object.baseDenom) : "",
+    };
+  },
+
+  toJSON(message: DenomTrace): unknown {
+    const obj: any = {};
+    if (message.path !== "") {
+      obj.path = message.path;
+    }
+    if (message.baseDenom !== "") {
+      obj.baseDenom = message.baseDenom;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<DenomTrace>, I>>(base?: I): DenomTrace {
+    return DenomTrace.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<DenomTrace>, I>>(object: I): DenomTrace {
+    const message = createBaseDenomTrace();
+    message.path = object.path ?? "";
+    message.baseDenom = object.baseDenom ?? "";
+    return message;
+  },
+};
 
 function createBaseParams(): Params {
   return { sendEnabled: false, receiveEnabled: false };

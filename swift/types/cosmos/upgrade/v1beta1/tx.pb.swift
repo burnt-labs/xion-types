@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+/// Since: cosmos-sdk 0.46
+
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -21,6 +23,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
+///
+/// Since: cosmos-sdk 0.46
 struct Cosmos_Upgrade_V1beta1_MsgSoftwareUpgrade: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -47,6 +51,8 @@ struct Cosmos_Upgrade_V1beta1_MsgSoftwareUpgrade: Sendable {
 }
 
 /// MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
+///
+/// Since: cosmos-sdk 0.46
 struct Cosmos_Upgrade_V1beta1_MsgSoftwareUpgradeResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -58,6 +64,8 @@ struct Cosmos_Upgrade_V1beta1_MsgSoftwareUpgradeResponse: Sendable {
 }
 
 /// MsgCancelUpgrade is the Msg/CancelUpgrade request type.
+///
+/// Since: cosmos-sdk 0.46
 struct Cosmos_Upgrade_V1beta1_MsgCancelUpgrade: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -72,6 +80,8 @@ struct Cosmos_Upgrade_V1beta1_MsgCancelUpgrade: Sendable {
 }
 
 /// MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
+///
+/// Since: cosmos-sdk 0.46
 struct Cosmos_Upgrade_V1beta1_MsgCancelUpgradeResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
