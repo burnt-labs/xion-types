@@ -44,9 +44,15 @@ export interface Module {
    */
   overrideStoreKeys: StoreKeyConfig[];
   /**
+   * skip_store_keys is an optional list of store keys to skip when constructing the
+   * module's keeper. This is useful when a module does not have a store key.
+   * NOTE: the provided environment variable will have a fake store service.
+   */
+  skipStoreKeys: string[];
+  /**
    * order_migrations defines the order in which module migrations are performed.
    * If this is left empty, it uses the default migration order.
-   * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
+   * https://pkg.go.dev/github.com/cosmos/cosmos-sdk/types/module#DefaultMigrationsOrder
    */
   orderMigrations: string[];
   /**
@@ -61,6 +67,12 @@ export interface Module {
    * no preparecheckstate function will be registered.
    */
   prepareCheckStaters: string[];
+  /**
+   * pre_blockers specifies the module names of pre blockers
+   * to call in the order in which they should be called. If this is left empty
+   * no pre blocker will be registered.
+   */
+  preBlockers: string[];
 }
 
 /**
@@ -82,9 +94,11 @@ function createBaseModule(): Module {
     initGenesis: [],
     exportGenesis: [],
     overrideStoreKeys: [],
+    skipStoreKeys: [],
     orderMigrations: [],
     precommiters: [],
     prepareCheckStaters: [],
+    preBlockers: [],
   };
 }
 
@@ -108,6 +122,9 @@ export const Module = {
     for (const v of message.overrideStoreKeys) {
       StoreKeyConfig.encode(v!, writer.uint32(50).fork()).ldelim();
     }
+    for (const v of message.skipStoreKeys) {
+      writer.uint32(90).string(v!);
+    }
     for (const v of message.orderMigrations) {
       writer.uint32(58).string(v!);
     }
@@ -116,6 +133,9 @@ export const Module = {
     }
     for (const v of message.prepareCheckStaters) {
       writer.uint32(74).string(v!);
+    }
+    for (const v of message.preBlockers) {
+      writer.uint32(82).string(v!);
     }
     return writer;
   },
@@ -169,6 +189,13 @@ export const Module = {
 
           message.overrideStoreKeys.push(StoreKeyConfig.decode(reader, reader.uint32()));
           continue;
+        case 11:
+          if (tag !== 90) {
+            break;
+          }
+
+          message.skipStoreKeys.push(reader.string());
+          continue;
         case 7:
           if (tag !== 58) {
             break;
@@ -189,6 +216,13 @@ export const Module = {
           }
 
           message.prepareCheckStaters.push(reader.string());
+          continue;
+        case 10:
+          if (tag !== 82) {
+            break;
+          }
+
+          message.preBlockers.push(reader.string());
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -217,6 +251,9 @@ export const Module = {
       overrideStoreKeys: globalThis.Array.isArray(object?.overrideStoreKeys)
         ? object.overrideStoreKeys.map((e: any) => StoreKeyConfig.fromJSON(e))
         : [],
+      skipStoreKeys: globalThis.Array.isArray(object?.skipStoreKeys)
+        ? object.skipStoreKeys.map((e: any) => globalThis.String(e))
+        : [],
       orderMigrations: globalThis.Array.isArray(object?.orderMigrations)
         ? object.orderMigrations.map((e: any) => globalThis.String(e))
         : [],
@@ -225,6 +262,9 @@ export const Module = {
         : [],
       prepareCheckStaters: globalThis.Array.isArray(object?.prepareCheckStaters)
         ? object.prepareCheckStaters.map((e: any) => globalThis.String(e))
+        : [],
+      preBlockers: globalThis.Array.isArray(object?.preBlockers)
+        ? object.preBlockers.map((e: any) => globalThis.String(e))
         : [],
     };
   },
@@ -249,6 +289,9 @@ export const Module = {
     if (message.overrideStoreKeys?.length) {
       obj.overrideStoreKeys = message.overrideStoreKeys.map((e) => StoreKeyConfig.toJSON(e));
     }
+    if (message.skipStoreKeys?.length) {
+      obj.skipStoreKeys = message.skipStoreKeys;
+    }
     if (message.orderMigrations?.length) {
       obj.orderMigrations = message.orderMigrations;
     }
@@ -257,6 +300,9 @@ export const Module = {
     }
     if (message.prepareCheckStaters?.length) {
       obj.prepareCheckStaters = message.prepareCheckStaters;
+    }
+    if (message.preBlockers?.length) {
+      obj.preBlockers = message.preBlockers;
     }
     return obj;
   },
@@ -272,9 +318,11 @@ export const Module = {
     message.initGenesis = object.initGenesis?.map((e) => e) || [];
     message.exportGenesis = object.exportGenesis?.map((e) => e) || [];
     message.overrideStoreKeys = object.overrideStoreKeys?.map((e) => StoreKeyConfig.fromPartial(e)) || [];
+    message.skipStoreKeys = object.skipStoreKeys?.map((e) => e) || [];
     message.orderMigrations = object.orderMigrations?.map((e) => e) || [];
     message.precommiters = object.precommiters?.map((e) => e) || [];
     message.prepareCheckStaters = object.prepareCheckStaters?.map((e) => e) || [];
+    message.preBlockers = object.preBlockers?.map((e) => e) || [];
     return message;
   },
 };

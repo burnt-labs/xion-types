@@ -34,8 +34,6 @@ export interface MsgCreateVestingAccountResponse {
 /**
  * MsgCreatePermanentLockedAccount defines a message that enables creating a permanent
  * locked account.
- *
- * Since: cosmos-sdk 0.46
  */
 export interface MsgCreatePermanentLockedAccount {
   fromAddress: string;
@@ -43,19 +41,13 @@ export interface MsgCreatePermanentLockedAccount {
   amount: Coin[];
 }
 
-/**
- * MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type.
- *
- * Since: cosmos-sdk 0.46
- */
+/** MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type. */
 export interface MsgCreatePermanentLockedAccountResponse {
 }
 
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
- *
- * Since: cosmos-sdk 0.46
  */
 export interface MsgCreatePeriodicVestingAccount {
   fromAddress: string;
@@ -68,8 +60,6 @@ export interface MsgCreatePeriodicVestingAccount {
 /**
  * MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount
  * response type.
- *
- * Since: cosmos-sdk 0.46
  */
 export interface MsgCreatePeriodicVestingAccountResponse {
 }
@@ -546,8 +536,6 @@ export interface Msg {
   /**
    * CreatePermanentLockedAccount defines a method that enables creating a permanent
    * locked account.
-   *
-   * Since: cosmos-sdk 0.46
    */
   CreatePermanentLockedAccount(
     request: DeepPartial<MsgCreatePermanentLockedAccount>,
@@ -556,8 +544,6 @@ export interface Msg {
   /**
    * CreatePeriodicVestingAccount defines a method that enables creating a
    * periodic vesting account.
-   *
-   * Since: cosmos-sdk 0.46
    */
   CreatePeriodicVestingAccount(
     request: DeepPartial<MsgCreatePeriodicVestingAccount>,
