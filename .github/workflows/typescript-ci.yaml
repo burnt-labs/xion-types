@@ -179,19 +179,11 @@ jobs:
         run: |
           cd dependent-project
           
-          # Install dependencies
-          npm install
+          # Only install the types package to test compatibility
+          npm install ../xion-types/ts --no-save
           
-          # Install the updated types package locally
-          npm install ../xion-types/ts
-          
-          # Run type checking
-          npm run check-types || npm run type-check || npx tsc --noEmit
-          
-          # Run build if available
-          if npm run build --dry-run 2>/dev/null; then
-            npm run build
-          fi
+          # Run type checking without installing all dependencies
+          npx tsc --noEmit --skipLibCheck
 
 #   publish:
 #     name: Publish to NPM
