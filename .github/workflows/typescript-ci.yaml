@@ -168,16 +168,16 @@ jobs:
           name: generated-types
           path: xion-types/ts/types
 
-      - name: Checkout Dependent Project
-        uses: actions/checkout@v4
-        with:
-          repository: burnt-labs/${{ matrix.project }}
-          path: dependent-project
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Test Project with Updated Types
         run: |
-          cd dependent-project
+          # Test against the local project directory
+          if [ -d "${{ matrix.project }}" ]; then
+            echo "Testing against local ${{ matrix.project }}"
+            cd ${{ matrix.project }}
+          else
+            echo "❌ Local project ${{ matrix.project }} not found"
+            exit 1
+          fi
           
           # Install the types package with legacy peer deps to bypass conflicts
           npm install ../xion-types/ts --no-save --legacy-peer-deps
@@ -185,7 +185,7 @@ jobs:
           # Run type checking
           npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
           
-          echo "✅ Proto compatibility test completed"
+          echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
 #   publish:
 #     name: Publish to NPM
