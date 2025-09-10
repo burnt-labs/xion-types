@@ -235,6 +235,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
           token: ${{ secrets.NPM_TOKEN }}
+          
+      - name: Configure NPM Authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
 
       - name: Bump Version
         working-directory: ./ts
