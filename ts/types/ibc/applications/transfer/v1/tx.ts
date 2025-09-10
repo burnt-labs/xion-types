@@ -25,7 +25,7 @@ export interface MsgTransfer {
   sourcePort: string;
   /** the channel by which the packet will be sent */
   sourceChannel: string;
-  /** the tokens to be transferred */
+  /** token to be transferred */
   token?:
     | Coin
     | undefined;
@@ -35,18 +35,22 @@ export interface MsgTransfer {
   receiver: string;
   /**
    * Timeout height relative to the current block height.
-   * The timeout is disabled when set to 0.
+   * If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
+   * If you are sending with IBC v2 protocol, timeout_timestamp must be set, and timeout_height must be omitted.
    */
   timeoutHeight?:
     | Height
     | undefined;
   /**
    * Timeout timestamp in absolute nanoseconds since unix epoch.
-   * The timeout is disabled when set to 0.
+   * If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
+   * If you are sending with IBC v2 protocol, timeout_timestamp must be set.
    */
   timeoutTimestamp: Long;
   /** optional memo */
   memo: string;
+  /** optional encoding */
+  encoding: string;
 }
 
 /** MsgTransferResponse defines the Msg/Transfer response type. */
@@ -84,6 +88,7 @@ function createBaseMsgTransfer(): MsgTransfer {
     timeoutHeight: undefined,
     timeoutTimestamp: Long.UZERO,
     memo: "",
+    encoding: "",
   };
 }
 
@@ -112,6 +117,9 @@ export const MsgTransfer = {
     }
     if (message.memo !== "") {
       writer.uint32(66).string(message.memo);
+    }
+    if (message.encoding !== "") {
+      writer.uint32(74).string(message.encoding);
     }
     return writer;
   },
@@ -179,6 +187,13 @@ export const MsgTransfer = {
 
           message.memo = reader.string();
           continue;
+        case 9:
+          if (tag !== 74) {
+            break;
+          }
+
+          message.encoding = reader.string();
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -198,6 +213,7 @@ export const MsgTransfer = {
       timeoutHeight: isSet(object.timeoutHeight) ? Height.fromJSON(object.timeoutHeight) : undefined,
       timeoutTimestamp: isSet(object.timeoutTimestamp) ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO,
       memo: isSet(object.memo) ? globalThis.String(object.memo) : "",
+      encoding: isSet(object.encoding) ? globalThis.String(object.encoding) : "",
     };
   },
 
@@ -227,6 +243,9 @@ export const MsgTransfer = {
     if (message.memo !== "") {
       obj.memo = message.memo;
     }
+    if (message.encoding !== "") {
+      obj.encoding = message.encoding;
+    }
     return obj;
   },
 
@@ -247,6 +266,7 @@ export const MsgTransfer = {
       ? Long.fromValue(object.timeoutTimestamp)
       : Long.UZERO;
     message.memo = object.memo ?? "";
+    message.encoding = object.encoding ?? "";
     return message;
   },
 };

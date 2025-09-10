@@ -8,7 +8,9 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { GenesisState as GenesisState3 } from "../../channel/v1/genesis";
+import { GenesisState as GenesisState5 } from "../../channel/v2/genesis";
 import { GenesisState as GenesisState1 } from "../../client/v1/genesis";
+import { GenesisState as GenesisState4 } from "../../client/v2/genesis";
 import { GenesisState as GenesisState2 } from "../../connection/v1/genesis";
 
 export const protobufPackage = "ibc.core.types.v1";
@@ -24,11 +26,25 @@ export interface GenesisState {
     | GenesisState2
     | undefined;
   /** ICS004 - Channel genesis state */
-  channelGenesis?: GenesisState3 | undefined;
+  channelGenesis?:
+    | GenesisState3
+    | undefined;
+  /** ICS002 - Clients/v2 genesis state */
+  clientV2Genesis?:
+    | GenesisState4
+    | undefined;
+  /** ICS004 - Channel/v2 genesis state */
+  channelV2Genesis?: GenesisState5 | undefined;
 }
 
 function createBaseGenesisState(): GenesisState {
-  return { clientGenesis: undefined, connectionGenesis: undefined, channelGenesis: undefined };
+  return {
+    clientGenesis: undefined,
+    connectionGenesis: undefined,
+    channelGenesis: undefined,
+    clientV2Genesis: undefined,
+    channelV2Genesis: undefined,
+  };
 }
 
 export const GenesisState = {
@@ -41,6 +57,12 @@ export const GenesisState = {
     }
     if (message.channelGenesis !== undefined) {
       GenesisState3.encode(message.channelGenesis, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.clientV2Genesis !== undefined) {
+      GenesisState4.encode(message.clientV2Genesis, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.channelV2Genesis !== undefined) {
+      GenesisState5.encode(message.channelV2Genesis, writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
@@ -73,6 +95,20 @@ export const GenesisState = {
 
           message.channelGenesis = GenesisState3.decode(reader, reader.uint32());
           continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.clientV2Genesis = GenesisState4.decode(reader, reader.uint32());
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.channelV2Genesis = GenesisState5.decode(reader, reader.uint32());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -87,6 +123,8 @@ export const GenesisState = {
       clientGenesis: isSet(object.clientGenesis) ? GenesisState1.fromJSON(object.clientGenesis) : undefined,
       connectionGenesis: isSet(object.connectionGenesis) ? GenesisState2.fromJSON(object.connectionGenesis) : undefined,
       channelGenesis: isSet(object.channelGenesis) ? GenesisState3.fromJSON(object.channelGenesis) : undefined,
+      clientV2Genesis: isSet(object.clientV2Genesis) ? GenesisState4.fromJSON(object.clientV2Genesis) : undefined,
+      channelV2Genesis: isSet(object.channelV2Genesis) ? GenesisState5.fromJSON(object.channelV2Genesis) : undefined,
     };
   },
 
@@ -100,6 +138,12 @@ export const GenesisState = {
     }
     if (message.channelGenesis !== undefined) {
       obj.channelGenesis = GenesisState3.toJSON(message.channelGenesis);
+    }
+    if (message.clientV2Genesis !== undefined) {
+      obj.clientV2Genesis = GenesisState4.toJSON(message.clientV2Genesis);
+    }
+    if (message.channelV2Genesis !== undefined) {
+      obj.channelV2Genesis = GenesisState5.toJSON(message.channelV2Genesis);
     }
     return obj;
   },
@@ -117,6 +161,12 @@ export const GenesisState = {
       : undefined;
     message.channelGenesis = (object.channelGenesis !== undefined && object.channelGenesis !== null)
       ? GenesisState3.fromPartial(object.channelGenesis)
+      : undefined;
+    message.clientV2Genesis = (object.clientV2Genesis !== undefined && object.clientV2Genesis !== null)
+      ? GenesisState4.fromPartial(object.clientV2Genesis)
+      : undefined;
+    message.channelV2Genesis = (object.channelV2Genesis !== undefined && object.channelV2Genesis !== null)
+      ? GenesisState5.fromPartial(object.channelV2Genesis)
       : undefined;
     return message;
   },

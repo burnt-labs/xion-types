@@ -11,47 +11,10 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { DenomTrace, Params } from "./transfer";
+import { Denom } from "./token";
+import { Params } from "./transfer";
 
 export const protobufPackage = "ibc.applications.transfer.v1";
-
-/**
- * QueryDenomTraceRequest is the request type for the Query/DenomTrace RPC
- * method
- */
-export interface QueryDenomTraceRequest {
-  /** hash (in hex format) or denom (full denom with ibc prefix) of the denomination trace information. */
-  hash: string;
-}
-
-/**
- * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
- * method.
- */
-export interface QueryDenomTraceResponse {
-  /** denom_trace returns the requested denomination trace information. */
-  denomTrace?: DenomTrace | undefined;
-}
-
-/**
- * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
- * method
- */
-export interface QueryDenomTracesRequest {
-  /** pagination defines an optional pagination for the request. */
-  pagination?: PageRequest | undefined;
-}
-
-/**
- * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
- * method.
- */
-export interface QueryDenomTracesResponse {
-  /** denom_traces returns all denominations trace information. */
-  denomTraces: DenomTrace[];
-  /** pagination defines the pagination in the response. */
-  pagination?: PageResponse | undefined;
-}
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
@@ -61,6 +24,44 @@ export interface QueryParamsRequest {
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params?: Params | undefined;
+}
+
+/**
+ * QueryDenomRequest is the request type for the Query/Denom RPC
+ * method
+ */
+export interface QueryDenomRequest {
+  /** hash (in hex format) or denom (full denom with ibc prefix) of the on chain denomination. */
+  hash: string;
+}
+
+/**
+ * QueryDenomResponse is the response type for the Query/Denom RPC
+ * method.
+ */
+export interface QueryDenomResponse {
+  /** denom returns the requested denomination. */
+  denom?: Denom | undefined;
+}
+
+/**
+ * QueryDenomsRequest is the request type for the Query/Denoms RPC
+ * method
+ */
+export interface QueryDenomsRequest {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequest | undefined;
+}
+
+/**
+ * QueryDenomsResponse is the response type for the Query/Denoms RPC
+ * method.
+ */
+export interface QueryDenomsResponse {
+  /** denoms returns all denominations. */
+  denoms: Denom[];
+  /** pagination defines the pagination in the response. */
+  pagination?: PageResponse | undefined;
 }
 
 /**
@@ -104,259 +105,6 @@ export interface QueryTotalEscrowForDenomRequest {
 export interface QueryTotalEscrowForDenomResponse {
   amount?: Coin | undefined;
 }
-
-function createBaseQueryDenomTraceRequest(): QueryDenomTraceRequest {
-  return { hash: "" };
-}
-
-export const QueryDenomTraceRequest = {
-  encode(message: QueryDenomTraceRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.hash !== "") {
-      writer.uint32(10).string(message.hash);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryDenomTraceRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.hash = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): QueryDenomTraceRequest {
-    return { hash: isSet(object.hash) ? globalThis.String(object.hash) : "" };
-  },
-
-  toJSON(message: QueryDenomTraceRequest): unknown {
-    const obj: any = {};
-    if (message.hash !== "") {
-      obj.hash = message.hash;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<QueryDenomTraceRequest>, I>>(base?: I): QueryDenomTraceRequest {
-    return QueryDenomTraceRequest.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<QueryDenomTraceRequest>, I>>(object: I): QueryDenomTraceRequest {
-    const message = createBaseQueryDenomTraceRequest();
-    message.hash = object.hash ?? "";
-    return message;
-  },
-};
-
-function createBaseQueryDenomTraceResponse(): QueryDenomTraceResponse {
-  return { denomTrace: undefined };
-}
-
-export const QueryDenomTraceResponse = {
-  encode(message: QueryDenomTraceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.denomTrace !== undefined) {
-      DenomTrace.encode(message.denomTrace, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryDenomTraceResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.denomTrace = DenomTrace.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): QueryDenomTraceResponse {
-    return { denomTrace: isSet(object.denomTrace) ? DenomTrace.fromJSON(object.denomTrace) : undefined };
-  },
-
-  toJSON(message: QueryDenomTraceResponse): unknown {
-    const obj: any = {};
-    if (message.denomTrace !== undefined) {
-      obj.denomTrace = DenomTrace.toJSON(message.denomTrace);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<QueryDenomTraceResponse>, I>>(base?: I): QueryDenomTraceResponse {
-    return QueryDenomTraceResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<QueryDenomTraceResponse>, I>>(object: I): QueryDenomTraceResponse {
-    const message = createBaseQueryDenomTraceResponse();
-    message.denomTrace = (object.denomTrace !== undefined && object.denomTrace !== null)
-      ? DenomTrace.fromPartial(object.denomTrace)
-      : undefined;
-    return message;
-  },
-};
-
-function createBaseQueryDenomTracesRequest(): QueryDenomTracesRequest {
-  return { pagination: undefined };
-}
-
-export const QueryDenomTracesRequest = {
-  encode(message: QueryDenomTracesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pagination !== undefined) {
-      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryDenomTracesRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.pagination = PageRequest.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): QueryDenomTracesRequest {
-    return { pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined };
-  },
-
-  toJSON(message: QueryDenomTracesRequest): unknown {
-    const obj: any = {};
-    if (message.pagination !== undefined) {
-      obj.pagination = PageRequest.toJSON(message.pagination);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<QueryDenomTracesRequest>, I>>(base?: I): QueryDenomTracesRequest {
-    return QueryDenomTracesRequest.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<QueryDenomTracesRequest>, I>>(object: I): QueryDenomTracesRequest {
-    const message = createBaseQueryDenomTracesRequest();
-    message.pagination = (object.pagination !== undefined && object.pagination !== null)
-      ? PageRequest.fromPartial(object.pagination)
-      : undefined;
-    return message;
-  },
-};
-
-function createBaseQueryDenomTracesResponse(): QueryDenomTracesResponse {
-  return { denomTraces: [], pagination: undefined };
-}
-
-export const QueryDenomTracesResponse = {
-  encode(message: QueryDenomTracesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.denomTraces) {
-      DenomTrace.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryDenomTracesResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.denomTraces.push(DenomTrace.decode(reader, reader.uint32()));
-          continue;
-        case 2:
-          if (tag !== 18) {
-            break;
-          }
-
-          message.pagination = PageResponse.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): QueryDenomTracesResponse {
-    return {
-      denomTraces: globalThis.Array.isArray(object?.denomTraces)
-        ? object.denomTraces.map((e: any) => DenomTrace.fromJSON(e))
-        : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
-    };
-  },
-
-  toJSON(message: QueryDenomTracesResponse): unknown {
-    const obj: any = {};
-    if (message.denomTraces?.length) {
-      obj.denomTraces = message.denomTraces.map((e) => DenomTrace.toJSON(e));
-    }
-    if (message.pagination !== undefined) {
-      obj.pagination = PageResponse.toJSON(message.pagination);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<QueryDenomTracesResponse>, I>>(base?: I): QueryDenomTracesResponse {
-    return QueryDenomTracesResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<QueryDenomTracesResponse>, I>>(object: I): QueryDenomTracesResponse {
-    const message = createBaseQueryDenomTracesResponse();
-    message.denomTraces = object.denomTraces?.map((e) => DenomTrace.fromPartial(e)) || [];
-    message.pagination = (object.pagination !== undefined && object.pagination !== null)
-      ? PageResponse.fromPartial(object.pagination)
-      : undefined;
-    return message;
-  },
-};
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
@@ -455,6 +203,255 @@ export const QueryParamsResponse = {
     const message = createBaseQueryParamsResponse();
     message.params = (object.params !== undefined && object.params !== null)
       ? Params.fromPartial(object.params)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseQueryDenomRequest(): QueryDenomRequest {
+  return { hash: "" };
+}
+
+export const QueryDenomRequest = {
+  encode(message: QueryDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.hash !== "") {
+      writer.uint32(10).string(message.hash);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.hash = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryDenomRequest {
+    return { hash: isSet(object.hash) ? globalThis.String(object.hash) : "" };
+  },
+
+  toJSON(message: QueryDenomRequest): unknown {
+    const obj: any = {};
+    if (message.hash !== "") {
+      obj.hash = message.hash;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryDenomRequest>, I>>(base?: I): QueryDenomRequest {
+    return QueryDenomRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryDenomRequest>, I>>(object: I): QueryDenomRequest {
+    const message = createBaseQueryDenomRequest();
+    message.hash = object.hash ?? "";
+    return message;
+  },
+};
+
+function createBaseQueryDenomResponse(): QueryDenomResponse {
+  return { denom: undefined };
+}
+
+export const QueryDenomResponse = {
+  encode(message: QueryDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.denom !== undefined) {
+      Denom.encode(message.denom, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.denom = Denom.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryDenomResponse {
+    return { denom: isSet(object.denom) ? Denom.fromJSON(object.denom) : undefined };
+  },
+
+  toJSON(message: QueryDenomResponse): unknown {
+    const obj: any = {};
+    if (message.denom !== undefined) {
+      obj.denom = Denom.toJSON(message.denom);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryDenomResponse>, I>>(base?: I): QueryDenomResponse {
+    return QueryDenomResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryDenomResponse>, I>>(object: I): QueryDenomResponse {
+    const message = createBaseQueryDenomResponse();
+    message.denom = (object.denom !== undefined && object.denom !== null) ? Denom.fromPartial(object.denom) : undefined;
+    return message;
+  },
+};
+
+function createBaseQueryDenomsRequest(): QueryDenomsRequest {
+  return { pagination: undefined };
+}
+
+export const QueryDenomsRequest = {
+  encode(message: QueryDenomsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryDenomsRequest {
+    return { pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined };
+  },
+
+  toJSON(message: QueryDenomsRequest): unknown {
+    const obj: any = {};
+    if (message.pagination !== undefined) {
+      obj.pagination = PageRequest.toJSON(message.pagination);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryDenomsRequest>, I>>(base?: I): QueryDenomsRequest {
+    return QueryDenomsRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryDenomsRequest>, I>>(object: I): QueryDenomsRequest {
+    const message = createBaseQueryDenomsRequest();
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageRequest.fromPartial(object.pagination)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseQueryDenomsResponse(): QueryDenomsResponse {
+  return { denoms: [], pagination: undefined };
+}
+
+export const QueryDenomsResponse = {
+  encode(message: QueryDenomsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.denoms) {
+      Denom.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.denoms.push(Denom.decode(reader, reader.uint32()));
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryDenomsResponse {
+    return {
+      denoms: globalThis.Array.isArray(object?.denoms) ? object.denoms.map((e: any) => Denom.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
+    };
+  },
+
+  toJSON(message: QueryDenomsResponse): unknown {
+    const obj: any = {};
+    if (message.denoms?.length) {
+      obj.denoms = message.denoms.map((e) => Denom.toJSON(e));
+    }
+    if (message.pagination !== undefined) {
+      obj.pagination = PageResponse.toJSON(message.pagination);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryDenomsResponse>, I>>(base?: I): QueryDenomsResponse {
+    return QueryDenomsResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryDenomsResponse>, I>>(object: I): QueryDenomsResponse {
+    const message = createBaseQueryDenomsResponse();
+    message.denoms = object.denoms?.map((e) => Denom.fromPartial(e)) || [];
+    message.pagination = (object.pagination !== undefined && object.pagination !== null)
+      ? PageResponse.fromPartial(object.pagination)
       : undefined;
     return message;
   },
@@ -829,15 +826,12 @@ export const QueryTotalEscrowForDenomResponse = {
 
 /** Query provides defines the gRPC querier service. */
 export interface Query {
-  /** DenomTraces queries all denomination traces. */
-  DenomTraces(
-    request: DeepPartial<QueryDenomTracesRequest>,
-    metadata?: grpc.Metadata,
-  ): Promise<QueryDenomTracesResponse>;
-  /** DenomTrace queries a denomination trace information. */
-  DenomTrace(request: DeepPartial<QueryDenomTraceRequest>, metadata?: grpc.Metadata): Promise<QueryDenomTraceResponse>;
   /** Params queries all parameters of the ibc-transfer module. */
   Params(request: DeepPartial<QueryParamsRequest>, metadata?: grpc.Metadata): Promise<QueryParamsResponse>;
+  /** Denoms queries all denominations */
+  Denoms(request: DeepPartial<QueryDenomsRequest>, metadata?: grpc.Metadata): Promise<QueryDenomsResponse>;
+  /** Denom queries a denomination */
+  Denom(request: DeepPartial<QueryDenomRequest>, metadata?: grpc.Metadata): Promise<QueryDenomResponse>;
   /** DenomHash queries a denomination hash information. */
   DenomHash(request: DeepPartial<QueryDenomHashRequest>, metadata?: grpc.Metadata): Promise<QueryDenomHashResponse>;
   /** EscrowAddress returns the escrow address for a particular port and channel id. */
@@ -857,27 +851,24 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.DenomTraces = this.DenomTraces.bind(this);
-    this.DenomTrace = this.DenomTrace.bind(this);
     this.Params = this.Params.bind(this);
+    this.Denoms = this.Denoms.bind(this);
+    this.Denom = this.Denom.bind(this);
     this.DenomHash = this.DenomHash.bind(this);
     this.EscrowAddress = this.EscrowAddress.bind(this);
     this.TotalEscrowForDenom = this.TotalEscrowForDenom.bind(this);
   }
 
-  DenomTraces(
-    request: DeepPartial<QueryDenomTracesRequest>,
-    metadata?: grpc.Metadata,
-  ): Promise<QueryDenomTracesResponse> {
-    return this.rpc.unary(QueryDenomTracesDesc, QueryDenomTracesRequest.fromPartial(request), metadata);
-  }
-
-  DenomTrace(request: DeepPartial<QueryDenomTraceRequest>, metadata?: grpc.Metadata): Promise<QueryDenomTraceResponse> {
-    return this.rpc.unary(QueryDenomTraceDesc, QueryDenomTraceRequest.fromPartial(request), metadata);
-  }
-
   Params(request: DeepPartial<QueryParamsRequest>, metadata?: grpc.Metadata): Promise<QueryParamsResponse> {
     return this.rpc.unary(QueryParamsDesc, QueryParamsRequest.fromPartial(request), metadata);
+  }
+
+  Denoms(request: DeepPartial<QueryDenomsRequest>, metadata?: grpc.Metadata): Promise<QueryDenomsResponse> {
+    return this.rpc.unary(QueryDenomsDesc, QueryDenomsRequest.fromPartial(request), metadata);
+  }
+
+  Denom(request: DeepPartial<QueryDenomRequest>, metadata?: grpc.Metadata): Promise<QueryDenomResponse> {
+    return this.rpc.unary(QueryDenomDesc, QueryDenomRequest.fromPartial(request), metadata);
   }
 
   DenomHash(request: DeepPartial<QueryDenomHashRequest>, metadata?: grpc.Metadata): Promise<QueryDenomHashResponse> {
@@ -901,52 +892,6 @@ export class QueryClientImpl implements Query {
 
 export const QueryDesc = { serviceName: "ibc.applications.transfer.v1.Query" };
 
-export const QueryDenomTracesDesc: UnaryMethodDefinitionish = {
-  methodName: "DenomTraces",
-  service: QueryDesc,
-  requestStream: false,
-  responseStream: false,
-  requestType: {
-    serializeBinary() {
-      return QueryDenomTracesRequest.encode(this).finish();
-    },
-  } as any,
-  responseType: {
-    deserializeBinary(data: Uint8Array) {
-      const value = QueryDenomTracesResponse.decode(data);
-      return {
-        ...value,
-        toObject() {
-          return value;
-        },
-      };
-    },
-  } as any,
-};
-
-export const QueryDenomTraceDesc: UnaryMethodDefinitionish = {
-  methodName: "DenomTrace",
-  service: QueryDesc,
-  requestStream: false,
-  responseStream: false,
-  requestType: {
-    serializeBinary() {
-      return QueryDenomTraceRequest.encode(this).finish();
-    },
-  } as any,
-  responseType: {
-    deserializeBinary(data: Uint8Array) {
-      const value = QueryDenomTraceResponse.decode(data);
-      return {
-        ...value,
-        toObject() {
-          return value;
-        },
-      };
-    },
-  } as any,
-};
-
 export const QueryParamsDesc: UnaryMethodDefinitionish = {
   methodName: "Params",
   service: QueryDesc,
@@ -960,6 +905,52 @@ export const QueryParamsDesc: UnaryMethodDefinitionish = {
   responseType: {
     deserializeBinary(data: Uint8Array) {
       const value = QueryParamsResponse.decode(data);
+      return {
+        ...value,
+        toObject() {
+          return value;
+        },
+      };
+    },
+  } as any,
+};
+
+export const QueryDenomsDesc: UnaryMethodDefinitionish = {
+  methodName: "Denoms",
+  service: QueryDesc,
+  requestStream: false,
+  responseStream: false,
+  requestType: {
+    serializeBinary() {
+      return QueryDenomsRequest.encode(this).finish();
+    },
+  } as any,
+  responseType: {
+    deserializeBinary(data: Uint8Array) {
+      const value = QueryDenomsResponse.decode(data);
+      return {
+        ...value,
+        toObject() {
+          return value;
+        },
+      };
+    },
+  } as any,
+};
+
+export const QueryDenomDesc: UnaryMethodDefinitionish = {
+  methodName: "Denom",
+  service: QueryDesc,
+  requestStream: false,
+  responseStream: false,
+  requestType: {
+    serializeBinary() {
+      return QueryDenomRequest.encode(this).finish();
+    },
+  } as any,
+  responseType: {
+    deserializeBinary(data: Uint8Array) {
+      const value = QueryDenomResponse.decode(data);
       return {
         ...value,
         toObject() {

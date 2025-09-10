@@ -70,8 +70,8 @@ gen_language() {
         echo "skipping problematic file $file"
         continue
       fi
-      echo "generating for file $file"
-      
+      echo "generating $language for file $file"
+
       buf generate $file \
         --include-imports \
         --template "$buf_dir/buf.gen.$language.yaml" \
@@ -114,10 +114,6 @@ main() {
 # Parse CLI parameters
   while [[ $# -gt 0 ]]; do
     case $1 in
-    --dart)
-      init_protoc && gen_language dart
-      shift
-      ;;
     --java)
       init_protoc && gen_language java 
       shift

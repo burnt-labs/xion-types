@@ -13,8 +13,6 @@ import { Any } from "../../../google/protobuf/any";
 
 export const protobufPackage = "cosmos.feegrant.v1beta1";
 
-/** Since: cosmos-sdk 0.43 */
-
 /**
  * MsgGrantAllowance adds permission for Grantee to spend up to Allowance
  * of fees from the account of Granter.
@@ -44,21 +42,13 @@ export interface MsgRevokeAllowance {
 export interface MsgRevokeAllowanceResponse {
 }
 
-/**
- * MsgPruneAllowances prunes expired fee allowances.
- *
- * Since cosmos-sdk 0.50
- */
+/** MsgPruneAllowances prunes expired fee allowances. */
 export interface MsgPruneAllowances {
   /** pruner is the address of the user pruning expired allowances. */
   pruner: string;
 }
 
-/**
- * MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
- *
- * Since cosmos-sdk 0.50
- */
+/** MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type. */
 export interface MsgPruneAllowancesResponse {
 }
 
@@ -428,11 +418,7 @@ export interface Msg {
     request: DeepPartial<MsgRevokeAllowance>,
     metadata?: grpc.Metadata,
   ): Promise<MsgRevokeAllowanceResponse>;
-  /**
-   * PruneAllowances prunes expired fee allowances, currently up to 75 at a time.
-   *
-   * Since cosmos-sdk 0.50
-   */
+  /** PruneAllowances prunes expired fee allowances, currently up to 75 at a time. */
   PruneAllowances(
     request: DeepPartial<MsgPruneAllowances>,
     metadata?: grpc.Metadata,
