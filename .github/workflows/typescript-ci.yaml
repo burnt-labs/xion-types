@@ -63,17 +63,26 @@ jobs:
           
           echo "✅ Required submodules initialized"
 
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-      - name: Build Protobuf Builder Image
+      - name: Install Dependencies
         run: |
-          cd docker
-          docker build -t swiftbuilder .
+          cd ts
+          npm install
+
+      - name: Install buf CLI
+        run: |
+          # Install buf CLI
+          curl -sSL "https://github.com/bufbuild/buf/releases/latest/download/buf-$(uname -s)-$(uname -m)" -o "/usr/local/bin/buf"
+          chmod +x "/usr/local/bin/buf"
 
       - name: Generate TypeScript Definitions
         run: |
-          make proto-gen-ts
+          # Use the existing script but run it directly instead of in Docker
+          ./scripts/proto-gen.sh --ts
 
       - name: Check if Types Were Generated
         id: check-types
@@ -90,7 +99,6 @@ jobs:
       - name: Validate Generated Types
         run: |
           cd ts
-          npm install
           # Basic TypeScript compilation check
           npx tsc --noEmit --skipLibCheck
           echo "✅ Generated types are valid TypeScript"
