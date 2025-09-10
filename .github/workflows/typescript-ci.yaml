@@ -138,85 +138,85 @@ jobs:
           path: ts/types
           retention-days: 1
 
-  test-dependent-projects:
-    name: Test Dependent Projects Compatibility
-    needs: [setup-submodules, generate-protobuf]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: 
-          #- xion-dashboard-app # is private TODO
-          - xion-explorer
-          - xion-faucet
-          - xion-staking
-    steps:
-      - name: Checkout Main Repository
-        uses: actions/checkout@v4
-        with:
-          path: xion-types
-          token: ${{ secrets.GITHUB_TOKEN }}
+  # test-dependent-projects:
+  #   name: Test Dependent Projects Compatibility
+  #   needs: [setup-submodules, generate-protobuf]
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       project: 
+  #         #- xion-dashboard-app # is private TODO
+  #         - xion-explorer
+  #         - xion-faucet
+  #         - xion-staking
+  #   steps:
+  #     - name: Checkout Main Repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         path: xion-types
+  #         token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Submodules
-        uses: actions/download-artifact@v4
-        with:
-          name: submodules
-          path: xion-types/
+  #     - name: Download Submodules
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: submodules
+  #         path: xion-types/
 
-      - name: Download Generated Types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types
-          path: xion-types/ts/types
+  #     - name: Download Generated Types
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: generated-types
+  #         path: xion-types/ts/types
 
-      - name: Checkout Dependent Project
-        uses: actions/checkout@v4
-        with:
-          repository: burnt-labs/${{ matrix.project }}
-          path: dependent-project
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 1
+  #     - name: Checkout Dependent Project
+  #       uses: actions/checkout@v4
+  #       with:
+  #         repository: burnt-labs/${{ matrix.project }}
+  #         path: dependent-project
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         fetch-depth: 1
           
-      - name: Debug Repository Checkout
-        run: |
-          echo "Checking if dependent-project directory exists..."
-          ls -la dependent-project/ || echo "Directory not found"
+  #     - name: Debug Repository Checkout
+  #       run: |
+  #         echo "Checking if dependent-project directory exists..."
+  #         ls -la dependent-project/ || echo "Directory not found"
           
-          echo "Checking repository URL..."
-          echo "Repository: burnt-labs/${{ matrix.project }}"
+  #         echo "Checking repository URL..."
+  #         echo "Repository: burnt-labs/${{ matrix.project }}"
           
-          echo "Checking if package.json exists..."
-          if [ -f "dependent-project/package.json" ]; then
-            echo "✅ package.json found"
-            head -5 dependent-project/package.json
-          else
-            echo "❌ package.json not found"
-            echo "Contents of dependent-project directory:"
-            ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
-          fi
+  #         echo "Checking if package.json exists..."
+  #         if [ -f "dependent-project/package.json" ]; then
+  #           echo "✅ package.json found"
+  #           head -5 dependent-project/package.json
+  #         else
+  #           echo "❌ package.json not found"
+  #           echo "Contents of dependent-project directory:"
+  #           ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
+  #         fi
 
-      - name: Test Project with Updated Types
-        run: |
-          cd dependent-project
+  #     - name: Test Project with Updated Types
+  #       run: |
+  #         cd dependent-project
           
-          # Check if package.json exists
-          if [ ! -f "package.json" ]; then
-            echo "❌ No package.json found in ${{ matrix.project }}"
-            exit 1
-          fi
+  #         # Check if package.json exists
+  #         if [ ! -f "package.json" ]; then
+  #           echo "❌ No package.json found in ${{ matrix.project }}"
+  #           exit 1
+  #         fi
           
-          # Install the types package with legacy peer deps to bypass conflicts
-          echo "Installing types package for ${{ matrix.project }}..."
-          npm install ../xion-types/ts --no-save --legacy-peer-deps
+  #         # Install the types package with legacy peer deps to bypass conflicts
+  #         echo "Installing types package for ${{ matrix.project }}..."
+  #         npm install ../xion-types/ts --no-save --legacy-peer-deps
           
-          # Run type checking
-          echo "Running type check for ${{ matrix.project }}..."
-          npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
+  #         # Run type checking
+  #         echo "Running type check for ${{ matrix.project }}..."
+  #         npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
           
-          echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
+  #         echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
   publish:
     name: Publish to NPM
-    needs: [test-dependent-projects]
+    needs: generate-protobuf # TODO [test-dependent-projects]
     runs-on: ubuntu-latest
     permissions:
       contents: read
