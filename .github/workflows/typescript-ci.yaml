@@ -112,27 +112,56 @@ jobs:
             find ./ts/types -name "*.ts" -exec echo "Generated: {}" \;
           fi
 
-#   validate:
-#     name: Validate Package
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v4
-#         with:
-#           submodules: false
-#           token: ${{ secrets.GITHUB_TOKEN }}
+  test-dependent-projects:
+    name: Test Dependent Projects Compatibility
+    needs: generate-protobuf
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: 
+          - xion-dashboard-app
+          - xion-explorer
+          - xion-faucet
+          - xion-staking
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          path: xion-types
 
-#       - name: Verify Types Directory
-#         run: |
-#           if [ ! -d "./ts/types" ] || [ -z "$(ls -A ./ts/types)" ]; then
-#             echo "Error: Types directory is empty or missing"
-#             exit 1
-#           fi
-#           echo "✅ Types directory validated"
+      - name: Checkout Dependent Project
+        uses: actions/checkout@v4
+        with:
+          repository: burnt-labs/${{ matrix.project }}
+          path: dependent-project
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Updated Types
+        run: |
+          cd xion-types
+          ./scripts/proto-gen.sh --ts
+
+      - name: Test Project with Updated Types
+        run: |
+          cd dependent-project
+          
+          # Install dependencies
+          npm install
+          
+          # Install the updated types package locally
+          npm install ../xion-types/ts
+          
+          # Run type checking
+          npm run check-types || npm run type-check || npx tsc --noEmit
+          
+          # Run build if available
+          if npm run build --dry-run 2>/dev/null; then
+            npm run build
+          fi
 
 #   publish:
 #     name: Publish to NPM
-#     needs: [validate]
+#     needs: [generate-protobuf]
 #     runs-on: ubuntu-latest
 #     permissions:
 #       contents: read
