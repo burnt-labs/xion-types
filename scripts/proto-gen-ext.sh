@@ -147,7 +147,7 @@ main() {
       shift
       ;;
     --ts)
-      init_protoc && gen_language ts
+      init_ts && gen_language ts
       shift
       ;;
     --swagger)
