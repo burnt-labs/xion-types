@@ -230,15 +230,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
           token: ${{ secrets.NPM_TOKEN }}
-          
-      - name: Configure NPM Authentication
+
+      - name: Verify NPM Authentication
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          npm whoami --registry https://registry.npmjs.org/
+          npm view @burnt-labs/xion-types --registry https://registry.npmjs.org/
 
       - name: Bump Version
         working-directory: ./ts
@@ -274,11 +275,6 @@ jobs:
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "New package version: $NEW_VERSION"
-
-      - name: Verify NPM Authentication
-        run: |
-          npm whoami --registry https://registry.npmjs.org/
-          npm view @burnt-labs/xion-types --registry https://registry.npmjs.org/
 
 # # TODO: Uncomment this when we want to publish to main
 #       - name: Publish to NPM 
