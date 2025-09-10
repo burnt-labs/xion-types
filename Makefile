@@ -1,13 +1,9 @@
 DOCKER := $(shell which docker)
-XIOproto-gen-kotlin: submodules
-	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
+XION ?= $(shell scripts/get-xion-latest.sh)
 
 proto-gen-php: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --php
-
-proto-gen-python: submodulesSION ?= $(shell scripts/get-xion-latest.sh)
 
 ################################################################################
 ###                                 Protobuf                                 ###
@@ -60,6 +56,14 @@ proto-gen-rust: submodules
 proto-gen-ruby: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --ruby
+
+proto-gen-cpp: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --cpp
+
+proto-gen-objc: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --objc
 
 contract-code-gen:
 	@$(protoImage) ./scripts/ts-codegen.sh

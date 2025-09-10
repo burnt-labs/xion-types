@@ -92,8 +92,11 @@ show_help() {
   echo "Generate protocol buffer types for various languages"
   echo ""
   echo "OPTIONS:"
+  echo "  --cpp        Generate C++ types"
+  echo "  --csharp     Generate C# types"
   echo "  --java       Generate Java types"
   echo "  --kotlin     Generate Kotlin types"
+  echo "  --objc       Generate Objective-C types"
   echo "  --php        Generate PHP types"
   echo "  --python     Generate Python types"
   echo "  --ruby       Generate Ruby types"
@@ -114,12 +117,20 @@ main() {
 # Parse CLI parameters
   while [[ $# -gt 0 ]]; do
     case $1 in
+    --cpp)
+      init_protoc && gen_language cpp
+      shift
+      ;;
     --java)
       init_protoc && gen_language java 
       shift
       ;;
     --kotlin)
       init_protoc && gen_language kotlin
+      shift
+      ;;
+    --objc)
+      init_protoc && gen_language objc
       shift
       ;;
     --php)
