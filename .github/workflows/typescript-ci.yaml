@@ -145,7 +145,7 @@ jobs:
     strategy:
       matrix:
         project: 
-          #- xion-dashboard-app # private
+          - xion-dashboard-app # is private TODO
           - xion-explorer
           - xion-faucet
           - xion-staking
@@ -214,70 +214,70 @@ jobs:
           
           echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
-#   publish:
-#     name: Publish to NPM
-#     needs: [generate-protobuf]
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       id-token: write
-#     #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v4
-#         with:
-#           submodules: false
-#           token: ${{ secrets.GITHUB_TOKEN }}
+  publish:
+    name: Publish to NPM
+    needs: [test-dependent-projects]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: ${{ env.NODE_VERSION }}
-#           registry-url: ${{ env.REGISTRY_URL }}
-#           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-#       - name: Bump Version
-#         working-directory: ./ts
-#         run: |
-#           if [ "${{ github.event.inputs.next_version }}" != "" ]; then
-#             # Set specific version from manual input
-#             npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
-#             echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
-#           else
-#             # Get version from latest Git tag
-#             echo "No manual version specified, using latest Git tag..."
+      - name: Bump Version
+        working-directory: ./ts
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            # Set specific version from manual input
+            npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
+            echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+          else
+            # Get version from latest Git tag
+            echo "No manual version specified, using latest Git tag..."
             
-#             # Fetch all tags
-#             git fetch --tags
+            # Fetch all tags
+            git fetch --tags
             
-#             # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
-#             LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+            # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
+            LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
             
-#             if [ -z "$LATEST_TAG" ]; then
-#               echo "❌ No version tags found. Please either:"
-#               echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
-#               echo "   2. Provide next_version input in workflow_dispatch"
-#               exit 1
-#             else
-#               # Remove 'v' prefix if present
-#               CLEAN_TAG=${LATEST_TAG#v}
-#               echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
-#               npm version $CLEAN_TAG --no-git-tag-version
-#             fi
-#           fi
+            if [ -z "$LATEST_TAG" ]; then
+              echo "❌ No version tags found. Please either:"
+              echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
+              echo "   2. Provide next_version input in workflow_dispatch"
+              exit 1
+            else
+              # Remove 'v' prefix if present
+              CLEAN_TAG=${LATEST_TAG#v}
+              echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
+              npm version $CLEAN_TAG --no-git-tag-version
+            fi
+          fi
         
-#           # Get the new version
-#           NEW_VERSION=$(node -p "require('./package.json').version")
-#           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-#           echo "New package version: $NEW_VERSION"
+          # Get the new version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "New package version: $NEW_VERSION"
 
-# # TODO: Uncomment this when we want to publish to main
-#       - name: Publish to NPM 
-#         working-directory: ./ts
-#         run: |
-#           echo "Publishing package version: ${{ env.NEW_VERSION }}"
-#           npm publish --provenance --access public
-#           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+# TODO: Uncomment this when we want to publish to main
+      - name: Publish to NPM 
+        working-directory: ./ts
+        run: |
+          echo "Publishing package version: ${{ env.NEW_VERSION }}"
+          npm publish --provenance --access public
+          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
 #   validate-package:
 #     name: Validate NPM Package
