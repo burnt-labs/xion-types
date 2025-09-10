@@ -271,15 +271,20 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "New package version: $NEW_VERSION"
 
-# TODO: Uncomment this when we want to publish to main
-      - name: Publish to NPM 
-        working-directory: ./ts
-        env:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Verify NPM Authentication
         run: |
-          echo "Publishing package version: ${{ env.NEW_VERSION }}"
-          npm publish --provenance --access public
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+          npm whoami --registry https://registry.npmjs.org/
+          npm view @burnt-labs/xion-types --registry https://registry.npmjs.org/
+
+# # TODO: Uncomment this when we want to publish to main
+#       - name: Publish to NPM 
+#         working-directory: ./ts
+#         env:
+#           token: ${{ secrets.NPM_TOKEN }}
+#         run: |
+#           echo "Publishing package version: ${{ env.NEW_VERSION }}"
+#           npm publish --verbose --provenance --access public
+#           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
 #   validate-package:
 #     name: Validate NPM Package
