@@ -27,63 +27,8 @@ env:
   REGISTRY_URL: 'https://registry.npmjs.org'
 
 jobs:
-  setup-submodules:
-    name: Setup Submodules
-    runs-on: ubuntu-latest
-    outputs:
-      submodules-ready: ${{ steps.check-submodules.outputs.ready }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Configure Git for HTTPS
-        run: |
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
-          git config --global url."https://".insteadOf "git://"
-
-      - name: Initialize and Update Submodules
-        run: |
-          # Initialize only the required submodules
-          git submodule init xion
-          git submodule init contracts
-          
-          # Update submodules using HTTPS URLs
-          git submodule update --init xion
-          git submodule update --init contracts
-          
-          # Verify submodules are available
-          if [ ! -d "xion" ] || [ -z "$(ls -A xion)" ]; then
-            echo "❌ xion submodule not available"
-            exit 1
-          fi
-          
-          if [ ! -d "contracts" ] || [ -z "$(ls -A contracts)" ]; then
-            echo "❌ contracts submodule not available"
-            exit 1
-          fi
-          
-          echo "✅ Required submodules initialized"
-
-      - name: Upload Submodules
-        uses: actions/upload-artifact@v4
-        with:
-          name: submodules
-          path: |
-            xion/
-            contracts/
-          retention-days: 1
-
-      - name: Check Submodules
-        id: check-submodules
-        run: |
-          echo "ready=true" >> $GITHUB_OUTPUT
-
   generate-protobuf:
     name: Generate Protobuf Definitions
-    needs: [setup-submodules]
     runs-on: ubuntu-latest
     outputs:
       types-generated: ${{ steps.check-types.outputs.types-generated }}
@@ -94,30 +39,9 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Submodules
-        uses: actions/download-artifact@v4
-        with:
-          name: submodules
-          path: ./
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install Dependencies
-        run: |
-          cd ts
-          npm install
-
-      - name: Install buf CLI
-        run: |
-          curl -sSL "https://github.com/bufbuild/buf/releases/latest/download/buf-$(uname -s)-$(uname -m)" -o "/usr/local/bin/buf"
-          chmod +x "/usr/local/bin/buf"
-
       - name: Generate TypeScript Definitions
         run: |
-          ./scripts/proto-gen.sh --ts
+          make proto-gen-ts
 
       - name: Check if Types Were Generated
         id: check-types
