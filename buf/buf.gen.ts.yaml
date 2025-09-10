@@ -1,6 +1,9 @@
-version: v1
+version: v2
 plugins:
-  - name: ts
-    out: types
-    path: node_modules/.bin/protoc-gen-ts_proto
+  - local: protoc-gen-ts_proto
+    out: ts/types
     opt: "esModuleInterop=true,forceLong=long,useOptionals=messages,outputClientImpl=grpc-web"
+inputs:
+  - directory: .
+    exclude_paths:
+      - "**/packetforward/**"

@@ -1,53 +1,41 @@
 DOCKER := $(shell which docker)
+XION_VERSION ?= $(shell scripts/get-xion-latest.sh)
 
 ################################################################################
 ###                                 Protobuf                                 ###
 ################################################################################
-protoVer=0.50.0
-#protoImageName=ghcr.io/cosmos/proto-builder:$(protoVer)
-protoImageName=swiftbuilder
-protoImage=$(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace $(protoImageName)
+protoVer=0.17.1
+protoImageName=ghcr.io/cosmos/proto-builder:$(protoVer)
+protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspace -e GOTOOLCHAIN=auto $(protoImageName)
 HTTPS_GIT := https://github.com/burnt-labs/xion.git
 
-proto-all: proto-format proto-lint proto-gen proto-format
+proto-all: proto-gen prot-gen-ts proto-gen-swift proto-gen-kotlin
 
 submodules:
 	@echo "Initializing and updating git submodules"
-	git submodule init
-	git submodule update --init
+	git submodule init contracts
+	git submodule update --init contracts
+	git submodule init xion
+	git submodule update --init xion
+# ./scripts/checkout-xion-tag.sh $(XION_VERSION)
 
 build-swiftbuilder-image:
-	cd docker && $(DOCKER) build . --tag $(protoImageName)
+	cd docker && $(DOCKER) build . --build-arg PROTO_VERSION=${protoVer} --tag swiftbuilder:${protoVer}
 
-proto-gen: submodules
-	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen.sh
+proto-gen:
+	cd xion && make proto-gen
 
 proto-gen-ts: submodules
 	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen.sh --ts
+	@$(protoImage) ./scripts/proto-gen-ext.sh --ts
 
 proto-gen-swift: build-swiftbuilder-image submodules
 	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen.sh --swift
+	@$(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace -e GOTOOLCHAIN=auto swiftbuilder:$(protoVer) ./scripts/proto-gen-ext.sh --swift
 
 proto-gen-kotlin: submodules
 	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen.sh --kotlin
-
-proto-gen-swagger: submodules
-	@echo "Generating Protobuf Swagger"
-	@$(protoImage) scripts/proto-gen.sh --swagger
-
-proto-format:
-	@echo "Formatting Protobuf files"
-	@$(protoImage) find ./ -name "*.proto" -exec clang-format -i {} \;
-
-proto-lint:
-	@$(protoImage) buf lint --error-format=json
-
-proto-check-breaking:
-	@$(protoImage) buf breaking --against $(HTTPS_GIT)#branch=main
+	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
 
 contract-code-gen:
 	@$(protoImage) ./scripts/ts-codegen.sh
