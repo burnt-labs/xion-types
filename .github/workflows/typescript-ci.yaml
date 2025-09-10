@@ -26,14 +26,16 @@ jobs:
     strategy:
       matrix:
         language:
-          - ts
+          - cpp
           - java
           - kotlin
-          - python
-          - rust
-          - ruby
+          - objc
           - php
+          - python
+          - ruby
+          - rust
           - swift
+          - ts
       fail-fast: false
     outputs:
       types-generated: ${{ steps.check-types.outputs.types-generated }}
