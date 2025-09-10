@@ -108,6 +108,43 @@ gen_kotlin() {
   find "$kotlin_dir/types" -name "*.proto.kt" -delete 2>/dev/null || true
 }
 
+gen_rust() {
+  local dirs=$(get_proto_dirs "$proto_dir" $proto_paths)  # Use both local and dependency paths
+  rust_dir=$xion_types_dir/rust
+  types_dir=$rust_dir/types
+  mkdir -p $types_dir
+
+  # Install Rust and protoc-gen-prost if not available (for Alpine Linux in Docker)
+  if ! command -v protoc-gen-prost >/dev/null 2>&1; then
+    echo "Installing Rust toolchain and protoc-gen-prost..."
+    if command -v apk >/dev/null 2>&1; then
+      apk add --no-cache curl build-base
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
+      export PATH="$HOME/.cargo/bin:$PATH"
+      cargo install protoc-gen-prost
+    fi
+  fi
+
+  # Work from the proto directory where buf.yaml has dependencies defined
+  cd $proto_dir
+
+  # Generate rust for all proto files, with error handling for problematic ones
+  for dir in $dirs; do
+    for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
+      # Skip problematic files that have import issues
+      if echo "$file" | grep -q -e "packet-forward-middleware" -e "regen-network/protobuf"; then
+        echo "skipping problematic file $file"
+        continue
+      fi
+      echo "generating for file $file"
+      buf generate $file \
+        --include-imports \
+        --template "$buf_dir/buf.gen.rust.yaml" \
+        --output $xion_types_dir
+    done
+  done
+}
+
 show_help() {
   echo "Usage: $0 [OPTIONS]"
   echo ""
@@ -118,6 +155,7 @@ show_help() {
   echo "  --ts         Generate TypeScript types"
   echo "  --swift      Generate Swift types"
   echo "  --kotlin     Generate Kotlin types"
+  echo "  --rust       Generate Rust types"
   echo "  -h, --help   Show this help message"
 }
 
@@ -145,6 +183,10 @@ main() {
       ;;
     --kotlin)
       gen_kotlin
+      shift
+      ;;
+    --rust)
+      gen_rust
       shift
       ;;
     -h|--help)

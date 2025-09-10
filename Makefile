@@ -37,6 +37,10 @@ proto-gen-kotlin: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
 
+proto-gen-rust: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --rust
+
 contract-code-gen:
 	@$(protoImage) ./scripts/ts-codegen.sh
 
