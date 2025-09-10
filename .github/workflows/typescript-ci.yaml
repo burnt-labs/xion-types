@@ -274,6 +274,8 @@ jobs:
 # TODO: Uncomment this when we want to publish to main
       - name: Publish to NPM 
         working-directory: ./ts
+        env:
+          token: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }}"
           npm publish --provenance --access public
