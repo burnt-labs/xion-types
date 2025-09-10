@@ -21,69 +21,69 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Module is the config object of the benchmark module.
-public struct Cosmos_Benchmark_Module_V1_Module: Sendable {
+struct Cosmos_Benchmark_Module_V1_Module: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var genesisParams: Cosmos_Benchmark_Module_V1_GeneratorParams {
+  var genesisParams: Cosmos_Benchmark_Module_V1_GeneratorParams {
     get {return _genesisParams ?? Cosmos_Benchmark_Module_V1_GeneratorParams()}
     set {_genesisParams = newValue}
   }
   /// Returns true if `genesisParams` has been explicitly set.
-  public var hasGenesisParams: Bool {return self._genesisParams != nil}
+  var hasGenesisParams: Bool {return self._genesisParams != nil}
   /// Clears the value of `genesisParams`. Subsequent reads from it will return its default value.
-  public mutating func clearGenesisParams() {self._genesisParams = nil}
+  mutating func clearGenesisParams() {self._genesisParams = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _genesisParams: Cosmos_Benchmark_Module_V1_GeneratorParams? = nil
 }
 
 /// GenesisParams defines the genesis parameters for the benchmark module.
-public struct Cosmos_Benchmark_Module_V1_GeneratorParams: Sendable {
+struct Cosmos_Benchmark_Module_V1_GeneratorParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// seed is the seed for the random number generator.
-  public var seed: UInt64 = 0
+  var seed: UInt64 = 0
 
   /// bucket_count is the number of store keys to uniformly distribute genesis_count keys across.
-  public var bucketCount: UInt64 = 0
+  var bucketCount: UInt64 = 0
 
   /// key_mean is the mean size (in normal distribution) of keys in each bucket.
-  public var keyMean: UInt64 = 0
+  var keyMean: UInt64 = 0
 
   /// key_std_dev is the standard deviation of key sizes in each bucket.
-  public var keyStdDev: UInt64 = 0
+  var keyStdDev: UInt64 = 0
 
   /// value_mean is the mean size (in normal distribution) of values in each bucket.
-  public var valueMean: UInt64 = 0
+  var valueMean: UInt64 = 0
 
   /// value_std_dev is the standard deviation of value sizes in each bucket.
-  public var valueStdDev: UInt64 = 0
+  var valueStdDev: UInt64 = 0
 
   /// genesis_count is the number of keys to insert in the store, distributed across all buckets.
-  public var genesisCount: UInt64 = 0
+  var genesisCount: UInt64 = 0
 
   /// insert_weight is the weight of insert operations.
-  public var insertWeight: Float = 0
+  var insertWeight: Float = 0
 
   /// update_weight is the weight of update operations.
-  public var updateWeight: Float = 0
+  var updateWeight: Float = 0
 
   /// get_weight is the weight of get operations.
-  public var getWeight: Float = 0
+  var getWeight: Float = 0
 
   /// delete_weight is the weight of delete operations.
-  public var deleteWeight: Float = 0
+  var deleteWeight: Float = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -91,12 +91,12 @@ public struct Cosmos_Benchmark_Module_V1_GeneratorParams: Sendable {
 fileprivate let _protobuf_package = "cosmos.benchmark.module.v1"
 
 extension Cosmos_Benchmark_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Module"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".Module"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "genesis_params"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -108,7 +108,7 @@ extension Cosmos_Benchmark_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -119,7 +119,7 @@ extension Cosmos_Benchmark_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Benchmark_Module_V1_Module, rhs: Cosmos_Benchmark_Module_V1_Module) -> Bool {
+  static func ==(lhs: Cosmos_Benchmark_Module_V1_Module, rhs: Cosmos_Benchmark_Module_V1_Module) -> Bool {
     if lhs._genesisParams != rhs._genesisParams {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -127,8 +127,8 @@ extension Cosmos_Benchmark_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension Cosmos_Benchmark_Module_V1_GeneratorParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".GeneratorParams"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".GeneratorParams"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "seed"),
     2: .standard(proto: "bucket_count"),
     3: .standard(proto: "key_mean"),
@@ -142,7 +142,7 @@ extension Cosmos_Benchmark_Module_V1_GeneratorParams: SwiftProtobuf.Message, Swi
     11: .standard(proto: "delete_weight"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -164,7 +164,7 @@ extension Cosmos_Benchmark_Module_V1_GeneratorParams: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.seed != 0 {
       try visitor.visitSingularUInt64Field(value: self.seed, fieldNumber: 1)
     }
@@ -201,7 +201,7 @@ extension Cosmos_Benchmark_Module_V1_GeneratorParams: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Benchmark_Module_V1_GeneratorParams, rhs: Cosmos_Benchmark_Module_V1_GeneratorParams) -> Bool {
+  static func ==(lhs: Cosmos_Benchmark_Module_V1_GeneratorParams, rhs: Cosmos_Benchmark_Module_V1_GeneratorParams) -> Bool {
     if lhs.seed != rhs.seed {return false}
     if lhs.bucketCount != rhs.bucketCount {return false}
     if lhs.keyMean != rhs.keyMean {return false}

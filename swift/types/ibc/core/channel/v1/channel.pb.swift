@@ -22,7 +22,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// State defines if a channel is in one of the following states:
-/// CLOSED, INIT, TRYOPEN, OPEN, FLUSHING, FLUSHCOMPLETE or UNINITIALIZED.
+/// CLOSED, INIT, TRYOPEN, OPEN, or UNINITIALIZED.
 enum Ibc_Core_Channel_V1_State: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
 
@@ -42,12 +42,6 @@ enum Ibc_Core_Channel_V1_State: SwiftProtobuf.Enum, Swift.CaseIterable {
   /// A channel has been closed and can no longer be used to send or receive
   /// packets.
   case closed // = 4
-
-  /// A channel has just accepted the upgrade handshake attempt and is flushing in-flight packets.
-  case flushing // = 5
-
-  /// A channel has just completed flushing any in-flight packets.
-  case flushcomplete // = 6
   case UNRECOGNIZED(Int)
 
   init() {
@@ -61,8 +55,6 @@ enum Ibc_Core_Channel_V1_State: SwiftProtobuf.Enum, Swift.CaseIterable {
     case 2: self = .tryopen
     case 3: self = .open
     case 4: self = .closed
-    case 5: self = .flushing
-    case 6: self = .flushcomplete
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -74,8 +66,6 @@ enum Ibc_Core_Channel_V1_State: SwiftProtobuf.Enum, Swift.CaseIterable {
     case .tryopen: return 2
     case .open: return 3
     case .closed: return 4
-    case .flushing: return 5
-    case .flushcomplete: return 6
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -87,8 +77,6 @@ enum Ibc_Core_Channel_V1_State: SwiftProtobuf.Enum, Swift.CaseIterable {
     .tryopen,
     .open,
     .closed,
-    .flushing,
-    .flushcomplete,
   ]
 
 }
@@ -170,10 +158,6 @@ struct Ibc_Core_Channel_V1_Channel: Sendable {
   /// opaque channel version, which is agreed upon during the handshake
   var version: String = String()
 
-  /// upgrade sequence indicates the latest upgrade attempt performed by this channel
-  /// the value of 0 indicates the channel has never been upgraded
-  var upgradeSequence: UInt64 = 0
-
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -216,10 +200,6 @@ struct Ibc_Core_Channel_V1_IdentifiedChannel: Sendable {
 
   /// channel identifier
   var channelID: String = String()
-
-  /// upgrade sequence indicates the latest upgrade attempt performed by this channel
-  /// the value of 0 indicates the channel has never been upgraded
-  var upgradeSequence: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -317,7 +297,7 @@ struct Ibc_Core_Channel_V1_PacketState: @unchecked Sendable {
   init() {}
 }
 
-/// PacketId is an identifer for a unique Packet
+/// PacketId is an identifier for a unique Packet
 /// Source chains refer to packets by source port/channel
 /// Destination chains refer to packets by destination port/channel
 struct Ibc_Core_Channel_V1_PacketId: Sendable {
@@ -383,14 +363,14 @@ struct Ibc_Core_Channel_V1_Acknowledgement: @unchecked Sendable {
 }
 
 /// Timeout defines an execution deadline structure for 04-channel handlers.
-/// This includes packet lifecycle handlers as well as the upgrade handshake handlers.
+/// This includes packet lifecycle handlers.
 /// A valid Timeout contains either one or both of a timestamp and block height (sequence).
 struct Ibc_Core_Channel_V1_Timeout: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// block height after which the packet or upgrade times out
+  /// block height after which the packet times out
   var height: Ibc_Core_Client_V1_Height {
     get {return _height ?? Ibc_Core_Client_V1_Height()}
     set {_height = newValue}
@@ -400,7 +380,7 @@ struct Ibc_Core_Channel_V1_Timeout: Sendable {
   /// Clears the value of `height`. Subsequent reads from it will return its default value.
   mutating func clearHeight() {self._height = nil}
 
-  /// block timestamp (in nanoseconds) after which the packet or upgrade times out
+  /// block timestamp (in nanoseconds) after which the packet times out
   var timestamp: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -408,29 +388,6 @@ struct Ibc_Core_Channel_V1_Timeout: Sendable {
   init() {}
 
   fileprivate var _height: Ibc_Core_Client_V1_Height? = nil
-}
-
-/// Params defines the set of IBC channel parameters.
-struct Ibc_Core_Channel_V1_Params: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  /// the relative timeout after which channel upgrades will time out.
-  var upgradeTimeout: Ibc_Core_Channel_V1_Timeout {
-    get {return _upgradeTimeout ?? Ibc_Core_Channel_V1_Timeout()}
-    set {_upgradeTimeout = newValue}
-  }
-  /// Returns true if `upgradeTimeout` has been explicitly set.
-  var hasUpgradeTimeout: Bool {return self._upgradeTimeout != nil}
-  /// Clears the value of `upgradeTimeout`. Subsequent reads from it will return its default value.
-  mutating func clearUpgradeTimeout() {self._upgradeTimeout = nil}
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _upgradeTimeout: Ibc_Core_Channel_V1_Timeout? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -444,8 +401,6 @@ extension Ibc_Core_Channel_V1_State: SwiftProtobuf._ProtoNameProviding {
     2: .same(proto: "STATE_TRYOPEN"),
     3: .same(proto: "STATE_OPEN"),
     4: .same(proto: "STATE_CLOSED"),
-    5: .same(proto: "STATE_FLUSHING"),
-    6: .same(proto: "STATE_FLUSHCOMPLETE"),
   ]
 }
 
@@ -465,7 +420,6 @@ extension Ibc_Core_Channel_V1_Channel: SwiftProtobuf.Message, SwiftProtobuf._Mes
     3: .same(proto: "counterparty"),
     4: .standard(proto: "connection_hops"),
     5: .same(proto: "version"),
-    6: .standard(proto: "upgrade_sequence"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -479,7 +433,6 @@ extension Ibc_Core_Channel_V1_Channel: SwiftProtobuf.Message, SwiftProtobuf._Mes
       case 3: try { try decoder.decodeSingularMessageField(value: &self._counterparty) }()
       case 4: try { try decoder.decodeRepeatedStringField(value: &self.connectionHops) }()
       case 5: try { try decoder.decodeSingularStringField(value: &self.version) }()
-      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.upgradeSequence) }()
       default: break
       }
     }
@@ -505,9 +458,6 @@ extension Ibc_Core_Channel_V1_Channel: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if !self.version.isEmpty {
       try visitor.visitSingularStringField(value: self.version, fieldNumber: 5)
     }
-    if self.upgradeSequence != 0 {
-      try visitor.visitSingularUInt64Field(value: self.upgradeSequence, fieldNumber: 6)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -517,7 +467,6 @@ extension Ibc_Core_Channel_V1_Channel: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if lhs._counterparty != rhs._counterparty {return false}
     if lhs.connectionHops != rhs.connectionHops {return false}
     if lhs.version != rhs.version {return false}
-    if lhs.upgradeSequence != rhs.upgradeSequence {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -533,7 +482,6 @@ extension Ibc_Core_Channel_V1_IdentifiedChannel: SwiftProtobuf.Message, SwiftPro
     5: .same(proto: "version"),
     6: .standard(proto: "port_id"),
     7: .standard(proto: "channel_id"),
-    8: .standard(proto: "upgrade_sequence"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -549,7 +497,6 @@ extension Ibc_Core_Channel_V1_IdentifiedChannel: SwiftProtobuf.Message, SwiftPro
       case 5: try { try decoder.decodeSingularStringField(value: &self.version) }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.portID) }()
       case 7: try { try decoder.decodeSingularStringField(value: &self.channelID) }()
-      case 8: try { try decoder.decodeSingularUInt64Field(value: &self.upgradeSequence) }()
       default: break
       }
     }
@@ -581,9 +528,6 @@ extension Ibc_Core_Channel_V1_IdentifiedChannel: SwiftProtobuf.Message, SwiftPro
     if !self.channelID.isEmpty {
       try visitor.visitSingularStringField(value: self.channelID, fieldNumber: 7)
     }
-    if self.upgradeSequence != 0 {
-      try visitor.visitSingularUInt64Field(value: self.upgradeSequence, fieldNumber: 8)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -595,7 +539,6 @@ extension Ibc_Core_Channel_V1_IdentifiedChannel: SwiftProtobuf.Message, SwiftPro
     if lhs.version != rhs.version {return false}
     if lhs.portID != rhs.portID {return false}
     if lhs.channelID != rhs.channelID {return false}
-    if lhs.upgradeSequence != rhs.upgradeSequence {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -908,42 +851,6 @@ extension Ibc_Core_Channel_V1_Timeout: SwiftProtobuf.Message, SwiftProtobuf._Mes
   static func ==(lhs: Ibc_Core_Channel_V1_Timeout, rhs: Ibc_Core_Channel_V1_Timeout) -> Bool {
     if lhs._height != rhs._height {return false}
     if lhs.timestamp != rhs.timestamp {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Ibc_Core_Channel_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Params"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "upgrade_timeout"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._upgradeTimeout) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._upgradeTimeout {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Ibc_Core_Channel_V1_Params, rhs: Ibc_Core_Channel_V1_Params) -> Bool {
-    if lhs._upgradeTimeout != rhs._upgradeTimeout {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

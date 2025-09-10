@@ -21,17 +21,17 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Module is the config object of the counter module.
-public struct Cosmos_Counter_Module_V1_Module: Sendable {
+struct Cosmos_Counter_Module_V1_Module: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// authority defines the custom module authority. If not set, defaults to the governance module.
-  public var authority: String = String()
+  var authority: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -39,12 +39,12 @@ public struct Cosmos_Counter_Module_V1_Module: Sendable {
 fileprivate let _protobuf_package = "cosmos.counter.module.v1"
 
 extension Cosmos_Counter_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Module"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".Module"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "authority"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -56,14 +56,14 @@ extension Cosmos_Counter_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authority.isEmpty {
       try visitor.visitSingularStringField(value: self.authority, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Counter_Module_V1_Module, rhs: Cosmos_Counter_Module_V1_Module) -> Bool {
+  static func ==(lhs: Cosmos_Counter_Module_V1_Module, rhs: Cosmos_Counter_Module_V1_Module) -> Bool {
     if lhs.authority != rhs.authority {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

@@ -21,28 +21,28 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// GenesisState defines the protocolpool module's genesis state.
-public struct Cosmos_Protocolpool_V1_GenesisState: Sendable {
+struct Cosmos_Protocolpool_V1_GenesisState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// ContinuousFunds defines the continuous funds at genesis.
-  public var continuousFunds: [Cosmos_Protocolpool_V1_ContinuousFund] = []
+  var continuousFunds: [Cosmos_Protocolpool_V1_ContinuousFund] = []
 
   /// Params defines the parameters of this module, currently only contains the
   /// denoms that will be used for continuous fund distributions.
-  public var params: Cosmos_Protocolpool_V1_Params {
+  var params: Cosmos_Protocolpool_V1_Params {
     get {return _params ?? Cosmos_Protocolpool_V1_Params()}
     set {_params = newValue}
   }
   /// Returns true if `params` has been explicitly set.
-  public var hasParams: Bool {return self._params != nil}
+  var hasParams: Bool {return self._params != nil}
   /// Clears the value of `params`. Subsequent reads from it will return its default value.
-  public mutating func clearParams() {self._params = nil}
+  mutating func clearParams() {self._params = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _params: Cosmos_Protocolpool_V1_Params? = nil
 }
@@ -52,13 +52,13 @@ public struct Cosmos_Protocolpool_V1_GenesisState: Sendable {
 fileprivate let _protobuf_package = "cosmos.protocolpool.v1"
 
 extension Cosmos_Protocolpool_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".GenesisState"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".GenesisState"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "continuous_funds"),
     2: .same(proto: "params"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -71,7 +71,7 @@ extension Cosmos_Protocolpool_V1_GenesisState: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -85,7 +85,7 @@ extension Cosmos_Protocolpool_V1_GenesisState: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_GenesisState, rhs: Cosmos_Protocolpool_V1_GenesisState) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_GenesisState, rhs: Cosmos_Protocolpool_V1_GenesisState) -> Bool {
     if lhs.continuousFunds != rhs.continuousFunds {return false}
     if lhs._params != rhs._params {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

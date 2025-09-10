@@ -22,56 +22,56 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 
 /// QueryEpochInfosRequest defines the gRPC request structure for
 /// querying all epoch info.
-public struct Cosmos_Epochs_V1beta1_QueryEpochInfosRequest: Sendable {
+struct Cosmos_Epochs_V1beta1_QueryEpochInfosRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryEpochInfosRequest defines the gRPC response structure for
 /// querying all epoch info.
-public struct Cosmos_Epochs_V1beta1_QueryEpochInfosResponse: Sendable {
+struct Cosmos_Epochs_V1beta1_QueryEpochInfosResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var epochs: [Cosmos_Epochs_V1beta1_EpochInfo] = []
+  var epochs: [Cosmos_Epochs_V1beta1_EpochInfo] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryCurrentEpochRequest defines the gRPC request structure for
 /// querying an epoch by its identifier.
-public struct Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest: Sendable {
+struct Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var identifier: String = String()
+  var identifier: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryCurrentEpochResponse defines the gRPC response structure for
 /// querying an epoch by its identifier.
-public struct Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse: Sendable {
+struct Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var currentEpoch: Int64 = 0
+  var currentEpoch: Int64 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -79,31 +79,31 @@ public struct Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse: Sendable {
 fileprivate let _protobuf_package = "cosmos.epochs.v1beta1"
 
 extension Cosmos_Epochs_V1beta1_QueryEpochInfosRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryEpochInfosRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".QueryEpochInfosRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_QueryEpochInfosRequest, rhs: Cosmos_Epochs_V1beta1_QueryEpochInfosRequest) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_QueryEpochInfosRequest, rhs: Cosmos_Epochs_V1beta1_QueryEpochInfosRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Epochs_V1beta1_QueryEpochInfosResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryEpochInfosResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryEpochInfosResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "epochs"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -115,14 +115,14 @@ extension Cosmos_Epochs_V1beta1_QueryEpochInfosResponse: SwiftProtobuf.Message, 
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.epochs.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.epochs, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_QueryEpochInfosResponse, rhs: Cosmos_Epochs_V1beta1_QueryEpochInfosResponse) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_QueryEpochInfosResponse, rhs: Cosmos_Epochs_V1beta1_QueryEpochInfosResponse) -> Bool {
     if lhs.epochs != rhs.epochs {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -130,12 +130,12 @@ extension Cosmos_Epochs_V1beta1_QueryEpochInfosResponse: SwiftProtobuf.Message, 
 }
 
 extension Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryCurrentEpochRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryCurrentEpochRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "identifier"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -147,14 +147,14 @@ extension Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest: SwiftProtobuf.Message,
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.identifier.isEmpty {
       try visitor.visitSingularStringField(value: self.identifier, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest, rhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest, rhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest) -> Bool {
     if lhs.identifier != rhs.identifier {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -162,12 +162,12 @@ extension Cosmos_Epochs_V1beta1_QueryCurrentEpochRequest: SwiftProtobuf.Message,
 }
 
 extension Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryCurrentEpochResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryCurrentEpochResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "current_epoch"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -179,14 +179,14 @@ extension Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse: SwiftProtobuf.Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.currentEpoch != 0 {
       try visitor.visitSingularInt64Field(value: self.currentEpoch, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse, rhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse, rhs: Cosmos_Epochs_V1beta1_QueryCurrentEpochResponse) -> Bool {
     if lhs.currentEpoch != rhs.currentEpoch {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

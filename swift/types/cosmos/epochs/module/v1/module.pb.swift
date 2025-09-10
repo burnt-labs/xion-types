@@ -21,14 +21,14 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Module is the config object of the epochs module.
-public struct Cosmos_Epochs_Module_V1_Module: Sendable {
+struct Cosmos_Epochs_Module_V1_Module: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -36,19 +36,19 @@ public struct Cosmos_Epochs_Module_V1_Module: Sendable {
 fileprivate let _protobuf_package = "cosmos.epochs.module.v1"
 
 extension Cosmos_Epochs_Module_V1_Module: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Module"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".Module"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_Module_V1_Module, rhs: Cosmos_Epochs_Module_V1_Module) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_Module_V1_Module, rhs: Cosmos_Epochs_Module_V1_Module) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

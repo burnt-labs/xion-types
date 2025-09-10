@@ -21,28 +21,28 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Op is a message describing a benchmark operation.
-public struct Cosmos_Benchmark_V1_Op: Sendable {
+struct Cosmos_Benchmark_V1_Op: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var seed: UInt64 = 0
+  var seed: UInt64 = 0
 
-  public var actor: String = String()
+  var actor: String = String()
 
-  public var keyLength: UInt64 = 0
+  var keyLength: UInt64 = 0
 
-  public var valueLength: UInt64 = 0
+  var valueLength: UInt64 = 0
 
-  public var iterations: UInt32 = 0
+  var iterations: UInt32 = 0
 
-  public var delete: Bool = false
+  var delete: Bool = false
 
-  public var exists: Bool = false
+  var exists: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -50,8 +50,8 @@ public struct Cosmos_Benchmark_V1_Op: Sendable {
 fileprivate let _protobuf_package = "cosmos.benchmark.v1"
 
 extension Cosmos_Benchmark_V1_Op: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Op"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".Op"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "seed"),
     2: .same(proto: "actor"),
     3: .standard(proto: "key_length"),
@@ -61,7 +61,7 @@ extension Cosmos_Benchmark_V1_Op: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     7: .same(proto: "exists"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -79,7 +79,7 @@ extension Cosmos_Benchmark_V1_Op: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.seed != 0 {
       try visitor.visitSingularUInt64Field(value: self.seed, fieldNumber: 1)
     }
@@ -104,7 +104,7 @@ extension Cosmos_Benchmark_V1_Op: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Benchmark_V1_Op, rhs: Cosmos_Benchmark_V1_Op) -> Bool {
+  static func ==(lhs: Cosmos_Benchmark_V1_Op, rhs: Cosmos_Benchmark_V1_Op) -> Bool {
     if lhs.seed != rhs.seed {return false}
     if lhs.actor != rhs.actor {return false}
     if lhs.keyLength != rhs.keyLength {return false}

@@ -22,33 +22,33 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// MsgLoadTestOps defines a message containing a sequence of load test operations.
-public struct Cosmos_Benchmark_V1_MsgLoadTest: @unchecked Sendable {
+struct Cosmos_Benchmark_V1_MsgLoadTest: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var caller: Data = Data()
+  var caller: Data = Data()
 
-  public var ops: [Cosmos_Benchmark_V1_Op] = []
+  var ops: [Cosmos_Benchmark_V1_Op] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgLoadTestResponse defines a message containing the results of a load test operation.
-public struct Cosmos_Benchmark_V1_MsgLoadTestResponse: Sendable {
+struct Cosmos_Benchmark_V1_MsgLoadTestResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var totalTime: UInt64 = 0
+  var totalTime: UInt64 = 0
 
-  public var totalErrors: UInt64 = 0
+  var totalErrors: UInt64 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -56,13 +56,13 @@ public struct Cosmos_Benchmark_V1_MsgLoadTestResponse: Sendable {
 fileprivate let _protobuf_package = "cosmos.benchmark.v1"
 
 extension Cosmos_Benchmark_V1_MsgLoadTest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgLoadTest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgLoadTest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "caller"),
     2: .same(proto: "ops"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -75,7 +75,7 @@ extension Cosmos_Benchmark_V1_MsgLoadTest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.caller.isEmpty {
       try visitor.visitSingularBytesField(value: self.caller, fieldNumber: 1)
     }
@@ -85,7 +85,7 @@ extension Cosmos_Benchmark_V1_MsgLoadTest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Benchmark_V1_MsgLoadTest, rhs: Cosmos_Benchmark_V1_MsgLoadTest) -> Bool {
+  static func ==(lhs: Cosmos_Benchmark_V1_MsgLoadTest, rhs: Cosmos_Benchmark_V1_MsgLoadTest) -> Bool {
     if lhs.caller != rhs.caller {return false}
     if lhs.ops != rhs.ops {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -94,13 +94,13 @@ extension Cosmos_Benchmark_V1_MsgLoadTest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Cosmos_Benchmark_V1_MsgLoadTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgLoadTestResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgLoadTestResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "total_time"),
     2: .standard(proto: "total_errors"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -113,7 +113,7 @@ extension Cosmos_Benchmark_V1_MsgLoadTestResponse: SwiftProtobuf.Message, SwiftP
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.totalTime != 0 {
       try visitor.visitSingularUInt64Field(value: self.totalTime, fieldNumber: 1)
     }
@@ -123,7 +123,7 @@ extension Cosmos_Benchmark_V1_MsgLoadTestResponse: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Benchmark_V1_MsgLoadTestResponse, rhs: Cosmos_Benchmark_V1_MsgLoadTestResponse) -> Bool {
+  static func ==(lhs: Cosmos_Benchmark_V1_MsgLoadTestResponse, rhs: Cosmos_Benchmark_V1_MsgLoadTestResponse) -> Bool {
     if lhs.totalTime != rhs.totalTime {return false}
     if lhs.totalErrors != rhs.totalErrors {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

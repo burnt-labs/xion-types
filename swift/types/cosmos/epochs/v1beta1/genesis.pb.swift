@@ -22,44 +22,44 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 
 /// EpochInfo is a struct that describes the data going into
 /// a timer defined by the x/epochs module.
-public struct Cosmos_Epochs_V1beta1_EpochInfo: Sendable {
+struct Cosmos_Epochs_V1beta1_EpochInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// identifier is a unique reference to this particular timer.
-  public var identifier: String = String()
+  var identifier: String = String()
 
   /// start_time is the time at which the timer first ever ticks.
   /// If start_time is in the future, the epoch will not begin until the start
   /// time.
-  public var startTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var startTime: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _startTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_startTime = newValue}
   }
   /// Returns true if `startTime` has been explicitly set.
-  public var hasStartTime: Bool {return self._startTime != nil}
+  var hasStartTime: Bool {return self._startTime != nil}
   /// Clears the value of `startTime`. Subsequent reads from it will return its default value.
-  public mutating func clearStartTime() {self._startTime = nil}
+  mutating func clearStartTime() {self._startTime = nil}
 
   /// duration is the time in between epoch ticks.
   /// In order for intended behavior to be met, duration should
   /// be greater than the chains expected block time.
   /// Duration must be non-zero.
-  public var duration: SwiftProtobuf.Google_Protobuf_Duration {
+  var duration: SwiftProtobuf.Google_Protobuf_Duration {
     get {return _duration ?? SwiftProtobuf.Google_Protobuf_Duration()}
     set {_duration = newValue}
   }
   /// Returns true if `duration` has been explicitly set.
-  public var hasDuration: Bool {return self._duration != nil}
+  var hasDuration: Bool {return self._duration != nil}
   /// Clears the value of `duration`. Subsequent reads from it will return its default value.
-  public mutating func clearDuration() {self._duration = nil}
+  mutating func clearDuration() {self._duration = nil}
 
   /// current_epoch is the current epoch number, or in other words,
   /// how many times has the timer 'ticked'.
   /// The first tick (current_epoch=1) is defined as
   /// the first block whose blocktime is greater than the EpochInfo start_time.
-  public var currentEpoch: Int64 = 0
+  var currentEpoch: Int64 = 0
 
   /// current_epoch_start_time describes the start time of the current timer
   /// interval. The interval is (current_epoch_start_time,
@@ -78,26 +78,26 @@ public struct Cosmos_Epochs_V1beta1_EpochInfo: Sendable {
   /// * The t=33 block will start the epoch for (25, 30]
   /// * The t=34 block will start the epoch for (30, 35]
   /// * The **t=36** block will start the epoch for (35, 40]
-  public var currentEpochStartTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var currentEpochStartTime: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _currentEpochStartTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_currentEpochStartTime = newValue}
   }
   /// Returns true if `currentEpochStartTime` has been explicitly set.
-  public var hasCurrentEpochStartTime: Bool {return self._currentEpochStartTime != nil}
+  var hasCurrentEpochStartTime: Bool {return self._currentEpochStartTime != nil}
   /// Clears the value of `currentEpochStartTime`. Subsequent reads from it will return its default value.
-  public mutating func clearCurrentEpochStartTime() {self._currentEpochStartTime = nil}
+  mutating func clearCurrentEpochStartTime() {self._currentEpochStartTime = nil}
 
   /// epoch_counting_started is a boolean, that indicates whether this
   /// epoch timer has began yet.
-  public var epochCountingStarted: Bool = false
+  var epochCountingStarted: Bool = false
 
   /// current_epoch_start_height is the block height at which the current epoch
   /// started. (The block height at which the timer last ticked)
-  public var currentEpochStartHeight: Int64 = 0
+  var currentEpochStartHeight: Int64 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _startTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
   fileprivate var _duration: SwiftProtobuf.Google_Protobuf_Duration? = nil
@@ -105,16 +105,16 @@ public struct Cosmos_Epochs_V1beta1_EpochInfo: Sendable {
 }
 
 /// GenesisState defines the epochs module's genesis state.
-public struct Cosmos_Epochs_V1beta1_GenesisState: Sendable {
+struct Cosmos_Epochs_V1beta1_GenesisState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var epochs: [Cosmos_Epochs_V1beta1_EpochInfo] = []
+  var epochs: [Cosmos_Epochs_V1beta1_EpochInfo] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -122,8 +122,8 @@ public struct Cosmos_Epochs_V1beta1_GenesisState: Sendable {
 fileprivate let _protobuf_package = "cosmos.epochs.v1beta1"
 
 extension Cosmos_Epochs_V1beta1_EpochInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".EpochInfo"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".EpochInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "identifier"),
     2: .standard(proto: "start_time"),
     3: .same(proto: "duration"),
@@ -133,7 +133,7 @@ extension Cosmos_Epochs_V1beta1_EpochInfo: SwiftProtobuf.Message, SwiftProtobuf.
     8: .standard(proto: "current_epoch_start_height"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -151,7 +151,7 @@ extension Cosmos_Epochs_V1beta1_EpochInfo: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -180,7 +180,7 @@ extension Cosmos_Epochs_V1beta1_EpochInfo: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_EpochInfo, rhs: Cosmos_Epochs_V1beta1_EpochInfo) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_EpochInfo, rhs: Cosmos_Epochs_V1beta1_EpochInfo) -> Bool {
     if lhs.identifier != rhs.identifier {return false}
     if lhs._startTime != rhs._startTime {return false}
     if lhs._duration != rhs._duration {return false}
@@ -194,12 +194,12 @@ extension Cosmos_Epochs_V1beta1_EpochInfo: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Cosmos_Epochs_V1beta1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".GenesisState"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".GenesisState"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "epochs"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -211,14 +211,14 @@ extension Cosmos_Epochs_V1beta1_GenesisState: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.epochs.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.epochs, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_GenesisState, rhs: Cosmos_Epochs_V1beta1_GenesisState) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_GenesisState, rhs: Cosmos_Epochs_V1beta1_GenesisState) -> Bool {
     if lhs.epochs != rhs.epochs {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

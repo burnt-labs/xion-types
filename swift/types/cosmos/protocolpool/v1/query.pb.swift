@@ -22,126 +22,126 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 
 /// QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
 /// method.
-public struct Cosmos_Protocolpool_V1_QueryCommunityPoolRequest: Sendable {
+struct Cosmos_Protocolpool_V1_QueryCommunityPoolRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryCommunityPoolResponse is the response type for the Query/CommunityPool
 /// RPC method.
-public struct Cosmos_Protocolpool_V1_QueryCommunityPoolResponse: Sendable {
+struct Cosmos_Protocolpool_V1_QueryCommunityPoolResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// pool defines community pool's coins.
-  public var pool: [Cosmos_Base_V1beta1_Coin] = []
+  var pool: [Cosmos_Base_V1beta1_Coin] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryContinuousFundRequest is the request type for the Query/ContinuousFund
 /// RPC method.
-public struct Cosmos_Protocolpool_V1_QueryContinuousFundRequest: Sendable {
+struct Cosmos_Protocolpool_V1_QueryContinuousFundRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// recipient is the recipient address to query unclaimed budget amount for.
-  public var recipient: String = String()
+  var recipient: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryUnclaimedBudgetResponse is the response type for the Query/ContinuousFund
 /// RPC method.
-public struct Cosmos_Protocolpool_V1_QueryContinuousFundResponse: Sendable {
+struct Cosmos_Protocolpool_V1_QueryContinuousFundResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// ContinuousFunds is the given continuous fund returned in the query.
-  public var continuousFund: Cosmos_Protocolpool_V1_ContinuousFund {
+  var continuousFund: Cosmos_Protocolpool_V1_ContinuousFund {
     get {return _continuousFund ?? Cosmos_Protocolpool_V1_ContinuousFund()}
     set {_continuousFund = newValue}
   }
   /// Returns true if `continuousFund` has been explicitly set.
-  public var hasContinuousFund: Bool {return self._continuousFund != nil}
+  var hasContinuousFund: Bool {return self._continuousFund != nil}
   /// Clears the value of `continuousFund`. Subsequent reads from it will return its default value.
-  public mutating func clearContinuousFund() {self._continuousFund = nil}
+  mutating func clearContinuousFund() {self._continuousFund = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _continuousFund: Cosmos_Protocolpool_V1_ContinuousFund? = nil
 }
 
 /// QueryContinuousFundRequest is the request type for the Query/ContinuousFunds
 /// RPC method.
-public struct Cosmos_Protocolpool_V1_QueryContinuousFundsRequest: Sendable {
+struct Cosmos_Protocolpool_V1_QueryContinuousFundsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryUnclaimedBudgetResponse is the response type for the Query/ContinuousFunds
 /// RPC method.
-public struct Cosmos_Protocolpool_V1_QueryContinuousFundsResponse: Sendable {
+struct Cosmos_Protocolpool_V1_QueryContinuousFundsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// ContinuousFunds defines all continuous funds in state.
-  public var continuousFunds: [Cosmos_Protocolpool_V1_ContinuousFund] = []
+  var continuousFunds: [Cosmos_Protocolpool_V1_ContinuousFund] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryParamsRequest is the response type for the Query/Params RPC method.
-public struct Cosmos_Protocolpool_V1_QueryParamsRequest: Sendable {
+struct Cosmos_Protocolpool_V1_QueryParamsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
-public struct Cosmos_Protocolpool_V1_QueryParamsResponse: Sendable {
+struct Cosmos_Protocolpool_V1_QueryParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var params: Cosmos_Protocolpool_V1_Params {
+  var params: Cosmos_Protocolpool_V1_Params {
     get {return _params ?? Cosmos_Protocolpool_V1_Params()}
     set {_params = newValue}
   }
   /// Returns true if `params` has been explicitly set.
-  public var hasParams: Bool {return self._params != nil}
+  var hasParams: Bool {return self._params != nil}
   /// Clears the value of `params`. Subsequent reads from it will return its default value.
-  public mutating func clearParams() {self._params = nil}
+  mutating func clearParams() {self._params = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _params: Cosmos_Protocolpool_V1_Params? = nil
 }
@@ -151,31 +151,31 @@ public struct Cosmos_Protocolpool_V1_QueryParamsResponse: Sendable {
 fileprivate let _protobuf_package = "cosmos.protocolpool.v1"
 
 extension Cosmos_Protocolpool_V1_QueryCommunityPoolRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryCommunityPoolRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".QueryCommunityPoolRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryCommunityPoolRequest, rhs: Cosmos_Protocolpool_V1_QueryCommunityPoolRequest) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryCommunityPoolRequest, rhs: Cosmos_Protocolpool_V1_QueryCommunityPoolRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Protocolpool_V1_QueryCommunityPoolResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryCommunityPoolResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryCommunityPoolResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "pool"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -187,14 +187,14 @@ extension Cosmos_Protocolpool_V1_QueryCommunityPoolResponse: SwiftProtobuf.Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.pool.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.pool, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryCommunityPoolResponse, rhs: Cosmos_Protocolpool_V1_QueryCommunityPoolResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryCommunityPoolResponse, rhs: Cosmos_Protocolpool_V1_QueryCommunityPoolResponse) -> Bool {
     if lhs.pool != rhs.pool {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -202,12 +202,12 @@ extension Cosmos_Protocolpool_V1_QueryCommunityPoolResponse: SwiftProtobuf.Messa
 }
 
 extension Cosmos_Protocolpool_V1_QueryContinuousFundRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "recipient"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -219,14 +219,14 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundRequest: SwiftProtobuf.Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.recipient.isEmpty {
       try visitor.visitSingularStringField(value: self.recipient, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundRequest, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundRequest) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundRequest, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundRequest) -> Bool {
     if lhs.recipient != rhs.recipient {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -234,12 +234,12 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundRequest: SwiftProtobuf.Messa
 }
 
 extension Cosmos_Protocolpool_V1_QueryContinuousFundResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "continuous_fund"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -251,7 +251,7 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundResponse: SwiftProtobuf.Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -262,7 +262,7 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundResponse: SwiftProtobuf.Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundResponse, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundResponse, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundResponse) -> Bool {
     if lhs._continuousFund != rhs._continuousFund {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -270,31 +270,31 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundResponse: SwiftProtobuf.Mess
 }
 
 extension Cosmos_Protocolpool_V1_QueryContinuousFundsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundsRequest, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundsRequest) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundsRequest, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Protocolpool_V1_QueryContinuousFundsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryContinuousFundsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "continuous_funds"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -306,14 +306,14 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundsResponse: SwiftProtobuf.Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.continuousFunds.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.continuousFunds, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundsResponse, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundsResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryContinuousFundsResponse, rhs: Cosmos_Protocolpool_V1_QueryContinuousFundsResponse) -> Bool {
     if lhs.continuousFunds != rhs.continuousFunds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -321,31 +321,31 @@ extension Cosmos_Protocolpool_V1_QueryContinuousFundsResponse: SwiftProtobuf.Mes
 }
 
 extension Cosmos_Protocolpool_V1_QueryParamsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryParamsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".QueryParamsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryParamsRequest, rhs: Cosmos_Protocolpool_V1_QueryParamsRequest) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryParamsRequest, rhs: Cosmos_Protocolpool_V1_QueryParamsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Protocolpool_V1_QueryParamsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".QueryParamsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".QueryParamsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "params"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -357,7 +357,7 @@ extension Cosmos_Protocolpool_V1_QueryParamsResponse: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -368,7 +368,7 @@ extension Cosmos_Protocolpool_V1_QueryParamsResponse: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_QueryParamsResponse, rhs: Cosmos_Protocolpool_V1_QueryParamsResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_QueryParamsResponse, rhs: Cosmos_Protocolpool_V1_QueryParamsResponse) -> Bool {
     if lhs._params != rhs._params {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

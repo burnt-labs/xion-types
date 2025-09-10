@@ -34,8 +34,6 @@ struct Cosmos_Evidence_V1beta1_QueryEvidenceRequest: @unchecked Sendable {
   var evidenceHash: Data = Data()
 
   /// hash defines the evidence hash of the requested evidence.
-  ///
-  /// Since: cosmos-sdk 0.47
   var hash: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

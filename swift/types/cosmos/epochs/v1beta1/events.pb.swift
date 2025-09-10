@@ -21,31 +21,31 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// EventEpochEnd is an event emitted when an epoch end.
-public struct Cosmos_Epochs_V1beta1_EventEpochEnd: Sendable {
+struct Cosmos_Epochs_V1beta1_EventEpochEnd: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var epochNumber: Int64 = 0
+  var epochNumber: Int64 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// EventEpochStart is an event emitted when an epoch start.
-public struct Cosmos_Epochs_V1beta1_EventEpochStart: Sendable {
+struct Cosmos_Epochs_V1beta1_EventEpochStart: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var epochNumber: Int64 = 0
+  var epochNumber: Int64 = 0
 
-  public var epochStartTime: Int64 = 0
+  var epochStartTime: Int64 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -53,12 +53,12 @@ public struct Cosmos_Epochs_V1beta1_EventEpochStart: Sendable {
 fileprivate let _protobuf_package = "cosmos.epochs.v1beta1"
 
 extension Cosmos_Epochs_V1beta1_EventEpochEnd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".EventEpochEnd"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".EventEpochEnd"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "epoch_number"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -70,14 +70,14 @@ extension Cosmos_Epochs_V1beta1_EventEpochEnd: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.epochNumber != 0 {
       try visitor.visitSingularInt64Field(value: self.epochNumber, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_EventEpochEnd, rhs: Cosmos_Epochs_V1beta1_EventEpochEnd) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_EventEpochEnd, rhs: Cosmos_Epochs_V1beta1_EventEpochEnd) -> Bool {
     if lhs.epochNumber != rhs.epochNumber {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -85,13 +85,13 @@ extension Cosmos_Epochs_V1beta1_EventEpochEnd: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Cosmos_Epochs_V1beta1_EventEpochStart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".EventEpochStart"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".EventEpochStart"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "epoch_number"),
     2: .standard(proto: "epoch_start_time"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -104,7 +104,7 @@ extension Cosmos_Epochs_V1beta1_EventEpochStart: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.epochNumber != 0 {
       try visitor.visitSingularInt64Field(value: self.epochNumber, fieldNumber: 1)
     }
@@ -114,7 +114,7 @@ extension Cosmos_Epochs_V1beta1_EventEpochStart: SwiftProtobuf.Message, SwiftPro
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Epochs_V1beta1_EventEpochStart, rhs: Cosmos_Epochs_V1beta1_EventEpochStart) -> Bool {
+  static func ==(lhs: Cosmos_Epochs_V1beta1_EventEpochStart, rhs: Cosmos_Epochs_V1beta1_EventEpochStart) -> Bool {
     if lhs.epochNumber != rhs.epochNumber {return false}
     if lhs.epochStartTime != rhs.epochStartTime {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

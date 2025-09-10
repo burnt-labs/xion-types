@@ -3,3 +3,7 @@ plugins:
   - local: protoc-gen-ts_proto
     out: ts/types
     opt: "esModuleInterop=true,forceLong=long,useOptionals=messages,outputClientImpl=grpc-web"
+inputs:
+  - directory: .
+    exclude_paths:
+      - "**/packetforward/**"

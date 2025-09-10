@@ -22,192 +22,192 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 
 /// MsgFundCommunityPool allows an account to directly
 /// fund the community pool.
-public struct Cosmos_Protocolpool_V1_MsgFundCommunityPool: Sendable {
+struct Cosmos_Protocolpool_V1_MsgFundCommunityPool: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var depositor: String = String()
+  var depositor: String = String()
 
-  public var amount: [Cosmos_Base_V1beta1_Coin] = []
+  var amount: [Cosmos_Base_V1beta1_Coin] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
-public struct Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse: Sendable {
+struct Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgCommunityPoolSpend defines a message for sending tokens from the community
 /// pool to another account. This message is typically executed via a governance
 /// proposal with the governance module being the executing authority.
-public struct Cosmos_Protocolpool_V1_MsgCommunityPoolSpend: Sendable {
+struct Cosmos_Protocolpool_V1_MsgCommunityPoolSpend: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// Authority is the address that controls the module (defaults to x/gov unless overwritten).
-  public var authority: String = String()
+  var authority: String = String()
 
-  public var recipient: String = String()
+  var recipient: String = String()
 
-  public var amount: [Cosmos_Base_V1beta1_Coin] = []
+  var amount: [Cosmos_Base_V1beta1_Coin] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgCommunityPoolSpendResponse defines the response to executing a
 /// MsgCommunityPoolSpend message.
-public struct Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse: Sendable {
+struct Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgCreateContinuousFund defines a message for adding continuous funds.
-public struct Cosmos_Protocolpool_V1_MsgCreateContinuousFund: Sendable {
+struct Cosmos_Protocolpool_V1_MsgCreateContinuousFund: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// Authority is the address that controls the module (defaults to x/gov unless overwritten).
-  public var authority: String = String()
+  var authority: String = String()
 
   /// Recipient address of the account receiving funds.
-  public var recipient: String = String()
+  var recipient: String = String()
 
   /// Percentage is the percentage of funds to be allocated from Community pool.
-  public var percentage: String = String()
+  var percentage: String = String()
 
   /// Optional, if expiry is set, removes the state object when expired.
-  public var expiry: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var expiry: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _expiry ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_expiry = newValue}
   }
   /// Returns true if `expiry` has been explicitly set.
-  public var hasExpiry: Bool {return self._expiry != nil}
+  var hasExpiry: Bool {return self._expiry != nil}
   /// Clears the value of `expiry`. Subsequent reads from it will return its default value.
-  public mutating func clearExpiry() {self._expiry = nil}
+  mutating func clearExpiry() {self._expiry = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _expiry: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 /// MsgCreateContinuousFundResponse defines the response to executing a
 /// MsgCreateContinuousFund message.
-public struct Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse: Sendable {
+struct Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgCancelContinuousFund defines a message to cancel continuous funds for a specific recipient.
-public struct Cosmos_Protocolpool_V1_MsgCancelContinuousFund: Sendable {
+struct Cosmos_Protocolpool_V1_MsgCancelContinuousFund: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// Authority is the account address of authority.
-  public var authority: String = String()
+  var authority: String = String()
 
   /// Recipient is the account address string of the recipient whose funds are to be cancelled.
-  public var recipient: String = String()
+  var recipient: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// MsgCancelContinuousFundResponse defines the response to executing a
 /// MsgCancelContinuousFund message.
-public struct Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse: Sendable {
+struct Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// CanceledTime is the canceled time.
-  public var canceledTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var canceledTime: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _canceledTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_canceledTime = newValue}
   }
   /// Returns true if `canceledTime` has been explicitly set.
-  public var hasCanceledTime: Bool {return self._canceledTime != nil}
+  var hasCanceledTime: Bool {return self._canceledTime != nil}
   /// Clears the value of `canceledTime`. Subsequent reads from it will return its default value.
-  public mutating func clearCanceledTime() {self._canceledTime = nil}
+  mutating func clearCanceledTime() {self._canceledTime = nil}
 
   /// CanceledHeight defines the canceled block height.
-  public var canceledHeight: UInt64 = 0
+  var canceledHeight: UInt64 = 0
 
   /// Recipient is the account address string of the recipient whose funds are cancelled.
-  public var recipient: String = String()
+  var recipient: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _canceledTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 /// MsgUpdateParams is the Msg/UpdateParams request type.
-public struct Cosmos_Protocolpool_V1_MsgUpdateParams: Sendable {
+struct Cosmos_Protocolpool_V1_MsgUpdateParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// authority is the address that controls the module (defaults to x/gov unless overwritten).
-  public var authority: String = String()
+  var authority: String = String()
 
   /// params defines the x/protocolpool parameters to update.
   ///
   /// NOTE: All parameters must be supplied.
-  public var params: Cosmos_Protocolpool_V1_Params {
+  var params: Cosmos_Protocolpool_V1_Params {
     get {return _params ?? Cosmos_Protocolpool_V1_Params()}
     set {_params = newValue}
   }
   /// Returns true if `params` has been explicitly set.
-  public var hasParams: Bool {return self._params != nil}
+  var hasParams: Bool {return self._params != nil}
   /// Clears the value of `params`. Subsequent reads from it will return its default value.
-  public mutating func clearParams() {self._params = nil}
+  mutating func clearParams() {self._params = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _params: Cosmos_Protocolpool_V1_Params? = nil
 }
 
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
-public struct Cosmos_Protocolpool_V1_MsgUpdateParamsResponse: Sendable {
+struct Cosmos_Protocolpool_V1_MsgUpdateParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -215,13 +215,13 @@ public struct Cosmos_Protocolpool_V1_MsgUpdateParamsResponse: Sendable {
 fileprivate let _protobuf_package = "cosmos.protocolpool.v1"
 
 extension Cosmos_Protocolpool_V1_MsgFundCommunityPool: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgFundCommunityPool"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgFundCommunityPool"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "depositor"),
     2: .same(proto: "amount"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -234,7 +234,7 @@ extension Cosmos_Protocolpool_V1_MsgFundCommunityPool: SwiftProtobuf.Message, Sw
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.depositor.isEmpty {
       try visitor.visitSingularStringField(value: self.depositor, fieldNumber: 1)
     }
@@ -244,7 +244,7 @@ extension Cosmos_Protocolpool_V1_MsgFundCommunityPool: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgFundCommunityPool, rhs: Cosmos_Protocolpool_V1_MsgFundCommunityPool) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgFundCommunityPool, rhs: Cosmos_Protocolpool_V1_MsgFundCommunityPool) -> Bool {
     if lhs.depositor != rhs.depositor {return false}
     if lhs.amount != rhs.amount {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -253,33 +253,33 @@ extension Cosmos_Protocolpool_V1_MsgFundCommunityPool: SwiftProtobuf.Message, Sw
 }
 
 extension Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgFundCommunityPoolResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".MsgFundCommunityPoolResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse, rhs: Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse, rhs: Cosmos_Protocolpool_V1_MsgFundCommunityPoolResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Protocolpool_V1_MsgCommunityPoolSpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgCommunityPoolSpend"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgCommunityPoolSpend"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "authority"),
     2: .same(proto: "recipient"),
     3: .same(proto: "amount"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -293,7 +293,7 @@ extension Cosmos_Protocolpool_V1_MsgCommunityPoolSpend: SwiftProtobuf.Message, S
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authority.isEmpty {
       try visitor.visitSingularStringField(value: self.authority, fieldNumber: 1)
     }
@@ -306,7 +306,7 @@ extension Cosmos_Protocolpool_V1_MsgCommunityPoolSpend: SwiftProtobuf.Message, S
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpend, rhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpend) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpend, rhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpend) -> Bool {
     if lhs.authority != rhs.authority {return false}
     if lhs.recipient != rhs.recipient {return false}
     if lhs.amount != rhs.amount {return false}
@@ -316,34 +316,34 @@ extension Cosmos_Protocolpool_V1_MsgCommunityPoolSpend: SwiftProtobuf.Message, S
 }
 
 extension Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgCommunityPoolSpendResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".MsgCommunityPoolSpendResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse, rhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse, rhs: Cosmos_Protocolpool_V1_MsgCommunityPoolSpendResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Protocolpool_V1_MsgCreateContinuousFund: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgCreateContinuousFund"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgCreateContinuousFund"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "authority"),
     2: .same(proto: "recipient"),
     3: .same(proto: "percentage"),
     4: .same(proto: "expiry"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -358,7 +358,7 @@ extension Cosmos_Protocolpool_V1_MsgCreateContinuousFund: SwiftProtobuf.Message,
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -378,7 +378,7 @@ extension Cosmos_Protocolpool_V1_MsgCreateContinuousFund: SwiftProtobuf.Message,
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFund, rhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFund) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFund, rhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFund) -> Bool {
     if lhs.authority != rhs.authority {return false}
     if lhs.recipient != rhs.recipient {return false}
     if lhs.percentage != rhs.percentage {return false}
@@ -389,32 +389,32 @@ extension Cosmos_Protocolpool_V1_MsgCreateContinuousFund: SwiftProtobuf.Message,
 }
 
 extension Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgCreateContinuousFundResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".MsgCreateContinuousFundResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse, rhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse, rhs: Cosmos_Protocolpool_V1_MsgCreateContinuousFundResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Cosmos_Protocolpool_V1_MsgCancelContinuousFund: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgCancelContinuousFund"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgCancelContinuousFund"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "authority"),
     2: .same(proto: "recipient"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -427,7 +427,7 @@ extension Cosmos_Protocolpool_V1_MsgCancelContinuousFund: SwiftProtobuf.Message,
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authority.isEmpty {
       try visitor.visitSingularStringField(value: self.authority, fieldNumber: 1)
     }
@@ -437,7 +437,7 @@ extension Cosmos_Protocolpool_V1_MsgCancelContinuousFund: SwiftProtobuf.Message,
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFund, rhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFund) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFund, rhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFund) -> Bool {
     if lhs.authority != rhs.authority {return false}
     if lhs.recipient != rhs.recipient {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -446,14 +446,14 @@ extension Cosmos_Protocolpool_V1_MsgCancelContinuousFund: SwiftProtobuf.Message,
 }
 
 extension Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgCancelContinuousFundResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgCancelContinuousFundResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "canceled_time"),
     2: .standard(proto: "canceled_height"),
     3: .same(proto: "recipient"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -467,7 +467,7 @@ extension Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse: SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -484,7 +484,7 @@ extension Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse: SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse, rhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse, rhs: Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse) -> Bool {
     if lhs._canceledTime != rhs._canceledTime {return false}
     if lhs.canceledHeight != rhs.canceledHeight {return false}
     if lhs.recipient != rhs.recipient {return false}
@@ -494,13 +494,13 @@ extension Cosmos_Protocolpool_V1_MsgCancelContinuousFundResponse: SwiftProtobuf.
 }
 
 extension Cosmos_Protocolpool_V1_MsgUpdateParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgUpdateParams"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".MsgUpdateParams"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "authority"),
     2: .same(proto: "params"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -513,7 +513,7 @@ extension Cosmos_Protocolpool_V1_MsgUpdateParams: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -527,7 +527,7 @@ extension Cosmos_Protocolpool_V1_MsgUpdateParams: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgUpdateParams, rhs: Cosmos_Protocolpool_V1_MsgUpdateParams) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgUpdateParams, rhs: Cosmos_Protocolpool_V1_MsgUpdateParams) -> Bool {
     if lhs.authority != rhs.authority {return false}
     if lhs._params != rhs._params {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -536,19 +536,19 @@ extension Cosmos_Protocolpool_V1_MsgUpdateParams: SwiftProtobuf.Message, SwiftPr
 }
 
 extension Cosmos_Protocolpool_V1_MsgUpdateParamsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".MsgUpdateParamsResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = _protobuf_package + ".MsgUpdateParamsResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     // Load everything into unknown fields
     while try decoder.nextFieldNumber() != nil {}
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_MsgUpdateParamsResponse, rhs: Cosmos_Protocolpool_V1_MsgUpdateParamsResponse) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_MsgUpdateParamsResponse, rhs: Cosmos_Protocolpool_V1_MsgUpdateParamsResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

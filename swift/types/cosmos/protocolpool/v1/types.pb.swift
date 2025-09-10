@@ -21,51 +21,51 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ContinuousFund defines the fields of continuous fund proposal.
-public struct Cosmos_Protocolpool_V1_ContinuousFund: Sendable {
+struct Cosmos_Protocolpool_V1_ContinuousFund: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// Recipient is the address string of the account receiving funds.
-  public var recipient: String = String()
+  var recipient: String = String()
 
   /// Percentage is the percentage of funds to be allocated from Community pool.
-  public var percentage: String = String()
+  var percentage: String = String()
 
   /// Optional, if expiry is set, removes the state object when expired.
-  public var expiry: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var expiry: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _expiry ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_expiry = newValue}
   }
   /// Returns true if `expiry` has been explicitly set.
-  public var hasExpiry: Bool {return self._expiry != nil}
+  var hasExpiry: Bool {return self._expiry != nil}
   /// Clears the value of `expiry`. Subsequent reads from it will return its default value.
-  public mutating func clearExpiry() {self._expiry = nil}
+  mutating func clearExpiry() {self._expiry = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _expiry: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 /// Params defines the parameters for the protocolpool module.
-public struct Cosmos_Protocolpool_V1_Params: Sendable {
+struct Cosmos_Protocolpool_V1_Params: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// EnabledDistributionDenoms lists the denoms that are allowed to be distributed.
   /// This is to avoid spending time distributing undesired tokens to continuous funds and budgets.
-  public var enabledDistributionDenoms: [String] = []
+  var enabledDistributionDenoms: [String] = []
 
   /// DistributionFrequency is the frequency (in terms of blocks) that funds are distributed out from the
   /// x/protocolpool module.
-  public var distributionFrequency: UInt64 = 0
+  var distributionFrequency: UInt64 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -73,14 +73,14 @@ public struct Cosmos_Protocolpool_V1_Params: Sendable {
 fileprivate let _protobuf_package = "cosmos.protocolpool.v1"
 
 extension Cosmos_Protocolpool_V1_ContinuousFund: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".ContinuousFund"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".ContinuousFund"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "recipient"),
     2: .same(proto: "percentage"),
     3: .same(proto: "expiry"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -94,7 +94,7 @@ extension Cosmos_Protocolpool_V1_ContinuousFund: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -111,7 +111,7 @@ extension Cosmos_Protocolpool_V1_ContinuousFund: SwiftProtobuf.Message, SwiftPro
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_ContinuousFund, rhs: Cosmos_Protocolpool_V1_ContinuousFund) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_ContinuousFund, rhs: Cosmos_Protocolpool_V1_ContinuousFund) -> Bool {
     if lhs.recipient != rhs.recipient {return false}
     if lhs.percentage != rhs.percentage {return false}
     if lhs._expiry != rhs._expiry {return false}
@@ -121,13 +121,13 @@ extension Cosmos_Protocolpool_V1_ContinuousFund: SwiftProtobuf.Message, SwiftPro
 }
 
 extension Cosmos_Protocolpool_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".Params"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = _protobuf_package + ".Params"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "enabled_distribution_denoms"),
     2: .standard(proto: "distribution_frequency"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -140,7 +140,7 @@ extension Cosmos_Protocolpool_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.enabledDistributionDenoms.isEmpty {
       try visitor.visitRepeatedStringField(value: self.enabledDistributionDenoms, fieldNumber: 1)
     }
@@ -150,7 +150,7 @@ extension Cosmos_Protocolpool_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Cosmos_Protocolpool_V1_Params, rhs: Cosmos_Protocolpool_V1_Params) -> Bool {
+  static func ==(lhs: Cosmos_Protocolpool_V1_Params, rhs: Cosmos_Protocolpool_V1_Params) -> Bool {
     if lhs.enabledDistributionDenoms != rhs.enabledDistributionDenoms {return false}
     if lhs.distributionFrequency != rhs.distributionFrequency {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

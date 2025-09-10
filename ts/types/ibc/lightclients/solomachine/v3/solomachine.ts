@@ -34,7 +34,7 @@ export interface ConsensusState {
     | Any
     | undefined;
   /**
-   * diversifier allows the same public key to be re-used across different solo
+   * diversifier allows the same public key to be reused across different solo
    * machine clients (potentially on different chains) without being considered
    * misbehaviour.
    */

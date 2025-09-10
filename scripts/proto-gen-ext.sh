@@ -32,6 +32,11 @@ gen_ts() {
   # # Generate ts for local proto files only, with include-imports to get dependencies
   for dir in $dirs; do
     for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
+      # Skip problematic files that have import issues
+      if echo "$file" | grep -q -e "packet-forward-middleware" -e "regen-network/protobuf"; then
+        echo "skipping problematic file $file"
+        continue
+      fi
       echo "generating for file $file"
       buf generate $file \
         --include-imports \
@@ -53,6 +58,11 @@ gen_swift() {
   # Generate swift for local proto files only, with include-imports to get dependencies
   for dir in $dirs; do
     for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
+      # Skip problematic files that have import issues
+      if echo "$file" | grep -q -e "packet-forward-middleware" -e "regen-network/protobuf"; then
+        echo "skipping problematic file $file"
+        continue
+      fi
       echo "generating for file $file"
       buf generate $file \
         --include-imports \

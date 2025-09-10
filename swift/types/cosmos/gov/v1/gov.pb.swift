@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.46
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -276,40 +274,30 @@ struct Cosmos_Gov_V1_Proposal: @unchecked Sendable {
   }
 
   /// title is the title of the proposal
-  ///
-  /// Since: cosmos-sdk 0.47
   var title: String {
     get {return _storage._title}
     set {_uniqueStorage()._title = newValue}
   }
 
   /// summary is a short summary of the proposal
-  ///
-  /// Since: cosmos-sdk 0.47
   var summary: String {
     get {return _storage._summary}
     set {_uniqueStorage()._summary = newValue}
   }
 
   /// proposer is the address of the proposal sumbitter
-  ///
-  /// Since: cosmos-sdk 0.47
   var proposer: String {
     get {return _storage._proposer}
     set {_uniqueStorage()._proposer = newValue}
   }
 
   /// expedited defines if the proposal is expedited
-  ///
-  /// Since: cosmos-sdk 0.50
   var expedited: Bool {
     get {return _storage._expedited}
     set {_uniqueStorage()._expedited = newValue}
   }
 
   /// failed_reason defines the reason why the proposal failed
-  ///
-  /// Since: cosmos-sdk 0.50
   var failedReason: String {
     get {return _storage._failedReason}
     set {_uniqueStorage()._failedReason = newValue}
@@ -449,8 +437,6 @@ struct Cosmos_Gov_V1_TallyParams: Sendable {
 }
 
 /// Params defines the parameters for the x/gov module.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Gov_V1_Params: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -510,8 +496,6 @@ struct Cosmos_Gov_V1_Params: @unchecked Sendable {
   }
 
   /// The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
-  ///
-  /// Since: cosmos-sdk 0.50
   var proposalCancelRatio: String {
     get {return _storage._proposalCancelRatio}
     set {_uniqueStorage()._proposalCancelRatio = newValue}
@@ -519,16 +503,12 @@ struct Cosmos_Gov_V1_Params: @unchecked Sendable {
 
   /// The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
   /// If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
-  ///
-  /// Since: cosmos-sdk 0.50
   var proposalCancelDest: String {
     get {return _storage._proposalCancelDest}
     set {_uniqueStorage()._proposalCancelDest = newValue}
   }
 
   /// Duration of the voting period of an expedited proposal.
-  ///
-  /// Since: cosmos-sdk 0.50
   var expeditedVotingPeriod: SwiftProtobuf.Google_Protobuf_Duration {
     get {return _storage._expeditedVotingPeriod ?? SwiftProtobuf.Google_Protobuf_Duration()}
     set {_uniqueStorage()._expeditedVotingPeriod = newValue}
@@ -539,8 +519,6 @@ struct Cosmos_Gov_V1_Params: @unchecked Sendable {
   mutating func clearExpeditedVotingPeriod() {_uniqueStorage()._expeditedVotingPeriod = nil}
 
   /// Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
-  ///
-  /// Since: cosmos-sdk 0.50
   var expeditedThreshold: String {
     get {return _storage._expeditedThreshold}
     set {_uniqueStorage()._expeditedThreshold = newValue}
@@ -573,8 +551,6 @@ struct Cosmos_Gov_V1_Params: @unchecked Sendable {
   /// The ratio representing the proportion of the deposit value minimum that must be met when making a deposit.
   /// Default value: 0.01. Meaning that for a chain with a min_deposit of 100stake, a deposit of 1stake would be
   /// required.
-  ///
-  /// Since: cosmos-sdk 0.50
   var minDepositRatio: String {
     get {return _storage._minDepositRatio}
     set {_uniqueStorage()._minDepositRatio = newValue}
