@@ -78,8 +78,6 @@ struct Cosmos_Base_Abci_V1beta1_TxResponse: Sendable {
   /// these events include those emitted by processing all the messages and those
   /// emitted from the ante. Whereas Logs contains the events, with
   /// additional metadata, emitted only by processing the messages.
-  ///
-  /// Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
   var events: [Tendermint_Abci_Event] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -179,8 +177,6 @@ struct Cosmos_Base_Abci_V1beta1_Result: @unchecked Sendable {
   var events: [Tendermint_Abci_Event] = []
 
   /// msg_responses contains the Msg handler responses type packed in Anys.
-  ///
-  /// Since: cosmos-sdk 0.46
   var msgResponses: [SwiftProtobuf.Google_Protobuf_Any] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -252,8 +248,6 @@ struct Cosmos_Base_Abci_V1beta1_TxMsgData: Sendable {
   var data: [Cosmos_Base_Abci_V1beta1_MsgData] = []
 
   /// msg_responses contains the Msg handler responses packed into Anys.
-  ///
-  /// Since: cosmos-sdk 0.46
   var msgResponses: [SwiftProtobuf.Google_Protobuf_Any] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

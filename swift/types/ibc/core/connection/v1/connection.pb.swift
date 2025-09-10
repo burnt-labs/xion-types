@@ -216,7 +216,7 @@ struct Ibc_Core_Connection_V1_ConnectionPaths: Sendable {
   init() {}
 }
 
-/// Version defines the versioning scheme used to negotiate the IBC verison in
+/// Version defines the versioning scheme used to negotiate the IBC version in
 /// the connection handshake.
 struct Ibc_Core_Connection_V1_Version: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the

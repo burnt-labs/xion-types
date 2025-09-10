@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.46
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file

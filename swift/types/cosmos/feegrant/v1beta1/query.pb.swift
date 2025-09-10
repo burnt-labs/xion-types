@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.43
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -114,8 +112,6 @@ struct Cosmos_Feegrant_V1beta1_QueryAllowancesResponse: Sendable {
 }
 
 /// QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Feegrant_V1beta1_QueryAllowancesByGranterRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -141,8 +137,6 @@ struct Cosmos_Feegrant_V1beta1_QueryAllowancesByGranterRequest: Sendable {
 }
 
 /// QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Feegrant_V1beta1_QueryAllowancesByGranterResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

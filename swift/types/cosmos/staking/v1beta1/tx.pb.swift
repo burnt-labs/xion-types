@@ -269,8 +269,6 @@ struct Cosmos_Staking_V1beta1_MsgUndelegateResponse: Sendable {
   mutating func clearCompletionTime() {self._completionTime = nil}
 
   /// amount returns the amount of undelegated coins
-  ///
-  /// Since: cosmos-sdk 0.50
   var amount: Cosmos_Base_V1beta1_Coin {
     get {return _amount ?? Cosmos_Base_V1beta1_Coin()}
     set {_amount = newValue}
@@ -289,8 +287,6 @@ struct Cosmos_Staking_V1beta1_MsgUndelegateResponse: Sendable {
 }
 
 /// MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Staking_V1beta1_MsgCancelUnbondingDelegation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -321,8 +317,6 @@ struct Cosmos_Staking_V1beta1_MsgCancelUnbondingDelegation: Sendable {
 }
 
 /// MsgCancelUnbondingDelegationResponse
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Staking_V1beta1_MsgCancelUnbondingDelegationResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -334,8 +328,6 @@ struct Cosmos_Staking_V1beta1_MsgCancelUnbondingDelegationResponse: Sendable {
 }
 
 /// MsgUpdateParams is the Msg/UpdateParams request type.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Staking_V1beta1_MsgUpdateParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -365,8 +357,6 @@ struct Cosmos_Staking_V1beta1_MsgUpdateParams: Sendable {
 
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Staking_V1beta1_MsgUpdateParamsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

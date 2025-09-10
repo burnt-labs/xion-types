@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.46
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -295,8 +293,6 @@ struct Cosmos_Gov_V1_QueryParamsResponse: Sendable {
   mutating func clearTallyParams() {self._tallyParams = nil}
 
   /// params defines all the paramaters of x/gov module.
-  ///
-  /// Since: cosmos-sdk 0.47
   var params: Cosmos_Gov_V1_Params {
     get {return _params ?? Cosmos_Gov_V1_Params()}
     set {_params = newValue}
