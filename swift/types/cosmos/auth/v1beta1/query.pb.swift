@@ -22,8 +22,6 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// QueryAccountsRequest is the request type for the Query/Accounts RPC method.
-///
-/// Since: cosmos-sdk 0.43
 struct Cosmos_Auth_V1beta1_QueryAccountsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -47,8 +45,6 @@ struct Cosmos_Auth_V1beta1_QueryAccountsRequest: Sendable {
 }
 
 /// QueryAccountsResponse is the response type for the Query/Accounts RPC method.
-///
-/// Since: cosmos-sdk 0.43
 struct Cosmos_Auth_V1beta1_QueryAccountsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -146,8 +142,6 @@ struct Cosmos_Auth_V1beta1_QueryParamsResponse: Sendable {
 }
 
 /// QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_QueryModuleAccountsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -159,8 +153,6 @@ struct Cosmos_Auth_V1beta1_QueryModuleAccountsRequest: Sendable {
 }
 
 /// QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_QueryModuleAccountsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -209,8 +201,6 @@ struct Cosmos_Auth_V1beta1_QueryModuleAccountByNameResponse: Sendable {
 }
 
 /// Bech32PrefixRequest is the request type for Bech32Prefix rpc method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_Bech32PrefixRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -222,8 +212,6 @@ struct Cosmos_Auth_V1beta1_Bech32PrefixRequest: Sendable {
 }
 
 /// Bech32PrefixResponse is the response type for Bech32Prefix rpc method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_Bech32PrefixResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -237,8 +225,6 @@ struct Cosmos_Auth_V1beta1_Bech32PrefixResponse: Sendable {
 }
 
 /// AddressBytesToStringRequest is the request type for AddressString rpc method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_AddressBytesToStringRequest: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -252,8 +238,6 @@ struct Cosmos_Auth_V1beta1_AddressBytesToStringRequest: @unchecked Sendable {
 }
 
 /// AddressBytesToStringResponse is the response type for AddressString rpc method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_AddressBytesToStringResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -267,8 +251,6 @@ struct Cosmos_Auth_V1beta1_AddressBytesToStringResponse: Sendable {
 }
 
 /// AddressStringToBytesRequest is the request type for AccountBytes rpc method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_AddressStringToBytesRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -282,8 +264,6 @@ struct Cosmos_Auth_V1beta1_AddressStringToBytesRequest: Sendable {
 }
 
 /// AddressStringToBytesResponse is the response type for AddressBytes rpc method.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Auth_V1beta1_AddressStringToBytesResponse: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -297,8 +277,6 @@ struct Cosmos_Auth_V1beta1_AddressStringToBytesResponse: @unchecked Sendable {
 }
 
 /// QueryAccountAddressByIDRequest is the request type for AccountAddressByID rpc method
-///
-/// Since: cosmos-sdk 0.46.2
 struct Cosmos_Auth_V1beta1_QueryAccountAddressByIDRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -314,8 +292,6 @@ struct Cosmos_Auth_V1beta1_QueryAccountAddressByIDRequest: Sendable {
   var id: Int64 = 0
 
   /// account_id is the account number of the address to be queried.
-  ///
-  /// Since: cosmos-sdk 0.47
   var accountID: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -324,8 +300,6 @@ struct Cosmos_Auth_V1beta1_QueryAccountAddressByIDRequest: Sendable {
 }
 
 /// QueryAccountAddressByIDResponse is the response type for AccountAddressByID rpc method
-///
-/// Since: cosmos-sdk 0.46.2
 struct Cosmos_Auth_V1beta1_QueryAccountAddressByIDResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -339,8 +313,6 @@ struct Cosmos_Auth_V1beta1_QueryAccountAddressByIDResponse: Sendable {
 }
 
 /// QueryAccountInfoRequest is the Query/AccountInfo request type.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Auth_V1beta1_QueryAccountInfoRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -355,8 +327,6 @@ struct Cosmos_Auth_V1beta1_QueryAccountInfoRequest: Sendable {
 }
 
 /// QueryAccountInfoResponse is the Query/AccountInfo response type.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Auth_V1beta1_QueryAccountInfoResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

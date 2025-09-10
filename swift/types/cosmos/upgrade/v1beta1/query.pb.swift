@@ -114,7 +114,6 @@ struct Cosmos_Upgrade_V1beta1_QueryUpgradedConsensusStateResponse: @unchecked Se
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// Since: cosmos-sdk 0.43
   var upgradedConsensusState: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -124,8 +123,6 @@ struct Cosmos_Upgrade_V1beta1_QueryUpgradedConsensusStateResponse: @unchecked Se
 
 /// QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
 /// RPC method.
-///
-/// Since: cosmos-sdk 0.43
 struct Cosmos_Upgrade_V1beta1_QueryModuleVersionsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -143,8 +140,6 @@ struct Cosmos_Upgrade_V1beta1_QueryModuleVersionsRequest: Sendable {
 
 /// QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
 /// RPC method.
-///
-/// Since: cosmos-sdk 0.43
 struct Cosmos_Upgrade_V1beta1_QueryModuleVersionsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -159,8 +154,6 @@ struct Cosmos_Upgrade_V1beta1_QueryModuleVersionsResponse: Sendable {
 }
 
 /// QueryAuthorityRequest is the request type for Query/Authority
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Upgrade_V1beta1_QueryAuthorityRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -172,8 +165,6 @@ struct Cosmos_Upgrade_V1beta1_QueryAuthorityRequest: Sendable {
 }
 
 /// QueryAuthorityResponse is the response type for Query/Authority
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Upgrade_V1beta1_QueryAuthorityResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

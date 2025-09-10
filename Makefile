@@ -1,5 +1,13 @@
 DOCKER := $(shell which docker)
-XION_VERSION ?= $(shell scripts/get-xion-latest.sh)
+XIOproto-gen-kotlin: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
+
+proto-gen-php: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --php
+
+proto-gen-python: submodulesSION ?= $(shell scripts/get-xion-latest.sh)
 
 ################################################################################
 ###                                 Protobuf                                 ###
@@ -36,6 +44,22 @@ proto-gen-swift: build-swiftbuilder-image submodules
 proto-gen-kotlin: submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
+
+proto-gen-java: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --java
+
+proto-gen-python: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --python
+
+proto-gen-rust: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --rust
+
+proto-gen-ruby: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --ruby
 
 contract-code-gen:
 	@$(protoImage) ./scripts/ts-codegen.sh

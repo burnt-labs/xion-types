@@ -56,8 +56,6 @@ struct Cosmos_Vesting_V1beta1_MsgCreateVestingAccountResponse: Sendable {
 
 /// MsgCreatePermanentLockedAccount defines a message that enables creating a permanent
 /// locked account.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Vesting_V1beta1_MsgCreatePermanentLockedAccount: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -75,8 +73,6 @@ struct Cosmos_Vesting_V1beta1_MsgCreatePermanentLockedAccount: Sendable {
 }
 
 /// MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Vesting_V1beta1_MsgCreatePermanentLockedAccountResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -89,8 +85,6 @@ struct Cosmos_Vesting_V1beta1_MsgCreatePermanentLockedAccountResponse: Sendable 
 
 /// MsgCreateVestingAccount defines a message that enables creating a vesting
 /// account.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Vesting_V1beta1_MsgCreatePeriodicVestingAccount: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -112,8 +106,6 @@ struct Cosmos_Vesting_V1beta1_MsgCreatePeriodicVestingAccount: Sendable {
 
 /// MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount
 /// response type.
-///
-/// Since: cosmos-sdk 0.46
 struct Cosmos_Vesting_V1beta1_MsgCreatePeriodicVestingAccountResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

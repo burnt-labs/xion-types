@@ -189,7 +189,6 @@ struct Cosmos_Base_Tendermint_V1beta1_GetBlockByHeightResponse: @unchecked Senda
   /// Clears the value of `block`. Subsequent reads from it will return its default value.
   mutating func clearBlock() {_uniqueStorage()._block = nil}
 
-  /// Since: cosmos-sdk 0.47
   var sdkBlock: Cosmos_Base_Tendermint_V1beta1_Block {
     get {return _storage._sdkBlock ?? Cosmos_Base_Tendermint_V1beta1_Block()}
     set {_uniqueStorage()._sdkBlock = newValue}
@@ -242,7 +241,6 @@ struct Cosmos_Base_Tendermint_V1beta1_GetLatestBlockResponse: @unchecked Sendabl
   /// Clears the value of `block`. Subsequent reads from it will return its default value.
   mutating func clearBlock() {_uniqueStorage()._block = nil}
 
-  /// Since: cosmos-sdk 0.47
   var sdkBlock: Cosmos_Base_Tendermint_V1beta1_Block {
     get {return _storage._sdkBlock ?? Cosmos_Base_Tendermint_V1beta1_Block()}
     set {_uniqueStorage()._sdkBlock = newValue}
@@ -345,7 +343,6 @@ struct Cosmos_Base_Tendermint_V1beta1_VersionInfo: Sendable {
 
   var buildDeps: [Cosmos_Base_Tendermint_V1beta1_Module] = []
 
-  /// Since: cosmos-sdk 0.43
   var cosmosSdkVersion: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

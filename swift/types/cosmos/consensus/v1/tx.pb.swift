@@ -8,8 +8,6 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
-/// Since: cosmos-sdk 0.47
-
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -63,7 +61,6 @@ struct Cosmos_Consensus_V1_MsgUpdateParams: Sendable {
   /// Clears the value of `validator`. Subsequent reads from it will return its default value.
   mutating func clearValidator() {self._validator = nil}
 
-  /// Since: cosmos-sdk 0.50
   var abci: Tendermint_Types_ABCIParams {
     get {return _abci ?? Tendermint_Types_ABCIParams()}
     set {_abci = newValue}
