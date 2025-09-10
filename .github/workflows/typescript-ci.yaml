@@ -39,13 +39,19 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Configure Git for HTTPS
+        run: |
+          # Configure git to use HTTPS instead of SSH for submodules
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          git config --global url."https://".insteadOf "git://"
+
       - name: Initialize and Update Submodules
         run: |
           # Initialize only the required submodules
           git submodule init xion
           git submodule init contracts
           
-          # Update submodules without recursive cloning
+          # Update submodules using HTTPS URLs
           git submodule update --init xion
           git submodule update --init contracts
           
