@@ -27,7 +27,28 @@ RUN apk add --no-cache \
     libstdc++ \
     libgcc \
     musl-fts \
-    musl-fts-dev
+    musl-fts-dev \
+    protobuf-dev \
+    curl \
+    build-base \
+    openjdk17 \
+    nodejs \
+    npm
+
+# Install Rust toolchain and protoc-gen-prost
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
+ENV PATH="/root/.cargo/bin:$PATH"
+RUN cargo install protoc-gen-prost
+
+# Install protoc-gen-scala JAR (following Buf plugins pattern)
+RUN curl -fsSL -o /usr/local/bin/protoc-gen-scala.jar \
+    https://repo1.maven.org/maven2/com/thesamet/scalapb/protoc-gen-scala/0.11.20/protoc-gen-scala-0.11.20-unix.sh && \
+    chmod +x /usr/local/bin/protoc-gen-scala.jar
+
+# Create wrapper script for protoc-gen-scala
+RUN echo '#!/bin/sh' > /usr/local/bin/protoc-gen-scala && \
+    echo 'exec java -jar /usr/local/bin/protoc-gen-scala.jar "$@"' >> /usr/local/bin/protoc-gen-scala && \
+    chmod +x /usr/local/bin/protoc-gen-scala
 
 # Create symlinks for fts functions to be available
 RUN ln -sf /usr/lib/libfts.so.0.0.0 /usr/lib/libfts.so.1
