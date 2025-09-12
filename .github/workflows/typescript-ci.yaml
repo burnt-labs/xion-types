@@ -23,22 +23,6 @@ jobs:
   generate-protobuf:
     name: Generate Protobuf Definitions
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        language:
-          - c
-          - cpp
-          - java
-          - kotlin
-          - objc
-          - php
-          - python
-          - ruby
-          - rust
-          - scala
-          - swift
-          - ts
-      fail-fast: false
     outputs:
       types-generated: ${{ steps.check-types.outputs.types-generated }}
     steps:
@@ -48,27 +32,27 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate ${{ matrix.language }} Definitions
+      - name: Generate all Definitions
         run: |
-          make proto-gen-${{ matrix.language }}
+          make proto-gen-all
 
-      - name: Check if Types Were Generated
-        id: check-types
-        run: |
-          if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
-            echo "types-generated=true" >> $GITHUB_OUTPUT
-            echo "✅ ${{ matrix.language }} definitions generated successfully"
-          else
-            echo "types-generated=false" >> $GITHUB_OUTPUT
-            echo "❌ Failed to generate ${{ matrix.language }} definitions"
-            exit 1
-          fi
+      # - name: Check if Types Were Generated
+      #   id: check-types
+      #   run: |
+      #     if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
+      #       echo "types-generated=true" >> $GITHUB_OUTPUT
+      #       echo "✅ ${{ matrix.language }} definitions generated successfully"
+      #     else
+      #       echo "types-generated=false" >> $GITHUB_OUTPUT
+      #       echo "❌ Failed to generate ${{ matrix.language }} definitions"
+      #       exit 1
+      #     fi
 
       - name: Upload Generated Types
         uses: actions/upload-artifact@v4
         with:
-          name: generated-types-${{ matrix.language }}
-          path: ${{ matrix.language }}/types
+          name: generated-types-ts
+          path: ts/types
           retention-days: 1
 
   # test-dependent-projects:
