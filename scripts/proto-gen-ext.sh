@@ -46,12 +46,20 @@ gen_language() {
         --output $xion_types_dir
     done
   done
-  
+}
+
+post_kotlin() { 
   # Special post-processing for Kotlin
-  if [ "$language" = "kotlin" ]; then
     echo "Cleaning up .proto.kt files..."
     find "$lang_dir/types" -name "*.proto.kt" -delete 2>/dev/null || true
-  fi
+}
+
+init_ts() {
+  # Install npm dependencies
+  ts_dir=$xion_types_dir/ts
+  cd $ts_dir
+  npm install
+  export PATH="$ts_dir/node_modules/.bin:$PATH"
 }
 
 show_help() {
@@ -61,7 +69,6 @@ show_help() {
   echo ""
   echo "OPTIONS:"
   echo "  --cpp        Generate C++ types"
-  echo "  --csharp     Generate C# types"
   echo "  --java       Generate Java types"
   echo "  --kotlin     Generate Kotlin types"
   echo "  --objc       Generate Objective-C types"
@@ -86,52 +93,56 @@ main() {
 # Parse CLI parameters
   while [[ $# -gt 0 ]]; do
     case $1 in
-    --cpp)
-      init_protoc && gen_language cpp
+    --all)
+      init_ts && gen_language all && post_kotlin
       shift
       ;;
-    --csharp)
-      init_protoc && gen_language csharp
+    --c)
+      gen_language c
+      shift
+      ;;
+    --cpp)
+      gen_language cpp
       shift
       ;;
     --java)
-      init_protoc && gen_language java 
+      gen_language java 
       shift
       ;;
     --kotlin)
-      init_protoc && gen_language kotlin
+      gen_language kotlin && post_kotlin
       shift
       ;;
     --objc)
-      init_protoc && gen_language objc
+      gen_language objc
       shift
       ;;
     --php)
-      init_protoc && gen_language php
+      gen_language php
       shift
       ;;
     --python)
-      init_protoc && gen_language python
+      gen_language python
       shift
       ;;
     --ruby)
-      init_protoc && gen_language ruby
+      gen_language ruby
       shift
       ;;
     --rust)
-      init_rust && gen_language rust
+      gen_language rust
       shift
       ;;
     --scala)
-      init_scala && gen_language scala
+      gen_language scala
       shift
       ;;
     --swift)
-      init_swift && gen_language swift
+      gen_language swift
       shift
       ;;
     --ts)
-      init_ts && gen_language ts
+      init_ts &&gen_language ts
       shift
       ;;
     --swagger)

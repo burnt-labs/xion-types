@@ -1,11 +1,5 @@
 DOCKER := $(shell which docker)
-XIOproto-gen-kotlin: submodules
-	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
 
-proto-gen-php: submodules
-	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen-ext.sh --php
 
 proto-gen-python: submodulesSION ?= $(shell scripts/get-xion-latest.sh)
 
@@ -17,7 +11,8 @@ protoImageName=localhost/proto-builder:$(protoVer)
 protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspace -e GOTOOLCHAIN=auto localhost/proto-builder:$(protoVer)
 HTTPS_GIT := https://github.com/burnt-labs/xion.git
 
-proto-all: proto-gen prot-gen-ts proto-gen-swift proto-gen-kotlin
+contract-code-gen:
+	@$(protoImage) ./scripts/ts-codegen.sh
 
 submodules:
 	@echo "Initializing and updating git submodules"
@@ -33,7 +28,15 @@ build-proto-builder-image:
 proto-gen:
 	cd xion && make proto-gen
 
-proto-gen-cpp: submodules
+proto-gen-all: build-proto-builder-image submodules
+	@echo "Generating Protobuf files for all languages"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --all
+
+proto-gen-c: build-proto-builder-image submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --c
+
+proto-gen-cpp: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --cpp
 
@@ -45,9 +48,13 @@ proto-gen-kotlin: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
 
-proto-gen-objc: submodules
+proto-gen-objc: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --objc
+
+proto-gen-php: build-proto-builder-image submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --php
 
 proto-gen-python: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
@@ -72,9 +79,6 @@ proto-gen-swift: build-proto-builder-image submodules
 proto-gen-ts: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --ts
-
-contract-code-gen:
-	@$(protoImage) ./scripts/ts-codegen.sh
 
 .PHONY: all install install-debug \
 	go-mod-cache draw-deps clean build format \

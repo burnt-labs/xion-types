@@ -7,6 +7,8 @@ package cosmos.auth.v1beta1
 
 /** ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
   *
+  * Since: cosmos-sdk 0.47
+  *
   * @param moduleName
   *   module_name is the name of the module used for address derivation (passed into address.Module).
   * @param derivationKeys

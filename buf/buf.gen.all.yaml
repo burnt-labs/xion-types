@@ -1,0 +1,56 @@
+version: v2
+plugins:
+  # C
+  - protoc_builtin: c
+    out: c/types
+
+  # C# (needs work)
+  # - protoc_builtin: csharp
+  #   out: csharp/types
+
+  # C++
+  - protoc_builtin: cpp
+    out: cpp/types
+
+  # Java
+  - protoc_builtin: java
+    out: java/types
+
+  # Kotlin
+  - protoc_builtin: kotlin
+    out: kotlin/types
+
+  # Objective-C
+  - protoc_builtin: objc
+    out: objc/types
+
+  # PHP
+  - protoc_builtin: php
+    out: php/types
+
+  # Python
+  - protoc_builtin: python
+    out: python/types
+
+  # Ruby
+  - protoc_builtin: ruby
+    out: ruby/types
+
+  # Rust
+  - local: protoc-gen-prost
+    out: rust/types
+
+  # Scala
+  - local: protoc-gen-scala
+    out: scala/types
+    opt:
+      - flat_package
+
+  # Swift
+  - protoc_builtin: swift
+    out: swift/types
+
+  # TypeScript
+  - local: protoc-gen-ts_proto
+    out: ts/types
+    opt: "esModuleInterop=true,forceLong=long,useOptionals=messages,outputClientImpl=grpc-web"
