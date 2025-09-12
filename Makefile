@@ -1,7 +1,5 @@
 DOCKER := $(shell which docker)
-
-
-proto-gen-python: submodulesSION ?= $(shell scripts/get-xion-latest.sh)
+XION_VERSION ?= $(shell scripts/get-xion-latest.sh)
 
 ################################################################################
 ###                                 Protobuf                                 ###
@@ -18,8 +16,8 @@ submodules:
 	@echo "Initializing and updating git submodules"
 	git submodule init contracts
 	git submodule update --init contracts
-# 	git submodule init xion
-# 	git submodule update --init xion
+ 	git submodule init xion
+ 	git submodule update --init xion
 # ./scripts/checkout-xion-tag.sh $(XION_VERSION)
 
 build-proto-builder-image:

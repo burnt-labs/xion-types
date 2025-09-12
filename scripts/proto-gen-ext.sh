@@ -68,6 +68,7 @@ show_help() {
   echo "Generate protocol buffer types for various languages"
   echo ""
   echo "OPTIONS:"
+  echo "  --c          Generate C types"
   echo "  --cpp        Generate C++ types"
   echo "  --java       Generate Java types"
   echo "  --kotlin     Generate Kotlin types"
