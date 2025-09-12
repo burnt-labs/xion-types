@@ -33,6 +33,10 @@ build-proto-builder-image:
 proto-gen:
 	cd xion && make proto-gen
 
+proto-gen-cpp: submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --cpp
+
 proto-gen-java: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --java
@@ -41,29 +45,33 @@ proto-gen-kotlin: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --kotlin
 
-proto-gen-ts: build-proto-builder-image submodules
+proto-gen-objc: submodules
 	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen-ext.sh --ts
-
-proto-gen-swift: build-proto-builder-image submodules
-	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen-ext.sh --swift
+	@$(protoImage) ./scripts/proto-gen-ext.sh --objc
 
 proto-gen-python: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --python
 
-proto-gen-rust: build-proto-builder-image submodules
-	@echo "Generating Protobuf files"
-	@$(protoImage) ./scripts/proto-gen-ext.sh --rust
-
 proto-gen-ruby: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --ruby
 
+proto-gen-rust: build-proto-builder-image submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --rust
+
 proto-gen-scala: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --scala
+
+proto-gen-swift: build-proto-builder-image submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --swift
+
+proto-gen-ts: build-proto-builder-image submodules
+	@echo "Generating Protobuf files"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --ts
 
 contract-code-gen:
 	@$(protoImage) ./scripts/ts-codegen.sh

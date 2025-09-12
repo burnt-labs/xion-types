@@ -33,12 +33,25 @@ RUN apk add --no-cache \
     build-base \
     openjdk17 \
     nodejs \
-    npm
+    npm \
+    ruby \
+    ruby-dev \
+    php \
+    php-dev \
+    python3 \
+    python3-dev
+
+# Verify protoc built-in plugins are available
+# Built-in plugins: cpp, csharp, java, objc, php, python should work with protobuf-dev
+# kotlin uses java plugin, ruby uses its own gem system
 
 # Install Rust toolchain and protoc-gen-prost
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
 ENV PATH="/root/.cargo/bin:$PATH"
 RUN cargo install protoc-gen-prost
+
+# Install Ruby protobuf gems
+RUN gem install google-protobuf grpc-tools
 
 # Install protoc-gen-scala JAR (following Buf plugins pattern)
 RUN curl -fsSL -o /usr/local/bin/protoc-gen-scala.jar \

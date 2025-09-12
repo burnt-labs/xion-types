@@ -60,8 +60,11 @@ show_help() {
   echo "Generate protocol buffer types for various languages"
   echo ""
   echo "OPTIONS:"
+  echo "  --cpp        Generate C++ types"
+  echo "  --csharp     Generate C# types"
   echo "  --java       Generate Java types"
   echo "  --kotlin     Generate Kotlin types"
+  echo "  --objc       Generate Objective-C types"
   echo "  --php        Generate PHP types"
   echo "  --python     Generate Python types"
   echo "  --ruby       Generate Ruby types"
@@ -83,40 +86,52 @@ main() {
 # Parse CLI parameters
   while [[ $# -gt 0 ]]; do
     case $1 in
+    --cpp)
+      init_protoc && gen_language cpp
+      shift
+      ;;
+    --csharp)
+      init_protoc && gen_language csharp
+      shift
+      ;;
     --java)
-      gen_language java 
+      init_protoc && gen_language java 
       shift
       ;;
     --kotlin)
-      gen_language kotlin
+      init_protoc && gen_language kotlin
+      shift
+      ;;
+    --objc)
+      init_protoc && gen_language objc
       shift
       ;;
     --php)
-      gen_language php
+      init_protoc && gen_language php
       shift
       ;;
     --python)
-      gen_language python
-      shift
-      ;;
-    --swift)
-      gen_language swift
+      init_protoc && gen_language python
       shift
       ;;
     --ruby)
-      gen_language ruby
+      init_protoc && gen_language ruby
       shift
       ;;
     --rust)
-      gen_language rust
+      init_rust && gen_language rust
       shift
       ;;
     --scala)
-      gen_language scala
+      init_scala && gen_language scala
+      shift
+      ;;
+    --swift)
+      init_swift && gen_language swift
       shift
       ;;
     --ts)
-      gen_language ts
+      init_ts && gen_language ts
       shift
       ;;
     --swagger)
