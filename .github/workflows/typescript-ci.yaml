@@ -27,15 +27,15 @@ jobs:
     strategy:
       matrix:
         language:
-          - cpp
-          - java
-          - kotlin
-          - objc
-          - php
-          - python
-          - ruby
-          - rust
-          - swift
+          # - cpp
+          # - java
+          # - kotlin
+          # - objc
+          # - php
+          # - python
+          # - ruby
+          # - rust
+          # - swift
           - ts
       fail-fast: false
     outputs:
