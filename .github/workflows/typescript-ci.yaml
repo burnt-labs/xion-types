@@ -3,7 +3,8 @@ name: Xion-Types Package CI/CD
 on:
   push:
     branches: 
-      - main 
+      - feat/add-tagging-to-npm-publish # DELETE THIS
+      #- main 
   pull_request:
     branches: 
       - main
@@ -69,90 +70,92 @@ jobs:
           path: ${{ matrix.language }}/types
           retention-days: 1
 
-  # test-dependent-projects:
-  #   name: Test Dependent Projects Compatibility
-  #   needs: [setup-submodules, generate-protobuf]
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       project: 
-  #         #- xion-dashboard-app # is private TODO
-  #         - xion-explorer
-  #         - xion-faucet
-  #         - xion-staking
-  #   steps:
-  #     - name: Checkout Main Repository
-  #       uses: actions/checkout@v4
-  #       with:
-  #         path: xion-types
-  #         token: ${{ secrets.GITHUB_TOKEN }}
+  test-dependent-projects:
+    name: Test Dependent Projects Compatibility
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: 
+          #- xion-dashboard-app # is private TODO
+          - xion-explorer
+          - xion-faucet
+          - xion-staking
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          path: xion-types
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-  #     - name: Download Submodules
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: submodules
-  #         path: xion-types/
+      - name: Download Submodules
+        uses: actions/download-artifact@v4
+        with:
+          name: submodules
+          path: xion-types/
 
-  #     - name: Download Generated Types
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: generated-types
-  #         path: xion-types/ts/types
+      - name: Download Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types
+          path: xion-types/ts/types
 
-  #     - name: Checkout Dependent Project
-  #       uses: actions/checkout@v4
-  #       with:
-  #         repository: burnt-labs/${{ matrix.project }}
-  #         path: dependent-project
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-  #         fetch-depth: 1
+      - name: Checkout Dependent Project
+        uses: actions/checkout@v4
+        with:
+          repository: burnt-labs/${{ matrix.project }}
+          path: dependent-project
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
           
-  #     - name: Debug Repository Checkout
-  #       run: |
-  #         echo "Checking if dependent-project directory exists..."
-  #         ls -la dependent-project/ || echo "Directory not found"
+      - name: Debug Repository Checkout
+        run: |
+          echo "Checking if dependent-project directory exists..."
+          ls -la dependent-project/ || echo "Directory not found"
           
-  #         echo "Checking repository URL..."
-  #         echo "Repository: burnt-labs/${{ matrix.project }}"
+          echo "Checking repository URL..."
+          echo "Repository: burnt-labs/${{ matrix.project }}"
           
-  #         echo "Checking if package.json exists..."
-  #         if [ -f "dependent-project/package.json" ]; then
-  #           echo "✅ package.json found"
-  #           head -5 dependent-project/package.json
-  #         else
-  #           echo "❌ package.json not found"
-  #           echo "Contents of dependent-project directory:"
-  #           ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
-  #         fi
+          echo "Checking if package.json exists..."
+          if [ -f "dependent-project/package.json" ]; then
+            echo "✅ package.json found"
+            head -5 dependent-project/package.json
+          else
+            echo "❌ package.json not found"
+            echo "Contents of dependent-project directory:"
+            ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
+          fi
 
-  #     - name: Test Project with Updated Types
-  #       run: |
-  #         cd dependent-project
+      - name: Test Project with Updated Types
+        run: |
+          cd dependent-project
           
-  #         # Check if package.json exists
-  #         if [ ! -f "package.json" ]; then
-  #           echo "❌ No package.json found in ${{ matrix.project }}"
-  #           exit 1
-  #         fi
+          # Check if package.json exists
+          if [ ! -f "package.json" ]; then
+            echo "❌ No package.json found in ${{ matrix.project }}"
+            exit 1
+          fi
           
-  #         # Install the types package with legacy peer deps to bypass conflicts
-  #         echo "Installing types package for ${{ matrix.project }}..."
-  #         npm install ../xion-types/ts --no-save --legacy-peer-deps
+          # Install the types package with legacy peer deps to bypass conflicts
+          echo "Installing types package for ${{ matrix.project }}..."
+          npm install ../xion-types/ts --no-save --legacy-peer-deps
           
-  #         # Run type checking
-  #         echo "Running type check for ${{ matrix.project }}..."
-  #         npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
+          # Run type checking
+          echo "Running type check for ${{ matrix.project }}..."
+          npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
           
-  #         echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
+          echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
   publish:
     name: Publish to NPM
-    needs: generate-protobuf
+    needs: [test-dependent-projects] # generate-protobuf
     runs-on: ubuntu-latest
+    outputs:
+      NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
     permissions:
       contents: read
       id-token: write
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
+    #if: github.ref == 'refs/heads/main' && github.event_name == 'merge' 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -174,6 +177,7 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
 
       - name: Bump Version
+        id: version
         working-directory: ./ts
         run: |
           if [ "${{ github.event.inputs.next_version }}" != "" ]; then
@@ -200,63 +204,84 @@ jobs:
               CLEAN_TAG=${LATEST_TAG#v}
               echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
               npm version $CLEAN_TAG --no-git-tag-version
+              echo "TAG=$CLEAN_TAG" >> $GITHUB_ENV
             fi
           fi
         
           # Get the new version
           NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "New package version: $NEW_VERSION"
 
-# # TODO: Uncomment this when we want to publish to main
-      - name: Publish to NPM 
+      - name: Dry run publish to NPM #DELETEME
         working-directory: ./ts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "Publishing package version: ${{ env.NEW_VERSION }}"
-          npm publish --verbose --access public
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+          echo "Dry run version: ${{ env.NEW_VERSION }}"
+          echo "Dry run tag: ${{ env.TAG }}"      
 
-#   validate-package:
-#     name: Validate NPM Package
-#     needs: publish
-#     runs-on: ubuntu-latest
-#     #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
-#     steps:
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: ${{ env.NODE_VERSION }}
-#           registry-url: ${{ env.REGISTRY_URL }}
+      # - name: Publish to NPM 
+      #   working-directory: ./ts
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: |
+      #     echo "Publishing package version: ${{ env.NEW_VERSION }}"
+      #     # TODO npm publish --verbose --access public
+      #     echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
 
-#       - name: Verify Package on NPM
-#         run: |
-#           PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
-#           echo "Verifying package version: $PACKAGE_VERSION"
+
+  #TODO - validate the tag based on how it is set from the trigger
+  validate-package:
+    name: Validate NPM Package
+    needs: [publish]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
+
+      - name: Verify Package on NPM
+        env:
+          TAG: latest #${{ needs.publish.outputs.TAG }}
+          VERSION: 21.0.0-alpha.4 #${{ needs.publish.outputs.NEW_VERSION }}
+        run: |
+          echo "Verifying package version: $VERSION"
           
-#           # Retry logic for NPM verification
-#           MAX_ATTEMPTS=10
-#           ATTEMPT=1
+          # Retry logic for NPM verification
+          MAX_ATTEMPTS=10
+          ATTEMPT=1
           
-#           while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-#             echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-#             if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
-#               echo "✅ Package successfully published to NPM"
-#               echo "Package version $PACKAGE_VERSION is available on NPM"
-#               exit 0
-#             else
-#               echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+            if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
+              echo "✅ Package successfully published to NPM"
+              echo "Package version $VERSION is available on NPM"
+
+              # Check if our version is tagged as latest
+              LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
+              if [ "$LATEST_VERSION" = "$VERSION" ]; then
+                echo "✅ Version $VERSION is correctly tagged as 'latest'"
+              else
+                echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
+              fi
+
+              exit 0
+            else
+              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-#               if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-#                 echo "Waiting 10 seconds before retry..."
-#                 sleep 10
-#               fi
-#             fi
+              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting 10 seconds before retry..."
+                sleep 10
+              fi
+            fi
             
-#             ATTEMPT=$((ATTEMPT + 1))
-#           done
+            ATTEMPT=$((ATTEMPT + 1))
+          done
           
-#           echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-#           exit 1
+          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+          exit 1
