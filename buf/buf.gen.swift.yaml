@@ -1,4 +1,4 @@
-version: v1
+version: v2
 plugins:
-  - name: swift
+  - protoc_builtin: swift
     out: swift/types
