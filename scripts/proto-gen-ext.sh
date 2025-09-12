@@ -66,13 +66,17 @@ gen_language() {
   for dir in $dirs; do
     for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
       # Skip problematic files if skip_problematic is
-      if [ "$skip_problematic" = "true" ] && echo "$file" | grep -q -e "packet-forward-middleware" -e "regen-network/protobuf"; then
+      if [ "$skip_problematic" = "true" ] && echo "$file" | grep -q \
+          -e "packet-forward-middleware" \
+          -e "regen-network/protobuf" \
+          -e "poa/genesis.proto"; then 
         echo "skipping problematic file $file"
         continue
       fi
       echo "generating $language for file $file"
 
       buf generate $file \
+        --include-wkt \
         --include-imports \
         --template "$buf_dir/buf.gen.$language.yaml" \
         --output $xion_types_dir
