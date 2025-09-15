@@ -32,4 +32,67 @@ pub struct Params {
     #[prost(uint64, tag="6")]
     pub blocks_per_year: u64,
 }
+/// GenesisState defines the mint module's genesis state.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    /// minter is a space for holding current inflation information.
+    #[prost(message, optional, tag="1")]
+    pub minter: ::core::option::Option<Minter>,
+    /// params defines all the parameters of the module.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+/// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryParamsRequest {
+}
+/// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryParamsResponse {
+    /// params defines the parameters of the module.
+    #[prost(message, optional, tag="1")]
+    pub params: ::core::option::Option<Params>,
+}
+/// QueryInflationRequest is the request type for the Query/Inflation RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryInflationRequest {
+}
+/// QueryInflationResponse is the response type for the Query/Inflation RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryInflationResponse {
+    /// inflation is the current minting inflation value.
+    #[prost(bytes="vec", tag="1")]
+    pub inflation: ::prost::alloc::vec::Vec<u8>,
+}
+/// QueryAnnualProvisionsRequest is the request type for the
+/// Query/AnnualProvisions RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryAnnualProvisionsRequest {
+}
+/// QueryAnnualProvisionsResponse is the response type for the
+/// Query/AnnualProvisions RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAnnualProvisionsResponse {
+    /// annual_provisions is the current minting annual provisions value.
+    #[prost(bytes="vec", tag="1")]
+    pub annual_provisions: ::prost::alloc::vec::Vec<u8>,
+}
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// params defines the x/mint parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
+}
 // @@protoc_insertion_point(module)

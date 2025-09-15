@@ -8,17 +8,29 @@ xion_dir="$xion_types_dir/xion"
 proto_dir="$xion_dir/proto"
 buf_dir="$xion_types_dir/buf"
 
-# This functions as an extension of the proto-gen.sh script from xion
-# this gives us a consistent souce of proto paths
-cd $xion_dir
-. ./scripts/proto-gen.sh
+# Define dependencies
+deps="
+github.com/CosmWasm/wasmd
+github.com/cosmos/ibc-go/v10
+github.com/burnt-labs/abstract-account
+"
+
+# Install selected dependencies from go.mod
+echo "installing dependencies"
+cd ${xion_dir} 
+go mod download $deps
+
+# Get dependency paths
+echo "getting paths for $deps"
+proto_paths=$(go list -f '{{ .Dir }}' -m $deps | sed "s/$/\/proto/")
+
 cd $xion_types_dir
 
 gen_language() {
   local language=$1
   local skip_problematic=${2:-true}  # Default to true if not specified
   
-  local dirs=$(get_proto_dirs "$proto_dir" $proto_paths)  # Use both local and dependency paths
+  local dirs="$proto_dir $proto_paths"  # Use both local and dependency paths
   lang_dir=$xion_types_dir/$language
   types_dir=$lang_dir/types
   mkdir -p $types_dir
@@ -28,23 +40,17 @@ gen_language() {
 
   # For local plugins, generate file by file (existing behavior)
   for dir in $dirs; do
-    for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
-      # Skip problematic files if skip_problematic is true
-      if [ "$skip_problematic" = "true" ] && echo "$file" | grep -q \
-          -e "packet-forward-middleware" \
-          -e "regen-network/protobuf" \
-          -e "poa/genesis.proto" \
-          -e "tokenfactory/v1beta1"; then
-        echo "skipping problematic file $file"
-        continue
-      fi
-      echo "generating $language for file $file"
+    # Skip problematic files if skip_problematic is true
+    if [ "$skip_problematic" = "true" ] && echo "$file" | grep -q \
+        -e "poa"; then
+      echo "skipping problematic file $file"
+      continue
+    fi
+    echo "generating $language for file $dir"
 
-      buf generate $file \
-        --include-imports \
-        --template "$buf_dir/buf.gen.$language.yaml" \
-        --output $xion_types_dir
-    done
+    buf generate $dir \
+      --template "$buf_dir/buf.gen.$language.yaml" \
+      --output $xion_types_dir 2>&1 | grep -v "duplicate generated file name"
   done
 }
 
@@ -57,9 +63,9 @@ post_kotlin() {
 init_ts() {
   # Install npm dependencies
   ts_dir=$xion_types_dir/ts
-  cd $ts_dir
-  npm install
-  export PATH="$ts_dir/node_modules/.bin:$PATH"
+  # cd $ts_dir
+  # npm install
+  # export PATH="$ts_dir/node_modules/.bin:$PATH"
 }
 
 show_help() {
@@ -95,7 +101,7 @@ main() {
   while [[ $# -gt 0 ]]; do
     case $1 in
     --all)
-      init_ts && gen_language all && post_kotlin
+      gen_language all && post_kotlin
       shift
       ;;
     --c)
@@ -143,7 +149,7 @@ main() {
       shift
       ;;
     --ts)
-      init_ts &&gen_language ts
+      gen_language ts
       shift
       ;;
     --swagger)

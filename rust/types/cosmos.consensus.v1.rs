@@ -13,4 +13,29 @@ pub struct QueryParamsResponse {
     #[prost(message, optional, tag="1")]
     pub params: ::core::option::Option<super::super::super::tendermint::types::ConsensusParams>,
 }
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// params defines the x/consensus parameters to update.
+    /// VersionsParams is not included in this Msg because it is tracked
+    /// separarately in x/upgrade.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub block: ::core::option::Option<super::super::super::tendermint::types::BlockParams>,
+    #[prost(message, optional, tag="3")]
+    pub evidence: ::core::option::Option<super::super::super::tendermint::types::EvidenceParams>,
+    #[prost(message, optional, tag="4")]
+    pub validator: ::core::option::Option<super::super::super::tendermint::types::ValidatorParams>,
+    #[prost(message, optional, tag="5")]
+    pub abci: ::core::option::Option<super::super::super::tendermint::types::AbciParams>,
+}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
+}
 // @@protoc_insertion_point(module)

@@ -135,30 +135,25 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n*cosmos/base/query/v1beta1/pagination.p"
-    "roto\022\031cosmos.base.query.v1beta1\032\031cosmos_"
-    "proto/cosmos.proto\"\235\001\n\013PageRequest\022\020\n\003ke"
-    "y\030\001 \001(\014R\003key\022\026\n\006offset\030\002 \001(\004R\006offset\022\024\n\005"
-    "limit\030\003 \001(\004R\005limit\022\037\n\013count_total\030\004 \001(\010R"
-    "\ncountTotal\022-\n\007reverse\030\005 \001(\010B\023\332\264-\017cosmos"
-    "-sdk 0.43R\007reverse\"\?\n\014PageResponse\022\031\n\010ne"
-    "xt_key\030\001 \001(\014R\007nextKey\022\024\n\005total\030\002 \001(\004R\005to"
-    "talB*Z(github.com/cosmos/cosmos-sdk/type"
-    "s/queryb\006proto3"
-};
-static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto_deps[1] =
-    {
-        &::descriptor_table_cosmos_5fproto_2fcosmos_2eproto,
+    "roto\022\031cosmos.base.query.v1beta1\"\210\001\n\013Page"
+    "Request\022\020\n\003key\030\001 \001(\014R\003key\022\026\n\006offset\030\002 \001("
+    "\004R\006offset\022\024\n\005limit\030\003 \001(\004R\005limit\022\037\n\013count"
+    "_total\030\004 \001(\010R\ncountTotal\022\030\n\007reverse\030\005 \001("
+    "\010R\007reverse\"\?\n\014PageResponse\022\031\n\010next_key\030\001"
+    " \001(\014R\007nextKey\022\024\n\005total\030\002 \001(\004R\005totalB*Z(g"
+    "ithub.com/cosmos/cosmos-sdk/types/queryb"
+    "\006proto3"
 };
 static ::absl::once_flag descriptor_table_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto = {
     false,
     false,
-    375,
+    327,
     descriptor_table_protodef_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto,
     "cosmos/base/query/v1beta1/pagination.proto",
     &descriptor_table_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto_once,
-    descriptor_table_cosmos_2fbase_2fquery_2fv1beta1_2fpagination_2eproto_deps,
-    1,
+    nullptr,
+    0,
     2,
     schemas,
     file_default_instances,
@@ -308,7 +303,7 @@ const ::_pbi::TcParseTable<3, 5, 0, 0, 2> PageRequest::_table_ = {
     // bool count_total = 4 [json_name = "countTotal"];
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(PageRequest, _impl_.count_total_), 63>(),
      {32, 63, 0, PROTOBUF_FIELD_OFFSET(PageRequest, _impl_.count_total_)}},
-    // bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];
+    // bool reverse = 5 [json_name = "reverse"];
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(PageRequest, _impl_.reverse_), 63>(),
      {40, 63, 0, PROTOBUF_FIELD_OFFSET(PageRequest, _impl_.reverse_)}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -328,7 +323,7 @@ const ::_pbi::TcParseTable<3, 5, 0, 0, 2> PageRequest::_table_ = {
     // bool count_total = 4 [json_name = "countTotal"];
     {PROTOBUF_FIELD_OFFSET(PageRequest, _impl_.count_total_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];
+    // bool reverse = 5 [json_name = "reverse"];
     {PROTOBUF_FIELD_OFFSET(PageRequest, _impl_.reverse_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
@@ -393,7 +388,7 @@ PROTOBUF_NOINLINE void PageRequest::Clear() {
                 4, this_._internal_count_total(), target);
           }
 
-          // bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];
+          // bool reverse = 5 [json_name = "reverse"];
           if (this_._internal_reverse() != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -444,7 +439,7 @@ PROTOBUF_NOINLINE void PageRequest::Clear() {
             if (this_._internal_count_total() != 0) {
               total_size += 2;
             }
-            // bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];
+            // bool reverse = 5 [json_name = "reverse"];
             if (this_._internal_reverse() != 0) {
               total_size += 2;
             }

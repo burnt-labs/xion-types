@@ -7,7 +7,7 @@
 module.exports = {
   // Package information
   name: '@burnt-labs/xion-types',
-  version: '16.0.0',
+  version: '22.0.0',
   description: 'TypeScript definitions for Xion Protobuf files'
 };
 

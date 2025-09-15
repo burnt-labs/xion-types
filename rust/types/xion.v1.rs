@@ -26,4 +26,108 @@ pub struct MultiAnyAllowance {
     #[prost(message, repeated, tag="1")]
     pub allowances: ::prost::alloc::vec::Vec<::prost_types::Any>,
 }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    #[prost(uint32, tag="1")]
+    pub platform_percentage: u32,
+    #[prost(message, repeated, tag="2")]
+    pub platform_minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryWebAuthNVerifyRegisterRequest {
+    #[prost(string, tag="1")]
+    pub addr: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub challenge: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub rp: ::prost::alloc::string::String,
+    #[prost(bytes="vec", tag="4")]
+    pub data: ::prost::alloc::vec::Vec<u8>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryWebAuthNVerifyRegisterResponse {
+    #[prost(bytes="vec", tag="1")]
+    pub credential: ::prost::alloc::vec::Vec<u8>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryWebAuthNVerifyAuthenticateRequest {
+    #[prost(string, tag="1")]
+    pub addr: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub challenge: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub rp: ::prost::alloc::string::String,
+    #[prost(bytes="vec", tag="4")]
+    pub credential: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="5")]
+    pub data: ::prost::alloc::vec::Vec<u8>,
+}
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryWebAuthNVerifyAuthenticateResponse {
+}
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryPlatformPercentageRequest {
+}
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryPlatformPercentageResponse {
+    #[prost(uint64, tag="1")]
+    pub platform_percentage: u64,
+}
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryPlatformMinimumRequest {
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryPlatformMinimumResponse {
+    #[prost(message, repeated, tag="3")]
+    pub minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+}
+/// MsgSend represents a message to send coins from one account to another.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgSend {
+    #[prost(string, tag="1")]
+    pub from_address: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub to_address: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag="3")]
+    pub amount: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+}
+/// MsgSendResponse defines the Msg/Send response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgSendResponse {
+}
+/// MsgMultiSend represents an arbitrary multi-in, multi-out send message.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgMultiSend {
+    /// Inputs, despite being `repeated`, only allows one sender input. This is
+    /// checked in MsgMultiSend's ValidateBasic.
+    #[prost(message, repeated, tag="1")]
+    pub inputs: ::prost::alloc::vec::Vec<super::super::cosmos::bank::v1beta1::Input>,
+    #[prost(message, repeated, tag="2")]
+    pub outputs: ::prost::alloc::vec::Vec<super::super::cosmos::bank::v1beta1::Output>,
+}
+/// MsgMultiSendResponse defines the Msg/MultiSend response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgMultiSendResponse {
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgSetPlatformPercentage {
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// platform_percentage is the platform fee percentage to multiplied by 10000
+    #[prost(uint32, tag="2")]
+    pub platform_percentage: u32,
+}
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgSetPlatformPercentageResponse {
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgSetPlatformMinimum {
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag="3")]
+    pub minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+}
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgSetPlatformMinimumResponse {
+}
 // @@protoc_insertion_point(module)
