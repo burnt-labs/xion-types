@@ -5,17 +5,17 @@ on:
     branches: 
       - feat/add-tagging-to-npm-publish # DELETE THIS
       #- main 
-  pull_request:
-    branches: 
-      - main
-      
+            
   workflow_dispatch:
     inputs:
       next_version:
-        description: 'Specific version to set (e.g., 1.2.3). If empty, will use the latest Git tag.'
-        required: false
+        description: 'Specific version to set (e.g., 1.2.3). Required for manual workflow runs.'
+        required: true
         type: string
 
+  repository_dispatch: # triggers on release event from burnt-labs/xion repo
+    types: [xion-types-release-trigger]
+      
 env:
   NODE_VERSION: '20'
   REGISTRY_URL: 'https://registry.npmjs.org'
@@ -150,7 +150,8 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    #if: github.ref == 'refs/heads/main' && github.event_name == 'merge' 
+    # Only run publish for: latest release OR manual dispatch
+    if: github.event.client_payload.release_type == 'latest' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -179,104 +180,91 @@ jobs:
             # Set specific version from manual input
             npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
             echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+          elif [ "${{ github.event_name }}" == "release" ]; then
+            # Set version from release tag
+            RELEASE_TAG="${{ github.event.release.tag_name }}"
+            # Remove 'v' prefix if present
+            CLEAN_TAG=${RELEASE_TAG#v}
+            echo "Set the package version in package.json to: $CLEAN_TAG"
+            npm version $CLEAN_TAG --no-git-tag-version
+            echo "Set version from release tag: $RELEASE_TAG (clean: $CLEAN_TAG)"
           else
-            # Get version from latest Git tag
-            echo "No manual version specified, using latest Git tag..."
-            
-            # Fetch all tags
-            git fetch --tags
-            
-            # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
-            LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
-            
-            if [ -z "$LATEST_TAG" ]; then
-              echo "❌ No version tags found. Please either:"
-              echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
-              echo "   2. Provide next_version input in workflow_dispatch"
-              exit 1
-            else
-              # Remove 'v' prefix if present
-              CLEAN_TAG=${LATEST_TAG#v}
-              echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
-              npm version $CLEAN_TAG --no-git-tag-version
-              echo "TAG=$CLEAN_TAG" >> $GITHUB_ENV
-            fi
+            echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
+            exit 1
           fi
         
           # Get the new version
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
           echo "New package version: $NEW_VERSION"
 
-      - name: Dry run publish to NPM #DELETEME
+      - name: Dry run publish to NPM # TODO TEST & DELETE ME
         working-directory: ./ts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "Dry run version: ${{ env.NEW_VERSION }}"
-          echo "Dry run tag: ${{ env.TAG }}"      
+          echo "DRY RUN CHECK: @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"     
 
       # - name: Publish to NPM 
       #   working-directory: ./ts
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       #   run: |
-      #     echo "Publishing package version: ${{ env.NEW_VERSION }}"
-      #     # TODO npm publish --verbose --access public
-      #     echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+      #     echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
+      #     npm publish --verbose --access public --tag ${{ env.TAG }}
+      #     echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
+  # validate-package:
+  #   name: Validate NPM Package
+  #   needs: [publish]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #         registry-url: ${{ env.REGISTRY_URL }}
 
-  #TODO - validate the tag based on how it is set from the trigger
-  validate-package:
-    name: Validate NPM Package
-    needs: [publish]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
-
-      - name: Verify Package on NPM
-        env:
-          TAG: latest #${{ needs.publish.outputs.TAG }}
-          VERSION: 21.0.0-alpha.4 #${{ needs.publish.outputs.NEW_VERSION }}
-        run: |
-          echo "Verifying package version: $VERSION"
+  #     - name: Verify Package on NPM
+  #       env:
+  #         TAG: ${{ needs.publish.outputs.TAG }}
+  #         VERSION: ${{ needs.publish.outputs.NEW_VERSION }}
+  #       run: |
+  #         echo "Verifying package version: $VERSION"
           
-          # Retry logic for NPM verification
-          MAX_ATTEMPTS=10
-          ATTEMPT=1
+  #         # Retry logic for NPM verification
+  #         MAX_ATTEMPTS=10
+  #         ATTEMPT=1
           
-          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+  #         while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+  #           echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-            if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
-              echo "✅ Package successfully published to NPM"
-              echo "Package version $VERSION is available on NPM"
+  #           if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
+  #             echo "✅ Package successfully published to NPM"
+  #             echo "Package version $VERSION is available on NPM"
 
-              # Check if our version is tagged as latest
-              LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
-              if [ "$LATEST_VERSION" = "$VERSION" ]; then
-                echo "✅ Version $VERSION is correctly tagged as 'latest'"
-              else
-                echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
-              fi
+  #             # Check if our version is tagged as latest
+  #             LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
+  #             if [ "$LATEST_VERSION" = "$VERSION" ]; then
+  #               echo "✅ Version $VERSION is correctly tagged as 'latest'"
+  #             else
+  #               echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
+  #             fi
 
-              exit 0
-            else
-              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+  #             exit 0
+  #           else
+  #             echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting 10 seconds before retry..."
-                sleep 10
-              fi
-            fi
+  #             if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+  #               echo "Waiting 10 seconds before retry..."
+  #               sleep 10
+  #             fi
+  #           fi
             
-            ATTEMPT=$((ATTEMPT + 1))
-          done
+  #           ATTEMPT=$((ATTEMPT + 1))
+  #         done
           
-          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-          exit 1
+  #         echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+  #         exit 1
