@@ -157,9 +157,11 @@ public object PageRequestKt {
     /**
      * ```
      * reverse is set to true if results are to be returned in the descending order.
+     *
+     * Since: cosmos-sdk 0.43
      * ```
      *
-     * `bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
+     * `bool reverse = 5 [json_name = "reverse"];`
      */
     public var reverse: kotlin.Boolean
       @JvmName("getReverse")
@@ -171,9 +173,11 @@ public object PageRequestKt {
     /**
      * ```
      * reverse is set to true if results are to be returned in the descending order.
+     *
+     * Since: cosmos-sdk 0.43
      * ```
      *
-     * `bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
+     * `bool reverse = 5 [json_name = "reverse"];`
      */
     public fun clearReverse() {
       _builder.clearReverse()

@@ -37,6 +37,7 @@ RUN apk add --no-cache \
     protobuf-dev \
     protobuf-c-dev
 
+RUN npm install -g ts-proto
 RUN npm install -g swagger-combine
 
 ENV GOLANG_PROTOBUF_VERSION=1.36.6 \
@@ -91,4 +92,5 @@ RUN protoc --version && \
     which protoc-gen-scala && \
     which protoc-gen-swift && \
     which protoc-gen-c && \
+    which protoc-gen-ts_proto && \
     buf --version

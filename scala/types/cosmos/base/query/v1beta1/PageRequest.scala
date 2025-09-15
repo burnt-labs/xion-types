@@ -31,6 +31,8 @@ package cosmos.base.query.v1beta1
   *   is set.
   * @param reverse
   *   reverse is set to true if results are to be returned in the descending order.
+  *  
+  *   Since: cosmos-sdk 0.43
   */
 @SerialVersionUID(0L)
 final case class PageRequest(

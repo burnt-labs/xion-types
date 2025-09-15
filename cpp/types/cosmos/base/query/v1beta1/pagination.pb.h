@@ -29,7 +29,6 @@
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
 #include "google/protobuf/unknown_field_set.h"
-#include "cosmos_proto/cosmos.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -487,7 +486,7 @@ class PageRequest final : public ::google::protobuf::Message
   void _internal_set_count_total(bool value);
 
   public:
-  // bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];
+  // bool reverse = 5 [json_name = "reverse"];
   void clear_reverse() ;
   bool reverse() const;
   void set_reverse(bool value);
@@ -662,7 +661,7 @@ inline void PageRequest::_internal_set_count_total(bool value) {
   _impl_.count_total_ = value;
 }
 
-// bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];
+// bool reverse = 5 [json_name = "reverse"];
 inline void PageRequest::clear_reverse() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.reverse_ = false;

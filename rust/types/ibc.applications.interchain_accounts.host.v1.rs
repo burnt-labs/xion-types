@@ -35,4 +35,40 @@ pub struct QueryParamsResponse {
     #[prost(message, optional, tag="1")]
     pub params: ::core::option::Option<Params>,
 }
+/// MsgUpdateParams defines the payload for Msg/UpdateParams
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// signer address
+    #[prost(string, tag="1")]
+    pub signer: ::prost::alloc::string::String,
+    /// params defines the 27-interchain-accounts/host parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+/// MsgUpdateParamsResponse defines the response for Msg/UpdateParams
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
+}
+/// MsgModuleQuerySafe defines the payload for Msg/ModuleQuerySafe
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgModuleQuerySafe {
+    /// signer address
+    #[prost(string, tag="1")]
+    pub signer: ::prost::alloc::string::String,
+    /// requests defines the module safe queries to execute.
+    #[prost(message, repeated, tag="2")]
+    pub requests: ::prost::alloc::vec::Vec<QueryRequest>,
+}
+/// MsgModuleQuerySafeResponse defines the response for Msg/ModuleQuerySafe
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgModuleQuerySafeResponse {
+    /// height at which the responses were queried
+    #[prost(uint64, tag="1")]
+    pub height: u64,
+    /// protobuf encoded responses for each query
+    #[prost(bytes="vec", repeated, tag="2")]
+    pub responses: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+}
 // @@protoc_insertion_point(module)
