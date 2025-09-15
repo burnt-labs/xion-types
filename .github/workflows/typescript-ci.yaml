@@ -180,14 +180,14 @@ jobs:
             # Set specific version from manual input
             npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
             echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
-          elif [ "${{ github.event_name }}" == "release" ]; then
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             # Set version from release tag
-            RELEASE_TAG="${{ github.event.release.tag_name }}"
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
             # Remove 'v' prefix if present
             CLEAN_TAG=${RELEASE_TAG#v}
             echo "Set the package version in package.json to: $CLEAN_TAG"
             npm version $CLEAN_TAG --no-git-tag-version
-            echo "Set version from release tag: $RELEASE_TAG (clean: $CLEAN_TAG)"
+            echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
           else
             echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
             exit 1
