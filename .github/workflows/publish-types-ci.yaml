@@ -1,4 +1,4 @@
-name: Xion-Types Package CI/CD
+name: Publish Types CI/CD
 
 on:
   push:
