@@ -13,6 +13,8 @@ deps="
 github.com/CosmWasm/wasmd
 github.com/cosmos/ibc-go/v10
 github.com/burnt-labs/abstract-account
+github.com/strangelove-ventures/tokenfactory
+github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v10
 "
 
 # Install selected dependencies from go.mod
