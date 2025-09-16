@@ -3324,8 +3324,6 @@ public final class Upgrade {
   /**
    * <pre>
    * ModuleVersion specifies a module and its consensus version.
-   *
-   * Since: cosmos-sdk 0.43
    * </pre>
    *
    * Protobuf type {@code cosmos.upgrade.v1beta1.ModuleVersion}
@@ -3598,8 +3596,6 @@ public final class Upgrade {
     /**
      * <pre>
      * ModuleVersion specifies a module and its consensus version.
-     *
-     * Since: cosmos-sdk 0.43
      * </pre>
      *
      * Protobuf type {@code cosmos.upgrade.v1beta1.ModuleVersion}
@@ -3987,10 +3983,10 @@ public final class Upgrade {
       "Proposal\022\024\n\005title\030\001 \001(\tR\005title\022 \n\013descri" +
       "ption\030\002 \001(\tR\013description:Q\030\001\350\240\037\001\312\264-\032cosm" +
       "os.gov.v1beta1.Content\212\347\260*(cosmos-sdk/Ca" +
-      "ncelSoftwareUpgradeProposal\"C\n\rModuleVer" +
+      "ncelSoftwareUpgradeProposal\"V\n\rModuleVer" +
       "sion\022\022\n\004name\030\001 \001(\tR\004name\022\030\n\007version\030\002 \001(" +
-      "\004R\007version:\004\350\240\037\001B\"Z\034cosmossdk.io/x/upgra" +
-      "de/types\310\341\036\000b\006proto3"
+      "\004R\007version:\027\350\240\037\001\322\264-\017cosmos-sdk 0.43B\"Z\034c" +
+      "osmossdk.io/x/upgrade/types\310\341\036\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4036,6 +4032,7 @@ public final class Upgrade {
     registry.add(amino.Amino.dontOmitempty);
     registry.add(amino.Amino.name);
     registry.add(cosmos_proto.Cosmos.implementsInterface);
+    registry.add(cosmos_proto.Cosmos.messageAddedIn);
     registry.add(com.google.protobuf.GoGoProtos.equal);
     registry.add(com.google.protobuf.GoGoProtos.goprotoGettersAll);
     registry.add(com.google.protobuf.GoGoProtos.nullable);

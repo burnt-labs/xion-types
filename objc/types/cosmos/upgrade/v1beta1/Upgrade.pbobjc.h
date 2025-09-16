@@ -166,8 +166,6 @@ typedef GPB_ENUM(ModuleVersion_FieldNumber) {
 
 /**
  * ModuleVersion specifies a module and its consensus version.
- *
- * Since: cosmos-sdk 0.43
  **/
 GPB_FINAL @interface ModuleVersion : GPBMessage
 

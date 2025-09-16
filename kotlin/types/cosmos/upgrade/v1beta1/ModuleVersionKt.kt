@@ -12,8 +12,6 @@ public inline fun moduleVersion(block: cosmos.upgrade.v1beta1.ModuleVersionKt.Ds
 /**
  * ```
  * ModuleVersion specifies a module and its consensus version.
- *
- * Since: cosmos-sdk 0.43
  * ```
  *
  * Protobuf type `cosmos.upgrade.v1beta1.ModuleVersion`

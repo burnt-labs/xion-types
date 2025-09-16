@@ -41,7 +41,8 @@ class ResponseFinalizeBlock extends \Google\Protobuf\Internal\Message
      */
     protected $consensus_param_updates = null;
     /**
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      *
      * Generated from protobuf field <code>bytes app_hash = 5 [json_name = "appHash"];</code>
      */
@@ -64,7 +65,8 @@ class ResponseFinalizeBlock extends \Google\Protobuf\Internal\Message
      *     @type \Tendermint\Types\ConsensusParams $consensus_param_updates
      *           updates to the consensus params, if any.
      *     @type string $app_hash
-     *           app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     *           app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     *           deterministic. It is up to the application to decide which algorithm to use.
      * }
      */
     public function __construct($data = NULL) {
@@ -191,7 +193,8 @@ class ResponseFinalizeBlock extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      *
      * Generated from protobuf field <code>bytes app_hash = 5 [json_name = "appHash"];</code>
      * @return string
@@ -202,7 +205,8 @@ class ResponseFinalizeBlock extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      *
      * Generated from protobuf field <code>bytes app_hash = 5 [json_name = "appHash"];</code>
      * @param string $var

@@ -35142,7 +35142,8 @@ public final class Types {
 
     /**
      * <pre>
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * </pre>
      *
      * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -35427,7 +35428,8 @@ public final class Types {
     private com.google.protobuf.ByteString appHash_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * </pre>
      *
      * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -37119,7 +37121,8 @@ public final class Types {
       private com.google.protobuf.ByteString appHash_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+       * deterministic. It is up to the application to decide which algorithm to use.
        * </pre>
        *
        * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -37131,7 +37134,8 @@ public final class Types {
       }
       /**
        * <pre>
-       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+       * deterministic. It is up to the application to decide which algorithm to use.
        * </pre>
        *
        * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -37147,7 +37151,8 @@ public final class Types {
       }
       /**
        * <pre>
-       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+       * deterministic. It is up to the application to decide which algorithm to use.
        * </pre>
        *
        * <code>bytes app_hash = 5 [json_name = "appHash"];</code>

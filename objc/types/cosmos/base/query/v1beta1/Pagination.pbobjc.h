@@ -95,11 +95,7 @@ GPB_FINAL @interface PageRequest : GPBMessage
  **/
 @property(nonatomic, readwrite) BOOL countTotal;
 
-/**
- * reverse is set to true if results are to be returned in the descending order.
- *
- * Since: cosmos-sdk 0.43
- **/
+/** reverse is set to true if results are to be returned in the descending order. */
 @property(nonatomic, readwrite) BOOL reverse;
 
 @end

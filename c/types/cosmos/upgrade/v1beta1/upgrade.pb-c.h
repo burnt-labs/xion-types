@@ -126,7 +126,6 @@ struct  Cosmos__Upgrade__V1beta1__CancelSoftwareUpgradeProposal
 
 /*
  * ModuleVersion specifies a module and its consensus version.
- * Since: cosmos-sdk 0.43
  */
 struct  Cosmos__Upgrade__V1beta1__ModuleVersion
 {

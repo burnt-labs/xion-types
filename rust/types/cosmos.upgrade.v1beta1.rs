@@ -62,8 +62,6 @@ pub struct CancelSoftwareUpgradeProposal {
     pub description: ::prost::alloc::string::String,
 }
 /// ModuleVersion specifies a module and its consensus version.
-///
-/// Since: cosmos-sdk 0.43
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleVersion {
     /// name of the app module
@@ -72,5 +70,103 @@ pub struct ModuleVersion {
     /// consensus version of the app module
     #[prost(uint64, tag="2")]
     pub version: u64,
+}
+/// QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
+/// method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryCurrentPlanRequest {
+}
+/// QueryCurrentPlanResponse is the response type for the Query/CurrentPlan RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryCurrentPlanResponse {
+    /// plan is the current upgrade plan.
+    #[prost(message, optional, tag="1")]
+    pub plan: ::core::option::Option<Plan>,
+}
+/// QueryCurrentPlanRequest is the request type for the Query/AppliedPlan RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAppliedPlanRequest {
+    /// name is the name of the applied plan to query for.
+    #[prost(string, tag="1")]
+    pub name: ::prost::alloc::string::String,
+}
+/// QueryAppliedPlanResponse is the response type for the Query/AppliedPlan RPC
+/// method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryAppliedPlanResponse {
+    /// height is the block height at which the plan was applied.
+    #[prost(int64, tag="1")]
+    pub height: i64,
+}
+/// QueryUpgradedConsensusStateRequest is the request type for the Query/UpgradedConsensusState
+/// RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryUpgradedConsensusStateRequest {
+    /// last height of the current chain must be sent in request
+    /// as this is the height under which next consensus state is stored
+    #[prost(int64, tag="1")]
+    pub last_height: i64,
+}
+/// QueryUpgradedConsensusStateResponse is the response type for the Query/UpgradedConsensusState
+/// RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryUpgradedConsensusStateResponse {
+    #[prost(bytes="vec", tag="2")]
+    pub upgraded_consensus_state: ::prost::alloc::vec::Vec<u8>,
+}
+/// QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
+/// RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryModuleVersionsRequest {
+    /// module_name is a field to query a specific module
+    /// consensus version from state. Leaving this empty will
+    /// fetch the full list of module versions from state
+    #[prost(string, tag="1")]
+    pub module_name: ::prost::alloc::string::String,
+}
+/// QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
+/// RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryModuleVersionsResponse {
+    /// module_versions is a list of module names with their consensus versions.
+    #[prost(message, repeated, tag="1")]
+    pub module_versions: ::prost::alloc::vec::Vec<ModuleVersion>,
+}
+/// QueryAuthorityRequest is the request type for Query/Authority
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryAuthorityRequest {
+}
+/// QueryAuthorityResponse is the response type for Query/Authority
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAuthorityResponse {
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+}
+/// MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgSoftwareUpgrade {
+    /// authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// plan is the upgrade plan.
+    #[prost(message, optional, tag="2")]
+    pub plan: ::core::option::Option<Plan>,
+}
+/// MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgSoftwareUpgradeResponse {
+}
+/// MsgCancelUpgrade is the Msg/CancelUpgrade request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCancelUpgrade {
+    /// authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+}
+/// MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgCancelUpgradeResponse {
 }
 // @@protoc_insertion_point(module)

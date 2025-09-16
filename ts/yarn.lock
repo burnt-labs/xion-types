@@ -1071,6 +1071,11 @@
     "@babel/helper-validator-identifier" "^7.18.6"
     to-fast-properties "^2.0.0"
 
+"@bufbuild/protobuf@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.npmjs.org/@bufbuild/protobuf/-/protobuf-2.8.0.tgz"
+  integrity sha512-r1/0w5C9dkbcdjyxY8ZHsC5AOWg4Pnzhm2zu7LO4UHSounp2tMm6Y+oioV9zlGbLveE7YaWRDUk48WLxRDgoqg==
+
 "@chain-registry/v2-types@^0.53.115", "@chain-registry/v2-types@^0.53.146":
   version "0.53.146"
   resolved "https://registry.npmjs.org/@chain-registry/v2-types/-/v2-types-0.53.146.tgz"
@@ -1219,6 +1224,13 @@
   integrity sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
+
+"@improbable-eng/grpc-web@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.npmjs.org/@improbable-eng/grpc-web/-/grpc-web-0.15.0.tgz"
+  integrity sha512-ERft9/0/8CmYalqOVnJnpdDry28q+j+nAlFFARdjyxXDJ+Mhgv9+F600QC8BR9ygOfrXRlAk6CvST2j+JCpQPg==
+  dependencies:
+    browser-headers "^0.4.1"
 
 "@interchainjs/amino@1.11.5":
   version "1.11.5"
@@ -1919,6 +1931,11 @@ brorand@^1.1.0:
   resolved "https://registry.npmjs.org/brorand/-/brorand-1.1.0.tgz"
   integrity sha512-cKV8tMCEpQs4hK/ik71d6LrPOnpkpGBR0wzxqr68g2m/LB2GxVYQroAjMJZRVM1Y4BCjCKc3vAamxSzOY2RP+w==
 
+browser-headers@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/browser-headers/-/browser-headers-0.4.1.tgz"
+  integrity sha512-CA9hsySZVo9371qEHjHZtYxV2cFtVj5Wj/ZHi8ooEsrtm4vOnl9Y9HmyYWk9q+05d7K3rdoAE0j3MVEFVvtQtg==
+
 browserslist@^4.24.0, browserslist@^4.25.3, "browserslist@>= 4.21.0":
   version "4.26.2"
   resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.26.2.tgz"
@@ -2590,6 +2607,11 @@ globals@^11.1.0:
   version "11.12.0"
   resolved "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
   integrity sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==
+
+google-protobuf@^3.14.0:
+  version "3.21.4"
+  resolved "https://registry.npmjs.org/google-protobuf/-/google-protobuf-3.21.4.tgz"
+  integrity sha512-MnG7N936zcKTco4Jd2PX2U96Kf9PxygAPKBug+74LHzmHXmceN16MmRcdgZv+DGef/S9YvQAfRsNCn4cjf9yyQ==
 
 gopd@^1.2.0:
   version "1.2.0"

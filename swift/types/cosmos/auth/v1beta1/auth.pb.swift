@@ -78,8 +78,6 @@ struct Cosmos_Auth_V1beta1_ModuleAccount: Sendable {
 }
 
 /// ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
-///
-/// Since: cosmos-sdk 0.47
 struct Cosmos_Auth_V1beta1_ModuleCredential: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

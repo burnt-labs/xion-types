@@ -39,8 +39,10 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@bufbuild/protobuf": "^2.8.0",
     "@cosmology/lcd": "^0.14.0",
     "@cosmology/telescope": "^1.12.20",
+    "@improbable-eng/grpc-web": "^0.15.0",
     "@interchainjs/cosmos": "1.11.5",
     "@interchainjs/cosmos-types": "1.11.5",
     "@interchainjs/encoding": "1.11.5",

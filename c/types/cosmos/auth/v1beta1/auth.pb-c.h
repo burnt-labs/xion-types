@@ -66,7 +66,6 @@ struct  Cosmos__Auth__V1beta1__ModuleAccount
 
 /*
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- * Since: cosmos-sdk 0.47
  */
 struct  Cosmos__Auth__V1beta1__ModuleCredential
 {

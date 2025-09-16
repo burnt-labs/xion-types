@@ -773,7 +773,8 @@ struct  Tendermint__Abci__ResponseFinalizeBlock
    */
   Tendermint__Types__ConsensusParams *consensus_param_updates;
   /*
-   * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+   * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+   * deterministic. It is up to the application to decide which algorithm to use.
    */
   ProtobufCBinaryData app_hash;
 };

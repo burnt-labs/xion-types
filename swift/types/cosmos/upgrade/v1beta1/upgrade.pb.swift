@@ -135,8 +135,6 @@ struct Cosmos_Upgrade_V1beta1_CancelSoftwareUpgradeProposal: Sendable {
 }
 
 /// ModuleVersion specifies a module and its consensus version.
-///
-/// Since: cosmos-sdk 0.43
 struct Cosmos_Upgrade_V1beta1_ModuleVersion: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
