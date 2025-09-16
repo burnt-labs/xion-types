@@ -1,3 +1,8 @@
 .idea
 go
 .claude
+
+ts/git-modules
+ts/protos
+ts/node_modules
+ts/dist

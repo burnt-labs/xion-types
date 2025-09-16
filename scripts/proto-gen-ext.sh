@@ -8,14 +8,21 @@ xion_dir="$xion_types_dir/xion"
 proto_dir="$xion_dir/proto"
 buf_dir="$xion_types_dir/buf"
 
-# Define dependencies
-deps="
-github.com/CosmWasm/wasmd
-github.com/cosmos/ibc-go/v10
-github.com/burnt-labs/abstract-account
-github.com/strangelove-ventures/tokenfactory
-github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v10
-"
+# Source dependencies from .env file
+env_file="$xion_types_dir/.env"
+if [ ! -f "$env_file" ]; then
+  echo "Error: .env file not found at $env_file"
+  exit 1
+fi
+
+source "$env_file"
+
+if [ -z "$DEPS" ]; then
+  echo "Error: DEPS variable not found in .env file"
+  exit 1
+fi
+
+deps="$DEPS"
 
 # Install selected dependencies from go.mod
 echo "installing dependencies"
@@ -45,14 +52,14 @@ gen_language() {
     # Skip problematic files if skip_problematic is true
     if [ "$skip_problematic" = "true" ] && echo "$file" | grep -q \
         -e "poa"; then
-      echo "skipping problematic file $file"
+      echo "skipping problematic dir $file"
       continue
     fi
-    echo "generating $language for file $dir"
+    echo "generating $language for dir $dir"
 
     buf generate $dir \
       --template "$buf_dir/buf.gen.$language.yaml" \
-      --output $xion_types_dir 2>&1 | grep -v "duplicate generated file name"
+      --output $xion_types_dir 2>&1 | grep -v "duplicate generated file name" || true
   done
 }
 
@@ -62,12 +69,19 @@ post_kotlin() {
     find "$lang_dir/types" -name "*.proto.kt" -delete 2>/dev/null || true
 }
 
-init_ts() {
+gen_ts() {
+  echo "🔭 Generating TypeScript types..."
+  
   # Install npm dependencies
   ts_dir=$xion_types_dir/ts
-  # cd $ts_dir
-  # npm install
-  # export PATH="$ts_dir/node_modules/.bin:$PATH"
+  cd $ts_dir
+  npm install
+
+  # Download .proto files (deps will be read from deps.txt)
+  npm run download-protos
+
+  # Run codegen (deps will be read from deps.txt)
+  npm run codegen
 }
 
 show_help() {
@@ -103,7 +117,7 @@ main() {
   while [[ $# -gt 0 ]]; do
     case $1 in
     --all)
-      gen_language all && post_kotlin
+      gen_language all && post_kotlin && gen_ts
       shift
       ;;
     --c)
@@ -151,7 +165,8 @@ main() {
       shift
       ;;
     --ts)
-      gen_language ts
+      #gen_language ts && 
+      gen_ts
       shift
       ;;
     --swagger)
