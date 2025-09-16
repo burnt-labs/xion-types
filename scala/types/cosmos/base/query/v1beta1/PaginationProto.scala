@@ -6,7 +6,9 @@
 package cosmos.base.query.v1beta1
 
 object PaginationProto extends _root_.scalapb.GeneratedFileObject {
-  lazy val dependencies: Seq[_root_.scalapb.GeneratedFileObject] = Seq.empty
+  lazy val dependencies: Seq[_root_.scalapb.GeneratedFileObject] = Seq(
+    cosmos_proto.CosmosProto
+  )
   lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
     Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
       cosmos.base.query.v1beta1.PageRequest,
@@ -14,12 +16,13 @@ object PaginationProto extends _root_.scalapb.GeneratedFileObject {
     )
   private lazy val ProtoBytes: _root_.scala.Array[Byte] =
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
-  """Cipjb3Ntb3MvYmFzZS9xdWVyeS92MWJldGExL3BhZ2luYXRpb24ucHJvdG8SGWNvc21vcy5iYXNlLnF1ZXJ5LnYxYmV0YTEiy
-  gEKC1BhZ2VSZXF1ZXN0EhoKA2tleRgBIAEoDEII4j8FEgNrZXlSA2tleRIjCgZvZmZzZXQYAiABKARCC+I/CBIGb2Zmc2V0UgZvZ
-  mZzZXQSIAoFbGltaXQYAyABKARCCuI/BxIFbGltaXRSBWxpbWl0EjAKC2NvdW50X3RvdGFsGAQgASgIQg/iPwwSCmNvdW50VG90Y
-  WxSCmNvdW50VG90YWwSJgoHcmV2ZXJzZRgFIAEoCEIM4j8JEgdyZXZlcnNlUgdyZXZlcnNlIlkKDFBhZ2VSZXNwb25zZRInCghuZ
-  Xh0X2tleRgBIAEoDEIM4j8JEgduZXh0S2V5UgduZXh0S2V5EiAKBXRvdGFsGAIgASgEQgriPwcSBXRvdGFsUgV0b3RhbEIqWihna
-  XRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzL3F1ZXJ5YgZwcm90bzM="""
+  """Cipjb3Ntb3MvYmFzZS9xdWVyeS92MWJldGExL3BhZ2luYXRpb24ucHJvdG8SGWNvc21vcy5iYXNlLnF1ZXJ5LnYxYmV0YTEaG
+  WNvc21vc19wcm90by9jb3Ntb3MucHJvdG8i3QEKC1BhZ2VSZXF1ZXN0EhoKA2tleRgBIAEoDEII4j8FEgNrZXlSA2tleRIjCgZvZ
+  mZzZXQYAiABKARCC+I/CBIGb2Zmc2V0UgZvZmZzZXQSIAoFbGltaXQYAyABKARCCuI/BxIFbGltaXRSBWxpbWl0EjAKC2NvdW50X
+  3RvdGFsGAQgASgIQg/iPwwSCmNvdW50VG90YWxSCmNvdW50VG90YWwSOQoHcmV2ZXJzZRgFIAEoCEIf4j8JEgdyZXZlcnNl2rQtD
+  2Nvc21vcy1zZGsgMC40M1IHcmV2ZXJzZSJZCgxQYWdlUmVzcG9uc2USJwoIbmV4dF9rZXkYASABKAxCDOI/CRIHbmV4dEtleVIHb
+  mV4dEtleRIgCgV0b3RhbBgCIAEoBEIK4j8HEgV0b3RhbFIFdG90YWxCKlooZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90e
+  XBlcy9xdWVyeWIGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)
@@ -28,6 +31,7 @@ object PaginationProto extends _root_.scalapb.GeneratedFileObject {
   lazy val javaDescriptor: com.google.protobuf.Descriptors.FileDescriptor = {
     val javaProto = com.google.protobuf.DescriptorProtos.FileDescriptorProto.parseFrom(ProtoBytes)
     com.google.protobuf.Descriptors.FileDescriptor.buildFrom(javaProto, _root_.scala.Array(
+      cosmos_proto.CosmosProto.javaDescriptor
     ))
   }
   @deprecated("Use javaDescriptor instead. In a future version this will refer to scalaDescriptor.", "ScalaPB 0.5.47")

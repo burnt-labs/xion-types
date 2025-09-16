@@ -248,10 +248,10 @@ const char descriptor_table_protodef_cosmos_2fupgrade_2fv1beta1_2fupgrade_2eprot
     "Proposal\022\024\n\005title\030\001 \001(\tR\005title\022 \n\013descri"
     "ption\030\002 \001(\tR\013description:Q\030\001\350\240\037\001\312\264-\032cosm"
     "os.gov.v1beta1.Content\212\347\260*(cosmos-sdk/Ca"
-    "ncelSoftwareUpgradeProposal\"C\n\rModuleVer"
+    "ncelSoftwareUpgradeProposal\"V\n\rModuleVer"
     "sion\022\022\n\004name\030\001 \001(\tR\004name\022\030\n\007version\030\002 \001("
-    "\004R\007version:\004\350\240\037\001B\"Z\034cosmossdk.io/x/upgra"
-    "de/types\310\341\036\000b\006proto3"
+    "\004R\007version:\027\350\240\037\001\322\264-\017cosmos-sdk 0.43B\"Z\034c"
+    "osmossdk.io/x/upgrade/types\310\341\036\000b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fupgrade_2fv1beta1_2fupgrade_2eproto_deps[5] =
     {
@@ -265,7 +265,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fupgrade_2fv1beta1_2fupgrade_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_cosmos_2fupgrade_2fv1beta1_2fupgrade_2eproto = {
     false,
     false,
-    940,
+    959,
     descriptor_table_protodef_cosmos_2fupgrade_2fv1beta1_2fupgrade_2eproto,
     "cosmos/upgrade/v1beta1/upgrade.proto",
     &descriptor_table_cosmos_2fupgrade_2fv1beta1_2fupgrade_2eproto_once,

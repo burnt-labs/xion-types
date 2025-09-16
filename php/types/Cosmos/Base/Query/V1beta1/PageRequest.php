@@ -55,9 +55,8 @@ class PageRequest extends \Google\Protobuf\Internal\Message
     protected $count_total = false;
     /**
      * reverse is set to true if results are to be returned in the descending order.
-     * Since: cosmos-sdk 0.43
      *
-     * Generated from protobuf field <code>bool reverse = 5 [json_name = "reverse"];</code>
+     * Generated from protobuf field <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
      */
     protected $reverse = false;
 
@@ -85,7 +84,6 @@ class PageRequest extends \Google\Protobuf\Internal\Message
      *           is set.
      *     @type bool $reverse
      *           reverse is set to true if results are to be returned in the descending order.
-     *           Since: cosmos-sdk 0.43
      * }
      */
     public function __construct($data = NULL) {
@@ -215,9 +213,8 @@ class PageRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * reverse is set to true if results are to be returned in the descending order.
-     * Since: cosmos-sdk 0.43
      *
-     * Generated from protobuf field <code>bool reverse = 5 [json_name = "reverse"];</code>
+     * Generated from protobuf field <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
      * @return bool
      */
     public function getReverse()
@@ -227,9 +224,8 @@ class PageRequest extends \Google\Protobuf\Internal\Message
 
     /**
      * reverse is set to true if results are to be returned in the descending order.
-     * Since: cosmos-sdk 0.43
      *
-     * Generated from protobuf field <code>bool reverse = 5 [json_name = "reverse"];</code>
+     * Generated from protobuf field <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
      * @param bool $var
      * @return $this
      */

@@ -1,43 +1,56 @@
 {
   "name": "@burnt-labs/xion-types",
-  "version": "22.0.0",
-  "description": "TypeScript definitions for Xion Protobuf files",
+  "version": "0.0.1",
+  "author": "burnt-labs <devops@burnt.com>",
+  "description": "xion-types",
   "main": "index.js",
-  "types": "types/",
-  "files": [
-    "types/",
-    "index.js",
-    "README.md"
-  ],
-  "scripts": {
-    "build": "echo 'Types are pre-generated, no build step needed'",
-    "test": "echo 'No tests configured'",
-    "prepublishOnly": "echo 'Package ready for publishing'"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@bufbuild/protobuf": "^2.8.0",
-    "@improbable-eng/grpc-web": "^0.14.1",
-    "browser-headers": "^0.4.1",
-    "google-protobuf": "^3.17.3",
-    "long": "^4.0.0",
-    "protobufjs": "~6.11.2"
-  },
-  "devDependencies": {
-    "prettier": "^2.3.0",
-    "ts-proto": "^1.82.5",
-    "typescript": "^5.0.0"
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "homepage": "https://github.com/burnt-labs/xion-types",
+  "license": "SEE LICENSE IN LICENSE",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/burnt-labs/xion-types.git"
+    "url": "https://github.com/burnt-labs/xion-types"
   },
-  "keywords": [
-    "xion",
-    "blockchain",
-    "typescript",
-    "protobuf",
-    "cosmos",
-    "ibc"
-  ]
+  "bugs": {
+    "url": "https://github.com/burnt-labs/xion-types/issues"
+  },
+  "scripts": {
+    "copy": "copyfiles -f ./LICENSE README.md package.json dist",
+    "clean": "rimraf dist",
+    "prepare": "npm run build",
+    "download-protos": "ts-node scripts/download-protos.ts",
+    "codegen": "ts-node scripts/codegen.ts",
+    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && npm run copy",
+    "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json && npm run copy",
+    "lint": "eslint . --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.8.0",
+    "@cosmology/lcd": "^0.14.0",
+    "@cosmology/telescope": "^1.12.20",
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@interchainjs/cosmos": "1.11.5",
+    "@interchainjs/cosmos-types": "1.11.5",
+    "@interchainjs/encoding": "1.11.5",
+    "@interchainjs/pubkey": "1.11.5",
+    "@interchainjs/types": "1.11.5",
+    "@interchainjs/utils": "1.11.5",
+    "@tanstack/react-query": "^5.89.0"
+  },
+  "keywords": [],
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

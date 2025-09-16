@@ -80,11 +80,9 @@ public final class Pagination {
     /**
      * <pre>
      * reverse is set to true if results are to be returned in the descending order.
-     *
-     * Since: cosmos-sdk 0.43
      * </pre>
      *
-     * <code>bool reverse = 5 [json_name = "reverse"];</code>
+     * <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
      * @return The reverse.
      */
     boolean getReverse();
@@ -210,11 +208,9 @@ public final class Pagination {
     /**
      * <pre>
      * reverse is set to true if results are to be returned in the descending order.
-     *
-     * Since: cosmos-sdk 0.43
      * </pre>
      *
-     * <code>bool reverse = 5 [json_name = "reverse"];</code>
+     * <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
      * @return The reverse.
      */
     @java.lang.Override
@@ -825,11 +821,9 @@ public final class Pagination {
       /**
        * <pre>
        * reverse is set to true if results are to be returned in the descending order.
-       *
-       * Since: cosmos-sdk 0.43
        * </pre>
        *
-       * <code>bool reverse = 5 [json_name = "reverse"];</code>
+       * <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
        * @return The reverse.
        */
       @java.lang.Override
@@ -839,11 +833,9 @@ public final class Pagination {
       /**
        * <pre>
        * reverse is set to true if results are to be returned in the descending order.
-       *
-       * Since: cosmos-sdk 0.43
        * </pre>
        *
-       * <code>bool reverse = 5 [json_name = "reverse"];</code>
+       * <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
        * @param value The reverse to set.
        * @return This builder for chaining.
        */
@@ -857,11 +849,9 @@ public final class Pagination {
       /**
        * <pre>
        * reverse is set to true if results are to be returned in the descending order.
-       *
-       * Since: cosmos-sdk 0.43
        * </pre>
        *
-       * <code>bool reverse = 5 [json_name = "reverse"];</code>
+       * <code>bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];</code>
        * @return This builder for chaining.
        */
       public Builder clearReverse() {
@@ -1525,18 +1515,20 @@ public final class Pagination {
   static {
     java.lang.String[] descriptorData = {
       "\n*cosmos/base/query/v1beta1/pagination.p" +
-      "roto\022\031cosmos.base.query.v1beta1\"\210\001\n\013Page" +
-      "Request\022\020\n\003key\030\001 \001(\014R\003key\022\026\n\006offset\030\002 \001(" +
-      "\004R\006offset\022\024\n\005limit\030\003 \001(\004R\005limit\022\037\n\013count" +
-      "_total\030\004 \001(\010R\ncountTotal\022\030\n\007reverse\030\005 \001(" +
-      "\010R\007reverse\"?\n\014PageResponse\022\031\n\010next_key\030\001" +
-      " \001(\014R\007nextKey\022\024\n\005total\030\002 \001(\004R\005totalB*Z(g" +
-      "ithub.com/cosmos/cosmos-sdk/types/queryb" +
-      "\006proto3"
+      "roto\022\031cosmos.base.query.v1beta1\032\031cosmos_" +
+      "proto/cosmos.proto\"\235\001\n\013PageRequest\022\020\n\003ke" +
+      "y\030\001 \001(\014R\003key\022\026\n\006offset\030\002 \001(\004R\006offset\022\024\n\005" +
+      "limit\030\003 \001(\004R\005limit\022\037\n\013count_total\030\004 \001(\010R" +
+      "\ncountTotal\022-\n\007reverse\030\005 \001(\010B\023\332\264-\017cosmos" +
+      "-sdk 0.43R\007reverse\"?\n\014PageResponse\022\031\n\010ne" +
+      "xt_key\030\001 \001(\014R\007nextKey\022\024\n\005total\030\002 \001(\004R\005to" +
+      "talB*Z(github.com/cosmos/cosmos-sdk/type" +
+      "s/queryb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          cosmos_proto.Cosmos.getDescriptor(),
         });
     internal_static_cosmos_base_query_v1beta1_PageRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -1551,6 +1543,12 @@ public final class Pagination {
         internal_static_cosmos_base_query_v1beta1_PageResponse_descriptor,
         new java.lang.String[] { "NextKey", "Total", });
     descriptor.resolveAllFeaturesImmutable();
+    cosmos_proto.Cosmos.getDescriptor();
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(cosmos_proto.Cosmos.fieldAddedIn);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
   }
 
   // @@protoc_insertion_point(outer_class_scope)

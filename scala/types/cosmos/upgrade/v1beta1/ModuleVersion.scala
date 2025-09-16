@@ -7,8 +7,6 @@ package cosmos.upgrade.v1beta1
 
 /** ModuleVersion specifies a module and its consensus version.
   *
-  * Since: cosmos-sdk 0.43
-  *
   * @param name
   *   name of the app module
   * @param version

@@ -324,4 +324,150 @@ impl SignedMsgType {
         }
     }
 }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Evidence {
+    #[prost(oneof="evidence::Sum", tags="1, 2")]
+    pub sum: ::core::option::Option<evidence::Sum>,
+}
+/// Nested message and enum types in `Evidence`.
+pub mod evidence {
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Sum {
+        #[prost(message, tag="1")]
+        DuplicateVoteEvidence(super::DuplicateVoteEvidence),
+        #[prost(message, tag="2")]
+        LightClientAttackEvidence(super::LightClientAttackEvidence),
+    }
+}
+/// DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DuplicateVoteEvidence {
+    #[prost(message, optional, tag="1")]
+    pub vote_a: ::core::option::Option<Vote>,
+    #[prost(message, optional, tag="2")]
+    pub vote_b: ::core::option::Option<Vote>,
+    #[prost(int64, tag="3")]
+    pub total_voting_power: i64,
+    #[prost(int64, tag="4")]
+    pub validator_power: i64,
+    #[prost(message, optional, tag="5")]
+    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+}
+/// LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LightClientAttackEvidence {
+    #[prost(message, optional, tag="1")]
+    pub conflicting_block: ::core::option::Option<LightBlock>,
+    #[prost(int64, tag="2")]
+    pub common_height: i64,
+    #[prost(message, repeated, tag="3")]
+    pub byzantine_validators: ::prost::alloc::vec::Vec<Validator>,
+    #[prost(int64, tag="4")]
+    pub total_voting_power: i64,
+    #[prost(message, optional, tag="5")]
+    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EvidenceList {
+    #[prost(message, repeated, tag="1")]
+    pub evidence: ::prost::alloc::vec::Vec<Evidence>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Block {
+    #[prost(message, optional, tag="1")]
+    pub header: ::core::option::Option<Header>,
+    #[prost(message, optional, tag="2")]
+    pub data: ::core::option::Option<Data>,
+    #[prost(message, optional, tag="3")]
+    pub evidence: ::core::option::Option<EvidenceList>,
+    #[prost(message, optional, tag="4")]
+    pub last_commit: ::core::option::Option<Commit>,
+}
+/// ConsensusParams contains consensus critical parameters that determine the
+/// validity of blocks.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConsensusParams {
+    #[prost(message, optional, tag="1")]
+    pub block: ::core::option::Option<BlockParams>,
+    #[prost(message, optional, tag="2")]
+    pub evidence: ::core::option::Option<EvidenceParams>,
+    #[prost(message, optional, tag="3")]
+    pub validator: ::core::option::Option<ValidatorParams>,
+    #[prost(message, optional, tag="4")]
+    pub version: ::core::option::Option<VersionParams>,
+    #[prost(message, optional, tag="5")]
+    pub abci: ::core::option::Option<AbciParams>,
+}
+/// BlockParams contains limits on the block size.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct BlockParams {
+    /// Max block size, in bytes.
+    /// Note: must be greater than 0
+    #[prost(int64, tag="1")]
+    pub max_bytes: i64,
+    /// Max gas per block.
+    /// Note: must be greater or equal to -1
+    #[prost(int64, tag="2")]
+    pub max_gas: i64,
+}
+/// EvidenceParams determine how we handle evidence of malfeasance.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct EvidenceParams {
+    /// Max age of evidence, in blocks.
+    ///
+    /// The basic formula for calculating this is: MaxAgeDuration / {average block
+    /// time}.
+    #[prost(int64, tag="1")]
+    pub max_age_num_blocks: i64,
+    /// Max age of evidence, in time.
+    ///
+    /// It should correspond with an app's "unbonding period" or other similar
+    /// mechanism for handling [Nothing-At-Stake
+    /// attacks](<https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed>).
+    #[prost(message, optional, tag="2")]
+    pub max_age_duration: ::core::option::Option<::prost_types::Duration>,
+    /// This sets the maximum size of total evidence in bytes that can be committed in a single block.
+    /// and should fall comfortably under the max block bytes.
+    /// Default is 1048576 or 1MB
+    #[prost(int64, tag="3")]
+    pub max_bytes: i64,
+}
+/// ValidatorParams restrict the public key types validators can use.
+/// NOTE: uses ABCI pubkey naming, not Amino names.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ValidatorParams {
+    #[prost(string, repeated, tag="1")]
+    pub pub_key_types: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// VersionParams contains the ABCI application version.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct VersionParams {
+    #[prost(uint64, tag="1")]
+    pub app: u64,
+}
+/// HashedParams is a subset of ConsensusParams.
+///
+/// It is hashed into the Header.ConsensusHash.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct HashedParams {
+    #[prost(int64, tag="1")]
+    pub block_max_bytes: i64,
+    #[prost(int64, tag="2")]
+    pub block_max_gas: i64,
+}
+/// ABCIParams configure functionality specific to the Application Blockchain Interface.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct AbciParams {
+    /// vote_extensions_enable_height configures the first height during which
+    /// vote extensions will be enabled. During this specified height, and for all
+    /// subsequent heights, precommit messages that do not contain valid extension data
+    /// will be considered invalid. Prior to this height, vote extensions will not
+    /// be used or accepted by validators on the network.
+    ///
+    /// Once enabled, vote extensions will be created by the application in ExtendVote,
+    /// passed to the application for validation in VerifyVoteExtension and given
+    /// to the application to use when proposing a block during PrepareProposal.
+    #[prost(int64, tag="1")]
+    pub vote_extensions_enable_height: i64,
+}
 // @@protoc_insertion_point(module)

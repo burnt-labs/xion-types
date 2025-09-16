@@ -11,7 +11,6 @@ use Google\Protobuf\Internal\GPBUtil;
 
 /**
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- * Since: cosmos-sdk 0.47
  *
  * Generated from protobuf message <code>cosmos.auth.v1beta1.ModuleCredential</code>
  */
