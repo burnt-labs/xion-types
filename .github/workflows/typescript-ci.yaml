@@ -1,28 +1,43 @@
-name: Xion-Types Package CI/CD
+name: Publish Types CI/CD
 
 on:
   push:
     branches: 
-      - main 
-  pull_request:
-    branches: 
-      - main
-      
+      - feat/add-tagging-to-npm-publish # DELETE THIS
+      #- main 
+            
   workflow_dispatch:
     inputs:
       next_version:
-        description: 'Specific version to set (e.g., 1.2.3). If empty, will use the latest Git tag.'
-        required: false
+        description: 'Specific version to set (e.g., 1.2.3). Required for manual workflow runs.'
+        required: true
         type: string
 
+  repository_dispatch: # triggers on release event from burnt-labs/xion repo
+    types: [xion-types-release-trigger]
+      
 env:
   NODE_VERSION: '20'
   REGISTRY_URL: 'https://registry.npmjs.org'
 
 jobs:
   generate-protobuf:
-    name: Generate Protobuf Definitions
+    name: Gen Protobuf Defs
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: # TODO - uncomment the other languages
+          # - cpp
+          # - java
+          # - kotlin
+          # - objc
+          # - php
+          # - python
+          # - ruby
+          # - rust
+          # - swift
+          - ts
+      fail-fast: false
     outputs:
       types-generated: ${{ steps.check-types.outputs.types-generated }}
     steps:
@@ -32,32 +47,32 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate all Definitions
+      - name: Generate ${{ matrix.language }} Definitions
         run: |
-          make proto-gen-all
+          make proto-gen-${{ matrix.language }}
 
-      # - name: Check if Types Were Generated
-      #   id: check-types
-      #   run: |
-      #     if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
-      #       echo "types-generated=true" >> $GITHUB_OUTPUT
-      #       echo "✅ ${{ matrix.language }} definitions generated successfully"
-      #     else
-      #       echo "types-generated=false" >> $GITHUB_OUTPUT
-      #       echo "❌ Failed to generate ${{ matrix.language }} definitions"
-      #       exit 1
-      #     fi
+      - name: Check if Types Were Generated
+        id: check-types
+        run: |
+          if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
+            echo "types-generated=true" >> $GITHUB_OUTPUT
+            echo "✅ ${{ matrix.language }} definitions generated successfully"
+          else
+            echo "types-generated=false" >> $GITHUB_OUTPUT
+            echo "❌ Failed to generate ${{ matrix.language }} definitions"
+            exit 1
+          fi
 
       - name: Upload Generated Types
         uses: actions/upload-artifact@v4
         with:
-          name: generated-types-ts
-          path: ts/types
+          name: generated-types-${{ matrix.language }}
+          path: ${{ matrix.language }}/types
           retention-days: 1
 
-  # test-dependent-projects:
-  #   name: Test Dependent Projects Compatibility
-  #   needs: [setup-submodules, generate-protobuf]
+  # test-dependent-projects: # TODO - set it to matrix for all the other langs
+  #   name: Test Dependents Compatibility
+  #   needs: [generate-protobuf]
   #   runs-on: ubuntu-latest
   #   strategy:
   #     matrix:
@@ -73,16 +88,10 @@ jobs:
   #         path: xion-types
   #         token: ${{ secrets.GITHUB_TOKEN }}
 
-  #     - name: Download Submodules
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: submodules
-  #         path: xion-types/
-
   #     - name: Download Generated Types
   #       uses: actions/download-artifact@v4
   #       with:
-  #         name: generated-types
+  #         name: generated-types-ts
   #         path: xion-types/ts/types
 
   #     - name: Checkout Dependent Project
@@ -131,14 +140,18 @@ jobs:
           
   #         echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
-  publish:
+  publish: #TODO - set it to matrix for all the other langs
     name: Publish to NPM
-    needs: generate-protobuf
+    # needs: [test-dependent-projects] #TODO
+    needs: [generate-protobuf] # DELETEME
     runs-on: ubuntu-latest
+    outputs:
+      NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
     permissions:
       contents: read
       id-token: write
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
+    # Only run publish for: latest release OR manual dispatch
+    if: github.event.client_payload.release_type == 'latest' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -146,7 +159,7 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download TypeScript Generated Types
+      - name: Download Generated Types
         uses: actions/download-artifact@v4
         with:
           name: generated-types-ts
@@ -160,89 +173,98 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
 
       - name: Bump Version
+        id: version
         working-directory: ./ts
         run: |
           if [ "${{ github.event.inputs.next_version }}" != "" ]; then
             # Set specific version from manual input
             npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
             echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            # Set version from release tag
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            # Remove 'v' prefix if present
+            CLEAN_TAG=${RELEASE_TAG#v}
+            echo "Set the package version in package.json to: $CLEAN_TAG"
+            npm version $CLEAN_TAG --no-git-tag-version
+            echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
           else
-            # Get version from latest Git tag
-            echo "No manual version specified, using latest Git tag..."
-            
-            # Fetch all tags
-            git fetch --tags
-            
-            # Get the latest tag (excluding pre-release tags like v1.0.0-beta.1)
-            LATEST_TAG=$(git tag -l --sort=-version:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
-            
-            if [ -z "$LATEST_TAG" ]; then
-              echo "❌ No version tags found. Please either:"
-              echo "   1. Create a Git tag (e.g., git tag v1.0.0)"
-              echo "   2. Provide next_version input in workflow_dispatch"
-              exit 1
-            else
-              # Remove 'v' prefix if present
-              CLEAN_TAG=${LATEST_TAG#v}
-              echo "Using version from Git tag: $LATEST_TAG (clean: $CLEAN_TAG)"
-              npm version $CLEAN_TAG --no-git-tag-version
-            fi
+            echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
+            exit 1
           fi
         
           # Get the new version
           NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
           echo "New package version: $NEW_VERSION"
 
-# # TODO: Uncomment this when we want to publish to main
-      - name: Publish to NPM 
+      - name: Dry run publish to NPM # TODO TEST & DELETE ME
         working-directory: ./ts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "Publishing package version: ${{ env.NEW_VERSION }}"
-          npm publish --verbose --access public
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }}"
+          echo "DRY RUN CHECK: @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"     
 
-#   validate-package:
-#     name: Validate NPM Package
-#     needs: publish
-#     runs-on: ubuntu-latest
-#     #if: github.ref == 'refs/heads/main' && github.event_name == 'push' #TODO: Uncomment this when we want to publish to main
-#     steps:
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: ${{ env.NODE_VERSION }}
-#           registry-url: ${{ env.REGISTRY_URL }}
+      # - name: Publish to NPM 
+      #   working-directory: ./ts
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: |
+      #     echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
+      #     npm publish --verbose --access public --tag ${{ env.TAG }}
+      #     echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
-#       - name: Verify Package on NPM
-#         run: |
-#           PACKAGE_VERSION="${{ needs.publish.outputs.NEW_VERSION }}"
-#           echo "Verifying package version: $PACKAGE_VERSION"
+  # validate-package:
+  #   name: Validate NPM Package
+  #   needs: [publish]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #         registry-url: ${{ env.REGISTRY_URL }}
+
+  #     - name: Verify Package on NPM
+  #       env:
+  #         TAG: ${{ needs.publish.outputs.TAG }}
+  #         VERSION: ${{ needs.publish.outputs.NEW_VERSION }}
+  #       run: |
+  #         echo "Verifying package version: $VERSION"
           
-#           # Retry logic for NPM verification
-#           MAX_ATTEMPTS=10
-#           ATTEMPT=1
+  #         # Retry logic for NPM verification
+  #         MAX_ATTEMPTS=10
+  #         ATTEMPT=1
           
-#           while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-#             echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+  #         while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+  #           echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-#             if npm view @burnt-labs/xion-types@$PACKAGE_VERSION version > /dev/null 2>&1; then
-#               echo "✅ Package successfully published to NPM"
-#               echo "Package version $PACKAGE_VERSION is available on NPM"
-#               exit 0
-#             else
-#               echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+  #           if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
+  #             echo "✅ Package successfully published to NPM"
+  #             echo "Package version $VERSION is available on NPM"
+
+  #             # Check if our version is tagged as latest
+  #             LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
+  #             if [ "$LATEST_VERSION" = "$VERSION" ]; then
+  #               echo "✅ Version $VERSION is correctly tagged as 'latest'"
+  #             else
+  #               echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
+  #             fi
+
+  #             exit 0
+  #           else
+  #             echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-#               if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-#                 echo "Waiting 10 seconds before retry..."
-#                 sleep 10
-#               fi
-#             fi
+  #             if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+  #               echo "Waiting 10 seconds before retry..."
+  #               sleep 10
+  #             fi
+  #           fi
             
-#             ATTEMPT=$((ATTEMPT + 1))
-#           done
+  #           ATTEMPT=$((ATTEMPT + 1))
+  #         done
           
-#           echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-#           exit 1
+  #         echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+  #         exit 1
