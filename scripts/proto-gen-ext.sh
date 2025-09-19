@@ -115,7 +115,7 @@ gen_docs() {
         --output $tmp_dir/$deep_proto_dir \
         --template "$buf_dir/buf.gen.docs.yaml" \
         --path "$deep_proto_dir"
-      destination_dir="$xion_types_dir/docs/$(echo $deep_proto_dir | sed "s|$module_dir||" | sed 's|^/||')"
+      destination_dir="$xion_types_dir/docs/$(echo $deep_proto_dir | sed "s|$dir||" | sed 's|^/||')"
       mkdir -p "$destination_dir"
       cp -rv $tmp_dir/$deep_proto_dir/* "$destination_dir/"
     done
