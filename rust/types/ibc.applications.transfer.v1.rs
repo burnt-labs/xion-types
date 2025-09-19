@@ -28,4 +28,246 @@ pub struct TransferAuthorization {
     #[prost(message, repeated, tag="1")]
     pub allocations: ::prost::alloc::vec::Vec<Allocation>,
 }
+/// DenomTrace contains the base denomination for ICS20 fungible tokens and the
+/// source tracing information path.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DenomTrace {
+    /// path defines the chain of port/channel identifiers used for tracing the
+    /// source of the fungible token.
+    #[prost(string, tag="1")]
+    pub path: ::prost::alloc::string::String,
+    /// base denomination of the relayed fungible token.
+    #[prost(string, tag="2")]
+    pub base_denom: ::prost::alloc::string::String,
+}
+/// Params defines the set of IBC transfer parameters.
+/// NOTE: To prevent a single token from being transferred, set the
+/// TransfersEnabled parameter to true and then set the bank module's SendEnabled
+/// parameter for the denomination to false.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct Params {
+    /// send_enabled enables or disables all cross-chain token transfers from this
+    /// chain.
+    #[prost(bool, tag="1")]
+    pub send_enabled: bool,
+    /// receive_enabled enables or disables all cross-chain token transfers to this
+    /// chain.
+    #[prost(bool, tag="2")]
+    pub receive_enabled: bool,
+}
+/// Token defines a struct which represents a token to be transferred.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Token {
+    /// the token denomination
+    #[prost(message, optional, tag="1")]
+    pub denom: ::core::option::Option<Denom>,
+    /// the token amount to be transferred
+    #[prost(string, tag="2")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// Denom holds the base denom of a Token and a trace of the chains it was sent through.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Denom {
+    /// the base token denomination
+    #[prost(string, tag="1")]
+    pub base: ::prost::alloc::string::String,
+    /// the trace of the token
+    #[prost(message, repeated, tag="3")]
+    pub trace: ::prost::alloc::vec::Vec<Hop>,
+}
+/// Hop defines a port ID, channel ID pair specifying a unique "hop" in a trace
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Hop {
+    #[prost(string, tag="1")]
+    pub port_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub channel_id: ::prost::alloc::string::String,
+}
+/// GenesisState defines the ibc-transfer genesis state
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    #[prost(string, tag="1")]
+    pub port_id: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag="2")]
+    pub denoms: ::prost::alloc::vec::Vec<Denom>,
+    #[prost(message, optional, tag="3")]
+    pub params: ::core::option::Option<Params>,
+    /// total_escrowed contains the total amount of tokens escrowed
+    /// by the transfer module
+    #[prost(message, repeated, tag="4")]
+    pub total_escrowed: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::base::v1beta1::Coin>,
+}
+/// FungibleTokenPacketData defines a struct for the packet payload
+/// See FungibleTokenPacketData spec:
+/// <https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures>
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct FungibleTokenPacketData {
+    /// the token denomination to be transferred
+    #[prost(string, tag="1")]
+    pub denom: ::prost::alloc::string::String,
+    /// the token amount to be transferred
+    #[prost(string, tag="2")]
+    pub amount: ::prost::alloc::string::String,
+    /// the sender address
+    #[prost(string, tag="3")]
+    pub sender: ::prost::alloc::string::String,
+    /// the recipient address on the destination chain
+    #[prost(string, tag="4")]
+    pub receiver: ::prost::alloc::string::String,
+    /// optional memo
+    #[prost(string, tag="5")]
+    pub memo: ::prost::alloc::string::String,
+}
+/// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryParamsRequest {
+}
+/// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryParamsResponse {
+    /// params defines the parameters of the module.
+    #[prost(message, optional, tag="1")]
+    pub params: ::core::option::Option<Params>,
+}
+/// QueryDenomRequest is the request type for the Query/Denom RPC
+/// method
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDenomRequest {
+    /// hash (in hex format) or denom (full denom with ibc prefix) of the on chain denomination.
+    #[prost(string, tag="1")]
+    pub hash: ::prost::alloc::string::String,
+}
+/// QueryDenomResponse is the response type for the Query/Denom RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDenomResponse {
+    /// denom returns the requested denomination.
+    #[prost(message, optional, tag="1")]
+    pub denom: ::core::option::Option<Denom>,
+}
+/// QueryDenomsRequest is the request type for the Query/Denoms RPC
+/// method
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDenomsRequest {
+    /// pagination defines an optional pagination for the request.
+    #[prost(message, optional, tag="1")]
+    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+}
+/// QueryDenomsResponse is the response type for the Query/Denoms RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDenomsResponse {
+    /// denoms returns all denominations.
+    #[prost(message, repeated, tag="1")]
+    pub denoms: ::prost::alloc::vec::Vec<Denom>,
+    /// pagination defines the pagination in the response.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+}
+/// QueryDenomHashRequest is the request type for the Query/DenomHash RPC
+/// method
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDenomHashRequest {
+    /// The denomination trace (\[port_id\]/[channel_id])+/\[denom\]
+    #[prost(string, tag="1")]
+    pub trace: ::prost::alloc::string::String,
+}
+/// QueryDenomHashResponse is the response type for the Query/DenomHash RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDenomHashResponse {
+    /// hash (in hex format) of the denomination trace information.
+    #[prost(string, tag="1")]
+    pub hash: ::prost::alloc::string::String,
+}
+/// QueryEscrowAddressRequest is the request type for the EscrowAddress RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryEscrowAddressRequest {
+    /// unique port identifier
+    #[prost(string, tag="1")]
+    pub port_id: ::prost::alloc::string::String,
+    /// unique channel identifier
+    #[prost(string, tag="2")]
+    pub channel_id: ::prost::alloc::string::String,
+}
+/// QueryEscrowAddressResponse is the response type of the EscrowAddress RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryEscrowAddressResponse {
+    /// the escrow account address
+    #[prost(string, tag="1")]
+    pub escrow_address: ::prost::alloc::string::String,
+}
+/// QueryTotalEscrowForDenomRequest is the request type for TotalEscrowForDenom RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryTotalEscrowForDenomRequest {
+    #[prost(string, tag="1")]
+    pub denom: ::prost::alloc::string::String,
+}
+/// QueryTotalEscrowForDenomResponse is the response type for TotalEscrowForDenom RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryTotalEscrowForDenomResponse {
+    #[prost(message, optional, tag="1")]
+    pub amount: ::core::option::Option<super::super::super::super::cosmos::base::v1beta1::Coin>,
+}
+/// MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
+/// ICS20 enabled chains. See ICS Spec here:
+/// <https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures>
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgTransfer {
+    /// the port on which the packet will be sent
+    #[prost(string, tag="1")]
+    pub source_port: ::prost::alloc::string::String,
+    /// the channel by which the packet will be sent
+    #[prost(string, tag="2")]
+    pub source_channel: ::prost::alloc::string::String,
+    /// token to be transferred
+    #[prost(message, optional, tag="3")]
+    pub token: ::core::option::Option<super::super::super::super::cosmos::base::v1beta1::Coin>,
+    /// the sender address
+    #[prost(string, tag="4")]
+    pub sender: ::prost::alloc::string::String,
+    /// the recipient address on the destination chain
+    #[prost(string, tag="5")]
+    pub receiver: ::prost::alloc::string::String,
+    /// Timeout height relative to the current block height.
+    /// If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
+    /// If you are sending with IBC v2 protocol, timeout_timestamp must be set, and timeout_height must be omitted.
+    #[prost(message, optional, tag="6")]
+    pub timeout_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
+    /// Timeout timestamp in absolute nanoseconds since unix epoch.
+    /// If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
+    /// If you are sending with IBC v2 protocol, timeout_timestamp must be set.
+    #[prost(uint64, tag="7")]
+    pub timeout_timestamp: u64,
+    /// optional memo
+    #[prost(string, tag="8")]
+    pub memo: ::prost::alloc::string::String,
+    /// optional encoding
+    #[prost(string, tag="9")]
+    pub encoding: ::prost::alloc::string::String,
+}
+/// MsgTransferResponse defines the Msg/Transfer response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgTransferResponse {
+    /// sequence number of the transfer packet sent
+    #[prost(uint64, tag="1")]
+    pub sequence: u64,
+}
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// signer address
+    #[prost(string, tag="1")]
+    pub signer: ::prost::alloc::string::String,
+    /// params defines the transfer parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
+}
 // @@protoc_insertion_point(module)

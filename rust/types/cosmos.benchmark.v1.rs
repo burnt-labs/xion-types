@@ -18,4 +18,20 @@ pub struct Op {
     #[prost(bool, tag="7")]
     pub exists: bool,
 }
+/// MsgLoadTestOps defines a message containing a sequence of load test operations.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgLoadTest {
+    #[prost(bytes="vec", tag="1")]
+    pub caller: ::prost::alloc::vec::Vec<u8>,
+    #[prost(message, repeated, tag="2")]
+    pub ops: ::prost::alloc::vec::Vec<Op>,
+}
+/// MsgLoadTestResponse defines a message containing the results of a load test operation.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgLoadTestResponse {
+    #[prost(uint64, tag="1")]
+    pub total_time: u64,
+    #[prost(uint64, tag="2")]
+    pub total_errors: u64,
+}
 // @@protoc_insertion_point(module)

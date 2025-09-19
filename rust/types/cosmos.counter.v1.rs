@@ -10,4 +10,21 @@ pub struct QueryGetCountResponse {
     #[prost(int64, tag="1")]
     pub total_count: i64,
 }
+/// MsgIncreaseCounter defines a count Msg service counter.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgIncreaseCounter {
+    /// signer is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub signer: ::prost::alloc::string::String,
+    /// count is the number of times to increment the counter.
+    #[prost(int64, tag="2")]
+    pub count: i64,
+}
+/// MsgIncreaseCountResponse is the Msg/Counter response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgIncreaseCountResponse {
+    /// new_count is the number of times the counter was incremented.
+    #[prost(int64, tag="1")]
+    pub new_count: i64,
+}
 // @@protoc_insertion_point(module)

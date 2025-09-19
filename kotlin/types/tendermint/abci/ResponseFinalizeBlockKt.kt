@@ -383,7 +383,8 @@ public object ResponseFinalizeBlockKt {
 
     /**
      * ```
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * ```
      *
      * `bytes app_hash = 5 [json_name = "appHash"];`
@@ -397,7 +398,8 @@ public object ResponseFinalizeBlockKt {
       }
     /**
      * ```
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * ```
      *
      * `bytes app_hash = 5 [json_name = "appHash"];`

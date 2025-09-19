@@ -597,7 +597,8 @@ pub struct ResponseFinalizeBlock {
     /// updates to the consensus params, if any.
     #[prost(message, optional, tag="4")]
     pub consensus_param_updates: ::core::option::Option<super::types::ConsensusParams>,
-    /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+    /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+    /// deterministic. It is up to the application to decide which algorithm to use.
     #[prost(bytes="vec", tag="5")]
     pub app_hash: ::prost::alloc::vec::Vec<u8>,
 }

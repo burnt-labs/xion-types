@@ -240,20 +240,20 @@ const char descriptor_table_protodef_cosmos_2fauth_2fv1beta1_2fauth_2eproto[] AB
     "missions\030\003 \003(\tR\013permissions:Z\210\240\037\000\312\264-\"cos"
     "mos.auth.v1beta1.ModuleAccountI\212\347\260*\030cosm"
     "os-sdk/ModuleAccount\222\347\260*\016module_account\""
-    "\204\001\n\020ModuleCredential\022\037\n\013module_name\030\001 \001("
+    "\227\001\n\020ModuleCredential\022\037\n\013module_name\030\001 \001("
     "\tR\nmoduleName\022\'\n\017derivation_keys\030\002 \003(\014R\016"
-    "derivationKeys:&\212\347\260*!cosmos-sdk/GroupAcc"
-    "ountCredential\"\327\002\n\006Params\022.\n\023max_memo_ch"
-    "aracters\030\001 \001(\004R\021maxMemoCharacters\022 \n\014tx_"
-    "sig_limit\030\002 \001(\004R\ntxSigLimit\0220\n\025tx_size_c"
-    "ost_per_byte\030\003 \001(\004R\021txSizeCostPerByte\022O\n"
-    "\027sig_verify_cost_ed25519\030\004 \001(\004B\030\342\336\037\024SigV"
-    "erifyCostED25519R\024sigVerifyCostEd25519\022U"
-    "\n\031sig_verify_cost_secp256k1\030\005 \001(\004B\032\342\336\037\026S"
-    "igVerifyCostSecp256k1R\026sigVerifyCostSecp"
-    "256k1:!\350\240\037\001\212\347\260*\030cosmos-sdk/x/auth/Params"
-    "B+Z)github.com/cosmos/cosmos-sdk/x/auth/"
-    "typesb\006proto3"
+    "derivationKeys:9\322\264-\017cosmos-sdk 0.47\212\347\260*!"
+    "cosmos-sdk/GroupAccountCredential\"\327\002\n\006Pa"
+    "rams\022.\n\023max_memo_characters\030\001 \001(\004R\021maxMe"
+    "moCharacters\022 \n\014tx_sig_limit\030\002 \001(\004R\ntxSi"
+    "gLimit\0220\n\025tx_size_cost_per_byte\030\003 \001(\004R\021t"
+    "xSizeCostPerByte\022O\n\027sig_verify_cost_ed25"
+    "519\030\004 \001(\004B\030\342\336\037\024SigVerifyCostED25519R\024sig"
+    "VerifyCostEd25519\022U\n\031sig_verify_cost_sec"
+    "p256k1\030\005 \001(\004B\032\342\336\037\026SigVerifyCostSecp256k1"
+    "R\026sigVerifyCostSecp256k1:!\350\240\037\001\212\347\260*\030cosmo"
+    "s-sdk/x/auth/ParamsB+Z)github.com/cosmos"
+    "/cosmos-sdk/x/auth/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto_deps[4] =
     {
@@ -266,7 +266,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto = {
     false,
     false,
-    1213,
+    1232,
     descriptor_table_protodef_cosmos_2fauth_2fv1beta1_2fauth_2eproto,
     "cosmos/auth/v1beta1/auth.proto",
     &descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto_once,

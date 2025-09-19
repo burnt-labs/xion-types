@@ -113,4 +113,64 @@ pub struct DisabledListResponse {
     #[prost(string, repeated, tag="1")]
     pub disabled_list: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
+/// MsgAuthorizeCircuitBreaker defines the Msg/AuthorizeCircuitBreaker request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgAuthorizeCircuitBreaker {
+    /// granter is the granter of the circuit breaker permissions and must have
+    /// LEVEL_SUPER_ADMIN.
+    #[prost(string, tag="1")]
+    pub granter: ::prost::alloc::string::String,
+    /// grantee is the account authorized with the provided permissions.
+    #[prost(string, tag="2")]
+    pub grantee: ::prost::alloc::string::String,
+    /// permissions are the circuit breaker permissions that the grantee receives.
+    /// These will overwrite any existing permissions. LEVEL_NONE_UNSPECIFIED can
+    /// be specified to revoke all permissions.
+    #[prost(message, optional, tag="3")]
+    pub permissions: ::core::option::Option<Permissions>,
+}
+/// MsgAuthorizeCircuitBreakerResponse defines the Msg/AuthorizeCircuitBreaker response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgAuthorizeCircuitBreakerResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
+/// MsgTripCircuitBreaker defines the Msg/TripCircuitBreaker request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgTripCircuitBreaker {
+    /// authority is the account authorized to trip the circuit breaker.
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// msg_type_urls specifies a list of type URLs to immediately stop processing.
+    /// IF IT IS LEFT EMPTY, ALL MSG PROCESSING WILL STOP IMMEDIATELY.
+    /// This value is validated against the authority's permissions and if the
+    /// authority does not have permissions to trip the specified msg type URLs
+    /// (or all URLs), the operation will fail.
+    #[prost(string, repeated, tag="2")]
+    pub msg_type_urls: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// MsgTripCircuitBreakerResponse defines the Msg/TripCircuitBreaker response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgTripCircuitBreakerResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
+/// MsgResetCircuitBreaker defines the Msg/ResetCircuitBreaker request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgResetCircuitBreaker {
+    /// authority is the account authorized to trip or reset the circuit breaker.
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// msg_type_urls specifies a list of Msg type URLs to resume processing. If
+    /// it is left empty all Msg processing for type URLs that the account is
+    /// authorized to trip will resume.
+    #[prost(string, repeated, tag="3")]
+    pub msg_type_urls: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// MsgResetCircuitBreakerResponse defines the Msg/ResetCircuitBreaker response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgResetCircuitBreakerResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
 // @@protoc_insertion_point(module)
