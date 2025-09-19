@@ -1,0 +1,174 @@
+# Xion Protocol Buffer Documentation
+
+> **Generated on:** {{.GeneratedAt}}  
+> **Generator:** protoc-gen-doc
+
+## Overview
+
+This document provides comprehensive API reference for all Protocol Buffer definitions used in the Xion blockchain.
+
+---
+
+## Table of Contents
+
+{{range .Files}}
+{{$file_name := .Name}}
+### 📄 {{.Name}}
+{{if .Package}}- **Package:** `{{.Package}}`{{end}}
+{{if .Services}}
+**Services:**
+{{range .Services}}
+- [{{.Name}}](#{{.FullName | anchor}})
+{{end}}
+{{end}}
+{{if .Messages}}
+**Messages:**
+{{range .Messages}}
+- [{{.LongName}}](#{{.FullName | anchor}})
+{{end}}
+{{end}}
+{{if .Enums}}
+**Enums:**
+{{range .Enums}}
+- [{{.LongName}}](#{{.FullName | anchor}})
+{{end}}
+{{end}}
+
+{{end}}
+
+---
+
+{{range .Files}}
+{{$file_name := .Name}}
+
+# 📄 File: {{.Name}}
+
+{{if .Package}}**Package:** `{{.Package}}`{{end}}
+
+{{if .Description}}
+{{.Description}}
+{{end}}
+
+{{range .Services}}
+
+## 🔧 Service: {{.Name}} {#{{.FullName | anchor}}}
+
+{{if .Description}}
+{{.Description}}
+{{end}}
+
+{{range .Methods}}
+
+### {{.Name}}
+
+{{if .Description}}
+{{.Description}}
+{{end}}
+
+**Method Signature:**
+```protobuf
+rpc {{.Name}}({{.RequestType}}) returns ({{.ResponseType}}){{if .RequestStreaming}} [Request Streaming]{{end}}{{if .ResponseStreaming}} [Response Streaming]{{end}}
+```
+
+{{if .RequestLongType}}
+- **Request Type:** [`{{.RequestLongType}}`](#{{.RequestLongType | anchor}})
+{{end}}
+{{if .ResponseLongType}}
+- **Response Type:** [`{{.ResponseLongType}}`](#{{.ResponseLongType | anchor}})
+{{end}}
+
+{{if .RequestStreaming}}
+> 📡 **Streaming Request:** This method accepts a stream of requests.
+{{end}}
+
+{{if .ResponseStreaming}}
+> 📡 **Streaming Response:** This method returns a stream of responses.
+{{end}}
+
+{{end}}
+{{end}}
+
+{{range .Messages}}
+
+## 📋 Message: {{.LongName}} {#{{.FullName | anchor}}}
+
+{{if .IsDeprecated}}
+> ⚠️ **DEPRECATED:** This message is deprecated and should not be used in new code.
+{{end}}
+
+{{if .Description}}
+{{.Description}}
+{{end}}
+
+{{if .Fields}}
+### Fields
+
+| Field | Type | Number | Label | Description |
+|-------|------|--------|-------|-------------|
+{{range .Fields}}
+| `{{.Name}}`{{if .IsDeprecated}} ⚠️{{end}} | [`{{.LongType}}`](#{{.LongType | anchor}}) | {{.Number}} | {{.Label}}{{if .IsOneof}} (oneof: {{.OneofName}}){{end}} | {{.Description}} {{if .DefaultValue}}<br/>**Default:** `{{.DefaultValue}}`{{end}} |
+{{end}}
+
+{{end}}
+
+{{if .HasExtensions}}
+### Extensions
+
+This message supports extensions in the range: {{.ExtensionRangeString}}
+{{end}}
+
+**Full Definition:**
+```protobuf
+message {{.Name}} {
+{{range .Fields}}
+  {{.Label}} {{.Type}} {{.Name}} = {{.Number}};{{if .Description}} // {{.Description}}{{end}}
+{{end}}
+}
+```
+
+{{end}}
+
+{{range .Enums}}
+
+## 🔢 Enum: {{.LongName}} {#{{.FullName | anchor}}}
+
+{{if .IsDeprecated}}
+> ⚠️ **DEPRECATED:** This enum is deprecated and should not be used in new code.
+{{end}}
+
+{{if .Description}}
+{{.Description}}
+{{end}}
+
+### Values
+
+| Name | Number | Description |
+|------|--------|-------------|
+{{range .Values}}
+| `{{.Name}}`{{if .IsDeprecated}} ⚠️{{end}} | {{.Number}} | {{.Description}} |
+{{end}}
+
+**Full Definition:**
+```protobuf
+enum {{.Name}} {
+{{range .Values}}
+  {{.Name}} = {{.Number}};{{if .Description}} // {{.Description}}{{end}}
+{{end}}
+}
+```
+
+{{end}}
+
+---
+
+{{end}}
+
+## 📚 Additional Resources
+
+- [Protocol Buffers Documentation](https://developers.google.com/protocol-buffers)
+- [Xion Blockchain Documentation](https://docs.xion.burnt.com)
+- [gRPC Documentation](https://grpc.io/docs/)
+
+---
+
+*This documentation was automatically generated from Protocol Buffer definitions.*

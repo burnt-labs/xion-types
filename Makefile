@@ -39,6 +39,10 @@ proto-gen-cpp: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --cpp
 
+proto-gen-docs:
+	@echo "Generating Protobuf Docs"
+	@$(protoImage) sh ./scripts/proto-gen-ext.sh --docs
+
 proto-gen-java: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --java

@@ -84,6 +84,46 @@ gen_ts() {
   npm run codegen
 }
 
+gen_docs() {
+  go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest #2>/dev/null
+  local dirs="$proto_dir $proto_paths"
+
+  tmp_dir=$(mktemp -d -t tmp-XXXXXX)
+  cd $tmp_dir
+  
+  # Generate docs for each proto file
+  for dir in $dirs; do
+  
+  # Check if directory is within the proto module
+    # Skip problematic dependencies
+    case "$dir" in
+      # missing or incorrectly identified cosmos_proto/cosmos.proto
+      *"burnt-labs/abstract-account"*)
+        continue
+        ;;
+    esac
+
+    module_dir=$(dirname $dir)
+
+    local deep_proto_dirs=$(find "$dir" -name '*.proto' -print0 2>/dev/null | \
+      xargs -0 -n1 dirname 2>/dev/null | \
+      sort -u 2>/dev/null || true)
+
+    for deep_proto_dir in $deep_proto_dirs; do
+      # For files within our module, use the module root with the specific file
+      buf generate "$module_dir" \
+        --output $tmp_dir/$deep_proto_dir \
+        --template "$buf_dir/buf.gen.docs.yaml" \
+        --path "$deep_proto_dir"
+      destination_dir="$xion_types_dir/docs/$(echo $deep_proto_dir | sed "s|$module_dir||" | sed 's|^/||')"
+      mkdir -p "$destination_dir"
+      cp -rv $tmp_dir/$deep_proto_dir/* "$destination_dir/"
+    done
+  done
+
+}
+
+
 show_help() {
   echo "Usage: $0 [OPTIONS]"
   echo ""
@@ -92,6 +132,7 @@ show_help() {
   echo "OPTIONS:"
   echo "  --c          Generate C types"
   echo "  --cpp        Generate C++ types"
+  echo "  --docs       Generate Markdown documentation"
   echo "  --java       Generate Java types"
   echo "  --kotlin     Generate Kotlin types"
   echo "  --objc       Generate Objective-C types"
@@ -117,7 +158,7 @@ main() {
   while [[ $# -gt 0 ]]; do
     case $1 in
     --all)
-      gen_language all && post_kotlin && gen_ts
+      gen_language all && post_kotlin && gen_ts && gen_docs
       shift
       ;;
     --c)
@@ -126,6 +167,10 @@ main() {
       ;;
     --cpp)
       gen_language cpp
+      shift
+      ;;
+    --docs)
+      gen_docs
       shift
       ;;
     --java)
