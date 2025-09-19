@@ -15,6 +15,10 @@ on:
 
   repository_dispatch: # triggers on release event from burnt-labs/xion repo
     types: [xion-types-release-trigger]
+    
+  schedule:
+    # Run nightly at 2 AM UTC
+    - cron: '0 2 * * *'
       
 env:
   NODE_VERSION: '20'
@@ -150,8 +154,8 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    # Only run publish for: latest release OR manual dispatch
-    if: github.event.client_payload.release_type == 'latest' || github.event_name == 'workflow_dispatch'
+    # Only run publish for: latest release, prerelease, manual dispatch, or scheduled (nightly)
+    if: github.event.client_payload.release_type == 'latest' || github.event.client_payload.release_type == 'prerelease' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -188,6 +192,13 @@ jobs:
             echo "Set the package version in package.json to: $CLEAN_TAG"
             npm version $CLEAN_TAG --no-git-tag-version
             echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
+          elif [ "${{ github.event_name }}" == "schedule" ]; then
+            # Create nightly version with timestamp
+            NIGHTLY_VERSION="nightly-$(date -u +%Y%m%d-%H%M%S)"
+            echo "Set the package version in package.json to: $NIGHTLY_VERSION"
+            npm version $NIGHTLY_VERSION --no-git-tag-version
+            echo "Set version from scheduled nightly build: $NIGHTLY_VERSION"
+
           else
             echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
             exit 1
@@ -197,15 +208,36 @@ jobs:
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
-          echo "New package version: $NEW_VERSION"
+          
+          # Set appropriate tag based on release type
+          if [ "${{ github.event_name }}" == "schedule" ]; then
+            # Nightly builds get 'nightly' tag
+            echo "TAG=nightly" >> $GITHUB_ENV
+            echo "Tag: nightly"
+          elif [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
+            # Pre-releases get 'beta' tag
+            echo "TAG=beta" >> $GITHUB_ENV
+            echo "Tag: beta"
+          elif [ "${{ github.event.client_payload.release_type }}" == "latest" ]; then
+            # Latest releases get 'latest' tag
+            echo "TAG=latest" >> $GITHUB_ENV
+            echo "Tag: latest"
+          else
+            # Published releases get version as tag
+            echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
+            echo "Tag: $NEW_VERSION"
+          fi
+          
+          echo "New version: $NEW_VERSION"
 
       - name: Dry run publish to NPM # TODO TEST & DELETE ME
         working-directory: ./ts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "DRY RUN CHECK: @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"     
+          echo "DRY RUN CHECK: @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
+          echo "Release type: ${{ github.event.client_payload.release_type || 'scheduled' }}"
+          echo "Event type: ${{ github.event_name }}"     
 
       # - name: Publish to NPM 
       #   working-directory: ./ts
