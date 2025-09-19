@@ -1,0 +1,6 @@
+version: v1
+plugins:
+  - plugin: doc
+    out: .
+    opt:
+      - markdown,index.md:./docs.md.tpl
