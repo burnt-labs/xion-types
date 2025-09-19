@@ -3,4 +3,4 @@ plugins:
   - plugin: doc
     out: .
     opt:
-      - markdown,index.md:./docs.md.tpl
+      - markdown,README.md:./docs.md.tpl
