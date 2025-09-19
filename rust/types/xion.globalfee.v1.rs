@@ -27,4 +27,16 @@ pub struct Params {
     #[prost(uint64, tag="3")]
     pub max_total_bypass_min_fee_msg_gas_usage: u64,
 }
+/// QueryMinimumGasPricesRequest is the request type for the
+/// Query/MinimumGasPrices RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryParamsRequest {
+}
+/// QueryMinimumGasPricesResponse is the response type for the
+/// Query/MinimumGasPrices RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryParamsResponse {
+    #[prost(message, optional, tag="1")]
+    pub params: ::core::option::Option<Params>,
+}
 // @@protoc_insertion_point(module)

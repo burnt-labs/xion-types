@@ -41,6 +41,52 @@ pub struct Params {
     #[prost(bytes="vec", tag="5")]
     pub slash_fraction_downtime: ::prost::alloc::vec::Vec<u8>,
 }
+/// GenesisState defines the slashing module's genesis state.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    /// params defines all the parameters of the module.
+    #[prost(message, optional, tag="1")]
+    pub params: ::core::option::Option<Params>,
+    /// signing_infos represents a map between validator addresses and their
+    /// signing infos.
+    #[prost(message, repeated, tag="2")]
+    pub signing_infos: ::prost::alloc::vec::Vec<SigningInfo>,
+    /// missed_blocks represents a map between validator addresses and their
+    /// missed blocks.
+    #[prost(message, repeated, tag="3")]
+    pub missed_blocks: ::prost::alloc::vec::Vec<ValidatorMissedBlocks>,
+}
+/// SigningInfo stores validator signing info of corresponding address.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SigningInfo {
+    /// address is the validator address.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+    /// validator_signing_info represents the signing info of this validator.
+    #[prost(message, optional, tag="2")]
+    pub validator_signing_info: ::core::option::Option<ValidatorSigningInfo>,
+}
+/// ValidatorMissedBlocks contains array of missed blocks of corresponding
+/// address.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ValidatorMissedBlocks {
+    /// address is the validator address.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+    /// missed_blocks is an array of missed blocks by the validator.
+    #[prost(message, repeated, tag="2")]
+    pub missed_blocks: ::prost::alloc::vec::Vec<MissedBlock>,
+}
+/// MissedBlock contains height and missed status as boolean.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MissedBlock {
+    /// index is the height at which the block was missed.
+    #[prost(int64, tag="1")]
+    pub index: i64,
+    /// missed is the missed status.
+    #[prost(bool, tag="2")]
+    pub missed: bool,
+}
 /// QueryParamsRequest is the request type for the Query/Params RPC method
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {
@@ -83,5 +129,32 @@ pub struct QuerySigningInfosResponse {
     pub info: ::prost::alloc::vec::Vec<ValidatorSigningInfo>,
     #[prost(message, optional, tag="2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// MsgUnjail defines the Msg/Unjail request type
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUnjail {
+    #[prost(string, tag="1")]
+    pub validator_addr: ::prost::alloc::string::String,
+}
+/// MsgUnjailResponse defines the Msg/Unjail response type
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUnjailResponse {
+}
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// params defines the x/slashing parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
 }
 // @@protoc_insertion_point(module)

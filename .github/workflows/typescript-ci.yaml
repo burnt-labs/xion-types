@@ -198,6 +198,7 @@ jobs:
             echo "Set the package version in package.json to: $NIGHTLY_VERSION"
             npm version $NIGHTLY_VERSION --no-git-tag-version
             echo "Set version from scheduled nightly build: $NIGHTLY_VERSION"
+
           else
             echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
             exit 1

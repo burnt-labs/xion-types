@@ -25,6 +25,17 @@ pub struct Params {
     #[prost(uint64, tag="2")]
     pub distribution_frequency: u64,
 }
+/// GenesisState defines the protocolpool module's genesis state.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    /// ContinuousFunds defines the continuous funds at genesis.
+    #[prost(message, repeated, tag="1")]
+    pub continuous_funds: ::prost::alloc::vec::Vec<ContinuousFund>,
+    /// Params defines the parameters of this module, currently only contains the
+    /// denoms that will be used for continuous fund distributions.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
 /// QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
 /// method.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -76,5 +87,98 @@ pub struct QueryParamsRequest {
 pub struct QueryParamsResponse {
     #[prost(message, optional, tag="1")]
     pub params: ::core::option::Option<Params>,
+}
+/// MsgFundCommunityPool allows an account to directly
+/// fund the community pool.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgFundCommunityPool {
+    #[prost(string, tag="1")]
+    pub depositor: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag="2")]
+    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+}
+/// MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgFundCommunityPoolResponse {
+}
+/// MsgCommunityPoolSpend defines a message for sending tokens from the community
+/// pool to another account. This message is typically executed via a governance
+/// proposal with the governance module being the executing authority.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCommunityPoolSpend {
+    /// Authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub recipient: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag="3")]
+    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+}
+/// MsgCommunityPoolSpendResponse defines the response to executing a
+/// MsgCommunityPoolSpend message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgCommunityPoolSpendResponse {
+}
+/// MsgCreateContinuousFund defines a message for adding continuous funds.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateContinuousFund {
+    /// Authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// Recipient address of the account receiving funds.
+    #[prost(string, tag="2")]
+    pub recipient: ::prost::alloc::string::String,
+    /// Percentage is the percentage of funds to be allocated from Community pool.
+    #[prost(string, tag="3")]
+    pub percentage: ::prost::alloc::string::String,
+    /// Optional, if expiry is set, removes the state object when expired.
+    #[prost(message, optional, tag="4")]
+    pub expiry: ::core::option::Option<::prost_types::Timestamp>,
+}
+/// MsgCreateContinuousFundResponse defines the response to executing a
+/// MsgCreateContinuousFund message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgCreateContinuousFundResponse {
+}
+/// MsgCancelContinuousFund defines a message to cancel continuous funds for a specific recipient.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCancelContinuousFund {
+    /// Authority is the account address of authority.
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// Recipient is the account address string of the recipient whose funds are to be cancelled.
+    #[prost(string, tag="2")]
+    pub recipient: ::prost::alloc::string::String,
+}
+/// MsgCancelContinuousFundResponse defines the response to executing a
+/// MsgCancelContinuousFund message.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCancelContinuousFundResponse {
+    /// CanceledTime is the canceled time.
+    #[prost(message, optional, tag="1")]
+    pub canceled_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// CanceledHeight defines the canceled block height.
+    #[prost(uint64, tag="2")]
+    pub canceled_height: u64,
+    /// Recipient is the account address string of the recipient whose funds are cancelled.
+    #[prost(string, tag="3")]
+    pub recipient: ::prost::alloc::string::String,
+}
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// authority is the address that controls the module (defaults to x/gov unless overwritten).
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// params defines the x/protocolpool parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
 }
 // @@protoc_insertion_point(module)

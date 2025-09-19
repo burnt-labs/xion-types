@@ -12,8 +12,6 @@ public inline fun moduleCredential(block: cosmos.auth.v1beta1.ModuleCredentialKt
 /**
  * ```
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- *
- * Since: cosmos-sdk 0.47
  * ```
  *
  * Protobuf type `cosmos.auth.v1beta1.ModuleCredential`

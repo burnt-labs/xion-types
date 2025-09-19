@@ -60,4 +60,108 @@ pub struct Grant {
     #[prost(message, optional, tag="3")]
     pub allowance: ::core::option::Option<::prost_types::Any>,
 }
+/// GenesisState contains a set of fee allowances, persisted from the store
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    #[prost(message, repeated, tag="1")]
+    pub allowances: ::prost::alloc::vec::Vec<Grant>,
+}
+/// QueryAllowanceRequest is the request type for the Query/Allowance RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowanceRequest {
+    /// granter is the address of the user granting an allowance of their funds.
+    #[prost(string, tag="1")]
+    pub granter: ::prost::alloc::string::String,
+    /// grantee is the address of the user being granted an allowance of another user's funds.
+    #[prost(string, tag="2")]
+    pub grantee: ::prost::alloc::string::String,
+}
+/// QueryAllowanceResponse is the response type for the Query/Allowance RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowanceResponse {
+    /// allowance is a allowance granted for grantee by granter.
+    #[prost(message, optional, tag="1")]
+    pub allowance: ::core::option::Option<Grant>,
+}
+/// QueryAllowancesRequest is the request type for the Query/Allowances RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowancesRequest {
+    #[prost(string, tag="1")]
+    pub grantee: ::prost::alloc::string::String,
+    /// pagination defines an pagination for the request.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryAllowancesResponse is the response type for the Query/Allowances RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowancesResponse {
+    /// allowances are allowance's granted for grantee by granter.
+    #[prost(message, repeated, tag="1")]
+    pub allowances: ::prost::alloc::vec::Vec<Grant>,
+    /// pagination defines an pagination for the response.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowancesByGranterRequest {
+    #[prost(string, tag="1")]
+    pub granter: ::prost::alloc::string::String,
+    /// pagination defines an pagination for the request.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowancesByGranterResponse {
+    /// allowances that have been issued by the granter.
+    #[prost(message, repeated, tag="1")]
+    pub allowances: ::prost::alloc::vec::Vec<Grant>,
+    /// pagination defines an pagination for the response.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// MsgGrantAllowance adds permission for Grantee to spend up to Allowance
+/// of fees from the account of Granter.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgGrantAllowance {
+    /// granter is the address of the user granting an allowance of their funds.
+    #[prost(string, tag="1")]
+    pub granter: ::prost::alloc::string::String,
+    /// grantee is the address of the user being granted an allowance of another user's funds.
+    #[prost(string, tag="2")]
+    pub grantee: ::prost::alloc::string::String,
+    /// allowance can be any of basic, periodic, allowed fee allowance.
+    #[prost(message, optional, tag="3")]
+    pub allowance: ::core::option::Option<::prost_types::Any>,
+}
+/// MsgGrantAllowanceResponse defines the Msg/GrantAllowanceResponse response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgGrantAllowanceResponse {
+}
+/// MsgRevokeAllowance removes any existing Allowance from Granter to Grantee.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgRevokeAllowance {
+    /// granter is the address of the user granting an allowance of their funds.
+    #[prost(string, tag="1")]
+    pub granter: ::prost::alloc::string::String,
+    /// grantee is the address of the user being granted an allowance of another user's funds.
+    #[prost(string, tag="2")]
+    pub grantee: ::prost::alloc::string::String,
+}
+/// MsgRevokeAllowanceResponse defines the Msg/RevokeAllowanceResponse response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgRevokeAllowanceResponse {
+}
+/// MsgPruneAllowances prunes expired fee allowances.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgPruneAllowances {
+    /// pruner is the address of the user pruning expired allowances.
+    #[prost(string, tag="1")]
+    pub pruner: ::prost::alloc::string::String,
+}
+/// MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgPruneAllowancesResponse {
+}
 // @@protoc_insertion_point(module)

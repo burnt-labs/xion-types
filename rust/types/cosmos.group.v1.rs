@@ -379,6 +379,132 @@ impl ProposalExecutorResult {
         }
     }
 }
+/// EventCreateGroup is an event emitted when a group is created.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct EventCreateGroup {
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="1")]
+    pub group_id: u64,
+}
+/// EventUpdateGroup is an event emitted when a group is updated.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct EventUpdateGroup {
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="1")]
+    pub group_id: u64,
+}
+/// EventCreateGroupPolicy is an event emitted when a group policy is created.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateGroupPolicy {
+    /// address is the account address of the group policy.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+}
+/// EventUpdateGroupPolicy is an event emitted when a group policy is updated.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventUpdateGroupPolicy {
+    /// address is the account address of the group policy.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+}
+/// EventSubmitProposal is an event emitted when a proposal is created.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct EventSubmitProposal {
+    /// proposal_id is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// EventWithdrawProposal is an event emitted when a proposal is withdrawn.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct EventWithdrawProposal {
+    /// proposal_id is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// EventVote is an event emitted when a voter votes on a proposal.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct EventVote {
+    /// proposal_id is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// EventExec is an event emitted when a proposal is executed.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventExec {
+    /// proposal_id is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// result is the proposal execution result.
+    #[prost(enumeration="ProposalExecutorResult", tag="2")]
+    pub result: i32,
+    /// logs contains error logs in case the execution result is FAILURE.
+    #[prost(string, tag="3")]
+    pub logs: ::prost::alloc::string::String,
+}
+/// EventLeaveGroup is an event emitted when group member leaves the group.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventLeaveGroup {
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="1")]
+    pub group_id: u64,
+    /// address is the account address of the group member.
+    #[prost(string, tag="2")]
+    pub address: ::prost::alloc::string::String,
+}
+/// EventProposalPruned is an event emitted when a proposal is pruned.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventProposalPruned {
+    /// proposal_id is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN).
+    #[prost(enumeration="ProposalStatus", tag="2")]
+    pub status: i32,
+    /// tally_result is the proposal tally result (when applicable).
+    #[prost(message, optional, tag="3")]
+    pub tally_result: ::core::option::Option<TallyResult>,
+}
+/// EventTallyError is an event emitted when a proposal tally failed with an error.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventTallyError {
+    /// proposal_id is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// error_message is the raw error output
+    #[prost(string, tag="2")]
+    pub error_message: ::prost::alloc::string::String,
+}
+/// GenesisState defines the group module's genesis state.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    /// group_seq is the group table orm.Sequence,
+    /// it is used to get the next group ID.
+    #[prost(uint64, tag="1")]
+    pub group_seq: u64,
+    /// groups is the list of groups info.
+    #[prost(message, repeated, tag="2")]
+    pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
+    /// group_members is the list of groups members.
+    #[prost(message, repeated, tag="3")]
+    pub group_members: ::prost::alloc::vec::Vec<GroupMember>,
+    /// group_policy_seq is the group policy table orm.Sequence,
+    /// it is used to generate the next group policy account address.
+    #[prost(uint64, tag="4")]
+    pub group_policy_seq: u64,
+    /// group_policies is the list of group policies info.
+    #[prost(message, repeated, tag="5")]
+    pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo>,
+    /// proposal_seq is the proposal table orm.Sequence,
+    /// it is used to get the next proposal ID.
+    #[prost(uint64, tag="6")]
+    pub proposal_seq: u64,
+    /// proposals is the list of proposals.
+    #[prost(message, repeated, tag="7")]
+    pub proposals: ::prost::alloc::vec::Vec<Proposal>,
+    /// votes is the list of votes.
+    #[prost(message, repeated, tag="8")]
+    pub votes: ::prost::alloc::vec::Vec<Vote>,
+}
 /// QueryGroupInfoRequest is the Query/GroupInfo request type.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct QueryGroupInfoRequest {
@@ -628,5 +754,333 @@ pub struct QueryGroupsResponse {
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+//
+// Groups
+//
+
+/// MsgCreateGroup is the Msg/CreateGroup request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateGroup {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// members defines the group members.
+    #[prost(message, repeated, tag="2")]
+    pub members: ::prost::alloc::vec::Vec<MemberRequest>,
+    /// metadata is any arbitrary metadata to attached to the group.
+    #[prost(string, tag="3")]
+    pub metadata: ::prost::alloc::string::String,
+}
+/// MsgCreateGroupResponse is the Msg/CreateGroup response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgCreateGroupResponse {
+    /// group_id is the unique ID of the newly created group.
+    #[prost(uint64, tag="1")]
+    pub group_id: u64,
+}
+/// MsgUpdateGroupMembers is the Msg/UpdateGroupMembers request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupMembers {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="2")]
+    pub group_id: u64,
+    /// member_updates is the list of members to update,
+    /// set weight to 0 to remove a member.
+    #[prost(message, repeated, tag="3")]
+    pub member_updates: ::prost::alloc::vec::Vec<MemberRequest>,
+}
+/// MsgUpdateGroupMembersResponse is the Msg/UpdateGroupMembers response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupMembersResponse {
+}
+/// MsgUpdateGroupAdmin is the Msg/UpdateGroupAdmin request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupAdmin {
+    /// admin is the current account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="2")]
+    pub group_id: u64,
+    /// new_admin is the group new admin account address.
+    #[prost(string, tag="3")]
+    pub new_admin: ::prost::alloc::string::String,
+}
+/// MsgUpdateGroupAdminResponse is the Msg/UpdateGroupAdmin response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupAdminResponse {
+}
+/// MsgUpdateGroupMetadata is the Msg/UpdateGroupMetadata request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupMetadata {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="2")]
+    pub group_id: u64,
+    /// metadata is the updated group's metadata.
+    #[prost(string, tag="3")]
+    pub metadata: ::prost::alloc::string::String,
+}
+/// MsgUpdateGroupMetadataResponse is the Msg/UpdateGroupMetadata response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupMetadataResponse {
+}
+//
+// Group Policies
+//
+
+/// MsgCreateGroupPolicy is the Msg/CreateGroupPolicy request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateGroupPolicy {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="2")]
+    pub group_id: u64,
+    /// metadata is any arbitrary metadata attached to the group policy.
+    #[prost(string, tag="3")]
+    pub metadata: ::prost::alloc::string::String,
+    /// decision_policy specifies the group policy's decision policy.
+    #[prost(message, optional, tag="4")]
+    pub decision_policy: ::core::option::Option<::prost_types::Any>,
+}
+/// MsgCreateGroupPolicyResponse is the Msg/CreateGroupPolicy response type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateGroupPolicyResponse {
+    /// address is the account address of the newly created group policy.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+}
+/// MsgUpdateGroupPolicyAdmin is the Msg/UpdateGroupPolicyAdmin request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupPolicyAdmin {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_policy_address is the account address of the group policy.
+    #[prost(string, tag="2")]
+    pub group_policy_address: ::prost::alloc::string::String,
+    /// new_admin is the new group policy admin.
+    #[prost(string, tag="3")]
+    pub new_admin: ::prost::alloc::string::String,
+}
+/// MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupPolicyAdminResponse {
+}
+/// MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateGroupWithPolicy {
+    /// admin is the account address of the group and group policy admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// members defines the group members.
+    #[prost(message, repeated, tag="2")]
+    pub members: ::prost::alloc::vec::Vec<MemberRequest>,
+    /// group_metadata is any arbitrary metadata attached to the group.
+    #[prost(string, tag="3")]
+    pub group_metadata: ::prost::alloc::string::String,
+    /// group_policy_metadata is any arbitrary metadata attached to the group policy.
+    #[prost(string, tag="4")]
+    pub group_policy_metadata: ::prost::alloc::string::String,
+    /// group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group
+    /// and group policy admin.
+    #[prost(bool, tag="5")]
+    pub group_policy_as_admin: bool,
+    /// decision_policy specifies the group policy's decision policy.
+    #[prost(message, optional, tag="6")]
+    pub decision_policy: ::core::option::Option<::prost_types::Any>,
+}
+/// MsgCreateGroupWithPolicyResponse is the Msg/CreateGroupWithPolicy response type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateGroupWithPolicyResponse {
+    /// group_id is the unique ID of the newly created group with policy.
+    #[prost(uint64, tag="1")]
+    pub group_id: u64,
+    /// group_policy_address is the account address of the newly created group policy.
+    #[prost(string, tag="2")]
+    pub group_policy_address: ::prost::alloc::string::String,
+}
+/// MsgUpdateGroupPolicyDecisionPolicy is the Msg/UpdateGroupPolicyDecisionPolicy request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupPolicyDecisionPolicy {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_policy_address is the account address of group policy.
+    #[prost(string, tag="2")]
+    pub group_policy_address: ::prost::alloc::string::String,
+    /// decision_policy is the updated group policy's decision policy.
+    #[prost(message, optional, tag="3")]
+    pub decision_policy: ::core::option::Option<::prost_types::Any>,
+}
+/// MsgUpdateGroupPolicyDecisionPolicyResponse is the Msg/UpdateGroupPolicyDecisionPolicy response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupPolicyDecisionPolicyResponse {
+}
+/// MsgUpdateGroupPolicyMetadata is the Msg/UpdateGroupPolicyMetadata request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupPolicyMetadata {
+    /// admin is the account address of the group admin.
+    #[prost(string, tag="1")]
+    pub admin: ::prost::alloc::string::String,
+    /// group_policy_address is the account address of group policy.
+    #[prost(string, tag="2")]
+    pub group_policy_address: ::prost::alloc::string::String,
+    /// metadata is the group policy metadata to be updated.
+    #[prost(string, tag="3")]
+    pub metadata: ::prost::alloc::string::String,
+}
+/// MsgUpdateGroupPolicyMetadataResponse is the Msg/UpdateGroupPolicyMetadata response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgUpdateGroupPolicyMetadataResponse {
+}
+/// MsgSubmitProposal is the Msg/SubmitProposal request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgSubmitProposal {
+    /// group_policy_address is the account address of group policy.
+    #[prost(string, tag="1")]
+    pub group_policy_address: ::prost::alloc::string::String,
+    /// proposers are the account addresses of the proposers.
+    /// Proposers signatures will be counted as yes votes.
+    #[prost(string, repeated, tag="2")]
+    pub proposers: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// metadata is any arbitrary metadata attached to the proposal.
+    #[prost(string, tag="3")]
+    pub metadata: ::prost::alloc::string::String,
+    /// messages is a list of `sdk.Msg`s that will be executed if the proposal passes.
+    #[prost(message, repeated, tag="4")]
+    pub messages: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    /// exec defines the mode of execution of the proposal,
+    /// whether it should be executed immediately on creation or not.
+    /// If so, proposers signatures are considered as Yes votes.
+    #[prost(enumeration="Exec", tag="5")]
+    pub exec: i32,
+    /// title is the title of the proposal.
+    #[prost(string, tag="6")]
+    pub title: ::prost::alloc::string::String,
+    /// summary is the summary of the proposal.
+    #[prost(string, tag="7")]
+    pub summary: ::prost::alloc::string::String,
+}
+/// MsgSubmitProposalResponse is the Msg/SubmitProposal response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgSubmitProposalResponse {
+    /// proposal is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// MsgWithdrawProposal is the Msg/WithdrawProposal request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgWithdrawProposal {
+    /// proposal is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// address is the admin of the group policy or one of the proposer of the proposal.
+    #[prost(string, tag="2")]
+    pub address: ::prost::alloc::string::String,
+}
+/// MsgWithdrawProposalResponse is the Msg/WithdrawProposal response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgWithdrawProposalResponse {
+}
+/// MsgVote is the Msg/Vote request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgVote {
+    /// proposal is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// voter is the voter account address.
+    #[prost(string, tag="2")]
+    pub voter: ::prost::alloc::string::String,
+    /// option is the voter's choice on the proposal.
+    #[prost(enumeration="VoteOption", tag="3")]
+    pub option: i32,
+    /// metadata is any arbitrary metadata attached to the vote.
+    #[prost(string, tag="4")]
+    pub metadata: ::prost::alloc::string::String,
+    /// exec defines whether the proposal should be executed
+    /// immediately after voting or not.
+    #[prost(enumeration="Exec", tag="5")]
+    pub exec: i32,
+}
+/// MsgVoteResponse is the Msg/Vote response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgVoteResponse {
+}
+/// MsgExec is the Msg/Exec request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgExec {
+    /// proposal is the unique ID of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// executor is the account address used to execute the proposal.
+    #[prost(string, tag="2")]
+    pub executor: ::prost::alloc::string::String,
+}
+/// MsgExecResponse is the Msg/Exec request type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgExecResponse {
+    /// result is the final result of the proposal execution.
+    #[prost(enumeration="ProposalExecutorResult", tag="2")]
+    pub result: i32,
+}
+/// MsgLeaveGroup is the Msg/LeaveGroup request type.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgLeaveGroup {
+    /// address is the account address of the group member.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+    /// group_id is the unique ID of the group.
+    #[prost(uint64, tag="2")]
+    pub group_id: u64,
+}
+/// MsgLeaveGroupResponse is the Msg/LeaveGroup response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgLeaveGroupResponse {
+}
+//
+// Proposals and Voting
+//
+
+/// Exec defines modes of execution of a proposal on creation or on new vote.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum Exec {
+    /// An empty value means that there should be a separate
+    /// MsgExec request for the proposal to execute.
+    Unspecified = 0,
+    /// Try to execute the proposal immediately.
+    /// If the proposal is not allowed per the DecisionPolicy,
+    /// the proposal will still be open and could
+    /// be executed at a later point.
+    Try = 1,
+}
+impl Exec {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            Self::Unspecified => "EXEC_UNSPECIFIED",
+            Self::Try => "EXEC_TRY",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "EXEC_UNSPECIFIED" => Some(Self::Unspecified),
+            "EXEC_TRY" => Some(Self::Try),
+            _ => None,
+        }
+    }
 }
 // @@protoc_insertion_point(module)

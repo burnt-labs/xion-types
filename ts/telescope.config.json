@@ -1,0 +1,84 @@
+{
+  "options": {
+    "classesUseArrowFunctions": true,
+    "env": "v-next",
+    "useInterchainJs": true,
+    "useSDKTypes": true,
+    "prototypes": {
+      "enableRegistryLoader": false,
+      "enableMessageComposer": false,
+      "enabled": true,
+      "parser": {
+        "keepCase": false,
+        "alternateCommentMode": true,
+        "preferTrailingComment": false
+      },
+      "methods": {
+        "fromJSON": true,
+        "toJSON": true,
+        "encode": true,
+        "decode": true,
+        "fromPartial": true,
+        "toAmino": true,
+        "fromAmino": true,
+        "fromProto": false,
+        "toProto": false,
+        "fromProtoMsg": false,
+        "toProtoMsg": false,
+        "toAminoMsg": true,
+        "fromAminoMsg": true
+      },
+      "addTypeUrlToDecoders": true,
+      "addTypeUrlToObjects": true,
+      "addAminoTypeToObjects": true,
+      "typingsFormat": {
+        "duration": "duration",
+        "timestamp": "date",
+        "useExact": true,
+        "useDeepPartial": true,
+        "num64": "bigint",
+        "customTypes": {
+          "useCosmosSDKDec": true,
+          "useEnhancedDecimal": false
+        },
+        "useTelescopeGeneratedType": true,
+        "autoFixUndefinedEnumDefault": true
+      }
+    },
+    "bundle": {
+      "enabled": false
+    },
+    "stargateClients": {
+      "enabled": true
+    },
+    "lcdClients": {
+      "enabled": true
+    },
+    "rpcClients": {
+      "enabled": true
+    },
+    "helperFunctions": {
+      "enabled": true,
+      "useGlobalDecoderRegistry": true,
+      "hooks": {
+        "react": true,
+        "vue": false
+      }
+    },
+    "interfaces": {
+      "enabled": true,
+      "useGlobalDecoderRegistry": true,
+      "registerAllDecodersToGlobal": false,
+      "useUnionTypes": true
+    },
+    "aminoEncoding": {
+      "enabled": true,
+      "useLegacyInlineEncoding": false,
+      "disableMsgTypes": false,
+      "useProtoOptionality": true,
+      "customTypes": {
+        "useCosmosSDKDec": true
+      }
+    }
+  }
+}

@@ -110,8 +110,6 @@ typedef GPB_ENUM(ModuleCredential_FieldNumber) {
 
 /**
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- *
- * Since: cosmos-sdk 0.47
  **/
 GPB_FINAL @interface ModuleCredential : GPBMessage
 

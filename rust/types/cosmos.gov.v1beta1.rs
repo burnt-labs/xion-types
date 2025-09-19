@@ -228,4 +228,250 @@ impl ProposalStatus {
         }
     }
 }
+/// GenesisState defines the gov module's genesis state.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisState {
+    /// starting_proposal_id is the ID of the starting proposal.
+    #[prost(uint64, tag="1")]
+    pub starting_proposal_id: u64,
+    /// deposits defines all the deposits present at genesis.
+    #[prost(message, repeated, tag="2")]
+    pub deposits: ::prost::alloc::vec::Vec<Deposit>,
+    /// votes defines all the votes present at genesis.
+    #[prost(message, repeated, tag="3")]
+    pub votes: ::prost::alloc::vec::Vec<Vote>,
+    /// proposals defines all the proposals present at genesis.
+    #[prost(message, repeated, tag="4")]
+    pub proposals: ::prost::alloc::vec::Vec<Proposal>,
+    /// deposit_params defines all the parameters related to deposit.
+    #[prost(message, optional, tag="5")]
+    pub deposit_params: ::core::option::Option<DepositParams>,
+    /// voting_params defines all the parameters related to voting.
+    #[prost(message, optional, tag="6")]
+    pub voting_params: ::core::option::Option<VotingParams>,
+    /// tally_params defines all the parameters related to tally.
+    #[prost(message, optional, tag="7")]
+    pub tally_params: ::core::option::Option<TallyParams>,
+}
+/// QueryProposalRequest is the request type for the Query/Proposal RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryProposalRequest {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// QueryProposalResponse is the response type for the Query/Proposal RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryProposalResponse {
+    #[prost(message, optional, tag="1")]
+    pub proposal: ::core::option::Option<Proposal>,
+}
+/// QueryProposalsRequest is the request type for the Query/Proposals RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryProposalsRequest {
+    /// proposal_status defines the status of the proposals.
+    #[prost(enumeration="ProposalStatus", tag="1")]
+    pub proposal_status: i32,
+    /// voter defines the voter address for the proposals.
+    #[prost(string, tag="2")]
+    pub voter: ::prost::alloc::string::String,
+    /// depositor defines the deposit addresses from the proposals.
+    #[prost(string, tag="3")]
+    pub depositor: ::prost::alloc::string::String,
+    /// pagination defines an optional pagination for the request.
+    #[prost(message, optional, tag="4")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryProposalsResponse is the response type for the Query/Proposals RPC
+/// method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryProposalsResponse {
+    /// proposals defines all the requested governance proposals.
+    #[prost(message, repeated, tag="1")]
+    pub proposals: ::prost::alloc::vec::Vec<Proposal>,
+    /// pagination defines the pagination in the response.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// QueryVoteRequest is the request type for the Query/Vote RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVoteRequest {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// voter defines the voter address for the proposals.
+    #[prost(string, tag="2")]
+    pub voter: ::prost::alloc::string::String,
+}
+/// QueryVoteResponse is the response type for the Query/Vote RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVoteResponse {
+    /// vote defines the queried vote.
+    #[prost(message, optional, tag="1")]
+    pub vote: ::core::option::Option<Vote>,
+}
+/// QueryVotesRequest is the request type for the Query/Votes RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVotesRequest {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// pagination defines an optional pagination for the request.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryVotesResponse is the response type for the Query/Votes RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVotesResponse {
+    /// votes defines the queried votes.
+    #[prost(message, repeated, tag="1")]
+    pub votes: ::prost::alloc::vec::Vec<Vote>,
+    /// pagination defines the pagination in the response.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// QueryParamsRequest is the request type for the Query/Params RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryParamsRequest {
+    /// params_type defines which parameters to query for, can be one of "voting",
+    /// "tallying" or "deposit".
+    #[prost(string, tag="1")]
+    pub params_type: ::prost::alloc::string::String,
+}
+/// QueryParamsResponse is the response type for the Query/Params RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryParamsResponse {
+    /// voting_params defines the parameters related to voting.
+    #[prost(message, optional, tag="1")]
+    pub voting_params: ::core::option::Option<VotingParams>,
+    /// deposit_params defines the parameters related to deposit.
+    #[prost(message, optional, tag="2")]
+    pub deposit_params: ::core::option::Option<DepositParams>,
+    /// tally_params defines the parameters related to tally.
+    #[prost(message, optional, tag="3")]
+    pub tally_params: ::core::option::Option<TallyParams>,
+}
+/// QueryDepositRequest is the request type for the Query/Deposit RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDepositRequest {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// depositor defines the deposit addresses from the proposals.
+    #[prost(string, tag="2")]
+    pub depositor: ::prost::alloc::string::String,
+}
+/// QueryDepositResponse is the response type for the Query/Deposit RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDepositResponse {
+    /// deposit defines the requested deposit.
+    #[prost(message, optional, tag="1")]
+    pub deposit: ::core::option::Option<Deposit>,
+}
+/// QueryDepositsRequest is the request type for the Query/Deposits RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDepositsRequest {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// pagination defines an optional pagination for the request.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryDepositsResponse is the response type for the Query/Deposits RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDepositsResponse {
+    /// deposits defines the requested deposits.
+    #[prost(message, repeated, tag="1")]
+    pub deposits: ::prost::alloc::vec::Vec<Deposit>,
+    /// pagination defines the pagination in the response.
+    #[prost(message, optional, tag="2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// QueryTallyResultRequest is the request type for the Query/Tally RPC method.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct QueryTallyResultRequest {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// QueryTallyResultResponse is the response type for the Query/Tally RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryTallyResultResponse {
+    /// tally defines the requested tally.
+    #[prost(message, optional, tag="1")]
+    pub tally: ::core::option::Option<TallyResult>,
+}
+/// MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
+/// proposal Content.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgSubmitProposal {
+    /// content is the proposal's content.
+    #[prost(message, optional, tag="1")]
+    pub content: ::core::option::Option<::prost_types::Any>,
+    /// initial_deposit is the deposit value that must be paid at proposal submission.
+    #[prost(message, repeated, tag="2")]
+    pub initial_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    /// proposer is the account address of the proposer.
+    #[prost(string, tag="3")]
+    pub proposer: ::prost::alloc::string::String,
+}
+/// MsgSubmitProposalResponse defines the Msg/SubmitProposal response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgSubmitProposalResponse {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+}
+/// MsgVote defines a message to cast a vote.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgVote {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// voter is the voter address for the proposal.
+    #[prost(string, tag="2")]
+    pub voter: ::prost::alloc::string::String,
+    /// option defines the vote option.
+    #[prost(enumeration="VoteOption", tag="3")]
+    pub option: i32,
+}
+/// MsgVoteResponse defines the Msg/Vote response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgVoteResponse {
+}
+/// MsgVoteWeighted defines a message to cast a vote.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgVoteWeighted {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// voter is the voter address for the proposal.
+    #[prost(string, tag="2")]
+    pub voter: ::prost::alloc::string::String,
+    /// options defines the weighted vote options.
+    #[prost(message, repeated, tag="3")]
+    pub options: ::prost::alloc::vec::Vec<WeightedVoteOption>,
+}
+/// MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgVoteWeightedResponse {
+}
+/// MsgDeposit defines a message to submit a deposit to an existing proposal.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgDeposit {
+    /// proposal_id defines the unique id of the proposal.
+    #[prost(uint64, tag="1")]
+    pub proposal_id: u64,
+    /// depositor defines the deposit addresses from the proposals.
+    #[prost(string, tag="2")]
+    pub depositor: ::prost::alloc::string::String,
+    /// amount to be deposited by depositor.
+    #[prost(message, repeated, tag="3")]
+    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+}
+/// MsgDepositResponse defines the Msg/Deposit response type.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct MsgDepositResponse {
+}
 // @@protoc_insertion_point(module)
