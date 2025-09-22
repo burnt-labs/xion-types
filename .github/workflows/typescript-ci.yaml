@@ -193,11 +193,13 @@ jobs:
             npm version $CLEAN_TAG --no-git-tag-version
             echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
           elif [ "${{ github.event_name }}" == "schedule" ]; then
-            # Create nightly version with timestamp
-            NIGHTLY_VERSION="nightly-$(date -u +%Y%m%d-%H%M%S)"
+            # Get the latest published version and create nightly version with timestamp
+            LATEST_VERSION=$(npm view @burnt-labs/xion-types version)
+            TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
+            NIGHTLY_VERSION="${LATEST_VERSION}-nightly.${TIMESTAMP}"
             echo "Set the package version in package.json to: $NIGHTLY_VERSION"
             npm version $NIGHTLY_VERSION --no-git-tag-version
-            echo "Set version from scheduled nightly build: $NIGHTLY_VERSION"
+            echo "Set version from scheduled nightly build: $NIGHTLY_VERSION (based on latest: $LATEST_VERSION)"
 
           else
             echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
