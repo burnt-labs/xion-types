@@ -153,8 +153,8 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    # Only run publish for: latest release, prerelease, manual dispatch, or scheduled (nightly)
-    if: github.event.client_payload.release_type == 'latest' || github.event.client_payload.release_type == 'prerelease' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    # Only run publish for: latest release, prerelease, manual dispatch
+    if: github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
