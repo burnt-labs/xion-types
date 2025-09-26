@@ -142,11 +142,11 @@ jobs:
           
           echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
-  nightly:
-    name: Create Nightly
-    needs: [generate-protobuf]
-    runs-on: ubuntu-latest
+  nightly-build:
     if: github.event_name == 'schedule'
+    name: Create Nightly
+    needs: [test-dependent-projects]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -189,7 +189,7 @@ jobs:
           path: ts/*.tgz
           retention-days: 1
 
-  publish: #TODO - set it to matrix for all the other langs
+  publish-to-npm: #TODO - set it to matrix for all the other langs
     name: Publish to NPM
     needs: [test-dependent-projects]
     runs-on: ubuntu-latest
@@ -272,9 +272,9 @@ jobs:
           npm publish --verbose --access public --tag ${{ env.TAG }}
           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
-  validate-package:
+  validate-on-npm:
     name: Validate NPM Package
-    needs: [publish]
+    needs: [publish-to-npm]
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js
@@ -285,8 +285,8 @@ jobs:
 
       - name: Verify Package on NPM
         env:
-          TAG: ${{ needs.publish.outputs.TAG }}
-          VERSION: ${{ needs.publish.outputs.NEW_VERSION }}
+          TAG: ${{ needs.publish-to-npm.outputs.TAG }}
+          VERSION: ${{ needs.publish-to-npm.outputs.NEW_VERSION }}
         run: |
           echo "Verifying package version: $VERSION"
           
