@@ -3,7 +3,8 @@ name: Publish Types CI/CD
 on:
   push:
     branches: 
-      - main 
+      # - main 
+      - feat/protobuf-publishing
             
   workflow_dispatch:
     inputs:
@@ -33,12 +34,12 @@ jobs:
           # - java
           # - kotlin
           # - objc
-          # - php
-          # - python
-          # - ruby
-          # - rust
+          - php
+          - python
+          - ruby
+          - rust
           # - swift
-          - ts
+          # - ts
       fail-fast: false
     outputs:
       types-generated: ${{ steps.check-types.outputs.types-generated }}
@@ -189,138 +190,138 @@ jobs:
           path: ts/*.tgz
           retention-days: 1
 
-  publish-to-npm: #TODO - set it to matrix for all the other langs
-    name: Publish to NPM
-    needs: [test-dependent-projects]
-    runs-on: ubuntu-latest
-    outputs:
-      NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
-    permissions:
-      contents: read
-      id-token: write
-    # Only run publish for: prerelease, published, manual dispatch
-    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch'
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v5
-        with:
-          submodules: false
-          token: ${{ secrets.GITHUB_TOKEN }}
+  # publish-to-npm: #TODO - set it to matrix for all the other langs
+  #   name: Publish to NPM
+  #   needs: [test-dependent-projects]
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #   # Only run publish for: prerelease, published, manual dispatch
+  #   if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch'
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v5
+  #       with:
+  #         submodules: false
+  #         token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Generated Types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-ts
-          path: ts/types
+  #     - name: Download Generated Types
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: generated-types-ts
+  #         path: ts/types
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
-          token: ${{ secrets.NPM_TOKEN }}
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v5
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #         registry-url: ${{ env.REGISTRY_URL }}
+  #         token: ${{ secrets.NPM_TOKEN }}
 
-      - name: Bump Version
-        id: version
-        working-directory: ./ts
-        run: |
-          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
-            # Set specific version from manual input
-            npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
-            echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
-          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            # Set version from release tag
-            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
-            # Remove 'v' prefix if present
-            CLEAN_TAG=${RELEASE_TAG#v}
-            echo "Set the package version in package.json to: $CLEAN_TAG"
-            npm version $CLEAN_TAG --no-git-tag-version
-            echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
-          else
-            echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
-            exit 1
-          fi
+  #     - name: Bump Version
+  #       id: version
+  #       working-directory: ./ts
+  #       run: |
+  #         if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+  #           # Set specific version from manual input
+  #           npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
+  #           echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+  #         elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+  #           # Set version from release tag
+  #           RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+  #           # Remove 'v' prefix if present
+  #           CLEAN_TAG=${RELEASE_TAG#v}
+  #           echo "Set the package version in package.json to: $CLEAN_TAG"
+  #           npm version $CLEAN_TAG --no-git-tag-version
+  #           echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
+  #         else
+  #           echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
+  #           exit 1
+  #         fi
         
-          # Get the new version
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+  #         # Get the new version
+  #         NEW_VERSION=$(node -p "require('./package.json').version")
+  #         echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+  #         echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           
-          # Set appropriate tag based on release type
-          if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
-            # Pre-releases get 'beta' tag
-            echo "TAG=beta" >> $GITHUB_ENV
-            echo "Tag: beta"
-          elif [ "${{ github.event.client_payload.release_type }}" == "published" ]; then
-            # Published releases get 'latest' tag
-            echo "TAG=latest" >> $GITHUB_ENV
-            echo "Tag: latest"
-          else
-            # Other releases get version as tag
-            echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
-            echo "Tag: $NEW_VERSION"
-          fi
+  #         # Set appropriate tag based on release type
+  #         if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
+  #           # Pre-releases get 'beta' tag
+  #           echo "TAG=beta" >> $GITHUB_ENV
+  #           echo "Tag: beta"
+  #         elif [ "${{ github.event.client_payload.release_type }}" == "published" ]; then
+  #           # Published releases get 'latest' tag
+  #           echo "TAG=latest" >> $GITHUB_ENV
+  #           echo "Tag: latest"
+  #         else
+  #           # Other releases get version as tag
+  #           echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
+  #           echo "Tag: $NEW_VERSION"
+  #         fi
           
-          echo "New version: $NEW_VERSION"
+  #         echo "New version: $NEW_VERSION"
 
-      - name: Publish to NPM 
-        working-directory: ./ts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
-          npm publish --verbose --access public --tag ${{ env.TAG }}
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
+  #     - name: Publish to NPM 
+  #       working-directory: ./ts
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #       run: |
+  #         echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
+  #         npm publish --verbose --access public --tag ${{ env.TAG }}
+  #         echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
-  validate-on-npm:
-    name: Validate NPM Package
-    needs: [publish-to-npm]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
+  # validate-on-npm:
+  #   name: Validate NPM Package
+  #   needs: [publish-to-npm]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #         registry-url: ${{ env.REGISTRY_URL }}
 
-      - name: Verify Package on NPM
-        env:
-          TAG: ${{ needs.publish-to-npm.outputs.TAG }}
-          VERSION: ${{ needs.publish-to-npm.outputs.NEW_VERSION }}
-        run: |
-          echo "Verifying package version: $VERSION"
+  #     - name: Verify Package on NPM
+  #       env:
+  #         TAG: ${{ needs.publish-to-npm.outputs.TAG }}
+  #         VERSION: ${{ needs.publish-to-npm.outputs.NEW_VERSION }}
+  #       run: |
+  #         echo "Verifying package version: $VERSION"
           
-          # Retry logic for NPM verification
-          MAX_ATTEMPTS=5
-          ATTEMPT=1
+  #         # Retry logic for NPM verification
+  #         MAX_ATTEMPTS=5
+  #         ATTEMPT=1
           
-          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+  #         while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+  #           echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-            if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
-              echo "✅ Package successfully published to NPM"
-              echo "Package version $VERSION is available on NPM"
+  #           if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
+  #             echo "✅ Package successfully published to NPM"
+  #             echo "Package version $VERSION is available on NPM"
 
-              # Check if our version is tagged as latest
-              LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
-              if [ "$LATEST_VERSION" = "$VERSION" ]; then
-                echo "✅ Version $VERSION is correctly tagged as 'latest'"
-              else
-                echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
-              fi
+  #             # Check if our version is tagged as latest
+  #             LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
+  #             if [ "$LATEST_VERSION" = "$VERSION" ]; then
+  #               echo "✅ Version $VERSION is correctly tagged as 'latest'"
+  #             else
+  #               echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
+  #             fi
 
-              exit 0
-            else
-              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+  #             exit 0
+  #           else
+  #             echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting 10 seconds before retry..."
-                sleep 10
-              fi
-            fi
+  #             if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+  #               echo "Waiting 10 seconds before retry..."
+  #               sleep 10
+  #             fi
+  #           fi
             
-            ATTEMPT=$((ATTEMPT + 1))
-          done
+  #           ATTEMPT=$((ATTEMPT + 1))
+  #         done
           
-          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-          exit 1
+  #         echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+  #         exit 1
