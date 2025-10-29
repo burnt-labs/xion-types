@@ -73,8 +73,12 @@ jobs:
     name: Trigger Python Publishing
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
-    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+    if: |
+        github.ref == 'refs/heads/feat/protobufs' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    # if: (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+    #     (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     steps:
       - name: Determine Version
         id: version
@@ -86,6 +90,11 @@ jobs:
             RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
             VERSION=${RELEASE_TAG#v}
             echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            # Create dev version for testing
+            GIT_SHA=$(git rev-parse --short HEAD)
+            VERSION="0.0.0-dev.${GIT_SHA}"
+            echo "Using dev version for testing: $VERSION"
           else
             echo "❌ No version specified"
             exit 1
