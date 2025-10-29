@@ -1,0 +1,126 @@
+name: Protobuf Generation & Publishing
+
+on:
+  push:
+    branches: 
+    #   - main 
+      - feat/protobufs
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for publishing.'
+        required: true
+        type: string
+
+  repository_dispatch:
+    types: [xion-types-release-trigger]
+    
+  schedule:
+    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+
+jobs:
+  generate-protobuf:
+    name: Generate ${{ matrix.language }} Types
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language:
+          - python
+        #   - php
+        #   - cpp
+        #   - java
+        #   - kotlin
+        #   - objc
+        #   - ruby
+        #   - rust
+        #   - swift
+        #   - ts
+      fail-fast: false
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate ${{ matrix.language }} Definitions
+        run: |
+          make proto-gen-${{ matrix.language }}
+
+      - name: Check if Types Were Generated
+        id: check-types
+        run: |
+          if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
+            echo "✅ ${{ matrix.language }} definitions generated successfully"
+          else
+            echo "❌ Failed to generate ${{ matrix.language }} definitions"
+            exit 1
+          fi
+
+      - name: Upload Generated Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-${{ matrix.language }}
+          path: ${{ matrix.language }}/types
+          retention-days: 30
+
+  # ============================================
+  # Language-Specific Publishing Triggers
+  # ============================================
+
+  trigger-python-publish:
+    name: Trigger Python Publishing
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    steps:
+      - name: Determine Version
+        id: version
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            VERSION="${{ github.event.inputs.next_version }}"
+            echo "Using manual version: $VERSION"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            VERSION=${RELEASE_TAG#v}
+            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          else
+            echo "❌ No version specified"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Trigger Python Publishing Workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const version = '${{ steps.version.outputs.version }}';
+            const runId = '${{ github.run_id }}';
+            
+            console.log(`Triggering Python publish workflow for version ${version}`);
+            console.log(`Using artifacts from run ID: ${runId}`);
+            
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'publish-python.yaml',
+              ref: 'main',
+              inputs: {
+                version: version,
+                artifact_run_id: runId,
+                skip_publish: 'false'
+              }
+            });
+            
+            console.log('✅ Python publishing workflow triggered successfully');
+
+  # Placeholder for other languages - add similar jobs as needed:
+  # trigger-typescript-publish:
+  # trigger-rust-publish:
+  # trigger-php-publish:
+  # trigger-ruby-publish:
+

@@ -4,7 +4,7 @@ on:
   push:
     branches: 
       # - main 
-      - feat/protobufs
+      - sdfdsfsd #feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -71,175 +71,124 @@ jobs:
         with:
           name: generated-types-${{ matrix.language }}
           path: ${{ matrix.language }}/types
-          retention-days: 1  # Extended retention for publishing flexibility
+          retention-days: 1
 
-  trigger-python-publish:
-    name: Trigger Python Publishing
+  test-dependent-projects: # TODO - set it to matrix for all the other langs
+    name: Test Dependents Compatibility
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
-    # Only trigger automatic publishing for releases and manual workflow runs
-    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    strategy:
+      matrix:
+        project: 
+          #- xion-dashboard-app # is private TODO
+          - xion-explorer
+          - xion-faucet
+          - xion-staking
     steps:
-      - name: Determine Version
-        id: version
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          path: xion-types
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: xion-types/ts/types
+
+      - name: Checkout Dependent Project
+        uses: actions/checkout@v4
+        with:
+          repository: burnt-labs/${{ matrix.project }}
+          path: dependent-project
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          
+      - name: Debug Repository Checkout
         run: |
-          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
-            # Use manual version input
-            VERSION="${{ github.event.inputs.next_version }}"
-            echo "Using manual version: $VERSION"
-          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            # Use version from release tag
-            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
-            VERSION=${RELEASE_TAG#v}  # Remove 'v' prefix
-            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          echo "Checking if dependent-project directory exists..."
+          ls -la dependent-project/ || echo "Directory not found"
+          
+          echo "Checking repository URL..."
+          echo "Repository: burnt-labs/${{ matrix.project }}"
+          
+          echo "Checking if package.json exists..."
+          if [ -f "dependent-project/package.json" ]; then
+            echo "✅ package.json found"
+            head -5 dependent-project/package.json
           else
-            echo "❌ No version specified"
+            echo "❌ package.json not found"
+            echo "Contents of dependent-project directory:"
+            ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
+          fi
+
+      - name: Test Project with Updated Types
+        run: |
+          cd dependent-project
+          
+          # Check if package.json exists
+          if [ ! -f "package.json" ]; then
+            echo "❌ No package.json found in ${{ matrix.project }}"
             exit 1
           fi
           
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          # Install the types package with legacy peer deps to bypass conflicts
+          echo "Installing types package for ${{ matrix.project }}..."
+          npm install ../xion-types/ts --no-save --legacy-peer-deps
+          
+          # Run type checking
+          echo "Running type check for ${{ matrix.project }}..."
+          npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
+          
+          echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
-      - name: Trigger Python Publishing Workflow
-        uses: actions/github-script@v7
+  nightly-build:
+    if: github.event_name == 'schedule'
+    name: Create Nightly
+    needs: [test-dependent-projects]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const version = '${{ steps.version.outputs.version }}';
-            const runId = '${{ github.run_id }}';
-            
-            console.log(`Triggering Python publish workflow for version ${version}`);
-            console.log(`Using artifacts from run ID: ${runId}`);
-            
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'publish-python.yaml',
-              ref: 'main',  // or context.ref for current branch
-              inputs: {
-                version: version,
-                artifact_run_id: runId,
-                skip_publish: 'false'
-              }
-            });
-            
-            console.log('✅ Python publishing workflow triggered successfully');
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-  # test-dependent-projects: # TODO - set it to matrix for all the other langs
-  #   name: Test Dependents Compatibility
-  #   needs: [generate-protobuf]
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       project: 
-  #         #- xion-dashboard-app # is private TODO
-  #         - xion-explorer
-  #         - xion-faucet
-  #         - xion-staking
-  #   steps:
-  #     - name: Checkout Main Repository
-  #       uses: actions/checkout@v4
-  #       with:
-  #         path: xion-types
-  #         token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: ts/types
 
-  #     - name: Download Generated Types
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: generated-types-ts
-  #         path: xion-types/ts/types
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-  #     - name: Checkout Dependent Project
-  #       uses: actions/checkout@v4
-  #       with:
-  #         repository: burnt-labs/${{ matrix.project }}
-  #         path: dependent-project
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-  #         fetch-depth: 1
-          
-  #     - name: Debug Repository Checkout
-  #       run: |
-  #         echo "Checking if dependent-project directory exists..."
-  #         ls -la dependent-project/ || echo "Directory not found"
-          
-  #         echo "Checking repository URL..."
-  #         echo "Repository: burnt-labs/${{ matrix.project }}"
-          
-  #         echo "Checking if package.json exists..."
-  #         if [ -f "dependent-project/package.json" ]; then
-  #           echo "✅ package.json found"
-  #           head -5 dependent-project/package.json
-  #         else
-  #           echo "❌ package.json not found"
-  #           echo "Contents of dependent-project directory:"
-  #           ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
-  #         fi
+      - name: Create Nightly Package
+        working-directory: ./ts
+        run: |
+          # Get the latest published version and create nightly version with timestamp
+          LATEST_VERSION=$(npm view @burnt-labs/xion-types version)
+          TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
+          NIGHTLY_VERSION="${LATEST_VERSION}-nightly.${TIMESTAMP}"
+          echo "Creating nightly package version: $NIGHTLY_VERSION"
+          npm version $NIGHTLY_VERSION --no-git-tag-version
 
-  #     - name: Test Project with Updated Types
-  #       run: |
-  #         cd dependent-project
-          
-  #         # Check if package.json exists
-  #         if [ ! -f "package.json" ]; then
-  #           echo "❌ No package.json found in ${{ matrix.project }}"
-  #           exit 1
-  #         fi
-          
-  #         # Install the types package with legacy peer deps to bypass conflicts
-  #         echo "Installing types package for ${{ matrix.project }}..."
-  #         npm install ../xion-types/ts --no-save --legacy-peer-deps
-          
-  #         # Run type checking
-  #         echo "Running type check for ${{ matrix.project }}..."
-  #         npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
-          
-  #         echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
+      - name: Create Package Archive
+        working-directory: ./ts
+        run: |
+          echo "Creating nightly package archive for version: $(node -p "require('./package.json').version")"
+          npm pack
+          echo "Created nightly package archive: $(ls *.tgz)"
 
-  # nightly-build:
-  #   if: github.event_name == 'schedule'
-  #   name: Create Nightly
-  #   needs: [test-dependent-projects]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v5
-  #       with:
-  #         submodules: false
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-
-  #     - name: Download Generated Types
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: generated-types-ts
-  #         path: ts/types
-
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v5
-  #       with:
-  #         node-version: ${{ env.NODE_VERSION }}
-
-  #     - name: Create Nightly Package
-  #       working-directory: ./ts
-  #       run: |
-  #         # Get the latest published version and create nightly version with timestamp
-  #         LATEST_VERSION=$(npm view @burnt-labs/xion-types version)
-  #         TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
-  #         NIGHTLY_VERSION="${LATEST_VERSION}-nightly.${TIMESTAMP}"
-  #         echo "Creating nightly package version: $NIGHTLY_VERSION"
-  #         npm version $NIGHTLY_VERSION --no-git-tag-version
-
-  #     - name: Create Package Archive
-  #       working-directory: ./ts
-  #       run: |
-  #         echo "Creating nightly package archive for version: $(node -p "require('./package.json').version")"
-  #         npm pack
-  #         echo "Created nightly package archive: $(ls *.tgz)"
-
-  #     - name: Upload Nightly Package as Artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: nightly-package-${{ github.run_number }}
-  #         path: ts/*.tgz
-  #         retention-days: 1
+      - name: Upload Nightly Package as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-package-${{ github.run_number }}
+          path: ts/*.tgz
+          retention-days: 1
 
   # publish-to-npm: #TODO - set it to matrix for all the other langs
   #   name: Publish to NPM

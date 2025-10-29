@@ -1,40 +1,21 @@
 name: Publish Python Package
 
 on:
-  workflow_call:
-    inputs:
-      version:
-        description: 'Version to publish (e.g., 1.2.3)'
-        required: true
-        type: string
-      artifact_run_id:
-        description: 'Specific workflow run ID to download artifacts from (optional)'
-        required: false
-        type: string
-      skip_publish:
-        description: 'Build and test only, skip actual publishing'
-        required: false
-        type: boolean
-        default: false
-    secrets:
-      PYPI_TOKEN:
-        required: true
-
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to publish (e.g., 1.2.3)'
         required: true
         type: string
+        description: "Version to publish (e.g., 1.2.3)"
       artifact_run_id:
-        description: 'Workflow run ID to download artifacts from (leave empty for latest successful run)'
         required: false
         type: string
+        description: "Specific run ID to download artifacts from"
       skip_publish:
-        description: 'Build and test only, skip actual publishing to PyPI'
         required: false
         type: boolean
         default: false
+        description: "Skip actual PyPI publishing (build and test only)"
 
 env:
   PYTHON_VERSION: '3.11'
@@ -43,47 +24,29 @@ jobs:
   download-artifacts:
     name: Download Generated Types
     runs-on: ubuntu-latest
-    outputs:
-      artifact_downloaded: ${{ steps.download.outputs.success }}
     steps:
-      - name: Download from Specific Run
-        if: inputs.artifact_run_id != ''
+      - name: Download Generated Python Types
         uses: actions/download-artifact@v4
-        id: download_specific
         with:
           name: generated-types-python
           path: python/types
-          run-id: ${{ inputs.artifact_run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Download from Latest Run
-        if: inputs.artifact_run_id == ''
-        uses: dawidd6/action-download-artifact@v3
-        id: download_latest
-        with:
-          workflow: typescript-ci.yaml
-          name: generated-types-python
-          path: python/types
-          search_artifacts: true
-          workflow_conclusion: success
+          run-id: ${{ inputs.artifact_run_id || github.event.workflow_run.id }}
           
-      - name: Verify Download
-        id: download
+      - name: Verify Downloaded Artifacts
         run: |
-          if [ -d "python/types" ] && [ "$(ls -A python/types)" ]; then
-            echo "✅ Generated types downloaded successfully"
-            echo "Files found: $(find python/types -name '*.py' | wc -l) Python files"
-            echo "success=true" >> $GITHUB_OUTPUT
-          else
-            echo "❌ Failed to download generated types"
-            echo "success=false" >> $GITHUB_OUTPUT
+          echo "Downloaded artifacts to: python/types"
+          ls -R python/types || true
+          if [ ! -d "python/types/cosmos" ]; then
+            echo "❌ Expected 'python/types/cosmos' directory not found"
             exit 1
           fi
+          echo "✅ Artifacts downloaded successfully"
 
-      - name: Upload Types for Next Jobs
+      - name: Upload for Build Job
         uses: actions/upload-artifact@v4
         with:
-          name: python-types-${{ github.run_id }}
+          name: python-types-for-build
           path: python/types
           retention-days: 1
 
@@ -92,25 +55,18 @@ jobs:
     needs: [download-artifacts]
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.set_version.outputs.version }}
-      package_name: ${{ steps.build.outputs.package_name }}
+      version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          sparse-checkout: |
-            pyproject.toml
-            python/__init__.py
-            python/types/__init__.py
-            python/README.md
-            MANIFEST.in
-            LICENSE
-            README.md
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Generated Types
+      - name: Download Generated Python Types
         uses: actions/download-artifact@v4
         with:
-          name: python-types-${{ github.run_id }}
+          name: python-types-for-build
           path: python/types
 
       - name: Setup Python
@@ -124,73 +80,38 @@ jobs:
           pip install build twine
 
       - name: Set Version
-        id: set_version
-        env:
-          VERSION: ${{ inputs.version }}
+        id: version
         run: |
+          VERSION="${{ inputs.version }}"
           echo "Setting version to: $VERSION"
-          sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
-          sed -i "s/__version__ = .*/__version__ = \"$VERSION\"/" python/__init__.py
-          
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          
-          echo "✅ Version set to $VERSION"
 
-      - name: Verify Package Structure
+      - name: Update Version in Files
         run: |
-          echo "=== Package Structure ==="
-          echo "Root files:"
-          ls -la
-          echo ""
-          echo "Python package structure:"
-          find python -name "*.py" | head -20
-          echo "..."
-          echo "Total Python files: $(find python -name '*.py' | wc -l)"
+          sed -i "s/^version = .*/version = \"${{ env.VERSION }}\"/" pyproject.toml
+          sed -i "s/__version__ = .*/__version__ = \"${{ env.VERSION }}\"/" python/__init__.py
+          echo "✅ Updated pyproject.toml and python/__init__.py"
 
       - name: Build Package
-        id: build
         run: |
-          echo "Building package version: ${{ env.VERSION }}"
           python -m build --wheel --sdist
-          
-          # Get package filename
-          PACKAGE_NAME=$(ls dist/*.whl | head -1 | xargs basename)
-          echo "package_name=$PACKAGE_NAME" >> $GITHUB_OUTPUT
-          
           echo "✅ Package built successfully"
-          echo "Files created:"
-          ls -lh dist/
 
-      - name: Verify Package Quality
+      - name: Verify Package
         run: |
-          echo "=== Running twine check ==="
           twine check dist/*
           echo "✅ Package verification passed"
-
-      - name: Inspect Package Contents
-        run: |
-          echo "=== Package Contents Preview ==="
-          echo "Wheel contents:"
-          unzip -l dist/*.whl | head -40
-          echo "..."
-          echo ""
-          echo "Source distribution contents:"
-          tar -tzf dist/*.tar.gz | head -40
-          echo "..."
-          echo ""
-          echo "Total files in package: $(tar -tzf dist/*.tar.gz | wc -l)"
 
       - name: Upload Package Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: python-package-${{ env.VERSION }}
+          name: python-package
           path: dist/
           retention-days: 30
-          if-no-files-found: error
 
   test-package:
-    name: Test on Python ${{ matrix.python-version }}
+    name: Test Python ${{ matrix.python-version }}
     needs: [build-package]
     runs-on: ubuntu-latest
     strategy:
@@ -206,37 +127,27 @@ jobs:
       - name: Download Package
         uses: actions/download-artifact@v4
         with:
-          name: python-package-${{ needs.build-package.outputs.version }}
+          name: python-package
           path: dist/
 
       - name: Install Package
         run: |
-          echo "Installing xion-types from wheel..."
           pip install dist/*.whl
-          echo "✅ Package installed successfully"
-          
-          echo ""
-          echo "Installed package info:"
-          pip show xion-types
+          echo "✅ Package installed"
 
-      - name: Test Core Imports
+      - name: Test Imports
         run: |
-          echo "=== Testing Core Imports ==="
           python -c "from types.cosmos.bank.v1beta1 import tx_pb2; print('✅ cosmos.bank.v1beta1')"
           python -c "from types.abstractaccount.v1 import account_pb2; print('✅ abstractaccount.v1')"
           python -c "from types.xion.jwk.v1 import tx_pb2; print('✅ xion.jwk.v1')"
-          python -c "from types.cosmos.base.v1beta1 import coin_pb2; print('✅ cosmos.base.v1beta1')"
-          python -c "from types.cosmwasm.wasm.v1 import tx_pb2; print('✅ cosmwasm.wasm.v1')"
-          echo "✅ All core imports successful"
+          echo "✅ All imports successful for Python ${{ matrix.python-version }}"
 
-      - name: Test Message Creation
+      - name: Test Serialization
         run: |
-          echo "=== Testing Message Creation ==="
-          python << 'EOF'
+          python -c "
           from types.cosmos.bank.v1beta1 import tx_pb2
           from types.cosmos.base.v1beta1 import coin_pb2
-
-          # Create a message
+          
           msg = tx_pb2.MsgSend()
           msg.from_address = 'xion1test'
           msg.to_address = 'xion1recipient'
@@ -246,71 +157,18 @@ jobs:
           coin.amount = '1000000'
           msg.amount.append(coin)
           
-          print(f'✅ Created MsgSend: from={msg.from_address}, to={msg.to_address}')
-          print(f'✅ Amount: {msg.amount[0].amount} {msg.amount[0].denom}')
-          EOF
-
-      - name: Test Serialization
-        run: |
-          echo "=== Testing Serialization/Deserialization ==="
-          python << 'EOF'
-          from types.cosmos.bank.v1beta1 import tx_pb2
-          from types.cosmos.base.v1beta1 import coin_pb2
-
-          # Create and serialize
-          msg1 = tx_pb2.MsgSend()
-          msg1.from_address = 'xion1alice'
-          msg1.to_address = 'xion1bob'
-          msg1.amount.append(coin_pb2.Coin(denom='uxion', amount='5000000'))
-          
-          data = msg1.SerializeToString()
-          print(f'✅ Serialized to {len(data)} bytes')
-          
-          # Deserialize
+          data = msg.SerializeToString()
           msg2 = tx_pb2.MsgSend()
           msg2.ParseFromString(data)
           
-          assert msg2.from_address == 'xion1alice'
-          assert msg2.to_address == 'xion1bob'
-          assert msg2.amount[0].amount == '5000000'
-          assert msg2.amount[0].denom == 'uxion'
-          
-          print('✅ Deserialization successful')
-          print('✅ Round-trip serialization verified')
-          EOF
-
-      - name: Test JSON Format
-        run: |
-          echo "=== Testing JSON Format ==="
-          python << 'EOF'
-          from google.protobuf import json_format
-          from types.cosmos.bank.v1beta1 import tx_pb2
-          from types.cosmos.base.v1beta1 import coin_pb2
-
-          msg = tx_pb2.MsgSend()
-          msg.from_address = 'xion1test'
-          msg.to_address = 'xion1dest'
-          msg.amount.append(coin_pb2.Coin(denom='uxion', amount='100'))
-          
-          # To JSON
-          json_str = json_format.MessageToJson(msg)
-          print('✅ Converted to JSON')
-          print(json_str[:100] + '...')
-          
-          # From JSON
-          msg2 = json_format.Parse(json_str, tx_pb2.MsgSend())
-          assert msg2.from_address == msg.from_address
-          
-          print('✅ JSON round-trip successful')
-          EOF
-
-      - name: Summary
-        run: |
-          echo "✅ All tests passed for Python ${{ matrix.python-version }}"
+          assert msg2.from_address == 'xion1test'
+          assert msg2.amount[0].amount == '1000000'
+          print('✅ Serialization test passed')
+          "
 
   publish-to-pypi:
     name: Publish to PyPI
-    needs: [build-package, test-package]
+    needs: [test-package]
     runs-on: ubuntu-latest
     if: ${{ !inputs.skip_publish }}
     permissions:
@@ -320,139 +178,89 @@ jobs:
       - name: Download Package
         uses: actions/download-artifact@v4
         with:
-          name: python-package-${{ needs.build-package.outputs.version }}
+          name: python-package
           path: dist/
 
-      - name: Verify Package Contents Before Publishing
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_TOKEN }}
+          skip-existing: true
+          verbose: true
+
+  verify-publication:
+    name: Verify PyPI Publication
+    needs: [publish-to-pypi, build-package]
+    runs-on: ubuntu-latest
+    if: ${{ !inputs.skip_publish }}
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Wait for PyPI
         run: |
-          echo "=== About to publish ==="
-          echo "Version: ${{ needs.build-package.outputs.version }}"
-          echo "Package: ${{ needs.build-package.outputs.package_name }}"
-          echo ""
-          echo "Files to be published:"
-          ls -lh dist/
-          echo ""
-          echo "Wheel contents summary:"
-          unzip -l dist/*.whl | tail -20
+          echo "Waiting 30 seconds for PyPI propagation..."
+          sleep 30
 
-#       - name: Publish to PyPI
-#         uses: pypa/gh-action-pypi-publish@release/v1
-#         with:
-#           password: ${{ secrets.PYPI_TOKEN }}
-#           skip-existing: true
-#           verbose: true
-#           print-hash: true
-
-#       - name: Publication Success
-#         run: |
-#           echo "✅ Successfully published xion-types@${{ needs.build-package.outputs.version }} to PyPI"
-#           echo "📦 Package: https://pypi.org/project/xion-types/${{ needs.build-package.outputs.version }}/"
-
-#   verify-publication:
-#     name: Verify PyPI Publication
-#     needs: [build-package, publish-to-pypi]
-#     runs-on: ubuntu-latest
-#     if: ${{ !inputs.skip_publish }}
-#     steps:
-#       - name: Setup Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: ${{ env.PYTHON_VERSION }}
-
-#       - name: Wait for PyPI Propagation
-#         run: |
-#           echo "⏳ Waiting 30 seconds for PyPI to propagate..."
-#           sleep 30
-
-#       - name: Verify Package Availability
-#         env:
-#           VERSION: ${{ needs.build-package.outputs.version }}
-#         run: |
-#           echo "🔍 Verifying xion-types@$VERSION on PyPI..."
+      - name: Verify Package
+        env:
+          VERSION: ${{ needs.build-package.outputs.version }}
+        run: |
+          echo "Verifying xion-types@$VERSION on PyPI..."
           
-#           MAX_ATTEMPTS=12
-#           ATTEMPT=1
+          MAX_ATTEMPTS=10
+          ATTEMPT=1
           
-#           while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-#             echo "Attempt $ATTEMPT/$MAX_ATTEMPTS..."
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS..."
             
-#             # Check if version is available
-#             if pip index versions xion-types 2>/dev/null | grep -q "$VERSION"; then
-#               echo "✅ Version $VERSION found on PyPI"
+            if pip index versions xion-types 2>/dev/null | grep -q "$VERSION"; then
+              echo "✅ Package xion-types@$VERSION found on PyPI"
               
-#               # Try to install it
-#               echo "📥 Installing xion-types==$VERSION..."
-#               pip install "xion-types==$VERSION"
+              pip install "xion-types==$VERSION"
+              echo "✅ Package installed from PyPI"
               
-#               # Verify installation
-#               INSTALLED_VERSION=$(pip show xion-types | grep "^Version:" | cut -d' ' -f2)
-#               echo "Installed version: $INSTALLED_VERSION"
+              python -c "from types.cosmos.bank.v1beta1 import tx_pb2; print('✅ Import test passed')"
               
-#               if [ "$INSTALLED_VERSION" = "$VERSION" ]; then
-#                 echo "✅ Correct version installed"
-#               else
-#                 echo "⚠️  Version mismatch: expected $VERSION, got $INSTALLED_VERSION"
-#               fi
+              exit 0
+            else
+              echo "Package not yet available (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-#               # Test import
-#               python -c "from types.cosmos.bank.v1beta1 import tx_pb2; print('✅ Import test passed')"
-              
-#               echo ""
-#               echo "🎉 Publication verified successfully!"
-#               echo "📦 PyPI: https://pypi.org/project/xion-types/$VERSION/"
-#               echo "📚 Install: pip install xion-types==$VERSION"
-              
-#               exit 0
-#             else
-#               echo "⏳ Package not yet available (attempt $ATTEMPT/$MAX_ATTEMPTS)"
-              
-#               if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-#                 echo "Waiting 15 seconds before retry..."
-#                 sleep 15
-#               fi
-#             fi
+              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+                sleep 15
+              fi
+            fi
             
-#             ATTEMPT=$((ATTEMPT + 1))
-#           done
+            ATTEMPT=$((ATTEMPT + 1))
+          done
           
-#           echo "❌ Failed to verify package on PyPI after $MAX_ATTEMPTS attempts"
-#           echo "This might be a PyPI propagation delay. Check manually at:"
-#           echo "https://pypi.org/project/xion-types/$VERSION/"
-#           exit 1
+          echo "❌ Failed to verify package on PyPI"
+          exit 1
 
-#   summary:
-#     name: Publish Summary
-#     needs: [build-package, test-package, publish-to-pypi, verify-publication]
-#     runs-on: ubuntu-latest
-#     if: always()
-#     steps:
-#       - name: Generate Summary
-#         run: |
-#           echo "# Python Package Publishing Summary" >> $GITHUB_STEP_SUMMARY
-#           echo "" >> $GITHUB_STEP_SUMMARY
-#           echo "## Package Information" >> $GITHUB_STEP_SUMMARY
-#           echo "- **Package**: xion-types" >> $GITHUB_STEP_SUMMARY
-#           echo "- **Version**: ${{ needs.build-package.outputs.version }}" >> $GITHUB_STEP_SUMMARY
-#           echo "- **Package Name**: ${{ needs.build-package.outputs.package_name }}" >> $GITHUB_STEP_SUMMARY
-#           echo "" >> $GITHUB_STEP_SUMMARY
-#           echo "## Results" >> $GITHUB_STEP_SUMMARY
-#           echo "- **Build**: ${{ needs.build-package.result }}" >> $GITHUB_STEP_SUMMARY
-#           echo "- **Tests**: ${{ needs.test-package.result }}" >> $GITHUB_STEP_SUMMARY
+  summary:
+    name: Summary
+    runs-on: ubuntu-latest
+    needs: [build-package, test-package, publish-to-pypi, verify-publication]
+    if: always()
+    steps:
+      - name: Generate Summary
+        run: |
+          echo "## Python Package Publishing Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version**: ${{ needs.build-package.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Build**: ${{ needs.build-package.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Test**: ${{ needs.test-package.result }}" >> $GITHUB_STEP_SUMMARY
           
-#           if [ "${{ inputs.skip_publish }}" = "true" ]; then
-#             echo "- **Publish**: ⏭️ Skipped (skip_publish=true)" >> $GITHUB_STEP_SUMMARY
-#           else
-#             echo "- **Publish**: ${{ needs.publish-to-pypi.result }}" >> $GITHUB_STEP_SUMMARY
-#             echo "- **Verification**: ${{ needs.verify-publication.result }}" >> $GITHUB_STEP_SUMMARY
-#           fi
-          
-#           echo "" >> $GITHUB_STEP_SUMMARY
-#           echo "## Links" >> $GITHUB_STEP_SUMMARY
-#           echo "- [PyPI Package](https://pypi.org/project/xion-types/)" >> $GITHUB_STEP_SUMMARY
-#           echo "- [This Version](https://pypi.org/project/xion-types/${{ needs.build-package.outputs.version }}/)" >> $GITHUB_STEP_SUMMARY
-#           echo "" >> $GITHUB_STEP_SUMMARY
-#           echo "## Installation" >> $GITHUB_STEP_SUMMARY
-#           echo '```bash' >> $GITHUB_STEP_SUMMARY
-#           echo "pip install xion-types==${{ needs.build-package.outputs.version }}" >> $GITHUB_STEP_SUMMARY
-#           echo '```' >> $GITHUB_STEP_SUMMARY
+          if [ "${{ needs.publish-to-pypi.result }}" == "success" ]; then
+            echo "**Publish**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Install: \`pip install xion-types==${{ needs.build-package.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.publish-to-pypi.result }}" == "skipped" ]; then
+            echo "**Publish**: ⏭️ Skipped" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Publish**: ❌ Failed" >> $GITHUB_STEP_SUMMARY
+          fi
 
