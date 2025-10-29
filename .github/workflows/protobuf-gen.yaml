@@ -114,15 +114,17 @@ jobs:
           script: |
             const version = '${{ steps.version.outputs.version }}';
             const runId = '${{ github.run_id }}';
+            const ref = context.ref.replace('refs/heads/', '');
             
             console.log(`Triggering Python publish workflow for version ${version}`);
             console.log(`Using artifacts from run ID: ${runId}`);
+            console.log(`Target branch: ${ref}`);
             
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'publish-python.yaml',
-              ref: 'main',
+              ref: ref,
               inputs: {
                 version: version,
                 artifact_run_id: runId,
