@@ -110,12 +110,27 @@ jobs:
   publish-python:
     name: Publish Python Package
     needs: [determine-version]
-    uses: .github/workflows/publish-python.yaml
-    secrets: inherit
-    with:
-      version: ${{ needs.determine-version.outputs.version }}
-      artifact_run_id: ${{ github.run_id }}
-      skip_publish: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Python Publishing
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const ref = context.ref.replace('refs/heads/', '');
+            console.log(`Triggering publish-python.yaml on branch: ${ref}`);
+            
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'publish-python.yaml',
+              ref: ref,
+              inputs: {
+                version: '${{ needs.determine-version.outputs.version }}',
+                artifact_run_id: '${{ github.run_id }}',
+                skip_publish: 'false'
+              }
+            });
 
   # Placeholder for other languages - add similar jobs as needed:
   # trigger-typescript-publish:
