@@ -69,16 +69,16 @@ jobs:
   # Language-Specific Publishing Triggers
   # ============================================
 
-  trigger-python-publish:
-    name: Trigger Python Publishing
+  determine-version:
+    name: Determine Version
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     if: |
         github.ref == 'refs/heads/feat/protobufs' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
-    # if: (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
-    #     (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -107,32 +107,15 @@ jobs:
           
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Trigger Python Publishing Workflow
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const version = '${{ steps.version.outputs.version }}';
-            const runId = '${{ github.run_id }}';
-            const ref = context.ref.replace('refs/heads/', '');
-            
-            console.log(`Triggering Python publish workflow for version ${version}`);
-            console.log(`Using artifacts from run ID: ${runId}`);
-            console.log(`Target branch: ${ref}`);
-            
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'publish-python.yaml',
-              ref: ref,
-              inputs: {
-                version: version,
-                artifact_run_id: runId,
-                skip_publish: 'false'
-              }
-            });
-            
-            console.log('✅ Python publishing workflow triggered successfully');
+  publish-python:
+    name: Publish Python Package
+    needs: [determine-version]
+    uses: .github/workflows/publish-python.yaml
+    secrets: inherit
+    with:
+      version: ${{ needs.determine-version.outputs.version }}
+      artifact_run_id: ${{ github.run_id }}
+      skip_publish: false
 
   # Placeholder for other languages - add similar jobs as needed:
   # trigger-typescript-publish:

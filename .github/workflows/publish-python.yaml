@@ -1,6 +1,21 @@
 name: Publish Python Package
 
 on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+        description: "Version to publish (e.g., 1.2.3)"
+      artifact_run_id:
+        required: false
+        type: string
+        description: "Specific run ID to download artifacts from"
+      skip_publish:
+        required: false
+        type: boolean
+        default: false
+        description: "Skip actual PyPI publishing (build and test only)"
   workflow_dispatch:
     inputs:
       version:
