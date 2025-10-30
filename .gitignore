@@ -6,3 +6,13 @@ ts/git-modules
 ts/protos
 ts/node_modules
 ts/dist
+
+# Python generated files
+python/xion_types/
+python/types/
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo

@@ -45,9 +45,10 @@ jobs:
 
       - name: Restructure Package (avoid 'types' namespace collision)
         run: |
-          mkdir -p python/xion_types
-          mv python/types/* python/xion_types/
-          rmdir python/types
+          # Remove any existing xion_types directory from repo
+          rm -rf python/xion_types
+          # Rename generated types directory
+          mv python/types python/xion_types
           echo "✅ Moved types to xion_types package"
 
       - name: Upload Generated Types
