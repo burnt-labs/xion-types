@@ -63,17 +63,18 @@ jobs:
           ]
           
           # Regex patterns for each package
+          # Convert to absolute imports within xion_types package
           patterns = []
           for pkg in packages:
               # Match: from package import ...
               patterns.append((
                   re.compile(f'^(\\s*)from {pkg} import', re.MULTILINE),
-                  f'\\1from .{pkg} import'
+                  f'\\1from xion_types.{pkg} import'
               ))
               # Match: from package.submodule ...
               patterns.append((
                   re.compile(f'^(\\s*)from {pkg}\\.', re.MULTILINE),
-                  f'\\1from .{pkg}.'
+                  f'\\1from xion_types.{pkg}.'
               ))
           
           # Process all Python files in temp location
