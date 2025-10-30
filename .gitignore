@@ -7,9 +7,8 @@ ts/protos
 ts/node_modules
 ts/dist
 
-# Python generated files
-python/xion_types/
-python/types/
+# Python generated files (temporary build artifacts)
+# Note: python/xion_types/ is committed to repo, only ignore build artifacts
 build/
 dist/
 *.egg-info/

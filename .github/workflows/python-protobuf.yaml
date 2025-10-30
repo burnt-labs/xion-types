@@ -43,13 +43,27 @@ jobs:
             exit 1
           fi
 
-      - name: Restructure Package (avoid 'types' namespace collision)
+      - name: Fix Imports (convert absolute to relative)
         run: |
+          echo "Fixing Python imports to be relative..."
+          find python/types -name "*.py" -type f -exec sed -i \
+            -e 's/^from gogoproto /from .gogoproto /g' \
+            -e 's/^from cosmos /from .cosmos /g' \
+            -e 's/^from cosmwasm /from .cosmwasm /g' \
+            -e 's/^from xion /from .xion /g' \
+            -e 's/^from abstractaccount /from .abstractaccount /g' \
+            -e 's/^from amino /from .amino /g' \
+            -e 's/^from ibc /from .ibc /g' \
+            -e 's/^from tendermint /from .tendermint /g' \
+            -e 's/^from osmosis /from .osmosis /g' \
+            -e 's/^from packetforward /from .packetforward /g' \
+            {} +
+          
           # Remove any existing xion_types directory from repo
           rm -rf python/xion_types
-          # Rename generated types directory
+          # Rename to xion_types to avoid 'types' namespace collision
           mv python/types python/xion_types
-          echo "✅ Moved types to xion_types package"
+          echo "✅ Fixed imports and moved to xion_types package"
 
       - name: Upload Generated Types
         uses: actions/upload-artifact@v4
