@@ -1,4 +1,4 @@
 include README.md
 include LICENSE
-recursive-include python/types *.py
+recursive-include python/xion_types *.py
 

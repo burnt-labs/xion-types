@@ -36,7 +36,7 @@ Repository = "https://github.com/burnt-labs/xion-types"
 
 [tool.setuptools.packages.find]
 where = ["python"]
-include = ["types*"]
+include = ["xion_types*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.py"]

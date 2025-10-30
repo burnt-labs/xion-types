@@ -11,8 +11,8 @@ pip install xion-types
 ## Usage
 
 ```python
-from types.cosmos.bank.v1beta1 import tx_pb2
-from types.cosmos.base.v1beta1 import coin_pb2
+from xion_types.cosmos.bank.v1beta1 import tx_pb2
+from xion_types.cosmos.base.v1beta1 import coin_pb2
 
 # Create a bank send message
 msg = tx_pb2.MsgSend()
@@ -31,10 +31,10 @@ data = msg.SerializeToString()
 
 ## Available Modules
 
-- `types.cosmos.*` - Cosmos SDK types
-- `types.abstractaccount.*` - Abstract Account module types
-- `types.xion.*` - Xion-specific types
-- `types.cosmwasm.*` - CosmWasm types
+- `xion_types.cosmos.*` - Cosmos SDK types
+- `xion_types.abstractaccount.*` - Abstract Account module types
+- `xion_types.xion.*` - Xion-specific types
+- `xion_types.cosmwasm.*` - CosmWasm types
 
 ## Requirements
 

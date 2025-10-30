@@ -43,11 +43,18 @@ jobs:
             exit 1
           fi
 
+      - name: Restructure Package (avoid 'types' namespace collision)
+        run: |
+          mkdir -p python/xion_types
+          mv python/types/* python/xion_types/
+          rmdir python/types
+          echo "✅ Moved types to xion_types package"
+
       - name: Upload Generated Types
         uses: actions/upload-artifact@v4
         with:
           name: generated-types-python
-          path: python/types
+          path: python/xion_types
           retention-days: 30
 
   # calculates what version number to use for the package based on how the workflow was triggered
@@ -93,7 +100,7 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   # ============================================
-  # Python Package Publishing
+  # Python Package Building/testing
   # ============================================
 
   python-build:
@@ -110,7 +117,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: generated-types-python
-          path: python/types
+          path: python/xion_types
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -164,4 +171,33 @@ jobs:
       - name: Install and Test
         run: |
           pip install dist/*.whl
-          python -c "from types.cosmos.bank.v1beta1 import tx_pb2; print('✅ Import successful')"
+          python -c "from xion_types.cosmos.bank.v1beta1 import tx_pb2; print('✅ Import successful')"
+
+  # ============================================
+  # Python Package Publishing
+  # ============================================
+
+  # python-publish:
+  #   name: Publish to PyPI
+  #   needs: [python-test, python-build]
+  #   runs-on: ubuntu-latest
+  #   # Only publish for manual triggers or releases (not on push)
+  #   if: |
+  #     github.event_name == 'workflow_dispatch' || 
+  #     (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+  #   permissions:
+  #     id-token: write  # Required for trusted publishing
+  #     contents: read
+  #   steps:
+  #     - name: Download Package
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: python-package
+  #         path: dist/
+
+  #     - name: Publish to PyPI
+  #       uses: pypa/gh-action-pypi-publish@release/v1
+  #       with:
+  #         password: ${{ secrets.PYPI_TOKEN }}
+  #         skip-existing: true
+  #         verbose: true
