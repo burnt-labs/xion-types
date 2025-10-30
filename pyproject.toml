@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "Apache-2.0"}
 authors = [
-    {name = "Burnt Labs", email = "--ADD-HERE-YOUR-VALUE--"}
+    {name = "Burnt Labs"}
 ]
 keywords = ["xion", "blockchain", "protobuf", "types"]
 classifiers = [
