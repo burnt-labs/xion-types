@@ -47,16 +47,25 @@ jobs:
         run: |
           echo "Fixing Python imports to be relative..."
           find python/types -name "*.py" -type f -exec sed -i'' \
-            -e 's/^from gogoproto /from .gogoproto /g' \
-            -e 's/^from cosmos /from .cosmos /g' \
-            -e 's/^from cosmwasm /from .cosmwasm /g' \
-            -e 's/^from xion /from .xion /g' \
-            -e 's/^from abstractaccount /from .abstractaccount /g' \
-            -e 's/^from amino /from .amino /g' \
-            -e 's/^from ibc /from .ibc /g' \
-            -e 's/^from tendermint /from .tendermint /g' \
-            -e 's/^from osmosis /from .osmosis /g' \
-            -e 's/^from packetforward /from .packetforward /g' \
+            -e 's/^from gogoproto import/from .gogoproto import/g' \
+            -e 's/^from cosmos import/from .cosmos import/g' \
+            -e 's/^from cosmos\./from .cosmos./g' \
+            -e 's/^from cosmwasm import/from .cosmwasm import/g' \
+            -e 's/^from cosmwasm\./from .cosmwasm./g' \
+            -e 's/^from xion import/from .xion import/g' \
+            -e 's/^from xion\./from .xion./g' \
+            -e 's/^from abstractaccount import/from .abstractaccount import/g' \
+            -e 's/^from abstractaccount\./from .abstractaccount./g' \
+            -e 's/^from amino import/from .amino import/g' \
+            -e 's/^from amino\./from .amino./g' \
+            -e 's/^from ibc import/from .ibc import/g' \
+            -e 's/^from ibc\./from .ibc./g' \
+            -e 's/^from tendermint import/from .tendermint import/g' \
+            -e 's/^from tendermint\./from .tendermint./g' \
+            -e 's/^from osmosis import/from .osmosis import/g' \
+            -e 's/^from osmosis\./from .osmosis./g' \
+            -e 's/^from packetforward import/from .packetforward import/g' \
+            -e 's/^from packetforward\./from .packetforward./g' \
             {} \;
           
           # Remove any existing xion_types directory from repo
