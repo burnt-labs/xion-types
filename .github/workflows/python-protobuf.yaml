@@ -1,0 +1,167 @@
+name: Protobuf Generation & Publishing
+
+on:
+  push:
+    branches: 
+    #   - main 
+      - feat/protobufs
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for publishing.'
+        required: true
+        type: string
+
+  repository_dispatch:
+    types: [xion-types-release-trigger]
+    
+  schedule:
+    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+
+jobs:
+  generate-protobuf:
+    name: Generate Python Types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Python Definitions
+        run: |
+          make proto-gen-python
+
+      - name: Check if Types Were Generated
+        run: |
+          if [ -d "./python/types" ] && [ "$(ls -A ./python/types)" ]; then
+            echo "✅ Python definitions generated successfully"
+          else
+            echo "❌ Failed to generate Python definitions"
+            exit 1
+          fi
+
+      - name: Upload Generated Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-python
+          path: python/types
+          retention-days: 30
+
+  # calculates what version number to use for the package based on how the workflow was triggered
+  determine-version:
+    name: Determine Version
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    if: |
+        github.ref == 'refs/heads/feat/protobufs' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version
+        # Version scenarios:
+        # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3")
+        # 2. Release event (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
+        # 3. Push to branch → Generate dev version (e.g., "0.0.0-dev.abc1234")
+        id: version
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            VERSION="${{ github.event.inputs.next_version }}"
+            echo "Using manual version: $VERSION"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            VERSION=${RELEASE_TAG#v}
+            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            GIT_SHA=$(git rev-parse --short HEAD)
+            VERSION="0.0.0-dev.${GIT_SHA}"
+            echo "Using dev version for testing: $VERSION"
+          else
+            echo "❌ No version specified"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+  # ============================================
+  # Python Package Publishing
+  # ============================================
+
+  python-build:
+    name: Build Python Package
+    needs: [determine-version, generate-protobuf]
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ needs.determine-version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Python Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-python
+          path: python/types
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Build Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Update Version
+        env:
+          VERSION: ${{ needs.determine-version.outputs.version }}
+        run: |
+          sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
+          sed -i "s/__version__ = .*/__version__ = \"$VERSION\"/" python/__init__.py
+
+      - name: Build Package
+        run: |
+          python -m build --wheel --sdist
+          twine check dist/*
+
+      - name: Upload Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package
+          path: dist/
+          retention-days: 30
+
+  python-test:
+    name: Test Python ${{ matrix.python-version }}
+    needs: [python-build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+      fail-fast: false
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Download Package
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package
+          path: dist/
+
+      - name: Install and Test
+        run: |
+          pip install dist/*.whl
+          python -c "from types.cosmos.bank.v1beta1 import tx_pb2; print('✅ Import successful')"
