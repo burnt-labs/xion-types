@@ -141,7 +141,7 @@ jobs:
           # Leave python/types in place (it will be ignored by .gitignore)
           echo "✅ Fixed imports and moved to xion_types package"
 
-      - name: Upload Generated Types
+      - name: Upload Generated Types 
         uses: actions/upload-artifact@v4
         with:
           name: generated-types-python
