@@ -58,7 +58,7 @@ jobs:
           import re
           from pathlib import Path
           
-          # Packages to convert from absolute to relative imports
+          # Packages to convert from absolute imports to xion_types.* imports
           packages = [
               'gogoproto', 'cosmos', 'cosmwasm', 'xion', 'abstractaccount',
               'amino', 'ibc', 'tendermint', 'osmosis', 'packetforward'
@@ -94,6 +94,18 @@ jobs:
           
           print("✅ Import fixing complete")
           EOF
+          
+          # Create gogoproto stub since buf doesn't generate it for Python
+          echo "Creating gogoproto stub..."
+          mkdir -p python/types_temp/gogoproto
+          cat > python/types_temp/gogoproto/__init__.py << 'GOGO'
+          """Stub for gogoproto - not used in Python protobuf"""
+          GOGO
+          cat > python/types_temp/gogoproto/gogo_pb2.py << 'GOGO'
+          """Stub for gogo.proto - these extensions are ignored in Python"""
+          # gogoproto extensions are Go-specific and don't affect Python
+          pass
+          GOGO
           
           # Create __init__.py in all subdirectories to make them Python packages
           echo "Creating __init__.py files..."
