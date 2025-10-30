@@ -46,27 +46,46 @@ jobs:
       - name: Fix Imports (convert absolute to relative)
         run: |
           echo "Fixing Python imports to be relative..."
-          find python/types -name "*.py" -type f -exec sed -i'' \
-            -e 's/^from gogoproto import/from .gogoproto import/g' \
-            -e 's/^from cosmos import/from .cosmos import/g' \
-            -e 's/^from cosmos\./from .cosmos./g' \
-            -e 's/^from cosmwasm import/from .cosmwasm import/g' \
-            -e 's/^from cosmwasm\./from .cosmwasm./g' \
-            -e 's/^from xion import/from .xion import/g' \
-            -e 's/^from xion\./from .xion./g' \
-            -e 's/^from abstractaccount import/from .abstractaccount import/g' \
-            -e 's/^from abstractaccount\./from .abstractaccount./g' \
-            -e 's/^from amino import/from .amino import/g' \
-            -e 's/^from amino\./from .amino./g' \
-            -e 's/^from ibc import/from .ibc import/g' \
-            -e 's/^from ibc\./from .ibc./g' \
-            -e 's/^from tendermint import/from .tendermint import/g' \
-            -e 's/^from tendermint\./from .tendermint./g' \
-            -e 's/^from osmosis import/from .osmosis import/g' \
-            -e 's/^from osmosis\./from .osmosis./g' \
-            -e 's/^from packetforward import/from .packetforward import/g' \
-            -e 's/^from packetforward\./from .packetforward./g' \
-            {} \;
+          python3 << 'EOF'
+          import os
+          import re
+          from pathlib import Path
+          
+          # Packages to convert from absolute to relative imports
+          packages = [
+              'gogoproto', 'cosmos', 'cosmwasm', 'xion', 'abstractaccount',
+              'amino', 'ibc', 'tendermint', 'osmosis', 'packetforward'
+          ]
+          
+          # Regex patterns for each package
+          patterns = []
+          for pkg in packages:
+              # Match: from package import ...
+              patterns.append((
+                  re.compile(f'^(\\s*)from {pkg} import'),
+                  f'\\1from .{pkg} import'
+              ))
+              # Match: from package.submodule ...
+              patterns.append((
+                  re.compile(f'^(\\s*)from {pkg}\\.'),
+                  f'\\1from .{pkg}.'
+              ))
+          
+          # Process all Python files
+          types_dir = Path('python/types')
+          for py_file in types_dir.rglob('*.py'):
+              content = py_file.read_text()
+              original = content
+              
+              for pattern, replacement in patterns:
+                  content = pattern.sub(replacement, content, flags=re.MULTILINE)
+              
+              if content != original:
+                  py_file.write_text(content)
+                  print(f"Fixed imports in: {py_file}")
+          
+          print("✅ Import fixing complete")
+          EOF
           
           # Remove any existing xion_types directory from repo
           rm -rf python/xion_types
