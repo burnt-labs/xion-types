@@ -92,10 +92,11 @@ jobs:
           print("✅ Import fixing complete")
           EOF
           
-          # Remove original and any existing xion_types directory
-          rm -rf python/types python/xion_types
+          # Remove any existing xion_types directory from repo (ignore errors)
+          rm -rf python/xion_types || true
           # Rename temp to xion_types to avoid 'types' namespace collision
           mv python/types_temp python/xion_types
+          # Leave python/types in place (it will be ignored by .gitignore)
           echo "✅ Fixed imports and moved to xion_types package"
 
       - name: Upload Generated Types
