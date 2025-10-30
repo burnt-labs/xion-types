@@ -1,10 +1,10 @@
-name: Protobuf Generation & Publishing
+name: Rust Protobuf Generation & Publishing
 
 on:
   push:
     branches: 
     #   - main 
-      - feat/protobufs
+      - sdfsdf #feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -21,7 +21,7 @@ on:
 
 jobs:
   generate-protobuf:
-    name: Generate Python Types
+    name: Generate Rust Types
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -30,27 +30,26 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate Python Definitions
+      - name: Generate Rust Definitions
         run: |
-          make proto-gen-python
+          make proto-gen-rust
 
       - name: Check if Types Were Generated
         run: |
-          if [ -d "./python/types" ] && [ "$(ls -A ./python/types)" ]; then
-            echo "✅ Python definitions generated successfully"
+          if [ -d "./rust/types" ] && [ "$(ls -A ./rust/types)" ]; then
+            echo "✅ Rust definitions generated successfully"
           else
-            echo "❌ Failed to generate Python definitions"
+            echo "❌ Failed to generate Rust definitions"
             exit 1
           fi
 
       - name: Upload Generated Types
         uses: actions/upload-artifact@v4
         with:
-          name: generated-types-python
-          path: python/types
+          name: generated-types-rust
+          path: rust/types
           retention-days: 30
 
-  # calculates what version number to use for the package based on how the workflow was triggered
   determine-version:
     name: Determine Version
     needs: [generate-protobuf]
@@ -71,7 +70,7 @@ jobs:
         # Version scenarios:
         # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3")
         # 2. Release event (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
-        # 3. Push to branch → Generate dev version (e.g., "0.0.0.dev1234567890")
+        # 3. Push to branch → Generate dev version (e.g., "0.0.0-dev.abc1234")
         id: version
         run: |
           if [ "${{ github.event.inputs.next_version }}" != "" ]; then
@@ -82,8 +81,8 @@ jobs:
             VERSION=${RELEASE_TAG#v}
             echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
           elif [ "${{ github.event_name }}" == "push" ]; then
-            TIMESTAMP=$(date +%s)
-            VERSION="0.0.0.dev${TIMESTAMP}"
+            GIT_SHA=$(git rev-parse --short HEAD)
+            VERSION="0.0.0-dev.${GIT_SHA}"
             echo "Using dev version for testing: $VERSION"
           else
             echo "❌ No version specified"
@@ -93,11 +92,11 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   # ============================================
-  # Python Package Publishing
+  # Rust Crate Publishing
   # ============================================
 
-  python-build:
-    name: Build Python Package
+  rust-build:
+    name: Build Rust Crate
     needs: [determine-version, generate-protobuf]
     runs-on: ubuntu-latest
     outputs:
@@ -106,62 +105,96 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Download Generated Python Types
+      - name: Download Generated Rust Types
         uses: actions/download-artifact@v4
         with:
-          name: generated-types-python
-          path: python/types
+          name: generated-types-rust
+          path: rust/types
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          python-version: '3.11'
-
-      - name: Install Build Tools
-        run: |
-          python -m pip install --upgrade pip
-          pip install build twine
+          toolchain: stable
 
       - name: Update Version
+        working-directory: ./rust
         env:
           VERSION: ${{ needs.determine-version.outputs.version }}
         run: |
-          sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
-          sed -i "s/__version__ = .*/__version__ = \"$VERSION\"/" python/__init__.py
+          sed -i "s/^version = .*/version = \"$VERSION\"/" Cargo.toml
+          echo "✅ Updated Cargo.toml with version $VERSION"
 
-      - name: Build Package
+      - name: Build Crate
+        working-directory: ./rust
         run: |
-          python -m build --wheel --sdist
-          twine check dist/*
+          cargo build --release
+          echo "✅ Crate built successfully"
+
+      - name: Package Crate
+        working-directory: ./rust
+        run: |
+          cargo package --allow-dirty
+          echo "✅ Crate packaged successfully"
 
       - name: Upload Package
         uses: actions/upload-artifact@v4
         with:
-          name: python-package
-          path: dist/
+          name: rust-crate
+          path: rust/target/package/*.crate
           retention-days: 30
 
-  python-test:
-    name: Test Python ${{ matrix.python-version }}
-    needs: [python-build]
+  rust-test:
+    name: Test Rust ${{ matrix.rust-version }}
+    needs: [rust-build]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        rust-version: ['1.70', '1.75', 'stable']
       fail-fast: false
     steps:
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Download Package
+      - name: Download Generated Rust Types
         uses: actions/download-artifact@v4
         with:
-          name: python-package
-          path: dist/
+          name: generated-types-rust
+          path: rust/types
 
-      - name: Install and Test
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust-version }}
+
+      - name: Update Version
+        working-directory: ./rust
+        env:
+          VERSION: ${{ needs.rust-build.outputs.version }}
         run: |
-          pip install dist/*.whl
-          python -c "from types.cosmos.bank.v1beta1 import tx_pb2; print('✅ Import successful')"
+          sed -i "s/^version = .*/version = \"$VERSION\"/" Cargo.toml
+
+      - name: Run Tests
+        working-directory: ./rust
+        run: |
+          cargo test --verbose
+          echo "✅ Tests passed for Rust ${{ matrix.rust-version }}"
+
+      - name: Check Build
+        working-directory: ./rust
+        run: |
+          cargo check --verbose
+          echo "✅ Build check passed for Rust ${{ matrix.rust-version }}"
+
+  # Placeholder for publishing to crates.io
+  # rust-publish:
+  #   name: Publish to crates.io
+  #   needs: [rust-test]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Publish Crate
+  #       working-directory: ./rust
+  #       env:
+  #         CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+  #       run: |
+  #         cargo publish --allow-dirty
+
