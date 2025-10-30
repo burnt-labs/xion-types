@@ -46,8 +46,10 @@ jobs:
       - name: Fix Imports (convert absolute to relative)
         run: |
           echo "Fixing Python imports to be relative..."
-          # Make files writable
-          chmod -R u+w python/types
+          
+          # Copy to temp location with write permissions
+          cp -r python/types python/types_temp
+          chmod -R u+w python/types_temp
           
           python3 << 'EOF'
           import os
@@ -74,8 +76,8 @@ jobs:
                   f'\\1from .{pkg}.'
               ))
           
-          # Process all Python files
-          types_dir = Path('python/types')
+          # Process all Python files in temp location
+          types_dir = Path('python/types_temp')
           for py_file in types_dir.rglob('*.py'):
               content = py_file.read_text()
               original = content
@@ -90,10 +92,10 @@ jobs:
           print("✅ Import fixing complete")
           EOF
           
-          # Remove any existing xion_types directory from repo
-          rm -rf python/xion_types
-          # Rename to xion_types to avoid 'types' namespace collision
-          mv python/types python/xion_types
+          # Remove original and any existing xion_types directory
+          rm -rf python/types python/xion_types
+          # Rename temp to xion_types to avoid 'types' namespace collision
+          mv python/types_temp python/xion_types
           echo "✅ Fixed imports and moved to xion_types package"
 
       - name: Upload Generated Types
