@@ -93,6 +93,10 @@ jobs:
           print("✅ Import fixing complete")
           EOF
           
+          # Create __init__.py in all subdirectories to make them Python packages
+          echo "Creating __init__.py files..."
+          find python/types_temp -type d -exec touch {}/__init__.py \;
+          
           # Remove any existing xion_types directory from repo (ignore errors)
           rm -rf python/xion_types || true
           # Rename temp to xion_types to avoid 'types' namespace collision
