@@ -60,7 +60,7 @@ jobs:
           
           # Packages to convert from absolute imports to xion_types.* imports
           packages = [
-              'gogoproto', 'cosmos', 'cosmwasm', 'xion', 'abstractaccount',
+              'gogoproto', 'cosmos_proto', 'cosmos', 'cosmwasm', 'xion', 'abstractaccount',
               'amino', 'ibc', 'tendermint', 'osmosis', 'packetforward'
           ]
           
@@ -106,6 +106,18 @@ jobs:
           # gogoproto extensions are Go-specific and don't affect Python
           pass
           GOGO
+          
+          # Create cosmos_proto stub
+          echo "Creating cosmos_proto stub..."
+          mkdir -p python/types_temp/cosmos_proto
+          cat > python/types_temp/cosmos_proto/__init__.py << 'COSMOS'
+          """Stub for cosmos_proto - not used in Python protobuf"""
+          COSMOS
+          cat > python/types_temp/cosmos_proto/cosmos_pb2.py << 'COSMOS'
+          """Stub for cosmos.proto - these extensions are ignored in Python"""
+          # cosmos_proto extensions are Go-specific and don't affect Python
+          pass
+          COSMOS
           
           # Create __init__.py in all subdirectories to make them Python packages
           echo "Creating __init__.py files..."
