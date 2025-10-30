@@ -62,12 +62,12 @@ jobs:
           for pkg in packages:
               # Match: from package import ...
               patterns.append((
-                  re.compile(f'^(\\s*)from {pkg} import'),
+                  re.compile(f'^(\\s*)from {pkg} import', re.MULTILINE),
                   f'\\1from .{pkg} import'
               ))
               # Match: from package.submodule ...
               patterns.append((
-                  re.compile(f'^(\\s*)from {pkg}\\.'),
+                  re.compile(f'^(\\s*)from {pkg}\\.', re.MULTILINE),
                   f'\\1from .{pkg}.'
               ))
           
@@ -78,7 +78,7 @@ jobs:
               original = content
               
               for pattern, replacement in patterns:
-                  content = pattern.sub(replacement, content, flags=re.MULTILINE)
+                  content = pattern.sub(replacement, content)
               
               if content != original:
                   py_file.write_text(content)
