@@ -46,7 +46,7 @@ jobs:
       - name: Fix Imports (convert absolute to relative)
         run: |
           echo "Fixing Python imports to be relative..."
-          find python/types -name "*.py" -type f -exec sed -i \
+          find python/types -name "*.py" -type f -exec sed -i'' \
             -e 's/^from gogoproto /from .gogoproto /g' \
             -e 's/^from cosmos /from .cosmos /g' \
             -e 's/^from cosmwasm /from .cosmwasm /g' \
@@ -57,7 +57,7 @@ jobs:
             -e 's/^from tendermint /from .tendermint /g' \
             -e 's/^from osmosis /from .osmosis /g' \
             -e 's/^from packetforward /from .packetforward /g' \
-            {} +
+            {} \;
           
           # Remove any existing xion_types directory from repo
           rm -rf python/xion_types
