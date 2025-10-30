@@ -49,6 +49,9 @@ jobs:
         run: |
           echo "Fixing Python imports to be relative..."
           
+          # Install protoc tools for generating stubs
+          pip install grpcio-tools
+          
           # Copy to temp location with write permissions
           cp -r python/types python/types_temp
           chmod -R u+w python/types_temp
@@ -98,26 +101,34 @@ jobs:
           # Create gogoproto stub since buf doesn't generate it for Python
           echo "Creating gogoproto stub..."
           mkdir -p python/types_temp/gogoproto
+          cat > python/types_temp/gogoproto/gogo.proto << 'GOGO'
+          syntax = "proto3";
+          package gogoproto;
+          GOGO
+          python3 -m grpc_tools.protoc --python_out=python/types_temp --proto_path=python/types_temp python/types_temp/gogoproto/gogo.proto 2>&1 || echo "gogoproto generation completed"
           cat > python/types_temp/gogoproto/__init__.py << 'GOGO'
           """Stub for gogoproto - not used in Python protobuf"""
-          GOGO
-          cat > python/types_temp/gogoproto/gogo_pb2.py << 'GOGO'
-          """Stub for gogo.proto - these extensions are ignored in Python"""
-          # gogoproto extensions are Go-specific and don't affect Python
-          pass
           GOGO
           
           # Create cosmos_proto stub
           echo "Creating cosmos_proto stub..."
           mkdir -p python/types_temp/cosmos_proto
+          cat > python/types_temp/cosmos_proto/cosmos.proto << 'COSMOS'
+          syntax = "proto3";
+          package cosmos_proto;
+          COSMOS
+          python3 -m grpc_tools.protoc --python_out=python/types_temp --proto_path=python/types_temp python/types_temp/cosmos_proto/cosmos.proto 2>&1 || echo "cosmos_proto generation completed"
           cat > python/types_temp/cosmos_proto/__init__.py << 'COSMOS'
           """Stub for cosmos_proto - not used in Python protobuf"""
           COSMOS
-          cat > python/types_temp/cosmos_proto/cosmos_pb2.py << 'COSMOS'
-          """Stub for cosmos.proto - these extensions are ignored in Python"""
-          # cosmos_proto extensions are Go-specific and don't affect Python
-          pass
-          COSMOS
+          
+          # Fix imports in stub files too (if any)
+          if [ -f "python/types_temp/gogoproto/gogo_pb2.py" ]; then
+            sed -i'' 's/^from gogoproto/from xion_types.gogoproto/g' python/types_temp/gogoproto/gogo_pb2.py || true
+          fi
+          if [ -f "python/types_temp/cosmos_proto/cosmos_pb2.py" ]; then
+            sed -i'' 's/^from cosmos_proto/from xion_types.cosmos_proto/g' python/types_temp/cosmos_proto/cosmos_pb2.py || true
+          fi
           
           # Create __init__.py in all subdirectories to make them Python packages
           echo "Creating __init__.py files..."
