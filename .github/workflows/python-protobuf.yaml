@@ -46,6 +46,9 @@ jobs:
       - name: Fix Imports (convert absolute to relative)
         run: |
           echo "Fixing Python imports to be relative..."
+          # Make files writable
+          chmod -R u+w python/types
+          
           python3 << 'EOF'
           import os
           import re
