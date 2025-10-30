@@ -38,6 +38,8 @@ jobs:
         run: |
           if [ -d "./python/types" ] && [ "$(ls -A ./python/types)" ]; then
             echo "✅ Python definitions generated successfully"
+            echo "Listing top-level directories:"
+            ls -la python/types/
           else
             echo "❌ Failed to generate Python definitions"
             exit 1
@@ -194,6 +196,14 @@ jobs:
         run: |
           python -m build --wheel --sdist
           twine check dist/*
+
+      - name: Verify Package Contents
+        run: |
+          echo "Checking what's in the wheel:"
+          unzip -l dist/*.whl | grep -E "gogoproto|xion_types/" | head -20
+          echo "---"
+          echo "Checking if gogoproto exists:"
+          unzip -l dist/*.whl | grep gogoproto || echo "⚠️ gogoproto not found in wheel"
 
       - name: Upload Package
         uses: actions/upload-artifact@v4
