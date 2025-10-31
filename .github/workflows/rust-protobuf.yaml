@@ -117,6 +117,28 @@ jobs:
           toolchain: stable
           cache: false  # Disable auto-cache, we'll handle it manually
 
+      - name: Create Rust Package Structure
+        run: |
+          mkdir -p rust
+          if [ ! -f "rust/Cargo.toml" ]; then
+            cat > rust/Cargo.toml << 'CARGO'
+          [package]
+          name = "xion-types"
+          version = "0.1.0"
+          edition = "2021"
+          description = "Generated Rust types for Xion blockchain protocol buffers"
+          license = "Apache-2.0"
+          repository = "https://github.com/burnt-labs/xion-types"
+          
+          [lib]
+          name = "xion_types"
+          path = "types/lib.rs"
+          CARGO
+            echo "✅ Created rust/Cargo.toml"
+          else
+            echo "✅ rust/Cargo.toml already exists"
+          fi
+
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
         with:
@@ -172,6 +194,28 @@ jobs:
         with:
           toolchain: ${{ matrix.rust-version }}
           cache: false  # Disable auto-cache, we'll handle it manually
+
+      - name: Create Rust Package Structure
+        run: |
+          mkdir -p rust
+          if [ ! -f "rust/Cargo.toml" ]; then
+            cat > rust/Cargo.toml << 'CARGO'
+          [package]
+          name = "xion-types"
+          version = "0.1.0"
+          edition = "2021"
+          description = "Generated Rust types for Xion blockchain protocol buffers"
+          license = "Apache-2.0"
+          repository = "https://github.com/burnt-labs/xion-types"
+          
+          [lib]
+          name = "xion_types"
+          path = "types/lib.rs"
+          CARGO
+            echo "✅ Created rust/Cargo.toml"
+          else
+            echo "✅ rust/Cargo.toml already exists"
+          fi
 
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
