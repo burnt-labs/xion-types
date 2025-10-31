@@ -132,7 +132,50 @@ jobs:
           pub mod types {
               include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
           }
+          
+          // Re-export modules at crate root for super::super paths
+          // Generated code uses paths like super::super::cosmos::base::v1beta1::Coin
+          // which expect these modules at crate root level
+          // Only re-export if they exist in types module
+          #[allow(unused_imports)]
+          pub use types::*;
           LIB
+          
+          # Generate re-exports dynamically based on what's in types/mod.rs
+          python3 << 'PYTHON'
+          import re
+          from pathlib import Path
+          
+          types_mod = Path("rust/types/mod.rs")
+          if types_mod.exists():
+              content = types_mod.read_text()
+              # Find all "pub mod X;" declarations
+              mod_declarations = re.findall(r'pub mod (\w+);', content)
+              
+              # Common modules that generated code references via super::super
+              needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
+                              'xion', 'abstractaccount', 'ibc', 'tendermint', 
+                              'osmosis', 'packetforward', 'cosmwasm']
+              
+              # Find which modules actually exist
+              existing_modules = [m for m in needed_modules if m in mod_declarations]
+              
+              if existing_modules:
+                  lib_rs = Path("rust/src/lib.rs")
+                  lib_content = lib_rs.read_text()
+                  
+                  # Replace the generic pub use with specific re-exports
+                  re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
+                  lib_content = lib_content.replace(
+                      '#[allow(unused_imports)]\npub use types::*;',
+                      f'// Re-export modules at crate root for super::super paths\n{re_exports}'
+                  )
+                  
+                  lib_rs.write_text(lib_content)
+                  print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
+              else:
+                  print("⚠️ No matching modules found to re-export")
+          PYTHON
           
           # Create Cargo.toml
           if [ ! -f "rust/Cargo.toml" ]; then
@@ -262,6 +305,41 @@ jobs:
               
               print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
+              
+              # Now add re-exports to lib.rs for modules referenced via super::super
+              import re
+              types_mod = Path("rust/types/mod.rs")
+              if types_mod.exists():
+                  content = types_mod.read_text()
+                  # Find all "pub mod X;" declarations (handle #[path] attributes)
+                  mod_declarations = set()
+                  for line in content.split('\n'):
+                      # Match "pub mod X;" ignoring #[path] lines
+                      match = re.search(r'pub mod (\w+);', line)
+                      if match:
+                          mod_declarations.add(match.group(1))
+                  
+                  # Common modules that generated code references via super::super
+                  needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
+                                  'xion', 'abstractaccount', 'ibc', 'tendermint', 
+                                  'osmosis', 'packetforward', 'cosmwasm']
+                  
+                  # Find which modules actually exist
+                  existing_modules = [m for m in needed_modules if m in mod_declarations]
+                  
+                  if existing_modules:
+                      lib_rs = Path("rust/src/lib.rs")
+                      lib_content = lib_rs.read_text()
+                      
+                      # Add re-exports at the end
+                      re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
+                      lib_content = lib_content.rstrip() + '\n\n// Re-export modules at crate root for super::super paths\n' + re_exports + '\n'
+                      
+                      lib_rs.write_text(lib_content)
+                      print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
+                  else:
+                      print("⚠️ No matching modules found to re-export")
+                      print(f"   Available modules: {sorted(mod_declarations)}")
           PYTHON
 
       - name: Cache Rust Dependencies
@@ -361,7 +439,50 @@ jobs:
           pub mod types {
               include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
           }
+          
+          // Re-export modules at crate root for super::super paths
+          // Generated code uses paths like super::super::cosmos::base::v1beta1::Coin
+          // which expect these modules at crate root level
+          // Only re-export if they exist in types module
+          #[allow(unused_imports)]
+          pub use types::*;
           LIB
+          
+          # Generate re-exports dynamically based on what's in types/mod.rs
+          python3 << 'PYTHON'
+          import re
+          from pathlib import Path
+          
+          types_mod = Path("rust/types/mod.rs")
+          if types_mod.exists():
+              content = types_mod.read_text()
+              # Find all "pub mod X;" declarations
+              mod_declarations = re.findall(r'pub mod (\w+);', content)
+              
+              # Common modules that generated code references via super::super
+              needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
+                              'xion', 'abstractaccount', 'ibc', 'tendermint', 
+                              'osmosis', 'packetforward', 'cosmwasm']
+              
+              # Find which modules actually exist
+              existing_modules = [m for m in needed_modules if m in mod_declarations]
+              
+              if existing_modules:
+                  lib_rs = Path("rust/src/lib.rs")
+                  lib_content = lib_rs.read_text()
+                  
+                  # Replace the generic pub use with specific re-exports
+                  re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
+                  lib_content = lib_content.replace(
+                      '#[allow(unused_imports)]\npub use types::*;',
+                      f'// Re-export modules at crate root for super::super paths\n{re_exports}'
+                  )
+                  
+                  lib_rs.write_text(lib_content)
+                  print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
+              else:
+                  print("⚠️ No matching modules found to re-export")
+          PYTHON
             echo "✅ Created rust/src/lib.rs"
           fi
           
@@ -469,6 +590,41 @@ jobs:
               
               print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
+              
+              # Now add re-exports to lib.rs for modules referenced via super::super
+              import re
+              types_mod = Path("rust/types/mod.rs")
+              if types_mod.exists():
+                  content = types_mod.read_text()
+                  # Find all "pub mod X;" declarations (handle #[path] attributes)
+                  mod_declarations = set()
+                  for line in content.split('\n'):
+                      # Match "pub mod X;" ignoring #[path] lines
+                      match = re.search(r'pub mod (\w+);', line)
+                      if match:
+                          mod_declarations.add(match.group(1))
+                  
+                  # Common modules that generated code references via super::super
+                  needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
+                                  'xion', 'abstractaccount', 'ibc', 'tendermint', 
+                                  'osmosis', 'packetforward', 'cosmwasm']
+                  
+                  # Find which modules actually exist
+                  existing_modules = [m for m in needed_modules if m in mod_declarations]
+                  
+                  if existing_modules:
+                      lib_rs = Path("rust/src/lib.rs")
+                      lib_content = lib_rs.read_text()
+                      
+                      # Add re-exports at the end
+                      re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
+                      lib_content = lib_content.rstrip() + '\n\n// Re-export modules at crate root for super::super paths\n' + re_exports + '\n'
+                      
+                      lib_rs.write_text(lib_content)
+                      print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
+                  else:
+                      print("⚠️ No matching modules found to re-export")
+                      print(f"   Available modules: {sorted(mod_declarations)}")
           PYTHON
 
       - name: Cache Rust Dependencies
