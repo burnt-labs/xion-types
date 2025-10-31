@@ -115,6 +115,12 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           toolchain: stable
+          cache: false  # Disable auto-cache, we'll handle it manually
+
+      - name: Cache Rust Dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: './rust'
 
       - name: Update Version
         working-directory: ./rust
@@ -165,6 +171,12 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           toolchain: ${{ matrix.rust-version }}
+          cache: false  # Disable auto-cache, we'll handle it manually
+
+      - name: Cache Rust Dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: './rust'
 
       - name: Update Version
         working-directory: ./rust
