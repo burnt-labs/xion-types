@@ -264,12 +264,22 @@ jobs:
           cd rust/types
           for item in */; do
             if [ -d "$item" ]; then
-              # Directory found - check if it has mod.rs or lib.rs
               dirname=$(basename "$item")
-              if [ -f "${item}mod.rs" ] || [ -f "${item}lib.rs" ]; then
-                echo "pub mod ${dirname};" >> mod.rs
-              elif [ "$(ls -A $item/*.rs 2>/dev/null | wc -l)" -gt 0 ]; then
-                # Directory has .rs files, create mod.rs for it
+              # Check if directory has .rs files
+              if [ "$(ls -A $item/*.rs 2>/dev/null | wc -l)" -gt 0 ]; then
+                # Create mod.rs for this subdirectory if it doesn't exist
+                if [ ! -f "${item}mod.rs" ]; then
+                  echo "// Auto-generated module for ${dirname}" > "${item}mod.rs"
+                  # Include all .rs files in this subdirectory
+                  for rsfile in "${item}"*.rs; do
+                    if [ -f "$rsfile" ] && [ "$(basename "$rsfile")" != "mod.rs" ]; then
+                      modname=$(basename "$rsfile" .rs)
+                      echo "pub mod ${modname};" >> "${item}mod.rs"
+                    fi
+                  done
+                  echo "✅ Created ${item}mod.rs"
+                fi
+                # Add to parent mod.rs
                 echo "pub mod ${dirname};" >> mod.rs
               fi
             fi
