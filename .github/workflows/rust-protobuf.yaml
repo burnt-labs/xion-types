@@ -258,41 +258,62 @@ jobs:
             echo "✅ Created rust/src/lib.rs"
           fi
           
-          # Generate mod.rs dynamically based on existing directories/files
-          echo "// Auto-generated module - includes all generated protobuf types" > rust/types/mod.rs
-          # Find all .rs files and directories in types/, generate mod declarations
-          cd rust/types
-          for item in */; do
-            if [ -d "$item" ]; then
-              dirname=$(basename "$item")
-              # Check if directory has .rs files
-              if [ "$(ls -A $item/*.rs 2>/dev/null | wc -l)" -gt 0 ]; then
-                # Create mod.rs for this subdirectory if it doesn't exist
-                if [ ! -f "${item}mod.rs" ]; then
-                  echo "// Auto-generated module for ${dirname}" > "${item}mod.rs"
-                  # Include all .rs files in this subdirectory
-                  for rsfile in "${item}"*.rs; do
-                    if [ -f "$rsfile" ] && [ "$(basename "$rsfile")" != "mod.rs" ]; then
-                      modname=$(basename "$rsfile" .rs)
-                      echo "pub mod ${modname};" >> "${item}mod.rs"
-                    fi
-                  done
-                  echo "✅ Created ${item}mod.rs"
-                fi
-                # Add to parent mod.rs
-                echo "pub mod ${dirname};" >> mod.rs
-              fi
-            fi
-          done
-          # Also include any direct .rs files (not in subdirectories)
-          for file in *.rs; do
-            if [ -f "$file" ] && [ "$file" != "mod.rs" ]; then
-              modname=$(basename "$file" .rs)
-              echo "pub mod ${modname};" >> mod.rs
-            fi
-          done
-          cd ../..
-          echo "✅ Generated rust/types/mod.rs"
+          # Generate mod.rs recursively for all directories
+          python3 << 'PYTHON'
+          import os
+          from pathlib import Path
+          
+          def create_mod_rs(dir_path):
+              """Recursively create mod.rs files for directories with .rs files or subdirs"""
+              mod_rs_path = dir_path / "mod.rs"
+              has_content = False
+              
+              # Check for direct .rs files
+              rs_files = list(dir_path.glob("*.rs"))
+              if rs_files:
+                  if not mod_rs_path.exists():
+                      mod_rs_path.write_text("// Auto-generated module\n")
+                  with mod_rs_path.open("a") as f:
+                      for rs_file in rs_files:
+                          if rs_file.name != "mod.rs":
+                              modname = rs_file.stem
+                              f.write(f"pub mod {modname};\n")
+                              has_content = True
+              
+              # Process subdirectories recursively
+              for subdir in sorted(dir_path.iterdir()):
+                  if subdir.is_dir():
+                      sub_has_content = create_mod_rs(subdir)
+                      if sub_has_content:
+                          if not mod_rs_path.exists():
+                              mod_rs_path.write_text("// Auto-generated module\n")
+                          with mod_rs_path.open("a") as f:
+                              f.write(f"pub mod {subdir.name};\n")
+                          has_content = True
+              
+              return has_content or mod_rs_path.exists()
+          
+          types_dir = Path("rust/types")
+          if types_dir.exists():
+              # Create mod.rs for root types directory
+              root_mod = types_dir / "mod.rs"
+              root_mod.write_text("// Auto-generated module - includes all generated protobuf types\n")
+              
+              # Process all subdirectories
+              for item in sorted(types_dir.iterdir()):
+                  if item.is_dir():
+                      if create_mod_rs(item):
+                          with root_mod.open("a") as f:
+                              f.write(f"pub mod {item.name};\n")
+              
+              # Include direct .rs files
+              for rs_file in sorted(types_dir.glob("*.rs")):
+                  if rs_file.name != "mod.rs":
+                      with root_mod.open("a") as f:
+                          f.write(f"pub mod {rs_file.stem};\n")
+              
+              print("✅ Generated rust/types/mod.rs recursively")
+          PYTHON
 
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
