@@ -258,13 +258,31 @@ jobs:
             echo "✅ Created rust/src/lib.rs"
           fi
           
-          # Create mod.rs if it doesn't exist
-          if [ ! -f "rust/types/mod.rs" ]; then
-            echo "// Auto-generated module" > rust/types/mod.rs
-            echo "pub mod cosmos;" >> rust/types/mod.rs 2>/dev/null || true
-            echo "pub mod xion;" >> rust/types/mod.rs 2>/dev/null || true
-            echo "✅ Created rust/types/mod.rs"
-          fi
+          # Generate mod.rs dynamically based on existing directories/files
+          echo "// Auto-generated module - includes all generated protobuf types" > rust/types/mod.rs
+          # Find all .rs files and directories in types/, generate mod declarations
+          cd rust/types
+          for item in */; do
+            if [ -d "$item" ]; then
+              # Directory found - check if it has mod.rs or lib.rs
+              dirname=$(basename "$item")
+              if [ -f "${item}mod.rs" ] || [ -f "${item}lib.rs" ]; then
+                echo "pub mod ${dirname};" >> mod.rs
+              elif [ "$(ls -A $item/*.rs 2>/dev/null | wc -l)" -gt 0 ]; then
+                # Directory has .rs files, create mod.rs for it
+                echo "pub mod ${dirname};" >> mod.rs
+              fi
+            fi
+          done
+          # Also include any direct .rs files (not in subdirectories)
+          for file in *.rs; do
+            if [ -f "$file" ] && [ "$file" != "mod.rs" ]; then
+              modname=$(basename "$file" .rs)
+              echo "pub mod ${modname};" >> mod.rs
+            fi
+          done
+          cd ../..
+          echo "✅ Generated rust/types/mod.rs"
 
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
