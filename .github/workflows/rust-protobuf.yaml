@@ -111,12 +111,6 @@ jobs:
           name: generated-types-rust
           path: rust/types
 
-      - name: Move Types to src/ Directory
-        run: |
-          mkdir -p rust/src
-          mv rust/types rust/src/types
-          echo "✅ Moved types to rust/src/types"
-
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
@@ -127,11 +121,17 @@ jobs:
         run: |
           mkdir -p rust/src
           # Create lib.rs that includes generated types
+          # Using include!() because generated code uses super::super paths
+          # that expect types/ to be at crate root level relative to CARGO_MANIFEST_DIR
           cat > rust/src/lib.rs << 'LIB'
           //! Generated Rust types for Xion blockchain protocol buffers
           
           // Include generated protobuf modules
-          pub mod types;
+          // Note: types/ is kept outside src/ because generated code uses
+          // super::super::cosmos::... paths that expect this structure
+          pub mod types {
+              include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
+          }
           LIB
           
           # Create Cargo.toml
@@ -216,7 +216,7 @@ jobs:
               
               return False
           
-          types_dir = Path("rust/src/types")
+          types_dir = Path("rust/types")
           if types_dir.exists():
               # Process all subdirectories recursively first
               subdirs_added = []
@@ -260,7 +260,7 @@ jobs:
                           else:
                               f.write(f"pub mod {modname};\n")
               
-              print("✅ Generated rust/src/types/mod.rs recursively")
+              print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
           PYTHON
 
@@ -358,7 +358,9 @@ jobs:
             cat > rust/src/lib.rs << 'LIB'
           //! Generated Rust types for Xion blockchain protocol buffers
           
-          pub mod types;
+          pub mod types {
+              include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
+          }
           LIB
             echo "✅ Created rust/src/lib.rs"
           fi
@@ -421,7 +423,7 @@ jobs:
               
               return False
           
-          types_dir = Path("rust/src/types")
+          types_dir = Path("rust/types")
           if types_dir.exists():
               # Process all subdirectories recursively first
               subdirs_added = []
@@ -465,7 +467,7 @@ jobs:
                           else:
                               f.write(f"pub mod {modname};\n")
               
-              print("✅ Generated rust/src/types/mod.rs recursively")
+              print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
           PYTHON
 
