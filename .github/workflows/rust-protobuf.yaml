@@ -194,7 +194,16 @@ jobs:
                       # Add direct .rs files
                       for rs_file in sorted(rs_files):
                           modname = rs_file.stem
-                          f.write(f"pub mod {modname};\n")
+                          filename = rs_file.name
+                          
+                          # Rust module names cannot contain dots, so use #[path] attribute
+                          if '.' in modname:
+                              # Convert dots to underscores for module name, but keep original filename
+                              safe_modname = modname.replace('.', '_')
+                              f.write(f'#[path = "{filename}"]\n')
+                              f.write(f"pub mod {safe_modname};\n")
+                          else:
+                              f.write(f"pub mod {modname};\n")
                       
                       # Add subdirectories that have mod.rs
                       for subdir in subdirs_with_mod_rs:
@@ -237,7 +246,16 @@ jobs:
                   # Include direct .rs files
                   for rs_file in sorted(types_dir.glob("*.rs")):
                       if rs_file.name != "mod.rs":
-                          f.write(f"pub mod {rs_file.stem};\n")
+                          modname = rs_file.stem
+                          filename = rs_file.name
+                          
+                          # Rust module names cannot contain dots, so use #[path] attribute
+                          if '.' in modname:
+                              safe_modname = modname.replace('.', '_')
+                              f.write(f'#[path = "{filename}"]\n')
+                              f.write(f"pub mod {safe_modname};\n")
+                          else:
+                              f.write(f"pub mod {modname};\n")
               
               print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
@@ -377,7 +395,16 @@ jobs:
                       # Add direct .rs files
                       for rs_file in sorted(rs_files):
                           modname = rs_file.stem
-                          f.write(f"pub mod {modname};\n")
+                          filename = rs_file.name
+                          
+                          # Rust module names cannot contain dots, so use #[path] attribute
+                          if '.' in modname:
+                              # Convert dots to underscores for module name, but keep original filename
+                              safe_modname = modname.replace('.', '_')
+                              f.write(f'#[path = "{filename}"]\n')
+                              f.write(f"pub mod {safe_modname};\n")
+                          else:
+                              f.write(f"pub mod {modname};\n")
                       
                       # Add subdirectories that have mod.rs
                       for subdir in subdirs_with_mod_rs:
@@ -420,7 +447,16 @@ jobs:
                   # Include direct .rs files
                   for rs_file in sorted(types_dir.glob("*.rs")):
                       if rs_file.name != "mod.rs":
-                          f.write(f"pub mod {rs_file.stem};\n")
+                          modname = rs_file.stem
+                          filename = rs_file.name
+                          
+                          # Rust module names cannot contain dots, so use #[path] attribute
+                          if '.' in modname:
+                              safe_modname = modname.replace('.', '_')
+                              f.write(f'#[path = "{filename}"]\n')
+                              f.write(f"pub mod {safe_modname};\n")
+                          else:
+                              f.write(f"pub mod {modname};\n")
               
               print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
