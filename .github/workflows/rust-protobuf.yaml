@@ -119,7 +119,19 @@ jobs:
 
       - name: Create Rust Package Structure
         run: |
-          mkdir -p rust
+          mkdir -p rust/src
+          # Create lib.rs that includes generated types
+          cat > rust/src/lib.rs << 'LIB'
+          //! Generated Rust types for Xion blockchain protocol buffers
+          
+          // Include generated protobuf modules
+          pub mod types {
+              // Include all generated .rs files from types directory
+              include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
+          }
+          LIB
+          
+          # Create Cargo.toml
           if [ ! -f "rust/Cargo.toml" ]; then
             cat > rust/Cargo.toml << 'CARGO'
           [package]
@@ -132,11 +144,23 @@ jobs:
           
           [lib]
           name = "xion_types"
-          path = "types/lib.rs"
+          path = "src/lib.rs"
+          
+          [dependencies]
+          prost = "0.12"
+          prost-types = "0.12"
           CARGO
             echo "✅ Created rust/Cargo.toml"
           else
             echo "✅ rust/Cargo.toml already exists"
+          fi
+          
+          # Create a mod.rs if it doesn't exist
+          if [ ! -f "rust/types/mod.rs" ]; then
+            echo "// Auto-generated module" > rust/types/mod.rs
+            echo "pub mod cosmos;" >> rust/types/mod.rs 2>/dev/null || true
+            echo "pub mod xion;" >> rust/types/mod.rs 2>/dev/null || true
+            echo "✅ Created rust/types/mod.rs"
           fi
 
       - name: Cache Rust Dependencies
@@ -210,11 +234,36 @@ jobs:
           
           [lib]
           name = "xion_types"
-          path = "types/lib.rs"
+          path = "src/lib.rs"
+          
+          [dependencies]
+          prost = "0.12"
+          prost-types = "0.12"
           CARGO
             echo "✅ Created rust/Cargo.toml"
           else
             echo "✅ rust/Cargo.toml already exists"
+          fi
+          
+          # Create src/lib.rs if it doesn't exist
+          mkdir -p rust/src
+          if [ ! -f "rust/src/lib.rs" ]; then
+            cat > rust/src/lib.rs << 'LIB'
+          //! Generated Rust types for Xion blockchain protocol buffers
+          
+          pub mod types {
+              include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
+          }
+          LIB
+            echo "✅ Created rust/src/lib.rs"
+          fi
+          
+          # Create mod.rs if it doesn't exist
+          if [ ! -f "rust/types/mod.rs" ]; then
+            echo "// Auto-generated module" > rust/types/mod.rs
+            echo "pub mod cosmos;" >> rust/types/mod.rs 2>/dev/null || true
+            echo "pub mod xion;" >> rust/types/mod.rs 2>/dev/null || true
+            echo "✅ Created rust/types/mod.rs"
           fi
 
       - name: Cache Rust Dependencies
