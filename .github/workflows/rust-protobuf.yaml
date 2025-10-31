@@ -263,25 +263,34 @@ jobs:
           import os
           from pathlib import Path
           
+          def has_any_rs_files(dir_path):
+              """Check if directory or any subdirectory has .rs files"""
+              for rs_file in dir_path.rglob("*.rs"):
+                  if rs_file.name != "mod.rs":
+                      return True
+              return False
+          
           def create_mod_rs(dir_path):
               """Recursively create mod.rs files for directories with .rs files or subdirs"""
               mod_rs_path = dir_path / "mod.rs"
-              mod_rs_created = False
               
-              # Check for direct .rs files
+              # Check for direct .rs files (excluding mod.rs)
               rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
               has_rs_files = len(rs_files) > 0
               
               # Process subdirectories recursively first
-              subdirs_with_content = []
+              subdirs_with_mod_rs = []
               for subdir in sorted(dir_path.iterdir()):
                   if subdir.is_dir():
-                      sub_has_mod_rs = create_mod_rs(subdir)
-                      if sub_has_mod_rs:
-                          subdirs_with_content.append(subdir)
+                      if create_mod_rs(subdir):
+                          subdirs_with_mod_rs.append(subdir)
               
-              # Only create mod.rs if we have content (rs files or subdirs with mod.rs)
-              if has_rs_files or subdirs_with_content:
+              # Only create mod.rs if we have direct .rs files OR subdirs with mod.rs
+              # But skip if this directory has no .rs files anywhere (even nested)
+              if not has_any_rs_files(dir_path):
+                  return False
+              
+              if has_rs_files or subdirs_with_mod_rs:
                   with mod_rs_path.open("w") as f:
                       f.write("// Auto-generated module\n")
                       
@@ -291,12 +300,12 @@ jobs:
                           f.write(f"pub mod {modname};\n")
                       
                       # Add subdirectories that have mod.rs
-                      for subdir in subdirs_with_content:
+                      for subdir in subdirs_with_mod_rs:
                           f.write(f"pub mod {subdir.name};\n")
-                      
-                      mod_rs_created = True
+                  
+                  return True
               
-              return mod_rs_created
+              return False
           
           types_dir = Path("rust/types")
           if types_dir.exists():
@@ -308,7 +317,8 @@ jobs:
               subdirs_added = []
               for item in sorted(types_dir.iterdir()):
                   if item.is_dir():
-                      if create_mod_rs(item):
+                      # Only add if directory has any .rs files (recursively)
+                      if has_any_rs_files(item) and create_mod_rs(item):
                           subdirs_added.append(item)
               
               # Add subdirectories that have mod.rs
@@ -323,6 +333,7 @@ jobs:
                           f.write(f"pub mod {rs_file.stem};\n")
               
               print("✅ Generated rust/types/mod.rs recursively")
+              print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
           PYTHON
 
       - name: Cache Rust Dependencies
