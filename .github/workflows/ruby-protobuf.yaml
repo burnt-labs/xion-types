@@ -1,0 +1,395 @@
+name: Ruby Protobuf Generation & Publishing
+
+on:
+  push:
+    branches: 
+    #   - main 
+      - adfdf #feat/protobufs
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for publishing.'
+        required: true
+        type: string
+
+  repository_dispatch:
+    types: [xion-types-release-trigger]
+    
+  schedule:
+    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+
+jobs:
+  generate-protobuf:
+    name: Generate Ruby Types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Ruby Definitions
+        run: |
+          make proto-gen-ruby
+
+      - name: Check if Types Were Generated
+        run: |
+          if [ -d "./ruby/types" ] && [ "$(ls -A ./ruby/types)" ]; then
+            echo "✅ Ruby definitions generated successfully"
+            echo "Listing top-level directories:"
+            ls -la ruby/types/ | head -20
+          else
+            echo "❌ Failed to generate Ruby definitions"
+            exit 1
+          fi
+
+      - name: Upload Generated Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-ruby
+          path: ruby/types
+          retention-days: 30
+
+  determine-version:
+    name: Determine Version
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    if: |
+        github.ref == 'refs/heads/feat/protobufs' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version
+        # Version scenarios:
+        # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3")
+        # 2. Release event (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
+        # 3. Push to branch → Generate dev version (e.g., "0.0.0.dev1234567890")
+        id: version
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            VERSION="${{ github.event.inputs.next_version }}"
+            echo "Using manual version: $VERSION"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            VERSION=${RELEASE_TAG#v}
+            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            TIMESTAMP=$(date +%s)
+            VERSION="0.0.0.dev${TIMESTAMP}"
+            echo "Using dev version for testing: $VERSION"
+          else
+            echo "❌ No version specified"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+  # ============================================
+  # Ruby Gem Building/Testing
+  # ============================================
+
+  ruby-build:
+    name: Build Gem
+    needs: [determine-version, generate-protobuf]
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ needs.determine-version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Ruby Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ruby
+          path: ruby/types
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false  # We'll handle caching manually
+
+      - name: Create Ruby Gem Structure
+        run: |
+          mkdir -p ruby/lib/xion_types
+          
+          # Create version file
+          cat > ruby/lib/xion_types/version.rb << 'VERSION'
+          module XionTypes
+            VERSION = "0.1.0"
+          end
+          VERSION
+          
+          # Create main module file
+          cat > ruby/lib/xion_types.rb << 'MAIN'
+          require_relative "xion_types/version"
+          
+          # Load all generated protobuf types
+          Dir[File.join(__dir__, "xion_types", "**", "*.rb")].each do |file|
+            require file
+          end
+          
+          module XionTypes
+            # Main module for Xion blockchain protocol buffer types
+          end
+          MAIN
+          
+          # Create gemspec
+          if [ ! -f "ruby/xion_types.gemspec" ]; then
+            cat > ruby/xion_types.gemspec << 'GEMSPEC'
+          # frozen_string_literal: true
+
+          require_relative "lib/xion_types/version"
+
+          Gem::Specification.new do |spec|
+            spec.name          = "xion_types"
+            spec.version       = XionTypes::VERSION
+            spec.authors       = ["Burnt Labs"]
+            spec.email         = ["--ADD-HERE-YOUR-VALUE--"]
+            
+            spec.summary       = "Generated Ruby types for Xion blockchain protocol buffers"
+            spec.description   = "Generated Ruby types for Xion blockchain protocol buffers"
+            spec.homepage      = "https://github.com/burnt-labs/xion-types"
+            spec.license       = "Apache-2.0"
+            
+            spec.metadata["homepage_uri"] = spec.homepage
+            spec.metadata["source_code_uri"] = spec.homepage
+            spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
+            
+            # Specify which files should be added to the gem when it is released
+            spec.files = Dir.chdir(__dir__) do
+              `git ls-files -z`.split("\x0").reject do |f|
+                (File.expand_path(f) == __FILE__) ||
+                  f.start_with?(*%w[bin/ test/ spec/ features/ .git .github Gemfile])
+              end
+            end
+            
+            spec.bindir        = "exe"
+            spec.executables  = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+            spec.require_paths = ["lib"]
+            
+            # Runtime dependencies
+            spec.add_runtime_dependency "google-protobuf", "~> 3.25"
+          end
+            echo "✅ Created ruby/xion_types.gemspec"
+          else
+            echo "✅ ruby/xion_types.gemspec already exists"
+          fi
+          
+          # Create Gemfile if it doesn't exist
+          if [ ! -f "ruby/Gemfile" ]; then
+            cat > ruby/Gemfile << 'GEMFILE'
+          # frozen_string_literal: true
+
+          source "https://rubygems.org"
+
+          gemspec
+          GEMFILE
+            echo "✅ Created ruby/Gemfile"
+          else
+            echo "✅ ruby/Gemfile already exists"
+          fi
+          
+          # Copy generated types to lib/xion_types directory structure
+          echo "Copying generated Ruby types..."
+          cp -r ruby/types/* ruby/lib/xion_types/ 2>/dev/null || true
+          
+          # Ensure all .rb files are properly required
+          find ruby/lib/xion_types -name "*.rb" -type f | head -5
+
+      - name: Update Version
+        working-directory: ./ruby
+        env:
+          VERSION: ${{ needs.determine-version.outputs.version }}
+        run: |
+          sed -i "s/VERSION = .*/VERSION = \"$VERSION\"/" lib/xion_types/version.rb
+          sed -i "s/spec.version       = .*/spec.version       = XionTypes::VERSION/" xion_types.gemspec
+          echo "✅ Updated version to $VERSION"
+
+      - name: Install Dependencies
+        working-directory: ./ruby
+        run: |
+          bundle install
+          echo "✅ Dependencies installed"
+
+      - name: Build Gem
+        working-directory: ./ruby
+        run: |
+          gem build xion_types.gemspec
+          echo "✅ Gem built successfully"
+          ls -lh *.gem
+
+      - name: Upload Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ruby-gem
+          path: ruby/*.gem
+          retention-days: 30
+
+  ruby-test:
+    name: Test Ruby ${{ matrix.ruby-version }}
+    needs: [ruby-build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.0', '3.1', '3.2', '3.3']
+      fail-fast: false
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Ruby Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ruby
+          path: ruby/types
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: false
+
+      - name: Create Ruby Gem Structure
+        run: |
+          mkdir -p ruby/lib/xion_types
+          
+          # Create version file
+          cat > ruby/lib/xion_types/version.rb << 'VERSION'
+          module XionTypes
+            VERSION = "0.1.0"
+          end
+          VERSION
+          
+          # Create main module file
+          cat > ruby/lib/xion_types.rb << 'MAIN'
+          require_relative "xion_types/version"
+          
+          # Load all generated protobuf types
+          Dir[File.join(__dir__, "xion_types", "**", "*.rb")].each do |file|
+            require file
+          end
+          
+          module XionTypes
+            # Main module for Xion blockchain protocol buffer types
+          end
+          MAIN
+          
+          # Create gemspec
+          if [ ! -f "ruby/xion_types.gemspec" ]; then
+            cat > ruby/xion_types.gemspec << 'GEMSPEC'
+          # frozen_string_literal: true
+
+          require_relative "lib/xion_types/version"
+
+          Gem::Specification.new do |spec|
+            spec.name          = "xion_types"
+            spec.version       = XionTypes::VERSION
+            spec.authors       = ["Burnt Labs"]
+            spec.email         = ["--ADD-HERE-YOUR-VALUE--"]
+            
+            spec.summary       = "Generated Ruby types for Xion blockchain protocol buffers"
+            spec.description   = "Generated Ruby types for Xion blockchain protocol buffers"
+            spec.homepage      = "https://github.com/burnt-labs/xion-types"
+            spec.license       = "Apache-2.0"
+            
+            spec.metadata["homepage_uri"] = spec.homepage
+            spec.metadata["source_code_uri"] = spec.homepage
+            spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
+            
+            spec.files = Dir.chdir(__dir__) do
+              `git ls-files -z`.split("\x0").reject do |f|
+                (File.expand_path(f) == __FILE__) ||
+                  f.start_with?(*%w[bin/ test/ spec/ features/ .git .github Gemfile])
+              end
+            end
+            
+            spec.bindir        = "exe"
+            spec.executables  = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+            spec.require_paths = ["lib"]
+            
+            spec.add_runtime_dependency "google-protobuf", "~> 3.25"
+          end
+            echo "✅ Created ruby/xion_types.gemspec"
+          fi
+          
+          # Create Gemfile if it doesn't exist
+          if [ ! -f "ruby/Gemfile" ]; then
+            cat > ruby/Gemfile << 'GEMFILE'
+          # frozen_string_literal: true
+
+          source "https://rubygems.org"
+
+          gemspec
+          GEMFILE
+          fi
+          
+          # Copy generated types
+          cp -r ruby/types/* ruby/lib/xion_types/ 2>/dev/null || true
+
+      - name: Download Package
+        uses: actions/download-artifact@v4
+        with:
+          name: ruby-gem
+          path: ruby/
+
+      - name: Install and Test
+        working-directory: ./ruby
+        env:
+          VERSION: ${{ needs.ruby-build.outputs.version }}
+        run: |
+          sed -i "s/VERSION = .*/VERSION = \"$VERSION\"/" lib/xion_types/version.rb
+          bundle install
+          gem install *.gem
+          
+          # Test basic import
+          ruby -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
+          
+          # Try to load a specific protobuf type if available
+          ruby -e "require 'xion_types'; puts '✅ Import successful'" || echo "⚠️ Some types may not be loadable"
+
+  # ============================================
+  # Ruby Gem Publishing
+  # ============================================
+
+  ruby-publish:
+    name: Publish to RubyGems
+    needs: [ruby-test, ruby-build]
+    runs-on: ubuntu-latest
+    # TODO: Remove push from condition after testing
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' || 
+      (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    permissions:
+      contents: read
+    steps:
+      - name: Download Package
+        uses: actions/download-artifact@v4
+        with:
+          name: ruby-gem
+          path: ruby/
+
+      - name: Publish to RubyGems
+        working-directory: ./ruby
+        env:
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: |
+          if [ -z "$RUBYGEMS_API_KEY" ]; then
+            echo "⚠️ RUBYGEMS_API_KEY not set, skipping publish"
+            exit 0
+          fi
+          
+          gem push *.gem --key github --host https://rubygems.org
+          echo "✅ Published to RubyGems"
+

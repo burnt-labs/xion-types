@@ -155,13 +155,93 @@ jobs:
             echo "✅ rust/Cargo.toml already exists"
           fi
           
-          # Create a mod.rs if it doesn't exist
-          if [ ! -f "rust/types/mod.rs" ]; then
-            echo "// Auto-generated module" > rust/types/mod.rs
-            echo "pub mod cosmos;" >> rust/types/mod.rs 2>/dev/null || true
-            echo "pub mod xion;" >> rust/types/mod.rs 2>/dev/null || true
-            echo "✅ Created rust/types/mod.rs"
-          fi
+          # Generate mod.rs recursively for all directories
+          python3 << 'PYTHON'
+          import os
+          from pathlib import Path
+          
+          def has_any_rs_files(dir_path):
+              """Check if directory or any subdirectory has .rs files"""
+              for rs_file in dir_path.rglob("*.rs"):
+                  if rs_file.name != "mod.rs":
+                      return True
+              return False
+          
+          def create_mod_rs(dir_path):
+              """Recursively create mod.rs files for directories with .rs files or subdirs"""
+              mod_rs_path = dir_path / "mod.rs"
+              
+              # Check for direct .rs files (excluding mod.rs)
+              rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
+              has_rs_files = len(rs_files) > 0
+              
+              # Process subdirectories recursively first
+              subdirs_with_mod_rs = []
+              for subdir in sorted(dir_path.iterdir()):
+                  if subdir.is_dir():
+                      if create_mod_rs(subdir):
+                          subdirs_with_mod_rs.append(subdir)
+              
+              # Only create mod.rs if we have direct .rs files OR subdirs with mod.rs
+              # But skip if this directory has no .rs files anywhere (even nested)
+              if not has_any_rs_files(dir_path):
+                  return False
+              
+              if has_rs_files or subdirs_with_mod_rs:
+                  with mod_rs_path.open("w") as f:
+                      f.write("// Auto-generated module\n")
+                      
+                      # Add direct .rs files
+                      for rs_file in sorted(rs_files):
+                          modname = rs_file.stem
+                          f.write(f"pub mod {modname};\n")
+                      
+                      # Add subdirectories that have mod.rs
+                      for subdir in subdirs_with_mod_rs:
+                          f.write(f"pub mod {subdir.name};\n")
+                  
+                  return True
+              
+              return False
+          
+          types_dir = Path("rust/types")
+          if types_dir.exists():
+              # Process all subdirectories recursively first
+              subdirs_added = []
+              for item in sorted(types_dir.iterdir()):
+                  if item.is_dir():
+                      # Only add if directory has any .rs files AND mod.rs was successfully created
+                      if has_any_rs_files(item):
+                          if create_mod_rs(item):
+                              # Verify mod.rs was actually created
+                              mod_rs_path = item / "mod.rs"
+                              if mod_rs_path.exists():
+                                  subdirs_added.append(item)
+                                  print(f"   Added module: {item.name}")
+                              else:
+                                  print(f"   Skipped {item.name}: mod.rs not created")
+                          else:
+                              print(f"   Skipped {item.name}: create_mod_rs returned False")
+                      else:
+                          print(f"   Skipped {item.name}: no .rs files found")
+              
+              # Create mod.rs for root types directory (after processing subdirs)
+              root_mod = types_dir / "mod.rs"
+              with root_mod.open("w") as f:
+                  f.write("// Auto-generated module - includes all generated protobuf types\n")
+                  
+                  # Add subdirectories that have mod.rs
+                  for item in subdirs_added:
+                      f.write(f"pub mod {item.name};\n")
+                  
+                  # Include direct .rs files
+                  for rs_file in sorted(types_dir.glob("*.rs")):
+                      if rs_file.name != "mod.rs":
+                          f.write(f"pub mod {rs_file.stem};\n")
+              
+              print("✅ Generated rust/types/mod.rs recursively")
+              print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
+          PYTHON
 
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
@@ -309,27 +389,37 @@ jobs:
           
           types_dir = Path("rust/types")
           if types_dir.exists():
-              # Create mod.rs for root types directory
-              root_mod = types_dir / "mod.rs"
-              root_mod.write_text("// Auto-generated module - includes all generated protobuf types\n")
-              
-              # Process all subdirectories
+              # Process all subdirectories recursively first
               subdirs_added = []
               for item in sorted(types_dir.iterdir()):
                   if item.is_dir():
-                      # Only add if directory has any .rs files (recursively)
-                      if has_any_rs_files(item) and create_mod_rs(item):
-                          subdirs_added.append(item)
+                      # Only add if directory has any .rs files AND mod.rs was successfully created
+                      if has_any_rs_files(item):
+                          if create_mod_rs(item):
+                              # Verify mod.rs was actually created
+                              mod_rs_path = item / "mod.rs"
+                              if mod_rs_path.exists():
+                                  subdirs_added.append(item)
+                                  print(f"   Added module: {item.name}")
+                              else:
+                                  print(f"   Skipped {item.name}: mod.rs not created")
+                          else:
+                              print(f"   Skipped {item.name}: create_mod_rs returned False")
+                      else:
+                          print(f"   Skipped {item.name}: no .rs files found")
               
-              # Add subdirectories that have mod.rs
-              with root_mod.open("a") as f:
+              # Create mod.rs for root types directory (after processing subdirs)
+              root_mod = types_dir / "mod.rs"
+              with root_mod.open("w") as f:
+                  f.write("// Auto-generated module - includes all generated protobuf types\n")
+                  
+                  # Add subdirectories that have mod.rs
                   for item in subdirs_added:
                       f.write(f"pub mod {item.name};\n")
-              
-              # Include direct .rs files
-              for rs_file in sorted(types_dir.glob("*.rs")):
-                  if rs_file.name != "mod.rs":
-                      with root_mod.open("a") as f:
+                  
+                  # Include direct .rs files
+                  for rs_file in sorted(types_dir.glob("*.rs")):
+                      if rs_file.name != "mod.rs":
                           f.write(f"pub mod {rs_file.stem};\n")
               
               print("✅ Generated rust/types/mod.rs recursively")
