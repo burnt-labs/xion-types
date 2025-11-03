@@ -111,7 +111,10 @@ jobs:
           npm run build
           echo "Packing xion-types package for local installation..."
           cd dist
-          npm pack --pack-destination .. --ignore-scripts
+          # Temporarily remove prepare script to prevent rebuild during pack
+          node -e "const pkg = require('./package.json'); delete pkg.scripts.prepare; require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));"
+          npm pack --pack-destination ..
+          # Restore prepare script (optional, as dist will be cleaned on next build)
           cd ..
           echo "Created package tarball: $(ls *.tgz 2>/dev/null | head -1 || echo 'none')"
 
