@@ -156,7 +156,7 @@ jobs:
           
           # Install project dependencies first (skip scripts to avoid postinstall hooks)
           echo "Installing project dependencies for ${{ matrix.project }}..."
-          npm install --ignore-scripts
+          npm install --ignore-scripts --legacy-peer-deps
           
           # Generate Nuxt types if this is a Nuxt project
           # Use dummy env vars for Nuxt config validation since we're only testing proto compatibility
