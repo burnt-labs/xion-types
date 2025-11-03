@@ -204,10 +204,11 @@ jobs:
           set -e  # Re-enable exit on error
           
           # Check for errors related to xion-types (proto compatibility issues)
-          if grep -qiE "(xion-types|@burnt-labs/xion-types|proto)" /tmp/tsc-output.log 2>/dev/null && grep -qi "error" /tmp/tsc-output.log 2>/dev/null; then
-            PROTO_ERROR_COUNT=$(grep -iE "(xion-types|@burnt-labs/xion-types|proto)" /tmp/tsc-output.log | grep -i "error" | wc -l | tr -d ' ' || echo "0")
+          # Use word boundaries to avoid false matches (e.g., "prototype" shouldn't match "proto")
+          if grep -qiE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" /tmp/tsc-output.log 2>/dev/null && grep -qi "error" /tmp/tsc-output.log 2>/dev/null; then
+            PROTO_ERROR_COUNT=$(grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" /tmp/tsc-output.log | grep -i "error" | wc -l | tr -d ' ' || echo "0")
             echo "❌ Found $PROTO_ERROR_COUNT proto-related TypeScript error(s) - proto compatibility issue detected!"
-            grep -iE "(xion-types|@burnt-labs/xion-types|proto)" /tmp/tsc-output.log | grep -i "error" | head -10
+            grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" /tmp/tsc-output.log | grep -i "error" | head -10
             exit 1
           elif [ "$TSC_EXIT_CODE" -eq 0 ]; then
             echo "✅ Type check passed - proto compatibility confirmed for ${{ matrix.project }}"
