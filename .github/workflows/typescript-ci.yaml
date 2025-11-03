@@ -154,14 +154,35 @@ jobs:
             exit 1
           fi
           
-          # Install project dependencies first
+          # Install project dependencies first (skip scripts to avoid postinstall hooks)
           echo "Installing project dependencies for ${{ matrix.project }}..."
-          npm install
+          npm install --ignore-scripts
           
           # Generate Nuxt types if this is a Nuxt project
+          # Use dummy env vars for Nuxt config validation since we're only testing proto compatibility
           if grep -q '"nuxt"' package.json || grep -q '"nuxt prepare"' package.json; then
-            echo "Detected Nuxt project, generating types..."
-            npx nuxt prepare || echo "Nuxt prepare completed with warnings"
+            echo "Detected Nuxt project, generating types with dummy environment variables..."
+            NUXT_PUBLIC_TURNSTILE_SITE_KEY="dummy" \
+            NUXT_FAUCET_MNEMONIC="dummy" \
+            NUXT_FAUCET_PATH_PATTERN="dummy" \
+            NUXT_TURNSTILE_SECRET_KEY="dummy" \
+            NUXT_XION_TESTNET_1_MNEMONIC="dummy" \
+            NUXT_XION_TESTNET_2_MNEMONIC="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
+            NUXT_PUBLIC_FAUCET_ADDRESS_PREFIX="dummy" \
+            NUXT_PUBLIC_FAUCET_AMOUNT_GIVEN="1000000" \
+            NUXT_PUBLIC_FAUCET_COOLDOWN_TIME="3600" \
+            NUXT_PUBLIC_FAUCET_DENOM="dummy" \
+            NUXT_PUBLIC_FAUCET_GAS_LIMIT="200000" \
+            NUXT_PUBLIC_FAUCET_GAS_PRICE="0.025" \
+            NUXT_PUBLIC_FAUCET_LOGGING="false" \
+            NUXT_PUBLIC_FAUCET_MEMO="dummy" \
+            NUXT_PUBLIC_FAUCET_TOKENS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_1_ADDRESS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_1_RPC_URL="https://dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_RPC_URL="https://dummy" \
+            npx nuxt prepare || echo "⚠️  Nuxt prepare failed (non-critical for proto testing)"
           fi
           
           # Install the types package with legacy peer deps to bypass conflicts
