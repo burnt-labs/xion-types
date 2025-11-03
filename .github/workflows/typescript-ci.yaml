@@ -96,6 +96,19 @@ jobs:
           name: generated-types-ts
           path: xion-types/ts/types
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Build xion-types Package
+        working-directory: xion-types/ts
+        run: |
+          echo "Installing dependencies for xion-types..."
+          npm install
+          echo "Building xion-types package..."
+          npm run build
+
       - name: Checkout Dependent Project
         uses: actions/checkout@v4
         with:
@@ -134,7 +147,7 @@ jobs:
           
           # Install the types package with legacy peer deps to bypass conflicts
           echo "Installing types package for ${{ matrix.project }}..."
-          npm install ../xion-types/ts --no-save --legacy-peer-deps
+          npm install ../xion-types/ts/dist --no-save --legacy-peer-deps
           
           # Run type checking
           echo "Running type check for ${{ matrix.project }}..."
@@ -269,58 +282,58 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
-          npm publish --verbose --access public --tag ${{ env.TAG }}
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
+        # npm publish --verbose --access public --tag ${{ env.TAG }}
+        # echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
-  validate-on-npm:
-    name: Validate NPM Package
-    needs: [publish-to-npm]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
+  # validate-on-npm:
+  #   name: Validate NPM Package
+  #   needs: [publish-to-npm]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #         registry-url: ${{ env.REGISTRY_URL }}
 
-      - name: Verify Package on NPM
-        env:
-          TAG: ${{ needs.publish-to-npm.outputs.TAG }}
-          VERSION: ${{ needs.publish-to-npm.outputs.NEW_VERSION }}
-        run: |
-          echo "Verifying package version: $VERSION"
+  #     - name: Verify Package on NPM
+  #       env:
+  #         TAG: ${{ needs.publish-to-npm.outputs.TAG }}
+  #         VERSION: ${{ needs.publish-to-npm.outputs.NEW_VERSION }}
+  #       run: |
+  #         echo "Verifying package version: $VERSION"
           
-          # Retry logic for NPM verification
-          MAX_ATTEMPTS=5
-          ATTEMPT=1
+  #         # Retry logic for NPM verification
+  #         MAX_ATTEMPTS=5
+  #         ATTEMPT=1
           
-          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+  #         while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+  #           echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
             
-            if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
-              echo "✅ Package successfully published to NPM"
-              echo "Package version $VERSION is available on NPM"
+  #           if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
+  #             echo "✅ Package successfully published to NPM"
+  #             echo "Package version $VERSION is available on NPM"
 
-              # Check if our version is tagged as latest
-              LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
-              if [ "$LATEST_VERSION" = "$VERSION" ]; then
-                echo "✅ Version $VERSION is correctly tagged as 'latest'"
-              else
-                echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
-              fi
+  #             # Check if our version is tagged as latest
+  #             LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
+  #             if [ "$LATEST_VERSION" = "$VERSION" ]; then
+  #               echo "✅ Version $VERSION is correctly tagged as 'latest'"
+  #             else
+  #               echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
+  #             fi
 
-              exit 0
-            else
-              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+  #             exit 0
+  #           else
+  #             echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
               
-              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting 10 seconds before retry..."
-                sleep 10
-              fi
-            fi
+  #             if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+  #               echo "Waiting 10 seconds before retry..."
+  #               sleep 10
+  #             fi
+  #           fi
             
-            ATTEMPT=$((ATTEMPT + 1))
-          done
+  #           ATTEMPT=$((ATTEMPT + 1))
+  #         done
           
-          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
-          exit 1
+  #         echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+  #         exit 1
