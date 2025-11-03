@@ -154,6 +154,16 @@ jobs:
             exit 1
           fi
           
+          # Install project dependencies first
+          echo "Installing project dependencies for ${{ matrix.project }}..."
+          npm install
+          
+          # Generate Nuxt types if this is a Nuxt project
+          if grep -q '"nuxt"' package.json || grep -q '"nuxt prepare"' package.json; then
+            echo "Detected Nuxt project, generating types..."
+            npx nuxt prepare || echo "Nuxt prepare completed with warnings"
+          fi
+          
           # Install the types package with legacy peer deps to bypass conflicts
           echo "Installing types package for ${{ matrix.project }}..."
           PACKAGE_TGZ=$(ls ../xion-types/ts/*.tgz 2>/dev/null | head -1)
@@ -165,9 +175,21 @@ jobs:
           echo "Installing from tarball: $PACKAGE_TGZ"
           npm install "$PACKAGE_TGZ" --no-save --legacy-peer-deps
           
-          # Run type checking
+          # Run type checking to validate proto compatibility
           echo "Running type check for ${{ matrix.project }}..."
-          npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
+          if npx tsc --noEmit --skipLibCheck 2>&1 | tee /tmp/tsc-output.log; then
+            echo "✅ Type check passed - proto compatibility confirmed for ${{ matrix.project }}"
+          else
+            TS_ERRORS=$(cat /tmp/tsc-output.log | grep -i "error TS" | wc -l)
+            if [ "$TS_ERRORS" -eq 0 ]; then
+              echo "⚠️  Type check completed with warnings (no TypeScript errors)"
+            else
+              echo "❌ Type check found $TS_ERRORS TypeScript error(s)"
+              echo "First few errors:"
+              cat /tmp/tsc-output.log | grep -i "error TS" | head -5
+              exit 1
+            fi
+          fi
           
           echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
