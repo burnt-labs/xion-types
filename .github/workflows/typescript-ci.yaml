@@ -3,7 +3,8 @@ name: Publish Types CI/CD
 on:
   push:
     branches: 
-      - main 
+      # - main 
+      - fix/release-trigger
             
   workflow_dispatch:
     inputs:
