@@ -111,7 +111,7 @@ jobs:
           npm run build
           echo "Packing xion-types package for local installation..."
           cd dist
-          npm pack --pack-destination ..
+          npm pack --pack-destination .. --ignore-scripts
           cd ..
           echo "Created package tarball: $(ls *.tgz 2>/dev/null | head -1 || echo 'none')"
 
