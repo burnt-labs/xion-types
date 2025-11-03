@@ -73,7 +73,7 @@ jobs:
           path: ${{ matrix.language }}/types
           retention-days: 1
 
-  test-dependent-projects: # TODO - set it to matrix for all the other langs
+  test-dependent-projects:
     name: Test Dependents Compatibility
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
@@ -109,6 +109,11 @@ jobs:
           npm install
           echo "Building xion-types package..."
           npm run build
+          echo "Packing xion-types package for local installation..."
+          cd dist
+          npm pack --pack-destination ..
+          cd ..
+          echo "Created package tarball: $(ls *.tgz 2>/dev/null | head -1 || echo 'none')"
 
       - name: Checkout Dependent Project
         uses: actions/checkout@v4
@@ -148,7 +153,14 @@ jobs:
           
           # Install the types package with legacy peer deps to bypass conflicts
           echo "Installing types package for ${{ matrix.project }}..."
-          npm install ../xion-types/ts/dist --no-save --legacy-peer-deps
+          PACKAGE_TGZ=$(ls ../xion-types/ts/*.tgz 2>/dev/null | head -1)
+          if [ -z "$PACKAGE_TGZ" ]; then
+            echo "❌ No package tarball found. Expected .tgz file in xion-types/ts/"
+            ls -la ../xion-types/ts/ || echo "Directory listing failed"
+            exit 1
+          fi
+          echo "Installing from tarball: $PACKAGE_TGZ"
+          npm install "$PACKAGE_TGZ" --no-save --legacy-peer-deps
           
           # Run type checking
           echo "Running type check for ${{ matrix.project }}..."

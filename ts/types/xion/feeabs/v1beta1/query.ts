@@ -5,6 +5,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 /** QueryHostChainConfigRequest */
 export interface QueryHostChainConfigRequest {
+  /** The IBC denomination to query configuration for */
   ibcDenom: string;
 }
 export interface QueryHostChainConfigRequestProtoMsg {
@@ -18,6 +19,9 @@ export interface QueryHostChainConfigRequestProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.QueryHostChainConfigRequest
  */
 export interface QueryHostChainConfigRequestAmino {
+  /**
+   * The IBC denomination to query configuration for
+   */
   ibc_denom?: string;
 }
 export interface QueryHostChainConfigRequestAminoMsg {
@@ -30,6 +34,7 @@ export interface QueryHostChainConfigRequestSDKType {
 }
 /** QueryHostChainConfigResponse */
 export interface QueryHostChainConfigResponse {
+  /** The host chain fee abstraction configuration */
   hostChainConfig: HostChainFeeAbsConfig;
 }
 export interface QueryHostChainConfigResponseProtoMsg {
@@ -43,6 +48,9 @@ export interface QueryHostChainConfigResponseProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.QueryHostChainConfigResponse
  */
 export interface QueryHostChainConfigResponseAmino {
+  /**
+   * The host chain fee abstraction configuration
+   */
   host_chain_config?: HostChainFeeAbsConfigAmino;
 }
 export interface QueryHostChainConfigResponseAminoMsg {
@@ -58,6 +66,7 @@ export interface QueryHostChainConfigResponseSDKType {
  * RPC method.
  */
 export interface QueryOsmosisArithmeticTwapRequest {
+  /** The IBC denomination to query TWAP for */
   ibcDenom: string;
 }
 export interface QueryOsmosisArithmeticTwapRequestProtoMsg {
@@ -72,6 +81,9 @@ export interface QueryOsmosisArithmeticTwapRequestProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.QueryOsmosisArithmeticTwapRequest
  */
 export interface QueryOsmosisArithmeticTwapRequestAmino {
+  /**
+   * The IBC denomination to query TWAP for
+   */
   ibc_denom?: string;
 }
 export interface QueryOsmosisArithmeticTwapRequestAminoMsg {
@@ -87,6 +99,7 @@ export interface QueryOsmosisArithmeticTwapRequestSDKType {
 }
 /** QueryOsmosisArithmeticTwapResponse */
 export interface QueryOsmosisArithmeticTwapResponse {
+  /** The arithmetic time-weighted average price */
   arithmeticTwap: string;
 }
 export interface QueryOsmosisArithmeticTwapResponseProtoMsg {
@@ -100,6 +113,9 @@ export interface QueryOsmosisArithmeticTwapResponseProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.QueryOsmosisArithmeticTwapResponse
  */
 export interface QueryOsmosisArithmeticTwapResponseAmino {
+  /**
+   * The arithmetic time-weighted average price
+   */
   arithmetic_twap?: string;
 }
 export interface QueryOsmosisArithmeticTwapResponseAminoMsg {
@@ -111,101 +127,113 @@ export interface QueryOsmosisArithmeticTwapResponseSDKType {
   arithmetic_twap: string;
 }
 /**
- * QueryFeeabsModuleBalacesRequest is the request type for the Query/Feeabs RPC
+ * QueryFeeabsModuleBalancesRequest is the request type for the Query/Feeabs RPC
  * method.
  */
-export interface QueryFeeabsModuleBalacesRequest {}
-export interface QueryFeeabsModuleBalacesRequestProtoMsg {
-  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesRequest";
+export interface QueryFeeabsModuleBalancesRequest {}
+export interface QueryFeeabsModuleBalancesRequestProtoMsg {
+  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesRequest";
   value: Uint8Array;
 }
 /**
- * QueryFeeabsModuleBalacesRequest is the request type for the Query/Feeabs RPC
+ * QueryFeeabsModuleBalancesRequest is the request type for the Query/Feeabs RPC
  * method.
- * @name QueryFeeabsModuleBalacesRequestAmino
+ * @name QueryFeeabsModuleBalancesRequestAmino
  * @package xion.feeabs.v1beta1
- * @see proto type: xion.feeabs.v1beta1.QueryFeeabsModuleBalacesRequest
+ * @see proto type: xion.feeabs.v1beta1.QueryFeeabsModuleBalancesRequest
  */
-export interface QueryFeeabsModuleBalacesRequestAmino {}
-export interface QueryFeeabsModuleBalacesRequestAminoMsg {
-  type: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesRequest";
-  value: QueryFeeabsModuleBalacesRequestAmino;
+export interface QueryFeeabsModuleBalancesRequestAmino {}
+export interface QueryFeeabsModuleBalancesRequestAminoMsg {
+  type: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesRequest";
+  value: QueryFeeabsModuleBalancesRequestAmino;
 }
 /**
- * QueryFeeabsModuleBalacesRequest is the request type for the Query/Feeabs RPC
+ * QueryFeeabsModuleBalancesRequest is the request type for the Query/Feeabs RPC
  * method.
  */
-export interface QueryFeeabsModuleBalacesRequestSDKType {}
-/** QueryFeeabsModuleBalacesResponse */
-export interface QueryFeeabsModuleBalacesResponse {
+export interface QueryFeeabsModuleBalancesRequestSDKType {}
+/** QueryFeeabsModuleBalancesResponse */
+export interface QueryFeeabsModuleBalancesResponse {
+  /** The coin balances held by the feeabs module */
   balances: Coin[];
+  /** The address of the feeabs module */
   address: string;
 }
-export interface QueryFeeabsModuleBalacesResponseProtoMsg {
-  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesResponse";
+export interface QueryFeeabsModuleBalancesResponseProtoMsg {
+  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesResponse";
   value: Uint8Array;
 }
 /**
- * QueryFeeabsModuleBalacesResponse
- * @name QueryFeeabsModuleBalacesResponseAmino
+ * QueryFeeabsModuleBalancesResponse
+ * @name QueryFeeabsModuleBalancesResponseAmino
  * @package xion.feeabs.v1beta1
- * @see proto type: xion.feeabs.v1beta1.QueryFeeabsModuleBalacesResponse
+ * @see proto type: xion.feeabs.v1beta1.QueryFeeabsModuleBalancesResponse
  */
-export interface QueryFeeabsModuleBalacesResponseAmino {
+export interface QueryFeeabsModuleBalancesResponseAmino {
+  /**
+   * The coin balances held by the feeabs module
+   */
   balances?: CoinAmino[];
+  /**
+   * The address of the feeabs module
+   */
   address?: string;
 }
-export interface QueryFeeabsModuleBalacesResponseAminoMsg {
-  type: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesResponse";
-  value: QueryFeeabsModuleBalacesResponseAmino;
+export interface QueryFeeabsModuleBalancesResponseAminoMsg {
+  type: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesResponse";
+  value: QueryFeeabsModuleBalancesResponseAmino;
 }
-/** QueryFeeabsModuleBalacesResponse */
-export interface QueryFeeabsModuleBalacesResponseSDKType {
+/** QueryFeeabsModuleBalancesResponse */
+export interface QueryFeeabsModuleBalancesResponseSDKType {
   balances: CoinSDKType[];
   address: string;
 }
-/** AllQueryHostChainConfigRequest */
-export interface AllQueryHostChainConfigRequest {}
-export interface AllQueryHostChainConfigRequestProtoMsg {
-  typeUrl: "/xion.feeabs.v1beta1.AllQueryHostChainConfigRequest";
+/** QueryAllHostChainConfigRequest */
+export interface QueryAllHostChainConfigRequest {}
+export interface QueryAllHostChainConfigRequestProtoMsg {
+  typeUrl: "/xion.feeabs.v1beta1.QueryAllHostChainConfigRequest";
   value: Uint8Array;
 }
 /**
- * AllQueryHostChainConfigRequest
- * @name AllQueryHostChainConfigRequestAmino
+ * QueryAllHostChainConfigRequest
+ * @name QueryAllHostChainConfigRequestAmino
  * @package xion.feeabs.v1beta1
- * @see proto type: xion.feeabs.v1beta1.AllQueryHostChainConfigRequest
+ * @see proto type: xion.feeabs.v1beta1.QueryAllHostChainConfigRequest
  */
-export interface AllQueryHostChainConfigRequestAmino {}
-export interface AllQueryHostChainConfigRequestAminoMsg {
-  type: "/xion.feeabs.v1beta1.AllQueryHostChainConfigRequest";
-  value: AllQueryHostChainConfigRequestAmino;
+export interface QueryAllHostChainConfigRequestAmino {}
+export interface QueryAllHostChainConfigRequestAminoMsg {
+  type: "/xion.feeabs.v1beta1.QueryAllHostChainConfigRequest";
+  value: QueryAllHostChainConfigRequestAmino;
 }
-/** AllQueryHostChainConfigRequest */
-export interface AllQueryHostChainConfigRequestSDKType {}
-/** AllQueryHostChainConfigResponse */
-export interface AllQueryHostChainConfigResponse {
+/** QueryAllHostChainConfigRequest */
+export interface QueryAllHostChainConfigRequestSDKType {}
+/** QueryAllHostChainConfigResponse */
+export interface QueryAllHostChainConfigResponse {
+  /** All host chain fee abstraction configurations */
   allHostChainConfig: HostChainFeeAbsConfig[];
 }
-export interface AllQueryHostChainConfigResponseProtoMsg {
-  typeUrl: "/xion.feeabs.v1beta1.AllQueryHostChainConfigResponse";
+export interface QueryAllHostChainConfigResponseProtoMsg {
+  typeUrl: "/xion.feeabs.v1beta1.QueryAllHostChainConfigResponse";
   value: Uint8Array;
 }
 /**
- * AllQueryHostChainConfigResponse
- * @name AllQueryHostChainConfigResponseAmino
+ * QueryAllHostChainConfigResponse
+ * @name QueryAllHostChainConfigResponseAmino
  * @package xion.feeabs.v1beta1
- * @see proto type: xion.feeabs.v1beta1.AllQueryHostChainConfigResponse
+ * @see proto type: xion.feeabs.v1beta1.QueryAllHostChainConfigResponse
  */
-export interface AllQueryHostChainConfigResponseAmino {
+export interface QueryAllHostChainConfigResponseAmino {
+  /**
+   * All host chain fee abstraction configurations
+   */
   all_host_chain_config?: HostChainFeeAbsConfigAmino[];
 }
-export interface AllQueryHostChainConfigResponseAminoMsg {
-  type: "/xion.feeabs.v1beta1.AllQueryHostChainConfigResponse";
-  value: AllQueryHostChainConfigResponseAmino;
+export interface QueryAllHostChainConfigResponseAminoMsg {
+  type: "/xion.feeabs.v1beta1.QueryAllHostChainConfigResponse";
+  value: QueryAllHostChainConfigResponseAmino;
 }
-/** AllQueryHostChainConfigResponse */
-export interface AllQueryHostChainConfigResponseSDKType {
+/** QueryAllHostChainConfigResponse */
+export interface QueryAllHostChainConfigResponseSDKType {
   all_host_chain_config: HostChainFeeAbsConfigSDKType[];
 }
 function createBaseQueryHostChainConfigRequest(): QueryHostChainConfigRequest {
@@ -460,18 +488,18 @@ export const QueryOsmosisArithmeticTwapResponse = {
     };
   }
 };
-function createBaseQueryFeeabsModuleBalacesRequest(): QueryFeeabsModuleBalacesRequest {
+function createBaseQueryFeeabsModuleBalancesRequest(): QueryFeeabsModuleBalancesRequest {
   return {};
 }
-export const QueryFeeabsModuleBalacesRequest = {
-  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesRequest",
-  encode(_: QueryFeeabsModuleBalacesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryFeeabsModuleBalancesRequest = {
+  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesRequest",
+  encode(_: QueryFeeabsModuleBalancesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeabsModuleBalacesRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeabsModuleBalancesRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryFeeabsModuleBalacesRequest();
+    const message = createBaseQueryFeeabsModuleBalancesRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -482,43 +510,43 @@ export const QueryFeeabsModuleBalacesRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryFeeabsModuleBalacesRequest>): QueryFeeabsModuleBalacesRequest {
-    const message = createBaseQueryFeeabsModuleBalacesRequest();
+  fromPartial(_: Partial<QueryFeeabsModuleBalancesRequest>): QueryFeeabsModuleBalancesRequest {
+    const message = createBaseQueryFeeabsModuleBalancesRequest();
     return message;
   },
-  fromAmino(_: QueryFeeabsModuleBalacesRequestAmino): QueryFeeabsModuleBalacesRequest {
-    const message = createBaseQueryFeeabsModuleBalacesRequest();
+  fromAmino(_: QueryFeeabsModuleBalancesRequestAmino): QueryFeeabsModuleBalancesRequest {
+    const message = createBaseQueryFeeabsModuleBalancesRequest();
     return message;
   },
-  toAmino(_: QueryFeeabsModuleBalacesRequest): QueryFeeabsModuleBalacesRequestAmino {
+  toAmino(_: QueryFeeabsModuleBalancesRequest): QueryFeeabsModuleBalancesRequestAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryFeeabsModuleBalacesRequestAminoMsg): QueryFeeabsModuleBalacesRequest {
-    return QueryFeeabsModuleBalacesRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryFeeabsModuleBalancesRequestAminoMsg): QueryFeeabsModuleBalancesRequest {
+    return QueryFeeabsModuleBalancesRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryFeeabsModuleBalacesRequestProtoMsg): QueryFeeabsModuleBalacesRequest {
-    return QueryFeeabsModuleBalacesRequest.decode(message.value);
+  fromProtoMsg(message: QueryFeeabsModuleBalancesRequestProtoMsg): QueryFeeabsModuleBalancesRequest {
+    return QueryFeeabsModuleBalancesRequest.decode(message.value);
   },
-  toProto(message: QueryFeeabsModuleBalacesRequest): Uint8Array {
-    return QueryFeeabsModuleBalacesRequest.encode(message).finish();
+  toProto(message: QueryFeeabsModuleBalancesRequest): Uint8Array {
+    return QueryFeeabsModuleBalancesRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryFeeabsModuleBalacesRequest): QueryFeeabsModuleBalacesRequestProtoMsg {
+  toProtoMsg(message: QueryFeeabsModuleBalancesRequest): QueryFeeabsModuleBalancesRequestProtoMsg {
     return {
-      typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesRequest",
-      value: QueryFeeabsModuleBalacesRequest.encode(message).finish()
+      typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesRequest",
+      value: QueryFeeabsModuleBalancesRequest.encode(message).finish()
     };
   }
 };
-function createBaseQueryFeeabsModuleBalacesResponse(): QueryFeeabsModuleBalacesResponse {
+function createBaseQueryFeeabsModuleBalancesResponse(): QueryFeeabsModuleBalancesResponse {
   return {
     balances: [],
     address: ""
   };
 }
-export const QueryFeeabsModuleBalacesResponse = {
-  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesResponse",
-  encode(message: QueryFeeabsModuleBalacesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryFeeabsModuleBalancesResponse = {
+  typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesResponse",
+  encode(message: QueryFeeabsModuleBalancesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.balances) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -527,10 +555,10 @@ export const QueryFeeabsModuleBalacesResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeabsModuleBalacesResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeabsModuleBalancesResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryFeeabsModuleBalacesResponse();
+    const message = createBaseQueryFeeabsModuleBalancesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -547,21 +575,21 @@ export const QueryFeeabsModuleBalacesResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryFeeabsModuleBalacesResponse>): QueryFeeabsModuleBalacesResponse {
-    const message = createBaseQueryFeeabsModuleBalacesResponse();
+  fromPartial(object: Partial<QueryFeeabsModuleBalancesResponse>): QueryFeeabsModuleBalancesResponse {
+    const message = createBaseQueryFeeabsModuleBalancesResponse();
     message.balances = object.balances?.map(e => Coin.fromPartial(e)) || [];
     message.address = object.address ?? "";
     return message;
   },
-  fromAmino(object: QueryFeeabsModuleBalacesResponseAmino): QueryFeeabsModuleBalacesResponse {
-    const message = createBaseQueryFeeabsModuleBalacesResponse();
+  fromAmino(object: QueryFeeabsModuleBalancesResponseAmino): QueryFeeabsModuleBalancesResponse {
+    const message = createBaseQueryFeeabsModuleBalancesResponse();
     message.balances = object.balances?.map(e => Coin.fromAmino(e)) || [];
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
     }
     return message;
   },
-  toAmino(message: QueryFeeabsModuleBalacesResponse): QueryFeeabsModuleBalacesResponseAmino {
+  toAmino(message: QueryFeeabsModuleBalancesResponse): QueryFeeabsModuleBalancesResponseAmino {
     const obj: any = {};
     if (message.balances) {
       obj.balances = message.balances.map(e => e ? Coin.toAmino(e) : undefined);
@@ -571,34 +599,34 @@ export const QueryFeeabsModuleBalacesResponse = {
     obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
-  fromAminoMsg(object: QueryFeeabsModuleBalacesResponseAminoMsg): QueryFeeabsModuleBalacesResponse {
-    return QueryFeeabsModuleBalacesResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryFeeabsModuleBalancesResponseAminoMsg): QueryFeeabsModuleBalancesResponse {
+    return QueryFeeabsModuleBalancesResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryFeeabsModuleBalacesResponseProtoMsg): QueryFeeabsModuleBalacesResponse {
-    return QueryFeeabsModuleBalacesResponse.decode(message.value);
+  fromProtoMsg(message: QueryFeeabsModuleBalancesResponseProtoMsg): QueryFeeabsModuleBalancesResponse {
+    return QueryFeeabsModuleBalancesResponse.decode(message.value);
   },
-  toProto(message: QueryFeeabsModuleBalacesResponse): Uint8Array {
-    return QueryFeeabsModuleBalacesResponse.encode(message).finish();
+  toProto(message: QueryFeeabsModuleBalancesResponse): Uint8Array {
+    return QueryFeeabsModuleBalancesResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryFeeabsModuleBalacesResponse): QueryFeeabsModuleBalacesResponseProtoMsg {
+  toProtoMsg(message: QueryFeeabsModuleBalancesResponse): QueryFeeabsModuleBalancesResponseProtoMsg {
     return {
-      typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalacesResponse",
-      value: QueryFeeabsModuleBalacesResponse.encode(message).finish()
+      typeUrl: "/xion.feeabs.v1beta1.QueryFeeabsModuleBalancesResponse",
+      value: QueryFeeabsModuleBalancesResponse.encode(message).finish()
     };
   }
 };
-function createBaseAllQueryHostChainConfigRequest(): AllQueryHostChainConfigRequest {
+function createBaseQueryAllHostChainConfigRequest(): QueryAllHostChainConfigRequest {
   return {};
 }
-export const AllQueryHostChainConfigRequest = {
-  typeUrl: "/xion.feeabs.v1beta1.AllQueryHostChainConfigRequest",
-  encode(_: AllQueryHostChainConfigRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryAllHostChainConfigRequest = {
+  typeUrl: "/xion.feeabs.v1beta1.QueryAllHostChainConfigRequest",
+  encode(_: QueryAllHostChainConfigRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): AllQueryHostChainConfigRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllHostChainConfigRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAllQueryHostChainConfigRequest();
+    const message = createBaseQueryAllHostChainConfigRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -609,51 +637,51 @@ export const AllQueryHostChainConfigRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<AllQueryHostChainConfigRequest>): AllQueryHostChainConfigRequest {
-    const message = createBaseAllQueryHostChainConfigRequest();
+  fromPartial(_: Partial<QueryAllHostChainConfigRequest>): QueryAllHostChainConfigRequest {
+    const message = createBaseQueryAllHostChainConfigRequest();
     return message;
   },
-  fromAmino(_: AllQueryHostChainConfigRequestAmino): AllQueryHostChainConfigRequest {
-    const message = createBaseAllQueryHostChainConfigRequest();
+  fromAmino(_: QueryAllHostChainConfigRequestAmino): QueryAllHostChainConfigRequest {
+    const message = createBaseQueryAllHostChainConfigRequest();
     return message;
   },
-  toAmino(_: AllQueryHostChainConfigRequest): AllQueryHostChainConfigRequestAmino {
+  toAmino(_: QueryAllHostChainConfigRequest): QueryAllHostChainConfigRequestAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: AllQueryHostChainConfigRequestAminoMsg): AllQueryHostChainConfigRequest {
-    return AllQueryHostChainConfigRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryAllHostChainConfigRequestAminoMsg): QueryAllHostChainConfigRequest {
+    return QueryAllHostChainConfigRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: AllQueryHostChainConfigRequestProtoMsg): AllQueryHostChainConfigRequest {
-    return AllQueryHostChainConfigRequest.decode(message.value);
+  fromProtoMsg(message: QueryAllHostChainConfigRequestProtoMsg): QueryAllHostChainConfigRequest {
+    return QueryAllHostChainConfigRequest.decode(message.value);
   },
-  toProto(message: AllQueryHostChainConfigRequest): Uint8Array {
-    return AllQueryHostChainConfigRequest.encode(message).finish();
+  toProto(message: QueryAllHostChainConfigRequest): Uint8Array {
+    return QueryAllHostChainConfigRequest.encode(message).finish();
   },
-  toProtoMsg(message: AllQueryHostChainConfigRequest): AllQueryHostChainConfigRequestProtoMsg {
+  toProtoMsg(message: QueryAllHostChainConfigRequest): QueryAllHostChainConfigRequestProtoMsg {
     return {
-      typeUrl: "/xion.feeabs.v1beta1.AllQueryHostChainConfigRequest",
-      value: AllQueryHostChainConfigRequest.encode(message).finish()
+      typeUrl: "/xion.feeabs.v1beta1.QueryAllHostChainConfigRequest",
+      value: QueryAllHostChainConfigRequest.encode(message).finish()
     };
   }
 };
-function createBaseAllQueryHostChainConfigResponse(): AllQueryHostChainConfigResponse {
+function createBaseQueryAllHostChainConfigResponse(): QueryAllHostChainConfigResponse {
   return {
     allHostChainConfig: []
   };
 }
-export const AllQueryHostChainConfigResponse = {
-  typeUrl: "/xion.feeabs.v1beta1.AllQueryHostChainConfigResponse",
-  encode(message: AllQueryHostChainConfigResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryAllHostChainConfigResponse = {
+  typeUrl: "/xion.feeabs.v1beta1.QueryAllHostChainConfigResponse",
+  encode(message: QueryAllHostChainConfigResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.allHostChainConfig) {
       HostChainFeeAbsConfig.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): AllQueryHostChainConfigResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllHostChainConfigResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAllQueryHostChainConfigResponse();
+    const message = createBaseQueryAllHostChainConfigResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -667,17 +695,17 @@ export const AllQueryHostChainConfigResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<AllQueryHostChainConfigResponse>): AllQueryHostChainConfigResponse {
-    const message = createBaseAllQueryHostChainConfigResponse();
+  fromPartial(object: Partial<QueryAllHostChainConfigResponse>): QueryAllHostChainConfigResponse {
+    const message = createBaseQueryAllHostChainConfigResponse();
     message.allHostChainConfig = object.allHostChainConfig?.map(e => HostChainFeeAbsConfig.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: AllQueryHostChainConfigResponseAmino): AllQueryHostChainConfigResponse {
-    const message = createBaseAllQueryHostChainConfigResponse();
+  fromAmino(object: QueryAllHostChainConfigResponseAmino): QueryAllHostChainConfigResponse {
+    const message = createBaseQueryAllHostChainConfigResponse();
     message.allHostChainConfig = object.all_host_chain_config?.map(e => HostChainFeeAbsConfig.fromAmino(e)) || [];
     return message;
   },
-  toAmino(message: AllQueryHostChainConfigResponse): AllQueryHostChainConfigResponseAmino {
+  toAmino(message: QueryAllHostChainConfigResponse): QueryAllHostChainConfigResponseAmino {
     const obj: any = {};
     if (message.allHostChainConfig) {
       obj.all_host_chain_config = message.allHostChainConfig.map(e => e ? HostChainFeeAbsConfig.toAmino(e) : undefined);
@@ -686,19 +714,19 @@ export const AllQueryHostChainConfigResponse = {
     }
     return obj;
   },
-  fromAminoMsg(object: AllQueryHostChainConfigResponseAminoMsg): AllQueryHostChainConfigResponse {
-    return AllQueryHostChainConfigResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryAllHostChainConfigResponseAminoMsg): QueryAllHostChainConfigResponse {
+    return QueryAllHostChainConfigResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: AllQueryHostChainConfigResponseProtoMsg): AllQueryHostChainConfigResponse {
-    return AllQueryHostChainConfigResponse.decode(message.value);
+  fromProtoMsg(message: QueryAllHostChainConfigResponseProtoMsg): QueryAllHostChainConfigResponse {
+    return QueryAllHostChainConfigResponse.decode(message.value);
   },
-  toProto(message: AllQueryHostChainConfigResponse): Uint8Array {
-    return AllQueryHostChainConfigResponse.encode(message).finish();
+  toProto(message: QueryAllHostChainConfigResponse): Uint8Array {
+    return QueryAllHostChainConfigResponse.encode(message).finish();
   },
-  toProtoMsg(message: AllQueryHostChainConfigResponse): AllQueryHostChainConfigResponseProtoMsg {
+  toProtoMsg(message: QueryAllHostChainConfigResponse): QueryAllHostChainConfigResponseProtoMsg {
     return {
-      typeUrl: "/xion.feeabs.v1beta1.AllQueryHostChainConfigResponse",
-      value: AllQueryHostChainConfigResponse.encode(message).finish()
+      typeUrl: "/xion.feeabs.v1beta1.QueryAllHostChainConfigResponse",
+      value: QueryAllHostChainConfigResponse.encode(message).finish()
     };
   }
 };
