@@ -78,12 +78,13 @@ jobs:
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false  # Allow all matrix jobs to complete even if one fails
       matrix:
         project: 
           #- xion-dashboard-app # is private TODO
-          # - xion-explorer
+          - xion-explorer
           - xion-faucet
-          # - xion-staking
+          - xion-staking
     steps:
       - name: Checkout Main Repository
         uses: actions/checkout@v4
