@@ -16,8 +16,8 @@ on:
   repository_dispatch: # triggers on release event from burnt-labs/xion repo
     types: [xion-types-release-trigger]
     
-  schedule: # the schedule is triggering on all branches
-    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+  # schedule: # the schedule is triggering on all branches
+  #   - cron: '0 2 * * *' # Run nightly at 2 AM UTC
       
 env:
   NODE_VERSION: '20'
@@ -82,8 +82,8 @@ jobs:
         project: 
           #- xion-dashboard-app # is private TODO
           - xion-explorer
-          - xion-faucet
-          - xion-staking
+          # - xion-faucet
+          # - xion-staking
     steps:
       - name: Checkout Main Repository
         uses: actions/checkout@v4
@@ -299,7 +299,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Bump Version
         id: version
@@ -347,7 +347,7 @@ jobs:
       - name: Publish to NPM 
         working-directory: ./ts
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
         # npm publish --verbose --access public --tag ${{ env.TAG }}
