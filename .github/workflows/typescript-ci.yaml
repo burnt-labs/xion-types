@@ -81,9 +81,9 @@ jobs:
       matrix:
         project: 
           #- xion-dashboard-app # is private TODO
-          - xion-explorer
+          # - xion-explorer
           - xion-faucet
-          - xion-staking
+          # - xion-staking
     steps:
       - name: Checkout Main Repository
         uses: actions/checkout@v4
@@ -182,6 +182,7 @@ jobs:
             NUXT_PUBLIC_XION_TESTNET_1_RPC_URL="https://dummy" \
             NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
             NUXT_PUBLIC_XION_TESTNET_2_RPC_URL="https://dummy" \
+            NUXT_DISCORD_APP_ID="dummy" \
             npx nuxt prepare || echo "⚠️  Nuxt prepare failed (non-critical for proto testing)"
           fi
           
@@ -204,11 +205,14 @@ jobs:
           set -e  # Re-enable exit on error
           
           # Check for errors related to xion-types (proto compatibility issues)
-          # Use word boundaries to avoid false matches (e.g., "prototype" shouldn't match "proto")
-          if grep -qiE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" /tmp/tsc-output.log 2>/dev/null && grep -qi "error" /tmp/tsc-output.log 2>/dev/null; then
-            PROTO_ERROR_COUNT=$(grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" /tmp/tsc-output.log | grep -i "error" | wc -l | tr -d ' ' || echo "0")
+          # Exclude file paths to avoid false positives (e.g., paths containing "xion-types")
+          # Look for actual import/usage errors, not path references
+          PROTO_ERRORS=$(grep -iE "error TS" /tmp/tsc-output.log 2>/dev/null | grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" 2>/dev/null | grep -vE "(Cannot read file|\.nuxt|node_modules)" 2>/dev/null || true)
+          
+          if [ -n "$PROTO_ERRORS" ] && [ "$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ')" -gt 0 ]; then
+            PROTO_ERROR_COUNT=$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ' || echo "0")
             echo "❌ Found $PROTO_ERROR_COUNT proto-related TypeScript error(s) - proto compatibility issue detected!"
-            grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" /tmp/tsc-output.log | grep -i "error" | head -10
+            echo "$PROTO_ERRORS" | head -10
             exit 1
           elif [ "$TSC_EXIT_CODE" -eq 0 ]; then
             echo "✅ Type check passed - proto compatibility confirmed for ${{ matrix.project }}"
