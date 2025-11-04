@@ -81,9 +81,9 @@ jobs:
       matrix:
         project: 
           #- xion-dashboard-app # is private TODO
-          # - xion-explorer
+          - xion-explorer
           - xion-faucet
-          # - xion-staking
+          - xion-staking
     steps:
       - name: Checkout Main Repository
         uses: actions/checkout@v4
