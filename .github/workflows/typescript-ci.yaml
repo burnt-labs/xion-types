@@ -72,11 +72,12 @@ jobs:
           path: ${{ matrix.language }}/types
           retention-days: 1
 
-  test-dependent-projects: # TODO - set it to matrix for all the other langs
-    name: Test Dependents Compatibility
+  test-dependent-projects:
+    name: Test Dependents
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false  # Allow all matrix jobs to complete even if one fails
       matrix:
         project: 
           #- xion-dashboard-app # is private TODO
@@ -95,6 +96,27 @@ jobs:
         with:
           name: generated-types-ts
           path: xion-types/ts/types
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Build xion-types Package
+        working-directory: xion-types/ts
+        run: |
+          echo "Installing dependencies for xion-types..."
+          npm install
+          echo "Building xion-types package..."
+          npm run build
+          echo "Packing xion-types package for local installation..."
+          cd dist
+          # Temporarily remove prepare script to prevent rebuild during pack
+          node -e "const pkg = require('./package.json'); delete pkg.scripts.prepare; require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));"
+          npm pack --pack-destination ..
+          # Restore prepare script (optional, as dist will be cleaned on next build)
+          cd ..
+          echo "Created package tarball: $(ls *.tgz 2>/dev/null | head -1 || echo 'none')"
 
       - name: Checkout Dependent Project
         uses: actions/checkout@v4
@@ -132,13 +154,76 @@ jobs:
             exit 1
           fi
           
+          # Install project dependencies first (skip scripts to avoid postinstall hooks)
+          echo "Installing project dependencies for ${{ matrix.project }}..."
+          npm install --ignore-scripts --legacy-peer-deps
+          
+          # Generate Nuxt types if this is a Nuxt project
+          # Use dummy env vars for Nuxt config validation since we're only testing proto compatibility
+          if grep -q '"nuxt"' package.json || grep -q '"nuxt prepare"' package.json; then
+            echo "Detected Nuxt project, generating types with dummy environment variables..."
+            NUXT_PUBLIC_TURNSTILE_SITE_KEY="dummy" \
+            NUXT_FAUCET_MNEMONIC="dummy" \
+            NUXT_FAUCET_PATH_PATTERN="dummy" \
+            NUXT_TURNSTILE_SECRET_KEY="dummy" \
+            NUXT_XION_TESTNET_1_MNEMONIC="dummy" \
+            NUXT_XION_TESTNET_2_MNEMONIC="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
+            NUXT_PUBLIC_FAUCET_ADDRESS_PREFIX="dummy" \
+            NUXT_PUBLIC_FAUCET_AMOUNT_GIVEN="1000000" \
+            NUXT_PUBLIC_FAUCET_COOLDOWN_TIME="3600" \
+            NUXT_PUBLIC_FAUCET_DENOM="dummy" \
+            NUXT_PUBLIC_FAUCET_GAS_LIMIT="200000" \
+            NUXT_PUBLIC_FAUCET_GAS_PRICE="0.025" \
+            NUXT_PUBLIC_FAUCET_LOGGING="false" \
+            NUXT_PUBLIC_FAUCET_MEMO="dummy" \
+            NUXT_PUBLIC_FAUCET_TOKENS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_1_ADDRESS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_1_RPC_URL="https://dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_RPC_URL="https://dummy" \
+            NUXT_DISCORD_APP_ID="dummy" \
+            npx nuxt prepare || echo "⚠️  Nuxt prepare failed (non-critical for proto testing)"
+          fi
+          
           # Install the types package with legacy peer deps to bypass conflicts
           echo "Installing types package for ${{ matrix.project }}..."
-          npm install ../xion-types/ts --no-save --legacy-peer-deps
+          PACKAGE_TGZ=$(ls ../xion-types/ts/*.tgz 2>/dev/null | head -1)
+          if [ -z "$PACKAGE_TGZ" ]; then
+            echo "❌ No package tarball found. Expected .tgz file in xion-types/ts/"
+            ls -la ../xion-types/ts/ || echo "Directory listing failed"
+            exit 1
+          fi
+          echo "Installing from tarball: $PACKAGE_TGZ"
+          npm install "$PACKAGE_TGZ" --no-save --legacy-peer-deps
           
-          # Run type checking
+          # Run type checking to validate proto compatibility
           echo "Running type check for ${{ matrix.project }}..."
-          npx tsc --noEmit --skipLibCheck || echo "Type check completed with warnings"
+          set +e  # Temporarily disable exit on error
+          npx tsc --noEmit --skipLibCheck > /tmp/tsc-output.log 2>&1
+          TSC_EXIT_CODE=$?
+          set -e  # Re-enable exit on error
+          
+          # Check for errors related to xion-types (proto compatibility issues)
+          # Exclude file paths to avoid false positives (e.g., paths containing "xion-types")
+          # Look for actual import/usage errors, not path references
+          PROTO_ERRORS=$(grep -iE "error TS" /tmp/tsc-output.log 2>/dev/null | grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" 2>/dev/null | grep -vE "(Cannot read file|\.nuxt|node_modules)" 2>/dev/null || true)
+          
+          if [ -n "$PROTO_ERRORS" ] && [ "$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ')" -gt 0 ]; then
+            PROTO_ERROR_COUNT=$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ' || echo "0")
+            echo "❌ Found $PROTO_ERROR_COUNT proto-related TypeScript error(s) - proto compatibility issue detected!"
+            echo "$PROTO_ERRORS" | head -10
+            exit 1
+          elif [ "$TSC_EXIT_CODE" -eq 0 ]; then
+            echo "✅ Type check passed - proto compatibility confirmed for ${{ matrix.project }}"
+          else
+            TOTAL_ERROR_COUNT=$(grep -ci "error TS" /tmp/tsc-output.log 2>/dev/null || echo "0")
+            echo "⚠️  Type check found $TOTAL_ERROR_COUNT TypeScript error(s), but none are proto-related"
+            echo "These appear to be pre-existing project errors (not xion-types issues)"
+            echo "Sample errors:"
+            grep -iE "error TS" /tmp/tsc-output.log | head -5 || echo "No error samples found"
+            echo "✅ Proto compatibility test passed (existing project errors are not blocking)"
+          fi
           
           echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
 
@@ -218,7 +303,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Bump Version
         id: version
@@ -266,7 +351,7 @@ jobs:
       - name: Publish to NPM 
         working-directory: ./ts
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
           npm publish --verbose --access public --tag ${{ env.TAG }}
