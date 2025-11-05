@@ -310,10 +310,11 @@ jobs:
                   content
               )
               
-              # Fix super::types:: and super::crypto:: in tendermint files
+              # Fix super::types::, super::crypto::, and super::version:: in tendermint files
               if 'tendermint' in rs_file.stem:
                   content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
                   content = re.sub(r'super::crypto::', 'crate::types::tendermint_crypto::', content)
+                  content = re.sub(r'super::version::', 'crate::types::tendermint_version::', content)
               
               # Fix context-dependent paths like super::super::v1:: in IBC files
               # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1
@@ -656,10 +657,11 @@ jobs:
                   content
               )
               
-              # Fix super::types:: and super::crypto:: in tendermint files
+              # Fix super::types::, super::crypto::, and super::version:: in tendermint files
               if 'tendermint' in rs_file.stem:
                   content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
                   content = re.sub(r'super::crypto::', 'crate::types::tendermint_crypto::', content)
+                  content = re.sub(r'super::version::', 'crate::types::tendermint_version::', content)
               
               # Fix context-dependent paths like super::super::v1:: in IBC files
               # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1

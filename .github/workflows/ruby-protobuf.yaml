@@ -359,14 +359,11 @@ jobs:
         env:
           VERSION: ${{ needs.ruby-build.outputs.version }}
         run: |
-          sed -i "s/VERSION = .*/VERSION = \"$VERSION\"/" lib/xion_types/version.rb
-          bundle install
-          
           # Verify gem structure before installation
           echo "Checking gem contents..."
           gem spec *.gem | grep -A 20 "^files:" || true
           
-          # Install the gem
+          # Install the gem (skip bundle install to avoid conflicts)
           gem install *.gem
           
           # Test basic import - RubyGems should handle the require path automatically

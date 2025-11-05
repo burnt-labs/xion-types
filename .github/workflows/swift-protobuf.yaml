@@ -178,7 +178,27 @@ jobs:
           
           # Copy generated types to Sources/XionTypes
           echo "Copying generated Swift types..."
-          cp -r swift/types/* swift/Sources/XionTypes/ 2>/dev/null || true
+          # Clear destination first to avoid duplicates
+          rm -rf swift/Sources/XionTypes/*
+          # Copy all files and subdirectories preserving structure
+          if [ -d "swift/types" ] && [ "$(ls -A swift/types)" ]; then
+            # Use rsync for more reliable copying, or fallback to cp
+            if command -v rsync &> /dev/null; then
+              rsync -a --delete swift/types/ swift/Sources/XionTypes/
+            else
+              cp -r swift/types/* swift/Sources/XionTypes/
+            fi
+          fi
+          
+          # Verify no duplicate .swift files
+          echo "Verifying source files..."
+          duplicate_count=$(find swift/Sources/XionTypes -name "*.swift" -type f | wc -l | tr -d ' ')
+          unique_count=$(find swift/Sources/XionTypes -name "*.swift" -type f -exec basename {} \; | sort -u | wc -l | tr -d ' ')
+          echo "Found $duplicate_count .swift files, $unique_count unique filenames"
+          if [ "$duplicate_count" -gt "$unique_count" ]; then
+            echo "⚠️ Warning: Potential duplicate files detected"
+            find swift/Sources/XionTypes -name "*.swift" -type f -exec basename {} \; | sort | uniq -d
+          fi
           
           # Create version file
           cat > swift/Sources/XionTypes/Version.swift << 'VERSION'
@@ -196,6 +216,13 @@ jobs:
           sed -i '' "s/version = .*/version = \"$VERSION\"/" Package.swift 2>/dev/null || sed -i "s/version = .*/version = \"$VERSION\"/" Package.swift
           sed -i '' "s/static let version = .*/static let version = \"$VERSION\"/" Sources/XionTypes/Version.swift 2>/dev/null || sed -i "s/static let version = .*/static let version = \"$VERSION\"/" Sources/XionTypes/Version.swift
           echo "✅ Updated version to $VERSION"
+
+      - name: Clean Build Directory
+        working-directory: ./swift
+        run: |
+          swift package clean
+          rm -rf .build
+          echo "✅ Cleaned build directory"
 
       - name: Build Swift Package
         working-directory: ./swift
@@ -243,7 +270,19 @@ jobs:
         run: |
           mkdir -p swift/Sources/XionTypes
           mkdir -p swift/Tests/XionTypesTests
-          cp -r swift/types/* swift/Sources/XionTypes/ 2>/dev/null || true
+          
+          # Clear destination first to avoid duplicates
+          rm -rf swift/Sources/XionTypes/*
+          
+          # Copy all files and subdirectories preserving structure
+          if [ -d "swift/types" ] && [ "$(ls -A swift/types)" ]; then
+            # Use rsync for more reliable copying, or fallback to cp
+            if command -v rsync &> /dev/null; then
+              rsync -a --delete swift/types/ swift/Sources/XionTypes/
+            else
+              cp -r swift/types/* swift/Sources/XionTypes/
+            fi
+          fi
           
           # Ensure test file exists
           if [ ! -f "swift/Tests/XionTypesTests/XionTypesTests.swift" ]; then
@@ -259,6 +298,13 @@ jobs:
           }
           TEST
           fi
+
+      - name: Clean Build Directory
+        working-directory: ./swift
+        run: |
+          swift package clean
+          rm -rf .build
+          echo "✅ Cleaned build directory"
 
       - name: Test Swift Package
         working-directory: ./swift
