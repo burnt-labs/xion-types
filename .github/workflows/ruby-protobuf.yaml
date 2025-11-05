@@ -358,20 +358,27 @@ jobs:
         working-directory: ./ruby
         env:
           VERSION: ${{ needs.ruby-build.outputs.version }}
+          BUNDLE_GEMFILE: ""  # Unset to avoid Bundler interference
         run: |
           # Verify gem structure before installation
           echo "Checking gem contents..."
           gem spec *.gem | grep -A 20 "^files:" || true
           
-          # Install the gem (skip bundle install to avoid conflicts)
-          gem install *.gem
+          # Install the gem to user directory to avoid system conflicts
+          gem install *.gem --user-install --no-document
           
-          # Test basic import - RubyGems should handle the require path automatically
-          # If this fails, the gem wasn't properly installed or doesn't have the required files
-          ruby -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
+          # Get the user gem directory for this Ruby version
+          USER_GEM_DIR=$(gem env user_gemhome)
+          echo "User gem directory: $USER_GEM_DIR"
+          
+          # Verify gem is installed
+          gem list --user-install | grep xion_types || echo "⚠️ Gem not found in user install"
+          
+          # Test basic import - explicitly activate RubyGems
+          ruby -rrubygems -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
           
           # Try to load a specific protobuf type if available
-          ruby -e "require 'xion_types'; puts '✅ Import successful'" || echo "⚠️ Some types may not be loadable"
+          ruby -rrubygems -e "require 'xion_types'; puts '✅ Import successful'" || echo "⚠️ Some types may not be loadable"
 
   # ============================================
   # Ruby Gem Publishing

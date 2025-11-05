@@ -452,12 +452,6 @@ jobs:
           name: generated-types-rust
           path: rust/types
 
-      - name: Move Types to src/ Directory
-        run: |
-          mkdir -p rust/src
-          mv rust/types rust/src/types
-          echo "✅ Moved types to rust/src/types"
-
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:

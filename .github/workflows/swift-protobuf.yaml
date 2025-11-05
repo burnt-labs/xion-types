@@ -226,8 +226,10 @@ jobs:
 
       - name: Build Swift Package
         working-directory: ./swift
+        env:
+          SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift build
+          swift build -j 1
           echo "✅ Swift package built successfully"
 
       - name: Upload Package
@@ -310,8 +312,9 @@ jobs:
         working-directory: ./swift
         env:
           VERSION: ${{ needs.swift-build.outputs.version }}
+          SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift test
+          swift test -j 1
           echo "✅ Swift package tests passed"
 
   # ============================================
