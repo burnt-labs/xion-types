@@ -1,10 +1,10 @@
-name: Ruby Protobuf Generation & Publishing
+name: Ruby Protobuf Gen & Publish
 
 on:
   push:
     branches: 
     #   - main 
-      - adfdf #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -380,16 +380,16 @@ jobs:
           name: ruby-gem
           path: ruby/
 
-      - name: Publish to RubyGems
-        working-directory: ./ruby
-        env:
-          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-        run: |
-          if [ -z "$RUBYGEMS_API_KEY" ]; then
-            echo "⚠️ RUBYGEMS_API_KEY not set, skipping publish"
-            exit 0
-          fi
+      # - name: Publish to RubyGems
+      #   working-directory: ./ruby
+      #   env:
+      #     RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+      #   run: |
+      #     if [ -z "$RUBYGEMS_API_KEY" ]; then
+      #       echo "⚠️ RUBYGEMS_API_KEY not set, skipping publish"
+      #       exit 0
+      #     fi
           
-          gem push *.gem --key github --host https://rubygems.org
-          echo "✅ Published to RubyGems"
+      #     gem push *.gem --key github --host https://rubygems.org
+      #     echo "✅ Published to RubyGems"
 

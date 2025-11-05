@@ -1,4 +1,4 @@
-name: Rust Protobuf Generation & Publishing
+name: Rust Protobuf Gen & Publish
 
 on:
   push:
@@ -204,6 +204,7 @@ jobs:
           # Generate mod.rs recursively for all directories
           python3 << 'PYTHON'
           import os
+          import re
           from pathlib import Path
           
           def has_any_rs_files(dir_path):
@@ -359,26 +360,45 @@ jobs:
               # Post-process generated files to fix super::super paths
               print("🔧 Post-processing generated files to fix module paths...")
               
-              # Determine replacement strategy based on whether modules exist
-              # If modules exist and will be re-exported: use crate::module::
-              # If modules don't exist: use crate::types::module:: (fallback)
-              replacement_map = {}
-              for module in needed_modules:
-                  if module in existing_modules:
-                      # Module exists, will be re-exported - use crate::module::
-                      replacement_map[module] = f'crate::{module}::'
-                  else:
-                      # Module doesn't exist - use crate::types::module:: as fallback
-                      replacement_map[module] = f'crate::types::{module}::'
+              # Build a map of actual module names from files
+              # Files like "cosmos.base.v1beta1.rs" become module "cosmos_base_v1beta1"
+              actual_modules = {}
+              types_dir = Path("rust/types")
+              for rs_file in types_dir.rglob("*.rs"):
+                  if rs_file.name == "mod.rs":
+                      continue
+                  # Get module name - if file is cosmos.base.v1beta1.rs, module is cosmos_base_v1beta1
+                  module_name = rs_file.stem.replace('.', '_')
+                  actual_modules[module_name] = rs_file
               
-              # Patterns to fix: super::super::module::... 
-              patterns_to_fix = [
-                  (re.compile(rf'super::super::({mod})::'), replacement)
-                  for mod, replacement in replacement_map.items()
+              # Since files are flat, we need to map hierarchical paths to flat module names
+              # Pattern: super::super::cosmos::base::v1beta1::Type
+              # Should become: crate::types::cosmos_base_v1beta1::Type
+              
+              # Common hierarchical patterns to map to flat modules
+              path_mappings = [
+                  # cosmos::base::v1beta1 patterns
+                  (r'super::super::cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+                  (r'super::super::cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+                  (r'super::super::cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+                  (r'super::super::cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+                  (r'super::super::cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
+                  (r'super::super::cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
+                  (r'super::super::cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
+                  # cosmos::bank::v1beta1 patterns
+                  (r'super::super::cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
+                  # cosmos::auth::v1beta1 patterns
+                  (r'super::super::cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
+                  # cosmos::authz::v1beta1 patterns
+                  (r'super::super::cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
+                  # base::query::v1beta1 patterns (standalone base references)
+                  (r'super::super::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+                  (r'super::super::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+                  # Generic fallback for any super::super::module:: pattern
+                  (r'super::super::([a-z_]+)::', r'crate::types::\1::'),
               ]
               
               # Process all .rs files in types directory
-              types_dir = Path("rust/types")
               files_processed = 0
               total_replacements = 0
               for rs_file in types_dir.rglob("*.rs"):
@@ -389,12 +409,13 @@ jobs:
                       content = rs_file.read_text()
                       original = content
                       
-                      # Apply all pattern replacements
-                      for pattern, replacement in patterns_to_fix:
-                          matches = len(pattern.findall(content))
-                          if matches > 0:
+                      # Apply all pattern replacements (order matters - specific first)
+                      for pattern_str, replacement in path_mappings:
+                          pattern = re.compile(pattern_str)
+                          matches = pattern.findall(content)
+                          if matches:
                               content = pattern.sub(replacement, content)
-                              total_replacements += matches
+                              total_replacements += len(matches) if isinstance(matches, list) else 1
                       
                       if content != original:
                           rs_file.write_text(content)
@@ -552,6 +573,7 @@ jobs:
           # Generate mod.rs recursively for all directories
           python3 << 'PYTHON'
           import os
+          import re
           from pathlib import Path
           
           def has_any_rs_files(dir_path):
@@ -707,26 +729,45 @@ jobs:
               # Post-process generated files to fix super::super paths
               print("🔧 Post-processing generated files to fix module paths...")
               
-              # Determine replacement strategy based on whether modules exist
-              # If modules exist and will be re-exported: use crate::module::
-              # If modules don't exist: use crate::types::module:: (fallback)
-              replacement_map = {}
-              for module in needed_modules:
-                  if module in existing_modules:
-                      # Module exists, will be re-exported - use crate::module::
-                      replacement_map[module] = f'crate::{module}::'
-                  else:
-                      # Module doesn't exist - use crate::types::module:: as fallback
-                      replacement_map[module] = f'crate::types::{module}::'
+              # Build a map of actual module names from files
+              # Files like "cosmos.base.v1beta1.rs" become module "cosmos_base_v1beta1"
+              actual_modules = {}
+              types_dir = Path("rust/types")
+              for rs_file in types_dir.rglob("*.rs"):
+                  if rs_file.name == "mod.rs":
+                      continue
+                  # Get module name - if file is cosmos.base.v1beta1.rs, module is cosmos_base_v1beta1
+                  module_name = rs_file.stem.replace('.', '_')
+                  actual_modules[module_name] = rs_file
               
-              # Patterns to fix: super::super::module::... 
-              patterns_to_fix = [
-                  (re.compile(rf'super::super::({mod})::'), replacement)
-                  for mod, replacement in replacement_map.items()
+              # Since files are flat, we need to map hierarchical paths to flat module names
+              # Pattern: super::super::cosmos::base::v1beta1::Type
+              # Should become: crate::types::cosmos_base_v1beta1::Type
+              
+              # Common hierarchical patterns to map to flat modules
+              path_mappings = [
+                  # cosmos::base::v1beta1 patterns
+                  (r'super::super::cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+                  (r'super::super::cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+                  (r'super::super::cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+                  (r'super::super::cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+                  (r'super::super::cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
+                  (r'super::super::cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
+                  (r'super::super::cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
+                  # cosmos::bank::v1beta1 patterns
+                  (r'super::super::cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
+                  # cosmos::auth::v1beta1 patterns
+                  (r'super::super::cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
+                  # cosmos::authz::v1beta1 patterns
+                  (r'super::super::cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
+                  # base::query::v1beta1 patterns (standalone base references)
+                  (r'super::super::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+                  (r'super::super::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+                  # Generic fallback for any super::super::module:: pattern
+                  (r'super::super::([a-z_]+)::', r'crate::types::\1::'),
               ]
               
               # Process all .rs files in types directory
-              types_dir = Path("rust/types")
               files_processed = 0
               total_replacements = 0
               for rs_file in types_dir.rglob("*.rs"):
@@ -737,12 +778,13 @@ jobs:
                       content = rs_file.read_text()
                       original = content
                       
-                      # Apply all pattern replacements
-                      for pattern, replacement in patterns_to_fix:
-                          matches = len(pattern.findall(content))
-                          if matches > 0:
+                      # Apply all pattern replacements (order matters - specific first)
+                      for pattern_str, replacement in path_mappings:
+                          pattern = re.compile(pattern_str)
+                          matches = pattern.findall(content)
+                          if matches:
                               content = pattern.sub(replacement, content)
-                              total_replacements += matches
+                              total_replacements += len(matches) if isinstance(matches, list) else 1
                       
                       if content != original:
                           rs_file.write_text(content)
