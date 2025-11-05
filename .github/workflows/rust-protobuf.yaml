@@ -306,11 +306,13 @@ jobs:
               print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
               
-              # Now add re-exports to lib.rs for modules referenced via super::super
-              import re
+              # Debug: Show what's in types/mod.rs
               types_mod = Path("rust/types/mod.rs")
               if types_mod.exists():
                   content = types_mod.read_text()
+                  print(f"📄 types/mod.rs content (first 50 lines):")
+                  print('\n'.join(content.split('\n')[:50]))
+                  
                   # Find all "pub mod X;" declarations (handle #[path] attributes)
                   mod_declarations = set()
                   for line in content.split('\n'):
@@ -318,6 +320,15 @@ jobs:
                       match = re.search(r'pub mod (\w+);', line)
                       if match:
                           mod_declarations.add(match.group(1))
+                  
+                  print(f"📦 Found {len(mod_declarations)} module declarations: {sorted(mod_declarations)[:20]}")
+                  
+                  # Check file structure - are files flat or in directories?
+                  flat_files = list(Path("rust/types").glob("*.rs"))
+                  dirs = [d for d in Path("rust/types").iterdir() if d.is_dir()]
+                  print(f"📁 Structure: {len(flat_files)} flat .rs files, {len(dirs)} directories")
+                  if dirs:
+                      print(f"   Directories: {[d.name for d in dirs[:10]]}")
                   
                   # Common modules that generated code references via super::super
                   needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
@@ -339,7 +350,59 @@ jobs:
                       print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
                   else:
                       print("⚠️ No matching modules found to re-export")
-                      print(f"   Available modules: {sorted(mod_declarations)}")
+                      print(f"   Needed: {needed_modules}")
+                      print(f"   Available: {sorted(mod_declarations)[:30]}")
+                      
+                      # If modules don't exist, files might be flat - need to fix paths in generated code
+                      print("🔧 Files appear to be flat - will fix super::super paths in generated code")
+              
+              # Post-process generated files to fix super::super paths
+              print("🔧 Post-processing generated files to fix module paths...")
+              
+              # Determine replacement strategy based on whether modules exist
+              # If modules exist and will be re-exported: use crate::module::
+              # If modules don't exist: use crate::types::module:: (fallback)
+              replacement_map = {}
+              for module in needed_modules:
+                  if module in existing_modules:
+                      # Module exists, will be re-exported - use crate::module::
+                      replacement_map[module] = f'crate::{module}::'
+                  else:
+                      # Module doesn't exist - use crate::types::module:: as fallback
+                      replacement_map[module] = f'crate::types::{module}::'
+              
+              # Patterns to fix: super::super::module::... 
+              patterns_to_fix = [
+                  (re.compile(rf'super::super::({mod})::'), replacement)
+                  for mod, replacement in replacement_map.items()
+              ]
+              
+              # Process all .rs files in types directory
+              types_dir = Path("rust/types")
+              files_processed = 0
+              total_replacements = 0
+              for rs_file in types_dir.rglob("*.rs"):
+                  if rs_file.name == "mod.rs":
+                      continue
+                  
+                  try:
+                      content = rs_file.read_text()
+                      original = content
+                      
+                      # Apply all pattern replacements
+                      for pattern, replacement in patterns_to_fix:
+                          matches = len(pattern.findall(content))
+                          if matches > 0:
+                              content = pattern.sub(replacement, content)
+                              total_replacements += matches
+                      
+                      if content != original:
+                          rs_file.write_text(content)
+                          files_processed += 1
+                  except Exception as e:
+                      print(f"⚠️ Error processing {rs_file}: {e}")
+              
+              print(f"✅ Post-processed {files_processed} files, fixed {total_replacements} path references")
           PYTHON
 
       - name: Cache Rust Dependencies
@@ -591,11 +654,13 @@ jobs:
               print("✅ Generated rust/types/mod.rs recursively")
               print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
               
-              # Now add re-exports to lib.rs for modules referenced via super::super
-              import re
+              # Debug: Show what's in types/mod.rs
               types_mod = Path("rust/types/mod.rs")
               if types_mod.exists():
                   content = types_mod.read_text()
+                  print(f"📄 types/mod.rs content (first 50 lines):")
+                  print('\n'.join(content.split('\n')[:50]))
+                  
                   # Find all "pub mod X;" declarations (handle #[path] attributes)
                   mod_declarations = set()
                   for line in content.split('\n'):
@@ -603,6 +668,15 @@ jobs:
                       match = re.search(r'pub mod (\w+);', line)
                       if match:
                           mod_declarations.add(match.group(1))
+                  
+                  print(f"📦 Found {len(mod_declarations)} module declarations: {sorted(mod_declarations)[:20]}")
+                  
+                  # Check file structure - are files flat or in directories?
+                  flat_files = list(Path("rust/types").glob("*.rs"))
+                  dirs = [d for d in Path("rust/types").iterdir() if d.is_dir()]
+                  print(f"📁 Structure: {len(flat_files)} flat .rs files, {len(dirs)} directories")
+                  if dirs:
+                      print(f"   Directories: {[d.name for d in dirs[:10]]}")
                   
                   # Common modules that generated code references via super::super
                   needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
@@ -624,7 +698,59 @@ jobs:
                       print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
                   else:
                       print("⚠️ No matching modules found to re-export")
-                      print(f"   Available modules: {sorted(mod_declarations)}")
+                      print(f"   Needed: {needed_modules}")
+                      print(f"   Available: {sorted(mod_declarations)[:30]}")
+                      
+                      # If modules don't exist, files might be flat - need to fix paths in generated code
+                      print("🔧 Files appear to be flat - will fix super::super paths in generated code")
+              
+              # Post-process generated files to fix super::super paths
+              print("🔧 Post-processing generated files to fix module paths...")
+              
+              # Determine replacement strategy based on whether modules exist
+              # If modules exist and will be re-exported: use crate::module::
+              # If modules don't exist: use crate::types::module:: (fallback)
+              replacement_map = {}
+              for module in needed_modules:
+                  if module in existing_modules:
+                      # Module exists, will be re-exported - use crate::module::
+                      replacement_map[module] = f'crate::{module}::'
+                  else:
+                      # Module doesn't exist - use crate::types::module:: as fallback
+                      replacement_map[module] = f'crate::types::{module}::'
+              
+              # Patterns to fix: super::super::module::... 
+              patterns_to_fix = [
+                  (re.compile(rf'super::super::({mod})::'), replacement)
+                  for mod, replacement in replacement_map.items()
+              ]
+              
+              # Process all .rs files in types directory
+              types_dir = Path("rust/types")
+              files_processed = 0
+              total_replacements = 0
+              for rs_file in types_dir.rglob("*.rs"):
+                  if rs_file.name == "mod.rs":
+                      continue
+                  
+                  try:
+                      content = rs_file.read_text()
+                      original = content
+                      
+                      # Apply all pattern replacements
+                      for pattern, replacement in patterns_to_fix:
+                          matches = len(pattern.findall(content))
+                          if matches > 0:
+                              content = pattern.sub(replacement, content)
+                              total_replacements += matches
+                      
+                      if content != original:
+                          rs_file.write_text(content)
+                          files_processed += 1
+                  except Exception as e:
+                      print(f"⚠️ Error processing {rs_file}: {e}")
+              
+              print(f"✅ Post-processed {files_processed} files, fixed {total_replacements} path references")
           PYTHON
 
       - name: Cache Rust Dependencies
