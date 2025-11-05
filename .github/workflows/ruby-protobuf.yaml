@@ -320,7 +320,10 @@ jobs:
             
             spec.add_runtime_dependency "google-protobuf", "~> 3.25"
           end
+          GEMSPEC
             echo "✅ Created ruby/xion_types.gemspec"
+          else
+            echo "✅ ruby/xion_types.gemspec already exists"
           fi
           
           # Create Gemfile if it doesn't exist

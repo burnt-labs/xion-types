@@ -120,64 +120,8 @@ jobs:
       - name: Create Rust Package Structure
         run: |
           mkdir -p rust/src
-          # Create lib.rs that includes generated types
-          # Using include!() because generated code uses super::super paths
-          # that expect types/ to be at crate root level relative to CARGO_MANIFEST_DIR
-          cat > rust/src/lib.rs << 'LIB'
-          //! Generated Rust types for Xion blockchain protocol buffers
           
-          // Include generated protobuf modules
-          // Note: types/ is kept outside src/ because generated code uses
-          // super::super::cosmos::... paths that expect this structure
-          pub mod types {
-              include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
-          }
-          
-          // Re-export modules at crate root for super::super paths
-          // Generated code uses paths like super::super::cosmos::base::v1beta1::Coin
-          // which expect these modules at crate root level
-          // Only re-export if they exist in types module
-          #[allow(unused_imports)]
-          pub use types::*;
-          LIB
-          
-          # Generate re-exports dynamically based on what's in types/mod.rs
-          python3 << 'PYTHON'
-          import re
-          from pathlib import Path
-          
-          types_mod = Path("rust/types/mod.rs")
-          if types_mod.exists():
-              content = types_mod.read_text()
-              # Find all "pub mod X;" declarations
-              mod_declarations = re.findall(r'pub mod (\w+);', content)
-              
-              # Common modules that generated code references via super::super
-              needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
-                              'xion', 'abstractaccount', 'ibc', 'tendermint', 
-                              'osmosis', 'packetforward', 'cosmwasm']
-              
-              # Find which modules actually exist
-              existing_modules = [m for m in needed_modules if m in mod_declarations]
-              
-              if existing_modules:
-                  lib_rs = Path("rust/src/lib.rs")
-                  lib_content = lib_rs.read_text()
-                  
-                  # Replace the generic pub use with specific re-exports
-                  re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
-                  lib_content = lib_content.replace(
-                      '#[allow(unused_imports)]\npub use types::*;',
-                      f'// Re-export modules at crate root for super::super paths\n{re_exports}'
-                  )
-                  
-                  lib_rs.write_text(lib_content)
-                  print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
-              else:
-                  print("⚠️ No matching modules found to re-export")
-          PYTHON
-          
-          # Create Cargo.toml
+          # Create Cargo.toml if it doesn't exist
           if [ ! -f "rust/Cargo.toml" ]; then
             cat > rust/Cargo.toml << 'CARGO'
           [package]
@@ -196,234 +140,107 @@ jobs:
           prost = "0.12"
           prost-types = "0.12"
           CARGO
-            echo "✅ Created rust/Cargo.toml"
-          else
-            echo "✅ rust/Cargo.toml already exists"
           fi
           
-          # Generate mod.rs recursively for all directories
+          # Single Python script to handle all setup
           python3 << 'PYTHON'
-          import os
           import re
           from pathlib import Path
           
-          def has_any_rs_files(dir_path):
-              """Check if directory or any subdirectory has .rs files"""
-              for rs_file in dir_path.rglob("*.rs"):
-                  if rs_file.name != "mod.rs":
-                      return True
-              return False
+          types_dir = Path("rust/types")
+          if not types_dir.exists():
+              print("❌ rust/types directory not found")
+              exit(1)
           
+          # 1. Generate mod.rs files recursively
           def create_mod_rs(dir_path):
-              """Recursively create mod.rs files for directories with .rs files or subdirs"""
-              mod_rs_path = dir_path / "mod.rs"
-              
-              # Check for direct .rs files (excluding mod.rs)
               rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
-              has_rs_files = len(rs_files) > 0
+              subdirs = [d for d in dir_path.iterdir() if d.is_dir() and create_mod_rs(d)]
               
-              # Process subdirectories recursively first
-              subdirs_with_mod_rs = []
-              for subdir in sorted(dir_path.iterdir()):
-                  if subdir.is_dir():
-                      if create_mod_rs(subdir):
-                          subdirs_with_mod_rs.append(subdir)
-              
-              # Only create mod.rs if we have direct .rs files OR subdirs with mod.rs
-              # But skip if this directory has no .rs files anywhere (even nested)
-              if not has_any_rs_files(dir_path):
+              if not rs_files and not subdirs:
                   return False
               
-              if has_rs_files or subdirs_with_mod_rs:
-                  with mod_rs_path.open("w") as f:
-                      f.write("// Auto-generated module\n")
-                      
-                      # Add direct .rs files
-                      for rs_file in sorted(rs_files):
-                          modname = rs_file.stem
-                          filename = rs_file.name
-                          
-                          # Rust module names cannot contain dots, so use #[path] attribute
-                          if '.' in modname:
-                              # Convert dots to underscores for module name, but keep original filename
-                              safe_modname = modname.replace('.', '_')
-                              f.write(f'#[path = "{filename}"]\n')
-                              f.write(f"pub mod {safe_modname};\n")
-                          else:
-                              f.write(f"pub mod {modname};\n")
-                      
-                      # Add subdirectories that have mod.rs
-                      for subdir in subdirs_with_mod_rs:
-                          f.write(f"pub mod {subdir.name};\n")
-                  
-                  return True
-              
-              return False
-          
-          types_dir = Path("rust/types")
-          if types_dir.exists():
-              # Process all subdirectories recursively first
-              subdirs_added = []
-              for item in sorted(types_dir.iterdir()):
-                  if item.is_dir():
-                      # Only add if directory has any .rs files AND mod.rs was successfully created
-                      if has_any_rs_files(item):
-                          if create_mod_rs(item):
-                              # Verify mod.rs was actually created
-                              mod_rs_path = item / "mod.rs"
-                              if mod_rs_path.exists():
-                                  subdirs_added.append(item)
-                                  print(f"   Added module: {item.name}")
-                              else:
-                                  print(f"   Skipped {item.name}: mod.rs not created")
-                          else:
-                              print(f"   Skipped {item.name}: create_mod_rs returned False")
+              with (dir_path / "mod.rs").open("w") as f:
+                  f.write("// Auto-generated module\n")
+                  for rs_file in sorted(rs_files):
+                      modname = rs_file.stem
+                      if '.' in modname:
+                          f.write(f'#[path = "{rs_file.name}"]\npub mod {modname.replace(".", "_")};\n')
                       else:
-                          print(f"   Skipped {item.name}: no .rs files found")
-              
-              # Create mod.rs for root types directory (after processing subdirs)
-              root_mod = types_dir / "mod.rs"
-              with root_mod.open("w") as f:
-                  f.write("// Auto-generated module - includes all generated protobuf types\n")
-                  
-                  # Add subdirectories that have mod.rs
-                  for item in subdirs_added:
+                          f.write(f"pub mod {modname};\n")
+                  for subdir in subdirs:
+                      f.write(f"pub mod {subdir.name};\n")
+              return True
+          
+          # Process subdirectories first
+          for item in sorted(types_dir.iterdir()):
+              if item.is_dir() and any(item.rglob("*.rs")):
+                  create_mod_rs(item)
+          
+          # Create root mod.rs
+          with (types_dir / "mod.rs").open("w") as f:
+              f.write("// Auto-generated module\n")
+              for item in sorted(types_dir.iterdir()):
+                  if item.is_dir() and (item / "mod.rs").exists():
                       f.write(f"pub mod {item.name};\n")
-                  
-                  # Include direct .rs files
-                  for rs_file in sorted(types_dir.glob("*.rs")):
-                      if rs_file.name != "mod.rs":
-                          modname = rs_file.stem
-                          filename = rs_file.name
-                          
-                          # Rust module names cannot contain dots, so use #[path] attribute
-                          if '.' in modname:
-                              safe_modname = modname.replace('.', '_')
-                              f.write(f'#[path = "{filename}"]\n')
-                              f.write(f"pub mod {safe_modname};\n")
-                          else:
-                              f.write(f"pub mod {modname};\n")
+                  elif item.suffix == ".rs" and item.name != "mod.rs":
+                      modname = item.stem
+                      if '.' in modname:
+                          f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
+                      else:
+                          f.write(f"pub mod {modname};\n")
+          
+          # 2. Create lib.rs
+          lib_rs = Path("rust/src/lib.rs")
+          lib_rs.parent.mkdir(parents=True, exist_ok=True)
+          lib_rs.write_text("""//! Generated Rust types for Xion blockchain protocol buffers
+          
+          pub mod types {
+              include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
+          }
+          """)
+          
+          # 3. Fix module paths in generated files
+          path_mappings = [
+              (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
+              (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
+              (r'(super::)+tendermint::version::', 'crate::types::tendermint_version::'),
+              (r'(super::)+tendermint::p2p::', 'crate::types::tendermint_p2p::'),
+              (r'(super::)+tendermint::crypto::', 'crate::types::tendermint_crypto::'),
+              (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
+              (r'(super::)+cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+              (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+              (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+              (r'(super::)+cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
+              (r'(super::)+cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
+              (r'(super::)+cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
+              (r'(super::)+base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+              (r'(super::)+([a-z_][a-z0-9_]*)::', r'crate::types::\2::'),
+          ]
+          
+          files_processed = 0
+          for rs_file in types_dir.rglob("*.rs"):
+              if rs_file.name == "mod.rs":
+                  continue
               
-              print("✅ Generated rust/types/mod.rs recursively")
-              print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
+              content = rs_file.read_text()
+              original = content
               
-              # Debug: Show what's in types/mod.rs
-              types_mod = Path("rust/types/mod.rs")
-              if types_mod.exists():
-                  content = types_mod.read_text()
-                  print(f"📄 types/mod.rs content (first 50 lines):")
-                  print('\n'.join(content.split('\n')[:50]))
-                  
-                  # Find all "pub mod X;" declarations (handle #[path] attributes)
-                  mod_declarations = set()
-                  for line in content.split('\n'):
-                      # Match "pub mod X;" ignoring #[path] lines
-                      match = re.search(r'pub mod (\w+);', line)
-                      if match:
-                          mod_declarations.add(match.group(1))
-                  
-                  print(f"📦 Found {len(mod_declarations)} module declarations: {sorted(mod_declarations)[:20]}")
-                  
-                  # Check file structure - are files flat or in directories?
-                  flat_files = list(Path("rust/types").glob("*.rs"))
-                  dirs = [d for d in Path("rust/types").iterdir() if d.is_dir()]
-                  print(f"📁 Structure: {len(flat_files)} flat .rs files, {len(dirs)} directories")
-                  if dirs:
-                      print(f"   Directories: {[d.name for d in dirs[:10]]}")
-                  
-                  # Common modules that generated code references via super::super
-                  needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
-                                  'xion', 'abstractaccount', 'ibc', 'tendermint', 
-                                  'osmosis', 'packetforward', 'cosmwasm']
-                  
-                  # Find which modules actually exist
-                  existing_modules = [m for m in needed_modules if m in mod_declarations]
-                  
-                  if existing_modules:
-                      lib_rs = Path("rust/src/lib.rs")
-                      lib_content = lib_rs.read_text()
-                      
-                      # Add re-exports at the end
-                      re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
-                      lib_content = lib_content.rstrip() + '\n\n// Re-export modules at crate root for super::super paths\n' + re_exports + '\n'
-                      
-                      lib_rs.write_text(lib_content)
-                      print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
-                  else:
-                      print("⚠️ No matching modules found to re-export")
-                      print(f"   Needed: {needed_modules}")
-                      print(f"   Available: {sorted(mod_declarations)[:30]}")
-                      
-                      # If modules don't exist, files might be flat - need to fix paths in generated code
-                      print("🔧 Files appear to be flat - will fix super::super paths in generated code")
+              for pattern_str, replacement in path_mappings:
+                  content = re.sub(pattern_str, replacement, content)
               
-              # Post-process generated files to fix super::super paths
-              print("🔧 Post-processing generated files to fix module paths...")
+              content = re.sub(r'crate::types::super::+', 'crate::types::', content)
               
-              # Build a map of actual module names from files
-              # Files like "cosmos.base.v1beta1.rs" become module "cosmos_base_v1beta1"
-              actual_modules = {}
-              types_dir = Path("rust/types")
-              for rs_file in types_dir.rglob("*.rs"):
-                  if rs_file.name == "mod.rs":
-                      continue
-                  # Get module name - if file is cosmos.base.v1beta1.rs, module is cosmos_base_v1beta1
-                  module_name = rs_file.stem.replace('.', '_')
-                  actual_modules[module_name] = rs_file
+              if rs_file.name == 'cosmos.staking.v1beta1.rs':
+                  content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
               
-              # Since files are flat, we need to map hierarchical paths to flat module names
-              # Pattern: super::super::cosmos::base::v1beta1::Type
-              # Should become: crate::types::cosmos_base_v1beta1::Type
-              
-              # Common hierarchical patterns to map to flat modules
-              path_mappings = [
-                  # cosmos::base::v1beta1 patterns
-                  (r'super::super::cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-                  (r'super::super::cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
-                  (r'super::super::cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
-                  (r'super::super::cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
-                  (r'super::super::cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
-                  (r'super::super::cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
-                  (r'super::super::cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
-                  # cosmos::bank::v1beta1 patterns
-                  (r'super::super::cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
-                  # cosmos::auth::v1beta1 patterns
-                  (r'super::super::cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
-                  # cosmos::authz::v1beta1 patterns
-                  (r'super::super::cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
-                  # base::query::v1beta1 patterns (standalone base references)
-                  (r'super::super::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
-                  (r'super::super::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-                  # Generic fallback for any super::super::module:: pattern
-                  (r'super::super::([a-z_]+)::', r'crate::types::\1::'),
-              ]
-              
-              # Process all .rs files in types directory
-              files_processed = 0
-              total_replacements = 0
-              for rs_file in types_dir.rglob("*.rs"):
-                  if rs_file.name == "mod.rs":
-                      continue
-                  
-                  try:
-                      content = rs_file.read_text()
-                      original = content
-                      
-                      # Apply all pattern replacements (order matters - specific first)
-                      for pattern_str, replacement in path_mappings:
-                          pattern = re.compile(pattern_str)
-                          matches = pattern.findall(content)
-                          if matches:
-                              content = pattern.sub(replacement, content)
-                              total_replacements += len(matches) if isinstance(matches, list) else 1
-                      
-                      if content != original:
-                          rs_file.write_text(content)
-                          files_processed += 1
-                  except Exception as e:
-                      print(f"⚠️ Error processing {rs_file}: {e}")
-              
-              print(f"✅ Post-processed {files_processed} files, fixed {total_replacements} path references")
+              if content != original:
+                  rs_file.write_text(content)
+                  files_processed += 1
+          
+          print(f"✅ Setup complete: processed {files_processed} files")
           PYTHON
 
       - name: Cache Rust Dependencies
@@ -490,7 +307,9 @@ jobs:
 
       - name: Create Rust Package Structure
         run: |
-          mkdir -p rust
+          mkdir -p rust/src
+          
+          # Create Cargo.toml if it doesn't exist
           if [ ! -f "rust/Cargo.toml" ]; then
             cat > rust/Cargo.toml << 'CARGO'
           [package]
@@ -509,290 +328,107 @@ jobs:
           prost = "0.12"
           prost-types = "0.12"
           CARGO
-            echo "✅ Created rust/Cargo.toml"
-          else
-            echo "✅ rust/Cargo.toml already exists"
           fi
           
-          # Create src/lib.rs if it doesn't exist
-          mkdir -p rust/src
-          if [ ! -f "rust/src/lib.rs" ]; then
-            cat > rust/src/lib.rs << 'LIB'
-          //! Generated Rust types for Xion blockchain protocol buffers
+          # Single Python script to handle all setup
+          python3 << 'PYTHON'
+          import re
+          from pathlib import Path
+          
+          types_dir = Path("rust/types")
+          if not types_dir.exists():
+              print("❌ rust/types directory not found")
+              exit(1)
+          
+          # 1. Generate mod.rs files recursively
+          def create_mod_rs(dir_path):
+              rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
+              subdirs = [d for d in dir_path.iterdir() if d.is_dir() and create_mod_rs(d)]
+              
+              if not rs_files and not subdirs:
+                  return False
+              
+              with (dir_path / "mod.rs").open("w") as f:
+                  f.write("// Auto-generated module\n")
+                  for rs_file in sorted(rs_files):
+                      modname = rs_file.stem
+                      if '.' in modname:
+                          f.write(f'#[path = "{rs_file.name}"]\npub mod {modname.replace(".", "_")};\n')
+                      else:
+                          f.write(f"pub mod {modname};\n")
+                  for subdir in subdirs:
+                      f.write(f"pub mod {subdir.name};\n")
+              return True
+          
+          # Process subdirectories first
+          for item in sorted(types_dir.iterdir()):
+              if item.is_dir() and any(item.rglob("*.rs")):
+                  create_mod_rs(item)
+          
+          # Create root mod.rs
+          with (types_dir / "mod.rs").open("w") as f:
+              f.write("// Auto-generated module\n")
+              for item in sorted(types_dir.iterdir()):
+                  if item.is_dir() and (item / "mod.rs").exists():
+                      f.write(f"pub mod {item.name};\n")
+                  elif item.suffix == ".rs" and item.name != "mod.rs":
+                      modname = item.stem
+                      if '.' in modname:
+                          f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
+                      else:
+                          f.write(f"pub mod {modname};\n")
+          
+          # 2. Create lib.rs
+          lib_rs = Path("rust/src/lib.rs")
+          lib_rs.parent.mkdir(parents=True, exist_ok=True)
+          lib_rs.write_text("""//! Generated Rust types for Xion blockchain protocol buffers
           
           pub mod types {
               include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
           }
+          """)
           
-          // Re-export modules at crate root for super::super paths
-          // Generated code uses paths like super::super::cosmos::base::v1beta1::Coin
-          // which expect these modules at crate root level
-          // Only re-export if they exist in types module
-          #[allow(unused_imports)]
-          pub use types::*;
-          LIB
+          # 3. Fix module paths in generated files
+          path_mappings = [
+              (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
+              (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
+              (r'(super::)+tendermint::version::', 'crate::types::tendermint_version::'),
+              (r'(super::)+tendermint::p2p::', 'crate::types::tendermint_p2p::'),
+              (r'(super::)+tendermint::crypto::', 'crate::types::tendermint_crypto::'),
+              (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
+              (r'(super::)+cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+              (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+              (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+              (r'(super::)+cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
+              (r'(super::)+cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
+              (r'(super::)+cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
+              (r'(super::)+base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+              (r'(super::)+([a-z_][a-z0-9_]*)::', r'crate::types::\2::'),
+          ]
           
-          # Generate re-exports dynamically based on what's in types/mod.rs
-          python3 << 'PYTHON'
-          import re
-          from pathlib import Path
+          files_processed = 0
+          for rs_file in types_dir.rglob("*.rs"):
+              if rs_file.name == "mod.rs":
+                  continue
+              
+              content = rs_file.read_text()
+              original = content
+              
+              for pattern_str, replacement in path_mappings:
+                  content = re.sub(pattern_str, replacement, content)
+              
+              content = re.sub(r'crate::types::super::+', 'crate::types::', content)
+              
+              if rs_file.name == 'cosmos.staking.v1beta1.rs':
+                  content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
+              
+              if content != original:
+                  rs_file.write_text(content)
+                  files_processed += 1
           
-          types_mod = Path("rust/types/mod.rs")
-          if types_mod.exists():
-              content = types_mod.read_text()
-              # Find all "pub mod X;" declarations
-              mod_declarations = re.findall(r'pub mod (\w+);', content)
-              
-              # Common modules that generated code references via super::super
-              needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
-                              'xion', 'abstractaccount', 'ibc', 'tendermint', 
-                              'osmosis', 'packetforward', 'cosmwasm']
-              
-              # Find which modules actually exist
-              existing_modules = [m for m in needed_modules if m in mod_declarations]
-              
-              if existing_modules:
-                  lib_rs = Path("rust/src/lib.rs")
-                  lib_content = lib_rs.read_text()
-                  
-                  # Replace the generic pub use with specific re-exports
-                  re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
-                  lib_content = lib_content.replace(
-                      '#[allow(unused_imports)]\npub use types::*;',
-                      f'// Re-export modules at crate root for super::super paths\n{re_exports}'
-                  )
-                  
-                  lib_rs.write_text(lib_content)
-                  print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
-              else:
-                  print("⚠️ No matching modules found to re-export")
-          PYTHON
-            echo "✅ Created rust/src/lib.rs"
-          fi
-          
-          # Generate mod.rs recursively for all directories
-          python3 << 'PYTHON'
-          import os
-          import re
-          from pathlib import Path
-          
-          def has_any_rs_files(dir_path):
-              """Check if directory or any subdirectory has .rs files"""
-              for rs_file in dir_path.rglob("*.rs"):
-                  if rs_file.name != "mod.rs":
-                      return True
-              return False
-          
-          def create_mod_rs(dir_path):
-              """Recursively create mod.rs files for directories with .rs files or subdirs"""
-              mod_rs_path = dir_path / "mod.rs"
-              
-              # Check for direct .rs files (excluding mod.rs)
-              rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
-              has_rs_files = len(rs_files) > 0
-              
-              # Process subdirectories recursively first
-              subdirs_with_mod_rs = []
-              for subdir in sorted(dir_path.iterdir()):
-                  if subdir.is_dir():
-                      if create_mod_rs(subdir):
-                          subdirs_with_mod_rs.append(subdir)
-              
-              # Only create mod.rs if we have direct .rs files OR subdirs with mod.rs
-              # But skip if this directory has no .rs files anywhere (even nested)
-              if not has_any_rs_files(dir_path):
-                  return False
-              
-              if has_rs_files or subdirs_with_mod_rs:
-                  with mod_rs_path.open("w") as f:
-                      f.write("// Auto-generated module\n")
-                      
-                      # Add direct .rs files
-                      for rs_file in sorted(rs_files):
-                          modname = rs_file.stem
-                          filename = rs_file.name
-                          
-                          # Rust module names cannot contain dots, so use #[path] attribute
-                          if '.' in modname:
-                              # Convert dots to underscores for module name, but keep original filename
-                              safe_modname = modname.replace('.', '_')
-                              f.write(f'#[path = "{filename}"]\n')
-                              f.write(f"pub mod {safe_modname};\n")
-                          else:
-                              f.write(f"pub mod {modname};\n")
-                      
-                      # Add subdirectories that have mod.rs
-                      for subdir in subdirs_with_mod_rs:
-                          f.write(f"pub mod {subdir.name};\n")
-                  
-                  return True
-              
-              return False
-          
-          types_dir = Path("rust/types")
-          if types_dir.exists():
-              # Process all subdirectories recursively first
-              subdirs_added = []
-              for item in sorted(types_dir.iterdir()):
-                  if item.is_dir():
-                      # Only add if directory has any .rs files AND mod.rs was successfully created
-                      if has_any_rs_files(item):
-                          if create_mod_rs(item):
-                              # Verify mod.rs was actually created
-                              mod_rs_path = item / "mod.rs"
-                              if mod_rs_path.exists():
-                                  subdirs_added.append(item)
-                                  print(f"   Added module: {item.name}")
-                              else:
-                                  print(f"   Skipped {item.name}: mod.rs not created")
-                          else:
-                              print(f"   Skipped {item.name}: create_mod_rs returned False")
-                      else:
-                          print(f"   Skipped {item.name}: no .rs files found")
-              
-              # Create mod.rs for root types directory (after processing subdirs)
-              root_mod = types_dir / "mod.rs"
-              with root_mod.open("w") as f:
-                  f.write("// Auto-generated module - includes all generated protobuf types\n")
-                  
-                  # Add subdirectories that have mod.rs
-                  for item in subdirs_added:
-                      f.write(f"pub mod {item.name};\n")
-                  
-                  # Include direct .rs files
-                  for rs_file in sorted(types_dir.glob("*.rs")):
-                      if rs_file.name != "mod.rs":
-                          modname = rs_file.stem
-                          filename = rs_file.name
-                          
-                          # Rust module names cannot contain dots, so use #[path] attribute
-                          if '.' in modname:
-                              safe_modname = modname.replace('.', '_')
-                              f.write(f'#[path = "{filename}"]\n')
-                              f.write(f"pub mod {safe_modname};\n")
-                          else:
-                              f.write(f"pub mod {modname};\n")
-              
-              print("✅ Generated rust/types/mod.rs recursively")
-              print(f"   Added {len(subdirs_added)} subdirectories to root mod.rs")
-              
-              # Debug: Show what's in types/mod.rs
-              types_mod = Path("rust/types/mod.rs")
-              if types_mod.exists():
-                  content = types_mod.read_text()
-                  print(f"📄 types/mod.rs content (first 50 lines):")
-                  print('\n'.join(content.split('\n')[:50]))
-                  
-                  # Find all "pub mod X;" declarations (handle #[path] attributes)
-                  mod_declarations = set()
-                  for line in content.split('\n'):
-                      # Match "pub mod X;" ignoring #[path] lines
-                      match = re.search(r'pub mod (\w+);', line)
-                      if match:
-                          mod_declarations.add(match.group(1))
-                  
-                  print(f"📦 Found {len(mod_declarations)} module declarations: {sorted(mod_declarations)[:20]}")
-                  
-                  # Check file structure - are files flat or in directories?
-                  flat_files = list(Path("rust/types").glob("*.rs"))
-                  dirs = [d for d in Path("rust/types").iterdir() if d.is_dir()]
-                  print(f"📁 Structure: {len(flat_files)} flat .rs files, {len(dirs)} directories")
-                  if dirs:
-                      print(f"   Directories: {[d.name for d in dirs[:10]]}")
-                  
-                  # Common modules that generated code references via super::super
-                  needed_modules = ['cosmos', 'base', 'amino', 'gogoproto', 'cosmos_proto', 
-                                  'xion', 'abstractaccount', 'ibc', 'tendermint', 
-                                  'osmosis', 'packetforward', 'cosmwasm']
-                  
-                  # Find which modules actually exist
-                  existing_modules = [m for m in needed_modules if m in mod_declarations]
-                  
-                  if existing_modules:
-                      lib_rs = Path("rust/src/lib.rs")
-                      lib_content = lib_rs.read_text()
-                      
-                      # Add re-exports at the end
-                      re_exports = '\n'.join([f'pub use types::{m};' for m in existing_modules])
-                      lib_content = lib_content.rstrip() + '\n\n// Re-export modules at crate root for super::super paths\n' + re_exports + '\n'
-                      
-                      lib_rs.write_text(lib_content)
-                      print(f"✅ Added re-exports for: {', '.join(existing_modules)}")
-                  else:
-                      print("⚠️ No matching modules found to re-export")
-                      print(f"   Needed: {needed_modules}")
-                      print(f"   Available: {sorted(mod_declarations)[:30]}")
-                      
-                      # If modules don't exist, files might be flat - need to fix paths in generated code
-                      print("🔧 Files appear to be flat - will fix super::super paths in generated code")
-              
-              # Post-process generated files to fix super::super paths
-              print("🔧 Post-processing generated files to fix module paths...")
-              
-              # Build a map of actual module names from files
-              # Files like "cosmos.base.v1beta1.rs" become module "cosmos_base_v1beta1"
-              actual_modules = {}
-              types_dir = Path("rust/types")
-              for rs_file in types_dir.rglob("*.rs"):
-                  if rs_file.name == "mod.rs":
-                      continue
-                  # Get module name - if file is cosmos.base.v1beta1.rs, module is cosmos_base_v1beta1
-                  module_name = rs_file.stem.replace('.', '_')
-                  actual_modules[module_name] = rs_file
-              
-              # Since files are flat, we need to map hierarchical paths to flat module names
-              # Pattern: super::super::cosmos::base::v1beta1::Type
-              # Should become: crate::types::cosmos_base_v1beta1::Type
-              
-              # Common hierarchical patterns to map to flat modules
-              path_mappings = [
-                  # cosmos::base::v1beta1 patterns
-                  (r'super::super::cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-                  (r'super::super::cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
-                  (r'super::super::cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
-                  (r'super::super::cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
-                  (r'super::super::cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
-                  (r'super::super::cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
-                  (r'super::super::cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
-                  # cosmos::bank::v1beta1 patterns
-                  (r'super::super::cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
-                  # cosmos::auth::v1beta1 patterns
-                  (r'super::super::cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
-                  # cosmos::authz::v1beta1 patterns
-                  (r'super::super::cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
-                  # base::query::v1beta1 patterns (standalone base references)
-                  (r'super::super::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
-                  (r'super::super::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-                  # Generic fallback for any super::super::module:: pattern
-                  (r'super::super::([a-z_]+)::', r'crate::types::\1::'),
-              ]
-              
-              # Process all .rs files in types directory
-              files_processed = 0
-              total_replacements = 0
-              for rs_file in types_dir.rglob("*.rs"):
-                  if rs_file.name == "mod.rs":
-                      continue
-                  
-                  try:
-                      content = rs_file.read_text()
-                      original = content
-                      
-                      # Apply all pattern replacements (order matters - specific first)
-                      for pattern_str, replacement in path_mappings:
-                          pattern = re.compile(pattern_str)
-                          matches = pattern.findall(content)
-                          if matches:
-                              content = pattern.sub(replacement, content)
-                              total_replacements += len(matches) if isinstance(matches, list) else 1
-                      
-                      if content != original:
-                          rs_file.write_text(content)
-                          files_processed += 1
-                  except Exception as e:
-                      print(f"⚠️ Error processing {rs_file}: {e}")
-              
-              print(f"✅ Post-processed {files_processed} files, fixed {total_replacements} path references")
+          print(f"✅ Setup complete: processed {files_processed} files")
           PYTHON
 
       - name: Cache Rust Dependencies

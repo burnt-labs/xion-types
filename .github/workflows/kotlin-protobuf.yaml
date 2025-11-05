@@ -1,0 +1,474 @@
+name: Kotlin Protobuf Gen & Publish
+
+on:
+  push:
+    branches: 
+    #   - main 
+      - feat/protobufs
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for publishing.'
+        required: true
+        type: string
+
+  repository_dispatch:
+    types: [xion-types-release-trigger]
+    
+  schedule:
+    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+
+jobs:
+  generate-protobuf:
+    name: Generate Kotlin Types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Kotlin Definitions
+        run: |
+          make proto-gen-kotlin
+
+      - name: Check if Types Were Generated
+        run: |
+          if [ -d "./kotlin/types" ] && [ "$(ls -A ./kotlin/types)" ]; then
+            echo "✅ Kotlin definitions generated successfully"
+          else
+            echo "❌ Failed to generate Kotlin definitions"
+            exit 1
+          fi
+
+      - name: Upload Generated Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+          retention-days: 30
+
+  determine-version:
+    name: Determine Version
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    if: |
+        github.ref == 'refs/heads/feat/protobufs' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version
+        # Version scenarios:
+        # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3")
+        # 2. Release event (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
+        # 3. Push to branch → Generate dev version (e.g., "0.0.0.dev1234567890")
+        id: version
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            VERSION="${{ github.event.inputs.next_version }}"
+            echo "Using manual version: $VERSION"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            VERSION=${RELEASE_TAG#v}
+            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            TIMESTAMP=$(date +%s)
+            VERSION="0.0.0.dev${TIMESTAMP}"
+            echo "Using dev version for testing: $VERSION"
+          else
+            echo "❌ No version specified"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+  # ============================================
+  # Kotlin/Maven Package Building/Testing
+  # ============================================
+
+  kotlin-build:
+    name: Build Kotlin Package
+    needs: [determine-version, generate-protobuf]
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ needs.determine-version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Create Maven Package Structure
+        run: |
+          mkdir -p kotlin/src/main/kotlin
+          
+          # Create pom.xml if it doesn't exist
+          if [ ! -f "kotlin/pom.xml" ]; then
+            cat > kotlin/pom.xml << 'POM'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <project xmlns="http://maven.apache.org/POM/4.0.0"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                   http://maven.apache.org/xsd/maven-4.0.0.xsd">
+              <modelVersion>4.0.0</modelVersion>
+              
+              <groupId>com.burntlabs</groupId>
+              <artifactId>xion-types</artifactId>
+              <version>0.1.0</version>
+              <packaging>jar</packaging>
+              
+              <name>XionTypes</name>
+              <description>Generated Kotlin types for Xion blockchain protocol buffers</description>
+              <url>https://github.com/burnt-labs/xion-types</url>
+              
+              <licenses>
+                  <license>
+                      <name>Apache-2.0</name>
+                      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                  </license>
+              </licenses>
+              
+              <developers>
+                  <developer>
+                      <name>Burnt Labs</name>
+                      <email>--ADD-HERE-YOUR-VALUE--</email>
+                  </developer>
+              </developers>
+              
+              <properties>
+                  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                  <kotlin.version>1.9.0</kotlin.version>
+                  <maven.compiler.source>17</maven.compiler.source>
+                  <maven.compiler.target>17</maven.compiler.target>
+              </properties>
+              
+              <dependencies>
+                  <dependency>
+                      <groupId>com.google.protobuf</groupId>
+                      <artifactId>protobuf-java</artifactId>
+                      <version>3.25.1</version>
+                  </dependency>
+                  <dependency>
+                      <groupId>com.google.protobuf</groupId>
+                      <artifactId>protobuf-kotlin</artifactId>
+                      <version>3.25.1</version>
+                  </dependency>
+              </dependencies>
+              
+              <build>
+                  <sourceDirectory>src/main/kotlin</sourceDirectory>
+                  <plugins>
+                      <plugin>
+                          <groupId>org.jetbrains.kotlin</groupId>
+                          <artifactId>kotlin-maven-plugin</artifactId>
+                          <version>${kotlin.version}</version>
+                          <executions>
+                              <execution>
+                                  <id>compile</id>
+                                  <phase>compile</phase>
+                                  <goals>
+                                      <goal>compile</goal>
+                                  </goals>
+                              </execution>
+                          </executions>
+                          <configuration>
+                              <jvmTarget>17</jvmTarget>
+                          </configuration>
+                      </plugin>
+                      <plugin>
+                          <groupId>org.apache.maven.plugins</groupId>
+                          <artifactId>maven-compiler-plugin</artifactId>
+                          <version>3.11.0</version>
+                          <configuration>
+                              <source>17</source>
+                              <target>17</target>
+                          </configuration>
+                      </plugin>
+                      <plugin>
+                          <groupId>org.apache.maven.plugins</groupId>
+                          <artifactId>maven-source-plugin</artifactId>
+                          <version>3.3.0</version>
+                          <executions>
+                              <execution>
+                                  <id>attach-sources</id>
+                                  <goals>
+                                      <goal>jar</goal>
+                                  </goals>
+                              </execution>
+                          </executions>
+                      </plugin>
+                  </plugins>
+              </build>
+          </project>
+          POM
+            echo "✅ Created kotlin/pom.xml"
+          else
+            echo "✅ kotlin/pom.xml already exists"
+          fi
+          
+          # Copy generated types to src/main/kotlin
+          echo "Copying generated Kotlin types..."
+          cp -r kotlin/types/* kotlin/src/main/kotlin/ 2>/dev/null || true
+
+      - name: Update Version
+        working-directory: ./kotlin
+        env:
+          VERSION: ${{ needs.determine-version.outputs.version }}
+        run: |
+          sed -i "s/<version>.*<\/version>/<version>$VERSION<\/version>/" pom.xml
+          echo "✅ Updated version to $VERSION"
+
+      - name: Build Maven Package
+        working-directory: ./kotlin
+        run: |
+          mvn clean package -DskipTests
+          echo "✅ Maven package built successfully"
+          ls -lh target/*.jar
+
+      - name: Upload Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: kotlin-package
+          path: kotlin/target/*.jar
+          retention-days: 30
+
+  kotlin-test:
+    name: Test Kotlin Package
+    needs: [kotlin-build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: ['17', '21']
+      fail-fast: false
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+
+      - name: Create Maven Package Structure
+        run: |
+          mkdir -p kotlin/src/main/kotlin
+          cp -r kotlin/types/* kotlin/src/main/kotlin/ 2>/dev/null || true
+
+      - name: Download Package
+        uses: actions/download-artifact@v4
+        with:
+          name: kotlin-package
+          path: kotlin/target/
+
+      - name: Test Kotlin Package
+        working-directory: ./kotlin
+        env:
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          mvn test
+          echo "✅ Kotlin package tests passed"
+
+  # ============================================
+  # Kotlin/Maven Package Publishing
+  # ============================================
+  # Publishing options:
+  # 1. Maven Central (Sonatype OSSRH) - requires GPG signing
+  # 2. JitPack - auto-builds from GitHub tags (simpler)
+  # 3. GitHub Packages - can host Maven packages
+
+  kotlin-publish-jitpack:
+    name: Publish to JitPack
+    needs: [kotlin-test, kotlin-build]
+    runs-on: ubuntu-latest
+    # TODO: Remove push from condition after testing
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' || 
+      (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create jitpack.yml
+        run: |
+          cat > kotlin/jitpack.yml << 'JITPACK'
+          jdk:
+            - openjdk17
+          before_install:
+            - ./mvnw install -DskipTests || true
+          install:
+            - mvn install -DskipTests -P github
+          JITPACK
+          echo "✅ Created jitpack.yml for auto-build"
+
+      # Note: JitPack auto-builds from Git tags
+      # No explicit publish step needed - just create a tag and JitPack will build it
+      - name: JitPack Info
+        run: |
+          echo "ℹ️ JitPack will automatically build from Git tags"
+          echo "To publish: Create a Git tag (e.g., v1.2.3) and JitPack will build it"
+          echo "Users can then use: com.github.burnt-labs:xion-types:v1.2.3"
+
+  kotlin-publish-github:
+    name: Publish to GitHub Packages
+    needs: [kotlin-test, kotlin-build]
+    runs-on: ubuntu-latest
+    # TODO: Remove push from condition after testing
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' || 
+      (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Download Package
+        uses: actions/download-artifact@v4
+        with:
+          name: kotlin-package
+          path: kotlin/target/
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          server-id: github
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Create Maven Package Structure
+        run: |
+          mkdir -p kotlin/src/main/kotlin
+          cp -r kotlin/types/* kotlin/src/main/kotlin/ 2>/dev/null || true
+
+      - name: Update pom.xml for GitHub Packages
+        working-directory: ./kotlin
+        env:
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          # Add distributionManagement for GitHub Packages
+          cat >> pom.xml << 'DIST'
+          <distributionManagement>
+             <repository>
+               <id>github</id>
+               <name>GitHub Packages</name>
+               <url>https://maven.pkg.github.com/burnt-labs/xion-types</url>
+             </repository>
+          </distributionManagement>
+          DIST
+          
+          sed -i "s/<version>.*<\/version>/<version>$VERSION<\/version>/" pom.xml
+
+      - name: Publish to GitHub Packages
+        working-directory: ./kotlin
+        run: |
+          mvn deploy -DskipTests
+          echo "✅ Published to GitHub Packages"
+
+  # kotlin-publish-maven-central:
+  #   name: Publish to Maven Central
+  #   needs: [kotlin-test, kotlin-build]
+  #   runs-on: ubuntu-latest
+  #   if: |
+  #     github.event_name == 'workflow_dispatch' || 
+  #     (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+  #   permissions:
+  #     contents: read
+  #   steps:
+  #     - name: Download Package
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: kotlin-package
+  #         path: kotlin/target/
+  #
+  #     - name: Setup Java
+  #       uses: actions/setup-java@v4
+  #       with:
+  #         distribution: 'temurin'
+  #         java-version: '17'
+  #         server-id: ossrh
+  #         server-username: ${{ secrets.OSSRH_USERNAME }}
+  #         server-password: ${{ secrets.OSSRH_TOKEN }}
+  #
+  #     - name: Import GPG Key
+  #       env:
+  #         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+  #         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+  #       run: |
+  #         echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+  #         gpg --list-secret-keys --keyid-format LONG
+  #
+  #     - name: Configure Maven for Maven Central
+  #       run: |
+  #         mkdir -p ~/.m2
+  #         cat > ~/.m2/settings.xml << 'SETTINGS'
+  #         <settings>
+  #           <servers>
+  #             <server>
+  #               <id>ossrh</id>
+  #               <username>${env.OSSRH_USERNAME}</username>
+  #               <password>${env.OSSRH_TOKEN}</password>
+  #             </server>
+  #           </servers>
+  #           <profiles>
+  #             <profile>
+  #               <id>ossrh</id>
+  #               <activation>
+  #                 <activeByDefault>true</activeByDefault>
+  #               </activation>
+  #               <properties>
+  #                 <gpg.executable>gpg</gpg.executable>
+  #                 <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+  #               </properties>
+  #             </profile>
+  #           </profiles>
+  #         </settings>
+  #         SETTINGS
+  #
+  #     - name: Publish to Maven Central
+  #       working-directory: ./kotlin
+  #       env:
+  #         VERSION: ${{ needs.kotlin-build.outputs.version }}
+  #       run: |
+  #         # Add Maven Central configuration to pom.xml
+  #         # Then run: mvn clean deploy -P release
+  #         echo "⚠️ Maven Central publishing requires additional pom.xml configuration"
+  #         echo "See: https://central.sonatype.com/publish/publish-guide/"
+
