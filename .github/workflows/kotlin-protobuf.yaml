@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - feat/protobufs
+      - fsdfsdf #feat/protobufs
             
   workflow_dispatch:
     inputs:

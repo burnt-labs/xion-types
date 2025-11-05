@@ -200,25 +200,65 @@ jobs:
           }
           """)
           
-          # 3. Fix module paths in generated files
+          # 3. Build module name map from actual files
+          module_map = {}
+          for rs_file in types_dir.rglob("*.rs"):
+              if rs_file.name == "mod.rs":
+                  continue
+              # File: cosmos.base.query.v1beta1.rs -> module: cosmos_base_query_v1beta1
+              mod_name = rs_file.stem.replace('.', '_')
+              module_map[mod_name] = rs_file
+          
+          # 4. Fix module paths in generated files
+          # Order matters: most specific first
           path_mappings = [
+              # Multi-level paths (most specific)
+              (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
+              (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+              (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+              (r'(super::)+cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
+              (r'(super::)+cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
+              (r'(super::)+cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
+              (r'(super::)+cosmos::crypto::multisig::v1beta1::', 'crate::types::cosmos_crypto_multisig_v1beta1::'),
+              (r'(super::)+cosmos::crypto::hd::v1::', 'crate::types::cosmos_crypto_hd_v1::'),
+              (r'(super::)+cosmos::tx::signing::v1beta1::', 'crate::types::cosmos_tx_signing_v1beta1::'),
+              (r'(super::)+cosmos::ics23::v1::', 'crate::types::cosmos_ics23_v1::'),
+              (r'(super::)+cosmos::upgrade::v1beta1::', 'crate::types::cosmos_upgrade_v1beta1::'),
+              (r'(super::)+cosmos::store::v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
+              (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
+              (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
+              (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+              (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              # Two-level paths
               (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
               (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
               (r'(super::)+tendermint::version::', 'crate::types::tendermint_version::'),
               (r'(super::)+tendermint::p2p::', 'crate::types::tendermint_p2p::'),
               (r'(super::)+tendermint::crypto::', 'crate::types::tendermint_crypto::'),
-              (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
               (r'(super::)+cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-              (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
-              (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
-              (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
               (r'(super::)+cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
               (r'(super::)+cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
               (r'(super::)+cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
               (r'(super::)+base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
               (r'(super::)+base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-              (r'(super::)+([a-z_][a-z0-9_]*)::', r'crate::types::\2::'),
+              (r'(super::)+base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+              # Single-level paths that need context
+              (r'(super::)+query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+hd::v1::', 'crate::types::cosmos_crypto_hd_v1::'),
+              (r'(super::)+crypto::multisig::v1beta1::', 'crate::types::cosmos_crypto_multisig_v1beta1::'),
+              (r'(super::)+signing::v1beta1::', 'crate::types::cosmos_tx_signing_v1beta1::'),
+              (r'(super::)+client::v1::', 'crate::types::ibc_core_client_v1::'),
+              (r'(super::)+client::v2::', 'crate::types::ibc_core_client_v2::'),
+              (r'(super::)+commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+              (r'(super::)+commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              (r'(super::)+v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
           ]
+          
+          # Helper function to convert hierarchical path to flat module name
+          def path_to_module(path_parts):
+              """Convert ['cosmos', 'base', 'query', 'v1beta1'] to 'cosmos_base_query_v1beta1'"""
+              return '_'.join(path_parts)
           
           files_processed = 0
           for rs_file in types_dir.rglob("*.rs"):
@@ -228,11 +268,61 @@ jobs:
               content = rs_file.read_text()
               original = content
               
+              # Apply specific mappings first
               for pattern_str, replacement in path_mappings:
                   content = re.sub(pattern_str, replacement, content)
               
+              # Handle remaining super::super::... paths by converting to flat module names
+              def replace_path(match):
+                  path_parts = match.group(2).split('::')
+                  mod_name = path_to_module(path_parts)
+                  # Check if module exists, otherwise try common prefixes
+                  if mod_name in module_map:
+                      return f'crate::types::{mod_name}::'
+                  # Try with cosmos prefix
+                  cosmos_mod = f'cosmos_{mod_name}'
+                  if cosmos_mod in module_map:
+                      return f'crate::types::{cosmos_mod}::'
+                  # Try with ibc prefix
+                  ibc_mod = f'ibc_{mod_name}'
+                  if ibc_mod in module_map:
+                      return f'crate::types::{ibc_mod}::'
+                  return match.group(0)  # Keep original if can't resolve
+              
+              # Match remaining super::... paths
+              content = re.sub(
+                  r'(super::)+([a-z_][a-z0-9_]*(?:::[a-z_][a-z0-9_]*)*)::',
+                  replace_path,
+                  content
+              )
+              
+              # Fix already-converted paths that reference nested modules (e.g., crate::types::query::v1beta1::)
+              def fix_nested_path(match):
+                  path_parts = match.group(1).split('::')
+                  mod_name = path_to_module(path_parts)
+                  if mod_name in module_map:
+                      return f'crate::types::{mod_name}::'
+                  # Try with cosmos prefix
+                  cosmos_mod = f'cosmos_{mod_name}'
+                  if cosmos_mod in module_map:
+                      return f'crate::types::{cosmos_mod}::'
+                  # Try with ibc prefix  
+                  ibc_mod = f'ibc_{mod_name}'
+                  if ibc_mod in module_map:
+                      return f'crate::types::{ibc_mod}::'
+                  return match.group(0)
+              
+              # Fix paths like crate::types::query::v1beta1:: -> crate::types::cosmos_base_query_v1beta1::
+              content = re.sub(
+                  r'crate::types::([a-z_][a-z0-9_]*(?:::[a-z_][a-z0-9_]*)+)::',
+                  fix_nested_path,
+                  content
+              )
+              
+              # Clean up invalid patterns
               content = re.sub(r'crate::types::super::+', 'crate::types::', content)
               
+              # Fix Validators duplicate
               if rs_file.name == 'cosmos.staking.v1beta1.rs':
                   content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
               
@@ -388,25 +478,65 @@ jobs:
           }
           """)
           
-          # 3. Fix module paths in generated files
+          # 3. Build module name map from actual files
+          module_map = {}
+          for rs_file in types_dir.rglob("*.rs"):
+              if rs_file.name == "mod.rs":
+                  continue
+              # File: cosmos.base.query.v1beta1.rs -> module: cosmos_base_query_v1beta1
+              mod_name = rs_file.stem.replace('.', '_')
+              module_map[mod_name] = rs_file
+          
+          # 4. Fix module paths in generated files
+          # Order matters: most specific first
           path_mappings = [
+              # Multi-level paths (most specific)
+              (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
+              (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+              (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+              (r'(super::)+cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
+              (r'(super::)+cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
+              (r'(super::)+cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
+              (r'(super::)+cosmos::crypto::multisig::v1beta1::', 'crate::types::cosmos_crypto_multisig_v1beta1::'),
+              (r'(super::)+cosmos::crypto::hd::v1::', 'crate::types::cosmos_crypto_hd_v1::'),
+              (r'(super::)+cosmos::tx::signing::v1beta1::', 'crate::types::cosmos_tx_signing_v1beta1::'),
+              (r'(super::)+cosmos::ics23::v1::', 'crate::types::cosmos_ics23_v1::'),
+              (r'(super::)+cosmos::upgrade::v1beta1::', 'crate::types::cosmos_upgrade_v1beta1::'),
+              (r'(super::)+cosmos::store::v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
+              (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
+              (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
+              (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+              (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              # Two-level paths
               (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
               (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
               (r'(super::)+tendermint::version::', 'crate::types::tendermint_version::'),
               (r'(super::)+tendermint::p2p::', 'crate::types::tendermint_p2p::'),
               (r'(super::)+tendermint::crypto::', 'crate::types::tendermint_crypto::'),
-              (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
               (r'(super::)+cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-              (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
-              (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
-              (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
               (r'(super::)+cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
               (r'(super::)+cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
               (r'(super::)+cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
               (r'(super::)+base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
               (r'(super::)+base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
-              (r'(super::)+([a-z_][a-z0-9_]*)::', r'crate::types::\2::'),
+              (r'(super::)+base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+              # Single-level paths that need context
+              (r'(super::)+query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+              (r'(super::)+hd::v1::', 'crate::types::cosmos_crypto_hd_v1::'),
+              (r'(super::)+crypto::multisig::v1beta1::', 'crate::types::cosmos_crypto_multisig_v1beta1::'),
+              (r'(super::)+signing::v1beta1::', 'crate::types::cosmos_tx_signing_v1beta1::'),
+              (r'(super::)+client::v1::', 'crate::types::ibc_core_client_v1::'),
+              (r'(super::)+client::v2::', 'crate::types::ibc_core_client_v2::'),
+              (r'(super::)+commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+              (r'(super::)+commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              (r'(super::)+v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
           ]
+          
+          # Helper function to convert hierarchical path to flat module name
+          def path_to_module(path_parts):
+              """Convert ['cosmos', 'base', 'query', 'v1beta1'] to 'cosmos_base_query_v1beta1'"""
+              return '_'.join(path_parts)
           
           files_processed = 0
           for rs_file in types_dir.rglob("*.rs"):
@@ -416,11 +546,61 @@ jobs:
               content = rs_file.read_text()
               original = content
               
+              # Apply specific mappings first
               for pattern_str, replacement in path_mappings:
                   content = re.sub(pattern_str, replacement, content)
               
+              # Handle remaining super::super::... paths by converting to flat module names
+              def replace_path(match):
+                  path_parts = match.group(2).split('::')
+                  mod_name = path_to_module(path_parts)
+                  # Check if module exists, otherwise try common prefixes
+                  if mod_name in module_map:
+                      return f'crate::types::{mod_name}::'
+                  # Try with cosmos prefix
+                  cosmos_mod = f'cosmos_{mod_name}'
+                  if cosmos_mod in module_map:
+                      return f'crate::types::{cosmos_mod}::'
+                  # Try with ibc prefix
+                  ibc_mod = f'ibc_{mod_name}'
+                  if ibc_mod in module_map:
+                      return f'crate::types::{ibc_mod}::'
+                  return match.group(0)  # Keep original if can't resolve
+              
+              # Match remaining super::... paths
+              content = re.sub(
+                  r'(super::)+([a-z_][a-z0-9_]*(?:::[a-z_][a-z0-9_]*)*)::',
+                  replace_path,
+                  content
+              )
+              
+              # Fix already-converted paths that reference nested modules (e.g., crate::types::query::v1beta1::)
+              def fix_nested_path(match):
+                  path_parts = match.group(1).split('::')
+                  mod_name = path_to_module(path_parts)
+                  if mod_name in module_map:
+                      return f'crate::types::{mod_name}::'
+                  # Try with cosmos prefix
+                  cosmos_mod = f'cosmos_{mod_name}'
+                  if cosmos_mod in module_map:
+                      return f'crate::types::{cosmos_mod}::'
+                  # Try with ibc prefix  
+                  ibc_mod = f'ibc_{mod_name}'
+                  if ibc_mod in module_map:
+                      return f'crate::types::{ibc_mod}::'
+                  return match.group(0)
+              
+              # Fix paths like crate::types::query::v1beta1:: -> crate::types::cosmos_base_query_v1beta1::
+              content = re.sub(
+                  r'crate::types::([a-z_][a-z0-9_]*(?:::[a-z_][a-z0-9_]*)+)::',
+                  fix_nested_path,
+                  content
+              )
+              
+              # Clean up invalid patterns
               content = re.sub(r'crate::types::super::+', 'crate::types::', content)
               
+              # Fix Validators duplicate
               if rs_file.name == 'cosmos.staking.v1beta1.rs':
                   content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
               
