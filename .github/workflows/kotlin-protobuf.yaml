@@ -234,7 +234,7 @@ jobs:
         env:
           VERSION: ${{ needs.determine-version.outputs.version }}
         run: |
-          sed -i "s/<version>.*<\/version>/<version>$VERSION<\/version>/" pom.xml
+          sed -i "/<artifactId>xion-types<\/artifactId>/,/<packaging>/s|<version>.*</version>|<version>$VERSION</version>|" pom.xml
           echo "✅ Updated version to $VERSION"
 
       - name: Build Maven Package
@@ -394,7 +394,7 @@ jobs:
           </distributionManagement>
           DIST
           
-          sed -i "s/<version>.*<\/version>/<version>$VERSION<\/version>/" pom.xml
+          sed -i "/<artifactId>xion-types<\/artifactId>/,/<packaging>/s|<version>.*</version>|<version>$VERSION</version>|" pom.xml
 
       - name: Publish to GitHub Packages
         working-directory: ./kotlin

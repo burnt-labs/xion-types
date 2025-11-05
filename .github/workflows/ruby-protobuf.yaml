@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - adfdsf #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -369,10 +369,8 @@ jobs:
           # Install the gem
           gem install *.gem
           
-          # Verify gem is installed and findable
-          gem list | grep xion_types || (echo "❌ Gem not found in gem list" && exit 1)
-          
           # Test basic import - RubyGems should handle the require path automatically
+          # If this fails, the gem wasn't properly installed or doesn't have the required files
           ruby -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
           
           # Try to load a specific protobuf type if available

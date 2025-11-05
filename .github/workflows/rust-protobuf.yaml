@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - sdfdsf #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -310,9 +310,10 @@ jobs:
                   content
               )
               
-              # Fix super::types:: in tendermint files (should be tendermint_types)
+              # Fix super::types:: and super::crypto:: in tendermint files
               if 'tendermint' in rs_file.stem:
                   content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
+                  content = re.sub(r'super::crypto::', 'crate::types::tendermint_crypto::', content)
               
               # Fix context-dependent paths like super::super::v1:: in IBC files
               # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1
@@ -354,9 +355,29 @@ jobs:
               # Clean up invalid patterns
               content = re.sub(r'crate::types::super::+', 'crate::types::', content)
               
-              # Fix Validators duplicate
+              # Fix Validators duplicate (enum conflicts with struct)
               if rs_file.name == 'cosmos.staking.v1beta1.rs':
+                  # Rename the enum to ValidatorsEnum
                   content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
+                  # Update oneof reference from Validators to ValidatorsEnum
+                  content = re.sub(
+                      r'oneof="stake_authorization::Validators"',
+                      'oneof="stake_authorization::ValidatorsEnum"',
+                      content
+                  )
+                  # Update Option<stake_authorization::Validators> to ValidatorsEnum (but keep struct Validators)
+                  # This is tricky - we need to update the enum type, not the struct type
+                  content = re.sub(
+                      r'Option<stake_authorization::Validators>',
+                      'Option<stake_authorization::ValidatorsEnum>',
+                      content
+                  )
+                  # Update enum variant references that use the enum type
+                  content = re.sub(
+                      r'ValidatorsEnum::(AllowList|DenyList)\(Validators\)',
+                      r'ValidatorsEnum::\1(Validators)',
+                      content
+                  )
               
               # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
               # Check if struct contains Option<Duration> or Option<Timestamp>
@@ -635,9 +656,10 @@ jobs:
                   content
               )
               
-              # Fix super::types:: in tendermint files (should be tendermint_types)
+              # Fix super::types:: and super::crypto:: in tendermint files
               if 'tendermint' in rs_file.stem:
                   content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
+                  content = re.sub(r'super::crypto::', 'crate::types::tendermint_crypto::', content)
               
               # Fix context-dependent paths like super::super::v1:: in IBC files
               # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1
@@ -679,9 +701,29 @@ jobs:
               # Clean up invalid patterns
               content = re.sub(r'crate::types::super::+', 'crate::types::', content)
               
-              # Fix Validators duplicate
+              # Fix Validators duplicate (enum conflicts with struct)
               if rs_file.name == 'cosmos.staking.v1beta1.rs':
+                  # Rename the enum to ValidatorsEnum
                   content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
+                  # Update oneof reference from Validators to ValidatorsEnum
+                  content = re.sub(
+                      r'oneof="stake_authorization::Validators"',
+                      'oneof="stake_authorization::ValidatorsEnum"',
+                      content
+                  )
+                  # Update Option<stake_authorization::Validators> to ValidatorsEnum (but keep struct Validators)
+                  # This is tricky - we need to update the enum type, not the struct type
+                  content = re.sub(
+                      r'Option<stake_authorization::Validators>',
+                      'Option<stake_authorization::ValidatorsEnum>',
+                      content
+                  )
+                  # Update enum variant references that use the enum type
+                  content = re.sub(
+                      r'ValidatorsEnum::(AllowList|DenyList)\(Validators\)',
+                      r'ValidatorsEnum::\1(Validators)',
+                      content
+                  )
               
               # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
               # Check if struct contains Option<Duration> or Option<Timestamp>

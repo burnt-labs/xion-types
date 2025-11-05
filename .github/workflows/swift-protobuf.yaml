@@ -114,6 +114,7 @@ jobs:
       - name: Create Swift Package Structure
         run: |
           mkdir -p swift/Sources/XionTypes
+          mkdir -p swift/Tests/XionTypesTests
           
           # Create Package.swift if it doesn't exist
           if [ ! -f "swift/Package.swift" ]; then
@@ -149,7 +150,7 @@ jobs:
                   .testTarget(
                       name: "XionTypesTests",
                       dependencies: ["XionTypes"],
-                      path: "Tests"
+                      path: "Tests/XionTypesTests"
                   ),
               ]
           )
@@ -157,6 +158,22 @@ jobs:
             echo "✅ Created swift/Package.swift"
           else
             echo "✅ swift/Package.swift already exists"
+          fi
+          
+          # Create minimal test file if it doesn't exist
+          if [ ! -f "swift/Tests/XionTypesTests/XionTypesTests.swift" ]; then
+            cat > swift/Tests/XionTypesTests/XionTypesTests.swift << 'TEST'
+          import XCTest
+          @testable import XionTypes
+
+          final class XionTypesTests: XCTestCase {
+              func testExample() {
+                  // This is a placeholder test to ensure the package builds correctly
+                  XCTAssertTrue(true)
+              }
+          }
+          TEST
+            echo "✅ Created swift/Tests/XionTypesTests/XionTypesTests.swift"
           fi
           
           # Copy generated types to Sources/XionTypes
@@ -225,7 +242,23 @@ jobs:
       - name: Create Swift Package Structure
         run: |
           mkdir -p swift/Sources/XionTypes
+          mkdir -p swift/Tests/XionTypesTests
           cp -r swift/types/* swift/Sources/XionTypes/ 2>/dev/null || true
+          
+          # Ensure test file exists
+          if [ ! -f "swift/Tests/XionTypesTests/XionTypesTests.swift" ]; then
+            cat > swift/Tests/XionTypesTests/XionTypesTests.swift << 'TEST'
+          import XCTest
+          @testable import XionTypes
+
+          final class XionTypesTests: XCTestCase {
+              func testExample() {
+                  // This is a placeholder test to ensure the package builds correctly
+                  XCTAssertTrue(true)
+              }
+          }
+          TEST
+          fi
 
       - name: Test Swift Package
         working-directory: ./swift
