@@ -168,9 +168,12 @@ jobs:
             
             # Specify which files should be added to the gem when it is released
             spec.files = Dir.chdir(__dir__) do
-              `git ls-files -z`.split("\x0").reject do |f|
-                (File.expand_path(f) == __FILE__) ||
-                  f.start_with?(*%w[bin/ test/ spec/ features/ .git .github Gemfile])
+              # Include all files from lib directory (including generated protobuf files)
+              lib_files = Dir.glob("lib/**/*").select { |f| File.file?(f) }
+              # Include gemspec and other root files if they exist
+              root_files = %w[Gemfile README.md LICENSE CHANGELOG.md].select { |f| File.exist?(f) }
+              (lib_files + root_files).reject do |f|
+                f.include?(".git") || f.include?(".github")
               end
             end
             
@@ -242,9 +245,9 @@ jobs:
     needs: [ruby-build]
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby-version: ['3.0', '3.1', '3.2', '3.3']
-      fail-fast: false
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -308,10 +311,14 @@ jobs:
             spec.metadata["source_code_uri"] = spec.homepage
             spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
             
+            # Specify which files should be added to the gem when it is released
             spec.files = Dir.chdir(__dir__) do
-              `git ls-files -z`.split("\x0").reject do |f|
-                (File.expand_path(f) == __FILE__) ||
-                  f.start_with?(*%w[bin/ test/ spec/ features/ .git .github Gemfile])
+              # Include all files from lib directory (including generated protobuf files)
+              lib_files = Dir.glob("lib/**/*").select { |f| File.file?(f) }
+              # Include gemspec and other root files if they exist
+              root_files = %w[Gemfile README.md LICENSE CHANGELOG.md].select { |f| File.exist?(f) }
+              (lib_files + root_files).reject do |f|
+                f.include?(".git") || f.include?(".github")
               end
             end
             
@@ -354,9 +361,18 @@ jobs:
         run: |
           sed -i "s/VERSION = .*/VERSION = \"$VERSION\"/" lib/xion_types/version.rb
           bundle install
+          
+          # Verify gem structure before installation
+          echo "Checking gem contents..."
+          gem spec *.gem | grep -A 20 "^files:" || true
+          
+          # Install the gem
           gem install *.gem
           
-          # Test basic import
+          # Verify gem is installed and findable
+          gem list | grep xion_types || (echo "❌ Gem not found in gem list" && exit 1)
+          
+          # Test basic import - RubyGems should handle the require path automatically
           ruby -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
           
           # Try to load a specific protobuf type if available

@@ -212,7 +212,19 @@ jobs:
           # 4. Fix module paths in generated files
           # Order matters: most specific first
           path_mappings = [
-              # Multi-level paths (most specific)
+              # IBC multi-level paths (most specific)
+              (r'(super::)+ibc::applications::interchain_accounts::controller::v1::', 'crate::types::ibc_applications_interchain_accounts_controller_v1::'),
+              (r'(super::)+ibc::applications::interchain_accounts::host::v1::', 'crate::types::ibc_applications_interchain_accounts_host_v1::'),
+              (r'(super::)+ibc::applications::interchain_accounts::v1::', 'crate::types::ibc_applications_interchain_accounts_v1::'),
+              (r'(super::)+ibc::core::channel::v1::', 'crate::types::ibc_core_channel_v1::'),
+              (r'(super::)+ibc::core::channel::v2::', 'crate::types::ibc_core_channel_v2::'),
+              (r'(super::)+ibc::core::connection::v1::', 'crate::types::ibc_core_connection_v1::'),
+              (r'(super::)+ibc::core::types::v1::', 'crate::types::ibc_core_types_v1::'),
+              (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
+              (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
+              (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+              (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              # Cosmos multi-level paths
               (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
               (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
               (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
@@ -226,10 +238,6 @@ jobs:
               (r'(super::)+cosmos::ics23::v1::', 'crate::types::cosmos_ics23_v1::'),
               (r'(super::)+cosmos::upgrade::v1beta1::', 'crate::types::cosmos_upgrade_v1beta1::'),
               (r'(super::)+cosmos::store::v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
-              (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
-              (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
-              (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
-              (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
               # Two-level paths
               (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
               (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
@@ -252,6 +260,12 @@ jobs:
               (r'(super::)+client::v2::', 'crate::types::ibc_core_client_v2::'),
               (r'(super::)+commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
               (r'(super::)+commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              (r'(super::)+channel::v1::', 'crate::types::ibc_core_channel_v1::'),
+              (r'(super::)+channel::v2::', 'crate::types::ibc_core_channel_v2::'),
+              (r'(super::)+connection::v1::', 'crate::types::ibc_core_connection_v1::'),
+              (r'(super::)+controller::v1::', 'crate::types::ibc_applications_interchain_accounts_controller_v1::'),
+              (r'(super::)+host::v1::', 'crate::types::ibc_applications_interchain_accounts_host_v1::'),
+              (r'(super::)+v1::', 'crate::types::ibc_applications_interchain_accounts_v1::'),
               (r'(super::)+v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
           ]
           
@@ -296,6 +310,24 @@ jobs:
                   content
               )
               
+              # Fix super::types:: in tendermint files (should be tendermint_types)
+              if 'tendermint' in rs_file.stem:
+                  content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
+              
+              # Fix context-dependent paths like super::super::v1:: in IBC files
+              # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1
+              if 'ibc.applications.interchain_accounts' in rs_file.stem:
+                  # Extract parent module from filename
+                  parts = rs_file.stem.split('.')
+                  if 'controller' in parts or 'host' in parts:
+                      # super::super::v1:: means go up to interchain_accounts.v1
+                      parent_mod = '_'.join(parts[:-2])  # Remove controller.v1 or host.v1
+                      content = re.sub(
+                          r'super::super::v1::',
+                          f'crate::types::{parent_mod}_v1::',
+                          content
+                      )
+              
               # Fix already-converted paths that reference nested modules (e.g., crate::types::query::v1beta1::)
               def fix_nested_path(match):
                   path_parts = match.group(1).split('::')
@@ -325,6 +357,21 @@ jobs:
               # Fix Validators duplicate
               if rs_file.name == 'cosmos.staking.v1beta1.rs':
                   content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
+              
+              # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
+              # Check if struct contains Option<Duration> or Option<Timestamp>
+              if 'Option<::prost_types::Duration>' in content or 'Option<::prost_types::Timestamp>' in content:
+                  # Remove Copy from derive attributes that include prost::Message
+                  content = re.sub(
+                      r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*::prost::Message\)\]',
+                      '#[derive(Clone, PartialEq, ::prost::Message)]',
+                      content
+                  )
+                  content = re.sub(
+                      r'#\[derive\(Clone,\s*Copy,\s*::prost::Message\)\]',
+                      '#[derive(Clone, ::prost::Message)]',
+                      content
+                  )
               
               if content != original:
                   rs_file.write_text(content)
@@ -490,7 +537,19 @@ jobs:
           # 4. Fix module paths in generated files
           # Order matters: most specific first
           path_mappings = [
-              # Multi-level paths (most specific)
+              # IBC multi-level paths (most specific)
+              (r'(super::)+ibc::applications::interchain_accounts::controller::v1::', 'crate::types::ibc_applications_interchain_accounts_controller_v1::'),
+              (r'(super::)+ibc::applications::interchain_accounts::host::v1::', 'crate::types::ibc_applications_interchain_accounts_host_v1::'),
+              (r'(super::)+ibc::applications::interchain_accounts::v1::', 'crate::types::ibc_applications_interchain_accounts_v1::'),
+              (r'(super::)+ibc::core::channel::v1::', 'crate::types::ibc_core_channel_v1::'),
+              (r'(super::)+ibc::core::channel::v2::', 'crate::types::ibc_core_channel_v2::'),
+              (r'(super::)+ibc::core::connection::v1::', 'crate::types::ibc_core_connection_v1::'),
+              (r'(super::)+ibc::core::types::v1::', 'crate::types::ibc_core_types_v1::'),
+              (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
+              (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
+              (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+              (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              # Cosmos multi-level paths
               (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
               (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
               (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
@@ -504,10 +563,6 @@ jobs:
               (r'(super::)+cosmos::ics23::v1::', 'crate::types::cosmos_ics23_v1::'),
               (r'(super::)+cosmos::upgrade::v1beta1::', 'crate::types::cosmos_upgrade_v1beta1::'),
               (r'(super::)+cosmos::store::v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
-              (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
-              (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
-              (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
-              (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
               # Two-level paths
               (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
               (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
@@ -530,6 +585,12 @@ jobs:
               (r'(super::)+client::v2::', 'crate::types::ibc_core_client_v2::'),
               (r'(super::)+commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
               (r'(super::)+commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+              (r'(super::)+channel::v1::', 'crate::types::ibc_core_channel_v1::'),
+              (r'(super::)+channel::v2::', 'crate::types::ibc_core_channel_v2::'),
+              (r'(super::)+connection::v1::', 'crate::types::ibc_core_connection_v1::'),
+              (r'(super::)+controller::v1::', 'crate::types::ibc_applications_interchain_accounts_controller_v1::'),
+              (r'(super::)+host::v1::', 'crate::types::ibc_applications_interchain_accounts_host_v1::'),
+              (r'(super::)+v1::', 'crate::types::ibc_applications_interchain_accounts_v1::'),
               (r'(super::)+v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
           ]
           
@@ -574,6 +635,24 @@ jobs:
                   content
               )
               
+              # Fix super::types:: in tendermint files (should be tendermint_types)
+              if 'tendermint' in rs_file.stem:
+                  content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
+              
+              # Fix context-dependent paths like super::super::v1:: in IBC files
+              # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1
+              if 'ibc.applications.interchain_accounts' in rs_file.stem:
+                  # Extract parent module from filename
+                  parts = rs_file.stem.split('.')
+                  if 'controller' in parts or 'host' in parts:
+                      # super::super::v1:: means go up to interchain_accounts.v1
+                      parent_mod = '_'.join(parts[:-2])  # Remove controller.v1 or host.v1
+                      content = re.sub(
+                          r'super::super::v1::',
+                          f'crate::types::{parent_mod}_v1::',
+                          content
+                      )
+              
               # Fix already-converted paths that reference nested modules (e.g., crate::types::query::v1beta1::)
               def fix_nested_path(match):
                   path_parts = match.group(1).split('::')
@@ -603,6 +682,21 @@ jobs:
               # Fix Validators duplicate
               if rs_file.name == 'cosmos.staking.v1beta1.rs':
                   content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
+              
+              # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
+              # Check if struct contains Option<Duration> or Option<Timestamp>
+              if 'Option<::prost_types::Duration>' in content or 'Option<::prost_types::Timestamp>' in content:
+                  # Remove Copy from derive attributes that include prost::Message
+                  content = re.sub(
+                      r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*::prost::Message\)\]',
+                      '#[derive(Clone, PartialEq, ::prost::Message)]',
+                      content
+                  )
+                  content = re.sub(
+                      r'#\[derive\(Clone,\s*Copy,\s*::prost::Message\)\]',
+                      '#[derive(Clone, ::prost::Message)]',
+                      content
+                  )
               
               if content != original:
                   rs_file.write_text(content)
