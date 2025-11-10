@@ -540,6 +540,13 @@ jobs:
           path: rust/target/package/*.crate
           retention-days: 30
 
+      - name: Upload Rust Source Directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: rust-source
+          path: rust
+          retention-days: 30
+
   rust-test:
     name: Test Rust ${{ matrix.rust-version }}
     needs: [rust-build]
@@ -980,15 +987,43 @@ jobs:
           echo "✅ Build check passed for Rust ${{ matrix.rust-version }}"
 
   # Placeholder for publishing to crates.io
-  # rust-publish:
-  #   name: Publish to crates.io
-  #   needs: [rust-test]
-  #   runs-on: ubuntu-latest
-  #   steps:
+  rust-publish:
+    name: Publish to crates.io
+    needs: [rust-build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Rust Source Directory
+        uses: actions/download-artifact@v4
+        with:
+          name: rust-source
+          path: rust
+  
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+          cache: false
+  
+      - name: Update Version
+        working-directory: ./rust
+        env:
+          VERSION: ${{ needs.rust-build.outputs.version }}
+        run: |
+          sed -i "s/^version = .*/version = \"$VERSION\"/" Cargo.toml
+  
+      - name: Dry Run Publish
+        working-directory: ./rust
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          cargo publish --dry-run --allow-dirty
+          echo "✅ Dry run successful"
+  #
   #     - name: Publish Crate
   #       working-directory: ./rust
   #       env:
   #         CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
   #       run: |
   #         cargo publish --allow-dirty
+  #         echo "✅ Crate published successfully"
 
