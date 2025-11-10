@@ -435,25 +435,42 @@ jobs:
                           if in_protobuf_block:
                               result.append(re.sub(r'(///)(\s+)', r'\1 #\2', line))
                           else:
-                              # Check if this line or nearby lines contain protobuf syntax
-                              check_lines = [line]
-                              for j in range(i + 1, min(i + 20, len(lines))):
-                                  if not re.match(r'\s*///', lines[j]):
-                                      break
-                                  check_lines.append(lines[j])
+                              # Check current line first for quick detection
+                              protobuf_syntax = (
+                                  re.search(r'///.*\bservice\s+\w+\s*\{', line) or
+                                  re.search(r'///.*\brpc\s+\w+\(', line) or
+                                  re.search(r'///.*\bmessage\s+\w+\s*\{', line) or
+                                  re.search(r'///.*http:', line) or
+                                  re.search(r'///.*\\\[.*\\\]', line) or
+                                  re.search(r'///.*Template\s*=\s*"/"', line) or
+                                  re.search(r'///.*Variable\s*=\s*"\{', line) or
+                                  re.search(r'///.*rules:', line) or
+                                  re.search(r'///.*selector:', line)
+                              )
                               
-                              block_text = '\n'.join(check_lines)
-                              if re.search(r'\bservice\s+\w+\s*\{', block_text) or \
-                                 re.search(r'\brpc\s+\w+\(', block_text) or \
-                                 re.search(r'\bmessage\s+\w+\s*\{', block_text) or \
-                                 re.search(r'^\s*http:', block_text, re.MULTILINE) or \
-                                 re.search(r'\\\[.*\\\]', block_text) or \
-                                 re.search(r'Template\s*=\s*"/"', block_text) or \
-                                 re.search(r'Variable\s*=\s*"\{', block_text):
-                                  protobuf_syntax = True
-                                  in_protobuf_block = True
+                              # If not found in current line, check nearby lines
+                              if not protobuf_syntax:
+                                  check_lines = [line]
+                                  for j in range(i + 1, min(i + 20, len(lines))):
+                                      if not re.match(r'\s*///', lines[j]):
+                                          break
+                                      check_lines.append(lines[j])
+                                  
+                                  block_text = '\n'.join(check_lines)
+                                  protobuf_syntax = (
+                                      re.search(r'///.*\bservice\s+\w+\s*\{', block_text) or
+                                      re.search(r'///.*\brpc\s+\w+\(', block_text) or
+                                      re.search(r'///.*\bmessage\s+\w+\s*\{', block_text) or
+                                      re.search(r'///.*http:', block_text) or
+                                      re.search(r'///.*\\\[.*\\\]', block_text) or
+                                      re.search(r'///.*Template\s*=\s*"/"', block_text) or
+                                      re.search(r'///.*Variable\s*=\s*"\{', block_text) or
+                                      re.search(r'///.*rules:', block_text) or
+                                      re.search(r'///.*selector:', block_text)
+                                  )
                               
                               if protobuf_syntax:
+                                  in_protobuf_block = True
                                   # Add `# ` prefix after /// to make it a comment (hidden from doctests)
                                   # Change `///      code` to `/// #      code` to prevent doctest extraction
                                   result.append(re.sub(r'(///)(\s+)', r'\1 #\2', line))
@@ -865,25 +882,42 @@ jobs:
                           if in_protobuf_block:
                               result.append(re.sub(r'(///)(\s+)', r'\1 #\2', line))
                           else:
-                              # Check if this line or nearby lines contain protobuf syntax
-                              check_lines = [line]
-                              for j in range(i + 1, min(i + 20, len(lines))):
-                                  if not re.match(r'\s*///', lines[j]):
-                                      break
-                                  check_lines.append(lines[j])
+                              # Check current line first for quick detection
+                              protobuf_syntax = (
+                                  re.search(r'///.*\bservice\s+\w+\s*\{', line) or
+                                  re.search(r'///.*\brpc\s+\w+\(', line) or
+                                  re.search(r'///.*\bmessage\s+\w+\s*\{', line) or
+                                  re.search(r'///.*http:', line) or
+                                  re.search(r'///.*\\\[.*\\\]', line) or
+                                  re.search(r'///.*Template\s*=\s*"/"', line) or
+                                  re.search(r'///.*Variable\s*=\s*"\{', line) or
+                                  re.search(r'///.*rules:', line) or
+                                  re.search(r'///.*selector:', line)
+                              )
                               
-                              block_text = '\n'.join(check_lines)
-                              if re.search(r'\bservice\s+\w+\s*\{', block_text) or \
-                                 re.search(r'\brpc\s+\w+\(', block_text) or \
-                                 re.search(r'\bmessage\s+\w+\s*\{', block_text) or \
-                                 re.search(r'^\s*http:', block_text, re.MULTILINE) or \
-                                 re.search(r'\\\[.*\\\]', block_text) or \
-                                 re.search(r'Template\s*=\s*"/"', block_text) or \
-                                 re.search(r'Variable\s*=\s*"\{', block_text):
-                                  protobuf_syntax = True
-                                  in_protobuf_block = True
+                              # If not found in current line, check nearby lines
+                              if not protobuf_syntax:
+                                  check_lines = [line]
+                                  for j in range(i + 1, min(i + 20, len(lines))):
+                                      if not re.match(r'\s*///', lines[j]):
+                                          break
+                                      check_lines.append(lines[j])
+                                  
+                                  block_text = '\n'.join(check_lines)
+                                  protobuf_syntax = (
+                                      re.search(r'///.*\bservice\s+\w+\s*\{', block_text) or
+                                      re.search(r'///.*\brpc\s+\w+\(', block_text) or
+                                      re.search(r'///.*\bmessage\s+\w+\s*\{', block_text) or
+                                      re.search(r'///.*http:', block_text) or
+                                      re.search(r'///.*\\\[.*\\\]', block_text) or
+                                      re.search(r'///.*Template\s*=\s*"/"', block_text) or
+                                      re.search(r'///.*Variable\s*=\s*"\{', block_text) or
+                                      re.search(r'///.*rules:', block_text) or
+                                      re.search(r'///.*selector:', block_text)
+                                  )
                               
                               if protobuf_syntax:
+                                  in_protobuf_block = True
                                   # Add `# ` prefix after /// to make it a comment (hidden from doctests)
                                   # Change `///      code` to `/// #      code` to prevent doctest extraction
                                   result.append(re.sub(r'(///)(\s+)', r'\1 #\2', line))
