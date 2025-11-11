@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - fsfsdf #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -116,9 +116,8 @@ jobs:
           mkdir -p swift/Sources/XionTypes
           mkdir -p swift/Tests/XionTypesTests
           
-          # Create Package.swift if it doesn't exist
-          if [ ! -f "swift/Package.swift" ]; then
-            cat > swift/Package.swift << 'PACKAGE'
+          # Always recreate Package.swift from scratch to avoid stale state
+          cat > swift/Package.swift << 'PACKAGE'
           // swift-tools-version:5.9
           import PackageDescription
 
@@ -155,10 +154,7 @@ jobs:
               ]
           )
           PACKAGE
-            echo "✅ Created swift/Package.swift"
-          else
-            echo "✅ swift/Package.swift already exists"
-          fi
+          echo "✅ Created swift/Package.swift"
           
           # Create minimal test file if it doesn't exist
           if [ ! -f "swift/Tests/XionTypesTests/XionTypesTests.swift" ]; then
@@ -226,6 +222,16 @@ jobs:
           sed -i '' "s/static let version = .*/static let version = \"$VERSION\"/" Sources/XionTypes/Version.swift 2>/dev/null || sed -i "s/static let version = .*/static let version = \"$VERSION\"/" Sources/XionTypes/Version.swift
           echo "✅ Updated version to $VERSION"
 
+      - name: Finalize Package.swift
+        working-directory: ./swift
+        run: |
+          # Verify Package.swift is correct and won't be modified
+          if ! grep -q "name: \"XionTypes\"" Package.swift; then
+            echo "❌ Package.swift validation failed"
+            exit 1
+          fi
+          echo "✅ Package.swift finalized"
+
       - name: Clean Build Directory
         working-directory: ./swift
         run: |
@@ -234,6 +240,8 @@ jobs:
           rm -rf .build
           rm -rf .swiftpm
           rm -rf .swiftpm-build
+          # Also clean derived data if it exists
+          rm -rf ~/Library/Developer/Xcode/DerivedData/* 2>/dev/null || true
           echo "✅ Cleaned build directory"
 
       - name: Verify Package Structure
@@ -261,6 +269,12 @@ jobs:
           fi
           echo "✅ Package structure verified"
 
+      - name: Describe Package
+        working-directory: ./swift
+        run: |
+          swift package describe --type json > /dev/null 2>&1 || swift package dump-package > package-info.json
+          echo "✅ Package structure validated"
+
       - name: Resolve Dependencies
         working-directory: ./swift
         run: |
@@ -272,8 +286,9 @@ jobs:
         env:
           SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          # Build with explicit single-threaded execution
-          swift build -c debug
+          # Explicitly specify the target to avoid "multiple producers" error
+          # This tells Swift Package Manager exactly which target to build
+          swift build -c debug --target XionTypes --build-path .build
           echo "✅ Swift package built successfully"
 
       - name: Upload Package
