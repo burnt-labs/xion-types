@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - sdfsdf #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -200,6 +200,14 @@ jobs:
             find swift/Sources/XionTypes -name "*.swift" -type f -exec basename {} \; | sort | uniq -d
           fi
           
+          # Ensure types directory is not accessible to Swift Package Manager
+          if [ -d "swift/types" ]; then
+            echo "Note: swift/types directory exists (used for copying only)"
+          fi
+          
+          # Remove any symlinks that might cause issues
+          find swift/Sources/XionTypes -type l -delete 2>/dev/null || true
+          
           # Create version file
           cat > swift/Sources/XionTypes/Version.swift << 'VERSION'
           // Generated version file
@@ -221,15 +229,24 @@ jobs:
         working-directory: ./swift
         run: |
           swift package clean
+          swift package reset 2>/dev/null || true
           rm -rf .build
+          rm -rf .swiftpm
+          rm -rf .swiftpm-build
           echo "✅ Cleaned build directory"
+
+      - name: Resolve Dependencies
+        working-directory: ./swift
+        run: |
+          swift package resolve
+          echo "✅ Resolved dependencies"
 
       - name: Build Swift Package
         working-directory: ./swift
         env:
           SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift build -j 1
+          swift build -c debug -j 1 --build-path .build
           echo "✅ Swift package built successfully"
 
       - name: Upload Package
@@ -305,8 +322,17 @@ jobs:
         working-directory: ./swift
         run: |
           swift package clean
+          swift package reset 2>/dev/null || true
           rm -rf .build
+          rm -rf .swiftpm
+          rm -rf .swiftpm-build
           echo "✅ Cleaned build directory"
+
+      - name: Resolve Dependencies
+        working-directory: ./swift
+        run: |
+          swift package resolve
+          echo "✅ Resolved dependencies"
 
       - name: Test Swift Package
         working-directory: ./swift
@@ -314,7 +340,7 @@ jobs:
           VERSION: ${{ needs.swift-build.outputs.version }}
           SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift test -j 1
+          swift test -c debug -j 1 --build-path .build
           echo "✅ Swift package tests passed"
 
   # ============================================
