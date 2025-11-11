@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - sdgfsg #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -304,15 +304,15 @@ jobs:
               lines.append(f'        .target(')
               lines.append(f'            name: "{target["name"]}",')
               lines.append("            dependencies: [")
-              lines.append('                .product(name: "SwiftProtobuf", package: "swift-protobuf")')
               
               target_top_dir = target.get("top_dir", "unknown")
               target_name = target["name"]
               
+              # Collect all additional dependencies first to determine if we need a comma
+              additional_deps = []
+              
               # Add dependencies on previous parts from same directory (to avoid circular deps)
-              # Extract part number if it's a split target
               if "Part" in target_name:
-                  # This is a split target - depend on previous parts
                   match = re.search(r'Part(\d+)', target_name)
                   if match:
                       part_num = int(match.group(1))
@@ -320,21 +320,30 @@ jobs:
                           if other_target.get("top_dir") == target_top_dir and other_target["name"] != target_name:
                               other_match = re.search(r'Part(\d+)', other_target["name"])
                               if other_match and int(other_match.group(1)) < part_num:
-                                  lines.append(f'                "{other_target["name"]}",')
+                                  additional_deps.append(f'                "{other_target["name"]}",')
               
               # All targets depend on base cosmos/google targets (most common dependencies)
               if target_top_dir != "cosmos":
                   for cosmos_target in cosmos_targets:
-                      lines.append(f'                "{cosmos_target}",')
+                      additional_deps.append(f'                "{cosmos_target}",')
               if target_top_dir != "google":
                   for google_target in google_targets:
-                      lines.append(f'                "{google_target}",')
+                      additional_deps.append(f'                "{google_target}",')
               if target_top_dir not in ["cosmos_proto", "cosmos"]:
                   for cosmos_proto_target in cosmos_proto_targets:
-                      lines.append(f'                "{cosmos_proto_target}",')
+                      additional_deps.append(f'                "{cosmos_proto_target}",')
               if target_top_dir != "gogoproto":
                   for gogoproto_target in gogoproto_targets:
-                      lines.append(f'                "{gogoproto_target}",')
+                      additional_deps.append(f'                "{gogoproto_target}",')
+              
+              # Add SwiftProtobuf dependency with comma if there are additional deps
+              if additional_deps:
+                  lines.append('                .product(name: "SwiftProtobuf", package: "swift-protobuf"),')
+              else:
+                  lines.append('                .product(name: "SwiftProtobuf", package: "swift-protobuf")')
+              
+              # Add all additional dependencies
+              lines.extend(additional_deps)
               
               lines.append("            ],")
               lines.append(f'            path: "{target["path"]}"),')
