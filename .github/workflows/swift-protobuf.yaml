@@ -291,14 +291,15 @@ jobs:
           lines.append("    ],")
           lines.append("    targets: [")
           
-          # Add all sub-targets with proper dependency ordering
+          # Add all sub-targets with proper dependency ordering (avoiding cycles)
           all_target_names = [t["name"] for t in targets]
           
           # Identify base targets that others commonly need
-          cosmos_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos"]
+          # Order matters: google and gogoproto are most basic, then cosmos_proto, then cosmos
           google_targets = [t["name"] for t in targets if t.get("top_dir") == "google"]
-          cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos_proto"]
           gogoproto_targets = [t["name"] for t in targets if t.get("top_dir") == "gogoproto"]
+          cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos_proto"]
+          cosmos_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos"]
           
           for target in targets:
               lines.append(f'        .target(')
@@ -322,19 +323,37 @@ jobs:
                               if other_match and int(other_match.group(1)) < part_num:
                                   additional_deps.append(f'                "{other_target["name"]}",')
               
-              # All targets depend on base cosmos/google targets (most common dependencies)
-              if target_top_dir != "cosmos":
-                  for cosmos_target in cosmos_targets:
-                      additional_deps.append(f'                "{cosmos_target}",')
-              if target_top_dir != "google":
+              # Add base dependencies in order (avoid cycles):
+              # 1. google and gogoproto are base (no dependencies on each other)
+              # 2. cosmos_proto depends on google/gogoproto
+              # 3. cosmos depends on cosmos_proto, google, gogoproto
+              # 4. Everything else depends on cosmos, google, cosmos_proto, gogoproto
+              
+              if target_top_dir == "cosmos_proto":
+                  # cosmos_proto depends on google and gogoproto
                   for google_target in google_targets:
                       additional_deps.append(f'                "{google_target}",')
-              if target_top_dir not in ["cosmos_proto", "cosmos"]:
-                  for cosmos_proto_target in cosmos_proto_targets:
-                      additional_deps.append(f'                "{cosmos_proto_target}",')
-              if target_top_dir != "gogoproto":
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
+              elif target_top_dir == "cosmos":
+                  # cosmos depends on cosmos_proto, google, gogoproto
+                  for cosmos_proto_target in cosmos_proto_targets:
+                      additional_deps.append(f'                "{cosmos_proto_target}",')
+                  for google_target in google_targets:
+                      additional_deps.append(f'                "{google_target}",')
+                  for gogoproto_target in gogoproto_targets:
+                      additional_deps.append(f'                "{gogoproto_target}",')
+              elif target_top_dir not in ["google", "gogoproto"]:
+                  # Everything else depends on cosmos, google, cosmos_proto, gogoproto
+                  for cosmos_target in cosmos_targets:
+                      additional_deps.append(f'                "{cosmos_target}",')
+                  for cosmos_proto_target in cosmos_proto_targets:
+                      additional_deps.append(f'                "{cosmos_proto_target}",')
+                  for google_target in google_targets:
+                      additional_deps.append(f'                "{google_target}",')
+                  for gogoproto_target in gogoproto_targets:
+                      additional_deps.append(f'                "{gogoproto_target}",')
+              # google and gogoproto have no dependencies on other targets
               
               # Add SwiftProtobuf dependency with comma if there are additional deps
               if additional_deps:

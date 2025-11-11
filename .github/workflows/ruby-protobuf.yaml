@@ -375,10 +375,13 @@ jobs:
           GEM_LIB_DIR=$(find "$USER_GEM_DIR/gems" -name "xion_types-*" -type d | head -1)
           if [ -n "$GEM_LIB_DIR" ]; then
             GEM_LIB_PATH="$GEM_LIB_DIR/lib"
+            GEM_XION_TYPES_PATH="$GEM_LIB_PATH/xion_types"
             echo "Found gem lib directory: $GEM_LIB_PATH"
+            echo "Found gem xion_types directory: $GEM_XION_TYPES_PATH"
             
-            # Add gem lib directory to RUBYLIB for direct loading
-            export RUBYLIB="$GEM_LIB_PATH:${RUBYLIB:-}"
+            # Add both lib and lib/xion_types to RUBYLIB
+            # lib is needed for 'require xion_types', lib/xion_types is needed for 'require cosmos_proto/cosmos_pb'
+            export RUBYLIB="$GEM_XION_TYPES_PATH:$GEM_LIB_PATH:${RUBYLIB:-}"
           fi
           
           # Add user gem directory to GEM_PATH so RubyGems can find user-installed gems
@@ -388,20 +391,22 @@ jobs:
           if [ -d "$GEM_LIB_DIR" ]; then
             echo "✅ Gem installed at: $GEM_LIB_DIR"
             ls -la "$GEM_LIB_DIR/lib" | head -5
+            echo "Checking xion_types subdirectory:"
+            ls -la "$GEM_XION_TYPES_PATH" | head -5 || echo "⚠️ xion_types directory not found"
           else
             echo "⚠️ Could not find installed gem directory"
           fi
           
-          # Test basic import - try direct path first, then via RubyGems
-          if [ -n "$GEM_LIB_PATH" ]; then
-            ruby -I"$GEM_LIB_PATH" -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
+          # Test basic import - add both paths to load path
+          if [ -n "$GEM_LIB_PATH" ] && [ -n "$GEM_XION_TYPES_PATH" ]; then
+            ruby -I"$GEM_XION_TYPES_PATH" -I"$GEM_LIB_PATH" -e "require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
           else
             ruby -rrubygems -e "Gem.paths.path.unshift('$USER_GEM_DIR'); require 'xion_types'; puts '✅ XionTypes module loaded successfully'"
           fi
           
           # Try to load a specific protobuf type if available
-          if [ -n "$GEM_LIB_PATH" ]; then
-            ruby -I"$GEM_LIB_PATH" -e "require 'xion_types'; puts '✅ Import successful'" || echo "⚠️ Some types may not be loadable"
+          if [ -n "$GEM_LIB_PATH" ] && [ -n "$GEM_XION_TYPES_PATH" ]; then
+            ruby -I"$GEM_XION_TYPES_PATH" -I"$GEM_LIB_PATH" -e "require 'xion_types'; puts '✅ Import successful'" || echo "⚠️ Some types may not be loadable"
           else
             ruby -rrubygems -e "Gem.paths.path.unshift('$USER_GEM_DIR'); require 'xion_types'; puts '✅ Import successful'" || echo "⚠️ Some types may not be loadable"
           fi
