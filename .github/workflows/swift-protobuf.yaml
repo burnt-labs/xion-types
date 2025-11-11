@@ -117,7 +117,7 @@ jobs:
           mkdir -p swift/Tests/XionTypesTests
           
           # Always recreate Package.swift from scratch to avoid stale state
-          cat > swift/Package.swift << 'PACKAGE'
+            cat > swift/Package.swift << 'PACKAGE'
           // swift-tools-version:5.9
           import PackageDescription
 
@@ -154,7 +154,7 @@ jobs:
               ]
           )
           PACKAGE
-          echo "✅ Created swift/Package.swift"
+            echo "✅ Created swift/Package.swift"
           
           # Create minimal test file if it doesn't exist
           if [ ! -f "swift/Tests/XionTypesTests/XionTypesTests.swift" ]; then
@@ -172,38 +172,133 @@ jobs:
             echo "✅ Created swift/Tests/XionTypesTests/XionTypesTests.swift"
           fi
           
-          # Copy generated types to Sources/XionTypes
-          echo "Copying generated Swift types..."
-          # Clear destination first to avoid duplicates
-          rm -rf swift/Sources/XionTypes/*
-          # Copy all files and subdirectories preserving structure
-          if [ -d "swift/types" ] && [ "$(ls -A swift/types)" ]; then
-            # Use rsync for more reliable copying, or fallback to cp
-            if command -v rsync &> /dev/null; then
-              rsync -a --delete swift/types/ swift/Sources/XionTypes/
-            else
-              cp -r swift/types/* swift/Sources/XionTypes/
-            fi
-          fi
+          # Split large source set into multiple targets to avoid "multiple producers" error
+          # This is a workaround for Swift Package Manager bug with 200+ source files
+          echo "Organizing Swift files into multiple targets..."
           
-          # Verify no duplicate .swift files
-          echo "Verifying source files..."
-          duplicate_count=$(find swift/Sources/XionTypes -name "*.swift" -type f | wc -l | tr -d ' ')
-          unique_count=$(find swift/Sources/XionTypes -name "*.swift" -type f -exec basename {} \; | sort -u | wc -l | tr -d ' ')
-          echo "Found $duplicate_count .swift files, $unique_count unique filenames"
-          if [ "$duplicate_count" -gt "$unique_count" ]; then
-            echo "⚠️ Warning: Potential duplicate files detected"
-            find swift/Sources/XionTypes -name "*.swift" -type f -exec basename {} \; | sort | uniq -d
-          fi
+          # Create a Python script file to generate Package.swift with multiple targets
+          cat > /tmp/generate_package.py << 'PYEOF'
+          import os
+          import shutil
+          from pathlib import Path
           
-          # Remove any symlinks that might cause issues
-          find swift/Sources/XionTypes -type l -delete 2>/dev/null || true
+          types_dir = Path("swift/types")
+          sources_base = Path("swift/Sources")
+          
+          if not types_dir.exists():
+              print("❌ swift/types directory not found")
+              exit(1)
+          
+          # Get all top-level directories (these will become separate targets)
+          top_level_dirs = [d for d in types_dir.iterdir() if d.is_dir()]
+          top_level_dirs.sort()
+          
+          # Create target structure
+          targets = []
+          
+          for top_dir in top_level_dirs:
+              # Create target name (capitalize first letter, handle underscores)
+              target_name = "XionTypes" + top_dir.name.capitalize().replace("_", "")
+              target_path = sources_base / target_name
+              target_path.mkdir(parents=True, exist_ok=True)
+              
+              # Copy files for this target
+              if (types_dir / top_dir.name).exists():
+                  dest = target_path / top_dir.name
+                  if dest.exists():
+                      shutil.rmtree(dest)
+                  shutil.copytree(types_dir / top_dir.name, dest)
+              
+              # Count files in this target
+              swift_files = list(target_path.rglob("*.swift"))
+              file_count = len(swift_files)
+              
+              targets.append({
+                  "name": target_name,
+                  "path": f"Sources/{target_name}",
+                  "file_count": file_count
+              })
+              
+              print(f"Created target {target_name} with {file_count} Swift files")
+          
+          # Generate Package.swift content
+          lines = []
+          lines.append("// swift-tools-version:5.9")
+          lines.append("import PackageDescription")
+          lines.append("")
+          lines.append("let package = Package(")
+          lines.append('    name: "XionTypes",')
+          lines.append("    platforms: [")
+          lines.append("        .iOS(.v13),")
+          lines.append("        .macOS(.v10_15),")
+          lines.append("        .watchOS(.v6),")
+          lines.append("        .tvOS(.v13)")
+          lines.append("    ],")
+          lines.append("    products: [")
+          lines.append('        .library(')
+          lines.append('            name: "XionTypes",')
+          lines.append('            targets: ["XionTypes"])')
+          lines.append("    ],")
+          lines.append("    dependencies: [")
+          lines.append('        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.25.0")')
+          lines.append("    ],")
+          lines.append("    targets: [")
+          
+          # Add all sub-targets
+          for target in targets:
+              lines.append(f'        .target(')
+              lines.append(f'            name: "{target["name"]}",')
+              lines.append("            dependencies: [")
+              lines.append('                .product(name: "SwiftProtobuf", package: "swift-protobuf")')
+              lines.append("            ],")
+              lines.append(f'            path: "{target["path"]}"),')
+          
+          # Add main XionTypes target that depends on all sub-targets
+          all_target_names = [t["name"] for t in targets]
+          lines.append('        .target(')
+          lines.append('            name: "XionTypes",')
+          lines.append("            dependencies: [")
+          lines.append('                .product(name: "SwiftProtobuf", package: "swift-protobuf"),')
+          for name in all_target_names:
+              lines.append(f'                "{name}",')
+          lines.append("            ],")
+          lines.append('            path: "Sources/XionTypes"),')
+          lines.append('        .testTarget(')
+          lines.append('            name: "XionTypesTests",')
+          lines.append('            dependencies: ["XionTypes"],')
+          lines.append('            path: "Tests/XionTypesTests")')
+          lines.append("    ]")
+          lines.append(")")
+          
+          # Write Package.swift
+          with open("swift/Package.swift", "w") as f:
+              f.write("\n".join(lines))
+          
+          print(f"✅ Generated Package.swift with {len(targets)} sub-targets")
+          print(f"Total targets: {len(targets) + 1} (including main XionTypes target)")
+          PYEOF
+          
+          # Execute the Python script
+          python3 /tmp/generate_package.py
+          
+          # Create main XionTypes target directory (empty, just for re-exports if needed)
+          mkdir -p swift/Sources/XionTypes
+          # Create a simple re-export file if needed
+          cat > swift/Sources/XionTypes/XionTypes.swift << 'REEXPORT'
+          // Main XionTypes module - re-exports all sub-modules
+          // This file can be used for any module-level declarations
+          REEXPORT
           
           # Move types directory outside swift package to prevent SPM from scanning it
           if [ -d "swift/types" ]; then
             echo "Moving types directory outside package structure..."
             mv swift/types swift-types-temp || true
           fi
+          
+          # Verify the structure
+          echo "Verifying package structure..."
+          total_files=$(find swift/Sources -name "*.swift" -type f | wc -l | tr -d ' ')
+          echo "Total Swift files organized: $total_files"
           
           # Create version file
           cat > swift/Sources/XionTypes/Version.swift << 'VERSION'
