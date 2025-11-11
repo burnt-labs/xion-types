@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - dfgdfg #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -368,7 +368,7 @@ jobs:
           gem install *.gem --user-install --no-document
           
           # Get the user gem directory for this Ruby version
-          USER_GEM_DIR=$(gem env user_gemhome)
+          USER_GEM_DIR=$(gem env user_gemdir)
           echo "User gem directory: $USER_GEM_DIR"
           
           # Verify gem is installed
