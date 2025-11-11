@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      -  dsfdsf #feat/protobufs
+      -  feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -988,7 +988,7 @@ jobs:
 
   rust-publish:
     name: Publish to crates.io
-    needs: [rust-test]
+    needs: [rust-test, rust-build]
     runs-on: ubuntu-latest
     steps:
       - name: Download Rust Source Directory
@@ -1008,7 +1008,13 @@ jobs:
         env:
           VERSION: ${{ needs.rust-build.outputs.version }}
         run: |
+          if [ -z "$VERSION" ]; then
+            echo "❌ Error: VERSION is empty. Cannot publish without a version."
+            exit 1
+          fi
+          echo "Setting version to: $VERSION"
           sed -i "s/^version = .*/version = \"$VERSION\"/" Cargo.toml
+          echo "✅ Updated Cargo.toml with version $VERSION"
   
     #   - name: Dry Run Publish
     #     working-directory: ./rust
