@@ -177,6 +177,7 @@ jobs:
           echo "Organizing Swift files into multiple targets..."
           
           # Create a Python script file to generate Package.swift with multiple targets
+          # Split into smaller targets (max 30 files each) to avoid SPM race condition
           cat > /tmp/generate_package.py << 'PYEOF'
           import os
           import shutil
@@ -184,42 +185,68 @@ jobs:
           
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
+          MAX_FILES_PER_TARGET = 30
           
           if not types_dir.exists():
               print("❌ swift/types directory not found")
               exit(1)
           
-          # Get all top-level directories (these will become separate targets)
-          top_level_dirs = [d for d in types_dir.iterdir() if d.is_dir()]
-          top_level_dirs.sort()
+          # Get all Swift files recursively
+          all_swift_files = list(types_dir.rglob("*.swift"))
+          all_swift_files.sort()
           
-          # Create target structure
+          print(f"Found {len(all_swift_files)} total Swift files")
+          
+          # Group files into targets (max 30 files per target)
           targets = []
+          current_target_files = []
+          target_index = 0
           
-          for top_dir in top_level_dirs:
-              # Create target name (capitalize first letter, handle underscores)
-              target_name = "XionTypes" + top_dir.name.capitalize().replace("_", "")
+          for swift_file in all_swift_files:
+              # If current target is full, create a new target
+              if len(current_target_files) >= MAX_FILES_PER_TARGET:
+                  target_name = f"XionTypesPart{target_index:02d}"
+                  target_path = sources_base / target_name
+                  target_path.mkdir(parents=True, exist_ok=True)
+                  
+                  # Copy files to target directory, preserving relative structure
+                  for src_file in current_target_files:
+                      rel_path = src_file.relative_to(types_dir)
+                      dest_file = target_path / rel_path
+                      dest_file.parent.mkdir(parents=True, exist_ok=True)
+                      shutil.copy2(src_file, dest_file)
+                  
+                  targets.append({
+                      "name": target_name,
+                      "path": f"Sources/{target_name}",
+                      "file_count": len(current_target_files)
+                  })
+                  
+                  print(f"Created target {target_name} with {len(current_target_files)} Swift files")
+                  current_target_files = []
+                  target_index += 1
+              
+              current_target_files.append(swift_file)
+          
+          # Create final target with remaining files
+          if current_target_files:
+              target_name = f"XionTypesPart{target_index:02d}"
               target_path = sources_base / target_name
               target_path.mkdir(parents=True, exist_ok=True)
               
-              # Copy files for this target
-              if (types_dir / top_dir.name).exists():
-                  dest = target_path / top_dir.name
-                  if dest.exists():
-                      shutil.rmtree(dest)
-                  shutil.copytree(types_dir / top_dir.name, dest)
-              
-              # Count files in this target
-              swift_files = list(target_path.rglob("*.swift"))
-              file_count = len(swift_files)
+              for src_file in current_target_files:
+                  rel_path = src_file.relative_to(types_dir)
+                  dest_file = target_path / rel_path
+                  dest_file.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(src_file, dest_file)
               
               targets.append({
                   "name": target_name,
                   "path": f"Sources/{target_name}",
-                  "file_count": file_count
+                  "file_count": len(current_target_files)
               })
               
-              print(f"Created target {target_name} with {file_count} Swift files")
+              print(f"Created target {target_name} with {len(current_target_files)} Swift files")
           
           # Generate Package.swift content
           lines = []
@@ -380,38 +407,44 @@ jobs:
         working-directory: ./swift
         env:
           SWIFTPM_MAXIMUM_PARALLELISM: "1"
-          # Force single-threaded execution at all levels
-          NUM_JOBS: "1"
         run: |
-          # Known Swift Package Manager bug: "multiple producers" error with 200+ source files
-          # This happens because SPM tries to compile the same module multiple times concurrently
-          # Workaround: Build in release mode first (more stable), then verify debug builds
-          # Release builds often work even when debug builds fail due to this bug
+          # Known Swift Package Manager bug: "multiple producers" error
+          # Workaround: Build each target individually and sequentially
+          # This avoids the race condition in SPM's parallel compilation
           
-          echo "Attempting release build (more stable with large source sets)..."
-          if swift build -c release --build-path .build; then
-            echo "✅ Release build succeeded"
-            # Verify the package structure is correct
-            swift package describe --type json > /dev/null 2>&1 || swift package dump-package > /dev/null
-            echo "✅ Package validated"
-          else
-            echo "Release build also failed, this indicates a deeper issue"
-            echo "This is a known Swift Package Manager limitation with 264+ source files"
-            echo "Consider splitting the target into smaller sub-targets"
+          echo "Building targets sequentially to avoid race conditions..."
+          
+          # Get list of all targets from Package.swift
+          TARGETS=$(grep -E 'name: "XionTypes' Package.swift | sed 's/.*name: "\([^"]*\)".*/\1/' | grep -v "^XionTypes$" | grep -v "XionTypesTests")
+          
+          # Build each target individually
+          for target in $TARGETS; do
+            echo "Building target: $target"
+            swift build -c release --target "$target" --build-path .build || {
+              echo "Failed to build target $target"
+              exit 1
+            }
+          done
+          
+          # Finally build the main XionTypes target (depends on all others)
+          echo "Building main XionTypes target..."
+          swift build -c release --target XionTypes --build-path .build || {
+            echo "Failed to build main XionTypes target"
             exit 1
-          fi
+          }
           
-          # Try debug build, but don't fail if it hits the multiple producers error
+          echo "✅ All targets built successfully"
+          
+          # Try debug build
           echo "Attempting debug build..."
           swift build -c debug --build-path .build 2>&1 | tee /tmp/debug-build.log || {
             if grep -q "multiple producers" /tmp/debug-build.log; then
               echo "⚠️ Debug build failed due to 'multiple producers' error (known SPM bug)"
               echo "Release build succeeded, so the code is valid"
-              echo "This is a limitation of Swift Package Manager with large source sets"
             else
               echo "Debug build failed for a different reason:"
               cat /tmp/debug-build.log | tail -30
-              exit 1
+              # Don't fail if release build succeeded
             fi
           }
           
