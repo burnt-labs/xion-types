@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      -  dsfdsf #feat/protobufs
+      -  feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -131,6 +131,7 @@ jobs:
           description = "Generated Rust types for Xion blockchain protocol buffers"
           license = "Apache-2.0"
           repository = "https://github.com/burnt-labs/xion-types"
+          readme = "README.md"
           
           [lib]
           name = "xion_types"
@@ -585,6 +586,7 @@ jobs:
           description = "Generated Rust types for Xion blockchain protocol buffers"
           license = "Apache-2.0"
           repository = "https://github.com/burnt-labs/xion-types"
+          readme = "README.md"
           
           [lib]
           name = "xion_types"
@@ -1030,5 +1032,5 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATESIO_ACCESS_TOKEN }}
         run: |
           cargo publish --allow-dirty
-          echo "✅ Crate published successfully [check: https://crates.io/dashboard/packages/xion-types]"
+          echo "✅ Crate published successfully [check: https://crates.io/crates/xion-types/versions]"
 
