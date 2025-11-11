@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - dfds #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -200,13 +200,14 @@ jobs:
             find swift/Sources/XionTypes -name "*.swift" -type f -exec basename {} \; | sort | uniq -d
           fi
           
-          # Ensure types directory is not accessible to Swift Package Manager
-          if [ -d "swift/types" ]; then
-            echo "Note: swift/types directory exists (used for copying only)"
-          fi
-          
           # Remove any symlinks that might cause issues
           find swift/Sources/XionTypes -type l -delete 2>/dev/null || true
+          
+          # Move types directory outside swift package to prevent SPM from scanning it
+          if [ -d "swift/types" ]; then
+            echo "Moving types directory outside package structure..."
+            mv swift/types swift-types-temp || true
+          fi
           
           # Create version file
           cat > swift/Sources/XionTypes/Version.swift << 'VERSION'
@@ -235,6 +236,31 @@ jobs:
           rm -rf .swiftpm-build
           echo "✅ Cleaned build directory"
 
+      - name: Verify Package Structure
+        working-directory: ./swift
+        run: |
+          echo "Verifying package structure..."
+          if [ ! -f "Package.swift" ]; then
+            echo "❌ Package.swift not found"
+            exit 1
+          fi
+          if [ ! -d "Sources/XionTypes" ]; then
+            echo "❌ Sources/XionTypes directory not found"
+            exit 1
+          fi
+          source_count=$(find Sources/XionTypes -name "*.swift" -type f | wc -l | tr -d ' ')
+          echo "Found $source_count Swift source files"
+          if [ "$source_count" -eq "0" ]; then
+            echo "❌ No source files found"
+            exit 1
+          fi
+          # Ensure types directory is not in swift package
+          if [ -d "types" ]; then
+            echo "⚠️ Warning: types directory still exists in package directory"
+            exit 1
+          fi
+          echo "✅ Package structure verified"
+
       - name: Resolve Dependencies
         working-directory: ./swift
         run: |
@@ -246,7 +272,8 @@ jobs:
         env:
           SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift build -c debug -j 1 --build-path .build
+          # Build with explicit single-threaded execution
+          swift build -c debug
           echo "✅ Swift package built successfully"
 
       - name: Upload Package
@@ -317,6 +344,15 @@ jobs:
           }
           TEST
           fi
+          
+          # Remove any symlinks that might cause issues
+          find swift/Sources/XionTypes -type l -delete 2>/dev/null || true
+          
+          # Move types directory outside swift package to prevent SPM from scanning it
+          if [ -d "swift/types" ]; then
+            echo "Moving types directory outside package structure..."
+            mv swift/types swift-types-temp || true
+          fi
 
       - name: Clean Build Directory
         working-directory: ./swift
@@ -340,7 +376,7 @@ jobs:
           VERSION: ${{ needs.swift-build.outputs.version }}
           SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift test -c debug -j 1 --build-path .build
+          swift test -c debug
           echo "✅ Swift package tests passed"
 
   # ============================================
