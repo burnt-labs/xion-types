@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - sdfs #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -181,7 +181,9 @@ jobs:
           cat > /tmp/generate_package.py << 'PYEOF'
           import os
           import shutil
+          import re
           from pathlib import Path
+          from collections import defaultdict
           
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
@@ -192,73 +194,79 @@ jobs:
               print("❌ swift/types directory not found")
               exit(1)
           
-          # Get all Swift files recursively
-          all_swift_files = list(types_dir.rglob("*.swift"))
-          all_swift_files.sort()
+          # Group files by top-level directory first, then split large directories
+          # This keeps related files together to preserve import relationships
           
-          print(f"Found {len(all_swift_files)} total Swift files")
+          # Group files by top-level directory
+          files_by_topdir = defaultdict(list)
+          for swift_file in types_dir.rglob("*.swift"):
+              # Get top-level directory (first component of relative path)
+              rel_path = swift_file.relative_to(types_dir)
+              top_dir = rel_path.parts[0] if rel_path.parts else "root"
+              files_by_topdir[top_dir].append(swift_file)
           
-          # Group files into targets (max 10 files per target)
-          # Flatten structure within each target to avoid path-related SPM issues
+          print(f"Found {sum(len(files) for files in files_by_topdir.values())} total Swift files in {len(files_by_topdir)} top-level directories")
+          
+          # Create targets: one per top-level directory, split if too large
           targets = []
-          current_target_files = []
           target_index = 0
           
-          for swift_file in all_swift_files:
-              # If current target is full, create a new target
-              if len(current_target_files) >= MAX_FILES_PER_TARGET:
-                  target_name = f"XionTypesPart{target_index:02d}"
+          for top_dir, files in sorted(files_by_topdir.items()):
+              files.sort()
+              
+              # If directory has many files, split it into multiple targets
+              if len(files) <= MAX_FILES_PER_TARGET:
+                  # Single target for this directory
+                  target_name = f"XionTypes{top_dir.capitalize().replace('_', '')}"
                   target_path = sources_base / target_name
                   target_path.mkdir(parents=True, exist_ok=True)
                   
-                  # Copy files to target directory with flattened names to avoid conflicts
-                  file_index = 0
-                  for src_file in current_target_files:
-                      # Create unique filename to avoid conflicts
-                      # Use a combination of parent dirs and filename
+                  # Copy files preserving structure
+                  for src_file in files:
                       rel_path = src_file.relative_to(types_dir)
-                      # Replace path separators with underscores for flat structure
-                      flat_name = str(rel_path).replace("/", "_").replace("\\", "_")
-                      dest_file = target_path / flat_name
+                      dest_file = target_path / rel_path
+                      dest_file.parent.mkdir(parents=True, exist_ok=True)
                       shutil.copy2(src_file, dest_file)
-                      file_index += 1
-                  
-                  # Verify no duplicates
-                  swift_files_in_target = list(target_path.glob("*.swift"))
-                  if len(swift_files_in_target) != len(current_target_files):
-                      print(f"⚠️ Warning: File count mismatch in {target_name}")
                   
                   targets.append({
                       "name": target_name,
                       "path": f"Sources/{target_name}",
-                      "file_count": len(current_target_files)
+                      "file_count": len(files),
+                      "top_dir": top_dir
                   })
-                  
-                  print(f"Created target {target_name} with {len(current_target_files)} Swift files")
-                  current_target_files = []
-                  target_index += 1
-              
-              current_target_files.append(swift_file)
+                  print(f"Created target {target_name} with {len(files)} Swift files from {top_dir}/")
+              else:
+                  # Split large directory into multiple targets
+                  num_splits = (len(files) + MAX_FILES_PER_TARGET - 1) // MAX_FILES_PER_TARGET
+                  for split_idx in range(num_splits):
+                      start_idx = split_idx * MAX_FILES_PER_TARGET
+                      end_idx = min(start_idx + MAX_FILES_PER_TARGET, len(files))
+                      split_files = files[start_idx:end_idx]
+                      
+                      target_name = f"XionTypes{top_dir.capitalize().replace('_', '')}Part{split_idx:02d}"
+                      target_path = sources_base / target_name
+                      target_path.mkdir(parents=True, exist_ok=True)
+                      
+                      # Copy files preserving structure
+                      for src_file in split_files:
+                          rel_path = src_file.relative_to(types_dir)
+                          dest_file = target_path / rel_path
+                          dest_file.parent.mkdir(parents=True, exist_ok=True)
+                          shutil.copy2(src_file, dest_file)
+                      
+                      targets.append({
+                          "name": target_name,
+                          "path": f"Sources/{target_name}",
+                          "file_count": len(split_files),
+                          "top_dir": top_dir
+                      })
+                      print(f"Created target {target_name} with {len(split_files)} Swift files from {top_dir}/ (split {split_idx + 1}/{num_splits})")
           
-          # Create final target with remaining files
-          if current_target_files:
-              target_name = f"XionTypesPart{target_index:02d}"
-              target_path = sources_base / target_name
-              target_path.mkdir(parents=True, exist_ok=True)
-              
-              for src_file in current_target_files:
-                  rel_path = src_file.relative_to(types_dir)
-                  flat_name = str(rel_path).replace("/", "_").replace("\\", "_")
-                  dest_file = target_path / flat_name
-                  shutil.copy2(src_file, dest_file)
-              
-              targets.append({
-                  "name": target_name,
-                  "path": f"Sources/{target_name}",
-                  "file_count": len(current_target_files)
-              })
-              
-              print(f"Created target {target_name} with {len(current_target_files)} Swift files")
+          # Group targets by top_dir for dependency management
+          targets_by_topdir = defaultdict(list)
+          for target in targets:
+              top_dir = target.get("top_dir", "unknown")
+              targets_by_topdir[top_dir].append(target["name"])
           
           # Generate Package.swift content
           lines = []
@@ -283,17 +291,56 @@ jobs:
           lines.append("    ],")
           lines.append("    targets: [")
           
-          # Add all sub-targets
+          # Add all sub-targets with proper dependency ordering
+          all_target_names = [t["name"] for t in targets]
+          
+          # Identify base targets that others commonly need
+          cosmos_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos"]
+          google_targets = [t["name"] for t in targets if t.get("top_dir") == "google"]
+          cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos_proto"]
+          gogoproto_targets = [t["name"] for t in targets if t.get("top_dir") == "gogoproto"]
+          
           for target in targets:
               lines.append(f'        .target(')
               lines.append(f'            name: "{target["name"]}",')
               lines.append("            dependencies: [")
               lines.append('                .product(name: "SwiftProtobuf", package: "swift-protobuf")')
+              
+              target_top_dir = target.get("top_dir", "unknown")
+              target_name = target["name"]
+              
+              # Add dependencies on previous parts from same directory (to avoid circular deps)
+              # Extract part number if it's a split target
+              if "Part" in target_name:
+                  # This is a split target - depend on previous parts
+                  match = re.search(r'Part(\d+)', target_name)
+                  if match:
+                      part_num = int(match.group(1))
+                      for other_target in targets:
+                          if other_target.get("top_dir") == target_top_dir and other_target["name"] != target_name:
+                              other_match = re.search(r'Part(\d+)', other_target["name"])
+                              if other_match and int(other_match.group(1)) < part_num:
+                                  lines.append(f'                "{other_target["name"]}",')
+              
+              # All targets depend on base cosmos/google targets (most common dependencies)
+              if target_top_dir != "cosmos":
+                  for cosmos_target in cosmos_targets:
+                      lines.append(f'                "{cosmos_target}",')
+              if target_top_dir != "google":
+                  for google_target in google_targets:
+                      lines.append(f'                "{google_target}",')
+              if target_top_dir not in ["cosmos_proto", "cosmos"]:
+                  for cosmos_proto_target in cosmos_proto_targets:
+                      lines.append(f'                "{cosmos_proto_target}",')
+              if target_top_dir != "gogoproto":
+                  for gogoproto_target in gogoproto_targets:
+                      lines.append(f'                "{gogoproto_target}",')
+              
               lines.append("            ],")
               lines.append(f'            path: "{target["path"]}"),')
           
           # Add main XionTypes target that depends on all sub-targets
-          all_target_names = [t["name"] for t in targets]
+          # (all_target_names already defined above)
           lines.append('        .target(')
           lines.append('            name: "XionTypes",')
           lines.append("            dependencies: [")
