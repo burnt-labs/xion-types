@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     #   - main 
-      - csd #feat/protobufs
+      - feat/protobufs
             
   workflow_dispatch:
     inputs:
@@ -185,7 +185,8 @@ jobs:
           
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
-          MAX_FILES_PER_TARGET = 30
+          # Use very small targets (10 files max) to avoid SPM race condition
+          MAX_FILES_PER_TARGET = 10
           
           if not types_dir.exists():
               print("❌ swift/types directory not found")
@@ -197,7 +198,8 @@ jobs:
           
           print(f"Found {len(all_swift_files)} total Swift files")
           
-          # Group files into targets (max 30 files per target)
+          # Group files into targets (max 10 files per target)
+          # Flatten structure within each target to avoid path-related SPM issues
           targets = []
           current_target_files = []
           target_index = 0
@@ -209,12 +211,22 @@ jobs:
                   target_path = sources_base / target_name
                   target_path.mkdir(parents=True, exist_ok=True)
                   
-                  # Copy files to target directory, preserving relative structure
+                  # Copy files to target directory with flattened names to avoid conflicts
+                  file_index = 0
                   for src_file in current_target_files:
+                      # Create unique filename to avoid conflicts
+                      # Use a combination of parent dirs and filename
                       rel_path = src_file.relative_to(types_dir)
-                      dest_file = target_path / rel_path
-                      dest_file.parent.mkdir(parents=True, exist_ok=True)
+                      # Replace path separators with underscores for flat structure
+                      flat_name = str(rel_path).replace("/", "_").replace("\\", "_")
+                      dest_file = target_path / flat_name
                       shutil.copy2(src_file, dest_file)
+                      file_index += 1
+                  
+                  # Verify no duplicates
+                  swift_files_in_target = list(target_path.glob("*.swift"))
+                  if len(swift_files_in_target) != len(current_target_files):
+                      print(f"⚠️ Warning: File count mismatch in {target_name}")
                   
                   targets.append({
                       "name": target_name,
@@ -236,8 +248,8 @@ jobs:
               
               for src_file in current_target_files:
                   rel_path = src_file.relative_to(types_dir)
-                  dest_file = target_path / rel_path
-                  dest_file.parent.mkdir(parents=True, exist_ok=True)
+                  flat_name = str(rel_path).replace("/", "_").replace("\\", "_")
+                  dest_file = target_path / flat_name
                   shutil.copy2(src_file, dest_file)
               
               targets.append({
@@ -417,12 +429,26 @@ jobs:
           # Get list of all targets from Package.swift
           TARGETS=$(grep -E 'name: "XionTypes' Package.swift | sed 's/.*name: "\([^"]*\)".*/\1/' | grep -v "^XionTypes$" | grep -v "XionTypesTests")
           
-          # Build each target individually
+          # Build each target individually with explicit single-threaded compilation
           for target in $TARGETS; do
             echo "Building target: $target"
-            swift build -c release --target "$target" --build-path .build || {
+            # Use -Xswiftc to pass flags directly to Swift compiler
+            # -j1 forces single-threaded compilation at the compiler level
+            swift build -c release --target "$target" --build-path .build -Xswiftc -j1 || {
               echo "Failed to build target $target"
-              exit 1
+              # Check if it's the multiple producers error
+              if swift build -c release --target "$target" --build-path .build 2>&1 | grep -q "multiple producers"; then
+                echo "⚠️ Multiple producers error detected for $target"
+                echo "This is a known Swift Package Manager limitation"
+                echo "Trying with even more aggressive serialization..."
+                # Try building with minimal parallelism
+                SWIFT_BUILD_JOBS=1 swift build -c release --target "$target" --build-path .build || {
+                  echo "Target $target failed even with minimal parallelism"
+                  exit 1
+                }
+              else
+                exit 1
+              fi
             }
           done
           
