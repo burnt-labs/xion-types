@@ -341,9 +341,9 @@ jobs:
             echo "TAG=latest" >> $GITHUB_ENV
             echo "Tag: latest"
           else
-            # Other releases get version as tag
-            echo "TAG=$NEW_VERSION" >> $GITHUB_ENV
-            echo "Tag: $NEW_VERSION"
+            # Other releases default to 'latest' tag (npm doesn't allow SemVer as tag names)
+            echo "TAG=latest" >> $GITHUB_ENV
+            echo "Tag: latest"
           fi
           
           echo "New version: $NEW_VERSION"
