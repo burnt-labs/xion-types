@@ -433,16 +433,37 @@ jobs:
           name: ruby-gem
           path: ruby/
 
-      # - name: Publish to RubyGems
-      #   working-directory: ./ruby
-      #   env:
-      #     RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-      #   run: |
-      #     if [ -z "$RUBYGEMS_API_KEY" ]; then
-      #       echo "⚠️ RUBYGEMS_API_KEY not set, skipping publish"
-      #       exit 0
-      #     fi
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      - name: Publish to RubyGems
+        working-directory: ./ruby
+        env:
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: |
+          if [ -z "$RUBYGEMS_API_KEY" ]; then
+            echo "⚠️ RUBYGEMS_API_KEY not set, skipping publish"
+            exit 0
+          fi
           
-      #     gem push *.gem --key github --host https://rubygems.org
-      #     echo "✅ Published to RubyGems"
+          # Verify gem file exists
+          if [ ! -f *.gem ]; then
+            echo "❌ No .gem file found to publish"
+            exit 1
+          fi
+          
+          # Create credentials file for RubyGems.org
+          # RubyGems credentials file format: YAML with API key
+          # See: https://guides.rubygems.org/publishing/
+          mkdir -p ~/.gem
+          printf "---\n:rubygems_api_key: %s\n" "$RUBYGEMS_API_KEY" > ~/.gem/credentials
+          chmod 600 ~/.gem/credentials
+          
+          # Publish to RubyGems.org
+          # gem push will automatically use credentials from ~/.gem/credentials
+          gem push *.gem
+          echo "✅ Published to RubyGems.org"
 
