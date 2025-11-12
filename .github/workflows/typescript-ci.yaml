@@ -3,8 +3,7 @@ name: Publish Types CI/CD
 on:
   push:
     branches: 
-      # - main 
-      - fix/rimraf-error
+      - main
             
   workflow_dispatch:
     inputs:
@@ -29,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: # TODO - uncomment the other languages
+        language:
           # - cpp
           # - java
           # - kotlin
@@ -275,7 +274,7 @@ jobs:
           path: ts/*.tgz
           retention-days: 1
 
-  publish-to-npm: #TODO - set it to matrix for all the other langs
+  publish-to-npm:
     name: Publish to NPM
     needs: [test-dependent-projects]
     runs-on: ubuntu-latest
@@ -285,8 +284,7 @@ jobs:
       contents: read
       id-token: write
     # Only run publish for: prerelease, published, manual dispatch
-    # TODO: Remove test branch condition before PR
-    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/fix/rimraf-error')
+    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -323,13 +321,6 @@ jobs:
             echo "Set the package version in package.json to: $CLEAN_TAG"
             npm version $CLEAN_TAG --no-git-tag-version
             echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
-          elif [ "${{ github.event_name }}" == "push" ] && [ "${{ github.ref }}" == "refs/heads/fix/rimraf-error" ]; then
-            # TODO: Remove test branch version logic before PR
-            # For testing: use current version + test suffix
-            CURRENT_VERSION=$(node -p "require('./package.json').version")
-            TEST_VERSION="${CURRENT_VERSION}-test.$(date +%s)"
-            npm version $TEST_VERSION --no-git-tag-version
-            echo "Set test version: $TEST_VERSION"
           else
             echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
             exit 1
@@ -341,12 +332,7 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           
           # Set appropriate tag based on release type
-          if [ "${{ github.event_name }}" == "push" ] && [ "${{ github.ref }}" == "refs/heads/fix/rimraf-error" ]; then
-            # TODO: Remove test branch tag logic before PR
-            # For testing: use 'test' tag to avoid affecting latest
-            echo "TAG=test" >> $GITHUB_ENV
-            echo "Tag: test"
-          elif [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
+          if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
             # Pre-releases get 'beta' tag
             echo "TAG=beta" >> $GITHUB_ENV
             echo "Tag: beta"
