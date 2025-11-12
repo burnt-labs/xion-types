@@ -3,7 +3,8 @@ name: Publish Types CI/CD
 on:
   push:
     branches: 
-      - main 
+      # - main 
+      - fix/rimraf-error
             
   workflow_dispatch:
     inputs:
@@ -284,7 +285,8 @@ jobs:
       contents: read
       id-token: write
     # Only run publish for: prerelease, published, manual dispatch
-    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch'
+    # TODO: Remove test branch condition before PR
+    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/fix/rimraf-error')
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -321,6 +323,13 @@ jobs:
             echo "Set the package version in package.json to: $CLEAN_TAG"
             npm version $CLEAN_TAG --no-git-tag-version
             echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
+          elif [ "${{ github.event_name }}" == "push" ] && [ "${{ github.ref }}" == "refs/heads/fix/rimraf-error" ]; then
+            # TODO: Remove test branch version logic before PR
+            # For testing: use current version + test suffix
+            CURRENT_VERSION=$(node -p "require('./package.json').version")
+            TEST_VERSION="${CURRENT_VERSION}-test.$(date +%s)"
+            npm version $TEST_VERSION --no-git-tag-version
+            echo "Set test version: $TEST_VERSION"
           else
             echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
             exit 1
@@ -332,7 +341,12 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           
           # Set appropriate tag based on release type
-          if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
+          if [ "${{ github.event_name }}" == "push" ] && [ "${{ github.ref }}" == "refs/heads/fix/rimraf-error" ]; then
+            # TODO: Remove test branch tag logic before PR
+            # For testing: use 'test' tag to avoid affecting latest
+            echo "TAG=test" >> $GITHUB_ENV
+            echo "Tag: test"
+          elif [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
             # Pre-releases get 'beta' tag
             echo "TAG=beta" >> $GITHUB_ENV
             echo "Tag: beta"
@@ -348,14 +362,20 @@ jobs:
           
           echo "New version: $NEW_VERSION"
 
-      - name: Publish to NPM 
+      - name: Install Dependencies
         working-directory: ./ts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
         run: |
-          echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
-          npm publish --verbose --access public --tag ${{ env.TAG }}
-          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
+          echo "Installing dependencies for publish..."
+          npm install
+
+      # - name: Publish to NPM 
+      #   working-directory: ./ts
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+      #   run: |
+      #     echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
+      #     npm publish --verbose --access public --tag ${{ env.TAG }}
+      #     echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
   validate-on-npm:
     name: Validate NPM Package
