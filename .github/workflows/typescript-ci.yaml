@@ -368,14 +368,14 @@ jobs:
           echo "Installing dependencies for publish..."
           npm install
 
-      # - name: Publish to NPM 
-      #   working-directory: ./ts
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
-      #   run: |
-      #     echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
-      #     npm publish --verbose --access public --tag ${{ env.TAG }}
-      #     echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
+      - name: Publish to NPM 
+        working-directory: ./ts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+        run: |
+          echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
+          npm publish --verbose --access public --tag ${{ env.TAG }}
+          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
   validate-on-npm:
     name: Validate NPM Package
