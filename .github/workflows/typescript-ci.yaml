@@ -3,7 +3,7 @@ name: Publish Types CI/CD
 on:
   push:
     branches: 
-      - main 
+      - main
             
   workflow_dispatch:
     inputs:
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: # TODO - uncomment the other languages
+        language:
           # - cpp
           # - java
           # - kotlin
@@ -274,7 +274,7 @@ jobs:
           path: ts/*.tgz
           retention-days: 1
 
-  publish-to-npm: #TODO - set it to matrix for all the other langs
+  publish-to-npm:
     name: Publish to NPM
     needs: [test-dependent-projects]
     runs-on: ubuntu-latest
@@ -347,6 +347,12 @@ jobs:
           fi
           
           echo "New version: $NEW_VERSION"
+
+      - name: Install Dependencies
+        working-directory: ./ts
+        run: |
+          echo "Installing dependencies for publish..."
+          npm install
 
       - name: Publish to NPM 
         working-directory: ./ts
