@@ -260,6 +260,12 @@ jobs:
           echo "Creating nightly package version: $NIGHTLY_VERSION"
           npm version $NIGHTLY_VERSION --no-git-tag-version
 
+      - name: Install Dependencies
+        working-directory: ./ts
+        run: |
+          echo "Installing dependencies for nightly build..."
+          npm install
+
       - name: Create Package Archive
         working-directory: ./ts
         run: |
