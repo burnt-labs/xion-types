@@ -216,11 +216,25 @@ jobs:
                   target_path = sources_base / target_name
                   target_path.mkdir(parents=True, exist_ok=True)
                   
-                  # Copy files preserving structure
+                  # Copy files with unique names to avoid Swift filename conflicts
+                  # Swift requires unique filenames even across subdirectories
+                  seen_filenames = {}
                   for src_file in files:
                       rel_path = src_file.relative_to(types_dir)
-                      dest_file = target_path / rel_path
-                      dest_file.parent.mkdir(parents=True, exist_ok=True)
+                      # Create unique filename by replacing path separators with underscores
+                      unique_name = str(rel_path).replace('/', '_').replace('\\', '_')
+                      # If filename already seen in this target, add a counter
+                      if unique_name in seen_filenames:
+                          seen_filenames[unique_name] += 1
+                          base_name = unique_name.rsplit('.', 1)
+                          if len(base_name) == 2:
+                              unique_name = f"{base_name[0]}_{seen_filenames[unique_name]}.{base_name[1]}"
+                          else:
+                              unique_name = f"{unique_name}_{seen_filenames[unique_name]}"
+                      else:
+                          seen_filenames[unique_name] = 0
+                      
+                      dest_file = target_path / unique_name
                       shutil.copy2(src_file, dest_file)
                   
                   targets.append({
@@ -242,11 +256,25 @@ jobs:
                       target_path = sources_base / target_name
                       target_path.mkdir(parents=True, exist_ok=True)
                       
-                      # Copy files preserving structure
+                      # Copy files with unique names to avoid Swift filename conflicts
+                      # Swift requires unique filenames even across subdirectories
+                      seen_filenames = {}
                       for src_file in split_files:
                           rel_path = src_file.relative_to(types_dir)
-                          dest_file = target_path / rel_path
-                          dest_file.parent.mkdir(parents=True, exist_ok=True)
+                          # Create unique filename by replacing path separators with underscores
+                          unique_name = str(rel_path).replace('/', '_').replace('\\', '_')
+                          # If filename already seen in this target, add a counter
+                          if unique_name in seen_filenames:
+                              seen_filenames[unique_name] += 1
+                              base_name = unique_name.rsplit('.', 1)
+                              if len(base_name) == 2:
+                                  unique_name = f"{base_name[0]}_{seen_filenames[unique_name]}.{base_name[1]}"
+                              else:
+                                  unique_name = f"{unique_name}_{seen_filenames[unique_name]}"
+                          else:
+                              seen_filenames[unique_name] = 0
+                          
+                          dest_file = target_path / unique_name
                           shutil.copy2(src_file, dest_file)
                       
                       targets.append({

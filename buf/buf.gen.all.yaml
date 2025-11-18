@@ -47,16 +47,8 @@ plugins:
       - flat_package
 
   # Swift
-  # The issue is Swift's filename uniqueness constraint. 
-  # Swift can't compile two files named module.pb.swift in the same target, even if they're in different subdirectories.
-  # Two protobuf files are generating the same Swift filename:
-  # cosmos/app/runtime/v1alpha1/module.proto → module.pb.swift
-  # cosmos/app/v1alpha1/module.proto → module.pb.swift
-  # Both end up in XionTypesCosmosPart00 target, causing the collision.
-  # Fix: Use path-based naming for Swift protobuf generation.
   - protoc_builtin: swift
     out: swift/types
-    opt: FileNaming=PathToUnderscores
 
   # TypeScript
   # - local: protoc-gen-ts_proto
