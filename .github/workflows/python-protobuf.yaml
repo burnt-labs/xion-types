@@ -1,10 +1,10 @@
-name: Protobuf Generation & Publishing
+name: Python Protobuf Gen & Publish
 
 on:
-  push:
-    branches: 
-    #   - main 
-      - dsfsdf #feat/protobufs
+  # push:
+  #   branches: 
+  #   #   - main 
+  #     - dsfsdf #feat/protobufs
             
   workflow_dispatch:
     inputs:
