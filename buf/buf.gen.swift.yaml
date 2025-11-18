@@ -9,5 +9,4 @@ version: v2
 plugins:
   - protoc_builtin: swift
     out: swift/types
-    opt:
-      - FileNaming=PathToUnderscores
+    opt: FileNaming=PathToUnderscores
