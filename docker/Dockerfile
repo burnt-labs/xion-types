@@ -3,7 +3,7 @@ FROM swift:5.10-jammy AS swift-builder
 
 # Clone and build swift-protobuf
 WORKDIR /build
-RUN git clone --depth 1 --branch 1.28.2 https://github.com/apple/swift-protobuf --recursive .
+RUN git clone --depth 1 --branch 1.29.0 https://github.com/apple/swift-protobuf --recursive .
 COPY extramoduleimports.patch /build/extramoduleimports.patch
 RUN git apply /build/extramoduleimports.patch
 
