@@ -183,7 +183,9 @@ jobs:
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
           # Use very small targets (10 files max) to avoid SPM race condition
+          # Exception: cosmos files must stay together to preserve type references
           MAX_FILES_PER_TARGET = 10
+          MAX_FILES_PER_TARGET_COSMOS = 200  # Keep all cosmos files together
           
           if not types_dir.exists():
               print("❌ swift/types directory not found")
@@ -209,8 +211,11 @@ jobs:
           for top_dir, files in sorted(files_by_topdir.items()):
               files.sort()
               
+              # Use larger limit for cosmos to keep all files together (they reference each other)
+              max_files = MAX_FILES_PER_TARGET_COSMOS if top_dir == "cosmos" else MAX_FILES_PER_TARGET
+              
               # If directory has many files, split it into multiple targets
-              if len(files) <= MAX_FILES_PER_TARGET:
+              if len(files) <= max_files:
                   # Single target for this directory
                   target_name = f"XionTypes{top_dir.capitalize().replace('_', '')}"
                   target_path = sources_base / target_name
@@ -246,10 +251,10 @@ jobs:
                   print(f"Created target {target_name} with {len(files)} Swift files from {top_dir}/")
               else:
                   # Split large directory into multiple targets
-                  num_splits = (len(files) + MAX_FILES_PER_TARGET - 1) // MAX_FILES_PER_TARGET
+                  num_splits = (len(files) + max_files - 1) // max_files
                   for split_idx in range(num_splits):
-                      start_idx = split_idx * MAX_FILES_PER_TARGET
-                      end_idx = min(start_idx + MAX_FILES_PER_TARGET, len(files))
+                      start_idx = split_idx * max_files
+                      end_idx = min(start_idx + max_files, len(files))
                       split_files = files[start_idx:end_idx]
                       
                       target_name = f"XionTypes{top_dir.capitalize().replace('_', '')}Part{split_idx:02d}"
