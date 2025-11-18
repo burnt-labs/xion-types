@@ -56,7 +56,8 @@ plugins:
   # Fix: Use path-based naming for Swift protobuf generation.
   - protoc_builtin: swift
     out: swift/types
-    opt: FileNaming=PathToUnderscores
+    opt:
+      - FileNaming=PathToUnderscores
 
   # TypeScript
   # - local: protoc-gen-ts_proto
