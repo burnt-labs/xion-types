@@ -323,10 +323,11 @@ jobs:
           all_target_names = [t["name"] for t in targets]
           
           # Identify base targets that others commonly need
-          # Order matters: google and gogoproto are most basic, then cosmos_proto, then cosmos
+          # Order matters: google and gogoproto are most basic, then cosmos_proto, then tendermint, then cosmos
           google_targets = [t["name"] for t in targets if t.get("top_dir") == "google"]
           gogoproto_targets = [t["name"] for t in targets if t.get("top_dir") == "gogoproto"]
           cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos_proto"]
+          tendermint_targets = [t["name"] for t in targets if t.get("top_dir") == "tendermint"]
           cosmos_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos"]
           
           for target in targets:
@@ -354,8 +355,9 @@ jobs:
               # Add base dependencies in order (avoid cycles):
               # 1. google and gogoproto are base (no dependencies on each other)
               # 2. cosmos_proto depends on google/gogoproto
-              # 3. cosmos depends on cosmos_proto, google, gogoproto
-              # 4. Everything else depends on cosmos, google, cosmos_proto, gogoproto
+              # 3. tendermint depends on google/gogoproto
+              # 4. cosmos depends on cosmos_proto, tendermint, google, gogoproto
+              # 5. Everything else depends on cosmos, google, cosmos_proto, gogoproto
               
               if target_top_dir == "cosmos_proto":
                   # cosmos_proto depends on google and gogoproto
@@ -363,15 +365,23 @@ jobs:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir == "cosmos":
-                  # cosmos depends on cosmos_proto, google, gogoproto
-                  for cosmos_proto_target in cosmos_proto_targets:
-                      additional_deps.append(f'                "{cosmos_proto_target}",')
+              elif target_top_dir == "tendermint":
+                  # tendermint depends on google and gogoproto
                   for google_target in google_targets:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir not in ["google", "gogoproto"]:
+              elif target_top_dir == "cosmos":
+                  # cosmos depends on cosmos_proto, tendermint, google, gogoproto
+                  for cosmos_proto_target in cosmos_proto_targets:
+                      additional_deps.append(f'                "{cosmos_proto_target}",')
+                  for tendermint_target in tendermint_targets:
+                      additional_deps.append(f'                "{tendermint_target}",')
+                  for google_target in google_targets:
+                      additional_deps.append(f'                "{google_target}",')
+                  for gogoproto_target in gogoproto_targets:
+                      additional_deps.append(f'                "{gogoproto_target}",')
+              elif target_top_dir not in ["google", "gogoproto", "cosmos_proto", "tendermint", "cosmos"]:
                   # Everything else depends on cosmos, google, cosmos_proto, gogoproto
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
