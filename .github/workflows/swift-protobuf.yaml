@@ -132,7 +132,7 @@ jobs:
                   ),
               ],
               dependencies: [
-                  .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.25.0"),
+                  .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.28.0"),
               ],
               targets: [
                   .target(
@@ -310,7 +310,7 @@ jobs:
           lines.append('            targets: ["XionTypes"])')
           lines.append("    ],")
           lines.append("    dependencies: [")
-          lines.append('        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.25.0")')
+          lines.append('        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.28.0")')
           lines.append("    ],")
           lines.append("    targets: [")
           
