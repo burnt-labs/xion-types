@@ -576,9 +576,44 @@ jobs:
           echo "Cosmos targets: $COSMOS_TARGETS"
           echo "Other targets: $OTHER_TARGETS"
           
-          # Build the entire package without specifying targets
-          # This lets SPM resolve all dependencies automatically and makes types accessible across modules
-          echo "Building entire package (SPM will resolve all dependencies)..."
+          # Build base and mid targets first (required by cosmos and other targets)
+          echo "Building base targets (google, gogoproto)..."
+          for base_target in $BASE_TARGETS; do
+            if [ -n "$base_target" ]; then
+              echo "Building: $base_target"
+              swift build -c release --target "$base_target" --build-path .build -Xswiftc -j1 || {
+                echo "Failed to build $base_target"
+                exit 1
+              }
+            fi
+          done
+          
+          echo "Building mid targets (cosmos_proto)..."
+          for mid_target in $MID_TARGETS; do
+            if [ -n "$mid_target" ]; then
+              echo "Building: $mid_target"
+              swift build -c release --target "$mid_target" --build-path .build -Xswiftc -j1 || {
+                echo "Failed to build $mid_target"
+                exit 1
+              }
+            fi
+          done
+          
+          # Build cosmos targets since many other targets depend on them
+          echo "Building cosmos targets (required by many other targets)..."
+          for cosmos_target in $COSMOS_TARGETS; do
+            if [ -n "$cosmos_target" ]; then
+              echo "Building: $cosmos_target"
+              swift build -c release --target "$cosmos_target" --build-path .build -Xswiftc -j1 || {
+                echo "Failed to build $cosmos_target"
+                exit 1
+              }
+            fi
+          done
+          
+          # Now build the entire package
+          # Cosmos is already built, so dependent targets can now find the types they need
+          echo "Building entire package (cosmos types now available)..."
           swift build -c release --build-path .build -Xswiftc -j1 || {
             echo "Build failed, checking error..."
             exit 1
