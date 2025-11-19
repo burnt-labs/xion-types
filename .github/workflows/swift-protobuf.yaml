@@ -183,9 +183,10 @@ jobs:
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
           # Use very small targets (10 files max) to avoid SPM race condition
-          # Exception: cosmos files must stay together to preserve type references
+          # Exception: cosmos and tendermint files must stay together to preserve type references
           MAX_FILES_PER_TARGET = 10
           MAX_FILES_PER_TARGET_COSMOS = 200  # Keep all cosmos files together
+          MAX_FILES_PER_TARGET_TENDERMINT = 200  # Keep all tendermint files together
           
           if not types_dir.exists():
               print("❌ swift/types directory not found")
@@ -211,8 +212,13 @@ jobs:
           for top_dir, files in sorted(files_by_topdir.items()):
               files.sort()
               
-              # Use larger limit for cosmos to keep all files together (they reference each other)
-              max_files = MAX_FILES_PER_TARGET_COSMOS if top_dir == "cosmos" else MAX_FILES_PER_TARGET
+              # Use larger limit for cosmos and tendermint to keep all files together (they reference each other)
+              if top_dir == "cosmos":
+                  max_files = MAX_FILES_PER_TARGET_COSMOS
+              elif top_dir == "tendermint":
+                  max_files = MAX_FILES_PER_TARGET_TENDERMINT
+              else:
+                  max_files = MAX_FILES_PER_TARGET
               
               # If directory has many files, split it into multiple targets
               if len(files) <= max_files:
