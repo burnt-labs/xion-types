@@ -533,6 +533,17 @@ jobs:
         run: |
           swift package resolve
           echo "✅ Resolved dependencies"
+      - name: Verify Package Dependencies
+        working-directory: ./swift
+        run: |
+          echo "Verifying cosmos targets depend on tendermint..."
+          if grep -A 20 'name: "XionTypesCosmos' Package.swift | grep -q "XionTypesTendermint"; then
+            echo "✅ Cosmos targets have tendermint dependency"
+          else
+            echo "⚠️ Warning: Cosmos targets may not have tendermint dependency"
+            echo "Package.swift cosmos section:"
+            grep -A 20 'name: "XionTypesCosmos' Package.swift | head -25
+          fi
       - name: Build Swift Package
         working-directory: ./swift
         env:
@@ -545,10 +556,27 @@ jobs:
           echo "Building targets sequentially to avoid race conditions..."
           
           # Get list of all targets from Package.swift
-          TARGETS=$(grep -E 'name: "XionTypes' Package.swift | sed 's/.*name: "\([^"]*\)".*/\1/' | grep -v "^XionTypes$" | grep -v "XionTypesTests")
+          ALL_TARGETS=$(grep -E 'name: "XionTypes' Package.swift | sed 's/.*name: "\([^"]*\)".*/\1/' | grep -v "^XionTypes$" | grep -v "XionTypesTests")
+          
+          # Build in dependency order: base targets first, then dependent targets
+          # Order: google/gogoproto -> cosmos_proto/tendermint -> cosmos -> everything else
+          BASE_TARGETS=$(echo "$ALL_TARGETS" | grep -E "XionTypes(Google|Gogoproto)" || true)
+          MID_TARGETS=$(echo "$ALL_TARGETS" | grep -E "XionTypes(Cosmosproto|Tendermint)" || true)
+          COSMOS_TARGETS=$(echo "$ALL_TARGETS" | grep -E "XionTypesCosmos" || true)
+          OTHER_TARGETS=$(echo "$ALL_TARGETS" | grep -v -E "XionTypes(Google|Gogoproto|Cosmosproto|Tendermint|Cosmos)" || true)
+          
+          # Combine in order
+          TARGETS="$BASE_TARGETS $MID_TARGETS $COSMOS_TARGETS $OTHER_TARGETS"
+          
+          echo "Build order: base -> mid -> cosmos -> other"
+          echo "Base targets: $BASE_TARGETS"
+          echo "Mid targets: $MID_TARGETS"
+          echo "Cosmos targets: $COSMOS_TARGETS"
+          echo "Other targets: $OTHER_TARGETS"
           
           # Build each target individually with explicit single-threaded compilation
           for target in $TARGETS; do
+            if [ -z "$target" ]; then continue; fi
             echo "Building target: $target"
             # Use -Xswiftc to pass flags directly to Swift compiler
             # -j1 forces single-threaded compilation at the compiler level
