@@ -330,11 +330,16 @@ jobs:
           
           # Identify base targets that others commonly need
           # Order matters: google and gogoproto are most basic, then cosmos_proto, then tendermint, then cosmos
-          google_targets = [t["name"] for t in targets if t.get("top_dir") == "google"]
-          gogoproto_targets = [t["name"] for t in targets if t.get("top_dir") == "gogoproto"]
-          cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos_proto"]
-          tendermint_targets = [t["name"] for t in targets if t.get("top_dir") == "tendermint"]
-          cosmos_targets = [t["name"] for t in targets if t.get("top_dir") == "cosmos"]
+          google_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "google"]
+          gogoproto_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "gogoproto"]
+          cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "cosmos_proto"]
+          tendermint_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "tendermint"]
+          cosmos_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "cosmos"]
+          
+          # Debug: print target counts
+          print(f"Found {len(google_targets)} google targets, {len(gogoproto_targets)} gogoproto targets, {len(cosmos_proto_targets)} cosmos_proto targets, {len(tendermint_targets)} tendermint targets, {len(cosmos_targets)} cosmos targets")
+          if tendermint_targets:
+              print(f"Tendermint targets: {tendermint_targets}")
           
           for target in targets:
               lines.append(f'        .target(')
@@ -342,6 +347,7 @@ jobs:
               lines.append("            dependencies: [")
               
               target_top_dir = target.get("top_dir", "unknown")
+              target_top_dir_lower = target_top_dir.lower()
               target_name = target["name"]
               
               # Collect all additional dependencies first to determine if we need a comma
@@ -353,7 +359,7 @@ jobs:
                   if match:
                       part_num = int(match.group(1))
                       for other_target in targets:
-                          if other_target.get("top_dir") == target_top_dir and other_target["name"] != target_name:
+                          if other_target.get("top_dir", "").lower() == target_top_dir_lower and other_target["name"] != target_name:
                               other_match = re.search(r'Part(\d+)', other_target["name"])
                               if other_match and int(other_match.group(1)) < part_num:
                                   additional_deps.append(f'                "{other_target["name"]}",')
@@ -365,19 +371,19 @@ jobs:
               # 4. cosmos depends on cosmos_proto, tendermint, google, gogoproto
               # 5. Everything else depends on cosmos, google, cosmos_proto, gogoproto
               
-              if target_top_dir == "cosmos_proto":
+              if target_top_dir_lower == "cosmos_proto":
                   # cosmos_proto depends on google and gogoproto
                   for google_target in google_targets:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir == "tendermint":
+              elif target_top_dir_lower == "tendermint":
                   # tendermint depends on google and gogoproto
                   for google_target in google_targets:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir == "cosmos":
+              elif target_top_dir_lower == "cosmos":
                   # cosmos depends on cosmos_proto, tendermint, google, gogoproto
                   for cosmos_proto_target in cosmos_proto_targets:
                       additional_deps.append(f'                "{cosmos_proto_target}",')
@@ -387,7 +393,7 @@ jobs:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir not in ["google", "gogoproto", "cosmos_proto", "tendermint", "cosmos"]:
+              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "tendermint", "cosmos"]:
                   # Everything else depends on cosmos, google, cosmos_proto, gogoproto
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
