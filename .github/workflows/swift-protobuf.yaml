@@ -183,9 +183,9 @@ jobs:
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
           # Use very small targets (10 files max) to avoid SPM race condition
-          # Exception: cosmos files (which include tendermint) must stay together to preserve type references
+          # Exception: cosmos files (includes tendermint, abstractaccount, xion, osmosis) must stay together
           MAX_FILES_PER_TARGET = 10
-          MAX_FILES_PER_TARGET_COSMOS = 200  # Keep all cosmos files together (includes tendermint)
+          MAX_FILES_PER_TARGET_COSMOS = 500  # Keep all cosmos-related files together (large target)
           
           if not types_dir.exists():
               print("❌ swift/types directory not found")
@@ -195,21 +195,22 @@ jobs:
           # This keeps related files together to preserve import relationships
           
           # Group files by top-level directory
-          # Special case: merge cosmos and tendermint since cosmos heavily depends on tendermint types
+          # Special case: merge cosmos, tendermint, abstractaccount, xion, and osmosis
+          # They heavily depend on each other and protobuf types are internal by default
           files_by_topdir = defaultdict(list)
           for swift_file in types_dir.rglob("*.swift"):
               # Get top-level directory (first component of relative path)
               rel_path = swift_file.relative_to(types_dir)
               top_dir = rel_path.parts[0] if rel_path.parts else "root"
-              # Merge tendermint into cosmos since they're tightly coupled
-              if top_dir == "tendermint":
+              # Merge into cosmos since they're tightly coupled and share types
+              if top_dir in ["tendermint", "abstractaccount", "xion", "osmosis"]:
                   top_dir = "cosmos"
               files_by_topdir[top_dir].append(swift_file)
           
           print(f"Found {sum(len(files) for files in files_by_topdir.values())} total Swift files in {len(files_by_topdir)} top-level directories")
           if "cosmos" in files_by_topdir:
               cosmos_count = len(files_by_topdir["cosmos"])
-              print(f"Cosmos target will contain {cosmos_count} files (includes both cosmos and tendermint files)")
+              print(f"Cosmos target will contain {cosmos_count} files (includes cosmos, tendermint, abstractaccount, xion, osmosis)")
           
           # Create targets: one per top-level directory, split if too large
           targets = []
@@ -333,14 +334,15 @@ jobs:
           all_target_names = [t["name"] for t in targets]
           
           # Identify base targets that others commonly need
-          # Order matters: google and gogoproto are most basic, then cosmos_proto, then cosmos (which includes tendermint)
+          # Order matters: google and gogoproto are most basic, then cosmos_proto, then cosmos
+          # Note: cosmos includes tendermint, abstractaccount, xion, and osmosis (merged for type accessibility)
           google_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "google"]
           gogoproto_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "gogoproto"]
           cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "cosmos_proto"]
           cosmos_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "cosmos"]
           
           # Debug: print target counts
-          print(f"Found {len(google_targets)} google targets, {len(gogoproto_targets)} gogoproto targets, {len(cosmos_proto_targets)} cosmos_proto targets, {len(cosmos_targets)} cosmos targets (includes tendermint)")
+          print(f"Found {len(google_targets)} google targets, {len(gogoproto_targets)} gogoproto targets, {len(cosmos_proto_targets)} cosmos_proto targets, {len(cosmos_targets)} cosmos targets")
           
           for target in targets:
               lines.append(f'        .target(')
@@ -368,7 +370,7 @@ jobs:
               # Add base dependencies in order (avoid cycles):
               # 1. google and gogoproto are base (no dependencies on each other)
               # 2. cosmos_proto depends on google/gogoproto
-              # 3. cosmos (which includes tendermint) depends on cosmos_proto, google, gogoproto
+              # 3. cosmos (includes tendermint, abstractaccount, xion, osmosis) depends on cosmos_proto, google, gogoproto
               # 4. Everything else depends on cosmos, google, cosmos_proto, gogoproto
               
               if target_top_dir_lower == "cosmos_proto":
@@ -385,18 +387,7 @@ jobs:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir_lower in ["osmosis", "abstractaccount", "xion"]:
-                  # osmosis, abstractaccount, and xion depend on cosmos (which includes cosmos and tendermint types)
-                  print(f"Adding cosmos dependencies to {target_name} (top_dir: {target_top_dir})")
-                  for cosmos_target in cosmos_targets:
-                      additional_deps.append(f'                "{cosmos_target}",')
-                  for cosmos_proto_target in cosmos_proto_targets:
-                      additional_deps.append(f'                "{cosmos_proto_target}",')
-                  for google_target in google_targets:
-                      additional_deps.append(f'                "{google_target}",')
-                  for gogoproto_target in gogoproto_targets:
-                      additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "cosmos", "osmosis", "abstractaccount", "xion"]:
+              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "cosmos"]:
                   # Everything else depends on cosmos, google, cosmos_proto, gogoproto
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
