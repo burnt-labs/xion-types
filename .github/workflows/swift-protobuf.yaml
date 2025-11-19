@@ -385,8 +385,8 @@ jobs:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir_lower == "osmosis":
-                  # osmosis depends on cosmos (which includes cosmos and tendermint types)
+              elif target_top_dir_lower in ["osmosis", "abstractaccount", "xion"]:
+                  # osmosis, abstractaccount, and xion depend on cosmos (which includes cosmos and tendermint types)
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
                   for cosmos_proto_target in cosmos_proto_targets:
@@ -395,7 +395,7 @@ jobs:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "cosmos", "osmosis"]:
+              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "cosmos", "osmosis", "abstractaccount", "xion"]:
                   # Everything else depends on cosmos, google, cosmos_proto, gogoproto
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
