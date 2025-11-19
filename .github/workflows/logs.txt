@@ -1,1 +1,0 @@
-/Users/runner/work/xion-types/xion-types/swift/Sources/XionTypesCosmos/cosmos_consensus_v1_tx.pb.swift:79:31: error: cannot find type 'Tendermint_Types_ValidatorParams' in scope
