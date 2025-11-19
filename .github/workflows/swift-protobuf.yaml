@@ -574,35 +574,26 @@ jobs:
           echo "Cosmos targets: $COSMOS_TARGETS"
           echo "Other targets: $OTHER_TARGETS"
           
-          # Build each target individually with explicit single-threaded compilation
-          for target in $TARGETS; do
-            if [ -z "$target" ]; then continue; fi
-            echo "Building target: $target"
-            # Use -Xswiftc to pass flags directly to Swift compiler
-            # -j1 forces single-threaded compilation at the compiler level
-            swift build -c release --target "$target" --build-path .build -Xswiftc -j1 || {
-              echo "Failed to build target $target"
-              # Check if it's the multiple producers error
-              if swift build -c release --target "$target" --build-path .build 2>&1 | grep -q "multiple producers"; then
-                echo "⚠️ Multiple producers error detected for $target"
-                echo "This is a known Swift Package Manager limitation"
-                echo "Trying with even more aggressive serialization..."
-                # Try building with minimal parallelism
-                SWIFT_BUILD_JOBS=1 swift build -c release --target "$target" --build-path .build || {
-                  echo "Target $target failed even with minimal parallelism"
-                  exit 1
-                }
-              else
-                exit 1
-              fi
-            }
-          done
-          
-          # Finally build the main XionTypes target (depends on all others)
-          echo "Building main XionTypes target..."
-          swift build -c release --target XionTypes --build-path .build || {
+          # Build the main XionTypes target which depends on all others
+          # This ensures dependencies are properly resolved and types are accessible
+          echo "Building main XionTypes target (includes all dependencies)..."
+          swift build -c release --target XionTypes --build-path .build -Xswiftc -j1 || {
             echo "Failed to build main XionTypes target"
-            exit 1
+            # If it fails, try building individual targets in order as fallback
+            echo "Attempting to build individual targets in dependency order..."
+            for target in $TARGETS; do
+              if [ -z "$target" ]; then continue; fi
+              echo "Building target: $target"
+              swift build -c release --target "$target" --build-path .build -Xswiftc -j1 || {
+                echo "Failed to build target $target"
+                exit 1
+              }
+            done
+            # Then try main target again
+            swift build -c release --target XionTypes --build-path .build || {
+              echo "Failed to build main XionTypes target after individual builds"
+              exit 1
+            }
           }
           
           echo "✅ All targets built successfully"
