@@ -385,7 +385,17 @@ jobs:
                       additional_deps.append(f'                "{google_target}",')
                   for gogoproto_target in gogoproto_targets:
                       additional_deps.append(f'                "{gogoproto_target}",')
-              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "cosmos"]:
+              elif target_top_dir_lower == "osmosis":
+                  # osmosis depends on cosmos (which includes cosmos and tendermint types)
+                  for cosmos_target in cosmos_targets:
+                      additional_deps.append(f'                "{cosmos_target}",')
+                  for cosmos_proto_target in cosmos_proto_targets:
+                      additional_deps.append(f'                "{cosmos_proto_target}",')
+                  for google_target in google_targets:
+                      additional_deps.append(f'                "{google_target}",')
+                  for gogoproto_target in gogoproto_targets:
+                      additional_deps.append(f'                "{gogoproto_target}",')
+              elif target_top_dir_lower not in ["google", "gogoproto", "cosmos_proto", "cosmos", "osmosis"]:
                   # Everything else depends on cosmos, google, cosmos_proto, gogoproto
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
