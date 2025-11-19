@@ -387,6 +387,7 @@ jobs:
                       additional_deps.append(f'                "{gogoproto_target}",')
               elif target_top_dir_lower in ["osmosis", "abstractaccount", "xion"]:
                   # osmosis, abstractaccount, and xion depend on cosmos (which includes cosmos and tendermint types)
+                  print(f"Adding cosmos dependencies to {target_name} (top_dir: {target_top_dir})")
                   for cosmos_target in cosmos_targets:
                       additional_deps.append(f'                "{cosmos_target}",')
                   for cosmos_proto_target in cosmos_proto_targets:
@@ -576,11 +577,14 @@ jobs:
           echo "Cosmos targets: $COSMOS_TARGETS"
           echo "Other targets: $OTHER_TARGETS"
           
-          # Build base and mid targets first (required by cosmos and other targets)
-          echo "Building base targets (google, gogoproto)..."
+          # Build all targets individually in strict dependency order
+          # This ensures types are available when dependent targets compile
+          echo "Building all targets in dependency order..."
+          
+          echo "1/4: Building base targets (google, gogoproto)..."
           for base_target in $BASE_TARGETS; do
             if [ -n "$base_target" ]; then
-              echo "Building: $base_target"
+              echo "  Building: $base_target"
               swift build -c release --target "$base_target" --build-path .build -Xswiftc -j1 || {
                 echo "Failed to build $base_target"
                 exit 1
@@ -588,10 +592,10 @@ jobs:
             fi
           done
           
-          echo "Building mid targets (cosmos_proto)..."
+          echo "2/4: Building mid targets (cosmos_proto)..."
           for mid_target in $MID_TARGETS; do
             if [ -n "$mid_target" ]; then
-              echo "Building: $mid_target"
+              echo "  Building: $mid_target"
               swift build -c release --target "$mid_target" --build-path .build -Xswiftc -j1 || {
                 echo "Failed to build $mid_target"
                 exit 1
@@ -599,11 +603,10 @@ jobs:
             fi
           done
           
-          # Build cosmos targets since many other targets depend on them
-          echo "Building cosmos targets (required by many other targets)..."
+          echo "3/4: Building cosmos targets (includes tendermint)..."
           for cosmos_target in $COSMOS_TARGETS; do
             if [ -n "$cosmos_target" ]; then
-              echo "Building: $cosmos_target"
+              echo "  Building: $cosmos_target"
               swift build -c release --target "$cosmos_target" --build-path .build -Xswiftc -j1 || {
                 echo "Failed to build $cosmos_target"
                 exit 1
@@ -611,11 +614,21 @@ jobs:
             fi
           done
           
-          # Now build the entire package
-          # Cosmos is already built, so dependent targets can now find the types they need
-          echo "Building entire package (cosmos types now available)..."
-          swift build -c release --build-path .build -Xswiftc -j1 || {
-            echo "Build failed, checking error..."
+          echo "4/4: Building remaining targets (depend on cosmos)..."
+          for other_target in $OTHER_TARGETS; do
+            if [ -n "$other_target" ]; then
+              echo "  Building: $other_target"
+              swift build -c release --target "$other_target" --build-path .build -Xswiftc -j1 || {
+                echo "Failed to build $other_target"
+                exit 1
+              }
+            fi
+          done
+          
+          # Finally build the main XionTypes target
+          echo "Building main XionTypes target..."
+          swift build -c release --target XionTypes --build-path .build -Xswiftc -j1 || {
+            echo "Failed to build main target"
             exit 1
           }
           
