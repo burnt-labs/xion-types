@@ -651,15 +651,6 @@ jobs:
     needs: [swift-build]
     runs-on: macos-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Download Generated Swift Types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-swift
-          path: swift/types
-
       - name: Download Package
         uses: actions/download-artifact@v4
         with:
@@ -669,66 +660,23 @@ jobs:
       - name: Verify Swift Version
         run: swift --version
 
-      - name: Create Swift Package Structure
-        run: |
-          mkdir -p swift/Sources/XionTypes
-          mkdir -p swift/Tests/XionTypesTests
-          
-          # Clear destination first to avoid duplicates
-          rm -rf swift/Sources/XionTypes/*
-          
-          # Copy all files and subdirectories preserving structure
-          if [ -d "swift/types" ] && [ "$(ls -A swift/types)" ]; then
-            # Use rsync for more reliable copying, or fallback to cp
-            if command -v rsync &> /dev/null; then
-              rsync -a --delete swift/types/ swift/Sources/XionTypes/
-            else
-              cp -r swift/types/* swift/Sources/XionTypes/
-            fi
-          fi
-          
-          # Ensure test file exists
-          if [ ! -f "swift/Tests/XionTypesTests/XionTypesTests.swift" ]; then
-            cat > swift/Tests/XionTypesTests/XionTypesTests.swift << 'TEST'
-          import XCTest
-          @testable import XionTypes
-          final class XionTypesTests: XCTestCase {
-              func testExample() {
-                  // This is a placeholder test to ensure the package builds correctly
-                  XCTAssertTrue(true)
-              }
-          }
-          TEST
-          fi
-          
-          # Remove any symlinks that might cause issues
-          find swift/Sources/XionTypes -type l -delete 2>/dev/null || true
-          
-          # Move types directory outside swift package to prevent SPM from scanning it
-          if [ -d "swift/types" ]; then
-            echo "Moving types directory outside package structure..."
-            mv swift/types swift-types-temp || true
-          fi
-      - name: Clean Build Directory
+      - name: Verify Package Structure
         working-directory: ./swift
         run: |
-          swift package clean
-          swift package reset 2>/dev/null || true
-          rm -rf .build
-          rm -rf .swiftpm
-          rm -rf .swiftpm-build
-          echo "✅ Cleaned build directory"
-      - name: Resolve Dependencies
-        working-directory: ./swift
-        run: |
-          swift package resolve
-          echo "✅ Resolved dependencies"
+          echo "=== Package structure ==="
+          ls -la
+          echo "=== Sources ==="
+          ls -la Sources/ 2>/dev/null || echo "No Sources directory"
+          echo "=== Sources/XionTypes (first 20 files) ==="
+          ls Sources/XionTypes/ 2>/dev/null | head -20 || echo "No XionTypes"
+          echo "=== Tests ==="
+          ls -la Tests/ 2>/dev/null || echo "No Tests directory"
       - name: Test Swift Package
         working-directory: ./swift
         env:
           VERSION: ${{ needs.swift-build.outputs.version }}
         run: |
-          swift test -c release -Xswiftc -j1 --build-path .build-test
+          swift test -c release -Xswiftc -j1
           echo "✅ Swift package tests passed"
   # ============================================
   # Swift Package Publishing
