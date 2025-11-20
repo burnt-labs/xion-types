@@ -183,9 +183,9 @@ jobs:
           types_dir = Path("swift/types")
           sources_base = Path("swift/Sources")
           # Use very small targets (10 files max) to avoid SPM race condition
-          # Exception: cosmos files (includes tendermint, abstractaccount, xion, osmosis, cosmwasm) must stay together
+          # Exception: cosmos files (includes tendermint, abstractaccount, xion, osmosis, cosmwasm, ibc) must stay together
           MAX_FILES_PER_TARGET = 10
-          MAX_FILES_PER_TARGET_COSMOS = 600  # Keep all cosmos-related files together (large target)
+          MAX_FILES_PER_TARGET_COSMOS = 1000  # Keep all cosmos-related files together (very large target)
           
           if not types_dir.exists():
               print("❌ swift/types directory not found")
@@ -203,14 +203,14 @@ jobs:
               rel_path = swift_file.relative_to(types_dir)
               top_dir = rel_path.parts[0] if rel_path.parts else "root"
               # Merge into cosmos since they're tightly coupled and share types
-              if top_dir in ["tendermint", "abstractaccount", "xion", "osmosis", "cosmwasm"]:
+              if top_dir in ["tendermint", "abstractaccount", "xion", "osmosis", "cosmwasm", "ibc"]:
                   top_dir = "cosmos"
               files_by_topdir[top_dir].append(swift_file)
           
           print(f"Found {sum(len(files) for files in files_by_topdir.values())} total Swift files in {len(files_by_topdir)} top-level directories")
           if "cosmos" in files_by_topdir:
               cosmos_count = len(files_by_topdir["cosmos"])
-              print(f"Cosmos target will contain {cosmos_count} files (includes cosmos, tendermint, abstractaccount, xion, osmosis, cosmwasm)")
+              print(f"Cosmos target will contain {cosmos_count} files (includes cosmos, tendermint, abstractaccount, xion, osmosis, cosmwasm, ibc)")
           
           # Create targets: one per top-level directory, split if too large
           targets = []
@@ -335,7 +335,7 @@ jobs:
           
           # Identify base targets that others commonly need
           # Order matters: google and gogoproto are most basic, then cosmos_proto, then cosmos
-          # Note: cosmos includes tendermint, abstractaccount, xion, osmosis, and cosmwasm (merged for type accessibility)
+          # Note: cosmos includes tendermint, abstractaccount, xion, osmosis, cosmwasm, and ibc (merged for type accessibility)
           google_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "google"]
           gogoproto_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "gogoproto"]
           cosmos_proto_targets = [t["name"] for t in targets if t.get("top_dir", "").lower() == "cosmos_proto"]
@@ -370,7 +370,7 @@ jobs:
               # Add base dependencies in order (avoid cycles):
               # 1. google and gogoproto are base (no dependencies on each other)
               # 2. cosmos_proto depends on google/gogoproto
-              # 3. cosmos (includes tendermint, abstractaccount, xion, osmosis, cosmwasm) depends on cosmos_proto, google, gogoproto
+              # 3. cosmos (includes tendermint, abstractaccount, xion, osmosis, cosmwasm, ibc) depends on cosmos_proto, google, gogoproto
               # 4. Everything else depends on cosmos, google, cosmos_proto, gogoproto
               
               if target_top_dir_lower == "cosmos_proto":
