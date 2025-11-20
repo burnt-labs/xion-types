@@ -727,9 +727,8 @@ jobs:
         working-directory: ./swift
         env:
           VERSION: ${{ needs.swift-build.outputs.version }}
-          SWIFTPM_MAXIMUM_PARALLELISM: "1"
         run: |
-          swift test -c debug
+          swift test -c release -Xswiftc -j1 --build-path .build-test
           echo "✅ Swift package tests passed"
   # ============================================
   # Swift Package Publishing
