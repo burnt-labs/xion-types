@@ -718,17 +718,21 @@ jobs:
             spec.name         = "XionTypes"
             spec.version      = "--ADD-HERE-YOUR-VALUE--"
             spec.summary      = "Generated Swift types for Xion blockchain protocol buffers"
-            spec.description  = "Generated Swift types for Xion blockchain protocol buffers"
+            spec.description  = <<-DESC
+              Complete Swift type definitions generated from Xion blockchain protocol buffers.
+              Includes support for Cosmos SDK, Tendermint, and Xion-specific modules.
+            DESC
             spec.homepage     = "https://github.com/burnt-labs/xion-types"
             spec.license      = { :type => "Apache-2.0" }
-            spec.author       = { "Burnt Labs" => "--ADD-HERE-YOUR-VALUE--" }
+            spec.author       = { "Burnt Labs" => "devops@burnt.com" }
             
             spec.source       = { :git => "https://github.com/burnt-labs/xion-types.git", :tag => "#{spec.version}" }
             spec.source_files = "Sources/XionTypes/**/*.swift"
-            spec.platform     = :ios, "13.0"
-            spec.platform     = :osx, "10.15"
-            spec.platform     = :watchos, "6.0"
-            spec.platform     = :tvos, "13.0"
+            
+            spec.ios.deployment_target = "13.0"
+            spec.osx.deployment_target = "10.15"
+            spec.watchos.deployment_target = "6.0"
+            spec.tvos.deployment_target = "13.0"
             
             spec.dependency "SwiftProtobuf", "~> 1.25"
             
