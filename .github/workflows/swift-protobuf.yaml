@@ -742,18 +742,18 @@ jobs:
           echo "Printing XionTypes.podspec..."
           cat XionTypes.podspec
           
-      # - name: Publish to CocoaPods Trunk
-      #   working-directory: ./swift
-      #   env:
-      #     COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-      #   run: |
-      #     if [ -z "$COCOAPODS_TRUNK_TOKEN" ]; then
-      #       echo "⚠️ COCOAPODS_TRUNK_TOKEN not set, skipping publish"
-      #       exit 0
-      #     fi
+      - name: Publish to CocoaPods Trunk
+        working-directory: ./swift
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: |
+          if [ -z "$COCOAPODS_TRUNK_TOKEN" ]; then
+            echo "⚠️ COCOAPODS_TRUNK_TOKEN not set, skipping publish"
+            exit 0
+          fi
 
-      #     echo "Printing session info..."
-      #     pod trunk me
+          echo "Printing session info..."
+          pod trunk me
           
-      #     pod trunk push XionTypes.podspec
-      #     echo "✅ Published to CocoaPods Trunk"
+          pod trunk push XionTypes.podspec
+          echo "✅ Published to CocoaPods Trunk"
