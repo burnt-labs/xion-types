@@ -750,6 +750,7 @@ jobs:
         working-directory: ./swift
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+          VERSION: ${{ needs.swift-build.outputs.version }}
         run: |
           if [ -z "$COCOAPODS_TRUNK_TOKEN" ]; then
             echo "⚠️ COCOAPODS_TRUNK_TOKEN not set, skipping publish"
@@ -759,5 +760,17 @@ jobs:
           echo "Printing session info..."
           pod trunk me
           
+          # Check if this is a dev version (0.0.0.devXXXXXXXXXX)
+          if [[ "$VERSION" == 0.0.0.dev* ]]; then
+            echo "⚠️ Dev version detected: $VERSION"
+            echo "Validating podspec with relaxed checks (dev versions don't have git tags yet)..."
+            pod lib lint XionTypes.podspec --skip-import-validation --allow-warnings
+            echo "✅ Podspec validation passed for dev version"
+            echo "⚠️ Skipping trunk push for dev version (no git tag exists yet)"
+            exit 0
+          fi
+          
+          # For release versions, do full validation and publish
+          echo "Publishing release version: $VERSION"
           pod trunk push XionTypes.podspec
           echo "✅ Published to CocoaPods Trunk"
