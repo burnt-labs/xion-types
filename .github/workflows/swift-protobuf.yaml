@@ -738,6 +738,9 @@ jobs:
           
           sed -i '' "s/--ADD-HERE-YOUR-VALUE--/$VERSION/" XionTypes.podspec 2>/dev/null || sed -i "s/--ADD-HERE-YOUR-VALUE--/$VERSION/" XionTypes.podspec
           echo "✅ Created XionTypes.podspec"
+
+          echo "Printing XionTypes.podspec..."
+          cat XionTypes.podspec
           
       # - name: Publish to CocoaPods Trunk
       #   working-directory: ./swift
@@ -748,6 +751,9 @@ jobs:
       #       echo "⚠️ COCOAPODS_TRUNK_TOKEN not set, skipping publish"
       #       exit 0
       #     fi
-      #     
+
+      #     echo "Printing session info..."
+      #     pod trunk me
+          
       #     pod trunk push XionTypes.podspec
       #     echo "✅ Published to CocoaPods Trunk"
