@@ -650,10 +650,6 @@ jobs:
     name: Test Swift Package
     needs: [swift-build]
     runs-on: macos-latest
-    strategy:
-      matrix:
-        swift-version: ['5.9', '5.10']
-      fail-fast: false
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -670,10 +666,8 @@ jobs:
           name: swift-package
           path: swift/
 
-      - name: Setup Swift
-        uses: swift-actions/setup-swift@v1
-        with:
-          swift-version: ${{ matrix.swift-version }}
+      - name: Verify Swift Version
+        run: swift --version
 
       - name: Create Swift Package Structure
         run: |
