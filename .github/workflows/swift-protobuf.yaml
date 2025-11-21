@@ -3,8 +3,8 @@ name: Swift Protobuf Gen & Publish
 on:
   push:
     branches: 
-      - main 
-      # - feat/add-swift-protobuf-cicd
+      # - main 
+      - feat/add-swift-protobuf-cicd
             
   workflow_dispatch:
     inputs:
@@ -842,7 +842,7 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
           payload: |
-            channel: C09QY10GTUJ
+            channel: ${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}
             text: "🔧 Swift Protobuf Dev Build - XionTypes (${{ steps.check-failures.outputs.version }}):
             • Generated Swift types from protobuf definitions
             • Built Swift Package successfully
