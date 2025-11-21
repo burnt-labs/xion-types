@@ -3,8 +3,8 @@ name: Swift Protobuf Gen & Publish
 on:
   push:
     branches: 
-    #   - main 
-      - feat/add-swift-protobuf-cicd
+      - main 
+      # - feat/add-swift-protobuf-cicd
             
   workflow_dispatch:
     inputs:
@@ -831,8 +831,8 @@ jobs:
             • Test: ${{ needs.swift-test.result }}
             • Publish: ${{ needs.swift-cocoapods-publish.result }}
             <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow run>"
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          errors: false
+          retries: 0
 
       - name: Send Slack notification for dev version
         if: steps.check-failures.outputs.has_failures == 'false' && steps.check-failures.outputs.is_dev_version == 'true'
@@ -849,8 +849,8 @@ jobs:
             • All tests passed
             • ⚠️ Dev version - not published to CocoaPods (no git tag)
             <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow run>"
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          errors: false
+          retries: 0
 
       - name: Send Slack notification on release success
         if: steps.check-failures.outputs.has_failures == 'false' && steps.check-failures.outputs.is_dev_version == 'false'
@@ -867,5 +867,5 @@ jobs:
             • All tests passed
             • Published to CocoaPods: ${{ needs.swift-cocoapods-publish.result }}
             <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow run>"
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          errors: false
+          retries: 0
