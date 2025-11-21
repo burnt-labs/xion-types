@@ -842,7 +842,7 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
           payload: |
-            channel: ${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}
+            channel: C09QY10GTUJ
             text: "🔧 Swift Protobuf Dev Build - XionTypes (${{ steps.check-failures.outputs.version }}):
             • Generated Swift types from protobuf definitions
             • Built Swift Package successfully
