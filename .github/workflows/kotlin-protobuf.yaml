@@ -55,7 +55,7 @@ jobs:
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     if: |
-        github.ref == 'refs/heads/feat/protobufs' ||
+        github.ref == 'refs/heads/feat/add-kotlin-protobufs' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     outputs:
