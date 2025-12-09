@@ -25,6 +25,8 @@ export enum Edition {
    */
   EDITION_2023 = 1000,
   EDITION_2024 = 1001,
+  /** EDITION_UNSTABLE - A placeholder edition for developing and testing unscheduled features. */
+  EDITION_UNSTABLE = 9999,
   /**
    * EDITION_1_TEST_ONLY - Placeholder editions for testing feature resolution.  These should not be
    * used or relied on outside of tests.
@@ -64,6 +66,9 @@ export function editionFromJSON(object: any): Edition {
     case 1001:
     case "EDITION_2024":
       return Edition.EDITION_2024;
+    case 9999:
+    case "EDITION_UNSTABLE":
+      return Edition.EDITION_UNSTABLE;
     case 1:
     case "EDITION_1_TEST_ONLY":
       return Edition.EDITION_1_TEST_ONLY;
@@ -102,6 +107,8 @@ export function editionToJSON(object: Edition): string {
       return "EDITION_2023";
     case Edition.EDITION_2024:
       return "EDITION_2024";
+    case Edition.EDITION_UNSTABLE:
+      return "EDITION_UNSTABLE";
     case Edition.EDITION_1_TEST_ONLY:
       return "EDITION_1_TEST_ONLY";
     case Edition.EDITION_2_TEST_ONLY:
@@ -2716,6 +2723,11 @@ export interface FieldOptions_FeatureSupport {
    * not be able to override it.
    */
   editionRemoved: Edition;
+  /**
+   * The removal error text if this feature is used after the edition it was
+   * removed in.
+   */
+  removalError: string;
 }
 export interface FieldOptions_FeatureSupportProtoMsg {
   typeUrl: "/google.protobuf.FeatureSupport";
@@ -2750,6 +2762,11 @@ export interface FieldOptions_FeatureSupportAmino {
    * not be able to override it.
    */
   edition_removed?: Edition;
+  /**
+   * The removal error text if this feature is used after the edition it was
+   * removed in.
+   */
+  removal_error?: string;
 }
 export interface FieldOptions_FeatureSupportAminoMsg {
   type: "/google.protobuf.FeatureSupport";
@@ -2761,6 +2778,7 @@ export interface FieldOptions_FeatureSupportSDKType {
   edition_deprecated: Edition;
   deprecation_warning: string;
   edition_removed: Edition;
+  removal_error: string;
 }
 export interface OneofOptions {
   /**
@@ -6222,7 +6240,8 @@ function createBaseFieldOptions_FeatureSupport(): FieldOptions_FeatureSupport {
     editionIntroduced: 1,
     editionDeprecated: 1,
     deprecationWarning: "",
-    editionRemoved: 1
+    editionRemoved: 1,
+    removalError: ""
   };
 }
 export const FieldOptions_FeatureSupport = {
@@ -6239,6 +6258,9 @@ export const FieldOptions_FeatureSupport = {
     }
     if (message.editionRemoved !== 1) {
       writer.uint32(32).int32(message.editionRemoved);
+    }
+    if (message.removalError !== "") {
+      writer.uint32(42).string(message.removalError);
     }
     return writer;
   },
@@ -6261,6 +6283,9 @@ export const FieldOptions_FeatureSupport = {
         case 4:
           message.editionRemoved = reader.int32() as any;
           break;
+        case 5:
+          message.removalError = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -6274,6 +6299,7 @@ export const FieldOptions_FeatureSupport = {
     message.editionDeprecated = object.editionDeprecated ?? 1;
     message.deprecationWarning = object.deprecationWarning ?? "";
     message.editionRemoved = object.editionRemoved ?? 1;
+    message.removalError = object.removalError ?? "";
     return message;
   },
   fromAmino(object: FieldOptions_FeatureSupportAmino): FieldOptions_FeatureSupport {
@@ -6290,6 +6316,9 @@ export const FieldOptions_FeatureSupport = {
     if (object.edition_removed !== undefined && object.edition_removed !== null) {
       message.editionRemoved = object.edition_removed;
     }
+    if (object.removal_error !== undefined && object.removal_error !== null) {
+      message.removalError = object.removal_error;
+    }
     return message;
   },
   toAmino(message: FieldOptions_FeatureSupport): FieldOptions_FeatureSupportAmino {
@@ -6298,6 +6327,7 @@ export const FieldOptions_FeatureSupport = {
     obj.edition_deprecated = message.editionDeprecated === 1 ? undefined : message.editionDeprecated;
     obj.deprecation_warning = message.deprecationWarning === "" ? undefined : message.deprecationWarning;
     obj.edition_removed = message.editionRemoved === 1 ? undefined : message.editionRemoved;
+    obj.removal_error = message.removalError === "" ? undefined : message.removalError;
     return obj;
   },
   fromAminoMsg(object: FieldOptions_FeatureSupportAminoMsg): FieldOptions_FeatureSupport {

@@ -1,13 +1,35 @@
-# xion.v1 TypeScript Protobuf Examples
+# Xion TypeScript Protobuf Examples
 
-This directory contains examples demonstrating how to use the generated TypeScript protobuf types for the Core Xion Module (`xion.v1`).
+This directory contains examples demonstrating how to use the generated TypeScript protobuf types for **all Xion modules**.
 
-## Files
+The files are working code examples you can copy from when building applications that interact with Xion. They show the correct field names, types, and methods for each message in each module.
 
-| File | Description |
-|------|-------------|
-| `xion-v1-transaction-messages.ts` | Transaction message construction (MsgSend, MsgMultiSend, etc.) |
-| `xion-v1-query-messages.ts` | Query message construction (WebAuthN, PlatformPercentage, etc.) |
+**What they show:**
+
+- **Construct messages** — Create transaction or query objects with the right fields
+- **Encode to bytes** — Convert the message to binary format (for sending to the blockchain)
+- **Decode from bytes** — Convert binary back to readable objects (for reading responses)
+- **Sign-ready format** — Get `{ typeUrl, value }` needed for transaction signing
+- **Amino format** — Convert to legacy JSON format (some wallets still use this)
+
+## Available Example Files
+
+| Module | File | Description |
+|--------|------|-------------|
+| **xion.v1** (Core) | `xion-v1-transaction-messages.ts` | MsgSend, MsgMultiSend, platform fees |
+| **xion.v1** (Core) | `xion-v1-query-messages.ts` | WebAuthN verification, platform queries |
+| **xion.jwk.v1** (JWK) | `jwk-v1-transaction-messages.ts` | Audience management, claims |
+| **xion.jwk.v1** (JWK) | `jwk-v1-query-messages.ts` | JWT validation, audience queries |
+| **xion.mint.v1** (Mint) | `mint-v1-transaction-messages.ts` | MsgUpdateParams (governance) |
+| **xion.mint.v1** (Mint) | `mint-v1-query-messages.ts` | Inflation, provisions, params queries |
+| **xion.feeabs.v1beta1** (FeeAbs) | `feeabs-v1beta1-transaction-messages.ts` | Cross-chain swaps, host zone management |
+| **xion.feeabs.v1beta1** (FeeAbs) | `feeabs-v1beta1-query-messages.ts` | TWAP queries, module balances, configs |
+| **xion.globalfee.v1** (GlobalFee) | `globalfee-v1-query-messages.ts` | Minimum gas prices, bypass rules (query only) |
+| **xion.indexer.authz.v1** (Authz Indexer) | `indexer-authz-v1-query-messages.ts` | Grant queries (⚠️ types not yet generated) |
+
+> **Note:** This guide walks through the **Core Module (xion.v1)** as a reference. The process for all other modules is identical — just swap the import paths and message types.
+
+---
 
 ## Prerequisites
 
@@ -20,9 +42,16 @@ pnpm add @burnt-labs/xion-types
 ## Running the Examples
 
 ```bash
+# Core module
 npx ts-node xion-v1-transaction-messages.ts
 npx ts-node xion-v1-query-messages.ts
+
+# JWK module and any other module ... (same process)
+npx ts-node jwk-v1-transaction-messages.ts
+npx ts-node jwk-v1-query-messages.ts
 ```
+
+---
 
 ## Transaction Messages (xion.v1)
 
@@ -42,6 +71,8 @@ npx ts-node xion-v1-query-messages.ts
 | `QueryPlatformPercentageRequest` | `QueryPlatformPercentageResponse` | Get platform fee percentage |
 | `QueryPlatformMinimumRequest` | `QueryPlatformMinimumResponse` | Get minimum platform fees |
 
+---
+
 ## Key Methods
 
 Each message type provides these methods:
@@ -57,6 +88,8 @@ Each message type provides these methods:
 | `toAmino(msg)` | Convert to Amino format |
 | `fromAminoMsg(obj)` | Convert from `{ type, value }` Amino |
 | `toAminoMsg(msg)` | Convert to `{ type, value }` Amino |
+
+---
 
 ## Quick Example
 
@@ -85,6 +118,8 @@ const amino = MsgSend.toAminoMsg(msg);
 // { type: "xion/MsgSend", value: { from_address: "...", ... } }
 ```
 
+---
+
 ## Notes
 
 ### Platform Percentage
@@ -101,7 +136,7 @@ The `platformPercentage` field is multiplied by 10000:
 
 ### Bytes Fields (Uint8Array)
 
-WebAuthN fields use `Uint8Array`. Convert to/from base64:
+WebAuthN and JWK fields use `Uint8Array`. Convert to/from base64:
 
 ```typescript
 // To base64
@@ -111,6 +146,7 @@ const base64 = Buffer.from(bytes).toString('base64');
 const bytes = new Uint8Array(Buffer.from(base64, 'base64'));
 ```
 
+---
 
 ## Testing Locally
 

@@ -4,8 +4,11 @@ import { EpochInfo, EpochInfoAmino, EpochInfoSDKType } from "./epoch";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the feeabs module's genesis state. */
 export interface GenesisState {
+  /** params defines the parameters for the feeabs module */
   params: Params;
+  /** epochs defines the list of epoch information */
   epochs: EpochInfo[];
+  /** port_id defines the IBC port identifier */
   portId: string;
 }
 export interface GenesisStateProtoMsg {
@@ -19,8 +22,17 @@ export interface GenesisStateProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.GenesisState
  */
 export interface GenesisStateAmino {
+  /**
+   * params defines the parameters for the feeabs module
+   */
   params?: ParamsAmino;
+  /**
+   * epochs defines the list of epoch information
+   */
   epochs?: EpochInfoAmino[];
+  /**
+   * port_id defines the IBC port identifier
+   */
   port_id?: string;
 }
 export interface GenesisStateAminoMsg {

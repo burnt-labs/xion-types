@@ -11,7 +11,7 @@ export class LCDQueryClient {
     this.req = requestClient;
     this.params = this.params.bind(this);
   }
-  /* Params */
+  /* Params queries the parameters of the module */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `xion/globalfee/v1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
