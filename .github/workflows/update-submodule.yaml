@@ -1,0 +1,433 @@
+name: Update Xion Submodule
+
+# Jobs Description:
+# 1. check-submodule-updates
+#     - Checks if xion submodule has updates
+#     - Compares current commit vs latest main
+#     - Outputs: has-updates, current-commit, latest-commit, commit-message
+# 2. update-submodule-and-create-pr (runs only if updates found)
+#     - Updates xion submodule to latest main
+#     - Creates a branch and commits changes
+#     - Creates a PR with details about the update
+#     - Note: TypeScript types will be regenerated automatically when PR is merged via typescript-ci.yaml
+# 3. notify-slack (always runs)
+#     - Sends Slack notifications based on results:
+#         - Error: If check or update fails
+#         - Success: If PR created successfully (with PR link)
+#         - Info: If no updates found
+#     - Uses the same Slack action and secrets as the Swift workflow
+
+
+on:
+  schedule:
+    # Run daily at 14:00 UTC [16:00 UTC+2]
+    - cron: '00 14 * * *'
+    # Original daily option: Run daily at 3 AM UTC (after the nightly build at 2 AM)
+    # - cron: '0 3 * * *'
+    # Weekly option: Run every Monday at 3 AM UTC
+    # - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update check even if no changes detected'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  check-submodule-updates:
+    name: Check for Submodule Updates
+    runs-on: ubuntu-latest
+    outputs:
+      has-updates: ${{ steps.check.outputs.has-updates }}
+      current-commit: ${{ steps.check.outputs.current-commit }}
+      latest-commit: ${{ steps.check.outputs.latest-commit }}
+      commit-message: ${{ steps.check.outputs.commit-message }}
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Check for submodule updates
+        id: check
+        run: |
+          echo "🔍 Checking for xion submodule updates..."
+          
+          cd xion
+          
+          # Get current commit
+          CURRENT_COMMIT=$(git rev-parse HEAD)
+          CURRENT_COMMIT_SHORT=$(git rev-parse --short HEAD)
+          
+          # Fetch latest changes
+          git fetch origin main
+          
+          # Get latest commit
+          git checkout main
+          git pull origin main
+          LATEST_COMMIT=$(git rev-parse HEAD)
+          LATEST_COMMIT_SHORT=$(git rev-parse --short HEAD)
+          
+          cd ..
+          
+          echo "Current commit: $CURRENT_COMMIT_SHORT ($CURRENT_COMMIT)"
+          echo "Latest commit: $LATEST_COMMIT_SHORT ($LATEST_COMMIT)"
+          
+          if [ "$CURRENT_COMMIT" != "$LATEST_COMMIT" ] || [ "${{ inputs.force_update }}" == "true" ]; then
+            echo "has-updates=true" >> $GITHUB_OUTPUT
+            echo "✅ Submodule updates found!"
+            
+            # Get commit message from latest commit
+            cd xion
+            COMMIT_MSG=$(git log -1 --pretty=format:"%s" $LATEST_COMMIT)
+            cd ..
+            
+            echo "current-commit=$CURRENT_COMMIT" >> $GITHUB_OUTPUT
+            echo "latest-commit=$LATEST_COMMIT" >> $GITHUB_OUTPUT
+            echo "commit-message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+            
+            echo "Update summary:"
+            echo "  From: $CURRENT_COMMIT_SHORT"
+            echo "  To: $LATEST_COMMIT_SHORT"
+            echo "  Message: $COMMIT_MSG"
+          else
+            echo "has-updates=false" >> $GITHUB_OUTPUT
+            echo "✅ Submodule is up to date"
+          fi
+
+  update-submodule-and-create-pr:
+    name: Update Submodule & Create PR
+    needs: check-submodule-updates
+    if: needs.check-submodule-updates.outputs.has-updates == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      pr-number: ${{ steps.create-pr.outputs.pr-number }}
+      pr-url: ${{ steps.create-pr.outputs.pr-url }}
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update xion submodule
+        run: |
+          echo "🔄 Updating xion submodule to latest..."
+          
+          cd xion
+          git checkout main
+          git pull origin main
+          LATEST_COMMIT=$(git rev-parse HEAD)
+          LATEST_COMMIT_SHORT=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s" $LATEST_COMMIT)
+          cd ..
+          
+          # Update submodule reference
+          git add xion
+          
+          echo "Updated xion submodule to: $LATEST_COMMIT_SHORT"
+          echo "Commit message: $COMMIT_MSG"
+
+      - name: Create Pull Request
+        id: create-pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Check if there are changes to commit
+          if git diff --quiet --cached; then
+            echo "No changes to commit"
+            echo "pr-number=" >> $GITHUB_OUTPUT
+            echo "pr-url=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          CURRENT_COMMIT_SHORT="${{ needs.check-submodule-updates.outputs.current-commit }}"
+          LATEST_COMMIT_SHORT="${{ needs.check-submodule-updates.outputs.latest-commit }}"
+          COMMIT_MSG="${{ needs.check-submodule-updates.outputs.commit-message }}"
+          
+          # Create branch name (human-readable format: chore/update-xion-submodule-YYYY-MM-DD)
+          BRANCH_NAME="chore/update-xion-submodule-$(date +%Y-%m-%d)"
+          
+          # Create and push branch
+          git checkout -b "$BRANCH_NAME"
+          git commit -m "chore: update xion submodule to latest
+
+          Automated update of xion submodule to latest main branch.
+
+          **Submodule Update:**
+          - Previous: \`${CURRENT_COMMIT_SHORT:0:7}\`
+          - Latest: \`${LATEST_COMMIT_SHORT:0:7}\`
+          - Latest commit message: ${COMMIT_MSG}
+
+          **Note:** TypeScript types will be automatically regenerated when this PR is merged via typescript-ci.yaml workflow.
+
+          🤖 Generated by automated workflow"
+          
+          git push origin "$BRANCH_NAME"
+          
+          # Create PR using GitHub CLI
+          PR_BODY=$(cat <<EOF
+          ## 🔄 Automated Submodule Update
+
+          This PR contains an automated update to the \`xion\` submodule.
+
+          ### 📦 Submodule Changes
+
+          | Field | Value |
+          |-------|-------|
+          | **Previous Commit** | \`${CURRENT_COMMIT_SHORT:0:7}\` |
+          | **Latest Commit** | \`${LATEST_COMMIT_SHORT:0:7}\` |
+          | **Latest Commit Message** | ${COMMIT_MSG} |
+
+          ### 🔍 What's Included
+
+          - ✅ Updated \`xion\` submodule to latest main branch
+          - ℹ️ TypeScript types will be automatically regenerated when this PR is merged (via typescript-ci.yaml workflow)
+
+          ### 🚀 Next Steps
+
+          1. Review the submodule changes
+          2. Merge when ready
+          3. TypeScript types will be regenerated automatically on merge to main
+
+          ### 🤖 Automation Info
+
+          - **Generated**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          - **Workflow**: ${{ github.workflow }}
+          - **Run**: ${{ github.run_number }}
+          - **Trigger**: ${{ github.event_name }}
+
+          EOF
+          )
+          
+          PR_OUTPUT=$(gh pr create \
+            --title "🤖 Automated: Update xion submodule ($(date +%Y-%m-%d))" \
+            --body "$PR_BODY" \
+            --head "$BRANCH_NAME" \
+            --base "main" 2>&1) || {
+            echo "Failed to create PR: $PR_OUTPUT"
+            exit 1
+          }
+          
+          # Extract PR number and URL
+          PR_NUMBER=$(echo "$PR_OUTPUT" | grep -oP 'pull/\K[0-9]+' | head -1)
+          PR_URL=$(echo "$PR_OUTPUT" | grep -oP 'https://[^\s]+' | head -1)
+          
+          echo "pr-number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr-url=$PR_URL" >> $GITHUB_OUTPUT
+          
+          echo "✅ Created PR #$PR_NUMBER: $PR_URL"
+
+  notify-slack:
+    name: Notify Slack
+    runs-on: ubuntu-latest
+    needs: [check-submodule-updates, update-submodule-and-create-pr]
+    if: always()
+    
+    steps:
+      - name: Check workflow results
+        id: check-results
+        run: |
+          CHECK_RESULT="${{ needs.check-submodule-updates.result }}"
+          UPDATE_RESULT="${{ needs.update-submodule-and-create-pr.result }}"
+          HAS_UPDATES="${{ needs.check-submodule-updates.outputs.has-updates }}"
+          PR_NUMBER="${{ needs.update-submodule-and-create-pr.outputs.pr-number }}"
+          PR_URL="${{ needs.update-submodule-and-create-pr.outputs.pr-url }}"
+          CURRENT_COMMIT="${{ needs.check-submodule-updates.outputs.current-commit }}"
+          LATEST_COMMIT="${{ needs.check-submodule-updates.outputs.latest-commit }}"
+          
+          echo "Check result: $CHECK_RESULT"
+          echo "Update result: $UPDATE_RESULT"
+          echo "Has updates: $HAS_UPDATES"
+          echo "PR number: $PR_NUMBER"
+          
+          # Determine notification type
+          if [ "$CHECK_RESULT" != "success" ]; then
+            echo "notification-type=error" >> $GITHUB_OUTPUT
+            echo "message=❌ Submodule check failed" >> $GITHUB_OUTPUT
+          elif [ "$UPDATE_RESULT" != "success" ] && [ "$HAS_UPDATES" == "true" ]; then
+            echo "notification-type=error" >> $GITHUB_OUTPUT
+            echo "message=❌ Failed to update submodule and create PR" >> $GITHUB_OUTPUT
+          elif [ "$HAS_UPDATES" == "true" ] && [ -n "$PR_NUMBER" ]; then
+            echo "notification-type=success" >> $GITHUB_OUTPUT
+            echo "message=✅ Submodule updated and PR created" >> $GITHUB_OUTPUT
+          elif [ "$HAS_UPDATES" == "true" ]; then
+            echo "notification-type=warning" >> $GITHUB_OUTPUT
+            echo "message=⚠️ Updates found but PR creation may have failed" >> $GITHUB_OUTPUT
+          else
+            echo "notification-type=info" >> $GITHUB_OUTPUT
+            echo "message=ℹ️ No submodule updates found" >> $GITHUB_OUTPUT
+          fi
+          
+          # Export values for notification
+          echo "pr-number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr-url=$PR_URL" >> $GITHUB_OUTPUT
+          echo "current-commit=${CURRENT_COMMIT:0:7}" >> $GITHUB_OUTPUT
+          echo "latest-commit=${LATEST_COMMIT:0:7}" >> $GITHUB_OUTPUT
+
+      - name: Send Slack notification on error
+        if: steps.check-results.outputs.notification-type == 'error'
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          payload: |
+            {
+              "channel": "${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}",
+              "text": "🚨 Xion Submodule Update Failed - xion-types",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚨 Xion Submodule Update Failed"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:*\nxion-types"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Workflow:*\n${{ github.workflow }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:*\n❌ Failed"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Run:*\n#${{ github.run_number }}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Check Result:* ${{ needs.check-submodule-updates.result }}\n*Update Result:* ${{ needs.update-submodule-and-create-pr.result }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Workflow Run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Send Slack notification on success
+        if: steps.check-results.outputs.notification-type == 'success'
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          payload: |
+            {
+              "channel": "${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}",
+              "text": "✅ Xion Submodule Updated - xion-types",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "✅ Xion Submodule Updated"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:*\nxion-types"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*PR:*\n<${{ steps.check-results.outputs.pr-url }}|#${{ steps.check-results.outputs.pr-number }}>"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Previous:*\n\`${{ steps.check-results.outputs.current-commit }}\`"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Latest:*\n\`${{ steps.check-results.outputs.latest-commit }}\`"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "✅ Submodule updated and PR created successfully\nℹ️ TypeScript types will be regenerated automatically when PR is merged"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View PR"
+                      },
+                      "url": "${{ steps.check-results.outputs.pr-url }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Workflow"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Send Slack notification on no updates
+        if: steps.check-results.outputs.notification-type == 'info'
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          payload: |
+            {
+              "channel": "${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}",
+              "text": "ℹ️ Xion Submodule Check - No Updates",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "ℹ️ *Xion Submodule Check*\n\nNo updates found. Submodule is up to date.\n\n*Workflow:* ${{ github.workflow }} #${{ github.run_number }}"
+                  }
+                }
+              ]
+            }

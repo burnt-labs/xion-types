@@ -25,7 +25,8 @@ The files are working code examples you can copy from when building applications
 | **xion.feeabs.v1beta1** (FeeAbs) | `feeabs-v1beta1-transaction-messages.ts` | Cross-chain swaps, host zone management |
 | **xion.feeabs.v1beta1** (FeeAbs) | `feeabs-v1beta1-query-messages.ts` | TWAP queries, module balances, configs |
 | **xion.globalfee.v1** (GlobalFee) | `globalfee-v1-query-messages.ts` | Minimum gas prices, bypass rules (query only) |
-| **xion.indexer.authz.v1** (Authz Indexer) | `indexer-authz-v1-query-messages.ts` | Grant queries (⚠️ types not yet generated) |
+| **xion.indexer.authz.v1** (Authz Indexer) | `indexer-authz-v1-query-messages.ts` | Grant queries by granter/grantee (query only) |
+| **xion.indexer.feegrant.v1** (Feegrant Indexer) | `indexer-feegrant-v1-query-messages.ts` | Fee allowance queries (query only) |
 
 > **Note:** This guide walks through the **Core Module (xion.v1)** as a reference. The process for all other modules is identical — just swap the import paths and message types.
 
