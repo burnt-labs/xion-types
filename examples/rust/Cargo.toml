@@ -1,0 +1,74 @@
+[package]
+name = "xion-types-examples"
+version = "0.1.0"
+edition = "2021"
+description = "Example usage of xion-types crate for CosmWasm protobuf messages"
+license = "MIT"
+
+[dependencies]
+xion-types = "0.0.0-dev.3da662ac"
+prost = "0.12"
+prost-types = "0.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+base64 = "0.22"
+hex = "0.4"
+
+# CosmWasm examples
+[[example]]
+name = "cosmwasm_v1_query_messages"
+path = "examples/cosmwasm_v1_query_messages.rs"
+
+[[example]]
+name = "cosmwasm_v1_transaction_messages"
+path = "examples/cosmwasm_v1_transaction_messages.rs"
+
+# Fee Abstraction examples
+[[example]]
+name = "feeabs_v1beta1_query_messages"
+path = "examples/feeabs_v1beta1_query_messages.rs"
+
+[[example]]
+name = "feeabs_v1beta1_transaction_messages"
+path = "examples/feeabs_v1beta1_transaction_messages.rs"
+
+# Global Fee examples
+[[example]]
+name = "globalfee_v1_query_messages"
+path = "examples/globalfee_v1_query_messages.rs"
+
+# JWK examples
+[[example]]
+name = "jwk_v1_query_messages"
+path = "examples/jwk_v1_query_messages.rs"
+
+[[example]]
+name = "jwk_v1_transaction_messages"
+path = "examples/jwk_v1_transaction_messages.rs"
+
+# Mint examples
+[[example]]
+name = "mint_v1_query_messages"
+path = "examples/mint_v1_query_messages.rs"
+
+[[example]]
+name = "mint_v1_transaction_messages"
+path = "examples/mint_v1_transaction_messages.rs"
+
+# Xion Core examples
+[[example]]
+name = "xion_v1_query_messages"
+path = "examples/xion_v1_query_messages.rs"
+
+[[example]]
+name = "xion_v1_transaction_messages"
+path = "examples/xion_v1_transaction_messages.rs"
+
+# Indexer examples
+[[example]]
+name = "indexer_authz_v1_query_messages"
+path = "examples/indexer_authz_v1_query_messages.rs"
+
+[[example]]
+name = "indexer_feegrant_v1_query_messages"
+path = "examples/indexer_feegrant_v1_query_messages.rs"
