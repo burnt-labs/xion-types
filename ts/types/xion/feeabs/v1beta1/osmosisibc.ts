@@ -6,13 +6,9 @@ import { toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "..
 import { Decimal } from "@cosmjs/math";
 /** QueryArithmeticTwapToNowRequest */
 export interface QueryArithmeticTwapToNowRequest {
-  /** pool_id defines the pool identifier */
   poolId: bigint;
-  /** base_asset defines the base asset for the TWAP calculation */
   baseAsset: string;
-  /** quote_asset defines the quote asset for the TWAP calculation */
   quoteAsset: string;
-  /** start_time defines the start time for the TWAP calculation */
   startTime: Date;
 }
 export interface QueryArithmeticTwapToNowRequestProtoMsg {
@@ -26,21 +22,9 @@ export interface QueryArithmeticTwapToNowRequestProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.QueryArithmeticTwapToNowRequest
  */
 export interface QueryArithmeticTwapToNowRequestAmino {
-  /**
-   * pool_id defines the pool identifier
-   */
   pool_id?: string;
-  /**
-   * base_asset defines the base asset for the TWAP calculation
-   */
   base_asset?: string;
-  /**
-   * quote_asset defines the quote asset for the TWAP calculation
-   */
   quote_asset?: string;
-  /**
-   * start_time defines the start time for the TWAP calculation
-   */
   start_time?: string;
 }
 export interface QueryArithmeticTwapToNowRequestAminoMsg {
@@ -56,10 +40,6 @@ export interface QueryArithmeticTwapToNowRequestSDKType {
 }
 /** QueryArithmeticTwapToNowResponse */
 export interface QueryArithmeticTwapToNowResponse {
-  /**
-   * arithmetic_twap defines the calculated arithmetic time-weighted average
-   * price
-   */
   arithmeticTwap: string;
 }
 export interface QueryArithmeticTwapToNowResponseProtoMsg {
@@ -73,10 +53,6 @@ export interface QueryArithmeticTwapToNowResponseProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.QueryArithmeticTwapToNowResponse
  */
 export interface QueryArithmeticTwapToNowResponseAmino {
-  /**
-   * arithmetic_twap defines the calculated arithmetic time-weighted average
-   * price
-   */
   arithmetic_twap?: string;
 }
 export interface QueryArithmeticTwapToNowResponseAminoMsg {
@@ -89,9 +65,7 @@ export interface QueryArithmeticTwapToNowResponseSDKType {
 }
 /** InterchainQueryRequest */
 export interface InterchainQueryRequest {
-  /** data defines the raw query data */
   data: Uint8Array;
-  /** path defines the query path */
   path: string;
 }
 export interface InterchainQueryRequestProtoMsg {
@@ -105,13 +79,7 @@ export interface InterchainQueryRequestProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.InterchainQueryRequest
  */
 export interface InterchainQueryRequestAmino {
-  /**
-   * data defines the raw query data
-   */
   data?: string;
-  /**
-   * path defines the query path
-   */
   path?: string;
 }
 export interface InterchainQueryRequestAminoMsg {
@@ -125,7 +93,6 @@ export interface InterchainQueryRequestSDKType {
 }
 /** InterchainQueryPacketData is comprised of raw query. */
 export interface InterchainQueryPacketData {
-  /** data defines the raw query data */
   data: Uint8Array;
   /** optional memo */
   memo: string;
@@ -141,9 +108,6 @@ export interface InterchainQueryPacketDataProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.InterchainQueryPacketData
  */
 export interface InterchainQueryPacketDataAmino {
-  /**
-   * data defines the raw query data
-   */
   data?: string;
   /**
    * optional memo
@@ -164,7 +128,6 @@ export interface InterchainQueryPacketDataSDKType {
  * non-deterministic fields left empty (e.g. Codespace, Log, Info and ...).
  */
 export interface InterchainQueryPacketAck {
-  /** data defines the query response data */
   data: Uint8Array;
 }
 export interface InterchainQueryPacketAckProtoMsg {
@@ -179,9 +142,6 @@ export interface InterchainQueryPacketAckProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.InterchainQueryPacketAck
  */
 export interface InterchainQueryPacketAckAmino {
-  /**
-   * data defines the query response data
-   */
   data?: string;
 }
 export interface InterchainQueryPacketAckAminoMsg {
@@ -197,7 +157,6 @@ export interface InterchainQueryPacketAckSDKType {
 }
 /** InterchainQueryRequestPacket */
 export interface InterchainQueryRequestPacket {
-  /** requests defines the list of interchain query requests */
   requests: InterchainQueryRequest[];
 }
 export interface InterchainQueryRequestPacketProtoMsg {
@@ -211,9 +170,6 @@ export interface InterchainQueryRequestPacketProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.InterchainQueryRequestPacket
  */
 export interface InterchainQueryRequestPacketAmino {
-  /**
-   * requests defines the list of interchain query requests
-   */
   requests?: InterchainQueryRequestAmino[];
 }
 export interface InterchainQueryRequestPacketAminoMsg {
@@ -229,7 +185,6 @@ export interface InterchainQueryRequestPacketSDKType {
  * used when sending queries to an SDK host chain.
  */
 export interface CosmosQuery {
-  /** requests defines the list of ABCI query requests */
   requests: RequestQuery[];
 }
 export interface CosmosQueryProtoMsg {
@@ -244,9 +199,6 @@ export interface CosmosQueryProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.CosmosQuery
  */
 export interface CosmosQueryAmino {
-  /**
-   * requests defines the list of ABCI query requests
-   */
   requests?: RequestQueryAmino[];
 }
 export interface CosmosQueryAminoMsg {
@@ -265,7 +217,6 @@ export interface CosmosQuerySDKType {
  * be used when receiving responses from an SDK host chain.
  */
 export interface CosmosResponse {
-  /** responses defines the list of ABCI query responses */
   responses: ResponseQuery[];
 }
 export interface CosmosResponseProtoMsg {
@@ -280,9 +231,6 @@ export interface CosmosResponseProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.CosmosResponse
  */
 export interface CosmosResponseAmino {
-  /**
-   * responses defines the list of ABCI query responses
-   */
   responses?: ResponseQueryAmino[];
 }
 export interface CosmosResponseAminoMsg {

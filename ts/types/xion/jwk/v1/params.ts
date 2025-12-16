@@ -2,9 +2,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params defines the parameters for the module. */
 export interface Params {
-  /** Time offset in nanoseconds for JWT validation */
   timeOffset: bigint;
-  /** Gas required to deploy a new project/audience */
   deploymentGas: bigint;
 }
 export interface ParamsProtoMsg {
@@ -18,13 +16,7 @@ export interface ParamsProtoMsg {
  * @see proto type: xion.jwk.v1.Params
  */
 export interface ParamsAmino {
-  /**
-   * Time offset in nanoseconds for JWT validation
-   */
   time_offset?: string;
-  /**
-   * Gas required to deploy a new project/audience
-   */
   deployment_gas?: string;
 }
 export interface ParamsAminoMsg {

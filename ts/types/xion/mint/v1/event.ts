@@ -6,19 +6,12 @@ import { Decimal } from "@cosmjs/math";
  * module EndBlocker
  */
 export interface MintIncentiveTokens {
-  /** The ratio of bonded tokens to total supply */
   bondedRatio: string;
-  /** The current inflation rate */
   inflation: string;
-  /** The total annual provisions for minting */
   annualProvisions: string;
-  /** The amount of tokens needed for incentives */
   neededAmount: bigint;
-  /** The amount of tokens collected for incentives */
   collectedAmount: bigint;
-  /** The amount of tokens minted */
   mintedAmount: bigint;
-  /** The amount of tokens burned */
   burnedAmount: bigint;
 }
 export interface MintIncentiveTokensProtoMsg {
@@ -33,33 +26,12 @@ export interface MintIncentiveTokensProtoMsg {
  * @see proto type: xion.mint.v1.MintIncentiveTokens
  */
 export interface MintIncentiveTokensAmino {
-  /**
-   * The ratio of bonded tokens to total supply
-   */
   bonded_ratio?: string;
-  /**
-   * The current inflation rate
-   */
   inflation?: string;
-  /**
-   * The total annual provisions for minting
-   */
   annual_provisions?: string;
-  /**
-   * The amount of tokens needed for incentives
-   */
   needed_amount?: string;
-  /**
-   * The amount of tokens collected for incentives
-   */
   collected_amount?: string;
-  /**
-   * The amount of tokens minted
-   */
   minted_amount?: string;
-  /**
-   * The amount of tokens burned
-   */
   burned_amount?: string;
 }
 export interface MintIncentiveTokensAminoMsg {

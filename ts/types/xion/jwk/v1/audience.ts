@@ -1,12 +1,8 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
-/** Audience represents a JWT audience configuration */
 export interface Audience {
-  /** The audience identifier */
   aud: string;
-  /** The public key associated with this audience */
   key: string;
-  /** The admin address for this audience */
   admin: string;
 }
 export interface AudienceProtoMsg {
@@ -14,38 +10,25 @@ export interface AudienceProtoMsg {
   value: Uint8Array;
 }
 /**
- * Audience represents a JWT audience configuration
  * @name AudienceAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.Audience
  */
 export interface AudienceAmino {
-  /**
-   * The audience identifier
-   */
   aud?: string;
-  /**
-   * The public key associated with this audience
-   */
   key?: string;
-  /**
-   * The admin address for this audience
-   */
   admin?: string;
 }
 export interface AudienceAminoMsg {
   type: "/xion.jwk.v1.Audience";
   value: AudienceAmino;
 }
-/** Audience represents a JWT audience configuration */
 export interface AudienceSDKType {
   aud: string;
   key: string;
   admin: string;
 }
-/** AudienceClaim represents a claim for an audience */
 export interface AudienceClaim {
-  /** The signer of the audience claim */
   signer: string;
 }
 export interface AudienceClaimProtoMsg {
@@ -53,22 +36,17 @@ export interface AudienceClaimProtoMsg {
   value: Uint8Array;
 }
 /**
- * AudienceClaim represents a claim for an audience
  * @name AudienceClaimAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.AudienceClaim
  */
 export interface AudienceClaimAmino {
-  /**
-   * The signer of the audience claim
-   */
   signer?: string;
 }
 export interface AudienceClaimAminoMsg {
   type: "/xion.jwk.v1.AudienceClaim";
   value: AudienceClaimAmino;
 }
-/** AudienceClaim represents a claim for an audience */
 export interface AudienceClaimSDKType {
   signer: string;
 }

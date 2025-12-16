@@ -2,18 +2,10 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../helpers";
-/**
- * QueryWebAuthNVerifyRegisterRequest is the request type for WebAuthN
- * registration verification
- */
 export interface QueryWebAuthNVerifyRegisterRequest {
-  /** The account address */
   addr: string;
-  /** The challenge string for registration */
   challenge: string;
-  /** The relying party identifier */
   rp: string;
-  /** The registration data */
   data: Uint8Array;
 }
 export interface QueryWebAuthNVerifyRegisterRequestProtoMsg {
@@ -21,50 +13,27 @@ export interface QueryWebAuthNVerifyRegisterRequestProtoMsg {
   value: Uint8Array;
 }
 /**
- * QueryWebAuthNVerifyRegisterRequest is the request type for WebAuthN
- * registration verification
  * @name QueryWebAuthNVerifyRegisterRequestAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryWebAuthNVerifyRegisterRequest
  */
 export interface QueryWebAuthNVerifyRegisterRequestAmino {
-  /**
-   * The account address
-   */
   addr?: string;
-  /**
-   * The challenge string for registration
-   */
   challenge?: string;
-  /**
-   * The relying party identifier
-   */
   rp?: string;
-  /**
-   * The registration data
-   */
   data?: string;
 }
 export interface QueryWebAuthNVerifyRegisterRequestAminoMsg {
   type: "/xion.v1.QueryWebAuthNVerifyRegisterRequest";
   value: QueryWebAuthNVerifyRegisterRequestAmino;
 }
-/**
- * QueryWebAuthNVerifyRegisterRequest is the request type for WebAuthN
- * registration verification
- */
 export interface QueryWebAuthNVerifyRegisterRequestSDKType {
   addr: string;
   challenge: string;
   rp: string;
   data: Uint8Array;
 }
-/**
- * QueryWebAuthNVerifyRegisterResponse is the response type for WebAuthN
- * registration verification
- */
 export interface QueryWebAuthNVerifyRegisterResponse {
-  /** The generated credential */
   credential: Uint8Array;
 }
 export interface QueryWebAuthNVerifyRegisterResponseProtoMsg {
@@ -72,43 +41,25 @@ export interface QueryWebAuthNVerifyRegisterResponseProtoMsg {
   value: Uint8Array;
 }
 /**
- * QueryWebAuthNVerifyRegisterResponse is the response type for WebAuthN
- * registration verification
  * @name QueryWebAuthNVerifyRegisterResponseAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryWebAuthNVerifyRegisterResponse
  */
 export interface QueryWebAuthNVerifyRegisterResponseAmino {
-  /**
-   * The generated credential
-   */
   credential?: string;
 }
 export interface QueryWebAuthNVerifyRegisterResponseAminoMsg {
   type: "/xion.v1.QueryWebAuthNVerifyRegisterResponse";
   value: QueryWebAuthNVerifyRegisterResponseAmino;
 }
-/**
- * QueryWebAuthNVerifyRegisterResponse is the response type for WebAuthN
- * registration verification
- */
 export interface QueryWebAuthNVerifyRegisterResponseSDKType {
   credential: Uint8Array;
 }
-/**
- * QueryWebAuthNVerifyAuthenticateRequest is the request type for WebAuthN
- * authentication verification
- */
 export interface QueryWebAuthNVerifyAuthenticateRequest {
-  /** The account address */
   addr: string;
-  /** The challenge string for authentication */
   challenge: string;
-  /** The relying party identifier */
   rp: string;
-  /** The credential to verify */
   credential: Uint8Array;
-  /** The authentication data */
   data: Uint8Array;
 }
 export interface QueryWebAuthNVerifyAuthenticateRequestProtoMsg {
@@ -116,42 +67,21 @@ export interface QueryWebAuthNVerifyAuthenticateRequestProtoMsg {
   value: Uint8Array;
 }
 /**
- * QueryWebAuthNVerifyAuthenticateRequest is the request type for WebAuthN
- * authentication verification
  * @name QueryWebAuthNVerifyAuthenticateRequestAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryWebAuthNVerifyAuthenticateRequest
  */
 export interface QueryWebAuthNVerifyAuthenticateRequestAmino {
-  /**
-   * The account address
-   */
   addr?: string;
-  /**
-   * The challenge string for authentication
-   */
   challenge?: string;
-  /**
-   * The relying party identifier
-   */
   rp?: string;
-  /**
-   * The credential to verify
-   */
   credential?: string;
-  /**
-   * The authentication data
-   */
   data?: string;
 }
 export interface QueryWebAuthNVerifyAuthenticateRequestAminoMsg {
   type: "/xion.v1.QueryWebAuthNVerifyAuthenticateRequest";
   value: QueryWebAuthNVerifyAuthenticateRequestAmino;
 }
-/**
- * QueryWebAuthNVerifyAuthenticateRequest is the request type for WebAuthN
- * authentication verification
- */
 export interface QueryWebAuthNVerifyAuthenticateRequestSDKType {
   addr: string;
   challenge: string;
@@ -159,18 +89,12 @@ export interface QueryWebAuthNVerifyAuthenticateRequestSDKType {
   credential: Uint8Array;
   data: Uint8Array;
 }
-/**
- * QueryWebAuthNVerifyAuthenticateResponse is the response type for WebAuthN
- * authentication verification
- */
 export interface QueryWebAuthNVerifyAuthenticateResponse {}
 export interface QueryWebAuthNVerifyAuthenticateResponseProtoMsg {
   typeUrl: "/xion.v1.QueryWebAuthNVerifyAuthenticateResponse";
   value: Uint8Array;
 }
 /**
- * QueryWebAuthNVerifyAuthenticateResponse is the response type for WebAuthN
- * authentication verification
  * @name QueryWebAuthNVerifyAuthenticateResponseAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryWebAuthNVerifyAuthenticateResponse
@@ -180,23 +104,13 @@ export interface QueryWebAuthNVerifyAuthenticateResponseAminoMsg {
   type: "/xion.v1.QueryWebAuthNVerifyAuthenticateResponse";
   value: QueryWebAuthNVerifyAuthenticateResponseAmino;
 }
-/**
- * QueryWebAuthNVerifyAuthenticateResponse is the response type for WebAuthN
- * authentication verification
- */
 export interface QueryWebAuthNVerifyAuthenticateResponseSDKType {}
-/**
- * QueryPlatformPercentageRequest is the request type for querying platform
- * percentage
- */
 export interface QueryPlatformPercentageRequest {}
 export interface QueryPlatformPercentageRequestProtoMsg {
   typeUrl: "/xion.v1.QueryPlatformPercentageRequest";
   value: Uint8Array;
 }
 /**
- * QueryPlatformPercentageRequest is the request type for querying platform
- * percentage
  * @name QueryPlatformPercentageRequestAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryPlatformPercentageRequest
@@ -206,17 +120,8 @@ export interface QueryPlatformPercentageRequestAminoMsg {
   type: "/xion.v1.QueryPlatformPercentageRequest";
   value: QueryPlatformPercentageRequestAmino;
 }
-/**
- * QueryPlatformPercentageRequest is the request type for querying platform
- * percentage
- */
 export interface QueryPlatformPercentageRequestSDKType {}
-/**
- * QueryPlatformPercentageResponse is the response type for querying platform
- * percentage
- */
 export interface QueryPlatformPercentageResponse {
-  /** The platform percentage fee */
   platformPercentage: bigint;
 }
 export interface QueryPlatformPercentageResponseProtoMsg {
@@ -224,41 +129,26 @@ export interface QueryPlatformPercentageResponseProtoMsg {
   value: Uint8Array;
 }
 /**
- * QueryPlatformPercentageResponse is the response type for querying platform
- * percentage
  * @name QueryPlatformPercentageResponseAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryPlatformPercentageResponse
  */
 export interface QueryPlatformPercentageResponseAmino {
-  /**
-   * The platform percentage fee
-   */
   platform_percentage?: string;
 }
 export interface QueryPlatformPercentageResponseAminoMsg {
   type: "/xion.v1.QueryPlatformPercentageResponse";
   value: QueryPlatformPercentageResponseAmino;
 }
-/**
- * QueryPlatformPercentageResponse is the response type for querying platform
- * percentage
- */
 export interface QueryPlatformPercentageResponseSDKType {
   platform_percentage: bigint;
 }
-/**
- * QueryPlatformMinimumRequest is the request type for querying platform minimum
- * fees
- */
 export interface QueryPlatformMinimumRequest {}
 export interface QueryPlatformMinimumRequestProtoMsg {
   typeUrl: "/xion.v1.QueryPlatformMinimumRequest";
   value: Uint8Array;
 }
 /**
- * QueryPlatformMinimumRequest is the request type for querying platform minimum
- * fees
  * @name QueryPlatformMinimumRequestAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryPlatformMinimumRequest
@@ -268,17 +158,8 @@ export interface QueryPlatformMinimumRequestAminoMsg {
   type: "/xion.v1.QueryPlatformMinimumRequest";
   value: QueryPlatformMinimumRequestAmino;
 }
-/**
- * QueryPlatformMinimumRequest is the request type for querying platform minimum
- * fees
- */
 export interface QueryPlatformMinimumRequestSDKType {}
-/**
- * QueryPlatformMinimumResponse is the response type for querying platform
- * minimum fees
- */
 export interface QueryPlatformMinimumResponse {
-  /** The minimum fees required by the platform */
   minimums: Coin[];
 }
 export interface QueryPlatformMinimumResponseProtoMsg {
@@ -286,26 +167,17 @@ export interface QueryPlatformMinimumResponseProtoMsg {
   value: Uint8Array;
 }
 /**
- * QueryPlatformMinimumResponse is the response type for querying platform
- * minimum fees
  * @name QueryPlatformMinimumResponseAmino
  * @package xion.v1
  * @see proto type: xion.v1.QueryPlatformMinimumResponse
  */
 export interface QueryPlatformMinimumResponseAmino {
-  /**
-   * The minimum fees required by the platform
-   */
   minimums?: CoinAmino[];
 }
 export interface QueryPlatformMinimumResponseAminoMsg {
   type: "/xion.v1.QueryPlatformMinimumResponse";
   value: QueryPlatformMinimumResponseAmino;
 }
-/**
- * QueryPlatformMinimumResponse is the response type for querying platform
- * minimum fees
- */
 export interface QueryPlatformMinimumResponseSDKType {
   minimums: CoinSDKType[];
 }

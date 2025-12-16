@@ -32,7 +32,6 @@ export interface QueryParamsRequestSDKType {}
  * Query/MinimumGasPrices RPC method.
  */
 export interface QueryParamsResponse {
-  /** The global fee parameters */
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
@@ -47,9 +46,6 @@ export interface QueryParamsResponseProtoMsg {
  * @see proto type: xion.globalfee.v1.QueryParamsResponse
  */
 export interface QueryParamsResponseAmino {
-  /**
-   * The global fee parameters
-   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {

@@ -4,9 +4,7 @@ import { Audience, AudienceAmino, AudienceSDKType } from "./audience";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the jwk module's genesis state. */
 export interface GenesisState {
-  /** The module parameters */
   params: Params;
-  /** List of all audiences */
   audienceList: Audience[];
 }
 export interface GenesisStateProtoMsg {
@@ -20,14 +18,8 @@ export interface GenesisStateProtoMsg {
  * @see proto type: xion.jwk.v1.GenesisState
  */
 export interface GenesisStateAmino {
-  /**
-   * The module parameters
-   */
   params?: ParamsAmino;
-  /**
-   * List of all audiences
-   */
-  audience_list?: AudienceAmino[];
+  audienceList?: AudienceAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/xion.jwk.v1.GenesisState";
@@ -36,7 +28,7 @@ export interface GenesisStateAminoMsg {
 /** GenesisState defines the jwk module's genesis state. */
 export interface GenesisStateSDKType {
   params: ParamsSDKType;
-  audience_list: AudienceSDKType[];
+  audienceList: AudienceSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -86,16 +78,16 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.audienceList = object.audience_list?.map(e => Audience.fromAmino(e)) || [];
+    message.audienceList = object.audienceList?.map(e => Audience.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     if (message.audienceList) {
-      obj.audience_list = message.audienceList.map(e => e ? Audience.toAmino(e) : undefined);
+      obj.audienceList = message.audienceList.map(e => e ? Audience.toAmino(e) : undefined);
     } else {
-      obj.audience_list = message.audienceList;
+      obj.audienceList = message.audienceList;
     }
     return obj;
   },

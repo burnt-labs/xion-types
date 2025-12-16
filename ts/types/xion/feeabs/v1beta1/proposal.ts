@@ -1,18 +1,10 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
-/**
- * HostChainFeeAbsStatus represents the status of a host chain fee abstraction
- * configuration
- */
+/** HostChainFeeAbsStatus */
 export enum HostChainFeeAbsStatus {
-  /** HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED - HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED indicates an unspecified status */
-  HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED = 0,
-  /** HOST_CHAIN_FEE_ABS_STATUS_UPDATED - HOST_CHAIN_FEE_ABS_STATUS_UPDATED indicates the configuration is up to date */
-  HOST_CHAIN_FEE_ABS_STATUS_UPDATED = 1,
-  /** HOST_CHAIN_FEE_ABS_STATUS_OUTDATED - HOST_CHAIN_FEE_ABS_STATUS_OUTDATED indicates the configuration is outdated */
-  HOST_CHAIN_FEE_ABS_STATUS_OUTDATED = 2,
-  /** HOST_CHAIN_FEE_ABS_STATUS_FROZEN - HOST_CHAIN_FEE_ABS_STATUS_FROZEN indicates the configuration is frozen */
-  HOST_CHAIN_FEE_ABS_STATUS_FROZEN = 3,
+  UPDATED = 0,
+  OUTDATED = 1,
+  FROZEN = 2,
   UNRECOGNIZED = -1,
 }
 export const HostChainFeeAbsStatusSDKType = HostChainFeeAbsStatus;
@@ -20,17 +12,14 @@ export const HostChainFeeAbsStatusAmino = HostChainFeeAbsStatus;
 export function hostChainFeeAbsStatusFromJSON(object: any): HostChainFeeAbsStatus {
   switch (object) {
     case 0:
-    case "HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED":
-      return HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED;
+    case "UPDATED":
+      return HostChainFeeAbsStatus.UPDATED;
     case 1:
-    case "HOST_CHAIN_FEE_ABS_STATUS_UPDATED":
-      return HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UPDATED;
+    case "OUTDATED":
+      return HostChainFeeAbsStatus.OUTDATED;
     case 2:
-    case "HOST_CHAIN_FEE_ABS_STATUS_OUTDATED":
-      return HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_OUTDATED;
-    case 3:
-    case "HOST_CHAIN_FEE_ABS_STATUS_FROZEN":
-      return HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_FROZEN;
+    case "FROZEN":
+      return HostChainFeeAbsStatus.FROZEN;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -39,14 +28,12 @@ export function hostChainFeeAbsStatusFromJSON(object: any): HostChainFeeAbsStatu
 }
 export function hostChainFeeAbsStatusToJSON(object: HostChainFeeAbsStatus): string {
   switch (object) {
-    case HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED:
-      return "HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED";
-    case HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UPDATED:
-      return "HOST_CHAIN_FEE_ABS_STATUS_UPDATED";
-    case HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_OUTDATED:
-      return "HOST_CHAIN_FEE_ABS_STATUS_OUTDATED";
-    case HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_FROZEN:
-      return "HOST_CHAIN_FEE_ABS_STATUS_FROZEN";
+    case HostChainFeeAbsStatus.UPDATED:
+      return "UPDATED";
+    case HostChainFeeAbsStatus.OUTDATED:
+      return "OUTDATED";
+    case HostChainFeeAbsStatus.FROZEN:
+      return "FROZEN";
     case HostChainFeeAbsStatus.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";

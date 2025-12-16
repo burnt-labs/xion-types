@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryAudienceClaimRequest, QueryAudienceClaimResponseSDKType, QueryAudienceRequest, QueryAudienceResponseSDKType, QueryAudienceAllRequest, QueryAudienceAllResponseSDKType, QueryValidateJWTRequest, QueryValidateJWTResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetAudienceClaimRequest, QueryGetAudienceClaimResponseSDKType, QueryGetAudienceRequest, QueryGetAudienceResponseSDKType, QueryAllAudienceRequest, QueryAllAudienceResponseSDKType, QueryValidateJWTRequest, QueryValidateJWTResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -21,20 +21,20 @@ export class LCDQueryClient {
     const endpoint = `xion/jwk/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-  /* AudienceClaim queries an audience claim by hash */
-  async audienceClaim(params: QueryAudienceClaimRequest): Promise<QueryAudienceClaimResponseSDKType> {
+  /* AudienceClaim */
+  async audienceClaim(params: QueryGetAudienceClaimRequest): Promise<QueryGetAudienceClaimResponseSDKType> {
     const endpoint = `xion/jwk/audience_claim/${params.hash}`;
-    return await this.req.get<QueryAudienceClaimResponseSDKType>(endpoint);
+    return await this.req.get<QueryGetAudienceClaimResponseSDKType>(endpoint);
   }
   /* Queries a list of Audience items. */
-  async audience(params: QueryAudienceRequest): Promise<QueryAudienceResponseSDKType> {
+  async audience(params: QueryGetAudienceRequest): Promise<QueryGetAudienceResponseSDKType> {
     const endpoint = `xion/jwk/audience/${params.aud}`;
-    return await this.req.get<QueryAudienceResponseSDKType>(endpoint);
+    return await this.req.get<QueryGetAudienceResponseSDKType>(endpoint);
   }
-  /* AudienceAll queries all audiences */
-  async audienceAll(params: QueryAudienceAllRequest = {
+  /* AudienceAll */
+  async audienceAll(params: QueryAllAudienceRequest = {
     pagination: undefined
-  }): Promise<QueryAudienceAllResponseSDKType> {
+  }): Promise<QueryAllAudienceResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -42,7 +42,7 @@ export class LCDQueryClient {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `xion/jwk/audience`;
-    return await this.req.get<QueryAudienceAllResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryAllAudienceResponseSDKType>(endpoint, options);
   }
   /* Queries a list of ValidateJWT items. */
   async validateJWT(params: QueryValidateJWTRequest): Promise<QueryValidateJWTResponseSDKType> {

@@ -15,11 +15,8 @@ export interface Msg {
    * module parameters. The authority is defined in the keeper.
    */
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse>;
-  /** AddHostZone adds a new host zone configuration */
   addHostZone(request: MsgAddHostZone): Promise<MsgAddHostZoneResponse>;
-  /** UpdateHostZone updates an existing host zone configuration */
   updateHostZone(request: MsgUpdateHostZone): Promise<MsgUpdateHostZoneResponse>;
-  /** RemoveHostZone removes a host zone configuration */
   removeHostZone(request: MsgRemoveHostZone): Promise<MsgRemoveHostZoneResponse>;
 }
 export class MsgClientImpl implements Msg {

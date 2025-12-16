@@ -4,11 +4,8 @@ import { Input, InputAmino, InputSDKType, Output, OutputAmino, OutputSDKType } f
 import { BinaryReader, BinaryWriter } from "../../binary";
 /** MsgSend represents a message to send coins from one account to another. */
 export interface MsgSend {
-  /** The address sending the coins */
   fromAddress: string;
-  /** The address receiving the coins */
   toAddress: string;
-  /** The amount of coins to send */
   amount: Coin[];
 }
 export interface MsgSendProtoMsg {
@@ -22,17 +19,8 @@ export interface MsgSendProtoMsg {
  * @see proto type: xion.v1.MsgSend
  */
 export interface MsgSendAmino {
-  /**
-   * The address sending the coins
-   */
   from_address?: string;
-  /**
-   * The address receiving the coins
-   */
   to_address?: string;
-  /**
-   * The amount of coins to send
-   */
   amount: CoinAmino[];
 }
 export interface MsgSendAminoMsg {
@@ -71,7 +59,6 @@ export interface MsgMultiSend {
    * checked in MsgMultiSend's ValidateBasic.
    */
   inputs: Input[];
-  /** The outputs specifying recipient addresses and amounts */
   outputs: Output[];
 }
 export interface MsgMultiSendProtoMsg {
@@ -90,9 +77,6 @@ export interface MsgMultiSendAmino {
    * checked in MsgMultiSend's ValidateBasic.
    */
   inputs: InputAmino[];
-  /**
-   * The outputs specifying recipient addresses and amounts
-   */
   outputs: OutputAmino[];
 }
 export interface MsgMultiSendAminoMsg {
@@ -123,9 +107,7 @@ export interface MsgMultiSendResponseAminoMsg {
 }
 /** MsgMultiSendResponse defines the Msg/MultiSend response type. */
 export interface MsgMultiSendResponseSDKType {}
-/** MsgSetPlatformPercentage defines the message for setting platform percentage */
 export interface MsgSetPlatformPercentage {
-  /** The authority address that can set the platform percentage */
   authority: string;
   /** platform_percentage is the platform fee percentage to multiplied by 10000 */
   platformPercentage: number;
@@ -135,15 +117,11 @@ export interface MsgSetPlatformPercentageProtoMsg {
   value: Uint8Array;
 }
 /**
- * MsgSetPlatformPercentage defines the message for setting platform percentage
  * @name MsgSetPlatformPercentageAmino
  * @package xion.v1
  * @see proto type: xion.v1.MsgSetPlatformPercentage
  */
 export interface MsgSetPlatformPercentageAmino {
-  /**
-   * The authority address that can set the platform percentage
-   */
   authority?: string;
   /**
    * platform_percentage is the platform fee percentage to multiplied by 10000
@@ -154,23 +132,16 @@ export interface MsgSetPlatformPercentageAminoMsg {
   type: "xion/MsgSetPlatformPercentage";
   value: MsgSetPlatformPercentageAmino;
 }
-/** MsgSetPlatformPercentage defines the message for setting platform percentage */
 export interface MsgSetPlatformPercentageSDKType {
   authority: string;
   platform_percentage: number;
 }
-/**
- * MsgSetPlatformPercentageResponse defines the response for setting platform
- * percentage
- */
 export interface MsgSetPlatformPercentageResponse {}
 export interface MsgSetPlatformPercentageResponseProtoMsg {
   typeUrl: "/xion.v1.MsgSetPlatformPercentageResponse";
   value: Uint8Array;
 }
 /**
- * MsgSetPlatformPercentageResponse defines the response for setting platform
- * percentage
  * @name MsgSetPlatformPercentageResponseAmino
  * @package xion.v1
  * @see proto type: xion.v1.MsgSetPlatformPercentageResponse
@@ -180,16 +151,9 @@ export interface MsgSetPlatformPercentageResponseAminoMsg {
   type: "/xion.v1.MsgSetPlatformPercentageResponse";
   value: MsgSetPlatformPercentageResponseAmino;
 }
-/**
- * MsgSetPlatformPercentageResponse defines the response for setting platform
- * percentage
- */
 export interface MsgSetPlatformPercentageResponseSDKType {}
-/** MsgSetPlatformMinimum defines the message for setting platform minimum fees */
 export interface MsgSetPlatformMinimum {
-  /** The authority address that can set the platform minimums */
   authority: string;
-  /** The minimum fees required by the platform */
   minimums: Coin[];
 }
 export interface MsgSetPlatformMinimumProtoMsg {
@@ -197,42 +161,28 @@ export interface MsgSetPlatformMinimumProtoMsg {
   value: Uint8Array;
 }
 /**
- * MsgSetPlatformMinimum defines the message for setting platform minimum fees
  * @name MsgSetPlatformMinimumAmino
  * @package xion.v1
  * @see proto type: xion.v1.MsgSetPlatformMinimum
  */
 export interface MsgSetPlatformMinimumAmino {
-  /**
-   * The authority address that can set the platform minimums
-   */
   authority?: string;
-  /**
-   * The minimum fees required by the platform
-   */
   minimums: CoinAmino[];
 }
 export interface MsgSetPlatformMinimumAminoMsg {
   type: "xion/MsgSetPlatformMinimum";
   value: MsgSetPlatformMinimumAmino;
 }
-/** MsgSetPlatformMinimum defines the message for setting platform minimum fees */
 export interface MsgSetPlatformMinimumSDKType {
   authority: string;
   minimums: CoinSDKType[];
 }
-/**
- * MsgSetPlatformMinimumResponse defines the response for setting platform
- * minimum fees
- */
 export interface MsgSetPlatformMinimumResponse {}
 export interface MsgSetPlatformMinimumResponseProtoMsg {
   typeUrl: "/xion.v1.MsgSetPlatformMinimumResponse";
   value: Uint8Array;
 }
 /**
- * MsgSetPlatformMinimumResponse defines the response for setting platform
- * minimum fees
  * @name MsgSetPlatformMinimumResponseAmino
  * @package xion.v1
  * @see proto type: xion.v1.MsgSetPlatformMinimumResponse
@@ -242,10 +192,6 @@ export interface MsgSetPlatformMinimumResponseAminoMsg {
   type: "/xion.v1.MsgSetPlatformMinimumResponse";
   value: MsgSetPlatformMinimumResponseAmino;
 }
-/**
- * MsgSetPlatformMinimumResponse defines the response for setting platform
- * minimum fees
- */
 export interface MsgSetPlatformMinimumResponseSDKType {}
 function createBaseMsgSend(): MsgSend {
   return {

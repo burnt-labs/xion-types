@@ -7,7 +7,6 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface MsgFundFeeAbsModuleAccount {
   /** sender is the that actor that signed the messages */
   sender: string;
-  /** The amount of coins to fund to the feeabs module account */
   amount: Coin[];
 }
 export interface MsgFundFeeAbsModuleAccountProtoMsg {
@@ -25,9 +24,6 @@ export interface MsgFundFeeAbsModuleAccountAmino {
    * sender is the that actor that signed the messages
    */
   sender?: string;
-  /**
-   * The amount of coins to fund to the feeabs module account
-   */
   amount?: CoinAmino[];
 }
 export interface MsgFundFeeAbsModuleAccountAminoMsg {
@@ -110,7 +106,6 @@ export interface MsgSendQueryIbcDenomTWAPResponseSDKType {}
 export interface MsgSwapCrossChain {
   /** Sender is the that actor that signed the messages */
   sender: string;
-  /** The IBC denomination to swap */
   ibcDenom: string;
 }
 export interface MsgSwapCrossChainProtoMsg {
@@ -128,9 +123,6 @@ export interface MsgSwapCrossChainAmino {
    * Sender is the that actor that signed the messages
    */
   sender?: string;
-  /**
-   * The IBC denomination to swap
-   */
   ibc_denom?: string;
 }
 export interface MsgSwapCrossChainAminoMsg {
@@ -343,7 +335,6 @@ export interface MsgUpdateHostZoneResponseSDKType {}
 export interface MsgRemoveHostZone {
   /** authority is the address of the governance account. */
   authority: string;
-  /** The IBC denomination of the host zone to remove */
   ibcDenom: string;
 }
 export interface MsgRemoveHostZoneProtoMsg {
@@ -361,9 +352,6 @@ export interface MsgRemoveHostZoneAmino {
    * authority is the address of the governance account.
    */
   authority?: string;
-  /**
-   * The IBC denomination of the host zone to remove
-   */
   ibc_denom?: string;
 }
 export interface MsgRemoveHostZoneAminoMsg {

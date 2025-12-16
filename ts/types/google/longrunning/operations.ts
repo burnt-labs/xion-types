@@ -152,19 +152,6 @@ export interface ListOperationsRequest {
   pageSize: number;
   /** The standard list page token. */
   pageToken: string;
-  /**
-   * When set to `true`, operations that are reachable are returned as normal,
-   * and those that are unreachable are returned in the
-   * [ListOperationsResponse.unreachable] field.
-   * 
-   * This can only be `true` when reading across collections e.g. when `parent`
-   * is set to `"projects/example/locations/-"`.
-   * 
-   * This field is not by default supported and will result in an
-   * `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
-   * service or product specific documentation.
-   */
-  returnPartialSuccess: boolean;
 }
 export interface ListOperationsRequestProtoMsg {
   typeUrl: "/google.longrunning.ListOperationsRequest";
@@ -194,19 +181,6 @@ export interface ListOperationsRequestAmino {
    * The standard list page token.
    */
   page_token?: string;
-  /**
-   * When set to `true`, operations that are reachable are returned as normal,
-   * and those that are unreachable are returned in the
-   * [ListOperationsResponse.unreachable] field.
-   * 
-   * This can only be `true` when reading across collections e.g. when `parent`
-   * is set to `"projects/example/locations/-"`.
-   * 
-   * This field is not by default supported and will result in an
-   * `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
-   * service or product specific documentation.
-   */
-  return_partial_success?: boolean;
 }
 export interface ListOperationsRequestAminoMsg {
   type: "/google.longrunning.ListOperationsRequest";
@@ -221,7 +195,6 @@ export interface ListOperationsRequestSDKType {
   filter: string;
   page_size: number;
   page_token: string;
-  return_partial_success: boolean;
 }
 /**
  * The response message for
@@ -232,13 +205,6 @@ export interface ListOperationsResponse {
   operations: Operation[];
   /** The standard List next-page token. */
   nextPageToken: string;
-  /**
-   * Unordered list. Unreachable resources. Populated when the request sets
-   * `ListOperationsRequest.return_partial_success` and reads across
-   * collections e.g. when attempting to list all resources across all supported
-   * locations.
-   */
-  unreachable: string[];
 }
 export interface ListOperationsResponseProtoMsg {
   typeUrl: "/google.longrunning.ListOperationsResponse";
@@ -260,13 +226,6 @@ export interface ListOperationsResponseAmino {
    * The standard List next-page token.
    */
   next_page_token?: string;
-  /**
-   * Unordered list. Unreachable resources. Populated when the request sets
-   * `ListOperationsRequest.return_partial_success` and reads across
-   * collections e.g. when attempting to list all resources across all supported
-   * locations.
-   */
-  unreachable?: string[];
 }
 export interface ListOperationsResponseAminoMsg {
   type: "/google.longrunning.ListOperationsResponse";
@@ -279,7 +238,6 @@ export interface ListOperationsResponseAminoMsg {
 export interface ListOperationsResponseSDKType {
   operations: OperationSDKType[];
   next_page_token: string;
-  unreachable: string[];
 }
 /**
  * The request message for
@@ -678,8 +636,7 @@ function createBaseListOperationsRequest(): ListOperationsRequest {
     name: "",
     filter: "",
     pageSize: 0,
-    pageToken: "",
-    returnPartialSuccess: false
+    pageToken: ""
   };
 }
 export const ListOperationsRequest = {
@@ -696,9 +653,6 @@ export const ListOperationsRequest = {
     }
     if (message.pageToken !== "") {
       writer.uint32(26).string(message.pageToken);
-    }
-    if (message.returnPartialSuccess === true) {
-      writer.uint32(40).bool(message.returnPartialSuccess);
     }
     return writer;
   },
@@ -721,9 +675,6 @@ export const ListOperationsRequest = {
         case 3:
           message.pageToken = reader.string();
           break;
-        case 5:
-          message.returnPartialSuccess = reader.bool();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -737,7 +688,6 @@ export const ListOperationsRequest = {
     message.filter = object.filter ?? "";
     message.pageSize = object.pageSize ?? 0;
     message.pageToken = object.pageToken ?? "";
-    message.returnPartialSuccess = object.returnPartialSuccess ?? false;
     return message;
   },
   fromAmino(object: ListOperationsRequestAmino): ListOperationsRequest {
@@ -754,9 +704,6 @@ export const ListOperationsRequest = {
     if (object.page_token !== undefined && object.page_token !== null) {
       message.pageToken = object.page_token;
     }
-    if (object.return_partial_success !== undefined && object.return_partial_success !== null) {
-      message.returnPartialSuccess = object.return_partial_success;
-    }
     return message;
   },
   toAmino(message: ListOperationsRequest): ListOperationsRequestAmino {
@@ -765,7 +712,6 @@ export const ListOperationsRequest = {
     obj.filter = message.filter === "" ? undefined : message.filter;
     obj.page_size = message.pageSize === 0 ? undefined : message.pageSize;
     obj.page_token = message.pageToken === "" ? undefined : message.pageToken;
-    obj.return_partial_success = message.returnPartialSuccess === false ? undefined : message.returnPartialSuccess;
     return obj;
   },
   fromAminoMsg(object: ListOperationsRequestAminoMsg): ListOperationsRequest {
@@ -787,8 +733,7 @@ export const ListOperationsRequest = {
 function createBaseListOperationsResponse(): ListOperationsResponse {
   return {
     operations: [],
-    nextPageToken: "",
-    unreachable: []
+    nextPageToken: ""
   };
 }
 export const ListOperationsResponse = {
@@ -799,9 +744,6 @@ export const ListOperationsResponse = {
     }
     if (message.nextPageToken !== "") {
       writer.uint32(18).string(message.nextPageToken);
-    }
-    for (const v of message.unreachable) {
-      writer.uint32(26).string(v!);
     }
     return writer;
   },
@@ -818,9 +760,6 @@ export const ListOperationsResponse = {
         case 2:
           message.nextPageToken = reader.string();
           break;
-        case 3:
-          message.unreachable.push(reader.string());
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -832,7 +771,6 @@ export const ListOperationsResponse = {
     const message = createBaseListOperationsResponse();
     message.operations = object.operations?.map(e => Operation.fromPartial(e)) || [];
     message.nextPageToken = object.nextPageToken ?? "";
-    message.unreachable = object.unreachable?.map(e => e) || [];
     return message;
   },
   fromAmino(object: ListOperationsResponseAmino): ListOperationsResponse {
@@ -841,7 +779,6 @@ export const ListOperationsResponse = {
     if (object.next_page_token !== undefined && object.next_page_token !== null) {
       message.nextPageToken = object.next_page_token;
     }
-    message.unreachable = object.unreachable?.map(e => e) || [];
     return message;
   },
   toAmino(message: ListOperationsResponse): ListOperationsResponseAmino {
@@ -852,11 +789,6 @@ export const ListOperationsResponse = {
       obj.operations = message.operations;
     }
     obj.next_page_token = message.nextPageToken === "" ? undefined : message.nextPageToken;
-    if (message.unreachable) {
-      obj.unreachable = message.unreachable.map(e => e);
-    } else {
-      obj.unreachable = message.unreachable;
-    }
     return obj;
   },
   fromAminoMsg(object: ListOperationsResponseAminoMsg): ListOperationsResponse {
