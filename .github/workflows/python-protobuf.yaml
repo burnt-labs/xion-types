@@ -1,10 +1,10 @@
 name: Python Protobuf Gen & Publish
 
 on:
-  # push:
-  #   branches: 
-  #   #   - main 
-  #     - dsfsdf #feat/protobufs
+  push: #TODO comment when done with testing
+    branches: 
+    #   - main 
+      - feat/fix-protobuf-builds
             
   workflow_dispatch:
     inputs:
@@ -153,8 +153,9 @@ jobs:
     name: Determine Version
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
-    if: |
-        github.ref == 'refs/heads/feat/protobufs' ||
+    # todo: remove feat/fix-protobuf-builds when done with testing
+    if: | 
+        github.ref == 'refs/heads/feat/fix-protobuf-builds' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     outputs:
@@ -225,7 +226,22 @@ jobs:
           VERSION: ${{ needs.determine-version.outputs.version }}
         run: |
           sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
-          sed -i "s/__version__ = .*/__version__ = \"$VERSION\"/" python/__init__.py
+          
+          # Ensure package has a deterministic version module (the generated protobuf tree
+          # only guarantees empty __init__.py files).
+          mkdir -p python/xion_types
+          cat > python/xion_types/_version.py <<'EOF'
+          __version__ = "0.0.0"
+          EOF
+          sed -i "s/^__version__ = .*/__version__ = \"$VERSION\"/" python/xion_types/_version.py
+
+          # Ensure package root exports __version__
+          if [ ! -f python/xion_types/__init__.py ]; then
+            touch python/xion_types/__init__.py
+          fi
+          if ! grep -q "^from \\.\\_version import __version__$" python/xion_types/__init__.py; then
+            printf "\nfrom ._version import __version__\n" >> python/xion_types/__init__.py
+          fi
 
       - name: Build Package
         run: |
