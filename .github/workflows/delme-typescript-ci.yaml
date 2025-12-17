@@ -12,11 +12,11 @@ on:
         required: true
         type: string
 
-  repository_dispatch: # triggers on release event from burnt-labs/xion repo
-    types: [xion-types-release-trigger]
-    
-  schedule: # the schedule is triggering on all branches
-    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+  # repository_dispatch: # deactivated (kept for reference)
+  #   types: [xion-types-release-trigger]
+  #   
+  # schedule: # deactivated (kept for reference)
+  #   - cron: '0 9 * * 5' # Run Fridays at 9 AM UTC
       
 env:
   NODE_VERSION: '20'
