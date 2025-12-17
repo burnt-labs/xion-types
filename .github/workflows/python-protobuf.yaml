@@ -1,10 +1,10 @@
 name: Python Protobuf Gen & Publish
 
 on:
-  push: #TODO comment when done with testing
-    branches: 
-    #   - main 
-      - feat/fix-protobuf-builds
+  # push: #TODO comment when done with testing
+  #   branches: 
+  #   #   - main 
+  #     - feat/fix-protobuf-builds
             
   workflow_dispatch:
     inputs:
@@ -153,9 +153,7 @@ jobs:
     name: Determine Version
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
-    # todo: remove feat/fix-protobuf-builds when done with testing
     if: | 
-        github.ref == 'refs/heads/feat/fix-protobuf-builds' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     outputs:
@@ -296,7 +294,6 @@ jobs:
     name: Publish to PyPI
     needs: [python-test, python-build]
     runs-on: ubuntu-latest
-    # TODO: Remove push from condition after testing
     if: |
       github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch' || 
