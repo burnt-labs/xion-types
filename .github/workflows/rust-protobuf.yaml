@@ -48,6 +48,7 @@ jobs:
           name: generated-types-rust
           path: rust/types
           retention-days: 30
+          if-no-files-found: error
 
   determine-version:
     name: Determine Version
