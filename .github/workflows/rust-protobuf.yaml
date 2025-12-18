@@ -1,10 +1,9 @@
 name: Rust Protobuf Gen & Publish
 
 on:
-#   push:
-#     branches: 
-#     #   - main 
-#       -  sdfdsf #feat/protobufs
+  push:
+    branches: 
+      - feat/fix-protobuf-builds
             
   workflow_dispatch:
     inputs:
@@ -16,8 +15,8 @@ on:
   repository_dispatch: # triggers on release event from burnt-labs/xion repo
     types: [xion-types-release-trigger]
     
-  schedule:
-    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+#   schedule:
+#     - cron: '0 2 * * *' # Run nightly at 2 AM UTC
 
 jobs:
   generate-protobuf:
@@ -55,7 +54,7 @@ jobs:
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     if: |
-        github.ref == 'refs/heads/feat/protobufs' ||
+        github.event_name == 'push' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     outputs:

@@ -1,9 +1,9 @@
 name: Swift Protobuf Gen & Publish
 
 on:
-  push:
-    branches: 
-      - feat/fix-protobuf-builds
+  # push:
+  #   branches: 
+  #     - feat/fix-protobuf-builds
             
   workflow_dispatch:
     inputs:
