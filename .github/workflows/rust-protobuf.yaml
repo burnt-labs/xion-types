@@ -196,6 +196,9 @@ jobs:
                       # Skip if a directory with the same name exists and has mod.rs
                       if modname in dirs_with_mod:
                           continue
+                      # Special case: if amino.rs exists and amino/ directory exists, prefer the directory
+                      if modname == "amino" and (types_dir / "amino").is_dir():
+                          continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
                       else:
@@ -428,18 +431,60 @@ jobs:
                   if 'Eq' in full_match:
                       return full_match
                   
-                  # Extract the content inside derive(...)
-                  derive_content = match.group(1) + 'Ord' + match.group(2)
-                  # Add Eq before Ord
-                  new_content = derive_content.replace('Ord', 'Eq, Ord', 1)
+                  # Extract the parts: before Ord, Ord itself, and after Ord
+                  before_ord = match.group(1)
+                  after_ord = match.group(2)
+                  
+                  # Add Eq before Ord, handling commas correctly
+                  if before_ord and not before_ord.rstrip().endswith(','):
+                      # Add comma if there's content before Ord
+                      new_content = before_ord.rstrip() + ', Eq, Ord' + after_ord
+                  else:
+                      # Ord is first or after a comma
+                      new_content = before_ord + 'Eq, Ord' + after_ord
+                  
                   return f'#[derive({new_content})]'
               
-              # Match derives with Ord but without Eq
+              # Match derives with Ord but without Eq - capture the full derive list
               content = re.sub(
-                  r'#\[derive\(([^)]*)\bOrd\b([^)]*)\)',
+                  r'#\[derive\(([^)]*?)\bOrd\b([^)]*)\)',
                   add_eq_to_ord,
                   content
               )
+              
+              # Fix BaseAccount: Add Eq and Hash if missing (needed for interchain_accounts)
+              if 'cosmos.auth.v1beta1.rs' in str(rs_file) or rs_file.name == 'cosmos.auth.v1beta1.rs':
+                  # Find BaseAccount struct and ensure it has Eq and Hash
+                  base_account_pattern = r'(#\[derive\(([^)]*?)\)\](\s*))?pub struct BaseAccount'
+                  def add_traits_to_base_account(match):
+                      full_derive = match.group(1) or ''
+                      derive_content = match.group(2) or ''
+                      whitespace = match.group(3) or '\n    '
+                      
+                      has_eq = 'Eq' in derive_content
+                      has_hash = 'Hash' in derive_content
+                      
+                      if not has_eq or not has_hash:
+                          if full_derive:
+                              # Modify existing derive
+                              if not has_eq and not has_hash:
+                                  derive_content = derive_content.rstrip() + ', Eq, Hash'
+                              elif not has_eq:
+                                  derive_content = derive_content.rstrip() + ', Eq'
+                              elif not has_hash:
+                                  derive_content = derive_content.rstrip() + ', Hash'
+                              return f'#[derive({derive_content})]{whitespace}pub struct BaseAccount'
+                          else:
+                              # Add new derive macro
+                              if not has_eq and not has_hash:
+                                  return f'#[derive(Eq, Hash)]{whitespace}pub struct BaseAccount'
+                              elif not has_eq:
+                                  return f'#[derive(Eq)]{whitespace}pub struct BaseAccount'
+                              else:
+                                  return f'#[derive(Hash)]{whitespace}pub struct BaseAccount'
+                      return match.group(0)  # No changes needed
+                  
+                  content = re.sub(base_account_pattern, add_traits_to_base_account, content)
               
               # Remove Eq and Hash from derive when struct contains types that don't implement Eq/Hash
               # Known problematic types that don't implement Eq/Hash
@@ -762,6 +807,9 @@ jobs:
                       # Skip if a directory with the same name exists and has mod.rs
                       if modname in dirs_with_mod:
                           continue
+                      # Special case: if amino.rs exists and amino/ directory exists, prefer the directory
+                      if modname == "amino" and (types_dir / "amino").is_dir():
+                          continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
                       else:
@@ -994,18 +1042,60 @@ jobs:
                   if 'Eq' in full_match:
                       return full_match
                   
-                  # Extract the content inside derive(...)
-                  derive_content = match.group(1) + 'Ord' + match.group(2)
-                  # Add Eq before Ord
-                  new_content = derive_content.replace('Ord', 'Eq, Ord', 1)
+                  # Extract the parts: before Ord, Ord itself, and after Ord
+                  before_ord = match.group(1)
+                  after_ord = match.group(2)
+                  
+                  # Add Eq before Ord, handling commas correctly
+                  if before_ord and not before_ord.rstrip().endswith(','):
+                      # Add comma if there's content before Ord
+                      new_content = before_ord.rstrip() + ', Eq, Ord' + after_ord
+                  else:
+                      # Ord is first or after a comma
+                      new_content = before_ord + 'Eq, Ord' + after_ord
+                  
                   return f'#[derive({new_content})]'
               
-              # Match derives with Ord but without Eq
+              # Match derives with Ord but without Eq - capture the full derive list
               content = re.sub(
-                  r'#\[derive\(([^)]*)\bOrd\b([^)]*)\)',
+                  r'#\[derive\(([^)]*?)\bOrd\b([^)]*)\)',
                   add_eq_to_ord,
                   content
               )
+              
+              # Fix BaseAccount: Add Eq and Hash if missing (needed for interchain_accounts)
+              if 'cosmos.auth.v1beta1.rs' in str(rs_file) or rs_file.name == 'cosmos.auth.v1beta1.rs':
+                  # Find BaseAccount struct and ensure it has Eq and Hash
+                  base_account_pattern = r'(#\[derive\(([^)]*?)\)\](\s*))?pub struct BaseAccount'
+                  def add_traits_to_base_account(match):
+                      full_derive = match.group(1) or ''
+                      derive_content = match.group(2) or ''
+                      whitespace = match.group(3) or '\n    '
+                      
+                      has_eq = 'Eq' in derive_content
+                      has_hash = 'Hash' in derive_content
+                      
+                      if not has_eq or not has_hash:
+                          if full_derive:
+                              # Modify existing derive
+                              if not has_eq and not has_hash:
+                                  derive_content = derive_content.rstrip() + ', Eq, Hash'
+                              elif not has_eq:
+                                  derive_content = derive_content.rstrip() + ', Eq'
+                              elif not has_hash:
+                                  derive_content = derive_content.rstrip() + ', Hash'
+                              return f'#[derive({derive_content})]{whitespace}pub struct BaseAccount'
+                          else:
+                              # Add new derive macro
+                              if not has_eq and not has_hash:
+                                  return f'#[derive(Eq, Hash)]{whitespace}pub struct BaseAccount'
+                              elif not has_eq:
+                                  return f'#[derive(Eq)]{whitespace}pub struct BaseAccount'
+                              else:
+                                  return f'#[derive(Hash)]{whitespace}pub struct BaseAccount'
+                      return match.group(0)  # No changes needed
+                  
+                  content = re.sub(base_account_pattern, add_traits_to_base_account, content)
               
               # Remove Eq and Hash from derive when struct contains types that don't implement Eq/Hash
               # Known problematic types that don't implement Eq/Hash
