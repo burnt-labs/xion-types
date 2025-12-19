@@ -181,11 +181,16 @@ jobs:
           # Create root mod.rs
           with (types_dir / "mod.rs").open("w") as f:
               f.write("// Auto-generated module\n")
+              processed_names = set()
               for item in sorted(types_dir.iterdir()):
                   if item.is_dir() and (item / "mod.rs").exists():
                       f.write(f"pub mod {item.name};\n")
+                      processed_names.add(item.name)
                   elif item.suffix == ".rs" and item.name != "mod.rs":
                       modname = item.stem
+                      # Skip if a directory with the same name exists
+                      if modname in processed_names or (types_dir / modname).is_dir():
+                          continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
                       else:
@@ -384,15 +389,29 @@ jobs:
               # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
               # Check if struct contains Option<Duration> or Option<Timestamp>
               if 'Option<::prost_types::Duration>' in content or 'Option<::prost_types::Timestamp>' in content:
-                  # Remove Copy from derive attributes that include prost::Message
+                  # Remove Copy from derive attributes - handle all positions in the derive list
+                  # First, remove Copy when it's in the middle: ", Copy," or ", Copy)"
                   content = re.sub(
-                      r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*::prost::Message\)\]',
-                      '#[derive(Clone, PartialEq, ::prost::Message)]',
+                      r',\s*Copy\s*(?=,|\))',
+                      '',
                       content
                   )
+                  # Remove Copy when it's at the start: "Copy,"
                   content = re.sub(
-                      r'#\[derive\(Clone,\s*Copy,\s*::prost::Message\)\]',
-                      '#[derive(Clone, ::prost::Message)]',
+                      r'#\[derive\(\s*Copy\s*,',
+                      '#[derive(',
+                      content
+                  )
+                  # Remove Copy when it's at the end: ", Copy)"
+                  content = re.sub(
+                      r'([^,]),\s*Copy\s*\)',
+                      r'\1)',
+                      content
+                  )
+                  # Handle case where Copy is the only trait (shouldn't happen with prost::Message, but be safe)
+                  content = re.sub(
+                      r'#\[derive\(\s*Copy\s*\)',
+                      '#[derive()',
                       content
                   )
               
@@ -636,11 +655,16 @@ jobs:
           # Create root mod.rs
           with (types_dir / "mod.rs").open("w") as f:
               f.write("// Auto-generated module\n")
+              processed_names = set()
               for item in sorted(types_dir.iterdir()):
                   if item.is_dir() and (item / "mod.rs").exists():
                       f.write(f"pub mod {item.name};\n")
+                      processed_names.add(item.name)
                   elif item.suffix == ".rs" and item.name != "mod.rs":
                       modname = item.stem
+                      # Skip if a directory with the same name exists
+                      if modname in processed_names or (types_dir / modname).is_dir():
+                          continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
                       else:
@@ -839,15 +863,29 @@ jobs:
               # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
               # Check if struct contains Option<Duration> or Option<Timestamp>
               if 'Option<::prost_types::Duration>' in content or 'Option<::prost_types::Timestamp>' in content:
-                  # Remove Copy from derive attributes that include prost::Message
+                  # Remove Copy from derive attributes - handle all positions in the derive list
+                  # First, remove Copy when it's in the middle: ", Copy," or ", Copy)"
                   content = re.sub(
-                      r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*::prost::Message\)\]',
-                      '#[derive(Clone, PartialEq, ::prost::Message)]',
+                      r',\s*Copy\s*(?=,|\))',
+                      '',
                       content
                   )
+                  # Remove Copy when it's at the start: "Copy,"
                   content = re.sub(
-                      r'#\[derive\(Clone,\s*Copy,\s*::prost::Message\)\]',
-                      '#[derive(Clone, ::prost::Message)]',
+                      r'#\[derive\(\s*Copy\s*,',
+                      '#[derive(',
+                      content
+                  )
+                  # Remove Copy when it's at the end: ", Copy)"
+                  content = re.sub(
+                      r'([^,]),\s*Copy\s*\)',
+                      r'\1)',
+                      content
+                  )
+                  # Handle case where Copy is the only trait (shouldn't happen with prost::Message, but be safe)
+                  content = re.sub(
+                      r'#\[derive\(\s*Copy\s*\)',
+                      '#[derive()',
                       content
                   )
               
