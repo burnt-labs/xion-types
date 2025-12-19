@@ -181,15 +181,20 @@ jobs:
           # Create root mod.rs
           with (types_dir / "mod.rs").open("w") as f:
               f.write("// Auto-generated module\n")
-              processed_names = set()
+              # First, collect all directories with mod.rs
+              dirs_with_mod = set()
+              for item in types_dir.iterdir():
+                  if item.is_dir() and (item / "mod.rs").exists():
+                      dirs_with_mod.add(item.name)
+              
+              # Then process items, skipping .rs files that conflict with directories
               for item in sorted(types_dir.iterdir()):
                   if item.is_dir() and (item / "mod.rs").exists():
                       f.write(f"pub mod {item.name};\n")
-                      processed_names.add(item.name)
                   elif item.suffix == ".rs" and item.name != "mod.rs":
                       modname = item.stem
                       # Skip if a directory with the same name exists and has mod.rs
-                      if modname in processed_names or ((types_dir / modname).is_dir() and (types_dir / modname / "mod.rs").exists()):
+                      if modname in dirs_with_mod:
                           continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
@@ -415,9 +420,29 @@ jobs:
                       content
                   )
               
+              # Fix enums: Add Eq to enums that derive Ord but not Eq (Ord requires Eq)
+              # Match: #[derive(..., Ord, ...)] where Eq is not present
+              def add_eq_to_ord(match):
+                  full_match = match.group(0)
+                  # Check if Eq is already present
+                  if 'Eq' in full_match:
+                      return full_match
+                  
+                  # Extract the content inside derive(...)
+                  derive_content = match.group(1) + 'Ord' + match.group(2)
+                  # Add Eq before Ord
+                  new_content = derive_content.replace('Ord', 'Eq, Ord', 1)
+                  return f'#[derive({new_content})]'
+              
+              # Match derives with Ord but without Eq
+              content = re.sub(
+                  r'#\[derive\(([^)]*)\bOrd\b([^)]*)\)',
+                  add_eq_to_ord,
+                  content
+              )
+              
               # Remove Eq and Hash from derive when struct contains types that don't implement Eq/Hash
-              # Types that don't implement Eq/Hash: Coin, Any, Duration, Timestamp, PageRequest, PageResponse, etc.
-              # Check for these types - they can appear in Option<...> with various path prefixes
+              # Known problematic types that don't implement Eq/Hash
               problematic_type_names = [
                   'cosmos_base_v1beta1::Coin',
                   'prost_types::Any',
@@ -425,23 +450,34 @@ jobs:
                   'prost_types::Timestamp',
                   'cosmos_base_query_v1beta1::PageRequest',
                   'cosmos_base_query_v1beta1::PageResponse',
+                  'ibc_applications_interchain_accounts_v1::InterchainAccountPacketData',
               ]
               
               # Check if any problematic type appears in an Option context
-              # Match patterns like: Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
-              # or ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
               has_problematic_type = False
               for type_name in problematic_type_names:
-                  # The type name contains :: which is literal in regex, so no escaping needed
-                  # Match Option<...type_name> with any path prefix
-                  # Also handle ::core::option::Option<...> format
                   patterns = [
-                      rf'Option<[^>]*{type_name}\s*>',  # Standard Option<...>
-                      rf'::core::option::Option<[^>]*{type_name}\s*>',  # Full path format
+                      rf'Option<[^>]*{type_name}\s*>',
+                      rf'::core::option::Option<[^>]*{type_name}\s*>',
                   ]
                   if any(re.search(pattern, content) for pattern in patterns):
                       has_problematic_type = True
                       break
+              
+              # Also check for nested types in Option<crate::types::...> that might not implement Eq/Hash
+              # This catches cases like Option<crate::types::ibc_applications_interchain_accounts_v1::InterchainAccountPacketData>
+              if not has_problematic_type:
+                  # Match Option with nested module paths containing underscores (multi-level modules)
+                  # These often contain types without Eq/Hash
+                  nested_patterns = [
+                      r'Option<crate::types::[a-z_]+::[A-Z][^>]*>',  # Nested types like crate::types::module::Type
+                      r'::core::option::Option<crate::types::[a-z_]+::[A-Z][^>]*>',
+                  ]
+                  # Only flag if we see a struct deriving Eq/Hash with such nested types
+                  if any(re.search(pattern, content) for pattern in nested_patterns):
+                      # Check if this struct derives Eq or Hash - if so, it's likely problematic
+                      if re.search(r'#\[derive\([^)]*\b(Eq|Hash)\b', content):
+                          has_problematic_type = True
               
               if has_problematic_type:
                   # These types don't implement Eq or Hash, so remove both traits
@@ -711,15 +747,20 @@ jobs:
           # Create root mod.rs
           with (types_dir / "mod.rs").open("w") as f:
               f.write("// Auto-generated module\n")
-              processed_names = set()
+              # First, collect all directories with mod.rs
+              dirs_with_mod = set()
+              for item in types_dir.iterdir():
+                  if item.is_dir() and (item / "mod.rs").exists():
+                      dirs_with_mod.add(item.name)
+              
+              # Then process items, skipping .rs files that conflict with directories
               for item in sorted(types_dir.iterdir()):
                   if item.is_dir() and (item / "mod.rs").exists():
                       f.write(f"pub mod {item.name};\n")
-                      processed_names.add(item.name)
                   elif item.suffix == ".rs" and item.name != "mod.rs":
                       modname = item.stem
                       # Skip if a directory with the same name exists and has mod.rs
-                      if modname in processed_names or ((types_dir / modname).is_dir() and (types_dir / modname / "mod.rs").exists()):
+                      if modname in dirs_with_mod:
                           continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
@@ -945,9 +986,29 @@ jobs:
                       content
                   )
               
+              # Fix enums: Add Eq to enums that derive Ord but not Eq (Ord requires Eq)
+              # Match: #[derive(..., Ord, ...)] where Eq is not present
+              def add_eq_to_ord(match):
+                  full_match = match.group(0)
+                  # Check if Eq is already present
+                  if 'Eq' in full_match:
+                      return full_match
+                  
+                  # Extract the content inside derive(...)
+                  derive_content = match.group(1) + 'Ord' + match.group(2)
+                  # Add Eq before Ord
+                  new_content = derive_content.replace('Ord', 'Eq, Ord', 1)
+                  return f'#[derive({new_content})]'
+              
+              # Match derives with Ord but without Eq
+              content = re.sub(
+                  r'#\[derive\(([^)]*)\bOrd\b([^)]*)\)',
+                  add_eq_to_ord,
+                  content
+              )
+              
               # Remove Eq and Hash from derive when struct contains types that don't implement Eq/Hash
-              # Types that don't implement Eq/Hash: Coin, Any, Duration, Timestamp, PageRequest, PageResponse, etc.
-              # Check for these types - they can appear in Option<...> with various path prefixes
+              # Known problematic types that don't implement Eq/Hash
               problematic_type_names = [
                   'cosmos_base_v1beta1::Coin',
                   'prost_types::Any',
@@ -955,23 +1016,34 @@ jobs:
                   'prost_types::Timestamp',
                   'cosmos_base_query_v1beta1::PageRequest',
                   'cosmos_base_query_v1beta1::PageResponse',
+                  'ibc_applications_interchain_accounts_v1::InterchainAccountPacketData',
               ]
               
               # Check if any problematic type appears in an Option context
-              # Match patterns like: Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
-              # or ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
               has_problematic_type = False
               for type_name in problematic_type_names:
-                  # The type name contains :: which is literal in regex, so no escaping needed
-                  # Match Option<...type_name> with any path prefix
-                  # Also handle ::core::option::Option<...> format
                   patterns = [
-                      rf'Option<[^>]*{type_name}\s*>',  # Standard Option<...>
-                      rf'::core::option::Option<[^>]*{type_name}\s*>',  # Full path format
+                      rf'Option<[^>]*{type_name}\s*>',
+                      rf'::core::option::Option<[^>]*{type_name}\s*>',
                   ]
                   if any(re.search(pattern, content) for pattern in patterns):
                       has_problematic_type = True
                       break
+              
+              # Also check for nested types in Option<crate::types::...> that might not implement Eq/Hash
+              # This catches cases like Option<crate::types::ibc_applications_interchain_accounts_v1::InterchainAccountPacketData>
+              if not has_problematic_type:
+                  # Match Option with nested module paths containing underscores (multi-level modules)
+                  # These often contain types without Eq/Hash
+                  nested_patterns = [
+                      r'Option<crate::types::[a-z_]+::[A-Z][^>]*>',  # Nested types like crate::types::module::Type
+                      r'::core::option::Option<crate::types::[a-z_]+::[A-Z][^>]*>',
+                  ]
+                  # Only flag if we see a struct deriving Eq/Hash with such nested types
+                  if any(re.search(pattern, content) for pattern in nested_patterns):
+                      # Check if this struct derives Eq or Hash - if so, it's likely problematic
+                      if re.search(r'#\[derive\([^)]*\b(Eq|Hash)\b', content):
+                          has_problematic_type = True
               
               if has_problematic_type:
                   # These types don't implement Eq or Hash, so remove both traits
