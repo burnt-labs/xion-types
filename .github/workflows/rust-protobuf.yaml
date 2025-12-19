@@ -188,8 +188,8 @@ jobs:
                       processed_names.add(item.name)
                   elif item.suffix == ".rs" and item.name != "mod.rs":
                       modname = item.stem
-                      # Skip if a directory with the same name exists
-                      if modname in processed_names or (types_dir / modname).is_dir():
+                      # Skip if a directory with the same name exists and has mod.rs
+                      if modname in processed_names or ((types_dir / modname).is_dir() and (types_dir / modname / "mod.rs").exists()):
                           continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
@@ -414,6 +414,62 @@ jobs:
                       '#[derive()',
                       content
                   )
+              
+              # Remove Eq and Hash from derive when struct contains types that don't implement Eq/Hash
+              # Types that don't implement Eq/Hash: Coin, Any, Duration, Timestamp, PageRequest, PageResponse, etc.
+              # Check for these types - they can appear in Option<...> with various path prefixes
+              problematic_type_names = [
+                  'cosmos_base_v1beta1::Coin',
+                  'prost_types::Any',
+                  'prost_types::Duration',
+                  'prost_types::Timestamp',
+                  'cosmos_base_query_v1beta1::PageRequest',
+                  'cosmos_base_query_v1beta1::PageResponse',
+              ]
+              
+              # Check if any problematic type appears in an Option context
+              # Match patterns like: Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
+              # or ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
+              has_problematic_type = False
+              for type_name in problematic_type_names:
+                  # The type name contains :: which is literal in regex, so no escaping needed
+                  # Match Option<...type_name> with any path prefix
+                  # Also handle ::core::option::Option<...> format
+                  patterns = [
+                      rf'Option<[^>]*{type_name}\s*>',  # Standard Option<...>
+                      rf'::core::option::Option<[^>]*{type_name}\s*>',  # Full path format
+                  ]
+                  if any(re.search(pattern, content) for pattern in patterns):
+                      has_problematic_type = True
+                      break
+              
+              if has_problematic_type:
+                  # These types don't implement Eq or Hash, so remove both traits
+                  for trait_name in ['Eq', 'Hash']:
+                      # Remove trait when it's in the middle: ", Eq," or ", Eq)"
+                      content = re.sub(
+                          rf',\s*{trait_name}\s*(?=,|\))',
+                          '',
+                          content
+                      )
+                      # Remove trait when it's at the start: "Eq,"
+                      content = re.sub(
+                          rf'#\[derive\(\s*{trait_name}\s*,',
+                          '#[derive(',
+                          content
+                      )
+                      # Remove trait when it's at the end: ", Eq)"
+                      content = re.sub(
+                          rf'([^,]),\s*{trait_name}\s*\)',
+                          r'\1)',
+                          content
+                      )
+                      # Handle case where trait is the only one (shouldn't happen with prost::Message, but be safe)
+                      content = re.sub(
+                          rf'#\[derive\(\s*{trait_name}\s*\)',
+                          '#[derive()',
+                          content
+                      )
               
               # Fix doctest issues: prevent protobuf/YAML/EBNF code blocks from being compiled
               # Rust doctests extract indented code blocks (4+ spaces) and try to compile them
@@ -662,8 +718,8 @@ jobs:
                       processed_names.add(item.name)
                   elif item.suffix == ".rs" and item.name != "mod.rs":
                       modname = item.stem
-                      # Skip if a directory with the same name exists
-                      if modname in processed_names or (types_dir / modname).is_dir():
+                      # Skip if a directory with the same name exists and has mod.rs
+                      if modname in processed_names or ((types_dir / modname).is_dir() and (types_dir / modname / "mod.rs").exists()):
                           continue
                       if '.' in modname:
                           f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
@@ -888,6 +944,62 @@ jobs:
                       '#[derive()',
                       content
                   )
+              
+              # Remove Eq and Hash from derive when struct contains types that don't implement Eq/Hash
+              # Types that don't implement Eq/Hash: Coin, Any, Duration, Timestamp, PageRequest, PageResponse, etc.
+              # Check for these types - they can appear in Option<...> with various path prefixes
+              problematic_type_names = [
+                  'cosmos_base_v1beta1::Coin',
+                  'prost_types::Any',
+                  'prost_types::Duration',
+                  'prost_types::Timestamp',
+                  'cosmos_base_query_v1beta1::PageRequest',
+                  'cosmos_base_query_v1beta1::PageResponse',
+              ]
+              
+              # Check if any problematic type appears in an Option context
+              # Match patterns like: Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
+              # or ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>
+              has_problematic_type = False
+              for type_name in problematic_type_names:
+                  # The type name contains :: which is literal in regex, so no escaping needed
+                  # Match Option<...type_name> with any path prefix
+                  # Also handle ::core::option::Option<...> format
+                  patterns = [
+                      rf'Option<[^>]*{type_name}\s*>',  # Standard Option<...>
+                      rf'::core::option::Option<[^>]*{type_name}\s*>',  # Full path format
+                  ]
+                  if any(re.search(pattern, content) for pattern in patterns):
+                      has_problematic_type = True
+                      break
+              
+              if has_problematic_type:
+                  # These types don't implement Eq or Hash, so remove both traits
+                  for trait_name in ['Eq', 'Hash']:
+                      # Remove trait when it's in the middle: ", Eq," or ", Eq)"
+                      content = re.sub(
+                          rf',\s*{trait_name}\s*(?=,|\))',
+                          '',
+                          content
+                      )
+                      # Remove trait when it's at the start: "Eq,"
+                      content = re.sub(
+                          rf'#\[derive\(\s*{trait_name}\s*,',
+                          '#[derive(',
+                          content
+                      )
+                      # Remove trait when it's at the end: ", Eq)"
+                      content = re.sub(
+                          rf'([^,]),\s*{trait_name}\s*\)',
+                          r'\1)',
+                          content
+                      )
+                      # Handle case where trait is the only one (shouldn't happen with prost::Message, but be safe)
+                      content = re.sub(
+                          rf'#\[derive\(\s*{trait_name}\s*\)',
+                          '#[derive()',
+                          content
+                      )
               
               # Fix doctest issues: prevent protobuf/YAML/EBNF code blocks from being compiled
               # Rust doctests extract indented code blocks (4+ spaces) and try to compile them
