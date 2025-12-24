@@ -1,9 +1,9 @@
-name: Publish Types CI/CD
+name: TS Protobuf Gen & Publish
 
 on:
-  push:
-    branches: 
-      - main
+  # push:
+  #   branches: 
+  #     - main
             
   workflow_dispatch:
     inputs:
@@ -16,7 +16,7 @@ on:
     types: [xion-types-release-trigger]
     
   schedule: # the schedule is triggering on all branches
-    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+    - cron: '0 9 * * 5' # Run Fridays at 9 AM UTC
       
 env:
   NODE_VERSION: '20'
@@ -207,7 +207,7 @@ jobs:
           # Check for errors related to xion-types (proto compatibility issues)
           # Exclude file paths to avoid false positives (e.g., paths containing "xion-types")
           # Look for actual import/usage errors, not path references
-          PROTO_ERRORS=$(grep -iE "error TS" /tmp/tsc-output.log 2>/dev/null | grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" 2>/dev/null | grep -vE "(Cannot read file|\.nuxt|node_modules)" 2>/dev/null || true)
+          PROTO_ERRORS=$(grep -iE "error TS" /tmp/tsc-output.log 2>/dev/null | grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\\bproto\\b)" 2>/dev/null | grep -vE "(Cannot read file|\\.nuxt|node_modules)" 2>/dev/null || true)
           
           if [ -n "$PROTO_ERRORS" ] && [ "$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ')" -gt 0 ]; then
             PROTO_ERROR_COUNT=$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ' || echo "0")
@@ -260,10 +260,16 @@ jobs:
           echo "Creating nightly package version: $NIGHTLY_VERSION"
           npm version $NIGHTLY_VERSION --no-git-tag-version
 
+      - name: Install Dependencies
+        working-directory: ./ts
+        run: |
+          echo "Installing dependencies for nightly build..."
+          npm install
+
       - name: Create Package Archive
         working-directory: ./ts
         run: |
-          echo "Creating nightly package archive for version: $(node -p "require('./package.json').version")"
+          echo "Creating nightly package archive for version: $(node -p \"require('./package.json').version\")"
           npm pack
           echo "Created nightly package archive: $(ls *.tgz)"
 
@@ -303,9 +309,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
-
-      - name: Update npm
-        run: npm install -g npm@latest
+          token: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Bump Version
         id: version
@@ -358,6 +362,8 @@ jobs:
 
       - name: Publish to NPM 
         working-directory: ./ts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
           npm publish --verbose --access public --tag ${{ env.TAG }}

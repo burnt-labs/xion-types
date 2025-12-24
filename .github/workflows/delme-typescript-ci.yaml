@@ -1,0 +1,423 @@
+name: Publish Types CI/CD
+
+on:
+  # push:
+  #   branches: 
+  #     - main
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for manual workflow runs.'
+        required: true
+        type: string
+
+  # repository_dispatch: # deactivated (kept for reference)
+  #   types: [xion-types-release-trigger]
+  #   
+  # schedule: # deactivated (kept for reference)
+  #   - cron: '0 9 * * 5' # Run Fridays at 9 AM UTC
+      
+env:
+  NODE_VERSION: '20'
+  REGISTRY_URL: 'https://registry.npmjs.org'
+
+jobs:
+  generate-protobuf:
+    name: Gen Protobuf Defs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language:
+          # - cpp
+          # - java
+          # - kotlin
+          # - objc
+          # - php
+          # - python
+          # - ruby
+          # - rust
+          # - swift
+          - ts
+      fail-fast: false
+    outputs:
+      types-generated: ${{ steps.check-types.outputs.types-generated }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate ${{ matrix.language }} Definitions
+        run: |
+          make proto-gen-${{ matrix.language }}
+
+      - name: Check if Types Were Generated
+        id: check-types
+        run: |
+          if [ -d "./${{ matrix.language }}/types" ] && [ "$(ls -A ./${{ matrix.language }}/types)" ]; then
+            echo "types-generated=true" >> $GITHUB_OUTPUT
+            echo "✅ ${{ matrix.language }} definitions generated successfully"
+          else
+            echo "types-generated=false" >> $GITHUB_OUTPUT
+            echo "❌ Failed to generate ${{ matrix.language }} definitions"
+            exit 1
+          fi
+
+      - name: Upload Generated Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-${{ matrix.language }}
+          path: ${{ matrix.language }}/types
+          retention-days: 1
+
+  test-dependent-projects:
+    name: Test Dependents
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false  # Allow all matrix jobs to complete even if one fails
+      matrix:
+        project: 
+          #- xion-dashboard-app # is private TODO
+          - xion-explorer
+          - xion-faucet
+          - xion-staking
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          path: xion-types
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: xion-types/ts/types
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Build xion-types Package
+        working-directory: xion-types/ts
+        run: |
+          echo "Installing dependencies for xion-types..."
+          npm install
+          echo "Building xion-types package..."
+          npm run build
+          echo "Packing xion-types package for local installation..."
+          cd dist
+          # Temporarily remove prepare script to prevent rebuild during pack
+          node -e "const pkg = require('./package.json'); delete pkg.scripts.prepare; require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));"
+          npm pack --pack-destination ..
+          # Restore prepare script (optional, as dist will be cleaned on next build)
+          cd ..
+          echo "Created package tarball: $(ls *.tgz 2>/dev/null | head -1 || echo 'none')"
+
+      - name: Checkout Dependent Project
+        uses: actions/checkout@v4
+        with:
+          repository: burnt-labs/${{ matrix.project }}
+          path: dependent-project
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          
+      - name: Debug Repository Checkout
+        run: |
+          echo "Checking if dependent-project directory exists..."
+          ls -la dependent-project/ || echo "Directory not found"
+          
+          echo "Checking repository URL..."
+          echo "Repository: burnt-labs/${{ matrix.project }}"
+          
+          echo "Checking if package.json exists..."
+          if [ -f "dependent-project/package.json" ]; then
+            echo "✅ package.json found"
+            head -5 dependent-project/package.json
+          else
+            echo "❌ package.json not found"
+            echo "Contents of dependent-project directory:"
+            ls -la dependent-project/ || echo "Directory is empty or doesn't exist"
+          fi
+
+      - name: Test Project with Updated Types
+        run: |
+          cd dependent-project
+          
+          # Check if package.json exists
+          if [ ! -f "package.json" ]; then
+            echo "❌ No package.json found in ${{ matrix.project }}"
+            exit 1
+          fi
+          
+          # Install project dependencies first (skip scripts to avoid postinstall hooks)
+          echo "Installing project dependencies for ${{ matrix.project }}..."
+          npm install --ignore-scripts --legacy-peer-deps
+          
+          # Generate Nuxt types if this is a Nuxt project
+          # Use dummy env vars for Nuxt config validation since we're only testing proto compatibility
+          if grep -q '"nuxt"' package.json || grep -q '"nuxt prepare"' package.json; then
+            echo "Detected Nuxt project, generating types with dummy environment variables..."
+            NUXT_PUBLIC_TURNSTILE_SITE_KEY="dummy" \
+            NUXT_FAUCET_MNEMONIC="dummy" \
+            NUXT_FAUCET_PATH_PATTERN="dummy" \
+            NUXT_TURNSTILE_SECRET_KEY="dummy" \
+            NUXT_XION_TESTNET_1_MNEMONIC="dummy" \
+            NUXT_XION_TESTNET_2_MNEMONIC="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
+            NUXT_PUBLIC_FAUCET_ADDRESS_PREFIX="dummy" \
+            NUXT_PUBLIC_FAUCET_AMOUNT_GIVEN="1000000" \
+            NUXT_PUBLIC_FAUCET_COOLDOWN_TIME="3600" \
+            NUXT_PUBLIC_FAUCET_DENOM="dummy" \
+            NUXT_PUBLIC_FAUCET_GAS_LIMIT="200000" \
+            NUXT_PUBLIC_FAUCET_GAS_PRICE="0.025" \
+            NUXT_PUBLIC_FAUCET_LOGGING="false" \
+            NUXT_PUBLIC_FAUCET_MEMO="dummy" \
+            NUXT_PUBLIC_FAUCET_TOKENS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_1_ADDRESS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_1_RPC_URL="https://dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS="dummy" \
+            NUXT_PUBLIC_XION_TESTNET_2_RPC_URL="https://dummy" \
+            NUXT_DISCORD_APP_ID="dummy" \
+            npx nuxt prepare || echo "⚠️  Nuxt prepare failed (non-critical for proto testing)"
+          fi
+          
+          # Install the types package with legacy peer deps to bypass conflicts
+          echo "Installing types package for ${{ matrix.project }}..."
+          PACKAGE_TGZ=$(ls ../xion-types/ts/*.tgz 2>/dev/null | head -1)
+          if [ -z "$PACKAGE_TGZ" ]; then
+            echo "❌ No package tarball found. Expected .tgz file in xion-types/ts/"
+            ls -la ../xion-types/ts/ || echo "Directory listing failed"
+            exit 1
+          fi
+          echo "Installing from tarball: $PACKAGE_TGZ"
+          npm install "$PACKAGE_TGZ" --no-save --legacy-peer-deps
+          
+          # Run type checking to validate proto compatibility
+          echo "Running type check for ${{ matrix.project }}..."
+          set +e  # Temporarily disable exit on error
+          npx tsc --noEmit --skipLibCheck > /tmp/tsc-output.log 2>&1
+          TSC_EXIT_CODE=$?
+          set -e  # Re-enable exit on error
+          
+          # Check for errors related to xion-types (proto compatibility issues)
+          # Exclude file paths to avoid false positives (e.g., paths containing "xion-types")
+          # Look for actual import/usage errors, not path references
+          PROTO_ERRORS=$(grep -iE "error TS" /tmp/tsc-output.log 2>/dev/null | grep -iE "(xion-types|@burnt-labs/xion-types|protobuf|\bproto\b)" 2>/dev/null | grep -vE "(Cannot read file|\.nuxt|node_modules)" 2>/dev/null || true)
+          
+          if [ -n "$PROTO_ERRORS" ] && [ "$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ')" -gt 0 ]; then
+            PROTO_ERROR_COUNT=$(echo "$PROTO_ERRORS" | wc -l | tr -d ' ' || echo "0")
+            echo "❌ Found $PROTO_ERROR_COUNT proto-related TypeScript error(s) - proto compatibility issue detected!"
+            echo "$PROTO_ERRORS" | head -10
+            exit 1
+          elif [ "$TSC_EXIT_CODE" -eq 0 ]; then
+            echo "✅ Type check passed - proto compatibility confirmed for ${{ matrix.project }}"
+          else
+            TOTAL_ERROR_COUNT=$(grep -ci "error TS" /tmp/tsc-output.log 2>/dev/null || echo "0")
+            echo "⚠️  Type check found $TOTAL_ERROR_COUNT TypeScript error(s), but none are proto-related"
+            echo "These appear to be pre-existing project errors (not xion-types issues)"
+            echo "Sample errors:"
+            grep -iE "error TS" /tmp/tsc-output.log | head -5 || echo "No error samples found"
+            echo "✅ Proto compatibility test passed (existing project errors are not blocking)"
+          fi
+          
+          echo "✅ Proto compatibility test completed for ${{ matrix.project }}"
+
+  nightly-build:
+    if: github.event_name == 'schedule'
+    name: Create Nightly
+    needs: [test-dependent-projects]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: ts/types
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Create Nightly Package
+        working-directory: ./ts
+        run: |
+          # Get the latest published version and create nightly version with timestamp
+          LATEST_VERSION=$(npm view @burnt-labs/xion-types version)
+          TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
+          NIGHTLY_VERSION="${LATEST_VERSION}-nightly.${TIMESTAMP}"
+          echo "Creating nightly package version: $NIGHTLY_VERSION"
+          npm version $NIGHTLY_VERSION --no-git-tag-version
+
+      - name: Install Dependencies
+        working-directory: ./ts
+        run: |
+          echo "Installing dependencies for nightly build..."
+          npm install
+
+      - name: Create Package Archive
+        working-directory: ./ts
+        run: |
+          echo "Creating nightly package archive for version: $(node -p "require('./package.json').version")"
+          npm pack
+          echo "Created nightly package archive: $(ls *.tgz)"
+
+      - name: Upload Nightly Package as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-package-${{ github.run_number }}
+          path: ts/*.tgz
+          retention-days: 1
+
+  publish-to-npm:
+    name: Publish to NPM
+    needs: [test-dependent-projects]
+    runs-on: ubuntu-latest
+    outputs:
+      NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
+    permissions:
+      contents: read
+      id-token: write
+    # Only run publish for: prerelease, published, manual dispatch
+    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Generated Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: ts/types
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
+
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Bump Version
+        id: version
+        working-directory: ./ts
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            # Set specific version from manual input
+            npm version ${{ github.event.inputs.next_version }} --no-git-tag-version
+            echo "Set version from manual input: ${{ github.event.inputs.next_version }}"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            # Set version from release tag
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            # Remove 'v' prefix if present
+            CLEAN_TAG=${RELEASE_TAG#v}
+            echo "Set the package version in package.json to: $CLEAN_TAG"
+            npm version $CLEAN_TAG --no-git-tag-version
+            echo "Set version from repository dispatch: $RELEASE_TAG (clean: $CLEAN_TAG)"
+          else
+            echo "❌ No version specified. Please provide next_version input in workflow_dispatch or trigger via release event"
+            exit 1
+          fi
+        
+          # Get the new version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          
+          # Set appropriate tag based on release type
+          if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
+            # Pre-releases get 'beta' tag
+            echo "TAG=beta" >> $GITHUB_ENV
+            echo "Tag: beta"
+          elif [ "${{ github.event.client_payload.release_type }}" == "published" ]; then
+            # Published releases get 'latest' tag
+            echo "TAG=latest" >> $GITHUB_ENV
+            echo "Tag: latest"
+          else
+            # Other releases default to 'latest' tag (npm doesn't allow SemVer as tag names)
+            echo "TAG=latest" >> $GITHUB_ENV
+            echo "Tag: latest"
+          fi
+          
+          echo "New version: $NEW_VERSION"
+
+      - name: Install Dependencies
+        working-directory: ./ts
+        run: |
+          echo "Installing dependencies for publish..."
+          npm install
+
+      - name: Publish to NPM 
+        working-directory: ./ts
+        run: |
+          echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
+          npm publish --verbose --access public --tag ${{ env.TAG }}
+          echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
+
+  validate-on-npm:
+    name: Validate NPM Package
+    needs: [publish-to-npm]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
+
+      - name: Verify Package on NPM
+        env:
+          TAG: ${{ needs.publish-to-npm.outputs.TAG }}
+          VERSION: ${{ needs.publish-to-npm.outputs.NEW_VERSION }}
+        run: |
+          echo "Verifying package version: $VERSION"
+          
+          # Retry logic for NPM verification
+          MAX_ATTEMPTS=5
+          ATTEMPT=1
+          
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS: Checking if package is available on NPM..."
+            
+            if npm view @burnt-labs/xion-types@$VERSION version > /dev/null 2>&1; then
+              echo "✅ Package successfully published to NPM"
+              echo "Package version $VERSION is available on NPM"
+
+              # Check if our version is tagged as latest
+              LATEST_VERSION=$(npm view @burnt-labs/xion-types@latest version 2>/dev/null || echo "")
+              if [ "$LATEST_VERSION" = "$VERSION" ]; then
+                echo "✅ Version $VERSION is correctly tagged as 'latest'"
+              else
+                echo "ℹ️  Version $VERSION is not the latest tag (latest: $LATEST_VERSION)"
+              fi
+
+              exit 0
+            else
+              echo "Package not yet available on NPM (attempt $ATTEMPT/$MAX_ATTEMPTS)"
+              
+              if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting 10 seconds before retry..."
+                sleep 10
+              fi
+            fi
+            
+            ATTEMPT=$((ATTEMPT + 1))
+          done
+          
+          echo "❌ Failed to verify package on NPM after $MAX_ATTEMPTS attempts"
+          exit 1
