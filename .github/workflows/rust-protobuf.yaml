@@ -125,28 +125,6 @@ jobs:
         run: |
           mkdir -p rust/src
           
-          # Create Cargo.toml if it doesn't exist
-          if [ ! -f "rust/Cargo.toml" ]; then
-            cat > rust/Cargo.toml << 'CARGO'
-          [package]
-          name = "xion-types"
-          version = "0.1.0"
-          edition = "2021"
-          description = "Generated Rust types for Xion blockchain protocol buffers"
-          license = "Apache-2.0"
-          repository = "https://github.com/burnt-labs/xion-types"
-          readme = "README.md"
-          
-          [lib]
-          name = "xion_types"
-          path = "src/lib.rs"
-          
-          [dependencies]
-          prost = "0.12"
-          prost-types = "0.12"
-          CARGO
-          fi
-          
           # Single Python script to handle all setup
           python3 << 'PYTHON'
           import re
@@ -579,28 +557,6 @@ jobs:
       - name: Create Rust Package Structure
         run: |
           mkdir -p rust/src
-          
-          # Create Cargo.toml if it doesn't exist
-          if [ ! -f "rust/Cargo.toml" ]; then
-            cat > rust/Cargo.toml << 'CARGO'
-          [package]
-          name = "xion-types"
-          version = "0.1.0"
-          edition = "2021"
-          description = "Generated Rust types for Xion blockchain protocol buffers"
-          license = "Apache-2.0"
-          repository = "https://github.com/burnt-labs/xion-types"
-          readme = "README.md"
-          
-          [lib]
-          name = "xion_types"
-          path = "src/lib.rs"
-          
-          [dependencies]
-          prost = "0.12"
-          prost-types = "0.12"
-          CARGO
-          fi
           
           # Single Python script to handle all setup
           python3 << 'PYTHON'
