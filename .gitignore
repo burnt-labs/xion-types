@@ -6,3 +6,12 @@ ts/git-modules
 ts/protos
 ts/node_modules
 ts/dist
+
+examples/typescript/node_modules
+examples/typescript/package-lock.json
+examples/typescript/package.json
+
+examples/rust/target
+
+examples/swift/.build
+examples/swift/.swiftpm

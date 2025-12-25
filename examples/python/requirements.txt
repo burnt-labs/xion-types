@@ -1,0 +1,6 @@
+# Xion Python Protobuf Examples - Requirements
+# 
+# The generated protobuf files require protobuf 6.x
+# Install with: pip install -r requirements.txt
+
+protobuf>=6.33.2

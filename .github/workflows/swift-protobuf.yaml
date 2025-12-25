@@ -1,9 +1,9 @@
 name: Swift Protobuf Gen & Publish
 
 on:
-  push:
-    branches: 
-      - main 
+  # push:
+  #   branches: 
+  #     - main 
             
   workflow_dispatch:
     inputs:
@@ -15,8 +15,8 @@ on:
   repository_dispatch:
     types: [xion-types-release-trigger]
     
-  # schedule:
-  #   - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+  schedule:
+    - cron: '0 9 * * 5' # Run Fridays at 9 AM UTC
 
 jobs:
   generate-protobuf:
@@ -52,7 +52,7 @@ jobs:
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     if: |
-        github.event_name == 'push' ||
+        github.event_name == 'schedule' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     outputs:
@@ -77,6 +77,10 @@ jobs:
             RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
             VERSION=${RELEASE_TAG#v}
             echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          elif [ "${{ github.event_name }}" == "schedule" ]; then
+            TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
+            VERSION="0.0.0-nightly.${TIMESTAMP}"
+            echo "Using nightly version: $VERSION"
           elif [ "${{ github.event_name }}" == "push" ]; then
             TIMESTAMP=$(date +%s)
             VERSION="0.0.0.dev${TIMESTAMP}"
@@ -688,9 +692,7 @@ jobs:
     name: Publish to CocoaPods
     needs: [swift-test, swift-build]
     runs-on: macos-latest
-    # TODO: Remove push from condition after testing
     if: |
-      github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch' || 
       (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     permissions:
