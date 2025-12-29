@@ -370,11 +370,11 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Previous:*\n\`${{ steps.check-results.outputs.current-commit }}\`"
+                      "text": "*Previous:*\n`${{ steps.check-results.outputs.current-commit }}`"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Latest:*\n\`${{ steps.check-results.outputs.latest-commit }}\`"
+                      "text": "*Latest:*\n`${{ steps.check-results.outputs.latest-commit }}`"
                     }
                   ]
                 },
