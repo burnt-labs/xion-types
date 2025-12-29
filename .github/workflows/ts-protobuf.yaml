@@ -269,7 +269,8 @@ jobs:
       - name: Create Package Archive
         working-directory: ./ts
         run: |
-          echo "Creating nightly package archive for version: $(node -p \"require('./package.json').version\")"
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "Creating nightly package archive for version: $PACKAGE_VERSION"
           npm pack
           echo "Created nightly package archive: $(ls *.tgz)"
 
