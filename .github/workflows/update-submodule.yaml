@@ -4,8 +4,14 @@ name: Update Xion Submodule
 # 1. check-submodule-updates
 #     - Checks if xion submodule has updates
 #     - Compares current commit vs latest main
+#     - Filters for proto-related changes only:
+#       * Files in proto/ directory (including deletions)
+#       * buf.work.yaml at root (affects buf workspace configuration)
+#       * Any buf*.yaml files (buf.yaml, buf.gen.*.yaml, etc.)
+#     - Only creates PRs when proto-related files change (skips non-proto changes)
+#     - Logs skipped updates with list of changed files
 #     - Outputs: has-updates, current-commit, latest-commit, commit-message
-# 2. update-submodule-and-create-pr (runs only if updates found)
+# 2. update-submodule-and-create-pr (runs only if proto-related updates found)
 #     - Updates xion submodule to latest main
 #     - Creates a branch and commits changes
 #     - Creates a PR with details about the update
@@ -14,18 +20,18 @@ name: Update Xion Submodule
 #     - Sends Slack notifications based on results:
 #         - Error: If check or update fails
 #         - Success: If PR created successfully (with PR link)
-#         - Info: If no updates found
+#         - Info: If no proto-related updates found (or submodule is up to date)
 #     - Uses the same Slack action and secrets as the Swift workflow
 
 
 on:
   schedule:
     # Run daily at 14:00 UTC [16:00 UTC+2]
-    - cron: '00 14 * * *'
+    # - cron: '00 14 * * *'
     # Original daily option: Run daily at 3 AM UTC (after the nightly build at 2 AM)
     # - cron: '0 3 * * *'
-    # Weekly option: Run every Monday at 3 AM UTC
-    # - cron: '0 3 * * 1'
+    # Weekly option
+    - cron: '0 3 * * 1' # Run every Monday at 3 AM UTC
   workflow_dispatch:
     inputs:
       force_update:
@@ -77,23 +83,53 @@ jobs:
           echo "Current commit: $CURRENT_COMMIT_SHORT ($CURRENT_COMMIT)"
           echo "Latest commit: $LATEST_COMMIT_SHORT ($LATEST_COMMIT)"
           
+          # Check if commits differ or force update is requested
           if [ "$CURRENT_COMMIT" != "$LATEST_COMMIT" ] || [ "${{ inputs.force_update }}" == "true" ]; then
-            echo "has-updates=true" >> $GITHUB_OUTPUT
-            echo "✅ Submodule updates found!"
+            echo "📦 Submodule commits differ, checking for proto-related changes..."
             
-            # Get commit message from latest commit
+            # Check for proto-related file changes between commits
             cd xion
-            COMMIT_MSG=$(git log -1 --pretty=format:"%s" $LATEST_COMMIT)
+            CHANGED_FILES=$(git diff --name-only $CURRENT_COMMIT..$LATEST_COMMIT)
+            
+            # Filter for proto-related files:
+            # - Files in proto/ directory (including deletions)
+            # - buf.work.yaml at root (affects buf workspace configuration)
+            # - Any buf*.yaml files (covers buf.yaml, buf.gen.*.yaml, etc.)
+            PROTO_CHANGES=$(echo "$CHANGED_FILES" | grep -E '^(proto/|buf\.work\.yaml$|.*buf.*\.yaml$)' || true)
+            
             cd ..
             
-            echo "current-commit=$CURRENT_COMMIT" >> $GITHUB_OUTPUT
-            echo "latest-commit=$LATEST_COMMIT" >> $GITHUB_OUTPUT
-            echo "commit-message=$COMMIT_MSG" >> $GITHUB_OUTPUT
-            
-            echo "Update summary:"
-            echo "  From: $CURRENT_COMMIT_SHORT"
-            echo "  To: $LATEST_COMMIT_SHORT"
-            echo "  Message: $COMMIT_MSG"
+            if [ -n "$PROTO_CHANGES" ] || [ "${{ inputs.force_update }}" == "true" ]; then
+              echo "has-updates=true" >> $GITHUB_OUTPUT
+              echo "✅ Proto-related changes found!"
+              
+              if [ -n "$PROTO_CHANGES" ]; then
+                echo "Changed proto-related files:"
+                echo "$PROTO_CHANGES" | sed 's/^/  - /'
+              fi
+              
+              # Get commit message from latest commit
+              cd xion
+              COMMIT_MSG=$(git log -1 --pretty=format:"%s" $LATEST_COMMIT)
+              cd ..
+              
+              echo "current-commit=$CURRENT_COMMIT" >> $GITHUB_OUTPUT
+              echo "latest-commit=$LATEST_COMMIT" >> $GITHUB_OUTPUT
+              echo "commit-message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+              
+              echo "Update summary:"
+              echo "  From: $CURRENT_COMMIT_SHORT"
+              echo "  To: $LATEST_COMMIT_SHORT"
+              echo "  Message: $COMMIT_MSG"
+            else
+              echo "has-updates=false" >> $GITHUB_OUTPUT
+              echo "ℹ️ Submodule has updates but no proto-related changes detected"
+              echo "Skipping PR creation. Changed files:"
+              echo "$CHANGED_FILES" | head -20 | sed 's/^/  - /'
+              if [ $(echo "$CHANGED_FILES" | wc -l) -gt 20 ]; then
+                echo "  ... and $(($(echo "$CHANGED_FILES" | wc -l) - 20)) more files"
+              fi
+            fi
           else
             echo "has-updates=false" >> $GITHUB_OUTPUT
             echo "✅ Submodule is up to date"
@@ -370,11 +406,11 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Previous:*\n\`${{ steps.check-results.outputs.current-commit }}\`"
+                      "text": "*Previous:*\n`${{ steps.check-results.outputs.current-commit }}`"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Latest:*\n\`${{ steps.check-results.outputs.latest-commit }}\`"
+                      "text": "*Latest:*\n`${{ steps.check-results.outputs.latest-commit }}`"
                     }
                   ]
                 },
