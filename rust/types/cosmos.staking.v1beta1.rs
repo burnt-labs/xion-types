@@ -11,8 +11,8 @@ pub struct StakeAuthorization {
     #[prost(enumeration="AuthorizationType", tag="4")]
     pub authorization_type: i32,
     /// validators is the oneof that represents either allow_list or deny_list
-    #[prost(oneof="stake_authorization::Validators", tags="2, 3")]
-    pub validators: ::core::option::Option<stake_authorization::Validators>,
+    #[prost(oneof="stake_authorization::ValidatorPolicy", tags="2, 3")]
+    pub validators: ::core::option::Option<stake_authorization::ValidatorPolicy>,
 }
 /// Nested message and enum types in `StakeAuthorization`.
 pub mod stake_authorization {
@@ -24,7 +24,7 @@ pub mod stake_authorization {
     }
     /// validators is the oneof that represents either allow_list or deny_list
     #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Validators {
+    pub enum ValidatorPolicy {
         /// allow_list specifies list of validator addresses to whom grantee can delegate tokens on behalf of granter's
         /// account.
         #[prost(message, tag="2")]
