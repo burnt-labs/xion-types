@@ -171,7 +171,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rust-version: ['1.70', '1.75', 'stable']
+        rust-version: ['1.72', '1.75', 'stable']
       fail-fast: false
     steps:
       - name: Checkout Repository
