@@ -24,14 +24,63 @@ fi
 
 deps="$DEPS"
 
-# Install selected dependencies from go.mod
-echo "installing dependencies"
-cd ${xion_dir} 
-go mod download $deps
+# Resolve actual module paths from go.mod (handles replace directives)
+echo "resolving module paths from go.mod"
+cd ${xion_dir}
 
-# Get dependency paths
-echo "getting paths for $deps"
-proto_paths=$(go list -f '{{ .Dir }}' -m $deps | sed "s/$/\/proto/")
+# First, ensure go.mod is up to date
+go mod tidy
+
+# Resolve each dependency to its actual module path in go.mod
+# This handles replace directives and version mismatches
+resolved_deps=""
+for dep in $deps; do
+  # Try to resolve the module using go list -m
+  # First try exact match
+  if go list -m "$dep" >/dev/null 2>&1; then
+    # Module exists in go.mod (either as-is or via replace)
+    if [ -z "$resolved_deps" ]; then
+      resolved_deps="$dep"
+    else
+      resolved_deps="$resolved_deps $dep"
+    fi
+  else
+    # Try to find module by base path (handles version mismatches like v8 vs v10)
+    # Extract base path (e.g., github.com/cosmos/ibc-go from github.com/cosmos/ibc-go/v10)
+    base_path=$(echo "$dep" | sed -E 's|/v[0-9]+$||' | sed -E 's|/v[0-9]+/|/|')
+    # Try to find matching module in go.mod
+    matched=$(go list -m all 2>/dev/null | grep -E "^${base_path}(/v[0-9]+)? " | head -1 | awk '{print $1}' || true)
+    if [ -n "$matched" ]; then
+      echo "Resolved $dep -> $matched (version mismatch)"
+      if [ -z "$resolved_deps" ]; then
+        resolved_deps="$matched"
+      else
+        resolved_deps="$resolved_deps $matched"
+      fi
+    else
+      echo "Warning: module $dep not found in go.mod, skipping"
+    fi
+  fi
+done
+
+if [ -z "$resolved_deps" ]; then
+  echo "Error: No valid dependencies found in go.mod"
+  exit 1
+fi
+
+# Install selected dependencies from go.mod
+# go list -m will download if needed, but we also run go mod download for explicit download
+echo "installing dependencies: $resolved_deps"
+go mod download $resolved_deps 2>&1 || {
+  echo "Warning: go mod download had errors, but continuing..."
+  # Alternative: use go list -m which will download modules if needed
+  go list -m $resolved_deps >/dev/null 2>&1 || true
+}
+
+# Get dependency paths (using resolved deps)
+# go list -m handles replace directives automatically
+echo "getting paths for dependencies"
+proto_paths=$(go list -f '{{ .Dir }}' -m $resolved_deps 2>/dev/null | sed "s/$/\/proto/" | tr '\n' ' ')
 
 cd $xion_types_dir
 
