@@ -1,9 +1,9 @@
 name: Rust Protobuf Gen & Publish
 
 on:
-  push:
-    branches: 
-      - fix/rust-protobuf-build
+  # push:
+  #   branches: 
+  #     - fix/rust-protobuf-build
             
   workflow_dispatch:
     inputs:
