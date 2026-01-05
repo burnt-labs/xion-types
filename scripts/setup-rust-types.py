@@ -267,6 +267,61 @@ pub mod types {
                 content
             )
         
+        # Remove Eq and Hash from derive when struct contains Option<prost_types::Any> or Option types
+        # that don't implement Eq/Hash. This is a common issue with protobuf-generated code.
+        # Check for patterns that indicate problematic fields
+        problematic_patterns = [
+            r'Option<[^>]*prost_types::Any',
+            r'Option<[^>]*::prost_types::Any',
+            r'Option<[^>]*::tendermint_types::(ConsensusParams|BlockParams|EvidenceParams|ValidatorParams|AbciParams)',
+            r'Option<[^>]*::cosmos_crypto_hd_v1::Bip44Params',
+            r'Option<[^>]*::cosmos_base_query_v1beta1::(PageRequest|PageResponse)',
+            r'Option<[^>]*::cosmos_base_v1beta1::Coin',
+            r'Option<[^>]*prost_types::Duration',
+            r'Option<[^>]*::prost_types::Duration',
+            r'Option<[^>]*::cosmos_crypto_keyring_v1::record::(Local|Ledger|Multi|Offline)',
+            r'Option<[^>]*::cosmos_auth_v1beta1::BaseAccount',
+            r'Option<[^>]*::ibc_applications_interchain_accounts_v1::InterchainAccountPacketData',
+            r'Option<[^>]*::ibc_core_client_v1::Height',
+        ]
+        
+        has_problematic_fields = any(re.search(pattern, content) for pattern in problematic_patterns)
+        
+        # Also check if this is an enum with variants that contain problematic types
+        is_problematic_enum = (
+            re.search(r'pub enum \w+ \{', content) and
+            (re.search(r'Local\(Local\)|Ledger\(Ledger\)|Multi\(Multi\)|Offline\(Offline\)', content) or
+             re.search(r'Option<[^>]*::cosmos_crypto_keyring_v1::record::', content))
+        )
+        
+        if has_problematic_fields or is_problematic_enum:
+            # Remove Eq and Hash from derive attributes
+            content = re.sub(
+                r'#\[derive\(Clone,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Message\)\]',
+                '#[derive(Clone, PartialEq, ::prost::Message)]',
+                content
+            )
+            content = re.sub(
+                r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Message\)\]',
+                '#[derive(Clone, Copy, PartialEq, ::prost::Message)]',
+                content
+            )
+            content = re.sub(
+                r'#\[derive\(Clone,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Oneof\)\]',
+                '#[derive(Clone, PartialEq, ::prost::Oneof)]',
+                content
+            )
+            content = re.sub(
+                r'#\[derive\(Clone,\s*PartialEq,\s*Eq,\s*Hash\)\]',
+                '#[derive(Clone, PartialEq)]',
+                content
+            )
+            content = re.sub(
+                r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*Eq,\s*Hash\)\]',
+                '#[derive(Clone, Copy, PartialEq)]',
+                content
+            )
+        
         # Fix doctest issues: prevent protobuf/YAML/EBNF code blocks from being compiled
         # Rust doctests extract indented code blocks (4+ spaces) and try to compile them
         # We add `# ` prefix to protobuf examples to make them comments (hidden from doctests)
