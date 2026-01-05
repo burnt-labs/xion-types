@@ -24,6 +24,21 @@ def main():
         print("❌ rust/types directory not found")
         sys.exit(1)
 
+    # 0. Remove conflicting files where both name.rs and name/mod.rs exist
+    # Rust doesn't allow both, so we keep the directory version
+    # Process recursively to handle nested directories too
+    def remove_conflicting_files(dir_path):
+        for item in dir_path.iterdir():
+            if item.is_dir():
+                rs_file = dir_path / f"{item.name}.rs"
+                if rs_file.exists():
+                    print(f"Removing conflicting file {rs_file} (keeping {item}/ directory)")
+                    rs_file.unlink()
+                # Recurse into subdirectories
+                remove_conflicting_files(item)
+    
+    remove_conflicting_files(types_dir)
+
     # 1. Generate mod.rs files recursively
     def create_mod_rs(dir_path):
         rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
@@ -50,17 +65,24 @@ def main():
             create_mod_rs(item)
     
     # Create root mod.rs
+    # Track modules to prevent duplicates (e.g., if amino/ dir and amino.rs both exist)
+    written_modules = set()
     with (types_dir / "mod.rs").open("w") as f:
         f.write("// Auto-generated module\n")
         for item in sorted(types_dir.iterdir()):
             if item.is_dir() and (item / "mod.rs").exists():
-                f.write(f"pub mod {item.name};\n")
+                if item.name not in written_modules:
+                    f.write(f"pub mod {item.name};\n")
+                    written_modules.add(item.name)
             elif item.suffix == ".rs" and item.name != "mod.rs":
                 modname = item.stem
-                if '.' in modname:
-                    f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
-                else:
-                    f.write(f"pub mod {modname};\n")
+                mod_key = modname.replace(".", "_") if '.' in modname else modname
+                if mod_key not in written_modules:
+                    if '.' in modname:
+                        f.write(f'#[path = "{item.name}"]\npub mod {mod_key};\n')
+                    else:
+                        f.write(f"pub mod {modname};\n")
+                    written_modules.add(mod_key)
     
     # 2. Create lib.rs
     lib_rs = repo_root / "rust" / "src" / "lib.rs"
@@ -227,6 +249,16 @@ pub mod types {
         
         # Clean up invalid patterns
         content = re.sub(r'crate::types::super::+', 'crate::types::', content)
+        
+        # Fix MerklePath reference - it's in a nested module but referenced from flat module name
+        # Files in ibc/core/client/v1/ reference crate::types::ibc_core_commitment_v1::MerklePath
+        # but MerklePath is in the nested ibc/core/commitment/v1/ directory
+        # Apply to all files that have this reference (both flat and nested ibc.core.client files)
+        content = re.sub(
+            r'crate::types::ibc_core_commitment_v1::MerklePath',
+            'crate::types::ibc::core::commitment::v1::ibc_core_commitment_v1::MerklePath',
+            content
+        )
         
         # Fix Validators duplicate (enum conflicts with struct)
         if rs_file.name == 'cosmos.staking.v1beta1.rs':
