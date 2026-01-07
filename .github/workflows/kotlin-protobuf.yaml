@@ -56,11 +56,14 @@ jobs:
             exit 1
           fi
 
+      - name: Setup Buf
+        uses: bufbuild/buf-setup-action@v1
+
       - name: Generate External Proto Dependencies
         run: |
           echo "Exporting and generating external proto dependencies..."
           
-          # Export dependencies from buf registry
+          mkdir -p proto_deps
           cd xion/proto
           buf export buf.build/cosmos/cosmos-proto --output ../../proto_deps/cosmos_proto
           buf export buf.build/cosmos/ics23 --output ../../proto_deps/ics23
