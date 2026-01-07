@@ -191,6 +191,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.10'
 
       - name: Update Version in build.gradle.kts
         env:
@@ -336,6 +338,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.10'
 
       - name: Import GPG Key
         env:
