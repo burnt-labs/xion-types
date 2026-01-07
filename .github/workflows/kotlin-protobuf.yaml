@@ -59,6 +59,11 @@ jobs:
       - name: Setup Buf
         uses: bufbuild/buf-setup-action@v1
 
+      - name: Setup Protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: "28.x"
+
       - name: Generate External Proto Dependencies
         run: |
           echo "Exporting and generating external proto dependencies..."
