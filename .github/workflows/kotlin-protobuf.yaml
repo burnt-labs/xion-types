@@ -231,16 +231,18 @@ jobs:
       - name: Verify JAR Contents
         run: |
           echo "Checking JAR contents:"
-          jar tf kotlin/build/libs/xion-types.jar | head -50
+          JAR_FILE=$(ls kotlin/build/libs/xion-types-kotlin-*.jar | head -1)
+          echo "Found JAR: $JAR_FILE"
+          jar tf "$JAR_FILE" | head -50
           echo "..."
           echo "JAR size:"
-          ls -lh kotlin/build/libs/xion-types.jar
+          ls -lh "$JAR_FILE"
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: kotlin-jar
-          path: kotlin/build/libs/xion-types.jar
+          path: kotlin/build/libs/xion-types-kotlin-*.jar
           retention-days: 30
 
   kotlin-test:
@@ -287,8 +289,10 @@ jobs:
           curl -sL https://repo1.maven.org/maven2/com/google/protobuf/protobuf-kotlin/4.31.1/protobuf-kotlin-4.31.1.jar -o protobuf-kotlin.jar
           
           # Compile and run test
-          kotlinc/bin/kotlinc -cp "libs/xion-types.jar:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypes.kt -include-runtime -d test.jar
-          java -cp "test.jar:libs/xion-types.jar:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypesKt
+          JAR_FILE=$(ls libs/xion-types-kotlin-*.jar | head -1)
+          echo "Using JAR: $JAR_FILE"
+          kotlinc/bin/kotlinc -cp "$JAR_FILE:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypes.kt -include-runtime -d test.jar
+          java -cp "test.jar:$JAR_FILE:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypesKt
 
   # ============================================
   # Kotlin Package Publishing to Maven Central
