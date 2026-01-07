@@ -2,7 +2,7 @@ plugins {
     java
 }
 
-group = "com.burnt-labs"
+group = "io.github.burnt-labs"
 version = "0.0.1"
 
 repositories {

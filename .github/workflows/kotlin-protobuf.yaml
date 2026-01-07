@@ -15,9 +15,6 @@ on:
 
   repository_dispatch:
     types: [xion-types-release-trigger]
-    
-  schedule:
-    - cron: '0 9 * * 5' # Run Fridays at 9 AM UTC
 
 jobs:
   generate-protobuf:
@@ -104,12 +101,12 @@ jobs:
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     if: |
-        github.event_name == 'schedule' ||
         github.event_name == 'push' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
-        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+        (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
     outputs:
       version: ${{ steps.version.outputs.version }}
+      is_snapshot: ${{ steps.version.outputs.is_snapshot }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -119,31 +116,45 @@ jobs:
       - name: Determine Version
         # Version scenarios:
         # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3")
-        # 2. Release event (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
-        # 3. Schedule → Generate nightly version
+        # 2. Release published (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
+        # 3. Release prerelease (repository_dispatch) → Use release tag with -SNAPSHOT suffix
+        # 4. Push → Use 0.0.1-SNAPSHOT
         id: version
         run: |
+          IS_SNAPSHOT="false"
+          
           if [ "${{ github.event.inputs.next_version }}" != "" ]; then
             VERSION="${{ github.event.inputs.next_version }}"
-            echo "Using manual version: $VERSION"
+            if [[ "$VERSION" == *-SNAPSHOT ]]; then
+              IS_SNAPSHOT="true"
+            fi
+            echo "Using manual version: $VERSION (snapshot: $IS_SNAPSHOT)"
           elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            RELEASE_TYPE="${{ github.event.client_payload.release_type }}"
             VERSION=${RELEASE_TAG#v}
-            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
-          elif [ "${{ github.event_name }}" == "schedule" ]; then
-            TIMESTAMP=$(date -u +%Y%m%d%H%M%S)
-            VERSION="0.0.1-SNAPSHOT.${TIMESTAMP}"
-            echo "Using nightly version: $VERSION"
+            
+            if [ "$RELEASE_TYPE" == "prerelease" ]; then
+              # For prereleases, append -SNAPSHOT if not already present
+              if [[ "$VERSION" != *-SNAPSHOT ]]; then
+                VERSION="${VERSION}-SNAPSHOT"
+              fi
+              IS_SNAPSHOT="true"
+              echo "Using prerelease/SNAPSHOT version: $VERSION (from tag: $RELEASE_TAG)"
+            else
+              echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+            fi
           elif [ "${{ github.event_name }}" == "push" ]; then
-            SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-            VERSION="0.0.1-dev.${SHORT_SHA}"
-            echo "Using dev version: $VERSION"
+            VERSION="0.0.1-SNAPSHOT"
+            IS_SNAPSHOT="true"
+            echo "Using dev SNAPSHOT version: $VERSION"
           else
             echo "❌ No version specified"
             exit 1
           fi
           
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "is_snapshot=$IS_SNAPSHOT" >> $GITHUB_OUTPUT
 
   # ============================================
   # Kotlin JAR Building/Testing
@@ -155,6 +166,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ needs.determine-version.outputs.version }}
+      is_snapshot: ${{ needs.determine-version.outputs.is_snapshot }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -289,7 +301,7 @@ jobs:
     if: |
       github.event_name == 'workflow_dispatch' || 
       github.event_name == 'push' ||
-      (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+      (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -306,6 +318,12 @@ jobs:
           name: generated-types-kotlin
           path: kotlin/types
 
+      - name: Remove Duplicate Kotlin Files
+        run: |
+          if [ -f "kotlin/types/cosmos/nft/v1beta1/NftKt.kt" ] && [ -f "kotlin/types/cosmos/nft/v1beta1/NFTKt.kt" ]; then
+            rm "kotlin/types/cosmos/nft/v1beta1/NftKt.kt"
+          fi
+
       - name: Setup JDK 17
         uses: actions/setup-java@v4
         with:
@@ -315,92 +333,92 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-    # TODO
-    #   - name: Import GPG Key
-    #     env:
-    #       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-    #       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-    #     run: |
-    #       echo "$GPG_PRIVATE_KEY" | gpg --batch --import
-    #       echo "GPG key imported"
+      - name: Import GPG Key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpgconf --reload gpg-agent
 
-    #   - name: Update Version
-    #     env:
-    #       VERSION: ${{ needs.kotlin-build.outputs.version }}
-    #     run: |
-    #       sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
-    #       sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts
+      - name: Update Version
+        env:
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts
+          echo "Updated version to: $VERSION"
 
-    #   - name: Configure Maven Central Publishing
-    #     run: |
-    #       cd kotlin
+      - name: Build and Sign Artifacts
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          cd kotlin
+          gradle publishToMavenLocal --no-daemon \
+            -Psigning.gnupg.passphrase="$GPG_PASSPHRASE" \
+            -Psigning.gnupg.executable=gpg
           
-    #       # Create publishing configuration
-    #       cat >> build.gradle.kts << 'GRADLE_CONFIG'
-          
-    #       plugins.apply("signing")
-          
-    #       publishing {
-    #           publications {
-    #               create<MavenPublication>("mavenJava") {
-    #                   from(components["java"])
-                      
-    #                   pom {
-    #                       name.set("Xion Types Kotlin")
-    #                       description.set("Kotlin/Java protobuf types for the Xion blockchain")
-    #                       url.set("https://github.com/burnt-labs/xion-types")
-                          
-    #                       licenses {
-    #                           license {
-    #                               name.set("Apache License 2.0")
-    #                               url.set("https://www.apache.org/licenses/LICENSE-2.0")
-    #                           }
-    #                       }
-                          
-    #                       developers {
-    #                           developer {
-    #                               id.set("burnt-labs")
-    #                               name.set("Burnt Labs")
-    #                               email.set("dev@burnt.com")
-    #                           }
-    #                       }
-                          
-    #                       scm {
-    #                           connection.set("scm:git:git://github.com/burnt-labs/xion-types.git")
-    #                           developerConnection.set("scm:git:ssh://github.com/burnt-labs/xion-types.git")
-    #                           url.set("https://github.com/burnt-labs/xion-types")
-    #                       }
-    #                   }
-    #               }
-    #           }
-              
-    #           repositories {
-    #               maven {
-    #                   name = "OSSRH"
-    #                   val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-    #                   val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    #                   url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-    #                   credentials {
-    #                       username = System.getenv("OSSRH_USERNAME")
-    #                       password = System.getenv("OSSRH_PASSWORD")
-    #                   }
-    #               }
-    #           }
-    #       }
-          
-    #       signing {
-    #           useGpgCmd()
-    #           sign(publishing.publications["mavenJava"])
-    #       }
-    #       GRADLE_CONFIG
+          echo "Built artifacts:"
+          find ~/.m2/repository/io/github/burnt-labs -type f | head -30
 
-    #   - name: Publish to Maven Central
-    #     env:
-    #       OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-    #       OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-    #       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-    #     run: |
-    #       cd kotlin
-    #       gradle publish --no-daemon -Psigning.gnupg.passphrase="$GPG_PASSPHRASE"
+      - name: Create Maven Central Bundle
+        env:
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          # Create bundle directory structure
+          ARTIFACT_PATH="io/github/burnt-labs/xion-types-kotlin/$VERSION"
+          mkdir -p bundle/$ARTIFACT_PATH
+          
+          # Copy artifacts from local Maven repo
+          cp -r ~/.m2/repository/io/github/burnt-labs/xion-types-kotlin/$VERSION/* bundle/$ARTIFACT_PATH/
+          
+          # Create the bundle ZIP
+          cd bundle
+          zip -r ../xion-types-kotlin-bundle.zip .
+          cd ..
+          
+          echo "Bundle contents:"
+          unzip -l xion-types-kotlin-bundle.zip
 
-
+      - name: Upload to Maven Central
+        env:
+          CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          IS_SNAPSHOT: ${{ needs.kotlin-build.outputs.is_snapshot }}
+        run: |
+          # Determine publishing type based on whether it's a SNAPSHOT
+          if [ "$IS_SNAPSHOT" == "true" ]; then
+            # SNAPSHOTs are auto-published (can be overwritten)
+            PUBLISH_TYPE="AUTOMATIC"
+            echo "Publishing SNAPSHOT version (auto-publish)"
+          else
+            # Releases require manual validation
+            PUBLISH_TYPE="USER_MANAGED"
+            echo "Publishing release version (manual validation required)"
+          fi
+          
+          # Upload bundle via Central Publisher API
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -u "$CENTRAL_USERNAME:$CENTRAL_PASSWORD" \
+            -F "bundle=@xion-types-kotlin-bundle.zip" \
+            "https://central.sonatype.com/api/v1/publisher/upload?publishingType=$PUBLISH_TYPE")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "Response: $BODY"
+          echo "HTTP Code: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "✅ Bundle uploaded successfully!"
+            echo "Deployment ID: $BODY"
+            if [ "$IS_SNAPSHOT" == "true" ]; then
+              echo "SNAPSHOT published automatically"
+            else
+              echo "Go to https://central.sonatype.com to validate and publish"
+            fi
+          else
+            echo "❌ Upload failed"
+            exit 1
+          fi
