@@ -43,7 +43,7 @@ public object QueryModuleAccountsResponseKt {
      */
      public val accounts: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.accountsList
       )
     /**
@@ -51,7 +51,7 @@ public object QueryModuleAccountsResponseKt {
      * @param value The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAccounts")
+@kotlin.jvm.JvmName("addAccounts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.add(value: com.google.protobuf.Any) {
       _builder.addAccounts(value)
     }
@@ -60,7 +60,7 @@ public object QueryModuleAccountsResponseKt {
      * @param value The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAccounts")
+@kotlin.jvm.JvmName("plusAssignAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -70,7 +70,7 @@ public object QueryModuleAccountsResponseKt {
      * @param values The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAccounts")
+@kotlin.jvm.JvmName("addAllAccounts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllAccounts(values)
     }
@@ -79,7 +79,7 @@ public object QueryModuleAccountsResponseKt {
      * @param values The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAccounts")
+@kotlin.jvm.JvmName("plusAssignAllAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object QueryModuleAccountsResponseKt {
      * @param value The accounts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAccounts")
+@kotlin.jvm.JvmName("setAccounts")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setAccounts(index, value)
     }
@@ -98,11 +98,10 @@ public object QueryModuleAccountsResponseKt {
      * `repeated .google.protobuf.Any accounts = 1 [json_name = "accounts", (.cosmos_proto.accepts_interface) = "cosmos.auth.v1beta1.ModuleAccountI"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAccounts")
+@kotlin.jvm.JvmName("clearAccounts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.clear() {
       _builder.clearAccounts()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

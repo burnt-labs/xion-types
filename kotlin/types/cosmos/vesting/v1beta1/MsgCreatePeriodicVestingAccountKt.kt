@@ -37,10 +37,10 @@ public object MsgCreatePeriodicVestingAccountKt {
      * `string from_address = 1 [json_name = "fromAddress"];`
      */
     public var fromAddress: kotlin.String
-      @JvmName("getFromAddress")
-      get() = _builder.fromAddress
-      @JvmName("setFromAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getFromAddress")
+        get() = _builder.fromAddress
+      @kotlin.jvm.JvmName("setFromAddress")
+        set(value) {
         _builder.fromAddress = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgCreatePeriodicVestingAccountKt {
      * `string to_address = 2 [json_name = "toAddress"];`
      */
     public var toAddress: kotlin.String
-      @JvmName("getToAddress")
-      get() = _builder.toAddress
-      @JvmName("setToAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getToAddress")
+        get() = _builder.toAddress
+      @kotlin.jvm.JvmName("setToAddress")
+        set(value) {
         _builder.toAddress = value
       }
     /**
@@ -75,10 +75,10 @@ public object MsgCreatePeriodicVestingAccountKt {
      * `int64 start_time = 3 [json_name = "startTime"];`
      */
     public var startTime: kotlin.Long
-      @JvmName("getStartTime")
-      get() = _builder.startTime
-      @JvmName("setStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartTime")
+        get() = _builder.startTime
+      @kotlin.jvm.JvmName("setStartTime")
+        set(value) {
         _builder.startTime = value
       }
     /**
@@ -103,7 +103,7 @@ public object MsgCreatePeriodicVestingAccountKt {
      */
      public val vestingPeriods: com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.vestingPeriodsList
       )
     /**
@@ -111,7 +111,7 @@ public object MsgCreatePeriodicVestingAccountKt {
      * @param value The vestingPeriods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addVestingPeriods")
+@kotlin.jvm.JvmName("addVestingPeriods")
     public fun com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>.add(value: cosmos.vesting.v1beta1.Vesting.Period) {
       _builder.addVestingPeriods(value)
     }
@@ -120,7 +120,7 @@ public object MsgCreatePeriodicVestingAccountKt {
      * @param value The vestingPeriods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignVestingPeriods")
+@kotlin.jvm.JvmName("plusAssignVestingPeriods")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>.plusAssign(value: cosmos.vesting.v1beta1.Vesting.Period) {
       add(value)
@@ -130,7 +130,7 @@ public object MsgCreatePeriodicVestingAccountKt {
      * @param values The vestingPeriods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllVestingPeriods")
+@kotlin.jvm.JvmName("addAllVestingPeriods")
     public fun com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.vesting.v1beta1.Vesting.Period>) {
       _builder.addAllVestingPeriods(values)
     }
@@ -139,7 +139,7 @@ public object MsgCreatePeriodicVestingAccountKt {
      * @param values The vestingPeriods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllVestingPeriods")
+@kotlin.jvm.JvmName("plusAssignAllVestingPeriods")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.vesting.v1beta1.Vesting.Period>) {
       addAll(values)
@@ -150,7 +150,7 @@ public object MsgCreatePeriodicVestingAccountKt {
      * @param value The vestingPeriods to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setVestingPeriods")
+@kotlin.jvm.JvmName("setVestingPeriods")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>.set(index: kotlin.Int, value: cosmos.vesting.v1beta1.Vesting.Period) {
       _builder.setVestingPeriods(index, value)
     }
@@ -158,11 +158,10 @@ public object MsgCreatePeriodicVestingAccountKt {
      * `repeated .cosmos.vesting.v1beta1.Period vesting_periods = 4 [json_name = "vestingPeriods", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearVestingPeriods")
+@kotlin.jvm.JvmName("clearVestingPeriods")
     public fun com.google.protobuf.kotlin.DslList<cosmos.vesting.v1beta1.Vesting.Period, VestingPeriodsProxy>.clear() {
       _builder.clearVestingPeriods()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

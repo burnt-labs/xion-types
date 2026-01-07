@@ -37,10 +37,10 @@ public object QueryDenomsFromCreatorRequestKt {
      * `string creator = 1 [json_name = "creator", (.gogoproto.moretags) = "yaml:\"creator\""];`
      */
     public var creator: kotlin.String
-      @JvmName("getCreator")
-      get() = _builder.creator
-      @JvmName("setCreator")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreator")
+        get() = _builder.creator
+      @kotlin.jvm.JvmName("setCreator")
+        set(value) {
         _builder.creator = value
       }
     /**

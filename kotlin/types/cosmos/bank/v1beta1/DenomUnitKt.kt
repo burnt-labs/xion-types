@@ -41,10 +41,10 @@ public object DenomUnitKt {
      * `string denom = 1 [json_name = "denom"];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -70,10 +70,10 @@ public object DenomUnitKt {
      * `uint32 exponent = 2 [json_name = "exponent"];`
      */
     public var exponent: kotlin.Int
-      @JvmName("getExponent")
-      get() = _builder.exponent
-      @JvmName("setExponent")
-      set(value) {
+      @kotlin.jvm.JvmName("getExponent")
+        get() = _builder.exponent
+      @kotlin.jvm.JvmName("setExponent")
+        set(value) {
         _builder.exponent = value
       }
     /**
@@ -106,7 +106,7 @@ public object DenomUnitKt {
      * @return A list containing the aliases.
      */
     public val aliases: com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.aliasesList
       )
@@ -119,7 +119,7 @@ public object DenomUnitKt {
      * @param value The aliases to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAliases")
+@kotlin.jvm.JvmName("addAliases")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>.add(value: kotlin.String) {
       _builder.addAliases(value)
     }
@@ -132,7 +132,7 @@ public object DenomUnitKt {
      * @param value The aliases to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAliases")
+@kotlin.jvm.JvmName("plusAssignAliases")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -146,7 +146,7 @@ public object DenomUnitKt {
      * @param values The aliases to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAliases")
+@kotlin.jvm.JvmName("addAllAliases")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAliases(values)
     }
@@ -159,7 +159,7 @@ public object DenomUnitKt {
      * @param values The aliases to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAliases")
+@kotlin.jvm.JvmName("plusAssignAllAliases")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -174,7 +174,7 @@ public object DenomUnitKt {
      * @param value The aliases to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAliases")
+@kotlin.jvm.JvmName("setAliases")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAliases(index, value)
     }/**
@@ -185,7 +185,7 @@ public object DenomUnitKt {
      * `repeated string aliases = 3 [json_name = "aliases"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAliases")
+@kotlin.jvm.JvmName("setAliases")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasesProxy>.clear() {
       _builder.clearAliases()
     }}

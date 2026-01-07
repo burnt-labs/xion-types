@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun audienceClaim(block: xion.jwk.v1.AudienceClaimKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.AudienceOuterClass.AudienceClaim =
   xion.jwk.v1.AudienceClaimKt.Dsl._create(xion.jwk.v1.AudienceOuterClass.AudienceClaim.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * AudienceClaim represents a claim for an audience
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.AudienceClaim`
  */
 public object AudienceClaimKt {
@@ -29,16 +33,24 @@ public object AudienceClaimKt {
     internal fun _build(): xion.jwk.v1.AudienceOuterClass.AudienceClaim = _builder.build()
 
     /**
+     * ```
+     * The signer of the audience claim
+     * ```
+     *
      * `string signer = 1 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
+     * ```
+     * The signer of the audience claim
+     * ```
+     *
      * `string signer = 1 [json_name = "signer"];`
      */
     public fun clearSigner() {

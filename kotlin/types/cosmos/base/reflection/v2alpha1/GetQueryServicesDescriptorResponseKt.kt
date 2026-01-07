@@ -40,10 +40,10 @@ public object GetQueryServicesDescriptorResponseKt {
      * `.cosmos.base.reflection.v2alpha1.QueryServicesDescriptor queries = 1 [json_name = "queries"];`
      */
     public var queries: cosmos.base.reflection.v2alpha1.Reflection.QueryServicesDescriptor
-      @JvmName("getQueries")
-      get() = _builder.queries
-      @JvmName("setQueries")
-      set(value) {
+      @kotlin.jvm.JvmName("getQueries")
+        get() = _builder.queries
+      @kotlin.jvm.JvmName("setQueries")
+        set(value) {
         _builder.queries = value
       }
     /**

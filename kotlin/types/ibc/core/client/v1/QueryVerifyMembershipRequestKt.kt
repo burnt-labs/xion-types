@@ -40,10 +40,10 @@ public object QueryVerifyMembershipRequestKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryVerifyMembershipRequestKt {
      * `bytes proof = 2 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -90,10 +90,10 @@ public object QueryVerifyMembershipRequestKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -129,10 +129,10 @@ public object QueryVerifyMembershipRequestKt {
      * `bytes value = 5 [json_name = "value"];`
      */
     public var value: com.google.protobuf.ByteString
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**
@@ -154,10 +154,10 @@ public object QueryVerifyMembershipRequestKt {
      * `uint64 time_delay = 6 [json_name = "timeDelay"];`
      */
     public var timeDelay: kotlin.Long
-      @JvmName("getTimeDelay")
-      get() = _builder.timeDelay
-      @JvmName("setTimeDelay")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeDelay")
+        get() = _builder.timeDelay
+      @kotlin.jvm.JvmName("setTimeDelay")
+        set(value) {
         _builder.timeDelay = value
       }
     /**
@@ -179,10 +179,10 @@ public object QueryVerifyMembershipRequestKt {
      * `uint64 block_delay = 7 [json_name = "blockDelay"];`
      */
     public var blockDelay: kotlin.Long
-      @JvmName("getBlockDelay")
-      get() = _builder.blockDelay
-      @JvmName("setBlockDelay")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockDelay")
+        get() = _builder.blockDelay
+      @kotlin.jvm.JvmName("setBlockDelay")
+        set(value) {
         _builder.blockDelay = value
       }
     /**
@@ -204,10 +204,10 @@ public object QueryVerifyMembershipRequestKt {
      * `.ibc.core.commitment.v2.MerklePath merkle_path = 8 [json_name = "merklePath", (.gogoproto.nullable) = false];`
      */
     public var merklePath: ibc.core.commitment.v2.Commitment.MerklePath
-      @JvmName("getMerklePath")
-      get() = _builder.merklePath
-      @JvmName("setMerklePath")
-      set(value) {
+      @kotlin.jvm.JvmName("getMerklePath")
+        get() = _builder.merklePath
+      @kotlin.jvm.JvmName("setMerklePath")
+        set(value) {
         _builder.merklePath = value
       }
     /**

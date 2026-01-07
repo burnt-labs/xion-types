@@ -41,10 +41,10 @@ public object QueryUnbondingDelegationResponseKt {
      * `.cosmos.staking.v1beta1.UnbondingDelegation unbond = 1 [json_name = "unbond", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var unbond: cosmos.staking.v1beta1.Staking.UnbondingDelegation
-      @JvmName("getUnbond")
-      get() = _builder.unbond
-      @JvmName("setUnbond")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbond")
+        get() = _builder.unbond
+      @kotlin.jvm.JvmName("setUnbond")
+        set(value) {
         _builder.unbond = value
       }
     /**

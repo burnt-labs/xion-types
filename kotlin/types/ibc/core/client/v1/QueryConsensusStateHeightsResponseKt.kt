@@ -48,7 +48,7 @@ public object QueryConsensusStateHeightsResponseKt {
      */
      public val consensusStateHeights: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.consensusStateHeightsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryConsensusStateHeightsResponseKt {
      * @param value The consensusStateHeights to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addConsensusStateHeights")
+@kotlin.jvm.JvmName("addConsensusStateHeights")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>.add(value: ibc.core.client.v1.Client.Height) {
       _builder.addConsensusStateHeights(value)
     }
@@ -73,7 +73,7 @@ public object QueryConsensusStateHeightsResponseKt {
      * @param value The consensusStateHeights to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignConsensusStateHeights")
+@kotlin.jvm.JvmName("plusAssignConsensusStateHeights")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>.plusAssign(value: ibc.core.client.v1.Client.Height) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryConsensusStateHeightsResponseKt {
      * @param values The consensusStateHeights to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllConsensusStateHeights")
+@kotlin.jvm.JvmName("addAllConsensusStateHeights")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.Height>) {
       _builder.addAllConsensusStateHeights(values)
     }
@@ -100,7 +100,7 @@ public object QueryConsensusStateHeightsResponseKt {
      * @param values The consensusStateHeights to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllConsensusStateHeights")
+@kotlin.jvm.JvmName("plusAssignAllConsensusStateHeights")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.Height>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryConsensusStateHeightsResponseKt {
      * @param value The consensusStateHeights to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setConsensusStateHeights")
+@kotlin.jvm.JvmName("setConsensusStateHeights")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Client.Height) {
       _builder.setConsensusStateHeights(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryConsensusStateHeightsResponseKt {
      * `repeated .ibc.core.client.v1.Height consensus_state_heights = 1 [json_name = "consensusStateHeights", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearConsensusStateHeights")
+@kotlin.jvm.JvmName("clearConsensusStateHeights")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.Height, ConsensusStateHeightsProxy>.clear() {
       _builder.clearConsensusStateHeights()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryConsensusStateHeightsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

@@ -37,10 +37,10 @@ public object DecProtoKt {
      * `string dec = 1 [json_name = "dec", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var dec: kotlin.String
-      @JvmName("getDec")
-      get() = _builder.dec
-      @JvmName("setDec")
-      set(value) {
+      @kotlin.jvm.JvmName("getDec")
+        get() = _builder.dec
+      @kotlin.jvm.JvmName("setDec")
+        set(value) {
         _builder.dec = value
       }
     /**

@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun queryValidateJWTResponse(block: xion.jwk.v1.QueryValidateJWTResponseKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryValidateJWTResponse =
   xion.jwk.v1.QueryValidateJWTResponseKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryValidateJWTResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryValidateJWTResponse is the response type for validating a JWT
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryValidateJWTResponse`
  */
 public object QueryValidateJWTResponseKt {
@@ -35,70 +39,97 @@ public object QueryValidateJWTResponseKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class PrivateClaimsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      */
      public val privateClaims: com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.privateClaimsList
       )
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      * @param value The privateClaims to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPrivateClaims")
+@kotlin.jvm.JvmName("addPrivateClaims")
     public fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>.add(value: xion.jwk.v1.QueryOuterClass.PrivateClaim) {
       _builder.addPrivateClaims(value)
     }
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      * @param value The privateClaims to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPrivateClaims")
+@kotlin.jvm.JvmName("plusAssignPrivateClaims")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>.plusAssign(value: xion.jwk.v1.QueryOuterClass.PrivateClaim) {
       add(value)
     }
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      * @param values The privateClaims to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPrivateClaims")
+@kotlin.jvm.JvmName("addAllPrivateClaims")
     public fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>.addAll(values: kotlin.collections.Iterable<xion.jwk.v1.QueryOuterClass.PrivateClaim>) {
       _builder.addAllPrivateClaims(values)
     }
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      * @param values The privateClaims to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPrivateClaims")
+@kotlin.jvm.JvmName("plusAssignAllPrivateClaims")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>.plusAssign(values: kotlin.collections.Iterable<xion.jwk.v1.QueryOuterClass.PrivateClaim>) {
       addAll(values)
     }
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      * @param index The index to set the value at.
      * @param value The privateClaims to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPrivateClaims")
+@kotlin.jvm.JvmName("setPrivateClaims")
     public operator fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>.set(index: kotlin.Int, value: xion.jwk.v1.QueryOuterClass.PrivateClaim) {
       _builder.setPrivateClaims(index, value)
     }
     /**
-     * `repeated .xion.jwk.v1.PrivateClaim privateClaims = 1 [json_name = "privateClaims"];`
+     * ```
+     * The private claims from the JWT
+     * ```
+     *
+     * `repeated .xion.jwk.v1.PrivateClaim private_claims = 1 [json_name = "privateClaims"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPrivateClaims")
+@kotlin.jvm.JvmName("clearPrivateClaims")
     public fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.QueryOuterClass.PrivateClaim, PrivateClaimsProxy>.clear() {
       _builder.clearPrivateClaims()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

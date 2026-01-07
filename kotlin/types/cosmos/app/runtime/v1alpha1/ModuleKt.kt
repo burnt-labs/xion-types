@@ -40,10 +40,10 @@ public object ModuleKt {
      * `string app_name = 1 [json_name = "appName"];`
      */
     public var appName: kotlin.String
-      @JvmName("getAppName")
-      get() = _builder.appName
-      @JvmName("setAppName")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppName")
+        get() = _builder.appName
+      @kotlin.jvm.JvmName("setAppName")
+        set(value) {
         _builder.appName = value
       }
     /**
@@ -74,7 +74,7 @@ public object ModuleKt {
      * @return A list containing the beginBlockers.
      */
     public val beginBlockers: com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.beginBlockersList
       )
@@ -89,7 +89,7 @@ public object ModuleKt {
      * @param value The beginBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addBeginBlockers")
+@kotlin.jvm.JvmName("addBeginBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>.add(value: kotlin.String) {
       _builder.addBeginBlockers(value)
     }
@@ -104,7 +104,7 @@ public object ModuleKt {
      * @param value The beginBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignBeginBlockers")
+@kotlin.jvm.JvmName("plusAssignBeginBlockers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -120,7 +120,7 @@ public object ModuleKt {
      * @param values The beginBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllBeginBlockers")
+@kotlin.jvm.JvmName("addAllBeginBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllBeginBlockers(values)
     }
@@ -135,7 +135,7 @@ public object ModuleKt {
      * @param values The beginBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllBeginBlockers")
+@kotlin.jvm.JvmName("plusAssignAllBeginBlockers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -152,7 +152,7 @@ public object ModuleKt {
      * @param value The beginBlockers to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setBeginBlockers")
+@kotlin.jvm.JvmName("setBeginBlockers")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setBeginBlockers(index, value)
     }/**
@@ -165,7 +165,7 @@ public object ModuleKt {
      * `repeated string begin_blockers = 2 [json_name = "beginBlockers"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearBeginBlockers")
+@kotlin.jvm.JvmName("setBeginBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BeginBlockersProxy>.clear() {
       _builder.clearBeginBlockers()
     }
@@ -186,7 +186,7 @@ public object ModuleKt {
      * @return A list containing the endBlockers.
      */
     public val endBlockers: com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.endBlockersList
       )
@@ -201,7 +201,7 @@ public object ModuleKt {
      * @param value The endBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEndBlockers")
+@kotlin.jvm.JvmName("addEndBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>.add(value: kotlin.String) {
       _builder.addEndBlockers(value)
     }
@@ -216,7 +216,7 @@ public object ModuleKt {
      * @param value The endBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEndBlockers")
+@kotlin.jvm.JvmName("plusAssignEndBlockers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -232,7 +232,7 @@ public object ModuleKt {
      * @param values The endBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEndBlockers")
+@kotlin.jvm.JvmName("addAllEndBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllEndBlockers(values)
     }
@@ -247,7 +247,7 @@ public object ModuleKt {
      * @param values The endBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEndBlockers")
+@kotlin.jvm.JvmName("plusAssignAllEndBlockers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -264,7 +264,7 @@ public object ModuleKt {
      * @param value The endBlockers to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEndBlockers")
+@kotlin.jvm.JvmName("setEndBlockers")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setEndBlockers(index, value)
     }/**
@@ -277,7 +277,7 @@ public object ModuleKt {
      * `repeated string end_blockers = 3 [json_name = "endBlockers"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEndBlockers")
+@kotlin.jvm.JvmName("setEndBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EndBlockersProxy>.clear() {
       _builder.clearEndBlockers()
     }
@@ -298,7 +298,7 @@ public object ModuleKt {
      * @return A list containing the initGenesis.
      */
     public val initGenesis: com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.initGenesisList
       )
@@ -313,7 +313,7 @@ public object ModuleKt {
      * @param value The initGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitGenesis")
+@kotlin.jvm.JvmName("addInitGenesis")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>.add(value: kotlin.String) {
       _builder.addInitGenesis(value)
     }
@@ -328,7 +328,7 @@ public object ModuleKt {
      * @param value The initGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitGenesis")
+@kotlin.jvm.JvmName("plusAssignInitGenesis")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -344,7 +344,7 @@ public object ModuleKt {
      * @param values The initGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitGenesis")
+@kotlin.jvm.JvmName("addAllInitGenesis")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllInitGenesis(values)
     }
@@ -359,7 +359,7 @@ public object ModuleKt {
      * @param values The initGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitGenesis")
+@kotlin.jvm.JvmName("plusAssignAllInitGenesis")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -376,7 +376,7 @@ public object ModuleKt {
      * @param value The initGenesis to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitGenesis")
+@kotlin.jvm.JvmName("setInitGenesis")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setInitGenesis(index, value)
     }/**
@@ -389,7 +389,7 @@ public object ModuleKt {
      * `repeated string init_genesis = 4 [json_name = "initGenesis"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitGenesis")
+@kotlin.jvm.JvmName("setInitGenesis")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitGenesisProxy>.clear() {
       _builder.clearInitGenesis()
     }
@@ -410,7 +410,7 @@ public object ModuleKt {
      * @return A list containing the exportGenesis.
      */
     public val exportGenesis: com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.exportGenesisList
       )
@@ -425,7 +425,7 @@ public object ModuleKt {
      * @param value The exportGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addExportGenesis")
+@kotlin.jvm.JvmName("addExportGenesis")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>.add(value: kotlin.String) {
       _builder.addExportGenesis(value)
     }
@@ -440,7 +440,7 @@ public object ModuleKt {
      * @param value The exportGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignExportGenesis")
+@kotlin.jvm.JvmName("plusAssignExportGenesis")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -456,7 +456,7 @@ public object ModuleKt {
      * @param values The exportGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllExportGenesis")
+@kotlin.jvm.JvmName("addAllExportGenesis")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllExportGenesis(values)
     }
@@ -471,7 +471,7 @@ public object ModuleKt {
      * @param values The exportGenesis to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllExportGenesis")
+@kotlin.jvm.JvmName("plusAssignAllExportGenesis")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -488,7 +488,7 @@ public object ModuleKt {
      * @param value The exportGenesis to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setExportGenesis")
+@kotlin.jvm.JvmName("setExportGenesis")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setExportGenesis(index, value)
     }/**
@@ -501,7 +501,7 @@ public object ModuleKt {
      * `repeated string export_genesis = 5 [json_name = "exportGenesis"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearExportGenesis")
+@kotlin.jvm.JvmName("setExportGenesis")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ExportGenesisProxy>.clear() {
       _builder.clearExportGenesis()
     }
@@ -521,7 +521,7 @@ public object ModuleKt {
      */
      public val overrideStoreKeys: com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.overrideStoreKeysList
       )
     /**
@@ -534,7 +534,7 @@ public object ModuleKt {
      * @param value The overrideStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOverrideStoreKeys")
+@kotlin.jvm.JvmName("addOverrideStoreKeys")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>.add(value: cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig) {
       _builder.addOverrideStoreKeys(value)
     }
@@ -548,7 +548,7 @@ public object ModuleKt {
      * @param value The overrideStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOverrideStoreKeys")
+@kotlin.jvm.JvmName("plusAssignOverrideStoreKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>.plusAssign(value: cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig) {
       add(value)
@@ -563,7 +563,7 @@ public object ModuleKt {
      * @param values The overrideStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOverrideStoreKeys")
+@kotlin.jvm.JvmName("addAllOverrideStoreKeys")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>.addAll(values: kotlin.collections.Iterable<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig>) {
       _builder.addAllOverrideStoreKeys(values)
     }
@@ -577,7 +577,7 @@ public object ModuleKt {
      * @param values The overrideStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOverrideStoreKeys")
+@kotlin.jvm.JvmName("plusAssignAllOverrideStoreKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig>) {
       addAll(values)
@@ -593,7 +593,7 @@ public object ModuleKt {
      * @param value The overrideStoreKeys to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOverrideStoreKeys")
+@kotlin.jvm.JvmName("setOverrideStoreKeys")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>.set(index: kotlin.Int, value: cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig) {
       _builder.setOverrideStoreKeys(index, value)
     }
@@ -606,11 +606,10 @@ public object ModuleKt {
      * `repeated .cosmos.app.runtime.v1alpha1.StoreKeyConfig override_store_keys = 6 [json_name = "overrideStoreKeys"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOverrideStoreKeys")
+@kotlin.jvm.JvmName("clearOverrideStoreKeys")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.runtime.v1alpha1.ModuleOuterClass.StoreKeyConfig, OverrideStoreKeysProxy>.clear() {
       _builder.clearOverrideStoreKeys()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -629,7 +628,7 @@ public object ModuleKt {
      * @return A list containing the skipStoreKeys.
      */
     public val skipStoreKeys: com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.skipStoreKeysList
       )
@@ -644,7 +643,7 @@ public object ModuleKt {
      * @param value The skipStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSkipStoreKeys")
+@kotlin.jvm.JvmName("addSkipStoreKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>.add(value: kotlin.String) {
       _builder.addSkipStoreKeys(value)
     }
@@ -659,7 +658,7 @@ public object ModuleKt {
      * @param value The skipStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSkipStoreKeys")
+@kotlin.jvm.JvmName("plusAssignSkipStoreKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -675,7 +674,7 @@ public object ModuleKt {
      * @param values The skipStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSkipStoreKeys")
+@kotlin.jvm.JvmName("addAllSkipStoreKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllSkipStoreKeys(values)
     }
@@ -690,7 +689,7 @@ public object ModuleKt {
      * @param values The skipStoreKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSkipStoreKeys")
+@kotlin.jvm.JvmName("plusAssignAllSkipStoreKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -707,7 +706,7 @@ public object ModuleKt {
      * @param value The skipStoreKeys to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSkipStoreKeys")
+@kotlin.jvm.JvmName("setSkipStoreKeys")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setSkipStoreKeys(index, value)
     }/**
@@ -720,7 +719,7 @@ public object ModuleKt {
      * `repeated string skip_store_keys = 11 [json_name = "skipStoreKeys"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSkipStoreKeys")
+@kotlin.jvm.JvmName("setSkipStoreKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, SkipStoreKeysProxy>.clear() {
       _builder.clearSkipStoreKeys()
     }
@@ -741,7 +740,7 @@ public object ModuleKt {
      * @return A list containing the orderMigrations.
      */
     public val orderMigrations: com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.orderMigrationsList
       )
@@ -756,7 +755,7 @@ public object ModuleKt {
      * @param value The orderMigrations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOrderMigrations")
+@kotlin.jvm.JvmName("addOrderMigrations")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>.add(value: kotlin.String) {
       _builder.addOrderMigrations(value)
     }
@@ -771,7 +770,7 @@ public object ModuleKt {
      * @param value The orderMigrations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOrderMigrations")
+@kotlin.jvm.JvmName("plusAssignOrderMigrations")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -787,7 +786,7 @@ public object ModuleKt {
      * @param values The orderMigrations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOrderMigrations")
+@kotlin.jvm.JvmName("addAllOrderMigrations")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllOrderMigrations(values)
     }
@@ -802,7 +801,7 @@ public object ModuleKt {
      * @param values The orderMigrations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOrderMigrations")
+@kotlin.jvm.JvmName("plusAssignAllOrderMigrations")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -819,7 +818,7 @@ public object ModuleKt {
      * @param value The orderMigrations to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOrderMigrations")
+@kotlin.jvm.JvmName("setOrderMigrations")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setOrderMigrations(index, value)
     }/**
@@ -832,7 +831,7 @@ public object ModuleKt {
      * `repeated string order_migrations = 7 [json_name = "orderMigrations"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOrderMigrations")
+@kotlin.jvm.JvmName("setOrderMigrations")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, OrderMigrationsProxy>.clear() {
       _builder.clearOrderMigrations()
     }
@@ -853,7 +852,7 @@ public object ModuleKt {
      * @return A list containing the precommiters.
      */
     public val precommiters: com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.precommitersList
       )
@@ -868,7 +867,7 @@ public object ModuleKt {
      * @param value The precommiters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPrecommiters")
+@kotlin.jvm.JvmName("addPrecommiters")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>.add(value: kotlin.String) {
       _builder.addPrecommiters(value)
     }
@@ -883,7 +882,7 @@ public object ModuleKt {
      * @param value The precommiters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPrecommiters")
+@kotlin.jvm.JvmName("plusAssignPrecommiters")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -899,7 +898,7 @@ public object ModuleKt {
      * @param values The precommiters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPrecommiters")
+@kotlin.jvm.JvmName("addAllPrecommiters")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPrecommiters(values)
     }
@@ -914,7 +913,7 @@ public object ModuleKt {
      * @param values The precommiters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPrecommiters")
+@kotlin.jvm.JvmName("plusAssignAllPrecommiters")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -931,7 +930,7 @@ public object ModuleKt {
      * @param value The precommiters to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPrecommiters")
+@kotlin.jvm.JvmName("setPrecommiters")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPrecommiters(index, value)
     }/**
@@ -944,7 +943,7 @@ public object ModuleKt {
      * `repeated string precommiters = 8 [json_name = "precommiters"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPrecommiters")
+@kotlin.jvm.JvmName("setPrecommiters")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PrecommitersProxy>.clear() {
       _builder.clearPrecommiters()
     }
@@ -965,7 +964,7 @@ public object ModuleKt {
      * @return A list containing the prepareCheckStaters.
      */
     public val prepareCheckStaters: com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.prepareCheckStatersList
       )
@@ -980,7 +979,7 @@ public object ModuleKt {
      * @param value The prepareCheckStaters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPrepareCheckStaters")
+@kotlin.jvm.JvmName("addPrepareCheckStaters")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>.add(value: kotlin.String) {
       _builder.addPrepareCheckStaters(value)
     }
@@ -995,7 +994,7 @@ public object ModuleKt {
      * @param value The prepareCheckStaters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPrepareCheckStaters")
+@kotlin.jvm.JvmName("plusAssignPrepareCheckStaters")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -1011,7 +1010,7 @@ public object ModuleKt {
      * @param values The prepareCheckStaters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPrepareCheckStaters")
+@kotlin.jvm.JvmName("addAllPrepareCheckStaters")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPrepareCheckStaters(values)
     }
@@ -1026,7 +1025,7 @@ public object ModuleKt {
      * @param values The prepareCheckStaters to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPrepareCheckStaters")
+@kotlin.jvm.JvmName("plusAssignAllPrepareCheckStaters")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -1043,7 +1042,7 @@ public object ModuleKt {
      * @param value The prepareCheckStaters to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPrepareCheckStaters")
+@kotlin.jvm.JvmName("setPrepareCheckStaters")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPrepareCheckStaters(index, value)
     }/**
@@ -1056,7 +1055,7 @@ public object ModuleKt {
      * `repeated string prepare_check_staters = 9 [json_name = "prepareCheckStaters"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPrepareCheckStaters")
+@kotlin.jvm.JvmName("setPrepareCheckStaters")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PrepareCheckStatersProxy>.clear() {
       _builder.clearPrepareCheckStaters()
     }
@@ -1077,7 +1076,7 @@ public object ModuleKt {
      * @return A list containing the preBlockers.
      */
     public val preBlockers: com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.preBlockersList
       )
@@ -1092,7 +1091,7 @@ public object ModuleKt {
      * @param value The preBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPreBlockers")
+@kotlin.jvm.JvmName("addPreBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>.add(value: kotlin.String) {
       _builder.addPreBlockers(value)
     }
@@ -1107,7 +1106,7 @@ public object ModuleKt {
      * @param value The preBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPreBlockers")
+@kotlin.jvm.JvmName("plusAssignPreBlockers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -1123,7 +1122,7 @@ public object ModuleKt {
      * @param values The preBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPreBlockers")
+@kotlin.jvm.JvmName("addAllPreBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPreBlockers(values)
     }
@@ -1138,7 +1137,7 @@ public object ModuleKt {
      * @param values The preBlockers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPreBlockers")
+@kotlin.jvm.JvmName("plusAssignAllPreBlockers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -1155,7 +1154,7 @@ public object ModuleKt {
      * @param value The preBlockers to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPreBlockers")
+@kotlin.jvm.JvmName("setPreBlockers")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPreBlockers(index, value)
     }/**
@@ -1168,7 +1167,7 @@ public object ModuleKt {
      * `repeated string pre_blockers = 10 [json_name = "preBlockers"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPreBlockers")
+@kotlin.jvm.JvmName("setPreBlockers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PreBlockersProxy>.clear() {
       _builder.clearPreBlockers()
     }}

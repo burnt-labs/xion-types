@@ -45,10 +45,10 @@ public object AuxSignerDataKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -74,10 +74,10 @@ public object AuxSignerDataKt {
      * `.cosmos.tx.v1beta1.SignDocDirectAux sign_doc = 2 [json_name = "signDoc"];`
      */
     public var signDoc: cosmos.tx.v1beta1.TxOuterClass.SignDocDirectAux
-      @JvmName("getSignDoc")
-      get() = _builder.signDoc
-      @JvmName("setSignDoc")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignDoc")
+        get() = _builder.signDoc
+      @kotlin.jvm.JvmName("setSignDoc")
+        set(value) {
         _builder.signDoc = value
       }
     /**
@@ -117,17 +117,17 @@ public object AuxSignerDataKt {
      * `.cosmos.tx.signing.v1beta1.SignMode mode = 3 [json_name = "mode"];`
      */
     public var mode: cosmos.tx.signing.v1beta1.Signing.SignMode
-      @JvmName("getMode")
-      get() = _builder.mode
-      @JvmName("setMode")
-      set(value) {
+      @kotlin.jvm.JvmName("getMode")
+        get() = _builder.mode
+      @kotlin.jvm.JvmName("setMode")
+        set(value) {
         _builder.mode = value
       }
     public var modeValue: kotlin.Int
-      @JvmName("getModeValue")
-      get() = _builder.modeValue
-      @JvmName("setModeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getModeValue")
+        get() = _builder.modeValue
+      @kotlin.jvm.JvmName("setModeValue")
+        set(value) {
         _builder.modeValue = value
       }
     /**
@@ -149,10 +149,10 @@ public object AuxSignerDataKt {
      * `bytes sig = 4 [json_name = "sig"];`
      */
     public var sig: com.google.protobuf.ByteString
-      @JvmName("getSig")
-      get() = _builder.sig
-      @JvmName("setSig")
-      set(value) {
+      @kotlin.jvm.JvmName("getSig")
+        get() = _builder.sig
+      @kotlin.jvm.JvmName("setSig")
+        set(value) {
         _builder.sig = value
       }
     /**

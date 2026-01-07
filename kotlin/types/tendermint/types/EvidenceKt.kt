@@ -32,10 +32,10 @@ public object EvidenceKt {
      * `.tendermint.types.DuplicateVoteEvidence duplicate_vote_evidence = 1 [json_name = "duplicateVoteEvidence"];`
      */
     public var duplicateVoteEvidence: tendermint.types.EvidenceOuterClass.DuplicateVoteEvidence
-      @JvmName("getDuplicateVoteEvidence")
-      get() = _builder.duplicateVoteEvidence
-      @JvmName("setDuplicateVoteEvidence")
-      set(value) {
+      @kotlin.jvm.JvmName("getDuplicateVoteEvidence")
+        get() = _builder.duplicateVoteEvidence
+      @kotlin.jvm.JvmName("setDuplicateVoteEvidence")
+        set(value) {
         _builder.duplicateVoteEvidence = value
       }
     /**
@@ -56,10 +56,10 @@ public object EvidenceKt {
      * `.tendermint.types.LightClientAttackEvidence light_client_attack_evidence = 2 [json_name = "lightClientAttackEvidence"];`
      */
     public var lightClientAttackEvidence: tendermint.types.EvidenceOuterClass.LightClientAttackEvidence
-      @JvmName("getLightClientAttackEvidence")
-      get() = _builder.lightClientAttackEvidence
-      @JvmName("setLightClientAttackEvidence")
-      set(value) {
+      @kotlin.jvm.JvmName("getLightClientAttackEvidence")
+        get() = _builder.lightClientAttackEvidence
+      @kotlin.jvm.JvmName("setLightClientAttackEvidence")
+        set(value) {
         _builder.lightClientAttackEvidence = value
       }
     /**

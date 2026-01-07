@@ -36,10 +36,10 @@ public object QueryConfigResponseKt {
      * `.ibc.core.client.v2.Config config = 1 [json_name = "config"];`
      */
     public var config: ibc.core.client.v2.ConfigOuterClass.Config
-      @JvmName("getConfig")
-      get() = _builder.config
-      @JvmName("setConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getConfig")
+        get() = _builder.config
+      @kotlin.jvm.JvmName("setConfig")
+        set(value) {
         _builder.config = value
       }
     /**

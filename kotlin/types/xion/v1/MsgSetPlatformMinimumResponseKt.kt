@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun msgSetPlatformMinimumResponse(block: xion.v1.MsgSetPlatformMinimumResponseKt.Dsl.() -> kotlin.Unit): xion.v1.Tx.MsgSetPlatformMinimumResponse =
   xion.v1.MsgSetPlatformMinimumResponseKt.Dsl._create(xion.v1.Tx.MsgSetPlatformMinimumResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgSetPlatformMinimumResponse defines the response for setting platform
+ * minimum fees
+ * ```
+ *
  * Protobuf type `xion.v1.MsgSetPlatformMinimumResponse`
  */
 public object MsgSetPlatformMinimumResponseKt {

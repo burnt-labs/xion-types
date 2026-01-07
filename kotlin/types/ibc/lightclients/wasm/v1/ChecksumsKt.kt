@@ -46,7 +46,7 @@ public object ChecksumsKt {
      */
      public val checksums: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.checksumsList
       )
     /**
@@ -54,7 +54,7 @@ public object ChecksumsKt {
      * @param value The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addChecksums")
+@kotlin.jvm.JvmName("addChecksums")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addChecksums(value)
     }/**
@@ -62,7 +62,7 @@ public object ChecksumsKt {
      * @param value The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignChecksums")
+@kotlin.jvm.JvmName("plusAssignChecksums")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -71,7 +71,7 @@ public object ChecksumsKt {
      * @param values The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllChecksums")
+@kotlin.jvm.JvmName("addAllChecksums")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllChecksums(values)
     }/**
@@ -79,7 +79,7 @@ public object ChecksumsKt {
      * @param values The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllChecksums")
+@kotlin.jvm.JvmName("plusAssignAllChecksums")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -89,14 +89,14 @@ public object ChecksumsKt {
      * @param value The checksums to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setChecksums")
+@kotlin.jvm.JvmName("setChecksums")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setChecksums(index, value)
     }/**
      * `repeated bytes checksums = 1 [json_name = "checksums"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearChecksums")
+@kotlin.jvm.JvmName("clearChecksums")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChecksumsProxy>.clear() {
       _builder.clearChecksums()
     }}

@@ -32,10 +32,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestEcho echo = 1 [json_name = "echo"];`
      */
     public var echo: tendermint.abci.Types.RequestEcho
-      @JvmName("getEcho")
-      get() = _builder.echo
-      @JvmName("setEcho")
-      set(value) {
+      @kotlin.jvm.JvmName("getEcho")
+        get() = _builder.echo
+      @kotlin.jvm.JvmName("setEcho")
+        set(value) {
         _builder.echo = value
       }
     /**
@@ -56,10 +56,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestFlush flush = 2 [json_name = "flush"];`
      */
     public var flush: tendermint.abci.Types.RequestFlush
-      @JvmName("getFlush")
-      get() = _builder.flush
-      @JvmName("setFlush")
-      set(value) {
+      @kotlin.jvm.JvmName("getFlush")
+        get() = _builder.flush
+      @kotlin.jvm.JvmName("setFlush")
+        set(value) {
         _builder.flush = value
       }
     /**
@@ -80,10 +80,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestInfo info = 3 [json_name = "info"];`
      */
     public var info: tendermint.abci.Types.RequestInfo
-      @JvmName("getInfo")
-      get() = _builder.info
-      @JvmName("setInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getInfo")
+        get() = _builder.info
+      @kotlin.jvm.JvmName("setInfo")
+        set(value) {
         _builder.info = value
       }
     /**
@@ -104,10 +104,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestInitChain init_chain = 5 [json_name = "initChain"];`
      */
     public var initChain: tendermint.abci.Types.RequestInitChain
-      @JvmName("getInitChain")
-      get() = _builder.initChain
-      @JvmName("setInitChain")
-      set(value) {
+      @kotlin.jvm.JvmName("getInitChain")
+        get() = _builder.initChain
+      @kotlin.jvm.JvmName("setInitChain")
+        set(value) {
         _builder.initChain = value
       }
     /**
@@ -128,10 +128,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestQuery query = 6 [json_name = "query"];`
      */
     public var query: tendermint.abci.Types.RequestQuery
-      @JvmName("getQuery")
-      get() = _builder.query
-      @JvmName("setQuery")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuery")
+        get() = _builder.query
+      @kotlin.jvm.JvmName("setQuery")
+        set(value) {
         _builder.query = value
       }
     /**
@@ -152,10 +152,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestCheckTx check_tx = 8 [json_name = "checkTx"];`
      */
     public var checkTx: tendermint.abci.Types.RequestCheckTx
-      @JvmName("getCheckTx")
-      get() = _builder.checkTx
-      @JvmName("setCheckTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getCheckTx")
+        get() = _builder.checkTx
+      @kotlin.jvm.JvmName("setCheckTx")
+        set(value) {
         _builder.checkTx = value
       }
     /**
@@ -176,10 +176,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestCommit commit = 11 [json_name = "commit"];`
      */
     public var commit: tendermint.abci.Types.RequestCommit
-      @JvmName("getCommit")
-      get() = _builder.commit
-      @JvmName("setCommit")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommit")
+        get() = _builder.commit
+      @kotlin.jvm.JvmName("setCommit")
+        set(value) {
         _builder.commit = value
       }
     /**
@@ -200,10 +200,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestListSnapshots list_snapshots = 12 [json_name = "listSnapshots"];`
      */
     public var listSnapshots: tendermint.abci.Types.RequestListSnapshots
-      @JvmName("getListSnapshots")
-      get() = _builder.listSnapshots
-      @JvmName("setListSnapshots")
-      set(value) {
+      @kotlin.jvm.JvmName("getListSnapshots")
+        get() = _builder.listSnapshots
+      @kotlin.jvm.JvmName("setListSnapshots")
+        set(value) {
         _builder.listSnapshots = value
       }
     /**
@@ -224,10 +224,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestOfferSnapshot offer_snapshot = 13 [json_name = "offerSnapshot"];`
      */
     public var offerSnapshot: tendermint.abci.Types.RequestOfferSnapshot
-      @JvmName("getOfferSnapshot")
-      get() = _builder.offerSnapshot
-      @JvmName("setOfferSnapshot")
-      set(value) {
+      @kotlin.jvm.JvmName("getOfferSnapshot")
+        get() = _builder.offerSnapshot
+      @kotlin.jvm.JvmName("setOfferSnapshot")
+        set(value) {
         _builder.offerSnapshot = value
       }
     /**
@@ -248,10 +248,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestLoadSnapshotChunk load_snapshot_chunk = 14 [json_name = "loadSnapshotChunk"];`
      */
     public var loadSnapshotChunk: tendermint.abci.Types.RequestLoadSnapshotChunk
-      @JvmName("getLoadSnapshotChunk")
-      get() = _builder.loadSnapshotChunk
-      @JvmName("setLoadSnapshotChunk")
-      set(value) {
+      @kotlin.jvm.JvmName("getLoadSnapshotChunk")
+        get() = _builder.loadSnapshotChunk
+      @kotlin.jvm.JvmName("setLoadSnapshotChunk")
+        set(value) {
         _builder.loadSnapshotChunk = value
       }
     /**
@@ -272,10 +272,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestApplySnapshotChunk apply_snapshot_chunk = 15 [json_name = "applySnapshotChunk"];`
      */
     public var applySnapshotChunk: tendermint.abci.Types.RequestApplySnapshotChunk
-      @JvmName("getApplySnapshotChunk")
-      get() = _builder.applySnapshotChunk
-      @JvmName("setApplySnapshotChunk")
-      set(value) {
+      @kotlin.jvm.JvmName("getApplySnapshotChunk")
+        get() = _builder.applySnapshotChunk
+      @kotlin.jvm.JvmName("setApplySnapshotChunk")
+        set(value) {
         _builder.applySnapshotChunk = value
       }
     /**
@@ -296,10 +296,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestPrepareProposal prepare_proposal = 16 [json_name = "prepareProposal"];`
      */
     public var prepareProposal: tendermint.abci.Types.RequestPrepareProposal
-      @JvmName("getPrepareProposal")
-      get() = _builder.prepareProposal
-      @JvmName("setPrepareProposal")
-      set(value) {
+      @kotlin.jvm.JvmName("getPrepareProposal")
+        get() = _builder.prepareProposal
+      @kotlin.jvm.JvmName("setPrepareProposal")
+        set(value) {
         _builder.prepareProposal = value
       }
     /**
@@ -320,10 +320,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestProcessProposal process_proposal = 17 [json_name = "processProposal"];`
      */
     public var processProposal: tendermint.abci.Types.RequestProcessProposal
-      @JvmName("getProcessProposal")
-      get() = _builder.processProposal
-      @JvmName("setProcessProposal")
-      set(value) {
+      @kotlin.jvm.JvmName("getProcessProposal")
+        get() = _builder.processProposal
+      @kotlin.jvm.JvmName("setProcessProposal")
+        set(value) {
         _builder.processProposal = value
       }
     /**
@@ -344,10 +344,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestExtendVote extend_vote = 18 [json_name = "extendVote"];`
      */
     public var extendVote: tendermint.abci.Types.RequestExtendVote
-      @JvmName("getExtendVote")
-      get() = _builder.extendVote
-      @JvmName("setExtendVote")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtendVote")
+        get() = _builder.extendVote
+      @kotlin.jvm.JvmName("setExtendVote")
+        set(value) {
         _builder.extendVote = value
       }
     /**
@@ -368,10 +368,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestVerifyVoteExtension verify_vote_extension = 19 [json_name = "verifyVoteExtension"];`
      */
     public var verifyVoteExtension: tendermint.abci.Types.RequestVerifyVoteExtension
-      @JvmName("getVerifyVoteExtension")
-      get() = _builder.verifyVoteExtension
-      @JvmName("setVerifyVoteExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getVerifyVoteExtension")
+        get() = _builder.verifyVoteExtension
+      @kotlin.jvm.JvmName("setVerifyVoteExtension")
+        set(value) {
         _builder.verifyVoteExtension = value
       }
     /**
@@ -392,10 +392,10 @@ public object RequestKt {
      * `.tendermint.abci.RequestFinalizeBlock finalize_block = 20 [json_name = "finalizeBlock"];`
      */
     public var finalizeBlock: tendermint.abci.Types.RequestFinalizeBlock
-      @JvmName("getFinalizeBlock")
-      get() = _builder.finalizeBlock
-      @JvmName("setFinalizeBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getFinalizeBlock")
+        get() = _builder.finalizeBlock
+      @kotlin.jvm.JvmName("setFinalizeBlock")
+        set(value) {
         _builder.finalizeBlock = value
       }
     /**

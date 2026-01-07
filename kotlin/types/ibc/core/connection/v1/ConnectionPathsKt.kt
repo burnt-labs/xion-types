@@ -40,10 +40,10 @@ public object ConnectionPathsKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -72,7 +72,7 @@ public object ConnectionPathsKt {
      * @return A list containing the paths.
      */
     public val paths: com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.pathsList
       )
@@ -85,7 +85,7 @@ public object ConnectionPathsKt {
      * @param value The paths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPaths")
+@kotlin.jvm.JvmName("addPaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>.add(value: kotlin.String) {
       _builder.addPaths(value)
     }
@@ -98,7 +98,7 @@ public object ConnectionPathsKt {
      * @param value The paths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPaths")
+@kotlin.jvm.JvmName("plusAssignPaths")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -112,7 +112,7 @@ public object ConnectionPathsKt {
      * @param values The paths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPaths")
+@kotlin.jvm.JvmName("addAllPaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPaths(values)
     }
@@ -125,7 +125,7 @@ public object ConnectionPathsKt {
      * @param values The paths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPaths")
+@kotlin.jvm.JvmName("plusAssignAllPaths")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -140,7 +140,7 @@ public object ConnectionPathsKt {
      * @param value The paths to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPaths")
+@kotlin.jvm.JvmName("setPaths")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPaths(index, value)
     }/**
@@ -151,7 +151,7 @@ public object ConnectionPathsKt {
      * `repeated string paths = 2 [json_name = "paths"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPaths")
+@kotlin.jvm.JvmName("setPaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PathsProxy>.clear() {
       _builder.clearPaths()
     }}

@@ -36,10 +36,10 @@ public object SnapshotIAVLItemKt {
      * `bytes key = 1 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -53,10 +53,10 @@ public object SnapshotIAVLItemKt {
      * `bytes value = 2 [json_name = "value"];`
      */
     public var value: com.google.protobuf.ByteString
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**
@@ -74,10 +74,10 @@ public object SnapshotIAVLItemKt {
      * `int64 version = 3 [json_name = "version"];`
      */
     public var version: kotlin.Long
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -99,10 +99,10 @@ public object SnapshotIAVLItemKt {
      * `int32 height = 4 [json_name = "height"];`
      */
     public var height: kotlin.Int
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**

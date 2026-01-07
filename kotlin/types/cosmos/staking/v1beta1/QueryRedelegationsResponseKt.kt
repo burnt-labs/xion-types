@@ -44,7 +44,7 @@ public object QueryRedelegationsResponseKt {
      */
      public val redelegationResponses: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.redelegationResponsesList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryRedelegationsResponseKt {
      * @param value The redelegationResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRedelegationResponses")
+@kotlin.jvm.JvmName("addRedelegationResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>.add(value: cosmos.staking.v1beta1.Staking.RedelegationResponse) {
       _builder.addRedelegationResponses(value)
     }
@@ -61,7 +61,7 @@ public object QueryRedelegationsResponseKt {
      * @param value The redelegationResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRedelegationResponses")
+@kotlin.jvm.JvmName("plusAssignRedelegationResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>.plusAssign(value: cosmos.staking.v1beta1.Staking.RedelegationResponse) {
       add(value)
@@ -71,7 +71,7 @@ public object QueryRedelegationsResponseKt {
      * @param values The redelegationResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRedelegationResponses")
+@kotlin.jvm.JvmName("addAllRedelegationResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.RedelegationResponse>) {
       _builder.addAllRedelegationResponses(values)
     }
@@ -80,7 +80,7 @@ public object QueryRedelegationsResponseKt {
      * @param values The redelegationResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRedelegationResponses")
+@kotlin.jvm.JvmName("plusAssignAllRedelegationResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.RedelegationResponse>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QueryRedelegationsResponseKt {
      * @param value The redelegationResponses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRedelegationResponses")
+@kotlin.jvm.JvmName("setRedelegationResponses")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Staking.RedelegationResponse) {
       _builder.setRedelegationResponses(index, value)
     }
@@ -99,11 +99,10 @@ public object QueryRedelegationsResponseKt {
      * `repeated .cosmos.staking.v1beta1.RedelegationResponse redelegation_responses = 1 [json_name = "redelegationResponses", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRedelegationResponses")
+@kotlin.jvm.JvmName("clearRedelegationResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.RedelegationResponse, RedelegationResponsesProxy>.clear() {
       _builder.clearRedelegationResponses()
     }
-
 
     /**
      * ```
@@ -113,10 +112,10 @@ public object QueryRedelegationsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

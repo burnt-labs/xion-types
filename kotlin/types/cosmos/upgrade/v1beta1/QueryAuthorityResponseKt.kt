@@ -36,10 +36,10 @@ public object QueryAuthorityResponseKt {
      * `string address = 1 [json_name = "address"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**

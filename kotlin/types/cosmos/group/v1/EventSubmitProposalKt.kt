@@ -40,10 +40,10 @@ public object EventSubmitProposalKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**

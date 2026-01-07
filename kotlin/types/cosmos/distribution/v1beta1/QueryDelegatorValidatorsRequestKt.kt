@@ -41,10 +41,10 @@ public object QueryDelegatorValidatorsRequestKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**

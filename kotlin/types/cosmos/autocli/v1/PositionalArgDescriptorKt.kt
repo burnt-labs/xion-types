@@ -41,10 +41,10 @@ public object PositionalArgDescriptorKt {
      * `string proto_field = 1 [json_name = "protoField"];`
      */
     public var protoField: kotlin.String
-      @JvmName("getProtoField")
-      get() = _builder.protoField
-      @JvmName("setProtoField")
-      set(value) {
+      @kotlin.jvm.JvmName("getProtoField")
+        get() = _builder.protoField
+      @kotlin.jvm.JvmName("setProtoField")
+        set(value) {
         _builder.protoField = value
       }
     /**
@@ -69,10 +69,10 @@ public object PositionalArgDescriptorKt {
      * `bool varargs = 2 [json_name = "varargs"];`
      */
     public var varargs: kotlin.Boolean
-      @JvmName("getVarargs")
-      get() = _builder.varargs
-      @JvmName("setVarargs")
-      set(value) {
+      @kotlin.jvm.JvmName("getVarargs")
+        get() = _builder.varargs
+      @kotlin.jvm.JvmName("setVarargs")
+        set(value) {
         _builder.varargs = value
       }
     /**
@@ -97,10 +97,10 @@ public object PositionalArgDescriptorKt {
      * `bool optional = 3 [json_name = "optional"];`
      */
     public var optional: kotlin.Boolean
-      @JvmName("getOptional")
-      get() = _builder.optional
-      @JvmName("setOptional")
-      set(value) {
+      @kotlin.jvm.JvmName("getOptional")
+        get() = _builder.optional
+      @kotlin.jvm.JvmName("setOptional")
+        set(value) {
         _builder.optional = value
       }
     /**

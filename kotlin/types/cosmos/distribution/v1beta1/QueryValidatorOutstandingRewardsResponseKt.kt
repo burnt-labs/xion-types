@@ -37,10 +37,10 @@ public object QueryValidatorOutstandingRewardsResponseKt {
      * `.cosmos.distribution.v1beta1.ValidatorOutstandingRewards rewards = 1 [json_name = "rewards", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var rewards: cosmos.distribution.v1beta1.Distribution.ValidatorOutstandingRewards
-      @JvmName("getRewards")
-      get() = _builder.rewards
-      @JvmName("setRewards")
-      set(value) {
+      @kotlin.jvm.JvmName("getRewards")
+        get() = _builder.rewards
+      @kotlin.jvm.JvmName("setRewards")
+        set(value) {
         _builder.rewards = value
       }
     /**

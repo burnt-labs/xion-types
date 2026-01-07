@@ -32,10 +32,10 @@ public object ValidatorKt {
      * `bytes address = 1 [json_name = "address"];`
      */
     public var address: com.google.protobuf.ByteString
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -49,10 +49,10 @@ public object ValidatorKt {
      * `.tendermint.crypto.PublicKey pub_key = 2 [json_name = "pubKey", (.gogoproto.nullable) = false];`
      */
     public var pubKey: tendermint.crypto.Keys.PublicKey
-      @JvmName("getPubKey")
-      get() = _builder.pubKey
-      @JvmName("setPubKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPubKey")
+        get() = _builder.pubKey
+      @kotlin.jvm.JvmName("setPubKey")
+        set(value) {
         _builder.pubKey = value
       }
     /**
@@ -76,10 +76,10 @@ public object ValidatorKt {
      * `int64 voting_power = 3 [json_name = "votingPower"];`
      */
     public var votingPower: kotlin.Long
-      @JvmName("getVotingPower")
-      get() = _builder.votingPower
-      @JvmName("setVotingPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingPower")
+        get() = _builder.votingPower
+      @kotlin.jvm.JvmName("setVotingPower")
+        set(value) {
         _builder.votingPower = value
       }
     /**
@@ -93,10 +93,10 @@ public object ValidatorKt {
      * `int64 proposer_priority = 4 [json_name = "proposerPriority"];`
      */
     public var proposerPriority: kotlin.Long
-      @JvmName("getProposerPriority")
-      get() = _builder.proposerPriority
-      @JvmName("setProposerPriority")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposerPriority")
+        get() = _builder.proposerPriority
+      @kotlin.jvm.JvmName("setProposerPriority")
+        set(value) {
         _builder.proposerPriority = value
       }
     /**

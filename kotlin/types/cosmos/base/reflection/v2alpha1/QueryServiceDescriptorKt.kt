@@ -40,10 +40,10 @@ public object QueryServiceDescriptorKt {
      * `string fullname = 1 [json_name = "fullname"];`
      */
     public var fullname: kotlin.String
-      @JvmName("getFullname")
-      get() = _builder.fullname
-      @JvmName("setFullname")
-      set(value) {
+      @kotlin.jvm.JvmName("getFullname")
+        get() = _builder.fullname
+      @kotlin.jvm.JvmName("setFullname")
+        set(value) {
         _builder.fullname = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryServiceDescriptorKt {
      * `bool is_module = 2 [json_name = "isModule"];`
      */
     public var isModule: kotlin.Boolean
-      @JvmName("getIsModule")
-      get() = _builder.isModule
-      @JvmName("setIsModule")
-      set(value) {
+      @kotlin.jvm.JvmName("getIsModule")
+        get() = _builder.isModule
+      @kotlin.jvm.JvmName("setIsModule")
+        set(value) {
         _builder.isModule = value
       }
     /**
@@ -97,7 +97,7 @@ public object QueryServiceDescriptorKt {
      */
      public val methods: com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.methodsList
       )
     /**
@@ -109,7 +109,7 @@ public object QueryServiceDescriptorKt {
      * @param value The methods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMethods")
+@kotlin.jvm.JvmName("addMethods")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>.add(value: cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor) {
       _builder.addMethods(value)
     }
@@ -122,7 +122,7 @@ public object QueryServiceDescriptorKt {
      * @param value The methods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMethods")
+@kotlin.jvm.JvmName("plusAssignMethods")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>.plusAssign(value: cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor) {
       add(value)
@@ -136,7 +136,7 @@ public object QueryServiceDescriptorKt {
      * @param values The methods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMethods")
+@kotlin.jvm.JvmName("addAllMethods")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor>) {
       _builder.addAllMethods(values)
     }
@@ -149,7 +149,7 @@ public object QueryServiceDescriptorKt {
      * @param values The methods to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMethods")
+@kotlin.jvm.JvmName("plusAssignAllMethods")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor>) {
       addAll(values)
@@ -164,7 +164,7 @@ public object QueryServiceDescriptorKt {
      * @param value The methods to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMethods")
+@kotlin.jvm.JvmName("setMethods")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>.set(index: kotlin.Int, value: cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor) {
       _builder.setMethods(index, value)
     }
@@ -176,11 +176,10 @@ public object QueryServiceDescriptorKt {
      * `repeated .cosmos.base.reflection.v2alpha1.QueryMethodDescriptor methods = 3 [json_name = "methods"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMethods")
+@kotlin.jvm.JvmName("clearMethods")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.QueryMethodDescriptor, MethodsProxy>.clear() {
       _builder.clearMethods()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

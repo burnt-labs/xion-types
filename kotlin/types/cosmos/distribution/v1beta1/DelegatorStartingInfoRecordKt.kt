@@ -40,10 +40,10 @@ public object DelegatorStartingInfoRecordKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -65,10 +65,10 @@ public object DelegatorStartingInfoRecordKt {
      * `string validator_address = 2 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -90,10 +90,10 @@ public object DelegatorStartingInfoRecordKt {
      * `.cosmos.distribution.v1beta1.DelegatorStartingInfo starting_info = 3 [json_name = "startingInfo", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var startingInfo: cosmos.distribution.v1beta1.Distribution.DelegatorStartingInfo
-      @JvmName("getStartingInfo")
-      get() = _builder.startingInfo
-      @JvmName("setStartingInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartingInfo")
+        get() = _builder.startingInfo
+      @kotlin.jvm.JvmName("setStartingInfo")
+        set(value) {
         _builder.startingInfo = value
       }
     /**

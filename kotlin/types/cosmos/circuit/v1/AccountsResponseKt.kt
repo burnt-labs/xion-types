@@ -43,7 +43,7 @@ public object AccountsResponseKt {
      */
      public val accounts: com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.accountsList
       )
     /**
@@ -51,7 +51,7 @@ public object AccountsResponseKt {
      * @param value The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAccounts")
+@kotlin.jvm.JvmName("addAccounts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>.add(value: cosmos.circuit.v1.Types.GenesisAccountPermissions) {
       _builder.addAccounts(value)
     }
@@ -60,7 +60,7 @@ public object AccountsResponseKt {
      * @param value The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAccounts")
+@kotlin.jvm.JvmName("plusAssignAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>.plusAssign(value: cosmos.circuit.v1.Types.GenesisAccountPermissions) {
       add(value)
@@ -70,7 +70,7 @@ public object AccountsResponseKt {
      * @param values The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAccounts")
+@kotlin.jvm.JvmName("addAllAccounts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.circuit.v1.Types.GenesisAccountPermissions>) {
       _builder.addAllAccounts(values)
     }
@@ -79,7 +79,7 @@ public object AccountsResponseKt {
      * @param values The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAccounts")
+@kotlin.jvm.JvmName("plusAssignAllAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.circuit.v1.Types.GenesisAccountPermissions>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object AccountsResponseKt {
      * @param value The accounts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAccounts")
+@kotlin.jvm.JvmName("setAccounts")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>.set(index: kotlin.Int, value: cosmos.circuit.v1.Types.GenesisAccountPermissions) {
       _builder.setAccounts(index, value)
     }
@@ -98,11 +98,10 @@ public object AccountsResponseKt {
      * `repeated .cosmos.circuit.v1.GenesisAccountPermissions accounts = 1 [json_name = "accounts"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAccounts")
+@kotlin.jvm.JvmName("clearAccounts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountsProxy>.clear() {
       _builder.clearAccounts()
     }
-
 
     /**
      * ```
@@ -112,10 +111,10 @@ public object AccountsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

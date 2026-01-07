@@ -44,10 +44,10 @@ public object MsgSetSendEnabledKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -76,7 +76,7 @@ public object MsgSetSendEnabledKt {
      */
      public val sendEnabled: com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.sendEnabledList
       )
     /**
@@ -88,7 +88,7 @@ public object MsgSetSendEnabledKt {
      * @param value The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSendEnabled")
+@kotlin.jvm.JvmName("addSendEnabled")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.add(value: cosmos.bank.v1beta1.Bank.SendEnabled) {
       _builder.addSendEnabled(value)
     }
@@ -101,7 +101,7 @@ public object MsgSetSendEnabledKt {
      * @param value The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSendEnabled")
+@kotlin.jvm.JvmName("plusAssignSendEnabled")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.plusAssign(value: cosmos.bank.v1beta1.Bank.SendEnabled) {
       add(value)
@@ -115,7 +115,7 @@ public object MsgSetSendEnabledKt {
      * @param values The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSendEnabled")
+@kotlin.jvm.JvmName("addAllSendEnabled")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.addAll(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.SendEnabled>) {
       _builder.addAllSendEnabled(values)
     }
@@ -128,7 +128,7 @@ public object MsgSetSendEnabledKt {
      * @param values The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSendEnabled")
+@kotlin.jvm.JvmName("plusAssignAllSendEnabled")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.SendEnabled>) {
       addAll(values)
@@ -143,7 +143,7 @@ public object MsgSetSendEnabledKt {
      * @param value The sendEnabled to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSendEnabled")
+@kotlin.jvm.JvmName("setSendEnabled")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.set(index: kotlin.Int, value: cosmos.bank.v1beta1.Bank.SendEnabled) {
       _builder.setSendEnabled(index, value)
     }
@@ -155,11 +155,10 @@ public object MsgSetSendEnabledKt {
      * `repeated .cosmos.bank.v1beta1.SendEnabled send_enabled = 2 [json_name = "sendEnabled"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSendEnabled")
+@kotlin.jvm.JvmName("clearSendEnabled")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.clear() {
       _builder.clearSendEnabled()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -179,7 +178,7 @@ public object MsgSetSendEnabledKt {
      * @return A list containing the useDefaultFor.
      */
     public val useDefaultFor: com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.useDefaultForList
       )
@@ -195,7 +194,7 @@ public object MsgSetSendEnabledKt {
      * @param value The useDefaultFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addUseDefaultFor")
+@kotlin.jvm.JvmName("addUseDefaultFor")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>.add(value: kotlin.String) {
       _builder.addUseDefaultFor(value)
     }
@@ -211,7 +210,7 @@ public object MsgSetSendEnabledKt {
      * @param value The useDefaultFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignUseDefaultFor")
+@kotlin.jvm.JvmName("plusAssignUseDefaultFor")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -228,7 +227,7 @@ public object MsgSetSendEnabledKt {
      * @param values The useDefaultFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllUseDefaultFor")
+@kotlin.jvm.JvmName("addAllUseDefaultFor")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllUseDefaultFor(values)
     }
@@ -244,7 +243,7 @@ public object MsgSetSendEnabledKt {
      * @param values The useDefaultFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllUseDefaultFor")
+@kotlin.jvm.JvmName("plusAssignAllUseDefaultFor")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -262,7 +261,7 @@ public object MsgSetSendEnabledKt {
      * @param value The useDefaultFor to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setUseDefaultFor")
+@kotlin.jvm.JvmName("setUseDefaultFor")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setUseDefaultFor(index, value)
     }/**
@@ -276,7 +275,7 @@ public object MsgSetSendEnabledKt {
      * `repeated string use_default_for = 3 [json_name = "useDefaultFor"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearUseDefaultFor")
+@kotlin.jvm.JvmName("setUseDefaultFor")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, UseDefaultForProxy>.clear() {
       _builder.clearUseDefaultFor()
     }}

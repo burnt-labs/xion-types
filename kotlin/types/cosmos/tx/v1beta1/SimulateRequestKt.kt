@@ -42,10 +42,10 @@ public object SimulateRequestKt {
      * `.cosmos.tx.v1beta1.Tx tx = 1 [json_name = "tx", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field tx is deprecated") public var tx: cosmos.tx.v1beta1.TxOuterClass.Tx
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**
@@ -83,10 +83,10 @@ public object SimulateRequestKt {
      * `bytes tx_bytes = 2 [json_name = "txBytes", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var txBytes: com.google.protobuf.ByteString
-      @JvmName("getTxBytes")
-      get() = _builder.txBytes
-      @JvmName("setTxBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxBytes")
+        get() = _builder.txBytes
+      @kotlin.jvm.JvmName("setTxBytes")
+        set(value) {
         _builder.txBytes = value
       }
     /**

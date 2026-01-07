@@ -40,10 +40,10 @@ public object QueryTallyResultResponseKt {
      * `.cosmos.gov.v1.TallyResult tally = 1 [json_name = "tally"];`
      */
     public var tally: cosmos.gov.v1.Gov.TallyResult
-      @JvmName("getTally")
-      get() = _builder.tally
-      @JvmName("setTally")
-      set(value) {
+      @kotlin.jvm.JvmName("getTally")
+        get() = _builder.tally
+      @kotlin.jvm.JvmName("setTally")
+        set(value) {
         _builder.tally = value
       }
     /**

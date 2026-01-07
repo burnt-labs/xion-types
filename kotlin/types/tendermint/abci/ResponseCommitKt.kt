@@ -32,10 +32,10 @@ public object ResponseCommitKt {
      * `int64 retain_height = 3 [json_name = "retainHeight"];`
      */
     public var retainHeight: kotlin.Long
-      @JvmName("getRetainHeight")
-      get() = _builder.retainHeight
-      @JvmName("setRetainHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getRetainHeight")
+        get() = _builder.retainHeight
+      @kotlin.jvm.JvmName("setRetainHeight")
+        set(value) {
         _builder.retainHeight = value
       }
     /**

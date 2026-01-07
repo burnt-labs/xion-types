@@ -41,10 +41,10 @@ public object ClientStateKt {
      * `bytes data = 1 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -63,10 +63,10 @@ public object ClientStateKt {
      * `bytes checksum = 2 [json_name = "checksum"];`
      */
     public var checksum: com.google.protobuf.ByteString
-      @JvmName("getChecksum")
-      get() = _builder.checksum
-      @JvmName("setChecksum")
-      set(value) {
+      @kotlin.jvm.JvmName("getChecksum")
+        get() = _builder.checksum
+      @kotlin.jvm.JvmName("setChecksum")
+        set(value) {
         _builder.checksum = value
       }
     /**
@@ -80,10 +80,10 @@ public object ClientStateKt {
      * `.ibc.core.client.v1.Height latest_height = 3 [json_name = "latestHeight", (.gogoproto.nullable) = false];`
      */
     public var latestHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getLatestHeight")
-      get() = _builder.latestHeight
-      @JvmName("setLatestHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getLatestHeight")
+        get() = _builder.latestHeight
+      @kotlin.jvm.JvmName("setLatestHeight")
+        set(value) {
         _builder.latestHeight = value
       }
     /**

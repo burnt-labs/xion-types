@@ -40,10 +40,10 @@ public object VotingParamsKt {
      * `.google.protobuf.Duration voting_period = 1 [json_name = "votingPeriod", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "voting_period,omitempty", (.gogoproto.stdduration) = true];`
      */
     public var votingPeriod: com.google.protobuf.Duration
-      @JvmName("getVotingPeriod")
-      get() = _builder.votingPeriod
-      @JvmName("setVotingPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingPeriod")
+        get() = _builder.votingPeriod
+      @kotlin.jvm.JvmName("setVotingPeriod")
+        set(value) {
         _builder.votingPeriod = value
       }
     /**

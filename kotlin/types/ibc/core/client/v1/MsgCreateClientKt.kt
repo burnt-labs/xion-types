@@ -40,10 +40,10 @@ public object MsgCreateClientKt {
      * `.google.protobuf.Any client_state = 1 [json_name = "clientState"];`
      */
     public var clientState: com.google.protobuf.Any
-      @JvmName("getClientState")
-      get() = _builder.clientState
-      @JvmName("setClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientState")
+        get() = _builder.clientState
+      @kotlin.jvm.JvmName("setClientState")
+        set(value) {
         _builder.clientState = value
       }
     /**
@@ -80,10 +80,10 @@ public object MsgCreateClientKt {
      * `.google.protobuf.Any consensus_state = 2 [json_name = "consensusState"];`
      */
     public var consensusState: com.google.protobuf.Any
-      @JvmName("getConsensusState")
-      get() = _builder.consensusState
-      @JvmName("setConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusState")
+        get() = _builder.consensusState
+      @kotlin.jvm.JvmName("setConsensusState")
+        set(value) {
         _builder.consensusState = value
       }
     /**
@@ -121,10 +121,10 @@ public object MsgCreateClientKt {
      * `string signer = 3 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

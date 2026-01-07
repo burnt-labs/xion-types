@@ -43,7 +43,7 @@ public object DisabledListResponseKt {
      * @return A list containing the disabledList.
      */
     public val disabledList: com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.disabledListList
       )
@@ -52,7 +52,7 @@ public object DisabledListResponseKt {
      * @param value The disabledList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDisabledList")
+@kotlin.jvm.JvmName("addDisabledList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>.add(value: kotlin.String) {
       _builder.addDisabledList(value)
     }
@@ -61,7 +61,7 @@ public object DisabledListResponseKt {
      * @param value The disabledList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDisabledList")
+@kotlin.jvm.JvmName("plusAssignDisabledList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -71,7 +71,7 @@ public object DisabledListResponseKt {
      * @param values The disabledList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDisabledList")
+@kotlin.jvm.JvmName("addAllDisabledList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllDisabledList(values)
     }
@@ -80,7 +80,7 @@ public object DisabledListResponseKt {
      * @param values The disabledList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDisabledList")
+@kotlin.jvm.JvmName("plusAssignAllDisabledList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -91,14 +91,14 @@ public object DisabledListResponseKt {
      * @param value The disabledList to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDisabledList")
+@kotlin.jvm.JvmName("setDisabledList")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setDisabledList(index, value)
     }/**
      * `repeated string disabled_list = 1 [json_name = "disabledList"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDisabledList")
+@kotlin.jvm.JvmName("setDisabledList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledListProxy>.clear() {
       _builder.clearDisabledList()
     }}

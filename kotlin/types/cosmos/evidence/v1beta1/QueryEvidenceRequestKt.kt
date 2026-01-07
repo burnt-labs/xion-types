@@ -41,10 +41,10 @@ public object QueryEvidenceRequestKt {
      * `bytes evidence_hash = 1 [json_name = "evidenceHash", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field evidenceHash is deprecated") public var evidenceHash: com.google.protobuf.ByteString
-      @JvmName("getEvidenceHash")
-      get() = _builder.evidenceHash
-      @JvmName("setEvidenceHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getEvidenceHash")
+        get() = _builder.evidenceHash
+      @kotlin.jvm.JvmName("setEvidenceHash")
+        set(value) {
         _builder.evidenceHash = value
       }
     /**
@@ -67,10 +67,10 @@ public object QueryEvidenceRequestKt {
      * `string hash = 2 [json_name = "hash", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var hash: kotlin.String
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**

@@ -40,10 +40,10 @@ public object MsgIBCSendKt {
      * `string channel = 2 [json_name = "channel", (.gogoproto.moretags) = "yaml:\"source_channel\""];`
      */
     public var channel: kotlin.String
-      @JvmName("getChannel")
-      get() = _builder.channel
-      @JvmName("setChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannel")
+        get() = _builder.channel
+      @kotlin.jvm.JvmName("setChannel")
+        set(value) {
         _builder.channel = value
       }
     /**
@@ -66,10 +66,10 @@ public object MsgIBCSendKt {
      * `uint64 timeout_height = 4 [json_name = "timeoutHeight", (.gogoproto.moretags) = "yaml:\"timeout_height\""];`
      */
     public var timeoutHeight: kotlin.Long
-      @JvmName("getTimeoutHeight")
-      get() = _builder.timeoutHeight
-      @JvmName("setTimeoutHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutHeight")
+        get() = _builder.timeoutHeight
+      @kotlin.jvm.JvmName("setTimeoutHeight")
+        set(value) {
         _builder.timeoutHeight = value
       }
     /**
@@ -93,10 +93,10 @@ public object MsgIBCSendKt {
      * `uint64 timeout_timestamp = 5 [json_name = "timeoutTimestamp", (.gogoproto.moretags) = "yaml:\"timeout_timestamp\""];`
      */
     public var timeoutTimestamp: kotlin.Long
-      @JvmName("getTimeoutTimestamp")
-      get() = _builder.timeoutTimestamp
-      @JvmName("setTimeoutTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutTimestamp")
+        get() = _builder.timeoutTimestamp
+      @kotlin.jvm.JvmName("setTimeoutTimestamp")
+        set(value) {
         _builder.timeoutTimestamp = value
       }
     /**
@@ -120,10 +120,10 @@ public object MsgIBCSendKt {
      * `bytes data = 6 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

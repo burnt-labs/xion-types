@@ -41,10 +41,10 @@ public object QueryConnectionRequestKt {
      * `string connection_id = 1 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**

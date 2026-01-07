@@ -32,10 +32,10 @@ public object ResponseQueryKt {
      * `uint32 code = 1 [json_name = "code"];`
      */
     public var code: kotlin.Int
-      @JvmName("getCode")
-      get() = _builder.code
-      @JvmName("setCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getCode")
+        get() = _builder.code
+      @kotlin.jvm.JvmName("setCode")
+        set(value) {
         _builder.code = value
       }
     /**
@@ -53,10 +53,10 @@ public object ResponseQueryKt {
      * `string log = 3 [json_name = "log"];`
      */
     public var log: kotlin.String
-      @JvmName("getLog")
-      get() = _builder.log
-      @JvmName("setLog")
-      set(value) {
+      @kotlin.jvm.JvmName("getLog")
+        get() = _builder.log
+      @kotlin.jvm.JvmName("setLog")
+        set(value) {
         _builder.log = value
       }
     /**
@@ -78,10 +78,10 @@ public object ResponseQueryKt {
      * `string info = 4 [json_name = "info"];`
      */
     public var info: kotlin.String
-      @JvmName("getInfo")
-      get() = _builder.info
-      @JvmName("setInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getInfo")
+        get() = _builder.info
+      @kotlin.jvm.JvmName("setInfo")
+        set(value) {
         _builder.info = value
       }
     /**
@@ -99,10 +99,10 @@ public object ResponseQueryKt {
      * `int64 index = 5 [json_name = "index"];`
      */
     public var index: kotlin.Long
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**
@@ -116,10 +116,10 @@ public object ResponseQueryKt {
      * `bytes key = 6 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -133,10 +133,10 @@ public object ResponseQueryKt {
      * `bytes value = 7 [json_name = "value"];`
      */
     public var value: com.google.protobuf.ByteString
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**
@@ -150,10 +150,10 @@ public object ResponseQueryKt {
      * `.tendermint.crypto.ProofOps proof_ops = 8 [json_name = "proofOps"];`
      */
     public var proofOps: tendermint.crypto.ProofOuterClass.ProofOps
-      @JvmName("getProofOps")
-      get() = _builder.proofOps
-      @JvmName("setProofOps")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofOps")
+        get() = _builder.proofOps
+      @kotlin.jvm.JvmName("setProofOps")
+        set(value) {
         _builder.proofOps = value
       }
     /**
@@ -177,10 +177,10 @@ public object ResponseQueryKt {
      * `int64 height = 9 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -194,10 +194,10 @@ public object ResponseQueryKt {
      * `string codespace = 10 [json_name = "codespace"];`
      */
     public var codespace: kotlin.String
-      @JvmName("getCodespace")
-      get() = _builder.codespace
-      @JvmName("setCodespace")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodespace")
+        get() = _builder.codespace
+      @kotlin.jvm.JvmName("setCodespace")
+        set(value) {
         _builder.codespace = value
       }
     /**

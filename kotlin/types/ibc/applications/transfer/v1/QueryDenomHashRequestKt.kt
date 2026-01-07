@@ -41,10 +41,10 @@ public object QueryDenomHashRequestKt {
      * `string trace = 1 [json_name = "trace"];`
      */
     public var trace: kotlin.String
-      @JvmName("getTrace")
-      get() = _builder.trace
-      @JvmName("setTrace")
-      set(value) {
+      @kotlin.jvm.JvmName("getTrace")
+        get() = _builder.trace
+      @kotlin.jvm.JvmName("setTrace")
+        set(value) {
         _builder.trace = value
       }
     /**

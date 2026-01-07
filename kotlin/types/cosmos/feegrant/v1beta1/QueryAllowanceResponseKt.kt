@@ -40,10 +40,10 @@ public object QueryAllowanceResponseKt {
      * `.cosmos.feegrant.v1beta1.Grant allowance = 1 [json_name = "allowance"];`
      */
     public var allowance: cosmos.feegrant.v1beta1.Feegrant.Grant
-      @JvmName("getAllowance")
-      get() = _builder.allowance
-      @JvmName("setAllowance")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowance")
+        get() = _builder.allowance
+      @kotlin.jvm.JvmName("setAllowance")
+        set(value) {
         _builder.allowance = value
       }
     /**

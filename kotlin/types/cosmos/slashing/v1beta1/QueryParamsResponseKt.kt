@@ -36,10 +36,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.slashing.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmos.slashing.v1beta1.Slashing.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

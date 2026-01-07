@@ -36,17 +36,17 @@ public object AccessConfigKt {
      * `.cosmwasm.wasm.v1.AccessType permission = 1 [json_name = "permission", (.gogoproto.moretags) = "yaml:\"permission\""];`
      */
     public var permission: cosmwasm.wasm.v1.Types.AccessType
-      @JvmName("getPermission")
-      get() = _builder.permission
-      @JvmName("setPermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getPermission")
+        get() = _builder.permission
+      @kotlin.jvm.JvmName("setPermission")
+        set(value) {
         _builder.permission = value
       }
     public var permissionValue: kotlin.Int
-      @JvmName("getPermissionValue")
-      get() = _builder.permissionValue
-      @JvmName("setPermissionValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getPermissionValue")
+        get() = _builder.permissionValue
+      @kotlin.jvm.JvmName("setPermissionValue")
+        set(value) {
         _builder.permissionValue = value
       }
     /**
@@ -67,7 +67,7 @@ public object AccessConfigKt {
      * @return A list containing the addresses.
      */
     public val addresses: com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.addressesList
       )
@@ -76,7 +76,7 @@ public object AccessConfigKt {
      * @param value The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAddresses")
+@kotlin.jvm.JvmName("addAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.add(value: kotlin.String) {
       _builder.addAddresses(value)
     }
@@ -85,7 +85,7 @@ public object AccessConfigKt {
      * @param value The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAddresses")
+@kotlin.jvm.JvmName("plusAssignAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -95,7 +95,7 @@ public object AccessConfigKt {
      * @param values The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAddresses")
+@kotlin.jvm.JvmName("addAllAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAddresses(values)
     }
@@ -104,7 +104,7 @@ public object AccessConfigKt {
      * @param values The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAddresses")
+@kotlin.jvm.JvmName("plusAssignAllAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -115,14 +115,14 @@ public object AccessConfigKt {
      * @param value The addresses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAddresses")
+@kotlin.jvm.JvmName("setAddresses")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAddresses(index, value)
     }/**
      * `repeated string addresses = 3 [json_name = "addresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAddresses")
+@kotlin.jvm.JvmName("setAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.clear() {
       _builder.clearAddresses()
     }}

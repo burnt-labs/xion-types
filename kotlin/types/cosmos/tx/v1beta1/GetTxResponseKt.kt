@@ -40,10 +40,10 @@ public object GetTxResponseKt {
      * `.cosmos.tx.v1beta1.Tx tx = 1 [json_name = "tx"];`
      */
     public var tx: cosmos.tx.v1beta1.TxOuterClass.Tx
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**
@@ -79,10 +79,10 @@ public object GetTxResponseKt {
      * `.cosmos.base.abci.v1beta1.TxResponse tx_response = 2 [json_name = "txResponse"];`
      */
     public var txResponse: cosmos.base.abci.v1beta1.Abci.TxResponse
-      @JvmName("getTxResponse")
-      get() = _builder.txResponse
-      @JvmName("setTxResponse")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxResponse")
+        get() = _builder.txResponse
+      @kotlin.jvm.JvmName("setTxResponse")
+        set(value) {
         _builder.txResponse = value
       }
     /**

@@ -43,10 +43,10 @@ public object MsgStoreAndMigrateContractResponseKt {
      * `uint64 code_id = 1 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -68,10 +68,10 @@ public object MsgStoreAndMigrateContractResponseKt {
      * `bytes checksum = 2 [json_name = "checksum"];`
      */
     public var checksum: com.google.protobuf.ByteString
-      @JvmName("getChecksum")
-      get() = _builder.checksum
-      @JvmName("setChecksum")
-      set(value) {
+      @kotlin.jvm.JvmName("getChecksum")
+        get() = _builder.checksum
+      @kotlin.jvm.JvmName("setChecksum")
+        set(value) {
         _builder.checksum = value
       }
     /**
@@ -93,10 +93,10 @@ public object MsgStoreAndMigrateContractResponseKt {
      * `bytes data = 3 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

@@ -48,7 +48,7 @@ public object TransferAuthorizationKt {
      */
      public val allocations: com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.allocationsList
       )
     /**
@@ -60,7 +60,7 @@ public object TransferAuthorizationKt {
      * @param value The allocations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllocations")
+@kotlin.jvm.JvmName("addAllocations")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>.add(value: ibc.applications.transfer.v1.Authz.Allocation) {
       _builder.addAllocations(value)
     }
@@ -73,7 +73,7 @@ public object TransferAuthorizationKt {
      * @param value The allocations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllocations")
+@kotlin.jvm.JvmName("plusAssignAllocations")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>.plusAssign(value: ibc.applications.transfer.v1.Authz.Allocation) {
       add(value)
@@ -87,7 +87,7 @@ public object TransferAuthorizationKt {
      * @param values The allocations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllocations")
+@kotlin.jvm.JvmName("addAllAllocations")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.Authz.Allocation>) {
       _builder.addAllAllocations(values)
     }
@@ -100,7 +100,7 @@ public object TransferAuthorizationKt {
      * @param values The allocations to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllocations")
+@kotlin.jvm.JvmName("plusAssignAllAllocations")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.Authz.Allocation>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object TransferAuthorizationKt {
      * @param value The allocations to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllocations")
+@kotlin.jvm.JvmName("setAllocations")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>.set(index: kotlin.Int, value: ibc.applications.transfer.v1.Authz.Allocation) {
       _builder.setAllocations(index, value)
     }
@@ -127,11 +127,10 @@ public object TransferAuthorizationKt {
      * `repeated .ibc.applications.transfer.v1.Allocation allocations = 1 [json_name = "allocations", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllocations")
+@kotlin.jvm.JvmName("clearAllocations")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.Authz.Allocation, AllocationsProxy>.clear() {
       _builder.clearAllocations()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

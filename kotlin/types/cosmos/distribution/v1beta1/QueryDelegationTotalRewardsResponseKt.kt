@@ -48,7 +48,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      */
      public val rewards: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.rewardsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param value The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRewards")
+@kotlin.jvm.JvmName("addRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>.add(value: cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward) {
       _builder.addRewards(value)
     }
@@ -73,7 +73,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param value The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRewards")
+@kotlin.jvm.JvmName("plusAssignRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>.plusAssign(value: cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param values The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRewards")
+@kotlin.jvm.JvmName("addAllRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward>) {
       _builder.addAllRewards(values)
     }
@@ -100,7 +100,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param values The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRewards")
+@kotlin.jvm.JvmName("plusAssignAllRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param value The rewards to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRewards")
+@kotlin.jvm.JvmName("setRewards")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward) {
       _builder.setRewards(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryDelegationTotalRewardsResponseKt {
      * `repeated .cosmos.distribution.v1beta1.DelegationDelegatorReward rewards = 1 [json_name = "rewards", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRewards")
+@kotlin.jvm.JvmName("clearRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.DelegationDelegatorReward, RewardsProxy>.clear() {
       _builder.clearRewards()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -148,7 +147,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      */
      public val total: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.totalList
       )
     /**
@@ -160,7 +159,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param value The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTotal")
+@kotlin.jvm.JvmName("addTotal")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addTotal(value)
     }
@@ -173,7 +172,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param value The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTotal")
+@kotlin.jvm.JvmName("plusAssignTotal")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -187,7 +186,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param values The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTotal")
+@kotlin.jvm.JvmName("addAllTotal")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllTotal(values)
     }
@@ -200,7 +199,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param values The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTotal")
+@kotlin.jvm.JvmName("plusAssignAllTotal")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -215,7 +214,7 @@ public object QueryDelegationTotalRewardsResponseKt {
      * @param value The total to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTotal")
+@kotlin.jvm.JvmName("setTotal")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setTotal(index, value)
     }
@@ -227,11 +226,10 @@ public object QueryDelegationTotalRewardsResponseKt {
      * `repeated .cosmos.base.v1beta1.DecCoin total = 2 [json_name = "total", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTotal")
+@kotlin.jvm.JvmName("clearTotal")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, TotalProxy>.clear() {
       _builder.clearTotal()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

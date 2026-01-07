@@ -44,7 +44,7 @@ public object QueryPinnedCodesResponseKt {
      */
      public val codeIds: com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.codeIdsList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryPinnedCodesResponseKt {
      * @param value The codeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCodeIds")
+@kotlin.jvm.JvmName("addCodeIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>.add(value: kotlin.Long) {
       _builder.addCodeIds(value)
     }/**
@@ -60,7 +60,7 @@ public object QueryPinnedCodesResponseKt {
      * @param value The codeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCodeIds")
+@kotlin.jvm.JvmName("plusAssignCodeIds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -69,7 +69,7 @@ public object QueryPinnedCodesResponseKt {
      * @param values The codeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCodeIds")
+@kotlin.jvm.JvmName("addAllCodeIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllCodeIds(values)
     }/**
@@ -77,7 +77,7 @@ public object QueryPinnedCodesResponseKt {
      * @param values The codeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCodeIds")
+@kotlin.jvm.JvmName("plusAssignAllCodeIds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -87,14 +87,14 @@ public object QueryPinnedCodesResponseKt {
      * @param value The codeIds to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCodeIds")
+@kotlin.jvm.JvmName("setCodeIds")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setCodeIds(index, value)
     }/**
      * `repeated uint64 code_ids = 1 [json_name = "codeIds", (.gogoproto.customname) = "CodeIDs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCodeIds")
+@kotlin.jvm.JvmName("clearCodeIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, CodeIdsProxy>.clear() {
       _builder.clearCodeIds()
     }
@@ -106,10 +106,10 @@ public object QueryPinnedCodesResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

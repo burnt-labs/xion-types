@@ -41,10 +41,10 @@ public object QuerySpendableBalanceByDenomRequestKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -66,10 +66,10 @@ public object QuerySpendableBalanceByDenomRequestKt {
      * `string denom = 2 [json_name = "denom"];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**

@@ -40,10 +40,10 @@ public object GetAuthnDescriptorResponseKt {
      * `.cosmos.base.reflection.v2alpha1.AuthnDescriptor authn = 1 [json_name = "authn"];`
      */
     public var authn: cosmos.base.reflection.v2alpha1.Reflection.AuthnDescriptor
-      @JvmName("getAuthn")
-      get() = _builder.authn
-      @JvmName("setAuthn")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthn")
+        get() = _builder.authn
+      @kotlin.jvm.JvmName("setAuthn")
+        set(value) {
         _builder.authn = value
       }
     /**

@@ -41,10 +41,10 @@ public object QueryContractInfoResponseKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -62,10 +62,10 @@ public object QueryContractInfoResponseKt {
      * `.cosmwasm.wasm.v1.ContractInfo contract_info = 2 [json_name = "contractInfo", (.gogoproto.nullable) = false, (.gogoproto.embed) = true, (.gogoproto.jsontag) = "", (.amino.dont_omitempty) = true];`
      */
     public var contractInfo: cosmwasm.wasm.v1.Types.ContractInfo
-      @JvmName("getContractInfo")
-      get() = _builder.contractInfo
-      @JvmName("setContractInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getContractInfo")
+        get() = _builder.contractInfo
+      @kotlin.jvm.JvmName("setContractInfo")
+        set(value) {
         _builder.contractInfo = value
       }
     /**

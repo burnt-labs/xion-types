@@ -40,10 +40,10 @@ public object MsgStoreCodeKt {
      * `string signer = 1 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgStoreCodeKt {
      * `bytes wasm_byte_code = 2 [json_name = "wasmByteCode"];`
      */
     public var wasmByteCode: com.google.protobuf.ByteString
-      @JvmName("getWasmByteCode")
-      get() = _builder.wasmByteCode
-      @JvmName("setWasmByteCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getWasmByteCode")
+        get() = _builder.wasmByteCode
+      @kotlin.jvm.JvmName("setWasmByteCode")
+        set(value) {
         _builder.wasmByteCode = value
       }
     /**

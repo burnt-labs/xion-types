@@ -32,10 +32,10 @@ public object DefaultNodeInfoKt {
      * `.tendermint.p2p.ProtocolVersion protocol_version = 1 [json_name = "protocolVersion", (.gogoproto.nullable) = false];`
      */
     public var protocolVersion: tendermint.p2p.Types.ProtocolVersion
-      @JvmName("getProtocolVersion")
-      get() = _builder.protocolVersion
-      @JvmName("setProtocolVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getProtocolVersion")
+        get() = _builder.protocolVersion
+      @kotlin.jvm.JvmName("setProtocolVersion")
+        set(value) {
         _builder.protocolVersion = value
       }
     /**
@@ -59,10 +59,10 @@ public object DefaultNodeInfoKt {
      * `string default_node_id = 2 [json_name = "defaultNodeId", (.gogoproto.customname) = "DefaultNodeID"];`
      */
     public var defaultNodeId: kotlin.String
-      @JvmName("getDefaultNodeId")
-      get() = _builder.defaultNodeId
-      @JvmName("setDefaultNodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getDefaultNodeId")
+        get() = _builder.defaultNodeId
+      @kotlin.jvm.JvmName("setDefaultNodeId")
+        set(value) {
         _builder.defaultNodeId = value
       }
     /**
@@ -76,10 +76,10 @@ public object DefaultNodeInfoKt {
      * `string listen_addr = 3 [json_name = "listenAddr"];`
      */
     public var listenAddr: kotlin.String
-      @JvmName("getListenAddr")
-      get() = _builder.listenAddr
-      @JvmName("setListenAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getListenAddr")
+        get() = _builder.listenAddr
+      @kotlin.jvm.JvmName("setListenAddr")
+        set(value) {
         _builder.listenAddr = value
       }
     /**
@@ -93,10 +93,10 @@ public object DefaultNodeInfoKt {
      * `string network = 4 [json_name = "network"];`
      */
     public var network: kotlin.String
-      @JvmName("getNetwork")
-      get() = _builder.network
-      @JvmName("setNetwork")
-      set(value) {
+      @kotlin.jvm.JvmName("getNetwork")
+        get() = _builder.network
+      @kotlin.jvm.JvmName("setNetwork")
+        set(value) {
         _builder.network = value
       }
     /**
@@ -110,10 +110,10 @@ public object DefaultNodeInfoKt {
      * `string version = 5 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -127,10 +127,10 @@ public object DefaultNodeInfoKt {
      * `bytes channels = 6 [json_name = "channels"];`
      */
     public var channels: com.google.protobuf.ByteString
-      @JvmName("getChannels")
-      get() = _builder.channels
-      @JvmName("setChannels")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannels")
+        get() = _builder.channels
+      @kotlin.jvm.JvmName("setChannels")
+        set(value) {
         _builder.channels = value
       }
     /**
@@ -144,10 +144,10 @@ public object DefaultNodeInfoKt {
      * `string moniker = 7 [json_name = "moniker"];`
      */
     public var moniker: kotlin.String
-      @JvmName("getMoniker")
-      get() = _builder.moniker
-      @JvmName("setMoniker")
-      set(value) {
+      @kotlin.jvm.JvmName("getMoniker")
+        get() = _builder.moniker
+      @kotlin.jvm.JvmName("setMoniker")
+        set(value) {
         _builder.moniker = value
       }
     /**
@@ -161,10 +161,10 @@ public object DefaultNodeInfoKt {
      * `.tendermint.p2p.DefaultNodeInfoOther other = 8 [json_name = "other", (.gogoproto.nullable) = false];`
      */
     public var other: tendermint.p2p.Types.DefaultNodeInfoOther
-      @JvmName("getOther")
-      get() = _builder.other
-      @JvmName("setOther")
-      set(value) {
+      @kotlin.jvm.JvmName("getOther")
+        get() = _builder.other
+      @kotlin.jvm.JvmName("setOther")
+        set(value) {
         _builder.other = value
       }
     /**

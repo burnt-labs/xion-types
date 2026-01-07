@@ -37,10 +37,10 @@ public object MsgBurnKt {
      * `string sender = 1 [json_name = "sender", (.gogoproto.moretags) = "yaml:\"sender\""];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgBurnKt {
      * `.cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.amino.encoding) = "legacy_coin"];`
      */
     public var amount: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**
@@ -81,10 +81,10 @@ public object MsgBurnKt {
      * `string burnFromAddress = 3 [json_name = "burnFromAddress", (.gogoproto.moretags) = "yaml:\"burn_from_address\"", (.amino.dont_omitempty) = true];`
      */
     public var burnFromAddress: kotlin.String
-      @JvmName("getBurnFromAddress")
-      get() = _builder.burnFromAddress
-      @JvmName("setBurnFromAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getBurnFromAddress")
+        get() = _builder.burnFromAddress
+      @kotlin.jvm.JvmName("setBurnFromAddress")
+        set(value) {
         _builder.burnFromAddress = value
       }
     /**

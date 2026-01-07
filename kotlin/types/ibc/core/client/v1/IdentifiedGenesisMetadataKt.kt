@@ -37,10 +37,10 @@ public object IdentifiedGenesisMetadataKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -61,7 +61,7 @@ public object IdentifiedGenesisMetadataKt {
      */
      public val clientMetadata: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.clientMetadataList
       )
     /**
@@ -69,7 +69,7 @@ public object IdentifiedGenesisMetadataKt {
      * @param value The clientMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClientMetadata")
+@kotlin.jvm.JvmName("addClientMetadata")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>.add(value: ibc.core.client.v1.Genesis.GenesisMetadata) {
       _builder.addClientMetadata(value)
     }
@@ -78,7 +78,7 @@ public object IdentifiedGenesisMetadataKt {
      * @param value The clientMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClientMetadata")
+@kotlin.jvm.JvmName("plusAssignClientMetadata")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>.plusAssign(value: ibc.core.client.v1.Genesis.GenesisMetadata) {
       add(value)
@@ -88,7 +88,7 @@ public object IdentifiedGenesisMetadataKt {
      * @param values The clientMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClientMetadata")
+@kotlin.jvm.JvmName("addAllClientMetadata")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Genesis.GenesisMetadata>) {
       _builder.addAllClientMetadata(values)
     }
@@ -97,7 +97,7 @@ public object IdentifiedGenesisMetadataKt {
      * @param values The clientMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClientMetadata")
+@kotlin.jvm.JvmName("plusAssignAllClientMetadata")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Genesis.GenesisMetadata>) {
       addAll(values)
@@ -108,7 +108,7 @@ public object IdentifiedGenesisMetadataKt {
      * @param value The clientMetadata to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClientMetadata")
+@kotlin.jvm.JvmName("setClientMetadata")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Genesis.GenesisMetadata) {
       _builder.setClientMetadata(index, value)
     }
@@ -116,11 +116,10 @@ public object IdentifiedGenesisMetadataKt {
      * `repeated .ibc.core.client.v1.GenesisMetadata client_metadata = 2 [json_name = "clientMetadata", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClientMetadata")
+@kotlin.jvm.JvmName("clearClientMetadata")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.GenesisMetadata, ClientMetadataProxy>.clear() {
       _builder.clearClientMetadata()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

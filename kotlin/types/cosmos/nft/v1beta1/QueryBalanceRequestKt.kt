@@ -40,10 +40,10 @@ public object QueryBalanceRequestKt {
      * `string class_id = 1 [json_name = "classId"];`
      */
     public var classId: kotlin.String
-      @JvmName("getClassId")
-      get() = _builder.classId
-      @JvmName("setClassId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClassId")
+        get() = _builder.classId
+      @kotlin.jvm.JvmName("setClassId")
+        set(value) {
         _builder.classId = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryBalanceRequestKt {
      * `string owner = 2 [json_name = "owner"];`
      */
     public var owner: kotlin.String
-      @JvmName("getOwner")
-      get() = _builder.owner
-      @JvmName("setOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getOwner")
+        get() = _builder.owner
+      @kotlin.jvm.JvmName("setOwner")
+        set(value) {
         _builder.owner = value
       }
     /**

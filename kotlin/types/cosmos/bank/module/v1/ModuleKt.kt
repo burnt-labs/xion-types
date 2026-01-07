@@ -49,7 +49,7 @@ public object ModuleKt {
      * @return A list containing the blockedModuleAccountsOverride.
      */
     public val blockedModuleAccountsOverride: com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.blockedModuleAccountsOverrideList
       )
@@ -64,7 +64,7 @@ public object ModuleKt {
      * @param value The blockedModuleAccountsOverride to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addBlockedModuleAccountsOverride")
+@kotlin.jvm.JvmName("addBlockedModuleAccountsOverride")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>.add(value: kotlin.String) {
       _builder.addBlockedModuleAccountsOverride(value)
     }
@@ -79,7 +79,7 @@ public object ModuleKt {
      * @param value The blockedModuleAccountsOverride to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignBlockedModuleAccountsOverride")
+@kotlin.jvm.JvmName("plusAssignBlockedModuleAccountsOverride")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -95,7 +95,7 @@ public object ModuleKt {
      * @param values The blockedModuleAccountsOverride to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllBlockedModuleAccountsOverride")
+@kotlin.jvm.JvmName("addAllBlockedModuleAccountsOverride")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllBlockedModuleAccountsOverride(values)
     }
@@ -110,7 +110,7 @@ public object ModuleKt {
      * @param values The blockedModuleAccountsOverride to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllBlockedModuleAccountsOverride")
+@kotlin.jvm.JvmName("plusAssignAllBlockedModuleAccountsOverride")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -127,7 +127,7 @@ public object ModuleKt {
      * @param value The blockedModuleAccountsOverride to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setBlockedModuleAccountsOverride")
+@kotlin.jvm.JvmName("setBlockedModuleAccountsOverride")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setBlockedModuleAccountsOverride(index, value)
     }/**
@@ -140,7 +140,7 @@ public object ModuleKt {
      * `repeated string blocked_module_accounts_override = 1 [json_name = "blockedModuleAccountsOverride"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearBlockedModuleAccountsOverride")
+@kotlin.jvm.JvmName("setBlockedModuleAccountsOverride")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BlockedModuleAccountsOverrideProxy>.clear() {
       _builder.clearBlockedModuleAccountsOverride()
     }
@@ -152,10 +152,10 @@ public object ModuleKt {
      * `string authority = 2 [json_name = "authority"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -187,7 +187,7 @@ public object ModuleKt {
      * @return A list containing the restrictionsOrder.
      */
     public val restrictionsOrder: com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.restrictionsOrderList
       )
@@ -203,7 +203,7 @@ public object ModuleKt {
      * @param value The restrictionsOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRestrictionsOrder")
+@kotlin.jvm.JvmName("addRestrictionsOrder")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>.add(value: kotlin.String) {
       _builder.addRestrictionsOrder(value)
     }
@@ -219,7 +219,7 @@ public object ModuleKt {
      * @param value The restrictionsOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRestrictionsOrder")
+@kotlin.jvm.JvmName("plusAssignRestrictionsOrder")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -236,7 +236,7 @@ public object ModuleKt {
      * @param values The restrictionsOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRestrictionsOrder")
+@kotlin.jvm.JvmName("addAllRestrictionsOrder")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllRestrictionsOrder(values)
     }
@@ -252,7 +252,7 @@ public object ModuleKt {
      * @param values The restrictionsOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRestrictionsOrder")
+@kotlin.jvm.JvmName("plusAssignAllRestrictionsOrder")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -270,7 +270,7 @@ public object ModuleKt {
      * @param value The restrictionsOrder to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRestrictionsOrder")
+@kotlin.jvm.JvmName("setRestrictionsOrder")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setRestrictionsOrder(index, value)
     }/**
@@ -284,7 +284,7 @@ public object ModuleKt {
      * `repeated string restrictions_order = 3 [json_name = "restrictionsOrder"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRestrictionsOrder")
+@kotlin.jvm.JvmName("setRestrictionsOrder")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, RestrictionsOrderProxy>.clear() {
       _builder.clearRestrictionsOrder()
     }}

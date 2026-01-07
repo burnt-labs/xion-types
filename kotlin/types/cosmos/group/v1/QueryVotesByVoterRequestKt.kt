@@ -40,10 +40,10 @@ public object QueryVotesByVoterRequestKt {
      * `string voter = 1 [json_name = "voter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var voter: kotlin.String
-      @JvmName("getVoter")
-      get() = _builder.voter
-      @JvmName("setVoter")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoter")
+        get() = _builder.voter
+      @kotlin.jvm.JvmName("setVoter")
+        set(value) {
         _builder.voter = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryVotesByVoterRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

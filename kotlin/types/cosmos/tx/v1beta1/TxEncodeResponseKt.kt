@@ -41,10 +41,10 @@ public object TxEncodeResponseKt {
      * `bytes tx_bytes = 1 [json_name = "txBytes"];`
      */
     public var txBytes: com.google.protobuf.ByteString
-      @JvmName("getTxBytes")
-      get() = _builder.txBytes
-      @JvmName("setTxBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxBytes")
+        get() = _builder.txBytes
+      @kotlin.jvm.JvmName("setTxBytes")
+        set(value) {
         _builder.txBytes = value
       }
     /**

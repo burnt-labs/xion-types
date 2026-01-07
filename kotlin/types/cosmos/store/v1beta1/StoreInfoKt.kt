@@ -37,10 +37,10 @@ public object StoreInfoKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -54,10 +54,10 @@ public object StoreInfoKt {
      * `.cosmos.store.v1beta1.CommitID commit_id = 2 [json_name = "commitId", (.gogoproto.nullable) = false];`
      */
     public var commitId: cosmos.store.v1beta1.CommitInfoOuterClass.CommitID
-      @JvmName("getCommitId")
-      get() = _builder.commitId
-      @JvmName("setCommitId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommitId")
+        get() = _builder.commitId
+      @kotlin.jvm.JvmName("setCommitId")
+        set(value) {
         _builder.commitId = value
       }
     /**

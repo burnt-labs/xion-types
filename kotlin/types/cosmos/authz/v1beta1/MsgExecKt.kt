@@ -38,10 +38,10 @@ public object MsgExecKt {
      * `string grantee = 1 [json_name = "grantee", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var grantee: kotlin.String
-      @JvmName("getGrantee")
-      get() = _builder.grantee
-      @JvmName("setGrantee")
-      set(value) {
+      @kotlin.jvm.JvmName("getGrantee")
+        get() = _builder.grantee
+      @kotlin.jvm.JvmName("setGrantee")
+        set(value) {
         _builder.grantee = value
       }
     /**
@@ -68,7 +68,7 @@ public object MsgExecKt {
      */
      public val msgs: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.msgsList
       )
     /**
@@ -82,7 +82,7 @@ public object MsgExecKt {
      * @param value The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMsgs")
+@kotlin.jvm.JvmName("addMsgs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>.add(value: com.google.protobuf.Any) {
       _builder.addMsgs(value)
     }
@@ -97,7 +97,7 @@ public object MsgExecKt {
      * @param value The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMsgs")
+@kotlin.jvm.JvmName("plusAssignMsgs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -113,7 +113,7 @@ public object MsgExecKt {
      * @param values The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMsgs")
+@kotlin.jvm.JvmName("addAllMsgs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllMsgs(values)
     }
@@ -128,7 +128,7 @@ public object MsgExecKt {
      * @param values The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMsgs")
+@kotlin.jvm.JvmName("plusAssignAllMsgs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -145,7 +145,7 @@ public object MsgExecKt {
      * @param value The msgs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMsgs")
+@kotlin.jvm.JvmName("setMsgs")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setMsgs(index, value)
     }
@@ -159,11 +159,10 @@ public object MsgExecKt {
      * `repeated .google.protobuf.Any msgs = 2 [json_name = "msgs", (.cosmos_proto.accepts_interface) = "cosmos.base.v1beta1.Msg"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMsgs")
+@kotlin.jvm.JvmName("clearMsgs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgsProxy>.clear() {
       _builder.clearMsgs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

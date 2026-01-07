@@ -40,10 +40,10 @@ public object ContractsAllowanceKt {
      * `.google.protobuf.Any allowance = 1 [json_name = "allowance", (.cosmos_proto.accepts_interface) = "cosmos.feegrant.v1beta1.FeeAllowanceI"];`
      */
     public var allowance: com.google.protobuf.Any
-      @JvmName("getAllowance")
-      get() = _builder.allowance
-      @JvmName("setAllowance")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowance")
+        get() = _builder.allowance
+      @kotlin.jvm.JvmName("setAllowance")
+        set(value) {
         _builder.allowance = value
       }
     /**
@@ -78,66 +78,94 @@ public object ContractsAllowanceKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class ContractAddressesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      * @return A list containing the contractAddresses.
      */
     public val contractAddresses: com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.contractAddressesList
       )
     /**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      * @param value The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContractAddresses")
+@kotlin.jvm.JvmName("addContractAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.add(value: kotlin.String) {
       _builder.addContractAddresses(value)
     }
     /**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      * @param value The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContractAddresses")
+@kotlin.jvm.JvmName("plusAssignContractAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.plusAssign(value: kotlin.String) {
       add(value)
     }
     /**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      * @param values The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContractAddresses")
+@kotlin.jvm.JvmName("addAllContractAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllContractAddresses(values)
     }
     /**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      * @param values The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContractAddresses")
+@kotlin.jvm.JvmName("plusAssignAllContractAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
     }
     /**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      * @param index The index to set the value at.
      * @param value The contractAddresses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContractAddresses")
+@kotlin.jvm.JvmName("setContractAddresses")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setContractAddresses(index, value)
     }/**
+     * ```
+     * List of contract addresses that this allowance applies to
+     * ```
+     *
      * `repeated string contract_addresses = 2 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContractAddresses")
+@kotlin.jvm.JvmName("setContractAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.clear() {
       _builder.clearContractAddresses()
     }}

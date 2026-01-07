@@ -37,10 +37,10 @@ public object MsgConnectionOpenAckKt {
      * `string connection_id = 1 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgConnectionOpenAckKt {
      * `string counterparty_connection_id = 2 [json_name = "counterpartyConnectionId"];`
      */
     public var counterpartyConnectionId: kotlin.String
-      @JvmName("getCounterpartyConnectionId")
-      get() = _builder.counterpartyConnectionId
-      @JvmName("setCounterpartyConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterpartyConnectionId")
+        get() = _builder.counterpartyConnectionId
+      @kotlin.jvm.JvmName("setCounterpartyConnectionId")
+        set(value) {
         _builder.counterpartyConnectionId = value
       }
     /**
@@ -71,10 +71,10 @@ public object MsgConnectionOpenAckKt {
      * `.ibc.core.connection.v1.Version version = 3 [json_name = "version"];`
      */
     public var version: ibc.core.connection.v1.Connection.Version
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -102,10 +102,10 @@ public object MsgConnectionOpenAckKt {
      * `.google.protobuf.Any client_state = 4 [json_name = "clientState", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field clientState is deprecated") public var clientState: com.google.protobuf.Any
-      @JvmName("getClientState")
-      get() = _builder.clientState
-      @JvmName("setClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientState")
+        get() = _builder.clientState
+      @kotlin.jvm.JvmName("setClientState")
+        set(value) {
         _builder.clientState = value
       }
     /**
@@ -137,10 +137,10 @@ public object MsgConnectionOpenAckKt {
      * `.ibc.core.client.v1.Height proof_height = 5 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -169,10 +169,10 @@ public object MsgConnectionOpenAckKt {
      * `bytes proof_try = 6 [json_name = "proofTry"];`
      */
     public var proofTry: com.google.protobuf.ByteString
-      @JvmName("getProofTry")
-      get() = _builder.proofTry
-      @JvmName("setProofTry")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofTry")
+        get() = _builder.proofTry
+      @kotlin.jvm.JvmName("setProofTry")
+        set(value) {
         _builder.proofTry = value
       }
     /**
@@ -195,10 +195,10 @@ public object MsgConnectionOpenAckKt {
      * `bytes proof_client = 7 [json_name = "proofClient", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field proofClient is deprecated") public var proofClient: com.google.protobuf.ByteString
-      @JvmName("getProofClient")
-      get() = _builder.proofClient
-      @JvmName("setProofClient")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofClient")
+        get() = _builder.proofClient
+      @kotlin.jvm.JvmName("setProofClient")
+        set(value) {
         _builder.proofClient = value
       }
     /**
@@ -220,10 +220,10 @@ public object MsgConnectionOpenAckKt {
      * `bytes proof_consensus = 8 [json_name = "proofConsensus", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field proofConsensus is deprecated") public var proofConsensus: com.google.protobuf.ByteString
-      @JvmName("getProofConsensus")
-      get() = _builder.proofConsensus
-      @JvmName("setProofConsensus")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofConsensus")
+        get() = _builder.proofConsensus
+      @kotlin.jvm.JvmName("setProofConsensus")
+        set(value) {
         _builder.proofConsensus = value
       }
     /**
@@ -245,10 +245,10 @@ public object MsgConnectionOpenAckKt {
      * `.ibc.core.client.v1.Height consensus_height = 9 [json_name = "consensusHeight", deprecated = true, (.gogoproto.nullable) = false];`
      */
     @kotlin.Deprecated(message = "Field consensusHeight is deprecated") public var consensusHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getConsensusHeight")
-      get() = _builder.consensusHeight
-      @JvmName("setConsensusHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusHeight")
+        get() = _builder.consensusHeight
+      @kotlin.jvm.JvmName("setConsensusHeight")
+        set(value) {
         _builder.consensusHeight = value
       }
     /**
@@ -280,10 +280,10 @@ public object MsgConnectionOpenAckKt {
      * `string signer = 10 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -301,10 +301,10 @@ public object MsgConnectionOpenAckKt {
      * `bytes host_consensus_state_proof = 11 [json_name = "hostConsensusStateProof", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field hostConsensusStateProof is deprecated") public var hostConsensusStateProof: com.google.protobuf.ByteString
-      @JvmName("getHostConsensusStateProof")
-      get() = _builder.hostConsensusStateProof
-      @JvmName("setHostConsensusStateProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostConsensusStateProof")
+        get() = _builder.hostConsensusStateProof
+      @kotlin.jvm.JvmName("setHostConsensusStateProof")
+        set(value) {
         _builder.hostConsensusStateProof = value
       }
     /**

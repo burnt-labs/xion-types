@@ -37,10 +37,10 @@ public object PacketCommitmentDataKt {
      * `bytes path = 1 [json_name = "path"];`
      */
     public var path: com.google.protobuf.ByteString
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -54,10 +54,10 @@ public object PacketCommitmentDataKt {
      * `bytes commitment = 2 [json_name = "commitment"];`
      */
     public var commitment: com.google.protobuf.ByteString
-      @JvmName("getCommitment")
-      get() = _builder.commitment
-      @JvmName("setCommitment")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommitment")
+        get() = _builder.commitment
+      @kotlin.jvm.JvmName("setCommitment")
+        set(value) {
         _builder.commitment = value
       }
     /**

@@ -32,10 +32,10 @@ public object ExtendedCommitKt {
      * `int64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -49,10 +49,10 @@ public object ExtendedCommitKt {
      * `int32 round = 2 [json_name = "round"];`
      */
     public var round: kotlin.Int
-      @JvmName("getRound")
-      get() = _builder.round
-      @JvmName("setRound")
-      set(value) {
+      @kotlin.jvm.JvmName("getRound")
+        get() = _builder.round
+      @kotlin.jvm.JvmName("setRound")
+        set(value) {
         _builder.round = value
       }
     /**
@@ -66,10 +66,10 @@ public object ExtendedCommitKt {
      * `.tendermint.types.BlockID block_id = 3 [json_name = "blockId", (.gogoproto.nullable) = false, (.gogoproto.customname) = "BlockID"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -100,7 +100,7 @@ public object ExtendedCommitKt {
      */
      public val extendedSignatures: com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.extendedSignaturesList
       )
     /**
@@ -108,7 +108,7 @@ public object ExtendedCommitKt {
      * @param value The extendedSignatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addExtendedSignatures")
+@kotlin.jvm.JvmName("addExtendedSignatures")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>.add(value: tendermint.types.Types.ExtendedCommitSig) {
       _builder.addExtendedSignatures(value)
     }
@@ -117,7 +117,7 @@ public object ExtendedCommitKt {
      * @param value The extendedSignatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignExtendedSignatures")
+@kotlin.jvm.JvmName("plusAssignExtendedSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>.plusAssign(value: tendermint.types.Types.ExtendedCommitSig) {
       add(value)
@@ -127,7 +127,7 @@ public object ExtendedCommitKt {
      * @param values The extendedSignatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllExtendedSignatures")
+@kotlin.jvm.JvmName("addAllExtendedSignatures")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.types.Types.ExtendedCommitSig>) {
       _builder.addAllExtendedSignatures(values)
     }
@@ -136,7 +136,7 @@ public object ExtendedCommitKt {
      * @param values The extendedSignatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllExtendedSignatures")
+@kotlin.jvm.JvmName("plusAssignAllExtendedSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.types.Types.ExtendedCommitSig>) {
       addAll(values)
@@ -147,7 +147,7 @@ public object ExtendedCommitKt {
      * @param value The extendedSignatures to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setExtendedSignatures")
+@kotlin.jvm.JvmName("setExtendedSignatures")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>.set(index: kotlin.Int, value: tendermint.types.Types.ExtendedCommitSig) {
       _builder.setExtendedSignatures(index, value)
     }
@@ -155,11 +155,10 @@ public object ExtendedCommitKt {
      * `repeated .tendermint.types.ExtendedCommitSig extended_signatures = 4 [json_name = "extendedSignatures", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearExtendedSignatures")
+@kotlin.jvm.JvmName("clearExtendedSignatures")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.ExtendedCommitSig, ExtendedSignaturesProxy>.clear() {
       _builder.clearExtendedSignatures()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

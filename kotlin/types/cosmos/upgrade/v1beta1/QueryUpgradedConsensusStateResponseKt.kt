@@ -37,10 +37,10 @@ public object QueryUpgradedConsensusStateResponseKt {
      * `bytes upgraded_consensus_state = 2 [json_name = "upgradedConsensusState", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var upgradedConsensusState: com.google.protobuf.ByteString
-      @JvmName("getUpgradedConsensusState")
-      get() = _builder.upgradedConsensusState
-      @JvmName("setUpgradedConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpgradedConsensusState")
+        get() = _builder.upgradedConsensusState
+      @kotlin.jvm.JvmName("setUpgradedConsensusState")
+        set(value) {
         _builder.upgradedConsensusState = value
       }
     /**

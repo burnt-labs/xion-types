@@ -32,10 +32,10 @@ public object BitArrayKt {
      * `int64 bits = 1 [json_name = "bits"];`
      */
     public var bits: kotlin.Long
-      @JvmName("getBits")
-      get() = _builder.bits
-      @JvmName("setBits")
-      set(value) {
+      @kotlin.jvm.JvmName("getBits")
+        get() = _builder.bits
+      @kotlin.jvm.JvmName("setBits")
+        set(value) {
         _builder.bits = value
       }
     /**
@@ -56,7 +56,7 @@ public object BitArrayKt {
      */
      public val elems: com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.elemsList
       )
     /**
@@ -64,7 +64,7 @@ public object BitArrayKt {
      * @param value The elems to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addElems")
+@kotlin.jvm.JvmName("addElems")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>.add(value: kotlin.Long) {
       _builder.addElems(value)
     }/**
@@ -72,7 +72,7 @@ public object BitArrayKt {
      * @param value The elems to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignElems")
+@kotlin.jvm.JvmName("plusAssignElems")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -81,7 +81,7 @@ public object BitArrayKt {
      * @param values The elems to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllElems")
+@kotlin.jvm.JvmName("addAllElems")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllElems(values)
     }/**
@@ -89,7 +89,7 @@ public object BitArrayKt {
      * @param values The elems to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllElems")
+@kotlin.jvm.JvmName("plusAssignAllElems")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -99,14 +99,14 @@ public object BitArrayKt {
      * @param value The elems to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setElems")
+@kotlin.jvm.JvmName("setElems")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setElems(index, value)
     }/**
      * `repeated uint64 elems = 2 [json_name = "elems"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearElems")
+@kotlin.jvm.JvmName("clearElems")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, ElemsProxy>.clear() {
       _builder.clearElems()
     }}

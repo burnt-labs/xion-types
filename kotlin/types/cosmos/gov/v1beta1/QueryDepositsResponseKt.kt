@@ -47,7 +47,7 @@ public object QueryDepositsResponseKt {
      */
      public val deposits: com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.depositsList
       )
     /**
@@ -59,7 +59,7 @@ public object QueryDepositsResponseKt {
      * @param value The deposits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDeposits")
+@kotlin.jvm.JvmName("addDeposits")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>.add(value: cosmos.gov.v1beta1.Gov.Deposit) {
       _builder.addDeposits(value)
     }
@@ -72,7 +72,7 @@ public object QueryDepositsResponseKt {
      * @param value The deposits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDeposits")
+@kotlin.jvm.JvmName("plusAssignDeposits")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>.plusAssign(value: cosmos.gov.v1beta1.Gov.Deposit) {
       add(value)
@@ -86,7 +86,7 @@ public object QueryDepositsResponseKt {
      * @param values The deposits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDeposits")
+@kotlin.jvm.JvmName("addAllDeposits")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.gov.v1beta1.Gov.Deposit>) {
       _builder.addAllDeposits(values)
     }
@@ -99,7 +99,7 @@ public object QueryDepositsResponseKt {
      * @param values The deposits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDeposits")
+@kotlin.jvm.JvmName("plusAssignAllDeposits")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.gov.v1beta1.Gov.Deposit>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object QueryDepositsResponseKt {
      * @param value The deposits to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDeposits")
+@kotlin.jvm.JvmName("setDeposits")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>.set(index: kotlin.Int, value: cosmos.gov.v1beta1.Gov.Deposit) {
       _builder.setDeposits(index, value)
     }
@@ -126,11 +126,10 @@ public object QueryDepositsResponseKt {
      * `repeated .cosmos.gov.v1beta1.Deposit deposits = 1 [json_name = "deposits", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDeposits")
+@kotlin.jvm.JvmName("clearDeposits")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Deposit, DepositsProxy>.clear() {
       _builder.clearDeposits()
     }
-
 
     /**
      * ```
@@ -140,10 +139,10 @@ public object QueryDepositsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

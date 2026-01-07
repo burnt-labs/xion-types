@@ -33,16 +33,24 @@ public object ExponentialBackoffKt {
     internal fun _build(): xion.feeabs.v1beta1.Epoch.ExponentialBackoff = _builder.build()
 
     /**
+     * ```
+     * jump defines the exponential backoff multiplier
+     * ```
+     *
      * `int64 jump = 1 [json_name = "jump"];`
      */
     public var jump: kotlin.Long
-      @JvmName("getJump")
-      get() = _builder.jump
-      @JvmName("setJump")
-      set(value) {
+      @kotlin.jvm.JvmName("getJump")
+        get() = _builder.jump
+      @kotlin.jvm.JvmName("setJump")
+        set(value) {
         _builder.jump = value
       }
     /**
+     * ```
+     * jump defines the exponential backoff multiplier
+     * ```
+     *
      * `int64 jump = 1 [json_name = "jump"];`
      */
     public fun clearJump() {
@@ -50,16 +58,24 @@ public object ExponentialBackoffKt {
     }
 
     /**
+     * ```
+     * future_epoch defines the target epoch for the backoff
+     * ```
+     *
      * `int64 future_epoch = 2 [json_name = "futureEpoch"];`
      */
     public var futureEpoch: kotlin.Long
-      @JvmName("getFutureEpoch")
-      get() = _builder.futureEpoch
-      @JvmName("setFutureEpoch")
-      set(value) {
+      @kotlin.jvm.JvmName("getFutureEpoch")
+        get() = _builder.futureEpoch
+      @kotlin.jvm.JvmName("setFutureEpoch")
+        set(value) {
         _builder.futureEpoch = value
       }
     /**
+     * ```
+     * future_epoch defines the target epoch for the backoff
+     * ```
+     *
      * `int64 future_epoch = 2 [json_name = "futureEpoch"];`
      */
     public fun clearFutureEpoch() {

@@ -44,7 +44,7 @@ public object ListImplementationsResponseKt {
      * @return A list containing the implementationMessageNames.
      */
     public val implementationMessageNames: com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.implementationMessageNamesList
       )
@@ -53,7 +53,7 @@ public object ListImplementationsResponseKt {
      * @param value The implementationMessageNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addImplementationMessageNames")
+@kotlin.jvm.JvmName("addImplementationMessageNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>.add(value: kotlin.String) {
       _builder.addImplementationMessageNames(value)
     }
@@ -62,7 +62,7 @@ public object ListImplementationsResponseKt {
      * @param value The implementationMessageNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignImplementationMessageNames")
+@kotlin.jvm.JvmName("plusAssignImplementationMessageNames")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -72,7 +72,7 @@ public object ListImplementationsResponseKt {
      * @param values The implementationMessageNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllImplementationMessageNames")
+@kotlin.jvm.JvmName("addAllImplementationMessageNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllImplementationMessageNames(values)
     }
@@ -81,7 +81,7 @@ public object ListImplementationsResponseKt {
      * @param values The implementationMessageNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllImplementationMessageNames")
+@kotlin.jvm.JvmName("plusAssignAllImplementationMessageNames")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -92,14 +92,14 @@ public object ListImplementationsResponseKt {
      * @param value The implementationMessageNames to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setImplementationMessageNames")
+@kotlin.jvm.JvmName("setImplementationMessageNames")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setImplementationMessageNames(index, value)
     }/**
      * `repeated string implementation_message_names = 1 [json_name = "implementationMessageNames"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearImplementationMessageNames")
+@kotlin.jvm.JvmName("setImplementationMessageNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ImplementationMessageNamesProxy>.clear() {
       _builder.clearImplementationMessageNames()
     }}

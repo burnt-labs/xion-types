@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun msgCreateAudienceClaim(block: xion.jwk.v1.MsgCreateAudienceClaimKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgCreateAudienceClaim =
   xion.jwk.v1.MsgCreateAudienceClaimKt.Dsl._create(xion.jwk.v1.Tx.MsgCreateAudienceClaim.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgCreateAudienceClaim defines the message for creating an audience claim
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgCreateAudienceClaim`
  */
 public object MsgCreateAudienceClaimKt {
@@ -29,16 +33,24 @@ public object MsgCreateAudienceClaimKt {
     internal fun _build(): xion.jwk.v1.Tx.MsgCreateAudienceClaim = _builder.build()
 
     /**
+     * ```
+     * The admin address creating the claim
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
+     * ```
+     * The admin address creating the claim
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public fun clearAdmin() {
@@ -46,16 +58,24 @@ public object MsgCreateAudienceClaimKt {
     }
 
     /**
+     * ```
+     * The hash of the audience for this claim
+     * ```
+     *
      * `bytes aud_hash = 2 [json_name = "audHash"];`
      */
     public var audHash: com.google.protobuf.ByteString
-      @JvmName("getAudHash")
-      get() = _builder.audHash
-      @JvmName("setAudHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getAudHash")
+        get() = _builder.audHash
+      @kotlin.jvm.JvmName("setAudHash")
+        set(value) {
         _builder.audHash = value
       }
     /**
+     * ```
+     * The hash of the audience for this claim
+     * ```
+     *
      * `bytes aud_hash = 2 [json_name = "audHash"];`
      */
     public fun clearAudHash() {

@@ -41,10 +41,10 @@ public object QueryDelegatorValidatorResponseKt {
      * `.cosmos.staking.v1beta1.Validator validator = 1 [json_name = "validator", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var validator: cosmos.staking.v1beta1.Staking.Validator
-      @JvmName("getValidator")
-      get() = _builder.validator
-      @JvmName("setValidator")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidator")
+        get() = _builder.validator
+      @kotlin.jvm.JvmName("setValidator")
+        set(value) {
         _builder.validator = value
       }
     /**

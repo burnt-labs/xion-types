@@ -36,10 +36,10 @@ public object CodeKt {
      * `uint64 code_id = 1 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -53,10 +53,10 @@ public object CodeKt {
      * `.cosmwasm.wasm.v1.CodeInfo code_info = 2 [json_name = "codeInfo", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var codeInfo: cosmwasm.wasm.v1.Types.CodeInfo
-      @JvmName("getCodeInfo")
-      get() = _builder.codeInfo
-      @JvmName("setCodeInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeInfo")
+        get() = _builder.codeInfo
+      @kotlin.jvm.JvmName("setCodeInfo")
+        set(value) {
         _builder.codeInfo = value
       }
     /**
@@ -80,10 +80,10 @@ public object CodeKt {
      * `bytes code_bytes = 3 [json_name = "codeBytes"];`
      */
     public var codeBytes: com.google.protobuf.ByteString
-      @JvmName("getCodeBytes")
-      get() = _builder.codeBytes
-      @JvmName("setCodeBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeBytes")
+        get() = _builder.codeBytes
+      @kotlin.jvm.JvmName("setCodeBytes")
+        set(value) {
         _builder.codeBytes = value
       }
     /**
@@ -101,10 +101,10 @@ public object CodeKt {
      * `bool pinned = 4 [json_name = "pinned"];`
      */
     public var pinned: kotlin.Boolean
-      @JvmName("getPinned")
-      get() = _builder.pinned
-      @JvmName("setPinned")
-      set(value) {
+      @kotlin.jvm.JvmName("getPinned")
+        get() = _builder.pinned
+      @kotlin.jvm.JvmName("setPinned")
+        set(value) {
         _builder.pinned = value
       }
     /**

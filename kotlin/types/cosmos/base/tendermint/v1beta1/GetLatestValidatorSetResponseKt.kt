@@ -36,10 +36,10 @@ public object GetLatestValidatorSetResponseKt {
      * `int64 block_height = 1 [json_name = "blockHeight"];`
      */
     public var blockHeight: kotlin.Long
-      @JvmName("getBlockHeight")
-      get() = _builder.blockHeight
-      @JvmName("setBlockHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockHeight")
+        get() = _builder.blockHeight
+      @kotlin.jvm.JvmName("setBlockHeight")
+        set(value) {
         _builder.blockHeight = value
       }
     /**
@@ -60,7 +60,7 @@ public object GetLatestValidatorSetResponseKt {
      */
      public val validators: com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorsList
       )
     /**
@@ -68,7 +68,7 @@ public object GetLatestValidatorSetResponseKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidators")
+@kotlin.jvm.JvmName("addValidators")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>.add(value: cosmos.base.tendermint.v1beta1.Query.Validator) {
       _builder.addValidators(value)
     }
@@ -77,7 +77,7 @@ public object GetLatestValidatorSetResponseKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidators")
+@kotlin.jvm.JvmName("plusAssignValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>.plusAssign(value: cosmos.base.tendermint.v1beta1.Query.Validator) {
       add(value)
@@ -87,7 +87,7 @@ public object GetLatestValidatorSetResponseKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidators")
+@kotlin.jvm.JvmName("addAllValidators")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.tendermint.v1beta1.Query.Validator>) {
       _builder.addAllValidators(values)
     }
@@ -96,7 +96,7 @@ public object GetLatestValidatorSetResponseKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidators")
+@kotlin.jvm.JvmName("plusAssignAllValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.tendermint.v1beta1.Query.Validator>) {
       addAll(values)
@@ -107,7 +107,7 @@ public object GetLatestValidatorSetResponseKt {
      * @param value The validators to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidators")
+@kotlin.jvm.JvmName("setValidators")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>.set(index: kotlin.Int, value: cosmos.base.tendermint.v1beta1.Query.Validator) {
       _builder.setValidators(index, value)
     }
@@ -115,11 +115,10 @@ public object GetLatestValidatorSetResponseKt {
      * `repeated .cosmos.base.tendermint.v1beta1.Validator validators = 2 [json_name = "validators"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidators")
+@kotlin.jvm.JvmName("clearValidators")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Validator, ValidatorsProxy>.clear() {
       _builder.clearValidators()
     }
-
 
     /**
      * ```
@@ -129,10 +128,10 @@ public object GetLatestValidatorSetResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 3 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

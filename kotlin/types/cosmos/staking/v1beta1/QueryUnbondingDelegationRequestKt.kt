@@ -41,10 +41,10 @@ public object QueryUnbondingDelegationRequestKt {
      * `string delegator_addr = 1 [json_name = "delegatorAddr", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddr: kotlin.String
-      @JvmName("getDelegatorAddr")
-      get() = _builder.delegatorAddr
-      @JvmName("setDelegatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddr")
+        get() = _builder.delegatorAddr
+      @kotlin.jvm.JvmName("setDelegatorAddr")
+        set(value) {
         _builder.delegatorAddr = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryUnbondingDelegationRequestKt {
      * `string validator_addr = 2 [json_name = "validatorAddr", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddr: kotlin.String
-      @JvmName("getValidatorAddr")
-      get() = _builder.validatorAddr
-      @JvmName("setValidatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddr")
+        get() = _builder.validatorAddr
+      @kotlin.jvm.JvmName("setValidatorAddr")
+        set(value) {
         _builder.validatorAddr = value
       }
     /**

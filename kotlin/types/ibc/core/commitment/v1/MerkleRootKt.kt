@@ -37,10 +37,10 @@ public object MerkleRootKt {
      * `bytes hash = 1 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**

@@ -48,10 +48,10 @@ public object PageResponseKt {
      * `bytes next_key = 1 [json_name = "nextKey"];`
      */
     public var nextKey: com.google.protobuf.ByteString
-      @JvmName("getNextKey")
-      get() = _builder.nextKey
-      @JvmName("setNextKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextKey")
+        get() = _builder.nextKey
+      @kotlin.jvm.JvmName("setNextKey")
+        set(value) {
         _builder.nextKey = value
       }
     /**
@@ -76,10 +76,10 @@ public object PageResponseKt {
      * `uint64 total = 2 [json_name = "total"];`
      */
     public var total: kotlin.Long
-      @JvmName("getTotal")
-      get() = _builder.total
-      @JvmName("setTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotal")
+        get() = _builder.total
+      @kotlin.jvm.JvmName("setTotal")
+        set(value) {
         _builder.total = value
       }
     /**

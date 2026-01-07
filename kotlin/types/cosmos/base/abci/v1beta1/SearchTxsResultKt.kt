@@ -40,10 +40,10 @@ public object SearchTxsResultKt {
      * `uint64 total_count = 1 [json_name = "totalCount"];`
      */
     public var totalCount: kotlin.Long
-      @JvmName("getTotalCount")
-      get() = _builder.totalCount
-      @JvmName("setTotalCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalCount")
+        get() = _builder.totalCount
+      @kotlin.jvm.JvmName("setTotalCount")
+        set(value) {
         _builder.totalCount = value
       }
     /**
@@ -65,10 +65,10 @@ public object SearchTxsResultKt {
      * `uint64 count = 2 [json_name = "count"];`
      */
     public var count: kotlin.Long
-      @JvmName("getCount")
-      get() = _builder.count
-      @JvmName("setCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getCount")
+        get() = _builder.count
+      @kotlin.jvm.JvmName("setCount")
+        set(value) {
         _builder.count = value
       }
     /**
@@ -90,10 +90,10 @@ public object SearchTxsResultKt {
      * `uint64 page_number = 3 [json_name = "pageNumber"];`
      */
     public var pageNumber: kotlin.Long
-      @JvmName("getPageNumber")
-      get() = _builder.pageNumber
-      @JvmName("setPageNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getPageNumber")
+        get() = _builder.pageNumber
+      @kotlin.jvm.JvmName("setPageNumber")
+        set(value) {
         _builder.pageNumber = value
       }
     /**
@@ -115,10 +115,10 @@ public object SearchTxsResultKt {
      * `uint64 page_total = 4 [json_name = "pageTotal"];`
      */
     public var pageTotal: kotlin.Long
-      @JvmName("getPageTotal")
-      get() = _builder.pageTotal
-      @JvmName("setPageTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getPageTotal")
+        get() = _builder.pageTotal
+      @kotlin.jvm.JvmName("setPageTotal")
+        set(value) {
         _builder.pageTotal = value
       }
     /**
@@ -140,10 +140,10 @@ public object SearchTxsResultKt {
      * `uint64 limit = 5 [json_name = "limit"];`
      */
     public var limit: kotlin.Long
-      @JvmName("getLimit")
-      get() = _builder.limit
-      @JvmName("setLimit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLimit")
+        get() = _builder.limit
+      @kotlin.jvm.JvmName("setLimit")
+        set(value) {
         _builder.limit = value
       }
     /**
@@ -172,7 +172,7 @@ public object SearchTxsResultKt {
      */
      public val txs: com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.txsList
       )
     /**
@@ -184,7 +184,7 @@ public object SearchTxsResultKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTxs")
+@kotlin.jvm.JvmName("addTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>.add(value: cosmos.base.abci.v1beta1.Abci.TxResponse) {
       _builder.addTxs(value)
     }
@@ -197,7 +197,7 @@ public object SearchTxsResultKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTxs")
+@kotlin.jvm.JvmName("plusAssignTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>.plusAssign(value: cosmos.base.abci.v1beta1.Abci.TxResponse) {
       add(value)
@@ -211,7 +211,7 @@ public object SearchTxsResultKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTxs")
+@kotlin.jvm.JvmName("addAllTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.TxResponse>) {
       _builder.addAllTxs(values)
     }
@@ -224,7 +224,7 @@ public object SearchTxsResultKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTxs")
+@kotlin.jvm.JvmName("plusAssignAllTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.TxResponse>) {
       addAll(values)
@@ -239,7 +239,7 @@ public object SearchTxsResultKt {
      * @param value The txs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTxs")
+@kotlin.jvm.JvmName("setTxs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>.set(index: kotlin.Int, value: cosmos.base.abci.v1beta1.Abci.TxResponse) {
       _builder.setTxs(index, value)
     }
@@ -251,11 +251,10 @@ public object SearchTxsResultKt {
      * `repeated .cosmos.base.abci.v1beta1.TxResponse txs = 6 [json_name = "txs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTxs")
+@kotlin.jvm.JvmName("clearTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxsProxy>.clear() {
       _builder.clearTxs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

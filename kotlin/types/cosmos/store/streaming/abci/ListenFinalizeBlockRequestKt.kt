@@ -36,10 +36,10 @@ public object ListenFinalizeBlockRequestKt {
      * `.tendermint.abci.RequestFinalizeBlock req = 1 [json_name = "req"];`
      */
     public var req: tendermint.abci.Types.RequestFinalizeBlock
-      @JvmName("getReq")
-      get() = _builder.req
-      @JvmName("setReq")
-      set(value) {
+      @kotlin.jvm.JvmName("getReq")
+        get() = _builder.req
+      @kotlin.jvm.JvmName("setReq")
+        set(value) {
         _builder.req = value
       }
     /**
@@ -63,10 +63,10 @@ public object ListenFinalizeBlockRequestKt {
      * `.tendermint.abci.ResponseFinalizeBlock res = 2 [json_name = "res"];`
      */
     public var res: tendermint.abci.Types.ResponseFinalizeBlock
-      @JvmName("getRes")
-      get() = _builder.res
-      @JvmName("setRes")
-      set(value) {
+      @kotlin.jvm.JvmName("getRes")
+        get() = _builder.res
+      @kotlin.jvm.JvmName("setRes")
+        set(value) {
         _builder.res = value
       }
     /**

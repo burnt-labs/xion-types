@@ -41,10 +41,10 @@ public object QueryAnnualProvisionsResponseKt {
      * `bytes annual_provisions = 1 [json_name = "annualProvisions", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var annualProvisions: com.google.protobuf.ByteString
-      @JvmName("getAnnualProvisions")
-      get() = _builder.annualProvisions
-      @JvmName("setAnnualProvisions")
-      set(value) {
+      @kotlin.jvm.JvmName("getAnnualProvisions")
+        get() = _builder.annualProvisions
+      @kotlin.jvm.JvmName("setAnnualProvisions")
+        set(value) {
         _builder.annualProvisions = value
       }
     /**

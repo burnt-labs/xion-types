@@ -51,7 +51,7 @@ public object AuthInfoKt {
      */
      public val signerInfos: com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signerInfosList
       )
     /**
@@ -66,7 +66,7 @@ public object AuthInfoKt {
      * @param value The signerInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSignerInfos")
+@kotlin.jvm.JvmName("addSignerInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>.add(value: cosmos.tx.v1beta1.TxOuterClass.SignerInfo) {
       _builder.addSignerInfos(value)
     }
@@ -82,7 +82,7 @@ public object AuthInfoKt {
      * @param value The signerInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSignerInfos")
+@kotlin.jvm.JvmName("plusAssignSignerInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>.plusAssign(value: cosmos.tx.v1beta1.TxOuterClass.SignerInfo) {
       add(value)
@@ -99,7 +99,7 @@ public object AuthInfoKt {
      * @param values The signerInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSignerInfos")
+@kotlin.jvm.JvmName("addAllSignerInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.SignerInfo>) {
       _builder.addAllSignerInfos(values)
     }
@@ -115,7 +115,7 @@ public object AuthInfoKt {
      * @param values The signerInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSignerInfos")
+@kotlin.jvm.JvmName("plusAssignAllSignerInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.SignerInfo>) {
       addAll(values)
@@ -133,7 +133,7 @@ public object AuthInfoKt {
      * @param value The signerInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSignerInfos")
+@kotlin.jvm.JvmName("setSignerInfos")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>.set(index: kotlin.Int, value: cosmos.tx.v1beta1.TxOuterClass.SignerInfo) {
       _builder.setSignerInfos(index, value)
     }
@@ -148,11 +148,10 @@ public object AuthInfoKt {
      * `repeated .cosmos.tx.v1beta1.SignerInfo signer_infos = 1 [json_name = "signerInfos"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSignerInfos")
+@kotlin.jvm.JvmName("clearSignerInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.SignerInfo, SignerInfosProxy>.clear() {
       _builder.clearSignerInfos()
     }
-
 
     /**
      * ```
@@ -165,10 +164,10 @@ public object AuthInfoKt {
      * `.cosmos.tx.v1beta1.Fee fee = 2 [json_name = "fee"];`
      */
     public var fee: cosmos.tx.v1beta1.TxOuterClass.Fee
-      @JvmName("getFee")
-      get() = _builder.fee
-      @JvmName("setFee")
-      set(value) {
+      @kotlin.jvm.JvmName("getFee")
+        get() = _builder.fee
+      @kotlin.jvm.JvmName("setFee")
+        set(value) {
         _builder.fee = value
       }
     /**
@@ -213,10 +212,10 @@ public object AuthInfoKt {
      * `.cosmos.tx.v1beta1.Tip tip = 3 [json_name = "tip", deprecated = true, (.cosmos_proto.field_added_in) = "cosmos-sdk 0.46"];`
      */
     @kotlin.Deprecated(message = "Field tip is deprecated") public var tip: cosmos.tx.v1beta1.TxOuterClass.Tip
-      @JvmName("getTip")
-      get() = _builder.tip
-      @JvmName("setTip")
-      set(value) {
+      @kotlin.jvm.JvmName("getTip")
+        get() = _builder.tip
+      @kotlin.jvm.JvmName("setTip")
+        set(value) {
         _builder.tip = value
       }
     /**

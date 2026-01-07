@@ -36,10 +36,10 @@ public object ExtendedVoteInfoKt {
      * `.tendermint.abci.Validator validator = 1 [json_name = "validator", (.gogoproto.nullable) = false];`
      */
     public var validator: tendermint.abci.Types.Validator
-      @JvmName("getValidator")
-      get() = _builder.validator
-      @JvmName("setValidator")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidator")
+        get() = _builder.validator
+      @kotlin.jvm.JvmName("setValidator")
+        set(value) {
         _builder.validator = value
       }
     /**
@@ -75,10 +75,10 @@ public object ExtendedVoteInfoKt {
      * `bytes vote_extension = 3 [json_name = "voteExtension"];`
      */
     public var voteExtension: com.google.protobuf.ByteString
-      @JvmName("getVoteExtension")
-      get() = _builder.voteExtension
-      @JvmName("setVoteExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoteExtension")
+        get() = _builder.voteExtension
+      @kotlin.jvm.JvmName("setVoteExtension")
+        set(value) {
         _builder.voteExtension = value
       }
     /**
@@ -100,10 +100,10 @@ public object ExtendedVoteInfoKt {
      * `bytes extension_signature = 4 [json_name = "extensionSignature"];`
      */
     public var extensionSignature: com.google.protobuf.ByteString
-      @JvmName("getExtensionSignature")
-      get() = _builder.extensionSignature
-      @JvmName("setExtensionSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtensionSignature")
+        get() = _builder.extensionSignature
+      @kotlin.jvm.JvmName("setExtensionSignature")
+        set(value) {
         _builder.extensionSignature = value
       }
     /**
@@ -125,17 +125,17 @@ public object ExtendedVoteInfoKt {
      * `.tendermint.types.BlockIDFlag block_id_flag = 5 [json_name = "blockIdFlag"];`
      */
     public var blockIdFlag: tendermint.types.ValidatorOuterClass.BlockIDFlag
-      @JvmName("getBlockIdFlag")
-      get() = _builder.blockIdFlag
-      @JvmName("setBlockIdFlag")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockIdFlag")
+        get() = _builder.blockIdFlag
+      @kotlin.jvm.JvmName("setBlockIdFlag")
+        set(value) {
         _builder.blockIdFlag = value
       }
     public var blockIdFlagValue: kotlin.Int
-      @JvmName("getBlockIdFlagValue")
-      get() = _builder.blockIdFlagValue
-      @JvmName("setBlockIdFlagValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockIdFlagValue")
+        get() = _builder.blockIdFlagValue
+      @kotlin.jvm.JvmName("setBlockIdFlagValue")
+        set(value) {
         _builder.blockIdFlagValue = value
       }
     /**

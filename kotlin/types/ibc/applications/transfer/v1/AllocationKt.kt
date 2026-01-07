@@ -40,10 +40,10 @@ public object AllocationKt {
      * `string source_port = 1 [json_name = "sourcePort"];`
      */
     public var sourcePort: kotlin.String
-      @JvmName("getSourcePort")
-      get() = _builder.sourcePort
-      @JvmName("setSourcePort")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourcePort")
+        get() = _builder.sourcePort
+      @kotlin.jvm.JvmName("setSourcePort")
+        set(value) {
         _builder.sourcePort = value
       }
     /**
@@ -65,10 +65,10 @@ public object AllocationKt {
      * `string source_channel = 2 [json_name = "sourceChannel"];`
      */
     public var sourceChannel: kotlin.String
-      @JvmName("getSourceChannel")
-      get() = _builder.sourceChannel
-      @JvmName("setSourceChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourceChannel")
+        get() = _builder.sourceChannel
+      @kotlin.jvm.JvmName("setSourceChannel")
+        set(value) {
         _builder.sourceChannel = value
       }
     /**
@@ -97,7 +97,7 @@ public object AllocationKt {
      */
      public val spendLimit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.spendLimitList
       )
     /**
@@ -109,7 +109,7 @@ public object AllocationKt {
      * @param value The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSpendLimit")
+@kotlin.jvm.JvmName("addSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addSpendLimit(value)
     }
@@ -122,7 +122,7 @@ public object AllocationKt {
      * @param value The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSpendLimit")
+@kotlin.jvm.JvmName("plusAssignSpendLimit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -136,7 +136,7 @@ public object AllocationKt {
      * @param values The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSpendLimit")
+@kotlin.jvm.JvmName("addAllSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllSpendLimit(values)
     }
@@ -149,7 +149,7 @@ public object AllocationKt {
      * @param values The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSpendLimit")
+@kotlin.jvm.JvmName("plusAssignAllSpendLimit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -164,7 +164,7 @@ public object AllocationKt {
      * @param value The spendLimit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSpendLimit")
+@kotlin.jvm.JvmName("setSpendLimit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setSpendLimit(index, value)
     }
@@ -176,11 +176,10 @@ public object AllocationKt {
      * `repeated .cosmos.base.v1beta1.Coin spend_limit = 3 [json_name = "spendLimit", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSpendLimit")
+@kotlin.jvm.JvmName("clearSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.clear() {
       _builder.clearSpendLimit()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -197,7 +196,7 @@ public object AllocationKt {
      * @return A list containing the allowList.
      */
     public val allowList: com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowListList
       )
@@ -210,7 +209,7 @@ public object AllocationKt {
      * @param value The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowList")
+@kotlin.jvm.JvmName("addAllowList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.add(value: kotlin.String) {
       _builder.addAllowList(value)
     }
@@ -223,7 +222,7 @@ public object AllocationKt {
      * @param value The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowList")
+@kotlin.jvm.JvmName("plusAssignAllowList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -237,7 +236,7 @@ public object AllocationKt {
      * @param values The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowList")
+@kotlin.jvm.JvmName("addAllAllowList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowList(values)
     }
@@ -250,7 +249,7 @@ public object AllocationKt {
      * @param values The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowList")
+@kotlin.jvm.JvmName("plusAssignAllAllowList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -265,7 +264,7 @@ public object AllocationKt {
      * @param value The allowList to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowList")
+@kotlin.jvm.JvmName("setAllowList")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowList(index, value)
     }/**
@@ -276,7 +275,7 @@ public object AllocationKt {
      * `repeated string allow_list = 4 [json_name = "allowList"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowList")
+@kotlin.jvm.JvmName("setAllowList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.clear() {
       _builder.clearAllowList()
     }
@@ -296,7 +295,7 @@ public object AllocationKt {
      * @return A list containing the allowedPacketData.
      */
     public val allowedPacketData: com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowedPacketDataList
       )
@@ -310,7 +309,7 @@ public object AllocationKt {
      * @param value The allowedPacketData to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowedPacketData")
+@kotlin.jvm.JvmName("addAllowedPacketData")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>.add(value: kotlin.String) {
       _builder.addAllowedPacketData(value)
     }
@@ -324,7 +323,7 @@ public object AllocationKt {
      * @param value The allowedPacketData to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowedPacketData")
+@kotlin.jvm.JvmName("plusAssignAllowedPacketData")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -339,7 +338,7 @@ public object AllocationKt {
      * @param values The allowedPacketData to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowedPacketData")
+@kotlin.jvm.JvmName("addAllAllowedPacketData")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowedPacketData(values)
     }
@@ -353,7 +352,7 @@ public object AllocationKt {
      * @param values The allowedPacketData to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowedPacketData")
+@kotlin.jvm.JvmName("plusAssignAllAllowedPacketData")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -369,7 +368,7 @@ public object AllocationKt {
      * @param value The allowedPacketData to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowedPacketData")
+@kotlin.jvm.JvmName("setAllowedPacketData")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowedPacketData(index, value)
     }/**
@@ -381,7 +380,7 @@ public object AllocationKt {
      * `repeated string allowed_packet_data = 5 [json_name = "allowedPacketData"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowedPacketData")
+@kotlin.jvm.JvmName("setAllowedPacketData")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedPacketDataProxy>.clear() {
       _builder.clearAllowedPacketData()
     }}

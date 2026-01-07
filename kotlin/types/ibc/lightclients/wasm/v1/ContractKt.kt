@@ -40,10 +40,10 @@ public object ContractKt {
      * `bytes code_bytes = 1 [json_name = "codeBytes"];`
      */
     public var codeBytes: com.google.protobuf.ByteString
-      @JvmName("getCodeBytes")
-      get() = _builder.codeBytes
-      @JvmName("setCodeBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeBytes")
+        get() = _builder.codeBytes
+      @kotlin.jvm.JvmName("setCodeBytes")
+        set(value) {
         _builder.codeBytes = value
       }
     /**

@@ -43,7 +43,7 @@ public object GenesisStateKt {
      */
      public val allowances: com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.allowancesList
       )
     /**
@@ -51,7 +51,7 @@ public object GenesisStateKt {
      * @param value The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowances")
+@kotlin.jvm.JvmName("addAllowances")
     public fun com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>.add(value: cosmos.feegrant.v1beta1.Feegrant.Grant) {
       _builder.addAllowances(value)
     }
@@ -60,7 +60,7 @@ public object GenesisStateKt {
      * @param value The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowances")
+@kotlin.jvm.JvmName("plusAssignAllowances")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>.plusAssign(value: cosmos.feegrant.v1beta1.Feegrant.Grant) {
       add(value)
@@ -70,7 +70,7 @@ public object GenesisStateKt {
      * @param values The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowances")
+@kotlin.jvm.JvmName("addAllAllowances")
     public fun com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.feegrant.v1beta1.Feegrant.Grant>) {
       _builder.addAllAllowances(values)
     }
@@ -79,7 +79,7 @@ public object GenesisStateKt {
      * @param values The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowances")
+@kotlin.jvm.JvmName("plusAssignAllAllowances")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.feegrant.v1beta1.Feegrant.Grant>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object GenesisStateKt {
      * @param value The allowances to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowances")
+@kotlin.jvm.JvmName("setAllowances")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>.set(index: kotlin.Int, value: cosmos.feegrant.v1beta1.Feegrant.Grant) {
       _builder.setAllowances(index, value)
     }
@@ -98,11 +98,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.feegrant.v1beta1.Grant allowances = 1 [json_name = "allowances", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowances")
+@kotlin.jvm.JvmName("clearAllowances")
     public fun com.google.protobuf.kotlin.DslList<cosmos.feegrant.v1beta1.Feegrant.Grant, AllowancesProxy>.clear() {
       _builder.clearAllowances()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

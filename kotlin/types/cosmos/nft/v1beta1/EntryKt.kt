@@ -40,10 +40,10 @@ public object EntryKt {
      * `string owner = 1 [json_name = "owner"];`
      */
     public var owner: kotlin.String
-      @JvmName("getOwner")
-      get() = _builder.owner
-      @JvmName("setOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getOwner")
+        get() = _builder.owner
+      @kotlin.jvm.JvmName("setOwner")
+        set(value) {
         _builder.owner = value
       }
     /**
@@ -72,7 +72,7 @@ public object EntryKt {
      */
      public val nfts: com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.nftsList
       )
     /**
@@ -84,7 +84,7 @@ public object EntryKt {
      * @param value The nfts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addNfts")
+@kotlin.jvm.JvmName("addNfts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>.add(value: cosmos.nft.v1beta1.Nft.NFT) {
       _builder.addNfts(value)
     }
@@ -97,7 +97,7 @@ public object EntryKt {
      * @param value The nfts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignNfts")
+@kotlin.jvm.JvmName("plusAssignNfts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>.plusAssign(value: cosmos.nft.v1beta1.Nft.NFT) {
       add(value)
@@ -111,7 +111,7 @@ public object EntryKt {
      * @param values The nfts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllNfts")
+@kotlin.jvm.JvmName("addAllNfts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.nft.v1beta1.Nft.NFT>) {
       _builder.addAllNfts(values)
     }
@@ -124,7 +124,7 @@ public object EntryKt {
      * @param values The nfts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllNfts")
+@kotlin.jvm.JvmName("plusAssignAllNfts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.nft.v1beta1.Nft.NFT>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object EntryKt {
      * @param value The nfts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setNfts")
+@kotlin.jvm.JvmName("setNfts")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>.set(index: kotlin.Int, value: cosmos.nft.v1beta1.Nft.NFT) {
       _builder.setNfts(index, value)
     }
@@ -151,11 +151,10 @@ public object EntryKt {
      * `repeated .cosmos.nft.v1beta1.NFT nfts = 2 [json_name = "nfts"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearNfts")
+@kotlin.jvm.JvmName("clearNfts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.NFT, NftsProxy>.clear() {
       _builder.clearNfts()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

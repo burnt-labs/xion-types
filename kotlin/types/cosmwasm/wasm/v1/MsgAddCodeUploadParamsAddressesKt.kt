@@ -41,10 +41,10 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -69,7 +69,7 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * @return A list containing the addresses.
      */
     public val addresses: com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.addressesList
       )
@@ -78,7 +78,7 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * @param value The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAddresses")
+@kotlin.jvm.JvmName("addAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.add(value: kotlin.String) {
       _builder.addAddresses(value)
     }
@@ -87,7 +87,7 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * @param value The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAddresses")
+@kotlin.jvm.JvmName("plusAssignAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -97,7 +97,7 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * @param values The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAddresses")
+@kotlin.jvm.JvmName("addAllAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAddresses(values)
     }
@@ -106,7 +106,7 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * @param values The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAddresses")
+@kotlin.jvm.JvmName("plusAssignAllAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -117,14 +117,14 @@ public object MsgAddCodeUploadParamsAddressesKt {
      * @param value The addresses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAddresses")
+@kotlin.jvm.JvmName("setAddresses")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAddresses(index, value)
     }/**
      * `repeated string addresses = 2 [json_name = "addresses", (.gogoproto.moretags) = "yaml:\"addresses\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAddresses")
+@kotlin.jvm.JvmName("setAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.clear() {
       _builder.clearAddresses()
     }}

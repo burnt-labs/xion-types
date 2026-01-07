@@ -41,10 +41,10 @@ public object StoreKeyConfigKt {
      * `string module_name = 1 [json_name = "moduleName"];`
      */
     public var moduleName: kotlin.String
-      @JvmName("getModuleName")
-      get() = _builder.moduleName
-      @JvmName("setModuleName")
-      set(value) {
+      @kotlin.jvm.JvmName("getModuleName")
+        get() = _builder.moduleName
+      @kotlin.jvm.JvmName("setModuleName")
+        set(value) {
         _builder.moduleName = value
       }
     /**
@@ -66,10 +66,10 @@ public object StoreKeyConfigKt {
      * `string kv_store_key = 2 [json_name = "kvStoreKey"];`
      */
     public var kvStoreKey: kotlin.String
-      @JvmName("getKvStoreKey")
-      get() = _builder.kvStoreKey
-      @JvmName("setKvStoreKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKvStoreKey")
+        get() = _builder.kvStoreKey
+      @kotlin.jvm.JvmName("setKvStoreKey")
+        set(value) {
         _builder.kvStoreKey = value
       }
     /**

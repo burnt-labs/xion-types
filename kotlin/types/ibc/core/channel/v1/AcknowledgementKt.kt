@@ -42,10 +42,10 @@ public object AcknowledgementKt {
      * `bytes result = 21 [json_name = "result"];`
      */
     public var result: com.google.protobuf.ByteString
-      @JvmName("getResult")
-      get() = _builder.result
-      @JvmName("setResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getResult")
+        get() = _builder.result
+      @kotlin.jvm.JvmName("setResult")
+        set(value) {
         _builder.result = value
       }
     /**
@@ -66,10 +66,10 @@ public object AcknowledgementKt {
      * `string error = 22 [json_name = "error"];`
      */
     public var error: kotlin.String
-      @JvmName("getError")
-      get() = _builder.error
-      @JvmName("setError")
-      set(value) {
+      @kotlin.jvm.JvmName("getError")
+        get() = _builder.error
+      @kotlin.jvm.JvmName("setError")
+        set(value) {
         _builder.error = value
       }
     /**

@@ -40,10 +40,10 @@ public object MsgDescriptorKt {
      * `string msg_type_url = 1 [json_name = "msgTypeUrl"];`
      */
     public var msgTypeUrl: kotlin.String
-      @JvmName("getMsgTypeUrl")
-      get() = _builder.msgTypeUrl
-      @JvmName("setMsgTypeUrl")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsgTypeUrl")
+        get() = _builder.msgTypeUrl
+      @kotlin.jvm.JvmName("setMsgTypeUrl")
+        set(value) {
         _builder.msgTypeUrl = value
       }
     /**

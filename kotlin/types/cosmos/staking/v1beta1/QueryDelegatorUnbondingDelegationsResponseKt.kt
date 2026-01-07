@@ -44,7 +44,7 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      */
      public val unbondingResponses: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.unbondingResponsesList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * @param value The unbondingResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addUnbondingResponses")
+@kotlin.jvm.JvmName("addUnbondingResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>.add(value: cosmos.staking.v1beta1.Staking.UnbondingDelegation) {
       _builder.addUnbondingResponses(value)
     }
@@ -61,7 +61,7 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * @param value The unbondingResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignUnbondingResponses")
+@kotlin.jvm.JvmName("plusAssignUnbondingResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>.plusAssign(value: cosmos.staking.v1beta1.Staking.UnbondingDelegation) {
       add(value)
@@ -71,7 +71,7 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * @param values The unbondingResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllUnbondingResponses")
+@kotlin.jvm.JvmName("addAllUnbondingResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.UnbondingDelegation>) {
       _builder.addAllUnbondingResponses(values)
     }
@@ -80,7 +80,7 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * @param values The unbondingResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllUnbondingResponses")
+@kotlin.jvm.JvmName("plusAssignAllUnbondingResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.UnbondingDelegation>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * @param value The unbondingResponses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setUnbondingResponses")
+@kotlin.jvm.JvmName("setUnbondingResponses")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Staking.UnbondingDelegation) {
       _builder.setUnbondingResponses(index, value)
     }
@@ -99,11 +99,10 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * `repeated .cosmos.staking.v1beta1.UnbondingDelegation unbonding_responses = 1 [json_name = "unbondingResponses", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearUnbondingResponses")
+@kotlin.jvm.JvmName("clearUnbondingResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegation, UnbondingResponsesProxy>.clear() {
       _builder.clearUnbondingResponses()
     }
-
 
     /**
      * ```
@@ -113,10 +112,10 @@ public object QueryDelegatorUnbondingDelegationsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

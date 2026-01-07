@@ -32,17 +32,17 @@ public object ResponseOfferSnapshotKt {
      * `.tendermint.abci.ResponseOfferSnapshot.Result result = 1 [json_name = "result"];`
      */
     public var result: tendermint.abci.Types.ResponseOfferSnapshot.Result
-      @JvmName("getResult")
-      get() = _builder.result
-      @JvmName("setResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getResult")
+        get() = _builder.result
+      @kotlin.jvm.JvmName("setResult")
+        set(value) {
         _builder.result = value
       }
     public var resultValue: kotlin.Int
-      @JvmName("getResultValue")
-      get() = _builder.resultValue
-      @JvmName("setResultValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getResultValue")
+        get() = _builder.resultValue
+      @kotlin.jvm.JvmName("setResultValue")
+        set(value) {
         _builder.resultValue = value
       }
     /**

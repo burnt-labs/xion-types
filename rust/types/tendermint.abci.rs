@@ -51,7 +51,7 @@ pub struct RequestEcho {
     #[prost(string, tag="1")]
     pub message: ::prost::alloc::string::String,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestFlush {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -72,7 +72,7 @@ pub struct RequestInitChain {
     #[prost(string, tag="2")]
     pub chain_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
-    pub consensus_params: ::core::option::Option<super::types::ConsensusParams>,
+    pub consensus_params: ::core::option::Option<crate::types::tendermint_types::ConsensusParams>,
     #[prost(message, repeated, tag="4")]
     pub validators: ::prost::alloc::vec::Vec<ValidatorUpdate>,
     #[prost(bytes="vec", tag="5")]
@@ -98,11 +98,11 @@ pub struct RequestCheckTx {
     #[prost(enumeration="CheckTxType", tag="2")]
     pub r#type: i32,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestCommit {
 }
 /// lists available snapshots
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestListSnapshots {
 }
 /// offers a snapshot to the application
@@ -116,7 +116,7 @@ pub struct RequestOfferSnapshot {
     pub app_hash: ::prost::alloc::vec::Vec<u8>,
 }
 /// loads a snapshot chunk
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestLoadSnapshotChunk {
     #[prost(uint64, tag="1")]
     pub height: u64,
@@ -297,7 +297,7 @@ pub struct ResponseEcho {
     #[prost(string, tag="1")]
     pub message: ::prost::alloc::string::String,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseFlush {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -316,7 +316,7 @@ pub struct ResponseInfo {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseInitChain {
     #[prost(message, optional, tag="1")]
-    pub consensus_params: ::core::option::Option<super::types::ConsensusParams>,
+    pub consensus_params: ::core::option::Option<crate::types::tendermint_types::ConsensusParams>,
     #[prost(message, repeated, tag="2")]
     pub validators: ::prost::alloc::vec::Vec<ValidatorUpdate>,
     #[prost(bytes="vec", tag="3")]
@@ -341,7 +341,7 @@ pub struct ResponseQuery {
     #[prost(bytes="vec", tag="7")]
     pub value: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="8")]
-    pub proof_ops: ::core::option::Option<super::crypto::ProofOps>,
+    pub proof_ops: ::core::option::Option<crate::types::tendermint_crypto::ProofOps>,
     #[prost(int64, tag="9")]
     pub height: i64,
     #[prost(string, tag="10")]
@@ -368,7 +368,7 @@ pub struct ResponseCheckTx {
     #[prost(string, tag="8")]
     pub codespace: ::prost::alloc::string::String,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseCommit {
     #[prost(int64, tag="3")]
     pub retain_height: i64,
@@ -378,7 +378,7 @@ pub struct ResponseListSnapshots {
     #[prost(message, repeated, tag="1")]
     pub snapshots: ::prost::alloc::vec::Vec<Snapshot>,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseOfferSnapshot {
     #[prost(enumeration="response_offer_snapshot::Result", tag="1")]
     pub result: i32,
@@ -498,7 +498,7 @@ pub struct ResponsePrepareProposal {
     #[prost(bytes="vec", repeated, tag="1")]
     pub txs: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseProcessProposal {
     #[prost(enumeration="response_process_proposal::ProposalStatus", tag="1")]
     pub status: i32,
@@ -540,7 +540,7 @@ pub struct ResponseExtendVote {
     #[prost(bytes="vec", tag="1")]
     pub vote_extension: ::prost::alloc::vec::Vec<u8>,
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseVerifyVoteExtension {
     #[prost(enumeration="response_verify_vote_extension::VerifyStatus", tag="1")]
     pub status: i32,
@@ -596,7 +596,7 @@ pub struct ResponseFinalizeBlock {
     pub validator_updates: ::prost::alloc::vec::Vec<ValidatorUpdate>,
     /// updates to the consensus params, if any.
     #[prost(message, optional, tag="4")]
-    pub consensus_param_updates: ::core::option::Option<super::types::ConsensusParams>,
+    pub consensus_param_updates: ::core::option::Option<crate::types::tendermint_types::ConsensusParams>,
     /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
     /// deterministic. It is up to the application to decide which algorithm to use.
     #[prost(bytes="vec", tag="5")]
@@ -702,7 +702,7 @@ pub struct Validator {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorUpdate {
     #[prost(message, optional, tag="1")]
-    pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
+    pub pub_key: ::core::option::Option<crate::types::tendermint_crypto::PublicKey>,
     #[prost(int64, tag="2")]
     pub power: i64,
 }
@@ -710,7 +710,7 @@ pub struct ValidatorUpdate {
 pub struct VoteInfo {
     #[prost(message, optional, tag="1")]
     pub validator: ::core::option::Option<Validator>,
-    #[prost(enumeration="super::types::BlockIdFlag", tag="3")]
+    #[prost(enumeration="crate::types::tendermint_types::BlockIdFlag", tag="3")]
     pub block_id_flag: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -725,7 +725,7 @@ pub struct ExtendedVoteInfo {
     #[prost(bytes="vec", tag="4")]
     pub extension_signature: ::prost::alloc::vec::Vec<u8>,
     /// block_id_flag indicates whether the validator voted for a block, nil, or did not vote at all
-    #[prost(enumeration="super::types::BlockIdFlag", tag="5")]
+    #[prost(enumeration="crate::types::tendermint_types::BlockIdFlag", tag="5")]
     pub block_id_flag: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]

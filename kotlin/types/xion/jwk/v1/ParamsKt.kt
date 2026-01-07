@@ -34,21 +34,21 @@ public object ParamsKt {
 
     /**
      * ```
-     * in nanoseconds
+     * Time offset in nanoseconds for JWT validation
      * ```
      *
      * `uint64 time_offset = 1 [json_name = "timeOffset", (.gogoproto.moretags) = "yaml:\"time_offset\""];`
      */
     public var timeOffset: kotlin.Long
-      @JvmName("getTimeOffset")
-      get() = _builder.timeOffset
-      @JvmName("setTimeOffset")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeOffset")
+        get() = _builder.timeOffset
+      @kotlin.jvm.JvmName("setTimeOffset")
+        set(value) {
         _builder.timeOffset = value
       }
     /**
      * ```
-     * in nanoseconds
+     * Time offset in nanoseconds for JWT validation
      * ```
      *
      * `uint64 time_offset = 1 [json_name = "timeOffset", (.gogoproto.moretags) = "yaml:\"time_offset\""];`
@@ -59,21 +59,21 @@ public object ParamsKt {
 
     /**
      * ```
-     * gas to deploy a new project/audience
+     * Gas required to deploy a new project/audience
      * ```
      *
      * `uint64 deployment_gas = 2 [json_name = "deploymentGas", (.gogoproto.moretags) = "yaml:\"deployment_gas\""];`
      */
     public var deploymentGas: kotlin.Long
-      @JvmName("getDeploymentGas")
-      get() = _builder.deploymentGas
-      @JvmName("setDeploymentGas")
-      set(value) {
+      @kotlin.jvm.JvmName("getDeploymentGas")
+        get() = _builder.deploymentGas
+      @kotlin.jvm.JvmName("setDeploymentGas")
+        set(value) {
         _builder.deploymentGas = value
       }
     /**
      * ```
-     * gas to deploy a new project/audience
+     * Gas required to deploy a new project/audience
      * ```
      *
      * `uint64 deployment_gas = 2 [json_name = "deploymentGas", (.gogoproto.moretags) = "yaml:\"deployment_gas\""];`

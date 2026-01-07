@@ -36,10 +36,10 @@ public object SnapshotKt {
      * `uint64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -53,10 +53,10 @@ public object SnapshotKt {
      * `uint32 format = 2 [json_name = "format"];`
      */
     public var format: kotlin.Int
-      @JvmName("getFormat")
-      get() = _builder.format
-      @JvmName("setFormat")
-      set(value) {
+      @kotlin.jvm.JvmName("getFormat")
+        get() = _builder.format
+      @kotlin.jvm.JvmName("setFormat")
+        set(value) {
         _builder.format = value
       }
     /**
@@ -70,10 +70,10 @@ public object SnapshotKt {
      * `uint32 chunks = 3 [json_name = "chunks"];`
      */
     public var chunks: kotlin.Int
-      @JvmName("getChunks")
-      get() = _builder.chunks
-      @JvmName("setChunks")
-      set(value) {
+      @kotlin.jvm.JvmName("getChunks")
+        get() = _builder.chunks
+      @kotlin.jvm.JvmName("setChunks")
+        set(value) {
         _builder.chunks = value
       }
     /**
@@ -87,10 +87,10 @@ public object SnapshotKt {
      * `bytes hash = 4 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**
@@ -104,10 +104,10 @@ public object SnapshotKt {
      * `.cosmos.store.snapshots.v1.Metadata metadata = 5 [json_name = "metadata", (.gogoproto.nullable) = false];`
      */
     public var metadata: cosmos.store.snapshots.v1.SnapshotOuterClass.Metadata
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**

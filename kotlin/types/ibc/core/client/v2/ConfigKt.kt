@@ -50,7 +50,7 @@ public object ConfigKt {
      * @return A list containing the allowedRelayers.
      */
     public val allowedRelayers: com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowedRelayersList
       )
@@ -63,7 +63,7 @@ public object ConfigKt {
      * @param value The allowedRelayers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowedRelayers")
+@kotlin.jvm.JvmName("addAllowedRelayers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>.add(value: kotlin.String) {
       _builder.addAllowedRelayers(value)
     }
@@ -76,7 +76,7 @@ public object ConfigKt {
      * @param value The allowedRelayers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowedRelayers")
+@kotlin.jvm.JvmName("plusAssignAllowedRelayers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -90,7 +90,7 @@ public object ConfigKt {
      * @param values The allowedRelayers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowedRelayers")
+@kotlin.jvm.JvmName("addAllAllowedRelayers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowedRelayers(values)
     }
@@ -103,7 +103,7 @@ public object ConfigKt {
      * @param values The allowedRelayers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowedRelayers")
+@kotlin.jvm.JvmName("plusAssignAllAllowedRelayers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -118,7 +118,7 @@ public object ConfigKt {
      * @param value The allowedRelayers to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowedRelayers")
+@kotlin.jvm.JvmName("setAllowedRelayers")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowedRelayers(index, value)
     }/**
@@ -129,7 +129,7 @@ public object ConfigKt {
      * `repeated string allowed_relayers = 1 [json_name = "allowedRelayers"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowedRelayers")
+@kotlin.jvm.JvmName("setAllowedRelayers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedRelayersProxy>.clear() {
       _builder.clearAllowedRelayers()
     }}

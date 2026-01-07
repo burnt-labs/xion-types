@@ -36,10 +36,10 @@ public object MsgCreateClientResponseKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**

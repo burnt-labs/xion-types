@@ -48,7 +48,7 @@ public object QueryContractsByCreatorResponseKt {
      * @return A list containing the contractAddresses.
      */
     public val contractAddresses: com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.contractAddressesList
       )
@@ -61,7 +61,7 @@ public object QueryContractsByCreatorResponseKt {
      * @param value The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContractAddresses")
+@kotlin.jvm.JvmName("addContractAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.add(value: kotlin.String) {
       _builder.addContractAddresses(value)
     }
@@ -74,7 +74,7 @@ public object QueryContractsByCreatorResponseKt {
      * @param value The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContractAddresses")
+@kotlin.jvm.JvmName("plusAssignContractAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -88,7 +88,7 @@ public object QueryContractsByCreatorResponseKt {
      * @param values The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContractAddresses")
+@kotlin.jvm.JvmName("addAllContractAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllContractAddresses(values)
     }
@@ -101,7 +101,7 @@ public object QueryContractsByCreatorResponseKt {
      * @param values The contractAddresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContractAddresses")
+@kotlin.jvm.JvmName("plusAssignAllContractAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -116,7 +116,7 @@ public object QueryContractsByCreatorResponseKt {
      * @param value The contractAddresses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContractAddresses")
+@kotlin.jvm.JvmName("setContractAddresses")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setContractAddresses(index, value)
     }/**
@@ -127,7 +127,7 @@ public object QueryContractsByCreatorResponseKt {
      * `repeated string contract_addresses = 1 [json_name = "contractAddresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContractAddresses")
+@kotlin.jvm.JvmName("setContractAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ContractAddressesProxy>.clear() {
       _builder.clearContractAddresses()
     }
@@ -139,10 +139,10 @@ public object QueryContractsByCreatorResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

@@ -48,7 +48,7 @@ public object QueryCommunityPoolResponseKt {
      */
      public val pool: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.poolList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryCommunityPoolResponseKt {
      * @param value The pool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPool")
+@kotlin.jvm.JvmName("addPool")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addPool(value)
     }
@@ -73,7 +73,7 @@ public object QueryCommunityPoolResponseKt {
      * @param value The pool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPool")
+@kotlin.jvm.JvmName("plusAssignPool")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryCommunityPoolResponseKt {
      * @param values The pool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPool")
+@kotlin.jvm.JvmName("addAllPool")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllPool(values)
     }
@@ -100,7 +100,7 @@ public object QueryCommunityPoolResponseKt {
      * @param values The pool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPool")
+@kotlin.jvm.JvmName("plusAssignAllPool")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryCommunityPoolResponseKt {
      * @param value The pool to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPool")
+@kotlin.jvm.JvmName("setPool")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setPool(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryCommunityPoolResponseKt {
      * `repeated .cosmos.base.v1beta1.DecCoin pool = 1 [json_name = "pool", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPool")
+@kotlin.jvm.JvmName("clearPool")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, PoolProxy>.clear() {
       _builder.clearPool()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

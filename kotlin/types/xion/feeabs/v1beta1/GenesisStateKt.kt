@@ -33,22 +33,34 @@ public object GenesisStateKt {
     internal fun _build(): xion.feeabs.v1beta1.Genesis.GenesisState = _builder.build()
 
     /**
+     * ```
+     * params defines the parameters for the feeabs module
+     * ```
+     *
      * `.xion.feeabs.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"params\""];`
      */
     public var params: xion.feeabs.v1beta1.ParamsOuterClass.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
+     * ```
+     * params defines the parameters for the feeabs module
+     * ```
+     *
      * `.xion.feeabs.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"params\""];`
      */
     public fun clearParams() {
       _builder.clearParams()
     }
     /**
+     * ```
+     * params defines the parameters for the feeabs module
+     * ```
+     *
      * `.xion.feeabs.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"params\""];`
      * @return Whether the params field is set.
      */
@@ -66,82 +78,117 @@ public object GenesisStateKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class EpochsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      */
      public val epochs: com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.epochsList
       )
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      * @param value The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEpochs")
+@kotlin.jvm.JvmName("addEpochs")
     public fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>.add(value: xion.feeabs.v1beta1.Epoch.EpochInfo) {
       _builder.addEpochs(value)
     }
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      * @param value The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEpochs")
+@kotlin.jvm.JvmName("plusAssignEpochs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>.plusAssign(value: xion.feeabs.v1beta1.Epoch.EpochInfo) {
       add(value)
     }
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      * @param values The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEpochs")
+@kotlin.jvm.JvmName("addAllEpochs")
     public fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>.addAll(values: kotlin.collections.Iterable<xion.feeabs.v1beta1.Epoch.EpochInfo>) {
       _builder.addAllEpochs(values)
     }
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      * @param values The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEpochs")
+@kotlin.jvm.JvmName("plusAssignAllEpochs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>.plusAssign(values: kotlin.collections.Iterable<xion.feeabs.v1beta1.Epoch.EpochInfo>) {
       addAll(values)
     }
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      * @param index The index to set the value at.
      * @param value The epochs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEpochs")
+@kotlin.jvm.JvmName("setEpochs")
     public operator fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>.set(index: kotlin.Int, value: xion.feeabs.v1beta1.Epoch.EpochInfo) {
       _builder.setEpochs(index, value)
     }
     /**
+     * ```
+     * epochs defines the list of epoch information
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.EpochInfo epochs = 2 [json_name = "epochs", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEpochs")
+@kotlin.jvm.JvmName("clearEpochs")
     public fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Epoch.EpochInfo, EpochsProxy>.clear() {
       _builder.clearEpochs()
     }
 
-
     /**
+     * ```
+     * port_id defines the IBC port identifier
+     * ```
+     *
      * `string port_id = 3 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
+     * ```
+     * port_id defines the IBC port identifier
+     * ```
+     *
      * `string port_id = 3 [json_name = "portId"];`
      */
     public fun clearPortId() {

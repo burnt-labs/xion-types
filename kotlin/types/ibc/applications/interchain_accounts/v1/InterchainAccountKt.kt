@@ -36,10 +36,10 @@ public object InterchainAccountKt {
      * `.cosmos.auth.v1beta1.BaseAccount base_account = 1 [json_name = "baseAccount", (.gogoproto.embed) = true];`
      */
     public var baseAccount: cosmos.auth.v1beta1.Auth.BaseAccount
-      @JvmName("getBaseAccount")
-      get() = _builder.baseAccount
-      @JvmName("setBaseAccount")
-      set(value) {
+      @kotlin.jvm.JvmName("getBaseAccount")
+        get() = _builder.baseAccount
+      @kotlin.jvm.JvmName("setBaseAccount")
+        set(value) {
         _builder.baseAccount = value
       }
     /**
@@ -63,10 +63,10 @@ public object InterchainAccountKt {
      * `string account_owner = 2 [json_name = "accountOwner"];`
      */
     public var accountOwner: kotlin.String
-      @JvmName("getAccountOwner")
-      get() = _builder.accountOwner
-      @JvmName("setAccountOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountOwner")
+        get() = _builder.accountOwner
+      @kotlin.jvm.JvmName("setAccountOwner")
+        set(value) {
         _builder.accountOwner = value
       }
     /**

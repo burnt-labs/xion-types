@@ -42,10 +42,10 @@ public object ModuleDescriptorKt {
      * `string go_import = 1 [json_name = "goImport"];`
      */
     public var goImport: kotlin.String
-      @JvmName("getGoImport")
-      get() = _builder.goImport
-      @JvmName("setGoImport")
-      set(value) {
+      @kotlin.jvm.JvmName("getGoImport")
+        get() = _builder.goImport
+      @kotlin.jvm.JvmName("setGoImport")
+        set(value) {
         _builder.goImport = value
       }
     /**
@@ -79,7 +79,7 @@ public object ModuleDescriptorKt {
      */
      public val usePackage: com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.usePackageList
       )
     /**
@@ -94,7 +94,7 @@ public object ModuleDescriptorKt {
      * @param value The usePackage to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addUsePackage")
+@kotlin.jvm.JvmName("addUsePackage")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>.add(value: cosmos.app.v1alpha1.Module.PackageReference) {
       _builder.addUsePackage(value)
     }
@@ -110,7 +110,7 @@ public object ModuleDescriptorKt {
      * @param value The usePackage to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignUsePackage")
+@kotlin.jvm.JvmName("plusAssignUsePackage")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>.plusAssign(value: cosmos.app.v1alpha1.Module.PackageReference) {
       add(value)
@@ -127,7 +127,7 @@ public object ModuleDescriptorKt {
      * @param values The usePackage to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllUsePackage")
+@kotlin.jvm.JvmName("addAllUsePackage")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>.addAll(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.Module.PackageReference>) {
       _builder.addAllUsePackage(values)
     }
@@ -143,7 +143,7 @@ public object ModuleDescriptorKt {
      * @param values The usePackage to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllUsePackage")
+@kotlin.jvm.JvmName("plusAssignAllUsePackage")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.Module.PackageReference>) {
       addAll(values)
@@ -161,7 +161,7 @@ public object ModuleDescriptorKt {
      * @param value The usePackage to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setUsePackage")
+@kotlin.jvm.JvmName("setUsePackage")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>.set(index: kotlin.Int, value: cosmos.app.v1alpha1.Module.PackageReference) {
       _builder.setUsePackage(index, value)
     }
@@ -176,11 +176,10 @@ public object ModuleDescriptorKt {
      * `repeated .cosmos.app.v1alpha1.PackageReference use_package = 2 [json_name = "usePackage"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearUsePackage")
+@kotlin.jvm.JvmName("clearUsePackage")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.PackageReference, UsePackageProxy>.clear() {
       _builder.clearUsePackage()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -203,7 +202,7 @@ public object ModuleDescriptorKt {
      */
      public val canMigrateFrom: com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.canMigrateFromList
       )
     /**
@@ -221,7 +220,7 @@ public object ModuleDescriptorKt {
      * @param value The canMigrateFrom to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCanMigrateFrom")
+@kotlin.jvm.JvmName("addCanMigrateFrom")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>.add(value: cosmos.app.v1alpha1.Module.MigrateFromInfo) {
       _builder.addCanMigrateFrom(value)
     }
@@ -240,7 +239,7 @@ public object ModuleDescriptorKt {
      * @param value The canMigrateFrom to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCanMigrateFrom")
+@kotlin.jvm.JvmName("plusAssignCanMigrateFrom")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>.plusAssign(value: cosmos.app.v1alpha1.Module.MigrateFromInfo) {
       add(value)
@@ -260,7 +259,7 @@ public object ModuleDescriptorKt {
      * @param values The canMigrateFrom to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCanMigrateFrom")
+@kotlin.jvm.JvmName("addAllCanMigrateFrom")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>.addAll(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.Module.MigrateFromInfo>) {
       _builder.addAllCanMigrateFrom(values)
     }
@@ -279,7 +278,7 @@ public object ModuleDescriptorKt {
      * @param values The canMigrateFrom to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCanMigrateFrom")
+@kotlin.jvm.JvmName("plusAssignAllCanMigrateFrom")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.Module.MigrateFromInfo>) {
       addAll(values)
@@ -300,7 +299,7 @@ public object ModuleDescriptorKt {
      * @param value The canMigrateFrom to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCanMigrateFrom")
+@kotlin.jvm.JvmName("setCanMigrateFrom")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>.set(index: kotlin.Int, value: cosmos.app.v1alpha1.Module.MigrateFromInfo) {
       _builder.setCanMigrateFrom(index, value)
     }
@@ -318,11 +317,10 @@ public object ModuleDescriptorKt {
      * `repeated .cosmos.app.v1alpha1.MigrateFromInfo can_migrate_from = 3 [json_name = "canMigrateFrom"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCanMigrateFrom")
+@kotlin.jvm.JvmName("clearCanMigrateFrom")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.Module.MigrateFromInfo, CanMigrateFromProxy>.clear() {
       _builder.clearCanMigrateFrom()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

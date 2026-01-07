@@ -20,13 +20,13 @@ pub struct ClientState {
     pub max_clock_drift: ::core::option::Option<::prost_types::Duration>,
     /// Block height when the client was frozen due to a misbehaviour
     #[prost(message, optional, tag="6")]
-    pub frozen_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
+    pub frozen_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     /// Latest height the client was updated to
     #[prost(message, optional, tag="7")]
-    pub latest_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
+    pub latest_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     /// Proof specifications used in verifying counterparty state
     #[prost(message, repeated, tag="8")]
-    pub proof_specs: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::ics23::v1::ProofSpec>,
+    pub proof_specs: ::prost::alloc::vec::Vec<crate::types::cosmos_ics23_v1::ProofSpec>,
     /// Path at which next upgraded client will be committed.
     /// Each element corresponds to the key for a single CommitmentProof in the
     /// chained proof. NOTE: ClientState must stored under
@@ -54,7 +54,7 @@ pub struct ConsensusState {
     pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
     /// commitment root (i.e app hash)
     #[prost(message, optional, tag="2")]
-    pub root: ::core::option::Option<super::super::super::core::commitment::v1::MerkleRoot>,
+    pub root: ::core::option::Option<crate::types::ibc_core_commitment_v1::MerkleRoot>,
     #[prost(bytes="vec", tag="3")]
     pub next_validators_hash: ::prost::alloc::vec::Vec<u8>,
 }
@@ -86,17 +86,17 @@ pub struct Misbehaviour {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Header {
     #[prost(message, optional, tag="1")]
-    pub signed_header: ::core::option::Option<super::super::super::super::tendermint::types::SignedHeader>,
+    pub signed_header: ::core::option::Option<crate::types::tendermint_types::SignedHeader>,
     #[prost(message, optional, tag="2")]
-    pub validator_set: ::core::option::Option<super::super::super::super::tendermint::types::ValidatorSet>,
+    pub validator_set: ::core::option::Option<crate::types::tendermint_types::ValidatorSet>,
     #[prost(message, optional, tag="3")]
-    pub trusted_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
+    pub trusted_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(message, optional, tag="4")]
-    pub trusted_validators: ::core::option::Option<super::super::super::super::tendermint::types::ValidatorSet>,
+    pub trusted_validators: ::core::option::Option<crate::types::tendermint_types::ValidatorSet>,
 }
 /// Fraction defines the protobuf message type for tmmath.Fraction that only
 /// supports positive values.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Fraction {
     #[prost(uint64, tag="1")]
     pub numerator: u64,

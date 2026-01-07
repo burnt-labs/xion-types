@@ -41,10 +41,10 @@ public object GenesisMetadataKt {
      * `bytes key = 1 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -66,10 +66,10 @@ public object GenesisMetadataKt {
      * `bytes value = 2 [json_name = "value"];`
      */
     public var value: com.google.protobuf.ByteString
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**

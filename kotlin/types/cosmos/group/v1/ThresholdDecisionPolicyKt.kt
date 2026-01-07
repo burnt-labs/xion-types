@@ -46,10 +46,10 @@ public object ThresholdDecisionPolicyKt {
      * `string threshold = 1 [json_name = "threshold"];`
      */
     public var threshold: kotlin.String
-      @JvmName("getThreshold")
-      get() = _builder.threshold
-      @JvmName("setThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getThreshold")
+        get() = _builder.threshold
+      @kotlin.jvm.JvmName("setThreshold")
+        set(value) {
         _builder.threshold = value
       }
     /**
@@ -72,10 +72,10 @@ public object ThresholdDecisionPolicyKt {
      * `.cosmos.group.v1.DecisionPolicyWindows windows = 2 [json_name = "windows"];`
      */
     public var windows: cosmos.group.v1.Types.DecisionPolicyWindows
-      @JvmName("getWindows")
-      get() = _builder.windows
-      @JvmName("setWindows")
-      set(value) {
+      @kotlin.jvm.JvmName("getWindows")
+        get() = _builder.windows
+      @kotlin.jvm.JvmName("setWindows")
+        set(value) {
         _builder.windows = value
       }
     /**

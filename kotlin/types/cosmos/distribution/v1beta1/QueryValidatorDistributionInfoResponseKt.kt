@@ -40,10 +40,10 @@ public object QueryValidatorDistributionInfoResponseKt {
      * `string operator_address = 1 [json_name = "operatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var operatorAddress: kotlin.String
-      @JvmName("getOperatorAddress")
-      get() = _builder.operatorAddress
-      @JvmName("setOperatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getOperatorAddress")
+        get() = _builder.operatorAddress
+      @kotlin.jvm.JvmName("setOperatorAddress")
+        set(value) {
         _builder.operatorAddress = value
       }
     /**
@@ -72,7 +72,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      */
      public val selfBondRewards: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.selfBondRewardsList
       )
     /**
@@ -84,7 +84,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param value The selfBondRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSelfBondRewards")
+@kotlin.jvm.JvmName("addSelfBondRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addSelfBondRewards(value)
     }
@@ -97,7 +97,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param value The selfBondRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSelfBondRewards")
+@kotlin.jvm.JvmName("plusAssignSelfBondRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -111,7 +111,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param values The selfBondRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSelfBondRewards")
+@kotlin.jvm.JvmName("addAllSelfBondRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllSelfBondRewards(values)
     }
@@ -124,7 +124,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param values The selfBondRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSelfBondRewards")
+@kotlin.jvm.JvmName("plusAssignAllSelfBondRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param value The selfBondRewards to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSelfBondRewards")
+@kotlin.jvm.JvmName("setSelfBondRewards")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setSelfBondRewards(index, value)
     }
@@ -151,11 +151,10 @@ public object QueryValidatorDistributionInfoResponseKt {
      * `repeated .cosmos.base.v1beta1.DecCoin self_bond_rewards = 2 [json_name = "selfBondRewards", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSelfBondRewards")
+@kotlin.jvm.JvmName("clearSelfBondRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, SelfBondRewardsProxy>.clear() {
       _builder.clearSelfBondRewards()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -172,7 +171,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      */
      public val commission: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.commissionList
       )
     /**
@@ -184,7 +183,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param value The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCommission")
+@kotlin.jvm.JvmName("addCommission")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addCommission(value)
     }
@@ -197,7 +196,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param value The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCommission")
+@kotlin.jvm.JvmName("plusAssignCommission")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -211,7 +210,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param values The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCommission")
+@kotlin.jvm.JvmName("addAllCommission")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllCommission(values)
     }
@@ -224,7 +223,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param values The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCommission")
+@kotlin.jvm.JvmName("plusAssignAllCommission")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -239,7 +238,7 @@ public object QueryValidatorDistributionInfoResponseKt {
      * @param value The commission to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCommission")
+@kotlin.jvm.JvmName("setCommission")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setCommission(index, value)
     }
@@ -251,11 +250,10 @@ public object QueryValidatorDistributionInfoResponseKt {
      * `repeated .cosmos.base.v1beta1.DecCoin commission = 3 [json_name = "commission", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCommission")
+@kotlin.jvm.JvmName("clearCommission")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.clear() {
       _builder.clearCommission()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

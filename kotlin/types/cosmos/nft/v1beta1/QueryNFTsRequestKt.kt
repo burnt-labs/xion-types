@@ -40,10 +40,10 @@ public object QueryNFTsRequestKt {
      * `string class_id = 1 [json_name = "classId"];`
      */
     public var classId: kotlin.String
-      @JvmName("getClassId")
-      get() = _builder.classId
-      @JvmName("setClassId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClassId")
+        get() = _builder.classId
+      @kotlin.jvm.JvmName("setClassId")
+        set(value) {
         _builder.classId = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryNFTsRequestKt {
      * `string owner = 2 [json_name = "owner"];`
      */
     public var owner: kotlin.String
-      @JvmName("getOwner")
-      get() = _builder.owner
-      @JvmName("setOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getOwner")
+        get() = _builder.owner
+      @kotlin.jvm.JvmName("setOwner")
+        set(value) {
         _builder.owner = value
       }
     /**
@@ -90,10 +90,10 @@ public object QueryNFTsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 3 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

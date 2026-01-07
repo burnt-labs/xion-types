@@ -53,7 +53,7 @@ public object ConfigKt {
      */
      public val modules: com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.modulesList
       )
     /**
@@ -65,7 +65,7 @@ public object ConfigKt {
      * @param value The modules to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addModules")
+@kotlin.jvm.JvmName("addModules")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>.add(value: cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig) {
       _builder.addModules(value)
     }
@@ -78,7 +78,7 @@ public object ConfigKt {
      * @param value The modules to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignModules")
+@kotlin.jvm.JvmName("plusAssignModules")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>.plusAssign(value: cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig) {
       add(value)
@@ -92,7 +92,7 @@ public object ConfigKt {
      * @param values The modules to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllModules")
+@kotlin.jvm.JvmName("addAllModules")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig>) {
       _builder.addAllModules(values)
     }
@@ -105,7 +105,7 @@ public object ConfigKt {
      * @param values The modules to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllModules")
+@kotlin.jvm.JvmName("plusAssignAllModules")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig>) {
       addAll(values)
@@ -120,7 +120,7 @@ public object ConfigKt {
      * @param value The modules to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setModules")
+@kotlin.jvm.JvmName("setModules")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>.set(index: kotlin.Int, value: cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig) {
       _builder.setModules(index, value)
     }
@@ -132,11 +132,10 @@ public object ConfigKt {
      * `repeated .cosmos.app.v1alpha1.ModuleConfig modules = 1 [json_name = "modules"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearModules")
+@kotlin.jvm.JvmName("clearModules")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.ModuleConfig, ModulesProxy>.clear() {
       _builder.clearModules()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -155,7 +154,7 @@ public object ConfigKt {
      */
      public val golangBindings: com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.golangBindingsList
       )
     /**
@@ -169,7 +168,7 @@ public object ConfigKt {
      * @param value The golangBindings to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGolangBindings")
+@kotlin.jvm.JvmName("addGolangBindings")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>.add(value: cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding) {
       _builder.addGolangBindings(value)
     }
@@ -184,7 +183,7 @@ public object ConfigKt {
      * @param value The golangBindings to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGolangBindings")
+@kotlin.jvm.JvmName("plusAssignGolangBindings")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>.plusAssign(value: cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding) {
       add(value)
@@ -200,7 +199,7 @@ public object ConfigKt {
      * @param values The golangBindings to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGolangBindings")
+@kotlin.jvm.JvmName("addAllGolangBindings")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding>) {
       _builder.addAllGolangBindings(values)
     }
@@ -215,7 +214,7 @@ public object ConfigKt {
      * @param values The golangBindings to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGolangBindings")
+@kotlin.jvm.JvmName("plusAssignAllGolangBindings")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding>) {
       addAll(values)
@@ -232,7 +231,7 @@ public object ConfigKt {
      * @param value The golangBindings to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGolangBindings")
+@kotlin.jvm.JvmName("setGolangBindings")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>.set(index: kotlin.Int, value: cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding) {
       _builder.setGolangBindings(index, value)
     }
@@ -246,11 +245,10 @@ public object ConfigKt {
      * `repeated .cosmos.app.v1alpha1.GolangBinding golang_bindings = 2 [json_name = "golangBindings"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGolangBindings")
+@kotlin.jvm.JvmName("clearGolangBindings")
     public fun com.google.protobuf.kotlin.DslList<cosmos.app.v1alpha1.ConfigOuterClass.GolangBinding, GolangBindingsProxy>.clear() {
       _builder.clearGolangBindings()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -42,10 +42,10 @@ public object ServiceCommandDescriptorKt {
      * `string service = 1 [json_name = "service"];`
      */
     public var service: kotlin.String
-      @JvmName("getService")
-      get() = _builder.service
-      @JvmName("setService")
-      set(value) {
+      @kotlin.jvm.JvmName("getService")
+        get() = _builder.service
+      @kotlin.jvm.JvmName("setService")
+        set(value) {
         _builder.service = value
       }
     /**
@@ -78,7 +78,7 @@ public object ServiceCommandDescriptorKt {
      */
      public val rpcCommandOptions: com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.rpcCommandOptionsList
       )
     /**
@@ -92,7 +92,7 @@ public object ServiceCommandDescriptorKt {
      * @param value The rpcCommandOptions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRpcCommandOptions")
+@kotlin.jvm.JvmName("addRpcCommandOptions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>.add(value: cosmos.autocli.v1.Options.RpcCommandOptions) {
       _builder.addRpcCommandOptions(value)
     }
@@ -107,7 +107,7 @@ public object ServiceCommandDescriptorKt {
      * @param value The rpcCommandOptions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRpcCommandOptions")
+@kotlin.jvm.JvmName("plusAssignRpcCommandOptions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>.plusAssign(value: cosmos.autocli.v1.Options.RpcCommandOptions) {
       add(value)
@@ -123,7 +123,7 @@ public object ServiceCommandDescriptorKt {
      * @param values The rpcCommandOptions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRpcCommandOptions")
+@kotlin.jvm.JvmName("addAllRpcCommandOptions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.autocli.v1.Options.RpcCommandOptions>) {
       _builder.addAllRpcCommandOptions(values)
     }
@@ -138,7 +138,7 @@ public object ServiceCommandDescriptorKt {
      * @param values The rpcCommandOptions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRpcCommandOptions")
+@kotlin.jvm.JvmName("plusAssignAllRpcCommandOptions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.autocli.v1.Options.RpcCommandOptions>) {
       addAll(values)
@@ -155,7 +155,7 @@ public object ServiceCommandDescriptorKt {
      * @param value The rpcCommandOptions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRpcCommandOptions")
+@kotlin.jvm.JvmName("setRpcCommandOptions")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>.set(index: kotlin.Int, value: cosmos.autocli.v1.Options.RpcCommandOptions) {
       _builder.setRpcCommandOptions(index, value)
     }
@@ -169,11 +169,10 @@ public object ServiceCommandDescriptorKt {
      * `repeated .cosmos.autocli.v1.RpcCommandOptions rpc_command_options = 2 [json_name = "rpcCommandOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRpcCommandOptions")
+@kotlin.jvm.JvmName("clearRpcCommandOptions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.RpcCommandOptions, RpcCommandOptionsProxy>.clear() {
       _builder.clearRpcCommandOptions()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -192,7 +191,7 @@ public object ServiceCommandDescriptorKt {
      */
      public val subCommands: com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor, SubCommandsProxy>
       @kotlin.jvm.JvmSynthetic
-      @JvmName("getSubCommandsMap")
+@kotlin.jvm.JvmName("getSubCommandsMap")
       get() = com.google.protobuf.kotlin.DslMap(
         _builder.subCommandsMap
       )
@@ -205,7 +204,7 @@ public object ServiceCommandDescriptorKt {
      *
      * `map<string, .cosmos.autocli.v1.ServiceCommandDescriptor> sub_commands = 3 [json_name = "subCommands"];`
      */
-    @JvmName("putSubCommands")
+    @kotlin.jvm.JvmName("putSubCommands")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor, SubCommandsProxy>
       .put(key: kotlin.String, value: cosmos.autocli.v1.Options.ServiceCommandDescriptor) {
          _builder.putSubCommands(key, value)
@@ -220,7 +219,7 @@ public object ServiceCommandDescriptorKt {
      * `map<string, .cosmos.autocli.v1.ServiceCommandDescriptor> sub_commands = 3 [json_name = "subCommands"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("setSubCommands")
+@kotlin.jvm.JvmName("setSubCommands")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor, SubCommandsProxy>
       .set(key: kotlin.String, value: cosmos.autocli.v1.Options.ServiceCommandDescriptor) {
@@ -236,7 +235,7 @@ public object ServiceCommandDescriptorKt {
      * `map<string, .cosmos.autocli.v1.ServiceCommandDescriptor> sub_commands = 3 [json_name = "subCommands"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("removeSubCommands")
+@kotlin.jvm.JvmName("removeSubCommands")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor, SubCommandsProxy>
       .remove(key: kotlin.String) {
          _builder.removeSubCommands(key)
@@ -251,7 +250,7 @@ public object ServiceCommandDescriptorKt {
      * `map<string, .cosmos.autocli.v1.ServiceCommandDescriptor> sub_commands = 3 [json_name = "subCommands"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("putAllSubCommands")
+@kotlin.jvm.JvmName("putAllSubCommands")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor, SubCommandsProxy>
       .putAll(map: kotlin.collections.Map<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor>) {
          _builder.putAllSubCommands(map)
@@ -266,7 +265,7 @@ public object ServiceCommandDescriptorKt {
      * `map<string, .cosmos.autocli.v1.ServiceCommandDescriptor> sub_commands = 3 [json_name = "subCommands"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("clearSubCommands")
+@kotlin.jvm.JvmName("clearSubCommands")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ServiceCommandDescriptor, SubCommandsProxy>
       .clear() {
          _builder.clearSubCommands()
@@ -282,10 +281,10 @@ public object ServiceCommandDescriptorKt {
      * `bool enhance_custom_command = 4 [json_name = "enhanceCustomCommand"];`
      */
     public var enhanceCustomCommand: kotlin.Boolean
-      @JvmName("getEnhanceCustomCommand")
-      get() = _builder.enhanceCustomCommand
-      @JvmName("setEnhanceCustomCommand")
-      set(value) {
+      @kotlin.jvm.JvmName("getEnhanceCustomCommand")
+        get() = _builder.enhanceCustomCommand
+      @kotlin.jvm.JvmName("setEnhanceCustomCommand")
+        set(value) {
         _builder.enhanceCustomCommand = value
       }
     /**
@@ -309,10 +308,10 @@ public object ServiceCommandDescriptorKt {
      * `string short = 5 [json_name = "short"];`
      */
     public var short: kotlin.String
-      @JvmName("getShort")
-      get() = _builder.short
-      @JvmName("setShort")
-      set(value) {
+      @kotlin.jvm.JvmName("getShort")
+        get() = _builder.short
+      @kotlin.jvm.JvmName("setShort")
+        set(value) {
         _builder.short = value
       }
     /**

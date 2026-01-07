@@ -10,6 +10,10 @@ package xion.v1;
 public inline fun msgSetPlatformPercentage(block: xion.v1.MsgSetPlatformPercentageKt.Dsl.() -> kotlin.Unit): xion.v1.Tx.MsgSetPlatformPercentage =
   xion.v1.MsgSetPlatformPercentageKt.Dsl._create(xion.v1.Tx.MsgSetPlatformPercentage.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgSetPlatformPercentage defines the message for setting platform percentage
+ * ```
+ *
  * Protobuf type `xion.v1.MsgSetPlatformPercentage`
  */
 public object MsgSetPlatformPercentageKt {
@@ -29,16 +33,24 @@ public object MsgSetPlatformPercentageKt {
     internal fun _build(): xion.v1.Tx.MsgSetPlatformPercentage = _builder.build()
 
     /**
+     * ```
+     * The authority address that can set the platform percentage
+     * ```
+     *
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
+     * ```
+     * The authority address that can set the platform percentage
+     * ```
+     *
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public fun clearAuthority() {
@@ -53,10 +65,10 @@ public object MsgSetPlatformPercentageKt {
      * `uint32 platform_percentage = 2 [json_name = "platformPercentage"];`
      */
     public var platformPercentage: kotlin.Int
-      @JvmName("getPlatformPercentage")
-      get() = _builder.platformPercentage
-      @JvmName("setPlatformPercentage")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlatformPercentage")
+        get() = _builder.platformPercentage
+      @kotlin.jvm.JvmName("setPlatformPercentage")
+        set(value) {
         _builder.platformPercentage = value
       }
     /**

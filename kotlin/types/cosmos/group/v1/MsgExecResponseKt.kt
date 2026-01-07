@@ -40,17 +40,17 @@ public object MsgExecResponseKt {
      * `.cosmos.group.v1.ProposalExecutorResult result = 2 [json_name = "result"];`
      */
     public var result: cosmos.group.v1.Types.ProposalExecutorResult
-      @JvmName("getResult")
-      get() = _builder.result
-      @JvmName("setResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getResult")
+        get() = _builder.result
+      @kotlin.jvm.JvmName("setResult")
+        set(value) {
         _builder.result = value
       }
     public var resultValue: kotlin.Int
-      @JvmName("getResultValue")
-      get() = _builder.resultValue
-      @JvmName("setResultValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getResultValue")
+        get() = _builder.resultValue
+      @kotlin.jvm.JvmName("setResultValue")
+        set(value) {
         _builder.resultValue = value
       }
     /**

@@ -37,10 +37,10 @@ public object MsgSetDenomMetadataKt {
      * `string sender = 1 [json_name = "sender", (.gogoproto.moretags) = "yaml:\"sender\""];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgSetDenomMetadataKt {
      * `.cosmos.bank.v1beta1.Metadata metadata = 2 [json_name = "metadata", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"metadata\""];`
      */
     public var metadata: cosmos.bank.v1beta1.Bank.Metadata
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**

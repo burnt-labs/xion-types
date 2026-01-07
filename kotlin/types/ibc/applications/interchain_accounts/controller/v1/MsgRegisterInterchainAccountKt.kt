@@ -36,10 +36,10 @@ public object MsgRegisterInterchainAccountKt {
      * `string owner = 1 [json_name = "owner"];`
      */
     public var owner: kotlin.String
-      @JvmName("getOwner")
-      get() = _builder.owner
-      @JvmName("setOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getOwner")
+        get() = _builder.owner
+      @kotlin.jvm.JvmName("setOwner")
+        set(value) {
         _builder.owner = value
       }
     /**
@@ -53,10 +53,10 @@ public object MsgRegisterInterchainAccountKt {
      * `string connection_id = 2 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -70,10 +70,10 @@ public object MsgRegisterInterchainAccountKt {
      * `string version = 3 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -87,17 +87,17 @@ public object MsgRegisterInterchainAccountKt {
      * `.ibc.core.channel.v1.Order ordering = 4 [json_name = "ordering"];`
      */
     public var ordering: ibc.core.channel.v1.ChannelOuterClass.Order
-      @JvmName("getOrdering")
-      get() = _builder.ordering
-      @JvmName("setOrdering")
-      set(value) {
+      @kotlin.jvm.JvmName("getOrdering")
+        get() = _builder.ordering
+      @kotlin.jvm.JvmName("setOrdering")
+        set(value) {
         _builder.ordering = value
       }
     public var orderingValue: kotlin.Int
-      @JvmName("getOrderingValue")
-      get() = _builder.orderingValue
-      @JvmName("setOrderingValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getOrderingValue")
+        get() = _builder.orderingValue
+      @kotlin.jvm.JvmName("setOrderingValue")
+        set(value) {
         _builder.orderingValue = value
       }
     /**

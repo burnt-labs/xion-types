@@ -42,10 +42,10 @@ public object QueryConsensusStateRequestKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -67,10 +67,10 @@ public object QueryConsensusStateRequestKt {
      * `uint64 revision_number = 2 [json_name = "revisionNumber"];`
      */
     public var revisionNumber: kotlin.Long
-      @JvmName("getRevisionNumber")
-      get() = _builder.revisionNumber
-      @JvmName("setRevisionNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevisionNumber")
+        get() = _builder.revisionNumber
+      @kotlin.jvm.JvmName("setRevisionNumber")
+        set(value) {
         _builder.revisionNumber = value
       }
     /**
@@ -92,10 +92,10 @@ public object QueryConsensusStateRequestKt {
      * `uint64 revision_height = 3 [json_name = "revisionHeight"];`
      */
     public var revisionHeight: kotlin.Long
-      @JvmName("getRevisionHeight")
-      get() = _builder.revisionHeight
-      @JvmName("setRevisionHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevisionHeight")
+        get() = _builder.revisionHeight
+      @kotlin.jvm.JvmName("setRevisionHeight")
+        set(value) {
         _builder.revisionHeight = value
       }
     /**
@@ -118,10 +118,10 @@ public object QueryConsensusStateRequestKt {
      * `bool latest_height = 4 [json_name = "latestHeight"];`
      */
     public var latestHeight: kotlin.Boolean
-      @JvmName("getLatestHeight")
-      get() = _builder.latestHeight
-      @JvmName("setLatestHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getLatestHeight")
+        get() = _builder.latestHeight
+      @kotlin.jvm.JvmName("setLatestHeight")
+        set(value) {
         _builder.latestHeight = value
       }
     /**

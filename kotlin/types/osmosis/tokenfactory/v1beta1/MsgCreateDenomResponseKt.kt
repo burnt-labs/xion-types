@@ -37,10 +37,10 @@ public object MsgCreateDenomResponseKt {
      * `string new_token_denom = 1 [json_name = "newTokenDenom", (.gogoproto.moretags) = "yaml:\"new_token_denom\""];`
      */
     public var newTokenDenom: kotlin.String
-      @JvmName("getNewTokenDenom")
-      get() = _builder.newTokenDenom
-      @JvmName("setNewTokenDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewTokenDenom")
+        get() = _builder.newTokenDenom
+      @kotlin.jvm.JvmName("setNewTokenDenom")
+        set(value) {
         _builder.newTokenDenom = value
       }
     /**

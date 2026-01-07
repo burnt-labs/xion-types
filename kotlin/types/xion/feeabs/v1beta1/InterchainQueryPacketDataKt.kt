@@ -33,16 +33,24 @@ public object InterchainQueryPacketDataKt {
     internal fun _build(): xion.feeabs.v1beta1.Osmosisibc.InterchainQueryPacketData = _builder.build()
 
     /**
+     * ```
+     * data defines the raw query data
+     * ```
+     *
      * `bytes data = 1 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
+     * ```
+     * data defines the raw query data
+     * ```
+     *
      * `bytes data = 1 [json_name = "data"];`
      */
     public fun clearData() {
@@ -57,10 +65,10 @@ public object InterchainQueryPacketDataKt {
      * `string memo = 2 [json_name = "memo"];`
      */
     public var memo: kotlin.String
-      @JvmName("getMemo")
-      get() = _builder.memo
-      @JvmName("setMemo")
-      set(value) {
+      @kotlin.jvm.JvmName("getMemo")
+        get() = _builder.memo
+      @kotlin.jvm.JvmName("setMemo")
+        set(value) {
         _builder.memo = value
       }
     /**

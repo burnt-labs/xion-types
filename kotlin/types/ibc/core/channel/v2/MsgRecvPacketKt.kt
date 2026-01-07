@@ -36,10 +36,10 @@ public object MsgRecvPacketKt {
      * `.ibc.core.channel.v2.Packet packet = 1 [json_name = "packet", (.gogoproto.nullable) = false];`
      */
     public var packet: ibc.core.channel.v2.PacketOuterClass.Packet
-      @JvmName("getPacket")
-      get() = _builder.packet
-      @JvmName("setPacket")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacket")
+        get() = _builder.packet
+      @kotlin.jvm.JvmName("setPacket")
+        set(value) {
         _builder.packet = value
       }
     /**
@@ -63,10 +63,10 @@ public object MsgRecvPacketKt {
      * `bytes proof_commitment = 2 [json_name = "proofCommitment"];`
      */
     public var proofCommitment: com.google.protobuf.ByteString
-      @JvmName("getProofCommitment")
-      get() = _builder.proofCommitment
-      @JvmName("setProofCommitment")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofCommitment")
+        get() = _builder.proofCommitment
+      @kotlin.jvm.JvmName("setProofCommitment")
+        set(value) {
         _builder.proofCommitment = value
       }
     /**
@@ -80,10 +80,10 @@ public object MsgRecvPacketKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -107,10 +107,10 @@ public object MsgRecvPacketKt {
      * `string signer = 4 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

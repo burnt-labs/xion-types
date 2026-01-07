@@ -40,10 +40,10 @@ public object RequestVerifyVoteExtensionKt {
      * `bytes hash = 1 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**
@@ -65,10 +65,10 @@ public object RequestVerifyVoteExtensionKt {
      * `bytes validator_address = 2 [json_name = "validatorAddress"];`
      */
     public var validatorAddress: com.google.protobuf.ByteString
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -86,10 +86,10 @@ public object RequestVerifyVoteExtensionKt {
      * `int64 height = 3 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -103,10 +103,10 @@ public object RequestVerifyVoteExtensionKt {
      * `bytes vote_extension = 4 [json_name = "voteExtension"];`
      */
     public var voteExtension: com.google.protobuf.ByteString
-      @JvmName("getVoteExtension")
-      get() = _builder.voteExtension
-      @JvmName("setVoteExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoteExtension")
+        get() = _builder.voteExtension
+      @kotlin.jvm.JvmName("setVoteExtension")
+        set(value) {
         _builder.voteExtension = value
       }
     /**

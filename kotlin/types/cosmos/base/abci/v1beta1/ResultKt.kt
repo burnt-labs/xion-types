@@ -43,10 +43,10 @@ public object ResultKt {
      * `bytes data = 1 [json_name = "data", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field data is deprecated") public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -71,10 +71,10 @@ public object ResultKt {
      * `string log = 2 [json_name = "log"];`
      */
     public var log: kotlin.String
-      @JvmName("getLog")
-      get() = _builder.log
-      @JvmName("setLog")
-      set(value) {
+      @kotlin.jvm.JvmName("getLog")
+        get() = _builder.log
+      @kotlin.jvm.JvmName("setLog")
+        set(value) {
         _builder.log = value
       }
     /**
@@ -104,7 +104,7 @@ public object ResultKt {
      */
      public val events: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.eventsList
       )
     /**
@@ -117,7 +117,7 @@ public object ResultKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvents")
+@kotlin.jvm.JvmName("addEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.add(value: tendermint.abci.Types.Event) {
       _builder.addEvents(value)
     }
@@ -131,7 +131,7 @@ public object ResultKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvents")
+@kotlin.jvm.JvmName("plusAssignEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.plusAssign(value: tendermint.abci.Types.Event) {
       add(value)
@@ -146,7 +146,7 @@ public object ResultKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvents")
+@kotlin.jvm.JvmName("addAllEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.Event>) {
       _builder.addAllEvents(values)
     }
@@ -160,7 +160,7 @@ public object ResultKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvents")
+@kotlin.jvm.JvmName("plusAssignAllEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.Event>) {
       addAll(values)
@@ -176,7 +176,7 @@ public object ResultKt {
      * @param value The events to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvents")
+@kotlin.jvm.JvmName("setEvents")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.Event) {
       _builder.setEvents(index, value)
     }
@@ -189,11 +189,10 @@ public object ResultKt {
      * `repeated .tendermint.abci.Event events = 3 [json_name = "events", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvents")
+@kotlin.jvm.JvmName("clearEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.clear() {
       _builder.clearEvents()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -210,7 +209,7 @@ public object ResultKt {
      */
      public val msgResponses: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.msgResponsesList
       )
     /**
@@ -222,7 +221,7 @@ public object ResultKt {
      * @param value The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMsgResponses")
+@kotlin.jvm.JvmName("addMsgResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.add(value: com.google.protobuf.Any) {
       _builder.addMsgResponses(value)
     }
@@ -235,7 +234,7 @@ public object ResultKt {
      * @param value The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMsgResponses")
+@kotlin.jvm.JvmName("plusAssignMsgResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -249,7 +248,7 @@ public object ResultKt {
      * @param values The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMsgResponses")
+@kotlin.jvm.JvmName("addAllMsgResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllMsgResponses(values)
     }
@@ -262,7 +261,7 @@ public object ResultKt {
      * @param values The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMsgResponses")
+@kotlin.jvm.JvmName("plusAssignAllMsgResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -277,7 +276,7 @@ public object ResultKt {
      * @param value The msgResponses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMsgResponses")
+@kotlin.jvm.JvmName("setMsgResponses")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setMsgResponses(index, value)
     }
@@ -289,11 +288,10 @@ public object ResultKt {
      * `repeated .google.protobuf.Any msg_responses = 4 [json_name = "msgResponses", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.46"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMsgResponses")
+@kotlin.jvm.JvmName("clearMsgResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.clear() {
       _builder.clearMsgResponses()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

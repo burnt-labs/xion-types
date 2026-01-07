@@ -32,10 +32,10 @@ public object CommitInfoKt {
      * `int32 round = 1 [json_name = "round"];`
      */
     public var round: kotlin.Int
-      @JvmName("getRound")
-      get() = _builder.round
-      @JvmName("setRound")
-      set(value) {
+      @kotlin.jvm.JvmName("getRound")
+        get() = _builder.round
+      @kotlin.jvm.JvmName("setRound")
+        set(value) {
         _builder.round = value
       }
     /**
@@ -56,7 +56,7 @@ public object CommitInfoKt {
      */
      public val votes: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.votesList
       )
     /**
@@ -64,7 +64,7 @@ public object CommitInfoKt {
      * @param value The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addVotes")
+@kotlin.jvm.JvmName("addVotes")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>.add(value: tendermint.abci.Types.VoteInfo) {
       _builder.addVotes(value)
     }
@@ -73,7 +73,7 @@ public object CommitInfoKt {
      * @param value The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignVotes")
+@kotlin.jvm.JvmName("plusAssignVotes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>.plusAssign(value: tendermint.abci.Types.VoteInfo) {
       add(value)
@@ -83,7 +83,7 @@ public object CommitInfoKt {
      * @param values The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllVotes")
+@kotlin.jvm.JvmName("addAllVotes")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.VoteInfo>) {
       _builder.addAllVotes(values)
     }
@@ -92,7 +92,7 @@ public object CommitInfoKt {
      * @param values The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllVotes")
+@kotlin.jvm.JvmName("plusAssignAllVotes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.VoteInfo>) {
       addAll(values)
@@ -103,7 +103,7 @@ public object CommitInfoKt {
      * @param value The votes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setVotes")
+@kotlin.jvm.JvmName("setVotes")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.VoteInfo) {
       _builder.setVotes(index, value)
     }
@@ -111,11 +111,10 @@ public object CommitInfoKt {
      * `repeated .tendermint.abci.VoteInfo votes = 2 [json_name = "votes", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearVotes")
+@kotlin.jvm.JvmName("clearVotes")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.VoteInfo, VotesProxy>.clear() {
       _builder.clearVotes()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

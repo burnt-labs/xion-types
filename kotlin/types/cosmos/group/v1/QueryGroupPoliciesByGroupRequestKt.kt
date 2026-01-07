@@ -40,10 +40,10 @@ public object QueryGroupPoliciesByGroupRequestKt {
      * `uint64 group_id = 1 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryGroupPoliciesByGroupRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

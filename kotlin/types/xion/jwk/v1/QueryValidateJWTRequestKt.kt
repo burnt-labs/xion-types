@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun queryValidateJWTRequest(block: xion.jwk.v1.QueryValidateJWTRequestKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryValidateJWTRequest =
   xion.jwk.v1.QueryValidateJWTRequestKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryValidateJWTRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryValidateJWTRequest is the request type for validating a JWT
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryValidateJWTRequest`
  */
 public object QueryValidateJWTRequestKt {
@@ -29,16 +33,24 @@ public object QueryValidateJWTRequestKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.QueryValidateJWTRequest = _builder.build()
 
     /**
+     * ```
+     * The audience identifier
+     * ```
+     *
      * `string aud = 1 [json_name = "aud"];`
      */
     public var aud: kotlin.String
-      @JvmName("getAud")
-      get() = _builder.aud
-      @JvmName("setAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getAud")
+        get() = _builder.aud
+      @kotlin.jvm.JvmName("setAud")
+        set(value) {
         _builder.aud = value
       }
     /**
+     * ```
+     * The audience identifier
+     * ```
+     *
      * `string aud = 1 [json_name = "aud"];`
      */
     public fun clearAud() {
@@ -46,16 +58,24 @@ public object QueryValidateJWTRequestKt {
     }
 
     /**
+     * ```
+     * The subject
+     * ```
+     *
      * `string sub = 2 [json_name = "sub"];`
      */
     public var sub: kotlin.String
-      @JvmName("getSub")
-      get() = _builder.sub
-      @JvmName("setSub")
-      set(value) {
+      @kotlin.jvm.JvmName("getSub")
+        get() = _builder.sub
+      @kotlin.jvm.JvmName("setSub")
+        set(value) {
         _builder.sub = value
       }
     /**
+     * ```
+     * The subject
+     * ```
+     *
      * `string sub = 2 [json_name = "sub"];`
      */
     public fun clearSub() {
@@ -63,17 +83,25 @@ public object QueryValidateJWTRequestKt {
     }
 
     /**
-     * `string sigBytes = 3 [json_name = "sigBytes"];`
+     * ```
+     * The signature bytes
+     * ```
+     *
+     * `string sig_bytes = 3 [json_name = "sigBytes"];`
      */
     public var sigBytes: kotlin.String
-      @JvmName("getSigBytes")
-      get() = _builder.sigBytes
-      @JvmName("setSigBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigBytes")
+        get() = _builder.sigBytes
+      @kotlin.jvm.JvmName("setSigBytes")
+        set(value) {
         _builder.sigBytes = value
       }
     /**
-     * `string sigBytes = 3 [json_name = "sigBytes"];`
+     * ```
+     * The signature bytes
+     * ```
+     *
+     * `string sig_bytes = 3 [json_name = "sigBytes"];`
      */
     public fun clearSigBytes() {
       _builder.clearSigBytes()

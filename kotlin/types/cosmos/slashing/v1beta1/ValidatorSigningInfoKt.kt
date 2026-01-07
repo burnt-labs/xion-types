@@ -37,10 +37,10 @@ public object ValidatorSigningInfoKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -58,10 +58,10 @@ public object ValidatorSigningInfoKt {
      * `int64 start_height = 2 [json_name = "startHeight"];`
      */
     public var startHeight: kotlin.Long
-      @JvmName("getStartHeight")
-      get() = _builder.startHeight
-      @JvmName("setStartHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartHeight")
+        get() = _builder.startHeight
+      @kotlin.jvm.JvmName("setStartHeight")
+        set(value) {
         _builder.startHeight = value
       }
     /**
@@ -85,10 +85,10 @@ public object ValidatorSigningInfoKt {
      * `int64 index_offset = 3 [json_name = "indexOffset"];`
      */
     public var indexOffset: kotlin.Long
-      @JvmName("getIndexOffset")
-      get() = _builder.indexOffset
-      @JvmName("setIndexOffset")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndexOffset")
+        get() = _builder.indexOffset
+      @kotlin.jvm.JvmName("setIndexOffset")
+        set(value) {
         _builder.indexOffset = value
       }
     /**
@@ -112,10 +112,10 @@ public object ValidatorSigningInfoKt {
      * `.google.protobuf.Timestamp jailed_until = 4 [json_name = "jailedUntil", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var jailedUntil: com.google.protobuf.Timestamp
-      @JvmName("getJailedUntil")
-      get() = _builder.jailedUntil
-      @JvmName("setJailedUntil")
-      set(value) {
+      @kotlin.jvm.JvmName("getJailedUntil")
+        get() = _builder.jailedUntil
+      @kotlin.jvm.JvmName("setJailedUntil")
+        set(value) {
         _builder.jailedUntil = value
       }
     /**
@@ -153,10 +153,10 @@ public object ValidatorSigningInfoKt {
      * `bool tombstoned = 5 [json_name = "tombstoned"];`
      */
     public var tombstoned: kotlin.Boolean
-      @JvmName("getTombstoned")
-      get() = _builder.tombstoned
-      @JvmName("setTombstoned")
-      set(value) {
+      @kotlin.jvm.JvmName("getTombstoned")
+        get() = _builder.tombstoned
+      @kotlin.jvm.JvmName("setTombstoned")
+        set(value) {
         _builder.tombstoned = value
       }
     /**
@@ -181,10 +181,10 @@ public object ValidatorSigningInfoKt {
      * `int64 missed_blocks_counter = 6 [json_name = "missedBlocksCounter"];`
      */
     public var missedBlocksCounter: kotlin.Long
-      @JvmName("getMissedBlocksCounter")
-      get() = _builder.missedBlocksCounter
-      @JvmName("setMissedBlocksCounter")
-      set(value) {
+      @kotlin.jvm.JvmName("getMissedBlocksCounter")
+        get() = _builder.missedBlocksCounter
+      @kotlin.jvm.JvmName("setMissedBlocksCounter")
+        set(value) {
         _builder.missedBlocksCounter = value
       }
     /**

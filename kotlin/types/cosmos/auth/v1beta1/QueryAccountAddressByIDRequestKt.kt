@@ -44,10 +44,10 @@ public object QueryAccountAddressByIDRequestKt {
      * `int64 id = 1 [json_name = "id", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field id is deprecated") public var id: kotlin.Long
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -73,10 +73,10 @@ public object QueryAccountAddressByIDRequestKt {
      * `uint64 account_id = 2 [json_name = "accountId", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var accountId: kotlin.Long
-      @JvmName("getAccountId")
-      get() = _builder.accountId
-      @JvmName("setAccountId")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountId")
+        get() = _builder.accountId
+      @kotlin.jvm.JvmName("setAccountId")
+        set(value) {
         _builder.accountId = value
       }
     /**

@@ -66,14 +66,14 @@ pub struct QueryGetAudienceResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllAudienceRequest {
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllAudienceResponse {
     #[prost(message, repeated, tag="1")]
     pub audience: ::prost::alloc::vec::Vec<Audience>,
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidateJwtRequest {

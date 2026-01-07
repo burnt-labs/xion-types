@@ -43,7 +43,7 @@ public object ParamsKt {
      */
      public val denomCreationFee: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.denomCreationFeeList
       )
     /**
@@ -51,7 +51,7 @@ public object ParamsKt {
      * @param value The denomCreationFee to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDenomCreationFee")
+@kotlin.jvm.JvmName("addDenomCreationFee")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addDenomCreationFee(value)
     }
@@ -60,7 +60,7 @@ public object ParamsKt {
      * @param value The denomCreationFee to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDenomCreationFee")
+@kotlin.jvm.JvmName("plusAssignDenomCreationFee")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -70,7 +70,7 @@ public object ParamsKt {
      * @param values The denomCreationFee to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDenomCreationFee")
+@kotlin.jvm.JvmName("addAllDenomCreationFee")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllDenomCreationFee(values)
     }
@@ -79,7 +79,7 @@ public object ParamsKt {
      * @param values The denomCreationFee to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDenomCreationFee")
+@kotlin.jvm.JvmName("plusAssignAllDenomCreationFee")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object ParamsKt {
      * @param value The denomCreationFee to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDenomCreationFee")
+@kotlin.jvm.JvmName("setDenomCreationFee")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setDenomCreationFee(index, value)
     }
@@ -98,11 +98,10 @@ public object ParamsKt {
      * `repeated .cosmos.base.v1beta1.Coin denom_creation_fee = 1 [json_name = "denomCreationFee", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"denom_creation_fee\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDenomCreationFee")
+@kotlin.jvm.JvmName("clearDenomCreationFee")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, DenomCreationFeeProxy>.clear() {
       _builder.clearDenomCreationFee()
     }
-
 
     /**
      * ```
@@ -114,10 +113,10 @@ public object ParamsKt {
      * `uint64 denom_creation_gas_consume = 2 [json_name = "denomCreationGasConsume", (.gogoproto.nullable) = true, (.gogoproto.moretags) = "yaml:\"denom_creation_gas_consume\""];`
      */
     public var denomCreationGasConsume: kotlin.Long
-      @JvmName("getDenomCreationGasConsume")
-      get() = _builder.denomCreationGasConsume
-      @JvmName("setDenomCreationGasConsume")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenomCreationGasConsume")
+        get() = _builder.denomCreationGasConsume
+      @kotlin.jvm.JvmName("setDenomCreationGasConsume")
+        set(value) {
         _builder.denomCreationGasConsume = value
       }
     /**

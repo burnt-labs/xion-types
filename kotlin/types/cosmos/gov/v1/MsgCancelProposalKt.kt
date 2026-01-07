@@ -40,10 +40,10 @@ public object MsgCancelProposalKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId", (.gogoproto.jsontag) = "proposal_id"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgCancelProposalKt {
      * `string proposer = 2 [json_name = "proposer", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var proposer: kotlin.String
-      @JvmName("getProposer")
-      get() = _builder.proposer
-      @JvmName("setProposer")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposer")
+        get() = _builder.proposer
+      @kotlin.jvm.JvmName("setProposer")
+        set(value) {
         _builder.proposer = value
       }
     /**

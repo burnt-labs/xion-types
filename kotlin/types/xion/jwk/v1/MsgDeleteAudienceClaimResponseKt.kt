@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun msgDeleteAudienceClaimResponse(block: xion.jwk.v1.MsgDeleteAudienceClaimResponseKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgDeleteAudienceClaimResponse =
   xion.jwk.v1.MsgDeleteAudienceClaimResponseKt.Dsl._create(xion.jwk.v1.Tx.MsgDeleteAudienceClaimResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgDeleteAudienceClaimResponse defines the response for deleting an audience
+ * claim
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgDeleteAudienceClaimResponse`
  */
 public object MsgDeleteAudienceClaimResponseKt {

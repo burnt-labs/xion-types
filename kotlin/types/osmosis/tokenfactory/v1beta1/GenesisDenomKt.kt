@@ -38,10 +38,10 @@ public object GenesisDenomKt {
      * `string denom = 1 [json_name = "denom", (.gogoproto.moretags) = "yaml:\"denom\""];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -55,10 +55,10 @@ public object GenesisDenomKt {
      * `.osmosis.tokenfactory.v1beta1.DenomAuthorityMetadata authority_metadata = 2 [json_name = "authorityMetadata", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"authority_metadata\""];`
      */
     public var authorityMetadata: osmosis.tokenfactory.v1beta1.AuthorityMetadata.DenomAuthorityMetadata
-      @JvmName("getAuthorityMetadata")
-      get() = _builder.authorityMetadata
-      @JvmName("setAuthorityMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthorityMetadata")
+        get() = _builder.authorityMetadata
+      @kotlin.jvm.JvmName("setAuthorityMetadata")
+        set(value) {
         _builder.authorityMetadata = value
       }
     /**

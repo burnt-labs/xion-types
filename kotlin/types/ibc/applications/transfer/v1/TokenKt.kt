@@ -40,10 +40,10 @@ public object TokenKt {
      * `.ibc.applications.transfer.v1.Denom denom = 1 [json_name = "denom", (.gogoproto.nullable) = false];`
      */
     public var denom: ibc.applications.transfer.v1.TokenOuterClass.Denom
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -79,10 +79,10 @@ public object TokenKt {
      * `string amount = 2 [json_name = "amount"];`
      */
     public var amount: kotlin.String
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**

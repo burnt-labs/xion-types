@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun msgDeleteAudience(block: xion.jwk.v1.MsgDeleteAudienceKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgDeleteAudience =
   xion.jwk.v1.MsgDeleteAudienceKt.Dsl._create(xion.jwk.v1.Tx.MsgDeleteAudience.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgDeleteAudience defines the message for deleting an audience
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgDeleteAudience`
  */
 public object MsgDeleteAudienceKt {
@@ -29,16 +33,24 @@ public object MsgDeleteAudienceKt {
     internal fun _build(): xion.jwk.v1.Tx.MsgDeleteAudience = _builder.build()
 
     /**
+     * ```
+     * The admin address deleting the audience
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
+     * ```
+     * The admin address deleting the audience
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public fun clearAdmin() {
@@ -46,16 +58,24 @@ public object MsgDeleteAudienceKt {
     }
 
     /**
+     * ```
+     * The audience identifier to delete
+     * ```
+     *
      * `string aud = 2 [json_name = "aud"];`
      */
     public var aud: kotlin.String
-      @JvmName("getAud")
-      get() = _builder.aud
-      @JvmName("setAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getAud")
+        get() = _builder.aud
+      @kotlin.jvm.JvmName("setAud")
+        set(value) {
         _builder.aud = value
       }
     /**
+     * ```
+     * The audience identifier to delete
+     * ```
+     *
      * `string aud = 2 [json_name = "aud"];`
      */
     public fun clearAud() {

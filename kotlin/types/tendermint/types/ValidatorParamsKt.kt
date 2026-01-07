@@ -44,7 +44,7 @@ public object ValidatorParamsKt {
      * @return A list containing the pubKeyTypes.
      */
     public val pubKeyTypes: com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.pubKeyTypesList
       )
@@ -53,7 +53,7 @@ public object ValidatorParamsKt {
      * @param value The pubKeyTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPubKeyTypes")
+@kotlin.jvm.JvmName("addPubKeyTypes")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>.add(value: kotlin.String) {
       _builder.addPubKeyTypes(value)
     }
@@ -62,7 +62,7 @@ public object ValidatorParamsKt {
      * @param value The pubKeyTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPubKeyTypes")
+@kotlin.jvm.JvmName("plusAssignPubKeyTypes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -72,7 +72,7 @@ public object ValidatorParamsKt {
      * @param values The pubKeyTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPubKeyTypes")
+@kotlin.jvm.JvmName("addAllPubKeyTypes")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPubKeyTypes(values)
     }
@@ -81,7 +81,7 @@ public object ValidatorParamsKt {
      * @param values The pubKeyTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPubKeyTypes")
+@kotlin.jvm.JvmName("plusAssignAllPubKeyTypes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -92,14 +92,14 @@ public object ValidatorParamsKt {
      * @param value The pubKeyTypes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPubKeyTypes")
+@kotlin.jvm.JvmName("setPubKeyTypes")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPubKeyTypes(index, value)
     }/**
      * `repeated string pub_key_types = 1 [json_name = "pubKeyTypes"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPubKeyTypes")
+@kotlin.jvm.JvmName("setPubKeyTypes")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PubKeyTypesProxy>.clear() {
       _builder.clearPubKeyTypes()
     }}

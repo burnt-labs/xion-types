@@ -44,7 +44,7 @@ public object QuerySubspacesResponseKt {
      */
      public val subspaces: com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.subspacesList
       )
     /**
@@ -52,7 +52,7 @@ public object QuerySubspacesResponseKt {
      * @param value The subspaces to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSubspaces")
+@kotlin.jvm.JvmName("addSubspaces")
     public fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>.add(value: cosmos.params.v1beta1.QueryOuterClass.Subspace) {
       _builder.addSubspaces(value)
     }
@@ -61,7 +61,7 @@ public object QuerySubspacesResponseKt {
      * @param value The subspaces to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSubspaces")
+@kotlin.jvm.JvmName("plusAssignSubspaces")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>.plusAssign(value: cosmos.params.v1beta1.QueryOuterClass.Subspace) {
       add(value)
@@ -71,7 +71,7 @@ public object QuerySubspacesResponseKt {
      * @param values The subspaces to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSubspaces")
+@kotlin.jvm.JvmName("addAllSubspaces")
     public fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.params.v1beta1.QueryOuterClass.Subspace>) {
       _builder.addAllSubspaces(values)
     }
@@ -80,7 +80,7 @@ public object QuerySubspacesResponseKt {
      * @param values The subspaces to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSubspaces")
+@kotlin.jvm.JvmName("plusAssignAllSubspaces")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.params.v1beta1.QueryOuterClass.Subspace>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QuerySubspacesResponseKt {
      * @param value The subspaces to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSubspaces")
+@kotlin.jvm.JvmName("setSubspaces")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>.set(index: kotlin.Int, value: cosmos.params.v1beta1.QueryOuterClass.Subspace) {
       _builder.setSubspaces(index, value)
     }
@@ -99,11 +99,10 @@ public object QuerySubspacesResponseKt {
      * `repeated .cosmos.params.v1beta1.Subspace subspaces = 1 [json_name = "subspaces"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSubspaces")
+@kotlin.jvm.JvmName("clearSubspaces")
     public fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.QueryOuterClass.Subspace, SubspacesProxy>.clear() {
       _builder.clearSubspaces()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

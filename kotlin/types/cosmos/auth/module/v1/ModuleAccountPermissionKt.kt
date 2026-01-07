@@ -40,10 +40,10 @@ public object ModuleAccountPermissionKt {
      * `string account = 1 [json_name = "account"];`
      */
     public var account: kotlin.String
-      @JvmName("getAccount")
-      get() = _builder.account
-      @JvmName("setAccount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccount")
+        get() = _builder.account
+      @kotlin.jvm.JvmName("setAccount")
+        set(value) {
         _builder.account = value
       }
     /**
@@ -73,7 +73,7 @@ public object ModuleAccountPermissionKt {
      * @return A list containing the permissions.
      */
     public val permissions: com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.permissionsList
       )
@@ -87,7 +87,7 @@ public object ModuleAccountPermissionKt {
      * @param value The permissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPermissions")
+@kotlin.jvm.JvmName("addPermissions")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>.add(value: kotlin.String) {
       _builder.addPermissions(value)
     }
@@ -101,7 +101,7 @@ public object ModuleAccountPermissionKt {
      * @param value The permissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPermissions")
+@kotlin.jvm.JvmName("plusAssignPermissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -116,7 +116,7 @@ public object ModuleAccountPermissionKt {
      * @param values The permissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPermissions")
+@kotlin.jvm.JvmName("addAllPermissions")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPermissions(values)
     }
@@ -130,7 +130,7 @@ public object ModuleAccountPermissionKt {
      * @param values The permissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPermissions")
+@kotlin.jvm.JvmName("plusAssignAllPermissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -146,7 +146,7 @@ public object ModuleAccountPermissionKt {
      * @param value The permissions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPermissions")
+@kotlin.jvm.JvmName("setPermissions")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPermissions(index, value)
     }/**
@@ -158,7 +158,7 @@ public object ModuleAccountPermissionKt {
      * `repeated string permissions = 2 [json_name = "permissions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPermissions")
+@kotlin.jvm.JvmName("setPermissions")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PermissionsProxy>.clear() {
       _builder.clearPermissions()
     }}

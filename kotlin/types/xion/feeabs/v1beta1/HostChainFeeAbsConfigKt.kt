@@ -40,10 +40,10 @@ public object HostChainFeeAbsConfigKt {
      * `string ibc_denom = 1 [json_name = "ibcDenom", (.gogoproto.moretags) = "yaml:\"allowed_token\""];`
      */
     public var ibcDenom: kotlin.String
-      @JvmName("getIbcDenom")
-      get() = _builder.ibcDenom
-      @JvmName("setIbcDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcDenom")
+        get() = _builder.ibcDenom
+      @kotlin.jvm.JvmName("setIbcDenom")
+        set(value) {
         _builder.ibcDenom = value
       }
     /**
@@ -65,10 +65,10 @@ public object HostChainFeeAbsConfigKt {
      * `string osmosis_pool_token_denom_in = 2 [json_name = "osmosisPoolTokenDenomIn"];`
      */
     public var osmosisPoolTokenDenomIn: kotlin.String
-      @JvmName("getOsmosisPoolTokenDenomIn")
-      get() = _builder.osmosisPoolTokenDenomIn
-      @JvmName("setOsmosisPoolTokenDenomIn")
-      set(value) {
+      @kotlin.jvm.JvmName("getOsmosisPoolTokenDenomIn")
+        get() = _builder.osmosisPoolTokenDenomIn
+      @kotlin.jvm.JvmName("setOsmosisPoolTokenDenomIn")
+        set(value) {
         _builder.osmosisPoolTokenDenomIn = value
       }
     /**
@@ -90,10 +90,10 @@ public object HostChainFeeAbsConfigKt {
      * `uint64 pool_id = 3 [json_name = "poolId"];`
      */
     public var poolId: kotlin.Long
-      @JvmName("getPoolId")
-      get() = _builder.poolId
-      @JvmName("setPoolId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPoolId")
+        get() = _builder.poolId
+      @kotlin.jvm.JvmName("setPoolId")
+        set(value) {
         _builder.poolId = value
       }
     /**
@@ -115,17 +115,17 @@ public object HostChainFeeAbsConfigKt {
      * `.xion.feeabs.v1beta1.HostChainFeeAbsStatus status = 4 [json_name = "status"];`
      */
     public var status: xion.feeabs.v1beta1.Proposal.HostChainFeeAbsStatus
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     public var statusValue: kotlin.Int
-      @JvmName("getStatusValue")
-      get() = _builder.statusValue
-      @JvmName("setStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatusValue")
+        get() = _builder.statusValue
+      @kotlin.jvm.JvmName("setStatusValue")
+        set(value) {
         _builder.statusValue = value
       }
     /**

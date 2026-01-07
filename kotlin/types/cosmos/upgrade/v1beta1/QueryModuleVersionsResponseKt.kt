@@ -48,7 +48,7 @@ public object QueryModuleVersionsResponseKt {
      */
      public val moduleVersions: com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.moduleVersionsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryModuleVersionsResponseKt {
      * @param value The moduleVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addModuleVersions")
+@kotlin.jvm.JvmName("addModuleVersions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>.add(value: cosmos.upgrade.v1beta1.Upgrade.ModuleVersion) {
       _builder.addModuleVersions(value)
     }
@@ -73,7 +73,7 @@ public object QueryModuleVersionsResponseKt {
      * @param value The moduleVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignModuleVersions")
+@kotlin.jvm.JvmName("plusAssignModuleVersions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>.plusAssign(value: cosmos.upgrade.v1beta1.Upgrade.ModuleVersion) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryModuleVersionsResponseKt {
      * @param values The moduleVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllModuleVersions")
+@kotlin.jvm.JvmName("addAllModuleVersions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion>) {
       _builder.addAllModuleVersions(values)
     }
@@ -100,7 +100,7 @@ public object QueryModuleVersionsResponseKt {
      * @param values The moduleVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllModuleVersions")
+@kotlin.jvm.JvmName("plusAssignAllModuleVersions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryModuleVersionsResponseKt {
      * @param value The moduleVersions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setModuleVersions")
+@kotlin.jvm.JvmName("setModuleVersions")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>.set(index: kotlin.Int, value: cosmos.upgrade.v1beta1.Upgrade.ModuleVersion) {
       _builder.setModuleVersions(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryModuleVersionsResponseKt {
      * `repeated .cosmos.upgrade.v1beta1.ModuleVersion module_versions = 1 [json_name = "moduleVersions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearModuleVersions")
+@kotlin.jvm.JvmName("clearModuleVersions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.upgrade.v1beta1.Upgrade.ModuleVersion, ModuleVersionsProxy>.clear() {
       _builder.clearModuleVersions()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

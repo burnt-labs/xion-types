@@ -2,6 +2,7 @@
 name = "xion-types"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.72"
 description = "Generated Rust types for Xion blockchain protocol buffers"
 license = "Apache-2.0"
 repository = "https://github.com/burnt-labs/xion-types"

@@ -47,7 +47,7 @@ public object MetadataKt {
      */
      public val chunkHashes: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.chunkHashesList
       )
     /**
@@ -59,7 +59,7 @@ public object MetadataKt {
      * @param value The chunkHashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addChunkHashes")
+@kotlin.jvm.JvmName("addChunkHashes")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addChunkHashes(value)
     }/**
@@ -71,7 +71,7 @@ public object MetadataKt {
      * @param value The chunkHashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignChunkHashes")
+@kotlin.jvm.JvmName("plusAssignChunkHashes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -84,7 +84,7 @@ public object MetadataKt {
      * @param values The chunkHashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllChunkHashes")
+@kotlin.jvm.JvmName("addAllChunkHashes")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllChunkHashes(values)
     }/**
@@ -96,7 +96,7 @@ public object MetadataKt {
      * @param values The chunkHashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllChunkHashes")
+@kotlin.jvm.JvmName("plusAssignAllChunkHashes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -110,7 +110,7 @@ public object MetadataKt {
      * @param value The chunkHashes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setChunkHashes")
+@kotlin.jvm.JvmName("setChunkHashes")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setChunkHashes(index, value)
     }/**
@@ -121,7 +121,7 @@ public object MetadataKt {
      * `repeated bytes chunk_hashes = 1 [json_name = "chunkHashes"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearChunkHashes")
+@kotlin.jvm.JvmName("clearChunkHashes")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ChunkHashesProxy>.clear() {
       _builder.clearChunkHashes()
     }}

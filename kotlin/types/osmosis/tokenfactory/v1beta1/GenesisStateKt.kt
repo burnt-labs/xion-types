@@ -40,10 +40,10 @@ public object GenesisStateKt {
      * `.osmosis.tokenfactory.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: osmosis.tokenfactory.v1beta1.ParamsOuterClass.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -82,7 +82,7 @@ public object GenesisStateKt {
      */
      public val factoryDenoms: com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.factoryDenomsList
       )
     /**
@@ -90,7 +90,7 @@ public object GenesisStateKt {
      * @param value The factoryDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addFactoryDenoms")
+@kotlin.jvm.JvmName("addFactoryDenoms")
     public fun com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>.add(value: osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom) {
       _builder.addFactoryDenoms(value)
     }
@@ -99,7 +99,7 @@ public object GenesisStateKt {
      * @param value The factoryDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignFactoryDenoms")
+@kotlin.jvm.JvmName("plusAssignFactoryDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>.plusAssign(value: osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom) {
       add(value)
@@ -109,7 +109,7 @@ public object GenesisStateKt {
      * @param values The factoryDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllFactoryDenoms")
+@kotlin.jvm.JvmName("addAllFactoryDenoms")
     public fun com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>.addAll(values: kotlin.collections.Iterable<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom>) {
       _builder.addAllFactoryDenoms(values)
     }
@@ -118,7 +118,7 @@ public object GenesisStateKt {
      * @param values The factoryDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllFactoryDenoms")
+@kotlin.jvm.JvmName("plusAssignAllFactoryDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>.plusAssign(values: kotlin.collections.Iterable<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom>) {
       addAll(values)
@@ -129,7 +129,7 @@ public object GenesisStateKt {
      * @param value The factoryDenoms to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setFactoryDenoms")
+@kotlin.jvm.JvmName("setFactoryDenoms")
     public operator fun com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>.set(index: kotlin.Int, value: osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom) {
       _builder.setFactoryDenoms(index, value)
     }
@@ -137,11 +137,10 @@ public object GenesisStateKt {
      * `repeated .osmosis.tokenfactory.v1beta1.GenesisDenom factory_denoms = 2 [json_name = "factoryDenoms", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"factory_denoms\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearFactoryDenoms")
+@kotlin.jvm.JvmName("clearFactoryDenoms")
     public fun com.google.protobuf.kotlin.DslList<osmosis.tokenfactory.v1beta1.Genesis.GenesisDenom, FactoryDenomsProxy>.clear() {
       _builder.clearFactoryDenoms()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

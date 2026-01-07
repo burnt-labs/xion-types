@@ -41,10 +41,10 @@ public object QueryUnreceivedPacketsRequestKt {
      * `string port_id = 1 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryUnreceivedPacketsRequestKt {
      * `string channel_id = 2 [json_name = "channelId"];`
      */
     public var channelId: kotlin.String
-      @JvmName("getChannelId")
-      get() = _builder.channelId
-      @JvmName("setChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelId")
+        get() = _builder.channelId
+      @kotlin.jvm.JvmName("setChannelId")
+        set(value) {
         _builder.channelId = value
       }
     /**
@@ -98,7 +98,7 @@ public object QueryUnreceivedPacketsRequestKt {
      */
      public val packetCommitmentSequences: com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.packetCommitmentSequencesList
       )
     /**
@@ -110,7 +110,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param value The packetCommitmentSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPacketCommitmentSequences")
+@kotlin.jvm.JvmName("addPacketCommitmentSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>.add(value: kotlin.Long) {
       _builder.addPacketCommitmentSequences(value)
     }/**
@@ -122,7 +122,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param value The packetCommitmentSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPacketCommitmentSequences")
+@kotlin.jvm.JvmName("plusAssignPacketCommitmentSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -135,7 +135,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param values The packetCommitmentSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPacketCommitmentSequences")
+@kotlin.jvm.JvmName("addAllPacketCommitmentSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllPacketCommitmentSequences(values)
     }/**
@@ -147,7 +147,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param values The packetCommitmentSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPacketCommitmentSequences")
+@kotlin.jvm.JvmName("plusAssignAllPacketCommitmentSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -161,7 +161,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param value The packetCommitmentSequences to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPacketCommitmentSequences")
+@kotlin.jvm.JvmName("setPacketCommitmentSequences")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setPacketCommitmentSequences(index, value)
     }/**
@@ -172,7 +172,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * `repeated uint64 packet_commitment_sequences = 3 [json_name = "packetCommitmentSequences"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPacketCommitmentSequences")
+@kotlin.jvm.JvmName("clearPacketCommitmentSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketCommitmentSequencesProxy>.clear() {
       _builder.clearPacketCommitmentSequences()
     }}

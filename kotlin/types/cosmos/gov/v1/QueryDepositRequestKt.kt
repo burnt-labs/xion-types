@@ -40,10 +40,10 @@ public object QueryDepositRequestKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryDepositRequestKt {
      * `string depositor = 2 [json_name = "depositor", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var depositor: kotlin.String
-      @JvmName("getDepositor")
-      get() = _builder.depositor
-      @JvmName("setDepositor")
-      set(value) {
+      @kotlin.jvm.JvmName("getDepositor")
+        get() = _builder.depositor
+      @kotlin.jvm.JvmName("setDepositor")
+        set(value) {
         _builder.depositor = value
       }
     /**

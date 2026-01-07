@@ -40,10 +40,10 @@ public object CommissionKt {
      * `.cosmos.staking.v1beta1.CommissionRates commission_rates = 1 [json_name = "commissionRates", (.gogoproto.nullable) = false, (.gogoproto.embed) = true, (.amino.dont_omitempty) = true];`
      */
     public var commissionRates: cosmos.staking.v1beta1.Staking.CommissionRates
-      @JvmName("getCommissionRates")
-      get() = _builder.commissionRates
-      @JvmName("setCommissionRates")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommissionRates")
+        get() = _builder.commissionRates
+      @kotlin.jvm.JvmName("setCommissionRates")
+        set(value) {
         _builder.commissionRates = value
       }
     /**
@@ -79,10 +79,10 @@ public object CommissionKt {
      * `.google.protobuf.Timestamp update_time = 2 [json_name = "updateTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var updateTime: com.google.protobuf.Timestamp
-      @JvmName("getUpdateTime")
-      get() = _builder.updateTime
-      @JvmName("setUpdateTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpdateTime")
+        get() = _builder.updateTime
+      @kotlin.jvm.JvmName("setUpdateTime")
+        set(value) {
         _builder.updateTime = value
       }
     /**

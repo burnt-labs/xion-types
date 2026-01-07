@@ -44,7 +44,7 @@ public object ValidatorUpdatesKt {
      */
      public val updates: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.updatesList
       )
     /**
@@ -52,7 +52,7 @@ public object ValidatorUpdatesKt {
      * @param value The updates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addUpdates")
+@kotlin.jvm.JvmName("addUpdates")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>.add(value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.addUpdates(value)
     }
@@ -61,7 +61,7 @@ public object ValidatorUpdatesKt {
      * @param value The updates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignUpdates")
+@kotlin.jvm.JvmName("plusAssignUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>.plusAssign(value: tendermint.abci.Types.ValidatorUpdate) {
       add(value)
@@ -71,7 +71,7 @@ public object ValidatorUpdatesKt {
      * @param values The updates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllUpdates")
+@kotlin.jvm.JvmName("addAllUpdates")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       _builder.addAllUpdates(values)
     }
@@ -80,7 +80,7 @@ public object ValidatorUpdatesKt {
      * @param values The updates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllUpdates")
+@kotlin.jvm.JvmName("plusAssignAllUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object ValidatorUpdatesKt {
      * @param value The updates to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setUpdates")
+@kotlin.jvm.JvmName("setUpdates")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.setUpdates(index, value)
     }
@@ -99,11 +99,10 @@ public object ValidatorUpdatesKt {
      * `repeated .tendermint.abci.ValidatorUpdate updates = 1 [json_name = "updates", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearUpdates")
+@kotlin.jvm.JvmName("clearUpdates")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, UpdatesProxy>.clear() {
       _builder.clearUpdates()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

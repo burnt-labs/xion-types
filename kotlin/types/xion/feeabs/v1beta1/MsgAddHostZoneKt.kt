@@ -40,10 +40,10 @@ public object MsgAddHostZoneKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgAddHostZoneKt {
      * `.xion.feeabs.v1beta1.HostChainFeeAbsConfig host_chain_config = 2 [json_name = "hostChainConfig", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var hostChainConfig: xion.feeabs.v1beta1.Proposal.HostChainFeeAbsConfig
-      @JvmName("getHostChainConfig")
-      get() = _builder.hostChainConfig
-      @JvmName("setHostChainConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostChainConfig")
+        get() = _builder.hostChainConfig
+      @kotlin.jvm.JvmName("setHostChainConfig")
+        set(value) {
         _builder.hostChainConfig = value
       }
     /**

@@ -48,7 +48,7 @@ public object MsgSubmitProposalKt {
      */
      public val messages: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.messagesList
       )
     /**
@@ -60,7 +60,7 @@ public object MsgSubmitProposalKt {
      * @param value The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMessages")
+@kotlin.jvm.JvmName("addMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.add(value: com.google.protobuf.Any) {
       _builder.addMessages(value)
     }
@@ -73,7 +73,7 @@ public object MsgSubmitProposalKt {
      * @param value The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMessages")
+@kotlin.jvm.JvmName("plusAssignMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -87,7 +87,7 @@ public object MsgSubmitProposalKt {
      * @param values The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMessages")
+@kotlin.jvm.JvmName("addAllMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllMessages(values)
     }
@@ -100,7 +100,7 @@ public object MsgSubmitProposalKt {
      * @param values The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMessages")
+@kotlin.jvm.JvmName("plusAssignAllMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object MsgSubmitProposalKt {
      * @param value The messages to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMessages")
+@kotlin.jvm.JvmName("setMessages")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setMessages(index, value)
     }
@@ -127,11 +127,10 @@ public object MsgSubmitProposalKt {
      * `repeated .google.protobuf.Any messages = 1 [json_name = "messages"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMessages")
+@kotlin.jvm.JvmName("clearMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.clear() {
       _builder.clearMessages()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -148,7 +147,7 @@ public object MsgSubmitProposalKt {
      */
      public val initialDeposit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.initialDepositList
       )
     /**
@@ -160,7 +159,7 @@ public object MsgSubmitProposalKt {
      * @param value The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitialDeposit")
+@kotlin.jvm.JvmName("addInitialDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addInitialDeposit(value)
     }
@@ -173,7 +172,7 @@ public object MsgSubmitProposalKt {
      * @param value The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitialDeposit")
+@kotlin.jvm.JvmName("plusAssignInitialDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -187,7 +186,7 @@ public object MsgSubmitProposalKt {
      * @param values The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitialDeposit")
+@kotlin.jvm.JvmName("addAllInitialDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllInitialDeposit(values)
     }
@@ -200,7 +199,7 @@ public object MsgSubmitProposalKt {
      * @param values The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitialDeposit")
+@kotlin.jvm.JvmName("plusAssignAllInitialDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -215,7 +214,7 @@ public object MsgSubmitProposalKt {
      * @param value The initialDeposit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitialDeposit")
+@kotlin.jvm.JvmName("setInitialDeposit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setInitialDeposit(index, value)
     }
@@ -227,11 +226,10 @@ public object MsgSubmitProposalKt {
      * `repeated .cosmos.base.v1beta1.Coin initial_deposit = 2 [json_name = "initialDeposit", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitialDeposit")
+@kotlin.jvm.JvmName("clearInitialDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.clear() {
       _builder.clearInitialDeposit()
     }
-
 
     /**
      * ```
@@ -241,10 +239,10 @@ public object MsgSubmitProposalKt {
      * `string proposer = 3 [json_name = "proposer", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var proposer: kotlin.String
-      @JvmName("getProposer")
-      get() = _builder.proposer
-      @JvmName("setProposer")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposer")
+        get() = _builder.proposer
+      @kotlin.jvm.JvmName("setProposer")
+        set(value) {
         _builder.proposer = value
       }
     /**
@@ -266,10 +264,10 @@ public object MsgSubmitProposalKt {
      * `string metadata = 4 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**
@@ -291,10 +289,10 @@ public object MsgSubmitProposalKt {
      * `string title = 5 [json_name = "title", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -316,10 +314,10 @@ public object MsgSubmitProposalKt {
      * `string summary = 6 [json_name = "summary", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var summary: kotlin.String
-      @JvmName("getSummary")
-      get() = _builder.summary
-      @JvmName("setSummary")
-      set(value) {
+      @kotlin.jvm.JvmName("getSummary")
+        get() = _builder.summary
+      @kotlin.jvm.JvmName("setSummary")
+        set(value) {
         _builder.summary = value
       }
     /**
@@ -341,10 +339,10 @@ public object MsgSubmitProposalKt {
      * `bool expedited = 7 [json_name = "expedited", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var expedited: kotlin.Boolean
-      @JvmName("getExpedited")
-      get() = _builder.expedited
-      @JvmName("setExpedited")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpedited")
+        get() = _builder.expedited
+      @kotlin.jvm.JvmName("setExpedited")
+        set(value) {
         _builder.expedited = value
       }
     /**

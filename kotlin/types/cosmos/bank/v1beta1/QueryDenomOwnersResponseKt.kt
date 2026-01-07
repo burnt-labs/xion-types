@@ -43,7 +43,7 @@ public object QueryDenomOwnersResponseKt {
      */
      public val denomOwners: com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.denomOwnersList
       )
     /**
@@ -51,7 +51,7 @@ public object QueryDenomOwnersResponseKt {
      * @param value The denomOwners to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDenomOwners")
+@kotlin.jvm.JvmName("addDenomOwners")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>.add(value: cosmos.bank.v1beta1.QueryOuterClass.DenomOwner) {
       _builder.addDenomOwners(value)
     }
@@ -60,7 +60,7 @@ public object QueryDenomOwnersResponseKt {
      * @param value The denomOwners to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDenomOwners")
+@kotlin.jvm.JvmName("plusAssignDenomOwners")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>.plusAssign(value: cosmos.bank.v1beta1.QueryOuterClass.DenomOwner) {
       add(value)
@@ -70,7 +70,7 @@ public object QueryDenomOwnersResponseKt {
      * @param values The denomOwners to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDenomOwners")
+@kotlin.jvm.JvmName("addAllDenomOwners")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>.addAll(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner>) {
       _builder.addAllDenomOwners(values)
     }
@@ -79,7 +79,7 @@ public object QueryDenomOwnersResponseKt {
      * @param values The denomOwners to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDenomOwners")
+@kotlin.jvm.JvmName("plusAssignAllDenomOwners")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object QueryDenomOwnersResponseKt {
      * @param value The denomOwners to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDenomOwners")
+@kotlin.jvm.JvmName("setDenomOwners")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>.set(index: kotlin.Int, value: cosmos.bank.v1beta1.QueryOuterClass.DenomOwner) {
       _builder.setDenomOwners(index, value)
     }
@@ -98,11 +98,10 @@ public object QueryDenomOwnersResponseKt {
      * `repeated .cosmos.bank.v1beta1.DenomOwner denom_owners = 1 [json_name = "denomOwners"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDenomOwners")
+@kotlin.jvm.JvmName("clearDenomOwners")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.QueryOuterClass.DenomOwner, DenomOwnersProxy>.clear() {
       _builder.clearDenomOwners()
     }
-
 
     /**
      * ```
@@ -112,10 +111,10 @@ public object QueryDenomOwnersResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

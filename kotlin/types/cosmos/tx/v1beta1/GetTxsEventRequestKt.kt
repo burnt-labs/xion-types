@@ -50,7 +50,7 @@ public object GetTxsEventRequestKt {
      * @return A list containing the events.
      */
     @kotlin.Deprecated(message = "Field events is deprecated") public val events: com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.eventsList
       )
@@ -65,7 +65,7 @@ public object GetTxsEventRequestKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvents")
+@kotlin.jvm.JvmName("addEvents")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>.add(value: kotlin.String) {
       _builder.addEvents(value)
     }
@@ -80,7 +80,7 @@ public object GetTxsEventRequestKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvents")
+@kotlin.jvm.JvmName("plusAssignEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -96,7 +96,7 @@ public object GetTxsEventRequestKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvents")
+@kotlin.jvm.JvmName("addAllEvents")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllEvents(values)
     }
@@ -111,7 +111,7 @@ public object GetTxsEventRequestKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvents")
+@kotlin.jvm.JvmName("plusAssignAllEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -128,7 +128,7 @@ public object GetTxsEventRequestKt {
      * @param value The events to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvents")
+@kotlin.jvm.JvmName("setEvents")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setEvents(index, value)
     }/**
@@ -141,7 +141,7 @@ public object GetTxsEventRequestKt {
      * `repeated string events = 1 [json_name = "events", deprecated = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvents")
+@kotlin.jvm.JvmName("setEvents")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EventsProxy>.clear() {
       _builder.clearEvents()
     }
@@ -154,10 +154,10 @@ public object GetTxsEventRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field pagination is deprecated") public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**
@@ -191,17 +191,17 @@ public object GetTxsEventRequestKt {
      * `.cosmos.tx.v1beta1.OrderBy order_by = 3 [json_name = "orderBy"];`
      */
     public var orderBy: cosmos.tx.v1beta1.ServiceOuterClass.OrderBy
-      @JvmName("getOrderBy")
-      get() = _builder.orderBy
-      @JvmName("setOrderBy")
-      set(value) {
+      @kotlin.jvm.JvmName("getOrderBy")
+        get() = _builder.orderBy
+      @kotlin.jvm.JvmName("setOrderBy")
+        set(value) {
         _builder.orderBy = value
       }
     public var orderByValue: kotlin.Int
-      @JvmName("getOrderByValue")
-      get() = _builder.orderByValue
-      @JvmName("setOrderByValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getOrderByValue")
+        get() = _builder.orderByValue
+      @kotlin.jvm.JvmName("setOrderByValue")
+        set(value) {
         _builder.orderByValue = value
       }
     /**
@@ -220,10 +220,10 @@ public object GetTxsEventRequestKt {
      * `uint64 page = 4 [json_name = "page"];`
      */
     public var page: kotlin.Long
-      @JvmName("getPage")
-      get() = _builder.page
-      @JvmName("setPage")
-      set(value) {
+      @kotlin.jvm.JvmName("getPage")
+        get() = _builder.page
+      @kotlin.jvm.JvmName("setPage")
+        set(value) {
         _builder.page = value
       }
     /**
@@ -247,10 +247,10 @@ public object GetTxsEventRequestKt {
      * `uint64 limit = 5 [json_name = "limit"];`
      */
     public var limit: kotlin.Long
-      @JvmName("getLimit")
-      get() = _builder.limit
-      @JvmName("setLimit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLimit")
+        get() = _builder.limit
+      @kotlin.jvm.JvmName("setLimit")
+        set(value) {
         _builder.limit = value
       }
     /**
@@ -274,10 +274,10 @@ public object GetTxsEventRequestKt {
      * `string query = 6 [json_name = "query", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var query: kotlin.String
-      @JvmName("getQuery")
-      get() = _builder.query
-      @JvmName("setQuery")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuery")
+        get() = _builder.query
+      @kotlin.jvm.JvmName("setQuery")
+        set(value) {
         _builder.query = value
       }
     /**

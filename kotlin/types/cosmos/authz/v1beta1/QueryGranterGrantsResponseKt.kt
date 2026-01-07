@@ -47,7 +47,7 @@ public object QueryGranterGrantsResponseKt {
      */
      public val grants: com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.grantsList
       )
     /**
@@ -59,7 +59,7 @@ public object QueryGranterGrantsResponseKt {
      * @param value The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGrants")
+@kotlin.jvm.JvmName("addGrants")
     public fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>.add(value: cosmos.authz.v1beta1.Authz.GrantAuthorization) {
       _builder.addGrants(value)
     }
@@ -72,7 +72,7 @@ public object QueryGranterGrantsResponseKt {
      * @param value The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGrants")
+@kotlin.jvm.JvmName("plusAssignGrants")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>.plusAssign(value: cosmos.authz.v1beta1.Authz.GrantAuthorization) {
       add(value)
@@ -86,7 +86,7 @@ public object QueryGranterGrantsResponseKt {
      * @param values The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGrants")
+@kotlin.jvm.JvmName("addAllGrants")
     public fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.authz.v1beta1.Authz.GrantAuthorization>) {
       _builder.addAllGrants(values)
     }
@@ -99,7 +99,7 @@ public object QueryGranterGrantsResponseKt {
      * @param values The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGrants")
+@kotlin.jvm.JvmName("plusAssignAllGrants")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.authz.v1beta1.Authz.GrantAuthorization>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object QueryGranterGrantsResponseKt {
      * @param value The grants to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGrants")
+@kotlin.jvm.JvmName("setGrants")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>.set(index: kotlin.Int, value: cosmos.authz.v1beta1.Authz.GrantAuthorization) {
       _builder.setGrants(index, value)
     }
@@ -126,11 +126,10 @@ public object QueryGranterGrantsResponseKt {
      * `repeated .cosmos.authz.v1beta1.GrantAuthorization grants = 1 [json_name = "grants"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGrants")
+@kotlin.jvm.JvmName("clearGrants")
     public fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, GrantsProxy>.clear() {
       _builder.clearGrants()
     }
-
 
     /**
      * ```
@@ -140,10 +139,10 @@ public object QueryGranterGrantsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

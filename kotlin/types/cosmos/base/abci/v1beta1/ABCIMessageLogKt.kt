@@ -36,10 +36,10 @@ public object ABCIMessageLogKt {
      * `uint32 msg_index = 1 [json_name = "msgIndex", (.gogoproto.jsontag) = "msg_index"];`
      */
     public var msgIndex: kotlin.Int
-      @JvmName("getMsgIndex")
-      get() = _builder.msgIndex
-      @JvmName("setMsgIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsgIndex")
+        get() = _builder.msgIndex
+      @kotlin.jvm.JvmName("setMsgIndex")
+        set(value) {
         _builder.msgIndex = value
       }
     /**
@@ -53,10 +53,10 @@ public object ABCIMessageLogKt {
      * `string log = 2 [json_name = "log"];`
      */
     public var log: kotlin.String
-      @JvmName("getLog")
-      get() = _builder.log
-      @JvmName("setLog")
-      set(value) {
+      @kotlin.jvm.JvmName("getLog")
+        get() = _builder.log
+      @kotlin.jvm.JvmName("setLog")
+        set(value) {
         _builder.log = value
       }
     /**
@@ -82,7 +82,7 @@ public object ABCIMessageLogKt {
      */
      public val events: com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.eventsList
       )
     /**
@@ -95,7 +95,7 @@ public object ABCIMessageLogKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvents")
+@kotlin.jvm.JvmName("addEvents")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>.add(value: cosmos.base.abci.v1beta1.Abci.StringEvent) {
       _builder.addEvents(value)
     }
@@ -109,7 +109,7 @@ public object ABCIMessageLogKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvents")
+@kotlin.jvm.JvmName("plusAssignEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>.plusAssign(value: cosmos.base.abci.v1beta1.Abci.StringEvent) {
       add(value)
@@ -124,7 +124,7 @@ public object ABCIMessageLogKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvents")
+@kotlin.jvm.JvmName("addAllEvents")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.StringEvent>) {
       _builder.addAllEvents(values)
     }
@@ -138,7 +138,7 @@ public object ABCIMessageLogKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvents")
+@kotlin.jvm.JvmName("plusAssignAllEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.StringEvent>) {
       addAll(values)
@@ -154,7 +154,7 @@ public object ABCIMessageLogKt {
      * @param value The events to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvents")
+@kotlin.jvm.JvmName("setEvents")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>.set(index: kotlin.Int, value: cosmos.base.abci.v1beta1.Abci.StringEvent) {
       _builder.setEvents(index, value)
     }
@@ -167,11 +167,10 @@ public object ABCIMessageLogKt {
      * `repeated .cosmos.base.abci.v1beta1.StringEvent events = 3 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "StringEvents"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvents")
+@kotlin.jvm.JvmName("clearEvents")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.StringEvent, EventsProxy>.clear() {
       _builder.clearEvents()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

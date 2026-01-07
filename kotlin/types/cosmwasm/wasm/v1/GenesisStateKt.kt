@@ -36,10 +36,10 @@ public object GenesisStateKt {
      * `.cosmwasm.wasm.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmwasm.wasm.v1.Types.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -70,7 +70,7 @@ public object GenesisStateKt {
      */
      public val codes: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.codesList
       )
     /**
@@ -78,7 +78,7 @@ public object GenesisStateKt {
      * @param value The codes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCodes")
+@kotlin.jvm.JvmName("addCodes")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>.add(value: cosmwasm.wasm.v1.Genesis.Code) {
       _builder.addCodes(value)
     }
@@ -87,7 +87,7 @@ public object GenesisStateKt {
      * @param value The codes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCodes")
+@kotlin.jvm.JvmName("plusAssignCodes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>.plusAssign(value: cosmwasm.wasm.v1.Genesis.Code) {
       add(value)
@@ -97,7 +97,7 @@ public object GenesisStateKt {
      * @param values The codes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCodes")
+@kotlin.jvm.JvmName("addAllCodes")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Genesis.Code>) {
       _builder.addAllCodes(values)
     }
@@ -106,7 +106,7 @@ public object GenesisStateKt {
      * @param values The codes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCodes")
+@kotlin.jvm.JvmName("plusAssignAllCodes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Genesis.Code>) {
       addAll(values)
@@ -117,7 +117,7 @@ public object GenesisStateKt {
      * @param value The codes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCodes")
+@kotlin.jvm.JvmName("setCodes")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Genesis.Code) {
       _builder.setCodes(index, value)
     }
@@ -125,11 +125,10 @@ public object GenesisStateKt {
      * `repeated .cosmwasm.wasm.v1.Code codes = 2 [json_name = "codes", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "codes,omitempty", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCodes")
+@kotlin.jvm.JvmName("clearCodes")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Code, CodesProxy>.clear() {
       _builder.clearCodes()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -142,7 +141,7 @@ public object GenesisStateKt {
      */
      public val contracts: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.contractsList
       )
     /**
@@ -150,7 +149,7 @@ public object GenesisStateKt {
      * @param value The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContracts")
+@kotlin.jvm.JvmName("addContracts")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>.add(value: cosmwasm.wasm.v1.Genesis.Contract) {
       _builder.addContracts(value)
     }
@@ -159,7 +158,7 @@ public object GenesisStateKt {
      * @param value The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContracts")
+@kotlin.jvm.JvmName("plusAssignContracts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>.plusAssign(value: cosmwasm.wasm.v1.Genesis.Contract) {
       add(value)
@@ -169,7 +168,7 @@ public object GenesisStateKt {
      * @param values The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContracts")
+@kotlin.jvm.JvmName("addAllContracts")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Genesis.Contract>) {
       _builder.addAllContracts(values)
     }
@@ -178,7 +177,7 @@ public object GenesisStateKt {
      * @param values The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContracts")
+@kotlin.jvm.JvmName("plusAssignAllContracts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Genesis.Contract>) {
       addAll(values)
@@ -189,7 +188,7 @@ public object GenesisStateKt {
      * @param value The contracts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContracts")
+@kotlin.jvm.JvmName("setContracts")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Genesis.Contract) {
       _builder.setContracts(index, value)
     }
@@ -197,11 +196,10 @@ public object GenesisStateKt {
      * `repeated .cosmwasm.wasm.v1.Contract contracts = 3 [json_name = "contracts", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "contracts,omitempty", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContracts")
+@kotlin.jvm.JvmName("clearContracts")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Contract, ContractsProxy>.clear() {
       _builder.clearContracts()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -214,7 +212,7 @@ public object GenesisStateKt {
      */
      public val sequences: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.sequencesList
       )
     /**
@@ -222,7 +220,7 @@ public object GenesisStateKt {
      * @param value The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSequences")
+@kotlin.jvm.JvmName("addSequences")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>.add(value: cosmwasm.wasm.v1.Genesis.Sequence) {
       _builder.addSequences(value)
     }
@@ -231,7 +229,7 @@ public object GenesisStateKt {
      * @param value The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSequences")
+@kotlin.jvm.JvmName("plusAssignSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>.plusAssign(value: cosmwasm.wasm.v1.Genesis.Sequence) {
       add(value)
@@ -241,7 +239,7 @@ public object GenesisStateKt {
      * @param values The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSequences")
+@kotlin.jvm.JvmName("addAllSequences")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Genesis.Sequence>) {
       _builder.addAllSequences(values)
     }
@@ -250,7 +248,7 @@ public object GenesisStateKt {
      * @param values The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSequences")
+@kotlin.jvm.JvmName("plusAssignAllSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Genesis.Sequence>) {
       addAll(values)
@@ -261,7 +259,7 @@ public object GenesisStateKt {
      * @param value The sequences to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSequences")
+@kotlin.jvm.JvmName("setSequences")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Genesis.Sequence) {
       _builder.setSequences(index, value)
     }
@@ -269,11 +267,10 @@ public object GenesisStateKt {
      * `repeated .cosmwasm.wasm.v1.Sequence sequences = 4 [json_name = "sequences", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "sequences,omitempty", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSequences")
+@kotlin.jvm.JvmName("clearSequences")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Genesis.Sequence, SequencesProxy>.clear() {
       _builder.clearSequences()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

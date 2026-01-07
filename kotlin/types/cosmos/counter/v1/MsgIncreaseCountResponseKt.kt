@@ -40,10 +40,10 @@ public object MsgIncreaseCountResponseKt {
      * `int64 new_count = 1 [json_name = "newCount"];`
      */
     public var newCount: kotlin.Long
-      @JvmName("getNewCount")
-      get() = _builder.newCount
-      @JvmName("setNewCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewCount")
+        get() = _builder.newCount
+      @kotlin.jvm.JvmName("setNewCount")
+        set(value) {
         _builder.newCount = value
       }
     /**

@@ -41,10 +41,10 @@ public object TallyParamsKt {
      * `bytes quorum = 1 [json_name = "quorum", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.jsontag) = "quorum,omitempty", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var quorum: com.google.protobuf.ByteString
-      @JvmName("getQuorum")
-      get() = _builder.quorum
-      @JvmName("setQuorum")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuorum")
+        get() = _builder.quorum
+      @kotlin.jvm.JvmName("setQuorum")
+        set(value) {
         _builder.quorum = value
       }
     /**
@@ -67,10 +67,10 @@ public object TallyParamsKt {
      * `bytes threshold = 2 [json_name = "threshold", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.jsontag) = "threshold,omitempty", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var threshold: com.google.protobuf.ByteString
-      @JvmName("getThreshold")
-      get() = _builder.threshold
-      @JvmName("setThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getThreshold")
+        get() = _builder.threshold
+      @kotlin.jvm.JvmName("setThreshold")
+        set(value) {
         _builder.threshold = value
       }
     /**
@@ -93,10 +93,10 @@ public object TallyParamsKt {
      * `bytes veto_threshold = 3 [json_name = "vetoThreshold", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.jsontag) = "veto_threshold,omitempty", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var vetoThreshold: com.google.protobuf.ByteString
-      @JvmName("getVetoThreshold")
-      get() = _builder.vetoThreshold
-      @JvmName("setVetoThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getVetoThreshold")
+        get() = _builder.vetoThreshold
+      @kotlin.jvm.JvmName("setVetoThreshold")
+        set(value) {
         _builder.vetoThreshold = value
       }
     /**

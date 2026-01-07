@@ -40,10 +40,10 @@ public object DeleteHostZoneProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -65,10 +65,10 @@ public object DeleteHostZoneProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -90,10 +90,10 @@ public object DeleteHostZoneProposalKt {
      * `string ibc_denom = 3 [json_name = "ibcDenom"];`
      */
     public var ibcDenom: kotlin.String
-      @JvmName("getIbcDenom")
-      get() = _builder.ibcDenom
-      @JvmName("setIbcDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcDenom")
+        get() = _builder.ibcDenom
+      @kotlin.jvm.JvmName("setIbcDenom")
+        set(value) {
         _builder.ibcDenom = value
       }
     /**

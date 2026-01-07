@@ -40,10 +40,10 @@ public object ParamsKt {
      * `string mint_denom = 1 [json_name = "mintDenom"];`
      */
     public var mintDenom: kotlin.String
-      @JvmName("getMintDenom")
-      get() = _builder.mintDenom
-      @JvmName("setMintDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getMintDenom")
+        get() = _builder.mintDenom
+      @kotlin.jvm.JvmName("setMintDenom")
+        set(value) {
         _builder.mintDenom = value
       }
     /**
@@ -65,10 +65,10 @@ public object ParamsKt {
      * `string inflation_rate_change = 2 [json_name = "inflationRateChange", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var inflationRateChange: kotlin.String
-      @JvmName("getInflationRateChange")
-      get() = _builder.inflationRateChange
-      @JvmName("setInflationRateChange")
-      set(value) {
+      @kotlin.jvm.JvmName("getInflationRateChange")
+        get() = _builder.inflationRateChange
+      @kotlin.jvm.JvmName("setInflationRateChange")
+        set(value) {
         _builder.inflationRateChange = value
       }
     /**
@@ -90,10 +90,10 @@ public object ParamsKt {
      * `string inflation_max = 3 [json_name = "inflationMax", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var inflationMax: kotlin.String
-      @JvmName("getInflationMax")
-      get() = _builder.inflationMax
-      @JvmName("setInflationMax")
-      set(value) {
+      @kotlin.jvm.JvmName("getInflationMax")
+        get() = _builder.inflationMax
+      @kotlin.jvm.JvmName("setInflationMax")
+        set(value) {
         _builder.inflationMax = value
       }
     /**
@@ -115,10 +115,10 @@ public object ParamsKt {
      * `string inflation_min = 4 [json_name = "inflationMin", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var inflationMin: kotlin.String
-      @JvmName("getInflationMin")
-      get() = _builder.inflationMin
-      @JvmName("setInflationMin")
-      set(value) {
+      @kotlin.jvm.JvmName("getInflationMin")
+        get() = _builder.inflationMin
+      @kotlin.jvm.JvmName("setInflationMin")
+        set(value) {
         _builder.inflationMin = value
       }
     /**
@@ -140,10 +140,10 @@ public object ParamsKt {
      * `string goal_bonded = 5 [json_name = "goalBonded", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var goalBonded: kotlin.String
-      @JvmName("getGoalBonded")
-      get() = _builder.goalBonded
-      @JvmName("setGoalBonded")
-      set(value) {
+      @kotlin.jvm.JvmName("getGoalBonded")
+        get() = _builder.goalBonded
+      @kotlin.jvm.JvmName("setGoalBonded")
+        set(value) {
         _builder.goalBonded = value
       }
     /**
@@ -165,10 +165,10 @@ public object ParamsKt {
      * `uint64 blocks_per_year = 6 [json_name = "blocksPerYear"];`
      */
     public var blocksPerYear: kotlin.Long
-      @JvmName("getBlocksPerYear")
-      get() = _builder.blocksPerYear
-      @JvmName("setBlocksPerYear")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlocksPerYear")
+        get() = _builder.blocksPerYear
+      @kotlin.jvm.JvmName("setBlocksPerYear")
+        set(value) {
         _builder.blocksPerYear = value
       }
     /**

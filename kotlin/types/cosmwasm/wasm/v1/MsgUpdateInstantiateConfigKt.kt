@@ -40,10 +40,10 @@ public object MsgUpdateInstantiateConfigKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgUpdateInstantiateConfigKt {
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgUpdateInstantiateConfigKt {
      * `.cosmwasm.wasm.v1.AccessConfig new_instantiate_permission = 3 [json_name = "newInstantiatePermission"];`
      */
     public var newInstantiatePermission: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getNewInstantiatePermission")
-      get() = _builder.newInstantiatePermission
-      @JvmName("setNewInstantiatePermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewInstantiatePermission")
+        get() = _builder.newInstantiatePermission
+      @kotlin.jvm.JvmName("setNewInstantiatePermission")
+        set(value) {
         _builder.newInstantiatePermission = value
       }
     /**

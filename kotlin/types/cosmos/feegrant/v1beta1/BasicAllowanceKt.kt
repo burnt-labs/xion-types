@@ -50,7 +50,7 @@ public object BasicAllowanceKt {
      */
      public val spendLimit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.spendLimitList
       )
     /**
@@ -64,7 +64,7 @@ public object BasicAllowanceKt {
      * @param value The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSpendLimit")
+@kotlin.jvm.JvmName("addSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addSpendLimit(value)
     }
@@ -79,7 +79,7 @@ public object BasicAllowanceKt {
      * @param value The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSpendLimit")
+@kotlin.jvm.JvmName("plusAssignSpendLimit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -95,7 +95,7 @@ public object BasicAllowanceKt {
      * @param values The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSpendLimit")
+@kotlin.jvm.JvmName("addAllSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllSpendLimit(values)
     }
@@ -110,7 +110,7 @@ public object BasicAllowanceKt {
      * @param values The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSpendLimit")
+@kotlin.jvm.JvmName("plusAssignAllSpendLimit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -127,7 +127,7 @@ public object BasicAllowanceKt {
      * @param value The spendLimit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSpendLimit")
+@kotlin.jvm.JvmName("setSpendLimit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setSpendLimit(index, value)
     }
@@ -141,11 +141,10 @@ public object BasicAllowanceKt {
      * `repeated .cosmos.base.v1beta1.Coin spend_limit = 1 [json_name = "spendLimit", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSpendLimit")
+@kotlin.jvm.JvmName("clearSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.clear() {
       _builder.clearSpendLimit()
     }
-
 
     /**
      * ```
@@ -155,10 +154,10 @@ public object BasicAllowanceKt {
      * `.google.protobuf.Timestamp expiration = 2 [json_name = "expiration", (.gogoproto.stdtime) = true];`
      */
     public var expiration: com.google.protobuf.Timestamp
-      @JvmName("getExpiration")
-      get() = _builder.expiration
-      @JvmName("setExpiration")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpiration")
+        get() = _builder.expiration
+      @kotlin.jvm.JvmName("setExpiration")
+        set(value) {
         _builder.expiration = value
       }
     /**

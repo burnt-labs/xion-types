@@ -40,10 +40,10 @@ public object GroupPolicyInfoKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -65,10 +65,10 @@ public object GroupPolicyInfoKt {
      * `uint64 group_id = 2 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**
@@ -90,10 +90,10 @@ public object GroupPolicyInfoKt {
      * `string admin = 3 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -117,10 +117,10 @@ public object GroupPolicyInfoKt {
      * `string metadata = 4 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**
@@ -145,10 +145,10 @@ public object GroupPolicyInfoKt {
      * `uint64 version = 5 [json_name = "version"];`
      */
     public var version: kotlin.Long
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -171,10 +171,10 @@ public object GroupPolicyInfoKt {
      * `.google.protobuf.Any decision_policy = 6 [json_name = "decisionPolicy", (.cosmos_proto.accepts_interface) = "cosmos.group.v1.DecisionPolicy"];`
      */
     public var decisionPolicy: com.google.protobuf.Any
-      @JvmName("getDecisionPolicy")
-      get() = _builder.decisionPolicy
-      @JvmName("setDecisionPolicy")
-      set(value) {
+      @kotlin.jvm.JvmName("getDecisionPolicy")
+        get() = _builder.decisionPolicy
+      @kotlin.jvm.JvmName("setDecisionPolicy")
+        set(value) {
         _builder.decisionPolicy = value
       }
     /**
@@ -210,10 +210,10 @@ public object GroupPolicyInfoKt {
      * `.google.protobuf.Timestamp created_at = 7 [json_name = "createdAt", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var createdAt: com.google.protobuf.Timestamp
-      @JvmName("getCreatedAt")
-      get() = _builder.createdAt
-      @JvmName("setCreatedAt")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreatedAt")
+        get() = _builder.createdAt
+      @kotlin.jvm.JvmName("setCreatedAt")
+        set(value) {
         _builder.createdAt = value
       }
     /**

@@ -39,70 +39,97 @@ public object InterchainQueryRequestPacketKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class RequestsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      */
      public val requests: com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.requestsList
       )
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      * @param value The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRequests")
+@kotlin.jvm.JvmName("addRequests")
     public fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>.add(value: xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest) {
       _builder.addRequests(value)
     }
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      * @param value The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRequests")
+@kotlin.jvm.JvmName("plusAssignRequests")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>.plusAssign(value: xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest) {
       add(value)
     }
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      * @param values The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRequests")
+@kotlin.jvm.JvmName("addAllRequests")
     public fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>.addAll(values: kotlin.collections.Iterable<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest>) {
       _builder.addAllRequests(values)
     }
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      * @param values The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRequests")
+@kotlin.jvm.JvmName("plusAssignAllRequests")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>.plusAssign(values: kotlin.collections.Iterable<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest>) {
       addAll(values)
     }
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      * @param index The index to set the value at.
      * @param value The requests to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRequests")
+@kotlin.jvm.JvmName("setRequests")
     public operator fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>.set(index: kotlin.Int, value: xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest) {
       _builder.setRequests(index, value)
     }
     /**
+     * ```
+     * requests defines the list of interchain query requests
+     * ```
+     *
      * `repeated .xion.feeabs.v1beta1.InterchainQueryRequest requests = 1 [json_name = "requests", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRequests")
+@kotlin.jvm.JvmName("clearRequests")
     public fun com.google.protobuf.kotlin.DslList<xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest, RequestsProxy>.clear() {
       _builder.clearRequests()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

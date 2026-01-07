@@ -40,10 +40,10 @@ public object MsgExecKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgExecKt {
      * `string executor = 2 [json_name = "executor", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var executor: kotlin.String
-      @JvmName("getExecutor")
-      get() = _builder.executor
-      @JvmName("setExecutor")
-      set(value) {
+      @kotlin.jvm.JvmName("getExecutor")
+        get() = _builder.executor
+      @kotlin.jvm.JvmName("setExecutor")
+        set(value) {
         _builder.executor = value
       }
     /**

@@ -32,17 +32,17 @@ public object MisbehaviorKt {
      * `.tendermint.abci.MisbehaviorType type = 1 [json_name = "type"];`
      */
     public var type: tendermint.abci.Types.MisbehaviorType
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     public var typeValue: kotlin.Int
-      @JvmName("getTypeValue")
-      get() = _builder.typeValue
-      @JvmName("setTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getTypeValue")
+        get() = _builder.typeValue
+      @kotlin.jvm.JvmName("setTypeValue")
+        set(value) {
         _builder.typeValue = value
       }
     /**
@@ -60,10 +60,10 @@ public object MisbehaviorKt {
      * `.tendermint.abci.Validator validator = 2 [json_name = "validator", (.gogoproto.nullable) = false];`
      */
     public var validator: tendermint.abci.Types.Validator
-      @JvmName("getValidator")
-      get() = _builder.validator
-      @JvmName("setValidator")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidator")
+        get() = _builder.validator
+      @kotlin.jvm.JvmName("setValidator")
+        set(value) {
         _builder.validator = value
       }
     /**
@@ -99,10 +99,10 @@ public object MisbehaviorKt {
      * `int64 height = 3 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -124,10 +124,10 @@ public object MisbehaviorKt {
      * `.google.protobuf.Timestamp time = 4 [json_name = "time", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var time: com.google.protobuf.Timestamp
-      @JvmName("getTime")
-      get() = _builder.time
-      @JvmName("setTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTime")
+        get() = _builder.time
+      @kotlin.jvm.JvmName("setTime")
+        set(value) {
         _builder.time = value
       }
     /**
@@ -165,10 +165,10 @@ public object MisbehaviorKt {
      * `int64 total_voting_power = 5 [json_name = "totalVotingPower"];`
      */
     public var totalVotingPower: kotlin.Long
-      @JvmName("getTotalVotingPower")
-      get() = _builder.totalVotingPower
-      @JvmName("setTotalVotingPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalVotingPower")
+        get() = _builder.totalVotingPower
+      @kotlin.jvm.JvmName("setTotalVotingPower")
+        set(value) {
         _builder.totalVotingPower = value
       }
     /**

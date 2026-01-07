@@ -43,10 +43,10 @@ public object ProposalKt {
      * `uint64 id = 1 [json_name = "id"];`
      */
     public var id: kotlin.Long
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -68,10 +68,10 @@ public object ProposalKt {
      * `string group_policy_address = 2 [json_name = "groupPolicyAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var groupPolicyAddress: kotlin.String
-      @JvmName("getGroupPolicyAddress")
-      get() = _builder.groupPolicyAddress
-      @JvmName("setGroupPolicyAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyAddress")
+        get() = _builder.groupPolicyAddress
+      @kotlin.jvm.JvmName("setGroupPolicyAddress")
+        set(value) {
         _builder.groupPolicyAddress = value
       }
     /**
@@ -95,10 +95,10 @@ public object ProposalKt {
      * `string metadata = 3 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**
@@ -129,7 +129,7 @@ public object ProposalKt {
      * @return A list containing the proposers.
      */
     public val proposers: com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.proposersList
       )
@@ -142,7 +142,7 @@ public object ProposalKt {
      * @param value The proposers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addProposers")
+@kotlin.jvm.JvmName("addProposers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>.add(value: kotlin.String) {
       _builder.addProposers(value)
     }
@@ -155,7 +155,7 @@ public object ProposalKt {
      * @param value The proposers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignProposers")
+@kotlin.jvm.JvmName("plusAssignProposers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -169,7 +169,7 @@ public object ProposalKt {
      * @param values The proposers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllProposers")
+@kotlin.jvm.JvmName("addAllProposers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllProposers(values)
     }
@@ -182,7 +182,7 @@ public object ProposalKt {
      * @param values The proposers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllProposers")
+@kotlin.jvm.JvmName("plusAssignAllProposers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -197,7 +197,7 @@ public object ProposalKt {
      * @param value The proposers to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setProposers")
+@kotlin.jvm.JvmName("setProposers")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setProposers(index, value)
     }/**
@@ -208,7 +208,7 @@ public object ProposalKt {
      * `repeated string proposers = 4 [json_name = "proposers", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearProposers")
+@kotlin.jvm.JvmName("setProposers")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ProposersProxy>.clear() {
       _builder.clearProposers()
     }
@@ -220,10 +220,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp submit_time = 5 [json_name = "submitTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var submitTime: com.google.protobuf.Timestamp
-      @JvmName("getSubmitTime")
-      get() = _builder.submitTime
-      @JvmName("setSubmitTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubmitTime")
+        get() = _builder.submitTime
+      @kotlin.jvm.JvmName("setSubmitTime")
+        set(value) {
         _builder.submitTime = value
       }
     /**
@@ -260,10 +260,10 @@ public object ProposalKt {
      * `uint64 group_version = 6 [json_name = "groupVersion"];`
      */
     public var groupVersion: kotlin.Long
-      @JvmName("getGroupVersion")
-      get() = _builder.groupVersion
-      @JvmName("setGroupVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupVersion")
+        get() = _builder.groupVersion
+      @kotlin.jvm.JvmName("setGroupVersion")
+        set(value) {
         _builder.groupVersion = value
       }
     /**
@@ -289,10 +289,10 @@ public object ProposalKt {
      * `uint64 group_policy_version = 7 [json_name = "groupPolicyVersion"];`
      */
     public var groupPolicyVersion: kotlin.Long
-      @JvmName("getGroupPolicyVersion")
-      get() = _builder.groupPolicyVersion
-      @JvmName("setGroupPolicyVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyVersion")
+        get() = _builder.groupPolicyVersion
+      @kotlin.jvm.JvmName("setGroupPolicyVersion")
+        set(value) {
         _builder.groupPolicyVersion = value
       }
     /**
@@ -317,17 +317,17 @@ public object ProposalKt {
      * `.cosmos.group.v1.ProposalStatus status = 8 [json_name = "status"];`
      */
     public var status: cosmos.group.v1.Types.ProposalStatus
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     public var statusValue: kotlin.Int
-      @JvmName("getStatusValue")
-      get() = _builder.statusValue
-      @JvmName("setStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatusValue")
+        get() = _builder.statusValue
+      @kotlin.jvm.JvmName("setStatusValue")
+        set(value) {
         _builder.statusValue = value
       }
     /**
@@ -352,10 +352,10 @@ public object ProposalKt {
      * `.cosmos.group.v1.TallyResult final_tally_result = 9 [json_name = "finalTallyResult", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var finalTallyResult: cosmos.group.v1.Types.TallyResult
-      @JvmName("getFinalTallyResult")
-      get() = _builder.finalTallyResult
-      @JvmName("setFinalTallyResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getFinalTallyResult")
+        get() = _builder.finalTallyResult
+      @kotlin.jvm.JvmName("setFinalTallyResult")
+        set(value) {
         _builder.finalTallyResult = value
       }
     /**
@@ -401,10 +401,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp voting_period_end = 10 [json_name = "votingPeriodEnd", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var votingPeriodEnd: com.google.protobuf.Timestamp
-      @JvmName("getVotingPeriodEnd")
-      get() = _builder.votingPeriodEnd
-      @JvmName("setVotingPeriodEnd")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingPeriodEnd")
+        get() = _builder.votingPeriodEnd
+      @kotlin.jvm.JvmName("setVotingPeriodEnd")
+        set(value) {
         _builder.votingPeriodEnd = value
       }
     /**
@@ -448,17 +448,17 @@ public object ProposalKt {
      * `.cosmos.group.v1.ProposalExecutorResult executor_result = 11 [json_name = "executorResult"];`
      */
     public var executorResult: cosmos.group.v1.Types.ProposalExecutorResult
-      @JvmName("getExecutorResult")
-      get() = _builder.executorResult
-      @JvmName("setExecutorResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getExecutorResult")
+        get() = _builder.executorResult
+      @kotlin.jvm.JvmName("setExecutorResult")
+        set(value) {
         _builder.executorResult = value
       }
     public var executorResultValue: kotlin.Int
-      @JvmName("getExecutorResultValue")
-      get() = _builder.executorResultValue
-      @JvmName("setExecutorResultValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getExecutorResultValue")
+        get() = _builder.executorResultValue
+      @kotlin.jvm.JvmName("setExecutorResultValue")
+        set(value) {
         _builder.executorResultValue = value
       }
     /**
@@ -487,7 +487,7 @@ public object ProposalKt {
      */
      public val messages: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.messagesList
       )
     /**
@@ -499,7 +499,7 @@ public object ProposalKt {
      * @param value The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMessages")
+@kotlin.jvm.JvmName("addMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.add(value: com.google.protobuf.Any) {
       _builder.addMessages(value)
     }
@@ -512,7 +512,7 @@ public object ProposalKt {
      * @param value The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMessages")
+@kotlin.jvm.JvmName("plusAssignMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -526,7 +526,7 @@ public object ProposalKt {
      * @param values The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMessages")
+@kotlin.jvm.JvmName("addAllMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllMessages(values)
     }
@@ -539,7 +539,7 @@ public object ProposalKt {
      * @param values The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMessages")
+@kotlin.jvm.JvmName("plusAssignAllMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -554,7 +554,7 @@ public object ProposalKt {
      * @param value The messages to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMessages")
+@kotlin.jvm.JvmName("setMessages")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setMessages(index, value)
     }
@@ -566,11 +566,10 @@ public object ProposalKt {
      * `repeated .google.protobuf.Any messages = 12 [json_name = "messages"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMessages")
+@kotlin.jvm.JvmName("clearMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MessagesProxy>.clear() {
       _builder.clearMessages()
     }
-
 
     /**
      * ```
@@ -580,10 +579,10 @@ public object ProposalKt {
      * `string title = 13 [json_name = "title", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -605,10 +604,10 @@ public object ProposalKt {
      * `string summary = 14 [json_name = "summary", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var summary: kotlin.String
-      @JvmName("getSummary")
-      get() = _builder.summary
-      @JvmName("setSummary")
-      set(value) {
+      @kotlin.jvm.JvmName("getSummary")
+        get() = _builder.summary
+      @kotlin.jvm.JvmName("setSummary")
+        set(value) {
         _builder.summary = value
       }
     /**

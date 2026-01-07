@@ -42,10 +42,10 @@ public object FungibleTokenPacketDataKt {
      * `string denom = 1 [json_name = "denom"];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -67,10 +67,10 @@ public object FungibleTokenPacketDataKt {
      * `string amount = 2 [json_name = "amount"];`
      */
     public var amount: kotlin.String
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**
@@ -92,10 +92,10 @@ public object FungibleTokenPacketDataKt {
      * `string sender = 3 [json_name = "sender"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -117,10 +117,10 @@ public object FungibleTokenPacketDataKt {
      * `string receiver = 4 [json_name = "receiver"];`
      */
     public var receiver: kotlin.String
-      @JvmName("getReceiver")
-      get() = _builder.receiver
-      @JvmName("setReceiver")
-      set(value) {
+      @kotlin.jvm.JvmName("getReceiver")
+        get() = _builder.receiver
+      @kotlin.jvm.JvmName("setReceiver")
+        set(value) {
         _builder.receiver = value
       }
     /**
@@ -142,10 +142,10 @@ public object FungibleTokenPacketDataKt {
      * `string memo = 5 [json_name = "memo"];`
      */
     public var memo: kotlin.String
-      @JvmName("getMemo")
-      get() = _builder.memo
-      @JvmName("setMemo")
-      set(value) {
+      @kotlin.jvm.JvmName("getMemo")
+        get() = _builder.memo
+      @kotlin.jvm.JvmName("setMemo")
+        set(value) {
         _builder.memo = value
       }
     /**

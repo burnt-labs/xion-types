@@ -36,10 +36,10 @@ public object QueryModuleAccountByNameResponseKt {
      * `.google.protobuf.Any account = 1 [json_name = "account", (.cosmos_proto.accepts_interface) = "cosmos.auth.v1beta1.ModuleAccountI"];`
      */
     public var account: com.google.protobuf.Any
-      @JvmName("getAccount")
-      get() = _builder.account
-      @JvmName("setAccount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccount")
+        get() = _builder.account
+      @kotlin.jvm.JvmName("setAccount")
+        set(value) {
         _builder.account = value
       }
     /**

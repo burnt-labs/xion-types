@@ -36,10 +36,10 @@ public object EventAccountRegisteredKt {
      * `string creator = 1 [json_name = "creator"];`
      */
     public var creator: kotlin.String
-      @JvmName("getCreator")
-      get() = _builder.creator
-      @JvmName("setCreator")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreator")
+        get() = _builder.creator
+      @kotlin.jvm.JvmName("setCreator")
+        set(value) {
         _builder.creator = value
       }
     /**
@@ -53,10 +53,10 @@ public object EventAccountRegisteredKt {
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -70,10 +70,10 @@ public object EventAccountRegisteredKt {
      * `string contract_addr = 3 [json_name = "contractAddr"];`
      */
     public var contractAddr: kotlin.String
-      @JvmName("getContractAddr")
-      get() = _builder.contractAddr
-      @JvmName("setContractAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getContractAddr")
+        get() = _builder.contractAddr
+      @kotlin.jvm.JvmName("setContractAddr")
+        set(value) {
         _builder.contractAddr = value
       }
     /**
@@ -87,10 +87,10 @@ public object EventAccountRegisteredKt {
      * `uint64 account_number = 4 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
-      @JvmName("getAccountNumber")
-      get() = _builder.accountNumber
-      @JvmName("setAccountNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountNumber")
+        get() = _builder.accountNumber
+      @kotlin.jvm.JvmName("setAccountNumber")
+        set(value) {
         _builder.accountNumber = value
       }
     /**

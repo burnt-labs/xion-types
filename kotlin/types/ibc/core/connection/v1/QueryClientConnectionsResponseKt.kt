@@ -48,7 +48,7 @@ public object QueryClientConnectionsResponseKt {
      * @return A list containing the connectionPaths.
      */
     public val connectionPaths: com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.connectionPathsList
       )
@@ -61,7 +61,7 @@ public object QueryClientConnectionsResponseKt {
      * @param value The connectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addConnectionPaths")
+@kotlin.jvm.JvmName("addConnectionPaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>.add(value: kotlin.String) {
       _builder.addConnectionPaths(value)
     }
@@ -74,7 +74,7 @@ public object QueryClientConnectionsResponseKt {
      * @param value The connectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignConnectionPaths")
+@kotlin.jvm.JvmName("plusAssignConnectionPaths")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -88,7 +88,7 @@ public object QueryClientConnectionsResponseKt {
      * @param values The connectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllConnectionPaths")
+@kotlin.jvm.JvmName("addAllConnectionPaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllConnectionPaths(values)
     }
@@ -101,7 +101,7 @@ public object QueryClientConnectionsResponseKt {
      * @param values The connectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllConnectionPaths")
+@kotlin.jvm.JvmName("plusAssignAllConnectionPaths")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -116,7 +116,7 @@ public object QueryClientConnectionsResponseKt {
      * @param value The connectionPaths to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setConnectionPaths")
+@kotlin.jvm.JvmName("setConnectionPaths")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setConnectionPaths(index, value)
     }/**
@@ -127,7 +127,7 @@ public object QueryClientConnectionsResponseKt {
      * `repeated string connection_paths = 1 [json_name = "connectionPaths"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearConnectionPaths")
+@kotlin.jvm.JvmName("setConnectionPaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionPathsProxy>.clear() {
       _builder.clearConnectionPaths()
     }
@@ -139,10 +139,10 @@ public object QueryClientConnectionsResponseKt {
      * `bytes proof = 2 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -164,10 +164,10 @@ public object QueryClientConnectionsResponseKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**

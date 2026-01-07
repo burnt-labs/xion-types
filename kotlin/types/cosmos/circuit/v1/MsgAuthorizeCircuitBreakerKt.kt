@@ -41,10 +41,10 @@ public object MsgAuthorizeCircuitBreakerKt {
      * `string granter = 1 [json_name = "granter"];`
      */
     public var granter: kotlin.String
-      @JvmName("getGranter")
-      get() = _builder.granter
-      @JvmName("setGranter")
-      set(value) {
+      @kotlin.jvm.JvmName("getGranter")
+        get() = _builder.granter
+      @kotlin.jvm.JvmName("setGranter")
+        set(value) {
         _builder.granter = value
       }
     /**
@@ -67,10 +67,10 @@ public object MsgAuthorizeCircuitBreakerKt {
      * `string grantee = 2 [json_name = "grantee"];`
      */
     public var grantee: kotlin.String
-      @JvmName("getGrantee")
-      get() = _builder.grantee
-      @JvmName("setGrantee")
-      set(value) {
+      @kotlin.jvm.JvmName("getGrantee")
+        get() = _builder.grantee
+      @kotlin.jvm.JvmName("setGrantee")
+        set(value) {
         _builder.grantee = value
       }
     /**
@@ -94,10 +94,10 @@ public object MsgAuthorizeCircuitBreakerKt {
      * `.cosmos.circuit.v1.Permissions permissions = 3 [json_name = "permissions"];`
      */
     public var permissions: cosmos.circuit.v1.Types.Permissions
-      @JvmName("getPermissions")
-      get() = _builder.permissions
-      @JvmName("setPermissions")
-      set(value) {
+      @kotlin.jvm.JvmName("getPermissions")
+        get() = _builder.permissions
+      @kotlin.jvm.JvmName("setPermissions")
+        set(value) {
         _builder.permissions = value
       }
     /**

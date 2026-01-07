@@ -37,17 +37,17 @@ public object VoteKt {
      * `.tendermint.types.SignedMsgType type = 1 [json_name = "type"];`
      */
     public var type: tendermint.types.Types.SignedMsgType
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     public var typeValue: kotlin.Int
-      @JvmName("getTypeValue")
-      get() = _builder.typeValue
-      @JvmName("setTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getTypeValue")
+        get() = _builder.typeValue
+      @kotlin.jvm.JvmName("setTypeValue")
+        set(value) {
         _builder.typeValue = value
       }
     /**
@@ -61,10 +61,10 @@ public object VoteKt {
      * `int64 height = 2 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -78,10 +78,10 @@ public object VoteKt {
      * `int32 round = 3 [json_name = "round"];`
      */
     public var round: kotlin.Int
-      @JvmName("getRound")
-      get() = _builder.round
-      @JvmName("setRound")
-      set(value) {
+      @kotlin.jvm.JvmName("getRound")
+        get() = _builder.round
+      @kotlin.jvm.JvmName("setRound")
+        set(value) {
         _builder.round = value
       }
     /**
@@ -99,10 +99,10 @@ public object VoteKt {
      * `.tendermint.types.BlockID block_id = 4 [json_name = "blockId", (.gogoproto.nullable) = false, (.gogoproto.customname) = "BlockID"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -134,10 +134,10 @@ public object VoteKt {
      * `.google.protobuf.Timestamp timestamp = 5 [json_name = "timestamp", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -161,10 +161,10 @@ public object VoteKt {
      * `bytes validator_address = 6 [json_name = "validatorAddress"];`
      */
     public var validatorAddress: com.google.protobuf.ByteString
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -178,10 +178,10 @@ public object VoteKt {
      * `int32 validator_index = 7 [json_name = "validatorIndex"];`
      */
     public var validatorIndex: kotlin.Int
-      @JvmName("getValidatorIndex")
-      get() = _builder.validatorIndex
-      @JvmName("setValidatorIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorIndex")
+        get() = _builder.validatorIndex
+      @kotlin.jvm.JvmName("setValidatorIndex")
+        set(value) {
         _builder.validatorIndex = value
       }
     /**
@@ -200,10 +200,10 @@ public object VoteKt {
      * `bytes signature = 8 [json_name = "signature"];`
      */
     public var signature: com.google.protobuf.ByteString
-      @JvmName("getSignature")
-      get() = _builder.signature
-      @JvmName("setSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignature")
+        get() = _builder.signature
+      @kotlin.jvm.JvmName("setSignature")
+        set(value) {
         _builder.signature = value
       }
     /**
@@ -227,10 +227,10 @@ public object VoteKt {
      * `bytes extension = 9 [json_name = "extension"];`
      */
     public var extension: com.google.protobuf.ByteString
-      @JvmName("getExtension")
-      get() = _builder.extension
-      @JvmName("setExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtension")
+        get() = _builder.extension
+      @kotlin.jvm.JvmName("setExtension")
+        set(value) {
         _builder.extension = value
       }
     /**
@@ -255,10 +255,10 @@ public object VoteKt {
      * `bytes extension_signature = 10 [json_name = "extensionSignature"];`
      */
     public var extensionSignature: com.google.protobuf.ByteString
-      @JvmName("getExtensionSignature")
-      get() = _builder.extensionSignature
-      @JvmName("setExtensionSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtensionSignature")
+        get() = _builder.extensionSignature
+      @kotlin.jvm.JvmName("setExtensionSignature")
+        set(value) {
         _builder.extensionSignature = value
       }
     /**

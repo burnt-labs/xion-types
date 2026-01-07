@@ -48,7 +48,7 @@ public object ParamsKt {
      * @return A list containing the enabledDistributionDenoms.
      */
     public val enabledDistributionDenoms: com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.enabledDistributionDenomsList
       )
@@ -62,7 +62,7 @@ public object ParamsKt {
      * @param value The enabledDistributionDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEnabledDistributionDenoms")
+@kotlin.jvm.JvmName("addEnabledDistributionDenoms")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>.add(value: kotlin.String) {
       _builder.addEnabledDistributionDenoms(value)
     }
@@ -76,7 +76,7 @@ public object ParamsKt {
      * @param value The enabledDistributionDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEnabledDistributionDenoms")
+@kotlin.jvm.JvmName("plusAssignEnabledDistributionDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -91,7 +91,7 @@ public object ParamsKt {
      * @param values The enabledDistributionDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEnabledDistributionDenoms")
+@kotlin.jvm.JvmName("addAllEnabledDistributionDenoms")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllEnabledDistributionDenoms(values)
     }
@@ -105,7 +105,7 @@ public object ParamsKt {
      * @param values The enabledDistributionDenoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEnabledDistributionDenoms")
+@kotlin.jvm.JvmName("plusAssignAllEnabledDistributionDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -121,7 +121,7 @@ public object ParamsKt {
      * @param value The enabledDistributionDenoms to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEnabledDistributionDenoms")
+@kotlin.jvm.JvmName("setEnabledDistributionDenoms")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setEnabledDistributionDenoms(index, value)
     }/**
@@ -133,7 +133,7 @@ public object ParamsKt {
      * `repeated string enabled_distribution_denoms = 1 [json_name = "enabledDistributionDenoms"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEnabledDistributionDenoms")
+@kotlin.jvm.JvmName("setEnabledDistributionDenoms")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, EnabledDistributionDenomsProxy>.clear() {
       _builder.clearEnabledDistributionDenoms()
     }
@@ -146,10 +146,10 @@ public object ParamsKt {
      * `uint64 distribution_frequency = 2 [json_name = "distributionFrequency"];`
      */
     public var distributionFrequency: kotlin.Long
-      @JvmName("getDistributionFrequency")
-      get() = _builder.distributionFrequency
-      @JvmName("setDistributionFrequency")
-      set(value) {
+      @kotlin.jvm.JvmName("getDistributionFrequency")
+        get() = _builder.distributionFrequency
+      @kotlin.jvm.JvmName("setDistributionFrequency")
+        set(value) {
         _builder.distributionFrequency = value
       }
     /**

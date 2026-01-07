@@ -40,10 +40,10 @@ public object MsgUpdateParamsKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -67,10 +67,10 @@ public object MsgUpdateParamsKt {
      * `.cosmos.slashing.v1beta1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmos.slashing.v1beta1.Slashing.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

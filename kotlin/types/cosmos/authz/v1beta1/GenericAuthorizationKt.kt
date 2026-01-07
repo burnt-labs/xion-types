@@ -41,10 +41,10 @@ public object GenericAuthorizationKt {
      * `string msg = 1 [json_name = "msg"];`
      */
     public var msg: kotlin.String
-      @JvmName("getMsg")
-      get() = _builder.msg
-      @JvmName("setMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsg")
+        get() = _builder.msg
+      @kotlin.jvm.JvmName("setMsg")
+        set(value) {
         _builder.msg = value
       }
     /**

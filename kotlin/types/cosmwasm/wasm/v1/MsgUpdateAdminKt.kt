@@ -40,10 +40,10 @@ public object MsgUpdateAdminKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgUpdateAdminKt {
      * `string new_admin = 2 [json_name = "newAdmin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var newAdmin: kotlin.String
-      @JvmName("getNewAdmin")
-      get() = _builder.newAdmin
-      @JvmName("setNewAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewAdmin")
+        get() = _builder.newAdmin
+      @kotlin.jvm.JvmName("setNewAdmin")
+        set(value) {
         _builder.newAdmin = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgUpdateAdminKt {
      * `string contract = 3 [json_name = "contract", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var contract: kotlin.String
-      @JvmName("getContract")
-      get() = _builder.contract
-      @JvmName("setContract")
-      set(value) {
+      @kotlin.jvm.JvmName("getContract")
+        get() = _builder.contract
+      @kotlin.jvm.JvmName("setContract")
+        set(value) {
         _builder.contract = value
       }
     /**

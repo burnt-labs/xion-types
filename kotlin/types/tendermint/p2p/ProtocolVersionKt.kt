@@ -32,10 +32,10 @@ public object ProtocolVersionKt {
      * `uint64 p2p = 1 [json_name = "p2p", (.gogoproto.customname) = "P2P"];`
      */
     public var p2P: kotlin.Long
-      @JvmName("getP2P")
-      get() = _builder.p2P
-      @JvmName("setP2P")
-      set(value) {
+      @kotlin.jvm.JvmName("getP2P")
+        get() = _builder.p2P
+      @kotlin.jvm.JvmName("setP2P")
+        set(value) {
         _builder.p2P = value
       }
     /**
@@ -49,10 +49,10 @@ public object ProtocolVersionKt {
      * `uint64 block = 2 [json_name = "block"];`
      */
     public var block: kotlin.Long
-      @JvmName("getBlock")
-      get() = _builder.block
-      @JvmName("setBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlock")
+        get() = _builder.block
+      @kotlin.jvm.JvmName("setBlock")
+        set(value) {
         _builder.block = value
       }
     /**
@@ -66,10 +66,10 @@ public object ProtocolVersionKt {
      * `uint64 app = 3 [json_name = "app"];`
      */
     public var app: kotlin.Long
-      @JvmName("getApp")
-      get() = _builder.app
-      @JvmName("setApp")
-      set(value) {
+      @kotlin.jvm.JvmName("getApp")
+        get() = _builder.app
+      @kotlin.jvm.JvmName("setApp")
+        set(value) {
         _builder.app = value
       }
     /**

@@ -41,10 +41,10 @@ public object MsgCancelProposalResponseKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId", (.gogoproto.jsontag) = "proposal_id"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -66,10 +66,10 @@ public object MsgCancelProposalResponseKt {
      * `.google.protobuf.Timestamp canceled_time = 2 [json_name = "canceledTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var canceledTime: com.google.protobuf.Timestamp
-      @JvmName("getCanceledTime")
-      get() = _builder.canceledTime
-      @JvmName("setCanceledTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getCanceledTime")
+        get() = _builder.canceledTime
+      @kotlin.jvm.JvmName("setCanceledTime")
+        set(value) {
         _builder.canceledTime = value
       }
     /**
@@ -105,10 +105,10 @@ public object MsgCancelProposalResponseKt {
      * `uint64 canceled_height = 3 [json_name = "canceledHeight"];`
      */
     public var canceledHeight: kotlin.Long
-      @JvmName("getCanceledHeight")
-      get() = _builder.canceledHeight
-      @JvmName("setCanceledHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getCanceledHeight")
+        get() = _builder.canceledHeight
+      @kotlin.jvm.JvmName("setCanceledHeight")
+        set(value) {
         _builder.canceledHeight = value
       }
     /**

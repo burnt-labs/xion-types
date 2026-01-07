@@ -48,10 +48,10 @@ public object ABCIParamsKt {
      * `int64 vote_extensions_enable_height = 1 [json_name = "voteExtensionsEnableHeight"];`
      */
     public var voteExtensionsEnableHeight: kotlin.Long
-      @JvmName("getVoteExtensionsEnableHeight")
-      get() = _builder.voteExtensionsEnableHeight
-      @JvmName("setVoteExtensionsEnableHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoteExtensionsEnableHeight")
+        get() = _builder.voteExtensionsEnableHeight
+      @kotlin.jvm.JvmName("setVoteExtensionsEnableHeight")
+        set(value) {
         _builder.voteExtensionsEnableHeight = value
       }
     /**

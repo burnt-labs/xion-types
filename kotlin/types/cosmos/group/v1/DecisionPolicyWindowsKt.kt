@@ -41,10 +41,10 @@ public object DecisionPolicyWindowsKt {
      * `.google.protobuf.Duration voting_period = 1 [json_name = "votingPeriod", (.gogoproto.nullable) = false, (.gogoproto.stdduration) = true, (.amino.dont_omitempty) = true];`
      */
     public var votingPeriod: com.google.protobuf.Duration
-      @JvmName("getVotingPeriod")
-      get() = _builder.votingPeriod
-      @JvmName("setVotingPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingPeriod")
+        get() = _builder.votingPeriod
+      @kotlin.jvm.JvmName("setVotingPeriod")
+        set(value) {
         _builder.votingPeriod = value
       }
     /**
@@ -92,10 +92,10 @@ public object DecisionPolicyWindowsKt {
      * `.google.protobuf.Duration min_execution_period = 2 [json_name = "minExecutionPeriod", (.gogoproto.nullable) = false, (.gogoproto.stdduration) = true, (.amino.dont_omitempty) = true];`
      */
     public var minExecutionPeriod: com.google.protobuf.Duration
-      @JvmName("getMinExecutionPeriod")
-      get() = _builder.minExecutionPeriod
-      @JvmName("setMinExecutionPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinExecutionPeriod")
+        get() = _builder.minExecutionPeriod
+      @kotlin.jvm.JvmName("setMinExecutionPeriod")
+        set(value) {
         _builder.minExecutionPeriod = value
       }
     /**

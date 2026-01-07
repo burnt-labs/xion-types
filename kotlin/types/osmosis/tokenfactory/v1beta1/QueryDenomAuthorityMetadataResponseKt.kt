@@ -37,10 +37,10 @@ public object QueryDenomAuthorityMetadataResponseKt {
      * `.osmosis.tokenfactory.v1beta1.DenomAuthorityMetadata authority_metadata = 1 [json_name = "authorityMetadata", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"authority_metadata\""];`
      */
     public var authorityMetadata: osmosis.tokenfactory.v1beta1.AuthorityMetadata.DenomAuthorityMetadata
-      @JvmName("getAuthorityMetadata")
-      get() = _builder.authorityMetadata
-      @JvmName("setAuthorityMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthorityMetadata")
+        get() = _builder.authorityMetadata
+      @kotlin.jvm.JvmName("setAuthorityMetadata")
+        set(value) {
         _builder.authorityMetadata = value
       }
     /**

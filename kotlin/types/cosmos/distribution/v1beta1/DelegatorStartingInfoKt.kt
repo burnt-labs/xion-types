@@ -41,10 +41,10 @@ public object DelegatorStartingInfoKt {
      * `uint64 previous_period = 1 [json_name = "previousPeriod"];`
      */
     public var previousPeriod: kotlin.Long
-      @JvmName("getPreviousPeriod")
-      get() = _builder.previousPeriod
-      @JvmName("setPreviousPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getPreviousPeriod")
+        get() = _builder.previousPeriod
+      @kotlin.jvm.JvmName("setPreviousPeriod")
+        set(value) {
         _builder.previousPeriod = value
       }
     /**
@@ -58,10 +58,10 @@ public object DelegatorStartingInfoKt {
      * `string stake = 2 [json_name = "stake", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var stake: kotlin.String
-      @JvmName("getStake")
-      get() = _builder.stake
-      @JvmName("setStake")
-      set(value) {
+      @kotlin.jvm.JvmName("getStake")
+        get() = _builder.stake
+      @kotlin.jvm.JvmName("setStake")
+        set(value) {
         _builder.stake = value
       }
     /**
@@ -75,10 +75,10 @@ public object DelegatorStartingInfoKt {
      * `uint64 height = 3 [json_name = "height", (.gogoproto.jsontag) = "creation_height", (.amino.field_name) = "creation_height", (.amino.dont_omitempty) = true];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**

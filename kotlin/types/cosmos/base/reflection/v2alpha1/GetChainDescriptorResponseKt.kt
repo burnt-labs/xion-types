@@ -40,10 +40,10 @@ public object GetChainDescriptorResponseKt {
      * `.cosmos.base.reflection.v2alpha1.ChainDescriptor chain = 1 [json_name = "chain"];`
      */
     public var chain: cosmos.base.reflection.v2alpha1.Reflection.ChainDescriptor
-      @JvmName("getChain")
-      get() = _builder.chain
-      @JvmName("setChain")
-      set(value) {
+      @kotlin.jvm.JvmName("getChain")
+        get() = _builder.chain
+      @kotlin.jvm.JvmName("setChain")
+        set(value) {
         _builder.chain = value
       }
     /**

@@ -36,17 +36,17 @@ public object AccessTypeParamKt {
      * `.cosmwasm.wasm.v1.AccessType value = 1 [json_name = "value", (.gogoproto.moretags) = "yaml:\"value\""];`
      */
     public var value: cosmwasm.wasm.v1.Types.AccessType
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     public var valueValue: kotlin.Int
-      @JvmName("getValueValue")
-      get() = _builder.valueValue
-      @JvmName("setValueValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValueValue")
+        get() = _builder.valueValue
+      @kotlin.jvm.JvmName("setValueValue")
+        set(value) {
         _builder.valueValue = value
       }
     /**

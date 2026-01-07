@@ -40,10 +40,10 @@ public object MsgRemoveChecksumKt {
      * `string signer = 1 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgRemoveChecksumKt {
      * `bytes checksum = 2 [json_name = "checksum"];`
      */
     public var checksum: com.google.protobuf.ByteString
-      @JvmName("getChecksum")
-      get() = _builder.checksum
-      @JvmName("setChecksum")
-      set(value) {
+      @kotlin.jvm.JvmName("getChecksum")
+        get() = _builder.checksum
+      @kotlin.jvm.JvmName("setChecksum")
+        set(value) {
         _builder.checksum = value
       }
     /**

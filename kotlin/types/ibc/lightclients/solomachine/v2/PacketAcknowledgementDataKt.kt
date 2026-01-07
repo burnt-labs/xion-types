@@ -37,10 +37,10 @@ public object PacketAcknowledgementDataKt {
      * `bytes path = 1 [json_name = "path"];`
      */
     public var path: com.google.protobuf.ByteString
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -54,10 +54,10 @@ public object PacketAcknowledgementDataKt {
      * `bytes acknowledgement = 2 [json_name = "acknowledgement"];`
      */
     public var acknowledgement: com.google.protobuf.ByteString
-      @JvmName("getAcknowledgement")
-      get() = _builder.acknowledgement
-      @JvmName("setAcknowledgement")
-      set(value) {
+      @kotlin.jvm.JvmName("getAcknowledgement")
+        get() = _builder.acknowledgement
+      @kotlin.jvm.JvmName("setAcknowledgement")
+        set(value) {
         _builder.acknowledgement = value
       }
     /**

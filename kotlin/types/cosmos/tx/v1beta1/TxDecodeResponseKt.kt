@@ -41,10 +41,10 @@ public object TxDecodeResponseKt {
      * `.cosmos.tx.v1beta1.Tx tx = 1 [json_name = "tx"];`
      */
     public var tx: cosmos.tx.v1beta1.TxOuterClass.Tx
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**

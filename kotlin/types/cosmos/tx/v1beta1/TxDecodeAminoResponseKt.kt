@@ -37,10 +37,10 @@ public object TxDecodeAminoResponseKt {
      * `string amino_json = 1 [json_name = "aminoJson"];`
      */
     public var aminoJson: kotlin.String
-      @JvmName("getAminoJson")
-      get() = _builder.aminoJson
-      @JvmName("setAminoJson")
-      set(value) {
+      @kotlin.jvm.JvmName("getAminoJson")
+        get() = _builder.aminoJson
+      @kotlin.jvm.JvmName("setAminoJson")
+        set(value) {
         _builder.aminoJson = value
       }
     /**

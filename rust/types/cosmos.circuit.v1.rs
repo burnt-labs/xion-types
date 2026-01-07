@@ -92,7 +92,7 @@ pub struct AccountResponse {
 pub struct QueryAccountsRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// AccountsResponse is the response type for the Query/Accounts RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -101,7 +101,7 @@ pub struct AccountsResponse {
     pub accounts: ::prost::alloc::vec::Vec<GenesisAccountPermissions>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDisableListRequest is the request type for the Query/DisabledList RPC method.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]

@@ -32,10 +32,10 @@ public object ValidatorUpdateKt {
      * `.tendermint.crypto.PublicKey pub_key = 1 [json_name = "pubKey", (.gogoproto.nullable) = false];`
      */
     public var pubKey: tendermint.crypto.Keys.PublicKey
-      @JvmName("getPubKey")
-      get() = _builder.pubKey
-      @JvmName("setPubKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPubKey")
+        get() = _builder.pubKey
+      @kotlin.jvm.JvmName("setPubKey")
+        set(value) {
         _builder.pubKey = value
       }
     /**
@@ -59,10 +59,10 @@ public object ValidatorUpdateKt {
      * `int64 power = 2 [json_name = "power"];`
      */
     public var power: kotlin.Long
-      @JvmName("getPower")
-      get() = _builder.power
-      @JvmName("setPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getPower")
+        get() = _builder.power
+      @kotlin.jvm.JvmName("setPower")
+        set(value) {
         _builder.power = value
       }
     /**

@@ -32,10 +32,10 @@ public object BlockKt {
      * `.tendermint.types.Header header = 1 [json_name = "header", (.gogoproto.nullable) = false];`
      */
     public var header: tendermint.types.Types.Header
-      @JvmName("getHeader")
-      get() = _builder.header
-      @JvmName("setHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeader")
+        get() = _builder.header
+      @kotlin.jvm.JvmName("setHeader")
+        set(value) {
         _builder.header = value
       }
     /**
@@ -59,10 +59,10 @@ public object BlockKt {
      * `.tendermint.types.Data data = 2 [json_name = "data", (.gogoproto.nullable) = false];`
      */
     public var data: tendermint.types.Types.Data
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -86,10 +86,10 @@ public object BlockKt {
      * `.tendermint.types.EvidenceList evidence = 3 [json_name = "evidence", (.gogoproto.nullable) = false];`
      */
     public var evidence: tendermint.types.EvidenceOuterClass.EvidenceList
-      @JvmName("getEvidence")
-      get() = _builder.evidence
-      @JvmName("setEvidence")
-      set(value) {
+      @kotlin.jvm.JvmName("getEvidence")
+        get() = _builder.evidence
+      @kotlin.jvm.JvmName("setEvidence")
+        set(value) {
         _builder.evidence = value
       }
     /**
@@ -113,10 +113,10 @@ public object BlockKt {
      * `.tendermint.types.Commit last_commit = 4 [json_name = "lastCommit"];`
      */
     public var lastCommit: tendermint.types.Types.Commit
-      @JvmName("getLastCommit")
-      get() = _builder.lastCommit
-      @JvmName("setLastCommit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastCommit")
+        get() = _builder.lastCommit
+      @kotlin.jvm.JvmName("setLastCommit")
+        set(value) {
         _builder.lastCommit = value
       }
     /**

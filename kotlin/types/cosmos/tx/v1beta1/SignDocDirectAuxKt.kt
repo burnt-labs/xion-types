@@ -42,10 +42,10 @@ public object SignDocDirectAuxKt {
      * `bytes body_bytes = 1 [json_name = "bodyBytes"];`
      */
     public var bodyBytes: com.google.protobuf.ByteString
-      @JvmName("getBodyBytes")
-      get() = _builder.bodyBytes
-      @JvmName("setBodyBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getBodyBytes")
+        get() = _builder.bodyBytes
+      @kotlin.jvm.JvmName("setBodyBytes")
+        set(value) {
         _builder.bodyBytes = value
       }
     /**
@@ -68,10 +68,10 @@ public object SignDocDirectAuxKt {
      * `.google.protobuf.Any public_key = 2 [json_name = "publicKey"];`
      */
     public var publicKey: com.google.protobuf.Any
-      @JvmName("getPublicKey")
-      get() = _builder.publicKey
-      @JvmName("setPublicKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPublicKey")
+        get() = _builder.publicKey
+      @kotlin.jvm.JvmName("setPublicKey")
+        set(value) {
         _builder.publicKey = value
       }
     /**
@@ -109,10 +109,10 @@ public object SignDocDirectAuxKt {
      * `string chain_id = 3 [json_name = "chainId"];`
      */
     public var chainId: kotlin.String
-      @JvmName("getChainId")
-      get() = _builder.chainId
-      @JvmName("setChainId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChainId")
+        get() = _builder.chainId
+      @kotlin.jvm.JvmName("setChainId")
+        set(value) {
         _builder.chainId = value
       }
     /**
@@ -136,10 +136,10 @@ public object SignDocDirectAuxKt {
      * `uint64 account_number = 4 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
-      @JvmName("getAccountNumber")
-      get() = _builder.accountNumber
-      @JvmName("setAccountNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountNumber")
+        get() = _builder.accountNumber
+      @kotlin.jvm.JvmName("setAccountNumber")
+        set(value) {
         _builder.accountNumber = value
       }
     /**
@@ -161,10 +161,10 @@ public object SignDocDirectAuxKt {
      * `uint64 sequence = 5 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -186,10 +186,10 @@ public object SignDocDirectAuxKt {
      * `.cosmos.tx.v1beta1.Tip tip = 6 [json_name = "tip", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field tip is deprecated") public var tip: cosmos.tx.v1beta1.TxOuterClass.Tip
-      @JvmName("getTip")
-      get() = _builder.tip
-      @JvmName("setTip")
-      set(value) {
+      @kotlin.jvm.JvmName("getTip")
+        get() = _builder.tip
+      @kotlin.jvm.JvmName("setTip")
+        set(value) {
         _builder.tip = value
       }
     /**

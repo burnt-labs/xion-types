@@ -43,7 +43,7 @@ public object GenesisStateKt {
      */
      public val authorization: com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.authorizationList
       )
     /**
@@ -51,7 +51,7 @@ public object GenesisStateKt {
      * @param value The authorization to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAuthorization")
+@kotlin.jvm.JvmName("addAuthorization")
     public fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>.add(value: cosmos.authz.v1beta1.Authz.GrantAuthorization) {
       _builder.addAuthorization(value)
     }
@@ -60,7 +60,7 @@ public object GenesisStateKt {
      * @param value The authorization to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAuthorization")
+@kotlin.jvm.JvmName("plusAssignAuthorization")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>.plusAssign(value: cosmos.authz.v1beta1.Authz.GrantAuthorization) {
       add(value)
@@ -70,7 +70,7 @@ public object GenesisStateKt {
      * @param values The authorization to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAuthorization")
+@kotlin.jvm.JvmName("addAllAuthorization")
     public fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>.addAll(values: kotlin.collections.Iterable<cosmos.authz.v1beta1.Authz.GrantAuthorization>) {
       _builder.addAllAuthorization(values)
     }
@@ -79,7 +79,7 @@ public object GenesisStateKt {
      * @param values The authorization to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAuthorization")
+@kotlin.jvm.JvmName("plusAssignAllAuthorization")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.authz.v1beta1.Authz.GrantAuthorization>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object GenesisStateKt {
      * @param value The authorization to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAuthorization")
+@kotlin.jvm.JvmName("setAuthorization")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>.set(index: kotlin.Int, value: cosmos.authz.v1beta1.Authz.GrantAuthorization) {
       _builder.setAuthorization(index, value)
     }
@@ -98,11 +98,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.authz.v1beta1.GrantAuthorization authorization = 1 [json_name = "authorization", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAuthorization")
+@kotlin.jvm.JvmName("clearAuthorization")
     public fun com.google.protobuf.kotlin.DslList<cosmos.authz.v1beta1.Authz.GrantAuthorization, AuthorizationProxy>.clear() {
       _builder.clearAuthorization()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

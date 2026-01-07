@@ -40,10 +40,10 @@ public object QueryParamsRequestKt {
      * `string subspace = 1 [json_name = "subspace"];`
      */
     public var subspace: kotlin.String
-      @JvmName("getSubspace")
-      get() = _builder.subspace
-      @JvmName("setSubspace")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubspace")
+        get() = _builder.subspace
+      @kotlin.jvm.JvmName("setSubspace")
+        set(value) {
         _builder.subspace = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryParamsRequestKt {
      * `string key = 2 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**

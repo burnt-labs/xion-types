@@ -36,10 +36,10 @@ public object MsgResetCircuitBreakerResponseKt {
      * `bool success = 1 [json_name = "success"];`
      */
     public var success: kotlin.Boolean
-      @JvmName("getSuccess")
-      get() = _builder.success
-      @JvmName("setSuccess")
-      set(value) {
+      @kotlin.jvm.JvmName("getSuccess")
+        get() = _builder.success
+      @kotlin.jvm.JvmName("setSuccess")
+        set(value) {
         _builder.success = value
       }
     /**

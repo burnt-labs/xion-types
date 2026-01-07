@@ -36,10 +36,10 @@ public object ParamsKt {
      * `string community_tax = 1 [json_name = "communityTax", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var communityTax: kotlin.String
-      @JvmName("getCommunityTax")
-      get() = _builder.communityTax
-      @JvmName("setCommunityTax")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommunityTax")
+        get() = _builder.communityTax
+      @kotlin.jvm.JvmName("setCommunityTax")
+        set(value) {
         _builder.communityTax = value
       }
     /**
@@ -58,10 +58,10 @@ public object ParamsKt {
      * `string base_proposer_reward = 2 [json_name = "baseProposerReward", deprecated = true, (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     @kotlin.Deprecated(message = "Field baseProposerReward is deprecated") public var baseProposerReward: kotlin.String
-      @JvmName("getBaseProposerReward")
-      get() = _builder.baseProposerReward
-      @JvmName("setBaseProposerReward")
-      set(value) {
+      @kotlin.jvm.JvmName("getBaseProposerReward")
+        get() = _builder.baseProposerReward
+      @kotlin.jvm.JvmName("setBaseProposerReward")
+        set(value) {
         _builder.baseProposerReward = value
       }
     /**
@@ -85,10 +85,10 @@ public object ParamsKt {
      * `string bonus_proposer_reward = 3 [json_name = "bonusProposerReward", deprecated = true, (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     @kotlin.Deprecated(message = "Field bonusProposerReward is deprecated") public var bonusProposerReward: kotlin.String
-      @JvmName("getBonusProposerReward")
-      get() = _builder.bonusProposerReward
-      @JvmName("setBonusProposerReward")
-      set(value) {
+      @kotlin.jvm.JvmName("getBonusProposerReward")
+        get() = _builder.bonusProposerReward
+      @kotlin.jvm.JvmName("setBonusProposerReward")
+        set(value) {
         _builder.bonusProposerReward = value
       }
     /**
@@ -107,10 +107,10 @@ public object ParamsKt {
      * `bool withdraw_addr_enabled = 4 [json_name = "withdrawAddrEnabled"];`
      */
     public var withdrawAddrEnabled: kotlin.Boolean
-      @JvmName("getWithdrawAddrEnabled")
-      get() = _builder.withdrawAddrEnabled
-      @JvmName("setWithdrawAddrEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getWithdrawAddrEnabled")
+        get() = _builder.withdrawAddrEnabled
+      @kotlin.jvm.JvmName("setWithdrawAddrEnabled")
+        set(value) {
         _builder.withdrawAddrEnabled = value
       }
     /**

@@ -37,10 +37,10 @@ public object MsgConnectionOpenInitKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgConnectionOpenInitKt {
      * `.ibc.core.connection.v1.Counterparty counterparty = 2 [json_name = "counterparty", (.gogoproto.nullable) = false];`
      */
     public var counterparty: ibc.core.connection.v1.Connection.Counterparty
-      @JvmName("getCounterparty")
-      get() = _builder.counterparty
-      @JvmName("setCounterparty")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterparty")
+        get() = _builder.counterparty
+      @kotlin.jvm.JvmName("setCounterparty")
+        set(value) {
         _builder.counterparty = value
       }
     /**
@@ -81,10 +81,10 @@ public object MsgConnectionOpenInitKt {
      * `.ibc.core.connection.v1.Version version = 3 [json_name = "version"];`
      */
     public var version: ibc.core.connection.v1.Connection.Version
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -108,10 +108,10 @@ public object MsgConnectionOpenInitKt {
      * `uint64 delay_period = 4 [json_name = "delayPeriod"];`
      */
     public var delayPeriod: kotlin.Long
-      @JvmName("getDelayPeriod")
-      get() = _builder.delayPeriod
-      @JvmName("setDelayPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelayPeriod")
+        get() = _builder.delayPeriod
+      @kotlin.jvm.JvmName("setDelayPeriod")
+        set(value) {
         _builder.delayPeriod = value
       }
     /**
@@ -125,10 +125,10 @@ public object MsgConnectionOpenInitKt {
      * `string signer = 5 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

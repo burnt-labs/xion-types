@@ -47,7 +47,7 @@ public object QueryProposalsByGroupPolicyResponseKt {
      */
      public val proposals: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.proposalsList
       )
     /**
@@ -59,7 +59,7 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * @param value The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addProposals")
+@kotlin.jvm.JvmName("addProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.add(value: cosmos.group.v1.Types.Proposal) {
       _builder.addProposals(value)
     }
@@ -72,7 +72,7 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * @param value The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignProposals")
+@kotlin.jvm.JvmName("plusAssignProposals")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.plusAssign(value: cosmos.group.v1.Types.Proposal) {
       add(value)
@@ -86,7 +86,7 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * @param values The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllProposals")
+@kotlin.jvm.JvmName("addAllProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Proposal>) {
       _builder.addAllProposals(values)
     }
@@ -99,7 +99,7 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * @param values The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllProposals")
+@kotlin.jvm.JvmName("plusAssignAllProposals")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Proposal>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * @param value The proposals to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setProposals")
+@kotlin.jvm.JvmName("setProposals")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.Proposal) {
       _builder.setProposals(index, value)
     }
@@ -126,11 +126,10 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * `repeated .cosmos.group.v1.Proposal proposals = 1 [json_name = "proposals"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearProposals")
+@kotlin.jvm.JvmName("clearProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.clear() {
       _builder.clearProposals()
     }
-
 
     /**
      * ```
@@ -140,10 +139,10 @@ public object QueryProposalsByGroupPolicyResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

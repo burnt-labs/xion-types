@@ -41,10 +41,10 @@ public object QueryChannelClientStateRequestKt {
      * `string port_id = 1 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryChannelClientStateRequestKt {
      * `string channel_id = 2 [json_name = "channelId"];`
      */
     public var channelId: kotlin.String
-      @JvmName("getChannelId")
-      get() = _builder.channelId
-      @JvmName("setChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelId")
+        get() = _builder.channelId
+      @kotlin.jvm.JvmName("setChannelId")
+        set(value) {
         _builder.channelId = value
       }
     /**

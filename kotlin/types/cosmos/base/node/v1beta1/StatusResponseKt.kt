@@ -40,10 +40,10 @@ public object StatusResponseKt {
      * `uint64 earliest_store_height = 1 [json_name = "earliestStoreHeight"];`
      */
     public var earliestStoreHeight: kotlin.Long
-      @JvmName("getEarliestStoreHeight")
-      get() = _builder.earliestStoreHeight
-      @JvmName("setEarliestStoreHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getEarliestStoreHeight")
+        get() = _builder.earliestStoreHeight
+      @kotlin.jvm.JvmName("setEarliestStoreHeight")
+        set(value) {
         _builder.earliestStoreHeight = value
       }
     /**
@@ -65,10 +65,10 @@ public object StatusResponseKt {
      * `uint64 height = 2 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -90,10 +90,10 @@ public object StatusResponseKt {
      * `.google.protobuf.Timestamp timestamp = 3 [json_name = "timestamp", (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -129,10 +129,10 @@ public object StatusResponseKt {
      * `bytes app_hash = 4 [json_name = "appHash"];`
      */
     public var appHash: com.google.protobuf.ByteString
-      @JvmName("getAppHash")
-      get() = _builder.appHash
-      @JvmName("setAppHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppHash")
+        get() = _builder.appHash
+      @kotlin.jvm.JvmName("setAppHash")
+        set(value) {
         _builder.appHash = value
       }
     /**
@@ -154,10 +154,10 @@ public object StatusResponseKt {
      * `bytes validator_hash = 5 [json_name = "validatorHash"];`
      */
     public var validatorHash: com.google.protobuf.ByteString
-      @JvmName("getValidatorHash")
-      get() = _builder.validatorHash
-      @JvmName("setValidatorHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorHash")
+        get() = _builder.validatorHash
+      @kotlin.jvm.JvmName("setValidatorHash")
+        set(value) {
         _builder.validatorHash = value
       }
     /**

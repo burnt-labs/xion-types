@@ -40,10 +40,10 @@ public object QueryDelegationResponseKt {
      * `.cosmos.staking.v1beta1.DelegationResponse delegation_response = 1 [json_name = "delegationResponse"];`
      */
     public var delegationResponse: cosmos.staking.v1beta1.Staking.DelegationResponse
-      @JvmName("getDelegationResponse")
-      get() = _builder.delegationResponse
-      @JvmName("setDelegationResponse")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegationResponse")
+        get() = _builder.delegationResponse
+      @kotlin.jvm.JvmName("setDelegationResponse")
+        set(value) {
         _builder.delegationResponse = value
       }
     /**

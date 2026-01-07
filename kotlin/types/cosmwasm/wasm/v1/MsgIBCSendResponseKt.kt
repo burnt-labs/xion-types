@@ -40,10 +40,10 @@ public object MsgIBCSendResponseKt {
      * `uint64 sequence = 1 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**

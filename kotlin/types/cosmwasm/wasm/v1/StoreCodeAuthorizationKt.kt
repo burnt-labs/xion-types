@@ -48,7 +48,7 @@ public object StoreCodeAuthorizationKt {
      */
      public val grants: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.grantsList
       )
     /**
@@ -60,7 +60,7 @@ public object StoreCodeAuthorizationKt {
      * @param value The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGrants")
+@kotlin.jvm.JvmName("addGrants")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>.add(value: cosmwasm.wasm.v1.Authz.CodeGrant) {
       _builder.addGrants(value)
     }
@@ -73,7 +73,7 @@ public object StoreCodeAuthorizationKt {
      * @param value The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGrants")
+@kotlin.jvm.JvmName("plusAssignGrants")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>.plusAssign(value: cosmwasm.wasm.v1.Authz.CodeGrant) {
       add(value)
@@ -87,7 +87,7 @@ public object StoreCodeAuthorizationKt {
      * @param values The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGrants")
+@kotlin.jvm.JvmName("addAllGrants")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Authz.CodeGrant>) {
       _builder.addAllGrants(values)
     }
@@ -100,7 +100,7 @@ public object StoreCodeAuthorizationKt {
      * @param values The grants to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGrants")
+@kotlin.jvm.JvmName("plusAssignAllGrants")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Authz.CodeGrant>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object StoreCodeAuthorizationKt {
      * @param value The grants to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGrants")
+@kotlin.jvm.JvmName("setGrants")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Authz.CodeGrant) {
       _builder.setGrants(index, value)
     }
@@ -127,11 +127,10 @@ public object StoreCodeAuthorizationKt {
      * `repeated .cosmwasm.wasm.v1.CodeGrant grants = 1 [json_name = "grants", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGrants")
+@kotlin.jvm.JvmName("clearGrants")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Authz.CodeGrant, GrantsProxy>.clear() {
       _builder.clearGrants()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

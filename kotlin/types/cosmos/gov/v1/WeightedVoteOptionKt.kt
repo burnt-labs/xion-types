@@ -40,17 +40,17 @@ public object WeightedVoteOptionKt {
      * `.cosmos.gov.v1.VoteOption option = 1 [json_name = "option"];`
      */
     public var option: cosmos.gov.v1.Gov.VoteOption
-      @JvmName("getOption")
-      get() = _builder.option
-      @JvmName("setOption")
-      set(value) {
+      @kotlin.jvm.JvmName("getOption")
+        get() = _builder.option
+      @kotlin.jvm.JvmName("setOption")
+        set(value) {
         _builder.option = value
       }
     public var optionValue: kotlin.Int
-      @JvmName("getOptionValue")
-      get() = _builder.optionValue
-      @JvmName("setOptionValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getOptionValue")
+        get() = _builder.optionValue
+      @kotlin.jvm.JvmName("setOptionValue")
+        set(value) {
         _builder.optionValue = value
       }
     /**
@@ -72,10 +72,10 @@ public object WeightedVoteOptionKt {
      * `string weight = 2 [json_name = "weight", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var weight: kotlin.String
-      @JvmName("getWeight")
-      get() = _builder.weight
-      @JvmName("setWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getWeight")
+        get() = _builder.weight
+      @kotlin.jvm.JvmName("setWeight")
+        set(value) {
         _builder.weight = value
       }
     /**

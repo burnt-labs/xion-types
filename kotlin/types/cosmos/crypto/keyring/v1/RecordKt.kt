@@ -40,10 +40,10 @@ public object RecordKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -65,10 +65,10 @@ public object RecordKt {
      * `.google.protobuf.Any pub_key = 2 [json_name = "pubKey"];`
      */
     public var pubKey: com.google.protobuf.Any
-      @JvmName("getPubKey")
-      get() = _builder.pubKey
-      @JvmName("setPubKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPubKey")
+        get() = _builder.pubKey
+      @kotlin.jvm.JvmName("setPubKey")
+        set(value) {
         _builder.pubKey = value
       }
     /**
@@ -104,10 +104,10 @@ public object RecordKt {
      * `.cosmos.crypto.keyring.v1.Record.Local local = 3 [json_name = "local"];`
      */
     public var local: cosmos.crypto.keyring.v1.RecordOuterClass.Record.Local
-      @JvmName("getLocal")
-      get() = _builder.local
-      @JvmName("setLocal")
-      set(value) {
+      @kotlin.jvm.JvmName("getLocal")
+        get() = _builder.local
+      @kotlin.jvm.JvmName("setLocal")
+        set(value) {
         _builder.local = value
       }
     /**
@@ -140,10 +140,10 @@ public object RecordKt {
      * `.cosmos.crypto.keyring.v1.Record.Ledger ledger = 4 [json_name = "ledger"];`
      */
     public var ledger: cosmos.crypto.keyring.v1.RecordOuterClass.Record.Ledger
-      @JvmName("getLedger")
-      get() = _builder.ledger
-      @JvmName("setLedger")
-      set(value) {
+      @kotlin.jvm.JvmName("getLedger")
+        get() = _builder.ledger
+      @kotlin.jvm.JvmName("setLedger")
+        set(value) {
         _builder.ledger = value
       }
     /**
@@ -176,10 +176,10 @@ public object RecordKt {
      * `.cosmos.crypto.keyring.v1.Record.Multi multi = 5 [json_name = "multi"];`
      */
     public var multi: cosmos.crypto.keyring.v1.RecordOuterClass.Record.Multi
-      @JvmName("getMulti")
-      get() = _builder.multi
-      @JvmName("setMulti")
-      set(value) {
+      @kotlin.jvm.JvmName("getMulti")
+        get() = _builder.multi
+      @kotlin.jvm.JvmName("setMulti")
+        set(value) {
         _builder.multi = value
       }
     /**
@@ -212,10 +212,10 @@ public object RecordKt {
      * `.cosmos.crypto.keyring.v1.Record.Offline offline = 6 [json_name = "offline"];`
      */
     public var offline: cosmos.crypto.keyring.v1.RecordOuterClass.Record.Offline
-      @JvmName("getOffline")
-      get() = _builder.offline
-      @JvmName("setOffline")
-      set(value) {
+      @kotlin.jvm.JvmName("getOffline")
+        get() = _builder.offline
+      @kotlin.jvm.JvmName("setOffline")
+        set(value) {
         _builder.offline = value
       }
     /**
@@ -278,10 +278,10 @@ public object RecordKt {
        * `.google.protobuf.Any priv_key = 1 [json_name = "privKey"];`
        */
       public var privKey: com.google.protobuf.Any
-        @JvmName("getPrivKey")
-        get() = _builder.privKey
-        @JvmName("setPrivKey")
-        set(value) {
+        @kotlin.jvm.JvmName("getPrivKey")
+          get() = _builder.privKey
+        @kotlin.jvm.JvmName("setPrivKey")
+          set(value) {
           _builder.privKey = value
         }
       /**
@@ -332,10 +332,10 @@ public object RecordKt {
        * `.cosmos.crypto.hd.v1.BIP44Params path = 1 [json_name = "path"];`
        */
       public var path: cosmos.crypto.hd.v1.Hd.BIP44Params
-        @JvmName("getPath")
-        get() = _builder.path
-        @JvmName("setPath")
-        set(value) {
+        @kotlin.jvm.JvmName("getPath")
+          get() = _builder.path
+        @kotlin.jvm.JvmName("setPath")
+          set(value) {
           _builder.path = value
         }
       /**

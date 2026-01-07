@@ -43,7 +43,7 @@ public object QueryCodesResponseKt {
      */
      public val codeInfos: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.codeInfosList
       )
     /**
@@ -51,7 +51,7 @@ public object QueryCodesResponseKt {
      * @param value The codeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCodeInfos")
+@kotlin.jvm.JvmName("addCodeInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>.add(value: cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse) {
       _builder.addCodeInfos(value)
     }
@@ -60,7 +60,7 @@ public object QueryCodesResponseKt {
      * @param value The codeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCodeInfos")
+@kotlin.jvm.JvmName("plusAssignCodeInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>.plusAssign(value: cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse) {
       add(value)
@@ -70,7 +70,7 @@ public object QueryCodesResponseKt {
      * @param values The codeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCodeInfos")
+@kotlin.jvm.JvmName("addAllCodeInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse>) {
       _builder.addAllCodeInfos(values)
     }
@@ -79,7 +79,7 @@ public object QueryCodesResponseKt {
      * @param values The codeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCodeInfos")
+@kotlin.jvm.JvmName("plusAssignAllCodeInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object QueryCodesResponseKt {
      * @param value The codeInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCodeInfos")
+@kotlin.jvm.JvmName("setCodeInfos")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse) {
       _builder.setCodeInfos(index, value)
     }
@@ -98,11 +98,10 @@ public object QueryCodesResponseKt {
      * `repeated .cosmwasm.wasm.v1.CodeInfoResponse code_infos = 1 [json_name = "codeInfos", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCodeInfos")
+@kotlin.jvm.JvmName("clearCodeInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse, CodeInfosProxy>.clear() {
       _builder.clearCodeInfos()
     }
-
 
     /**
      * ```
@@ -112,10 +111,10 @@ public object QueryCodesResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

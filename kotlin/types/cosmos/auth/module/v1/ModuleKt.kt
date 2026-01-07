@@ -40,10 +40,10 @@ public object ModuleKt {
      * `string bech32_prefix = 1 [json_name = "bech32Prefix"];`
      */
     public var bech32Prefix: kotlin.String
-      @JvmName("getBech32Prefix")
-      get() = _builder.bech32Prefix
-      @JvmName("setBech32Prefix")
-      set(value) {
+      @kotlin.jvm.JvmName("getBech32Prefix")
+        get() = _builder.bech32Prefix
+      @kotlin.jvm.JvmName("setBech32Prefix")
+        set(value) {
         _builder.bech32Prefix = value
       }
     /**
@@ -72,7 +72,7 @@ public object ModuleKt {
      */
      public val moduleAccountPermissions: com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.moduleAccountPermissionsList
       )
     /**
@@ -84,7 +84,7 @@ public object ModuleKt {
      * @param value The moduleAccountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addModuleAccountPermissions")
+@kotlin.jvm.JvmName("addModuleAccountPermissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>.add(value: cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission) {
       _builder.addModuleAccountPermissions(value)
     }
@@ -97,7 +97,7 @@ public object ModuleKt {
      * @param value The moduleAccountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignModuleAccountPermissions")
+@kotlin.jvm.JvmName("plusAssignModuleAccountPermissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>.plusAssign(value: cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission) {
       add(value)
@@ -111,7 +111,7 @@ public object ModuleKt {
      * @param values The moduleAccountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllModuleAccountPermissions")
+@kotlin.jvm.JvmName("addAllModuleAccountPermissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission>) {
       _builder.addAllModuleAccountPermissions(values)
     }
@@ -124,7 +124,7 @@ public object ModuleKt {
      * @param values The moduleAccountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllModuleAccountPermissions")
+@kotlin.jvm.JvmName("plusAssignAllModuleAccountPermissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object ModuleKt {
      * @param value The moduleAccountPermissions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setModuleAccountPermissions")
+@kotlin.jvm.JvmName("setModuleAccountPermissions")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>.set(index: kotlin.Int, value: cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission) {
       _builder.setModuleAccountPermissions(index, value)
     }
@@ -151,11 +151,10 @@ public object ModuleKt {
      * `repeated .cosmos.auth.module.v1.ModuleAccountPermission module_account_permissions = 2 [json_name = "moduleAccountPermissions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearModuleAccountPermissions")
+@kotlin.jvm.JvmName("clearModuleAccountPermissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.auth.module.v1.ModuleOuterClass.ModuleAccountPermission, ModuleAccountPermissionsProxy>.clear() {
       _builder.clearModuleAccountPermissions()
     }
-
 
     /**
      * ```
@@ -165,10 +164,10 @@ public object ModuleKt {
      * `string authority = 3 [json_name = "authority"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -192,10 +191,10 @@ public object ModuleKt {
      * `bool enable_unordered_transactions = 4 [json_name = "enableUnorderedTransactions"];`
      */
     public var enableUnorderedTransactions: kotlin.Boolean
-      @JvmName("getEnableUnorderedTransactions")
-      get() = _builder.enableUnorderedTransactions
-      @JvmName("setEnableUnorderedTransactions")
-      set(value) {
+      @kotlin.jvm.JvmName("getEnableUnorderedTransactions")
+        get() = _builder.enableUnorderedTransactions
+      @kotlin.jvm.JvmName("setEnableUnorderedTransactions")
+        set(value) {
         _builder.enableUnorderedTransactions = value
       }
     /**

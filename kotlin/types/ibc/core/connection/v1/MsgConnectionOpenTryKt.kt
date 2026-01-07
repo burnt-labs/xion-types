@@ -37,10 +37,10 @@ public object MsgConnectionOpenTryKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -58,10 +58,10 @@ public object MsgConnectionOpenTryKt {
      * `string previous_connection_id = 2 [json_name = "previousConnectionId", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field previousConnectionId is deprecated") public var previousConnectionId: kotlin.String
-      @JvmName("getPreviousConnectionId")
-      get() = _builder.previousConnectionId
-      @JvmName("setPreviousConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPreviousConnectionId")
+        get() = _builder.previousConnectionId
+      @kotlin.jvm.JvmName("setPreviousConnectionId")
+        set(value) {
         _builder.previousConnectionId = value
       }
     /**
@@ -83,10 +83,10 @@ public object MsgConnectionOpenTryKt {
      * `.google.protobuf.Any client_state = 3 [json_name = "clientState", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field clientState is deprecated") public var clientState: com.google.protobuf.Any
-      @JvmName("getClientState")
-      get() = _builder.clientState
-      @JvmName("setClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientState")
+        get() = _builder.clientState
+      @kotlin.jvm.JvmName("setClientState")
+        set(value) {
         _builder.clientState = value
       }
     /**
@@ -118,10 +118,10 @@ public object MsgConnectionOpenTryKt {
      * `.ibc.core.connection.v1.Counterparty counterparty = 4 [json_name = "counterparty", (.gogoproto.nullable) = false];`
      */
     public var counterparty: ibc.core.connection.v1.Connection.Counterparty
-      @JvmName("getCounterparty")
-      get() = _builder.counterparty
-      @JvmName("setCounterparty")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterparty")
+        get() = _builder.counterparty
+      @kotlin.jvm.JvmName("setCounterparty")
+        set(value) {
         _builder.counterparty = value
       }
     /**
@@ -145,10 +145,10 @@ public object MsgConnectionOpenTryKt {
      * `uint64 delay_period = 5 [json_name = "delayPeriod"];`
      */
     public var delayPeriod: kotlin.Long
-      @JvmName("getDelayPeriod")
-      get() = _builder.delayPeriod
-      @JvmName("setDelayPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelayPeriod")
+        get() = _builder.delayPeriod
+      @kotlin.jvm.JvmName("setDelayPeriod")
+        set(value) {
         _builder.delayPeriod = value
       }
     /**
@@ -169,7 +169,7 @@ public object MsgConnectionOpenTryKt {
      */
      public val counterpartyVersions: com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.counterpartyVersionsList
       )
     /**
@@ -177,7 +177,7 @@ public object MsgConnectionOpenTryKt {
      * @param value The counterpartyVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCounterpartyVersions")
+@kotlin.jvm.JvmName("addCounterpartyVersions")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>.add(value: ibc.core.connection.v1.Connection.Version) {
       _builder.addCounterpartyVersions(value)
     }
@@ -186,7 +186,7 @@ public object MsgConnectionOpenTryKt {
      * @param value The counterpartyVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCounterpartyVersions")
+@kotlin.jvm.JvmName("plusAssignCounterpartyVersions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>.plusAssign(value: ibc.core.connection.v1.Connection.Version) {
       add(value)
@@ -196,7 +196,7 @@ public object MsgConnectionOpenTryKt {
      * @param values The counterpartyVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCounterpartyVersions")
+@kotlin.jvm.JvmName("addAllCounterpartyVersions")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.Version>) {
       _builder.addAllCounterpartyVersions(values)
     }
@@ -205,7 +205,7 @@ public object MsgConnectionOpenTryKt {
      * @param values The counterpartyVersions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCounterpartyVersions")
+@kotlin.jvm.JvmName("plusAssignAllCounterpartyVersions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.Version>) {
       addAll(values)
@@ -216,7 +216,7 @@ public object MsgConnectionOpenTryKt {
      * @param value The counterpartyVersions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCounterpartyVersions")
+@kotlin.jvm.JvmName("setCounterpartyVersions")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>.set(index: kotlin.Int, value: ibc.core.connection.v1.Connection.Version) {
       _builder.setCounterpartyVersions(index, value)
     }
@@ -224,20 +224,19 @@ public object MsgConnectionOpenTryKt {
      * `repeated .ibc.core.connection.v1.Version counterparty_versions = 6 [json_name = "counterpartyVersions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCounterpartyVersions")
+@kotlin.jvm.JvmName("clearCounterpartyVersions")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, CounterpartyVersionsProxy>.clear() {
       _builder.clearCounterpartyVersions()
     }
-
 
     /**
      * `.ibc.core.client.v1.Height proof_height = 7 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -266,10 +265,10 @@ public object MsgConnectionOpenTryKt {
      * `bytes proof_init = 8 [json_name = "proofInit"];`
      */
     public var proofInit: com.google.protobuf.ByteString
-      @JvmName("getProofInit")
-      get() = _builder.proofInit
-      @JvmName("setProofInit")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofInit")
+        get() = _builder.proofInit
+      @kotlin.jvm.JvmName("setProofInit")
+        set(value) {
         _builder.proofInit = value
       }
     /**
@@ -292,10 +291,10 @@ public object MsgConnectionOpenTryKt {
      * `bytes proof_client = 9 [json_name = "proofClient", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field proofClient is deprecated") public var proofClient: com.google.protobuf.ByteString
-      @JvmName("getProofClient")
-      get() = _builder.proofClient
-      @JvmName("setProofClient")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofClient")
+        get() = _builder.proofClient
+      @kotlin.jvm.JvmName("setProofClient")
+        set(value) {
         _builder.proofClient = value
       }
     /**
@@ -317,10 +316,10 @@ public object MsgConnectionOpenTryKt {
      * `bytes proof_consensus = 10 [json_name = "proofConsensus", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field proofConsensus is deprecated") public var proofConsensus: com.google.protobuf.ByteString
-      @JvmName("getProofConsensus")
-      get() = _builder.proofConsensus
-      @JvmName("setProofConsensus")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofConsensus")
+        get() = _builder.proofConsensus
+      @kotlin.jvm.JvmName("setProofConsensus")
+        set(value) {
         _builder.proofConsensus = value
       }
     /**
@@ -342,10 +341,10 @@ public object MsgConnectionOpenTryKt {
      * `.ibc.core.client.v1.Height consensus_height = 11 [json_name = "consensusHeight", deprecated = true, (.gogoproto.nullable) = false];`
      */
     @kotlin.Deprecated(message = "Field consensusHeight is deprecated") public var consensusHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getConsensusHeight")
-      get() = _builder.consensusHeight
-      @JvmName("setConsensusHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusHeight")
+        get() = _builder.consensusHeight
+      @kotlin.jvm.JvmName("setConsensusHeight")
+        set(value) {
         _builder.consensusHeight = value
       }
     /**
@@ -377,10 +376,10 @@ public object MsgConnectionOpenTryKt {
      * `string signer = 12 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -398,10 +397,10 @@ public object MsgConnectionOpenTryKt {
      * `bytes host_consensus_state_proof = 13 [json_name = "hostConsensusStateProof", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field hostConsensusStateProof is deprecated") public var hostConsensusStateProof: com.google.protobuf.ByteString
-      @JvmName("getHostConsensusStateProof")
-      get() = _builder.hostConsensusStateProof
-      @JvmName("setHostConsensusStateProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostConsensusStateProof")
+        get() = _builder.hostConsensusStateProof
+      @kotlin.jvm.JvmName("setHostConsensusStateProof")
+        set(value) {
         _builder.hostConsensusStateProof = value
       }
     /**

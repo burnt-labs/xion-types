@@ -37,10 +37,10 @@ public object CommitIDKt {
      * `int64 version = 1 [json_name = "version"];`
      */
     public var version: kotlin.Long
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -54,10 +54,10 @@ public object CommitIDKt {
      * `bytes hash = 2 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**

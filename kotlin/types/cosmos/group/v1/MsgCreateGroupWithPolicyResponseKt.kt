@@ -40,10 +40,10 @@ public object MsgCreateGroupWithPolicyResponseKt {
      * `uint64 group_id = 1 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgCreateGroupWithPolicyResponseKt {
      * `string group_policy_address = 2 [json_name = "groupPolicyAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var groupPolicyAddress: kotlin.String
-      @JvmName("getGroupPolicyAddress")
-      get() = _builder.groupPolicyAddress
-      @JvmName("setGroupPolicyAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyAddress")
+        get() = _builder.groupPolicyAddress
+      @kotlin.jvm.JvmName("setGroupPolicyAddress")
+        set(value) {
         _builder.groupPolicyAddress = value
       }
     /**

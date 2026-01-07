@@ -47,10 +47,10 @@ public object HeaderKt {
      * `.tendermint.types.SignedHeader signed_header = 1 [json_name = "signedHeader", (.gogoproto.embed) = true];`
      */
     public var signedHeader: tendermint.types.Types.SignedHeader
-      @JvmName("getSignedHeader")
-      get() = _builder.signedHeader
-      @JvmName("setSignedHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignedHeader")
+        get() = _builder.signedHeader
+      @kotlin.jvm.JvmName("setSignedHeader")
+        set(value) {
         _builder.signedHeader = value
       }
     /**
@@ -74,10 +74,10 @@ public object HeaderKt {
      * `.tendermint.types.ValidatorSet validator_set = 2 [json_name = "validatorSet"];`
      */
     public var validatorSet: tendermint.types.ValidatorOuterClass.ValidatorSet
-      @JvmName("getValidatorSet")
-      get() = _builder.validatorSet
-      @JvmName("setValidatorSet")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorSet")
+        get() = _builder.validatorSet
+      @kotlin.jvm.JvmName("setValidatorSet")
+        set(value) {
         _builder.validatorSet = value
       }
     /**
@@ -101,10 +101,10 @@ public object HeaderKt {
      * `.ibc.core.client.v1.Height trusted_height = 3 [json_name = "trustedHeight", (.gogoproto.nullable) = false];`
      */
     public var trustedHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getTrustedHeight")
-      get() = _builder.trustedHeight
-      @JvmName("setTrustedHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getTrustedHeight")
+        get() = _builder.trustedHeight
+      @kotlin.jvm.JvmName("setTrustedHeight")
+        set(value) {
         _builder.trustedHeight = value
       }
     /**
@@ -128,10 +128,10 @@ public object HeaderKt {
      * `.tendermint.types.ValidatorSet trusted_validators = 4 [json_name = "trustedValidators"];`
      */
     public var trustedValidators: tendermint.types.ValidatorOuterClass.ValidatorSet
-      @JvmName("getTrustedValidators")
-      get() = _builder.trustedValidators
-      @JvmName("setTrustedValidators")
-      set(value) {
+      @kotlin.jvm.JvmName("getTrustedValidators")
+        get() = _builder.trustedValidators
+      @kotlin.jvm.JvmName("setTrustedValidators")
+        set(value) {
         _builder.trustedValidators = value
       }
     /**

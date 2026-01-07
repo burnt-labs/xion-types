@@ -40,10 +40,10 @@ public object GolangBindingKt {
      * `string interface_type = 1 [json_name = "interfaceType"];`
      */
     public var interfaceType: kotlin.String
-      @JvmName("getInterfaceType")
-      get() = _builder.interfaceType
-      @JvmName("setInterfaceType")
-      set(value) {
+      @kotlin.jvm.JvmName("getInterfaceType")
+        get() = _builder.interfaceType
+      @kotlin.jvm.JvmName("setInterfaceType")
+        set(value) {
         _builder.interfaceType = value
       }
     /**
@@ -65,10 +65,10 @@ public object GolangBindingKt {
      * `string implementation = 2 [json_name = "implementation"];`
      */
     public var implementation: kotlin.String
-      @JvmName("getImplementation")
-      get() = _builder.implementation
-      @JvmName("setImplementation")
-      set(value) {
+      @kotlin.jvm.JvmName("getImplementation")
+        get() = _builder.implementation
+      @kotlin.jvm.JvmName("setImplementation")
+        set(value) {
         _builder.implementation = value
       }
     /**

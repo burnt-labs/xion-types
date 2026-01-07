@@ -36,10 +36,10 @@ public object ConfigResponseKt {
      * `string minimum_gas_price = 1 [json_name = "minimumGasPrice"];`
      */
     public var minimumGasPrice: kotlin.String
-      @JvmName("getMinimumGasPrice")
-      get() = _builder.minimumGasPrice
-      @JvmName("setMinimumGasPrice")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinimumGasPrice")
+        get() = _builder.minimumGasPrice
+      @kotlin.jvm.JvmName("setMinimumGasPrice")
+        set(value) {
         _builder.minimumGasPrice = value
       }
     /**
@@ -53,10 +53,10 @@ public object ConfigResponseKt {
      * `string pruning_keep_recent = 2 [json_name = "pruningKeepRecent"];`
      */
     public var pruningKeepRecent: kotlin.String
-      @JvmName("getPruningKeepRecent")
-      get() = _builder.pruningKeepRecent
-      @JvmName("setPruningKeepRecent")
-      set(value) {
+      @kotlin.jvm.JvmName("getPruningKeepRecent")
+        get() = _builder.pruningKeepRecent
+      @kotlin.jvm.JvmName("setPruningKeepRecent")
+        set(value) {
         _builder.pruningKeepRecent = value
       }
     /**
@@ -70,10 +70,10 @@ public object ConfigResponseKt {
      * `string pruning_interval = 3 [json_name = "pruningInterval"];`
      */
     public var pruningInterval: kotlin.String
-      @JvmName("getPruningInterval")
-      get() = _builder.pruningInterval
-      @JvmName("setPruningInterval")
-      set(value) {
+      @kotlin.jvm.JvmName("getPruningInterval")
+        get() = _builder.pruningInterval
+      @kotlin.jvm.JvmName("setPruningInterval")
+        set(value) {
         _builder.pruningInterval = value
       }
     /**
@@ -87,10 +87,10 @@ public object ConfigResponseKt {
      * `uint64 halt_height = 4 [json_name = "haltHeight"];`
      */
     public var haltHeight: kotlin.Long
-      @JvmName("getHaltHeight")
-      get() = _builder.haltHeight
-      @JvmName("setHaltHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHaltHeight")
+        get() = _builder.haltHeight
+      @kotlin.jvm.JvmName("setHaltHeight")
+        set(value) {
         _builder.haltHeight = value
       }
     /**

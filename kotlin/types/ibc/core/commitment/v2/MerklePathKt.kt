@@ -73,7 +73,7 @@ public object MerklePathKt {
      */
      public val keyPath: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.keyPathList
       )
     /**
@@ -81,7 +81,7 @@ public object MerklePathKt {
      * @param value The keyPath to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addKeyPath")
+@kotlin.jvm.JvmName("addKeyPath")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addKeyPath(value)
     }/**
@@ -89,7 +89,7 @@ public object MerklePathKt {
      * @param value The keyPath to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignKeyPath")
+@kotlin.jvm.JvmName("plusAssignKeyPath")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -98,7 +98,7 @@ public object MerklePathKt {
      * @param values The keyPath to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllKeyPath")
+@kotlin.jvm.JvmName("addAllKeyPath")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllKeyPath(values)
     }/**
@@ -106,7 +106,7 @@ public object MerklePathKt {
      * @param values The keyPath to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllKeyPath")
+@kotlin.jvm.JvmName("plusAssignAllKeyPath")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -116,14 +116,14 @@ public object MerklePathKt {
      * @param value The keyPath to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setKeyPath")
+@kotlin.jvm.JvmName("setKeyPath")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setKeyPath(index, value)
     }/**
      * `repeated bytes key_path = 1 [json_name = "keyPath"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearKeyPath")
+@kotlin.jvm.JvmName("clearKeyPath")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, KeyPathProxy>.clear() {
       _builder.clearKeyPath()
     }}

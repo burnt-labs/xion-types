@@ -32,10 +32,10 @@ public object SignedHeaderKt {
      * `.tendermint.types.Header header = 1 [json_name = "header"];`
      */
     public var header: tendermint.types.Types.Header
-      @JvmName("getHeader")
-      get() = _builder.header
-      @JvmName("setHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeader")
+        get() = _builder.header
+      @kotlin.jvm.JvmName("setHeader")
+        set(value) {
         _builder.header = value
       }
     /**
@@ -59,10 +59,10 @@ public object SignedHeaderKt {
      * `.tendermint.types.Commit commit = 2 [json_name = "commit"];`
      */
     public var commit: tendermint.types.Types.Commit
-      @JvmName("getCommit")
-      get() = _builder.commit
-      @JvmName("setCommit")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommit")
+        get() = _builder.commit
+      @kotlin.jvm.JvmName("setCommit")
+        set(value) {
         _builder.commit = value
       }
     /**

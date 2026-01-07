@@ -41,10 +41,10 @@ public object MaxCallsLimitKt {
      * `uint64 remaining = 1 [json_name = "remaining"];`
      */
     public var remaining: kotlin.Long
-      @JvmName("getRemaining")
-      get() = _builder.remaining
-      @JvmName("setRemaining")
-      set(value) {
+      @kotlin.jvm.JvmName("getRemaining")
+        get() = _builder.remaining
+      @kotlin.jvm.JvmName("setRemaining")
+        set(value) {
         _builder.remaining = value
       }
     /**

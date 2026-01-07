@@ -41,10 +41,10 @@ public object ConsensusStateKt {
      * `.google.protobuf.Timestamp timestamp = 1 [json_name = "timestamp", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -82,10 +82,10 @@ public object ConsensusStateKt {
      * `.ibc.core.commitment.v1.MerkleRoot root = 2 [json_name = "root", (.gogoproto.nullable) = false];`
      */
     public var root: ibc.core.commitment.v1.Commitment.MerkleRoot
-      @JvmName("getRoot")
-      get() = _builder.root
-      @JvmName("setRoot")
-      set(value) {
+      @kotlin.jvm.JvmName("getRoot")
+        get() = _builder.root
+      @kotlin.jvm.JvmName("setRoot")
+        set(value) {
         _builder.root = value
       }
     /**
@@ -117,10 +117,10 @@ public object ConsensusStateKt {
      * `bytes next_validators_hash = 3 [json_name = "nextValidatorsHash", (.gogoproto.casttype) = "github.com/cometbft/cometbft/libs/bytes.HexBytes"];`
      */
     public var nextValidatorsHash: com.google.protobuf.ByteString
-      @JvmName("getNextValidatorsHash")
-      get() = _builder.nextValidatorsHash
-      @JvmName("setNextValidatorsHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextValidatorsHash")
+        get() = _builder.nextValidatorsHash
+      @kotlin.jvm.JvmName("setNextValidatorsHash")
+        set(value) {
         _builder.nextValidatorsHash = value
       }
     /**

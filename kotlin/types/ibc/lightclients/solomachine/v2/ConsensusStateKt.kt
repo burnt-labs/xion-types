@@ -42,10 +42,10 @@ public object ConsensusStateKt {
      * `.google.protobuf.Any public_key = 1 [json_name = "publicKey"];`
      */
     public var publicKey: com.google.protobuf.Any
-      @JvmName("getPublicKey")
-      get() = _builder.publicKey
-      @JvmName("setPublicKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPublicKey")
+        get() = _builder.publicKey
+      @kotlin.jvm.JvmName("setPublicKey")
+        set(value) {
         _builder.publicKey = value
       }
     /**
@@ -83,10 +83,10 @@ public object ConsensusStateKt {
      * `string diversifier = 2 [json_name = "diversifier"];`
      */
     public var diversifier: kotlin.String
-      @JvmName("getDiversifier")
-      get() = _builder.diversifier
-      @JvmName("setDiversifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getDiversifier")
+        get() = _builder.diversifier
+      @kotlin.jvm.JvmName("setDiversifier")
+        set(value) {
         _builder.diversifier = value
       }
     /**
@@ -106,10 +106,10 @@ public object ConsensusStateKt {
      * `uint64 timestamp = 3 [json_name = "timestamp"];`
      */
     public var timestamp: kotlin.Long
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**

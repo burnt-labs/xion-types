@@ -40,10 +40,10 @@ public object PayloadKt {
      * `string source_port = 1 [json_name = "sourcePort"];`
      */
     public var sourcePort: kotlin.String
-      @JvmName("getSourcePort")
-      get() = _builder.sourcePort
-      @JvmName("setSourcePort")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourcePort")
+        get() = _builder.sourcePort
+      @kotlin.jvm.JvmName("setSourcePort")
+        set(value) {
         _builder.sourcePort = value
       }
     /**
@@ -65,10 +65,10 @@ public object PayloadKt {
      * `string destination_port = 2 [json_name = "destinationPort"];`
      */
     public var destinationPort: kotlin.String
-      @JvmName("getDestinationPort")
-      get() = _builder.destinationPort
-      @JvmName("setDestinationPort")
-      set(value) {
+      @kotlin.jvm.JvmName("getDestinationPort")
+        get() = _builder.destinationPort
+      @kotlin.jvm.JvmName("setDestinationPort")
+        set(value) {
         _builder.destinationPort = value
       }
     /**
@@ -90,10 +90,10 @@ public object PayloadKt {
      * `string version = 3 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -115,10 +115,10 @@ public object PayloadKt {
      * `string encoding = 4 [json_name = "encoding"];`
      */
     public var encoding: kotlin.String
-      @JvmName("getEncoding")
-      get() = _builder.encoding
-      @JvmName("setEncoding")
-      set(value) {
+      @kotlin.jvm.JvmName("getEncoding")
+        get() = _builder.encoding
+      @kotlin.jvm.JvmName("setEncoding")
+        set(value) {
         _builder.encoding = value
       }
     /**
@@ -140,10 +140,10 @@ public object PayloadKt {
      * `bytes value = 5 [json_name = "value"];`
      */
     public var value: com.google.protobuf.ByteString
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**

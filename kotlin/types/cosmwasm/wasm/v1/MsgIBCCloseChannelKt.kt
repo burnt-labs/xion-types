@@ -36,10 +36,10 @@ public object MsgIBCCloseChannelKt {
      * `string channel = 2 [json_name = "channel", (.gogoproto.moretags) = "yaml:\"source_channel\""];`
      */
     public var channel: kotlin.String
-      @JvmName("getChannel")
-      get() = _builder.channel
-      @JvmName("setChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannel")
+        get() = _builder.channel
+      @kotlin.jvm.JvmName("setChannel")
+        set(value) {
         _builder.channel = value
       }
     /**

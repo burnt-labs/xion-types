@@ -41,10 +41,10 @@ public object TallyParamsKt {
      * `string quorum = 1 [json_name = "quorum", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var quorum: kotlin.String
-      @JvmName("getQuorum")
-      get() = _builder.quorum
-      @JvmName("setQuorum")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuorum")
+        get() = _builder.quorum
+      @kotlin.jvm.JvmName("setQuorum")
+        set(value) {
         _builder.quorum = value
       }
     /**
@@ -67,10 +67,10 @@ public object TallyParamsKt {
      * `string threshold = 2 [json_name = "threshold", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var threshold: kotlin.String
-      @JvmName("getThreshold")
-      get() = _builder.threshold
-      @JvmName("setThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getThreshold")
+        get() = _builder.threshold
+      @kotlin.jvm.JvmName("setThreshold")
+        set(value) {
         _builder.threshold = value
       }
     /**
@@ -93,10 +93,10 @@ public object TallyParamsKt {
      * `string veto_threshold = 3 [json_name = "vetoThreshold", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var vetoThreshold: kotlin.String
-      @JvmName("getVetoThreshold")
-      get() = _builder.vetoThreshold
-      @JvmName("setVetoThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getVetoThreshold")
+        get() = _builder.vetoThreshold
+      @kotlin.jvm.JvmName("setVetoThreshold")
+        set(value) {
         _builder.vetoThreshold = value
       }
     /**

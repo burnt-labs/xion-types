@@ -48,7 +48,7 @@ public object MsgMultiSendKt {
      */
      public val inputs: com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.inputsList
       )
     /**
@@ -61,7 +61,7 @@ public object MsgMultiSendKt {
      * @param value The inputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInputs")
+@kotlin.jvm.JvmName("addInputs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>.add(value: cosmos.bank.v1beta1.Bank.Input) {
       _builder.addInputs(value)
     }
@@ -75,7 +75,7 @@ public object MsgMultiSendKt {
      * @param value The inputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInputs")
+@kotlin.jvm.JvmName("plusAssignInputs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>.plusAssign(value: cosmos.bank.v1beta1.Bank.Input) {
       add(value)
@@ -90,7 +90,7 @@ public object MsgMultiSendKt {
      * @param values The inputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInputs")
+@kotlin.jvm.JvmName("addAllInputs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.Input>) {
       _builder.addAllInputs(values)
     }
@@ -104,7 +104,7 @@ public object MsgMultiSendKt {
      * @param values The inputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInputs")
+@kotlin.jvm.JvmName("plusAssignAllInputs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.Input>) {
       addAll(values)
@@ -120,7 +120,7 @@ public object MsgMultiSendKt {
      * @param value The inputs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInputs")
+@kotlin.jvm.JvmName("setInputs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>.set(index: kotlin.Int, value: cosmos.bank.v1beta1.Bank.Input) {
       _builder.setInputs(index, value)
     }
@@ -133,11 +133,10 @@ public object MsgMultiSendKt {
      * `repeated .cosmos.bank.v1beta1.Input inputs = 1 [json_name = "inputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInputs")
+@kotlin.jvm.JvmName("clearInputs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Input, InputsProxy>.clear() {
       _builder.clearInputs()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -146,70 +145,97 @@ public object MsgMultiSendKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class OutputsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
      public val outputs: com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.outputsList
       )
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      * @param value The outputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOutputs")
+@kotlin.jvm.JvmName("addOutputs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>.add(value: cosmos.bank.v1beta1.Bank.Output) {
       _builder.addOutputs(value)
     }
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      * @param value The outputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOutputs")
+@kotlin.jvm.JvmName("plusAssignOutputs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>.plusAssign(value: cosmos.bank.v1beta1.Bank.Output) {
       add(value)
     }
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      * @param values The outputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOutputs")
+@kotlin.jvm.JvmName("addAllOutputs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.Output>) {
       _builder.addAllOutputs(values)
     }
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      * @param values The outputs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOutputs")
+@kotlin.jvm.JvmName("plusAssignAllOutputs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.Output>) {
       addAll(values)
     }
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      * @param index The index to set the value at.
      * @param value The outputs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOutputs")
+@kotlin.jvm.JvmName("setOutputs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>.set(index: kotlin.Int, value: cosmos.bank.v1beta1.Bank.Output) {
       _builder.setOutputs(index, value)
     }
     /**
+     * ```
+     * The outputs specifying recipient addresses and amounts
+     * ```
+     *
      * `repeated .cosmos.bank.v1beta1.Output outputs = 2 [json_name = "outputs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOutputs")
+@kotlin.jvm.JvmName("clearOutputs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.Output, OutputsProxy>.clear() {
       _builder.clearOutputs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

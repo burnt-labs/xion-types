@@ -40,10 +40,10 @@ public object ProofOpKt {
      * `string type = 1 [json_name = "type"];`
      */
     public var type: kotlin.String
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     /**
@@ -57,10 +57,10 @@ public object ProofOpKt {
      * `bytes key = 2 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -74,10 +74,10 @@ public object ProofOpKt {
      * `bytes data = 3 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

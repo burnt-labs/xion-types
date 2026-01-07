@@ -40,10 +40,10 @@ public object GenesisStateKt {
      * `.ibc.core.client.v1.GenesisState client_genesis = 1 [json_name = "clientGenesis", (.gogoproto.nullable) = false];`
      */
     public var clientGenesis: ibc.core.client.v1.Genesis.GenesisState
-      @JvmName("getClientGenesis")
-      get() = _builder.clientGenesis
-      @JvmName("setClientGenesis")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientGenesis")
+        get() = _builder.clientGenesis
+      @kotlin.jvm.JvmName("setClientGenesis")
+        set(value) {
         _builder.clientGenesis = value
       }
     /**
@@ -79,10 +79,10 @@ public object GenesisStateKt {
      * `.ibc.core.connection.v1.GenesisState connection_genesis = 2 [json_name = "connectionGenesis", (.gogoproto.nullable) = false];`
      */
     public var connectionGenesis: ibc.core.connection.v1.Genesis.GenesisState
-      @JvmName("getConnectionGenesis")
-      get() = _builder.connectionGenesis
-      @JvmName("setConnectionGenesis")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionGenesis")
+        get() = _builder.connectionGenesis
+      @kotlin.jvm.JvmName("setConnectionGenesis")
+        set(value) {
         _builder.connectionGenesis = value
       }
     /**
@@ -118,10 +118,10 @@ public object GenesisStateKt {
      * `.ibc.core.channel.v1.GenesisState channel_genesis = 3 [json_name = "channelGenesis", (.gogoproto.nullable) = false];`
      */
     public var channelGenesis: ibc.core.channel.v1.Genesis.GenesisState
-      @JvmName("getChannelGenesis")
-      get() = _builder.channelGenesis
-      @JvmName("setChannelGenesis")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelGenesis")
+        get() = _builder.channelGenesis
+      @kotlin.jvm.JvmName("setChannelGenesis")
+        set(value) {
         _builder.channelGenesis = value
       }
     /**
@@ -157,10 +157,10 @@ public object GenesisStateKt {
      * `.ibc.core.client.v2.GenesisState client_v2_genesis = 4 [json_name = "clientV2Genesis", (.gogoproto.nullable) = false];`
      */
     public var clientV2Genesis: ibc.core.client.v2.Genesis.GenesisState
-      @JvmName("getClientV2Genesis")
-      get() = _builder.clientV2Genesis
-      @JvmName("setClientV2Genesis")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientV2Genesis")
+        get() = _builder.clientV2Genesis
+      @kotlin.jvm.JvmName("setClientV2Genesis")
+        set(value) {
         _builder.clientV2Genesis = value
       }
     /**
@@ -196,10 +196,10 @@ public object GenesisStateKt {
      * `.ibc.core.channel.v2.GenesisState channel_v2_genesis = 5 [json_name = "channelV2Genesis", (.gogoproto.nullable) = false];`
      */
     public var channelV2Genesis: ibc.core.channel.v2.Genesis.GenesisState
-      @JvmName("getChannelV2Genesis")
-      get() = _builder.channelV2Genesis
-      @JvmName("setChannelV2Genesis")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelV2Genesis")
+        get() = _builder.channelV2Genesis
+      @kotlin.jvm.JvmName("setChannelV2Genesis")
+        set(value) {
         _builder.channelV2Genesis = value
       }
     /**

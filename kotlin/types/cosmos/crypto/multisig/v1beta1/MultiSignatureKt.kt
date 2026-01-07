@@ -45,7 +45,7 @@ public object MultiSignatureKt {
      */
      public val signatures: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signaturesList
       )
     /**
@@ -53,7 +53,7 @@ public object MultiSignatureKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSignatures")
+@kotlin.jvm.JvmName("addSignatures")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addSignatures(value)
     }/**
@@ -61,7 +61,7 @@ public object MultiSignatureKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSignatures")
+@kotlin.jvm.JvmName("plusAssignSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -70,7 +70,7 @@ public object MultiSignatureKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSignatures")
+@kotlin.jvm.JvmName("addAllSignatures")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllSignatures(values)
     }/**
@@ -78,7 +78,7 @@ public object MultiSignatureKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSignatures")
+@kotlin.jvm.JvmName("plusAssignAllSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -88,14 +88,14 @@ public object MultiSignatureKt {
      * @param value The signatures to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSignatures")
+@kotlin.jvm.JvmName("setSignatures")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setSignatures(index, value)
     }/**
      * `repeated bytes signatures = 1 [json_name = "signatures"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSignatures")
+@kotlin.jvm.JvmName("clearSignatures")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.clear() {
       _builder.clearSignatures()
     }}

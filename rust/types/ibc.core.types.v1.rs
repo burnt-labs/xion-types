@@ -5,18 +5,18 @@
 pub struct GenesisState {
     /// ICS002 - Clients genesis state
     #[prost(message, optional, tag="1")]
-    pub client_genesis: ::core::option::Option<super::super::client::v1::GenesisState>,
+    pub client_genesis: ::core::option::Option<crate::types::ibc_core_client_v1::GenesisState>,
     /// ICS003 - Connections genesis state
     #[prost(message, optional, tag="2")]
-    pub connection_genesis: ::core::option::Option<super::super::connection::v1::GenesisState>,
+    pub connection_genesis: ::core::option::Option<crate::types::ibc_core_connection_v1::GenesisState>,
     /// ICS004 - Channel genesis state
     #[prost(message, optional, tag="3")]
-    pub channel_genesis: ::core::option::Option<super::super::channel::v1::GenesisState>,
+    pub channel_genesis: ::core::option::Option<crate::types::ibc_core_channel_v1::GenesisState>,
     /// ICS002 - Clients/v2 genesis state
     #[prost(message, optional, tag="4")]
-    pub client_v2_genesis: ::core::option::Option<super::super::client::v2::GenesisState>,
+    pub client_v2_genesis: ::core::option::Option<crate::types::ibc_core_client_v2::GenesisState>,
     /// ICS004 - Channel/v2 genesis state
     #[prost(message, optional, tag="5")]
-    pub channel_v2_genesis: ::core::option::Option<super::super::channel::v2::GenesisState>,
+    pub channel_v2_genesis: ::core::option::Option<crate::types::ibc_core_channel_v2::GenesisState>,
 }
 // @@protoc_insertion_point(module)

@@ -40,10 +40,10 @@ public object MsgMigrateContractKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgMigrateContractKt {
      * `string contract = 2 [json_name = "contract", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var contract: kotlin.String
-      @JvmName("getContract")
-      get() = _builder.contract
-      @JvmName("setContract")
-      set(value) {
+      @kotlin.jvm.JvmName("getContract")
+        get() = _builder.contract
+      @kotlin.jvm.JvmName("setContract")
+        set(value) {
         _builder.contract = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgMigrateContractKt {
      * `uint64 code_id = 3 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -115,10 +115,10 @@ public object MsgMigrateContractKt {
      * `bytes msg = 4 [json_name = "msg", (.gogoproto.casttype) = "RawContractMessage", (.amino.encoding) = "inline_json"];`
      */
     public var msg: com.google.protobuf.ByteString
-      @JvmName("getMsg")
-      get() = _builder.msg
-      @JvmName("setMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsg")
+        get() = _builder.msg
+      @kotlin.jvm.JvmName("setMsg")
+        set(value) {
         _builder.msg = value
       }
     /**

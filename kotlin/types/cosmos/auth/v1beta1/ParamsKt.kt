@@ -36,10 +36,10 @@ public object ParamsKt {
      * `uint64 max_memo_characters = 1 [json_name = "maxMemoCharacters"];`
      */
     public var maxMemoCharacters: kotlin.Long
-      @JvmName("getMaxMemoCharacters")
-      get() = _builder.maxMemoCharacters
-      @JvmName("setMaxMemoCharacters")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxMemoCharacters")
+        get() = _builder.maxMemoCharacters
+      @kotlin.jvm.JvmName("setMaxMemoCharacters")
+        set(value) {
         _builder.maxMemoCharacters = value
       }
     /**
@@ -53,10 +53,10 @@ public object ParamsKt {
      * `uint64 tx_sig_limit = 2 [json_name = "txSigLimit"];`
      */
     public var txSigLimit: kotlin.Long
-      @JvmName("getTxSigLimit")
-      get() = _builder.txSigLimit
-      @JvmName("setTxSigLimit")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxSigLimit")
+        get() = _builder.txSigLimit
+      @kotlin.jvm.JvmName("setTxSigLimit")
+        set(value) {
         _builder.txSigLimit = value
       }
     /**
@@ -70,10 +70,10 @@ public object ParamsKt {
      * `uint64 tx_size_cost_per_byte = 3 [json_name = "txSizeCostPerByte"];`
      */
     public var txSizeCostPerByte: kotlin.Long
-      @JvmName("getTxSizeCostPerByte")
-      get() = _builder.txSizeCostPerByte
-      @JvmName("setTxSizeCostPerByte")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxSizeCostPerByte")
+        get() = _builder.txSizeCostPerByte
+      @kotlin.jvm.JvmName("setTxSizeCostPerByte")
+        set(value) {
         _builder.txSizeCostPerByte = value
       }
     /**
@@ -87,10 +87,10 @@ public object ParamsKt {
      * `uint64 sig_verify_cost_ed25519 = 4 [json_name = "sigVerifyCostEd25519", (.gogoproto.customname) = "SigVerifyCostED25519"];`
      */
     public var sigVerifyCostEd25519: kotlin.Long
-      @JvmName("getSigVerifyCostEd25519")
-      get() = _builder.sigVerifyCostEd25519
-      @JvmName("setSigVerifyCostEd25519")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigVerifyCostEd25519")
+        get() = _builder.sigVerifyCostEd25519
+      @kotlin.jvm.JvmName("setSigVerifyCostEd25519")
+        set(value) {
         _builder.sigVerifyCostEd25519 = value
       }
     /**
@@ -104,10 +104,10 @@ public object ParamsKt {
      * `uint64 sig_verify_cost_secp256k1 = 5 [json_name = "sigVerifyCostSecp256k1", (.gogoproto.customname) = "SigVerifyCostSecp256k1"];`
      */
     public var sigVerifyCostSecp256K1: kotlin.Long
-      @JvmName("getSigVerifyCostSecp256K1")
-      get() = _builder.sigVerifyCostSecp256K1
-      @JvmName("setSigVerifyCostSecp256K1")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigVerifyCostSecp256K1")
+        get() = _builder.sigVerifyCostSecp256K1
+      @kotlin.jvm.JvmName("setSigVerifyCostSecp256K1")
+        set(value) {
         _builder.sigVerifyCostSecp256K1 = value
       }
     /**

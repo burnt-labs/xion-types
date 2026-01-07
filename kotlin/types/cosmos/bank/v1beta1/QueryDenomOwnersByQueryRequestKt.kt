@@ -42,10 +42,10 @@ public object QueryDenomOwnersByQueryRequestKt {
      * `string denom = 1 [json_name = "denom"];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -67,10 +67,10 @@ public object QueryDenomOwnersByQueryRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

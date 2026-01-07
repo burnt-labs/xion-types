@@ -40,10 +40,10 @@ public object LastValidatorPowerKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -65,10 +65,10 @@ public object LastValidatorPowerKt {
      * `int64 power = 2 [json_name = "power"];`
      */
     public var power: kotlin.Long
-      @JvmName("getPower")
-      get() = _builder.power
-      @JvmName("setPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getPower")
+        get() = _builder.power
+      @kotlin.jvm.JvmName("setPower")
+        set(value) {
         _builder.power = value
       }
     /**

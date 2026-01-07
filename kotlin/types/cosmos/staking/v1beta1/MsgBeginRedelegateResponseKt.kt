@@ -36,10 +36,10 @@ public object MsgBeginRedelegateResponseKt {
      * `.google.protobuf.Timestamp completion_time = 1 [json_name = "completionTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var completionTime: com.google.protobuf.Timestamp
-      @JvmName("getCompletionTime")
-      get() = _builder.completionTime
-      @JvmName("setCompletionTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getCompletionTime")
+        get() = _builder.completionTime
+      @kotlin.jvm.JvmName("setCompletionTime")
+        set(value) {
         _builder.completionTime = value
       }
     /**

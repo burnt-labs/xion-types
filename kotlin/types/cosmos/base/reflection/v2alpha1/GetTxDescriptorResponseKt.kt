@@ -41,10 +41,10 @@ public object GetTxDescriptorResponseKt {
      * `.cosmos.base.reflection.v2alpha1.TxDescriptor tx = 1 [json_name = "tx"];`
      */
     public var tx: cosmos.base.reflection.v2alpha1.Reflection.TxDescriptor
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**

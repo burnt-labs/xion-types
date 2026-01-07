@@ -37,10 +37,10 @@ public object CommitInfoKt {
      * `int64 version = 1 [json_name = "version"];`
      */
     public var version: kotlin.Long
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -61,7 +61,7 @@ public object CommitInfoKt {
      */
      public val storeInfos: com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.storeInfosList
       )
     /**
@@ -69,7 +69,7 @@ public object CommitInfoKt {
      * @param value The storeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addStoreInfos")
+@kotlin.jvm.JvmName("addStoreInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>.add(value: cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo) {
       _builder.addStoreInfos(value)
     }
@@ -78,7 +78,7 @@ public object CommitInfoKt {
      * @param value The storeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignStoreInfos")
+@kotlin.jvm.JvmName("plusAssignStoreInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>.plusAssign(value: cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo) {
       add(value)
@@ -88,7 +88,7 @@ public object CommitInfoKt {
      * @param values The storeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllStoreInfos")
+@kotlin.jvm.JvmName("addAllStoreInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo>) {
       _builder.addAllStoreInfos(values)
     }
@@ -97,7 +97,7 @@ public object CommitInfoKt {
      * @param values The storeInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllStoreInfos")
+@kotlin.jvm.JvmName("plusAssignAllStoreInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo>) {
       addAll(values)
@@ -108,7 +108,7 @@ public object CommitInfoKt {
      * @param value The storeInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setStoreInfos")
+@kotlin.jvm.JvmName("setStoreInfos")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>.set(index: kotlin.Int, value: cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo) {
       _builder.setStoreInfos(index, value)
     }
@@ -116,20 +116,19 @@ public object CommitInfoKt {
      * `repeated .cosmos.store.v1beta1.StoreInfo store_infos = 2 [json_name = "storeInfos", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearStoreInfos")
+@kotlin.jvm.JvmName("clearStoreInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.CommitInfoOuterClass.StoreInfo, StoreInfosProxy>.clear() {
       _builder.clearStoreInfos()
     }
-
 
     /**
      * `.google.protobuf.Timestamp timestamp = 3 [json_name = "timestamp", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**

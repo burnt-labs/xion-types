@@ -40,10 +40,10 @@ public object GetCodecDescriptorResponseKt {
      * `.cosmos.base.reflection.v2alpha1.CodecDescriptor codec = 1 [json_name = "codec"];`
      */
     public var codec: cosmos.base.reflection.v2alpha1.Reflection.CodecDescriptor
-      @JvmName("getCodec")
-      get() = _builder.codec
-      @JvmName("setCodec")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodec")
+        get() = _builder.codec
+      @kotlin.jvm.JvmName("setCodec")
+        set(value) {
         _builder.codec = value
       }
     /**

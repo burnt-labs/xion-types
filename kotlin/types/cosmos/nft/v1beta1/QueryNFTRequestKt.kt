@@ -40,10 +40,10 @@ public object QueryNFTRequestKt {
      * `string class_id = 1 [json_name = "classId"];`
      */
     public var classId: kotlin.String
-      @JvmName("getClassId")
-      get() = _builder.classId
-      @JvmName("setClassId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClassId")
+        get() = _builder.classId
+      @kotlin.jvm.JvmName("setClassId")
+        set(value) {
         _builder.classId = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryNFTRequestKt {
      * `string id = 2 [json_name = "id"];`
      */
     public var id: kotlin.String
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**

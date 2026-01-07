@@ -36,10 +36,10 @@ public object GetLatestBlockResponseKt {
      * `.tendermint.types.BlockID block_id = 1 [json_name = "blockId"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -67,10 +67,10 @@ public object GetLatestBlockResponseKt {
      * `.tendermint.types.Block block = 2 [json_name = "block"];`
      */
     public var block: tendermint.types.BlockOuterClass.Block
-      @JvmName("getBlock")
-      get() = _builder.block
-      @JvmName("setBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlock")
+        get() = _builder.block
+      @kotlin.jvm.JvmName("setBlock")
+        set(value) {
         _builder.block = value
       }
     /**
@@ -102,10 +102,10 @@ public object GetLatestBlockResponseKt {
      * `.cosmos.base.tendermint.v1beta1.Block sdk_block = 3 [json_name = "sdkBlock", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var sdkBlock: cosmos.base.tendermint.v1beta1.Types.Block
-      @JvmName("getSdkBlock")
-      get() = _builder.sdkBlock
-      @JvmName("setSdkBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getSdkBlock")
+        get() = _builder.sdkBlock
+      @kotlin.jvm.JvmName("setSdkBlock")
+        set(value) {
         _builder.sdkBlock = value
       }
     /**

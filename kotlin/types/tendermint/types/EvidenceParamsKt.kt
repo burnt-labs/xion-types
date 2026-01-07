@@ -43,10 +43,10 @@ public object EvidenceParamsKt {
      * `int64 max_age_num_blocks = 1 [json_name = "maxAgeNumBlocks"];`
      */
     public var maxAgeNumBlocks: kotlin.Long
-      @JvmName("getMaxAgeNumBlocks")
-      get() = _builder.maxAgeNumBlocks
-      @JvmName("setMaxAgeNumBlocks")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxAgeNumBlocks")
+        get() = _builder.maxAgeNumBlocks
+      @kotlin.jvm.JvmName("setMaxAgeNumBlocks")
+        set(value) {
         _builder.maxAgeNumBlocks = value
       }
     /**
@@ -75,10 +75,10 @@ public object EvidenceParamsKt {
      * `.google.protobuf.Duration max_age_duration = 2 [json_name = "maxAgeDuration", (.gogoproto.nullable) = false, (.gogoproto.stdduration) = true];`
      */
     public var maxAgeDuration: com.google.protobuf.Duration
-      @JvmName("getMaxAgeDuration")
-      get() = _builder.maxAgeDuration
-      @JvmName("setMaxAgeDuration")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxAgeDuration")
+        get() = _builder.maxAgeDuration
+      @kotlin.jvm.JvmName("setMaxAgeDuration")
+        set(value) {
         _builder.maxAgeDuration = value
       }
     /**
@@ -124,10 +124,10 @@ public object EvidenceParamsKt {
      * `int64 max_bytes = 3 [json_name = "maxBytes"];`
      */
     public var maxBytes: kotlin.Long
-      @JvmName("getMaxBytes")
-      get() = _builder.maxBytes
-      @JvmName("setMaxBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxBytes")
+        get() = _builder.maxBytes
+      @kotlin.jvm.JvmName("setMaxBytes")
+        set(value) {
         _builder.maxBytes = value
       }
     /**

@@ -36,10 +36,10 @@ public object RequestApplySnapshotChunkKt {
      * `uint32 index = 1 [json_name = "index"];`
      */
     public var index: kotlin.Int
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**
@@ -53,10 +53,10 @@ public object RequestApplySnapshotChunkKt {
      * `bytes chunk = 2 [json_name = "chunk"];`
      */
     public var chunk: com.google.protobuf.ByteString
-      @JvmName("getChunk")
-      get() = _builder.chunk
-      @JvmName("setChunk")
-      set(value) {
+      @kotlin.jvm.JvmName("getChunk")
+        get() = _builder.chunk
+      @kotlin.jvm.JvmName("setChunk")
+        set(value) {
         _builder.chunk = value
       }
     /**
@@ -70,10 +70,10 @@ public object RequestApplySnapshotChunkKt {
      * `string sender = 3 [json_name = "sender"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**

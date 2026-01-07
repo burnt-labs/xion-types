@@ -36,10 +36,10 @@ public object ParameterChangeProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -53,10 +53,10 @@ public object ParameterChangeProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -77,7 +77,7 @@ public object ParameterChangeProposalKt {
      */
      public val changes: com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.changesList
       )
     /**
@@ -85,7 +85,7 @@ public object ParameterChangeProposalKt {
      * @param value The changes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addChanges")
+@kotlin.jvm.JvmName("addChanges")
     public fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>.add(value: cosmos.params.v1beta1.Params.ParamChange) {
       _builder.addChanges(value)
     }
@@ -94,7 +94,7 @@ public object ParameterChangeProposalKt {
      * @param value The changes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignChanges")
+@kotlin.jvm.JvmName("plusAssignChanges")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>.plusAssign(value: cosmos.params.v1beta1.Params.ParamChange) {
       add(value)
@@ -104,7 +104,7 @@ public object ParameterChangeProposalKt {
      * @param values The changes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllChanges")
+@kotlin.jvm.JvmName("addAllChanges")
     public fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.params.v1beta1.Params.ParamChange>) {
       _builder.addAllChanges(values)
     }
@@ -113,7 +113,7 @@ public object ParameterChangeProposalKt {
      * @param values The changes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllChanges")
+@kotlin.jvm.JvmName("plusAssignAllChanges")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.params.v1beta1.Params.ParamChange>) {
       addAll(values)
@@ -124,7 +124,7 @@ public object ParameterChangeProposalKt {
      * @param value The changes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setChanges")
+@kotlin.jvm.JvmName("setChanges")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>.set(index: kotlin.Int, value: cosmos.params.v1beta1.Params.ParamChange) {
       _builder.setChanges(index, value)
     }
@@ -132,11 +132,10 @@ public object ParameterChangeProposalKt {
      * `repeated .cosmos.params.v1beta1.ParamChange changes = 3 [json_name = "changes", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearChanges")
+@kotlin.jvm.JvmName("clearChanges")
     public fun com.google.protobuf.kotlin.DslList<cosmos.params.v1beta1.Params.ParamChange, ChangesProxy>.clear() {
       _builder.clearChanges()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

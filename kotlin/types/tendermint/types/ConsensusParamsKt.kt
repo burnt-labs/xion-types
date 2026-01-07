@@ -37,10 +37,10 @@ public object ConsensusParamsKt {
      * `.tendermint.types.BlockParams block = 1 [json_name = "block"];`
      */
     public var block: tendermint.types.Params.BlockParams
-      @JvmName("getBlock")
-      get() = _builder.block
-      @JvmName("setBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlock")
+        get() = _builder.block
+      @kotlin.jvm.JvmName("setBlock")
+        set(value) {
         _builder.block = value
       }
     /**
@@ -64,10 +64,10 @@ public object ConsensusParamsKt {
      * `.tendermint.types.EvidenceParams evidence = 2 [json_name = "evidence"];`
      */
     public var evidence: tendermint.types.Params.EvidenceParams
-      @JvmName("getEvidence")
-      get() = _builder.evidence
-      @JvmName("setEvidence")
-      set(value) {
+      @kotlin.jvm.JvmName("getEvidence")
+        get() = _builder.evidence
+      @kotlin.jvm.JvmName("setEvidence")
+        set(value) {
         _builder.evidence = value
       }
     /**
@@ -91,10 +91,10 @@ public object ConsensusParamsKt {
      * `.tendermint.types.ValidatorParams validator = 3 [json_name = "validator"];`
      */
     public var validator: tendermint.types.Params.ValidatorParams
-      @JvmName("getValidator")
-      get() = _builder.validator
-      @JvmName("setValidator")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidator")
+        get() = _builder.validator
+      @kotlin.jvm.JvmName("setValidator")
+        set(value) {
         _builder.validator = value
       }
     /**
@@ -118,10 +118,10 @@ public object ConsensusParamsKt {
      * `.tendermint.types.VersionParams version = 4 [json_name = "version"];`
      */
     public var version: tendermint.types.Params.VersionParams
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -145,10 +145,10 @@ public object ConsensusParamsKt {
      * `.tendermint.types.ABCIParams abci = 5 [json_name = "abci"];`
      */
     public var abci: tendermint.types.Params.ABCIParams
-      @JvmName("getAbci")
-      get() = _builder.abci
-      @JvmName("setAbci")
-      set(value) {
+      @kotlin.jvm.JvmName("getAbci")
+        get() = _builder.abci
+      @kotlin.jvm.JvmName("setAbci")
+        set(value) {
         _builder.abci = value
       }
     /**

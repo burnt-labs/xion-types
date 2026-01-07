@@ -36,10 +36,10 @@ public object RequestPrepareProposalKt {
      * `int64 max_tx_bytes = 1 [json_name = "maxTxBytes"];`
      */
     public var maxTxBytes: kotlin.Long
-      @JvmName("getMaxTxBytes")
-      get() = _builder.maxTxBytes
-      @JvmName("setMaxTxBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxTxBytes")
+        get() = _builder.maxTxBytes
+      @kotlin.jvm.JvmName("setMaxTxBytes")
+        set(value) {
         _builder.maxTxBytes = value
       }
     /**
@@ -69,7 +69,7 @@ public object RequestPrepareProposalKt {
      */
      public val txs: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.txsList
       )
     /**
@@ -82,7 +82,7 @@ public object RequestPrepareProposalKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTxs")
+@kotlin.jvm.JvmName("addTxs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addTxs(value)
     }/**
@@ -95,7 +95,7 @@ public object RequestPrepareProposalKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTxs")
+@kotlin.jvm.JvmName("plusAssignTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -109,7 +109,7 @@ public object RequestPrepareProposalKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTxs")
+@kotlin.jvm.JvmName("addAllTxs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllTxs(values)
     }/**
@@ -122,7 +122,7 @@ public object RequestPrepareProposalKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTxs")
+@kotlin.jvm.JvmName("plusAssignAllTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -137,7 +137,7 @@ public object RequestPrepareProposalKt {
      * @param value The txs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTxs")
+@kotlin.jvm.JvmName("setTxs")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setTxs(index, value)
     }/**
@@ -149,7 +149,7 @@ public object RequestPrepareProposalKt {
      * `repeated bytes txs = 2 [json_name = "txs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTxs")
+@kotlin.jvm.JvmName("clearTxs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, TxsProxy>.clear() {
       _builder.clearTxs()
     }
@@ -157,10 +157,10 @@ public object RequestPrepareProposalKt {
      * `.tendermint.abci.ExtendedCommitInfo local_last_commit = 3 [json_name = "localLastCommit", (.gogoproto.nullable) = false];`
      */
     public var localLastCommit: tendermint.abci.Types.ExtendedCommitInfo
-      @JvmName("getLocalLastCommit")
-      get() = _builder.localLastCommit
-      @JvmName("setLocalLastCommit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLocalLastCommit")
+        get() = _builder.localLastCommit
+      @kotlin.jvm.JvmName("setLocalLastCommit")
+        set(value) {
         _builder.localLastCommit = value
       }
     /**
@@ -191,7 +191,7 @@ public object RequestPrepareProposalKt {
      */
      public val misbehavior: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.misbehaviorList
       )
     /**
@@ -199,7 +199,7 @@ public object RequestPrepareProposalKt {
      * @param value The misbehavior to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMisbehavior")
+@kotlin.jvm.JvmName("addMisbehavior")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>.add(value: tendermint.abci.Types.Misbehavior) {
       _builder.addMisbehavior(value)
     }
@@ -208,7 +208,7 @@ public object RequestPrepareProposalKt {
      * @param value The misbehavior to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMisbehavior")
+@kotlin.jvm.JvmName("plusAssignMisbehavior")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>.plusAssign(value: tendermint.abci.Types.Misbehavior) {
       add(value)
@@ -218,7 +218,7 @@ public object RequestPrepareProposalKt {
      * @param values The misbehavior to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMisbehavior")
+@kotlin.jvm.JvmName("addAllMisbehavior")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.Misbehavior>) {
       _builder.addAllMisbehavior(values)
     }
@@ -227,7 +227,7 @@ public object RequestPrepareProposalKt {
      * @param values The misbehavior to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMisbehavior")
+@kotlin.jvm.JvmName("plusAssignAllMisbehavior")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.Misbehavior>) {
       addAll(values)
@@ -238,7 +238,7 @@ public object RequestPrepareProposalKt {
      * @param value The misbehavior to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMisbehavior")
+@kotlin.jvm.JvmName("setMisbehavior")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.Misbehavior) {
       _builder.setMisbehavior(index, value)
     }
@@ -246,20 +246,19 @@ public object RequestPrepareProposalKt {
      * `repeated .tendermint.abci.Misbehavior misbehavior = 4 [json_name = "misbehavior", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMisbehavior")
+@kotlin.jvm.JvmName("clearMisbehavior")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Misbehavior, MisbehaviorProxy>.clear() {
       _builder.clearMisbehavior()
     }
-
 
     /**
      * `int64 height = 5 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -273,10 +272,10 @@ public object RequestPrepareProposalKt {
      * `.google.protobuf.Timestamp time = 6 [json_name = "time", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var time: com.google.protobuf.Timestamp
-      @JvmName("getTime")
-      get() = _builder.time
-      @JvmName("setTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTime")
+        get() = _builder.time
+      @kotlin.jvm.JvmName("setTime")
+        set(value) {
         _builder.time = value
       }
     /**
@@ -300,10 +299,10 @@ public object RequestPrepareProposalKt {
      * `bytes next_validators_hash = 7 [json_name = "nextValidatorsHash"];`
      */
     public var nextValidatorsHash: com.google.protobuf.ByteString
-      @JvmName("getNextValidatorsHash")
-      get() = _builder.nextValidatorsHash
-      @JvmName("setNextValidatorsHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextValidatorsHash")
+        get() = _builder.nextValidatorsHash
+      @kotlin.jvm.JvmName("setNextValidatorsHash")
+        set(value) {
         _builder.nextValidatorsHash = value
       }
     /**
@@ -321,10 +320,10 @@ public object RequestPrepareProposalKt {
      * `bytes proposer_address = 8 [json_name = "proposerAddress"];`
      */
     public var proposerAddress: com.google.protobuf.ByteString
-      @JvmName("getProposerAddress")
-      get() = _builder.proposerAddress
-      @JvmName("setProposerAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposerAddress")
+        get() = _builder.proposerAddress
+      @kotlin.jvm.JvmName("setProposerAddress")
+        set(value) {
         _builder.proposerAddress = value
       }
     /**

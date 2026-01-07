@@ -43,10 +43,10 @@ public object InstantiateContract2ProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -68,10 +68,10 @@ public object InstantiateContract2ProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -93,10 +93,10 @@ public object InstantiateContract2ProposalKt {
      * `string run_as = 3 [json_name = "runAs", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var runAs: kotlin.String
-      @JvmName("getRunAs")
-      get() = _builder.runAs
-      @JvmName("setRunAs")
-      set(value) {
+      @kotlin.jvm.JvmName("getRunAs")
+        get() = _builder.runAs
+      @kotlin.jvm.JvmName("setRunAs")
+        set(value) {
         _builder.runAs = value
       }
     /**
@@ -118,10 +118,10 @@ public object InstantiateContract2ProposalKt {
      * `string admin = 4 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -143,10 +143,10 @@ public object InstantiateContract2ProposalKt {
      * `uint64 code_id = 5 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -168,10 +168,10 @@ public object InstantiateContract2ProposalKt {
      * `string label = 6 [json_name = "label"];`
      */
     public var label: kotlin.String
-      @JvmName("getLabel")
-      get() = _builder.label
-      @JvmName("setLabel")
-      set(value) {
+      @kotlin.jvm.JvmName("getLabel")
+        get() = _builder.label
+      @kotlin.jvm.JvmName("setLabel")
+        set(value) {
         _builder.label = value
       }
     /**
@@ -193,10 +193,10 @@ public object InstantiateContract2ProposalKt {
      * `bytes msg = 7 [json_name = "msg", (.gogoproto.casttype) = "RawContractMessage", (.amino.encoding) = "inline_json"];`
      */
     public var msg: com.google.protobuf.ByteString
-      @JvmName("getMsg")
-      get() = _builder.msg
-      @JvmName("setMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsg")
+        get() = _builder.msg
+      @kotlin.jvm.JvmName("setMsg")
+        set(value) {
         _builder.msg = value
       }
     /**
@@ -225,7 +225,7 @@ public object InstantiateContract2ProposalKt {
      */
      public val funds: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.fundsList
       )
     /**
@@ -237,7 +237,7 @@ public object InstantiateContract2ProposalKt {
      * @param value The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addFunds")
+@kotlin.jvm.JvmName("addFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addFunds(value)
     }
@@ -250,7 +250,7 @@ public object InstantiateContract2ProposalKt {
      * @param value The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignFunds")
+@kotlin.jvm.JvmName("plusAssignFunds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -264,7 +264,7 @@ public object InstantiateContract2ProposalKt {
      * @param values The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllFunds")
+@kotlin.jvm.JvmName("addAllFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllFunds(values)
     }
@@ -277,7 +277,7 @@ public object InstantiateContract2ProposalKt {
      * @param values The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllFunds")
+@kotlin.jvm.JvmName("plusAssignAllFunds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -292,7 +292,7 @@ public object InstantiateContract2ProposalKt {
      * @param value The funds to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setFunds")
+@kotlin.jvm.JvmName("setFunds")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setFunds(index, value)
     }
@@ -304,11 +304,10 @@ public object InstantiateContract2ProposalKt {
      * `repeated .cosmos.base.v1beta1.Coin funds = 8 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearFunds")
+@kotlin.jvm.JvmName("clearFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.clear() {
       _builder.clearFunds()
     }
-
 
     /**
      * ```
@@ -318,10 +317,10 @@ public object InstantiateContract2ProposalKt {
      * `bytes salt = 9 [json_name = "salt"];`
      */
     public var salt: com.google.protobuf.ByteString
-      @JvmName("getSalt")
-      get() = _builder.salt
-      @JvmName("setSalt")
-      set(value) {
+      @kotlin.jvm.JvmName("getSalt")
+        get() = _builder.salt
+      @kotlin.jvm.JvmName("setSalt")
+        set(value) {
         _builder.salt = value
       }
     /**
@@ -344,10 +343,10 @@ public object InstantiateContract2ProposalKt {
      * `bool fix_msg = 10 [json_name = "fixMsg"];`
      */
     public var fixMsg: kotlin.Boolean
-      @JvmName("getFixMsg")
-      get() = _builder.fixMsg
-      @JvmName("setFixMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getFixMsg")
+        get() = _builder.fixMsg
+      @kotlin.jvm.JvmName("setFixMsg")
+        set(value) {
         _builder.fixMsg = value
       }
     /**

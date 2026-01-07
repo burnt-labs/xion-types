@@ -40,10 +40,10 @@ public object QueryClassResponseKt {
      * `.cosmos.nft.v1beta1.Class class = 1 [json_name = "class"];`
      */
     public var class_: cosmos.nft.v1beta1.Nft.Class
-      @JvmName("getClass_")
-      get() = _builder.class_
-      @JvmName("setClass_")
-      set(value) {
+      @kotlin.jvm.JvmName("getClass_")
+        get() = _builder.class_
+      @kotlin.jvm.JvmName("setClass_")
+        set(value) {
         _builder.class_ = value
       }
     /**

@@ -41,10 +41,10 @@ public object QueryBuildAddressRequestKt {
      * `string code_hash = 1 [json_name = "codeHash"];`
      */
     public var codeHash: kotlin.String
-      @JvmName("getCodeHash")
-      get() = _builder.codeHash
-      @JvmName("setCodeHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeHash")
+        get() = _builder.codeHash
+      @kotlin.jvm.JvmName("setCodeHash")
+        set(value) {
         _builder.codeHash = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryBuildAddressRequestKt {
      * `string creator_address = 2 [json_name = "creatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var creatorAddress: kotlin.String
-      @JvmName("getCreatorAddress")
-      get() = _builder.creatorAddress
-      @JvmName("setCreatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreatorAddress")
+        get() = _builder.creatorAddress
+      @kotlin.jvm.JvmName("setCreatorAddress")
+        set(value) {
         _builder.creatorAddress = value
       }
     /**
@@ -91,10 +91,10 @@ public object QueryBuildAddressRequestKt {
      * `string salt = 3 [json_name = "salt"];`
      */
     public var salt: kotlin.String
-      @JvmName("getSalt")
-      get() = _builder.salt
-      @JvmName("setSalt")
-      set(value) {
+      @kotlin.jvm.JvmName("getSalt")
+        get() = _builder.salt
+      @kotlin.jvm.JvmName("setSalt")
+        set(value) {
         _builder.salt = value
       }
     /**
@@ -117,10 +117,10 @@ public object QueryBuildAddressRequestKt {
      * `bytes init_args = 4 [json_name = "initArgs"];`
      */
     public var initArgs: com.google.protobuf.ByteString
-      @JvmName("getInitArgs")
-      get() = _builder.initArgs
-      @JvmName("setInitArgs")
-      set(value) {
+      @kotlin.jvm.JvmName("getInitArgs")
+        get() = _builder.initArgs
+      @kotlin.jvm.JvmName("setInitArgs")
+        set(value) {
         _builder.initArgs = value
       }
     /**

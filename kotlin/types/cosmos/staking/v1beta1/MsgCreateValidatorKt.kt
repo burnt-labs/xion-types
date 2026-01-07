@@ -36,10 +36,10 @@ public object MsgCreateValidatorKt {
      * `.cosmos.staking.v1beta1.Description description = 1 [json_name = "description", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var description: cosmos.staking.v1beta1.Staking.Description
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -63,10 +63,10 @@ public object MsgCreateValidatorKt {
      * `.cosmos.staking.v1beta1.CommissionRates commission = 2 [json_name = "commission", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var commission: cosmos.staking.v1beta1.Staking.CommissionRates
-      @JvmName("getCommission")
-      get() = _builder.commission
-      @JvmName("setCommission")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommission")
+        get() = _builder.commission
+      @kotlin.jvm.JvmName("setCommission")
+        set(value) {
         _builder.commission = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgCreateValidatorKt {
      * `string min_self_delegation = 3 [json_name = "minSelfDelegation", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int", (.amino.dont_omitempty) = true];`
      */
     public var minSelfDelegation: kotlin.String
-      @JvmName("getMinSelfDelegation")
-      get() = _builder.minSelfDelegation
-      @JvmName("setMinSelfDelegation")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinSelfDelegation")
+        get() = _builder.minSelfDelegation
+      @kotlin.jvm.JvmName("setMinSelfDelegation")
+        set(value) {
         _builder.minSelfDelegation = value
       }
     /**
@@ -113,10 +113,10 @@ public object MsgCreateValidatorKt {
      * `string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     @kotlin.Deprecated(message = "Field delegatorAddress is deprecated") public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -136,10 +136,10 @@ public object MsgCreateValidatorKt {
      * `string validator_address = 5 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -153,10 +153,10 @@ public object MsgCreateValidatorKt {
      * `.google.protobuf.Any pubkey = 6 [json_name = "pubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];`
      */
     public var pubkey: com.google.protobuf.Any
-      @JvmName("getPubkey")
-      get() = _builder.pubkey
-      @JvmName("setPubkey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPubkey")
+        get() = _builder.pubkey
+      @kotlin.jvm.JvmName("setPubkey")
+        set(value) {
         _builder.pubkey = value
       }
     /**
@@ -180,10 +180,10 @@ public object MsgCreateValidatorKt {
      * `.cosmos.base.v1beta1.Coin value = 7 [json_name = "value", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var value: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**

@@ -36,10 +36,10 @@ public object VersionParamsKt {
      * `uint64 app = 1 [json_name = "app"];`
      */
     public var app: kotlin.Long
-      @JvmName("getApp")
-      get() = _builder.app
-      @JvmName("setApp")
-      set(value) {
+      @kotlin.jvm.JvmName("getApp")
+        get() = _builder.app
+      @kotlin.jvm.JvmName("setApp")
+        set(value) {
         _builder.app = value
       }
     /**

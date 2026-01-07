@@ -43,7 +43,7 @@ public object ControllerGenesisStateKt {
      */
      public val activeChannels: com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.activeChannelsList
       )
     /**
@@ -51,7 +51,7 @@ public object ControllerGenesisStateKt {
      * @param value The activeChannels to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addActiveChannels")
+@kotlin.jvm.JvmName("addActiveChannels")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>.add(value: ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel) {
       _builder.addActiveChannels(value)
     }
@@ -60,7 +60,7 @@ public object ControllerGenesisStateKt {
      * @param value The activeChannels to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignActiveChannels")
+@kotlin.jvm.JvmName("plusAssignActiveChannels")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>.plusAssign(value: ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel) {
       add(value)
@@ -70,7 +70,7 @@ public object ControllerGenesisStateKt {
      * @param values The activeChannels to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllActiveChannels")
+@kotlin.jvm.JvmName("addAllActiveChannels")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel>) {
       _builder.addAllActiveChannels(values)
     }
@@ -79,7 +79,7 @@ public object ControllerGenesisStateKt {
      * @param values The activeChannels to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllActiveChannels")
+@kotlin.jvm.JvmName("plusAssignAllActiveChannels")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object ControllerGenesisStateKt {
      * @param value The activeChannels to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setActiveChannels")
+@kotlin.jvm.JvmName("setActiveChannels")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>.set(index: kotlin.Int, value: ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel) {
       _builder.setActiveChannels(index, value)
     }
@@ -98,11 +98,10 @@ public object ControllerGenesisStateKt {
      * `repeated .ibc.applications.interchain_accounts.genesis.v1.ActiveChannel active_channels = 1 [json_name = "activeChannels", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearActiveChannels")
+@kotlin.jvm.JvmName("clearActiveChannels")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.ActiveChannel, ActiveChannelsProxy>.clear() {
       _builder.clearActiveChannels()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -115,7 +114,7 @@ public object ControllerGenesisStateKt {
      */
      public val interchainAccounts: com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.interchainAccountsList
       )
     /**
@@ -123,7 +122,7 @@ public object ControllerGenesisStateKt {
      * @param value The interchainAccounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInterchainAccounts")
+@kotlin.jvm.JvmName("addInterchainAccounts")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>.add(value: ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount) {
       _builder.addInterchainAccounts(value)
     }
@@ -132,7 +131,7 @@ public object ControllerGenesisStateKt {
      * @param value The interchainAccounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInterchainAccounts")
+@kotlin.jvm.JvmName("plusAssignInterchainAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>.plusAssign(value: ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount) {
       add(value)
@@ -142,7 +141,7 @@ public object ControllerGenesisStateKt {
      * @param values The interchainAccounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInterchainAccounts")
+@kotlin.jvm.JvmName("addAllInterchainAccounts")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount>) {
       _builder.addAllInterchainAccounts(values)
     }
@@ -151,7 +150,7 @@ public object ControllerGenesisStateKt {
      * @param values The interchainAccounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInterchainAccounts")
+@kotlin.jvm.JvmName("plusAssignAllInterchainAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount>) {
       addAll(values)
@@ -162,7 +161,7 @@ public object ControllerGenesisStateKt {
      * @param value The interchainAccounts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInterchainAccounts")
+@kotlin.jvm.JvmName("setInterchainAccounts")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>.set(index: kotlin.Int, value: ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount) {
       _builder.setInterchainAccounts(index, value)
     }
@@ -170,11 +169,10 @@ public object ControllerGenesisStateKt {
      * `repeated .ibc.applications.interchain_accounts.genesis.v1.RegisteredInterchainAccount interchain_accounts = 2 [json_name = "interchainAccounts", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInterchainAccounts")
+@kotlin.jvm.JvmName("clearInterchainAccounts")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.genesis.v1.Genesis.RegisteredInterchainAccount, InterchainAccountsProxy>.clear() {
       _builder.clearInterchainAccounts()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -187,7 +185,7 @@ public object ControllerGenesisStateKt {
      * @return A list containing the ports.
      */
     public val ports: com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.portsList
       )
@@ -196,7 +194,7 @@ public object ControllerGenesisStateKt {
      * @param value The ports to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPorts")
+@kotlin.jvm.JvmName("addPorts")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>.add(value: kotlin.String) {
       _builder.addPorts(value)
     }
@@ -205,7 +203,7 @@ public object ControllerGenesisStateKt {
      * @param value The ports to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPorts")
+@kotlin.jvm.JvmName("plusAssignPorts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -215,7 +213,7 @@ public object ControllerGenesisStateKt {
      * @param values The ports to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPorts")
+@kotlin.jvm.JvmName("addAllPorts")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllPorts(values)
     }
@@ -224,7 +222,7 @@ public object ControllerGenesisStateKt {
      * @param values The ports to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPorts")
+@kotlin.jvm.JvmName("plusAssignAllPorts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -235,14 +233,14 @@ public object ControllerGenesisStateKt {
      * @param value The ports to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPorts")
+@kotlin.jvm.JvmName("setPorts")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setPorts(index, value)
     }/**
      * `repeated string ports = 3 [json_name = "ports"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPorts")
+@kotlin.jvm.JvmName("setPorts")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, PortsProxy>.clear() {
       _builder.clearPorts()
     }
@@ -250,10 +248,10 @@ public object ControllerGenesisStateKt {
      * `.ibc.applications.interchain_accounts.controller.v1.Params params = 4 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: ibc.applications.interchain_accounts.controller.v1.Controller.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

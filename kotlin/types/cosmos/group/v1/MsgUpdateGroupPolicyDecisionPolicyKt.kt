@@ -40,10 +40,10 @@ public object MsgUpdateGroupPolicyDecisionPolicyKt {
      * `string admin = 1 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgUpdateGroupPolicyDecisionPolicyKt {
      * `string group_policy_address = 2 [json_name = "groupPolicyAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var groupPolicyAddress: kotlin.String
-      @JvmName("getGroupPolicyAddress")
-      get() = _builder.groupPolicyAddress
-      @JvmName("setGroupPolicyAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyAddress")
+        get() = _builder.groupPolicyAddress
+      @kotlin.jvm.JvmName("setGroupPolicyAddress")
+        set(value) {
         _builder.groupPolicyAddress = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgUpdateGroupPolicyDecisionPolicyKt {
      * `.google.protobuf.Any decision_policy = 3 [json_name = "decisionPolicy", (.cosmos_proto.accepts_interface) = "cosmos.group.v1.DecisionPolicy"];`
      */
     public var decisionPolicy: com.google.protobuf.Any
-      @JvmName("getDecisionPolicy")
-      get() = _builder.decisionPolicy
-      @JvmName("setDecisionPolicy")
-      set(value) {
+      @kotlin.jvm.JvmName("getDecisionPolicy")
+        get() = _builder.decisionPolicy
+      @kotlin.jvm.JvmName("setDecisionPolicy")
+        set(value) {
         _builder.decisionPolicy = value
       }
     /**

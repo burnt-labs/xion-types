@@ -37,10 +37,10 @@ public object QueryDenomsFromAdminRequestKt {
      * `string admin = 1 [json_name = "admin", (.gogoproto.moretags) = "yaml:\"admin\""];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**

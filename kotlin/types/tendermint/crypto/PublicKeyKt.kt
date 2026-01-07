@@ -36,10 +36,10 @@ public object PublicKeyKt {
      * `bytes ed25519 = 1 [json_name = "ed25519"];`
      */
     public var ed25519: com.google.protobuf.ByteString
-      @JvmName("getEd25519")
-      get() = _builder.ed25519
-      @JvmName("setEd25519")
-      set(value) {
+      @kotlin.jvm.JvmName("getEd25519")
+        get() = _builder.ed25519
+      @kotlin.jvm.JvmName("setEd25519")
+        set(value) {
         _builder.ed25519 = value
       }
     /**
@@ -60,10 +60,10 @@ public object PublicKeyKt {
      * `bytes secp256k1 = 2 [json_name = "secp256k1"];`
      */
     public var secp256K1: com.google.protobuf.ByteString
-      @JvmName("getSecp256K1")
-      get() = _builder.secp256K1
-      @JvmName("setSecp256K1")
-      set(value) {
+      @kotlin.jvm.JvmName("getSecp256K1")
+        get() = _builder.secp256K1
+      @kotlin.jvm.JvmName("setSecp256K1")
+        set(value) {
         _builder.secp256K1 = value
       }
     /**

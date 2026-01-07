@@ -41,10 +41,10 @@ public object GenesisStateKt {
      * `uint64 group_seq = 1 [json_name = "groupSeq"];`
      */
     public var groupSeq: kotlin.Long
-      @JvmName("getGroupSeq")
-      get() = _builder.groupSeq
-      @JvmName("setGroupSeq")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupSeq")
+        get() = _builder.groupSeq
+      @kotlin.jvm.JvmName("setGroupSeq")
+        set(value) {
         _builder.groupSeq = value
       }
     /**
@@ -74,7 +74,7 @@ public object GenesisStateKt {
      */
      public val groups: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.groupsList
       )
     /**
@@ -86,7 +86,7 @@ public object GenesisStateKt {
      * @param value The groups to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGroups")
+@kotlin.jvm.JvmName("addGroups")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>.add(value: cosmos.group.v1.Types.GroupInfo) {
       _builder.addGroups(value)
     }
@@ -99,7 +99,7 @@ public object GenesisStateKt {
      * @param value The groups to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGroups")
+@kotlin.jvm.JvmName("plusAssignGroups")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>.plusAssign(value: cosmos.group.v1.Types.GroupInfo) {
       add(value)
@@ -113,7 +113,7 @@ public object GenesisStateKt {
      * @param values The groups to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGroups")
+@kotlin.jvm.JvmName("addAllGroups")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupInfo>) {
       _builder.addAllGroups(values)
     }
@@ -126,7 +126,7 @@ public object GenesisStateKt {
      * @param values The groups to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGroups")
+@kotlin.jvm.JvmName("plusAssignAllGroups")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupInfo>) {
       addAll(values)
@@ -141,7 +141,7 @@ public object GenesisStateKt {
      * @param value The groups to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGroups")
+@kotlin.jvm.JvmName("setGroups")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.GroupInfo) {
       _builder.setGroups(index, value)
     }
@@ -153,11 +153,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.group.v1.GroupInfo groups = 2 [json_name = "groups"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGroups")
+@kotlin.jvm.JvmName("clearGroups")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupInfo, GroupsProxy>.clear() {
       _builder.clearGroups()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -174,7 +173,7 @@ public object GenesisStateKt {
      */
      public val groupMembers: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.groupMembersList
       )
     /**
@@ -186,7 +185,7 @@ public object GenesisStateKt {
      * @param value The groupMembers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGroupMembers")
+@kotlin.jvm.JvmName("addGroupMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>.add(value: cosmos.group.v1.Types.GroupMember) {
       _builder.addGroupMembers(value)
     }
@@ -199,7 +198,7 @@ public object GenesisStateKt {
      * @param value The groupMembers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGroupMembers")
+@kotlin.jvm.JvmName("plusAssignGroupMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>.plusAssign(value: cosmos.group.v1.Types.GroupMember) {
       add(value)
@@ -213,7 +212,7 @@ public object GenesisStateKt {
      * @param values The groupMembers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGroupMembers")
+@kotlin.jvm.JvmName("addAllGroupMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupMember>) {
       _builder.addAllGroupMembers(values)
     }
@@ -226,7 +225,7 @@ public object GenesisStateKt {
      * @param values The groupMembers to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGroupMembers")
+@kotlin.jvm.JvmName("plusAssignAllGroupMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupMember>) {
       addAll(values)
@@ -241,7 +240,7 @@ public object GenesisStateKt {
      * @param value The groupMembers to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGroupMembers")
+@kotlin.jvm.JvmName("setGroupMembers")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.GroupMember) {
       _builder.setGroupMembers(index, value)
     }
@@ -253,11 +252,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.group.v1.GroupMember group_members = 3 [json_name = "groupMembers"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGroupMembers")
+@kotlin.jvm.JvmName("clearGroupMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, GroupMembersProxy>.clear() {
       _builder.clearGroupMembers()
     }
-
 
     /**
      * ```
@@ -268,10 +266,10 @@ public object GenesisStateKt {
      * `uint64 group_policy_seq = 4 [json_name = "groupPolicySeq"];`
      */
     public var groupPolicySeq: kotlin.Long
-      @JvmName("getGroupPolicySeq")
-      get() = _builder.groupPolicySeq
-      @JvmName("setGroupPolicySeq")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicySeq")
+        get() = _builder.groupPolicySeq
+      @kotlin.jvm.JvmName("setGroupPolicySeq")
+        set(value) {
         _builder.groupPolicySeq = value
       }
     /**
@@ -301,7 +299,7 @@ public object GenesisStateKt {
      */
      public val groupPolicies: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.groupPoliciesList
       )
     /**
@@ -313,7 +311,7 @@ public object GenesisStateKt {
      * @param value The groupPolicies to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGroupPolicies")
+@kotlin.jvm.JvmName("addGroupPolicies")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>.add(value: cosmos.group.v1.Types.GroupPolicyInfo) {
       _builder.addGroupPolicies(value)
     }
@@ -326,7 +324,7 @@ public object GenesisStateKt {
      * @param value The groupPolicies to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGroupPolicies")
+@kotlin.jvm.JvmName("plusAssignGroupPolicies")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>.plusAssign(value: cosmos.group.v1.Types.GroupPolicyInfo) {
       add(value)
@@ -340,7 +338,7 @@ public object GenesisStateKt {
      * @param values The groupPolicies to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGroupPolicies")
+@kotlin.jvm.JvmName("addAllGroupPolicies")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupPolicyInfo>) {
       _builder.addAllGroupPolicies(values)
     }
@@ -353,7 +351,7 @@ public object GenesisStateKt {
      * @param values The groupPolicies to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGroupPolicies")
+@kotlin.jvm.JvmName("plusAssignAllGroupPolicies")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupPolicyInfo>) {
       addAll(values)
@@ -368,7 +366,7 @@ public object GenesisStateKt {
      * @param value The groupPolicies to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGroupPolicies")
+@kotlin.jvm.JvmName("setGroupPolicies")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.GroupPolicyInfo) {
       _builder.setGroupPolicies(index, value)
     }
@@ -380,11 +378,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.group.v1.GroupPolicyInfo group_policies = 5 [json_name = "groupPolicies"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGroupPolicies")
+@kotlin.jvm.JvmName("clearGroupPolicies")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupPolicyInfo, GroupPoliciesProxy>.clear() {
       _builder.clearGroupPolicies()
     }
-
 
     /**
      * ```
@@ -395,10 +392,10 @@ public object GenesisStateKt {
      * `uint64 proposal_seq = 6 [json_name = "proposalSeq"];`
      */
     public var proposalSeq: kotlin.Long
-      @JvmName("getProposalSeq")
-      get() = _builder.proposalSeq
-      @JvmName("setProposalSeq")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalSeq")
+        get() = _builder.proposalSeq
+      @kotlin.jvm.JvmName("setProposalSeq")
+        set(value) {
         _builder.proposalSeq = value
       }
     /**
@@ -428,7 +425,7 @@ public object GenesisStateKt {
      */
      public val proposals: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.proposalsList
       )
     /**
@@ -440,7 +437,7 @@ public object GenesisStateKt {
      * @param value The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addProposals")
+@kotlin.jvm.JvmName("addProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.add(value: cosmos.group.v1.Types.Proposal) {
       _builder.addProposals(value)
     }
@@ -453,7 +450,7 @@ public object GenesisStateKt {
      * @param value The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignProposals")
+@kotlin.jvm.JvmName("plusAssignProposals")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.plusAssign(value: cosmos.group.v1.Types.Proposal) {
       add(value)
@@ -467,7 +464,7 @@ public object GenesisStateKt {
      * @param values The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllProposals")
+@kotlin.jvm.JvmName("addAllProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Proposal>) {
       _builder.addAllProposals(values)
     }
@@ -480,7 +477,7 @@ public object GenesisStateKt {
      * @param values The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllProposals")
+@kotlin.jvm.JvmName("plusAssignAllProposals")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Proposal>) {
       addAll(values)
@@ -495,7 +492,7 @@ public object GenesisStateKt {
      * @param value The proposals to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setProposals")
+@kotlin.jvm.JvmName("setProposals")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.Proposal) {
       _builder.setProposals(index, value)
     }
@@ -507,11 +504,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.group.v1.Proposal proposals = 7 [json_name = "proposals"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearProposals")
+@kotlin.jvm.JvmName("clearProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Proposal, ProposalsProxy>.clear() {
       _builder.clearProposals()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -528,7 +524,7 @@ public object GenesisStateKt {
      */
      public val votes: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.votesList
       )
     /**
@@ -540,7 +536,7 @@ public object GenesisStateKt {
      * @param value The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addVotes")
+@kotlin.jvm.JvmName("addVotes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.add(value: cosmos.group.v1.Types.Vote) {
       _builder.addVotes(value)
     }
@@ -553,7 +549,7 @@ public object GenesisStateKt {
      * @param value The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignVotes")
+@kotlin.jvm.JvmName("plusAssignVotes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.plusAssign(value: cosmos.group.v1.Types.Vote) {
       add(value)
@@ -567,7 +563,7 @@ public object GenesisStateKt {
      * @param values The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllVotes")
+@kotlin.jvm.JvmName("addAllVotes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Vote>) {
       _builder.addAllVotes(values)
     }
@@ -580,7 +576,7 @@ public object GenesisStateKt {
      * @param values The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllVotes")
+@kotlin.jvm.JvmName("plusAssignAllVotes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Vote>) {
       addAll(values)
@@ -595,7 +591,7 @@ public object GenesisStateKt {
      * @param value The votes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setVotes")
+@kotlin.jvm.JvmName("setVotes")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.Vote) {
       _builder.setVotes(index, value)
     }
@@ -607,11 +603,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.group.v1.Vote votes = 8 [json_name = "votes"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearVotes")
+@kotlin.jvm.JvmName("clearVotes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.clear() {
       _builder.clearVotes()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -42,10 +42,10 @@ public object QueryChannelResponseKt {
      * `.ibc.core.channel.v1.Channel channel = 1 [json_name = "channel"];`
      */
     public var channel: ibc.core.channel.v1.ChannelOuterClass.Channel
-      @JvmName("getChannel")
-      get() = _builder.channel
-      @JvmName("setChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannel")
+        get() = _builder.channel
+      @kotlin.jvm.JvmName("setChannel")
+        set(value) {
         _builder.channel = value
       }
     /**
@@ -81,10 +81,10 @@ public object QueryChannelResponseKt {
      * `bytes proof = 2 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -106,10 +106,10 @@ public object QueryChannelResponseKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**

@@ -41,10 +41,10 @@ public object IdentifiedConnectionKt {
      * `string id = 1 [json_name = "id"];`
      */
     public var id: kotlin.String
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -66,10 +66,10 @@ public object IdentifiedConnectionKt {
      * `string client_id = 2 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -99,7 +99,7 @@ public object IdentifiedConnectionKt {
      */
      public val versions: com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.versionsList
       )
     /**
@@ -112,7 +112,7 @@ public object IdentifiedConnectionKt {
      * @param value The versions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addVersions")
+@kotlin.jvm.JvmName("addVersions")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>.add(value: ibc.core.connection.v1.Connection.Version) {
       _builder.addVersions(value)
     }
@@ -126,7 +126,7 @@ public object IdentifiedConnectionKt {
      * @param value The versions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignVersions")
+@kotlin.jvm.JvmName("plusAssignVersions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>.plusAssign(value: ibc.core.connection.v1.Connection.Version) {
       add(value)
@@ -141,7 +141,7 @@ public object IdentifiedConnectionKt {
      * @param values The versions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllVersions")
+@kotlin.jvm.JvmName("addAllVersions")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.Version>) {
       _builder.addAllVersions(values)
     }
@@ -155,7 +155,7 @@ public object IdentifiedConnectionKt {
      * @param values The versions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllVersions")
+@kotlin.jvm.JvmName("plusAssignAllVersions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.Version>) {
       addAll(values)
@@ -171,7 +171,7 @@ public object IdentifiedConnectionKt {
      * @param value The versions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setVersions")
+@kotlin.jvm.JvmName("setVersions")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>.set(index: kotlin.Int, value: ibc.core.connection.v1.Connection.Version) {
       _builder.setVersions(index, value)
     }
@@ -184,11 +184,10 @@ public object IdentifiedConnectionKt {
      * `repeated .ibc.core.connection.v1.Version versions = 3 [json_name = "versions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearVersions")
+@kotlin.jvm.JvmName("clearVersions")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.Version, VersionsProxy>.clear() {
       _builder.clearVersions()
     }
-
 
     /**
      * ```
@@ -198,17 +197,17 @@ public object IdentifiedConnectionKt {
      * `.ibc.core.connection.v1.State state = 4 [json_name = "state"];`
      */
     public var state: ibc.core.connection.v1.Connection.State
-      @JvmName("getState")
-      get() = _builder.state
-      @JvmName("setState")
-      set(value) {
+      @kotlin.jvm.JvmName("getState")
+        get() = _builder.state
+      @kotlin.jvm.JvmName("setState")
+        set(value) {
         _builder.state = value
       }
     public var stateValue: kotlin.Int
-      @JvmName("getStateValue")
-      get() = _builder.stateValue
-      @JvmName("setStateValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStateValue")
+        get() = _builder.stateValue
+      @kotlin.jvm.JvmName("setStateValue")
+        set(value) {
         _builder.stateValue = value
       }
     /**
@@ -230,10 +229,10 @@ public object IdentifiedConnectionKt {
      * `.ibc.core.connection.v1.Counterparty counterparty = 5 [json_name = "counterparty", (.gogoproto.nullable) = false];`
      */
     public var counterparty: ibc.core.connection.v1.Connection.Counterparty
-      @JvmName("getCounterparty")
-      get() = _builder.counterparty
-      @JvmName("setCounterparty")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterparty")
+        get() = _builder.counterparty
+      @kotlin.jvm.JvmName("setCounterparty")
+        set(value) {
         _builder.counterparty = value
       }
     /**
@@ -269,10 +268,10 @@ public object IdentifiedConnectionKt {
      * `uint64 delay_period = 6 [json_name = "delayPeriod"];`
      */
     public var delayPeriod: kotlin.Long
-      @JvmName("getDelayPeriod")
-      get() = _builder.delayPeriod
-      @JvmName("setDelayPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelayPeriod")
+        get() = _builder.delayPeriod
+      @kotlin.jvm.JvmName("setDelayPeriod")
+        set(value) {
         _builder.delayPeriod = value
       }
     /**

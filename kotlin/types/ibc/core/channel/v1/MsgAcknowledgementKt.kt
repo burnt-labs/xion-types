@@ -36,10 +36,10 @@ public object MsgAcknowledgementKt {
      * `.ibc.core.channel.v1.Packet packet = 1 [json_name = "packet", (.gogoproto.nullable) = false];`
      */
     public var packet: ibc.core.channel.v1.ChannelOuterClass.Packet
-      @JvmName("getPacket")
-      get() = _builder.packet
-      @JvmName("setPacket")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacket")
+        get() = _builder.packet
+      @kotlin.jvm.JvmName("setPacket")
+        set(value) {
         _builder.packet = value
       }
     /**
@@ -63,10 +63,10 @@ public object MsgAcknowledgementKt {
      * `bytes acknowledgement = 2 [json_name = "acknowledgement"];`
      */
     public var acknowledgement: com.google.protobuf.ByteString
-      @JvmName("getAcknowledgement")
-      get() = _builder.acknowledgement
-      @JvmName("setAcknowledgement")
-      set(value) {
+      @kotlin.jvm.JvmName("getAcknowledgement")
+        get() = _builder.acknowledgement
+      @kotlin.jvm.JvmName("setAcknowledgement")
+        set(value) {
         _builder.acknowledgement = value
       }
     /**
@@ -80,10 +80,10 @@ public object MsgAcknowledgementKt {
      * `bytes proof_acked = 3 [json_name = "proofAcked"];`
      */
     public var proofAcked: com.google.protobuf.ByteString
-      @JvmName("getProofAcked")
-      get() = _builder.proofAcked
-      @JvmName("setProofAcked")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofAcked")
+        get() = _builder.proofAcked
+      @kotlin.jvm.JvmName("setProofAcked")
+        set(value) {
         _builder.proofAcked = value
       }
     /**
@@ -97,10 +97,10 @@ public object MsgAcknowledgementKt {
      * `.ibc.core.client.v1.Height proof_height = 4 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -124,10 +124,10 @@ public object MsgAcknowledgementKt {
      * `string signer = 5 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

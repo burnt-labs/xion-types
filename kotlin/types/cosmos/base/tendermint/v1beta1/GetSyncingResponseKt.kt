@@ -36,10 +36,10 @@ public object GetSyncingResponseKt {
      * `bool syncing = 1 [json_name = "syncing"];`
      */
     public var syncing: kotlin.Boolean
-      @JvmName("getSyncing")
-      get() = _builder.syncing
-      @JvmName("setSyncing")
-      set(value) {
+      @kotlin.jvm.JvmName("getSyncing")
+        get() = _builder.syncing
+      @kotlin.jvm.JvmName("setSyncing")
+        set(value) {
         _builder.syncing = value
       }
     /**

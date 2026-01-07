@@ -46,10 +46,10 @@ public object PlanKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -79,10 +79,10 @@ public object PlanKt {
      * `.google.protobuf.Timestamp time = 2 [json_name = "time", deprecated = true, (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     @kotlin.Deprecated(message = "Field time is deprecated") public var time: com.google.protobuf.Timestamp
-      @JvmName("getTime")
-      get() = _builder.time
-      @JvmName("setTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTime")
+        get() = _builder.time
+      @kotlin.jvm.JvmName("setTime")
+        set(value) {
         _builder.time = value
       }
     /**
@@ -122,10 +122,10 @@ public object PlanKt {
      * `int64 height = 3 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -148,10 +148,10 @@ public object PlanKt {
      * `string info = 4 [json_name = "info"];`
      */
     public var info: kotlin.String
-      @JvmName("getInfo")
-      get() = _builder.info
-      @JvmName("setInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getInfo")
+        get() = _builder.info
+      @kotlin.jvm.JvmName("setInfo")
+        set(value) {
         _builder.info = value
       }
     /**
@@ -176,10 +176,10 @@ public object PlanKt {
      * `.google.protobuf.Any upgraded_client_state = 5 [json_name = "upgradedClientState", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field upgradedClientState is deprecated") public var upgradedClientState: com.google.protobuf.Any
-      @JvmName("getUpgradedClientState")
-      get() = _builder.upgradedClientState
-      @JvmName("setUpgradedClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpgradedClientState")
+        get() = _builder.upgradedClientState
+      @kotlin.jvm.JvmName("setUpgradedClientState")
+        set(value) {
         _builder.upgradedClientState = value
       }
     /**

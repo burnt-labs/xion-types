@@ -32,10 +32,10 @@ public object ResponseLoadSnapshotChunkKt {
      * `bytes chunk = 1 [json_name = "chunk"];`
      */
     public var chunk: com.google.protobuf.ByteString
-      @JvmName("getChunk")
-      get() = _builder.chunk
-      @JvmName("setChunk")
-      set(value) {
+      @kotlin.jvm.JvmName("getChunk")
+        get() = _builder.chunk
+      @kotlin.jvm.JvmName("setChunk")
+        set(value) {
         _builder.chunk = value
       }
     /**

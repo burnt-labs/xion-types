@@ -37,10 +37,10 @@ public object MetadataKt {
      * `string description = 1 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -65,7 +65,7 @@ public object MetadataKt {
      */
      public val denomUnits: com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.denomUnitsList
       )
     /**
@@ -77,7 +77,7 @@ public object MetadataKt {
      * @param value The denomUnits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDenomUnits")
+@kotlin.jvm.JvmName("addDenomUnits")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>.add(value: cosmos.bank.v1beta1.Bank.DenomUnit) {
       _builder.addDenomUnits(value)
     }
@@ -90,7 +90,7 @@ public object MetadataKt {
      * @param value The denomUnits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDenomUnits")
+@kotlin.jvm.JvmName("plusAssignDenomUnits")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>.plusAssign(value: cosmos.bank.v1beta1.Bank.DenomUnit) {
       add(value)
@@ -104,7 +104,7 @@ public object MetadataKt {
      * @param values The denomUnits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDenomUnits")
+@kotlin.jvm.JvmName("addAllDenomUnits")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.DenomUnit>) {
       _builder.addAllDenomUnits(values)
     }
@@ -117,7 +117,7 @@ public object MetadataKt {
      * @param values The denomUnits to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDenomUnits")
+@kotlin.jvm.JvmName("plusAssignAllDenomUnits")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.DenomUnit>) {
       addAll(values)
@@ -132,7 +132,7 @@ public object MetadataKt {
      * @param value The denomUnits to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDenomUnits")
+@kotlin.jvm.JvmName("setDenomUnits")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>.set(index: kotlin.Int, value: cosmos.bank.v1beta1.Bank.DenomUnit) {
       _builder.setDenomUnits(index, value)
     }
@@ -144,11 +144,10 @@ public object MetadataKt {
      * `repeated .cosmos.bank.v1beta1.DenomUnit denom_units = 2 [json_name = "denomUnits"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDenomUnits")
+@kotlin.jvm.JvmName("clearDenomUnits")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.DenomUnit, DenomUnitsProxy>.clear() {
       _builder.clearDenomUnits()
     }
-
 
     /**
      * ```
@@ -158,10 +157,10 @@ public object MetadataKt {
      * `string base = 3 [json_name = "base"];`
      */
     public var base: kotlin.String
-      @JvmName("getBase")
-      get() = _builder.base
-      @JvmName("setBase")
-      set(value) {
+      @kotlin.jvm.JvmName("getBase")
+        get() = _builder.base
+      @kotlin.jvm.JvmName("setBase")
+        set(value) {
         _builder.base = value
       }
     /**
@@ -184,10 +183,10 @@ public object MetadataKt {
      * `string display = 4 [json_name = "display"];`
      */
     public var display: kotlin.String
-      @JvmName("getDisplay")
-      get() = _builder.display
-      @JvmName("setDisplay")
-      set(value) {
+      @kotlin.jvm.JvmName("getDisplay")
+        get() = _builder.display
+      @kotlin.jvm.JvmName("setDisplay")
+        set(value) {
         _builder.display = value
       }
     /**
@@ -210,10 +209,10 @@ public object MetadataKt {
      * `string name = 5 [json_name = "name", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -236,10 +235,10 @@ public object MetadataKt {
      * `string symbol = 6 [json_name = "symbol", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var symbol: kotlin.String
-      @JvmName("getSymbol")
-      get() = _builder.symbol
-      @JvmName("setSymbol")
-      set(value) {
+      @kotlin.jvm.JvmName("getSymbol")
+        get() = _builder.symbol
+      @kotlin.jvm.JvmName("setSymbol")
+        set(value) {
         _builder.symbol = value
       }
     /**
@@ -262,10 +261,10 @@ public object MetadataKt {
      * `string uri = 7 [json_name = "uri", (.gogoproto.customname) = "URI", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.46"];`
      */
     public var uri: kotlin.String
-      @JvmName("getUri")
-      get() = _builder.uri
-      @JvmName("setUri")
-      set(value) {
+      @kotlin.jvm.JvmName("getUri")
+        get() = _builder.uri
+      @kotlin.jvm.JvmName("setUri")
+        set(value) {
         _builder.uri = value
       }
     /**
@@ -288,10 +287,10 @@ public object MetadataKt {
      * `string uri_hash = 8 [json_name = "uriHash", (.gogoproto.customname) = "URIHash", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.46"];`
      */
     public var uriHash: kotlin.String
-      @JvmName("getUriHash")
-      get() = _builder.uriHash
-      @JvmName("setUriHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getUriHash")
+        get() = _builder.uriHash
+      @kotlin.jvm.JvmName("setUriHash")
+        set(value) {
         _builder.uriHash = value
       }
     /**

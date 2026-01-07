@@ -41,10 +41,10 @@ public object QueryChannelConsensusStateResponseKt {
      * `.google.protobuf.Any consensus_state = 1 [json_name = "consensusState"];`
      */
     public var consensusState: com.google.protobuf.Any
-      @JvmName("getConsensusState")
-      get() = _builder.consensusState
-      @JvmName("setConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusState")
+        get() = _builder.consensusState
+      @kotlin.jvm.JvmName("setConsensusState")
+        set(value) {
         _builder.consensusState = value
       }
     /**
@@ -80,10 +80,10 @@ public object QueryChannelConsensusStateResponseKt {
      * `string client_id = 2 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -105,10 +105,10 @@ public object QueryChannelConsensusStateResponseKt {
      * `bytes proof = 3 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -130,10 +130,10 @@ public object QueryChannelConsensusStateResponseKt {
      * `.ibc.core.client.v1.Height proof_height = 4 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**

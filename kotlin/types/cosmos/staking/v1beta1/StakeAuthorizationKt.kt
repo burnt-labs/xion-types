@@ -41,10 +41,10 @@ public object StakeAuthorizationKt {
      * `.cosmos.base.v1beta1.Coin max_tokens = 1 [json_name = "maxTokens", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coin"];`
      */
     public var maxTokens: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getMaxTokens")
-      get() = _builder.maxTokens
-      @JvmName("setMaxTokens")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxTokens")
+        get() = _builder.maxTokens
+      @kotlin.jvm.JvmName("setMaxTokens")
+        set(value) {
         _builder.maxTokens = value
       }
     /**
@@ -83,10 +83,10 @@ public object StakeAuthorizationKt {
      * `.cosmos.staking.v1beta1.StakeAuthorization.Validators allow_list = 2 [json_name = "allowList", (.amino.oneof_name) = "cosmos-sdk/StakeAuthorization/AllowList"];`
      */
     public var allowList: cosmos.staking.v1beta1.Authz.StakeAuthorization.Validators
-      @JvmName("getAllowList")
-      get() = _builder.allowList
-      @JvmName("setAllowList")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowList")
+        get() = _builder.allowList
+      @kotlin.jvm.JvmName("setAllowList")
+        set(value) {
         _builder.allowList = value
       }
     /**
@@ -121,10 +121,10 @@ public object StakeAuthorizationKt {
      * `.cosmos.staking.v1beta1.StakeAuthorization.Validators deny_list = 3 [json_name = "denyList", (.amino.oneof_name) = "cosmos-sdk/StakeAuthorization/DenyList"];`
      */
     public var denyList: cosmos.staking.v1beta1.Authz.StakeAuthorization.Validators
-      @JvmName("getDenyList")
-      get() = _builder.denyList
-      @JvmName("setDenyList")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenyList")
+        get() = _builder.denyList
+      @kotlin.jvm.JvmName("setDenyList")
+        set(value) {
         _builder.denyList = value
       }
     /**
@@ -157,17 +157,17 @@ public object StakeAuthorizationKt {
      * `.cosmos.staking.v1beta1.AuthorizationType authorization_type = 4 [json_name = "authorizationType"];`
      */
     public var authorizationType: cosmos.staking.v1beta1.Authz.AuthorizationType
-      @JvmName("getAuthorizationType")
-      get() = _builder.authorizationType
-      @JvmName("setAuthorizationType")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthorizationType")
+        get() = _builder.authorizationType
+      @kotlin.jvm.JvmName("setAuthorizationType")
+        set(value) {
         _builder.authorizationType = value
       }
     public var authorizationTypeValue: kotlin.Int
-      @JvmName("getAuthorizationTypeValue")
-      get() = _builder.authorizationTypeValue
-      @JvmName("setAuthorizationTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthorizationTypeValue")
+        get() = _builder.authorizationTypeValue
+      @kotlin.jvm.JvmName("setAuthorizationTypeValue")
+        set(value) {
         _builder.authorizationTypeValue = value
       }
     /**
@@ -225,7 +225,7 @@ public object StakeAuthorizationKt {
        * @return A list containing the address.
        */
       public val address: com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>
-        @kotlin.jvm.JvmSynthetic
+      @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
         get() = com.google.protobuf.kotlin.DslList(
           _builder.addressList
         )
@@ -234,7 +234,7 @@ public object StakeAuthorizationKt {
        * @param value The address to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("addAddress")
+@kotlin.jvm.JvmName("addAddress")
       public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>.add(value: kotlin.String) {
         _builder.addAddress(value)
       }
@@ -243,7 +243,7 @@ public object StakeAuthorizationKt {
        * @param value The address to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("plusAssignAddress")
+@kotlin.jvm.JvmName("plusAssignAddress")
       @Suppress("NOTHING_TO_INLINE")
       public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>.plusAssign(value: kotlin.String) {
         add(value)
@@ -253,7 +253,7 @@ public object StakeAuthorizationKt {
        * @param values The address to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("addAllAddress")
+@kotlin.jvm.JvmName("addAllAddress")
       public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
         _builder.addAllAddress(values)
       }
@@ -262,7 +262,7 @@ public object StakeAuthorizationKt {
        * @param values The address to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("plusAssignAllAddress")
+@kotlin.jvm.JvmName("plusAssignAllAddress")
       @Suppress("NOTHING_TO_INLINE")
       public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
         addAll(values)
@@ -273,14 +273,14 @@ public object StakeAuthorizationKt {
        * @param value The address to set.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("setAddress")
+@kotlin.jvm.JvmName("setAddress")
       public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>.set(index: kotlin.Int, value: kotlin.String) {
         _builder.setAddress(index, value)
       }/**
        * `repeated string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("clearAddress")
+@kotlin.jvm.JvmName("setAddress")
       public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressProxy>.clear() {
         _builder.clearAddress()
       }}

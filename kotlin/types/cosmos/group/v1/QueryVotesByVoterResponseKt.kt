@@ -47,7 +47,7 @@ public object QueryVotesByVoterResponseKt {
      */
      public val votes: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.votesList
       )
     /**
@@ -59,7 +59,7 @@ public object QueryVotesByVoterResponseKt {
      * @param value The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addVotes")
+@kotlin.jvm.JvmName("addVotes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.add(value: cosmos.group.v1.Types.Vote) {
       _builder.addVotes(value)
     }
@@ -72,7 +72,7 @@ public object QueryVotesByVoterResponseKt {
      * @param value The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignVotes")
+@kotlin.jvm.JvmName("plusAssignVotes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.plusAssign(value: cosmos.group.v1.Types.Vote) {
       add(value)
@@ -86,7 +86,7 @@ public object QueryVotesByVoterResponseKt {
      * @param values The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllVotes")
+@kotlin.jvm.JvmName("addAllVotes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Vote>) {
       _builder.addAllVotes(values)
     }
@@ -99,7 +99,7 @@ public object QueryVotesByVoterResponseKt {
      * @param values The votes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllVotes")
+@kotlin.jvm.JvmName("plusAssignAllVotes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.Vote>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object QueryVotesByVoterResponseKt {
      * @param value The votes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setVotes")
+@kotlin.jvm.JvmName("setVotes")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.Vote) {
       _builder.setVotes(index, value)
     }
@@ -126,11 +126,10 @@ public object QueryVotesByVoterResponseKt {
      * `repeated .cosmos.group.v1.Vote votes = 1 [json_name = "votes"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearVotes")
+@kotlin.jvm.JvmName("clearVotes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.Vote, VotesProxy>.clear() {
       _builder.clearVotes()
     }
-
 
     /**
      * ```
@@ -140,10 +139,10 @@ public object QueryVotesByVoterResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

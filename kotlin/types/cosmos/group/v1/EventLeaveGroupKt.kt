@@ -40,10 +40,10 @@ public object EventLeaveGroupKt {
      * `uint64 group_id = 1 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**
@@ -65,10 +65,10 @@ public object EventLeaveGroupKt {
      * `string address = 2 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**

@@ -44,7 +44,7 @@ public object SendAuthorizationKt {
      */
      public val spendLimit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.spendLimitList
       )
     /**
@@ -52,7 +52,7 @@ public object SendAuthorizationKt {
      * @param value The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSpendLimit")
+@kotlin.jvm.JvmName("addSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addSpendLimit(value)
     }
@@ -61,7 +61,7 @@ public object SendAuthorizationKt {
      * @param value The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSpendLimit")
+@kotlin.jvm.JvmName("plusAssignSpendLimit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -71,7 +71,7 @@ public object SendAuthorizationKt {
      * @param values The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSpendLimit")
+@kotlin.jvm.JvmName("addAllSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllSpendLimit(values)
     }
@@ -80,7 +80,7 @@ public object SendAuthorizationKt {
      * @param values The spendLimit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSpendLimit")
+@kotlin.jvm.JvmName("plusAssignAllSpendLimit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object SendAuthorizationKt {
      * @param value The spendLimit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSpendLimit")
+@kotlin.jvm.JvmName("setSpendLimit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setSpendLimit(index, value)
     }
@@ -99,11 +99,10 @@ public object SendAuthorizationKt {
      * `repeated .cosmos.base.v1beta1.Coin spend_limit = 1 [json_name = "spendLimit", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSpendLimit")
+@kotlin.jvm.JvmName("clearSpendLimit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, SpendLimitProxy>.clear() {
       _builder.clearSpendLimit()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -121,7 +120,7 @@ public object SendAuthorizationKt {
      * @return A list containing the allowList.
      */
     public val allowList: com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowListList
       )
@@ -135,7 +134,7 @@ public object SendAuthorizationKt {
      * @param value The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowList")
+@kotlin.jvm.JvmName("addAllowList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.add(value: kotlin.String) {
       _builder.addAllowList(value)
     }
@@ -149,7 +148,7 @@ public object SendAuthorizationKt {
      * @param value The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowList")
+@kotlin.jvm.JvmName("plusAssignAllowList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -164,7 +163,7 @@ public object SendAuthorizationKt {
      * @param values The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowList")
+@kotlin.jvm.JvmName("addAllAllowList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowList(values)
     }
@@ -178,7 +177,7 @@ public object SendAuthorizationKt {
      * @param values The allowList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowList")
+@kotlin.jvm.JvmName("plusAssignAllAllowList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -194,7 +193,7 @@ public object SendAuthorizationKt {
      * @param value The allowList to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowList")
+@kotlin.jvm.JvmName("setAllowList")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowList(index, value)
     }/**
@@ -206,7 +205,7 @@ public object SendAuthorizationKt {
      * `repeated string allow_list = 2 [json_name = "allowList", (.cosmos_proto.scalar) = "cosmos.AddressString", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowList")
+@kotlin.jvm.JvmName("setAllowList")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowListProxy>.clear() {
       _builder.clearAllowList()
     }}

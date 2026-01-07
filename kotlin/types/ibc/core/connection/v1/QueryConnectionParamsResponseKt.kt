@@ -40,10 +40,10 @@ public object QueryConnectionParamsResponseKt {
      * `.ibc.core.connection.v1.Params params = 1 [json_name = "params"];`
      */
     public var params: ibc.core.connection.v1.Connection.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

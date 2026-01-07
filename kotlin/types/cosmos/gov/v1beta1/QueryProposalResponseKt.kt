@@ -36,10 +36,10 @@ public object QueryProposalResponseKt {
      * `.cosmos.gov.v1beta1.Proposal proposal = 1 [json_name = "proposal", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var proposal: cosmos.gov.v1beta1.Gov.Proposal
-      @JvmName("getProposal")
-      get() = _builder.proposal
-      @JvmName("setProposal")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposal")
+        get() = _builder.proposal
+      @kotlin.jvm.JvmName("setProposal")
+        set(value) {
         _builder.proposal = value
       }
     /**

@@ -41,10 +41,10 @@ public object ParamsKt {
      * `bool controller_enabled = 1 [json_name = "controllerEnabled"];`
      */
     public var controllerEnabled: kotlin.Boolean
-      @JvmName("getControllerEnabled")
-      get() = _builder.controllerEnabled
-      @JvmName("setControllerEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getControllerEnabled")
+        get() = _builder.controllerEnabled
+      @kotlin.jvm.JvmName("setControllerEnabled")
+        set(value) {
         _builder.controllerEnabled = value
       }
     /**

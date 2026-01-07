@@ -42,10 +42,10 @@ public object QueryUpgradedConsensusStateRequestKt {
      * `int64 last_height = 1 [json_name = "lastHeight"];`
      */
     public var lastHeight: kotlin.Long
-      @JvmName("getLastHeight")
-      get() = _builder.lastHeight
-      @JvmName("setLastHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastHeight")
+        get() = _builder.lastHeight
+      @kotlin.jvm.JvmName("setLastHeight")
+        set(value) {
         _builder.lastHeight = value
       }
     /**

@@ -48,7 +48,7 @@ public object MultiAnyAllowanceKt {
      */
      public val allowances: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.allowancesList
       )
     /**
@@ -60,7 +60,7 @@ public object MultiAnyAllowanceKt {
      * @param value The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowances")
+@kotlin.jvm.JvmName("addAllowances")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>.add(value: com.google.protobuf.Any) {
       _builder.addAllowances(value)
     }
@@ -73,7 +73,7 @@ public object MultiAnyAllowanceKt {
      * @param value The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowances")
+@kotlin.jvm.JvmName("plusAssignAllowances")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -87,7 +87,7 @@ public object MultiAnyAllowanceKt {
      * @param values The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowances")
+@kotlin.jvm.JvmName("addAllAllowances")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllAllowances(values)
     }
@@ -100,7 +100,7 @@ public object MultiAnyAllowanceKt {
      * @param values The allowances to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowances")
+@kotlin.jvm.JvmName("plusAssignAllAllowances")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object MultiAnyAllowanceKt {
      * @param value The allowances to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowances")
+@kotlin.jvm.JvmName("setAllowances")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setAllowances(index, value)
     }
@@ -127,11 +127,10 @@ public object MultiAnyAllowanceKt {
      * `repeated .google.protobuf.Any allowances = 1 [json_name = "allowances", (.cosmos_proto.accepts_interface) = "cosmos.feegrant.v1beta1.FeeAllowanceI"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowances")
+@kotlin.jvm.JvmName("clearAllowances")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AllowancesProxy>.clear() {
       _builder.clearAllowances()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

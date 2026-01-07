@@ -40,10 +40,10 @@ public object QueryEvidenceResponseKt {
      * `.google.protobuf.Any evidence = 1 [json_name = "evidence"];`
      */
     public var evidence: com.google.protobuf.Any
-      @JvmName("getEvidence")
-      get() = _builder.evidence
-      @JvmName("setEvidence")
-      set(value) {
+      @kotlin.jvm.JvmName("getEvidence")
+        get() = _builder.evidence
+      @kotlin.jvm.JvmName("setEvidence")
+        set(value) {
         _builder.evidence = value
       }
     /**

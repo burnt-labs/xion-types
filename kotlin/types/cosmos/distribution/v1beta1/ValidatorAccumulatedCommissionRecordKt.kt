@@ -41,10 +41,10 @@ public object ValidatorAccumulatedCommissionRecordKt {
      * `string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -66,10 +66,10 @@ public object ValidatorAccumulatedCommissionRecordKt {
      * `.cosmos.distribution.v1beta1.ValidatorAccumulatedCommission accumulated = 2 [json_name = "accumulated", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var accumulated: cosmos.distribution.v1beta1.Distribution.ValidatorAccumulatedCommission
-      @JvmName("getAccumulated")
-      get() = _builder.accumulated
-      @JvmName("setAccumulated")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccumulated")
+        get() = _builder.accumulated
+      @kotlin.jvm.JvmName("setAccumulated")
+        set(value) {
         _builder.accumulated = value
       }
     /**

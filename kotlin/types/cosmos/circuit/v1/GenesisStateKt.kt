@@ -43,7 +43,7 @@ public object GenesisStateKt {
      */
      public val accountPermissions: com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.accountPermissionsList
       )
     /**
@@ -51,7 +51,7 @@ public object GenesisStateKt {
      * @param value The accountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAccountPermissions")
+@kotlin.jvm.JvmName("addAccountPermissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>.add(value: cosmos.circuit.v1.Types.GenesisAccountPermissions) {
       _builder.addAccountPermissions(value)
     }
@@ -60,7 +60,7 @@ public object GenesisStateKt {
      * @param value The accountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAccountPermissions")
+@kotlin.jvm.JvmName("plusAssignAccountPermissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>.plusAssign(value: cosmos.circuit.v1.Types.GenesisAccountPermissions) {
       add(value)
@@ -70,7 +70,7 @@ public object GenesisStateKt {
      * @param values The accountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAccountPermissions")
+@kotlin.jvm.JvmName("addAllAccountPermissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.circuit.v1.Types.GenesisAccountPermissions>) {
       _builder.addAllAccountPermissions(values)
     }
@@ -79,7 +79,7 @@ public object GenesisStateKt {
      * @param values The accountPermissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAccountPermissions")
+@kotlin.jvm.JvmName("plusAssignAllAccountPermissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.circuit.v1.Types.GenesisAccountPermissions>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object GenesisStateKt {
      * @param value The accountPermissions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAccountPermissions")
+@kotlin.jvm.JvmName("setAccountPermissions")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>.set(index: kotlin.Int, value: cosmos.circuit.v1.Types.GenesisAccountPermissions) {
       _builder.setAccountPermissions(index, value)
     }
@@ -98,11 +98,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.circuit.v1.GenesisAccountPermissions account_permissions = 1 [json_name = "accountPermissions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAccountPermissions")
+@kotlin.jvm.JvmName("clearAccountPermissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.circuit.v1.Types.GenesisAccountPermissions, AccountPermissionsProxy>.clear() {
       _builder.clearAccountPermissions()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -115,7 +114,7 @@ public object GenesisStateKt {
      * @return A list containing the disabledTypeUrls.
      */
     public val disabledTypeUrls: com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.disabledTypeUrlsList
       )
@@ -124,7 +123,7 @@ public object GenesisStateKt {
      * @param value The disabledTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDisabledTypeUrls")
+@kotlin.jvm.JvmName("addDisabledTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>.add(value: kotlin.String) {
       _builder.addDisabledTypeUrls(value)
     }
@@ -133,7 +132,7 @@ public object GenesisStateKt {
      * @param value The disabledTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDisabledTypeUrls")
+@kotlin.jvm.JvmName("plusAssignDisabledTypeUrls")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -143,7 +142,7 @@ public object GenesisStateKt {
      * @param values The disabledTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDisabledTypeUrls")
+@kotlin.jvm.JvmName("addAllDisabledTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllDisabledTypeUrls(values)
     }
@@ -152,7 +151,7 @@ public object GenesisStateKt {
      * @param values The disabledTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDisabledTypeUrls")
+@kotlin.jvm.JvmName("plusAssignAllDisabledTypeUrls")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -163,14 +162,14 @@ public object GenesisStateKt {
      * @param value The disabledTypeUrls to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDisabledTypeUrls")
+@kotlin.jvm.JvmName("setDisabledTypeUrls")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setDisabledTypeUrls(index, value)
     }/**
      * `repeated string disabled_type_urls = 2 [json_name = "disabledTypeUrls"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDisabledTypeUrls")
+@kotlin.jvm.JvmName("setDisabledTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DisabledTypeUrlsProxy>.clear() {
       _builder.clearDisabledTypeUrls()
     }}

@@ -40,10 +40,10 @@ public object QueryVoteByProposalVoterResponseKt {
      * `.cosmos.group.v1.Vote vote = 1 [json_name = "vote"];`
      */
     public var vote: cosmos.group.v1.Types.Vote
-      @JvmName("getVote")
-      get() = _builder.vote
-      @JvmName("setVote")
-      set(value) {
+      @kotlin.jvm.JvmName("getVote")
+        get() = _builder.vote
+      @kotlin.jvm.JvmName("setVote")
+        set(value) {
         _builder.vote = value
       }
     /**

@@ -43,10 +43,10 @@ public object MsgStoreAndMigrateContractKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -68,10 +68,10 @@ public object MsgStoreAndMigrateContractKt {
      * `bytes wasm_byte_code = 2 [json_name = "wasmByteCode", (.gogoproto.customname) = "WASMByteCode"];`
      */
     public var wasmByteCode: com.google.protobuf.ByteString
-      @JvmName("getWasmByteCode")
-      get() = _builder.wasmByteCode
-      @JvmName("setWasmByteCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getWasmByteCode")
+        get() = _builder.wasmByteCode
+      @kotlin.jvm.JvmName("setWasmByteCode")
+        set(value) {
         _builder.wasmByteCode = value
       }
     /**
@@ -93,10 +93,10 @@ public object MsgStoreAndMigrateContractKt {
      * `.cosmwasm.wasm.v1.AccessConfig instantiate_permission = 3 [json_name = "instantiatePermission"];`
      */
     public var instantiatePermission: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getInstantiatePermission")
-      get() = _builder.instantiatePermission
-      @JvmName("setInstantiatePermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiatePermission")
+        get() = _builder.instantiatePermission
+      @kotlin.jvm.JvmName("setInstantiatePermission")
+        set(value) {
         _builder.instantiatePermission = value
       }
     /**
@@ -132,10 +132,10 @@ public object MsgStoreAndMigrateContractKt {
      * `string contract = 4 [json_name = "contract"];`
      */
     public var contract: kotlin.String
-      @JvmName("getContract")
-      get() = _builder.contract
-      @JvmName("setContract")
-      set(value) {
+      @kotlin.jvm.JvmName("getContract")
+        get() = _builder.contract
+      @kotlin.jvm.JvmName("setContract")
+        set(value) {
         _builder.contract = value
       }
     /**
@@ -157,10 +157,10 @@ public object MsgStoreAndMigrateContractKt {
      * `bytes msg = 5 [json_name = "msg", (.gogoproto.casttype) = "RawContractMessage", (.amino.encoding) = "inline_json"];`
      */
     public var msg: com.google.protobuf.ByteString
-      @JvmName("getMsg")
-      get() = _builder.msg
-      @JvmName("setMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsg")
+        get() = _builder.msg
+      @kotlin.jvm.JvmName("setMsg")
+        set(value) {
         _builder.msg = value
       }
     /**

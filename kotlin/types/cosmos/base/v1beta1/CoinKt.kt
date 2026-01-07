@@ -39,10 +39,10 @@ public object CoinKt {
      * `string denom = 1 [json_name = "denom"];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -56,10 +56,10 @@ public object CoinKt {
      * `string amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int", (.amino.dont_omitempty) = true];`
      */
     public var amount: kotlin.String
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**

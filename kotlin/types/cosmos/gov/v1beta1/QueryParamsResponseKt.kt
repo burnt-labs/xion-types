@@ -40,10 +40,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1beta1.VotingParams voting_params = 1 [json_name = "votingParams", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var votingParams: cosmos.gov.v1beta1.Gov.VotingParams
-      @JvmName("getVotingParams")
-      get() = _builder.votingParams
-      @JvmName("setVotingParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingParams")
+        get() = _builder.votingParams
+      @kotlin.jvm.JvmName("setVotingParams")
+        set(value) {
         _builder.votingParams = value
       }
     /**
@@ -79,10 +79,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1beta1.DepositParams deposit_params = 2 [json_name = "depositParams", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var depositParams: cosmos.gov.v1beta1.Gov.DepositParams
-      @JvmName("getDepositParams")
-      get() = _builder.depositParams
-      @JvmName("setDepositParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getDepositParams")
+        get() = _builder.depositParams
+      @kotlin.jvm.JvmName("setDepositParams")
+        set(value) {
         _builder.depositParams = value
       }
     /**
@@ -118,10 +118,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1beta1.TallyParams tally_params = 3 [json_name = "tallyParams", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var tallyParams: cosmos.gov.v1beta1.Gov.TallyParams
-      @JvmName("getTallyParams")
-      get() = _builder.tallyParams
-      @JvmName("setTallyParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getTallyParams")
+        get() = _builder.tallyParams
+      @kotlin.jvm.JvmName("setTallyParams")
+        set(value) {
         _builder.tallyParams = value
       }
     /**

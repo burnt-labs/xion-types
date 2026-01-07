@@ -32,10 +32,10 @@ public object ResponseInitChainKt {
      * `.tendermint.types.ConsensusParams consensus_params = 1 [json_name = "consensusParams"];`
      */
     public var consensusParams: tendermint.types.Params.ConsensusParams
-      @JvmName("getConsensusParams")
-      get() = _builder.consensusParams
-      @JvmName("setConsensusParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusParams")
+        get() = _builder.consensusParams
+      @kotlin.jvm.JvmName("setConsensusParams")
+        set(value) {
         _builder.consensusParams = value
       }
     /**
@@ -66,7 +66,7 @@ public object ResponseInitChainKt {
      */
      public val validators: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorsList
       )
     /**
@@ -74,7 +74,7 @@ public object ResponseInitChainKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidators")
+@kotlin.jvm.JvmName("addValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.add(value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.addValidators(value)
     }
@@ -83,7 +83,7 @@ public object ResponseInitChainKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidators")
+@kotlin.jvm.JvmName("plusAssignValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.plusAssign(value: tendermint.abci.Types.ValidatorUpdate) {
       add(value)
@@ -93,7 +93,7 @@ public object ResponseInitChainKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidators")
+@kotlin.jvm.JvmName("addAllValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       _builder.addAllValidators(values)
     }
@@ -102,7 +102,7 @@ public object ResponseInitChainKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidators")
+@kotlin.jvm.JvmName("plusAssignAllValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       addAll(values)
@@ -113,7 +113,7 @@ public object ResponseInitChainKt {
      * @param value The validators to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidators")
+@kotlin.jvm.JvmName("setValidators")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.setValidators(index, value)
     }
@@ -121,20 +121,19 @@ public object ResponseInitChainKt {
      * `repeated .tendermint.abci.ValidatorUpdate validators = 2 [json_name = "validators", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidators")
+@kotlin.jvm.JvmName("clearValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.clear() {
       _builder.clearValidators()
     }
-
 
     /**
      * `bytes app_hash = 3 [json_name = "appHash"];`
      */
     public var appHash: com.google.protobuf.ByteString
-      @JvmName("getAppHash")
-      get() = _builder.appHash
-      @JvmName("setAppHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppHash")
+        get() = _builder.appHash
+      @kotlin.jvm.JvmName("setAppHash")
+        set(value) {
         _builder.appHash = value
       }
     /**

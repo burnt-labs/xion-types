@@ -40,70 +40,97 @@ public object CosmosResponseKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class ResponsesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      */
      public val responses: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.responsesList
       )
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      * @param value The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addResponses")
+@kotlin.jvm.JvmName("addResponses")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>.add(value: tendermint.abci.Types.ResponseQuery) {
       _builder.addResponses(value)
     }
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      * @param value The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignResponses")
+@kotlin.jvm.JvmName("plusAssignResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>.plusAssign(value: tendermint.abci.Types.ResponseQuery) {
       add(value)
     }
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      * @param values The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllResponses")
+@kotlin.jvm.JvmName("addAllResponses")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.ResponseQuery>) {
       _builder.addAllResponses(values)
     }
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      * @param values The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllResponses")
+@kotlin.jvm.JvmName("plusAssignAllResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.ResponseQuery>) {
       addAll(values)
     }
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      * @param index The index to set the value at.
      * @param value The responses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setResponses")
+@kotlin.jvm.JvmName("setResponses")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.ResponseQuery) {
       _builder.setResponses(index, value)
     }
     /**
+     * ```
+     * responses defines the list of ABCI query responses
+     * ```
+     *
      * `repeated .tendermint.abci.ResponseQuery responses = 1 [json_name = "responses", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearResponses")
+@kotlin.jvm.JvmName("clearResponses")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ResponseQuery, ResponsesProxy>.clear() {
       _builder.clearResponses()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

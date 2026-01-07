@@ -40,10 +40,10 @@ public object BIP44ParamsKt {
      * `uint32 purpose = 1 [json_name = "purpose"];`
      */
     public var purpose: kotlin.Int
-      @JvmName("getPurpose")
-      get() = _builder.purpose
-      @JvmName("setPurpose")
-      set(value) {
+      @kotlin.jvm.JvmName("getPurpose")
+        get() = _builder.purpose
+      @kotlin.jvm.JvmName("setPurpose")
+        set(value) {
         _builder.purpose = value
       }
     /**
@@ -65,10 +65,10 @@ public object BIP44ParamsKt {
      * `uint32 coin_type = 2 [json_name = "coinType"];`
      */
     public var coinType: kotlin.Int
-      @JvmName("getCoinType")
-      get() = _builder.coinType
-      @JvmName("setCoinType")
-      set(value) {
+      @kotlin.jvm.JvmName("getCoinType")
+        get() = _builder.coinType
+      @kotlin.jvm.JvmName("setCoinType")
+        set(value) {
         _builder.coinType = value
       }
     /**
@@ -90,10 +90,10 @@ public object BIP44ParamsKt {
      * `uint32 account = 3 [json_name = "account"];`
      */
     public var account: kotlin.Int
-      @JvmName("getAccount")
-      get() = _builder.account
-      @JvmName("setAccount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccount")
+        get() = _builder.account
+      @kotlin.jvm.JvmName("setAccount")
+        set(value) {
         _builder.account = value
       }
     /**
@@ -116,10 +116,10 @@ public object BIP44ParamsKt {
      * `bool change = 4 [json_name = "change"];`
      */
     public var change: kotlin.Boolean
-      @JvmName("getChange")
-      get() = _builder.change
-      @JvmName("setChange")
-      set(value) {
+      @kotlin.jvm.JvmName("getChange")
+        get() = _builder.change
+      @kotlin.jvm.JvmName("setChange")
+        set(value) {
         _builder.change = value
       }
     /**
@@ -142,10 +142,10 @@ public object BIP44ParamsKt {
      * `uint32 address_index = 5 [json_name = "addressIndex"];`
      */
     public var addressIndex: kotlin.Int
-      @JvmName("getAddressIndex")
-      get() = _builder.addressIndex
-      @JvmName("setAddressIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddressIndex")
+        get() = _builder.addressIndex
+      @kotlin.jvm.JvmName("setAddressIndex")
+        set(value) {
         _builder.addressIndex = value
       }
     /**

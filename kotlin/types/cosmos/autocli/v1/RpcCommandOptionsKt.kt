@@ -42,10 +42,10 @@ public object RpcCommandOptionsKt {
      * `string rpc_method = 1 [json_name = "rpcMethod"];`
      */
     public var rpcMethod: kotlin.String
-      @JvmName("getRpcMethod")
-      get() = _builder.rpcMethod
-      @JvmName("setRpcMethod")
-      set(value) {
+      @kotlin.jvm.JvmName("getRpcMethod")
+        get() = _builder.rpcMethod
+      @kotlin.jvm.JvmName("setRpcMethod")
+        set(value) {
         _builder.rpcMethod = value
       }
     /**
@@ -72,10 +72,10 @@ public object RpcCommandOptionsKt {
      * `string use = 2 [json_name = "use"];`
      */
     public var use: kotlin.String
-      @JvmName("getUse")
-      get() = _builder.use
-      @JvmName("setUse")
-      set(value) {
+      @kotlin.jvm.JvmName("getUse")
+        get() = _builder.use
+      @kotlin.jvm.JvmName("setUse")
+        set(value) {
         _builder.use = value
       }
     /**
@@ -101,10 +101,10 @@ public object RpcCommandOptionsKt {
      * `string long = 3 [json_name = "long"];`
      */
     public var long: kotlin.String
-      @JvmName("getLong")
-      get() = _builder.long
-      @JvmName("setLong")
-      set(value) {
+      @kotlin.jvm.JvmName("getLong")
+        get() = _builder.long
+      @kotlin.jvm.JvmName("setLong")
+        set(value) {
         _builder.long = value
       }
     /**
@@ -126,10 +126,10 @@ public object RpcCommandOptionsKt {
      * `string short = 4 [json_name = "short"];`
      */
     public var short: kotlin.String
-      @JvmName("getShort")
-      get() = _builder.short
-      @JvmName("setShort")
-      set(value) {
+      @kotlin.jvm.JvmName("getShort")
+        get() = _builder.short
+      @kotlin.jvm.JvmName("setShort")
+        set(value) {
         _builder.short = value
       }
     /**
@@ -151,10 +151,10 @@ public object RpcCommandOptionsKt {
      * `string example = 5 [json_name = "example"];`
      */
     public var example: kotlin.String
-      @JvmName("getExample")
-      get() = _builder.example
-      @JvmName("setExample")
-      set(value) {
+      @kotlin.jvm.JvmName("getExample")
+        get() = _builder.example
+      @kotlin.jvm.JvmName("setExample")
+        set(value) {
         _builder.example = value
       }
     /**
@@ -183,7 +183,7 @@ public object RpcCommandOptionsKt {
      * @return A list containing the alias.
      */
     public val alias: com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.aliasList
       )
@@ -196,7 +196,7 @@ public object RpcCommandOptionsKt {
      * @param value The alias to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAlias")
+@kotlin.jvm.JvmName("addAlias")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>.add(value: kotlin.String) {
       _builder.addAlias(value)
     }
@@ -209,7 +209,7 @@ public object RpcCommandOptionsKt {
      * @param value The alias to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAlias")
+@kotlin.jvm.JvmName("plusAssignAlias")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -223,7 +223,7 @@ public object RpcCommandOptionsKt {
      * @param values The alias to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAlias")
+@kotlin.jvm.JvmName("addAllAlias")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAlias(values)
     }
@@ -236,7 +236,7 @@ public object RpcCommandOptionsKt {
      * @param values The alias to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAlias")
+@kotlin.jvm.JvmName("plusAssignAllAlias")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -251,7 +251,7 @@ public object RpcCommandOptionsKt {
      * @param value The alias to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAlias")
+@kotlin.jvm.JvmName("setAlias")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAlias(index, value)
     }/**
@@ -262,7 +262,7 @@ public object RpcCommandOptionsKt {
      * `repeated string alias = 6 [json_name = "alias"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAlias")
+@kotlin.jvm.JvmName("setAlias")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AliasProxy>.clear() {
       _builder.clearAlias()
     }
@@ -282,7 +282,7 @@ public object RpcCommandOptionsKt {
      * @return A list containing the suggestFor.
      */
     public val suggestFor: com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.suggestForList
       )
@@ -296,7 +296,7 @@ public object RpcCommandOptionsKt {
      * @param value The suggestFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSuggestFor")
+@kotlin.jvm.JvmName("addSuggestFor")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>.add(value: kotlin.String) {
       _builder.addSuggestFor(value)
     }
@@ -310,7 +310,7 @@ public object RpcCommandOptionsKt {
      * @param value The suggestFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSuggestFor")
+@kotlin.jvm.JvmName("plusAssignSuggestFor")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -325,7 +325,7 @@ public object RpcCommandOptionsKt {
      * @param values The suggestFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSuggestFor")
+@kotlin.jvm.JvmName("addAllSuggestFor")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllSuggestFor(values)
     }
@@ -339,7 +339,7 @@ public object RpcCommandOptionsKt {
      * @param values The suggestFor to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSuggestFor")
+@kotlin.jvm.JvmName("plusAssignAllSuggestFor")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -355,7 +355,7 @@ public object RpcCommandOptionsKt {
      * @param value The suggestFor to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSuggestFor")
+@kotlin.jvm.JvmName("setSuggestFor")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setSuggestFor(index, value)
     }/**
@@ -367,7 +367,7 @@ public object RpcCommandOptionsKt {
      * `repeated string suggest_for = 7 [json_name = "suggestFor"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSuggestFor")
+@kotlin.jvm.JvmName("setSuggestFor")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, SuggestForProxy>.clear() {
       _builder.clearSuggestFor()
     }
@@ -379,10 +379,10 @@ public object RpcCommandOptionsKt {
      * `string deprecated = 8 [json_name = "deprecated"];`
      */
     public var deprecated: kotlin.String
-      @JvmName("getDeprecated")
-      get() = _builder.deprecated
-      @JvmName("setDeprecated")
-      set(value) {
+      @kotlin.jvm.JvmName("getDeprecated")
+        get() = _builder.deprecated
+      @kotlin.jvm.JvmName("setDeprecated")
+        set(value) {
         _builder.deprecated = value
       }
     /**
@@ -407,10 +407,10 @@ public object RpcCommandOptionsKt {
      * `string version = 9 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -444,7 +444,7 @@ public object RpcCommandOptionsKt {
      */
      public val flagOptions: com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.FlagOptions, FlagOptionsProxy>
       @kotlin.jvm.JvmSynthetic
-      @JvmName("getFlagOptionsMap")
+@kotlin.jvm.JvmName("getFlagOptionsMap")
       get() = com.google.protobuf.kotlin.DslMap(
         _builder.flagOptionsMap
       )
@@ -457,7 +457,7 @@ public object RpcCommandOptionsKt {
      *
      * `map<string, .cosmos.autocli.v1.FlagOptions> flag_options = 10 [json_name = "flagOptions"];`
      */
-    @JvmName("putFlagOptions")
+    @kotlin.jvm.JvmName("putFlagOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.FlagOptions, FlagOptionsProxy>
       .put(key: kotlin.String, value: cosmos.autocli.v1.Options.FlagOptions) {
          _builder.putFlagOptions(key, value)
@@ -472,7 +472,7 @@ public object RpcCommandOptionsKt {
      * `map<string, .cosmos.autocli.v1.FlagOptions> flag_options = 10 [json_name = "flagOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("setFlagOptions")
+@kotlin.jvm.JvmName("setFlagOptions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.FlagOptions, FlagOptionsProxy>
       .set(key: kotlin.String, value: cosmos.autocli.v1.Options.FlagOptions) {
@@ -488,7 +488,7 @@ public object RpcCommandOptionsKt {
      * `map<string, .cosmos.autocli.v1.FlagOptions> flag_options = 10 [json_name = "flagOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("removeFlagOptions")
+@kotlin.jvm.JvmName("removeFlagOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.FlagOptions, FlagOptionsProxy>
       .remove(key: kotlin.String) {
          _builder.removeFlagOptions(key)
@@ -503,7 +503,7 @@ public object RpcCommandOptionsKt {
      * `map<string, .cosmos.autocli.v1.FlagOptions> flag_options = 10 [json_name = "flagOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("putAllFlagOptions")
+@kotlin.jvm.JvmName("putAllFlagOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.FlagOptions, FlagOptionsProxy>
       .putAll(map: kotlin.collections.Map<kotlin.String, cosmos.autocli.v1.Options.FlagOptions>) {
          _builder.putAllFlagOptions(map)
@@ -518,7 +518,7 @@ public object RpcCommandOptionsKt {
      * `map<string, .cosmos.autocli.v1.FlagOptions> flag_options = 10 [json_name = "flagOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("clearFlagOptions")
+@kotlin.jvm.JvmName("clearFlagOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.FlagOptions, FlagOptionsProxy>
       .clear() {
          _builder.clearFlagOptions()
@@ -539,7 +539,7 @@ public object RpcCommandOptionsKt {
      */
      public val positionalArgs: com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.positionalArgsList
       )
     /**
@@ -551,7 +551,7 @@ public object RpcCommandOptionsKt {
      * @param value The positionalArgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPositionalArgs")
+@kotlin.jvm.JvmName("addPositionalArgs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>.add(value: cosmos.autocli.v1.Options.PositionalArgDescriptor) {
       _builder.addPositionalArgs(value)
     }
@@ -564,7 +564,7 @@ public object RpcCommandOptionsKt {
      * @param value The positionalArgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPositionalArgs")
+@kotlin.jvm.JvmName("plusAssignPositionalArgs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>.plusAssign(value: cosmos.autocli.v1.Options.PositionalArgDescriptor) {
       add(value)
@@ -578,7 +578,7 @@ public object RpcCommandOptionsKt {
      * @param values The positionalArgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPositionalArgs")
+@kotlin.jvm.JvmName("addAllPositionalArgs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.autocli.v1.Options.PositionalArgDescriptor>) {
       _builder.addAllPositionalArgs(values)
     }
@@ -591,7 +591,7 @@ public object RpcCommandOptionsKt {
      * @param values The positionalArgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPositionalArgs")
+@kotlin.jvm.JvmName("plusAssignAllPositionalArgs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.autocli.v1.Options.PositionalArgDescriptor>) {
       addAll(values)
@@ -606,7 +606,7 @@ public object RpcCommandOptionsKt {
      * @param value The positionalArgs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPositionalArgs")
+@kotlin.jvm.JvmName("setPositionalArgs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>.set(index: kotlin.Int, value: cosmos.autocli.v1.Options.PositionalArgDescriptor) {
       _builder.setPositionalArgs(index, value)
     }
@@ -618,11 +618,10 @@ public object RpcCommandOptionsKt {
      * `repeated .cosmos.autocli.v1.PositionalArgDescriptor positional_args = 11 [json_name = "positionalArgs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPositionalArgs")
+@kotlin.jvm.JvmName("clearPositionalArgs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.autocli.v1.Options.PositionalArgDescriptor, PositionalArgsProxy>.clear() {
       _builder.clearPositionalArgs()
     }
-
 
     /**
      * ```
@@ -632,10 +631,10 @@ public object RpcCommandOptionsKt {
      * `bool skip = 12 [json_name = "skip"];`
      */
     public var skip: kotlin.Boolean
-      @JvmName("getSkip")
-      get() = _builder.skip
-      @JvmName("setSkip")
-      set(value) {
+      @kotlin.jvm.JvmName("getSkip")
+        get() = _builder.skip
+      @kotlin.jvm.JvmName("setSkip")
+        set(value) {
         _builder.skip = value
       }
     /**
@@ -660,10 +659,10 @@ public object RpcCommandOptionsKt {
      * `bool gov_proposal = 13 [json_name = "govProposal", (.cosmos_proto.field_added_in) = "client/v2 v2.0.0-beta.2"];`
      */
     public var govProposal: kotlin.Boolean
-      @JvmName("getGovProposal")
-      get() = _builder.govProposal
-      @JvmName("setGovProposal")
-      set(value) {
+      @kotlin.jvm.JvmName("getGovProposal")
+        get() = _builder.govProposal
+      @kotlin.jvm.JvmName("setGovProposal")
+        set(value) {
         _builder.govProposal = value
       }
     /**

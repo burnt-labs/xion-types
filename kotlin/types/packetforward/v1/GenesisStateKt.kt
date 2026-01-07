@@ -50,7 +50,7 @@ public object GenesisStateKt {
      */
      public val inFlightPackets: com.google.protobuf.kotlin.DslMap<kotlin.String, packetforward.v1.Genesis.InFlightPacket, InFlightPacketsProxy>
       @kotlin.jvm.JvmSynthetic
-      @JvmName("getInFlightPacketsMap")
+@kotlin.jvm.JvmName("getInFlightPacketsMap")
       get() = com.google.protobuf.kotlin.DslMap(
         _builder.inFlightPacketsMap
       )
@@ -64,7 +64,7 @@ public object GenesisStateKt {
      *
      * `map<string, .packetforward.v1.InFlightPacket> in_flight_packets = 2 [json_name = "inFlightPackets", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"in_flight_packets\""];`
      */
-    @JvmName("putInFlightPackets")
+    @kotlin.jvm.JvmName("putInFlightPackets")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, packetforward.v1.Genesis.InFlightPacket, InFlightPacketsProxy>
       .put(key: kotlin.String, value: packetforward.v1.Genesis.InFlightPacket) {
          _builder.putInFlightPackets(key, value)
@@ -80,7 +80,7 @@ public object GenesisStateKt {
      * `map<string, .packetforward.v1.InFlightPacket> in_flight_packets = 2 [json_name = "inFlightPackets", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"in_flight_packets\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("setInFlightPackets")
+@kotlin.jvm.JvmName("setInFlightPackets")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, packetforward.v1.Genesis.InFlightPacket, InFlightPacketsProxy>
       .set(key: kotlin.String, value: packetforward.v1.Genesis.InFlightPacket) {
@@ -97,7 +97,7 @@ public object GenesisStateKt {
      * `map<string, .packetforward.v1.InFlightPacket> in_flight_packets = 2 [json_name = "inFlightPackets", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"in_flight_packets\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("removeInFlightPackets")
+@kotlin.jvm.JvmName("removeInFlightPackets")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, packetforward.v1.Genesis.InFlightPacket, InFlightPacketsProxy>
       .remove(key: kotlin.String) {
          _builder.removeInFlightPackets(key)
@@ -113,7 +113,7 @@ public object GenesisStateKt {
      * `map<string, .packetforward.v1.InFlightPacket> in_flight_packets = 2 [json_name = "inFlightPackets", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"in_flight_packets\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("putAllInFlightPackets")
+@kotlin.jvm.JvmName("putAllInFlightPackets")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, packetforward.v1.Genesis.InFlightPacket, InFlightPacketsProxy>
       .putAll(map: kotlin.collections.Map<kotlin.String, packetforward.v1.Genesis.InFlightPacket>) {
          _builder.putAllInFlightPackets(map)
@@ -129,7 +129,7 @@ public object GenesisStateKt {
      * `map<string, .packetforward.v1.InFlightPacket> in_flight_packets = 2 [json_name = "inFlightPackets", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"in_flight_packets\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("clearInFlightPackets")
+@kotlin.jvm.JvmName("clearInFlightPackets")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, packetforward.v1.Genesis.InFlightPacket, InFlightPacketsProxy>
       .clear() {
          _builder.clearInFlightPackets()

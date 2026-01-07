@@ -33,16 +33,24 @@ public object InterchainQueryRequestKt {
     internal fun _build(): xion.feeabs.v1beta1.Osmosisibc.InterchainQueryRequest = _builder.build()
 
     /**
+     * ```
+     * data defines the raw query data
+     * ```
+     *
      * `bytes data = 1 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
+     * ```
+     * data defines the raw query data
+     * ```
+     *
      * `bytes data = 1 [json_name = "data"];`
      */
     public fun clearData() {
@@ -50,16 +58,24 @@ public object InterchainQueryRequestKt {
     }
 
     /**
+     * ```
+     * path defines the query path
+     * ```
+     *
      * `string path = 2 [json_name = "path"];`
      */
     public var path: kotlin.String
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
+     * ```
+     * path defines the query path
+     * ```
+     *
      * `string path = 2 [json_name = "path"];`
      */
     public fun clearPath() {

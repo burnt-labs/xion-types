@@ -37,10 +37,10 @@ public object ContinuousVestingAccountKt {
      * `.cosmos.vesting.v1beta1.BaseVestingAccount base_vesting_account = 1 [json_name = "baseVestingAccount", (.gogoproto.embed) = true];`
      */
     public var baseVestingAccount: cosmos.vesting.v1beta1.Vesting.BaseVestingAccount
-      @JvmName("getBaseVestingAccount")
-      get() = _builder.baseVestingAccount
-      @JvmName("setBaseVestingAccount")
-      set(value) {
+      @kotlin.jvm.JvmName("getBaseVestingAccount")
+        get() = _builder.baseVestingAccount
+      @kotlin.jvm.JvmName("setBaseVestingAccount")
+        set(value) {
         _builder.baseVestingAccount = value
       }
     /**
@@ -68,10 +68,10 @@ public object ContinuousVestingAccountKt {
      * `int64 start_time = 2 [json_name = "startTime"];`
      */
     public var startTime: kotlin.Long
-      @JvmName("getStartTime")
-      get() = _builder.startTime
-      @JvmName("setStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartTime")
+        get() = _builder.startTime
+      @kotlin.jvm.JvmName("setStartTime")
+        set(value) {
         _builder.startTime = value
       }
     /**

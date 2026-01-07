@@ -48,7 +48,7 @@ public object QueryContinuousFundsResponseKt {
      */
      public val continuousFunds: com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.continuousFundsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryContinuousFundsResponseKt {
      * @param value The continuousFunds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContinuousFunds")
+@kotlin.jvm.JvmName("addContinuousFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>.add(value: cosmos.protocolpool.v1.Types.ContinuousFund) {
       _builder.addContinuousFunds(value)
     }
@@ -73,7 +73,7 @@ public object QueryContinuousFundsResponseKt {
      * @param value The continuousFunds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContinuousFunds")
+@kotlin.jvm.JvmName("plusAssignContinuousFunds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>.plusAssign(value: cosmos.protocolpool.v1.Types.ContinuousFund) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryContinuousFundsResponseKt {
      * @param values The continuousFunds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContinuousFunds")
+@kotlin.jvm.JvmName("addAllContinuousFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.protocolpool.v1.Types.ContinuousFund>) {
       _builder.addAllContinuousFunds(values)
     }
@@ -100,7 +100,7 @@ public object QueryContinuousFundsResponseKt {
      * @param values The continuousFunds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContinuousFunds")
+@kotlin.jvm.JvmName("plusAssignAllContinuousFunds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.protocolpool.v1.Types.ContinuousFund>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryContinuousFundsResponseKt {
      * @param value The continuousFunds to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContinuousFunds")
+@kotlin.jvm.JvmName("setContinuousFunds")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>.set(index: kotlin.Int, value: cosmos.protocolpool.v1.Types.ContinuousFund) {
       _builder.setContinuousFunds(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryContinuousFundsResponseKt {
      * `repeated .cosmos.protocolpool.v1.ContinuousFund continuous_funds = 1 [json_name = "continuousFunds", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContinuousFunds")
+@kotlin.jvm.JvmName("clearContinuousFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.protocolpool.v1.Types.ContinuousFund, ContinuousFundsProxy>.clear() {
       _builder.clearContinuousFunds()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

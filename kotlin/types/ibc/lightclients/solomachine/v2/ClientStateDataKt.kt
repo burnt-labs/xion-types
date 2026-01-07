@@ -36,10 +36,10 @@ public object ClientStateDataKt {
      * `bytes path = 1 [json_name = "path"];`
      */
     public var path: com.google.protobuf.ByteString
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -53,10 +53,10 @@ public object ClientStateDataKt {
      * `.google.protobuf.Any client_state = 2 [json_name = "clientState"];`
      */
     public var clientState: com.google.protobuf.Any
-      @JvmName("getClientState")
-      get() = _builder.clientState
-      @JvmName("setClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientState")
+        get() = _builder.clientState
+      @kotlin.jvm.JvmName("setClientState")
+        set(value) {
         _builder.clientState = value
       }
     /**

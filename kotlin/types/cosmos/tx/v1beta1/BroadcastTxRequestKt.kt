@@ -41,10 +41,10 @@ public object BroadcastTxRequestKt {
      * `bytes tx_bytes = 1 [json_name = "txBytes"];`
      */
     public var txBytes: com.google.protobuf.ByteString
-      @JvmName("getTxBytes")
-      get() = _builder.txBytes
-      @JvmName("setTxBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxBytes")
+        get() = _builder.txBytes
+      @kotlin.jvm.JvmName("setTxBytes")
+        set(value) {
         _builder.txBytes = value
       }
     /**
@@ -62,17 +62,17 @@ public object BroadcastTxRequestKt {
      * `.cosmos.tx.v1beta1.BroadcastMode mode = 2 [json_name = "mode"];`
      */
     public var mode: cosmos.tx.v1beta1.ServiceOuterClass.BroadcastMode
-      @JvmName("getMode")
-      get() = _builder.mode
-      @JvmName("setMode")
-      set(value) {
+      @kotlin.jvm.JvmName("getMode")
+        get() = _builder.mode
+      @kotlin.jvm.JvmName("setMode")
+        set(value) {
         _builder.mode = value
       }
     public var modeValue: kotlin.Int
-      @JvmName("getModeValue")
-      get() = _builder.modeValue
-      @JvmName("setModeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getModeValue")
+        get() = _builder.modeValue
+      @kotlin.jvm.JvmName("setModeValue")
+        set(value) {
         _builder.modeValue = value
       }
     /**

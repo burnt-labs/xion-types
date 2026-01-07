@@ -37,10 +37,10 @@ public object MsgDelegateKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgDelegateKt {
      * `string validator_address = 2 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -71,10 +71,10 @@ public object MsgDelegateKt {
      * `.cosmos.base.v1beta1.Coin amount = 3 [json_name = "amount", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var amount: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**

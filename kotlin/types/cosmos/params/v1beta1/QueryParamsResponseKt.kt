@@ -40,10 +40,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.params.v1beta1.ParamChange param = 1 [json_name = "param", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var param: cosmos.params.v1beta1.Params.ParamChange
-      @JvmName("getParam")
-      get() = _builder.param
-      @JvmName("setParam")
-      set(value) {
+      @kotlin.jvm.JvmName("getParam")
+        get() = _builder.param
+      @kotlin.jvm.JvmName("setParam")
+        set(value) {
         _builder.param = value
       }
     /**

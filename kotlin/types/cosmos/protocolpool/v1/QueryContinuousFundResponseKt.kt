@@ -41,10 +41,10 @@ public object QueryContinuousFundResponseKt {
      * `.cosmos.protocolpool.v1.ContinuousFund continuous_fund = 1 [json_name = "continuousFund", (.gogoproto.nullable) = false];`
      */
     public var continuousFund: cosmos.protocolpool.v1.Types.ContinuousFund
-      @JvmName("getContinuousFund")
-      get() = _builder.continuousFund
-      @JvmName("setContinuousFund")
-      set(value) {
+      @kotlin.jvm.JvmName("getContinuousFund")
+        get() = _builder.continuousFund
+      @kotlin.jvm.JvmName("setContinuousFund")
+        set(value) {
         _builder.continuousFund = value
       }
     /**

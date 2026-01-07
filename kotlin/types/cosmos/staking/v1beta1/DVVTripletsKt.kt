@@ -43,7 +43,7 @@ public object DVVTripletsKt {
      */
      public val triplets: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.tripletsList
       )
     /**
@@ -51,7 +51,7 @@ public object DVVTripletsKt {
      * @param value The triplets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTriplets")
+@kotlin.jvm.JvmName("addTriplets")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>.add(value: cosmos.staking.v1beta1.Staking.DVVTriplet) {
       _builder.addTriplets(value)
     }
@@ -60,7 +60,7 @@ public object DVVTripletsKt {
      * @param value The triplets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTriplets")
+@kotlin.jvm.JvmName("plusAssignTriplets")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>.plusAssign(value: cosmos.staking.v1beta1.Staking.DVVTriplet) {
       add(value)
@@ -70,7 +70,7 @@ public object DVVTripletsKt {
      * @param values The triplets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTriplets")
+@kotlin.jvm.JvmName("addAllTriplets")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.DVVTriplet>) {
       _builder.addAllTriplets(values)
     }
@@ -79,7 +79,7 @@ public object DVVTripletsKt {
      * @param values The triplets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTriplets")
+@kotlin.jvm.JvmName("plusAssignAllTriplets")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.DVVTriplet>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object DVVTripletsKt {
      * @param value The triplets to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTriplets")
+@kotlin.jvm.JvmName("setTriplets")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Staking.DVVTriplet) {
       _builder.setTriplets(index, value)
     }
@@ -98,11 +98,10 @@ public object DVVTripletsKt {
      * `repeated .cosmos.staking.v1beta1.DVVTriplet triplets = 1 [json_name = "triplets", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTriplets")
+@kotlin.jvm.JvmName("clearTriplets")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVVTriplet, TripletsProxy>.clear() {
       _builder.clearTriplets()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -41,10 +41,10 @@ public object CodeGrantKt {
      * `bytes code_hash = 1 [json_name = "codeHash"];`
      */
     public var codeHash: com.google.protobuf.ByteString
-      @JvmName("getCodeHash")
-      get() = _builder.codeHash
-      @JvmName("setCodeHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeHash")
+        get() = _builder.codeHash
+      @kotlin.jvm.JvmName("setCodeHash")
+        set(value) {
         _builder.codeHash = value
       }
     /**
@@ -69,10 +69,10 @@ public object CodeGrantKt {
      * `.cosmwasm.wasm.v1.AccessConfig instantiate_permission = 2 [json_name = "instantiatePermission"];`
      */
     public var instantiatePermission: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getInstantiatePermission")
-      get() = _builder.instantiatePermission
-      @JvmName("setInstantiatePermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiatePermission")
+        get() = _builder.instantiatePermission
+      @kotlin.jvm.JvmName("setInstantiatePermission")
+        set(value) {
         _builder.instantiatePermission = value
       }
     /**

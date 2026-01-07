@@ -48,7 +48,7 @@ public object QueryProposalsResponseKt {
      */
      public val proposals: com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.proposalsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryProposalsResponseKt {
      * @param value The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addProposals")
+@kotlin.jvm.JvmName("addProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>.add(value: cosmos.gov.v1beta1.Gov.Proposal) {
       _builder.addProposals(value)
     }
@@ -73,7 +73,7 @@ public object QueryProposalsResponseKt {
      * @param value The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignProposals")
+@kotlin.jvm.JvmName("plusAssignProposals")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>.plusAssign(value: cosmos.gov.v1beta1.Gov.Proposal) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryProposalsResponseKt {
      * @param values The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllProposals")
+@kotlin.jvm.JvmName("addAllProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.gov.v1beta1.Gov.Proposal>) {
       _builder.addAllProposals(values)
     }
@@ -100,7 +100,7 @@ public object QueryProposalsResponseKt {
      * @param values The proposals to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllProposals")
+@kotlin.jvm.JvmName("plusAssignAllProposals")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.gov.v1beta1.Gov.Proposal>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryProposalsResponseKt {
      * @param value The proposals to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setProposals")
+@kotlin.jvm.JvmName("setProposals")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>.set(index: kotlin.Int, value: cosmos.gov.v1beta1.Gov.Proposal) {
       _builder.setProposals(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryProposalsResponseKt {
      * `repeated .cosmos.gov.v1beta1.Proposal proposals = 1 [json_name = "proposals", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearProposals")
+@kotlin.jvm.JvmName("clearProposals")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1beta1.Gov.Proposal, ProposalsProxy>.clear() {
       _builder.clearProposals()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryProposalsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

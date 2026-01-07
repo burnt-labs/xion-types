@@ -43,7 +43,7 @@ public object MsgExecResponseKt {
      */
      public val results: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.resultsList
       )
     /**
@@ -51,7 +51,7 @@ public object MsgExecResponseKt {
      * @param value The results to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addResults")
+@kotlin.jvm.JvmName("addResults")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addResults(value)
     }/**
@@ -59,7 +59,7 @@ public object MsgExecResponseKt {
      * @param value The results to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignResults")
+@kotlin.jvm.JvmName("plusAssignResults")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -68,7 +68,7 @@ public object MsgExecResponseKt {
      * @param values The results to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllResults")
+@kotlin.jvm.JvmName("addAllResults")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllResults(values)
     }/**
@@ -76,7 +76,7 @@ public object MsgExecResponseKt {
      * @param values The results to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllResults")
+@kotlin.jvm.JvmName("plusAssignAllResults")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -86,14 +86,14 @@ public object MsgExecResponseKt {
      * @param value The results to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setResults")
+@kotlin.jvm.JvmName("setResults")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setResults(index, value)
     }/**
      * `repeated bytes results = 1 [json_name = "results"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearResults")
+@kotlin.jvm.JvmName("clearResults")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResultsProxy>.clear() {
       _builder.clearResults()
     }}

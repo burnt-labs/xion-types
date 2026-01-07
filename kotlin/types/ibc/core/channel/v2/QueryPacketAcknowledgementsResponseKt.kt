@@ -44,7 +44,7 @@ public object QueryPacketAcknowledgementsResponseKt {
      */
      public val acknowledgements: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.acknowledgementsList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryPacketAcknowledgementsResponseKt {
      * @param value The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAcknowledgements")
+@kotlin.jvm.JvmName("addAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.add(value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.addAcknowledgements(value)
     }
@@ -61,7 +61,7 @@ public object QueryPacketAcknowledgementsResponseKt {
      * @param value The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAcknowledgements")
+@kotlin.jvm.JvmName("plusAssignAcknowledgements")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.plusAssign(value: ibc.core.channel.v2.Genesis.PacketState) {
       add(value)
@@ -71,7 +71,7 @@ public object QueryPacketAcknowledgementsResponseKt {
      * @param values The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAcknowledgements")
+@kotlin.jvm.JvmName("addAllAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       _builder.addAllAcknowledgements(values)
     }
@@ -80,7 +80,7 @@ public object QueryPacketAcknowledgementsResponseKt {
      * @param values The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAcknowledgements")
+@kotlin.jvm.JvmName("plusAssignAllAcknowledgements")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QueryPacketAcknowledgementsResponseKt {
      * @param value The acknowledgements to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAcknowledgements")
+@kotlin.jvm.JvmName("setAcknowledgements")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.setAcknowledgements(index, value)
     }
@@ -99,11 +99,10 @@ public object QueryPacketAcknowledgementsResponseKt {
      * `repeated .ibc.core.channel.v2.PacketState acknowledgements = 1 [json_name = "acknowledgements"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAcknowledgements")
+@kotlin.jvm.JvmName("clearAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.clear() {
       _builder.clearAcknowledgements()
     }
-
 
     /**
      * ```
@@ -113,10 +112,10 @@ public object QueryPacketAcknowledgementsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**
@@ -152,10 +151,10 @@ public object QueryPacketAcknowledgementsResponseKt {
      * `.ibc.core.client.v1.Height height = 3 [json_name = "height", (.gogoproto.nullable) = false];`
      */
     public var height: ibc.core.client.v1.Client.Height
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**

@@ -41,17 +41,17 @@ public object IdentifiedChannelKt {
      * `.ibc.core.channel.v1.State state = 1 [json_name = "state"];`
      */
     public var state: ibc.core.channel.v1.ChannelOuterClass.State
-      @JvmName("getState")
-      get() = _builder.state
-      @JvmName("setState")
-      set(value) {
+      @kotlin.jvm.JvmName("getState")
+        get() = _builder.state
+      @kotlin.jvm.JvmName("setState")
+        set(value) {
         _builder.state = value
       }
     public var stateValue: kotlin.Int
-      @JvmName("getStateValue")
-      get() = _builder.stateValue
-      @JvmName("setStateValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStateValue")
+        get() = _builder.stateValue
+      @kotlin.jvm.JvmName("setStateValue")
+        set(value) {
         _builder.stateValue = value
       }
     /**
@@ -73,17 +73,17 @@ public object IdentifiedChannelKt {
      * `.ibc.core.channel.v1.Order ordering = 2 [json_name = "ordering"];`
      */
     public var ordering: ibc.core.channel.v1.ChannelOuterClass.Order
-      @JvmName("getOrdering")
-      get() = _builder.ordering
-      @JvmName("setOrdering")
-      set(value) {
+      @kotlin.jvm.JvmName("getOrdering")
+        get() = _builder.ordering
+      @kotlin.jvm.JvmName("setOrdering")
+        set(value) {
         _builder.ordering = value
       }
     public var orderingValue: kotlin.Int
-      @JvmName("getOrderingValue")
-      get() = _builder.orderingValue
-      @JvmName("setOrderingValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getOrderingValue")
+        get() = _builder.orderingValue
+      @kotlin.jvm.JvmName("setOrderingValue")
+        set(value) {
         _builder.orderingValue = value
       }
     /**
@@ -105,10 +105,10 @@ public object IdentifiedChannelKt {
      * `.ibc.core.channel.v1.Counterparty counterparty = 3 [json_name = "counterparty", (.gogoproto.nullable) = false];`
      */
     public var counterparty: ibc.core.channel.v1.ChannelOuterClass.Counterparty
-      @JvmName("getCounterparty")
-      get() = _builder.counterparty
-      @JvmName("setCounterparty")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterparty")
+        get() = _builder.counterparty
+      @kotlin.jvm.JvmName("setCounterparty")
+        set(value) {
         _builder.counterparty = value
       }
     /**
@@ -152,7 +152,7 @@ public object IdentifiedChannelKt {
      * @return A list containing the connectionHops.
      */
     public val connectionHops: com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.connectionHopsList
       )
@@ -166,7 +166,7 @@ public object IdentifiedChannelKt {
      * @param value The connectionHops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addConnectionHops")
+@kotlin.jvm.JvmName("addConnectionHops")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>.add(value: kotlin.String) {
       _builder.addConnectionHops(value)
     }
@@ -180,7 +180,7 @@ public object IdentifiedChannelKt {
      * @param value The connectionHops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignConnectionHops")
+@kotlin.jvm.JvmName("plusAssignConnectionHops")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -195,7 +195,7 @@ public object IdentifiedChannelKt {
      * @param values The connectionHops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllConnectionHops")
+@kotlin.jvm.JvmName("addAllConnectionHops")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllConnectionHops(values)
     }
@@ -209,7 +209,7 @@ public object IdentifiedChannelKt {
      * @param values The connectionHops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllConnectionHops")
+@kotlin.jvm.JvmName("plusAssignAllConnectionHops")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -225,7 +225,7 @@ public object IdentifiedChannelKt {
      * @param value The connectionHops to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setConnectionHops")
+@kotlin.jvm.JvmName("setConnectionHops")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setConnectionHops(index, value)
     }/**
@@ -237,7 +237,7 @@ public object IdentifiedChannelKt {
      * `repeated string connection_hops = 4 [json_name = "connectionHops"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearConnectionHops")
+@kotlin.jvm.JvmName("setConnectionHops")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ConnectionHopsProxy>.clear() {
       _builder.clearConnectionHops()
     }
@@ -249,10 +249,10 @@ public object IdentifiedChannelKt {
      * `string version = 5 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -274,10 +274,10 @@ public object IdentifiedChannelKt {
      * `string port_id = 6 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -299,10 +299,10 @@ public object IdentifiedChannelKt {
      * `string channel_id = 7 [json_name = "channelId"];`
      */
     public var channelId: kotlin.String
-      @JvmName("getChannelId")
-      get() = _builder.channelId
-      @JvmName("setChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelId")
+        get() = _builder.channelId
+      @kotlin.jvm.JvmName("setChannelId")
+        set(value) {
         _builder.channelId = value
       }
     /**

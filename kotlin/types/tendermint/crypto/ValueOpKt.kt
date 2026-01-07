@@ -36,10 +36,10 @@ public object ValueOpKt {
      * `bytes key = 1 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -61,10 +61,10 @@ public object ValueOpKt {
      * `.tendermint.crypto.Proof proof = 2 [json_name = "proof"];`
      */
     public var proof: tendermint.crypto.ProofOuterClass.Proof
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**

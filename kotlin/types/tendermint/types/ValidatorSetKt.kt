@@ -39,7 +39,7 @@ public object ValidatorSetKt {
      */
      public val validators: com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorsList
       )
     /**
@@ -47,7 +47,7 @@ public object ValidatorSetKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidators")
+@kotlin.jvm.JvmName("addValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>.add(value: tendermint.types.ValidatorOuterClass.Validator) {
       _builder.addValidators(value)
     }
@@ -56,7 +56,7 @@ public object ValidatorSetKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidators")
+@kotlin.jvm.JvmName("plusAssignValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>.plusAssign(value: tendermint.types.ValidatorOuterClass.Validator) {
       add(value)
@@ -66,7 +66,7 @@ public object ValidatorSetKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidators")
+@kotlin.jvm.JvmName("addAllValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.types.ValidatorOuterClass.Validator>) {
       _builder.addAllValidators(values)
     }
@@ -75,7 +75,7 @@ public object ValidatorSetKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidators")
+@kotlin.jvm.JvmName("plusAssignAllValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.types.ValidatorOuterClass.Validator>) {
       addAll(values)
@@ -86,7 +86,7 @@ public object ValidatorSetKt {
      * @param value The validators to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidators")
+@kotlin.jvm.JvmName("setValidators")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>.set(index: kotlin.Int, value: tendermint.types.ValidatorOuterClass.Validator) {
       _builder.setValidators(index, value)
     }
@@ -94,20 +94,19 @@ public object ValidatorSetKt {
      * `repeated .tendermint.types.Validator validators = 1 [json_name = "validators"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidators")
+@kotlin.jvm.JvmName("clearValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.ValidatorOuterClass.Validator, ValidatorsProxy>.clear() {
       _builder.clearValidators()
     }
-
 
     /**
      * `.tendermint.types.Validator proposer = 2 [json_name = "proposer"];`
      */
     public var proposer: tendermint.types.ValidatorOuterClass.Validator
-      @JvmName("getProposer")
-      get() = _builder.proposer
-      @JvmName("setProposer")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposer")
+        get() = _builder.proposer
+      @kotlin.jvm.JvmName("setProposer")
+        set(value) {
         _builder.proposer = value
       }
     /**
@@ -131,10 +130,10 @@ public object ValidatorSetKt {
      * `int64 total_voting_power = 3 [json_name = "totalVotingPower"];`
      */
     public var totalVotingPower: kotlin.Long
-      @JvmName("getTotalVotingPower")
-      get() = _builder.totalVotingPower
-      @JvmName("setTotalVotingPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalVotingPower")
+        get() = _builder.totalVotingPower
+      @kotlin.jvm.JvmName("setTotalVotingPower")
+        set(value) {
         _builder.totalVotingPower = value
       }
     /**

@@ -48,7 +48,7 @@ public object TxMsgDataKt {
      */
     @kotlin.Deprecated(message = "Field data is deprecated")  public val data: com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.dataList
       )
     /**
@@ -60,7 +60,7 @@ public object TxMsgDataKt {
      * @param value The data to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addData")
+@kotlin.jvm.JvmName("addData")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>.add(value: cosmos.base.abci.v1beta1.Abci.MsgData) {
       _builder.addData(value)
     }
@@ -73,7 +73,7 @@ public object TxMsgDataKt {
      * @param value The data to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignData")
+@kotlin.jvm.JvmName("plusAssignData")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>.plusAssign(value: cosmos.base.abci.v1beta1.Abci.MsgData) {
       add(value)
@@ -87,7 +87,7 @@ public object TxMsgDataKt {
      * @param values The data to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllData")
+@kotlin.jvm.JvmName("addAllData")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.MsgData>) {
       _builder.addAllData(values)
     }
@@ -100,7 +100,7 @@ public object TxMsgDataKt {
      * @param values The data to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllData")
+@kotlin.jvm.JvmName("plusAssignAllData")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.MsgData>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object TxMsgDataKt {
      * @param value The data to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setData")
+@kotlin.jvm.JvmName("setData")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>.set(index: kotlin.Int, value: cosmos.base.abci.v1beta1.Abci.MsgData) {
       _builder.setData(index, value)
     }
@@ -127,11 +127,10 @@ public object TxMsgDataKt {
      * `repeated .cosmos.base.abci.v1beta1.MsgData data = 1 [json_name = "data", deprecated = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearData")
+@kotlin.jvm.JvmName("clearData")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.MsgData, DataProxy>.clear() {
       _builder.clearData()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -148,7 +147,7 @@ public object TxMsgDataKt {
      */
      public val msgResponses: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.msgResponsesList
       )
     /**
@@ -160,7 +159,7 @@ public object TxMsgDataKt {
      * @param value The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMsgResponses")
+@kotlin.jvm.JvmName("addMsgResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.add(value: com.google.protobuf.Any) {
       _builder.addMsgResponses(value)
     }
@@ -173,7 +172,7 @@ public object TxMsgDataKt {
      * @param value The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMsgResponses")
+@kotlin.jvm.JvmName("plusAssignMsgResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -187,7 +186,7 @@ public object TxMsgDataKt {
      * @param values The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMsgResponses")
+@kotlin.jvm.JvmName("addAllMsgResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllMsgResponses(values)
     }
@@ -200,7 +199,7 @@ public object TxMsgDataKt {
      * @param values The msgResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMsgResponses")
+@kotlin.jvm.JvmName("plusAssignAllMsgResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -215,7 +214,7 @@ public object TxMsgDataKt {
      * @param value The msgResponses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMsgResponses")
+@kotlin.jvm.JvmName("setMsgResponses")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setMsgResponses(index, value)
     }
@@ -227,11 +226,10 @@ public object TxMsgDataKt {
      * `repeated .google.protobuf.Any msg_responses = 2 [json_name = "msgResponses", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.46"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMsgResponses")
+@kotlin.jvm.JvmName("clearMsgResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, MsgResponsesProxy>.clear() {
       _builder.clearMsgResponses()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

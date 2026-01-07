@@ -43,10 +43,10 @@ public object MigrateContractProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -68,10 +68,10 @@ public object MigrateContractProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -93,10 +93,10 @@ public object MigrateContractProposalKt {
      * `string contract = 4 [json_name = "contract", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var contract: kotlin.String
-      @JvmName("getContract")
-      get() = _builder.contract
-      @JvmName("setContract")
-      set(value) {
+      @kotlin.jvm.JvmName("getContract")
+        get() = _builder.contract
+      @kotlin.jvm.JvmName("setContract")
+        set(value) {
         _builder.contract = value
       }
     /**
@@ -118,10 +118,10 @@ public object MigrateContractProposalKt {
      * `uint64 code_id = 5 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -143,10 +143,10 @@ public object MigrateContractProposalKt {
      * `bytes msg = 6 [json_name = "msg", (.gogoproto.casttype) = "RawContractMessage", (.amino.encoding) = "inline_json"];`
      */
     public var msg: com.google.protobuf.ByteString
-      @JvmName("getMsg")
-      get() = _builder.msg
-      @JvmName("setMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsg")
+        get() = _builder.msg
+      @kotlin.jvm.JvmName("setMsg")
+        set(value) {
         _builder.msg = value
       }
     /**

@@ -36,10 +36,10 @@ public object ParamsKt {
      * `int64 signed_blocks_window = 1 [json_name = "signedBlocksWindow"];`
      */
     public var signedBlocksWindow: kotlin.Long
-      @JvmName("getSignedBlocksWindow")
-      get() = _builder.signedBlocksWindow
-      @JvmName("setSignedBlocksWindow")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignedBlocksWindow")
+        get() = _builder.signedBlocksWindow
+      @kotlin.jvm.JvmName("setSignedBlocksWindow")
+        set(value) {
         _builder.signedBlocksWindow = value
       }
     /**
@@ -53,10 +53,10 @@ public object ParamsKt {
      * `bytes min_signed_per_window = 2 [json_name = "minSignedPerWindow", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var minSignedPerWindow: com.google.protobuf.ByteString
-      @JvmName("getMinSignedPerWindow")
-      get() = _builder.minSignedPerWindow
-      @JvmName("setMinSignedPerWindow")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinSignedPerWindow")
+        get() = _builder.minSignedPerWindow
+      @kotlin.jvm.JvmName("setMinSignedPerWindow")
+        set(value) {
         _builder.minSignedPerWindow = value
       }
     /**
@@ -70,10 +70,10 @@ public object ParamsKt {
      * `.google.protobuf.Duration downtime_jail_duration = 3 [json_name = "downtimeJailDuration", (.gogoproto.nullable) = false, (.gogoproto.stdduration) = true, (.amino.dont_omitempty) = true];`
      */
     public var downtimeJailDuration: com.google.protobuf.Duration
-      @JvmName("getDowntimeJailDuration")
-      get() = _builder.downtimeJailDuration
-      @JvmName("setDowntimeJailDuration")
-      set(value) {
+      @kotlin.jvm.JvmName("getDowntimeJailDuration")
+        get() = _builder.downtimeJailDuration
+      @kotlin.jvm.JvmName("setDowntimeJailDuration")
+        set(value) {
         _builder.downtimeJailDuration = value
       }
     /**
@@ -97,10 +97,10 @@ public object ParamsKt {
      * `bytes slash_fraction_double_sign = 4 [json_name = "slashFractionDoubleSign", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var slashFractionDoubleSign: com.google.protobuf.ByteString
-      @JvmName("getSlashFractionDoubleSign")
-      get() = _builder.slashFractionDoubleSign
-      @JvmName("setSlashFractionDoubleSign")
-      set(value) {
+      @kotlin.jvm.JvmName("getSlashFractionDoubleSign")
+        get() = _builder.slashFractionDoubleSign
+      @kotlin.jvm.JvmName("setSlashFractionDoubleSign")
+        set(value) {
         _builder.slashFractionDoubleSign = value
       }
     /**
@@ -114,10 +114,10 @@ public object ParamsKt {
      * `bytes slash_fraction_downtime = 5 [json_name = "slashFractionDowntime", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var slashFractionDowntime: com.google.protobuf.ByteString
-      @JvmName("getSlashFractionDowntime")
-      get() = _builder.slashFractionDowntime
-      @JvmName("setSlashFractionDowntime")
-      set(value) {
+      @kotlin.jvm.JvmName("getSlashFractionDowntime")
+        get() = _builder.slashFractionDowntime
+      @kotlin.jvm.JvmName("setSlashFractionDowntime")
+        set(value) {
         _builder.slashFractionDowntime = value
       }
     /**

@@ -41,10 +41,10 @@ public object SignDocKt {
      * `bytes body_bytes = 1 [json_name = "bodyBytes"];`
      */
     public var bodyBytes: com.google.protobuf.ByteString
-      @JvmName("getBodyBytes")
-      get() = _builder.bodyBytes
-      @JvmName("setBodyBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getBodyBytes")
+        get() = _builder.bodyBytes
+      @kotlin.jvm.JvmName("setBodyBytes")
+        set(value) {
         _builder.bodyBytes = value
       }
     /**
@@ -68,10 +68,10 @@ public object SignDocKt {
      * `bytes auth_info_bytes = 2 [json_name = "authInfoBytes"];`
      */
     public var authInfoBytes: com.google.protobuf.ByteString
-      @JvmName("getAuthInfoBytes")
-      get() = _builder.authInfoBytes
-      @JvmName("setAuthInfoBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthInfoBytes")
+        get() = _builder.authInfoBytes
+      @kotlin.jvm.JvmName("setAuthInfoBytes")
+        set(value) {
         _builder.authInfoBytes = value
       }
     /**
@@ -96,10 +96,10 @@ public object SignDocKt {
      * `string chain_id = 3 [json_name = "chainId"];`
      */
     public var chainId: kotlin.String
-      @JvmName("getChainId")
-      get() = _builder.chainId
-      @JvmName("setChainId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChainId")
+        get() = _builder.chainId
+      @kotlin.jvm.JvmName("setChainId")
+        set(value) {
         _builder.chainId = value
       }
     /**
@@ -123,10 +123,10 @@ public object SignDocKt {
      * `uint64 account_number = 4 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
-      @JvmName("getAccountNumber")
-      get() = _builder.accountNumber
-      @JvmName("setAccountNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountNumber")
+        get() = _builder.accountNumber
+      @kotlin.jvm.JvmName("setAccountNumber")
+        set(value) {
         _builder.accountNumber = value
       }
     /**

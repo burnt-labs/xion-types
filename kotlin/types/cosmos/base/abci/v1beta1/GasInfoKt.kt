@@ -40,10 +40,10 @@ public object GasInfoKt {
      * `uint64 gas_wanted = 1 [json_name = "gasWanted"];`
      */
     public var gasWanted: kotlin.Long
-      @JvmName("getGasWanted")
-      get() = _builder.gasWanted
-      @JvmName("setGasWanted")
-      set(value) {
+      @kotlin.jvm.JvmName("getGasWanted")
+        get() = _builder.gasWanted
+      @kotlin.jvm.JvmName("setGasWanted")
+        set(value) {
         _builder.gasWanted = value
       }
     /**
@@ -65,10 +65,10 @@ public object GasInfoKt {
      * `uint64 gas_used = 2 [json_name = "gasUsed"];`
      */
     public var gasUsed: kotlin.Long
-      @JvmName("getGasUsed")
-      get() = _builder.gasUsed
-      @JvmName("setGasUsed")
-      set(value) {
+      @kotlin.jvm.JvmName("getGasUsed")
+        get() = _builder.gasUsed
+      @kotlin.jvm.JvmName("setGasUsed")
+        set(value) {
         _builder.gasUsed = value
       }
     /**

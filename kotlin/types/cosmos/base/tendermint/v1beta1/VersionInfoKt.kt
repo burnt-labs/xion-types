@@ -36,10 +36,10 @@ public object VersionInfoKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -53,10 +53,10 @@ public object VersionInfoKt {
      * `string app_name = 2 [json_name = "appName"];`
      */
     public var appName: kotlin.String
-      @JvmName("getAppName")
-      get() = _builder.appName
-      @JvmName("setAppName")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppName")
+        get() = _builder.appName
+      @kotlin.jvm.JvmName("setAppName")
+        set(value) {
         _builder.appName = value
       }
     /**
@@ -70,10 +70,10 @@ public object VersionInfoKt {
      * `string version = 3 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -87,10 +87,10 @@ public object VersionInfoKt {
      * `string git_commit = 4 [json_name = "gitCommit"];`
      */
     public var gitCommit: kotlin.String
-      @JvmName("getGitCommit")
-      get() = _builder.gitCommit
-      @JvmName("setGitCommit")
-      set(value) {
+      @kotlin.jvm.JvmName("getGitCommit")
+        get() = _builder.gitCommit
+      @kotlin.jvm.JvmName("setGitCommit")
+        set(value) {
         _builder.gitCommit = value
       }
     /**
@@ -104,10 +104,10 @@ public object VersionInfoKt {
      * `string build_tags = 5 [json_name = "buildTags"];`
      */
     public var buildTags: kotlin.String
-      @JvmName("getBuildTags")
-      get() = _builder.buildTags
-      @JvmName("setBuildTags")
-      set(value) {
+      @kotlin.jvm.JvmName("getBuildTags")
+        get() = _builder.buildTags
+      @kotlin.jvm.JvmName("setBuildTags")
+        set(value) {
         _builder.buildTags = value
       }
     /**
@@ -121,10 +121,10 @@ public object VersionInfoKt {
      * `string go_version = 6 [json_name = "goVersion"];`
      */
     public var goVersion: kotlin.String
-      @JvmName("getGoVersion")
-      get() = _builder.goVersion
-      @JvmName("setGoVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getGoVersion")
+        get() = _builder.goVersion
+      @kotlin.jvm.JvmName("setGoVersion")
+        set(value) {
         _builder.goVersion = value
       }
     /**
@@ -145,7 +145,7 @@ public object VersionInfoKt {
      */
      public val buildDeps: com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.buildDepsList
       )
     /**
@@ -153,7 +153,7 @@ public object VersionInfoKt {
      * @param value The buildDeps to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addBuildDeps")
+@kotlin.jvm.JvmName("addBuildDeps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>.add(value: cosmos.base.tendermint.v1beta1.Query.Module) {
       _builder.addBuildDeps(value)
     }
@@ -162,7 +162,7 @@ public object VersionInfoKt {
      * @param value The buildDeps to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignBuildDeps")
+@kotlin.jvm.JvmName("plusAssignBuildDeps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>.plusAssign(value: cosmos.base.tendermint.v1beta1.Query.Module) {
       add(value)
@@ -172,7 +172,7 @@ public object VersionInfoKt {
      * @param values The buildDeps to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllBuildDeps")
+@kotlin.jvm.JvmName("addAllBuildDeps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.tendermint.v1beta1.Query.Module>) {
       _builder.addAllBuildDeps(values)
     }
@@ -181,7 +181,7 @@ public object VersionInfoKt {
      * @param values The buildDeps to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllBuildDeps")
+@kotlin.jvm.JvmName("plusAssignAllBuildDeps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.tendermint.v1beta1.Query.Module>) {
       addAll(values)
@@ -192,7 +192,7 @@ public object VersionInfoKt {
      * @param value The buildDeps to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setBuildDeps")
+@kotlin.jvm.JvmName("setBuildDeps")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>.set(index: kotlin.Int, value: cosmos.base.tendermint.v1beta1.Query.Module) {
       _builder.setBuildDeps(index, value)
     }
@@ -200,20 +200,19 @@ public object VersionInfoKt {
      * `repeated .cosmos.base.tendermint.v1beta1.Module build_deps = 7 [json_name = "buildDeps"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearBuildDeps")
+@kotlin.jvm.JvmName("clearBuildDeps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.Module, BuildDepsProxy>.clear() {
       _builder.clearBuildDeps()
     }
-
 
     /**
      * `string cosmos_sdk_version = 8 [json_name = "cosmosSdkVersion", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var cosmosSdkVersion: kotlin.String
-      @JvmName("getCosmosSdkVersion")
-      get() = _builder.cosmosSdkVersion
-      @JvmName("setCosmosSdkVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getCosmosSdkVersion")
+        get() = _builder.cosmosSdkVersion
+      @kotlin.jvm.JvmName("setCosmosSdkVersion")
+        set(value) {
         _builder.cosmosSdkVersion = value
       }
     /**

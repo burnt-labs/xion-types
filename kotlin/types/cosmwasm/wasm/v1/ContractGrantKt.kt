@@ -41,10 +41,10 @@ public object ContractGrantKt {
      * `string contract = 1 [json_name = "contract", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var contract: kotlin.String
-      @JvmName("getContract")
-      get() = _builder.contract
-      @JvmName("setContract")
-      set(value) {
+      @kotlin.jvm.JvmName("getContract")
+        get() = _builder.contract
+      @kotlin.jvm.JvmName("setContract")
+        set(value) {
         _builder.contract = value
       }
     /**
@@ -67,10 +67,10 @@ public object ContractGrantKt {
      * `.google.protobuf.Any limit = 2 [json_name = "limit", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractAuthzLimitX"];`
      */
     public var limit: com.google.protobuf.Any
-      @JvmName("getLimit")
-      get() = _builder.limit
-      @JvmName("setLimit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLimit")
+        get() = _builder.limit
+      @kotlin.jvm.JvmName("setLimit")
+        set(value) {
         _builder.limit = value
       }
     /**
@@ -110,10 +110,10 @@ public object ContractGrantKt {
      * `.google.protobuf.Any filter = 3 [json_name = "filter", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractAuthzFilterX"];`
      */
     public var filter: com.google.protobuf.Any
-      @JvmName("getFilter")
-      get() = _builder.filter
-      @JvmName("setFilter")
-      set(value) {
+      @kotlin.jvm.JvmName("getFilter")
+        get() = _builder.filter
+      @kotlin.jvm.JvmName("setFilter")
+        set(value) {
         _builder.filter = value
       }
     /**

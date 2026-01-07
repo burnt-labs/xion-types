@@ -48,7 +48,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * @return A list containing the validators.
      */
     public val validators: com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorsList
       )
@@ -61,7 +61,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidators")
+@kotlin.jvm.JvmName("addValidators")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>.add(value: kotlin.String) {
       _builder.addValidators(value)
     }
@@ -74,7 +74,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidators")
+@kotlin.jvm.JvmName("plusAssignValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -88,7 +88,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidators")
+@kotlin.jvm.JvmName("addAllValidators")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllValidators(values)
     }
@@ -101,7 +101,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidators")
+@kotlin.jvm.JvmName("plusAssignAllValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -116,7 +116,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * @param value The validators to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidators")
+@kotlin.jvm.JvmName("setValidators")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setValidators(index, value)
     }/**
@@ -127,7 +127,7 @@ public object QueryDelegatorValidatorsResponseKt {
      * `repeated string validators = 1 [json_name = "validators"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidators")
+@kotlin.jvm.JvmName("setValidators")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ValidatorsProxy>.clear() {
       _builder.clearValidators()
     }}

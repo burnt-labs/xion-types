@@ -40,10 +40,10 @@ public object QueryOwnerResponseKt {
      * `string owner = 1 [json_name = "owner"];`
      */
     public var owner: kotlin.String
-      @JvmName("getOwner")
-      get() = _builder.owner
-      @JvmName("setOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getOwner")
+        get() = _builder.owner
+      @kotlin.jvm.JvmName("setOwner")
+        set(value) {
         _builder.owner = value
       }
     /**

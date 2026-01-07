@@ -36,10 +36,10 @@ public object EventEpochStartKt {
      * `int64 epoch_number = 1 [json_name = "epochNumber"];`
      */
     public var epochNumber: kotlin.Long
-      @JvmName("getEpochNumber")
-      get() = _builder.epochNumber
-      @JvmName("setEpochNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getEpochNumber")
+        get() = _builder.epochNumber
+      @kotlin.jvm.JvmName("setEpochNumber")
+        set(value) {
         _builder.epochNumber = value
       }
     /**
@@ -53,10 +53,10 @@ public object EventEpochStartKt {
      * `int64 epoch_start_time = 2 [json_name = "epochStartTime"];`
      */
     public var epochStartTime: kotlin.Long
-      @JvmName("getEpochStartTime")
-      get() = _builder.epochStartTime
-      @JvmName("setEpochStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getEpochStartTime")
+        get() = _builder.epochStartTime
+      @kotlin.jvm.JvmName("setEpochStartTime")
+        set(value) {
         _builder.epochStartTime = value
       }
     /**

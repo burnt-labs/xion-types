@@ -40,10 +40,10 @@ public object MsgCreateGroupWithPolicyKt {
      * `string admin = 1 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -72,7 +72,7 @@ public object MsgCreateGroupWithPolicyKt {
      */
      public val members: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.membersList
       )
     /**
@@ -84,7 +84,7 @@ public object MsgCreateGroupWithPolicyKt {
      * @param value The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMembers")
+@kotlin.jvm.JvmName("addMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.add(value: cosmos.group.v1.Types.MemberRequest) {
       _builder.addMembers(value)
     }
@@ -97,7 +97,7 @@ public object MsgCreateGroupWithPolicyKt {
      * @param value The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMembers")
+@kotlin.jvm.JvmName("plusAssignMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.plusAssign(value: cosmos.group.v1.Types.MemberRequest) {
       add(value)
@@ -111,7 +111,7 @@ public object MsgCreateGroupWithPolicyKt {
      * @param values The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMembers")
+@kotlin.jvm.JvmName("addAllMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.MemberRequest>) {
       _builder.addAllMembers(values)
     }
@@ -124,7 +124,7 @@ public object MsgCreateGroupWithPolicyKt {
      * @param values The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMembers")
+@kotlin.jvm.JvmName("plusAssignAllMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.MemberRequest>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object MsgCreateGroupWithPolicyKt {
      * @param value The members to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMembers")
+@kotlin.jvm.JvmName("setMembers")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.MemberRequest) {
       _builder.setMembers(index, value)
     }
@@ -151,11 +151,10 @@ public object MsgCreateGroupWithPolicyKt {
      * `repeated .cosmos.group.v1.MemberRequest members = 2 [json_name = "members", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMembers")
+@kotlin.jvm.JvmName("clearMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.clear() {
       _builder.clearMembers()
     }
-
 
     /**
      * ```
@@ -165,10 +164,10 @@ public object MsgCreateGroupWithPolicyKt {
      * `string group_metadata = 3 [json_name = "groupMetadata"];`
      */
     public var groupMetadata: kotlin.String
-      @JvmName("getGroupMetadata")
-      get() = _builder.groupMetadata
-      @JvmName("setGroupMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupMetadata")
+        get() = _builder.groupMetadata
+      @kotlin.jvm.JvmName("setGroupMetadata")
+        set(value) {
         _builder.groupMetadata = value
       }
     /**
@@ -190,10 +189,10 @@ public object MsgCreateGroupWithPolicyKt {
      * `string group_policy_metadata = 4 [json_name = "groupPolicyMetadata"];`
      */
     public var groupPolicyMetadata: kotlin.String
-      @JvmName("getGroupPolicyMetadata")
-      get() = _builder.groupPolicyMetadata
-      @JvmName("setGroupPolicyMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyMetadata")
+        get() = _builder.groupPolicyMetadata
+      @kotlin.jvm.JvmName("setGroupPolicyMetadata")
+        set(value) {
         _builder.groupPolicyMetadata = value
       }
     /**
@@ -216,10 +215,10 @@ public object MsgCreateGroupWithPolicyKt {
      * `bool group_policy_as_admin = 5 [json_name = "groupPolicyAsAdmin"];`
      */
     public var groupPolicyAsAdmin: kotlin.Boolean
-      @JvmName("getGroupPolicyAsAdmin")
-      get() = _builder.groupPolicyAsAdmin
-      @JvmName("setGroupPolicyAsAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyAsAdmin")
+        get() = _builder.groupPolicyAsAdmin
+      @kotlin.jvm.JvmName("setGroupPolicyAsAdmin")
+        set(value) {
         _builder.groupPolicyAsAdmin = value
       }
     /**
@@ -242,10 +241,10 @@ public object MsgCreateGroupWithPolicyKt {
      * `.google.protobuf.Any decision_policy = 6 [json_name = "decisionPolicy", (.cosmos_proto.accepts_interface) = "cosmos.group.v1.DecisionPolicy"];`
      */
     public var decisionPolicy: com.google.protobuf.Any
-      @JvmName("getDecisionPolicy")
-      get() = _builder.decisionPolicy
-      @JvmName("setDecisionPolicy")
-      set(value) {
+      @kotlin.jvm.JvmName("getDecisionPolicy")
+        get() = _builder.decisionPolicy
+      @kotlin.jvm.JvmName("setDecisionPolicy")
+        set(value) {
         _builder.decisionPolicy = value
       }
     /**

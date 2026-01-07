@@ -43,7 +43,7 @@ public object ResponseFinalizeBlockKt {
      */
      public val events: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.eventsList
       )
     /**
@@ -55,7 +55,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvents")
+@kotlin.jvm.JvmName("addEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.add(value: tendermint.abci.Types.Event) {
       _builder.addEvents(value)
     }
@@ -68,7 +68,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvents")
+@kotlin.jvm.JvmName("plusAssignEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.plusAssign(value: tendermint.abci.Types.Event) {
       add(value)
@@ -82,7 +82,7 @@ public object ResponseFinalizeBlockKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvents")
+@kotlin.jvm.JvmName("addAllEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.Event>) {
       _builder.addAllEvents(values)
     }
@@ -95,7 +95,7 @@ public object ResponseFinalizeBlockKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvents")
+@kotlin.jvm.JvmName("plusAssignAllEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.Event>) {
       addAll(values)
@@ -110,7 +110,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The events to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvents")
+@kotlin.jvm.JvmName("setEvents")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.Event) {
       _builder.setEvents(index, value)
     }
@@ -122,11 +122,10 @@ public object ResponseFinalizeBlockKt {
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvents")
+@kotlin.jvm.JvmName("clearEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.clear() {
       _builder.clearEvents()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -145,7 +144,7 @@ public object ResponseFinalizeBlockKt {
      */
      public val txResults: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.txResultsList
       )
     /**
@@ -159,7 +158,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The txResults to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTxResults")
+@kotlin.jvm.JvmName("addTxResults")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>.add(value: tendermint.abci.Types.ExecTxResult) {
       _builder.addTxResults(value)
     }
@@ -174,7 +173,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The txResults to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTxResults")
+@kotlin.jvm.JvmName("plusAssignTxResults")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>.plusAssign(value: tendermint.abci.Types.ExecTxResult) {
       add(value)
@@ -190,7 +189,7 @@ public object ResponseFinalizeBlockKt {
      * @param values The txResults to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTxResults")
+@kotlin.jvm.JvmName("addAllTxResults")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.ExecTxResult>) {
       _builder.addAllTxResults(values)
     }
@@ -205,7 +204,7 @@ public object ResponseFinalizeBlockKt {
      * @param values The txResults to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTxResults")
+@kotlin.jvm.JvmName("plusAssignAllTxResults")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.ExecTxResult>) {
       addAll(values)
@@ -222,7 +221,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The txResults to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTxResults")
+@kotlin.jvm.JvmName("setTxResults")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.ExecTxResult) {
       _builder.setTxResults(index, value)
     }
@@ -236,11 +235,10 @@ public object ResponseFinalizeBlockKt {
      * `repeated .tendermint.abci.ExecTxResult tx_results = 2 [json_name = "txResults"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTxResults")
+@kotlin.jvm.JvmName("clearTxResults")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ExecTxResult, TxResultsProxy>.clear() {
       _builder.clearTxResults()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -257,7 +255,7 @@ public object ResponseFinalizeBlockKt {
      */
      public val validatorUpdates: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorUpdatesList
       )
     /**
@@ -269,7 +267,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The validatorUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidatorUpdates")
+@kotlin.jvm.JvmName("addValidatorUpdates")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>.add(value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.addValidatorUpdates(value)
     }
@@ -282,7 +280,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The validatorUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidatorUpdates")
+@kotlin.jvm.JvmName("plusAssignValidatorUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>.plusAssign(value: tendermint.abci.Types.ValidatorUpdate) {
       add(value)
@@ -296,7 +294,7 @@ public object ResponseFinalizeBlockKt {
      * @param values The validatorUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidatorUpdates")
+@kotlin.jvm.JvmName("addAllValidatorUpdates")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       _builder.addAllValidatorUpdates(values)
     }
@@ -309,7 +307,7 @@ public object ResponseFinalizeBlockKt {
      * @param values The validatorUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidatorUpdates")
+@kotlin.jvm.JvmName("plusAssignAllValidatorUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       addAll(values)
@@ -324,7 +322,7 @@ public object ResponseFinalizeBlockKt {
      * @param value The validatorUpdates to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidatorUpdates")
+@kotlin.jvm.JvmName("setValidatorUpdates")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.setValidatorUpdates(index, value)
     }
@@ -336,11 +334,10 @@ public object ResponseFinalizeBlockKt {
      * `repeated .tendermint.abci.ValidatorUpdate validator_updates = 3 [json_name = "validatorUpdates", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidatorUpdates")
+@kotlin.jvm.JvmName("clearValidatorUpdates")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorUpdatesProxy>.clear() {
       _builder.clearValidatorUpdates()
     }
-
 
     /**
      * ```
@@ -350,10 +347,10 @@ public object ResponseFinalizeBlockKt {
      * `.tendermint.types.ConsensusParams consensus_param_updates = 4 [json_name = "consensusParamUpdates"];`
      */
     public var consensusParamUpdates: tendermint.types.Params.ConsensusParams
-      @JvmName("getConsensusParamUpdates")
-      get() = _builder.consensusParamUpdates
-      @JvmName("setConsensusParamUpdates")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusParamUpdates")
+        get() = _builder.consensusParamUpdates
+      @kotlin.jvm.JvmName("setConsensusParamUpdates")
+        set(value) {
         _builder.consensusParamUpdates = value
       }
     /**
@@ -390,10 +387,10 @@ public object ResponseFinalizeBlockKt {
      * `bytes app_hash = 5 [json_name = "appHash"];`
      */
     public var appHash: com.google.protobuf.ByteString
-      @JvmName("getAppHash")
-      get() = _builder.appHash
-      @JvmName("setAppHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppHash")
+        get() = _builder.appHash
+      @kotlin.jvm.JvmName("setAppHash")
+        set(value) {
         _builder.appHash = value
       }
     /**

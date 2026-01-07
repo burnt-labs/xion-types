@@ -41,10 +41,10 @@ public object QueryUpgradedConsensusStateResponseKt {
      * `.google.protobuf.Any upgraded_consensus_state = 1 [json_name = "upgradedConsensusState"];`
      */
     public var upgradedConsensusState: com.google.protobuf.Any
-      @JvmName("getUpgradedConsensusState")
-      get() = _builder.upgradedConsensusState
-      @JvmName("setUpgradedConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpgradedConsensusState")
+        get() = _builder.upgradedConsensusState
+      @kotlin.jvm.JvmName("setUpgradedConsensusState")
+        set(value) {
         _builder.upgradedConsensusState = value
       }
     /**

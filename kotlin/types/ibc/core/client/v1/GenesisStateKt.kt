@@ -47,7 +47,7 @@ public object GenesisStateKt {
      */
      public val clients: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.clientsList
       )
     /**
@@ -59,7 +59,7 @@ public object GenesisStateKt {
      * @param value The clients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClients")
+@kotlin.jvm.JvmName("addClients")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>.add(value: ibc.core.client.v1.Client.IdentifiedClientState) {
       _builder.addClients(value)
     }
@@ -72,7 +72,7 @@ public object GenesisStateKt {
      * @param value The clients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClients")
+@kotlin.jvm.JvmName("plusAssignClients")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>.plusAssign(value: ibc.core.client.v1.Client.IdentifiedClientState) {
       add(value)
@@ -86,7 +86,7 @@ public object GenesisStateKt {
      * @param values The clients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClients")
+@kotlin.jvm.JvmName("addAllClients")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.IdentifiedClientState>) {
       _builder.addAllClients(values)
     }
@@ -99,7 +99,7 @@ public object GenesisStateKt {
      * @param values The clients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClients")
+@kotlin.jvm.JvmName("plusAssignAllClients")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.IdentifiedClientState>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object GenesisStateKt {
      * @param value The clients to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClients")
+@kotlin.jvm.JvmName("setClients")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Client.IdentifiedClientState) {
       _builder.setClients(index, value)
     }
@@ -126,11 +126,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.client.v1.IdentifiedClientState clients = 1 [json_name = "clients", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "IdentifiedClientStates"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClients")
+@kotlin.jvm.JvmName("clearClients")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientsProxy>.clear() {
       _builder.clearClients()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -147,7 +146,7 @@ public object GenesisStateKt {
      */
      public val clientsConsensus: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.clientsConsensusList
       )
     /**
@@ -159,7 +158,7 @@ public object GenesisStateKt {
      * @param value The clientsConsensus to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClientsConsensus")
+@kotlin.jvm.JvmName("addClientsConsensus")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>.add(value: ibc.core.client.v1.Client.ClientConsensusStates) {
       _builder.addClientsConsensus(value)
     }
@@ -172,7 +171,7 @@ public object GenesisStateKt {
      * @param value The clientsConsensus to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClientsConsensus")
+@kotlin.jvm.JvmName("plusAssignClientsConsensus")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>.plusAssign(value: ibc.core.client.v1.Client.ClientConsensusStates) {
       add(value)
@@ -186,7 +185,7 @@ public object GenesisStateKt {
      * @param values The clientsConsensus to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClientsConsensus")
+@kotlin.jvm.JvmName("addAllClientsConsensus")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.ClientConsensusStates>) {
       _builder.addAllClientsConsensus(values)
     }
@@ -199,7 +198,7 @@ public object GenesisStateKt {
      * @param values The clientsConsensus to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClientsConsensus")
+@kotlin.jvm.JvmName("plusAssignAllClientsConsensus")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.ClientConsensusStates>) {
       addAll(values)
@@ -214,7 +213,7 @@ public object GenesisStateKt {
      * @param value The clientsConsensus to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClientsConsensus")
+@kotlin.jvm.JvmName("setClientsConsensus")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Client.ClientConsensusStates) {
       _builder.setClientsConsensus(index, value)
     }
@@ -226,11 +225,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.client.v1.ClientConsensusStates clients_consensus = 2 [json_name = "clientsConsensus", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "ClientsConsensusStates"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClientsConsensus")
+@kotlin.jvm.JvmName("clearClientsConsensus")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ClientConsensusStates, ClientsConsensusProxy>.clear() {
       _builder.clearClientsConsensus()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -247,7 +245,7 @@ public object GenesisStateKt {
      */
      public val clientsMetadata: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.clientsMetadataList
       )
     /**
@@ -259,7 +257,7 @@ public object GenesisStateKt {
      * @param value The clientsMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClientsMetadata")
+@kotlin.jvm.JvmName("addClientsMetadata")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>.add(value: ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata) {
       _builder.addClientsMetadata(value)
     }
@@ -272,7 +270,7 @@ public object GenesisStateKt {
      * @param value The clientsMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClientsMetadata")
+@kotlin.jvm.JvmName("plusAssignClientsMetadata")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>.plusAssign(value: ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata) {
       add(value)
@@ -286,7 +284,7 @@ public object GenesisStateKt {
      * @param values The clientsMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClientsMetadata")
+@kotlin.jvm.JvmName("addAllClientsMetadata")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata>) {
       _builder.addAllClientsMetadata(values)
     }
@@ -299,7 +297,7 @@ public object GenesisStateKt {
      * @param values The clientsMetadata to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClientsMetadata")
+@kotlin.jvm.JvmName("plusAssignAllClientsMetadata")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata>) {
       addAll(values)
@@ -314,7 +312,7 @@ public object GenesisStateKt {
      * @param value The clientsMetadata to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClientsMetadata")
+@kotlin.jvm.JvmName("setClientsMetadata")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata) {
       _builder.setClientsMetadata(index, value)
     }
@@ -326,20 +324,19 @@ public object GenesisStateKt {
      * `repeated .ibc.core.client.v1.IdentifiedGenesisMetadata clients_metadata = 3 [json_name = "clientsMetadata", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClientsMetadata")
+@kotlin.jvm.JvmName("clearClientsMetadata")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Genesis.IdentifiedGenesisMetadata, ClientsMetadataProxy>.clear() {
       _builder.clearClientsMetadata()
     }
-
 
     /**
      * `.ibc.core.client.v1.Params params = 4 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: ibc.core.client.v1.Client.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -368,10 +365,10 @@ public object GenesisStateKt {
      * `bool create_localhost = 5 [json_name = "createLocalhost", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field createLocalhost is deprecated") public var createLocalhost: kotlin.Boolean
-      @JvmName("getCreateLocalhost")
-      get() = _builder.createLocalhost
-      @JvmName("setCreateLocalhost")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreateLocalhost")
+        get() = _builder.createLocalhost
+      @kotlin.jvm.JvmName("setCreateLocalhost")
+        set(value) {
         _builder.createLocalhost = value
       }
     /**
@@ -394,10 +391,10 @@ public object GenesisStateKt {
      * `uint64 next_client_sequence = 6 [json_name = "nextClientSequence"];`
      */
     public var nextClientSequence: kotlin.Long
-      @JvmName("getNextClientSequence")
-      get() = _builder.nextClientSequence
-      @JvmName("setNextClientSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextClientSequence")
+        get() = _builder.nextClientSequence
+      @kotlin.jvm.JvmName("setNextClientSequence")
+        set(value) {
         _builder.nextClientSequence = value
       }
     /**

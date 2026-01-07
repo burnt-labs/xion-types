@@ -40,10 +40,10 @@ public object DescriptionKt {
      * `string moniker = 1 [json_name = "moniker"];`
      */
     public var moniker: kotlin.String
-      @JvmName("getMoniker")
-      get() = _builder.moniker
-      @JvmName("setMoniker")
-      set(value) {
+      @kotlin.jvm.JvmName("getMoniker")
+        get() = _builder.moniker
+      @kotlin.jvm.JvmName("setMoniker")
+        set(value) {
         _builder.moniker = value
       }
     /**
@@ -65,10 +65,10 @@ public object DescriptionKt {
      * `string identity = 2 [json_name = "identity"];`
      */
     public var identity: kotlin.String
-      @JvmName("getIdentity")
-      get() = _builder.identity
-      @JvmName("setIdentity")
-      set(value) {
+      @kotlin.jvm.JvmName("getIdentity")
+        get() = _builder.identity
+      @kotlin.jvm.JvmName("setIdentity")
+        set(value) {
         _builder.identity = value
       }
     /**
@@ -90,10 +90,10 @@ public object DescriptionKt {
      * `string website = 3 [json_name = "website"];`
      */
     public var website: kotlin.String
-      @JvmName("getWebsite")
-      get() = _builder.website
-      @JvmName("setWebsite")
-      set(value) {
+      @kotlin.jvm.JvmName("getWebsite")
+        get() = _builder.website
+      @kotlin.jvm.JvmName("setWebsite")
+        set(value) {
         _builder.website = value
       }
     /**
@@ -115,10 +115,10 @@ public object DescriptionKt {
      * `string security_contact = 4 [json_name = "securityContact"];`
      */
     public var securityContact: kotlin.String
-      @JvmName("getSecurityContact")
-      get() = _builder.securityContact
-      @JvmName("setSecurityContact")
-      set(value) {
+      @kotlin.jvm.JvmName("getSecurityContact")
+        get() = _builder.securityContact
+      @kotlin.jvm.JvmName("setSecurityContact")
+        set(value) {
         _builder.securityContact = value
       }
     /**
@@ -140,10 +140,10 @@ public object DescriptionKt {
      * `string details = 5 [json_name = "details"];`
      */
     public var details: kotlin.String
-      @JvmName("getDetails")
-      get() = _builder.details
-      @JvmName("setDetails")
-      set(value) {
+      @kotlin.jvm.JvmName("getDetails")
+        get() = _builder.details
+      @kotlin.jvm.JvmName("setDetails")
+        set(value) {
         _builder.details = value
       }
     /**

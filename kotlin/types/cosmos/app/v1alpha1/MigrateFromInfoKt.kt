@@ -42,10 +42,10 @@ public object MigrateFromInfoKt {
      * `string module = 1 [json_name = "module"];`
      */
     public var module: kotlin.String
-      @JvmName("getModule")
-      get() = _builder.module
-      @JvmName("setModule")
-      set(value) {
+      @kotlin.jvm.JvmName("getModule")
+        get() = _builder.module
+      @kotlin.jvm.JvmName("setModule")
+        set(value) {
         _builder.module = value
       }
     /**

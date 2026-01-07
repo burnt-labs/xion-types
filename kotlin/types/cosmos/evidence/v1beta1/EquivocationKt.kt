@@ -41,10 +41,10 @@ public object EquivocationKt {
      * `int64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -66,10 +66,10 @@ public object EquivocationKt {
      * `.google.protobuf.Timestamp time = 2 [json_name = "time", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var time: com.google.protobuf.Timestamp
-      @JvmName("getTime")
-      get() = _builder.time
-      @JvmName("setTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTime")
+        get() = _builder.time
+      @kotlin.jvm.JvmName("setTime")
+        set(value) {
         _builder.time = value
       }
     /**
@@ -105,10 +105,10 @@ public object EquivocationKt {
      * `int64 power = 3 [json_name = "power"];`
      */
     public var power: kotlin.Long
-      @JvmName("getPower")
-      get() = _builder.power
-      @JvmName("setPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getPower")
+        get() = _builder.power
+      @kotlin.jvm.JvmName("setPower")
+        set(value) {
         _builder.power = value
       }
     /**
@@ -130,10 +130,10 @@ public object EquivocationKt {
      * `string consensus_address = 4 [json_name = "consensusAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var consensusAddress: kotlin.String
-      @JvmName("getConsensusAddress")
-      get() = _builder.consensusAddress
-      @JvmName("setConsensusAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusAddress")
+        get() = _builder.consensusAddress
+      @kotlin.jvm.JvmName("setConsensusAddress")
+        set(value) {
         _builder.consensusAddress = value
       }
     /**

@@ -42,10 +42,10 @@ public object ParamsKt {
      * `uint64 max_expected_time_per_block = 1 [json_name = "maxExpectedTimePerBlock"];`
      */
     public var maxExpectedTimePerBlock: kotlin.Long
-      @JvmName("getMaxExpectedTimePerBlock")
-      get() = _builder.maxExpectedTimePerBlock
-      @JvmName("setMaxExpectedTimePerBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxExpectedTimePerBlock")
+        get() = _builder.maxExpectedTimePerBlock
+      @kotlin.jvm.JvmName("setMaxExpectedTimePerBlock")
+        set(value) {
         _builder.maxExpectedTimePerBlock = value
       }
     /**

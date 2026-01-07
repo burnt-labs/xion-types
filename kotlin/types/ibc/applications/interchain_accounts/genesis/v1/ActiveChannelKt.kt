@@ -37,10 +37,10 @@ public object ActiveChannelKt {
      * `string connection_id = 1 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -54,10 +54,10 @@ public object ActiveChannelKt {
      * `string port_id = 2 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -71,10 +71,10 @@ public object ActiveChannelKt {
      * `string channel_id = 3 [json_name = "channelId"];`
      */
     public var channelId: kotlin.String
-      @JvmName("getChannelId")
-      get() = _builder.channelId
-      @JvmName("setChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelId")
+        get() = _builder.channelId
+      @kotlin.jvm.JvmName("setChannelId")
+        set(value) {
         _builder.channelId = value
       }
     /**
@@ -88,10 +88,10 @@ public object ActiveChannelKt {
      * `bool is_middleware_enabled = 4 [json_name = "isMiddlewareEnabled"];`
      */
     public var isMiddlewareEnabled: kotlin.Boolean
-      @JvmName("getIsMiddlewareEnabled")
-      get() = _builder.isMiddlewareEnabled
-      @JvmName("setIsMiddlewareEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getIsMiddlewareEnabled")
+        get() = _builder.isMiddlewareEnabled
+      @kotlin.jvm.JvmName("setIsMiddlewareEnabled")
+        set(value) {
         _builder.isMiddlewareEnabled = value
       }
     /**

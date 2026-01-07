@@ -36,10 +36,10 @@ public object SignBytesKt {
      * `uint64 sequence = 1 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -53,10 +53,10 @@ public object SignBytesKt {
      * `uint64 timestamp = 2 [json_name = "timestamp"];`
      */
     public var timestamp: kotlin.Long
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -70,10 +70,10 @@ public object SignBytesKt {
      * `string diversifier = 3 [json_name = "diversifier"];`
      */
     public var diversifier: kotlin.String
-      @JvmName("getDiversifier")
-      get() = _builder.diversifier
-      @JvmName("setDiversifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getDiversifier")
+        get() = _builder.diversifier
+      @kotlin.jvm.JvmName("setDiversifier")
+        set(value) {
         _builder.diversifier = value
       }
     /**
@@ -91,17 +91,17 @@ public object SignBytesKt {
      * `.ibc.lightclients.solomachine.v2.DataType data_type = 4 [json_name = "dataType"];`
      */
     public var dataType: ibc.lightclients.solomachine.v2.Solomachine.DataType
-      @JvmName("getDataType")
-      get() = _builder.dataType
-      @JvmName("setDataType")
-      set(value) {
+      @kotlin.jvm.JvmName("getDataType")
+        get() = _builder.dataType
+      @kotlin.jvm.JvmName("setDataType")
+        set(value) {
         _builder.dataType = value
       }
     public var dataTypeValue: kotlin.Int
-      @JvmName("getDataTypeValue")
-      get() = _builder.dataTypeValue
-      @JvmName("setDataTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getDataTypeValue")
+        get() = _builder.dataTypeValue
+      @kotlin.jvm.JvmName("setDataTypeValue")
+        set(value) {
         _builder.dataTypeValue = value
       }
     /**
@@ -123,10 +123,10 @@ public object SignBytesKt {
      * `bytes data = 5 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

@@ -36,10 +36,10 @@ public object DuplicateVoteEvidenceKt {
      * `.tendermint.types.Vote vote_a = 1 [json_name = "voteA"];`
      */
     public var voteA: tendermint.types.Types.Vote
-      @JvmName("getVoteA")
-      get() = _builder.voteA
-      @JvmName("setVoteA")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoteA")
+        get() = _builder.voteA
+      @kotlin.jvm.JvmName("setVoteA")
+        set(value) {
         _builder.voteA = value
       }
     /**
@@ -63,10 +63,10 @@ public object DuplicateVoteEvidenceKt {
      * `.tendermint.types.Vote vote_b = 2 [json_name = "voteB"];`
      */
     public var voteB: tendermint.types.Types.Vote
-      @JvmName("getVoteB")
-      get() = _builder.voteB
-      @JvmName("setVoteB")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoteB")
+        get() = _builder.voteB
+      @kotlin.jvm.JvmName("setVoteB")
+        set(value) {
         _builder.voteB = value
       }
     /**
@@ -90,10 +90,10 @@ public object DuplicateVoteEvidenceKt {
      * `int64 total_voting_power = 3 [json_name = "totalVotingPower"];`
      */
     public var totalVotingPower: kotlin.Long
-      @JvmName("getTotalVotingPower")
-      get() = _builder.totalVotingPower
-      @JvmName("setTotalVotingPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalVotingPower")
+        get() = _builder.totalVotingPower
+      @kotlin.jvm.JvmName("setTotalVotingPower")
+        set(value) {
         _builder.totalVotingPower = value
       }
     /**
@@ -107,10 +107,10 @@ public object DuplicateVoteEvidenceKt {
      * `int64 validator_power = 4 [json_name = "validatorPower"];`
      */
     public var validatorPower: kotlin.Long
-      @JvmName("getValidatorPower")
-      get() = _builder.validatorPower
-      @JvmName("setValidatorPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorPower")
+        get() = _builder.validatorPower
+      @kotlin.jvm.JvmName("setValidatorPower")
+        set(value) {
         _builder.validatorPower = value
       }
     /**
@@ -124,10 +124,10 @@ public object DuplicateVoteEvidenceKt {
      * `.google.protobuf.Timestamp timestamp = 5 [json_name = "timestamp", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**

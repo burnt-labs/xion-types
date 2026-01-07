@@ -32,10 +32,10 @@ public object MsgForceTransferKt {
      * `string sender = 1 [json_name = "sender", (.gogoproto.moretags) = "yaml:\"sender\""];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -49,10 +49,10 @@ public object MsgForceTransferKt {
      * `.cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.amino.encoding) = "legacy_coin"];`
      */
     public var amount: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**
@@ -76,10 +76,10 @@ public object MsgForceTransferKt {
      * `string transferFromAddress = 3 [json_name = "transferFromAddress", (.gogoproto.moretags) = "yaml:\"transfer_from_address\""];`
      */
     public var transferFromAddress: kotlin.String
-      @JvmName("getTransferFromAddress")
-      get() = _builder.transferFromAddress
-      @JvmName("setTransferFromAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getTransferFromAddress")
+        get() = _builder.transferFromAddress
+      @kotlin.jvm.JvmName("setTransferFromAddress")
+        set(value) {
         _builder.transferFromAddress = value
       }
     /**
@@ -93,10 +93,10 @@ public object MsgForceTransferKt {
      * `string transferToAddress = 4 [json_name = "transferToAddress", (.gogoproto.moretags) = "yaml:\"transfer_to_address\""];`
      */
     public var transferToAddress: kotlin.String
-      @JvmName("getTransferToAddress")
-      get() = _builder.transferToAddress
-      @JvmName("setTransferToAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getTransferToAddress")
+        get() = _builder.transferToAddress
+      @kotlin.jvm.JvmName("setTransferToAddress")
+        set(value) {
         _builder.transferToAddress = value
       }
     /**

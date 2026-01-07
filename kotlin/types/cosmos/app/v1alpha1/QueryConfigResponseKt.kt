@@ -40,10 +40,10 @@ public object QueryConfigResponseKt {
      * `.cosmos.app.v1alpha1.Config config = 1 [json_name = "config"];`
      */
     public var config: cosmos.app.v1alpha1.ConfigOuterClass.Config
-      @JvmName("getConfig")
-      get() = _builder.config
-      @JvmName("setConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getConfig")
+        get() = _builder.config
+      @kotlin.jvm.JvmName("setConfig")
+        set(value) {
         _builder.config = value
       }
     /**

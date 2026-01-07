@@ -41,17 +41,17 @@ public object PermissionsKt {
      * `.cosmos.circuit.v1.Permissions.Level level = 1 [json_name = "level"];`
      */
     public var level: cosmos.circuit.v1.Types.Permissions.Level
-      @JvmName("getLevel")
-      get() = _builder.level
-      @JvmName("setLevel")
-      set(value) {
+      @kotlin.jvm.JvmName("getLevel")
+        get() = _builder.level
+      @kotlin.jvm.JvmName("setLevel")
+        set(value) {
         _builder.level = value
       }
     public var levelValue: kotlin.Int
-      @JvmName("getLevelValue")
-      get() = _builder.levelValue
-      @JvmName("setLevelValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getLevelValue")
+        get() = _builder.levelValue
+      @kotlin.jvm.JvmName("setLevelValue")
+        set(value) {
         _builder.levelValue = value
       }
     /**
@@ -82,7 +82,7 @@ public object PermissionsKt {
      * @return A list containing the limitTypeUrls.
      */
     public val limitTypeUrls: com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.limitTypeUrlsList
       )
@@ -97,7 +97,7 @@ public object PermissionsKt {
      * @param value The limitTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addLimitTypeUrls")
+@kotlin.jvm.JvmName("addLimitTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>.add(value: kotlin.String) {
       _builder.addLimitTypeUrls(value)
     }
@@ -112,7 +112,7 @@ public object PermissionsKt {
      * @param value The limitTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignLimitTypeUrls")
+@kotlin.jvm.JvmName("plusAssignLimitTypeUrls")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -128,7 +128,7 @@ public object PermissionsKt {
      * @param values The limitTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllLimitTypeUrls")
+@kotlin.jvm.JvmName("addAllLimitTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllLimitTypeUrls(values)
     }
@@ -143,7 +143,7 @@ public object PermissionsKt {
      * @param values The limitTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllLimitTypeUrls")
+@kotlin.jvm.JvmName("plusAssignAllLimitTypeUrls")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -160,7 +160,7 @@ public object PermissionsKt {
      * @param value The limitTypeUrls to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setLimitTypeUrls")
+@kotlin.jvm.JvmName("setLimitTypeUrls")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setLimitTypeUrls(index, value)
     }/**
@@ -173,7 +173,7 @@ public object PermissionsKt {
      * `repeated string limit_type_urls = 2 [json_name = "limitTypeUrls"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearLimitTypeUrls")
+@kotlin.jvm.JvmName("setLimitTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, LimitTypeUrlsProxy>.clear() {
       _builder.clearLimitTypeUrls()
     }}

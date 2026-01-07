@@ -37,10 +37,10 @@ public object FractionKt {
      * `uint64 numerator = 1 [json_name = "numerator"];`
      */
     public var numerator: kotlin.Long
-      @JvmName("getNumerator")
-      get() = _builder.numerator
-      @JvmName("setNumerator")
-      set(value) {
+      @kotlin.jvm.JvmName("getNumerator")
+        get() = _builder.numerator
+      @kotlin.jvm.JvmName("setNumerator")
+        set(value) {
         _builder.numerator = value
       }
     /**
@@ -54,10 +54,10 @@ public object FractionKt {
      * `uint64 denominator = 2 [json_name = "denominator"];`
      */
     public var denominator: kotlin.Long
-      @JvmName("getDenominator")
-      get() = _builder.denominator
-      @JvmName("setDenominator")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenominator")
+        get() = _builder.denominator
+      @kotlin.jvm.JvmName("setDenominator")
+        set(value) {
         _builder.denominator = value
       }
     /**

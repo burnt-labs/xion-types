@@ -48,7 +48,7 @@ public object AcknowledgementKt {
      */
      public val appAcknowledgements: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.appAcknowledgementsList
       )
     /**
@@ -56,7 +56,7 @@ public object AcknowledgementKt {
      * @param value The appAcknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAppAcknowledgements")
+@kotlin.jvm.JvmName("addAppAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addAppAcknowledgements(value)
     }/**
@@ -64,7 +64,7 @@ public object AcknowledgementKt {
      * @param value The appAcknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAppAcknowledgements")
+@kotlin.jvm.JvmName("plusAssignAppAcknowledgements")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -73,7 +73,7 @@ public object AcknowledgementKt {
      * @param values The appAcknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAppAcknowledgements")
+@kotlin.jvm.JvmName("addAllAppAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllAppAcknowledgements(values)
     }/**
@@ -81,7 +81,7 @@ public object AcknowledgementKt {
      * @param values The appAcknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAppAcknowledgements")
+@kotlin.jvm.JvmName("plusAssignAllAppAcknowledgements")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -91,14 +91,14 @@ public object AcknowledgementKt {
      * @param value The appAcknowledgements to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAppAcknowledgements")
+@kotlin.jvm.JvmName("setAppAcknowledgements")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setAppAcknowledgements(index, value)
     }/**
      * `repeated bytes app_acknowledgements = 1 [json_name = "appAcknowledgements"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAppAcknowledgements")
+@kotlin.jvm.JvmName("clearAppAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AppAcknowledgementsProxy>.clear() {
       _builder.clearAppAcknowledgements()
     }}

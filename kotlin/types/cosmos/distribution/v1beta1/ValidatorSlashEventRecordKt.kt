@@ -40,10 +40,10 @@ public object ValidatorSlashEventRecordKt {
      * `string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -65,10 +65,10 @@ public object ValidatorSlashEventRecordKt {
      * `uint64 height = 2 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -90,10 +90,10 @@ public object ValidatorSlashEventRecordKt {
      * `uint64 period = 3 [json_name = "period"];`
      */
     public var period: kotlin.Long
-      @JvmName("getPeriod")
-      get() = _builder.period
-      @JvmName("setPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getPeriod")
+        get() = _builder.period
+      @kotlin.jvm.JvmName("setPeriod")
+        set(value) {
         _builder.period = value
       }
     /**
@@ -115,10 +115,10 @@ public object ValidatorSlashEventRecordKt {
      * `.cosmos.distribution.v1beta1.ValidatorSlashEvent validator_slash_event = 4 [json_name = "validatorSlashEvent", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var validatorSlashEvent: cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent
-      @JvmName("getValidatorSlashEvent")
-      get() = _builder.validatorSlashEvent
-      @JvmName("setValidatorSlashEvent")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorSlashEvent")
+        get() = _builder.validatorSlashEvent
+      @kotlin.jvm.JvmName("setValidatorSlashEvent")
+        set(value) {
         _builder.validatorSlashEvent = value
       }
     /**

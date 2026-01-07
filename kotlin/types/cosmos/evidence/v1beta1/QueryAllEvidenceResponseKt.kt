@@ -48,7 +48,7 @@ public object QueryAllEvidenceResponseKt {
      */
      public val evidence: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.evidenceList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryAllEvidenceResponseKt {
      * @param value The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvidence")
+@kotlin.jvm.JvmName("addEvidence")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>.add(value: com.google.protobuf.Any) {
       _builder.addEvidence(value)
     }
@@ -73,7 +73,7 @@ public object QueryAllEvidenceResponseKt {
      * @param value The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvidence")
+@kotlin.jvm.JvmName("plusAssignEvidence")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryAllEvidenceResponseKt {
      * @param values The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvidence")
+@kotlin.jvm.JvmName("addAllEvidence")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllEvidence(values)
     }
@@ -100,7 +100,7 @@ public object QueryAllEvidenceResponseKt {
      * @param values The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvidence")
+@kotlin.jvm.JvmName("plusAssignAllEvidence")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryAllEvidenceResponseKt {
      * @param value The evidence to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvidence")
+@kotlin.jvm.JvmName("setEvidence")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setEvidence(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryAllEvidenceResponseKt {
      * `repeated .google.protobuf.Any evidence = 1 [json_name = "evidence"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvidence")
+@kotlin.jvm.JvmName("clearEvidence")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, EvidenceProxy>.clear() {
       _builder.clearEvidence()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryAllEvidenceResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

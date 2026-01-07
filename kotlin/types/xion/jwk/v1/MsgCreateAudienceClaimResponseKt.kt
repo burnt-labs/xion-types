@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun msgCreateAudienceClaimResponse(block: xion.jwk.v1.MsgCreateAudienceClaimResponseKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgCreateAudienceClaimResponse =
   xion.jwk.v1.MsgCreateAudienceClaimResponseKt.Dsl._create(xion.jwk.v1.Tx.MsgCreateAudienceClaimResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgCreateAudienceClaimResponse defines the response for creating an audience
+ * claim
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgCreateAudienceClaimResponse`
  */
 public object MsgCreateAudienceClaimResponseKt {

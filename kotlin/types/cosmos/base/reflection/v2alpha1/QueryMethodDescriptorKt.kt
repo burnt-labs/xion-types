@@ -42,10 +42,10 @@ public object QueryMethodDescriptorKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -68,10 +68,10 @@ public object QueryMethodDescriptorKt {
      * `string full_query_path = 2 [json_name = "fullQueryPath"];`
      */
     public var fullQueryPath: kotlin.String
-      @JvmName("getFullQueryPath")
-      get() = _builder.fullQueryPath
-      @JvmName("setFullQueryPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getFullQueryPath")
+        get() = _builder.fullQueryPath
+      @kotlin.jvm.JvmName("setFullQueryPath")
+        set(value) {
         _builder.fullQueryPath = value
       }
     /**

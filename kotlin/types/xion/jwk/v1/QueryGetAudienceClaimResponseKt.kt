@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun queryGetAudienceClaimResponse(block: xion.jwk.v1.QueryGetAudienceClaimResponseKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryGetAudienceClaimResponse =
   xion.jwk.v1.QueryGetAudienceClaimResponseKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryGetAudienceClaimResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryGetAudienceClaimResponse is the legacy response type for querying an
+ * audience claim (deprecated)
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryGetAudienceClaimResponse`
  */
 public object QueryGetAudienceClaimResponseKt {
@@ -29,22 +34,34 @@ public object QueryGetAudienceClaimResponseKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.QueryGetAudienceClaimResponse = _builder.build()
 
     /**
+     * ```
+     * The audience claim
+     * ```
+     *
      * `.xion.jwk.v1.AudienceClaim claim = 1 [json_name = "claim"];`
      */
     public var claim: xion.jwk.v1.AudienceOuterClass.AudienceClaim
-      @JvmName("getClaim")
-      get() = _builder.claim
-      @JvmName("setClaim")
-      set(value) {
+      @kotlin.jvm.JvmName("getClaim")
+        get() = _builder.claim
+      @kotlin.jvm.JvmName("setClaim")
+        set(value) {
         _builder.claim = value
       }
     /**
+     * ```
+     * The audience claim
+     * ```
+     *
      * `.xion.jwk.v1.AudienceClaim claim = 1 [json_name = "claim"];`
      */
     public fun clearClaim() {
       _builder.clearClaim()
     }
     /**
+     * ```
+     * The audience claim
+     * ```
+     *
      * `.xion.jwk.v1.AudienceClaim claim = 1 [json_name = "claim"];`
      * @return Whether the claim field is set.
      */

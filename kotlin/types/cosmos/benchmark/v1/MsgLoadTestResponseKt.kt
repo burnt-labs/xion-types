@@ -36,10 +36,10 @@ public object MsgLoadTestResponseKt {
      * `uint64 total_time = 1 [json_name = "totalTime"];`
      */
     public var totalTime: kotlin.Long
-      @JvmName("getTotalTime")
-      get() = _builder.totalTime
-      @JvmName("setTotalTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalTime")
+        get() = _builder.totalTime
+      @kotlin.jvm.JvmName("setTotalTime")
+        set(value) {
         _builder.totalTime = value
       }
     /**
@@ -53,10 +53,10 @@ public object MsgLoadTestResponseKt {
      * `uint64 total_errors = 2 [json_name = "totalErrors"];`
      */
     public var totalErrors: kotlin.Long
-      @JvmName("getTotalErrors")
-      get() = _builder.totalErrors
-      @JvmName("setTotalErrors")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalErrors")
+        get() = _builder.totalErrors
+      @kotlin.jvm.JvmName("setTotalErrors")
+        set(value) {
         _builder.totalErrors = value
       }
     /**

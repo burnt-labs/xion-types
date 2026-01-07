@@ -41,10 +41,10 @@ public object QueryParamsRequestKt {
      * `string params_type = 1 [json_name = "paramsType"];`
      */
     public var paramsType: kotlin.String
-      @JvmName("getParamsType")
-      get() = _builder.paramsType
-      @JvmName("setParamsType")
-      set(value) {
+      @kotlin.jvm.JvmName("getParamsType")
+        get() = _builder.paramsType
+      @kotlin.jvm.JvmName("setParamsType")
+        set(value) {
         _builder.paramsType = value
       }
     /**

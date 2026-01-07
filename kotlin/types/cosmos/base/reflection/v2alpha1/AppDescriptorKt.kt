@@ -41,10 +41,10 @@ public object AppDescriptorKt {
      * `.cosmos.base.reflection.v2alpha1.AuthnDescriptor authn = 1 [json_name = "authn"];`
      */
     public var authn: cosmos.base.reflection.v2alpha1.Reflection.AuthnDescriptor
-      @JvmName("getAuthn")
-      get() = _builder.authn
-      @JvmName("setAuthn")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthn")
+        get() = _builder.authn
+      @kotlin.jvm.JvmName("setAuthn")
+        set(value) {
         _builder.authn = value
       }
     /**
@@ -82,10 +82,10 @@ public object AppDescriptorKt {
      * `.cosmos.base.reflection.v2alpha1.ChainDescriptor chain = 2 [json_name = "chain"];`
      */
     public var chain: cosmos.base.reflection.v2alpha1.Reflection.ChainDescriptor
-      @JvmName("getChain")
-      get() = _builder.chain
-      @JvmName("setChain")
-      set(value) {
+      @kotlin.jvm.JvmName("getChain")
+        get() = _builder.chain
+      @kotlin.jvm.JvmName("setChain")
+        set(value) {
         _builder.chain = value
       }
     /**
@@ -121,10 +121,10 @@ public object AppDescriptorKt {
      * `.cosmos.base.reflection.v2alpha1.CodecDescriptor codec = 3 [json_name = "codec"];`
      */
     public var codec: cosmos.base.reflection.v2alpha1.Reflection.CodecDescriptor
-      @JvmName("getCodec")
-      get() = _builder.codec
-      @JvmName("setCodec")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodec")
+        get() = _builder.codec
+      @kotlin.jvm.JvmName("setCodec")
+        set(value) {
         _builder.codec = value
       }
     /**
@@ -160,10 +160,10 @@ public object AppDescriptorKt {
      * `.cosmos.base.reflection.v2alpha1.ConfigurationDescriptor configuration = 4 [json_name = "configuration"];`
      */
     public var configuration: cosmos.base.reflection.v2alpha1.Reflection.ConfigurationDescriptor
-      @JvmName("getConfiguration")
-      get() = _builder.configuration
-      @JvmName("setConfiguration")
-      set(value) {
+      @kotlin.jvm.JvmName("getConfiguration")
+        get() = _builder.configuration
+      @kotlin.jvm.JvmName("setConfiguration")
+        set(value) {
         _builder.configuration = value
       }
     /**
@@ -199,10 +199,10 @@ public object AppDescriptorKt {
      * `.cosmos.base.reflection.v2alpha1.QueryServicesDescriptor query_services = 5 [json_name = "queryServices"];`
      */
     public var queryServices: cosmos.base.reflection.v2alpha1.Reflection.QueryServicesDescriptor
-      @JvmName("getQueryServices")
-      get() = _builder.queryServices
-      @JvmName("setQueryServices")
-      set(value) {
+      @kotlin.jvm.JvmName("getQueryServices")
+        get() = _builder.queryServices
+      @kotlin.jvm.JvmName("setQueryServices")
+        set(value) {
         _builder.queryServices = value
       }
     /**
@@ -238,10 +238,10 @@ public object AppDescriptorKt {
      * `.cosmos.base.reflection.v2alpha1.TxDescriptor tx = 6 [json_name = "tx"];`
      */
     public var tx: cosmos.base.reflection.v2alpha1.Reflection.TxDescriptor
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**

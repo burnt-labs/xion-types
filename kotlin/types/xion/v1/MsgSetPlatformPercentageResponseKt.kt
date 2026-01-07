@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun msgSetPlatformPercentageResponse(block: xion.v1.MsgSetPlatformPercentageResponseKt.Dsl.() -> kotlin.Unit): xion.v1.Tx.MsgSetPlatformPercentageResponse =
   xion.v1.MsgSetPlatformPercentageResponseKt.Dsl._create(xion.v1.Tx.MsgSetPlatformPercentageResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgSetPlatformPercentageResponse defines the response for setting platform
+ * percentage
+ * ```
+ *
  * Protobuf type `xion.v1.MsgSetPlatformPercentageResponse`
  */
 public object MsgSetPlatformPercentageResponseKt {

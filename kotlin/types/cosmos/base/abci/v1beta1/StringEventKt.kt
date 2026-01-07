@@ -37,10 +37,10 @@ public object StringEventKt {
      * `string type = 1 [json_name = "type"];`
      */
     public var type: kotlin.String
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     /**
@@ -61,7 +61,7 @@ public object StringEventKt {
      */
      public val attributes: com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.attributesList
       )
     /**
@@ -69,7 +69,7 @@ public object StringEventKt {
      * @param value The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAttributes")
+@kotlin.jvm.JvmName("addAttributes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>.add(value: cosmos.base.abci.v1beta1.Abci.Attribute) {
       _builder.addAttributes(value)
     }
@@ -78,7 +78,7 @@ public object StringEventKt {
      * @param value The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAttributes")
+@kotlin.jvm.JvmName("plusAssignAttributes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>.plusAssign(value: cosmos.base.abci.v1beta1.Abci.Attribute) {
       add(value)
@@ -88,7 +88,7 @@ public object StringEventKt {
      * @param values The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAttributes")
+@kotlin.jvm.JvmName("addAllAttributes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.Attribute>) {
       _builder.addAllAttributes(values)
     }
@@ -97,7 +97,7 @@ public object StringEventKt {
      * @param values The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAttributes")
+@kotlin.jvm.JvmName("plusAssignAllAttributes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.Attribute>) {
       addAll(values)
@@ -108,7 +108,7 @@ public object StringEventKt {
      * @param value The attributes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAttributes")
+@kotlin.jvm.JvmName("setAttributes")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>.set(index: kotlin.Int, value: cosmos.base.abci.v1beta1.Abci.Attribute) {
       _builder.setAttributes(index, value)
     }
@@ -116,11 +116,10 @@ public object StringEventKt {
      * `repeated .cosmos.base.abci.v1beta1.Attribute attributes = 2 [json_name = "attributes", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAttributes")
+@kotlin.jvm.JvmName("clearAttributes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.Attribute, AttributesProxy>.clear() {
       _builder.clearAttributes()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

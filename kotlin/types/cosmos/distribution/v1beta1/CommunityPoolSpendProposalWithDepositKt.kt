@@ -37,10 +37,10 @@ public object CommunityPoolSpendProposalWithDepositKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -54,10 +54,10 @@ public object CommunityPoolSpendProposalWithDepositKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -71,10 +71,10 @@ public object CommunityPoolSpendProposalWithDepositKt {
      * `string recipient = 3 [json_name = "recipient"];`
      */
     public var recipient: kotlin.String
-      @JvmName("getRecipient")
-      get() = _builder.recipient
-      @JvmName("setRecipient")
-      set(value) {
+      @kotlin.jvm.JvmName("getRecipient")
+        get() = _builder.recipient
+      @kotlin.jvm.JvmName("setRecipient")
+        set(value) {
         _builder.recipient = value
       }
     /**
@@ -88,10 +88,10 @@ public object CommunityPoolSpendProposalWithDepositKt {
      * `string amount = 4 [json_name = "amount"];`
      */
     public var amount: kotlin.String
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**
@@ -105,10 +105,10 @@ public object CommunityPoolSpendProposalWithDepositKt {
      * `string deposit = 5 [json_name = "deposit"];`
      */
     public var deposit: kotlin.String
-      @JvmName("getDeposit")
-      get() = _builder.deposit
-      @JvmName("setDeposit")
-      set(value) {
+      @kotlin.jvm.JvmName("getDeposit")
+        get() = _builder.deposit
+      @kotlin.jvm.JvmName("setDeposit")
+        set(value) {
         _builder.deposit = value
       }
     /**

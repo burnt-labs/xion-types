@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryPlatformMinimumRequest(block: xion.v1.QueryPlatformMinimumRequestKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryPlatformMinimumRequest =
   xion.v1.QueryPlatformMinimumRequestKt.Dsl._create(xion.v1.QueryOuterClass.QueryPlatformMinimumRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryPlatformMinimumRequest is the request type for querying platform minimum
+ * fees
+ * ```
+ *
  * Protobuf type `xion.v1.QueryPlatformMinimumRequest`
  */
 public object QueryPlatformMinimumRequestKt {

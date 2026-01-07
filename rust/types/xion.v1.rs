@@ -31,7 +31,7 @@ pub struct GenesisState {
     #[prost(uint32, tag="1")]
     pub platform_percentage: u32,
     #[prost(message, repeated, tag="2")]
-    pub platform_minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub platform_minimums: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryWebAuthNVerifyRegisterRequest {
@@ -79,7 +79,7 @@ pub struct QueryPlatformMinimumRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPlatformMinimumResponse {
     #[prost(message, repeated, tag="3")]
-    pub minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub minimums: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgSend represents a message to send coins from one account to another.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -89,7 +89,7 @@ pub struct MsgSend {
     #[prost(string, tag="2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgSendResponse defines the Msg/Send response type.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -101,9 +101,9 @@ pub struct MsgMultiSend {
     /// Inputs, despite being `repeated`, only allows one sender input. This is
     /// checked in MsgMultiSend's ValidateBasic.
     #[prost(message, repeated, tag="1")]
-    pub inputs: ::prost::alloc::vec::Vec<super::super::cosmos::bank::v1beta1::Input>,
+    pub inputs: ::prost::alloc::vec::Vec<crate::types::cosmos_bank_v1beta1::Input>,
     #[prost(message, repeated, tag="2")]
-    pub outputs: ::prost::alloc::vec::Vec<super::super::cosmos::bank::v1beta1::Output>,
+    pub outputs: ::prost::alloc::vec::Vec<crate::types::cosmos_bank_v1beta1::Output>,
 }
 /// MsgMultiSendResponse defines the Msg/MultiSend response type.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -125,7 +125,7 @@ pub struct MsgSetPlatformMinimum {
     #[prost(string, tag="1")]
     pub authority: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub minimums: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct MsgSetPlatformMinimumResponse {

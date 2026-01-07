@@ -37,10 +37,10 @@ public object IntProtoKt {
      * `string int = 1 [json_name = "int", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var int: kotlin.String
-      @JvmName("getInt")
-      get() = _builder.int
-      @JvmName("setInt")
-      set(value) {
+      @kotlin.jvm.JvmName("getInt")
+        get() = _builder.int
+      @kotlin.jvm.JvmName("setInt")
+        set(value) {
         _builder.int = value
       }
     /**

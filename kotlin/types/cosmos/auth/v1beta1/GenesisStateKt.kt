@@ -40,10 +40,10 @@ public object GenesisStateKt {
      * `.cosmos.auth.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmos.auth.v1beta1.Auth.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -86,7 +86,7 @@ public object GenesisStateKt {
      */
      public val accounts: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.accountsList
       )
     /**
@@ -98,7 +98,7 @@ public object GenesisStateKt {
      * @param value The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAccounts")
+@kotlin.jvm.JvmName("addAccounts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.add(value: com.google.protobuf.Any) {
       _builder.addAccounts(value)
     }
@@ -111,7 +111,7 @@ public object GenesisStateKt {
      * @param value The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAccounts")
+@kotlin.jvm.JvmName("plusAssignAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -125,7 +125,7 @@ public object GenesisStateKt {
      * @param values The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAccounts")
+@kotlin.jvm.JvmName("addAllAccounts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllAccounts(values)
     }
@@ -138,7 +138,7 @@ public object GenesisStateKt {
      * @param values The accounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAccounts")
+@kotlin.jvm.JvmName("plusAssignAllAccounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -153,7 +153,7 @@ public object GenesisStateKt {
      * @param value The accounts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAccounts")
+@kotlin.jvm.JvmName("setAccounts")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setAccounts(index, value)
     }
@@ -165,11 +165,10 @@ public object GenesisStateKt {
      * `repeated .google.protobuf.Any accounts = 2 [json_name = "accounts"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAccounts")
+@kotlin.jvm.JvmName("clearAccounts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, AccountsProxy>.clear() {
       _builder.clearAccounts()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

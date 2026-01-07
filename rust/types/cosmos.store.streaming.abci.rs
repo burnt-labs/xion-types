@@ -4,9 +4,9 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListenFinalizeBlockRequest {
     #[prost(message, optional, tag="1")]
-    pub req: ::core::option::Option<super::super::super::super::tendermint::abci::RequestFinalizeBlock>,
+    pub req: ::core::option::Option<crate::types::tendermint_abci::RequestFinalizeBlock>,
     #[prost(message, optional, tag="2")]
-    pub res: ::core::option::Option<super::super::super::super::tendermint::abci::ResponseFinalizeBlock>,
+    pub res: ::core::option::Option<crate::types::tendermint_abci::ResponseFinalizeBlock>,
 }
 /// ListenEndBlockResponse is the response type for the ListenEndBlock RPC method
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -19,9 +19,9 @@ pub struct ListenCommitRequest {
     #[prost(int64, tag="1")]
     pub block_height: i64,
     #[prost(message, optional, tag="2")]
-    pub res: ::core::option::Option<super::super::super::super::tendermint::abci::ResponseCommit>,
+    pub res: ::core::option::Option<crate::types::tendermint_abci::ResponseCommit>,
     #[prost(message, repeated, tag="3")]
-    pub change_set: ::prost::alloc::vec::Vec<super::super::v1beta1::StoreKvPair>,
+    pub change_set: ::prost::alloc::vec::Vec<crate::types::cosmos_store_v1beta1::StoreKvPair>,
 }
 /// ListenCommitResponse is the response type for the ListenCommit RPC method
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]

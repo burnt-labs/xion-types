@@ -41,10 +41,10 @@ public object ListImplementationsRequestKt {
      * `string interface_name = 1 [json_name = "interfaceName"];`
      */
     public var interfaceName: kotlin.String
-      @JvmName("getInterfaceName")
-      get() = _builder.interfaceName
-      @JvmName("setInterfaceName")
-      set(value) {
+      @kotlin.jvm.JvmName("getInterfaceName")
+        get() = _builder.interfaceName
+      @kotlin.jvm.JvmName("setInterfaceName")
+        set(value) {
         _builder.interfaceName = value
       }
     /**

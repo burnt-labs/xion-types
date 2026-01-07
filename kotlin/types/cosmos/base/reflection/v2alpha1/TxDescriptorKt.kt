@@ -42,10 +42,10 @@ public object TxDescriptorKt {
      * `string fullname = 1 [json_name = "fullname"];`
      */
     public var fullname: kotlin.String
-      @JvmName("getFullname")
-      get() = _builder.fullname
-      @JvmName("setFullname")
-      set(value) {
+      @kotlin.jvm.JvmName("getFullname")
+        get() = _builder.fullname
+      @kotlin.jvm.JvmName("setFullname")
+        set(value) {
         _builder.fullname = value
       }
     /**
@@ -76,7 +76,7 @@ public object TxDescriptorKt {
      */
      public val msgs: com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.msgsList
       )
     /**
@@ -88,7 +88,7 @@ public object TxDescriptorKt {
      * @param value The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMsgs")
+@kotlin.jvm.JvmName("addMsgs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>.add(value: cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor) {
       _builder.addMsgs(value)
     }
@@ -101,7 +101,7 @@ public object TxDescriptorKt {
      * @param value The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMsgs")
+@kotlin.jvm.JvmName("plusAssignMsgs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>.plusAssign(value: cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor) {
       add(value)
@@ -115,7 +115,7 @@ public object TxDescriptorKt {
      * @param values The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMsgs")
+@kotlin.jvm.JvmName("addAllMsgs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor>) {
       _builder.addAllMsgs(values)
     }
@@ -128,7 +128,7 @@ public object TxDescriptorKt {
      * @param values The msgs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMsgs")
+@kotlin.jvm.JvmName("plusAssignAllMsgs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor>) {
       addAll(values)
@@ -143,7 +143,7 @@ public object TxDescriptorKt {
      * @param value The msgs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMsgs")
+@kotlin.jvm.JvmName("setMsgs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>.set(index: kotlin.Int, value: cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor) {
       _builder.setMsgs(index, value)
     }
@@ -155,11 +155,10 @@ public object TxDescriptorKt {
      * `repeated .cosmos.base.reflection.v2alpha1.MsgDescriptor msgs = 2 [json_name = "msgs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMsgs")
+@kotlin.jvm.JvmName("clearMsgs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.MsgDescriptor, MsgsProxy>.clear() {
       _builder.clearMsgs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

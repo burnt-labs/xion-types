@@ -38,10 +38,10 @@ public object MsgChannelOpenTryKt {
      * `string port_id = 1 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -59,10 +59,10 @@ public object MsgChannelOpenTryKt {
      * `string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field previousChannelId is deprecated") public var previousChannelId: kotlin.String
-      @JvmName("getPreviousChannelId")
-      get() = _builder.previousChannelId
-      @JvmName("setPreviousChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPreviousChannelId")
+        get() = _builder.previousChannelId
+      @kotlin.jvm.JvmName("setPreviousChannelId")
+        set(value) {
         _builder.previousChannelId = value
       }
     /**
@@ -84,10 +84,10 @@ public object MsgChannelOpenTryKt {
      * `.ibc.core.channel.v1.Channel channel = 3 [json_name = "channel", (.gogoproto.nullable) = false];`
      */
     public var channel: ibc.core.channel.v1.ChannelOuterClass.Channel
-      @JvmName("getChannel")
-      get() = _builder.channel
-      @JvmName("setChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannel")
+        get() = _builder.channel
+      @kotlin.jvm.JvmName("setChannel")
+        set(value) {
         _builder.channel = value
       }
     /**
@@ -119,10 +119,10 @@ public object MsgChannelOpenTryKt {
      * `string counterparty_version = 4 [json_name = "counterpartyVersion"];`
      */
     public var counterpartyVersion: kotlin.String
-      @JvmName("getCounterpartyVersion")
-      get() = _builder.counterpartyVersion
-      @JvmName("setCounterpartyVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterpartyVersion")
+        get() = _builder.counterpartyVersion
+      @kotlin.jvm.JvmName("setCounterpartyVersion")
+        set(value) {
         _builder.counterpartyVersion = value
       }
     /**
@@ -136,10 +136,10 @@ public object MsgChannelOpenTryKt {
      * `bytes proof_init = 5 [json_name = "proofInit"];`
      */
     public var proofInit: com.google.protobuf.ByteString
-      @JvmName("getProofInit")
-      get() = _builder.proofInit
-      @JvmName("setProofInit")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofInit")
+        get() = _builder.proofInit
+      @kotlin.jvm.JvmName("setProofInit")
+        set(value) {
         _builder.proofInit = value
       }
     /**
@@ -153,10 +153,10 @@ public object MsgChannelOpenTryKt {
      * `.ibc.core.client.v1.Height proof_height = 6 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -180,10 +180,10 @@ public object MsgChannelOpenTryKt {
      * `string signer = 7 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

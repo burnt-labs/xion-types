@@ -37,10 +37,10 @@ public object ConnectionStateDataKt {
      * `bytes path = 1 [json_name = "path"];`
      */
     public var path: com.google.protobuf.ByteString
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -54,10 +54,10 @@ public object ConnectionStateDataKt {
      * `.ibc.core.connection.v1.ConnectionEnd connection = 2 [json_name = "connection"];`
      */
     public var connection: ibc.core.connection.v1.Connection.ConnectionEnd
-      @JvmName("getConnection")
-      get() = _builder.connection
-      @JvmName("setConnection")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnection")
+        get() = _builder.connection
+      @kotlin.jvm.JvmName("setConnection")
+        set(value) {
         _builder.connection = value
       }
     /**

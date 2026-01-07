@@ -40,10 +40,10 @@ public object QuerySupplyOfResponseKt {
      * `.cosmos.base.v1beta1.Coin amount = 1 [json_name = "amount", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var amount: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**

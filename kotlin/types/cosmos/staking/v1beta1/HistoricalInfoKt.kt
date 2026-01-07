@@ -39,10 +39,10 @@ public object HistoricalInfoKt {
      * `.tendermint.types.Header header = 1 [json_name = "header", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var header: tendermint.types.Types.Header
-      @JvmName("getHeader")
-      get() = _builder.header
-      @JvmName("setHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeader")
+        get() = _builder.header
+      @kotlin.jvm.JvmName("setHeader")
+        set(value) {
         _builder.header = value
       }
     /**
@@ -73,7 +73,7 @@ public object HistoricalInfoKt {
      */
      public val valset: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.valsetList
       )
     /**
@@ -81,7 +81,7 @@ public object HistoricalInfoKt {
      * @param value The valset to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValset")
+@kotlin.jvm.JvmName("addValset")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>.add(value: cosmos.staking.v1beta1.Staking.Validator) {
       _builder.addValset(value)
     }
@@ -90,7 +90,7 @@ public object HistoricalInfoKt {
      * @param value The valset to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValset")
+@kotlin.jvm.JvmName("plusAssignValset")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>.plusAssign(value: cosmos.staking.v1beta1.Staking.Validator) {
       add(value)
@@ -100,7 +100,7 @@ public object HistoricalInfoKt {
      * @param values The valset to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValset")
+@kotlin.jvm.JvmName("addAllValset")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.Validator>) {
       _builder.addAllValset(values)
     }
@@ -109,7 +109,7 @@ public object HistoricalInfoKt {
      * @param values The valset to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValset")
+@kotlin.jvm.JvmName("plusAssignAllValset")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.Validator>) {
       addAll(values)
@@ -120,7 +120,7 @@ public object HistoricalInfoKt {
      * @param value The valset to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValset")
+@kotlin.jvm.JvmName("setValset")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Staking.Validator) {
       _builder.setValset(index, value)
     }
@@ -128,11 +128,10 @@ public object HistoricalInfoKt {
      * `repeated .cosmos.staking.v1beta1.Validator valset = 2 [json_name = "valset", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValset")
+@kotlin.jvm.JvmName("clearValset")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.Validator, ValsetProxy>.clear() {
       _builder.clearValset()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

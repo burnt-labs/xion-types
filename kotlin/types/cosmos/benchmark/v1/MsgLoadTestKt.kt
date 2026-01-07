@@ -36,10 +36,10 @@ public object MsgLoadTestKt {
      * `bytes caller = 1 [json_name = "caller"];`
      */
     public var caller: com.google.protobuf.ByteString
-      @JvmName("getCaller")
-      get() = _builder.caller
-      @JvmName("setCaller")
-      set(value) {
+      @kotlin.jvm.JvmName("getCaller")
+        get() = _builder.caller
+      @kotlin.jvm.JvmName("setCaller")
+        set(value) {
         _builder.caller = value
       }
     /**
@@ -60,7 +60,7 @@ public object MsgLoadTestKt {
      */
      public val ops: com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.opsList
       )
     /**
@@ -68,7 +68,7 @@ public object MsgLoadTestKt {
      * @param value The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOps")
+@kotlin.jvm.JvmName("addOps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>.add(value: cosmos.benchmark.v1.Benchmark.Op) {
       _builder.addOps(value)
     }
@@ -77,7 +77,7 @@ public object MsgLoadTestKt {
      * @param value The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOps")
+@kotlin.jvm.JvmName("plusAssignOps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>.plusAssign(value: cosmos.benchmark.v1.Benchmark.Op) {
       add(value)
@@ -87,7 +87,7 @@ public object MsgLoadTestKt {
      * @param values The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOps")
+@kotlin.jvm.JvmName("addAllOps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.benchmark.v1.Benchmark.Op>) {
       _builder.addAllOps(values)
     }
@@ -96,7 +96,7 @@ public object MsgLoadTestKt {
      * @param values The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOps")
+@kotlin.jvm.JvmName("plusAssignAllOps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.benchmark.v1.Benchmark.Op>) {
       addAll(values)
@@ -107,7 +107,7 @@ public object MsgLoadTestKt {
      * @param value The ops to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOps")
+@kotlin.jvm.JvmName("setOps")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>.set(index: kotlin.Int, value: cosmos.benchmark.v1.Benchmark.Op) {
       _builder.setOps(index, value)
     }
@@ -115,11 +115,10 @@ public object MsgLoadTestKt {
      * `repeated .cosmos.benchmark.v1.Op ops = 2 [json_name = "ops"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOps")
+@kotlin.jvm.JvmName("clearOps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.benchmark.v1.Benchmark.Op, OpsProxy>.clear() {
       _builder.clearOps()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

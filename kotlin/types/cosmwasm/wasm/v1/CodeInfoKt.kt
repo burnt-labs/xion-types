@@ -40,10 +40,10 @@ public object CodeInfoKt {
      * `bytes code_hash = 1 [json_name = "codeHash"];`
      */
     public var codeHash: com.google.protobuf.ByteString
-      @JvmName("getCodeHash")
-      get() = _builder.codeHash
-      @JvmName("setCodeHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeHash")
+        get() = _builder.codeHash
+      @kotlin.jvm.JvmName("setCodeHash")
+        set(value) {
         _builder.codeHash = value
       }
     /**
@@ -65,10 +65,10 @@ public object CodeInfoKt {
      * `string creator = 2 [json_name = "creator", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var creator: kotlin.String
-      @JvmName("getCreator")
-      get() = _builder.creator
-      @JvmName("setCreator")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreator")
+        get() = _builder.creator
+      @kotlin.jvm.JvmName("setCreator")
+        set(value) {
         _builder.creator = value
       }
     /**
@@ -90,10 +90,10 @@ public object CodeInfoKt {
      * `.cosmwasm.wasm.v1.AccessConfig instantiate_config = 5 [json_name = "instantiateConfig", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var instantiateConfig: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getInstantiateConfig")
-      get() = _builder.instantiateConfig
-      @JvmName("setInstantiateConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiateConfig")
+        get() = _builder.instantiateConfig
+      @kotlin.jvm.JvmName("setInstantiateConfig")
+        set(value) {
         _builder.instantiateConfig = value
       }
     /**

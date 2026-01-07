@@ -44,7 +44,7 @@ public object ValidatorAccumulatedCommissionKt {
      */
      public val commission: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.commissionList
       )
     /**
@@ -52,7 +52,7 @@ public object ValidatorAccumulatedCommissionKt {
      * @param value The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCommission")
+@kotlin.jvm.JvmName("addCommission")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addCommission(value)
     }
@@ -61,7 +61,7 @@ public object ValidatorAccumulatedCommissionKt {
      * @param value The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCommission")
+@kotlin.jvm.JvmName("plusAssignCommission")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -71,7 +71,7 @@ public object ValidatorAccumulatedCommissionKt {
      * @param values The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCommission")
+@kotlin.jvm.JvmName("addAllCommission")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllCommission(values)
     }
@@ -80,7 +80,7 @@ public object ValidatorAccumulatedCommissionKt {
      * @param values The commission to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCommission")
+@kotlin.jvm.JvmName("plusAssignAllCommission")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object ValidatorAccumulatedCommissionKt {
      * @param value The commission to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCommission")
+@kotlin.jvm.JvmName("setCommission")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setCommission(index, value)
     }
@@ -99,11 +99,10 @@ public object ValidatorAccumulatedCommissionKt {
      * `repeated .cosmos.base.v1beta1.DecCoin commission = 1 [json_name = "commission", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCommission")
+@kotlin.jvm.JvmName("clearCommission")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommissionProxy>.clear() {
       _builder.clearCommission()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

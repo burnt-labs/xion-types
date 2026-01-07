@@ -36,10 +36,10 @@ public object QueryAccountAddressByIDResponseKt {
      * `string account_address = 1 [json_name = "accountAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var accountAddress: kotlin.String
-      @JvmName("getAccountAddress")
-      get() = _builder.accountAddress
-      @JvmName("setAccountAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountAddress")
+        get() = _builder.accountAddress
+      @kotlin.jvm.JvmName("setAccountAddress")
+        set(value) {
         _builder.accountAddress = value
       }
     /**

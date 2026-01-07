@@ -40,10 +40,10 @@ public object PackageReferenceKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -99,10 +99,10 @@ public object PackageReferenceKt {
      * `uint32 revision = 2 [json_name = "revision"];`
      */
     public var revision: kotlin.Int
-      @JvmName("getRevision")
-      get() = _builder.revision
-      @JvmName("setRevision")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevision")
+        get() = _builder.revision
+      @kotlin.jvm.JvmName("setRevision")
+        set(value) {
         _builder.revision = value
       }
     /**

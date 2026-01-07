@@ -43,7 +43,7 @@ public object DVPairsKt {
      */
      public val pairs: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.pairsList
       )
     /**
@@ -51,7 +51,7 @@ public object DVPairsKt {
      * @param value The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPairs")
+@kotlin.jvm.JvmName("addPairs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>.add(value: cosmos.staking.v1beta1.Staking.DVPair) {
       _builder.addPairs(value)
     }
@@ -60,7 +60,7 @@ public object DVPairsKt {
      * @param value The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPairs")
+@kotlin.jvm.JvmName("plusAssignPairs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>.plusAssign(value: cosmos.staking.v1beta1.Staking.DVPair) {
       add(value)
@@ -70,7 +70,7 @@ public object DVPairsKt {
      * @param values The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPairs")
+@kotlin.jvm.JvmName("addAllPairs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.DVPair>) {
       _builder.addAllPairs(values)
     }
@@ -79,7 +79,7 @@ public object DVPairsKt {
      * @param values The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPairs")
+@kotlin.jvm.JvmName("plusAssignAllPairs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.DVPair>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object DVPairsKt {
      * @param value The pairs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPairs")
+@kotlin.jvm.JvmName("setPairs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Staking.DVPair) {
       _builder.setPairs(index, value)
     }
@@ -98,11 +98,10 @@ public object DVPairsKt {
      * `repeated .cosmos.staking.v1beta1.DVPair pairs = 1 [json_name = "pairs", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPairs")
+@kotlin.jvm.JvmName("clearPairs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.DVPair, PairsProxy>.clear() {
       _builder.clearPairs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

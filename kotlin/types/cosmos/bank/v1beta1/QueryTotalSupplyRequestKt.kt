@@ -41,10 +41,10 @@ public object QueryTotalSupplyRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 1 [json_name = "pagination", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

@@ -73,7 +73,7 @@ pub struct ModuleVersion {
 }
 /// QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
 /// method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCurrentPlanRequest {
 }
 /// QueryCurrentPlanResponse is the response type for the Query/CurrentPlan RPC
@@ -94,7 +94,7 @@ pub struct QueryAppliedPlanRequest {
 }
 /// QueryAppliedPlanResponse is the response type for the Query/AppliedPlan RPC
 /// method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAppliedPlanResponse {
     /// height is the block height at which the plan was applied.
     #[prost(int64, tag="1")]
@@ -102,7 +102,7 @@ pub struct QueryAppliedPlanResponse {
 }
 /// QueryUpgradedConsensusStateRequest is the request type for the Query/UpgradedConsensusState
 /// RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryUpgradedConsensusStateRequest {
     /// last height of the current chain must be sent in request
     /// as this is the height under which next consensus state is stored
@@ -135,7 +135,7 @@ pub struct QueryModuleVersionsResponse {
     pub module_versions: ::prost::alloc::vec::Vec<ModuleVersion>,
 }
 /// QueryAuthorityRequest is the request type for Query/Authority
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAuthorityRequest {
 }
 /// QueryAuthorityResponse is the response type for Query/Authority
@@ -155,7 +155,7 @@ pub struct MsgSoftwareUpgrade {
     pub plan: ::core::option::Option<Plan>,
 }
 /// MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSoftwareUpgradeResponse {
 }
 /// MsgCancelUpgrade is the Msg/CancelUpgrade request type.
@@ -166,7 +166,7 @@ pub struct MsgCancelUpgrade {
     pub authority: ::prost::alloc::string::String,
 }
 /// MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCancelUpgradeResponse {
 }
 // @@protoc_insertion_point(module)

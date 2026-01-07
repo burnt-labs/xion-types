@@ -41,10 +41,10 @@ public object ModuleKt {
      * `.google.protobuf.Duration max_execution_period = 1 [json_name = "maxExecutionPeriod", (.gogoproto.nullable) = false, (.gogoproto.stdduration) = true, (.amino.dont_omitempty) = true];`
      */
     public var maxExecutionPeriod: com.google.protobuf.Duration
-      @JvmName("getMaxExecutionPeriod")
-      get() = _builder.maxExecutionPeriod
-      @JvmName("setMaxExecutionPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxExecutionPeriod")
+        get() = _builder.maxExecutionPeriod
+      @kotlin.jvm.JvmName("setMaxExecutionPeriod")
+        set(value) {
         _builder.maxExecutionPeriod = value
       }
     /**
@@ -83,10 +83,10 @@ public object ModuleKt {
      * `uint64 max_metadata_len = 2 [json_name = "maxMetadataLen"];`
      */
     public var maxMetadataLen: kotlin.Long
-      @JvmName("getMaxMetadataLen")
-      get() = _builder.maxMetadataLen
-      @JvmName("setMaxMetadataLen")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxMetadataLen")
+        get() = _builder.maxMetadataLen
+      @kotlin.jvm.JvmName("setMaxMetadataLen")
+        set(value) {
         _builder.maxMetadataLen = value
       }
     /**

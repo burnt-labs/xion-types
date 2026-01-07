@@ -36,10 +36,10 @@ public object GenesisStateKt {
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      */
     public var params: abstractaccount.v1.ParamsOuterClass.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -63,10 +63,10 @@ public object GenesisStateKt {
      * `uint64 next_account_id = 2 [json_name = "nextAccountId"];`
      */
     public var nextAccountId: kotlin.Long
-      @JvmName("getNextAccountId")
-      get() = _builder.nextAccountId
-      @JvmName("setNextAccountId")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextAccountId")
+        get() = _builder.nextAccountId
+      @kotlin.jvm.JvmName("setNextAccountId")
+        set(value) {
         _builder.nextAccountId = value
       }
     /**

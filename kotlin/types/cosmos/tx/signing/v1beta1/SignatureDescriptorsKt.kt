@@ -47,7 +47,7 @@ public object SignatureDescriptorsKt {
      */
      public val signatures: com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signaturesList
       )
     /**
@@ -59,7 +59,7 @@ public object SignatureDescriptorsKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSignatures")
+@kotlin.jvm.JvmName("addSignatures")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>.add(value: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor) {
       _builder.addSignatures(value)
     }
@@ -72,7 +72,7 @@ public object SignatureDescriptorsKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSignatures")
+@kotlin.jvm.JvmName("plusAssignSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>.plusAssign(value: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor) {
       add(value)
@@ -86,7 +86,7 @@ public object SignatureDescriptorsKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSignatures")
+@kotlin.jvm.JvmName("addAllSignatures")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor>) {
       _builder.addAllSignatures(values)
     }
@@ -99,7 +99,7 @@ public object SignatureDescriptorsKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSignatures")
+@kotlin.jvm.JvmName("plusAssignAllSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object SignatureDescriptorsKt {
      * @param value The signatures to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSignatures")
+@kotlin.jvm.JvmName("setSignatures")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>.set(index: kotlin.Int, value: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor) {
       _builder.setSignatures(index, value)
     }
@@ -126,11 +126,10 @@ public object SignatureDescriptorsKt {
      * `repeated .cosmos.tx.signing.v1beta1.SignatureDescriptor signatures = 1 [json_name = "signatures"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSignatures")
+@kotlin.jvm.JvmName("clearSignatures")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor, SignaturesProxy>.clear() {
       _builder.clearSignatures()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

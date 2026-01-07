@@ -32,10 +32,10 @@ public object ResponseEchoKt {
      * `string message = 1 [json_name = "message"];`
      */
     public var message: kotlin.String
-      @JvmName("getMessage")
-      get() = _builder.message
-      @JvmName("setMessage")
-      set(value) {
+      @kotlin.jvm.JvmName("getMessage")
+        get() = _builder.message
+      @kotlin.jvm.JvmName("setMessage")
+        set(value) {
         _builder.message = value
       }
     /**

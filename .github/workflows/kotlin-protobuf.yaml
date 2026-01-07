@@ -1,0 +1,370 @@
+name: Kotlin Protobuf Gen & Publish
+
+on:
+  push:
+    branches: 
+    #   - main 
+      - feat/add-kotlin-protos
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for publishing.'
+        required: true
+        type: string
+
+  repository_dispatch:
+    types: [xion-types-release-trigger]
+    
+  schedule:
+    - cron: '0 9 * * 5' # Run Fridays at 9 AM UTC
+
+jobs:
+  generate-protobuf:
+    name: Generate Kotlin Types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Java Definitions
+        run: |
+          make proto-gen-java
+
+      - name: Generate Kotlin Definitions
+        run: |
+          make proto-gen-kotlin
+
+      - name: Check if Types Were Generated
+        run: |
+          if [ -d "./java/types" ] && [ "$(ls -A ./java/types)" ]; then
+            echo "✅ Java definitions generated successfully"
+            ls -la java/types/ | head -20
+          else
+            echo "❌ Failed to generate Java definitions"
+            exit 1
+          fi
+          
+          if [ -d "./kotlin/types" ] && [ "$(ls -A ./kotlin/types)" ]; then
+            echo "✅ Kotlin definitions generated successfully"
+            ls -la kotlin/types/ | head -20
+          else
+            echo "❌ Failed to generate Kotlin definitions"
+            exit 1
+          fi
+
+      - name: Generate External Proto Dependencies
+        run: |
+          echo "Exporting and generating external proto dependencies..."
+          
+          # Export dependencies from buf registry
+          cd xion/proto
+          buf export buf.build/cosmos/cosmos-proto --output ../../proto_deps/cosmos_proto
+          buf export buf.build/cosmos/ics23 --output ../../proto_deps/ics23
+          buf export buf.build/cosmos/gogo-proto --output ../../proto_deps/gogo_proto
+          buf export buf.build/googleapis/googleapis --output ../../proto_deps/googleapis
+          cd ../..
+          
+          # Generate Java for all dependencies
+          for dir in proto_deps/cosmos_proto proto_deps/ics23 proto_deps/gogo_proto proto_deps/googleapis; do
+            echo "Generating Java for $dir"
+            buf generate $dir --template buf/buf.gen.java.yaml --output .
+          done
+          
+          echo "✅ External dependencies generated"
+          ls -la java/types/
+
+      - name: Upload Generated Java Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+          retention-days: 30
+
+      - name: Upload Generated Kotlin Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+          retention-days: 30
+
+  determine-version:
+    name: Determine Version
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    if: |
+        github.event_name == 'schedule' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version
+        # Version scenarios:
+        # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3")
+        # 2. Release event (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
+        # 3. Schedule → Generate nightly version
+        id: version
+        run: |
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            VERSION="${{ github.event.inputs.next_version }}"
+            echo "Using manual version: $VERSION"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            VERSION=${RELEASE_TAG#v}
+            echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+          elif [ "${{ github.event_name }}" == "schedule" ]; then
+            TIMESTAMP=$(date -u +%Y%m%d%H%M%S)
+            VERSION="0.0.1-SNAPSHOT.${TIMESTAMP}"
+            echo "Using nightly version: $VERSION"
+          else
+            echo "❌ No version specified"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+  # ============================================
+  # Kotlin JAR Building/Testing
+  # ============================================
+
+  kotlin-build:
+    name: Build JAR
+    needs: [determine-version, generate-protobuf]
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ needs.determine-version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Java Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Update Version in build.gradle.kts
+        env:
+          VERSION: ${{ needs.determine-version.outputs.version }}
+        run: |
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts
+          echo "Updated version to: $VERSION"
+          grep "^version" kotlin/build.gradle.kts
+
+      - name: Build JAR
+        run: |
+          cd kotlin
+          gradle jar --no-daemon
+          
+      - name: Verify JAR Contents
+        run: |
+          echo "Checking JAR contents:"
+          jar tf kotlin/build/libs/xion-types.jar | head -50
+          echo "..."
+          echo "JAR size:"
+          ls -lh kotlin/build/libs/xion-types.jar
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: kotlin-jar
+          path: kotlin/build/libs/xion-types.jar
+          retention-days: 30
+
+  kotlin-test:
+    name: Test Kotlin JDK ${{ matrix.java-version }}
+    needs: [kotlin-build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: ['17', '21']
+      fail-fast: false
+    steps:
+      - name: Setup JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'temurin'
+
+      - name: Download JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: kotlin-jar
+          path: libs/
+
+      - name: Test JAR Loading
+        run: |
+          # Create a simple test file
+          cat > TestXionTypes.kt << 'EOF'
+          import cosmos.bank.v1beta1.Tx
+          import cosmos.base.v1beta1.CoinOuterClass
+          
+          fun main() {
+              println("✅ Kotlin protobuf types loaded successfully")
+              println("Testing Cosmos Bank Tx class: ${Tx::class.java.name}")
+              println("Testing Coin class: ${CoinOuterClass.Coin::class.java.name}")
+          }
+          EOF
+          
+          # Download Kotlin compiler
+          curl -sL https://github.com/JetBrains/kotlin/releases/download/v2.1.0/kotlin-compiler-2.1.0.zip -o kotlin-compiler.zip
+          unzip -q kotlin-compiler.zip
+          
+          # Download protobuf-java
+          curl -sL https://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/4.31.1/protobuf-java-4.31.1.jar -o protobuf-java.jar
+          curl -sL https://repo1.maven.org/maven2/com/google/protobuf/protobuf-kotlin/4.31.1/protobuf-kotlin-4.31.1.jar -o protobuf-kotlin.jar
+          
+          # Compile and run test
+          kotlinc/bin/kotlinc -cp "libs/xion-types.jar:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypes.kt -include-runtime -d test.jar
+          java -cp "test.jar:libs/xion-types.jar:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypesKt
+
+  # ============================================
+  # Kotlin Package Publishing to Maven Central
+  # ============================================
+
+  kotlin-publish:
+    name: Publish to Maven Central
+    needs: [kotlin-test, kotlin-build]
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' || 
+      (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Java Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+    # TODO
+    #   - name: Import GPG Key
+    #     env:
+    #       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+    #       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+    #     run: |
+    #       echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+    #       echo "GPG key imported"
+
+    #   - name: Update Version
+    #     env:
+    #       VERSION: ${{ needs.kotlin-build.outputs.version }}
+    #     run: |
+    #       sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
+    #       sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts
+
+    #   - name: Configure Maven Central Publishing
+    #     run: |
+    #       cd kotlin
+          
+    #       # Create publishing configuration
+    #       cat >> build.gradle.kts << 'GRADLE_CONFIG'
+          
+    #       plugins.apply("signing")
+          
+    #       publishing {
+    #           publications {
+    #               create<MavenPublication>("mavenJava") {
+    #                   from(components["java"])
+                      
+    #                   pom {
+    #                       name.set("Xion Types Kotlin")
+    #                       description.set("Kotlin/Java protobuf types for the Xion blockchain")
+    #                       url.set("https://github.com/burnt-labs/xion-types")
+                          
+    #                       licenses {
+    #                           license {
+    #                               name.set("Apache License 2.0")
+    #                               url.set("https://www.apache.org/licenses/LICENSE-2.0")
+    #                           }
+    #                       }
+                          
+    #                       developers {
+    #                           developer {
+    #                               id.set("burnt-labs")
+    #                               name.set("Burnt Labs")
+    #                               email.set("dev@burnt.com")
+    #                           }
+    #                       }
+                          
+    #                       scm {
+    #                           connection.set("scm:git:git://github.com/burnt-labs/xion-types.git")
+    #                           developerConnection.set("scm:git:ssh://github.com/burnt-labs/xion-types.git")
+    #                           url.set("https://github.com/burnt-labs/xion-types")
+    #                       }
+    #                   }
+    #               }
+    #           }
+              
+    #           repositories {
+    #               maven {
+    #                   name = "OSSRH"
+    #                   val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+    #                   val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    #                   url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+    #                   credentials {
+    #                       username = System.getenv("OSSRH_USERNAME")
+    #                       password = System.getenv("OSSRH_PASSWORD")
+    #                   }
+    #               }
+    #           }
+    #       }
+          
+    #       signing {
+    #           useGpgCmd()
+    #           sign(publishing.publications["mavenJava"])
+    #       }
+    #       GRADLE_CONFIG
+
+    #   - name: Publish to Maven Central
+    #     env:
+    #       OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+    #       OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+    #       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+    #     run: |
+    #       cd kotlin
+    #       gradle publish --no-daemon -Psigning.gnupg.passphrase="$GPG_PASSPHRASE"
+
+

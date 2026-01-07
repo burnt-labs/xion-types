@@ -49,7 +49,7 @@ public object ModuleKt {
      * @return A list containing the hooksOrder.
      */
     public val hooksOrder: com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.hooksOrderList
       )
@@ -64,7 +64,7 @@ public object ModuleKt {
      * @param value The hooksOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addHooksOrder")
+@kotlin.jvm.JvmName("addHooksOrder")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>.add(value: kotlin.String) {
       _builder.addHooksOrder(value)
     }
@@ -79,7 +79,7 @@ public object ModuleKt {
      * @param value The hooksOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignHooksOrder")
+@kotlin.jvm.JvmName("plusAssignHooksOrder")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -95,7 +95,7 @@ public object ModuleKt {
      * @param values The hooksOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllHooksOrder")
+@kotlin.jvm.JvmName("addAllHooksOrder")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllHooksOrder(values)
     }
@@ -110,7 +110,7 @@ public object ModuleKt {
      * @param values The hooksOrder to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllHooksOrder")
+@kotlin.jvm.JvmName("plusAssignAllHooksOrder")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -127,7 +127,7 @@ public object ModuleKt {
      * @param value The hooksOrder to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setHooksOrder")
+@kotlin.jvm.JvmName("setHooksOrder")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setHooksOrder(index, value)
     }/**
@@ -140,7 +140,7 @@ public object ModuleKt {
      * `repeated string hooks_order = 1 [json_name = "hooksOrder"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearHooksOrder")
+@kotlin.jvm.JvmName("setHooksOrder")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, HooksOrderProxy>.clear() {
       _builder.clearHooksOrder()
     }
@@ -152,10 +152,10 @@ public object ModuleKt {
      * `string authority = 2 [json_name = "authority"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -177,10 +177,10 @@ public object ModuleKt {
      * `string bech32_prefix_validator = 3 [json_name = "bech32PrefixValidator"];`
      */
     public var bech32PrefixValidator: kotlin.String
-      @JvmName("getBech32PrefixValidator")
-      get() = _builder.bech32PrefixValidator
-      @JvmName("setBech32PrefixValidator")
-      set(value) {
+      @kotlin.jvm.JvmName("getBech32PrefixValidator")
+        get() = _builder.bech32PrefixValidator
+      @kotlin.jvm.JvmName("setBech32PrefixValidator")
+        set(value) {
         _builder.bech32PrefixValidator = value
       }
     /**
@@ -202,10 +202,10 @@ public object ModuleKt {
      * `string bech32_prefix_consensus = 4 [json_name = "bech32PrefixConsensus"];`
      */
     public var bech32PrefixConsensus: kotlin.String
-      @JvmName("getBech32PrefixConsensus")
-      get() = _builder.bech32PrefixConsensus
-      @JvmName("setBech32PrefixConsensus")
-      set(value) {
+      @kotlin.jvm.JvmName("getBech32PrefixConsensus")
+        get() = _builder.bech32PrefixConsensus
+      @kotlin.jvm.JvmName("setBech32PrefixConsensus")
+        set(value) {
         _builder.bech32PrefixConsensus = value
       }
     /**

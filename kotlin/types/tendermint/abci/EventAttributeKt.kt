@@ -36,10 +36,10 @@ public object EventAttributeKt {
      * `string key = 1 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -53,10 +53,10 @@ public object EventAttributeKt {
      * `string value = 2 [json_name = "value"];`
      */
     public var value: kotlin.String
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**
@@ -74,10 +74,10 @@ public object EventAttributeKt {
      * `bool index = 3 [json_name = "index"];`
      */
     public var index: kotlin.Boolean
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**

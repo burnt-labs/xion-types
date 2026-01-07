@@ -32,10 +32,10 @@ public object DominoOpKt {
      * `string key = 1 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -49,10 +49,10 @@ public object DominoOpKt {
      * `string input = 2 [json_name = "input"];`
      */
     public var input: kotlin.String
-      @JvmName("getInput")
-      get() = _builder.input
-      @JvmName("setInput")
-      set(value) {
+      @kotlin.jvm.JvmName("getInput")
+        get() = _builder.input
+      @kotlin.jvm.JvmName("setInput")
+        set(value) {
         _builder.input = value
       }
     /**
@@ -66,10 +66,10 @@ public object DominoOpKt {
      * `string output = 3 [json_name = "output"];`
      */
     public var output: kotlin.String
-      @JvmName("getOutput")
-      get() = _builder.output
-      @JvmName("setOutput")
-      set(value) {
+      @kotlin.jvm.JvmName("getOutput")
+        get() = _builder.output
+      @kotlin.jvm.JvmName("setOutput")
+        set(value) {
         _builder.output = value
       }
     /**

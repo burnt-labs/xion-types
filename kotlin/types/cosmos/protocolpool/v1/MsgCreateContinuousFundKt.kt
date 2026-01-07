@@ -40,10 +40,10 @@ public object MsgCreateContinuousFundKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgCreateContinuousFundKt {
      * `string recipient = 2 [json_name = "recipient", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var recipient: kotlin.String
-      @JvmName("getRecipient")
-      get() = _builder.recipient
-      @JvmName("setRecipient")
-      set(value) {
+      @kotlin.jvm.JvmName("getRecipient")
+        get() = _builder.recipient
+      @kotlin.jvm.JvmName("setRecipient")
+        set(value) {
         _builder.recipient = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgCreateContinuousFundKt {
      * `string percentage = 3 [json_name = "percentage", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var percentage: kotlin.String
-      @JvmName("getPercentage")
-      get() = _builder.percentage
-      @JvmName("setPercentage")
-      set(value) {
+      @kotlin.jvm.JvmName("getPercentage")
+        get() = _builder.percentage
+      @kotlin.jvm.JvmName("setPercentage")
+        set(value) {
         _builder.percentage = value
       }
     /**
@@ -115,10 +115,10 @@ public object MsgCreateContinuousFundKt {
      * `.google.protobuf.Timestamp expiry = 4 [json_name = "expiry", (.gogoproto.stdtime) = true];`
      */
     public var expiry: com.google.protobuf.Timestamp
-      @JvmName("getExpiry")
-      get() = _builder.expiry
-      @JvmName("setExpiry")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpiry")
+        get() = _builder.expiry
+      @kotlin.jvm.JvmName("setExpiry")
+        set(value) {
         _builder.expiry = value
       }
     /**

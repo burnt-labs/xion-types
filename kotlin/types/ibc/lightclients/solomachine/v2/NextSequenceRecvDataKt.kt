@@ -37,10 +37,10 @@ public object NextSequenceRecvDataKt {
      * `bytes path = 1 [json_name = "path"];`
      */
     public var path: com.google.protobuf.ByteString
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -54,10 +54,10 @@ public object NextSequenceRecvDataKt {
      * `uint64 next_seq_recv = 2 [json_name = "nextSeqRecv"];`
      */
     public var nextSeqRecv: kotlin.Long
-      @JvmName("getNextSeqRecv")
-      get() = _builder.nextSeqRecv
-      @JvmName("setNextSeqRecv")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextSeqRecv")
+        get() = _builder.nextSeqRecv
+      @kotlin.jvm.JvmName("setNextSeqRecv")
+        set(value) {
         _builder.nextSeqRecv = value
       }
     /**

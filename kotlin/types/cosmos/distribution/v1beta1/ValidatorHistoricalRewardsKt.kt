@@ -54,7 +54,7 @@ public object ValidatorHistoricalRewardsKt {
      */
      public val cumulativeRewardRatio: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.cumulativeRewardRatioList
       )
     /**
@@ -62,7 +62,7 @@ public object ValidatorHistoricalRewardsKt {
      * @param value The cumulativeRewardRatio to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCumulativeRewardRatio")
+@kotlin.jvm.JvmName("addCumulativeRewardRatio")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addCumulativeRewardRatio(value)
     }
@@ -71,7 +71,7 @@ public object ValidatorHistoricalRewardsKt {
      * @param value The cumulativeRewardRatio to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCumulativeRewardRatio")
+@kotlin.jvm.JvmName("plusAssignCumulativeRewardRatio")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -81,7 +81,7 @@ public object ValidatorHistoricalRewardsKt {
      * @param values The cumulativeRewardRatio to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCumulativeRewardRatio")
+@kotlin.jvm.JvmName("addAllCumulativeRewardRatio")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllCumulativeRewardRatio(values)
     }
@@ -90,7 +90,7 @@ public object ValidatorHistoricalRewardsKt {
      * @param values The cumulativeRewardRatio to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCumulativeRewardRatio")
+@kotlin.jvm.JvmName("plusAssignAllCumulativeRewardRatio")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -101,7 +101,7 @@ public object ValidatorHistoricalRewardsKt {
      * @param value The cumulativeRewardRatio to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCumulativeRewardRatio")
+@kotlin.jvm.JvmName("setCumulativeRewardRatio")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setCumulativeRewardRatio(index, value)
     }
@@ -109,20 +109,19 @@ public object ValidatorHistoricalRewardsKt {
      * `repeated .cosmos.base.v1beta1.DecCoin cumulative_reward_ratio = 1 [json_name = "cumulativeRewardRatio", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCumulativeRewardRatio")
+@kotlin.jvm.JvmName("clearCumulativeRewardRatio")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CumulativeRewardRatioProxy>.clear() {
       _builder.clearCumulativeRewardRatio()
     }
-
 
     /**
      * `uint32 reference_count = 2 [json_name = "referenceCount"];`
      */
     public var referenceCount: kotlin.Int
-      @JvmName("getReferenceCount")
-      get() = _builder.referenceCount
-      @JvmName("setReferenceCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getReferenceCount")
+        get() = _builder.referenceCount
+      @kotlin.jvm.JvmName("setReferenceCount")
+        set(value) {
         _builder.referenceCount = value
       }
     /**

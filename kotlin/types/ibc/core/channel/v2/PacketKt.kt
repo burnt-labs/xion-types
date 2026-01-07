@@ -42,10 +42,10 @@ public object PacketKt {
      * `uint64 sequence = 1 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -69,10 +69,10 @@ public object PacketKt {
      * `string source_client = 2 [json_name = "sourceClient"];`
      */
     public var sourceClient: kotlin.String
-      @JvmName("getSourceClient")
-      get() = _builder.sourceClient
-      @JvmName("setSourceClient")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourceClient")
+        get() = _builder.sourceClient
+      @kotlin.jvm.JvmName("setSourceClient")
+        set(value) {
         _builder.sourceClient = value
       }
     /**
@@ -94,10 +94,10 @@ public object PacketKt {
      * `string destination_client = 3 [json_name = "destinationClient"];`
      */
     public var destinationClient: kotlin.String
-      @JvmName("getDestinationClient")
-      get() = _builder.destinationClient
-      @JvmName("setDestinationClient")
-      set(value) {
+      @kotlin.jvm.JvmName("getDestinationClient")
+        get() = _builder.destinationClient
+      @kotlin.jvm.JvmName("setDestinationClient")
+        set(value) {
         _builder.destinationClient = value
       }
     /**
@@ -119,10 +119,10 @@ public object PacketKt {
      * `uint64 timeout_timestamp = 4 [json_name = "timeoutTimestamp"];`
      */
     public var timeoutTimestamp: kotlin.Long
-      @JvmName("getTimeoutTimestamp")
-      get() = _builder.timeoutTimestamp
-      @JvmName("setTimeoutTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutTimestamp")
+        get() = _builder.timeoutTimestamp
+      @kotlin.jvm.JvmName("setTimeoutTimestamp")
+        set(value) {
         _builder.timeoutTimestamp = value
       }
     /**
@@ -151,7 +151,7 @@ public object PacketKt {
      */
      public val payloads: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.payloadsList
       )
     /**
@@ -163,7 +163,7 @@ public object PacketKt {
      * @param value The payloads to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPayloads")
+@kotlin.jvm.JvmName("addPayloads")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>.add(value: ibc.core.channel.v2.PacketOuterClass.Payload) {
       _builder.addPayloads(value)
     }
@@ -176,7 +176,7 @@ public object PacketKt {
      * @param value The payloads to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPayloads")
+@kotlin.jvm.JvmName("plusAssignPayloads")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>.plusAssign(value: ibc.core.channel.v2.PacketOuterClass.Payload) {
       add(value)
@@ -190,7 +190,7 @@ public object PacketKt {
      * @param values The payloads to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPayloads")
+@kotlin.jvm.JvmName("addAllPayloads")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.PacketOuterClass.Payload>) {
       _builder.addAllPayloads(values)
     }
@@ -203,7 +203,7 @@ public object PacketKt {
      * @param values The payloads to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPayloads")
+@kotlin.jvm.JvmName("plusAssignAllPayloads")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.PacketOuterClass.Payload>) {
       addAll(values)
@@ -218,7 +218,7 @@ public object PacketKt {
      * @param value The payloads to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPayloads")
+@kotlin.jvm.JvmName("setPayloads")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.PacketOuterClass.Payload) {
       _builder.setPayloads(index, value)
     }
@@ -230,11 +230,10 @@ public object PacketKt {
      * `repeated .ibc.core.channel.v2.Payload payloads = 5 [json_name = "payloads", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPayloads")
+@kotlin.jvm.JvmName("clearPayloads")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.PacketOuterClass.Payload, PayloadsProxy>.clear() {
       _builder.clearPayloads()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

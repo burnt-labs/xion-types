@@ -48,7 +48,7 @@ public object GetBlockWithTxsResponseKt {
      */
      public val txs: com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.txsList
       )
     /**
@@ -60,7 +60,7 @@ public object GetBlockWithTxsResponseKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTxs")
+@kotlin.jvm.JvmName("addTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.add(value: cosmos.tx.v1beta1.TxOuterClass.Tx) {
       _builder.addTxs(value)
     }
@@ -73,7 +73,7 @@ public object GetBlockWithTxsResponseKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTxs")
+@kotlin.jvm.JvmName("plusAssignTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.plusAssign(value: cosmos.tx.v1beta1.TxOuterClass.Tx) {
       add(value)
@@ -87,7 +87,7 @@ public object GetBlockWithTxsResponseKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTxs")
+@kotlin.jvm.JvmName("addAllTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.Tx>) {
       _builder.addAllTxs(values)
     }
@@ -100,7 +100,7 @@ public object GetBlockWithTxsResponseKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTxs")
+@kotlin.jvm.JvmName("plusAssignAllTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.Tx>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object GetBlockWithTxsResponseKt {
      * @param value The txs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTxs")
+@kotlin.jvm.JvmName("setTxs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.set(index: kotlin.Int, value: cosmos.tx.v1beta1.TxOuterClass.Tx) {
       _builder.setTxs(index, value)
     }
@@ -127,20 +127,19 @@ public object GetBlockWithTxsResponseKt {
      * `repeated .cosmos.tx.v1beta1.Tx txs = 1 [json_name = "txs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTxs")
+@kotlin.jvm.JvmName("clearTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.clear() {
       _builder.clearTxs()
     }
-
 
     /**
      * `.tendermint.types.BlockID block_id = 2 [json_name = "blockId"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -164,10 +163,10 @@ public object GetBlockWithTxsResponseKt {
      * `.tendermint.types.Block block = 3 [json_name = "block"];`
      */
     public var block: tendermint.types.BlockOuterClass.Block
-      @JvmName("getBlock")
-      get() = _builder.block
-      @JvmName("setBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlock")
+        get() = _builder.block
+      @kotlin.jvm.JvmName("setBlock")
+        set(value) {
         _builder.block = value
       }
     /**
@@ -195,10 +194,10 @@ public object GetBlockWithTxsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 4 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

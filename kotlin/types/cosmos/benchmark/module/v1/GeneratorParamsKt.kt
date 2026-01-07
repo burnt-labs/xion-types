@@ -40,10 +40,10 @@ public object GeneratorParamsKt {
      * `uint64 seed = 1 [json_name = "seed"];`
      */
     public var seed: kotlin.Long
-      @JvmName("getSeed")
-      get() = _builder.seed
-      @JvmName("setSeed")
-      set(value) {
+      @kotlin.jvm.JvmName("getSeed")
+        get() = _builder.seed
+      @kotlin.jvm.JvmName("setSeed")
+        set(value) {
         _builder.seed = value
       }
     /**
@@ -65,10 +65,10 @@ public object GeneratorParamsKt {
      * `uint64 bucket_count = 2 [json_name = "bucketCount"];`
      */
     public var bucketCount: kotlin.Long
-      @JvmName("getBucketCount")
-      get() = _builder.bucketCount
-      @JvmName("setBucketCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getBucketCount")
+        get() = _builder.bucketCount
+      @kotlin.jvm.JvmName("setBucketCount")
+        set(value) {
         _builder.bucketCount = value
       }
     /**
@@ -90,10 +90,10 @@ public object GeneratorParamsKt {
      * `uint64 key_mean = 3 [json_name = "keyMean"];`
      */
     public var keyMean: kotlin.Long
-      @JvmName("getKeyMean")
-      get() = _builder.keyMean
-      @JvmName("setKeyMean")
-      set(value) {
+      @kotlin.jvm.JvmName("getKeyMean")
+        get() = _builder.keyMean
+      @kotlin.jvm.JvmName("setKeyMean")
+        set(value) {
         _builder.keyMean = value
       }
     /**
@@ -115,10 +115,10 @@ public object GeneratorParamsKt {
      * `uint64 key_std_dev = 4 [json_name = "keyStdDev"];`
      */
     public var keyStdDev: kotlin.Long
-      @JvmName("getKeyStdDev")
-      get() = _builder.keyStdDev
-      @JvmName("setKeyStdDev")
-      set(value) {
+      @kotlin.jvm.JvmName("getKeyStdDev")
+        get() = _builder.keyStdDev
+      @kotlin.jvm.JvmName("setKeyStdDev")
+        set(value) {
         _builder.keyStdDev = value
       }
     /**
@@ -140,10 +140,10 @@ public object GeneratorParamsKt {
      * `uint64 value_mean = 6 [json_name = "valueMean"];`
      */
     public var valueMean: kotlin.Long
-      @JvmName("getValueMean")
-      get() = _builder.valueMean
-      @JvmName("setValueMean")
-      set(value) {
+      @kotlin.jvm.JvmName("getValueMean")
+        get() = _builder.valueMean
+      @kotlin.jvm.JvmName("setValueMean")
+        set(value) {
         _builder.valueMean = value
       }
     /**
@@ -165,10 +165,10 @@ public object GeneratorParamsKt {
      * `uint64 value_std_dev = 7 [json_name = "valueStdDev"];`
      */
     public var valueStdDev: kotlin.Long
-      @JvmName("getValueStdDev")
-      get() = _builder.valueStdDev
-      @JvmName("setValueStdDev")
-      set(value) {
+      @kotlin.jvm.JvmName("getValueStdDev")
+        get() = _builder.valueStdDev
+      @kotlin.jvm.JvmName("setValueStdDev")
+        set(value) {
         _builder.valueStdDev = value
       }
     /**
@@ -190,10 +190,10 @@ public object GeneratorParamsKt {
      * `uint64 genesis_count = 8 [json_name = "genesisCount"];`
      */
     public var genesisCount: kotlin.Long
-      @JvmName("getGenesisCount")
-      get() = _builder.genesisCount
-      @JvmName("setGenesisCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getGenesisCount")
+        get() = _builder.genesisCount
+      @kotlin.jvm.JvmName("setGenesisCount")
+        set(value) {
         _builder.genesisCount = value
       }
     /**
@@ -215,10 +215,10 @@ public object GeneratorParamsKt {
      * `float insert_weight = 9 [json_name = "insertWeight"];`
      */
     public var insertWeight: kotlin.Float
-      @JvmName("getInsertWeight")
-      get() = _builder.insertWeight
-      @JvmName("setInsertWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getInsertWeight")
+        get() = _builder.insertWeight
+      @kotlin.jvm.JvmName("setInsertWeight")
+        set(value) {
         _builder.insertWeight = value
       }
     /**
@@ -240,10 +240,10 @@ public object GeneratorParamsKt {
      * `float update_weight = 10 [json_name = "updateWeight"];`
      */
     public var updateWeight: kotlin.Float
-      @JvmName("getUpdateWeight")
-      get() = _builder.updateWeight
-      @JvmName("setUpdateWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpdateWeight")
+        get() = _builder.updateWeight
+      @kotlin.jvm.JvmName("setUpdateWeight")
+        set(value) {
         _builder.updateWeight = value
       }
     /**
@@ -265,10 +265,10 @@ public object GeneratorParamsKt {
      * `float get_weight = 12 [json_name = "getWeight"];`
      */
     public var getWeight: kotlin.Float
-      @JvmName("getGetWeight")
-      get() = _builder.getWeight
-      @JvmName("setGetWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getGetWeight")
+        get() = _builder.getWeight
+      @kotlin.jvm.JvmName("setGetWeight")
+        set(value) {
         _builder.getWeight = value
       }
     /**
@@ -290,10 +290,10 @@ public object GeneratorParamsKt {
      * `float delete_weight = 11 [json_name = "deleteWeight"];`
      */
     public var deleteWeight: kotlin.Float
-      @JvmName("getDeleteWeight")
-      get() = _builder.deleteWeight
-      @JvmName("setDeleteWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getDeleteWeight")
+        get() = _builder.deleteWeight
+      @kotlin.jvm.JvmName("setDeleteWeight")
+        set(value) {
         _builder.deleteWeight = value
       }
     /**

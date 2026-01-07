@@ -32,10 +32,10 @@ public object VoteInfoKt {
      * `.tendermint.abci.Validator validator = 1 [json_name = "validator", (.gogoproto.nullable) = false];`
      */
     public var validator: tendermint.abci.Types.Validator
-      @JvmName("getValidator")
-      get() = _builder.validator
-      @JvmName("setValidator")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidator")
+        get() = _builder.validator
+      @kotlin.jvm.JvmName("setValidator")
+        set(value) {
         _builder.validator = value
       }
     /**
@@ -59,17 +59,17 @@ public object VoteInfoKt {
      * `.tendermint.types.BlockIDFlag block_id_flag = 3 [json_name = "blockIdFlag"];`
      */
     public var blockIdFlag: tendermint.types.ValidatorOuterClass.BlockIDFlag
-      @JvmName("getBlockIdFlag")
-      get() = _builder.blockIdFlag
-      @JvmName("setBlockIdFlag")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockIdFlag")
+        get() = _builder.blockIdFlag
+      @kotlin.jvm.JvmName("setBlockIdFlag")
+        set(value) {
         _builder.blockIdFlag = value
       }
     public var blockIdFlagValue: kotlin.Int
-      @JvmName("getBlockIdFlagValue")
-      get() = _builder.blockIdFlagValue
-      @JvmName("setBlockIdFlagValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockIdFlagValue")
+        get() = _builder.blockIdFlagValue
+      @kotlin.jvm.JvmName("setBlockIdFlagValue")
+        set(value) {
         _builder.blockIdFlagValue = value
       }
     /**

@@ -40,10 +40,10 @@ public object ModuleCredentialKt {
      * `string module_name = 1 [json_name = "moduleName"];`
      */
     public var moduleName: kotlin.String
-      @JvmName("getModuleName")
-      get() = _builder.moduleName
-      @JvmName("setModuleName")
-      set(value) {
+      @kotlin.jvm.JvmName("getModuleName")
+        get() = _builder.moduleName
+      @kotlin.jvm.JvmName("setModuleName")
+        set(value) {
         _builder.moduleName = value
       }
     /**
@@ -73,7 +73,7 @@ public object ModuleCredentialKt {
      */
      public val derivationKeys: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.derivationKeysList
       )
     /**
@@ -86,7 +86,7 @@ public object ModuleCredentialKt {
      * @param value The derivationKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDerivationKeys")
+@kotlin.jvm.JvmName("addDerivationKeys")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addDerivationKeys(value)
     }/**
@@ -99,7 +99,7 @@ public object ModuleCredentialKt {
      * @param value The derivationKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDerivationKeys")
+@kotlin.jvm.JvmName("plusAssignDerivationKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -113,7 +113,7 @@ public object ModuleCredentialKt {
      * @param values The derivationKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDerivationKeys")
+@kotlin.jvm.JvmName("addAllDerivationKeys")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllDerivationKeys(values)
     }/**
@@ -126,7 +126,7 @@ public object ModuleCredentialKt {
      * @param values The derivationKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDerivationKeys")
+@kotlin.jvm.JvmName("plusAssignAllDerivationKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -141,7 +141,7 @@ public object ModuleCredentialKt {
      * @param value The derivationKeys to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDerivationKeys")
+@kotlin.jvm.JvmName("setDerivationKeys")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setDerivationKeys(index, value)
     }/**
@@ -153,7 +153,7 @@ public object ModuleCredentialKt {
      * `repeated bytes derivation_keys = 2 [json_name = "derivationKeys"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDerivationKeys")
+@kotlin.jvm.JvmName("clearDerivationKeys")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, DerivationKeysProxy>.clear() {
       _builder.clearDerivationKeys()
     }}

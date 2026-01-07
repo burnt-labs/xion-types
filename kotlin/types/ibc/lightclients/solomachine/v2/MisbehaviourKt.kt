@@ -37,10 +37,10 @@ public object MisbehaviourKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -54,10 +54,10 @@ public object MisbehaviourKt {
      * `uint64 sequence = 2 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -71,10 +71,10 @@ public object MisbehaviourKt {
      * `.ibc.lightclients.solomachine.v2.SignatureAndData signature_one = 3 [json_name = "signatureOne"];`
      */
     public var signatureOne: ibc.lightclients.solomachine.v2.Solomachine.SignatureAndData
-      @JvmName("getSignatureOne")
-      get() = _builder.signatureOne
-      @JvmName("setSignatureOne")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignatureOne")
+        get() = _builder.signatureOne
+      @kotlin.jvm.JvmName("setSignatureOne")
+        set(value) {
         _builder.signatureOne = value
       }
     /**
@@ -98,10 +98,10 @@ public object MisbehaviourKt {
      * `.ibc.lightclients.solomachine.v2.SignatureAndData signature_two = 4 [json_name = "signatureTwo"];`
      */
     public var signatureTwo: ibc.lightclients.solomachine.v2.Solomachine.SignatureAndData
-      @JvmName("getSignatureTwo")
-      get() = _builder.signatureTwo
-      @JvmName("setSignatureTwo")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignatureTwo")
+        get() = _builder.signatureTwo
+      @kotlin.jvm.JvmName("setSignatureTwo")
+        set(value) {
         _builder.signatureTwo = value
       }
     /**

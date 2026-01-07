@@ -40,10 +40,10 @@ public object QueryAllBalancesRequestKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryAllBalancesRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**
@@ -104,10 +104,10 @@ public object QueryAllBalancesRequestKt {
      * `bool resolve_denom = 3 [json_name = "resolveDenom", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50.0"];`
      */
     public var resolveDenom: kotlin.Boolean
-      @JvmName("getResolveDenom")
-      get() = _builder.resolveDenom
-      @JvmName("setResolveDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getResolveDenom")
+        get() = _builder.resolveDenom
+      @kotlin.jvm.JvmName("setResolveDenom")
+        set(value) {
         _builder.resolveDenom = value
       }
     /**

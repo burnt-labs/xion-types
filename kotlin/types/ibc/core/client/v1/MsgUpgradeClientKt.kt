@@ -41,10 +41,10 @@ public object MsgUpgradeClientKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -66,10 +66,10 @@ public object MsgUpgradeClientKt {
      * `.google.protobuf.Any client_state = 2 [json_name = "clientState"];`
      */
     public var clientState: com.google.protobuf.Any
-      @JvmName("getClientState")
-      get() = _builder.clientState
-      @JvmName("setClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientState")
+        get() = _builder.clientState
+      @kotlin.jvm.JvmName("setClientState")
+        set(value) {
         _builder.clientState = value
       }
     /**
@@ -106,10 +106,10 @@ public object MsgUpgradeClientKt {
      * `.google.protobuf.Any consensus_state = 3 [json_name = "consensusState"];`
      */
     public var consensusState: com.google.protobuf.Any
-      @JvmName("getConsensusState")
-      get() = _builder.consensusState
-      @JvmName("setConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusState")
+        get() = _builder.consensusState
+      @kotlin.jvm.JvmName("setConsensusState")
+        set(value) {
         _builder.consensusState = value
       }
     /**
@@ -147,10 +147,10 @@ public object MsgUpgradeClientKt {
      * `bytes proof_upgrade_client = 4 [json_name = "proofUpgradeClient"];`
      */
     public var proofUpgradeClient: com.google.protobuf.ByteString
-      @JvmName("getProofUpgradeClient")
-      get() = _builder.proofUpgradeClient
-      @JvmName("setProofUpgradeClient")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofUpgradeClient")
+        get() = _builder.proofUpgradeClient
+      @kotlin.jvm.JvmName("setProofUpgradeClient")
+        set(value) {
         _builder.proofUpgradeClient = value
       }
     /**
@@ -172,10 +172,10 @@ public object MsgUpgradeClientKt {
      * `bytes proof_upgrade_consensus_state = 5 [json_name = "proofUpgradeConsensusState"];`
      */
     public var proofUpgradeConsensusState: com.google.protobuf.ByteString
-      @JvmName("getProofUpgradeConsensusState")
-      get() = _builder.proofUpgradeConsensusState
-      @JvmName("setProofUpgradeConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofUpgradeConsensusState")
+        get() = _builder.proofUpgradeConsensusState
+      @kotlin.jvm.JvmName("setProofUpgradeConsensusState")
+        set(value) {
         _builder.proofUpgradeConsensusState = value
       }
     /**
@@ -197,10 +197,10 @@ public object MsgUpgradeClientKt {
      * `string signer = 6 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

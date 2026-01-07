@@ -36,10 +36,10 @@ public object BlockIDKt {
      * `bytes hash = 1 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**
@@ -53,10 +53,10 @@ public object BlockIDKt {
      * `.tendermint.types.PartSetHeader part_set_header = 2 [json_name = "partSetHeader", (.gogoproto.nullable) = false];`
      */
     public var partSetHeader: tendermint.types.Types.PartSetHeader
-      @JvmName("getPartSetHeader")
-      get() = _builder.partSetHeader
-      @JvmName("setPartSetHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getPartSetHeader")
+        get() = _builder.partSetHeader
+      @kotlin.jvm.JvmName("setPartSetHeader")
+        set(value) {
         _builder.partSetHeader = value
       }
     /**

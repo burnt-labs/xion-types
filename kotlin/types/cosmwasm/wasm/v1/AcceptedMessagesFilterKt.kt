@@ -49,7 +49,7 @@ public object AcceptedMessagesFilterKt {
      */
      public val messages: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.messagesList
       )
     /**
@@ -61,7 +61,7 @@ public object AcceptedMessagesFilterKt {
      * @param value The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMessages")
+@kotlin.jvm.JvmName("addMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addMessages(value)
     }/**
@@ -73,7 +73,7 @@ public object AcceptedMessagesFilterKt {
      * @param value The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMessages")
+@kotlin.jvm.JvmName("plusAssignMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -86,7 +86,7 @@ public object AcceptedMessagesFilterKt {
      * @param values The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMessages")
+@kotlin.jvm.JvmName("addAllMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllMessages(values)
     }/**
@@ -98,7 +98,7 @@ public object AcceptedMessagesFilterKt {
      * @param values The messages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMessages")
+@kotlin.jvm.JvmName("plusAssignAllMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -112,7 +112,7 @@ public object AcceptedMessagesFilterKt {
      * @param value The messages to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMessages")
+@kotlin.jvm.JvmName("setMessages")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setMessages(index, value)
     }/**
@@ -123,7 +123,7 @@ public object AcceptedMessagesFilterKt {
      * `repeated bytes messages = 1 [json_name = "messages", (.gogoproto.casttype) = "RawContractMessage", (.amino.encoding) = "inline_json"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMessages")
+@kotlin.jvm.JvmName("clearMessages")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MessagesProxy>.clear() {
       _builder.clearMessages()
     }}

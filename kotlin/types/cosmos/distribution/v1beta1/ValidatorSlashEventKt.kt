@@ -39,10 +39,10 @@ public object ValidatorSlashEventKt {
      * `uint64 validator_period = 1 [json_name = "validatorPeriod"];`
      */
     public var validatorPeriod: kotlin.Long
-      @JvmName("getValidatorPeriod")
-      get() = _builder.validatorPeriod
-      @JvmName("setValidatorPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorPeriod")
+        get() = _builder.validatorPeriod
+      @kotlin.jvm.JvmName("setValidatorPeriod")
+        set(value) {
         _builder.validatorPeriod = value
       }
     /**
@@ -56,10 +56,10 @@ public object ValidatorSlashEventKt {
      * `string fraction = 2 [json_name = "fraction", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var fraction: kotlin.String
-      @JvmName("getFraction")
-      get() = _builder.fraction
-      @JvmName("setFraction")
-      set(value) {
+      @kotlin.jvm.JvmName("getFraction")
+        get() = _builder.fraction
+      @kotlin.jvm.JvmName("setFraction")
+        set(value) {
         _builder.fraction = value
       }
     /**

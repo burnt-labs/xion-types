@@ -50,7 +50,7 @@ pub mod signature_descriptor {
         pub struct Multi {
             /// bitarray specifies which keys within the multisig are signing
             #[prost(message, optional, tag="1")]
-            pub bitarray: ::core::option::Option<super::super::super::super::super::crypto::multisig::v1beta1::CompactBitArray>,
+            pub bitarray: ::core::option::Option<crate::types::cosmos_crypto_multisig_v1beta1::CompactBitArray>,
             /// signatures is the signatures of the multi-signature
             #[prost(message, repeated, tag="2")]
             pub signatures: ::prost::alloc::vec::Vec<super::Data>,

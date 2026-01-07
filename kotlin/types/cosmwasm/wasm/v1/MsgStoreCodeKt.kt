@@ -40,10 +40,10 @@ public object MsgStoreCodeKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgStoreCodeKt {
      * `bytes wasm_byte_code = 2 [json_name = "wasmByteCode", (.gogoproto.customname) = "WASMByteCode"];`
      */
     public var wasmByteCode: com.google.protobuf.ByteString
-      @JvmName("getWasmByteCode")
-      get() = _builder.wasmByteCode
-      @JvmName("setWasmByteCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getWasmByteCode")
+        get() = _builder.wasmByteCode
+      @kotlin.jvm.JvmName("setWasmByteCode")
+        set(value) {
         _builder.wasmByteCode = value
       }
     /**
@@ -91,10 +91,10 @@ public object MsgStoreCodeKt {
      * `.cosmwasm.wasm.v1.AccessConfig instantiate_permission = 5 [json_name = "instantiatePermission"];`
      */
     public var instantiatePermission: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getInstantiatePermission")
-      get() = _builder.instantiatePermission
-      @JvmName("setInstantiatePermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiatePermission")
+        get() = _builder.instantiatePermission
+      @kotlin.jvm.JvmName("setInstantiatePermission")
+        set(value) {
         _builder.instantiatePermission = value
       }
     /**

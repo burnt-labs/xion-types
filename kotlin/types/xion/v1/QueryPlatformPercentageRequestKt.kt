@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryPlatformPercentageRequest(block: xion.v1.QueryPlatformPercentageRequestKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryPlatformPercentageRequest =
   xion.v1.QueryPlatformPercentageRequestKt.Dsl._create(xion.v1.QueryOuterClass.QueryPlatformPercentageRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryPlatformPercentageRequest is the request type for querying platform
+ * percentage
+ * ```
+ *
  * Protobuf type `xion.v1.QueryPlatformPercentageRequest`
  */
 public object QueryPlatformPercentageRequestKt {

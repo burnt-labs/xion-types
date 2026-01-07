@@ -40,10 +40,10 @@ public object MsgIncreaseCounterKt {
      * `string signer = 1 [json_name = "signer", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgIncreaseCounterKt {
      * `int64 count = 2 [json_name = "count"];`
      */
     public var count: kotlin.Long
-      @JvmName("getCount")
-      get() = _builder.count
-      @JvmName("setCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getCount")
+        get() = _builder.count
+      @kotlin.jvm.JvmName("setCount")
+        set(value) {
         _builder.count = value
       }
     /**

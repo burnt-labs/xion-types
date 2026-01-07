@@ -41,10 +41,10 @@ public object UnbondingDelegationKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -66,10 +66,10 @@ public object UnbondingDelegationKt {
      * `string validator_address = 2 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -98,7 +98,7 @@ public object UnbondingDelegationKt {
      */
      public val entries: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.entriesList
       )
     /**
@@ -110,7 +110,7 @@ public object UnbondingDelegationKt {
      * @param value The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEntries")
+@kotlin.jvm.JvmName("addEntries")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>.add(value: cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry) {
       _builder.addEntries(value)
     }
@@ -123,7 +123,7 @@ public object UnbondingDelegationKt {
      * @param value The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEntries")
+@kotlin.jvm.JvmName("plusAssignEntries")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>.plusAssign(value: cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry) {
       add(value)
@@ -137,7 +137,7 @@ public object UnbondingDelegationKt {
      * @param values The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEntries")
+@kotlin.jvm.JvmName("addAllEntries")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry>) {
       _builder.addAllEntries(values)
     }
@@ -150,7 +150,7 @@ public object UnbondingDelegationKt {
      * @param values The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEntries")
+@kotlin.jvm.JvmName("plusAssignAllEntries")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry>) {
       addAll(values)
@@ -165,7 +165,7 @@ public object UnbondingDelegationKt {
      * @param value The entries to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEntries")
+@kotlin.jvm.JvmName("setEntries")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry) {
       _builder.setEntries(index, value)
     }
@@ -177,11 +177,10 @@ public object UnbondingDelegationKt {
      * `repeated .cosmos.staking.v1beta1.UnbondingDelegationEntry entries = 3 [json_name = "entries", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEntries")
+@kotlin.jvm.JvmName("clearEntries")
     public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Staking.UnbondingDelegationEntry, EntriesProxy>.clear() {
       _builder.clearEntries()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

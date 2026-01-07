@@ -45,7 +45,7 @@ public object SupplyKt {
      */
      public val total: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.totalList
       )
     /**
@@ -53,7 +53,7 @@ public object SupplyKt {
      * @param value The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTotal")
+@kotlin.jvm.JvmName("addTotal")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addTotal(value)
     }
@@ -62,7 +62,7 @@ public object SupplyKt {
      * @param value The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTotal")
+@kotlin.jvm.JvmName("plusAssignTotal")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -72,7 +72,7 @@ public object SupplyKt {
      * @param values The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTotal")
+@kotlin.jvm.JvmName("addAllTotal")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllTotal(values)
     }
@@ -81,7 +81,7 @@ public object SupplyKt {
      * @param values The total to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTotal")
+@kotlin.jvm.JvmName("plusAssignAllTotal")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -92,7 +92,7 @@ public object SupplyKt {
      * @param value The total to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTotal")
+@kotlin.jvm.JvmName("setTotal")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setTotal(index, value)
     }
@@ -100,11 +100,10 @@ public object SupplyKt {
      * `repeated .cosmos.base.v1beta1.Coin total = 1 [json_name = "total", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTotal")
+@kotlin.jvm.JvmName("clearTotal")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalProxy>.clear() {
       _builder.clearTotal()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -40,10 +40,10 @@ public object ClassKt {
      * `string id = 1 [json_name = "id"];`
      */
     public var id: kotlin.String
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -65,10 +65,10 @@ public object ClassKt {
      * `string name = 2 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -90,10 +90,10 @@ public object ClassKt {
      * `string symbol = 3 [json_name = "symbol"];`
      */
     public var symbol: kotlin.String
-      @JvmName("getSymbol")
-      get() = _builder.symbol
-      @JvmName("setSymbol")
-      set(value) {
+      @kotlin.jvm.JvmName("getSymbol")
+        get() = _builder.symbol
+      @kotlin.jvm.JvmName("setSymbol")
+        set(value) {
         _builder.symbol = value
       }
     /**
@@ -115,10 +115,10 @@ public object ClassKt {
      * `string description = 4 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -140,10 +140,10 @@ public object ClassKt {
      * `string uri = 5 [json_name = "uri"];`
      */
     public var uri: kotlin.String
-      @JvmName("getUri")
-      get() = _builder.uri
-      @JvmName("setUri")
-      set(value) {
+      @kotlin.jvm.JvmName("getUri")
+        get() = _builder.uri
+      @kotlin.jvm.JvmName("setUri")
+        set(value) {
         _builder.uri = value
       }
     /**
@@ -165,10 +165,10 @@ public object ClassKt {
      * `string uri_hash = 6 [json_name = "uriHash"];`
      */
     public var uriHash: kotlin.String
-      @JvmName("getUriHash")
-      get() = _builder.uriHash
-      @JvmName("setUriHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getUriHash")
+        get() = _builder.uriHash
+      @kotlin.jvm.JvmName("setUriHash")
+        set(value) {
         _builder.uriHash = value
       }
     /**
@@ -190,10 +190,10 @@ public object ClassKt {
      * `.google.protobuf.Any data = 7 [json_name = "data"];`
      */
     public var data: com.google.protobuf.Any
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

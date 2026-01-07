@@ -37,10 +37,10 @@ public object QueryDenomAuthorityMetadataRequestKt {
      * `string denom = 1 [json_name = "denom", (.gogoproto.moretags) = "yaml:\"denom\""];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**

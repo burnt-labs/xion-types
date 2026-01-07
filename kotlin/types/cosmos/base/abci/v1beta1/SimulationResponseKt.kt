@@ -37,10 +37,10 @@ public object SimulationResponseKt {
      * `.cosmos.base.abci.v1beta1.GasInfo gas_info = 1 [json_name = "gasInfo", (.gogoproto.nullable) = false, (.gogoproto.embed) = true];`
      */
     public var gasInfo: cosmos.base.abci.v1beta1.Abci.GasInfo
-      @JvmName("getGasInfo")
-      get() = _builder.gasInfo
-      @JvmName("setGasInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getGasInfo")
+        get() = _builder.gasInfo
+      @kotlin.jvm.JvmName("setGasInfo")
+        set(value) {
         _builder.gasInfo = value
       }
     /**
@@ -64,10 +64,10 @@ public object SimulationResponseKt {
      * `.cosmos.base.abci.v1beta1.Result result = 2 [json_name = "result"];`
      */
     public var result: cosmos.base.abci.v1beta1.Abci.Result
-      @JvmName("getResult")
-      get() = _builder.result
-      @JvmName("setResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getResult")
+        get() = _builder.result
+      @kotlin.jvm.JvmName("setResult")
+        set(value) {
         _builder.result = value
       }
     /**

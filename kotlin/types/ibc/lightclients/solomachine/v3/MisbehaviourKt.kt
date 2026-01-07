@@ -37,10 +37,10 @@ public object MisbehaviourKt {
      * `uint64 sequence = 1 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -54,10 +54,10 @@ public object MisbehaviourKt {
      * `.ibc.lightclients.solomachine.v3.SignatureAndData signature_one = 2 [json_name = "signatureOne"];`
      */
     public var signatureOne: ibc.lightclients.solomachine.v3.Solomachine.SignatureAndData
-      @JvmName("getSignatureOne")
-      get() = _builder.signatureOne
-      @JvmName("setSignatureOne")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignatureOne")
+        get() = _builder.signatureOne
+      @kotlin.jvm.JvmName("setSignatureOne")
+        set(value) {
         _builder.signatureOne = value
       }
     /**
@@ -81,10 +81,10 @@ public object MisbehaviourKt {
      * `.ibc.lightclients.solomachine.v3.SignatureAndData signature_two = 3 [json_name = "signatureTwo"];`
      */
     public var signatureTwo: ibc.lightclients.solomachine.v3.Solomachine.SignatureAndData
-      @JvmName("getSignatureTwo")
-      get() = _builder.signatureTwo
-      @JvmName("setSignatureTwo")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignatureTwo")
+        get() = _builder.signatureTwo
+      @kotlin.jvm.JvmName("setSignatureTwo")
+        set(value) {
         _builder.signatureTwo = value
       }
     /**

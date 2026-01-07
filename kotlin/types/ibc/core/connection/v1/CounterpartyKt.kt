@@ -41,10 +41,10 @@ public object CounterpartyKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -68,10 +68,10 @@ public object CounterpartyKt {
      * `string connection_id = 2 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -94,10 +94,10 @@ public object CounterpartyKt {
      * `.ibc.core.commitment.v1.MerklePrefix prefix = 3 [json_name = "prefix", (.gogoproto.nullable) = false];`
      */
     public var prefix: ibc.core.commitment.v1.Commitment.MerklePrefix
-      @JvmName("getPrefix")
-      get() = _builder.prefix
-      @JvmName("setPrefix")
-      set(value) {
+      @kotlin.jvm.JvmName("getPrefix")
+        get() = _builder.prefix
+      @kotlin.jvm.JvmName("setPrefix")
+        set(value) {
         _builder.prefix = value
       }
     /**

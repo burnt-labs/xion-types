@@ -40,10 +40,10 @@ public object MsgVerifyInvariantKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgVerifyInvariantKt {
      * `string invariant_module_name = 2 [json_name = "invariantModuleName"];`
      */
     public var invariantModuleName: kotlin.String
-      @JvmName("getInvariantModuleName")
-      get() = _builder.invariantModuleName
-      @JvmName("setInvariantModuleName")
-      set(value) {
+      @kotlin.jvm.JvmName("getInvariantModuleName")
+        get() = _builder.invariantModuleName
+      @kotlin.jvm.JvmName("setInvariantModuleName")
+        set(value) {
         _builder.invariantModuleName = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgVerifyInvariantKt {
      * `string invariant_route = 3 [json_name = "invariantRoute"];`
      */
     public var invariantRoute: kotlin.String
-      @JvmName("getInvariantRoute")
-      get() = _builder.invariantRoute
-      @JvmName("setInvariantRoute")
-      set(value) {
+      @kotlin.jvm.JvmName("getInvariantRoute")
+        get() = _builder.invariantRoute
+      @kotlin.jvm.JvmName("setInvariantRoute")
+        set(value) {
         _builder.invariantRoute = value
       }
     /**

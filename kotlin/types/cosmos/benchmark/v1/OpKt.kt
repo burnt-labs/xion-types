@@ -36,10 +36,10 @@ public object OpKt {
      * `uint64 seed = 1 [json_name = "seed"];`
      */
     public var seed: kotlin.Long
-      @JvmName("getSeed")
-      get() = _builder.seed
-      @JvmName("setSeed")
-      set(value) {
+      @kotlin.jvm.JvmName("getSeed")
+        get() = _builder.seed
+      @kotlin.jvm.JvmName("setSeed")
+        set(value) {
         _builder.seed = value
       }
     /**
@@ -53,10 +53,10 @@ public object OpKt {
      * `string actor = 2 [json_name = "actor"];`
      */
     public var actor: kotlin.String
-      @JvmName("getActor")
-      get() = _builder.actor
-      @JvmName("setActor")
-      set(value) {
+      @kotlin.jvm.JvmName("getActor")
+        get() = _builder.actor
+      @kotlin.jvm.JvmName("setActor")
+        set(value) {
         _builder.actor = value
       }
     /**
@@ -70,10 +70,10 @@ public object OpKt {
      * `uint64 key_length = 3 [json_name = "keyLength"];`
      */
     public var keyLength: kotlin.Long
-      @JvmName("getKeyLength")
-      get() = _builder.keyLength
-      @JvmName("setKeyLength")
-      set(value) {
+      @kotlin.jvm.JvmName("getKeyLength")
+        get() = _builder.keyLength
+      @kotlin.jvm.JvmName("setKeyLength")
+        set(value) {
         _builder.keyLength = value
       }
     /**
@@ -87,10 +87,10 @@ public object OpKt {
      * `uint64 value_length = 4 [json_name = "valueLength"];`
      */
     public var valueLength: kotlin.Long
-      @JvmName("getValueLength")
-      get() = _builder.valueLength
-      @JvmName("setValueLength")
-      set(value) {
+      @kotlin.jvm.JvmName("getValueLength")
+        get() = _builder.valueLength
+      @kotlin.jvm.JvmName("setValueLength")
+        set(value) {
         _builder.valueLength = value
       }
     /**
@@ -104,10 +104,10 @@ public object OpKt {
      * `uint32 iterations = 5 [json_name = "iterations"];`
      */
     public var iterations: kotlin.Int
-      @JvmName("getIterations")
-      get() = _builder.iterations
-      @JvmName("setIterations")
-      set(value) {
+      @kotlin.jvm.JvmName("getIterations")
+        get() = _builder.iterations
+      @kotlin.jvm.JvmName("setIterations")
+        set(value) {
         _builder.iterations = value
       }
     /**
@@ -121,10 +121,10 @@ public object OpKt {
      * `bool delete = 6 [json_name = "delete"];`
      */
     public var delete: kotlin.Boolean
-      @JvmName("getDelete")
-      get() = _builder.delete
-      @JvmName("setDelete")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelete")
+        get() = _builder.delete
+      @kotlin.jvm.JvmName("setDelete")
+        set(value) {
         _builder.delete = value
       }
     /**
@@ -138,10 +138,10 @@ public object OpKt {
      * `bool exists = 7 [json_name = "exists"];`
      */
     public var exists: kotlin.Boolean
-      @JvmName("getExists")
-      get() = _builder.exists
-      @JvmName("setExists")
-      set(value) {
+      @kotlin.jvm.JvmName("getExists")
+        get() = _builder.exists
+      @kotlin.jvm.JvmName("setExists")
+        set(value) {
         _builder.exists = value
       }
     /**

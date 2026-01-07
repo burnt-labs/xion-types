@@ -33,22 +33,34 @@ public object QueryHostChainConfigResponseKt {
     internal fun _build(): xion.feeabs.v1beta1.QueryOuterClass.QueryHostChainConfigResponse = _builder.build()
 
     /**
+     * ```
+     * The host chain fee abstraction configuration
+     * ```
+     *
      * `.xion.feeabs.v1beta1.HostChainFeeAbsConfig host_chain_config = 1 [json_name = "hostChainConfig", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"host_chain_config\""];`
      */
     public var hostChainConfig: xion.feeabs.v1beta1.Proposal.HostChainFeeAbsConfig
-      @JvmName("getHostChainConfig")
-      get() = _builder.hostChainConfig
-      @JvmName("setHostChainConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostChainConfig")
+        get() = _builder.hostChainConfig
+      @kotlin.jvm.JvmName("setHostChainConfig")
+        set(value) {
         _builder.hostChainConfig = value
       }
     /**
+     * ```
+     * The host chain fee abstraction configuration
+     * ```
+     *
      * `.xion.feeabs.v1beta1.HostChainFeeAbsConfig host_chain_config = 1 [json_name = "hostChainConfig", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"host_chain_config\""];`
      */
     public fun clearHostChainConfig() {
       _builder.clearHostChainConfig()
     }
     /**
+     * ```
+     * The host chain fee abstraction configuration
+     * ```
+     *
      * `.xion.feeabs.v1beta1.HostChainFeeAbsConfig host_chain_config = 1 [json_name = "hostChainConfig", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"host_chain_config\""];`
      * @return Whether the hostChainConfig field is set.
      */

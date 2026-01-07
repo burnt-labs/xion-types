@@ -41,10 +41,10 @@ public object PubKeyKt {
      * `bytes key = 1 [json_name = "key", (.gogoproto.customtype) = "ecdsaPK"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**

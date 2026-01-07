@@ -40,10 +40,10 @@ public object SetHostZoneProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -65,10 +65,10 @@ public object SetHostZoneProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -90,10 +90,10 @@ public object SetHostZoneProposalKt {
      * `.xion.feeabs.v1beta1.HostChainFeeAbsConfig host_chain_config = 3 [json_name = "hostChainConfig"];`
      */
     public var hostChainConfig: xion.feeabs.v1beta1.Proposal.HostChainFeeAbsConfig
-      @JvmName("getHostChainConfig")
-      get() = _builder.hostChainConfig
-      @JvmName("setHostChainConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostChainConfig")
+        get() = _builder.hostChainConfig
+      @kotlin.jvm.JvmName("setHostChainConfig")
+        set(value) {
         _builder.hostChainConfig = value
       }
     /**

@@ -38,10 +38,10 @@ public object BaseAccountKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -55,10 +55,10 @@ public object BaseAccountKt {
      * `.google.protobuf.Any pub_key = 2 [json_name = "pubKey", (.gogoproto.jsontag) = "public_key,omitempty", (.amino.field_name) = "public_key"];`
      */
     public var pubKey: com.google.protobuf.Any
-      @JvmName("getPubKey")
-      get() = _builder.pubKey
-      @JvmName("setPubKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPubKey")
+        get() = _builder.pubKey
+      @kotlin.jvm.JvmName("setPubKey")
+        set(value) {
         _builder.pubKey = value
       }
     /**
@@ -82,10 +82,10 @@ public object BaseAccountKt {
      * `uint64 account_number = 3 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
-      @JvmName("getAccountNumber")
-      get() = _builder.accountNumber
-      @JvmName("setAccountNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountNumber")
+        get() = _builder.accountNumber
+      @kotlin.jvm.JvmName("setAccountNumber")
+        set(value) {
         _builder.accountNumber = value
       }
     /**
@@ -99,10 +99,10 @@ public object BaseAccountKt {
      * `uint64 sequence = 4 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**

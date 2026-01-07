@@ -41,10 +41,10 @@ public object VoteKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -66,10 +66,10 @@ public object VoteKt {
      * `string voter = 2 [json_name = "voter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var voter: kotlin.String
-      @JvmName("getVoter")
-      get() = _builder.voter
-      @JvmName("setVoter")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoter")
+        get() = _builder.voter
+      @kotlin.jvm.JvmName("setVoter")
+        set(value) {
         _builder.voter = value
       }
     /**
@@ -98,7 +98,7 @@ public object VoteKt {
      */
      public val options: com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.optionsList
       )
     /**
@@ -110,7 +110,7 @@ public object VoteKt {
      * @param value The options to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOptions")
+@kotlin.jvm.JvmName("addOptions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>.add(value: cosmos.gov.v1.Gov.WeightedVoteOption) {
       _builder.addOptions(value)
     }
@@ -123,7 +123,7 @@ public object VoteKt {
      * @param value The options to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOptions")
+@kotlin.jvm.JvmName("plusAssignOptions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>.plusAssign(value: cosmos.gov.v1.Gov.WeightedVoteOption) {
       add(value)
@@ -137,7 +137,7 @@ public object VoteKt {
      * @param values The options to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOptions")
+@kotlin.jvm.JvmName("addAllOptions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.gov.v1.Gov.WeightedVoteOption>) {
       _builder.addAllOptions(values)
     }
@@ -150,7 +150,7 @@ public object VoteKt {
      * @param values The options to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOptions")
+@kotlin.jvm.JvmName("plusAssignAllOptions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.gov.v1.Gov.WeightedVoteOption>) {
       addAll(values)
@@ -165,7 +165,7 @@ public object VoteKt {
      * @param value The options to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOptions")
+@kotlin.jvm.JvmName("setOptions")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>.set(index: kotlin.Int, value: cosmos.gov.v1.Gov.WeightedVoteOption) {
       _builder.setOptions(index, value)
     }
@@ -177,11 +177,10 @@ public object VoteKt {
      * `repeated .cosmos.gov.v1.WeightedVoteOption options = 4 [json_name = "options"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOptions")
+@kotlin.jvm.JvmName("clearOptions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.gov.v1.Gov.WeightedVoteOption, OptionsProxy>.clear() {
       _builder.clearOptions()
     }
-
 
     /**
      * ```
@@ -192,10 +191,10 @@ public object VoteKt {
      * `string metadata = 5 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**

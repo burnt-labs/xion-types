@@ -40,10 +40,10 @@ public object MsgUpdateGroupPolicyAdminKt {
      * `string admin = 1 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgUpdateGroupPolicyAdminKt {
      * `string group_policy_address = 2 [json_name = "groupPolicyAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var groupPolicyAddress: kotlin.String
-      @JvmName("getGroupPolicyAddress")
-      get() = _builder.groupPolicyAddress
-      @JvmName("setGroupPolicyAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupPolicyAddress")
+        get() = _builder.groupPolicyAddress
+      @kotlin.jvm.JvmName("setGroupPolicyAddress")
+        set(value) {
         _builder.groupPolicyAddress = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgUpdateGroupPolicyAdminKt {
      * `string new_admin = 3 [json_name = "newAdmin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var newAdmin: kotlin.String
-      @JvmName("getNewAdmin")
-      get() = _builder.newAdmin
-      @JvmName("setNewAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewAdmin")
+        get() = _builder.newAdmin
+      @kotlin.jvm.JvmName("setNewAdmin")
+        set(value) {
         _builder.newAdmin = value
       }
     /**

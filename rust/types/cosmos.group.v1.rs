@@ -65,7 +65,7 @@ pub struct PercentageDecisionPolicy {
     pub windows: ::core::option::Option<DecisionPolicyWindows>,
 }
 /// DecisionPolicyWindows defines the different windows for voting and execution.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DecisionPolicyWindows {
     /// voting_period is the duration from submission of a proposal to the end of voting period
     /// Within this times votes can be submitted with MsgVote.
@@ -380,14 +380,14 @@ impl ProposalExecutorResult {
     }
 }
 /// EventCreateGroup is an event emitted when a group is created.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventCreateGroup {
     /// group_id is the unique ID of the group.
     #[prost(uint64, tag="1")]
     pub group_id: u64,
 }
 /// EventUpdateGroup is an event emitted when a group is updated.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventUpdateGroup {
     /// group_id is the unique ID of the group.
     #[prost(uint64, tag="1")]
@@ -408,21 +408,21 @@ pub struct EventUpdateGroupPolicy {
     pub address: ::prost::alloc::string::String,
 }
 /// EventSubmitProposal is an event emitted when a proposal is created.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventSubmitProposal {
     /// proposal_id is the unique ID of the proposal.
     #[prost(uint64, tag="1")]
     pub proposal_id: u64,
 }
 /// EventWithdrawProposal is an event emitted when a proposal is withdrawn.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventWithdrawProposal {
     /// proposal_id is the unique ID of the proposal.
     #[prost(uint64, tag="1")]
     pub proposal_id: u64,
 }
 /// EventVote is an event emitted when a voter votes on a proposal.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventVote {
     /// proposal_id is the unique ID of the proposal.
     #[prost(uint64, tag="1")]
@@ -506,7 +506,7 @@ pub struct GenesisState {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
 }
 /// QueryGroupInfoRequest is the Query/GroupInfo request type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupInfoRequest {
     /// group_id is the unique ID of the group.
     #[prost(uint64, tag="1")]
@@ -541,7 +541,7 @@ pub struct QueryGroupMembersRequest {
     pub group_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGroupMembersResponse is the Query/GroupMembersResponse response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -551,7 +551,7 @@ pub struct QueryGroupMembersResponse {
     pub members: ::prost::alloc::vec::Vec<GroupMember>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryGroupsByAdminRequest is the Query/GroupsByAdmin request type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -561,7 +561,7 @@ pub struct QueryGroupsByAdminRequest {
     pub admin: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGroupsByAdminResponse is the Query/GroupsByAdminResponse response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -571,7 +571,7 @@ pub struct QueryGroupsByAdminResponse {
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryGroupPoliciesByGroupRequest is the Query/GroupPoliciesByGroup request type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -581,7 +581,7 @@ pub struct QueryGroupPoliciesByGroupRequest {
     pub group_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGroupPoliciesByGroupResponse is the Query/GroupPoliciesByGroup response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -591,7 +591,7 @@ pub struct QueryGroupPoliciesByGroupResponse {
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryGroupPoliciesByAdminRequest is the Query/GroupPoliciesByAdmin request type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -601,7 +601,7 @@ pub struct QueryGroupPoliciesByAdminRequest {
     pub admin: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGroupPoliciesByAdminResponse is the Query/GroupPoliciesByAdmin response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -611,10 +611,10 @@ pub struct QueryGroupPoliciesByAdminResponse {
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryProposalRequest is the Query/Proposal request type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalRequest {
     /// proposal_id is the unique ID of a proposal.
     #[prost(uint64, tag="1")]
@@ -635,7 +635,7 @@ pub struct QueryProposalsByGroupPolicyRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryProposalsByGroupPolicyResponse is the Query/ProposalByGroupPolicy response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -645,7 +645,7 @@ pub struct QueryProposalsByGroupPolicyResponse {
     pub proposals: ::prost::alloc::vec::Vec<Proposal>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryVoteByProposalVoterRequest is the Query/VoteByProposalVoter request type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -672,7 +672,7 @@ pub struct QueryVotesByProposalRequest {
     pub proposal_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryVotesByProposalResponse is the Query/VotesByProposal response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -682,7 +682,7 @@ pub struct QueryVotesByProposalResponse {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryVotesByVoterRequest is the Query/VotesByVoter request type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -692,7 +692,7 @@ pub struct QueryVotesByVoterRequest {
     pub voter: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryVotesByVoterResponse is the Query/VotesByVoter response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -702,7 +702,7 @@ pub struct QueryVotesByVoterResponse {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryGroupsByMemberRequest is the Query/GroupsByMember request type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -712,7 +712,7 @@ pub struct QueryGroupsByMemberRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGroupsByMemberResponse is the Query/GroupsByMember response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -722,10 +722,10 @@ pub struct QueryGroupsByMemberResponse {
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryTallyResultRequest is the Query/TallyResult request type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTallyResultRequest {
     /// proposal_id is the unique id of a proposal.
     #[prost(uint64, tag="1")]
@@ -743,7 +743,7 @@ pub struct QueryTallyResultResponse {
 pub struct QueryGroupsRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGroupsResponse is the Query/Groups response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -753,7 +753,7 @@ pub struct QueryGroupsResponse {
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 //
 // Groups
@@ -773,7 +773,7 @@ pub struct MsgCreateGroup {
     pub metadata: ::prost::alloc::string::String,
 }
 /// MsgCreateGroupResponse is the Msg/CreateGroup response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupResponse {
     /// group_id is the unique ID of the newly created group.
     #[prost(uint64, tag="1")]
@@ -794,7 +794,7 @@ pub struct MsgUpdateGroupMembers {
     pub member_updates: ::prost::alloc::vec::Vec<MemberRequest>,
 }
 /// MsgUpdateGroupMembersResponse is the Msg/UpdateGroupMembers response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupMembersResponse {
 }
 /// MsgUpdateGroupAdmin is the Msg/UpdateGroupAdmin request type.
@@ -811,7 +811,7 @@ pub struct MsgUpdateGroupAdmin {
     pub new_admin: ::prost::alloc::string::String,
 }
 /// MsgUpdateGroupAdminResponse is the Msg/UpdateGroupAdmin response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupAdminResponse {
 }
 /// MsgUpdateGroupMetadata is the Msg/UpdateGroupMetadata request type.
@@ -828,7 +828,7 @@ pub struct MsgUpdateGroupMetadata {
     pub metadata: ::prost::alloc::string::String,
 }
 /// MsgUpdateGroupMetadataResponse is the Msg/UpdateGroupMetadata response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupMetadataResponse {
 }
 //
@@ -872,7 +872,7 @@ pub struct MsgUpdateGroupPolicyAdmin {
     pub new_admin: ::prost::alloc::string::String,
 }
 /// MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyAdminResponse {
 }
 /// MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type.
@@ -922,7 +922,7 @@ pub struct MsgUpdateGroupPolicyDecisionPolicy {
     pub decision_policy: ::core::option::Option<::prost_types::Any>,
 }
 /// MsgUpdateGroupPolicyDecisionPolicyResponse is the Msg/UpdateGroupPolicyDecisionPolicy response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyDecisionPolicyResponse {
 }
 /// MsgUpdateGroupPolicyMetadata is the Msg/UpdateGroupPolicyMetadata request type.
@@ -939,7 +939,7 @@ pub struct MsgUpdateGroupPolicyMetadata {
     pub metadata: ::prost::alloc::string::String,
 }
 /// MsgUpdateGroupPolicyMetadataResponse is the Msg/UpdateGroupPolicyMetadata response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateGroupPolicyMetadataResponse {
 }
 /// MsgSubmitProposal is the Msg/SubmitProposal request type.
@@ -971,7 +971,7 @@ pub struct MsgSubmitProposal {
     pub summary: ::prost::alloc::string::String,
 }
 /// MsgSubmitProposalResponse is the Msg/SubmitProposal response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitProposalResponse {
     /// proposal is the unique ID of the proposal.
     #[prost(uint64, tag="1")]
@@ -988,7 +988,7 @@ pub struct MsgWithdrawProposal {
     pub address: ::prost::alloc::string::String,
 }
 /// MsgWithdrawProposalResponse is the Msg/WithdrawProposal response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawProposalResponse {
 }
 /// MsgVote is the Msg/Vote request type.
@@ -1012,7 +1012,7 @@ pub struct MsgVote {
     pub exec: i32,
 }
 /// MsgVoteResponse is the Msg/Vote response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteResponse {
 }
 /// MsgExec is the Msg/Exec request type.
@@ -1026,7 +1026,7 @@ pub struct MsgExec {
     pub executor: ::prost::alloc::string::String,
 }
 /// MsgExecResponse is the Msg/Exec request type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExecResponse {
     /// result is the final result of the proposal execution.
     #[prost(enumeration="ProposalExecutorResult", tag="2")]
@@ -1043,7 +1043,7 @@ pub struct MsgLeaveGroup {
     pub group_id: u64,
 }
 /// MsgLeaveGroupResponse is the Msg/LeaveGroup response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgLeaveGroupResponse {
 }
 //

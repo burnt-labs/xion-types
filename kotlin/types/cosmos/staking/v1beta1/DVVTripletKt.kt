@@ -39,10 +39,10 @@ public object DVVTripletKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -56,10 +56,10 @@ public object DVVTripletKt {
      * `string validator_src_address = 2 [json_name = "validatorSrcAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorSrcAddress: kotlin.String
-      @JvmName("getValidatorSrcAddress")
-      get() = _builder.validatorSrcAddress
-      @JvmName("setValidatorSrcAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorSrcAddress")
+        get() = _builder.validatorSrcAddress
+      @kotlin.jvm.JvmName("setValidatorSrcAddress")
+        set(value) {
         _builder.validatorSrcAddress = value
       }
     /**
@@ -73,10 +73,10 @@ public object DVVTripletKt {
      * `string validator_dst_address = 3 [json_name = "validatorDstAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorDstAddress: kotlin.String
-      @JvmName("getValidatorDstAddress")
-      get() = _builder.validatorDstAddress
-      @JvmName("setValidatorDstAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorDstAddress")
+        get() = _builder.validatorDstAddress
+      @kotlin.jvm.JvmName("setValidatorDstAddress")
+        set(value) {
         _builder.validatorDstAddress = value
       }
     /**

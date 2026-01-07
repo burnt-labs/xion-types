@@ -48,7 +48,7 @@ public object GetTxsEventResponseKt {
      */
      public val txs: com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.txsList
       )
     /**
@@ -60,7 +60,7 @@ public object GetTxsEventResponseKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTxs")
+@kotlin.jvm.JvmName("addTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.add(value: cosmos.tx.v1beta1.TxOuterClass.Tx) {
       _builder.addTxs(value)
     }
@@ -73,7 +73,7 @@ public object GetTxsEventResponseKt {
      * @param value The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTxs")
+@kotlin.jvm.JvmName("plusAssignTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.plusAssign(value: cosmos.tx.v1beta1.TxOuterClass.Tx) {
       add(value)
@@ -87,7 +87,7 @@ public object GetTxsEventResponseKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTxs")
+@kotlin.jvm.JvmName("addAllTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.Tx>) {
       _builder.addAllTxs(values)
     }
@@ -100,7 +100,7 @@ public object GetTxsEventResponseKt {
      * @param values The txs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTxs")
+@kotlin.jvm.JvmName("plusAssignAllTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.Tx>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object GetTxsEventResponseKt {
      * @param value The txs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTxs")
+@kotlin.jvm.JvmName("setTxs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.set(index: kotlin.Int, value: cosmos.tx.v1beta1.TxOuterClass.Tx) {
       _builder.setTxs(index, value)
     }
@@ -127,11 +127,10 @@ public object GetTxsEventResponseKt {
      * `repeated .cosmos.tx.v1beta1.Tx txs = 1 [json_name = "txs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTxs")
+@kotlin.jvm.JvmName("clearTxs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.Tx, TxsProxy>.clear() {
       _builder.clearTxs()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -148,7 +147,7 @@ public object GetTxsEventResponseKt {
      */
      public val txResponses: com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.txResponsesList
       )
     /**
@@ -160,7 +159,7 @@ public object GetTxsEventResponseKt {
      * @param value The txResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTxResponses")
+@kotlin.jvm.JvmName("addTxResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>.add(value: cosmos.base.abci.v1beta1.Abci.TxResponse) {
       _builder.addTxResponses(value)
     }
@@ -173,7 +172,7 @@ public object GetTxsEventResponseKt {
      * @param value The txResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTxResponses")
+@kotlin.jvm.JvmName("plusAssignTxResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>.plusAssign(value: cosmos.base.abci.v1beta1.Abci.TxResponse) {
       add(value)
@@ -187,7 +186,7 @@ public object GetTxsEventResponseKt {
      * @param values The txResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTxResponses")
+@kotlin.jvm.JvmName("addAllTxResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.TxResponse>) {
       _builder.addAllTxResponses(values)
     }
@@ -200,7 +199,7 @@ public object GetTxsEventResponseKt {
      * @param values The txResponses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTxResponses")
+@kotlin.jvm.JvmName("plusAssignAllTxResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.abci.v1beta1.Abci.TxResponse>) {
       addAll(values)
@@ -215,7 +214,7 @@ public object GetTxsEventResponseKt {
      * @param value The txResponses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTxResponses")
+@kotlin.jvm.JvmName("setTxResponses")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>.set(index: kotlin.Int, value: cosmos.base.abci.v1beta1.Abci.TxResponse) {
       _builder.setTxResponses(index, value)
     }
@@ -227,11 +226,10 @@ public object GetTxsEventResponseKt {
      * `repeated .cosmos.base.abci.v1beta1.TxResponse tx_responses = 2 [json_name = "txResponses"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTxResponses")
+@kotlin.jvm.JvmName("clearTxResponses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.abci.v1beta1.Abci.TxResponse, TxResponsesProxy>.clear() {
       _builder.clearTxResponses()
     }
-
 
     /**
      * ```
@@ -242,10 +240,10 @@ public object GetTxsEventResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 3 [json_name = "pagination", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field pagination is deprecated") public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**
@@ -283,10 +281,10 @@ public object GetTxsEventResponseKt {
      * `uint64 total = 4 [json_name = "total"];`
      */
     public var total: kotlin.Long
-      @JvmName("getTotal")
-      get() = _builder.total
-      @JvmName("setTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotal")
+        get() = _builder.total
+      @kotlin.jvm.JvmName("setTotal")
+        set(value) {
         _builder.total = value
       }
     /**

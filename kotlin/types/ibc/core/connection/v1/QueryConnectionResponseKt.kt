@@ -42,10 +42,10 @@ public object QueryConnectionResponseKt {
      * `.ibc.core.connection.v1.ConnectionEnd connection = 1 [json_name = "connection"];`
      */
     public var connection: ibc.core.connection.v1.Connection.ConnectionEnd
-      @JvmName("getConnection")
-      get() = _builder.connection
-      @JvmName("setConnection")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnection")
+        get() = _builder.connection
+      @kotlin.jvm.JvmName("setConnection")
+        set(value) {
         _builder.connection = value
       }
     /**
@@ -81,10 +81,10 @@ public object QueryConnectionResponseKt {
      * `bytes proof = 2 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -106,10 +106,10 @@ public object QueryConnectionResponseKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**

@@ -32,17 +32,17 @@ public object ProposalKt {
      * `.tendermint.types.SignedMsgType type = 1 [json_name = "type"];`
      */
     public var type: tendermint.types.Types.SignedMsgType
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     public var typeValue: kotlin.Int
-      @JvmName("getTypeValue")
-      get() = _builder.typeValue
-      @JvmName("setTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getTypeValue")
+        get() = _builder.typeValue
+      @kotlin.jvm.JvmName("setTypeValue")
+        set(value) {
         _builder.typeValue = value
       }
     /**
@@ -56,10 +56,10 @@ public object ProposalKt {
      * `int64 height = 2 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -73,10 +73,10 @@ public object ProposalKt {
      * `int32 round = 3 [json_name = "round"];`
      */
     public var round: kotlin.Int
-      @JvmName("getRound")
-      get() = _builder.round
-      @JvmName("setRound")
-      set(value) {
+      @kotlin.jvm.JvmName("getRound")
+        get() = _builder.round
+      @kotlin.jvm.JvmName("setRound")
+        set(value) {
         _builder.round = value
       }
     /**
@@ -90,10 +90,10 @@ public object ProposalKt {
      * `int32 pol_round = 4 [json_name = "polRound"];`
      */
     public var polRound: kotlin.Int
-      @JvmName("getPolRound")
-      get() = _builder.polRound
-      @JvmName("setPolRound")
-      set(value) {
+      @kotlin.jvm.JvmName("getPolRound")
+        get() = _builder.polRound
+      @kotlin.jvm.JvmName("setPolRound")
+        set(value) {
         _builder.polRound = value
       }
     /**
@@ -107,10 +107,10 @@ public object ProposalKt {
      * `.tendermint.types.BlockID block_id = 5 [json_name = "blockId", (.gogoproto.nullable) = false, (.gogoproto.customname) = "BlockID"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -134,10 +134,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp timestamp = 6 [json_name = "timestamp", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -161,10 +161,10 @@ public object ProposalKt {
      * `bytes signature = 7 [json_name = "signature"];`
      */
     public var signature: com.google.protobuf.ByteString
-      @JvmName("getSignature")
-      get() = _builder.signature
-      @JvmName("setSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignature")
+        get() = _builder.signature
+      @kotlin.jvm.JvmName("setSignature")
+        set(value) {
         _builder.signature = value
       }
     /**

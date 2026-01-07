@@ -39,10 +39,10 @@ public object CompactBitArrayKt {
      * `uint32 extra_bits_stored = 1 [json_name = "extraBitsStored"];`
      */
     public var extraBitsStored: kotlin.Int
-      @JvmName("getExtraBitsStored")
-      get() = _builder.extraBitsStored
-      @JvmName("setExtraBitsStored")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtraBitsStored")
+        get() = _builder.extraBitsStored
+      @kotlin.jvm.JvmName("setExtraBitsStored")
+        set(value) {
         _builder.extraBitsStored = value
       }
     /**
@@ -56,10 +56,10 @@ public object CompactBitArrayKt {
      * `bytes elems = 2 [json_name = "elems"];`
      */
     public var elems: com.google.protobuf.ByteString
-      @JvmName("getElems")
-      get() = _builder.elems
-      @JvmName("setElems")
-      set(value) {
+      @kotlin.jvm.JvmName("getElems")
+        get() = _builder.elems
+      @kotlin.jvm.JvmName("setElems")
+        set(value) {
         _builder.elems = value
       }
     /**

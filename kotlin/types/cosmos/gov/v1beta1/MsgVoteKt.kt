@@ -40,10 +40,10 @@ public object MsgVoteKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgVoteKt {
      * `string voter = 2 [json_name = "voter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var voter: kotlin.String
-      @JvmName("getVoter")
-      get() = _builder.voter
-      @JvmName("setVoter")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoter")
+        get() = _builder.voter
+      @kotlin.jvm.JvmName("setVoter")
+        set(value) {
         _builder.voter = value
       }
     /**
@@ -90,17 +90,17 @@ public object MsgVoteKt {
      * `.cosmos.gov.v1beta1.VoteOption option = 3 [json_name = "option"];`
      */
     public var option: cosmos.gov.v1beta1.Gov.VoteOption
-      @JvmName("getOption")
-      get() = _builder.option
-      @JvmName("setOption")
-      set(value) {
+      @kotlin.jvm.JvmName("getOption")
+        get() = _builder.option
+      @kotlin.jvm.JvmName("setOption")
+        set(value) {
         _builder.option = value
       }
     public var optionValue: kotlin.Int
-      @JvmName("getOptionValue")
-      get() = _builder.optionValue
-      @JvmName("setOptionValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getOptionValue")
+        get() = _builder.optionValue
+      @kotlin.jvm.JvmName("setOptionValue")
+        set(value) {
         _builder.optionValue = value
       }
     /**

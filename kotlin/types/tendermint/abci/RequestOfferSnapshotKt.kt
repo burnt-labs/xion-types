@@ -40,10 +40,10 @@ public object RequestOfferSnapshotKt {
      * `.tendermint.abci.Snapshot snapshot = 1 [json_name = "snapshot"];`
      */
     public var snapshot: tendermint.abci.Types.Snapshot
-      @JvmName("getSnapshot")
-      get() = _builder.snapshot
-      @JvmName("setSnapshot")
-      set(value) {
+      @kotlin.jvm.JvmName("getSnapshot")
+        get() = _builder.snapshot
+      @kotlin.jvm.JvmName("setSnapshot")
+        set(value) {
         _builder.snapshot = value
       }
     /**
@@ -79,10 +79,10 @@ public object RequestOfferSnapshotKt {
      * `bytes app_hash = 2 [json_name = "appHash"];`
      */
     public var appHash: com.google.protobuf.ByteString
-      @JvmName("getAppHash")
-      get() = _builder.appHash
-      @JvmName("setAppHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppHash")
+        get() = _builder.appHash
+      @kotlin.jvm.JvmName("setAppHash")
+        set(value) {
         _builder.appHash = value
       }
     /**

@@ -44,10 +44,10 @@ public object ParamsKt {
      * `bool allow_all_code_ids = 1 [json_name = "allowAllCodeIds", (.gogoproto.customname) = "AllowAllCodeIDs"];`
      */
     public var allowAllCodeIds: kotlin.Boolean
-      @JvmName("getAllowAllCodeIds")
-      get() = _builder.allowAllCodeIds
-      @JvmName("setAllowAllCodeIds")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowAllCodeIds")
+        get() = _builder.allowAllCodeIds
+      @kotlin.jvm.JvmName("setAllowAllCodeIds")
+        set(value) {
         _builder.allowAllCodeIds = value
       }
     /**
@@ -81,7 +81,7 @@ public object ParamsKt {
      */
      public val allowedCodeIds: com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.allowedCodeIdsList
       )
     /**
@@ -94,7 +94,7 @@ public object ParamsKt {
      * @param value The allowedCodeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowedCodeIds")
+@kotlin.jvm.JvmName("addAllowedCodeIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>.add(value: kotlin.Long) {
       _builder.addAllowedCodeIds(value)
     }/**
@@ -107,7 +107,7 @@ public object ParamsKt {
      * @param value The allowedCodeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowedCodeIds")
+@kotlin.jvm.JvmName("plusAssignAllowedCodeIds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -121,7 +121,7 @@ public object ParamsKt {
      * @param values The allowedCodeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowedCodeIds")
+@kotlin.jvm.JvmName("addAllAllowedCodeIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllAllowedCodeIds(values)
     }/**
@@ -134,7 +134,7 @@ public object ParamsKt {
      * @param values The allowedCodeIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowedCodeIds")
+@kotlin.jvm.JvmName("plusAssignAllAllowedCodeIds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -149,7 +149,7 @@ public object ParamsKt {
      * @param value The allowedCodeIds to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowedCodeIds")
+@kotlin.jvm.JvmName("setAllowedCodeIds")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setAllowedCodeIds(index, value)
     }/**
@@ -161,7 +161,7 @@ public object ParamsKt {
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowedCodeIds")
+@kotlin.jvm.JvmName("clearAllowedCodeIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, AllowedCodeIdsProxy>.clear() {
       _builder.clearAllowedCodeIds()
     }
@@ -176,10 +176,10 @@ public object ParamsKt {
      * `uint64 max_gas_before = 3 [json_name = "maxGasBefore"];`
      */
     public var maxGasBefore: kotlin.Long
-      @JvmName("getMaxGasBefore")
-      get() = _builder.maxGasBefore
-      @JvmName("setMaxGasBefore")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxGasBefore")
+        get() = _builder.maxGasBefore
+      @kotlin.jvm.JvmName("setMaxGasBefore")
+        set(value) {
         _builder.maxGasBefore = value
       }
     /**
@@ -207,10 +207,10 @@ public object ParamsKt {
      * `uint64 max_gas_after = 4 [json_name = "maxGasAfter"];`
      */
     public var maxGasAfter: kotlin.Long
-      @JvmName("getMaxGasAfter")
-      get() = _builder.maxGasAfter
-      @JvmName("setMaxGasAfter")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxGasAfter")
+        get() = _builder.maxGasAfter
+      @kotlin.jvm.JvmName("setMaxGasAfter")
+        set(value) {
         _builder.maxGasAfter = value
       }
     /**

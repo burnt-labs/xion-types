@@ -40,10 +40,10 @@ public object AllowedMsgAllowanceKt {
      * `.google.protobuf.Any allowance = 1 [json_name = "allowance", (.cosmos_proto.accepts_interface) = "cosmos.feegrant.v1beta1.FeeAllowanceI"];`
      */
     public var allowance: com.google.protobuf.Any
-      @JvmName("getAllowance")
-      get() = _builder.allowance
-      @JvmName("setAllowance")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowance")
+        get() = _builder.allowance
+      @kotlin.jvm.JvmName("setAllowance")
+        set(value) {
         _builder.allowance = value
       }
     /**
@@ -86,7 +86,7 @@ public object AllowedMsgAllowanceKt {
      * @return A list containing the allowedMessages.
      */
     public val allowedMessages: com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowedMessagesList
       )
@@ -99,7 +99,7 @@ public object AllowedMsgAllowanceKt {
      * @param value The allowedMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowedMessages")
+@kotlin.jvm.JvmName("addAllowedMessages")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>.add(value: kotlin.String) {
       _builder.addAllowedMessages(value)
     }
@@ -112,7 +112,7 @@ public object AllowedMsgAllowanceKt {
      * @param value The allowedMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowedMessages")
+@kotlin.jvm.JvmName("plusAssignAllowedMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -126,7 +126,7 @@ public object AllowedMsgAllowanceKt {
      * @param values The allowedMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowedMessages")
+@kotlin.jvm.JvmName("addAllAllowedMessages")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowedMessages(values)
     }
@@ -139,7 +139,7 @@ public object AllowedMsgAllowanceKt {
      * @param values The allowedMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowedMessages")
+@kotlin.jvm.JvmName("plusAssignAllAllowedMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -154,7 +154,7 @@ public object AllowedMsgAllowanceKt {
      * @param value The allowedMessages to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowedMessages")
+@kotlin.jvm.JvmName("setAllowedMessages")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowedMessages(index, value)
     }/**
@@ -165,7 +165,7 @@ public object AllowedMsgAllowanceKt {
      * `repeated string allowed_messages = 2 [json_name = "allowedMessages"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowedMessages")
+@kotlin.jvm.JvmName("setAllowedMessages")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedMessagesProxy>.clear() {
       _builder.clearAllowedMessages()
     }}

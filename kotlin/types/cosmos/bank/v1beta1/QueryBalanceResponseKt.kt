@@ -40,10 +40,10 @@ public object QueryBalanceResponseKt {
      * `.cosmos.base.v1beta1.Coin balance = 1 [json_name = "balance"];`
      */
     public var balance: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getBalance")
-      get() = _builder.balance
-      @JvmName("setBalance")
-      set(value) {
+      @kotlin.jvm.JvmName("getBalance")
+        get() = _builder.balance
+      @kotlin.jvm.JvmName("setBalance")
+        set(value) {
         _builder.balance = value
       }
     /**

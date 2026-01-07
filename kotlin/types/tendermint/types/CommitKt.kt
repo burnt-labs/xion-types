@@ -36,10 +36,10 @@ public object CommitKt {
      * `int64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -53,10 +53,10 @@ public object CommitKt {
      * `int32 round = 2 [json_name = "round"];`
      */
     public var round: kotlin.Int
-      @JvmName("getRound")
-      get() = _builder.round
-      @JvmName("setRound")
-      set(value) {
+      @kotlin.jvm.JvmName("getRound")
+        get() = _builder.round
+      @kotlin.jvm.JvmName("setRound")
+        set(value) {
         _builder.round = value
       }
     /**
@@ -70,10 +70,10 @@ public object CommitKt {
      * `.tendermint.types.BlockID block_id = 3 [json_name = "blockId", (.gogoproto.nullable) = false, (.gogoproto.customname) = "BlockID"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -104,7 +104,7 @@ public object CommitKt {
      */
      public val signatures: com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signaturesList
       )
     /**
@@ -112,7 +112,7 @@ public object CommitKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSignatures")
+@kotlin.jvm.JvmName("addSignatures")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>.add(value: tendermint.types.Types.CommitSig) {
       _builder.addSignatures(value)
     }
@@ -121,7 +121,7 @@ public object CommitKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSignatures")
+@kotlin.jvm.JvmName("plusAssignSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>.plusAssign(value: tendermint.types.Types.CommitSig) {
       add(value)
@@ -131,7 +131,7 @@ public object CommitKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSignatures")
+@kotlin.jvm.JvmName("addAllSignatures")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.types.Types.CommitSig>) {
       _builder.addAllSignatures(values)
     }
@@ -140,7 +140,7 @@ public object CommitKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSignatures")
+@kotlin.jvm.JvmName("plusAssignAllSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.types.Types.CommitSig>) {
       addAll(values)
@@ -151,7 +151,7 @@ public object CommitKt {
      * @param value The signatures to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSignatures")
+@kotlin.jvm.JvmName("setSignatures")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>.set(index: kotlin.Int, value: tendermint.types.Types.CommitSig) {
       _builder.setSignatures(index, value)
     }
@@ -159,11 +159,10 @@ public object CommitKt {
      * `repeated .tendermint.types.CommitSig signatures = 4 [json_name = "signatures", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSignatures")
+@kotlin.jvm.JvmName("clearSignatures")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.Types.CommitSig, SignaturesProxy>.clear() {
       _builder.clearSignatures()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -8,7 +8,7 @@ pub struct BasicAllowance {
     /// by this allowance and will be updated as coins are spent. If it is
     /// empty, there is no spend limit and any amount of coins can be spent.
     #[prost(message, repeated, tag="1")]
-    pub spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// expiration specifies an optional time when this allowance expires
     #[prost(message, optional, tag="2")]
     pub expiration: ::core::option::Option<::prost_types::Timestamp>,
@@ -27,10 +27,10 @@ pub struct PeriodicAllowance {
     /// period_spend_limit specifies the maximum number of coins that can be spent
     /// in the period
     #[prost(message, repeated, tag="3")]
-    pub period_spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub period_spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// period_can_spend is the number of coins left to be spent before the period_reset time
     #[prost(message, repeated, tag="4")]
-    pub period_can_spend: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub period_can_spend: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// period_reset is the time at which this period resets and a new one begins,
     /// it is calculated from the start time of the first transaction after the
     /// last period ended
@@ -90,7 +90,7 @@ pub struct QueryAllowancesRequest {
     pub grantee: ::prost::alloc::string::String,
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryAllowancesResponse is the response type for the Query/Allowances RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -100,7 +100,7 @@ pub struct QueryAllowancesResponse {
     pub allowances: ::prost::alloc::vec::Vec<Grant>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -109,7 +109,7 @@ pub struct QueryAllowancesByGranterRequest {
     pub granter: ::prost::alloc::string::String,
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -119,7 +119,7 @@ pub struct QueryAllowancesByGranterResponse {
     pub allowances: ::prost::alloc::vec::Vec<Grant>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// MsgGrantAllowance adds permission for Grantee to spend up to Allowance
 /// of fees from the account of Granter.
@@ -136,7 +136,7 @@ pub struct MsgGrantAllowance {
     pub allowance: ::core::option::Option<::prost_types::Any>,
 }
 /// MsgGrantAllowanceResponse defines the Msg/GrantAllowanceResponse response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgGrantAllowanceResponse {
 }
 /// MsgRevokeAllowance removes any existing Allowance from Granter to Grantee.
@@ -150,7 +150,7 @@ pub struct MsgRevokeAllowance {
     pub grantee: ::prost::alloc::string::String,
 }
 /// MsgRevokeAllowanceResponse defines the Msg/RevokeAllowanceResponse response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRevokeAllowanceResponse {
 }
 /// MsgPruneAllowances prunes expired fee allowances.
@@ -161,7 +161,7 @@ pub struct MsgPruneAllowances {
     pub pruner: ::prost::alloc::string::String,
 }
 /// MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgPruneAllowancesResponse {
 }
 // @@protoc_insertion_point(module)

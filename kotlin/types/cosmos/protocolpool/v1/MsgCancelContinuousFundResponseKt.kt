@@ -41,10 +41,10 @@ public object MsgCancelContinuousFundResponseKt {
      * `.google.protobuf.Timestamp canceled_time = 1 [json_name = "canceledTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var canceledTime: com.google.protobuf.Timestamp
-      @JvmName("getCanceledTime")
-      get() = _builder.canceledTime
-      @JvmName("setCanceledTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getCanceledTime")
+        get() = _builder.canceledTime
+      @kotlin.jvm.JvmName("setCanceledTime")
+        set(value) {
         _builder.canceledTime = value
       }
     /**
@@ -80,10 +80,10 @@ public object MsgCancelContinuousFundResponseKt {
      * `uint64 canceled_height = 2 [json_name = "canceledHeight"];`
      */
     public var canceledHeight: kotlin.Long
-      @JvmName("getCanceledHeight")
-      get() = _builder.canceledHeight
-      @JvmName("setCanceledHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getCanceledHeight")
+        get() = _builder.canceledHeight
+      @kotlin.jvm.JvmName("setCanceledHeight")
+        set(value) {
         _builder.canceledHeight = value
       }
     /**
@@ -105,10 +105,10 @@ public object MsgCancelContinuousFundResponseKt {
      * `string recipient = 3 [json_name = "recipient", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var recipient: kotlin.String
-      @JvmName("getRecipient")
-      get() = _builder.recipient
-      @JvmName("setRecipient")
-      set(value) {
+      @kotlin.jvm.JvmName("getRecipient")
+        get() = _builder.recipient
+      @kotlin.jvm.JvmName("setRecipient")
+        set(value) {
         _builder.recipient = value
       }
     /**

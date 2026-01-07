@@ -133,7 +133,7 @@ pub struct ConnectionStateData {
     #[prost(bytes="vec", tag="1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub connection: ::core::option::Option<super::super::super::core::connection::v1::ConnectionEnd>,
+    pub connection: ::core::option::Option<crate::types::ibc_core_connection_v1::ConnectionEnd>,
 }
 /// ChannelStateData returns the SignBytes data for channel state
 /// verification.
@@ -142,7 +142,7 @@ pub struct ChannelStateData {
     #[prost(bytes="vec", tag="1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub channel: ::core::option::Option<super::super::super::core::channel::v1::Channel>,
+    pub channel: ::core::option::Option<crate::types::ibc_core_channel_v1::Channel>,
 }
 /// PacketCommitmentData returns the SignBytes data for packet commitment
 /// verification.

@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun queryAllAudienceRequest(block: xion.jwk.v1.QueryAllAudienceRequestKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryAllAudienceRequest =
   xion.jwk.v1.QueryAllAudienceRequestKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryAllAudienceRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryAllAudienceRequest is the legacy request type for querying all audiences
+ * (deprecated)
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryAllAudienceRequest`
  */
 public object QueryAllAudienceRequestKt {
@@ -29,22 +34,34 @@ public object QueryAllAudienceRequestKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.QueryAllAudienceRequest = _builder.build()
 
     /**
+     * ```
+     * Pagination parameters
+     * ```
+     *
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 1 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**
+     * ```
+     * Pagination parameters
+     * ```
+     *
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 1 [json_name = "pagination"];`
      */
     public fun clearPagination() {
       _builder.clearPagination()
     }
     /**
+     * ```
+     * Pagination parameters
+     * ```
+     *
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 1 [json_name = "pagination"];`
      * @return Whether the pagination field is set.
      */

@@ -40,10 +40,10 @@ public object PrivKeyKt {
      * `bytes secret = 1 [json_name = "secret", (.gogoproto.customtype) = "ecdsaSK"];`
      */
     public var secret: com.google.protobuf.ByteString
-      @JvmName("getSecret")
-      get() = _builder.secret
-      @JvmName("setSecret")
-      set(value) {
+      @kotlin.jvm.JvmName("getSecret")
+        get() = _builder.secret
+      @kotlin.jvm.JvmName("setSecret")
+        set(value) {
         _builder.secret = value
       }
     /**

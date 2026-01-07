@@ -44,7 +44,7 @@ public object QueryEpochInfosResponseKt {
      */
      public val epochs: com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.epochsList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryEpochInfosResponseKt {
      * @param value The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEpochs")
+@kotlin.jvm.JvmName("addEpochs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>.add(value: cosmos.epochs.v1beta1.Genesis.EpochInfo) {
       _builder.addEpochs(value)
     }
@@ -61,7 +61,7 @@ public object QueryEpochInfosResponseKt {
      * @param value The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEpochs")
+@kotlin.jvm.JvmName("plusAssignEpochs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>.plusAssign(value: cosmos.epochs.v1beta1.Genesis.EpochInfo) {
       add(value)
@@ -71,7 +71,7 @@ public object QueryEpochInfosResponseKt {
      * @param values The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEpochs")
+@kotlin.jvm.JvmName("addAllEpochs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.epochs.v1beta1.Genesis.EpochInfo>) {
       _builder.addAllEpochs(values)
     }
@@ -80,7 +80,7 @@ public object QueryEpochInfosResponseKt {
      * @param values The epochs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEpochs")
+@kotlin.jvm.JvmName("plusAssignAllEpochs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.epochs.v1beta1.Genesis.EpochInfo>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QueryEpochInfosResponseKt {
      * @param value The epochs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEpochs")
+@kotlin.jvm.JvmName("setEpochs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>.set(index: kotlin.Int, value: cosmos.epochs.v1beta1.Genesis.EpochInfo) {
       _builder.setEpochs(index, value)
     }
@@ -99,11 +99,10 @@ public object QueryEpochInfosResponseKt {
      * `repeated .cosmos.epochs.v1beta1.EpochInfo epochs = 1 [json_name = "epochs", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEpochs")
+@kotlin.jvm.JvmName("clearEpochs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.epochs.v1beta1.Genesis.EpochInfo, EpochsProxy>.clear() {
       _builder.clearEpochs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

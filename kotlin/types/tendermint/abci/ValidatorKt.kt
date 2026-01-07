@@ -36,10 +36,10 @@ public object ValidatorKt {
      * `bytes address = 1 [json_name = "address"];`
      */
     public var address: com.google.protobuf.ByteString
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -61,10 +61,10 @@ public object ValidatorKt {
      * `int64 power = 3 [json_name = "power"];`
      */
     public var power: kotlin.Long
-      @JvmName("getPower")
-      get() = _builder.power
-      @JvmName("setPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getPower")
+        get() = _builder.power
+      @kotlin.jvm.JvmName("setPower")
+        set(value) {
         _builder.power = value
       }
     /**

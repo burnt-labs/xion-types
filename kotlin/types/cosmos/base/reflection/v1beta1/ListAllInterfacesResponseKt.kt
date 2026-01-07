@@ -47,7 +47,7 @@ public object ListAllInterfacesResponseKt {
      * @return A list containing the interfaceNames.
      */
     public val interfaceNames: com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.interfaceNamesList
       )
@@ -60,7 +60,7 @@ public object ListAllInterfacesResponseKt {
      * @param value The interfaceNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInterfaceNames")
+@kotlin.jvm.JvmName("addInterfaceNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>.add(value: kotlin.String) {
       _builder.addInterfaceNames(value)
     }
@@ -73,7 +73,7 @@ public object ListAllInterfacesResponseKt {
      * @param value The interfaceNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInterfaceNames")
+@kotlin.jvm.JvmName("plusAssignInterfaceNames")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -87,7 +87,7 @@ public object ListAllInterfacesResponseKt {
      * @param values The interfaceNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInterfaceNames")
+@kotlin.jvm.JvmName("addAllInterfaceNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllInterfaceNames(values)
     }
@@ -100,7 +100,7 @@ public object ListAllInterfacesResponseKt {
      * @param values The interfaceNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInterfaceNames")
+@kotlin.jvm.JvmName("plusAssignAllInterfaceNames")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object ListAllInterfacesResponseKt {
      * @param value The interfaceNames to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInterfaceNames")
+@kotlin.jvm.JvmName("setInterfaceNames")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setInterfaceNames(index, value)
     }/**
@@ -126,7 +126,7 @@ public object ListAllInterfacesResponseKt {
      * `repeated string interface_names = 1 [json_name = "interfaceNames"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInterfaceNames")
+@kotlin.jvm.JvmName("setInterfaceNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InterfaceNamesProxy>.clear() {
       _builder.clearInterfaceNames()
     }}

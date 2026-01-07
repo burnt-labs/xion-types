@@ -40,10 +40,10 @@ public object EpochInfoKt {
      * `string identifier = 1 [json_name = "identifier"];`
      */
     public var identifier: kotlin.String
-      @JvmName("getIdentifier")
-      get() = _builder.identifier
-      @JvmName("setIdentifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getIdentifier")
+        get() = _builder.identifier
+      @kotlin.jvm.JvmName("setIdentifier")
+        set(value) {
         _builder.identifier = value
       }
     /**
@@ -67,10 +67,10 @@ public object EpochInfoKt {
      * `.google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"start_time\"", (.gogoproto.stdtime) = true];`
      */
     public var startTime: com.google.protobuf.Timestamp
-      @JvmName("getStartTime")
-      get() = _builder.startTime
-      @JvmName("setStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartTime")
+        get() = _builder.startTime
+      @kotlin.jvm.JvmName("setStartTime")
+        set(value) {
         _builder.startTime = value
       }
     /**
@@ -113,10 +113,10 @@ public object EpochInfoKt {
      * `.google.protobuf.Duration duration = 3 [json_name = "duration", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "duration,omitempty", (.gogoproto.moretags) = "yaml:\"duration\"", (.gogoproto.stdduration) = true];`
      */
     public var duration: com.google.protobuf.Duration
-      @JvmName("getDuration")
-      get() = _builder.duration
-      @JvmName("setDuration")
-      set(value) {
+      @kotlin.jvm.JvmName("getDuration")
+        get() = _builder.duration
+      @kotlin.jvm.JvmName("setDuration")
+        set(value) {
         _builder.duration = value
       }
     /**
@@ -161,10 +161,10 @@ public object EpochInfoKt {
      * `int64 current_epoch = 4 [json_name = "currentEpoch"];`
      */
     public var currentEpoch: kotlin.Long
-      @JvmName("getCurrentEpoch")
-      get() = _builder.currentEpoch
-      @JvmName("setCurrentEpoch")
-      set(value) {
+      @kotlin.jvm.JvmName("getCurrentEpoch")
+        get() = _builder.currentEpoch
+      @kotlin.jvm.JvmName("setCurrentEpoch")
+        set(value) {
         _builder.currentEpoch = value
       }
     /**
@@ -205,10 +205,10 @@ public object EpochInfoKt {
      * `.google.protobuf.Timestamp current_epoch_start_time = 5 [json_name = "currentEpochStartTime", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"current_epoch_start_time\"", (.gogoproto.stdtime) = true];`
      */
     public var currentEpochStartTime: com.google.protobuf.Timestamp
-      @JvmName("getCurrentEpochStartTime")
-      get() = _builder.currentEpochStartTime
-      @JvmName("setCurrentEpochStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getCurrentEpochStartTime")
+        get() = _builder.currentEpochStartTime
+      @kotlin.jvm.JvmName("setCurrentEpochStartTime")
+        set(value) {
         _builder.currentEpochStartTime = value
       }
     /**
@@ -277,10 +277,10 @@ public object EpochInfoKt {
      * `bool epoch_counting_started = 6 [json_name = "epochCountingStarted"];`
      */
     public var epochCountingStarted: kotlin.Boolean
-      @JvmName("getEpochCountingStarted")
-      get() = _builder.epochCountingStarted
-      @JvmName("setEpochCountingStarted")
-      set(value) {
+      @kotlin.jvm.JvmName("getEpochCountingStarted")
+        get() = _builder.epochCountingStarted
+      @kotlin.jvm.JvmName("setEpochCountingStarted")
+        set(value) {
         _builder.epochCountingStarted = value
       }
     /**
@@ -304,10 +304,10 @@ public object EpochInfoKt {
      * `int64 current_epoch_start_height = 8 [json_name = "currentEpochStartHeight"];`
      */
     public var currentEpochStartHeight: kotlin.Long
-      @JvmName("getCurrentEpochStartHeight")
-      get() = _builder.currentEpochStartHeight
-      @JvmName("setCurrentEpochStartHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getCurrentEpochStartHeight")
+        get() = _builder.currentEpochStartHeight
+      @kotlin.jvm.JvmName("setCurrentEpochStartHeight")
+        set(value) {
         _builder.currentEpochStartHeight = value
       }
     /**

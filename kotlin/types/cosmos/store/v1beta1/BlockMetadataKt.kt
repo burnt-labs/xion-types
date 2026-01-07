@@ -37,10 +37,10 @@ public object BlockMetadataKt {
      * `.tendermint.abci.ResponseCommit response_commit = 6 [json_name = "responseCommit"];`
      */
     public var responseCommit: tendermint.abci.Types.ResponseCommit
-      @JvmName("getResponseCommit")
-      get() = _builder.responseCommit
-      @JvmName("setResponseCommit")
-      set(value) {
+      @kotlin.jvm.JvmName("getResponseCommit")
+        get() = _builder.responseCommit
+      @kotlin.jvm.JvmName("setResponseCommit")
+        set(value) {
         _builder.responseCommit = value
       }
     /**
@@ -64,10 +64,10 @@ public object BlockMetadataKt {
      * `.tendermint.abci.RequestFinalizeBlock request_finalize_block = 7 [json_name = "requestFinalizeBlock"];`
      */
     public var requestFinalizeBlock: tendermint.abci.Types.RequestFinalizeBlock
-      @JvmName("getRequestFinalizeBlock")
-      get() = _builder.requestFinalizeBlock
-      @JvmName("setRequestFinalizeBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getRequestFinalizeBlock")
+        get() = _builder.requestFinalizeBlock
+      @kotlin.jvm.JvmName("setRequestFinalizeBlock")
+        set(value) {
         _builder.requestFinalizeBlock = value
       }
     /**
@@ -95,10 +95,10 @@ public object BlockMetadataKt {
      * `.tendermint.abci.ResponseFinalizeBlock response_finalize_block = 8 [json_name = "responseFinalizeBlock"];`
      */
     public var responseFinalizeBlock: tendermint.abci.Types.ResponseFinalizeBlock
-      @JvmName("getResponseFinalizeBlock")
-      get() = _builder.responseFinalizeBlock
-      @JvmName("setResponseFinalizeBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getResponseFinalizeBlock")
+        get() = _builder.responseFinalizeBlock
+      @kotlin.jvm.JvmName("setResponseFinalizeBlock")
+        set(value) {
         _builder.responseFinalizeBlock = value
       }
     /**

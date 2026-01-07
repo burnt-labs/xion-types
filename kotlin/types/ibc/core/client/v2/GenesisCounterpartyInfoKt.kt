@@ -40,10 +40,10 @@ public object GenesisCounterpartyInfoKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -65,10 +65,10 @@ public object GenesisCounterpartyInfoKt {
      * `.ibc.core.client.v2.CounterpartyInfo counterparty_info = 2 [json_name = "counterpartyInfo", (.gogoproto.nullable) = false];`
      */
     public var counterpartyInfo: ibc.core.client.v2.Counterparty.CounterpartyInfo
-      @JvmName("getCounterpartyInfo")
-      get() = _builder.counterpartyInfo
-      @JvmName("setCounterpartyInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterpartyInfo")
+        get() = _builder.counterpartyInfo
+      @kotlin.jvm.JvmName("setCounterpartyInfo")
+        set(value) {
         _builder.counterpartyInfo = value
       }
     /**

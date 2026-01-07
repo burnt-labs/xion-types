@@ -40,10 +40,10 @@ public object MsgCreateGroupKt {
      * `string admin = 1 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -72,7 +72,7 @@ public object MsgCreateGroupKt {
      */
      public val members: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.membersList
       )
     /**
@@ -84,7 +84,7 @@ public object MsgCreateGroupKt {
      * @param value The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMembers")
+@kotlin.jvm.JvmName("addMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.add(value: cosmos.group.v1.Types.MemberRequest) {
       _builder.addMembers(value)
     }
@@ -97,7 +97,7 @@ public object MsgCreateGroupKt {
      * @param value The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMembers")
+@kotlin.jvm.JvmName("plusAssignMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.plusAssign(value: cosmos.group.v1.Types.MemberRequest) {
       add(value)
@@ -111,7 +111,7 @@ public object MsgCreateGroupKt {
      * @param values The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMembers")
+@kotlin.jvm.JvmName("addAllMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.MemberRequest>) {
       _builder.addAllMembers(values)
     }
@@ -124,7 +124,7 @@ public object MsgCreateGroupKt {
      * @param values The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMembers")
+@kotlin.jvm.JvmName("plusAssignAllMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.MemberRequest>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object MsgCreateGroupKt {
      * @param value The members to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMembers")
+@kotlin.jvm.JvmName("setMembers")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.MemberRequest) {
       _builder.setMembers(index, value)
     }
@@ -151,11 +151,10 @@ public object MsgCreateGroupKt {
      * `repeated .cosmos.group.v1.MemberRequest members = 2 [json_name = "members", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMembers")
+@kotlin.jvm.JvmName("clearMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MembersProxy>.clear() {
       _builder.clearMembers()
     }
-
 
     /**
      * ```
@@ -165,10 +164,10 @@ public object MsgCreateGroupKt {
      * `string metadata = 3 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**

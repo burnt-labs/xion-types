@@ -40,10 +40,10 @@ public object EventTallyErrorKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object EventTallyErrorKt {
      * `string error_message = 2 [json_name = "errorMessage"];`
      */
     public var errorMessage: kotlin.String
-      @JvmName("getErrorMessage")
-      get() = _builder.errorMessage
-      @JvmName("setErrorMessage")
-      set(value) {
+      @kotlin.jvm.JvmName("getErrorMessage")
+        get() = _builder.errorMessage
+      @kotlin.jvm.JvmName("setErrorMessage")
+        set(value) {
         _builder.errorMessage = value
       }
     /**

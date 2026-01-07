@@ -38,10 +38,10 @@ public object ConsensusKt {
      * `uint64 block = 1 [json_name = "block"];`
      */
     public var block: kotlin.Long
-      @JvmName("getBlock")
-      get() = _builder.block
-      @JvmName("setBlock")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlock")
+        get() = _builder.block
+      @kotlin.jvm.JvmName("setBlock")
+        set(value) {
         _builder.block = value
       }
     /**
@@ -55,10 +55,10 @@ public object ConsensusKt {
      * `uint64 app = 2 [json_name = "app"];`
      */
     public var app: kotlin.Long
-      @JvmName("getApp")
-      get() = _builder.app
-      @JvmName("setApp")
-      set(value) {
+      @kotlin.jvm.JvmName("getApp")
+        get() = _builder.app
+      @kotlin.jvm.JvmName("setApp")
+        set(value) {
         _builder.app = value
       }
     /**

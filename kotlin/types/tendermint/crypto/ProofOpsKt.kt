@@ -43,7 +43,7 @@ public object ProofOpsKt {
      */
      public val ops: com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.opsList
       )
     /**
@@ -51,7 +51,7 @@ public object ProofOpsKt {
      * @param value The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOps")
+@kotlin.jvm.JvmName("addOps")
     public fun com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>.add(value: tendermint.crypto.ProofOuterClass.ProofOp) {
       _builder.addOps(value)
     }
@@ -60,7 +60,7 @@ public object ProofOpsKt {
      * @param value The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOps")
+@kotlin.jvm.JvmName("plusAssignOps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>.plusAssign(value: tendermint.crypto.ProofOuterClass.ProofOp) {
       add(value)
@@ -70,7 +70,7 @@ public object ProofOpsKt {
      * @param values The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOps")
+@kotlin.jvm.JvmName("addAllOps")
     public fun com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.crypto.ProofOuterClass.ProofOp>) {
       _builder.addAllOps(values)
     }
@@ -79,7 +79,7 @@ public object ProofOpsKt {
      * @param values The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOps")
+@kotlin.jvm.JvmName("plusAssignAllOps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.crypto.ProofOuterClass.ProofOp>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object ProofOpsKt {
      * @param value The ops to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOps")
+@kotlin.jvm.JvmName("setOps")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>.set(index: kotlin.Int, value: tendermint.crypto.ProofOuterClass.ProofOp) {
       _builder.setOps(index, value)
     }
@@ -98,11 +98,10 @@ public object ProofOpsKt {
      * `repeated .tendermint.crypto.ProofOp ops = 1 [json_name = "ops", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOps")
+@kotlin.jvm.JvmName("clearOps")
     public fun com.google.protobuf.kotlin.DslList<tendermint.crypto.ProofOuterClass.ProofOp, OpsProxy>.clear() {
       _builder.clearOps()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

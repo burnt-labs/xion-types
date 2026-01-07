@@ -40,10 +40,10 @@ public object EventUpdateGroupKt {
      * `uint64 group_id = 1 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**

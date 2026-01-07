@@ -47,7 +47,7 @@ public object GenesisStateKt {
      */
      public val counterpartyInfos: com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.counterpartyInfosList
       )
     /**
@@ -59,7 +59,7 @@ public object GenesisStateKt {
      * @param value The counterpartyInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCounterpartyInfos")
+@kotlin.jvm.JvmName("addCounterpartyInfos")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>.add(value: ibc.core.client.v2.Genesis.GenesisCounterpartyInfo) {
       _builder.addCounterpartyInfos(value)
     }
@@ -72,7 +72,7 @@ public object GenesisStateKt {
      * @param value The counterpartyInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCounterpartyInfos")
+@kotlin.jvm.JvmName("plusAssignCounterpartyInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>.plusAssign(value: ibc.core.client.v2.Genesis.GenesisCounterpartyInfo) {
       add(value)
@@ -86,7 +86,7 @@ public object GenesisStateKt {
      * @param values The counterpartyInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCounterpartyInfos")
+@kotlin.jvm.JvmName("addAllCounterpartyInfos")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo>) {
       _builder.addAllCounterpartyInfos(values)
     }
@@ -99,7 +99,7 @@ public object GenesisStateKt {
      * @param values The counterpartyInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCounterpartyInfos")
+@kotlin.jvm.JvmName("plusAssignAllCounterpartyInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object GenesisStateKt {
      * @param value The counterpartyInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCounterpartyInfos")
+@kotlin.jvm.JvmName("setCounterpartyInfos")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>.set(index: kotlin.Int, value: ibc.core.client.v2.Genesis.GenesisCounterpartyInfo) {
       _builder.setCounterpartyInfos(index, value)
     }
@@ -126,11 +126,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.client.v2.GenesisCounterpartyInfo counterparty_infos = 1 [json_name = "counterpartyInfos", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCounterpartyInfos")
+@kotlin.jvm.JvmName("clearCounterpartyInfos")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v2.Genesis.GenesisCounterpartyInfo, CounterpartyInfosProxy>.clear() {
       _builder.clearCounterpartyInfos()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

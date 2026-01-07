@@ -41,10 +41,10 @@ public object QueryValidatorCommissionResponseKt {
      * `.cosmos.distribution.v1beta1.ValidatorAccumulatedCommission commission = 1 [json_name = "commission", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var commission: cosmos.distribution.v1beta1.Distribution.ValidatorAccumulatedCommission
-      @JvmName("getCommission")
-      get() = _builder.commission
-      @JvmName("setCommission")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommission")
+        get() = _builder.commission
+      @kotlin.jvm.JvmName("setCommission")
+        set(value) {
         _builder.commission = value
       }
     /**

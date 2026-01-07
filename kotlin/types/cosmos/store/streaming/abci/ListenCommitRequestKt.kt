@@ -40,10 +40,10 @@ public object ListenCommitRequestKt {
      * `int64 block_height = 1 [json_name = "blockHeight"];`
      */
     public var blockHeight: kotlin.Long
-      @JvmName("getBlockHeight")
-      get() = _builder.blockHeight
-      @JvmName("setBlockHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockHeight")
+        get() = _builder.blockHeight
+      @kotlin.jvm.JvmName("setBlockHeight")
+        set(value) {
         _builder.blockHeight = value
       }
     /**
@@ -61,10 +61,10 @@ public object ListenCommitRequestKt {
      * `.tendermint.abci.ResponseCommit res = 2 [json_name = "res"];`
      */
     public var res: tendermint.abci.Types.ResponseCommit
-      @JvmName("getRes")
-      get() = _builder.res
-      @JvmName("setRes")
-      set(value) {
+      @kotlin.jvm.JvmName("getRes")
+        get() = _builder.res
+      @kotlin.jvm.JvmName("setRes")
+        set(value) {
         _builder.res = value
       }
     /**
@@ -95,7 +95,7 @@ public object ListenCommitRequestKt {
      */
      public val changeSet: com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.changeSetList
       )
     /**
@@ -103,7 +103,7 @@ public object ListenCommitRequestKt {
      * @param value The changeSet to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addChangeSet")
+@kotlin.jvm.JvmName("addChangeSet")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>.add(value: cosmos.store.v1beta1.Listening.StoreKVPair) {
       _builder.addChangeSet(value)
     }
@@ -112,7 +112,7 @@ public object ListenCommitRequestKt {
      * @param value The changeSet to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignChangeSet")
+@kotlin.jvm.JvmName("plusAssignChangeSet")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>.plusAssign(value: cosmos.store.v1beta1.Listening.StoreKVPair) {
       add(value)
@@ -122,7 +122,7 @@ public object ListenCommitRequestKt {
      * @param values The changeSet to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllChangeSet")
+@kotlin.jvm.JvmName("addAllChangeSet")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>.addAll(values: kotlin.collections.Iterable<cosmos.store.v1beta1.Listening.StoreKVPair>) {
       _builder.addAllChangeSet(values)
     }
@@ -131,7 +131,7 @@ public object ListenCommitRequestKt {
      * @param values The changeSet to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllChangeSet")
+@kotlin.jvm.JvmName("plusAssignAllChangeSet")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.store.v1beta1.Listening.StoreKVPair>) {
       addAll(values)
@@ -142,7 +142,7 @@ public object ListenCommitRequestKt {
      * @param value The changeSet to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setChangeSet")
+@kotlin.jvm.JvmName("setChangeSet")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>.set(index: kotlin.Int, value: cosmos.store.v1beta1.Listening.StoreKVPair) {
       _builder.setChangeSet(index, value)
     }
@@ -150,11 +150,10 @@ public object ListenCommitRequestKt {
      * `repeated .cosmos.store.v1beta1.StoreKVPair change_set = 3 [json_name = "changeSet"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearChangeSet")
+@kotlin.jvm.JvmName("clearChangeSet")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.v1beta1.Listening.StoreKVPair, ChangeSetProxy>.clear() {
       _builder.clearChangeSet()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -48,7 +48,7 @@ public object QueryConsensusStatesResponseKt {
      */
      public val consensusStates: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.consensusStatesList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryConsensusStatesResponseKt {
      * @param value The consensusStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addConsensusStates")
+@kotlin.jvm.JvmName("addConsensusStates")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>.add(value: ibc.core.client.v1.Client.ConsensusStateWithHeight) {
       _builder.addConsensusStates(value)
     }
@@ -73,7 +73,7 @@ public object QueryConsensusStatesResponseKt {
      * @param value The consensusStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignConsensusStates")
+@kotlin.jvm.JvmName("plusAssignConsensusStates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>.plusAssign(value: ibc.core.client.v1.Client.ConsensusStateWithHeight) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryConsensusStatesResponseKt {
      * @param values The consensusStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllConsensusStates")
+@kotlin.jvm.JvmName("addAllConsensusStates")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.ConsensusStateWithHeight>) {
       _builder.addAllConsensusStates(values)
     }
@@ -100,7 +100,7 @@ public object QueryConsensusStatesResponseKt {
      * @param values The consensusStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllConsensusStates")
+@kotlin.jvm.JvmName("plusAssignAllConsensusStates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.ConsensusStateWithHeight>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryConsensusStatesResponseKt {
      * @param value The consensusStates to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setConsensusStates")
+@kotlin.jvm.JvmName("setConsensusStates")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Client.ConsensusStateWithHeight) {
       _builder.setConsensusStates(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryConsensusStatesResponseKt {
      * `repeated .ibc.core.client.v1.ConsensusStateWithHeight consensus_states = 1 [json_name = "consensusStates", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearConsensusStates")
+@kotlin.jvm.JvmName("clearConsensusStates")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.ConsensusStateWithHeight, ConsensusStatesProxy>.clear() {
       _builder.clearConsensusStates()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryConsensusStatesResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

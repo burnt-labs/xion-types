@@ -41,10 +41,10 @@ public object MsgExecLegacyContentKt {
      * `.google.protobuf.Any content = 1 [json_name = "content", (.cosmos_proto.accepts_interface) = "cosmos.gov.v1beta1.Content"];`
      */
     public var content: com.google.protobuf.Any
-      @JvmName("getContent")
-      get() = _builder.content
-      @JvmName("setContent")
-      set(value) {
+      @kotlin.jvm.JvmName("getContent")
+        get() = _builder.content
+      @kotlin.jvm.JvmName("setContent")
+        set(value) {
         _builder.content = value
       }
     /**
@@ -80,10 +80,10 @@ public object MsgExecLegacyContentKt {
      * `string authority = 2 [json_name = "authority"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**

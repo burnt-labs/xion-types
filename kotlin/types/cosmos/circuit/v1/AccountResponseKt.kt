@@ -36,10 +36,10 @@ public object AccountResponseKt {
      * `.cosmos.circuit.v1.Permissions permission = 1 [json_name = "permission"];`
      */
     public var permission: cosmos.circuit.v1.Types.Permissions
-      @JvmName("getPermission")
-      get() = _builder.permission
-      @JvmName("setPermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getPermission")
+        get() = _builder.permission
+      @kotlin.jvm.JvmName("setPermission")
+        set(value) {
         _builder.permission = value
       }
     /**

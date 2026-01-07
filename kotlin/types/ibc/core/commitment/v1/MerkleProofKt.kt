@@ -47,7 +47,7 @@ public object MerkleProofKt {
      */
      public val proofs: com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.proofsList
       )
     /**
@@ -55,7 +55,7 @@ public object MerkleProofKt {
      * @param value The proofs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addProofs")
+@kotlin.jvm.JvmName("addProofs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>.add(value: cosmos.ics23.v1.Proofs.CommitmentProof) {
       _builder.addProofs(value)
     }
@@ -64,7 +64,7 @@ public object MerkleProofKt {
      * @param value The proofs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignProofs")
+@kotlin.jvm.JvmName("plusAssignProofs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>.plusAssign(value: cosmos.ics23.v1.Proofs.CommitmentProof) {
       add(value)
@@ -74,7 +74,7 @@ public object MerkleProofKt {
      * @param values The proofs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllProofs")
+@kotlin.jvm.JvmName("addAllProofs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.ics23.v1.Proofs.CommitmentProof>) {
       _builder.addAllProofs(values)
     }
@@ -83,7 +83,7 @@ public object MerkleProofKt {
      * @param values The proofs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllProofs")
+@kotlin.jvm.JvmName("plusAssignAllProofs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.ics23.v1.Proofs.CommitmentProof>) {
       addAll(values)
@@ -94,7 +94,7 @@ public object MerkleProofKt {
      * @param value The proofs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setProofs")
+@kotlin.jvm.JvmName("setProofs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>.set(index: kotlin.Int, value: cosmos.ics23.v1.Proofs.CommitmentProof) {
       _builder.setProofs(index, value)
     }
@@ -102,11 +102,10 @@ public object MerkleProofKt {
      * `repeated .cosmos.ics23.v1.CommitmentProof proofs = 1 [json_name = "proofs"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearProofs")
+@kotlin.jvm.JvmName("clearProofs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.ics23.v1.Proofs.CommitmentProof, ProofsProxy>.clear() {
       _builder.clearProofs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

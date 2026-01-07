@@ -41,10 +41,10 @@ public object ConfigKt {
      * `bool skip_ante_handler = 1 [json_name = "skipAnteHandler"];`
      */
     public var skipAnteHandler: kotlin.Boolean
-      @JvmName("getSkipAnteHandler")
-      get() = _builder.skipAnteHandler
-      @JvmName("setSkipAnteHandler")
-      set(value) {
+      @kotlin.jvm.JvmName("getSkipAnteHandler")
+        get() = _builder.skipAnteHandler
+      @kotlin.jvm.JvmName("setSkipAnteHandler")
+        set(value) {
         _builder.skipAnteHandler = value
       }
     /**
@@ -68,10 +68,10 @@ public object ConfigKt {
      * `bool skip_post_handler = 2 [json_name = "skipPostHandler"];`
      */
     public var skipPostHandler: kotlin.Boolean
-      @JvmName("getSkipPostHandler")
-      get() = _builder.skipPostHandler
-      @JvmName("setSkipPostHandler")
-      set(value) {
+      @kotlin.jvm.JvmName("getSkipPostHandler")
+        get() = _builder.skipPostHandler
+      @kotlin.jvm.JvmName("setSkipPostHandler")
+        set(value) {
         _builder.skipPostHandler = value
       }
     /**

@@ -40,10 +40,10 @@ public object CodeInfoResponseKt {
      * `uint64 code_id = 1 [json_name = "codeId", (.gogoproto.customname) = "CodeID", (.gogoproto.jsontag) = "id"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -61,10 +61,10 @@ public object CodeInfoResponseKt {
      * `string creator = 2 [json_name = "creator", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var creator: kotlin.String
-      @JvmName("getCreator")
-      get() = _builder.creator
-      @JvmName("setCreator")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreator")
+        get() = _builder.creator
+      @kotlin.jvm.JvmName("setCreator")
+        set(value) {
         _builder.creator = value
       }
     /**
@@ -78,10 +78,10 @@ public object CodeInfoResponseKt {
      * `bytes data_hash = 3 [json_name = "dataHash", (.gogoproto.casttype) = "github.com/cometbft/cometbft/libs/bytes.HexBytes"];`
      */
     public var dataHash: com.google.protobuf.ByteString
-      @JvmName("getDataHash")
-      get() = _builder.dataHash
-      @JvmName("setDataHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getDataHash")
+        get() = _builder.dataHash
+      @kotlin.jvm.JvmName("setDataHash")
+        set(value) {
         _builder.dataHash = value
       }
     /**
@@ -95,10 +95,10 @@ public object CodeInfoResponseKt {
      * `.cosmwasm.wasm.v1.AccessConfig instantiate_permission = 6 [json_name = "instantiatePermission", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var instantiatePermission: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getInstantiatePermission")
-      get() = _builder.instantiatePermission
-      @JvmName("setInstantiatePermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiatePermission")
+        get() = _builder.instantiatePermission
+      @kotlin.jvm.JvmName("setInstantiatePermission")
+        set(value) {
         _builder.instantiatePermission = value
       }
     /**

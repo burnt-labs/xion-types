@@ -26,7 +26,7 @@ pub mod record {
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Ledger {
         #[prost(message, optional, tag="1")]
-        pub path: ::core::option::Option<super::super::super::hd::v1::Bip44Params>,
+        pub path: ::core::option::Option<crate::types::cosmos_crypto_hd_v1::Bip44Params>,
     }
     /// Multi item
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]

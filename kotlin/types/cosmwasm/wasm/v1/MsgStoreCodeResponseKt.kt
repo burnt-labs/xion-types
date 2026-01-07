@@ -40,10 +40,10 @@ public object MsgStoreCodeResponseKt {
      * `uint64 code_id = 1 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgStoreCodeResponseKt {
      * `bytes checksum = 2 [json_name = "checksum"];`
      */
     public var checksum: com.google.protobuf.ByteString
-      @JvmName("getChecksum")
-      get() = _builder.checksum
-      @JvmName("setChecksum")
-      set(value) {
+      @kotlin.jvm.JvmName("getChecksum")
+        get() = _builder.checksum
+      @kotlin.jvm.JvmName("setChecksum")
+        set(value) {
         _builder.checksum = value
       }
     /**

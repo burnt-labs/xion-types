@@ -40,10 +40,10 @@ public object ParamsKt {
      * `.google.protobuf.Duration unbonding_time = 1 [json_name = "unbondingTime", (.gogoproto.nullable) = false, (.gogoproto.stdduration) = true, (.amino.dont_omitempty) = true];`
      */
     public var unbondingTime: com.google.protobuf.Duration
-      @JvmName("getUnbondingTime")
-      get() = _builder.unbondingTime
-      @JvmName("setUnbondingTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbondingTime")
+        get() = _builder.unbondingTime
+      @kotlin.jvm.JvmName("setUnbondingTime")
+        set(value) {
         _builder.unbondingTime = value
       }
     /**
@@ -79,10 +79,10 @@ public object ParamsKt {
      * `uint32 max_validators = 2 [json_name = "maxValidators"];`
      */
     public var maxValidators: kotlin.Int
-      @JvmName("getMaxValidators")
-      get() = _builder.maxValidators
-      @JvmName("setMaxValidators")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxValidators")
+        get() = _builder.maxValidators
+      @kotlin.jvm.JvmName("setMaxValidators")
+        set(value) {
         _builder.maxValidators = value
       }
     /**
@@ -104,10 +104,10 @@ public object ParamsKt {
      * `uint32 max_entries = 3 [json_name = "maxEntries"];`
      */
     public var maxEntries: kotlin.Int
-      @JvmName("getMaxEntries")
-      get() = _builder.maxEntries
-      @JvmName("setMaxEntries")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxEntries")
+        get() = _builder.maxEntries
+      @kotlin.jvm.JvmName("setMaxEntries")
+        set(value) {
         _builder.maxEntries = value
       }
     /**
@@ -129,10 +129,10 @@ public object ParamsKt {
      * `uint32 historical_entries = 4 [json_name = "historicalEntries"];`
      */
     public var historicalEntries: kotlin.Int
-      @JvmName("getHistoricalEntries")
-      get() = _builder.historicalEntries
-      @JvmName("setHistoricalEntries")
-      set(value) {
+      @kotlin.jvm.JvmName("getHistoricalEntries")
+        get() = _builder.historicalEntries
+      @kotlin.jvm.JvmName("setHistoricalEntries")
+        set(value) {
         _builder.historicalEntries = value
       }
     /**
@@ -154,10 +154,10 @@ public object ParamsKt {
      * `string bond_denom = 5 [json_name = "bondDenom"];`
      */
     public var bondDenom: kotlin.String
-      @JvmName("getBondDenom")
-      get() = _builder.bondDenom
-      @JvmName("setBondDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getBondDenom")
+        get() = _builder.bondDenom
+      @kotlin.jvm.JvmName("setBondDenom")
+        set(value) {
         _builder.bondDenom = value
       }
     /**
@@ -179,10 +179,10 @@ public object ParamsKt {
      * `string min_commission_rate = 6 [json_name = "minCommissionRate", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"min_commission_rate\"", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var minCommissionRate: kotlin.String
-      @JvmName("getMinCommissionRate")
-      get() = _builder.minCommissionRate
-      @JvmName("setMinCommissionRate")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinCommissionRate")
+        get() = _builder.minCommissionRate
+      @kotlin.jvm.JvmName("setMinCommissionRate")
+        set(value) {
         _builder.minCommissionRate = value
       }
     /**

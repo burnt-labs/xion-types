@@ -49,7 +49,7 @@ public object ParamsKt {
      * @return A list containing the allowedClients.
      */
     public val allowedClients: com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowedClientsList
       )
@@ -64,7 +64,7 @@ public object ParamsKt {
      * @param value The allowedClients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowedClients")
+@kotlin.jvm.JvmName("addAllowedClients")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>.add(value: kotlin.String) {
       _builder.addAllowedClients(value)
     }
@@ -79,7 +79,7 @@ public object ParamsKt {
      * @param value The allowedClients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowedClients")
+@kotlin.jvm.JvmName("plusAssignAllowedClients")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -95,7 +95,7 @@ public object ParamsKt {
      * @param values The allowedClients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowedClients")
+@kotlin.jvm.JvmName("addAllAllowedClients")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowedClients(values)
     }
@@ -110,7 +110,7 @@ public object ParamsKt {
      * @param values The allowedClients to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowedClients")
+@kotlin.jvm.JvmName("plusAssignAllAllowedClients")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -127,7 +127,7 @@ public object ParamsKt {
      * @param value The allowedClients to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowedClients")
+@kotlin.jvm.JvmName("setAllowedClients")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowedClients(index, value)
     }/**
@@ -140,7 +140,7 @@ public object ParamsKt {
      * `repeated string allowed_clients = 1 [json_name = "allowedClients"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowedClients")
+@kotlin.jvm.JvmName("setAllowedClients")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowedClientsProxy>.clear() {
       _builder.clearAllowedClients()
     }}

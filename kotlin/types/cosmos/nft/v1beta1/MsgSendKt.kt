@@ -40,10 +40,10 @@ public object MsgSendKt {
      * `string class_id = 1 [json_name = "classId"];`
      */
     public var classId: kotlin.String
-      @JvmName("getClassId")
-      get() = _builder.classId
-      @JvmName("setClassId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClassId")
+        get() = _builder.classId
+      @kotlin.jvm.JvmName("setClassId")
+        set(value) {
         _builder.classId = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgSendKt {
      * `string id = 2 [json_name = "id"];`
      */
     public var id: kotlin.String
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgSendKt {
      * `string sender = 3 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -115,10 +115,10 @@ public object MsgSendKt {
      * `string receiver = 4 [json_name = "receiver", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var receiver: kotlin.String
-      @JvmName("getReceiver")
-      get() = _builder.receiver
-      @JvmName("setReceiver")
-      set(value) {
+      @kotlin.jvm.JvmName("getReceiver")
+        get() = _builder.receiver
+      @kotlin.jvm.JvmName("setReceiver")
+        set(value) {
         _builder.receiver = value
       }
     /**

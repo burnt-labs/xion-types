@@ -37,10 +37,10 @@ public object MsgDataKt {
      * `string msg_type = 1 [json_name = "msgType"];`
      */
     public var msgType: kotlin.String
-      @JvmName("getMsgType")
-      get() = _builder.msgType
-      @JvmName("setMsgType")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsgType")
+        get() = _builder.msgType
+      @kotlin.jvm.JvmName("setMsgType")
+        set(value) {
         _builder.msgType = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgDataKt {
      * `bytes data = 2 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

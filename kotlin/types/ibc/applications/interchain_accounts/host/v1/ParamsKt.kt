@@ -41,10 +41,10 @@ public object ParamsKt {
      * `bool host_enabled = 1 [json_name = "hostEnabled"];`
      */
     public var hostEnabled: kotlin.Boolean
-      @JvmName("getHostEnabled")
-      get() = _builder.hostEnabled
-      @JvmName("setHostEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostEnabled")
+        get() = _builder.hostEnabled
+      @kotlin.jvm.JvmName("setHostEnabled")
+        set(value) {
         _builder.hostEnabled = value
       }
     /**
@@ -73,7 +73,7 @@ public object ParamsKt {
      * @return A list containing the allowMessages.
      */
     public val allowMessages: com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.allowMessagesList
       )
@@ -86,7 +86,7 @@ public object ParamsKt {
      * @param value The allowMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllowMessages")
+@kotlin.jvm.JvmName("addAllowMessages")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>.add(value: kotlin.String) {
       _builder.addAllowMessages(value)
     }
@@ -99,7 +99,7 @@ public object ParamsKt {
      * @param value The allowMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllowMessages")
+@kotlin.jvm.JvmName("plusAssignAllowMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -113,7 +113,7 @@ public object ParamsKt {
      * @param values The allowMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAllowMessages")
+@kotlin.jvm.JvmName("addAllAllowMessages")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAllowMessages(values)
     }
@@ -126,7 +126,7 @@ public object ParamsKt {
      * @param values The allowMessages to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAllowMessages")
+@kotlin.jvm.JvmName("plusAssignAllAllowMessages")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -141,7 +141,7 @@ public object ParamsKt {
      * @param value The allowMessages to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAllowMessages")
+@kotlin.jvm.JvmName("setAllowMessages")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAllowMessages(index, value)
     }/**
@@ -152,7 +152,7 @@ public object ParamsKt {
      * `repeated string allow_messages = 2 [json_name = "allowMessages"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAllowMessages")
+@kotlin.jvm.JvmName("setAllowMessages")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AllowMessagesProxy>.clear() {
       _builder.clearAllowMessages()
     }}

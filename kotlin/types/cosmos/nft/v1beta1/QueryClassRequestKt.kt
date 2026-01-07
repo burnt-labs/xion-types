@@ -40,10 +40,10 @@ public object QueryClassRequestKt {
      * `string class_id = 1 [json_name = "classId"];`
      */
     public var classId: kotlin.String
-      @JvmName("getClassId")
-      get() = _builder.classId
-      @JvmName("setClassId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClassId")
+        get() = _builder.classId
+      @kotlin.jvm.JvmName("setClassId")
+        set(value) {
         _builder.classId = value
       }
     /**

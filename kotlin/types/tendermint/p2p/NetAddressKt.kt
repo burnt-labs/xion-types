@@ -32,10 +32,10 @@ public object NetAddressKt {
      * `string id = 1 [json_name = "id", (.gogoproto.customname) = "ID"];`
      */
     public var id: kotlin.String
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -49,10 +49,10 @@ public object NetAddressKt {
      * `string ip = 2 [json_name = "ip", (.gogoproto.customname) = "IP"];`
      */
     public var ip: kotlin.String
-      @JvmName("getIp")
-      get() = _builder.ip
-      @JvmName("setIp")
-      set(value) {
+      @kotlin.jvm.JvmName("getIp")
+        get() = _builder.ip
+      @kotlin.jvm.JvmName("setIp")
+        set(value) {
         _builder.ip = value
       }
     /**
@@ -66,10 +66,10 @@ public object NetAddressKt {
      * `uint32 port = 3 [json_name = "port"];`
      */
     public var port: kotlin.Int
-      @JvmName("getPort")
-      get() = _builder.port
-      @JvmName("setPort")
-      set(value) {
+      @kotlin.jvm.JvmName("getPort")
+        get() = _builder.port
+      @kotlin.jvm.JvmName("setPort")
+        set(value) {
         _builder.port = value
       }
     /**

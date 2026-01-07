@@ -40,10 +40,10 @@ public object MsgRemoveHostZoneKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -58,16 +58,24 @@ public object MsgRemoveHostZoneKt {
     }
 
     /**
+     * ```
+     * The IBC denomination of the host zone to remove
+     * ```
+     *
      * `string ibc_denom = 2 [json_name = "ibcDenom"];`
      */
     public var ibcDenom: kotlin.String
-      @JvmName("getIbcDenom")
-      get() = _builder.ibcDenom
-      @JvmName("setIbcDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcDenom")
+        get() = _builder.ibcDenom
+      @kotlin.jvm.JvmName("setIbcDenom")
+        set(value) {
         _builder.ibcDenom = value
       }
     /**
+     * ```
+     * The IBC denomination of the host zone to remove
+     * ```
+     *
      * `string ibc_denom = 2 [json_name = "ibcDenom"];`
      */
     public fun clearIbcDenom() {

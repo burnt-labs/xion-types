@@ -37,10 +37,10 @@ public object TxEncodeAminoResponseKt {
      * `bytes amino_binary = 1 [json_name = "aminoBinary"];`
      */
     public var aminoBinary: com.google.protobuf.ByteString
-      @JvmName("getAminoBinary")
-      get() = _builder.aminoBinary
-      @JvmName("setAminoBinary")
-      set(value) {
+      @kotlin.jvm.JvmName("getAminoBinary")
+        get() = _builder.aminoBinary
+      @kotlin.jvm.JvmName("setAminoBinary")
+        set(value) {
         _builder.aminoBinary = value
       }
     /**

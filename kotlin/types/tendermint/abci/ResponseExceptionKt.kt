@@ -36,10 +36,10 @@ public object ResponseExceptionKt {
      * `string error = 1 [json_name = "error"];`
      */
     public var error: kotlin.String
-      @JvmName("getError")
-      get() = _builder.error
-      @JvmName("setError")
-      set(value) {
+      @kotlin.jvm.JvmName("getError")
+        get() = _builder.error
+      @kotlin.jvm.JvmName("setError")
+        set(value) {
         _builder.error = value
       }
     /**

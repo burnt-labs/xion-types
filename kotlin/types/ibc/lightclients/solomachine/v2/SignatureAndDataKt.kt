@@ -37,10 +37,10 @@ public object SignatureAndDataKt {
      * `bytes signature = 1 [json_name = "signature"];`
      */
     public var signature: com.google.protobuf.ByteString
-      @JvmName("getSignature")
-      get() = _builder.signature
-      @JvmName("setSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignature")
+        get() = _builder.signature
+      @kotlin.jvm.JvmName("setSignature")
+        set(value) {
         _builder.signature = value
       }
     /**
@@ -54,17 +54,17 @@ public object SignatureAndDataKt {
      * `.ibc.lightclients.solomachine.v2.DataType data_type = 2 [json_name = "dataType"];`
      */
     public var dataType: ibc.lightclients.solomachine.v2.Solomachine.DataType
-      @JvmName("getDataType")
-      get() = _builder.dataType
-      @JvmName("setDataType")
-      set(value) {
+      @kotlin.jvm.JvmName("getDataType")
+        get() = _builder.dataType
+      @kotlin.jvm.JvmName("setDataType")
+        set(value) {
         _builder.dataType = value
       }
     public var dataTypeValue: kotlin.Int
-      @JvmName("getDataTypeValue")
-      get() = _builder.dataTypeValue
-      @JvmName("setDataTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getDataTypeValue")
+        get() = _builder.dataTypeValue
+      @kotlin.jvm.JvmName("setDataTypeValue")
+        set(value) {
         _builder.dataTypeValue = value
       }
     /**
@@ -78,10 +78,10 @@ public object SignatureAndDataKt {
      * `bytes data = 3 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -95,10 +95,10 @@ public object SignatureAndDataKt {
      * `uint64 timestamp = 4 [json_name = "timestamp"];`
      */
     public var timestamp: kotlin.Long
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**

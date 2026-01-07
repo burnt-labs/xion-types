@@ -44,7 +44,7 @@ public object ValidatorOutstandingRewardsKt {
      */
      public val rewards: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.rewardsList
       )
     /**
@@ -52,7 +52,7 @@ public object ValidatorOutstandingRewardsKt {
      * @param value The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRewards")
+@kotlin.jvm.JvmName("addRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addRewards(value)
     }
@@ -61,7 +61,7 @@ public object ValidatorOutstandingRewardsKt {
      * @param value The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRewards")
+@kotlin.jvm.JvmName("plusAssignRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -71,7 +71,7 @@ public object ValidatorOutstandingRewardsKt {
      * @param values The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRewards")
+@kotlin.jvm.JvmName("addAllRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllRewards(values)
     }
@@ -80,7 +80,7 @@ public object ValidatorOutstandingRewardsKt {
      * @param values The rewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRewards")
+@kotlin.jvm.JvmName("plusAssignAllRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object ValidatorOutstandingRewardsKt {
      * @param value The rewards to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRewards")
+@kotlin.jvm.JvmName("setRewards")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setRewards(index, value)
     }
@@ -99,11 +99,10 @@ public object ValidatorOutstandingRewardsKt {
      * `repeated .cosmos.base.v1beta1.DecCoin rewards = 1 [json_name = "rewards", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRewards")
+@kotlin.jvm.JvmName("clearRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, RewardsProxy>.clear() {
       _builder.clearRewards()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -41,10 +41,10 @@ public object MetadataKt {
      * `string version = 1 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -66,10 +66,10 @@ public object MetadataKt {
      * `string controller_connection_id = 2 [json_name = "controllerConnectionId"];`
      */
     public var controllerConnectionId: kotlin.String
-      @JvmName("getControllerConnectionId")
-      get() = _builder.controllerConnectionId
-      @JvmName("setControllerConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getControllerConnectionId")
+        get() = _builder.controllerConnectionId
+      @kotlin.jvm.JvmName("setControllerConnectionId")
+        set(value) {
         _builder.controllerConnectionId = value
       }
     /**
@@ -91,10 +91,10 @@ public object MetadataKt {
      * `string host_connection_id = 3 [json_name = "hostConnectionId"];`
      */
     public var hostConnectionId: kotlin.String
-      @JvmName("getHostConnectionId")
-      get() = _builder.hostConnectionId
-      @JvmName("setHostConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostConnectionId")
+        get() = _builder.hostConnectionId
+      @kotlin.jvm.JvmName("setHostConnectionId")
+        set(value) {
         _builder.hostConnectionId = value
       }
     /**
@@ -117,10 +117,10 @@ public object MetadataKt {
      * `string address = 4 [json_name = "address"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -143,10 +143,10 @@ public object MetadataKt {
      * `string encoding = 5 [json_name = "encoding"];`
      */
     public var encoding: kotlin.String
-      @JvmName("getEncoding")
-      get() = _builder.encoding
-      @JvmName("setEncoding")
-      set(value) {
+      @kotlin.jvm.JvmName("getEncoding")
+        get() = _builder.encoding
+      @kotlin.jvm.JvmName("setEncoding")
+        set(value) {
         _builder.encoding = value
       }
     /**
@@ -168,10 +168,10 @@ public object MetadataKt {
      * `string tx_type = 6 [json_name = "txType"];`
      */
     public var txType: kotlin.String
-      @JvmName("getTxType")
-      get() = _builder.txType
-      @JvmName("setTxType")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxType")
+        get() = _builder.txType
+      @kotlin.jvm.JvmName("setTxType")
+        set(value) {
         _builder.txType = value
       }
     /**

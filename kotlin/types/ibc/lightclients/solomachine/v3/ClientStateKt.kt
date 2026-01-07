@@ -41,10 +41,10 @@ public object ClientStateKt {
      * `uint64 sequence = 1 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -66,10 +66,10 @@ public object ClientStateKt {
      * `bool is_frozen = 2 [json_name = "isFrozen"];`
      */
     public var isFrozen: kotlin.Boolean
-      @JvmName("getIsFrozen")
-      get() = _builder.isFrozen
-      @JvmName("setIsFrozen")
-      set(value) {
+      @kotlin.jvm.JvmName("getIsFrozen")
+        get() = _builder.isFrozen
+      @kotlin.jvm.JvmName("setIsFrozen")
+        set(value) {
         _builder.isFrozen = value
       }
     /**
@@ -87,10 +87,10 @@ public object ClientStateKt {
      * `.ibc.lightclients.solomachine.v3.ConsensusState consensus_state = 3 [json_name = "consensusState"];`
      */
     public var consensusState: ibc.lightclients.solomachine.v3.Solomachine.ConsensusState
-      @JvmName("getConsensusState")
-      get() = _builder.consensusState
-      @JvmName("setConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusState")
+        get() = _builder.consensusState
+      @kotlin.jvm.JvmName("setConsensusState")
+        set(value) {
         _builder.consensusState = value
       }
     /**

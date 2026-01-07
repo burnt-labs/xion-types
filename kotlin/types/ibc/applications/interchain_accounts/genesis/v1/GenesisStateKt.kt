@@ -36,10 +36,10 @@ public object GenesisStateKt {
      * `.ibc.applications.interchain_accounts.genesis.v1.ControllerGenesisState controller_genesis_state = 1 [json_name = "controllerGenesisState", (.gogoproto.nullable) = false];`
      */
     public var controllerGenesisState: ibc.applications.interchain_accounts.genesis.v1.Genesis.ControllerGenesisState
-      @JvmName("getControllerGenesisState")
-      get() = _builder.controllerGenesisState
-      @JvmName("setControllerGenesisState")
-      set(value) {
+      @kotlin.jvm.JvmName("getControllerGenesisState")
+        get() = _builder.controllerGenesisState
+      @kotlin.jvm.JvmName("setControllerGenesisState")
+        set(value) {
         _builder.controllerGenesisState = value
       }
     /**
@@ -63,10 +63,10 @@ public object GenesisStateKt {
      * `.ibc.applications.interchain_accounts.genesis.v1.HostGenesisState host_genesis_state = 2 [json_name = "hostGenesisState", (.gogoproto.nullable) = false];`
      */
     public var hostGenesisState: ibc.applications.interchain_accounts.genesis.v1.Genesis.HostGenesisState
-      @JvmName("getHostGenesisState")
-      get() = _builder.hostGenesisState
-      @JvmName("setHostGenesisState")
-      set(value) {
+      @kotlin.jvm.JvmName("getHostGenesisState")
+        get() = _builder.hostGenesisState
+      @kotlin.jvm.JvmName("setHostGenesisState")
+        set(value) {
         _builder.hostGenesisState = value
       }
     /**

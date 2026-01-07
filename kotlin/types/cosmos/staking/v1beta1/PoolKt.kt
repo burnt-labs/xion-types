@@ -37,10 +37,10 @@ public object PoolKt {
      * `string not_bonded_tokens = 1 [json_name = "notBondedTokens", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.gogoproto.jsontag) = "not_bonded_tokens", (.cosmos_proto.scalar) = "cosmos.Int", (.amino.dont_omitempty) = true];`
      */
     public var notBondedTokens: kotlin.String
-      @JvmName("getNotBondedTokens")
-      get() = _builder.notBondedTokens
-      @JvmName("setNotBondedTokens")
-      set(value) {
+      @kotlin.jvm.JvmName("getNotBondedTokens")
+        get() = _builder.notBondedTokens
+      @kotlin.jvm.JvmName("setNotBondedTokens")
+        set(value) {
         _builder.notBondedTokens = value
       }
     /**
@@ -54,10 +54,10 @@ public object PoolKt {
      * `string bonded_tokens = 2 [json_name = "bondedTokens", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.gogoproto.jsontag) = "bonded_tokens", (.cosmos_proto.scalar) = "cosmos.Int", (.amino.dont_omitempty) = true];`
      */
     public var bondedTokens: kotlin.String
-      @JvmName("getBondedTokens")
-      get() = _builder.bondedTokens
-      @JvmName("setBondedTokens")
-      set(value) {
+      @kotlin.jvm.JvmName("getBondedTokens")
+        get() = _builder.bondedTokens
+      @kotlin.jvm.JvmName("setBondedTokens")
+        set(value) {
         _builder.bondedTokens = value
       }
     /**

@@ -40,10 +40,10 @@ public object GrantKt {
      * `string granter = 1 [json_name = "granter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var granter: kotlin.String
-      @JvmName("getGranter")
-      get() = _builder.granter
-      @JvmName("setGranter")
-      set(value) {
+      @kotlin.jvm.JvmName("getGranter")
+        get() = _builder.granter
+      @kotlin.jvm.JvmName("setGranter")
+        set(value) {
         _builder.granter = value
       }
     /**
@@ -65,10 +65,10 @@ public object GrantKt {
      * `string grantee = 2 [json_name = "grantee", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var grantee: kotlin.String
-      @JvmName("getGrantee")
-      get() = _builder.grantee
-      @JvmName("setGrantee")
-      set(value) {
+      @kotlin.jvm.JvmName("getGrantee")
+        get() = _builder.grantee
+      @kotlin.jvm.JvmName("setGrantee")
+        set(value) {
         _builder.grantee = value
       }
     /**
@@ -90,10 +90,10 @@ public object GrantKt {
      * `.google.protobuf.Any allowance = 3 [json_name = "allowance", (.cosmos_proto.accepts_interface) = "cosmos.feegrant.v1beta1.FeeAllowanceI"];`
      */
     public var allowance: com.google.protobuf.Any
-      @JvmName("getAllowance")
-      get() = _builder.allowance
-      @JvmName("setAllowance")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowance")
+        get() = _builder.allowance
+      @kotlin.jvm.JvmName("setAllowance")
+        set(value) {
         _builder.allowance = value
       }
     /**

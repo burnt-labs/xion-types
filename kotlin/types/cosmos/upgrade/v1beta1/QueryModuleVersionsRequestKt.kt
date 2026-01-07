@@ -43,10 +43,10 @@ public object QueryModuleVersionsRequestKt {
      * `string module_name = 1 [json_name = "moduleName"];`
      */
     public var moduleName: kotlin.String
-      @JvmName("getModuleName")
-      get() = _builder.moduleName
-      @JvmName("setModuleName")
-      set(value) {
+      @kotlin.jvm.JvmName("getModuleName")
+        get() = _builder.moduleName
+      @kotlin.jvm.JvmName("setModuleName")
+        set(value) {
         _builder.moduleName = value
       }
     /**

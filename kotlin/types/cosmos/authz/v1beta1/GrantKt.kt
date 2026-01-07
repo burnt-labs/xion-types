@@ -37,10 +37,10 @@ public object GrantKt {
      * `.google.protobuf.Any authorization = 1 [json_name = "authorization", (.cosmos_proto.accepts_interface) = "cosmos.authz.v1beta1.Authorization"];`
      */
     public var authorization: com.google.protobuf.Any
-      @JvmName("getAuthorization")
-      get() = _builder.authorization
-      @JvmName("setAuthorization")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthorization")
+        get() = _builder.authorization
+      @kotlin.jvm.JvmName("setAuthorization")
+        set(value) {
         _builder.authorization = value
       }
     /**
@@ -70,10 +70,10 @@ public object GrantKt {
      * `.google.protobuf.Timestamp expiration = 2 [json_name = "expiration", (.gogoproto.nullable) = true, (.gogoproto.stdtime) = true];`
      */
     public var expiration: com.google.protobuf.Timestamp
-      @JvmName("getExpiration")
-      get() = _builder.expiration
-      @JvmName("setExpiration")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpiration")
+        get() = _builder.expiration
+      @kotlin.jvm.JvmName("setExpiration")
+        set(value) {
         _builder.expiration = value
       }
     /**

@@ -43,7 +43,7 @@ public object FeePoolKt {
      */
      public val communityPool: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.communityPoolList
       )
     /**
@@ -51,7 +51,7 @@ public object FeePoolKt {
      * @param value The communityPool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCommunityPool")
+@kotlin.jvm.JvmName("addCommunityPool")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addCommunityPool(value)
     }
@@ -60,7 +60,7 @@ public object FeePoolKt {
      * @param value The communityPool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCommunityPool")
+@kotlin.jvm.JvmName("plusAssignCommunityPool")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -70,7 +70,7 @@ public object FeePoolKt {
      * @param values The communityPool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCommunityPool")
+@kotlin.jvm.JvmName("addAllCommunityPool")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllCommunityPool(values)
     }
@@ -79,7 +79,7 @@ public object FeePoolKt {
      * @param values The communityPool to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCommunityPool")
+@kotlin.jvm.JvmName("plusAssignAllCommunityPool")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object FeePoolKt {
      * @param value The communityPool to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCommunityPool")
+@kotlin.jvm.JvmName("setCommunityPool")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setCommunityPool(index, value)
     }
@@ -98,11 +98,10 @@ public object FeePoolKt {
      * `repeated .cosmos.base.v1beta1.DecCoin community_pool = 1 [json_name = "communityPool", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCommunityPool")
+@kotlin.jvm.JvmName("clearCommunityPool")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, CommunityPoolProxy>.clear() {
       _builder.clearCommunityPool()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

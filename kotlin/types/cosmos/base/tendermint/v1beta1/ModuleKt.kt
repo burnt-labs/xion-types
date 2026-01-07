@@ -40,10 +40,10 @@ public object ModuleKt {
      * `string path = 1 [json_name = "path"];`
      */
     public var path: kotlin.String
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -65,10 +65,10 @@ public object ModuleKt {
      * `string version = 2 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -90,10 +90,10 @@ public object ModuleKt {
      * `string sum = 3 [json_name = "sum"];`
      */
     public var sum: kotlin.String
-      @JvmName("getSum")
-      get() = _builder.sum
-      @JvmName("setSum")
-      set(value) {
+      @kotlin.jvm.JvmName("getSum")
+        get() = _builder.sum
+      @kotlin.jvm.JvmName("setSum")
+        set(value) {
         _builder.sum = value
       }
     /**

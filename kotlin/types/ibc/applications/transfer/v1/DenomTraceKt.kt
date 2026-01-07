@@ -42,10 +42,10 @@ public object DenomTraceKt {
      * `string path = 1 [json_name = "path"];`
      */
     public var path: kotlin.String
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -68,10 +68,10 @@ public object DenomTraceKt {
      * `string base_denom = 2 [json_name = "baseDenom"];`
      */
     public var baseDenom: kotlin.String
-      @JvmName("getBaseDenom")
-      get() = _builder.baseDenom
-      @JvmName("setBaseDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getBaseDenom")
+        get() = _builder.baseDenom
+      @kotlin.jvm.JvmName("setBaseDenom")
+        set(value) {
         _builder.baseDenom = value
       }
     /**

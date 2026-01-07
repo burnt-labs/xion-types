@@ -41,10 +41,10 @@ public object QueryUnreceivedAcksRequestKt {
      * `string port_id = 1 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryUnreceivedAcksRequestKt {
      * `string channel_id = 2 [json_name = "channelId"];`
      */
     public var channelId: kotlin.String
-      @JvmName("getChannelId")
-      get() = _builder.channelId
-      @JvmName("setChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelId")
+        get() = _builder.channelId
+      @kotlin.jvm.JvmName("setChannelId")
+        set(value) {
         _builder.channelId = value
       }
     /**
@@ -98,7 +98,7 @@ public object QueryUnreceivedAcksRequestKt {
      */
      public val packetAckSequences: com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.packetAckSequencesList
       )
     /**
@@ -110,7 +110,7 @@ public object QueryUnreceivedAcksRequestKt {
      * @param value The packetAckSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPacketAckSequences")
+@kotlin.jvm.JvmName("addPacketAckSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>.add(value: kotlin.Long) {
       _builder.addPacketAckSequences(value)
     }/**
@@ -122,7 +122,7 @@ public object QueryUnreceivedAcksRequestKt {
      * @param value The packetAckSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPacketAckSequences")
+@kotlin.jvm.JvmName("plusAssignPacketAckSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -135,7 +135,7 @@ public object QueryUnreceivedAcksRequestKt {
      * @param values The packetAckSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPacketAckSequences")
+@kotlin.jvm.JvmName("addAllPacketAckSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllPacketAckSequences(values)
     }/**
@@ -147,7 +147,7 @@ public object QueryUnreceivedAcksRequestKt {
      * @param values The packetAckSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPacketAckSequences")
+@kotlin.jvm.JvmName("plusAssignAllPacketAckSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -161,7 +161,7 @@ public object QueryUnreceivedAcksRequestKt {
      * @param value The packetAckSequences to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPacketAckSequences")
+@kotlin.jvm.JvmName("setPacketAckSequences")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setPacketAckSequences(index, value)
     }/**
@@ -172,7 +172,7 @@ public object QueryUnreceivedAcksRequestKt {
      * `repeated uint64 packet_ack_sequences = 3 [json_name = "packetAckSequences"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPacketAckSequences")
+@kotlin.jvm.JvmName("clearPacketAckSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, PacketAckSequencesProxy>.clear() {
       _builder.clearPacketAckSequences()
     }}

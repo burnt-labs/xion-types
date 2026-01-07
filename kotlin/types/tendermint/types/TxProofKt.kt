@@ -36,10 +36,10 @@ public object TxProofKt {
      * `bytes root_hash = 1 [json_name = "rootHash"];`
      */
     public var rootHash: com.google.protobuf.ByteString
-      @JvmName("getRootHash")
-      get() = _builder.rootHash
-      @JvmName("setRootHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getRootHash")
+        get() = _builder.rootHash
+      @kotlin.jvm.JvmName("setRootHash")
+        set(value) {
         _builder.rootHash = value
       }
     /**
@@ -53,10 +53,10 @@ public object TxProofKt {
      * `bytes data = 2 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -70,10 +70,10 @@ public object TxProofKt {
      * `.tendermint.crypto.Proof proof = 3 [json_name = "proof"];`
      */
     public var proof: tendermint.crypto.ProofOuterClass.Proof
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**

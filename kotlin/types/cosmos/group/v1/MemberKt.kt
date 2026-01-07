@@ -41,10 +41,10 @@ public object MemberKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -66,10 +66,10 @@ public object MemberKt {
      * `string weight = 2 [json_name = "weight"];`
      */
     public var weight: kotlin.String
-      @JvmName("getWeight")
-      get() = _builder.weight
-      @JvmName("setWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getWeight")
+        get() = _builder.weight
+      @kotlin.jvm.JvmName("setWeight")
+        set(value) {
         _builder.weight = value
       }
     /**
@@ -91,10 +91,10 @@ public object MemberKt {
      * `string metadata = 3 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**
@@ -116,10 +116,10 @@ public object MemberKt {
      * `.google.protobuf.Timestamp added_at = 4 [json_name = "addedAt", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var addedAt: com.google.protobuf.Timestamp
-      @JvmName("getAddedAt")
-      get() = _builder.addedAt
-      @JvmName("setAddedAt")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddedAt")
+        get() = _builder.addedAt
+      @kotlin.jvm.JvmName("setAddedAt")
+        set(value) {
         _builder.addedAt = value
       }
     /**

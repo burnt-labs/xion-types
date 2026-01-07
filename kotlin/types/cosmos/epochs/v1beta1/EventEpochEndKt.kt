@@ -36,10 +36,10 @@ public object EventEpochEndKt {
      * `int64 epoch_number = 1 [json_name = "epochNumber"];`
      */
     public var epochNumber: kotlin.Long
-      @JvmName("getEpochNumber")
-      get() = _builder.epochNumber
-      @JvmName("setEpochNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getEpochNumber")
+        get() = _builder.epochNumber
+      @kotlin.jvm.JvmName("setEpochNumber")
+        set(value) {
         _builder.epochNumber = value
       }
     /**

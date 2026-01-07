@@ -33,7 +33,7 @@ pub struct Deposit {
     pub depositor: ::prost::alloc::string::String,
     /// amount to be deposited by depositor.
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// Proposal defines the core field members of a governance proposal.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -60,7 +60,7 @@ pub struct Proposal {
     pub deposit_end_time: ::core::option::Option<::prost_types::Timestamp>,
     /// total_deposit is the total deposit on the proposal.
     #[prost(message, repeated, tag="7")]
-    pub total_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub total_deposit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// voting_start_time is the starting time to vote on a proposal.
     #[prost(message, optional, tag="8")]
     pub voting_start_time: ::core::option::Option<::prost_types::Timestamp>,
@@ -109,14 +109,14 @@ pub struct Vote {
 pub struct DepositParams {
     /// Minimum deposit for a proposal to enter voting period.
     #[prost(message, repeated, tag="1")]
-    pub min_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub min_deposit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Maximum period for Atom holders to deposit on a proposal. Initial value: 2
     /// months.
     #[prost(message, optional, tag="2")]
     pub max_deposit_period: ::core::option::Option<::prost_types::Duration>,
 }
 /// VotingParams defines the params for voting on governance proposals.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VotingParams {
     /// Duration of the voting period.
     #[prost(message, optional, tag="1")]
@@ -254,7 +254,7 @@ pub struct GenesisState {
     pub tally_params: ::core::option::Option<TallyParams>,
 }
 /// QueryProposalRequest is the request type for the Query/Proposal RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryProposalRequest {
     /// proposal_id defines the unique id of the proposal.
     #[prost(uint64, tag="1")]
@@ -280,7 +280,7 @@ pub struct QueryProposalsRequest {
     pub depositor: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryProposalsResponse is the response type for the Query/Proposals RPC
 /// method.
@@ -291,7 +291,7 @@ pub struct QueryProposalsResponse {
     pub proposals: ::prost::alloc::vec::Vec<Proposal>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryVoteRequest is the request type for the Query/Vote RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -318,7 +318,7 @@ pub struct QueryVotesRequest {
     pub proposal_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryVotesResponse is the response type for the Query/Votes RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -328,7 +328,7 @@ pub struct QueryVotesResponse {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -376,7 +376,7 @@ pub struct QueryDepositsRequest {
     pub proposal_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryDepositsResponse is the response type for the Query/Deposits RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -386,10 +386,10 @@ pub struct QueryDepositsResponse {
     pub deposits: ::prost::alloc::vec::Vec<Deposit>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryTallyResultRequest is the request type for the Query/Tally RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTallyResultRequest {
     /// proposal_id defines the unique id of the proposal.
     #[prost(uint64, tag="1")]
@@ -411,13 +411,13 @@ pub struct MsgSubmitProposal {
     pub content: ::core::option::Option<::prost_types::Any>,
     /// initial_deposit is the deposit value that must be paid at proposal submission.
     #[prost(message, repeated, tag="2")]
-    pub initial_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub initial_deposit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// proposer is the account address of the proposer.
     #[prost(string, tag="3")]
     pub proposer: ::prost::alloc::string::String,
 }
 /// MsgSubmitProposalResponse defines the Msg/SubmitProposal response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSubmitProposalResponse {
     /// proposal_id defines the unique id of the proposal.
     #[prost(uint64, tag="1")]
@@ -437,7 +437,7 @@ pub struct MsgVote {
     pub option: i32,
 }
 /// MsgVoteResponse defines the Msg/Vote response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteResponse {
 }
 /// MsgVoteWeighted defines a message to cast a vote.
@@ -454,7 +454,7 @@ pub struct MsgVoteWeighted {
     pub options: ::prost::alloc::vec::Vec<WeightedVoteOption>,
 }
 /// MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgVoteWeightedResponse {
 }
 /// MsgDeposit defines a message to submit a deposit to an existing proposal.
@@ -468,10 +468,10 @@ pub struct MsgDeposit {
     pub depositor: ::prost::alloc::string::String,
     /// amount to be deposited by depositor.
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgDepositResponse defines the Msg/Deposit response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDepositResponse {
 }
 // @@protoc_insertion_point(module)

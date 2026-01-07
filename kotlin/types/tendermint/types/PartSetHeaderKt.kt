@@ -36,10 +36,10 @@ public object PartSetHeaderKt {
      * `uint32 total = 1 [json_name = "total"];`
      */
     public var total: kotlin.Int
-      @JvmName("getTotal")
-      get() = _builder.total
-      @JvmName("setTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotal")
+        get() = _builder.total
+      @kotlin.jvm.JvmName("setTotal")
+        set(value) {
         _builder.total = value
       }
     /**
@@ -53,10 +53,10 @@ public object PartSetHeaderKt {
      * `bytes hash = 2 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**

@@ -47,7 +47,7 @@ public object QueryClassesResponseKt {
      */
      public val classes: com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.classesList
       )
     /**
@@ -59,7 +59,7 @@ public object QueryClassesResponseKt {
      * @param value The classes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClasses")
+@kotlin.jvm.JvmName("addClasses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>.add(value: cosmos.nft.v1beta1.Nft.Class) {
       _builder.addClasses(value)
     }
@@ -72,7 +72,7 @@ public object QueryClassesResponseKt {
      * @param value The classes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClasses")
+@kotlin.jvm.JvmName("plusAssignClasses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>.plusAssign(value: cosmos.nft.v1beta1.Nft.Class) {
       add(value)
@@ -86,7 +86,7 @@ public object QueryClassesResponseKt {
      * @param values The classes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClasses")
+@kotlin.jvm.JvmName("addAllClasses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.nft.v1beta1.Nft.Class>) {
       _builder.addAllClasses(values)
     }
@@ -99,7 +99,7 @@ public object QueryClassesResponseKt {
      * @param values The classes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClasses")
+@kotlin.jvm.JvmName("plusAssignAllClasses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.nft.v1beta1.Nft.Class>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object QueryClassesResponseKt {
      * @param value The classes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClasses")
+@kotlin.jvm.JvmName("setClasses")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>.set(index: kotlin.Int, value: cosmos.nft.v1beta1.Nft.Class) {
       _builder.setClasses(index, value)
     }
@@ -126,11 +126,10 @@ public object QueryClassesResponseKt {
      * `repeated .cosmos.nft.v1beta1.Class classes = 1 [json_name = "classes"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClasses")
+@kotlin.jvm.JvmName("clearClasses")
     public fun com.google.protobuf.kotlin.DslList<cosmos.nft.v1beta1.Nft.Class, ClassesProxy>.clear() {
       _builder.clearClasses()
     }
-
 
     /**
      * ```
@@ -140,10 +139,10 @@ public object QueryClassesResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

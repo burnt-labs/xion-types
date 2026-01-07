@@ -41,10 +41,10 @@ public object QuerySigningInfoResponseKt {
      * `.cosmos.slashing.v1beta1.ValidatorSigningInfo val_signing_info = 1 [json_name = "valSigningInfo", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var valSigningInfo: cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo
-      @JvmName("getValSigningInfo")
-      get() = _builder.valSigningInfo
-      @JvmName("setValSigningInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getValSigningInfo")
+        get() = _builder.valSigningInfo
+      @kotlin.jvm.JvmName("setValSigningInfo")
+        set(value) {
         _builder.valSigningInfo = value
       }
     /**

@@ -40,17 +40,17 @@ public object RecvPacketResultKt {
      * `.ibc.core.channel.v2.PacketStatus status = 1 [json_name = "status"];`
      */
     public var status: ibc.core.channel.v2.PacketOuterClass.PacketStatus
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     public var statusValue: kotlin.Int
-      @JvmName("getStatusValue")
-      get() = _builder.statusValue
-      @JvmName("setStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatusValue")
+        get() = _builder.statusValue
+      @kotlin.jvm.JvmName("setStatusValue")
+        set(value) {
         _builder.statusValue = value
       }
     /**
@@ -72,10 +72,10 @@ public object RecvPacketResultKt {
      * `bytes acknowledgement = 2 [json_name = "acknowledgement"];`
      */
     public var acknowledgement: com.google.protobuf.ByteString
-      @JvmName("getAcknowledgement")
-      get() = _builder.acknowledgement
-      @JvmName("setAcknowledgement")
-      set(value) {
+      @kotlin.jvm.JvmName("getAcknowledgement")
+        get() = _builder.acknowledgement
+      @kotlin.jvm.JvmName("setAcknowledgement")
+        set(value) {
         _builder.acknowledgement = value
       }
     /**

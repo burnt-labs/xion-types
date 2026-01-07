@@ -40,10 +40,10 @@ public object QueryAccountInfoResponseKt {
      * `.cosmos.auth.v1beta1.BaseAccount info = 1 [json_name = "info"];`
      */
     public var info: cosmos.auth.v1beta1.Auth.BaseAccount
-      @JvmName("getInfo")
-      get() = _builder.info
-      @JvmName("setInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getInfo")
+        get() = _builder.info
+      @kotlin.jvm.JvmName("setInfo")
+        set(value) {
         _builder.info = value
       }
     /**

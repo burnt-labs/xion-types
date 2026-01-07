@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryWebAuthNVerifyRegisterRequest(block: xion.v1.QueryWebAuthNVerifyRegisterRequestKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryWebAuthNVerifyRegisterRequest =
   xion.v1.QueryWebAuthNVerifyRegisterRequestKt.Dsl._create(xion.v1.QueryOuterClass.QueryWebAuthNVerifyRegisterRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryWebAuthNVerifyRegisterRequest is the request type for WebAuthN
+ * registration verification
+ * ```
+ *
  * Protobuf type `xion.v1.QueryWebAuthNVerifyRegisterRequest`
  */
 public object QueryWebAuthNVerifyRegisterRequestKt {
@@ -29,16 +34,24 @@ public object QueryWebAuthNVerifyRegisterRequestKt {
     internal fun _build(): xion.v1.QueryOuterClass.QueryWebAuthNVerifyRegisterRequest = _builder.build()
 
     /**
+     * ```
+     * The account address
+     * ```
+     *
      * `string addr = 1 [json_name = "addr"];`
      */
     public var addr: kotlin.String
-      @JvmName("getAddr")
-      get() = _builder.addr
-      @JvmName("setAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddr")
+        get() = _builder.addr
+      @kotlin.jvm.JvmName("setAddr")
+        set(value) {
         _builder.addr = value
       }
     /**
+     * ```
+     * The account address
+     * ```
+     *
      * `string addr = 1 [json_name = "addr"];`
      */
     public fun clearAddr() {
@@ -46,16 +59,24 @@ public object QueryWebAuthNVerifyRegisterRequestKt {
     }
 
     /**
+     * ```
+     * The challenge string for registration
+     * ```
+     *
      * `string challenge = 2 [json_name = "challenge"];`
      */
     public var challenge: kotlin.String
-      @JvmName("getChallenge")
-      get() = _builder.challenge
-      @JvmName("setChallenge")
-      set(value) {
+      @kotlin.jvm.JvmName("getChallenge")
+        get() = _builder.challenge
+      @kotlin.jvm.JvmName("setChallenge")
+        set(value) {
         _builder.challenge = value
       }
     /**
+     * ```
+     * The challenge string for registration
+     * ```
+     *
      * `string challenge = 2 [json_name = "challenge"];`
      */
     public fun clearChallenge() {
@@ -63,16 +84,24 @@ public object QueryWebAuthNVerifyRegisterRequestKt {
     }
 
     /**
+     * ```
+     * The relying party identifier
+     * ```
+     *
      * `string rp = 3 [json_name = "rp"];`
      */
     public var rp: kotlin.String
-      @JvmName("getRp")
-      get() = _builder.rp
-      @JvmName("setRp")
-      set(value) {
+      @kotlin.jvm.JvmName("getRp")
+        get() = _builder.rp
+      @kotlin.jvm.JvmName("setRp")
+        set(value) {
         _builder.rp = value
       }
     /**
+     * ```
+     * The relying party identifier
+     * ```
+     *
      * `string rp = 3 [json_name = "rp"];`
      */
     public fun clearRp() {
@@ -80,16 +109,24 @@ public object QueryWebAuthNVerifyRegisterRequestKt {
     }
 
     /**
+     * ```
+     * The registration data
+     * ```
+     *
      * `bytes data = 4 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
+     * ```
+     * The registration data
+     * ```
+     *
      * `bytes data = 4 [json_name = "data"];`
      */
     public fun clearData() {

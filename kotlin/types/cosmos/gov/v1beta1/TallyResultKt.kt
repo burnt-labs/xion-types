@@ -40,10 +40,10 @@ public object TallyResultKt {
      * `string yes = 1 [json_name = "yes", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var yes: kotlin.String
-      @JvmName("getYes")
-      get() = _builder.yes
-      @JvmName("setYes")
-      set(value) {
+      @kotlin.jvm.JvmName("getYes")
+        get() = _builder.yes
+      @kotlin.jvm.JvmName("setYes")
+        set(value) {
         _builder.yes = value
       }
     /**
@@ -65,10 +65,10 @@ public object TallyResultKt {
      * `string abstain = 2 [json_name = "abstain", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var abstain: kotlin.String
-      @JvmName("getAbstain")
-      get() = _builder.abstain
-      @JvmName("setAbstain")
-      set(value) {
+      @kotlin.jvm.JvmName("getAbstain")
+        get() = _builder.abstain
+      @kotlin.jvm.JvmName("setAbstain")
+        set(value) {
         _builder.abstain = value
       }
     /**
@@ -90,10 +90,10 @@ public object TallyResultKt {
      * `string no = 3 [json_name = "no", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var no: kotlin.String
-      @JvmName("getNo")
-      get() = _builder.no
-      @JvmName("setNo")
-      set(value) {
+      @kotlin.jvm.JvmName("getNo")
+        get() = _builder.no
+      @kotlin.jvm.JvmName("setNo")
+        set(value) {
         _builder.no = value
       }
     /**
@@ -115,10 +115,10 @@ public object TallyResultKt {
      * `string no_with_veto = 4 [json_name = "noWithVeto", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var noWithVeto: kotlin.String
-      @JvmName("getNoWithVeto")
-      get() = _builder.noWithVeto
-      @JvmName("setNoWithVeto")
-      set(value) {
+      @kotlin.jvm.JvmName("getNoWithVeto")
+        get() = _builder.noWithVeto
+      @kotlin.jvm.JvmName("setNoWithVeto")
+        set(value) {
         _builder.noWithVeto = value
       }
     /**

@@ -36,10 +36,10 @@ public object SequenceKt {
      * `bytes id_key = 1 [json_name = "idKey", (.gogoproto.customname) = "IDKey"];`
      */
     public var idKey: com.google.protobuf.ByteString
-      @JvmName("getIdKey")
-      get() = _builder.idKey
-      @JvmName("setIdKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getIdKey")
+        get() = _builder.idKey
+      @kotlin.jvm.JvmName("setIdKey")
+        set(value) {
         _builder.idKey = value
       }
     /**
@@ -53,10 +53,10 @@ public object SequenceKt {
      * `uint64 value = 2 [json_name = "value"];`
      */
     public var value: kotlin.Long
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**

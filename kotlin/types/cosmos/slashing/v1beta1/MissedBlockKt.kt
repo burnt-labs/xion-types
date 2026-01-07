@@ -40,10 +40,10 @@ public object MissedBlockKt {
      * `int64 index = 1 [json_name = "index"];`
      */
     public var index: kotlin.Long
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**
@@ -65,10 +65,10 @@ public object MissedBlockKt {
      * `bool missed = 2 [json_name = "missed"];`
      */
     public var missed: kotlin.Boolean
-      @JvmName("getMissed")
-      get() = _builder.missed
-      @JvmName("setMissed")
-      set(value) {
+      @kotlin.jvm.JvmName("getMissed")
+        get() = _builder.missed
+      @kotlin.jvm.JvmName("setMissed")
+        set(value) {
         _builder.missed = value
       }
     /**

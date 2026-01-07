@@ -40,10 +40,10 @@ public object MsgModuleQuerySafeResponseKt {
      * `uint64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -72,7 +72,7 @@ public object MsgModuleQuerySafeResponseKt {
      */
      public val responses: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.responsesList
       )
     /**
@@ -84,7 +84,7 @@ public object MsgModuleQuerySafeResponseKt {
      * @param value The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addResponses")
+@kotlin.jvm.JvmName("addResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addResponses(value)
     }/**
@@ -96,7 +96,7 @@ public object MsgModuleQuerySafeResponseKt {
      * @param value The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignResponses")
+@kotlin.jvm.JvmName("plusAssignResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -109,7 +109,7 @@ public object MsgModuleQuerySafeResponseKt {
      * @param values The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllResponses")
+@kotlin.jvm.JvmName("addAllResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllResponses(values)
     }/**
@@ -121,7 +121,7 @@ public object MsgModuleQuerySafeResponseKt {
      * @param values The responses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllResponses")
+@kotlin.jvm.JvmName("plusAssignAllResponses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -135,7 +135,7 @@ public object MsgModuleQuerySafeResponseKt {
      * @param value The responses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setResponses")
+@kotlin.jvm.JvmName("setResponses")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setResponses(index, value)
     }/**
@@ -146,7 +146,7 @@ public object MsgModuleQuerySafeResponseKt {
      * `repeated bytes responses = 2 [json_name = "responses"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearResponses")
+@kotlin.jvm.JvmName("clearResponses")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, ResponsesProxy>.clear() {
       _builder.clearResponses()
     }}

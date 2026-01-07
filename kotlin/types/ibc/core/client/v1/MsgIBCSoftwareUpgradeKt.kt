@@ -36,10 +36,10 @@ public object MsgIBCSoftwareUpgradeKt {
      * `.cosmos.upgrade.v1beta1.Plan plan = 1 [json_name = "plan", (.gogoproto.nullable) = false];`
      */
     public var plan: cosmos.upgrade.v1beta1.Upgrade.Plan
-      @JvmName("getPlan")
-      get() = _builder.plan
-      @JvmName("setPlan")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlan")
+        get() = _builder.plan
+      @kotlin.jvm.JvmName("setPlan")
+        set(value) {
         _builder.plan = value
       }
     /**
@@ -74,10 +74,10 @@ public object MsgIBCSoftwareUpgradeKt {
      * `.google.protobuf.Any upgraded_client_state = 2 [json_name = "upgradedClientState"];`
      */
     public var upgradedClientState: com.google.protobuf.Any
-      @JvmName("getUpgradedClientState")
-      get() = _builder.upgradedClientState
-      @JvmName("setUpgradedClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpgradedClientState")
+        get() = _builder.upgradedClientState
+      @kotlin.jvm.JvmName("setUpgradedClientState")
+        set(value) {
         _builder.upgradedClientState = value
       }
     /**
@@ -127,10 +127,10 @@ public object MsgIBCSoftwareUpgradeKt {
      * `string signer = 3 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

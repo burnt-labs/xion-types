@@ -37,10 +37,10 @@ public object SubspaceKt {
      * `string subspace = 1 [json_name = "subspace"];`
      */
     public var subspace: kotlin.String
-      @JvmName("getSubspace")
-      get() = _builder.subspace
-      @JvmName("setSubspace")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubspace")
+        get() = _builder.subspace
+      @kotlin.jvm.JvmName("setSubspace")
+        set(value) {
         _builder.subspace = value
       }
     /**
@@ -61,7 +61,7 @@ public object SubspaceKt {
      * @return A list containing the keys.
      */
     public val keys: com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.keysList
       )
@@ -70,7 +70,7 @@ public object SubspaceKt {
      * @param value The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addKeys")
+@kotlin.jvm.JvmName("addKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.add(value: kotlin.String) {
       _builder.addKeys(value)
     }
@@ -79,7 +79,7 @@ public object SubspaceKt {
      * @param value The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignKeys")
+@kotlin.jvm.JvmName("plusAssignKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -89,7 +89,7 @@ public object SubspaceKt {
      * @param values The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllKeys")
+@kotlin.jvm.JvmName("addAllKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllKeys(values)
     }
@@ -98,7 +98,7 @@ public object SubspaceKt {
      * @param values The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllKeys")
+@kotlin.jvm.JvmName("plusAssignAllKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -109,14 +109,14 @@ public object SubspaceKt {
      * @param value The keys to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setKeys")
+@kotlin.jvm.JvmName("setKeys")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setKeys(index, value)
     }/**
      * `repeated string keys = 2 [json_name = "keys"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearKeys")
+@kotlin.jvm.JvmName("setKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.clear() {
       _builder.clearKeys()
     }}

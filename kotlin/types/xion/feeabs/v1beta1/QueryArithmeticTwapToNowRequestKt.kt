@@ -33,16 +33,24 @@ public object QueryArithmeticTwapToNowRequestKt {
     internal fun _build(): xion.feeabs.v1beta1.Osmosisibc.QueryArithmeticTwapToNowRequest = _builder.build()
 
     /**
+     * ```
+     * pool_id defines the pool identifier
+     * ```
+     *
      * `uint64 pool_id = 1 [json_name = "poolId"];`
      */
     public var poolId: kotlin.Long
-      @JvmName("getPoolId")
-      get() = _builder.poolId
-      @JvmName("setPoolId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPoolId")
+        get() = _builder.poolId
+      @kotlin.jvm.JvmName("setPoolId")
+        set(value) {
         _builder.poolId = value
       }
     /**
+     * ```
+     * pool_id defines the pool identifier
+     * ```
+     *
      * `uint64 pool_id = 1 [json_name = "poolId"];`
      */
     public fun clearPoolId() {
@@ -50,16 +58,24 @@ public object QueryArithmeticTwapToNowRequestKt {
     }
 
     /**
+     * ```
+     * base_asset defines the base asset for the TWAP calculation
+     * ```
+     *
      * `string base_asset = 2 [json_name = "baseAsset"];`
      */
     public var baseAsset: kotlin.String
-      @JvmName("getBaseAsset")
-      get() = _builder.baseAsset
-      @JvmName("setBaseAsset")
-      set(value) {
+      @kotlin.jvm.JvmName("getBaseAsset")
+        get() = _builder.baseAsset
+      @kotlin.jvm.JvmName("setBaseAsset")
+        set(value) {
         _builder.baseAsset = value
       }
     /**
+     * ```
+     * base_asset defines the base asset for the TWAP calculation
+     * ```
+     *
      * `string base_asset = 2 [json_name = "baseAsset"];`
      */
     public fun clearBaseAsset() {
@@ -67,16 +83,24 @@ public object QueryArithmeticTwapToNowRequestKt {
     }
 
     /**
+     * ```
+     * quote_asset defines the quote asset for the TWAP calculation
+     * ```
+     *
      * `string quote_asset = 3 [json_name = "quoteAsset"];`
      */
     public var quoteAsset: kotlin.String
-      @JvmName("getQuoteAsset")
-      get() = _builder.quoteAsset
-      @JvmName("setQuoteAsset")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuoteAsset")
+        get() = _builder.quoteAsset
+      @kotlin.jvm.JvmName("setQuoteAsset")
+        set(value) {
         _builder.quoteAsset = value
       }
     /**
+     * ```
+     * quote_asset defines the quote asset for the TWAP calculation
+     * ```
+     *
      * `string quote_asset = 3 [json_name = "quoteAsset"];`
      */
     public fun clearQuoteAsset() {
@@ -84,22 +108,34 @@ public object QueryArithmeticTwapToNowRequestKt {
     }
 
     /**
+     * ```
+     * start_time defines the start time for the TWAP calculation
+     * ```
+     *
      * `.google.protobuf.Timestamp start_time = 4 [json_name = "startTime", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"start_time\"", (.gogoproto.stdtime) = true];`
      */
     public var startTime: com.google.protobuf.Timestamp
-      @JvmName("getStartTime")
-      get() = _builder.startTime
-      @JvmName("setStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartTime")
+        get() = _builder.startTime
+      @kotlin.jvm.JvmName("setStartTime")
+        set(value) {
         _builder.startTime = value
       }
     /**
+     * ```
+     * start_time defines the start time for the TWAP calculation
+     * ```
+     *
      * `.google.protobuf.Timestamp start_time = 4 [json_name = "startTime", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"start_time\"", (.gogoproto.stdtime) = true];`
      */
     public fun clearStartTime() {
       _builder.clearStartTime()
     }
     /**
+     * ```
+     * start_time defines the start time for the TWAP calculation
+     * ```
+     *
      * `.google.protobuf.Timestamp start_time = 4 [json_name = "startTime", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"start_time\"", (.gogoproto.stdtime) = true];`
      * @return Whether the startTime field is set.
      */

@@ -38,7 +38,7 @@ pub struct GenesisState {
 }
 /// QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
 /// method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCommunityPoolRequest {
 }
 /// QueryCommunityPoolResponse is the response type for the Query/CommunityPool
@@ -47,7 +47,7 @@ pub struct QueryCommunityPoolRequest {
 pub struct QueryCommunityPoolResponse {
     /// pool defines community pool's coins.
     #[prost(message, repeated, tag="1")]
-    pub pool: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub pool: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// QueryContinuousFundRequest is the request type for the Query/ContinuousFund
 /// RPC method.
@@ -67,7 +67,7 @@ pub struct QueryContinuousFundResponse {
 }
 /// QueryContinuousFundRequest is the request type for the Query/ContinuousFunds
 /// RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryContinuousFundsRequest {
 }
 /// QueryUnclaimedBudgetResponse is the response type for the Query/ContinuousFunds
@@ -79,7 +79,7 @@ pub struct QueryContinuousFundsResponse {
     pub continuous_funds: ::prost::alloc::vec::Vec<ContinuousFund>,
 }
 /// QueryParamsRequest is the response type for the Query/Params RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
@@ -95,10 +95,10 @@ pub struct MsgFundCommunityPool {
     #[prost(string, tag="1")]
     pub depositor: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFundCommunityPoolResponse {
 }
 /// MsgCommunityPoolSpend defines a message for sending tokens from the community
@@ -112,11 +112,11 @@ pub struct MsgCommunityPoolSpend {
     #[prost(string, tag="2")]
     pub recipient: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgCommunityPoolSpendResponse defines the response to executing a
 /// MsgCommunityPoolSpend message.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCommunityPoolSpendResponse {
 }
 /// MsgCreateContinuousFund defines a message for adding continuous funds.
@@ -137,7 +137,7 @@ pub struct MsgCreateContinuousFund {
 }
 /// MsgCreateContinuousFundResponse defines the response to executing a
 /// MsgCreateContinuousFund message.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateContinuousFundResponse {
 }
 /// MsgCancelContinuousFund defines a message to cancel continuous funds for a specific recipient.
@@ -178,7 +178,7 @@ pub struct MsgUpdateParams {
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {
 }
 // @@protoc_insertion_point(module)

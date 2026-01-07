@@ -36,10 +36,10 @@ public object AddressBytesToStringResponseKt {
      * `string address_string = 1 [json_name = "addressString"];`
      */
     public var addressString: kotlin.String
-      @JvmName("getAddressString")
-      get() = _builder.addressString
-      @JvmName("setAddressString")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddressString")
+        get() = _builder.addressString
+      @kotlin.jvm.JvmName("setAddressString")
+        set(value) {
         _builder.addressString = value
       }
     /**

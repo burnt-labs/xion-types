@@ -33,7 +33,7 @@ pub struct Params {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorHistoricalRewards {
     #[prost(message, repeated, tag="1")]
-    pub cumulative_reward_ratio: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub cumulative_reward_ratio: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
     #[prost(uint32, tag="2")]
     pub reference_count: u32,
 }
@@ -43,7 +43,7 @@ pub struct ValidatorHistoricalRewards {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorCurrentRewards {
     #[prost(message, repeated, tag="1")]
-    pub rewards: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub rewards: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
     #[prost(uint64, tag="2")]
     pub period: u64,
 }
@@ -52,14 +52,14 @@ pub struct ValidatorCurrentRewards {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorAccumulatedCommission {
     #[prost(message, repeated, tag="1")]
-    pub commission: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub commission: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// ValidatorOutstandingRewards represents outstanding (un-withdrawn) rewards
 /// for a validator inexpensive to track, allows simple sanity checks.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorOutstandingRewards {
     #[prost(message, repeated, tag="1")]
-    pub rewards: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub rewards: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// ValidatorSlashEvent represents a validator slash event.
 /// Height is implicit within the store key.
@@ -82,7 +82,7 @@ pub struct ValidatorSlashEvents {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FeePool {
     #[prost(message, repeated, tag="1")]
-    pub community_pool: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub community_pool: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// CommunityPoolSpendProposal details a proposal for use of community funds,
 /// together with how many coins are proposed to be spent, and to which
@@ -101,7 +101,7 @@ pub struct CommunityPoolSpendProposal {
     #[prost(string, tag="3")]
     pub recipient: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="4")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// DelegatorStartingInfo represents the starting info for a delegator reward
 /// period. It tracks the previous validator period, the delegation's amount of
@@ -125,7 +125,7 @@ pub struct DelegationDelegatorReward {
     #[prost(string, tag="1")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub reward: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub reward: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// CommunityPoolSpendProposalWithDeposit defines a CommunityPoolSpendProposal
 /// with a deposit
@@ -162,7 +162,7 @@ pub struct ValidatorOutstandingRewardsRecord {
     pub validator_address: ::prost::alloc::string::String,
     /// outstanding_rewards represents the outstanding rewards of a validator.
     #[prost(message, repeated, tag="2")]
-    pub outstanding_rewards: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub outstanding_rewards: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// ValidatorAccumulatedCommissionRecord is used for import / export via genesis
 /// json.
@@ -288,10 +288,10 @@ pub struct QueryValidatorDistributionInfoResponse {
     pub operator_address: ::prost::alloc::string::String,
     /// self_bond_rewards defines the self delegations rewards.
     #[prost(message, repeated, tag="2")]
-    pub self_bond_rewards: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub self_bond_rewards: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
     /// commission defines the commission the validator received.
     #[prost(message, repeated, tag="3")]
-    pub commission: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub commission: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// QueryValidatorOutstandingRewardsRequest is the request type for the
 /// Query/ValidatorOutstandingRewards RPC method.
@@ -339,7 +339,7 @@ pub struct QueryValidatorSlashesRequest {
     pub ending_height: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryValidatorSlashesResponse is the response type for the
 /// Query/ValidatorSlashes RPC method.
@@ -350,7 +350,7 @@ pub struct QueryValidatorSlashesResponse {
     pub slashes: ::prost::alloc::vec::Vec<ValidatorSlashEvent>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDelegationRewardsRequest is the request type for the
 /// Query/DelegationRewards RPC method.
@@ -369,7 +369,7 @@ pub struct QueryDelegationRewardsRequest {
 pub struct QueryDelegationRewardsResponse {
     /// rewards defines the rewards accrued by a delegation.
     #[prost(message, repeated, tag="1")]
-    pub rewards: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub rewards: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// QueryDelegationTotalRewardsRequest is the request type for the
 /// Query/DelegationTotalRewards RPC method.
@@ -388,7 +388,7 @@ pub struct QueryDelegationTotalRewardsResponse {
     pub rewards: ::prost::alloc::vec::Vec<DelegationDelegatorReward>,
     /// total defines the sum of all the rewards.
     #[prost(message, repeated, tag="2")]
-    pub total: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub total: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// QueryDelegatorValidatorsRequest is the request type for the
 /// Query/DelegatorValidators RPC method.
@@ -433,7 +433,7 @@ pub struct QueryCommunityPoolRequest {
 pub struct QueryCommunityPoolResponse {
     /// pool defines community pool's coins.
     #[prost(message, repeated, tag="1")]
-    pub pool: ::prost::alloc::vec::Vec<super::super::base::v1beta1::DecCoin>,
+    pub pool: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
 }
 /// MsgSetWithdrawAddress sets the withdraw address for
 /// a delegator (or validator self-delegation).
@@ -463,7 +463,7 @@ pub struct MsgWithdrawDelegatorReward {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawDelegatorRewardResponse {
     #[prost(message, repeated, tag="1")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgWithdrawValidatorCommission withdraws the full commission to the validator
 /// address.
@@ -477,14 +477,14 @@ pub struct MsgWithdrawValidatorCommission {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawValidatorCommissionResponse {
     #[prost(message, repeated, tag="1")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgFundCommunityPool allows an account to directly
 /// fund the community pool.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFundCommunityPool {
     #[prost(message, repeated, tag="1")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(string, tag="2")]
     pub depositor: ::prost::alloc::string::String,
 }
@@ -520,7 +520,7 @@ pub struct MsgCommunityPoolSpend {
     #[prost(string, tag="2")]
     pub recipient: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgCommunityPoolSpendResponse defines the response to executing a
 /// MsgCommunityPoolSpend message.
@@ -536,7 +536,7 @@ pub struct MsgDepositValidatorRewardsPool {
     #[prost(string, tag="2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgDepositValidatorRewardsPoolResponse defines the response to executing a
 /// MsgDepositValidatorRewardsPool message.

@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryWebAuthNVerifyAuthenticateRequest(block: xion.v1.QueryWebAuthNVerifyAuthenticateRequestKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryWebAuthNVerifyAuthenticateRequest =
   xion.v1.QueryWebAuthNVerifyAuthenticateRequestKt.Dsl._create(xion.v1.QueryOuterClass.QueryWebAuthNVerifyAuthenticateRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryWebAuthNVerifyAuthenticateRequest is the request type for WebAuthN
+ * authentication verification
+ * ```
+ *
  * Protobuf type `xion.v1.QueryWebAuthNVerifyAuthenticateRequest`
  */
 public object QueryWebAuthNVerifyAuthenticateRequestKt {
@@ -29,16 +34,24 @@ public object QueryWebAuthNVerifyAuthenticateRequestKt {
     internal fun _build(): xion.v1.QueryOuterClass.QueryWebAuthNVerifyAuthenticateRequest = _builder.build()
 
     /**
+     * ```
+     * The account address
+     * ```
+     *
      * `string addr = 1 [json_name = "addr"];`
      */
     public var addr: kotlin.String
-      @JvmName("getAddr")
-      get() = _builder.addr
-      @JvmName("setAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddr")
+        get() = _builder.addr
+      @kotlin.jvm.JvmName("setAddr")
+        set(value) {
         _builder.addr = value
       }
     /**
+     * ```
+     * The account address
+     * ```
+     *
      * `string addr = 1 [json_name = "addr"];`
      */
     public fun clearAddr() {
@@ -46,16 +59,24 @@ public object QueryWebAuthNVerifyAuthenticateRequestKt {
     }
 
     /**
+     * ```
+     * The challenge string for authentication
+     * ```
+     *
      * `string challenge = 2 [json_name = "challenge"];`
      */
     public var challenge: kotlin.String
-      @JvmName("getChallenge")
-      get() = _builder.challenge
-      @JvmName("setChallenge")
-      set(value) {
+      @kotlin.jvm.JvmName("getChallenge")
+        get() = _builder.challenge
+      @kotlin.jvm.JvmName("setChallenge")
+        set(value) {
         _builder.challenge = value
       }
     /**
+     * ```
+     * The challenge string for authentication
+     * ```
+     *
      * `string challenge = 2 [json_name = "challenge"];`
      */
     public fun clearChallenge() {
@@ -63,16 +84,24 @@ public object QueryWebAuthNVerifyAuthenticateRequestKt {
     }
 
     /**
+     * ```
+     * The relying party identifier
+     * ```
+     *
      * `string rp = 3 [json_name = "rp"];`
      */
     public var rp: kotlin.String
-      @JvmName("getRp")
-      get() = _builder.rp
-      @JvmName("setRp")
-      set(value) {
+      @kotlin.jvm.JvmName("getRp")
+        get() = _builder.rp
+      @kotlin.jvm.JvmName("setRp")
+        set(value) {
         _builder.rp = value
       }
     /**
+     * ```
+     * The relying party identifier
+     * ```
+     *
      * `string rp = 3 [json_name = "rp"];`
      */
     public fun clearRp() {
@@ -80,16 +109,24 @@ public object QueryWebAuthNVerifyAuthenticateRequestKt {
     }
 
     /**
+     * ```
+     * The credential to verify
+     * ```
+     *
      * `bytes credential = 4 [json_name = "credential"];`
      */
     public var credential: com.google.protobuf.ByteString
-      @JvmName("getCredential")
-      get() = _builder.credential
-      @JvmName("setCredential")
-      set(value) {
+      @kotlin.jvm.JvmName("getCredential")
+        get() = _builder.credential
+      @kotlin.jvm.JvmName("setCredential")
+        set(value) {
         _builder.credential = value
       }
     /**
+     * ```
+     * The credential to verify
+     * ```
+     *
      * `bytes credential = 4 [json_name = "credential"];`
      */
     public fun clearCredential() {
@@ -97,16 +134,24 @@ public object QueryWebAuthNVerifyAuthenticateRequestKt {
     }
 
     /**
+     * ```
+     * The authentication data
+     * ```
+     *
      * `bytes data = 5 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
+     * ```
+     * The authentication data
+     * ```
+     *
      * `bytes data = 5 [json_name = "data"];`
      */
     public fun clearData() {

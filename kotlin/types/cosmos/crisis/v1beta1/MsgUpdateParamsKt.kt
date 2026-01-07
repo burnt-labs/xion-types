@@ -40,10 +40,10 @@ public object MsgUpdateParamsKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgUpdateParamsKt {
      * `.cosmos.base.v1beta1.Coin constant_fee = 2 [json_name = "constantFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var constantFee: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getConstantFee")
-      get() = _builder.constantFee
-      @JvmName("setConstantFee")
-      set(value) {
+      @kotlin.jvm.JvmName("getConstantFee")
+        get() = _builder.constantFee
+      @kotlin.jvm.JvmName("setConstantFee")
+        set(value) {
         _builder.constantFee = value
       }
     /**

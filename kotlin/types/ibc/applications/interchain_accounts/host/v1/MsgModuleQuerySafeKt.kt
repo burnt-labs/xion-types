@@ -40,10 +40,10 @@ public object MsgModuleQuerySafeKt {
      * `string signer = 1 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -72,7 +72,7 @@ public object MsgModuleQuerySafeKt {
      */
      public val requests: com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.requestsList
       )
     /**
@@ -84,7 +84,7 @@ public object MsgModuleQuerySafeKt {
      * @param value The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addRequests")
+@kotlin.jvm.JvmName("addRequests")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>.add(value: ibc.applications.interchain_accounts.host.v1.Host.QueryRequest) {
       _builder.addRequests(value)
     }
@@ -97,7 +97,7 @@ public object MsgModuleQuerySafeKt {
      * @param value The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignRequests")
+@kotlin.jvm.JvmName("plusAssignRequests")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>.plusAssign(value: ibc.applications.interchain_accounts.host.v1.Host.QueryRequest) {
       add(value)
@@ -111,7 +111,7 @@ public object MsgModuleQuerySafeKt {
      * @param values The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllRequests")
+@kotlin.jvm.JvmName("addAllRequests")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest>) {
       _builder.addAllRequests(values)
     }
@@ -124,7 +124,7 @@ public object MsgModuleQuerySafeKt {
      * @param values The requests to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllRequests")
+@kotlin.jvm.JvmName("plusAssignAllRequests")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object MsgModuleQuerySafeKt {
      * @param value The requests to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setRequests")
+@kotlin.jvm.JvmName("setRequests")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>.set(index: kotlin.Int, value: ibc.applications.interchain_accounts.host.v1.Host.QueryRequest) {
       _builder.setRequests(index, value)
     }
@@ -151,11 +151,10 @@ public object MsgModuleQuerySafeKt {
      * `repeated .ibc.applications.interchain_accounts.host.v1.QueryRequest requests = 2 [json_name = "requests", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearRequests")
+@kotlin.jvm.JvmName("clearRequests")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.interchain_accounts.host.v1.Host.QueryRequest, RequestsProxy>.clear() {
       _builder.clearRequests()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

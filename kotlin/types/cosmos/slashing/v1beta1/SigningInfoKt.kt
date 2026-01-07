@@ -40,10 +40,10 @@ public object SigningInfoKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -65,10 +65,10 @@ public object SigningInfoKt {
      * `.cosmos.slashing.v1beta1.ValidatorSigningInfo validator_signing_info = 2 [json_name = "validatorSigningInfo", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var validatorSigningInfo: cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo
-      @JvmName("getValidatorSigningInfo")
-      get() = _builder.validatorSigningInfo
-      @JvmName("setValidatorSigningInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorSigningInfo")
+        get() = _builder.validatorSigningInfo
+      @kotlin.jvm.JvmName("setValidatorSigningInfo")
+        set(value) {
         _builder.validatorSigningInfo = value
       }
     /**

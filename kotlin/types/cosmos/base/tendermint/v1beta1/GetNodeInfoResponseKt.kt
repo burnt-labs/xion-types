@@ -36,10 +36,10 @@ public object GetNodeInfoResponseKt {
      * `.tendermint.p2p.DefaultNodeInfo default_node_info = 1 [json_name = "defaultNodeInfo"];`
      */
     public var defaultNodeInfo: tendermint.p2p.Types.DefaultNodeInfo
-      @JvmName("getDefaultNodeInfo")
-      get() = _builder.defaultNodeInfo
-      @JvmName("setDefaultNodeInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getDefaultNodeInfo")
+        get() = _builder.defaultNodeInfo
+      @kotlin.jvm.JvmName("setDefaultNodeInfo")
+        set(value) {
         _builder.defaultNodeInfo = value
       }
     /**
@@ -63,10 +63,10 @@ public object GetNodeInfoResponseKt {
      * `.cosmos.base.tendermint.v1beta1.VersionInfo application_version = 2 [json_name = "applicationVersion"];`
      */
     public var applicationVersion: cosmos.base.tendermint.v1beta1.Query.VersionInfo
-      @JvmName("getApplicationVersion")
-      get() = _builder.applicationVersion
-      @JvmName("setApplicationVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getApplicationVersion")
+        get() = _builder.applicationVersion
+      @kotlin.jvm.JvmName("setApplicationVersion")
+        set(value) {
         _builder.applicationVersion = value
       }
     /**

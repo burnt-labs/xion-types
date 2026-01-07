@@ -37,10 +37,10 @@ public object QueryCurrentEpochRequestKt {
      * `string identifier = 1 [json_name = "identifier"];`
      */
     public var identifier: kotlin.String
-      @JvmName("getIdentifier")
-      get() = _builder.identifier
-      @JvmName("setIdentifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getIdentifier")
+        get() = _builder.identifier
+      @kotlin.jvm.JvmName("setIdentifier")
+        set(value) {
         _builder.identifier = value
       }
     /**

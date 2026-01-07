@@ -37,10 +37,10 @@ public object TimestampedSignatureDataKt {
      * `bytes signature_data = 1 [json_name = "signatureData"];`
      */
     public var signatureData: com.google.protobuf.ByteString
-      @JvmName("getSignatureData")
-      get() = _builder.signatureData
-      @JvmName("setSignatureData")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignatureData")
+        get() = _builder.signatureData
+      @kotlin.jvm.JvmName("setSignatureData")
+        set(value) {
         _builder.signatureData = value
       }
     /**
@@ -54,10 +54,10 @@ public object TimestampedSignatureDataKt {
      * `uint64 timestamp = 2 [json_name = "timestamp"];`
      */
     public var timestamp: kotlin.Long
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**

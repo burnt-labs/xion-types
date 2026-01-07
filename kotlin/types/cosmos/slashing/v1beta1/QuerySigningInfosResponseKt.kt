@@ -48,7 +48,7 @@ public object QuerySigningInfosResponseKt {
      */
      public val info: com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.infoList
       )
     /**
@@ -60,7 +60,7 @@ public object QuerySigningInfosResponseKt {
      * @param value The info to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInfo")
+@kotlin.jvm.JvmName("addInfo")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>.add(value: cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo) {
       _builder.addInfo(value)
     }
@@ -73,7 +73,7 @@ public object QuerySigningInfosResponseKt {
      * @param value The info to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInfo")
+@kotlin.jvm.JvmName("plusAssignInfo")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>.plusAssign(value: cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo) {
       add(value)
@@ -87,7 +87,7 @@ public object QuerySigningInfosResponseKt {
      * @param values The info to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInfo")
+@kotlin.jvm.JvmName("addAllInfo")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>.addAll(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo>) {
       _builder.addAllInfo(values)
     }
@@ -100,7 +100,7 @@ public object QuerySigningInfosResponseKt {
      * @param values The info to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInfo")
+@kotlin.jvm.JvmName("plusAssignAllInfo")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QuerySigningInfosResponseKt {
      * @param value The info to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInfo")
+@kotlin.jvm.JvmName("setInfo")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>.set(index: kotlin.Int, value: cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo) {
       _builder.setInfo(index, value)
     }
@@ -127,20 +127,19 @@ public object QuerySigningInfosResponseKt {
      * `repeated .cosmos.slashing.v1beta1.ValidatorSigningInfo info = 1 [json_name = "info", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInfo")
+@kotlin.jvm.JvmName("clearInfo")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Slashing.ValidatorSigningInfo, InfoProxy>.clear() {
       _builder.clearInfo()
     }
-
 
     /**
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

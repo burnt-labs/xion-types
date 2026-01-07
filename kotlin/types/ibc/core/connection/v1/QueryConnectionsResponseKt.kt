@@ -48,7 +48,7 @@ public object QueryConnectionsResponseKt {
      */
      public val connections: com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.connectionsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryConnectionsResponseKt {
      * @param value The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addConnections")
+@kotlin.jvm.JvmName("addConnections")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.add(value: ibc.core.connection.v1.Connection.IdentifiedConnection) {
       _builder.addConnections(value)
     }
@@ -73,7 +73,7 @@ public object QueryConnectionsResponseKt {
      * @param value The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignConnections")
+@kotlin.jvm.JvmName("plusAssignConnections")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.plusAssign(value: ibc.core.connection.v1.Connection.IdentifiedConnection) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryConnectionsResponseKt {
      * @param values The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllConnections")
+@kotlin.jvm.JvmName("addAllConnections")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.IdentifiedConnection>) {
       _builder.addAllConnections(values)
     }
@@ -100,7 +100,7 @@ public object QueryConnectionsResponseKt {
      * @param values The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllConnections")
+@kotlin.jvm.JvmName("plusAssignAllConnections")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.IdentifiedConnection>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryConnectionsResponseKt {
      * @param value The connections to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setConnections")
+@kotlin.jvm.JvmName("setConnections")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.set(index: kotlin.Int, value: ibc.core.connection.v1.Connection.IdentifiedConnection) {
       _builder.setConnections(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryConnectionsResponseKt {
      * `repeated .ibc.core.connection.v1.IdentifiedConnection connections = 1 [json_name = "connections"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearConnections")
+@kotlin.jvm.JvmName("clearConnections")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.clear() {
       _builder.clearConnections()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryConnectionsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**
@@ -180,10 +179,10 @@ public object QueryConnectionsResponseKt {
      * `.ibc.core.client.v1.Height height = 3 [json_name = "height", (.gogoproto.nullable) = false];`
      */
     public var height: ibc.core.client.v1.Client.Height
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**

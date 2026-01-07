@@ -40,10 +40,10 @@ public object QueryGroupPolicyInfoResponseKt {
      * `.cosmos.group.v1.GroupPolicyInfo info = 1 [json_name = "info"];`
      */
     public var info: cosmos.group.v1.Types.GroupPolicyInfo
-      @JvmName("getInfo")
-      get() = _builder.info
-      @JvmName("setInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getInfo")
+        get() = _builder.info
+      @kotlin.jvm.JvmName("setInfo")
+        set(value) {
         _builder.info = value
       }
     /**

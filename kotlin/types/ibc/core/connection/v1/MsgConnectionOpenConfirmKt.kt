@@ -37,10 +37,10 @@ public object MsgConnectionOpenConfirmKt {
      * `string connection_id = 1 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -58,10 +58,10 @@ public object MsgConnectionOpenConfirmKt {
      * `bytes proof_ack = 2 [json_name = "proofAck"];`
      */
     public var proofAck: com.google.protobuf.ByteString
-      @JvmName("getProofAck")
-      get() = _builder.proofAck
-      @JvmName("setProofAck")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofAck")
+        get() = _builder.proofAck
+      @kotlin.jvm.JvmName("setProofAck")
+        set(value) {
         _builder.proofAck = value
       }
     /**
@@ -79,10 +79,10 @@ public object MsgConnectionOpenConfirmKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -106,10 +106,10 @@ public object MsgConnectionOpenConfirmKt {
      * `string signer = 4 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

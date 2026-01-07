@@ -47,7 +47,7 @@ public object AppOptionsResponseKt {
      */
      public val moduleOptions: com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions, ModuleOptionsProxy>
       @kotlin.jvm.JvmSynthetic
-      @JvmName("getModuleOptionsMap")
+@kotlin.jvm.JvmName("getModuleOptionsMap")
       get() = com.google.protobuf.kotlin.DslMap(
         _builder.moduleOptionsMap
       )
@@ -58,7 +58,7 @@ public object AppOptionsResponseKt {
      *
      * `map<string, .cosmos.autocli.v1.ModuleOptions> module_options = 1 [json_name = "moduleOptions"];`
      */
-    @JvmName("putModuleOptions")
+    @kotlin.jvm.JvmName("putModuleOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions, ModuleOptionsProxy>
       .put(key: kotlin.String, value: cosmos.autocli.v1.Options.ModuleOptions) {
          _builder.putModuleOptions(key, value)
@@ -71,7 +71,7 @@ public object AppOptionsResponseKt {
      * `map<string, .cosmos.autocli.v1.ModuleOptions> module_options = 1 [json_name = "moduleOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("setModuleOptions")
+@kotlin.jvm.JvmName("setModuleOptions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions, ModuleOptionsProxy>
       .set(key: kotlin.String, value: cosmos.autocli.v1.Options.ModuleOptions) {
@@ -85,7 +85,7 @@ public object AppOptionsResponseKt {
      * `map<string, .cosmos.autocli.v1.ModuleOptions> module_options = 1 [json_name = "moduleOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("removeModuleOptions")
+@kotlin.jvm.JvmName("removeModuleOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions, ModuleOptionsProxy>
       .remove(key: kotlin.String) {
          _builder.removeModuleOptions(key)
@@ -98,7 +98,7 @@ public object AppOptionsResponseKt {
      * `map<string, .cosmos.autocli.v1.ModuleOptions> module_options = 1 [json_name = "moduleOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("putAllModuleOptions")
+@kotlin.jvm.JvmName("putAllModuleOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions, ModuleOptionsProxy>
       .putAll(map: kotlin.collections.Map<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions>) {
          _builder.putAllModuleOptions(map)
@@ -111,7 +111,7 @@ public object AppOptionsResponseKt {
      * `map<string, .cosmos.autocli.v1.ModuleOptions> module_options = 1 [json_name = "moduleOptions"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @JvmName("clearModuleOptions")
+@kotlin.jvm.JvmName("clearModuleOptions")
     public fun com.google.protobuf.kotlin.DslMap<kotlin.String, cosmos.autocli.v1.Options.ModuleOptions, ModuleOptionsProxy>
       .clear() {
          _builder.clearModuleOptions()

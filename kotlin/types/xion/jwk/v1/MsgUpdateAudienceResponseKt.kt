@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun msgUpdateAudienceResponse(block: xion.jwk.v1.MsgUpdateAudienceResponseKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgUpdateAudienceResponse =
   xion.jwk.v1.MsgUpdateAudienceResponseKt.Dsl._create(xion.jwk.v1.Tx.MsgUpdateAudienceResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgUpdateAudienceResponse defines the response for updating an audience
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgUpdateAudienceResponse`
  */
 public object MsgUpdateAudienceResponseKt {
@@ -29,22 +33,34 @@ public object MsgUpdateAudienceResponseKt {
     internal fun _build(): xion.jwk.v1.Tx.MsgUpdateAudienceResponse = _builder.build()
 
     /**
+     * ```
+     * The updated audience
+     * ```
+     *
      * `.xion.jwk.v1.Audience audience = 1 [json_name = "audience"];`
      */
     public var audience: xion.jwk.v1.AudienceOuterClass.Audience
-      @JvmName("getAudience")
-      get() = _builder.audience
-      @JvmName("setAudience")
-      set(value) {
+      @kotlin.jvm.JvmName("getAudience")
+        get() = _builder.audience
+      @kotlin.jvm.JvmName("setAudience")
+        set(value) {
         _builder.audience = value
       }
     /**
+     * ```
+     * The updated audience
+     * ```
+     *
      * `.xion.jwk.v1.Audience audience = 1 [json_name = "audience"];`
      */
     public fun clearAudience() {
       _builder.clearAudience()
     }
     /**
+     * ```
+     * The updated audience
+     * ```
+     *
      * `.xion.jwk.v1.Audience audience = 1 [json_name = "audience"];`
      * @return Whether the audience field is set.
      */

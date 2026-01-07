@@ -40,10 +40,10 @@ public object InterfaceImplementerDescriptorKt {
      * `string fullname = 1 [json_name = "fullname"];`
      */
     public var fullname: kotlin.String
-      @JvmName("getFullname")
-      get() = _builder.fullname
-      @JvmName("setFullname")
-      set(value) {
+      @kotlin.jvm.JvmName("getFullname")
+        get() = _builder.fullname
+      @kotlin.jvm.JvmName("setFullname")
+        set(value) {
         _builder.fullname = value
       }
     /**
@@ -68,10 +68,10 @@ public object InterfaceImplementerDescriptorKt {
      * `string type_url = 2 [json_name = "typeUrl"];`
      */
     public var typeUrl: kotlin.String
-      @JvmName("getTypeUrl")
-      get() = _builder.typeUrl
-      @JvmName("setTypeUrl")
-      set(value) {
+      @kotlin.jvm.JvmName("getTypeUrl")
+        get() = _builder.typeUrl
+      @kotlin.jvm.JvmName("setTypeUrl")
+        set(value) {
         _builder.typeUrl = value
       }
     /**

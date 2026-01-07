@@ -43,10 +43,10 @@ public object FlagOptionsKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -68,10 +68,10 @@ public object FlagOptionsKt {
      * `string shorthand = 2 [json_name = "shorthand"];`
      */
     public var shorthand: kotlin.String
-      @JvmName("getShorthand")
-      get() = _builder.shorthand
-      @JvmName("setShorthand")
-      set(value) {
+      @kotlin.jvm.JvmName("getShorthand")
+        get() = _builder.shorthand
+      @kotlin.jvm.JvmName("setShorthand")
+        set(value) {
         _builder.shorthand = value
       }
     /**
@@ -93,10 +93,10 @@ public object FlagOptionsKt {
      * `string usage = 3 [json_name = "usage"];`
      */
     public var usage: kotlin.String
-      @JvmName("getUsage")
-      get() = _builder.usage
-      @JvmName("setUsage")
-      set(value) {
+      @kotlin.jvm.JvmName("getUsage")
+        get() = _builder.usage
+      @kotlin.jvm.JvmName("setUsage")
+        set(value) {
         _builder.usage = value
       }
     /**
@@ -118,10 +118,10 @@ public object FlagOptionsKt {
      * `string default_value = 4 [json_name = "defaultValue"];`
      */
     public var defaultValue: kotlin.String
-      @JvmName("getDefaultValue")
-      get() = _builder.defaultValue
-      @JvmName("setDefaultValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getDefaultValue")
+        get() = _builder.defaultValue
+      @kotlin.jvm.JvmName("setDefaultValue")
+        set(value) {
         _builder.defaultValue = value
       }
     /**
@@ -143,10 +143,10 @@ public object FlagOptionsKt {
      * `string deprecated = 6 [json_name = "deprecated"];`
      */
     public var deprecated: kotlin.String
-      @JvmName("getDeprecated")
-      get() = _builder.deprecated
-      @JvmName("setDeprecated")
-      set(value) {
+      @kotlin.jvm.JvmName("getDeprecated")
+        get() = _builder.deprecated
+      @kotlin.jvm.JvmName("setDeprecated")
+        set(value) {
         _builder.deprecated = value
       }
     /**
@@ -168,10 +168,10 @@ public object FlagOptionsKt {
      * `string shorthand_deprecated = 7 [json_name = "shorthandDeprecated"];`
      */
     public var shorthandDeprecated: kotlin.String
-      @JvmName("getShorthandDeprecated")
-      get() = _builder.shorthandDeprecated
-      @JvmName("setShorthandDeprecated")
-      set(value) {
+      @kotlin.jvm.JvmName("getShorthandDeprecated")
+        get() = _builder.shorthandDeprecated
+      @kotlin.jvm.JvmName("setShorthandDeprecated")
+        set(value) {
         _builder.shorthandDeprecated = value
       }
     /**
@@ -193,10 +193,10 @@ public object FlagOptionsKt {
      * `bool hidden = 8 [json_name = "hidden"];`
      */
     public var hidden: kotlin.Boolean
-      @JvmName("getHidden")
-      get() = _builder.hidden
-      @JvmName("setHidden")
-      set(value) {
+      @kotlin.jvm.JvmName("getHidden")
+        get() = _builder.hidden
+      @kotlin.jvm.JvmName("setHidden")
+        set(value) {
         _builder.hidden = value
       }
     /**

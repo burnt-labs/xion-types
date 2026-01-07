@@ -41,10 +41,10 @@ public object GenesisStateKt {
      * `.cosmos.base.v1beta1.Coin constant_fee = 3 [json_name = "constantFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var constantFee: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getConstantFee")
-      get() = _builder.constantFee
-      @JvmName("setConstantFee")
-      set(value) {
+      @kotlin.jvm.JvmName("getConstantFee")
+        get() = _builder.constantFee
+      @kotlin.jvm.JvmName("setConstantFee")
+        set(value) {
         _builder.constantFee = value
       }
     /**

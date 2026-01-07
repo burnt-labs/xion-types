@@ -44,10 +44,10 @@ public object MsgCreateDenomKt {
      * `string sender = 1 [json_name = "sender", (.gogoproto.moretags) = "yaml:\"sender\""];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgCreateDenomKt {
      * `string subdenom = 2 [json_name = "subdenom", (.gogoproto.moretags) = "yaml:\"subdenom\""];`
      */
     public var subdenom: kotlin.String
-      @JvmName("getSubdenom")
-      get() = _builder.subdenom
-      @JvmName("setSubdenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubdenom")
+        get() = _builder.subdenom
+      @kotlin.jvm.JvmName("setSubdenom")
+        set(value) {
         _builder.subdenom = value
       }
     /**

@@ -40,10 +40,10 @@ public object QueryUnreceivedPacketsRequestKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -72,7 +72,7 @@ public object QueryUnreceivedPacketsRequestKt {
      */
      public val sequences: com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.sequencesList
       )
     /**
@@ -84,7 +84,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param value The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSequences")
+@kotlin.jvm.JvmName("addSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.add(value: kotlin.Long) {
       _builder.addSequences(value)
     }/**
@@ -96,7 +96,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param value The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSequences")
+@kotlin.jvm.JvmName("plusAssignSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -109,7 +109,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param values The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSequences")
+@kotlin.jvm.JvmName("addAllSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllSequences(values)
     }/**
@@ -121,7 +121,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param values The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSequences")
+@kotlin.jvm.JvmName("plusAssignAllSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -135,7 +135,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * @param value The sequences to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSequences")
+@kotlin.jvm.JvmName("setSequences")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setSequences(index, value)
     }/**
@@ -146,7 +146,7 @@ public object QueryUnreceivedPacketsRequestKt {
      * `repeated uint64 sequences = 2 [json_name = "sequences"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSequences")
+@kotlin.jvm.JvmName("clearSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.clear() {
       _builder.clearSequences()
     }}

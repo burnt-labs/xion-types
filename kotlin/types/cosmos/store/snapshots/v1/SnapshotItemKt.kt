@@ -36,10 +36,10 @@ public object SnapshotItemKt {
      * `.cosmos.store.snapshots.v1.SnapshotStoreItem store = 1 [json_name = "store"];`
      */
     public var store: cosmos.store.snapshots.v1.SnapshotOuterClass.SnapshotStoreItem
-      @JvmName("getStore")
-      get() = _builder.store
-      @JvmName("setStore")
-      set(value) {
+      @kotlin.jvm.JvmName("getStore")
+        get() = _builder.store
+      @kotlin.jvm.JvmName("setStore")
+        set(value) {
         _builder.store = value
       }
     /**
@@ -60,10 +60,10 @@ public object SnapshotItemKt {
      * `.cosmos.store.snapshots.v1.SnapshotIAVLItem iavl = 2 [json_name = "iavl", (.gogoproto.customname) = "IAVL"];`
      */
     public var iavl: cosmos.store.snapshots.v1.SnapshotOuterClass.SnapshotIAVLItem
-      @JvmName("getIavl")
-      get() = _builder.iavl
-      @JvmName("setIavl")
-      set(value) {
+      @kotlin.jvm.JvmName("getIavl")
+        get() = _builder.iavl
+      @kotlin.jvm.JvmName("setIavl")
+        set(value) {
         _builder.iavl = value
       }
     /**
@@ -84,10 +84,10 @@ public object SnapshotItemKt {
      * `.cosmos.store.snapshots.v1.SnapshotExtensionMeta extension = 3 [json_name = "extension"];`
      */
     public var extension: cosmos.store.snapshots.v1.SnapshotOuterClass.SnapshotExtensionMeta
-      @JvmName("getExtension")
-      get() = _builder.extension
-      @JvmName("setExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtension")
+        get() = _builder.extension
+      @kotlin.jvm.JvmName("setExtension")
+        set(value) {
         _builder.extension = value
       }
     /**
@@ -108,10 +108,10 @@ public object SnapshotItemKt {
      * `.cosmos.store.snapshots.v1.SnapshotExtensionPayload extension_payload = 4 [json_name = "extensionPayload"];`
      */
     public var extensionPayload: cosmos.store.snapshots.v1.SnapshotOuterClass.SnapshotExtensionPayload
-      @JvmName("getExtensionPayload")
-      get() = _builder.extensionPayload
-      @JvmName("setExtensionPayload")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtensionPayload")
+        get() = _builder.extensionPayload
+      @kotlin.jvm.JvmName("setExtensionPayload")
+        set(value) {
         _builder.extensionPayload = value
       }
     /**

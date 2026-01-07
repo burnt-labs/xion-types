@@ -42,10 +42,10 @@ public object PacketKt {
      * `uint64 sequence = 1 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -69,10 +69,10 @@ public object PacketKt {
      * `string source_port = 2 [json_name = "sourcePort"];`
      */
     public var sourcePort: kotlin.String
-      @JvmName("getSourcePort")
-      get() = _builder.sourcePort
-      @JvmName("setSourcePort")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourcePort")
+        get() = _builder.sourcePort
+      @kotlin.jvm.JvmName("setSourcePort")
+        set(value) {
         _builder.sourcePort = value
       }
     /**
@@ -94,10 +94,10 @@ public object PacketKt {
      * `string source_channel = 3 [json_name = "sourceChannel"];`
      */
     public var sourceChannel: kotlin.String
-      @JvmName("getSourceChannel")
-      get() = _builder.sourceChannel
-      @JvmName("setSourceChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourceChannel")
+        get() = _builder.sourceChannel
+      @kotlin.jvm.JvmName("setSourceChannel")
+        set(value) {
         _builder.sourceChannel = value
       }
     /**
@@ -119,10 +119,10 @@ public object PacketKt {
      * `string destination_port = 4 [json_name = "destinationPort"];`
      */
     public var destinationPort: kotlin.String
-      @JvmName("getDestinationPort")
-      get() = _builder.destinationPort
-      @JvmName("setDestinationPort")
-      set(value) {
+      @kotlin.jvm.JvmName("getDestinationPort")
+        get() = _builder.destinationPort
+      @kotlin.jvm.JvmName("setDestinationPort")
+        set(value) {
         _builder.destinationPort = value
       }
     /**
@@ -144,10 +144,10 @@ public object PacketKt {
      * `string destination_channel = 5 [json_name = "destinationChannel"];`
      */
     public var destinationChannel: kotlin.String
-      @JvmName("getDestinationChannel")
-      get() = _builder.destinationChannel
-      @JvmName("setDestinationChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getDestinationChannel")
+        get() = _builder.destinationChannel
+      @kotlin.jvm.JvmName("setDestinationChannel")
+        set(value) {
         _builder.destinationChannel = value
       }
     /**
@@ -169,10 +169,10 @@ public object PacketKt {
      * `bytes data = 6 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -194,10 +194,10 @@ public object PacketKt {
      * `.ibc.core.client.v1.Height timeout_height = 7 [json_name = "timeoutHeight", (.gogoproto.nullable) = false];`
      */
     public var timeoutHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getTimeoutHeight")
-      get() = _builder.timeoutHeight
-      @JvmName("setTimeoutHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutHeight")
+        get() = _builder.timeoutHeight
+      @kotlin.jvm.JvmName("setTimeoutHeight")
+        set(value) {
         _builder.timeoutHeight = value
       }
     /**
@@ -233,10 +233,10 @@ public object PacketKt {
      * `uint64 timeout_timestamp = 8 [json_name = "timeoutTimestamp"];`
      */
     public var timeoutTimestamp: kotlin.Long
-      @JvmName("getTimeoutTimestamp")
-      get() = _builder.timeoutTimestamp
-      @JvmName("setTimeoutTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutTimestamp")
+        get() = _builder.timeoutTimestamp
+      @kotlin.jvm.JvmName("setTimeoutTimestamp")
+        set(value) {
         _builder.timeoutTimestamp = value
       }
     /**

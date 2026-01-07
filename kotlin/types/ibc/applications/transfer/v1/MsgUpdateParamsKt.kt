@@ -40,10 +40,10 @@ public object MsgUpdateParamsKt {
      * `string signer = 1 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**
@@ -67,10 +67,10 @@ public object MsgUpdateParamsKt {
      * `.ibc.applications.transfer.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: ibc.applications.transfer.v1.Transfer.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

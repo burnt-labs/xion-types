@@ -40,10 +40,10 @@ public object QueryPacketReceiptResponseKt {
      * `bool received = 2 [json_name = "received"];`
      */
     public var received: kotlin.Boolean
-      @JvmName("getReceived")
-      get() = _builder.received
-      @JvmName("setReceived")
-      set(value) {
+      @kotlin.jvm.JvmName("getReceived")
+        get() = _builder.received
+      @kotlin.jvm.JvmName("setReceived")
+        set(value) {
         _builder.received = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryPacketReceiptResponseKt {
      * `bytes proof = 3 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -90,10 +90,10 @@ public object QueryPacketReceiptResponseKt {
      * `.ibc.core.client.v1.Height proof_height = 4 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**

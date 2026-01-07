@@ -36,10 +36,10 @@ public object MsgSendTxKt {
      * `string owner = 1 [json_name = "owner"];`
      */
     public var owner: kotlin.String
-      @JvmName("getOwner")
-      get() = _builder.owner
-      @JvmName("setOwner")
-      set(value) {
+      @kotlin.jvm.JvmName("getOwner")
+        get() = _builder.owner
+      @kotlin.jvm.JvmName("setOwner")
+        set(value) {
         _builder.owner = value
       }
     /**
@@ -53,10 +53,10 @@ public object MsgSendTxKt {
      * `string connection_id = 2 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -70,10 +70,10 @@ public object MsgSendTxKt {
      * `.ibc.applications.interchain_accounts.v1.InterchainAccountPacketData packet_data = 3 [json_name = "packetData", (.gogoproto.nullable) = false];`
      */
     public var packetData: ibc.applications.interchain_accounts.v1.Packet.InterchainAccountPacketData
-      @JvmName("getPacketData")
-      get() = _builder.packetData
-      @JvmName("setPacketData")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacketData")
+        get() = _builder.packetData
+      @kotlin.jvm.JvmName("setPacketData")
+        set(value) {
         _builder.packetData = value
       }
     /**
@@ -102,10 +102,10 @@ public object MsgSendTxKt {
      * `uint64 relative_timeout = 4 [json_name = "relativeTimeout"];`
      */
     public var relativeTimeout: kotlin.Long
-      @JvmName("getRelativeTimeout")
-      get() = _builder.relativeTimeout
-      @JvmName("setRelativeTimeout")
-      set(value) {
+      @kotlin.jvm.JvmName("getRelativeTimeout")
+        get() = _builder.relativeTimeout
+      @kotlin.jvm.JvmName("setRelativeTimeout")
+        set(value) {
         _builder.relativeTimeout = value
       }
     /**

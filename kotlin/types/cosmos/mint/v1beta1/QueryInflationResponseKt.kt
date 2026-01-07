@@ -41,10 +41,10 @@ public object QueryInflationResponseKt {
      * `bytes inflation = 1 [json_name = "inflation", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var inflation: com.google.protobuf.ByteString
-      @JvmName("getInflation")
-      get() = _builder.inflation
-      @JvmName("setInflation")
-      set(value) {
+      @kotlin.jvm.JvmName("getInflation")
+        get() = _builder.inflation
+      @kotlin.jvm.JvmName("setInflation")
+        set(value) {
         _builder.inflation = value
       }
     /**

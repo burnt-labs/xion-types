@@ -44,7 +44,7 @@ public object QueryDenomsFromAdminResponseKt {
      * @return A list containing the denoms.
      */
     public val denoms: com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.denomsList
       )
@@ -53,7 +53,7 @@ public object QueryDenomsFromAdminResponseKt {
      * @param value The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDenoms")
+@kotlin.jvm.JvmName("addDenoms")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>.add(value: kotlin.String) {
       _builder.addDenoms(value)
     }
@@ -62,7 +62,7 @@ public object QueryDenomsFromAdminResponseKt {
      * @param value The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDenoms")
+@kotlin.jvm.JvmName("plusAssignDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -72,7 +72,7 @@ public object QueryDenomsFromAdminResponseKt {
      * @param values The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDenoms")
+@kotlin.jvm.JvmName("addAllDenoms")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllDenoms(values)
     }
@@ -81,7 +81,7 @@ public object QueryDenomsFromAdminResponseKt {
      * @param values The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDenoms")
+@kotlin.jvm.JvmName("plusAssignAllDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -92,14 +92,14 @@ public object QueryDenomsFromAdminResponseKt {
      * @param value The denoms to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDenoms")
+@kotlin.jvm.JvmName("setDenoms")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setDenoms(index, value)
     }/**
      * `repeated string denoms = 1 [json_name = "denoms", (.gogoproto.moretags) = "yaml:\"denoms\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDenoms")
+@kotlin.jvm.JvmName("setDenoms")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, DenomsProxy>.clear() {
       _builder.clearDenoms()
     }}

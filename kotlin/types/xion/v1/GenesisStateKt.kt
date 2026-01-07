@@ -10,6 +10,10 @@ package xion.v1;
 public inline fun genesisState(block: xion.v1.GenesisStateKt.Dsl.() -> kotlin.Unit): xion.v1.Genesis.GenesisState =
   xion.v1.GenesisStateKt.Dsl._create(xion.v1.Genesis.GenesisState.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * GenesisState defines the xion module's genesis state
+ * ```
+ *
  * Protobuf type `xion.v1.GenesisState`
  */
 public object GenesisStateKt {
@@ -29,16 +33,24 @@ public object GenesisStateKt {
     internal fun _build(): xion.v1.Genesis.GenesisState = _builder.build()
 
     /**
+     * ```
+     * The percentage fee taken by the platform
+     * ```
+     *
      * `uint32 platform_percentage = 1 [json_name = "platformPercentage"];`
      */
     public var platformPercentage: kotlin.Int
-      @JvmName("getPlatformPercentage")
-      get() = _builder.platformPercentage
-      @JvmName("setPlatformPercentage")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlatformPercentage")
+        get() = _builder.platformPercentage
+      @kotlin.jvm.JvmName("setPlatformPercentage")
+        set(value) {
         _builder.platformPercentage = value
       }
     /**
+     * ```
+     * The percentage fee taken by the platform
+     * ```
+     *
      * `uint32 platform_percentage = 1 [json_name = "platformPercentage"];`
      */
     public fun clearPlatformPercentage() {
@@ -52,70 +64,97 @@ public object GenesisStateKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class PlatformMinimumsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
      public val platformMinimums: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.platformMinimumsList
       )
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param value The platformMinimums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPlatformMinimums")
+@kotlin.jvm.JvmName("addPlatformMinimums")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addPlatformMinimums(value)
     }
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param value The platformMinimums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPlatformMinimums")
+@kotlin.jvm.JvmName("plusAssignPlatformMinimums")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
     }
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param values The platformMinimums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPlatformMinimums")
+@kotlin.jvm.JvmName("addAllPlatformMinimums")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllPlatformMinimums(values)
     }
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param values The platformMinimums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPlatformMinimums")
+@kotlin.jvm.JvmName("plusAssignAllPlatformMinimums")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
     }
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param index The index to set the value at.
      * @param value The platformMinimums to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPlatformMinimums")
+@kotlin.jvm.JvmName("setPlatformMinimums")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setPlatformMinimums(index, value)
     }
     /**
+     * ```
+     * Minimum amounts required for platform operations
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin platform_minimums = 2 [json_name = "platformMinimums", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "platform_minimums,omitempty", (.gogoproto.moretags) = "yaml:\"platform_minimums\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPlatformMinimums")
+@kotlin.jvm.JvmName("clearPlatformMinimums")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, PlatformMinimumsProxy>.clear() {
       _builder.clearPlatformMinimums()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -37,10 +37,10 @@ public object InFlightPacketKt {
      * `string original_sender_address = 1 [json_name = "originalSenderAddress"];`
      */
     public var originalSenderAddress: kotlin.String
-      @JvmName("getOriginalSenderAddress")
-      get() = _builder.originalSenderAddress
-      @JvmName("setOriginalSenderAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getOriginalSenderAddress")
+        get() = _builder.originalSenderAddress
+      @kotlin.jvm.JvmName("setOriginalSenderAddress")
+        set(value) {
         _builder.originalSenderAddress = value
       }
     /**
@@ -54,10 +54,10 @@ public object InFlightPacketKt {
      * `string refund_channel_id = 2 [json_name = "refundChannelId"];`
      */
     public var refundChannelId: kotlin.String
-      @JvmName("getRefundChannelId")
-      get() = _builder.refundChannelId
-      @JvmName("setRefundChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getRefundChannelId")
+        get() = _builder.refundChannelId
+      @kotlin.jvm.JvmName("setRefundChannelId")
+        set(value) {
         _builder.refundChannelId = value
       }
     /**
@@ -71,10 +71,10 @@ public object InFlightPacketKt {
      * `string refund_port_id = 3 [json_name = "refundPortId"];`
      */
     public var refundPortId: kotlin.String
-      @JvmName("getRefundPortId")
-      get() = _builder.refundPortId
-      @JvmName("setRefundPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getRefundPortId")
+        get() = _builder.refundPortId
+      @kotlin.jvm.JvmName("setRefundPortId")
+        set(value) {
         _builder.refundPortId = value
       }
     /**
@@ -88,10 +88,10 @@ public object InFlightPacketKt {
      * `string packet_src_channel_id = 4 [json_name = "packetSrcChannelId"];`
      */
     public var packetSrcChannelId: kotlin.String
-      @JvmName("getPacketSrcChannelId")
-      get() = _builder.packetSrcChannelId
-      @JvmName("setPacketSrcChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacketSrcChannelId")
+        get() = _builder.packetSrcChannelId
+      @kotlin.jvm.JvmName("setPacketSrcChannelId")
+        set(value) {
         _builder.packetSrcChannelId = value
       }
     /**
@@ -105,10 +105,10 @@ public object InFlightPacketKt {
      * `string packet_src_port_id = 5 [json_name = "packetSrcPortId"];`
      */
     public var packetSrcPortId: kotlin.String
-      @JvmName("getPacketSrcPortId")
-      get() = _builder.packetSrcPortId
-      @JvmName("setPacketSrcPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacketSrcPortId")
+        get() = _builder.packetSrcPortId
+      @kotlin.jvm.JvmName("setPacketSrcPortId")
+        set(value) {
         _builder.packetSrcPortId = value
       }
     /**
@@ -122,10 +122,10 @@ public object InFlightPacketKt {
      * `uint64 packet_timeout_timestamp = 6 [json_name = "packetTimeoutTimestamp"];`
      */
     public var packetTimeoutTimestamp: kotlin.Long
-      @JvmName("getPacketTimeoutTimestamp")
-      get() = _builder.packetTimeoutTimestamp
-      @JvmName("setPacketTimeoutTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacketTimeoutTimestamp")
+        get() = _builder.packetTimeoutTimestamp
+      @kotlin.jvm.JvmName("setPacketTimeoutTimestamp")
+        set(value) {
         _builder.packetTimeoutTimestamp = value
       }
     /**
@@ -139,10 +139,10 @@ public object InFlightPacketKt {
      * `string packet_timeout_height = 7 [json_name = "packetTimeoutHeight"];`
      */
     public var packetTimeoutHeight: kotlin.String
-      @JvmName("getPacketTimeoutHeight")
-      get() = _builder.packetTimeoutHeight
-      @JvmName("setPacketTimeoutHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacketTimeoutHeight")
+        get() = _builder.packetTimeoutHeight
+      @kotlin.jvm.JvmName("setPacketTimeoutHeight")
+        set(value) {
         _builder.packetTimeoutHeight = value
       }
     /**
@@ -156,10 +156,10 @@ public object InFlightPacketKt {
      * `bytes packet_data = 8 [json_name = "packetData"];`
      */
     public var packetData: com.google.protobuf.ByteString
-      @JvmName("getPacketData")
-      get() = _builder.packetData
-      @JvmName("setPacketData")
-      set(value) {
+      @kotlin.jvm.JvmName("getPacketData")
+        get() = _builder.packetData
+      @kotlin.jvm.JvmName("setPacketData")
+        set(value) {
         _builder.packetData = value
       }
     /**
@@ -173,10 +173,10 @@ public object InFlightPacketKt {
      * `uint64 refund_sequence = 9 [json_name = "refundSequence"];`
      */
     public var refundSequence: kotlin.Long
-      @JvmName("getRefundSequence")
-      get() = _builder.refundSequence
-      @JvmName("setRefundSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getRefundSequence")
+        get() = _builder.refundSequence
+      @kotlin.jvm.JvmName("setRefundSequence")
+        set(value) {
         _builder.refundSequence = value
       }
     /**
@@ -190,10 +190,10 @@ public object InFlightPacketKt {
      * `int32 retries_remaining = 10 [json_name = "retriesRemaining"];`
      */
     public var retriesRemaining: kotlin.Int
-      @JvmName("getRetriesRemaining")
-      get() = _builder.retriesRemaining
-      @JvmName("setRetriesRemaining")
-      set(value) {
+      @kotlin.jvm.JvmName("getRetriesRemaining")
+        get() = _builder.retriesRemaining
+      @kotlin.jvm.JvmName("setRetriesRemaining")
+        set(value) {
         _builder.retriesRemaining = value
       }
     /**
@@ -207,10 +207,10 @@ public object InFlightPacketKt {
      * `uint64 timeout = 11 [json_name = "timeout"];`
      */
     public var timeout: kotlin.Long
-      @JvmName("getTimeout")
-      get() = _builder.timeout
-      @JvmName("setTimeout")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeout")
+        get() = _builder.timeout
+      @kotlin.jvm.JvmName("setTimeout")
+        set(value) {
         _builder.timeout = value
       }
     /**
@@ -224,10 +224,10 @@ public object InFlightPacketKt {
      * `bool nonrefundable = 12 [json_name = "nonrefundable"];`
      */
     public var nonrefundable: kotlin.Boolean
-      @JvmName("getNonrefundable")
-      get() = _builder.nonrefundable
-      @JvmName("setNonrefundable")
-      set(value) {
+      @kotlin.jvm.JvmName("getNonrefundable")
+        get() = _builder.nonrefundable
+      @kotlin.jvm.JvmName("setNonrefundable")
+        set(value) {
         _builder.nonrefundable = value
       }
     /**

@@ -48,7 +48,7 @@ public object QueryDenomsResponseKt {
      */
      public val denoms: com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.denomsList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryDenomsResponseKt {
      * @param value The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDenoms")
+@kotlin.jvm.JvmName("addDenoms")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.add(value: ibc.applications.transfer.v1.TokenOuterClass.Denom) {
       _builder.addDenoms(value)
     }
@@ -73,7 +73,7 @@ public object QueryDenomsResponseKt {
      * @param value The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDenoms")
+@kotlin.jvm.JvmName("plusAssignDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.plusAssign(value: ibc.applications.transfer.v1.TokenOuterClass.Denom) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryDenomsResponseKt {
      * @param values The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDenoms")
+@kotlin.jvm.JvmName("addAllDenoms")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.TokenOuterClass.Denom>) {
       _builder.addAllDenoms(values)
     }
@@ -100,7 +100,7 @@ public object QueryDenomsResponseKt {
      * @param values The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDenoms")
+@kotlin.jvm.JvmName("plusAssignAllDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.TokenOuterClass.Denom>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryDenomsResponseKt {
      * @param value The denoms to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDenoms")
+@kotlin.jvm.JvmName("setDenoms")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.set(index: kotlin.Int, value: ibc.applications.transfer.v1.TokenOuterClass.Denom) {
       _builder.setDenoms(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryDenomsResponseKt {
      * `repeated .ibc.applications.transfer.v1.Denom denoms = 1 [json_name = "denoms", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "Denoms"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDenoms")
+@kotlin.jvm.JvmName("clearDenoms")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.clear() {
       _builder.clearDenoms()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryDenomsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

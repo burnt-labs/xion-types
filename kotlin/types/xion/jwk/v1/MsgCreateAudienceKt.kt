@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun msgCreateAudience(block: xion.jwk.v1.MsgCreateAudienceKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgCreateAudience =
   xion.jwk.v1.MsgCreateAudienceKt.Dsl._create(xion.jwk.v1.Tx.MsgCreateAudience.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgCreateAudience defines the message for creating an audience
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgCreateAudience`
  */
 public object MsgCreateAudienceKt {
@@ -29,16 +33,24 @@ public object MsgCreateAudienceKt {
     internal fun _build(): xion.jwk.v1.Tx.MsgCreateAudience = _builder.build()
 
     /**
+     * ```
+     * The admin address creating the audience
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
+     * ```
+     * The admin address creating the audience
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public fun clearAdmin() {
@@ -46,16 +58,24 @@ public object MsgCreateAudienceKt {
     }
 
     /**
+     * ```
+     * The audience identifier
+     * ```
+     *
      * `string aud = 2 [json_name = "aud"];`
      */
     public var aud: kotlin.String
-      @JvmName("getAud")
-      get() = _builder.aud
-      @JvmName("setAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getAud")
+        get() = _builder.aud
+      @kotlin.jvm.JvmName("setAud")
+        set(value) {
         _builder.aud = value
       }
     /**
+     * ```
+     * The audience identifier
+     * ```
+     *
      * `string aud = 2 [json_name = "aud"];`
      */
     public fun clearAud() {
@@ -63,16 +83,24 @@ public object MsgCreateAudienceKt {
     }
 
     /**
+     * ```
+     * The public key for this audience
+     * ```
+     *
      * `string key = 3 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
+     * ```
+     * The public key for this audience
+     * ```
+     *
      * `string key = 3 [json_name = "key"];`
      */
     public fun clearKey() {

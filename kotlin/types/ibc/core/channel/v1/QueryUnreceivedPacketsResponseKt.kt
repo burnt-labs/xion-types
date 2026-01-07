@@ -48,7 +48,7 @@ public object QueryUnreceivedPacketsResponseKt {
      */
      public val sequences: com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.sequencesList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryUnreceivedPacketsResponseKt {
      * @param value The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSequences")
+@kotlin.jvm.JvmName("addSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.add(value: kotlin.Long) {
       _builder.addSequences(value)
     }/**
@@ -72,7 +72,7 @@ public object QueryUnreceivedPacketsResponseKt {
      * @param value The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSequences")
+@kotlin.jvm.JvmName("plusAssignSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -85,7 +85,7 @@ public object QueryUnreceivedPacketsResponseKt {
      * @param values The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSequences")
+@kotlin.jvm.JvmName("addAllSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllSequences(values)
     }/**
@@ -97,7 +97,7 @@ public object QueryUnreceivedPacketsResponseKt {
      * @param values The sequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSequences")
+@kotlin.jvm.JvmName("plusAssignAllSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -111,7 +111,7 @@ public object QueryUnreceivedPacketsResponseKt {
      * @param value The sequences to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSequences")
+@kotlin.jvm.JvmName("setSequences")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setSequences(index, value)
     }/**
@@ -122,7 +122,7 @@ public object QueryUnreceivedPacketsResponseKt {
      * `repeated uint64 sequences = 1 [json_name = "sequences"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSequences")
+@kotlin.jvm.JvmName("clearSequences")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, SequencesProxy>.clear() {
       _builder.clearSequences()
     }
@@ -134,10 +134,10 @@ public object QueryUnreceivedPacketsResponseKt {
      * `.ibc.core.client.v1.Height height = 2 [json_name = "height", (.gogoproto.nullable) = false];`
      */
     public var height: ibc.core.client.v1.Client.Height
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**

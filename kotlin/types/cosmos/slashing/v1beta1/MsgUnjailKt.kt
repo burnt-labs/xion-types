@@ -36,10 +36,10 @@ public object MsgUnjailKt {
      * `string validator_addr = 1 [json_name = "validatorAddr", (.gogoproto.jsontag) = "address", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString", (.amino.field_name) = "address", (.amino.dont_omitempty) = true];`
      */
     public var validatorAddr: kotlin.String
-      @JvmName("getValidatorAddr")
-      get() = _builder.validatorAddr
-      @JvmName("setValidatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddr")
+        get() = _builder.validatorAddr
+      @kotlin.jvm.JvmName("setValidatorAddr")
+        set(value) {
         _builder.validatorAddr = value
       }
     /**

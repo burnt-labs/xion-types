@@ -38,10 +38,10 @@ public object LegacyAminoPubKeyKt {
      * `uint32 threshold = 1 [json_name = "threshold"];`
      */
     public var threshold: kotlin.Int
-      @JvmName("getThreshold")
-      get() = _builder.threshold
-      @JvmName("setThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getThreshold")
+        get() = _builder.threshold
+      @kotlin.jvm.JvmName("setThreshold")
+        set(value) {
         _builder.threshold = value
       }
     /**
@@ -62,7 +62,7 @@ public object LegacyAminoPubKeyKt {
      */
      public val publicKeys: com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.publicKeysList
       )
     /**
@@ -70,7 +70,7 @@ public object LegacyAminoPubKeyKt {
      * @param value The publicKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPublicKeys")
+@kotlin.jvm.JvmName("addPublicKeys")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>.add(value: com.google.protobuf.Any) {
       _builder.addPublicKeys(value)
     }
@@ -79,7 +79,7 @@ public object LegacyAminoPubKeyKt {
      * @param value The publicKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPublicKeys")
+@kotlin.jvm.JvmName("plusAssignPublicKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>.plusAssign(value: com.google.protobuf.Any) {
       add(value)
@@ -89,7 +89,7 @@ public object LegacyAminoPubKeyKt {
      * @param values The publicKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPublicKeys")
+@kotlin.jvm.JvmName("addAllPublicKeys")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       _builder.addAllPublicKeys(values)
     }
@@ -98,7 +98,7 @@ public object LegacyAminoPubKeyKt {
      * @param values The publicKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPublicKeys")
+@kotlin.jvm.JvmName("plusAssignAllPublicKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.Any>) {
       addAll(values)
@@ -109,7 +109,7 @@ public object LegacyAminoPubKeyKt {
      * @param value The publicKeys to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPublicKeys")
+@kotlin.jvm.JvmName("setPublicKeys")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>.set(index: kotlin.Int, value: com.google.protobuf.Any) {
       _builder.setPublicKeys(index, value)
     }
@@ -117,11 +117,10 @@ public object LegacyAminoPubKeyKt {
      * `repeated .google.protobuf.Any public_keys = 2 [json_name = "publicKeys", (.gogoproto.customname) = "PubKeys", (.amino.field_name) = "pubkeys"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPublicKeys")
+@kotlin.jvm.JvmName("clearPublicKeys")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.Any, PublicKeysProxy>.clear() {
       _builder.clearPublicKeys()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

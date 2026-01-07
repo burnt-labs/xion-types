@@ -36,10 +36,10 @@ public object QueryCodeResponseKt {
      * `.cosmwasm.wasm.v1.CodeInfoResponse code_info = 1 [json_name = "codeInfo", (.gogoproto.embed) = true, (.gogoproto.jsontag) = ""];`
      */
     public var codeInfo: cosmwasm.wasm.v1.QueryOuterClass.CodeInfoResponse
-      @JvmName("getCodeInfo")
-      get() = _builder.codeInfo
-      @JvmName("setCodeInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeInfo")
+        get() = _builder.codeInfo
+      @kotlin.jvm.JvmName("setCodeInfo")
+        set(value) {
         _builder.codeInfo = value
       }
     /**
@@ -63,10 +63,10 @@ public object QueryCodeResponseKt {
      * `bytes data = 2 [json_name = "data", (.gogoproto.jsontag) = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**

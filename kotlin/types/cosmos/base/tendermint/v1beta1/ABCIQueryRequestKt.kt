@@ -36,10 +36,10 @@ public object ABCIQueryRequestKt {
      * `bytes data = 1 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -53,10 +53,10 @@ public object ABCIQueryRequestKt {
      * `string path = 2 [json_name = "path"];`
      */
     public var path: kotlin.String
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -70,10 +70,10 @@ public object ABCIQueryRequestKt {
      * `int64 height = 3 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -87,10 +87,10 @@ public object ABCIQueryRequestKt {
      * `bool prove = 4 [json_name = "prove"];`
      */
     public var prove: kotlin.Boolean
-      @JvmName("getProve")
-      get() = _builder.prove
-      @JvmName("setProve")
-      set(value) {
+      @kotlin.jvm.JvmName("getProve")
+        get() = _builder.prove
+      @kotlin.jvm.JvmName("setProve")
+        set(value) {
         _builder.prove = value
       }
     /**

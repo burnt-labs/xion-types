@@ -40,10 +40,10 @@ public object QueryNextSequenceSendResponseKt {
      * `uint64 next_sequence_send = 1 [json_name = "nextSequenceSend"];`
      */
     public var nextSequenceSend: kotlin.Long
-      @JvmName("getNextSequenceSend")
-      get() = _builder.nextSequenceSend
-      @JvmName("setNextSequenceSend")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextSequenceSend")
+        get() = _builder.nextSequenceSend
+      @kotlin.jvm.JvmName("setNextSequenceSend")
+        set(value) {
         _builder.nextSequenceSend = value
       }
     /**
@@ -65,10 +65,10 @@ public object QueryNextSequenceSendResponseKt {
      * `bytes proof = 2 [json_name = "proof"];`
      */
     public var proof: com.google.protobuf.ByteString
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**
@@ -90,10 +90,10 @@ public object QueryNextSequenceSendResponseKt {
      * `.ibc.core.client.v1.Height proof_height = 3 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**

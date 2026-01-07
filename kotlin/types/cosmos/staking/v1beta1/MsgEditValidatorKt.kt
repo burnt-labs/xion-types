@@ -36,10 +36,10 @@ public object MsgEditValidatorKt {
      * `.cosmos.staking.v1beta1.Description description = 1 [json_name = "description", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var description: cosmos.staking.v1beta1.Staking.Description
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -63,10 +63,10 @@ public object MsgEditValidatorKt {
      * `string validator_address = 2 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -87,10 +87,10 @@ public object MsgEditValidatorKt {
      * `string commission_rate = 3 [json_name = "commissionRate", (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var commissionRate: kotlin.String
-      @JvmName("getCommissionRate")
-      get() = _builder.commissionRate
-      @JvmName("setCommissionRate")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommissionRate")
+        get() = _builder.commissionRate
+      @kotlin.jvm.JvmName("setCommissionRate")
+        set(value) {
         _builder.commissionRate = value
       }
     /**
@@ -111,10 +111,10 @@ public object MsgEditValidatorKt {
      * `string min_self_delegation = 4 [json_name = "minSelfDelegation", (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var minSelfDelegation: kotlin.String
-      @JvmName("getMinSelfDelegation")
-      get() = _builder.minSelfDelegation
-      @JvmName("setMinSelfDelegation")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinSelfDelegation")
+        get() = _builder.minSelfDelegation
+      @kotlin.jvm.JvmName("setMinSelfDelegation")
+        set(value) {
         _builder.minSelfDelegation = value
       }
     /**

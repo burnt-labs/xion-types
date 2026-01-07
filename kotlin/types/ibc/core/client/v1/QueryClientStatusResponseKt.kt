@@ -37,10 +37,10 @@ public object QueryClientStatusResponseKt {
      * `string status = 1 [json_name = "status"];`
      */
     public var status: kotlin.String
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     /**

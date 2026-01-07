@@ -44,10 +44,10 @@ public object ParamsKt {
      * `bool send_enabled = 1 [json_name = "sendEnabled"];`
      */
     public var sendEnabled: kotlin.Boolean
-      @JvmName("getSendEnabled")
-      get() = _builder.sendEnabled
-      @JvmName("setSendEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getSendEnabled")
+        get() = _builder.sendEnabled
+      @kotlin.jvm.JvmName("setSendEnabled")
+        set(value) {
         _builder.sendEnabled = value
       }
     /**
@@ -71,10 +71,10 @@ public object ParamsKt {
      * `bool receive_enabled = 2 [json_name = "receiveEnabled"];`
      */
     public var receiveEnabled: kotlin.Boolean
-      @JvmName("getReceiveEnabled")
-      get() = _builder.receiveEnabled
-      @JvmName("setReceiveEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getReceiveEnabled")
+        get() = _builder.receiveEnabled
+      @kotlin.jvm.JvmName("setReceiveEnabled")
+        set(value) {
         _builder.receiveEnabled = value
       }
     /**

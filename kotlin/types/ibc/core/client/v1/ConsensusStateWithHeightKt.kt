@@ -41,10 +41,10 @@ public object ConsensusStateWithHeightKt {
      * `.ibc.core.client.v1.Height height = 1 [json_name = "height", (.gogoproto.nullable) = false];`
      */
     public var height: ibc.core.client.v1.Client.Height
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -80,10 +80,10 @@ public object ConsensusStateWithHeightKt {
      * `.google.protobuf.Any consensus_state = 2 [json_name = "consensusState"];`
      */
     public var consensusState: com.google.protobuf.Any
-      @JvmName("getConsensusState")
-      get() = _builder.consensusState
-      @JvmName("setConsensusState")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusState")
+        get() = _builder.consensusState
+      @kotlin.jvm.JvmName("setConsensusState")
+        set(value) {
         _builder.consensusState = value
       }
     /**

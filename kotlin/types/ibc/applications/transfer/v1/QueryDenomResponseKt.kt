@@ -41,10 +41,10 @@ public object QueryDenomResponseKt {
      * `.ibc.applications.transfer.v1.Denom denom = 1 [json_name = "denom"];`
      */
     public var denom: ibc.applications.transfer.v1.TokenOuterClass.Denom
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**

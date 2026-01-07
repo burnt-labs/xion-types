@@ -41,10 +41,10 @@ public object AbsoluteTxPositionKt {
      * `uint64 block_height = 1 [json_name = "blockHeight"];`
      */
     public var blockHeight: kotlin.Long
-      @JvmName("getBlockHeight")
-      get() = _builder.blockHeight
-      @JvmName("setBlockHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockHeight")
+        get() = _builder.blockHeight
+      @kotlin.jvm.JvmName("setBlockHeight")
+        set(value) {
         _builder.blockHeight = value
       }
     /**
@@ -67,10 +67,10 @@ public object AbsoluteTxPositionKt {
      * `uint64 tx_index = 2 [json_name = "txIndex"];`
      */
     public var txIndex: kotlin.Long
-      @JvmName("getTxIndex")
-      get() = _builder.txIndex
-      @JvmName("setTxIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxIndex")
+        get() = _builder.txIndex
+      @kotlin.jvm.JvmName("setTxIndex")
+        set(value) {
         _builder.txIndex = value
       }
     /**

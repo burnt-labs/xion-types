@@ -41,10 +41,10 @@ public object QueryValidatorSlashesRequestKt {
      * `string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryValidatorSlashesRequestKt {
      * `uint64 starting_height = 2 [json_name = "startingHeight"];`
      */
     public var startingHeight: kotlin.Long
-      @JvmName("getStartingHeight")
-      get() = _builder.startingHeight
-      @JvmName("setStartingHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getStartingHeight")
+        get() = _builder.startingHeight
+      @kotlin.jvm.JvmName("setStartingHeight")
+        set(value) {
         _builder.startingHeight = value
       }
     /**
@@ -91,10 +91,10 @@ public object QueryValidatorSlashesRequestKt {
      * `uint64 ending_height = 3 [json_name = "endingHeight"];`
      */
     public var endingHeight: kotlin.Long
-      @JvmName("getEndingHeight")
-      get() = _builder.endingHeight
-      @JvmName("setEndingHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getEndingHeight")
+        get() = _builder.endingHeight
+      @kotlin.jvm.JvmName("setEndingHeight")
+        set(value) {
         _builder.endingHeight = value
       }
     /**
@@ -116,10 +116,10 @@ public object QueryValidatorSlashesRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 4 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

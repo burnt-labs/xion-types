@@ -43,7 +43,7 @@ public object PairsKt {
      */
      public val pairs: com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.pairsList
       )
     /**
@@ -51,7 +51,7 @@ public object PairsKt {
      * @param value The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addPairs")
+@kotlin.jvm.JvmName("addPairs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>.add(value: cosmos.store.internal.kv.v1beta1.Kv.Pair) {
       _builder.addPairs(value)
     }
@@ -60,7 +60,7 @@ public object PairsKt {
      * @param value The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignPairs")
+@kotlin.jvm.JvmName("plusAssignPairs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>.plusAssign(value: cosmos.store.internal.kv.v1beta1.Kv.Pair) {
       add(value)
@@ -70,7 +70,7 @@ public object PairsKt {
      * @param values The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllPairs")
+@kotlin.jvm.JvmName("addAllPairs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.store.internal.kv.v1beta1.Kv.Pair>) {
       _builder.addAllPairs(values)
     }
@@ -79,7 +79,7 @@ public object PairsKt {
      * @param values The pairs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllPairs")
+@kotlin.jvm.JvmName("plusAssignAllPairs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.store.internal.kv.v1beta1.Kv.Pair>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object PairsKt {
      * @param value The pairs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setPairs")
+@kotlin.jvm.JvmName("setPairs")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>.set(index: kotlin.Int, value: cosmos.store.internal.kv.v1beta1.Kv.Pair) {
       _builder.setPairs(index, value)
     }
@@ -98,11 +98,10 @@ public object PairsKt {
      * `repeated .cosmos.store.internal.kv.v1beta1.Pair pairs = 1 [json_name = "pairs", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearPairs")
+@kotlin.jvm.JvmName("clearPairs")
     public fun com.google.protobuf.kotlin.DslList<cosmos.store.internal.kv.v1beta1.Kv.Pair, PairsProxy>.clear() {
       _builder.clearPairs()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -40,10 +40,10 @@ public object QueryVoteResponseKt {
      * `.cosmos.gov.v1beta1.Vote vote = 1 [json_name = "vote", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var vote: cosmos.gov.v1beta1.Gov.Vote
-      @JvmName("getVote")
-      get() = _builder.vote
-      @JvmName("setVote")
-      set(value) {
+      @kotlin.jvm.JvmName("getVote")
+        get() = _builder.vote
+      @kotlin.jvm.JvmName("setVote")
+        set(value) {
         _builder.vote = value
       }
     /**

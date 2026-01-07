@@ -40,10 +40,10 @@ public object ContractInfoKt {
      * `uint64 code_id = 1 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -65,10 +65,10 @@ public object ContractInfoKt {
      * `string creator = 2 [json_name = "creator", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var creator: kotlin.String
-      @JvmName("getCreator")
-      get() = _builder.creator
-      @JvmName("setCreator")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreator")
+        get() = _builder.creator
+      @kotlin.jvm.JvmName("setCreator")
+        set(value) {
         _builder.creator = value
       }
     /**
@@ -90,10 +90,10 @@ public object ContractInfoKt {
      * `string admin = 3 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -115,10 +115,10 @@ public object ContractInfoKt {
      * `string label = 4 [json_name = "label"];`
      */
     public var label: kotlin.String
-      @JvmName("getLabel")
-      get() = _builder.label
-      @JvmName("setLabel")
-      set(value) {
+      @kotlin.jvm.JvmName("getLabel")
+        get() = _builder.label
+      @kotlin.jvm.JvmName("setLabel")
+        set(value) {
         _builder.label = value
       }
     /**
@@ -140,10 +140,10 @@ public object ContractInfoKt {
      * `.cosmwasm.wasm.v1.AbsoluteTxPosition created = 5 [json_name = "created"];`
      */
     public var created: cosmwasm.wasm.v1.Types.AbsoluteTxPosition
-      @JvmName("getCreated")
-      get() = _builder.created
-      @JvmName("setCreated")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreated")
+        get() = _builder.created
+      @kotlin.jvm.JvmName("setCreated")
+        set(value) {
         _builder.created = value
       }
     /**
@@ -175,10 +175,10 @@ public object ContractInfoKt {
      * `string ibc_port_id = 6 [json_name = "ibcPortId", (.gogoproto.customname) = "IBCPortID"];`
      */
     public var ibcPortId: kotlin.String
-      @JvmName("getIbcPortId")
-      get() = _builder.ibcPortId
-      @JvmName("setIbcPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcPortId")
+        get() = _builder.ibcPortId
+      @kotlin.jvm.JvmName("setIbcPortId")
+        set(value) {
         _builder.ibcPortId = value
       }
     /**
@@ -189,35 +189,18 @@ public object ContractInfoKt {
     }
 
     /**
-     * `string ibc2_port_id = 7 [json_name = "ibc2PortId", (.gogoproto.customname) = "IBC2PortID"];`
-     */
-    public var ibc2PortId: kotlin.String
-      @JvmName("getIbc2PortId")
-      get() = _builder.ibc2PortId
-      @JvmName("setIbc2PortId")
-      set(value) {
-        _builder.ibc2PortId = value
-      }
-    /**
-     * `string ibc2_port_id = 7 [json_name = "ibc2PortId", (.gogoproto.customname) = "IBC2PortID"];`
-     */
-    public fun clearIbc2PortId() {
-      _builder.clearIbc2PortId()
-    }
-
-    /**
      * ```
      * Extension is an extension point to store custom metadata within the
      * persistence model.
      * ```
      *
-     * `.google.protobuf.Any extension = 8 [json_name = "extension", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractInfoExtension"];`
+     * `.google.protobuf.Any extension = 7 [json_name = "extension", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractInfoExtension"];`
      */
     public var extension: com.google.protobuf.Any
-      @JvmName("getExtension")
-      get() = _builder.extension
-      @JvmName("setExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getExtension")
+        get() = _builder.extension
+      @kotlin.jvm.JvmName("setExtension")
+        set(value) {
         _builder.extension = value
       }
     /**
@@ -226,7 +209,7 @@ public object ContractInfoKt {
      * persistence model.
      * ```
      *
-     * `.google.protobuf.Any extension = 8 [json_name = "extension", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractInfoExtension"];`
+     * `.google.protobuf.Any extension = 7 [json_name = "extension", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractInfoExtension"];`
      */
     public fun clearExtension() {
       _builder.clearExtension()
@@ -237,7 +220,7 @@ public object ContractInfoKt {
      * persistence model.
      * ```
      *
-     * `.google.protobuf.Any extension = 8 [json_name = "extension", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractInfoExtension"];`
+     * `.google.protobuf.Any extension = 7 [json_name = "extension", (.cosmos_proto.accepts_interface) = "cosmwasm.wasm.v1.ContractInfoExtension"];`
      * @return Whether the extension field is set.
      */
     public fun hasExtension(): kotlin.Boolean {
@@ -246,6 +229,23 @@ public object ContractInfoKt {
 
     public val ContractInfoKt.Dsl.extensionOrNull: com.google.protobuf.Any?
       get() = _builder.extensionOrNull
+
+    /**
+     * `string ibc2_port_id = 8 [json_name = "ibc2PortId", (.gogoproto.customname) = "IBC2PortID"];`
+     */
+    public var ibc2PortId: kotlin.String
+      @kotlin.jvm.JvmName("getIbc2PortId")
+        get() = _builder.ibc2PortId
+      @kotlin.jvm.JvmName("setIbc2PortId")
+        set(value) {
+        _builder.ibc2PortId = value
+      }
+    /**
+     * `string ibc2_port_id = 8 [json_name = "ibc2PortId", (.gogoproto.customname) = "IBC2PortID"];`
+     */
+    public fun clearIbc2PortId() {
+      _builder.clearIbc2PortId()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

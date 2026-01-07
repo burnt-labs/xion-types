@@ -37,10 +37,10 @@ public object MsgSetWithdrawAddressKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgSetWithdrawAddressKt {
      * `string withdraw_address = 2 [json_name = "withdrawAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var withdrawAddress: kotlin.String
-      @JvmName("getWithdrawAddress")
-      get() = _builder.withdrawAddress
-      @JvmName("setWithdrawAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getWithdrawAddress")
+        get() = _builder.withdrawAddress
+      @kotlin.jvm.JvmName("setWithdrawAddress")
+        set(value) {
         _builder.withdrawAddress = value
       }
     /**

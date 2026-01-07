@@ -47,7 +47,7 @@ public object DepositParamsKt {
      */
      public val minDeposit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.minDepositList
       )
     /**
@@ -59,7 +59,7 @@ public object DepositParamsKt {
      * @param value The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMinDeposit")
+@kotlin.jvm.JvmName("addMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addMinDeposit(value)
     }
@@ -72,7 +72,7 @@ public object DepositParamsKt {
      * @param value The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMinDeposit")
+@kotlin.jvm.JvmName("plusAssignMinDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -86,7 +86,7 @@ public object DepositParamsKt {
      * @param values The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMinDeposit")
+@kotlin.jvm.JvmName("addAllMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllMinDeposit(values)
     }
@@ -99,7 +99,7 @@ public object DepositParamsKt {
      * @param values The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMinDeposit")
+@kotlin.jvm.JvmName("plusAssignAllMinDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object DepositParamsKt {
      * @param value The minDeposit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMinDeposit")
+@kotlin.jvm.JvmName("setMinDeposit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setMinDeposit(index, value)
     }
@@ -126,11 +126,10 @@ public object DepositParamsKt {
      * `repeated .cosmos.base.v1beta1.Coin min_deposit = 1 [json_name = "minDeposit", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "min_deposit,omitempty", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMinDeposit")
+@kotlin.jvm.JvmName("clearMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.clear() {
       _builder.clearMinDeposit()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object DepositParamsKt {
      * `.google.protobuf.Duration max_deposit_period = 2 [json_name = "maxDepositPeriod", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "max_deposit_period,omitempty", (.gogoproto.stdduration) = true];`
      */
     public var maxDepositPeriod: com.google.protobuf.Duration
-      @JvmName("getMaxDepositPeriod")
-      get() = _builder.maxDepositPeriod
-      @JvmName("setMaxDepositPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxDepositPeriod")
+        get() = _builder.maxDepositPeriod
+      @kotlin.jvm.JvmName("setMaxDepositPeriod")
+        set(value) {
         _builder.maxDepositPeriod = value
       }
     /**

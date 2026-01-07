@@ -36,10 +36,10 @@ public object QueryConstitutionResponseKt {
      * `string constitution = 1 [json_name = "constitution"];`
      */
     public var constitution: kotlin.String
-      @JvmName("getConstitution")
-      get() = _builder.constitution
-      @JvmName("setConstitution")
-      set(value) {
+      @kotlin.jvm.JvmName("getConstitution")
+        get() = _builder.constitution
+      @kotlin.jvm.JvmName("setConstitution")
+        set(value) {
         _builder.constitution = value
       }
     /**

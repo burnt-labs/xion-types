@@ -41,10 +41,10 @@ public object QueryRedelegationsRequestKt {
      * `string delegator_addr = 1 [json_name = "delegatorAddr", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddr: kotlin.String
-      @JvmName("getDelegatorAddr")
-      get() = _builder.delegatorAddr
-      @JvmName("setDelegatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddr")
+        get() = _builder.delegatorAddr
+      @kotlin.jvm.JvmName("setDelegatorAddr")
+        set(value) {
         _builder.delegatorAddr = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryRedelegationsRequestKt {
      * `string src_validator_addr = 2 [json_name = "srcValidatorAddr", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var srcValidatorAddr: kotlin.String
-      @JvmName("getSrcValidatorAddr")
-      get() = _builder.srcValidatorAddr
-      @JvmName("setSrcValidatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getSrcValidatorAddr")
+        get() = _builder.srcValidatorAddr
+      @kotlin.jvm.JvmName("setSrcValidatorAddr")
+        set(value) {
         _builder.srcValidatorAddr = value
       }
     /**
@@ -91,10 +91,10 @@ public object QueryRedelegationsRequestKt {
      * `string dst_validator_addr = 3 [json_name = "dstValidatorAddr", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var dstValidatorAddr: kotlin.String
-      @JvmName("getDstValidatorAddr")
-      get() = _builder.dstValidatorAddr
-      @JvmName("setDstValidatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getDstValidatorAddr")
+        get() = _builder.dstValidatorAddr
+      @kotlin.jvm.JvmName("setDstValidatorAddr")
+        set(value) {
         _builder.dstValidatorAddr = value
       }
     /**
@@ -116,10 +116,10 @@ public object QueryRedelegationsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 4 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

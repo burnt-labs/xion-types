@@ -37,10 +37,10 @@ public object DelegationResponseKt {
      * `.cosmos.staking.v1beta1.Delegation delegation = 1 [json_name = "delegation", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var delegation: cosmos.staking.v1beta1.Staking.Delegation
-      @JvmName("getDelegation")
-      get() = _builder.delegation
-      @JvmName("setDelegation")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegation")
+        get() = _builder.delegation
+      @kotlin.jvm.JvmName("setDelegation")
+        set(value) {
         _builder.delegation = value
       }
     /**
@@ -64,10 +64,10 @@ public object DelegationResponseKt {
      * `.cosmos.base.v1beta1.Coin balance = 2 [json_name = "balance", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var balance: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getBalance")
-      get() = _builder.balance
-      @JvmName("setBalance")
-      set(value) {
+      @kotlin.jvm.JvmName("getBalance")
+        get() = _builder.balance
+      @kotlin.jvm.JvmName("setBalance")
+        set(value) {
         _builder.balance = value
       }
     /**

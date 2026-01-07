@@ -4,7 +4,7 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InterchainAccount {
     #[prost(message, optional, tag="1")]
-    pub base_account: ::core::option::Option<super::super::super::super::cosmos::auth::v1beta1::BaseAccount>,
+    pub base_account: ::core::option::Option<crate::types::cosmos_auth_v1beta1::BaseAccount>,
     #[prost(string, tag="2")]
     pub account_owner: ::prost::alloc::string::String,
 }

@@ -42,10 +42,10 @@ public object MsgTransferKt {
      * `string source_port = 1 [json_name = "sourcePort"];`
      */
     public var sourcePort: kotlin.String
-      @JvmName("getSourcePort")
-      get() = _builder.sourcePort
-      @JvmName("setSourcePort")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourcePort")
+        get() = _builder.sourcePort
+      @kotlin.jvm.JvmName("setSourcePort")
+        set(value) {
         _builder.sourcePort = value
       }
     /**
@@ -67,10 +67,10 @@ public object MsgTransferKt {
      * `string source_channel = 2 [json_name = "sourceChannel"];`
      */
     public var sourceChannel: kotlin.String
-      @JvmName("getSourceChannel")
-      get() = _builder.sourceChannel
-      @JvmName("setSourceChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getSourceChannel")
+        get() = _builder.sourceChannel
+      @kotlin.jvm.JvmName("setSourceChannel")
+        set(value) {
         _builder.sourceChannel = value
       }
     /**
@@ -92,10 +92,10 @@ public object MsgTransferKt {
      * `.cosmos.base.v1beta1.Coin token = 3 [json_name = "token", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var token: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getToken")
-      get() = _builder.token
-      @JvmName("setToken")
-      set(value) {
+      @kotlin.jvm.JvmName("getToken")
+        get() = _builder.token
+      @kotlin.jvm.JvmName("setToken")
+        set(value) {
         _builder.token = value
       }
     /**
@@ -131,10 +131,10 @@ public object MsgTransferKt {
      * `string sender = 4 [json_name = "sender"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -156,10 +156,10 @@ public object MsgTransferKt {
      * `string receiver = 5 [json_name = "receiver"];`
      */
     public var receiver: kotlin.String
-      @JvmName("getReceiver")
-      get() = _builder.receiver
-      @JvmName("setReceiver")
-      set(value) {
+      @kotlin.jvm.JvmName("getReceiver")
+        get() = _builder.receiver
+      @kotlin.jvm.JvmName("setReceiver")
+        set(value) {
         _builder.receiver = value
       }
     /**
@@ -183,10 +183,10 @@ public object MsgTransferKt {
      * `.ibc.core.client.v1.Height timeout_height = 6 [json_name = "timeoutHeight", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var timeoutHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getTimeoutHeight")
-      get() = _builder.timeoutHeight
-      @JvmName("setTimeoutHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutHeight")
+        get() = _builder.timeoutHeight
+      @kotlin.jvm.JvmName("setTimeoutHeight")
+        set(value) {
         _builder.timeoutHeight = value
       }
     /**
@@ -228,10 +228,10 @@ public object MsgTransferKt {
      * `uint64 timeout_timestamp = 7 [json_name = "timeoutTimestamp"];`
      */
     public var timeoutTimestamp: kotlin.Long
-      @JvmName("getTimeoutTimestamp")
-      get() = _builder.timeoutTimestamp
-      @JvmName("setTimeoutTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimeoutTimestamp")
+        get() = _builder.timeoutTimestamp
+      @kotlin.jvm.JvmName("setTimeoutTimestamp")
+        set(value) {
         _builder.timeoutTimestamp = value
       }
     /**
@@ -255,10 +255,10 @@ public object MsgTransferKt {
      * `string memo = 8 [json_name = "memo"];`
      */
     public var memo: kotlin.String
-      @JvmName("getMemo")
-      get() = _builder.memo
-      @JvmName("setMemo")
-      set(value) {
+      @kotlin.jvm.JvmName("getMemo")
+        get() = _builder.memo
+      @kotlin.jvm.JvmName("setMemo")
+        set(value) {
         _builder.memo = value
       }
     /**
@@ -280,10 +280,10 @@ public object MsgTransferKt {
      * `string encoding = 9 [json_name = "encoding"];`
      */
     public var encoding: kotlin.String
-      @JvmName("getEncoding")
-      get() = _builder.encoding
-      @JvmName("setEncoding")
-      set(value) {
+      @kotlin.jvm.JvmName("getEncoding")
+        get() = _builder.encoding
+      @kotlin.jvm.JvmName("setEncoding")
+        set(value) {
         _builder.encoding = value
       }
     /**

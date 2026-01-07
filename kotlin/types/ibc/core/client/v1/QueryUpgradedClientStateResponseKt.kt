@@ -41,10 +41,10 @@ public object QueryUpgradedClientStateResponseKt {
      * `.google.protobuf.Any upgraded_client_state = 1 [json_name = "upgradedClientState"];`
      */
     public var upgradedClientState: com.google.protobuf.Any
-      @JvmName("getUpgradedClientState")
-      get() = _builder.upgradedClientState
-      @JvmName("setUpgradedClientState")
-      set(value) {
+      @kotlin.jvm.JvmName("getUpgradedClientState")
+        get() = _builder.upgradedClientState
+      @kotlin.jvm.JvmName("setUpgradedClientState")
+        set(value) {
         _builder.upgradedClientState = value
       }
     /**

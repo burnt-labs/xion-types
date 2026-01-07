@@ -40,10 +40,10 @@ public object QueryTallyResultResponseKt {
      * `.cosmos.group.v1.TallyResult tally = 1 [json_name = "tally", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var tally: cosmos.group.v1.Types.TallyResult
-      @JvmName("getTally")
-      get() = _builder.tally
-      @JvmName("setTally")
-      set(value) {
+      @kotlin.jvm.JvmName("getTally")
+        get() = _builder.tally
+      @kotlin.jvm.JvmName("setTally")
+        set(value) {
         _builder.tally = value
       }
     /**

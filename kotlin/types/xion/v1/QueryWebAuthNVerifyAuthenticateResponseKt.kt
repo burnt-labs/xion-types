@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryWebAuthNVerifyAuthenticateResponse(block: xion.v1.QueryWebAuthNVerifyAuthenticateResponseKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryWebAuthNVerifyAuthenticateResponse =
   xion.v1.QueryWebAuthNVerifyAuthenticateResponseKt.Dsl._create(xion.v1.QueryOuterClass.QueryWebAuthNVerifyAuthenticateResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryWebAuthNVerifyAuthenticateResponse is the response type for WebAuthN
+ * authentication verification
+ * ```
+ *
  * Protobuf type `xion.v1.QueryWebAuthNVerifyAuthenticateResponse`
  */
 public object QueryWebAuthNVerifyAuthenticateResponseKt {

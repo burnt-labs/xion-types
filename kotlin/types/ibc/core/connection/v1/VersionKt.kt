@@ -41,10 +41,10 @@ public object VersionKt {
      * `string identifier = 1 [json_name = "identifier"];`
      */
     public var identifier: kotlin.String
-      @JvmName("getIdentifier")
-      get() = _builder.identifier
-      @JvmName("setIdentifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getIdentifier")
+        get() = _builder.identifier
+      @kotlin.jvm.JvmName("setIdentifier")
+        set(value) {
         _builder.identifier = value
       }
     /**
@@ -73,7 +73,7 @@ public object VersionKt {
      * @return A list containing the features.
      */
     public val features: com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.featuresList
       )
@@ -86,7 +86,7 @@ public object VersionKt {
      * @param value The features to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addFeatures")
+@kotlin.jvm.JvmName("addFeatures")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>.add(value: kotlin.String) {
       _builder.addFeatures(value)
     }
@@ -99,7 +99,7 @@ public object VersionKt {
      * @param value The features to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignFeatures")
+@kotlin.jvm.JvmName("plusAssignFeatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -113,7 +113,7 @@ public object VersionKt {
      * @param values The features to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllFeatures")
+@kotlin.jvm.JvmName("addAllFeatures")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllFeatures(values)
     }
@@ -126,7 +126,7 @@ public object VersionKt {
      * @param values The features to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllFeatures")
+@kotlin.jvm.JvmName("plusAssignAllFeatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -141,7 +141,7 @@ public object VersionKt {
      * @param value The features to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setFeatures")
+@kotlin.jvm.JvmName("setFeatures")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setFeatures(index, value)
     }/**
@@ -152,7 +152,7 @@ public object VersionKt {
      * `repeated string features = 2 [json_name = "features"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearFeatures")
+@kotlin.jvm.JvmName("setFeatures")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, FeaturesProxy>.clear() {
       _builder.clearFeatures()
     }}

@@ -41,10 +41,10 @@ public object MsgSubmitProposalKt {
      * `.google.protobuf.Any content = 1 [json_name = "content", (.cosmos_proto.accepts_interface) = "cosmos.gov.v1beta1.Content"];`
      */
     public var content: com.google.protobuf.Any
-      @JvmName("getContent")
-      get() = _builder.content
-      @JvmName("setContent")
-      set(value) {
+      @kotlin.jvm.JvmName("getContent")
+        get() = _builder.content
+      @kotlin.jvm.JvmName("setContent")
+        set(value) {
         _builder.content = value
       }
     /**
@@ -87,7 +87,7 @@ public object MsgSubmitProposalKt {
      */
      public val initialDeposit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.initialDepositList
       )
     /**
@@ -99,7 +99,7 @@ public object MsgSubmitProposalKt {
      * @param value The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitialDeposit")
+@kotlin.jvm.JvmName("addInitialDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addInitialDeposit(value)
     }
@@ -112,7 +112,7 @@ public object MsgSubmitProposalKt {
      * @param value The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitialDeposit")
+@kotlin.jvm.JvmName("plusAssignInitialDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -126,7 +126,7 @@ public object MsgSubmitProposalKt {
      * @param values The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitialDeposit")
+@kotlin.jvm.JvmName("addAllInitialDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllInitialDeposit(values)
     }
@@ -139,7 +139,7 @@ public object MsgSubmitProposalKt {
      * @param values The initialDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitialDeposit")
+@kotlin.jvm.JvmName("plusAssignAllInitialDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -154,7 +154,7 @@ public object MsgSubmitProposalKt {
      * @param value The initialDeposit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitialDeposit")
+@kotlin.jvm.JvmName("setInitialDeposit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setInitialDeposit(index, value)
     }
@@ -166,11 +166,10 @@ public object MsgSubmitProposalKt {
      * `repeated .cosmos.base.v1beta1.Coin initial_deposit = 2 [json_name = "initialDeposit", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitialDeposit")
+@kotlin.jvm.JvmName("clearInitialDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, InitialDepositProxy>.clear() {
       _builder.clearInitialDeposit()
     }
-
 
     /**
      * ```
@@ -180,10 +179,10 @@ public object MsgSubmitProposalKt {
      * `string proposer = 3 [json_name = "proposer", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var proposer: kotlin.String
-      @JvmName("getProposer")
-      get() = _builder.proposer
-      @JvmName("setProposer")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposer")
+        get() = _builder.proposer
+      @kotlin.jvm.JvmName("setProposer")
+        set(value) {
         _builder.proposer = value
       }
     /**

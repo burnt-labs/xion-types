@@ -41,10 +41,10 @@ public object QuerySigningInfoRequestKt {
      * `string cons_address = 1 [json_name = "consAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];`
      */
     public var consAddress: kotlin.String
-      @JvmName("getConsAddress")
-      get() = _builder.consAddress
-      @JvmName("setConsAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsAddress")
+        get() = _builder.consAddress
+      @kotlin.jvm.JvmName("setConsAddress")
+        set(value) {
         _builder.consAddress = value
       }
     /**

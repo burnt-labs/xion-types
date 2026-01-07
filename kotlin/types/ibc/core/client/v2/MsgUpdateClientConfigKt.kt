@@ -40,10 +40,10 @@ public object MsgUpdateClientConfigKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -67,10 +67,10 @@ public object MsgUpdateClientConfigKt {
      * `.ibc.core.client.v2.Config config = 2 [json_name = "config", (.gogoproto.nullable) = false];`
      */
     public var config: ibc.core.client.v2.ConfigOuterClass.Config
-      @JvmName("getConfig")
-      get() = _builder.config
-      @JvmName("setConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getConfig")
+        get() = _builder.config
+      @kotlin.jvm.JvmName("setConfig")
+        set(value) {
         _builder.config = value
       }
     /**
@@ -110,10 +110,10 @@ public object MsgUpdateClientConfigKt {
      * `string signer = 3 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

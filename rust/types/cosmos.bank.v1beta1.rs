@@ -5,7 +5,7 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendAuthorization {
     #[prost(message, repeated, tag="1")]
-    pub spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
     /// granter. If omitted, any recipient is allowed.
     #[prost(string, repeated, tag="2")]
@@ -40,7 +40,7 @@ pub struct Input {
     #[prost(string, tag="1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub coins: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// Output models transaction outputs.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -48,7 +48,7 @@ pub struct Output {
     #[prost(string, tag="1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub coins: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// Supply represents a struct that passively keeps track of the total supply
 /// amounts in the network.
@@ -56,7 +56,7 @@ pub struct Output {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Supply {
     #[prost(message, repeated, tag="1")]
-    pub total: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub total: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// DenomUnit represents a struct that describes a given
 /// denomination unit of the basic token.
@@ -119,7 +119,7 @@ pub struct GenesisState {
     /// supply represents the total supply. If it is left empty, then supply will be calculated based on the provided
     /// balances. Otherwise, it will be used to validate that the sum of the balances equals this amount.
     #[prost(message, repeated, tag="3")]
-    pub supply: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub supply: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// denom_metadata defines the metadata of the different coins.
     #[prost(message, repeated, tag="4")]
     pub denom_metadata: ::prost::alloc::vec::Vec<Metadata>,
@@ -136,7 +136,7 @@ pub struct Balance {
     pub address: ::prost::alloc::string::String,
     /// coins defines the different coins this balance holds.
     #[prost(message, repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub coins: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// QueryBalanceRequest is the request type for the Query/Balance RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -153,7 +153,7 @@ pub struct QueryBalanceRequest {
 pub struct QueryBalanceResponse {
     /// balance is the balance of the coin.
     #[prost(message, optional, tag="1")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// QueryBalanceRequest is the request type for the Query/AllBalances RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -163,7 +163,7 @@ pub struct QueryAllBalancesRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
     /// resolve_denom is the flag to resolve the denom into a human-readable form from the metadata.
     #[prost(bool, tag="3")]
     pub resolve_denom: bool,
@@ -174,10 +174,10 @@ pub struct QueryAllBalancesRequest {
 pub struct QueryAllBalancesResponse {
     /// balances is the balances of all the coins.
     #[prost(message, repeated, tag="1")]
-    pub balances: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub balances: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QuerySpendableBalancesRequest defines the gRPC request structure for querying
 /// an account's spendable balances.
@@ -188,7 +188,7 @@ pub struct QuerySpendableBalancesRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QuerySpendableBalancesResponse defines the gRPC response structure for querying
 /// an account's spendable balances.
@@ -196,10 +196,10 @@ pub struct QuerySpendableBalancesRequest {
 pub struct QuerySpendableBalancesResponse {
     /// balances is the spendable balances of all the coins.
     #[prost(message, repeated, tag="1")]
-    pub balances: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub balances: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QuerySpendableBalanceByDenomRequest defines the gRPC request structure for
 /// querying an account's spendable balance for a specific denom.
@@ -218,7 +218,7 @@ pub struct QuerySpendableBalanceByDenomRequest {
 pub struct QuerySpendableBalanceByDenomResponse {
     /// balance is the balance of the coin.
     #[prost(message, optional, tag="1")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// QueryTotalSupplyRequest is the request type for the Query/TotalSupply RPC
 /// method.
@@ -226,7 +226,7 @@ pub struct QuerySpendableBalanceByDenomResponse {
 pub struct QueryTotalSupplyRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryTotalSupplyResponse is the response type for the Query/TotalSupply RPC
 /// method
@@ -234,10 +234,10 @@ pub struct QueryTotalSupplyRequest {
 pub struct QueryTotalSupplyResponse {
     /// supply is the supply of the coins
     #[prost(message, repeated, tag="1")]
-    pub supply: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub supply: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -251,7 +251,7 @@ pub struct QuerySupplyOfRequest {
 pub struct QuerySupplyOfResponse {
     /// amount is the supply of the coin.
     #[prost(message, optional, tag="1")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// QueryParamsRequest defines the request type for querying x/bank parameters.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -269,7 +269,7 @@ pub struct QueryParamsResponse {
 pub struct QueryDenomsMetadataRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryDenomsMetadataResponse is the response type for the Query/DenomsMetadata RPC
 /// method.
@@ -280,7 +280,7 @@ pub struct QueryDenomsMetadataResponse {
     pub metadatas: ::prost::alloc::vec::Vec<Metadata>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDenomMetadataRequest is the request type for the Query/DenomMetadata RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -323,7 +323,7 @@ pub struct QueryDenomOwnersRequest {
     pub denom: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// DenomOwner defines structure representing an account that owns or holds a
 /// particular denominated token. It contains the account address and account
@@ -335,7 +335,7 @@ pub struct DenomOwner {
     pub address: ::prost::alloc::string::String,
     /// balance is the balance of the denominated coin for an account.
     #[prost(message, optional, tag="2")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// QueryDenomOwnersResponse defines the RPC response of a DenomOwners RPC query.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -344,7 +344,7 @@ pub struct QueryDenomOwnersResponse {
     pub denom_owners: ::prost::alloc::vec::Vec<DenomOwner>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDenomOwnersByQueryRequest defines the request type for the DenomOwnersByQuery RPC query,
 /// which queries for a paginated set of all account holders of a particular
@@ -356,7 +356,7 @@ pub struct QueryDenomOwnersByQueryRequest {
     pub denom: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryDenomOwnersByQueryResponse defines the RPC response of a DenomOwnersByQuery RPC query.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -365,7 +365,7 @@ pub struct QueryDenomOwnersByQueryResponse {
     pub denom_owners: ::prost::alloc::vec::Vec<DenomOwner>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QuerySendEnabledRequest defines the RPC request for looking up SendEnabled entries.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -376,7 +376,7 @@ pub struct QuerySendEnabledRequest {
     /// pagination defines an optional pagination for the request. This field is
     /// only read if the denoms field is empty.
     #[prost(message, optional, tag="99")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QuerySendEnabledResponse defines the RPC response of a SendEnable query.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -386,7 +386,7 @@ pub struct QuerySendEnabledResponse {
     /// pagination defines the pagination in the response. This field is only
     /// populated if the denoms field in the request is empty.
     #[prost(message, optional, tag="99")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// MsgSend represents a message to send coins from one account to another.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -396,7 +396,7 @@ pub struct MsgSend {
     #[prost(string, tag="2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgSendResponse defines the Msg/Send response type.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]

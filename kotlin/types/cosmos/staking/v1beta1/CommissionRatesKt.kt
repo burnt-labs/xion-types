@@ -41,10 +41,10 @@ public object CommissionRatesKt {
      * `string rate = 1 [json_name = "rate", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var rate: kotlin.String
-      @JvmName("getRate")
-      get() = _builder.rate
-      @JvmName("setRate")
-      set(value) {
+      @kotlin.jvm.JvmName("getRate")
+        get() = _builder.rate
+      @kotlin.jvm.JvmName("setRate")
+        set(value) {
         _builder.rate = value
       }
     /**
@@ -66,10 +66,10 @@ public object CommissionRatesKt {
      * `string max_rate = 2 [json_name = "maxRate", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var maxRate: kotlin.String
-      @JvmName("getMaxRate")
-      get() = _builder.maxRate
-      @JvmName("setMaxRate")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxRate")
+        get() = _builder.maxRate
+      @kotlin.jvm.JvmName("setMaxRate")
+        set(value) {
         _builder.maxRate = value
       }
     /**
@@ -91,10 +91,10 @@ public object CommissionRatesKt {
      * `string max_change_rate = 3 [json_name = "maxChangeRate", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];`
      */
     public var maxChangeRate: kotlin.String
-      @JvmName("getMaxChangeRate")
-      get() = _builder.maxChangeRate
-      @JvmName("setMaxChangeRate")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxChangeRate")
+        get() = _builder.maxChangeRate
+      @kotlin.jvm.JvmName("setMaxChangeRate")
+        set(value) {
         _builder.maxChangeRate = value
       }
     /**

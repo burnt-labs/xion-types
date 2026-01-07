@@ -48,7 +48,7 @@ public object MaxFundsLimitKt {
      */
      public val amounts: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.amountsList
       )
     /**
@@ -60,7 +60,7 @@ public object MaxFundsLimitKt {
      * @param value The amounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAmounts")
+@kotlin.jvm.JvmName("addAmounts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addAmounts(value)
     }
@@ -73,7 +73,7 @@ public object MaxFundsLimitKt {
      * @param value The amounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAmounts")
+@kotlin.jvm.JvmName("plusAssignAmounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -87,7 +87,7 @@ public object MaxFundsLimitKt {
      * @param values The amounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAmounts")
+@kotlin.jvm.JvmName("addAllAmounts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllAmounts(values)
     }
@@ -100,7 +100,7 @@ public object MaxFundsLimitKt {
      * @param values The amounts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAmounts")
+@kotlin.jvm.JvmName("plusAssignAllAmounts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object MaxFundsLimitKt {
      * @param value The amounts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAmounts")
+@kotlin.jvm.JvmName("setAmounts")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setAmounts(index, value)
     }
@@ -127,11 +127,10 @@ public object MaxFundsLimitKt {
      * `repeated .cosmos.base.v1beta1.Coin amounts = 1 [json_name = "amounts", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAmounts")
+@kotlin.jvm.JvmName("clearAmounts")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountsProxy>.clear() {
       _builder.clearAmounts()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

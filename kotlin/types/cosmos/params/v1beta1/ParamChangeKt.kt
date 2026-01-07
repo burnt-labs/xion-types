@@ -37,10 +37,10 @@ public object ParamChangeKt {
      * `string subspace = 1 [json_name = "subspace"];`
      */
     public var subspace: kotlin.String
-      @JvmName("getSubspace")
-      get() = _builder.subspace
-      @JvmName("setSubspace")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubspace")
+        get() = _builder.subspace
+      @kotlin.jvm.JvmName("setSubspace")
+        set(value) {
         _builder.subspace = value
       }
     /**
@@ -54,10 +54,10 @@ public object ParamChangeKt {
      * `string key = 2 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -71,10 +71,10 @@ public object ParamChangeKt {
      * `string value = 3 [json_name = "value"];`
      */
     public var value: kotlin.String
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**

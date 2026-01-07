@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryWebAuthNVerifyRegisterResponse(block: xion.v1.QueryWebAuthNVerifyRegisterResponseKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryWebAuthNVerifyRegisterResponse =
   xion.v1.QueryWebAuthNVerifyRegisterResponseKt.Dsl._create(xion.v1.QueryOuterClass.QueryWebAuthNVerifyRegisterResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryWebAuthNVerifyRegisterResponse is the response type for WebAuthN
+ * registration verification
+ * ```
+ *
  * Protobuf type `xion.v1.QueryWebAuthNVerifyRegisterResponse`
  */
 public object QueryWebAuthNVerifyRegisterResponseKt {
@@ -29,16 +34,24 @@ public object QueryWebAuthNVerifyRegisterResponseKt {
     internal fun _build(): xion.v1.QueryOuterClass.QueryWebAuthNVerifyRegisterResponse = _builder.build()
 
     /**
+     * ```
+     * The generated credential
+     * ```
+     *
      * `bytes credential = 1 [json_name = "credential"];`
      */
     public var credential: com.google.protobuf.ByteString
-      @JvmName("getCredential")
-      get() = _builder.credential
-      @JvmName("setCredential")
-      set(value) {
+      @kotlin.jvm.JvmName("getCredential")
+        get() = _builder.credential
+      @kotlin.jvm.JvmName("setCredential")
+        set(value) {
         _builder.credential = value
       }
     /**
+     * ```
+     * The generated credential
+     * ```
+     *
      * `bytes credential = 1 [json_name = "credential"];`
      */
     public fun clearCredential() {

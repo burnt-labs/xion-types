@@ -47,7 +47,7 @@ public object GenesisStateKt {
      */
      public val genTxs: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.genTxsList
       )
     /**
@@ -59,7 +59,7 @@ public object GenesisStateKt {
      * @param value The genTxs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addGenTxs")
+@kotlin.jvm.JvmName("addGenTxs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addGenTxs(value)
     }/**
@@ -71,7 +71,7 @@ public object GenesisStateKt {
      * @param value The genTxs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignGenTxs")
+@kotlin.jvm.JvmName("plusAssignGenTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -84,7 +84,7 @@ public object GenesisStateKt {
      * @param values The genTxs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllGenTxs")
+@kotlin.jvm.JvmName("addAllGenTxs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllGenTxs(values)
     }/**
@@ -96,7 +96,7 @@ public object GenesisStateKt {
      * @param values The genTxs to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllGenTxs")
+@kotlin.jvm.JvmName("plusAssignAllGenTxs")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -110,7 +110,7 @@ public object GenesisStateKt {
      * @param value The genTxs to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setGenTxs")
+@kotlin.jvm.JvmName("setGenTxs")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setGenTxs(index, value)
     }/**
@@ -121,7 +121,7 @@ public object GenesisStateKt {
      * `repeated bytes gen_txs = 1 [json_name = "genTxs", (.gogoproto.jsontag) = "gentxs", (.gogoproto.casttype) = "encoding/json.RawMessage", (.amino.field_name) = "gentxs", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearGenTxs")
+@kotlin.jvm.JvmName("clearGenTxs")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, GenTxsProxy>.clear() {
       _builder.clearGenTxs()
     }}

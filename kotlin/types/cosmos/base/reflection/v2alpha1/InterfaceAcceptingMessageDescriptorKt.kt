@@ -41,10 +41,10 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * `string fullname = 1 [json_name = "fullname"];`
      */
     public var fullname: kotlin.String
-      @JvmName("getFullname")
-      get() = _builder.fullname
-      @JvmName("setFullname")
-      set(value) {
+      @kotlin.jvm.JvmName("getFullname")
+        get() = _builder.fullname
+      @kotlin.jvm.JvmName("setFullname")
+        set(value) {
         _builder.fullname = value
       }
     /**
@@ -75,7 +75,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * @return A list containing the fieldDescriptorNames.
      */
     public val fieldDescriptorNames: com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.fieldDescriptorNamesList
       )
@@ -90,7 +90,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * @param value The fieldDescriptorNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addFieldDescriptorNames")
+@kotlin.jvm.JvmName("addFieldDescriptorNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>.add(value: kotlin.String) {
       _builder.addFieldDescriptorNames(value)
     }
@@ -105,7 +105,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * @param value The fieldDescriptorNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignFieldDescriptorNames")
+@kotlin.jvm.JvmName("plusAssignFieldDescriptorNames")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -121,7 +121,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * @param values The fieldDescriptorNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllFieldDescriptorNames")
+@kotlin.jvm.JvmName("addAllFieldDescriptorNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllFieldDescriptorNames(values)
     }
@@ -136,7 +136,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * @param values The fieldDescriptorNames to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllFieldDescriptorNames")
+@kotlin.jvm.JvmName("plusAssignAllFieldDescriptorNames")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -153,7 +153,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * @param value The fieldDescriptorNames to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setFieldDescriptorNames")
+@kotlin.jvm.JvmName("setFieldDescriptorNames")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setFieldDescriptorNames(index, value)
     }/**
@@ -166,7 +166,7 @@ public object InterfaceAcceptingMessageDescriptorKt {
      * `repeated string field_descriptor_names = 2 [json_name = "fieldDescriptorNames"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearFieldDescriptorNames")
+@kotlin.jvm.JvmName("setFieldDescriptorNames")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, FieldDescriptorNamesProxy>.clear() {
       _builder.clearFieldDescriptorNames()
     }}

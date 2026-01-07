@@ -40,17 +40,17 @@ public object QueryProposalsRequestKt {
      * `.cosmos.gov.v1.ProposalStatus proposal_status = 1 [json_name = "proposalStatus"];`
      */
     public var proposalStatus: cosmos.gov.v1.Gov.ProposalStatus
-      @JvmName("getProposalStatus")
-      get() = _builder.proposalStatus
-      @JvmName("setProposalStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalStatus")
+        get() = _builder.proposalStatus
+      @kotlin.jvm.JvmName("setProposalStatus")
+        set(value) {
         _builder.proposalStatus = value
       }
     public var proposalStatusValue: kotlin.Int
-      @JvmName("getProposalStatusValue")
-      get() = _builder.proposalStatusValue
-      @JvmName("setProposalStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalStatusValue")
+        get() = _builder.proposalStatusValue
+      @kotlin.jvm.JvmName("setProposalStatusValue")
+        set(value) {
         _builder.proposalStatusValue = value
       }
     /**
@@ -72,10 +72,10 @@ public object QueryProposalsRequestKt {
      * `string voter = 2 [json_name = "voter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var voter: kotlin.String
-      @JvmName("getVoter")
-      get() = _builder.voter
-      @JvmName("setVoter")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoter")
+        get() = _builder.voter
+      @kotlin.jvm.JvmName("setVoter")
+        set(value) {
         _builder.voter = value
       }
     /**
@@ -97,10 +97,10 @@ public object QueryProposalsRequestKt {
      * `string depositor = 3 [json_name = "depositor", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var depositor: kotlin.String
-      @JvmName("getDepositor")
-      get() = _builder.depositor
-      @JvmName("setDepositor")
-      set(value) {
+      @kotlin.jvm.JvmName("getDepositor")
+        get() = _builder.depositor
+      @kotlin.jvm.JvmName("setDepositor")
+        set(value) {
         _builder.depositor = value
       }
     /**
@@ -122,10 +122,10 @@ public object QueryProposalsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 4 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

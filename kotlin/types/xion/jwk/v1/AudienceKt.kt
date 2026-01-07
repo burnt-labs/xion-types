@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun audience(block: xion.jwk.v1.AudienceKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.AudienceOuterClass.Audience =
   xion.jwk.v1.AudienceKt.Dsl._create(xion.jwk.v1.AudienceOuterClass.Audience.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * Audience represents a JWT audience configuration
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.Audience`
  */
 public object AudienceKt {
@@ -29,16 +33,24 @@ public object AudienceKt {
     internal fun _build(): xion.jwk.v1.AudienceOuterClass.Audience = _builder.build()
 
     /**
+     * ```
+     * The audience identifier
+     * ```
+     *
      * `string aud = 1 [json_name = "aud"];`
      */
     public var aud: kotlin.String
-      @JvmName("getAud")
-      get() = _builder.aud
-      @JvmName("setAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getAud")
+        get() = _builder.aud
+      @kotlin.jvm.JvmName("setAud")
+        set(value) {
         _builder.aud = value
       }
     /**
+     * ```
+     * The audience identifier
+     * ```
+     *
      * `string aud = 1 [json_name = "aud"];`
      */
     public fun clearAud() {
@@ -46,16 +58,24 @@ public object AudienceKt {
     }
 
     /**
+     * ```
+     * The public key associated with this audience
+     * ```
+     *
      * `string key = 2 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
+     * ```
+     * The public key associated with this audience
+     * ```
+     *
      * `string key = 2 [json_name = "key"];`
      */
     public fun clearKey() {
@@ -63,16 +83,24 @@ public object AudienceKt {
     }
 
     /**
+     * ```
+     * The admin address for this audience
+     * ```
+     *
      * `string admin = 3 [json_name = "admin"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
+     * ```
+     * The admin address for this audience
+     * ```
+     *
      * `string admin = 3 [json_name = "admin"];`
      */
     public fun clearAdmin() {

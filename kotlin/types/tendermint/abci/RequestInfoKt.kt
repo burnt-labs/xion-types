@@ -32,10 +32,10 @@ public object RequestInfoKt {
      * `string version = 1 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -49,10 +49,10 @@ public object RequestInfoKt {
      * `uint64 block_version = 2 [json_name = "blockVersion"];`
      */
     public var blockVersion: kotlin.Long
-      @JvmName("getBlockVersion")
-      get() = _builder.blockVersion
-      @JvmName("setBlockVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockVersion")
+        get() = _builder.blockVersion
+      @kotlin.jvm.JvmName("setBlockVersion")
+        set(value) {
         _builder.blockVersion = value
       }
     /**
@@ -66,10 +66,10 @@ public object RequestInfoKt {
      * `uint64 p2p_version = 3 [json_name = "p2pVersion"];`
      */
     public var p2PVersion: kotlin.Long
-      @JvmName("getP2PVersion")
-      get() = _builder.p2PVersion
-      @JvmName("setP2PVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getP2PVersion")
+        get() = _builder.p2PVersion
+      @kotlin.jvm.JvmName("setP2PVersion")
+        set(value) {
         _builder.p2PVersion = value
       }
     /**
@@ -83,10 +83,10 @@ public object RequestInfoKt {
      * `string abci_version = 4 [json_name = "abciVersion"];`
      */
     public var abciVersion: kotlin.String
-      @JvmName("getAbciVersion")
-      get() = _builder.abciVersion
-      @JvmName("setAbciVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getAbciVersion")
+        get() = _builder.abciVersion
+      @kotlin.jvm.JvmName("setAbciVersion")
+        set(value) {
         _builder.abciVersion = value
       }
     /**

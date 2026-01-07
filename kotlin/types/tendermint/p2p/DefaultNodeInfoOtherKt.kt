@@ -32,10 +32,10 @@ public object DefaultNodeInfoOtherKt {
      * `string tx_index = 1 [json_name = "txIndex"];`
      */
     public var txIndex: kotlin.String
-      @JvmName("getTxIndex")
-      get() = _builder.txIndex
-      @JvmName("setTxIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxIndex")
+        get() = _builder.txIndex
+      @kotlin.jvm.JvmName("setTxIndex")
+        set(value) {
         _builder.txIndex = value
       }
     /**
@@ -49,10 +49,10 @@ public object DefaultNodeInfoOtherKt {
      * `string rpc_address = 2 [json_name = "rpcAddress", (.gogoproto.customname) = "RPCAddress"];`
      */
     public var rpcAddress: kotlin.String
-      @JvmName("getRpcAddress")
-      get() = _builder.rpcAddress
-      @JvmName("setRpcAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getRpcAddress")
+        get() = _builder.rpcAddress
+      @kotlin.jvm.JvmName("setRpcAddress")
+        set(value) {
         _builder.rpcAddress = value
       }
     /**

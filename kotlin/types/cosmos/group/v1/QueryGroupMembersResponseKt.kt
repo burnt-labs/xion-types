@@ -47,7 +47,7 @@ public object QueryGroupMembersResponseKt {
      */
      public val members: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.membersList
       )
     /**
@@ -59,7 +59,7 @@ public object QueryGroupMembersResponseKt {
      * @param value The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMembers")
+@kotlin.jvm.JvmName("addMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>.add(value: cosmos.group.v1.Types.GroupMember) {
       _builder.addMembers(value)
     }
@@ -72,7 +72,7 @@ public object QueryGroupMembersResponseKt {
      * @param value The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMembers")
+@kotlin.jvm.JvmName("plusAssignMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>.plusAssign(value: cosmos.group.v1.Types.GroupMember) {
       add(value)
@@ -86,7 +86,7 @@ public object QueryGroupMembersResponseKt {
      * @param values The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMembers")
+@kotlin.jvm.JvmName("addAllMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupMember>) {
       _builder.addAllMembers(values)
     }
@@ -99,7 +99,7 @@ public object QueryGroupMembersResponseKt {
      * @param values The members to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMembers")
+@kotlin.jvm.JvmName("plusAssignAllMembers")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.GroupMember>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object QueryGroupMembersResponseKt {
      * @param value The members to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMembers")
+@kotlin.jvm.JvmName("setMembers")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.GroupMember) {
       _builder.setMembers(index, value)
     }
@@ -126,11 +126,10 @@ public object QueryGroupMembersResponseKt {
      * `repeated .cosmos.group.v1.GroupMember members = 1 [json_name = "members"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMembers")
+@kotlin.jvm.JvmName("clearMembers")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.GroupMember, MembersProxy>.clear() {
       _builder.clearMembers()
     }
-
 
     /**
      * ```
@@ -140,10 +139,10 @@ public object QueryGroupMembersResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

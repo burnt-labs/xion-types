@@ -41,10 +41,10 @@ public object QueryDenomMetadataResponseKt {
      * `.cosmos.bank.v1beta1.Metadata metadata = 1 [json_name = "metadata", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var metadata: cosmos.bank.v1beta1.Bank.Metadata
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**

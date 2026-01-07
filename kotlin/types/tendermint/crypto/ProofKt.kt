@@ -32,10 +32,10 @@ public object ProofKt {
      * `int64 total = 1 [json_name = "total"];`
      */
     public var total: kotlin.Long
-      @JvmName("getTotal")
-      get() = _builder.total
-      @JvmName("setTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotal")
+        get() = _builder.total
+      @kotlin.jvm.JvmName("setTotal")
+        set(value) {
         _builder.total = value
       }
     /**
@@ -49,10 +49,10 @@ public object ProofKt {
      * `int64 index = 2 [json_name = "index"];`
      */
     public var index: kotlin.Long
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**
@@ -66,10 +66,10 @@ public object ProofKt {
      * `bytes leaf_hash = 3 [json_name = "leafHash"];`
      */
     public var leafHash: com.google.protobuf.ByteString
-      @JvmName("getLeafHash")
-      get() = _builder.leafHash
-      @JvmName("setLeafHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getLeafHash")
+        get() = _builder.leafHash
+      @kotlin.jvm.JvmName("setLeafHash")
+        set(value) {
         _builder.leafHash = value
       }
     /**
@@ -90,7 +90,7 @@ public object ProofKt {
      */
      public val aunts: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.auntsList
       )
     /**
@@ -98,7 +98,7 @@ public object ProofKt {
      * @param value The aunts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAunts")
+@kotlin.jvm.JvmName("addAunts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addAunts(value)
     }/**
@@ -106,7 +106,7 @@ public object ProofKt {
      * @param value The aunts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAunts")
+@kotlin.jvm.JvmName("plusAssignAunts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -115,7 +115,7 @@ public object ProofKt {
      * @param values The aunts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAunts")
+@kotlin.jvm.JvmName("addAllAunts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllAunts(values)
     }/**
@@ -123,7 +123,7 @@ public object ProofKt {
      * @param values The aunts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAunts")
+@kotlin.jvm.JvmName("plusAssignAllAunts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -133,14 +133,14 @@ public object ProofKt {
      * @param value The aunts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAunts")
+@kotlin.jvm.JvmName("setAunts")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setAunts(index, value)
     }/**
      * `repeated bytes aunts = 4 [json_name = "aunts"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAunts")
+@kotlin.jvm.JvmName("clearAunts")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, AuntsProxy>.clear() {
       _builder.clearAunts()
     }}

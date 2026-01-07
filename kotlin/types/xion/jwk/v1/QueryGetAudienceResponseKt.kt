@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun queryGetAudienceResponse(block: xion.jwk.v1.QueryGetAudienceResponseKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryGetAudienceResponse =
   xion.jwk.v1.QueryGetAudienceResponseKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryGetAudienceResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryGetAudienceResponse is the legacy response type for querying an audience
+ * (deprecated)
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryGetAudienceResponse`
  */
 public object QueryGetAudienceResponseKt {
@@ -29,22 +34,34 @@ public object QueryGetAudienceResponseKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.QueryGetAudienceResponse = _builder.build()
 
     /**
+     * ```
+     * The audience information
+     * ```
+     *
      * `.xion.jwk.v1.Audience audience = 1 [json_name = "audience", (.gogoproto.nullable) = false];`
      */
     public var audience: xion.jwk.v1.AudienceOuterClass.Audience
-      @JvmName("getAudience")
-      get() = _builder.audience
-      @JvmName("setAudience")
-      set(value) {
+      @kotlin.jvm.JvmName("getAudience")
+        get() = _builder.audience
+      @kotlin.jvm.JvmName("setAudience")
+        set(value) {
         _builder.audience = value
       }
     /**
+     * ```
+     * The audience information
+     * ```
+     *
      * `.xion.jwk.v1.Audience audience = 1 [json_name = "audience", (.gogoproto.nullable) = false];`
      */
     public fun clearAudience() {
       _builder.clearAudience()
     }
     /**
+     * ```
+     * The audience information
+     * ```
+     *
      * `.xion.jwk.v1.Audience audience = 1 [json_name = "audience", (.gogoproto.nullable) = false];`
      * @return Whether the audience field is set.
      */

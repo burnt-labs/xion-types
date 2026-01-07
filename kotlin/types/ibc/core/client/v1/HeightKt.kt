@@ -52,10 +52,10 @@ public object HeightKt {
      * `uint64 revision_number = 1 [json_name = "revisionNumber", (.gogoproto.jsontag) = "revision_number"];`
      */
     public var revisionNumber: kotlin.Long
-      @JvmName("getRevisionNumber")
-      get() = _builder.revisionNumber
-      @JvmName("setRevisionNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevisionNumber")
+        get() = _builder.revisionNumber
+      @kotlin.jvm.JvmName("setRevisionNumber")
+        set(value) {
         _builder.revisionNumber = value
       }
     /**
@@ -77,10 +77,10 @@ public object HeightKt {
      * `uint64 revision_height = 2 [json_name = "revisionHeight", (.gogoproto.jsontag) = "revision_height"];`
      */
     public var revisionHeight: kotlin.Long
-      @JvmName("getRevisionHeight")
-      get() = _builder.revisionHeight
-      @JvmName("setRevisionHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevisionHeight")
+        get() = _builder.revisionHeight
+      @kotlin.jvm.JvmName("setRevisionHeight")
+        set(value) {
         _builder.revisionHeight = value
       }
     /**

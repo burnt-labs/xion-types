@@ -40,10 +40,10 @@ public object RedelegationEntryKt {
      * `int64 creation_height = 1 [json_name = "creationHeight"];`
      */
     public var creationHeight: kotlin.Long
-      @JvmName("getCreationHeight")
-      get() = _builder.creationHeight
-      @JvmName("setCreationHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreationHeight")
+        get() = _builder.creationHeight
+      @kotlin.jvm.JvmName("setCreationHeight")
+        set(value) {
         _builder.creationHeight = value
       }
     /**
@@ -65,10 +65,10 @@ public object RedelegationEntryKt {
      * `.google.protobuf.Timestamp completion_time = 2 [json_name = "completionTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var completionTime: com.google.protobuf.Timestamp
-      @JvmName("getCompletionTime")
-      get() = _builder.completionTime
-      @JvmName("setCompletionTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getCompletionTime")
+        get() = _builder.completionTime
+      @kotlin.jvm.JvmName("setCompletionTime")
+        set(value) {
         _builder.completionTime = value
       }
     /**
@@ -104,10 +104,10 @@ public object RedelegationEntryKt {
      * `string initial_balance = 3 [json_name = "initialBalance", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var initialBalance: kotlin.String
-      @JvmName("getInitialBalance")
-      get() = _builder.initialBalance
-      @JvmName("setInitialBalance")
-      set(value) {
+      @kotlin.jvm.JvmName("getInitialBalance")
+        get() = _builder.initialBalance
+      @kotlin.jvm.JvmName("setInitialBalance")
+        set(value) {
         _builder.initialBalance = value
       }
     /**
@@ -129,10 +129,10 @@ public object RedelegationEntryKt {
      * `string shares_dst = 4 [json_name = "sharesDst", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var sharesDst: kotlin.String
-      @JvmName("getSharesDst")
-      get() = _builder.sharesDst
-      @JvmName("setSharesDst")
-      set(value) {
+      @kotlin.jvm.JvmName("getSharesDst")
+        get() = _builder.sharesDst
+      @kotlin.jvm.JvmName("setSharesDst")
+        set(value) {
         _builder.sharesDst = value
       }
     /**
@@ -154,10 +154,10 @@ public object RedelegationEntryKt {
      * `uint64 unbonding_id = 5 [json_name = "unbondingId"];`
      */
     public var unbondingId: kotlin.Long
-      @JvmName("getUnbondingId")
-      get() = _builder.unbondingId
-      @JvmName("setUnbondingId")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbondingId")
+        get() = _builder.unbondingId
+      @kotlin.jvm.JvmName("setUnbondingId")
+        set(value) {
         _builder.unbondingId = value
       }
     /**
@@ -179,10 +179,10 @@ public object RedelegationEntryKt {
      * `int64 unbonding_on_hold_ref_count = 6 [json_name = "unbondingOnHoldRefCount"];`
      */
     public var unbondingOnHoldRefCount: kotlin.Long
-      @JvmName("getUnbondingOnHoldRefCount")
-      get() = _builder.unbondingOnHoldRefCount
-      @JvmName("setUnbondingOnHoldRefCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbondingOnHoldRefCount")
+        get() = _builder.unbondingOnHoldRefCount
+      @kotlin.jvm.JvmName("setUnbondingOnHoldRefCount")
+        set(value) {
         _builder.unbondingOnHoldRefCount = value
       }
     /**

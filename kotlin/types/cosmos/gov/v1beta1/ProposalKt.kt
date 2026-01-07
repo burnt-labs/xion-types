@@ -40,10 +40,10 @@ public object ProposalKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object ProposalKt {
      * `.google.protobuf.Any content = 2 [json_name = "content", (.cosmos_proto.accepts_interface) = "cosmos.gov.v1beta1.Content"];`
      */
     public var content: com.google.protobuf.Any
-      @JvmName("getContent")
-      get() = _builder.content
-      @JvmName("setContent")
-      set(value) {
+      @kotlin.jvm.JvmName("getContent")
+        get() = _builder.content
+      @kotlin.jvm.JvmName("setContent")
+        set(value) {
         _builder.content = value
       }
     /**
@@ -104,17 +104,17 @@ public object ProposalKt {
      * `.cosmos.gov.v1beta1.ProposalStatus status = 3 [json_name = "status"];`
      */
     public var status: cosmos.gov.v1beta1.Gov.ProposalStatus
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     public var statusValue: kotlin.Int
-      @JvmName("getStatusValue")
-      get() = _builder.statusValue
-      @JvmName("setStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatusValue")
+        get() = _builder.statusValue
+      @kotlin.jvm.JvmName("setStatusValue")
+        set(value) {
         _builder.statusValue = value
       }
     /**
@@ -138,10 +138,10 @@ public object ProposalKt {
      * `.cosmos.gov.v1beta1.TallyResult final_tally_result = 4 [json_name = "finalTallyResult", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var finalTallyResult: cosmos.gov.v1beta1.Gov.TallyResult
-      @JvmName("getFinalTallyResult")
-      get() = _builder.finalTallyResult
-      @JvmName("setFinalTallyResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getFinalTallyResult")
+        get() = _builder.finalTallyResult
+      @kotlin.jvm.JvmName("setFinalTallyResult")
+        set(value) {
         _builder.finalTallyResult = value
       }
     /**
@@ -181,10 +181,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp submit_time = 5 [json_name = "submitTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var submitTime: com.google.protobuf.Timestamp
-      @JvmName("getSubmitTime")
-      get() = _builder.submitTime
-      @JvmName("setSubmitTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubmitTime")
+        get() = _builder.submitTime
+      @kotlin.jvm.JvmName("setSubmitTime")
+        set(value) {
         _builder.submitTime = value
       }
     /**
@@ -220,10 +220,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp deposit_end_time = 6 [json_name = "depositEndTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var depositEndTime: com.google.protobuf.Timestamp
-      @JvmName("getDepositEndTime")
-      get() = _builder.depositEndTime
-      @JvmName("setDepositEndTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getDepositEndTime")
+        get() = _builder.depositEndTime
+      @kotlin.jvm.JvmName("setDepositEndTime")
+        set(value) {
         _builder.depositEndTime = value
       }
     /**
@@ -266,7 +266,7 @@ public object ProposalKt {
      */
      public val totalDeposit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.totalDepositList
       )
     /**
@@ -278,7 +278,7 @@ public object ProposalKt {
      * @param value The totalDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTotalDeposit")
+@kotlin.jvm.JvmName("addTotalDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addTotalDeposit(value)
     }
@@ -291,7 +291,7 @@ public object ProposalKt {
      * @param value The totalDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTotalDeposit")
+@kotlin.jvm.JvmName("plusAssignTotalDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -305,7 +305,7 @@ public object ProposalKt {
      * @param values The totalDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTotalDeposit")
+@kotlin.jvm.JvmName("addAllTotalDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllTotalDeposit(values)
     }
@@ -318,7 +318,7 @@ public object ProposalKt {
      * @param values The totalDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTotalDeposit")
+@kotlin.jvm.JvmName("plusAssignAllTotalDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -333,7 +333,7 @@ public object ProposalKt {
      * @param value The totalDeposit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTotalDeposit")
+@kotlin.jvm.JvmName("setTotalDeposit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setTotalDeposit(index, value)
     }
@@ -345,11 +345,10 @@ public object ProposalKt {
      * `repeated .cosmos.base.v1beta1.Coin total_deposit = 7 [json_name = "totalDeposit", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTotalDeposit")
+@kotlin.jvm.JvmName("clearTotalDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalDepositProxy>.clear() {
       _builder.clearTotalDeposit()
     }
-
 
     /**
      * ```
@@ -359,10 +358,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp voting_start_time = 8 [json_name = "votingStartTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var votingStartTime: com.google.protobuf.Timestamp
-      @JvmName("getVotingStartTime")
-      get() = _builder.votingStartTime
-      @JvmName("setVotingStartTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingStartTime")
+        get() = _builder.votingStartTime
+      @kotlin.jvm.JvmName("setVotingStartTime")
+        set(value) {
         _builder.votingStartTime = value
       }
     /**
@@ -398,10 +397,10 @@ public object ProposalKt {
      * `.google.protobuf.Timestamp voting_end_time = 9 [json_name = "votingEndTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var votingEndTime: com.google.protobuf.Timestamp
-      @JvmName("getVotingEndTime")
-      get() = _builder.votingEndTime
-      @JvmName("setVotingEndTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingEndTime")
+        get() = _builder.votingEndTime
+      @kotlin.jvm.JvmName("setVotingEndTime")
+        set(value) {
         _builder.votingEndTime = value
       }
     /**

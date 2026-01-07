@@ -36,10 +36,10 @@ public object MsgUpdateParamsKt {
      * `string sender = 1 [json_name = "sender"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -53,10 +53,10 @@ public object MsgUpdateParamsKt {
      * `.abstractaccount.v1.Params params = 2 [json_name = "params"];`
      */
     public var params: abstractaccount.v1.ParamsOuterClass.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

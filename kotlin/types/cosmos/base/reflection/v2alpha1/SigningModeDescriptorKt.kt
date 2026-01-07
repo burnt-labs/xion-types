@@ -43,10 +43,10 @@ public object SigningModeDescriptorKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -68,10 +68,10 @@ public object SigningModeDescriptorKt {
      * `int32 number = 2 [json_name = "number"];`
      */
     public var number: kotlin.Int
-      @JvmName("getNumber")
-      get() = _builder.number
-      @JvmName("setNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getNumber")
+        get() = _builder.number
+      @kotlin.jvm.JvmName("setNumber")
+        set(value) {
         _builder.number = value
       }
     /**
@@ -94,10 +94,10 @@ public object SigningModeDescriptorKt {
      * `string authn_info_provider_method_fullname = 3 [json_name = "authnInfoProviderMethodFullname"];`
      */
     public var authnInfoProviderMethodFullname: kotlin.String
-      @JvmName("getAuthnInfoProviderMethodFullname")
-      get() = _builder.authnInfoProviderMethodFullname
-      @JvmName("setAuthnInfoProviderMethodFullname")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthnInfoProviderMethodFullname")
+        get() = _builder.authnInfoProviderMethodFullname
+      @kotlin.jvm.JvmName("setAuthnInfoProviderMethodFullname")
+        set(value) {
         _builder.authnInfoProviderMethodFullname = value
       }
     /**

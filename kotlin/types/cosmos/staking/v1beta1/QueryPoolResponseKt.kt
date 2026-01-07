@@ -40,10 +40,10 @@ public object QueryPoolResponseKt {
      * `.cosmos.staking.v1beta1.Pool pool = 1 [json_name = "pool", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var pool: cosmos.staking.v1beta1.Staking.Pool
-      @JvmName("getPool")
-      get() = _builder.pool
-      @JvmName("setPool")
-      set(value) {
+      @kotlin.jvm.JvmName("getPool")
+        get() = _builder.pool
+      @kotlin.jvm.JvmName("setPool")
+        set(value) {
         _builder.pool = value
       }
     /**

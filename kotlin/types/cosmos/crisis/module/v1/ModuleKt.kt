@@ -40,10 +40,10 @@ public object ModuleKt {
      * `string fee_collector_name = 1 [json_name = "feeCollectorName"];`
      */
     public var feeCollectorName: kotlin.String
-      @JvmName("getFeeCollectorName")
-      get() = _builder.feeCollectorName
-      @JvmName("setFeeCollectorName")
-      set(value) {
+      @kotlin.jvm.JvmName("getFeeCollectorName")
+        get() = _builder.feeCollectorName
+      @kotlin.jvm.JvmName("setFeeCollectorName")
+        set(value) {
         _builder.feeCollectorName = value
       }
     /**
@@ -65,10 +65,10 @@ public object ModuleKt {
      * `string authority = 2 [json_name = "authority"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**

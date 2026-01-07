@@ -41,10 +41,10 @@ public object QueryRawContractStateRequestKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -62,10 +62,10 @@ public object QueryRawContractStateRequestKt {
      * `bytes query_data = 2 [json_name = "queryData"];`
      */
     public var queryData: com.google.protobuf.ByteString
-      @JvmName("getQueryData")
-      get() = _builder.queryData
-      @JvmName("setQueryData")
-      set(value) {
+      @kotlin.jvm.JvmName("getQueryData")
+        get() = _builder.queryData
+      @kotlin.jvm.JvmName("setQueryData")
+        set(value) {
         _builder.queryData = value
       }
     /**

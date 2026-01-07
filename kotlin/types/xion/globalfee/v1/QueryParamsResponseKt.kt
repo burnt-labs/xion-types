@@ -34,22 +34,34 @@ public object QueryParamsResponseKt {
     internal fun _build(): xion.globalfee.v1.QueryOuterClass.QueryParamsResponse = _builder.build()
 
     /**
+     * ```
+     * The global fee parameters
+     * ```
+     *
      * `.xion.globalfee.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: xion.globalfee.v1.Genesis.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
+     * ```
+     * The global fee parameters
+     * ```
+     *
      * `.xion.globalfee.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public fun clearParams() {
       _builder.clearParams()
     }
     /**
+     * ```
+     * The global fee parameters
+     * ```
+     *
      * `.xion.globalfee.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      * @return Whether the params field is set.
      */

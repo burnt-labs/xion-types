@@ -36,10 +36,10 @@ public object Bech32PrefixResponseKt {
      * `string bech32_prefix = 1 [json_name = "bech32Prefix"];`
      */
     public var bech32Prefix: kotlin.String
-      @JvmName("getBech32Prefix")
-      get() = _builder.bech32Prefix
-      @JvmName("setBech32Prefix")
-      set(value) {
+      @kotlin.jvm.JvmName("getBech32Prefix")
+        get() = _builder.bech32Prefix
+      @kotlin.jvm.JvmName("setBech32Prefix")
+        set(value) {
         _builder.bech32Prefix = value
       }
     /**

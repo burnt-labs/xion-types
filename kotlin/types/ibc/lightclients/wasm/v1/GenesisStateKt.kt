@@ -47,7 +47,7 @@ public object GenesisStateKt {
      */
      public val contracts: com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.contractsList
       )
     /**
@@ -59,7 +59,7 @@ public object GenesisStateKt {
      * @param value The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContracts")
+@kotlin.jvm.JvmName("addContracts")
     public fun com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>.add(value: ibc.lightclients.wasm.v1.Genesis.Contract) {
       _builder.addContracts(value)
     }
@@ -72,7 +72,7 @@ public object GenesisStateKt {
      * @param value The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContracts")
+@kotlin.jvm.JvmName("plusAssignContracts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>.plusAssign(value: ibc.lightclients.wasm.v1.Genesis.Contract) {
       add(value)
@@ -86,7 +86,7 @@ public object GenesisStateKt {
      * @param values The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContracts")
+@kotlin.jvm.JvmName("addAllContracts")
     public fun com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>.addAll(values: kotlin.collections.Iterable<ibc.lightclients.wasm.v1.Genesis.Contract>) {
       _builder.addAllContracts(values)
     }
@@ -99,7 +99,7 @@ public object GenesisStateKt {
      * @param values The contracts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContracts")
+@kotlin.jvm.JvmName("plusAssignAllContracts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.lightclients.wasm.v1.Genesis.Contract>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object GenesisStateKt {
      * @param value The contracts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContracts")
+@kotlin.jvm.JvmName("setContracts")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>.set(index: kotlin.Int, value: ibc.lightclients.wasm.v1.Genesis.Contract) {
       _builder.setContracts(index, value)
     }
@@ -126,11 +126,10 @@ public object GenesisStateKt {
      * `repeated .ibc.lightclients.wasm.v1.Contract contracts = 1 [json_name = "contracts", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContracts")
+@kotlin.jvm.JvmName("clearContracts")
     public fun com.google.protobuf.kotlin.DslList<ibc.lightclients.wasm.v1.Genesis.Contract, ContractsProxy>.clear() {
       _builder.clearContracts()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

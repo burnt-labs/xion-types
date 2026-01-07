@@ -40,10 +40,10 @@ public object QueryCodeRequestKt {
      * `string checksum = 1 [json_name = "checksum"];`
      */
     public var checksum: kotlin.String
-      @JvmName("getChecksum")
-      get() = _builder.checksum
-      @JvmName("setChecksum")
-      set(value) {
+      @kotlin.jvm.JvmName("getChecksum")
+        get() = _builder.checksum
+      @kotlin.jvm.JvmName("setChecksum")
+        set(value) {
         _builder.checksum = value
       }
     /**

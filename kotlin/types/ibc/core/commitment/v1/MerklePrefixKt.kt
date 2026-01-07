@@ -38,10 +38,10 @@ public object MerklePrefixKt {
      * `bytes key_prefix = 1 [json_name = "keyPrefix"];`
      */
     public var keyPrefix: com.google.protobuf.ByteString
-      @JvmName("getKeyPrefix")
-      get() = _builder.keyPrefix
-      @JvmName("setKeyPrefix")
-      set(value) {
+      @kotlin.jvm.JvmName("getKeyPrefix")
+        get() = _builder.keyPrefix
+      @kotlin.jvm.JvmName("setKeyPrefix")
+        set(value) {
         _builder.keyPrefix = value
       }
     /**

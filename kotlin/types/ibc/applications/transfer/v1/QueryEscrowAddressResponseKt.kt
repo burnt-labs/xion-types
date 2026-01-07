@@ -40,10 +40,10 @@ public object QueryEscrowAddressResponseKt {
      * `string escrow_address = 1 [json_name = "escrowAddress"];`
      */
     public var escrowAddress: kotlin.String
-      @JvmName("getEscrowAddress")
-      get() = _builder.escrowAddress
-      @JvmName("setEscrowAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getEscrowAddress")
+        get() = _builder.escrowAddress
+      @kotlin.jvm.JvmName("setEscrowAddress")
+        set(value) {
         _builder.escrowAddress = value
       }
     /**

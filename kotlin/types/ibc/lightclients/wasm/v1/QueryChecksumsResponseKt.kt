@@ -47,7 +47,7 @@ public object QueryChecksumsResponseKt {
      * @return A list containing the checksums.
      */
     public val checksums: com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.checksumsList
       )
@@ -60,7 +60,7 @@ public object QueryChecksumsResponseKt {
      * @param value The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addChecksums")
+@kotlin.jvm.JvmName("addChecksums")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>.add(value: kotlin.String) {
       _builder.addChecksums(value)
     }
@@ -73,7 +73,7 @@ public object QueryChecksumsResponseKt {
      * @param value The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignChecksums")
+@kotlin.jvm.JvmName("plusAssignChecksums")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryChecksumsResponseKt {
      * @param values The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllChecksums")
+@kotlin.jvm.JvmName("addAllChecksums")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllChecksums(values)
     }
@@ -100,7 +100,7 @@ public object QueryChecksumsResponseKt {
      * @param values The checksums to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllChecksums")
+@kotlin.jvm.JvmName("plusAssignAllChecksums")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryChecksumsResponseKt {
      * @param value The checksums to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setChecksums")
+@kotlin.jvm.JvmName("setChecksums")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setChecksums(index, value)
     }/**
@@ -126,7 +126,7 @@ public object QueryChecksumsResponseKt {
      * `repeated string checksums = 1 [json_name = "checksums"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearChecksums")
+@kotlin.jvm.JvmName("setChecksums")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ChecksumsProxy>.clear() {
       _builder.clearChecksums()
     }
@@ -138,10 +138,10 @@ public object QueryChecksumsResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

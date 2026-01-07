@@ -113,7 +113,7 @@ pub struct MsgRegisterAccount {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds are coins to be deposited to the contract on instantiattion
     #[prost(message, repeated, tag="4")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Salt is an arbinary value to be used in deriving the account address.
     /// Max 64 bytes.
     #[prost(bytes="vec", tag="5")]

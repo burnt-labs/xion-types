@@ -40,10 +40,10 @@ public object QueryDepositResponseKt {
      * `.cosmos.gov.v1beta1.Deposit deposit = 1 [json_name = "deposit", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var deposit: cosmos.gov.v1beta1.Gov.Deposit
-      @JvmName("getDeposit")
-      get() = _builder.deposit
-      @JvmName("setDeposit")
-      set(value) {
+      @kotlin.jvm.JvmName("getDeposit")
+        get() = _builder.deposit
+      @kotlin.jvm.JvmName("setDeposit")
+        set(value) {
         _builder.deposit = value
       }
     /**

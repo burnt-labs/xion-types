@@ -41,10 +41,10 @@ public object ValidatorMissedBlocksKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -73,7 +73,7 @@ public object ValidatorMissedBlocksKt {
      */
      public val missedBlocks: com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.missedBlocksList
       )
     /**
@@ -85,7 +85,7 @@ public object ValidatorMissedBlocksKt {
      * @param value The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMissedBlocks")
+@kotlin.jvm.JvmName("addMissedBlocks")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>.add(value: cosmos.slashing.v1beta1.Genesis.MissedBlock) {
       _builder.addMissedBlocks(value)
     }
@@ -98,7 +98,7 @@ public object ValidatorMissedBlocksKt {
      * @param value The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMissedBlocks")
+@kotlin.jvm.JvmName("plusAssignMissedBlocks")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>.plusAssign(value: cosmos.slashing.v1beta1.Genesis.MissedBlock) {
       add(value)
@@ -112,7 +112,7 @@ public object ValidatorMissedBlocksKt {
      * @param values The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMissedBlocks")
+@kotlin.jvm.JvmName("addAllMissedBlocks")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>.addAll(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Genesis.MissedBlock>) {
       _builder.addAllMissedBlocks(values)
     }
@@ -125,7 +125,7 @@ public object ValidatorMissedBlocksKt {
      * @param values The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMissedBlocks")
+@kotlin.jvm.JvmName("plusAssignAllMissedBlocks")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Genesis.MissedBlock>) {
       addAll(values)
@@ -140,7 +140,7 @@ public object ValidatorMissedBlocksKt {
      * @param value The missedBlocks to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMissedBlocks")
+@kotlin.jvm.JvmName("setMissedBlocks")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>.set(index: kotlin.Int, value: cosmos.slashing.v1beta1.Genesis.MissedBlock) {
       _builder.setMissedBlocks(index, value)
     }
@@ -152,11 +152,10 @@ public object ValidatorMissedBlocksKt {
      * `repeated .cosmos.slashing.v1beta1.MissedBlock missed_blocks = 2 [json_name = "missedBlocks", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMissedBlocks")
+@kotlin.jvm.JvmName("clearMissedBlocks")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.MissedBlock, MissedBlocksProxy>.clear() {
       _builder.clearMissedBlocks()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

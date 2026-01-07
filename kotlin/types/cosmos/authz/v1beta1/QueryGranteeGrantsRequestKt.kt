@@ -36,10 +36,10 @@ public object QueryGranteeGrantsRequestKt {
      * `string grantee = 1 [json_name = "grantee", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var grantee: kotlin.String
-      @JvmName("getGrantee")
-      get() = _builder.grantee
-      @JvmName("setGrantee")
-      set(value) {
+      @kotlin.jvm.JvmName("getGrantee")
+        get() = _builder.grantee
+      @kotlin.jvm.JvmName("setGrantee")
+        set(value) {
         _builder.grantee = value
       }
     /**
@@ -57,10 +57,10 @@ public object QueryGranteeGrantsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

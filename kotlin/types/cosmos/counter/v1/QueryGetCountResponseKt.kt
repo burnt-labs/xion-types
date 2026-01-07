@@ -36,10 +36,10 @@ public object QueryGetCountResponseKt {
      * `int64 total_count = 1 [json_name = "totalCount"];`
      */
     public var totalCount: kotlin.Long
-      @JvmName("getTotalCount")
-      get() = _builder.totalCount
-      @JvmName("setTotalCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalCount")
+        get() = _builder.totalCount
+      @kotlin.jvm.JvmName("setTotalCount")
+        set(value) {
         _builder.totalCount = value
       }
     /**

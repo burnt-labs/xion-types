@@ -40,10 +40,10 @@ public object ParamsKt {
      * `string native_ibced_in_osmosis = 1 [json_name = "nativeIbcedInOsmosis"];`
      */
     public var nativeIbcedInOsmosis: kotlin.String
-      @JvmName("getNativeIbcedInOsmosis")
-      get() = _builder.nativeIbcedInOsmosis
-      @JvmName("setNativeIbcedInOsmosis")
-      set(value) {
+      @kotlin.jvm.JvmName("getNativeIbcedInOsmosis")
+        get() = _builder.nativeIbcedInOsmosis
+      @kotlin.jvm.JvmName("setNativeIbcedInOsmosis")
+        set(value) {
         _builder.nativeIbcedInOsmosis = value
       }
     /**
@@ -65,10 +65,10 @@ public object ParamsKt {
      * `string osmosis_query_twap_path = 2 [json_name = "osmosisQueryTwapPath"];`
      */
     public var osmosisQueryTwapPath: kotlin.String
-      @JvmName("getOsmosisQueryTwapPath")
-      get() = _builder.osmosisQueryTwapPath
-      @JvmName("setOsmosisQueryTwapPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getOsmosisQueryTwapPath")
+        get() = _builder.osmosisQueryTwapPath
+      @kotlin.jvm.JvmName("setOsmosisQueryTwapPath")
+        set(value) {
         _builder.osmosisQueryTwapPath = value
       }
     /**
@@ -90,10 +90,10 @@ public object ParamsKt {
      * `string chain_name = 3 [json_name = "chainName"];`
      */
     public var chainName: kotlin.String
-      @JvmName("getChainName")
-      get() = _builder.chainName
-      @JvmName("setChainName")
-      set(value) {
+      @kotlin.jvm.JvmName("getChainName")
+        get() = _builder.chainName
+      @kotlin.jvm.JvmName("setChainName")
+        set(value) {
         _builder.chainName = value
       }
     /**
@@ -115,10 +115,10 @@ public object ParamsKt {
      * `string ibc_transfer_channel = 4 [json_name = "ibcTransferChannel"];`
      */
     public var ibcTransferChannel: kotlin.String
-      @JvmName("getIbcTransferChannel")
-      get() = _builder.ibcTransferChannel
-      @JvmName("setIbcTransferChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcTransferChannel")
+        get() = _builder.ibcTransferChannel
+      @kotlin.jvm.JvmName("setIbcTransferChannel")
+        set(value) {
         _builder.ibcTransferChannel = value
       }
     /**
@@ -140,10 +140,10 @@ public object ParamsKt {
      * `string ibc_query_icq_channel = 5 [json_name = "ibcQueryIcqChannel"];`
      */
     public var ibcQueryIcqChannel: kotlin.String
-      @JvmName("getIbcQueryIcqChannel")
-      get() = _builder.ibcQueryIcqChannel
-      @JvmName("setIbcQueryIcqChannel")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcQueryIcqChannel")
+        get() = _builder.ibcQueryIcqChannel
+      @kotlin.jvm.JvmName("setIbcQueryIcqChannel")
+        set(value) {
         _builder.ibcQueryIcqChannel = value
       }
     /**
@@ -165,10 +165,10 @@ public object ParamsKt {
      * `string osmosis_crosschain_swap_address = 6 [json_name = "osmosisCrosschainSwapAddress"];`
      */
     public var osmosisCrosschainSwapAddress: kotlin.String
-      @JvmName("getOsmosisCrosschainSwapAddress")
-      get() = _builder.osmosisCrosschainSwapAddress
-      @JvmName("setOsmosisCrosschainSwapAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getOsmosisCrosschainSwapAddress")
+        get() = _builder.osmosisCrosschainSwapAddress
+      @kotlin.jvm.JvmName("setOsmosisCrosschainSwapAddress")
+        set(value) {
         _builder.osmosisCrosschainSwapAddress = value
       }
     /**

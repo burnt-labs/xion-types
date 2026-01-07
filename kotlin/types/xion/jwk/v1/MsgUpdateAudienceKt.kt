@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun msgUpdateAudience(block: xion.jwk.v1.MsgUpdateAudienceKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.Tx.MsgUpdateAudience =
   xion.jwk.v1.MsgUpdateAudienceKt.Dsl._create(xion.jwk.v1.Tx.MsgUpdateAudience.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * MsgUpdateAudience defines the message for updating an audience
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.MsgUpdateAudience`
  */
 public object MsgUpdateAudienceKt {
@@ -29,16 +33,24 @@ public object MsgUpdateAudienceKt {
     internal fun _build(): xion.jwk.v1.Tx.MsgUpdateAudience = _builder.build()
 
     /**
+     * ```
+     * The current admin address
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
+     * ```
+     * The current admin address
+     * ```
+     *
      * `string admin = 1 [json_name = "admin"];`
      */
     public fun clearAdmin() {
@@ -46,16 +58,24 @@ public object MsgUpdateAudienceKt {
     }
 
     /**
+     * ```
+     * The new admin address
+     * ```
+     *
      * `string new_admin = 2 [json_name = "newAdmin"];`
      */
     public var newAdmin: kotlin.String
-      @JvmName("getNewAdmin")
-      get() = _builder.newAdmin
-      @JvmName("setNewAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewAdmin")
+        get() = _builder.newAdmin
+      @kotlin.jvm.JvmName("setNewAdmin")
+        set(value) {
         _builder.newAdmin = value
       }
     /**
+     * ```
+     * The new admin address
+     * ```
+     *
      * `string new_admin = 2 [json_name = "newAdmin"];`
      */
     public fun clearNewAdmin() {
@@ -63,16 +83,24 @@ public object MsgUpdateAudienceKt {
     }
 
     /**
+     * ```
+     * The current audience identifier
+     * ```
+     *
      * `string aud = 3 [json_name = "aud"];`
      */
     public var aud: kotlin.String
-      @JvmName("getAud")
-      get() = _builder.aud
-      @JvmName("setAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getAud")
+        get() = _builder.aud
+      @kotlin.jvm.JvmName("setAud")
+        set(value) {
         _builder.aud = value
       }
     /**
+     * ```
+     * The current audience identifier
+     * ```
+     *
      * `string aud = 3 [json_name = "aud"];`
      */
     public fun clearAud() {
@@ -80,16 +108,24 @@ public object MsgUpdateAudienceKt {
     }
 
     /**
+     * ```
+     * The current public key
+     * ```
+     *
      * `string key = 4 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
+     * ```
+     * The current public key
+     * ```
+     *
      * `string key = 4 [json_name = "key"];`
      */
     public fun clearKey() {
@@ -97,16 +133,24 @@ public object MsgUpdateAudienceKt {
     }
 
     /**
+     * ```
+     * The new audience identifier
+     * ```
+     *
      * `string new_aud = 5 [json_name = "newAud"];`
      */
     public var newAud: kotlin.String
-      @JvmName("getNewAud")
-      get() = _builder.newAud
-      @JvmName("setNewAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewAud")
+        get() = _builder.newAud
+      @kotlin.jvm.JvmName("setNewAud")
+        set(value) {
         _builder.newAud = value
       }
     /**
+     * ```
+     * The new audience identifier
+     * ```
+     *
      * `string new_aud = 5 [json_name = "newAud"];`
      */
     public fun clearNewAud() {

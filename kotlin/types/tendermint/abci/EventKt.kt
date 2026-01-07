@@ -38,10 +38,10 @@ public object EventKt {
      * `string type = 1 [json_name = "type"];`
      */
     public var type: kotlin.String
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     /**
@@ -62,7 +62,7 @@ public object EventKt {
      */
      public val attributes: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.attributesList
       )
     /**
@@ -70,7 +70,7 @@ public object EventKt {
      * @param value The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAttributes")
+@kotlin.jvm.JvmName("addAttributes")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>.add(value: tendermint.abci.Types.EventAttribute) {
       _builder.addAttributes(value)
     }
@@ -79,7 +79,7 @@ public object EventKt {
      * @param value The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAttributes")
+@kotlin.jvm.JvmName("plusAssignAttributes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>.plusAssign(value: tendermint.abci.Types.EventAttribute) {
       add(value)
@@ -89,7 +89,7 @@ public object EventKt {
      * @param values The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAttributes")
+@kotlin.jvm.JvmName("addAllAttributes")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.EventAttribute>) {
       _builder.addAllAttributes(values)
     }
@@ -98,7 +98,7 @@ public object EventKt {
      * @param values The attributes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAttributes")
+@kotlin.jvm.JvmName("plusAssignAllAttributes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.EventAttribute>) {
       addAll(values)
@@ -109,7 +109,7 @@ public object EventKt {
      * @param value The attributes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAttributes")
+@kotlin.jvm.JvmName("setAttributes")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.EventAttribute) {
       _builder.setAttributes(index, value)
     }
@@ -117,11 +117,10 @@ public object EventKt {
      * `repeated .tendermint.abci.EventAttribute attributes = 2 [json_name = "attributes", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "attributes,omitempty"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAttributes")
+@kotlin.jvm.JvmName("clearAttributes")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.EventAttribute, AttributesProxy>.clear() {
       _builder.clearAttributes()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

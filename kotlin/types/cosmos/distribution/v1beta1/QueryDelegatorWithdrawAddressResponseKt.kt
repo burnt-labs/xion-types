@@ -41,10 +41,10 @@ public object QueryDelegatorWithdrawAddressResponseKt {
      * `string withdraw_address = 1 [json_name = "withdrawAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var withdrawAddress: kotlin.String
-      @JvmName("getWithdrawAddress")
-      get() = _builder.withdrawAddress
-      @JvmName("setWithdrawAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getWithdrawAddress")
+        get() = _builder.withdrawAddress
+      @kotlin.jvm.JvmName("setWithdrawAddress")
+        set(value) {
         _builder.withdrawAddress = value
       }
     /**

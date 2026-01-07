@@ -38,10 +38,10 @@ public object HashedParamsKt {
      * `int64 block_max_bytes = 1 [json_name = "blockMaxBytes"];`
      */
     public var blockMaxBytes: kotlin.Long
-      @JvmName("getBlockMaxBytes")
-      get() = _builder.blockMaxBytes
-      @JvmName("setBlockMaxBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockMaxBytes")
+        get() = _builder.blockMaxBytes
+      @kotlin.jvm.JvmName("setBlockMaxBytes")
+        set(value) {
         _builder.blockMaxBytes = value
       }
     /**
@@ -55,10 +55,10 @@ public object HashedParamsKt {
      * `int64 block_max_gas = 2 [json_name = "blockMaxGas"];`
      */
     public var blockMaxGas: kotlin.Long
-      @JvmName("getBlockMaxGas")
-      get() = _builder.blockMaxGas
-      @JvmName("setBlockMaxGas")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockMaxGas")
+        get() = _builder.blockMaxGas
+      @kotlin.jvm.JvmName("setBlockMaxGas")
+        set(value) {
         _builder.blockMaxGas = value
       }
     /**

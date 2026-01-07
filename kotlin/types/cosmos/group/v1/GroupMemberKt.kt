@@ -40,10 +40,10 @@ public object GroupMemberKt {
      * `uint64 group_id = 1 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**
@@ -65,10 +65,10 @@ public object GroupMemberKt {
      * `.cosmos.group.v1.Member member = 2 [json_name = "member"];`
      */
     public var member: cosmos.group.v1.Types.Member
-      @JvmName("getMember")
-      get() = _builder.member
-      @JvmName("setMember")
-      set(value) {
+      @kotlin.jvm.JvmName("getMember")
+        get() = _builder.member
+      @kotlin.jvm.JvmName("setMember")
+        set(value) {
         _builder.member = value
       }
     /**

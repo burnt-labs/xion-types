@@ -45,7 +45,7 @@ public object ProofOpsKt {
      */
      public val ops: com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.opsList
       )
     /**
@@ -53,7 +53,7 @@ public object ProofOpsKt {
      * @param value The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOps")
+@kotlin.jvm.JvmName("addOps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>.add(value: cosmos.base.tendermint.v1beta1.Query.ProofOp) {
       _builder.addOps(value)
     }
@@ -62,7 +62,7 @@ public object ProofOpsKt {
      * @param value The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOps")
+@kotlin.jvm.JvmName("plusAssignOps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>.plusAssign(value: cosmos.base.tendermint.v1beta1.Query.ProofOp) {
       add(value)
@@ -72,7 +72,7 @@ public object ProofOpsKt {
      * @param values The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOps")
+@kotlin.jvm.JvmName("addAllOps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.tendermint.v1beta1.Query.ProofOp>) {
       _builder.addAllOps(values)
     }
@@ -81,7 +81,7 @@ public object ProofOpsKt {
      * @param values The ops to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOps")
+@kotlin.jvm.JvmName("plusAssignAllOps")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.tendermint.v1beta1.Query.ProofOp>) {
       addAll(values)
@@ -92,7 +92,7 @@ public object ProofOpsKt {
      * @param value The ops to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOps")
+@kotlin.jvm.JvmName("setOps")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>.set(index: kotlin.Int, value: cosmos.base.tendermint.v1beta1.Query.ProofOp) {
       _builder.setOps(index, value)
     }
@@ -100,11 +100,10 @@ public object ProofOpsKt {
      * `repeated .cosmos.base.tendermint.v1beta1.ProofOp ops = 1 [json_name = "ops", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOps")
+@kotlin.jvm.JvmName("clearOps")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.tendermint.v1beta1.Query.ProofOp, OpsProxy>.clear() {
       _builder.clearOps()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

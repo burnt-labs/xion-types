@@ -36,10 +36,10 @@ public object SnapshotExtensionMetaKt {
      * `string name = 1 [json_name = "name"];`
      */
     public var name: kotlin.String
-      @JvmName("getName")
-      get() = _builder.name
-      @JvmName("setName")
-      set(value) {
+      @kotlin.jvm.JvmName("getName")
+        get() = _builder.name
+      @kotlin.jvm.JvmName("setName")
+        set(value) {
         _builder.name = value
       }
     /**
@@ -53,10 +53,10 @@ public object SnapshotExtensionMetaKt {
      * `uint32 format = 2 [json_name = "format"];`
      */
     public var format: kotlin.Int
-      @JvmName("getFormat")
-      get() = _builder.format
-      @JvmName("setFormat")
-      set(value) {
+      @kotlin.jvm.JvmName("getFormat")
+        get() = _builder.format
+      @kotlin.jvm.JvmName("setFormat")
+        set(value) {
         _builder.format = value
       }
     /**

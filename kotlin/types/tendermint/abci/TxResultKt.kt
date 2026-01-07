@@ -38,10 +38,10 @@ public object TxResultKt {
      * `int64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -55,10 +55,10 @@ public object TxResultKt {
      * `uint32 index = 2 [json_name = "index"];`
      */
     public var index: kotlin.Int
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**
@@ -72,10 +72,10 @@ public object TxResultKt {
      * `bytes tx = 3 [json_name = "tx"];`
      */
     public var tx: com.google.protobuf.ByteString
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**
@@ -89,10 +89,10 @@ public object TxResultKt {
      * `.tendermint.abci.ExecTxResult result = 4 [json_name = "result", (.gogoproto.nullable) = false];`
      */
     public var result: tendermint.abci.Types.ExecTxResult
-      @JvmName("getResult")
-      get() = _builder.result
-      @JvmName("setResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getResult")
+        get() = _builder.result
+      @kotlin.jvm.JvmName("setResult")
+        set(value) {
         _builder.result = value
       }
     /**

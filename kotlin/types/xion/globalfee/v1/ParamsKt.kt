@@ -51,7 +51,7 @@ public object ParamsKt {
      */
      public val minimumGasPrices: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.minimumGasPricesList
       )
     /**
@@ -67,7 +67,7 @@ public object ParamsKt {
      * @param value The minimumGasPrices to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMinimumGasPrices")
+@kotlin.jvm.JvmName("addMinimumGasPrices")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.addMinimumGasPrices(value)
     }
@@ -84,7 +84,7 @@ public object ParamsKt {
      * @param value The minimumGasPrices to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMinimumGasPrices")
+@kotlin.jvm.JvmName("plusAssignMinimumGasPrices")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       add(value)
@@ -102,7 +102,7 @@ public object ParamsKt {
      * @param values The minimumGasPrices to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMinimumGasPrices")
+@kotlin.jvm.JvmName("addAllMinimumGasPrices")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       _builder.addAllMinimumGasPrices(values)
     }
@@ -119,7 +119,7 @@ public object ParamsKt {
      * @param values The minimumGasPrices to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMinimumGasPrices")
+@kotlin.jvm.JvmName("plusAssignAllMinimumGasPrices")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.DecCoin>) {
       addAll(values)
@@ -138,7 +138,7 @@ public object ParamsKt {
      * @param value The minimumGasPrices to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMinimumGasPrices")
+@kotlin.jvm.JvmName("setMinimumGasPrices")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.DecCoin) {
       _builder.setMinimumGasPrices(index, value)
     }
@@ -154,11 +154,10 @@ public object ParamsKt {
      * `repeated .cosmos.base.v1beta1.DecCoin minimum_gas_prices = 1 [json_name = "minimumGasPrices", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "minimum_gas_prices,omitempty", (.gogoproto.moretags) = "yaml:\"minimum_gas_prices\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.DecCoins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMinimumGasPrices")
+@kotlin.jvm.JvmName("clearMinimumGasPrices")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.DecCoin, MinimumGasPricesProxy>.clear() {
       _builder.clearMinimumGasPrices()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -176,7 +175,7 @@ public object ParamsKt {
      * @return A list containing the bypassMinFeeMsgTypes.
      */
     public val bypassMinFeeMsgTypes: com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.bypassMinFeeMsgTypesList
       )
@@ -190,7 +189,7 @@ public object ParamsKt {
      * @param value The bypassMinFeeMsgTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addBypassMinFeeMsgTypes")
+@kotlin.jvm.JvmName("addBypassMinFeeMsgTypes")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>.add(value: kotlin.String) {
       _builder.addBypassMinFeeMsgTypes(value)
     }
@@ -204,7 +203,7 @@ public object ParamsKt {
      * @param value The bypassMinFeeMsgTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignBypassMinFeeMsgTypes")
+@kotlin.jvm.JvmName("plusAssignBypassMinFeeMsgTypes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -219,7 +218,7 @@ public object ParamsKt {
      * @param values The bypassMinFeeMsgTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllBypassMinFeeMsgTypes")
+@kotlin.jvm.JvmName("addAllBypassMinFeeMsgTypes")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllBypassMinFeeMsgTypes(values)
     }
@@ -233,7 +232,7 @@ public object ParamsKt {
      * @param values The bypassMinFeeMsgTypes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllBypassMinFeeMsgTypes")
+@kotlin.jvm.JvmName("plusAssignAllBypassMinFeeMsgTypes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -249,7 +248,7 @@ public object ParamsKt {
      * @param value The bypassMinFeeMsgTypes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setBypassMinFeeMsgTypes")
+@kotlin.jvm.JvmName("setBypassMinFeeMsgTypes")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setBypassMinFeeMsgTypes(index, value)
     }/**
@@ -261,7 +260,7 @@ public object ParamsKt {
      * `repeated string bypass_min_fee_msg_types = 2 [json_name = "bypassMinFeeMsgTypes", (.gogoproto.jsontag) = "bypass_min_fee_msg_types,omitempty", (.gogoproto.moretags) = "yaml:\"bypass_min_fee_msg_types\""];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearBypassMinFeeMsgTypes")
+@kotlin.jvm.JvmName("setBypassMinFeeMsgTypes")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, BypassMinFeeMsgTypesProxy>.clear() {
       _builder.clearBypassMinFeeMsgTypes()
     }
@@ -275,10 +274,10 @@ public object ParamsKt {
      * `uint64 max_total_bypass_min_fee_msg_gas_usage = 3 [json_name = "maxTotalBypassMinFeeMsgGasUsage"];`
      */
     public var maxTotalBypassMinFeeMsgGasUsage: kotlin.Long
-      @JvmName("getMaxTotalBypassMinFeeMsgGasUsage")
-      get() = _builder.maxTotalBypassMinFeeMsgGasUsage
-      @JvmName("setMaxTotalBypassMinFeeMsgGasUsage")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxTotalBypassMinFeeMsgGasUsage")
+        get() = _builder.maxTotalBypassMinFeeMsgGasUsage
+      @kotlin.jvm.JvmName("setMaxTotalBypassMinFeeMsgGasUsage")
+        set(value) {
         _builder.maxTotalBypassMinFeeMsgGasUsage = value
       }
     /**

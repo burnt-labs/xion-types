@@ -41,10 +41,10 @@ public object QueryValidatorUnbondingDelegationsRequestKt {
      * `string validator_addr = 1 [json_name = "validatorAddr", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddr: kotlin.String
-      @JvmName("getValidatorAddr")
-      get() = _builder.validatorAddr
-      @JvmName("setValidatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddr")
+        get() = _builder.validatorAddr
+      @kotlin.jvm.JvmName("setValidatorAddr")
+        set(value) {
         _builder.validatorAddr = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryValidatorUnbondingDelegationsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

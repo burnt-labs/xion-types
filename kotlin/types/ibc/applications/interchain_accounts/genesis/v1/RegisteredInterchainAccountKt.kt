@@ -36,10 +36,10 @@ public object RegisteredInterchainAccountKt {
      * `string connection_id = 1 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -53,10 +53,10 @@ public object RegisteredInterchainAccountKt {
      * `string port_id = 2 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -70,10 +70,10 @@ public object RegisteredInterchainAccountKt {
      * `string account_address = 3 [json_name = "accountAddress"];`
      */
     public var accountAddress: kotlin.String
-      @JvmName("getAccountAddress")
-      get() = _builder.accountAddress
-      @JvmName("setAccountAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountAddress")
+        get() = _builder.accountAddress
+      @kotlin.jvm.JvmName("setAccountAddress")
+        set(value) {
         _builder.accountAddress = value
       }
     /**

@@ -40,10 +40,10 @@ public object MsgSwapCrossChainKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -58,16 +58,24 @@ public object MsgSwapCrossChainKt {
     }
 
     /**
+     * ```
+     * The IBC denomination to swap
+     * ```
+     *
      * `string ibc_denom = 2 [json_name = "ibcDenom"];`
      */
     public var ibcDenom: kotlin.String
-      @JvmName("getIbcDenom")
-      get() = _builder.ibcDenom
-      @JvmName("setIbcDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcDenom")
+        get() = _builder.ibcDenom
+      @kotlin.jvm.JvmName("setIbcDenom")
+        set(value) {
         _builder.ibcDenom = value
       }
     /**
+     * ```
+     * The IBC denomination to swap
+     * ```
+     *
      * `string ibc_denom = 2 [json_name = "ibcDenom"];`
      */
     public fun clearIbcDenom() {

@@ -165,7 +165,7 @@ pub struct QueryNfTsRequest {
     pub owner: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="3")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryNFTsResponse is the response type for the Query/NFTs RPC methods
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -175,7 +175,7 @@ pub struct QueryNfTsResponse {
     pub nfts: ::prost::alloc::vec::Vec<Nft>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryNFTRequest is the request type for the Query/NFT RPC method
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -213,7 +213,7 @@ pub struct QueryClassResponse {
 pub struct QueryClassesRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryClassesResponse is the response type for the Query/Classes RPC method
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -223,7 +223,7 @@ pub struct QueryClassesResponse {
     pub classes: ::prost::alloc::vec::Vec<Class>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// MsgSend represents a message to send a nft from one account to another account.
 #[derive(Clone, PartialEq, ::prost::Message)]

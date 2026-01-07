@@ -32,10 +32,10 @@ public object SimpleValidatorKt {
      * `.tendermint.crypto.PublicKey pub_key = 1 [json_name = "pubKey"];`
      */
     public var pubKey: tendermint.crypto.Keys.PublicKey
-      @JvmName("getPubKey")
-      get() = _builder.pubKey
-      @JvmName("setPubKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPubKey")
+        get() = _builder.pubKey
+      @kotlin.jvm.JvmName("setPubKey")
+        set(value) {
         _builder.pubKey = value
       }
     /**
@@ -59,10 +59,10 @@ public object SimpleValidatorKt {
      * `int64 voting_power = 2 [json_name = "votingPower"];`
      */
     public var votingPower: kotlin.Long
-      @JvmName("getVotingPower")
-      get() = _builder.votingPower
-      @JvmName("setVotingPower")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingPower")
+        get() = _builder.votingPower
+      @kotlin.jvm.JvmName("setVotingPower")
+        set(value) {
         _builder.votingPower = value
       }
     /**

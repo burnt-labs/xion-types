@@ -33,16 +33,26 @@ public object QueryArithmeticTwapToNowResponseKt {
     internal fun _build(): xion.feeabs.v1beta1.Osmosisibc.QueryArithmeticTwapToNowResponse = _builder.build()
 
     /**
+     * ```
+     * arithmetic_twap defines the calculated arithmetic time-weighted average
+     * price
+     * ```
+     *
      * `string arithmetic_twap = 1 [json_name = "arithmeticTwap", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"arithmetic_twap\""];`
      */
     public var arithmeticTwap: kotlin.String
-      @JvmName("getArithmeticTwap")
-      get() = _builder.arithmeticTwap
-      @JvmName("setArithmeticTwap")
-      set(value) {
+      @kotlin.jvm.JvmName("getArithmeticTwap")
+        get() = _builder.arithmeticTwap
+      @kotlin.jvm.JvmName("setArithmeticTwap")
+        set(value) {
         _builder.arithmeticTwap = value
       }
     /**
+     * ```
+     * arithmetic_twap defines the calculated arithmetic time-weighted average
+     * price
+     * ```
+     *
      * `string arithmetic_twap = 1 [json_name = "arithmeticTwap", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"arithmetic_twap\""];`
      */
     public fun clearArithmeticTwap() {

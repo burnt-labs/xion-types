@@ -40,10 +40,10 @@ public object ConfigurationDescriptorKt {
      * `string bech32_account_address_prefix = 1 [json_name = "bech32AccountAddressPrefix"];`
      */
     public var bech32AccountAddressPrefix: kotlin.String
-      @JvmName("getBech32AccountAddressPrefix")
-      get() = _builder.bech32AccountAddressPrefix
-      @JvmName("setBech32AccountAddressPrefix")
-      set(value) {
+      @kotlin.jvm.JvmName("getBech32AccountAddressPrefix")
+        get() = _builder.bech32AccountAddressPrefix
+      @kotlin.jvm.JvmName("setBech32AccountAddressPrefix")
+        set(value) {
         _builder.bech32AccountAddressPrefix = value
       }
     /**

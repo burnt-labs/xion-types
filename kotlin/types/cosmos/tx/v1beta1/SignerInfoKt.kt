@@ -43,10 +43,10 @@ public object SignerInfoKt {
      * `.google.protobuf.Any public_key = 1 [json_name = "publicKey"];`
      */
     public var publicKey: com.google.protobuf.Any
-      @JvmName("getPublicKey")
-      get() = _builder.publicKey
-      @JvmName("setPublicKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPublicKey")
+        get() = _builder.publicKey
+      @kotlin.jvm.JvmName("setPublicKey")
+        set(value) {
         _builder.publicKey = value
       }
     /**
@@ -87,10 +87,10 @@ public object SignerInfoKt {
      * `.cosmos.tx.v1beta1.ModeInfo mode_info = 2 [json_name = "modeInfo"];`
      */
     public var modeInfo: cosmos.tx.v1beta1.TxOuterClass.ModeInfo
-      @JvmName("getModeInfo")
-      get() = _builder.modeInfo
-      @JvmName("setModeInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getModeInfo")
+        get() = _builder.modeInfo
+      @kotlin.jvm.JvmName("setModeInfo")
+        set(value) {
         _builder.modeInfo = value
       }
     /**
@@ -130,10 +130,10 @@ public object SignerInfoKt {
      * `uint64 sequence = 3 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**

@@ -40,10 +40,10 @@ public object ModeInfoKt {
      * `.cosmos.tx.v1beta1.ModeInfo.Single single = 1 [json_name = "single"];`
      */
     public var single: cosmos.tx.v1beta1.TxOuterClass.ModeInfo.Single
-      @JvmName("getSingle")
-      get() = _builder.single
-      @JvmName("setSingle")
-      set(value) {
+      @kotlin.jvm.JvmName("getSingle")
+        get() = _builder.single
+      @kotlin.jvm.JvmName("setSingle")
+        set(value) {
         _builder.single = value
       }
     /**
@@ -76,10 +76,10 @@ public object ModeInfoKt {
      * `.cosmos.tx.v1beta1.ModeInfo.Multi multi = 2 [json_name = "multi"];`
      */
     public var multi: cosmos.tx.v1beta1.TxOuterClass.ModeInfo.Multi
-      @JvmName("getMulti")
-      get() = _builder.multi
-      @JvmName("setMulti")
-      set(value) {
+      @kotlin.jvm.JvmName("getMulti")
+        get() = _builder.multi
+      @kotlin.jvm.JvmName("setMulti")
+        set(value) {
         _builder.multi = value
       }
     /**
@@ -147,17 +147,17 @@ public object ModeInfoKt {
        * `.cosmos.tx.signing.v1beta1.SignMode mode = 1 [json_name = "mode"];`
        */
       public var mode: cosmos.tx.signing.v1beta1.Signing.SignMode
-        @JvmName("getMode")
-        get() = _builder.mode
-        @JvmName("setMode")
-        set(value) {
+        @kotlin.jvm.JvmName("getMode")
+          get() = _builder.mode
+        @kotlin.jvm.JvmName("setMode")
+          set(value) {
           _builder.mode = value
         }
       public var modeValue: kotlin.Int
-        @JvmName("getModeValue")
-        get() = _builder.modeValue
-        @JvmName("setModeValue")
-        set(value) {
+        @kotlin.jvm.JvmName("getModeValue")
+          get() = _builder.modeValue
+        @kotlin.jvm.JvmName("setModeValue")
+          set(value) {
           _builder.modeValue = value
         }
       /**
@@ -206,10 +206,10 @@ public object ModeInfoKt {
        * `.cosmos.crypto.multisig.v1beta1.CompactBitArray bitarray = 1 [json_name = "bitarray"];`
        */
       public var bitarray: cosmos.crypto.multisig.v1beta1.Multisig.CompactBitArray
-        @JvmName("getBitarray")
-        get() = _builder.bitarray
-        @JvmName("setBitarray")
-        set(value) {
+        @kotlin.jvm.JvmName("getBitarray")
+          get() = _builder.bitarray
+        @kotlin.jvm.JvmName("setBitarray")
+          set(value) {
           _builder.bitarray = value
         }
       /**
@@ -253,7 +253,7 @@ public object ModeInfoKt {
        */
        public val modeInfos: com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>
         @kotlin.jvm.JvmSynthetic
-        get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
           _builder.modeInfosList
         )
       /**
@@ -266,7 +266,7 @@ public object ModeInfoKt {
        * @param value The modeInfos to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("addModeInfos")
+@kotlin.jvm.JvmName("addModeInfos")
       public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>.add(value: cosmos.tx.v1beta1.TxOuterClass.ModeInfo) {
         _builder.addModeInfos(value)
       }
@@ -280,7 +280,7 @@ public object ModeInfoKt {
        * @param value The modeInfos to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("plusAssignModeInfos")
+@kotlin.jvm.JvmName("plusAssignModeInfos")
       @Suppress("NOTHING_TO_INLINE")
       public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>.plusAssign(value: cosmos.tx.v1beta1.TxOuterClass.ModeInfo) {
         add(value)
@@ -295,7 +295,7 @@ public object ModeInfoKt {
        * @param values The modeInfos to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("addAllModeInfos")
+@kotlin.jvm.JvmName("addAllModeInfos")
       public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.ModeInfo>) {
         _builder.addAllModeInfos(values)
       }
@@ -309,7 +309,7 @@ public object ModeInfoKt {
        * @param values The modeInfos to add.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("plusAssignAllModeInfos")
+@kotlin.jvm.JvmName("plusAssignAllModeInfos")
       @Suppress("NOTHING_TO_INLINE")
       public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.tx.v1beta1.TxOuterClass.ModeInfo>) {
         addAll(values)
@@ -325,7 +325,7 @@ public object ModeInfoKt {
        * @param value The modeInfos to set.
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("setModeInfos")
+@kotlin.jvm.JvmName("setModeInfos")
       public operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>.set(index: kotlin.Int, value: cosmos.tx.v1beta1.TxOuterClass.ModeInfo) {
         _builder.setModeInfos(index, value)
       }
@@ -338,11 +338,10 @@ public object ModeInfoKt {
        * `repeated .cosmos.tx.v1beta1.ModeInfo mode_infos = 2 [json_name = "modeInfos"];`
        */
       @kotlin.jvm.JvmSynthetic
-      @kotlin.jvm.JvmName("clearModeInfos")
+@kotlin.jvm.JvmName("clearModeInfos")
       public fun com.google.protobuf.kotlin.DslList<cosmos.tx.v1beta1.TxOuterClass.ModeInfo, ModeInfosProxy>.clear() {
         _builder.clearModeInfos()
       }
-
     }
   }
 }

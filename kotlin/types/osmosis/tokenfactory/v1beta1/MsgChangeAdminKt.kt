@@ -37,10 +37,10 @@ public object MsgChangeAdminKt {
      * `string sender = 1 [json_name = "sender", (.gogoproto.moretags) = "yaml:\"sender\""];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgChangeAdminKt {
      * `string denom = 2 [json_name = "denom", (.gogoproto.moretags) = "yaml:\"denom\""];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -71,10 +71,10 @@ public object MsgChangeAdminKt {
      * `string new_admin = 3 [json_name = "newAdmin", (.gogoproto.moretags) = "yaml:\"new_admin\""];`
      */
     public var newAdmin: kotlin.String
-      @JvmName("getNewAdmin")
-      get() = _builder.newAdmin
-      @JvmName("setNewAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewAdmin")
+        get() = _builder.newAdmin
+      @kotlin.jvm.JvmName("setNewAdmin")
+        set(value) {
         _builder.newAdmin = value
       }
     /**

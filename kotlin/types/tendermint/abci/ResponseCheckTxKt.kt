@@ -32,10 +32,10 @@ public object ResponseCheckTxKt {
      * `uint32 code = 1 [json_name = "code"];`
      */
     public var code: kotlin.Int
-      @JvmName("getCode")
-      get() = _builder.code
-      @JvmName("setCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getCode")
+        get() = _builder.code
+      @kotlin.jvm.JvmName("setCode")
+        set(value) {
         _builder.code = value
       }
     /**
@@ -49,10 +49,10 @@ public object ResponseCheckTxKt {
      * `bytes data = 2 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -70,10 +70,10 @@ public object ResponseCheckTxKt {
      * `string log = 3 [json_name = "log"];`
      */
     public var log: kotlin.String
-      @JvmName("getLog")
-      get() = _builder.log
-      @JvmName("setLog")
-      set(value) {
+      @kotlin.jvm.JvmName("getLog")
+        get() = _builder.log
+      @kotlin.jvm.JvmName("setLog")
+        set(value) {
         _builder.log = value
       }
     /**
@@ -95,10 +95,10 @@ public object ResponseCheckTxKt {
      * `string info = 4 [json_name = "info"];`
      */
     public var info: kotlin.String
-      @JvmName("getInfo")
-      get() = _builder.info
-      @JvmName("setInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getInfo")
+        get() = _builder.info
+      @kotlin.jvm.JvmName("setInfo")
+        set(value) {
         _builder.info = value
       }
     /**
@@ -116,10 +116,10 @@ public object ResponseCheckTxKt {
      * `int64 gas_wanted = 5 [json_name = "gas_wanted"];`
      */
     public var gasWanted: kotlin.Long
-      @JvmName("getGasWanted")
-      get() = _builder.gasWanted
-      @JvmName("setGasWanted")
-      set(value) {
+      @kotlin.jvm.JvmName("getGasWanted")
+        get() = _builder.gasWanted
+      @kotlin.jvm.JvmName("setGasWanted")
+        set(value) {
         _builder.gasWanted = value
       }
     /**
@@ -133,10 +133,10 @@ public object ResponseCheckTxKt {
      * `int64 gas_used = 6 [json_name = "gas_used"];`
      */
     public var gasUsed: kotlin.Long
-      @JvmName("getGasUsed")
-      get() = _builder.gasUsed
-      @JvmName("setGasUsed")
-      set(value) {
+      @kotlin.jvm.JvmName("getGasUsed")
+        get() = _builder.gasUsed
+      @kotlin.jvm.JvmName("setGasUsed")
+        set(value) {
         _builder.gasUsed = value
       }
     /**
@@ -157,7 +157,7 @@ public object ResponseCheckTxKt {
      */
      public val events: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.eventsList
       )
     /**
@@ -165,7 +165,7 @@ public object ResponseCheckTxKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvents")
+@kotlin.jvm.JvmName("addEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.add(value: tendermint.abci.Types.Event) {
       _builder.addEvents(value)
     }
@@ -174,7 +174,7 @@ public object ResponseCheckTxKt {
      * @param value The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvents")
+@kotlin.jvm.JvmName("plusAssignEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.plusAssign(value: tendermint.abci.Types.Event) {
       add(value)
@@ -184,7 +184,7 @@ public object ResponseCheckTxKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvents")
+@kotlin.jvm.JvmName("addAllEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.Event>) {
       _builder.addAllEvents(values)
     }
@@ -193,7 +193,7 @@ public object ResponseCheckTxKt {
      * @param values The events to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvents")
+@kotlin.jvm.JvmName("plusAssignAllEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.Event>) {
       addAll(values)
@@ -204,7 +204,7 @@ public object ResponseCheckTxKt {
      * @param value The events to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvents")
+@kotlin.jvm.JvmName("setEvents")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.Event) {
       _builder.setEvents(index, value)
     }
@@ -212,20 +212,19 @@ public object ResponseCheckTxKt {
      * `repeated .tendermint.abci.Event events = 7 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvents")
+@kotlin.jvm.JvmName("clearEvents")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.Event, EventsProxy>.clear() {
       _builder.clearEvents()
     }
-
 
     /**
      * `string codespace = 8 [json_name = "codespace"];`
      */
     public var codespace: kotlin.String
-      @JvmName("getCodespace")
-      get() = _builder.codespace
-      @JvmName("setCodespace")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodespace")
+        get() = _builder.codespace
+      @kotlin.jvm.JvmName("setCodespace")
+        set(value) {
         _builder.codespace = value
       }
     /**

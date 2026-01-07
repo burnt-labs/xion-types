@@ -40,10 +40,10 @@ public object TallyResultKt {
      * `string yes_count = 1 [json_name = "yesCount", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var yesCount: kotlin.String
-      @JvmName("getYesCount")
-      get() = _builder.yesCount
-      @JvmName("setYesCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getYesCount")
+        get() = _builder.yesCount
+      @kotlin.jvm.JvmName("setYesCount")
+        set(value) {
         _builder.yesCount = value
       }
     /**
@@ -65,10 +65,10 @@ public object TallyResultKt {
      * `string abstain_count = 2 [json_name = "abstainCount", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var abstainCount: kotlin.String
-      @JvmName("getAbstainCount")
-      get() = _builder.abstainCount
-      @JvmName("setAbstainCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAbstainCount")
+        get() = _builder.abstainCount
+      @kotlin.jvm.JvmName("setAbstainCount")
+        set(value) {
         _builder.abstainCount = value
       }
     /**
@@ -90,10 +90,10 @@ public object TallyResultKt {
      * `string no_count = 3 [json_name = "noCount", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var noCount: kotlin.String
-      @JvmName("getNoCount")
-      get() = _builder.noCount
-      @JvmName("setNoCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getNoCount")
+        get() = _builder.noCount
+      @kotlin.jvm.JvmName("setNoCount")
+        set(value) {
         _builder.noCount = value
       }
     /**
@@ -115,10 +115,10 @@ public object TallyResultKt {
      * `string no_with_veto_count = 4 [json_name = "noWithVetoCount", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var noWithVetoCount: kotlin.String
-      @JvmName("getNoWithVetoCount")
-      get() = _builder.noWithVetoCount
-      @JvmName("setNoWithVetoCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getNoWithVetoCount")
+        get() = _builder.noWithVetoCount
+      @kotlin.jvm.JvmName("setNoWithVetoCount")
+        set(value) {
         _builder.noWithVetoCount = value
       }
     /**

@@ -40,10 +40,10 @@ public object QueryNFTResponseKt {
      * `.cosmos.nft.v1beta1.NFT nft = 1 [json_name = "nft"];`
      */
     public var nft: cosmos.nft.v1beta1.Nft.NFT
-      @JvmName("getNft")
-      get() = _builder.nft
-      @JvmName("setNft")
-      set(value) {
+      @kotlin.jvm.JvmName("getNft")
+        get() = _builder.nft
+      @kotlin.jvm.JvmName("setNft")
+        set(value) {
         _builder.nft = value
       }
     /**

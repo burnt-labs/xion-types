@@ -23,6 +23,6 @@ pub struct MerklePrefix {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MerkleProof {
     #[prost(message, repeated, tag="1")]
-    pub proofs: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::ics23::v1::CommitmentProof>,
+    pub proofs: ::prost::alloc::vec::Vec<crate::types::cosmos_ics23_v1::CommitmentProof>,
 }
 // @@protoc_insertion_point(module)

@@ -37,10 +37,10 @@ public object QueryCurrentEpochResponseKt {
      * `int64 current_epoch = 1 [json_name = "currentEpoch"];`
      */
     public var currentEpoch: kotlin.Long
-      @JvmName("getCurrentEpoch")
-      get() = _builder.currentEpoch
-      @JvmName("setCurrentEpoch")
-      set(value) {
+      @kotlin.jvm.JvmName("getCurrentEpoch")
+        get() = _builder.currentEpoch
+      @kotlin.jvm.JvmName("setCurrentEpoch")
+        set(value) {
         _builder.currentEpoch = value
       }
     /**

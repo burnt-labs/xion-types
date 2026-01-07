@@ -37,10 +37,10 @@ public object QueryCounterpartyInfoResponseKt {
      * `.ibc.core.client.v2.CounterpartyInfo counterparty_info = 1 [json_name = "counterpartyInfo"];`
      */
     public var counterpartyInfo: ibc.core.client.v2.Counterparty.CounterpartyInfo
-      @JvmName("getCounterpartyInfo")
-      get() = _builder.counterpartyInfo
-      @JvmName("setCounterpartyInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterpartyInfo")
+        get() = _builder.counterpartyInfo
+      @kotlin.jvm.JvmName("setCounterpartyInfo")
+        set(value) {
         _builder.counterpartyInfo = value
       }
     /**

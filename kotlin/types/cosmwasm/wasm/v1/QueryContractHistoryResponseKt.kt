@@ -44,7 +44,7 @@ public object QueryContractHistoryResponseKt {
      */
      public val entries: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.entriesList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryContractHistoryResponseKt {
      * @param value The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEntries")
+@kotlin.jvm.JvmName("addEntries")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>.add(value: cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry) {
       _builder.addEntries(value)
     }
@@ -61,7 +61,7 @@ public object QueryContractHistoryResponseKt {
      * @param value The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEntries")
+@kotlin.jvm.JvmName("plusAssignEntries")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>.plusAssign(value: cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry) {
       add(value)
@@ -71,7 +71,7 @@ public object QueryContractHistoryResponseKt {
      * @param values The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEntries")
+@kotlin.jvm.JvmName("addAllEntries")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry>) {
       _builder.addAllEntries(values)
     }
@@ -80,7 +80,7 @@ public object QueryContractHistoryResponseKt {
      * @param values The entries to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEntries")
+@kotlin.jvm.JvmName("plusAssignAllEntries")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QueryContractHistoryResponseKt {
      * @param value The entries to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEntries")
+@kotlin.jvm.JvmName("setEntries")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry) {
       _builder.setEntries(index, value)
     }
@@ -99,11 +99,10 @@ public object QueryContractHistoryResponseKt {
      * `repeated .cosmwasm.wasm.v1.ContractCodeHistoryEntry entries = 1 [json_name = "entries", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEntries")
+@kotlin.jvm.JvmName("clearEntries")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, EntriesProxy>.clear() {
       _builder.clearEntries()
     }
-
 
     /**
      * ```
@@ -113,10 +112,10 @@ public object QueryContractHistoryResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

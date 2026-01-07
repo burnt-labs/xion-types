@@ -36,10 +36,10 @@ public object GenesisAccountPermissionsKt {
      * `string address = 1 [json_name = "address"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -53,10 +53,10 @@ public object GenesisAccountPermissionsKt {
      * `.cosmos.circuit.v1.Permissions permissions = 2 [json_name = "permissions"];`
      */
     public var permissions: cosmos.circuit.v1.Types.Permissions
-      @JvmName("getPermissions")
-      get() = _builder.permissions
-      @JvmName("setPermissions")
-      set(value) {
+      @kotlin.jvm.JvmName("getPermissions")
+        get() = _builder.permissions
+      @kotlin.jvm.JvmName("setPermissions")
+        set(value) {
         _builder.permissions = value
       }
     /**

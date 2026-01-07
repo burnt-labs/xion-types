@@ -39,10 +39,10 @@ public object AbstractAccountKt {
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
-      @JvmName("getAddress")
-      get() = _builder.address
-      @JvmName("setAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddress")
+        get() = _builder.address
+      @kotlin.jvm.JvmName("setAddress")
+        set(value) {
         _builder.address = value
       }
     /**
@@ -56,10 +56,10 @@ public object AbstractAccountKt {
      * `uint64 account_number = 2 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
-      @JvmName("getAccountNumber")
-      get() = _builder.accountNumber
-      @JvmName("setAccountNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getAccountNumber")
+        get() = _builder.accountNumber
+      @kotlin.jvm.JvmName("setAccountNumber")
+        set(value) {
         _builder.accountNumber = value
       }
     /**
@@ -73,10 +73,10 @@ public object AbstractAccountKt {
      * `uint64 sequence = 3 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**

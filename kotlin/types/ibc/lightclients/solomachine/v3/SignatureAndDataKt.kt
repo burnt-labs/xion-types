@@ -37,10 +37,10 @@ public object SignatureAndDataKt {
      * `bytes signature = 1 [json_name = "signature"];`
      */
     public var signature: com.google.protobuf.ByteString
-      @JvmName("getSignature")
-      get() = _builder.signature
-      @JvmName("setSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignature")
+        get() = _builder.signature
+      @kotlin.jvm.JvmName("setSignature")
+        set(value) {
         _builder.signature = value
       }
     /**
@@ -54,10 +54,10 @@ public object SignatureAndDataKt {
      * `bytes path = 2 [json_name = "path"];`
      */
     public var path: com.google.protobuf.ByteString
-      @JvmName("getPath")
-      get() = _builder.path
-      @JvmName("setPath")
-      set(value) {
+      @kotlin.jvm.JvmName("getPath")
+        get() = _builder.path
+      @kotlin.jvm.JvmName("setPath")
+        set(value) {
         _builder.path = value
       }
     /**
@@ -71,10 +71,10 @@ public object SignatureAndDataKt {
      * `bytes data = 3 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -88,10 +88,10 @@ public object SignatureAndDataKt {
      * `uint64 timestamp = 4 [json_name = "timestamp"];`
      */
     public var timestamp: kotlin.Long
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**

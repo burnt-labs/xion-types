@@ -36,10 +36,10 @@ public object ModuleKt {
      * `.cosmos.benchmark.module.v1.GeneratorParams genesis_params = 1 [json_name = "genesisParams"];`
      */
     public var genesisParams: cosmos.benchmark.module.v1.ModuleOuterClass.GeneratorParams
-      @JvmName("getGenesisParams")
-      get() = _builder.genesisParams
-      @JvmName("setGenesisParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getGenesisParams")
+        get() = _builder.genesisParams
+      @kotlin.jvm.JvmName("setGenesisParams")
+        set(value) {
         _builder.genesisParams = value
       }
     /**

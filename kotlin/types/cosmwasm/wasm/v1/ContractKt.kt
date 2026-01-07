@@ -36,10 +36,10 @@ public object ContractKt {
      * `string contract_address = 1 [json_name = "contractAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var contractAddress: kotlin.String
-      @JvmName("getContractAddress")
-      get() = _builder.contractAddress
-      @JvmName("setContractAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getContractAddress")
+        get() = _builder.contractAddress
+      @kotlin.jvm.JvmName("setContractAddress")
+        set(value) {
         _builder.contractAddress = value
       }
     /**
@@ -53,10 +53,10 @@ public object ContractKt {
      * `.cosmwasm.wasm.v1.ContractInfo contract_info = 2 [json_name = "contractInfo", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var contractInfo: cosmwasm.wasm.v1.Types.ContractInfo
-      @JvmName("getContractInfo")
-      get() = _builder.contractInfo
-      @JvmName("setContractInfo")
-      set(value) {
+      @kotlin.jvm.JvmName("getContractInfo")
+        get() = _builder.contractInfo
+      @kotlin.jvm.JvmName("setContractInfo")
+        set(value) {
         _builder.contractInfo = value
       }
     /**
@@ -87,7 +87,7 @@ public object ContractKt {
      */
      public val contractState: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.contractStateList
       )
     /**
@@ -95,7 +95,7 @@ public object ContractKt {
      * @param value The contractState to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContractState")
+@kotlin.jvm.JvmName("addContractState")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>.add(value: cosmwasm.wasm.v1.Types.Model) {
       _builder.addContractState(value)
     }
@@ -104,7 +104,7 @@ public object ContractKt {
      * @param value The contractState to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContractState")
+@kotlin.jvm.JvmName("plusAssignContractState")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>.plusAssign(value: cosmwasm.wasm.v1.Types.Model) {
       add(value)
@@ -114,7 +114,7 @@ public object ContractKt {
      * @param values The contractState to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContractState")
+@kotlin.jvm.JvmName("addAllContractState")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.Model>) {
       _builder.addAllContractState(values)
     }
@@ -123,7 +123,7 @@ public object ContractKt {
      * @param values The contractState to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContractState")
+@kotlin.jvm.JvmName("plusAssignAllContractState")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.Model>) {
       addAll(values)
@@ -134,7 +134,7 @@ public object ContractKt {
      * @param value The contractState to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContractState")
+@kotlin.jvm.JvmName("setContractState")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Types.Model) {
       _builder.setContractState(index, value)
     }
@@ -142,11 +142,10 @@ public object ContractKt {
      * `repeated .cosmwasm.wasm.v1.Model contract_state = 3 [json_name = "contractState", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContractState")
+@kotlin.jvm.JvmName("clearContractState")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ContractStateProxy>.clear() {
       _builder.clearContractState()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -159,7 +158,7 @@ public object ContractKt {
      */
      public val contractCodeHistory: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.contractCodeHistoryList
       )
     /**
@@ -167,7 +166,7 @@ public object ContractKt {
      * @param value The contractCodeHistory to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addContractCodeHistory")
+@kotlin.jvm.JvmName("addContractCodeHistory")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>.add(value: cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry) {
       _builder.addContractCodeHistory(value)
     }
@@ -176,7 +175,7 @@ public object ContractKt {
      * @param value The contractCodeHistory to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignContractCodeHistory")
+@kotlin.jvm.JvmName("plusAssignContractCodeHistory")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>.plusAssign(value: cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry) {
       add(value)
@@ -186,7 +185,7 @@ public object ContractKt {
      * @param values The contractCodeHistory to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllContractCodeHistory")
+@kotlin.jvm.JvmName("addAllContractCodeHistory")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry>) {
       _builder.addAllContractCodeHistory(values)
     }
@@ -195,7 +194,7 @@ public object ContractKt {
      * @param values The contractCodeHistory to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllContractCodeHistory")
+@kotlin.jvm.JvmName("plusAssignAllContractCodeHistory")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry>) {
       addAll(values)
@@ -206,7 +205,7 @@ public object ContractKt {
      * @param value The contractCodeHistory to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setContractCodeHistory")
+@kotlin.jvm.JvmName("setContractCodeHistory")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry) {
       _builder.setContractCodeHistory(index, value)
     }
@@ -214,11 +213,10 @@ public object ContractKt {
      * `repeated .cosmwasm.wasm.v1.ContractCodeHistoryEntry contract_code_history = 4 [json_name = "contractCodeHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearContractCodeHistory")
+@kotlin.jvm.JvmName("clearContractCodeHistory")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.ContractCodeHistoryEntry, ContractCodeHistoryProxy>.clear() {
       _builder.clearContractCodeHistory()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

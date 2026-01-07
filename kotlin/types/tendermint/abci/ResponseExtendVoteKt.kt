@@ -32,10 +32,10 @@ public object ResponseExtendVoteKt {
      * `bytes vote_extension = 1 [json_name = "voteExtension"];`
      */
     public var voteExtension: com.google.protobuf.ByteString
-      @JvmName("getVoteExtension")
-      get() = _builder.voteExtension
-      @JvmName("setVoteExtension")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoteExtension")
+        get() = _builder.voteExtension
+      @kotlin.jvm.JvmName("setVoteExtension")
+        set(value) {
         _builder.voteExtension = value
       }
     /**

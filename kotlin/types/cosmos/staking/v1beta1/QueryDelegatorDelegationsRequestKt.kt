@@ -41,10 +41,10 @@ public object QueryDelegatorDelegationsRequestKt {
      * `string delegator_addr = 1 [json_name = "delegatorAddr", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddr: kotlin.String
-      @JvmName("getDelegatorAddr")
-      get() = _builder.delegatorAddr
-      @JvmName("setDelegatorAddr")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddr")
+        get() = _builder.delegatorAddr
+      @kotlin.jvm.JvmName("setDelegatorAddr")
+        set(value) {
         _builder.delegatorAddr = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryDelegatorDelegationsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

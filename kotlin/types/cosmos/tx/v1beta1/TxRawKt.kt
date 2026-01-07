@@ -45,10 +45,10 @@ public object TxRawKt {
      * `bytes body_bytes = 1 [json_name = "bodyBytes"];`
      */
     public var bodyBytes: com.google.protobuf.ByteString
-      @JvmName("getBodyBytes")
-      get() = _builder.bodyBytes
-      @JvmName("setBodyBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getBodyBytes")
+        get() = _builder.bodyBytes
+      @kotlin.jvm.JvmName("setBodyBytes")
+        set(value) {
         _builder.bodyBytes = value
       }
     /**
@@ -72,10 +72,10 @@ public object TxRawKt {
      * `bytes auth_info_bytes = 2 [json_name = "authInfoBytes"];`
      */
     public var authInfoBytes: com.google.protobuf.ByteString
-      @JvmName("getAuthInfoBytes")
-      get() = _builder.authInfoBytes
-      @JvmName("setAuthInfoBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthInfoBytes")
+        get() = _builder.authInfoBytes
+      @kotlin.jvm.JvmName("setAuthInfoBytes")
+        set(value) {
         _builder.authInfoBytes = value
       }
     /**
@@ -107,7 +107,7 @@ public object TxRawKt {
      */
      public val signatures: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signaturesList
       )
     /**
@@ -121,7 +121,7 @@ public object TxRawKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSignatures")
+@kotlin.jvm.JvmName("addSignatures")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addSignatures(value)
     }/**
@@ -135,7 +135,7 @@ public object TxRawKt {
      * @param value The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSignatures")
+@kotlin.jvm.JvmName("plusAssignSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -150,7 +150,7 @@ public object TxRawKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSignatures")
+@kotlin.jvm.JvmName("addAllSignatures")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllSignatures(values)
     }/**
@@ -164,7 +164,7 @@ public object TxRawKt {
      * @param values The signatures to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSignatures")
+@kotlin.jvm.JvmName("plusAssignAllSignatures")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -180,7 +180,7 @@ public object TxRawKt {
      * @param value The signatures to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSignatures")
+@kotlin.jvm.JvmName("setSignatures")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setSignatures(index, value)
     }/**
@@ -193,7 +193,7 @@ public object TxRawKt {
      * `repeated bytes signatures = 3 [json_name = "signatures"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSignatures")
+@kotlin.jvm.JvmName("clearSignatures")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, SignaturesProxy>.clear() {
       _builder.clearSignatures()
     }}

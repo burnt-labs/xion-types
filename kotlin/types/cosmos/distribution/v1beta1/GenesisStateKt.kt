@@ -40,10 +40,10 @@ public object GenesisStateKt {
      * `.cosmos.distribution.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmos.distribution.v1beta1.Distribution.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -79,10 +79,10 @@ public object GenesisStateKt {
      * `.cosmos.distribution.v1beta1.FeePool fee_pool = 2 [json_name = "feePool", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var feePool: cosmos.distribution.v1beta1.Distribution.FeePool
-      @JvmName("getFeePool")
-      get() = _builder.feePool
-      @JvmName("setFeePool")
-      set(value) {
+      @kotlin.jvm.JvmName("getFeePool")
+        get() = _builder.feePool
+      @kotlin.jvm.JvmName("setFeePool")
+        set(value) {
         _builder.feePool = value
       }
     /**
@@ -125,7 +125,7 @@ public object GenesisStateKt {
      */
      public val delegatorWithdrawInfos: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.delegatorWithdrawInfosList
       )
     /**
@@ -137,7 +137,7 @@ public object GenesisStateKt {
      * @param value The delegatorWithdrawInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDelegatorWithdrawInfos")
+@kotlin.jvm.JvmName("addDelegatorWithdrawInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>.add(value: cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo) {
       _builder.addDelegatorWithdrawInfos(value)
     }
@@ -150,7 +150,7 @@ public object GenesisStateKt {
      * @param value The delegatorWithdrawInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDelegatorWithdrawInfos")
+@kotlin.jvm.JvmName("plusAssignDelegatorWithdrawInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo) {
       add(value)
@@ -164,7 +164,7 @@ public object GenesisStateKt {
      * @param values The delegatorWithdrawInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDelegatorWithdrawInfos")
+@kotlin.jvm.JvmName("addAllDelegatorWithdrawInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo>) {
       _builder.addAllDelegatorWithdrawInfos(values)
     }
@@ -177,7 +177,7 @@ public object GenesisStateKt {
      * @param values The delegatorWithdrawInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDelegatorWithdrawInfos")
+@kotlin.jvm.JvmName("plusAssignAllDelegatorWithdrawInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo>) {
       addAll(values)
@@ -192,7 +192,7 @@ public object GenesisStateKt {
      * @param value The delegatorWithdrawInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDelegatorWithdrawInfos")
+@kotlin.jvm.JvmName("setDelegatorWithdrawInfos")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo) {
       _builder.setDelegatorWithdrawInfos(index, value)
     }
@@ -204,11 +204,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.DelegatorWithdrawInfo delegator_withdraw_infos = 3 [json_name = "delegatorWithdrawInfos", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDelegatorWithdrawInfos")
+@kotlin.jvm.JvmName("clearDelegatorWithdrawInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorWithdrawInfo, DelegatorWithdrawInfosProxy>.clear() {
       _builder.clearDelegatorWithdrawInfos()
     }
-
 
     /**
      * ```
@@ -218,10 +217,10 @@ public object GenesisStateKt {
      * `string previous_proposer = 4 [json_name = "previousProposer", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var previousProposer: kotlin.String
-      @JvmName("getPreviousProposer")
-      get() = _builder.previousProposer
-      @JvmName("setPreviousProposer")
-      set(value) {
+      @kotlin.jvm.JvmName("getPreviousProposer")
+        get() = _builder.previousProposer
+      @kotlin.jvm.JvmName("setPreviousProposer")
+        set(value) {
         _builder.previousProposer = value
       }
     /**
@@ -250,7 +249,7 @@ public object GenesisStateKt {
      */
      public val outstandingRewards: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.outstandingRewardsList
       )
     /**
@@ -262,7 +261,7 @@ public object GenesisStateKt {
      * @param value The outstandingRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addOutstandingRewards")
+@kotlin.jvm.JvmName("addOutstandingRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>.add(value: cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord) {
       _builder.addOutstandingRewards(value)
     }
@@ -275,7 +274,7 @@ public object GenesisStateKt {
      * @param value The outstandingRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignOutstandingRewards")
+@kotlin.jvm.JvmName("plusAssignOutstandingRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord) {
       add(value)
@@ -289,7 +288,7 @@ public object GenesisStateKt {
      * @param values The outstandingRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllOutstandingRewards")
+@kotlin.jvm.JvmName("addAllOutstandingRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord>) {
       _builder.addAllOutstandingRewards(values)
     }
@@ -302,7 +301,7 @@ public object GenesisStateKt {
      * @param values The outstandingRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllOutstandingRewards")
+@kotlin.jvm.JvmName("plusAssignAllOutstandingRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord>) {
       addAll(values)
@@ -317,7 +316,7 @@ public object GenesisStateKt {
      * @param value The outstandingRewards to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setOutstandingRewards")
+@kotlin.jvm.JvmName("setOutstandingRewards")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord) {
       _builder.setOutstandingRewards(index, value)
     }
@@ -329,11 +328,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.ValidatorOutstandingRewardsRecord outstanding_rewards = 5 [json_name = "outstandingRewards", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearOutstandingRewards")
+@kotlin.jvm.JvmName("clearOutstandingRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorOutstandingRewardsRecord, OutstandingRewardsProxy>.clear() {
       _builder.clearOutstandingRewards()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -350,7 +348,7 @@ public object GenesisStateKt {
      */
      public val validatorAccumulatedCommissions: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorAccumulatedCommissionsList
       )
     /**
@@ -362,7 +360,7 @@ public object GenesisStateKt {
      * @param value The validatorAccumulatedCommissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidatorAccumulatedCommissions")
+@kotlin.jvm.JvmName("addValidatorAccumulatedCommissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>.add(value: cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord) {
       _builder.addValidatorAccumulatedCommissions(value)
     }
@@ -375,7 +373,7 @@ public object GenesisStateKt {
      * @param value The validatorAccumulatedCommissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidatorAccumulatedCommissions")
+@kotlin.jvm.JvmName("plusAssignValidatorAccumulatedCommissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord) {
       add(value)
@@ -389,7 +387,7 @@ public object GenesisStateKt {
      * @param values The validatorAccumulatedCommissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidatorAccumulatedCommissions")
+@kotlin.jvm.JvmName("addAllValidatorAccumulatedCommissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord>) {
       _builder.addAllValidatorAccumulatedCommissions(values)
     }
@@ -402,7 +400,7 @@ public object GenesisStateKt {
      * @param values The validatorAccumulatedCommissions to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidatorAccumulatedCommissions")
+@kotlin.jvm.JvmName("plusAssignAllValidatorAccumulatedCommissions")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord>) {
       addAll(values)
@@ -417,7 +415,7 @@ public object GenesisStateKt {
      * @param value The validatorAccumulatedCommissions to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidatorAccumulatedCommissions")
+@kotlin.jvm.JvmName("setValidatorAccumulatedCommissions")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord) {
       _builder.setValidatorAccumulatedCommissions(index, value)
     }
@@ -429,11 +427,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.ValidatorAccumulatedCommissionRecord validator_accumulated_commissions = 6 [json_name = "validatorAccumulatedCommissions", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidatorAccumulatedCommissions")
+@kotlin.jvm.JvmName("clearValidatorAccumulatedCommissions")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorAccumulatedCommissionRecord, ValidatorAccumulatedCommissionsProxy>.clear() {
       _builder.clearValidatorAccumulatedCommissions()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -450,7 +447,7 @@ public object GenesisStateKt {
      */
      public val validatorHistoricalRewards: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorHistoricalRewardsList
       )
     /**
@@ -462,7 +459,7 @@ public object GenesisStateKt {
      * @param value The validatorHistoricalRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidatorHistoricalRewards")
+@kotlin.jvm.JvmName("addValidatorHistoricalRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>.add(value: cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord) {
       _builder.addValidatorHistoricalRewards(value)
     }
@@ -475,7 +472,7 @@ public object GenesisStateKt {
      * @param value The validatorHistoricalRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidatorHistoricalRewards")
+@kotlin.jvm.JvmName("plusAssignValidatorHistoricalRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord) {
       add(value)
@@ -489,7 +486,7 @@ public object GenesisStateKt {
      * @param values The validatorHistoricalRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidatorHistoricalRewards")
+@kotlin.jvm.JvmName("addAllValidatorHistoricalRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord>) {
       _builder.addAllValidatorHistoricalRewards(values)
     }
@@ -502,7 +499,7 @@ public object GenesisStateKt {
      * @param values The validatorHistoricalRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidatorHistoricalRewards")
+@kotlin.jvm.JvmName("plusAssignAllValidatorHistoricalRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord>) {
       addAll(values)
@@ -517,7 +514,7 @@ public object GenesisStateKt {
      * @param value The validatorHistoricalRewards to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidatorHistoricalRewards")
+@kotlin.jvm.JvmName("setValidatorHistoricalRewards")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord) {
       _builder.setValidatorHistoricalRewards(index, value)
     }
@@ -529,11 +526,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.ValidatorHistoricalRewardsRecord validator_historical_rewards = 7 [json_name = "validatorHistoricalRewards", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidatorHistoricalRewards")
+@kotlin.jvm.JvmName("clearValidatorHistoricalRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorHistoricalRewardsRecord, ValidatorHistoricalRewardsProxy>.clear() {
       _builder.clearValidatorHistoricalRewards()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -550,7 +546,7 @@ public object GenesisStateKt {
      */
      public val validatorCurrentRewards: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorCurrentRewardsList
       )
     /**
@@ -562,7 +558,7 @@ public object GenesisStateKt {
      * @param value The validatorCurrentRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidatorCurrentRewards")
+@kotlin.jvm.JvmName("addValidatorCurrentRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>.add(value: cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord) {
       _builder.addValidatorCurrentRewards(value)
     }
@@ -575,7 +571,7 @@ public object GenesisStateKt {
      * @param value The validatorCurrentRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidatorCurrentRewards")
+@kotlin.jvm.JvmName("plusAssignValidatorCurrentRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord) {
       add(value)
@@ -589,7 +585,7 @@ public object GenesisStateKt {
      * @param values The validatorCurrentRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidatorCurrentRewards")
+@kotlin.jvm.JvmName("addAllValidatorCurrentRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord>) {
       _builder.addAllValidatorCurrentRewards(values)
     }
@@ -602,7 +598,7 @@ public object GenesisStateKt {
      * @param values The validatorCurrentRewards to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidatorCurrentRewards")
+@kotlin.jvm.JvmName("plusAssignAllValidatorCurrentRewards")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord>) {
       addAll(values)
@@ -617,7 +613,7 @@ public object GenesisStateKt {
      * @param value The validatorCurrentRewards to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidatorCurrentRewards")
+@kotlin.jvm.JvmName("setValidatorCurrentRewards")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord) {
       _builder.setValidatorCurrentRewards(index, value)
     }
@@ -629,11 +625,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.ValidatorCurrentRewardsRecord validator_current_rewards = 8 [json_name = "validatorCurrentRewards", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidatorCurrentRewards")
+@kotlin.jvm.JvmName("clearValidatorCurrentRewards")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorCurrentRewardsRecord, ValidatorCurrentRewardsProxy>.clear() {
       _builder.clearValidatorCurrentRewards()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -650,7 +645,7 @@ public object GenesisStateKt {
      */
      public val delegatorStartingInfos: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.delegatorStartingInfosList
       )
     /**
@@ -662,7 +657,7 @@ public object GenesisStateKt {
      * @param value The delegatorStartingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDelegatorStartingInfos")
+@kotlin.jvm.JvmName("addDelegatorStartingInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>.add(value: cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord) {
       _builder.addDelegatorStartingInfos(value)
     }
@@ -675,7 +670,7 @@ public object GenesisStateKt {
      * @param value The delegatorStartingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDelegatorStartingInfos")
+@kotlin.jvm.JvmName("plusAssignDelegatorStartingInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord) {
       add(value)
@@ -689,7 +684,7 @@ public object GenesisStateKt {
      * @param values The delegatorStartingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDelegatorStartingInfos")
+@kotlin.jvm.JvmName("addAllDelegatorStartingInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord>) {
       _builder.addAllDelegatorStartingInfos(values)
     }
@@ -702,7 +697,7 @@ public object GenesisStateKt {
      * @param values The delegatorStartingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDelegatorStartingInfos")
+@kotlin.jvm.JvmName("plusAssignAllDelegatorStartingInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord>) {
       addAll(values)
@@ -717,7 +712,7 @@ public object GenesisStateKt {
      * @param value The delegatorStartingInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDelegatorStartingInfos")
+@kotlin.jvm.JvmName("setDelegatorStartingInfos")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord) {
       _builder.setDelegatorStartingInfos(index, value)
     }
@@ -729,11 +724,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.DelegatorStartingInfoRecord delegator_starting_infos = 9 [json_name = "delegatorStartingInfos", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDelegatorStartingInfos")
+@kotlin.jvm.JvmName("clearDelegatorStartingInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.DelegatorStartingInfoRecord, DelegatorStartingInfosProxy>.clear() {
       _builder.clearDelegatorStartingInfos()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -750,7 +744,7 @@ public object GenesisStateKt {
      */
      public val validatorSlashEvents: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorSlashEventsList
       )
     /**
@@ -762,7 +756,7 @@ public object GenesisStateKt {
      * @param value The validatorSlashEvents to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidatorSlashEvents")
+@kotlin.jvm.JvmName("addValidatorSlashEvents")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>.add(value: cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord) {
       _builder.addValidatorSlashEvents(value)
     }
@@ -775,7 +769,7 @@ public object GenesisStateKt {
      * @param value The validatorSlashEvents to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidatorSlashEvents")
+@kotlin.jvm.JvmName("plusAssignValidatorSlashEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>.plusAssign(value: cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord) {
       add(value)
@@ -789,7 +783,7 @@ public object GenesisStateKt {
      * @param values The validatorSlashEvents to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidatorSlashEvents")
+@kotlin.jvm.JvmName("addAllValidatorSlashEvents")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord>) {
       _builder.addAllValidatorSlashEvents(values)
     }
@@ -802,7 +796,7 @@ public object GenesisStateKt {
      * @param values The validatorSlashEvents to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidatorSlashEvents")
+@kotlin.jvm.JvmName("plusAssignAllValidatorSlashEvents")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord>) {
       addAll(values)
@@ -817,7 +811,7 @@ public object GenesisStateKt {
      * @param value The validatorSlashEvents to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidatorSlashEvents")
+@kotlin.jvm.JvmName("setValidatorSlashEvents")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord) {
       _builder.setValidatorSlashEvents(index, value)
     }
@@ -829,11 +823,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.distribution.v1beta1.ValidatorSlashEventRecord validator_slash_events = 10 [json_name = "validatorSlashEvents", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidatorSlashEvents")
+@kotlin.jvm.JvmName("clearValidatorSlashEvents")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Genesis.ValidatorSlashEventRecord, ValidatorSlashEventsProxy>.clear() {
       _builder.clearValidatorSlashEvents()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

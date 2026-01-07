@@ -43,10 +43,10 @@ public object SignatureDescriptorKt {
      * `.google.protobuf.Any public_key = 1 [json_name = "publicKey"];`
      */
     public var publicKey: com.google.protobuf.Any
-      @JvmName("getPublicKey")
-      get() = _builder.publicKey
-      @JvmName("setPublicKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getPublicKey")
+        get() = _builder.publicKey
+      @kotlin.jvm.JvmName("setPublicKey")
+        set(value) {
         _builder.publicKey = value
       }
     /**
@@ -78,10 +78,10 @@ public object SignatureDescriptorKt {
      * `.cosmos.tx.signing.v1beta1.SignatureDescriptor.Data data = 2 [json_name = "data"];`
      */
     public var data: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -111,10 +111,10 @@ public object SignatureDescriptorKt {
      * `uint64 sequence = 3 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
-      @JvmName("getSequence")
-      get() = _builder.sequence
-      @JvmName("setSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getSequence")
+        get() = _builder.sequence
+      @kotlin.jvm.JvmName("setSequence")
+        set(value) {
         _builder.sequence = value
       }
     /**
@@ -164,10 +164,10 @@ public object SignatureDescriptorKt {
        * `.cosmos.tx.signing.v1beta1.SignatureDescriptor.Data.Single single = 1 [json_name = "single"];`
        */
       public var single: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data.Single
-        @JvmName("getSingle")
-        get() = _builder.single
-        @JvmName("setSingle")
-        set(value) {
+        @kotlin.jvm.JvmName("getSingle")
+          get() = _builder.single
+        @kotlin.jvm.JvmName("setSingle")
+          set(value) {
           _builder.single = value
         }
       /**
@@ -200,10 +200,10 @@ public object SignatureDescriptorKt {
        * `.cosmos.tx.signing.v1beta1.SignatureDescriptor.Data.Multi multi = 2 [json_name = "multi"];`
        */
       public var multi: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data.Multi
-        @JvmName("getMulti")
-        get() = _builder.multi
-        @JvmName("setMulti")
-        set(value) {
+        @kotlin.jvm.JvmName("getMulti")
+          get() = _builder.multi
+        @kotlin.jvm.JvmName("setMulti")
+          set(value) {
           _builder.multi = value
         }
       /**
@@ -269,17 +269,17 @@ public object SignatureDescriptorKt {
          * `.cosmos.tx.signing.v1beta1.SignMode mode = 1 [json_name = "mode"];`
          */
         public var mode: cosmos.tx.signing.v1beta1.Signing.SignMode
-          @JvmName("getMode")
-          get() = _builder.mode
-          @JvmName("setMode")
-          set(value) {
+          @kotlin.jvm.JvmName("getMode")
+            get() = _builder.mode
+          @kotlin.jvm.JvmName("setMode")
+            set(value) {
             _builder.mode = value
           }
         public var modeValue: kotlin.Int
-          @JvmName("getModeValue")
-          get() = _builder.modeValue
-          @JvmName("setModeValue")
-          set(value) {
+          @kotlin.jvm.JvmName("getModeValue")
+            get() = _builder.modeValue
+          @kotlin.jvm.JvmName("setModeValue")
+            set(value) {
             _builder.modeValue = value
           }
         /**
@@ -301,10 +301,10 @@ public object SignatureDescriptorKt {
          * `bytes signature = 2 [json_name = "signature"];`
          */
         public var signature: com.google.protobuf.ByteString
-          @JvmName("getSignature")
-          get() = _builder.signature
-          @JvmName("setSignature")
-          set(value) {
+          @kotlin.jvm.JvmName("getSignature")
+            get() = _builder.signature
+          @kotlin.jvm.JvmName("setSignature")
+            set(value) {
             _builder.signature = value
           }
         /**
@@ -353,10 +353,10 @@ public object SignatureDescriptorKt {
          * `.cosmos.crypto.multisig.v1beta1.CompactBitArray bitarray = 1 [json_name = "bitarray"];`
          */
         public var bitarray: cosmos.crypto.multisig.v1beta1.Multisig.CompactBitArray
-          @JvmName("getBitarray")
-          get() = _builder.bitarray
-          @JvmName("setBitarray")
-          set(value) {
+          @kotlin.jvm.JvmName("getBitarray")
+            get() = _builder.bitarray
+          @kotlin.jvm.JvmName("setBitarray")
+            set(value) {
             _builder.bitarray = value
           }
         /**
@@ -399,7 +399,7 @@ public object SignatureDescriptorKt {
          */
          public val signatures: com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>
           @kotlin.jvm.JvmSynthetic
-          get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
             _builder.signaturesList
           )
         /**
@@ -411,7 +411,7 @@ public object SignatureDescriptorKt {
          * @param value The signatures to add.
          */
         @kotlin.jvm.JvmSynthetic
-        @kotlin.jvm.JvmName("addSignatures")
+@kotlin.jvm.JvmName("addSignatures")
         public fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>.add(value: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data) {
           _builder.addSignatures(value)
         }
@@ -424,7 +424,7 @@ public object SignatureDescriptorKt {
          * @param value The signatures to add.
          */
         @kotlin.jvm.JvmSynthetic
-        @kotlin.jvm.JvmName("plusAssignSignatures")
+@kotlin.jvm.JvmName("plusAssignSignatures")
         @Suppress("NOTHING_TO_INLINE")
         public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>.plusAssign(value: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data) {
           add(value)
@@ -438,7 +438,7 @@ public object SignatureDescriptorKt {
          * @param values The signatures to add.
          */
         @kotlin.jvm.JvmSynthetic
-        @kotlin.jvm.JvmName("addAllSignatures")
+@kotlin.jvm.JvmName("addAllSignatures")
         public fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data>) {
           _builder.addAllSignatures(values)
         }
@@ -451,7 +451,7 @@ public object SignatureDescriptorKt {
          * @param values The signatures to add.
          */
         @kotlin.jvm.JvmSynthetic
-        @kotlin.jvm.JvmName("plusAssignAllSignatures")
+@kotlin.jvm.JvmName("plusAssignAllSignatures")
         @Suppress("NOTHING_TO_INLINE")
         public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data>) {
           addAll(values)
@@ -466,7 +466,7 @@ public object SignatureDescriptorKt {
          * @param value The signatures to set.
          */
         @kotlin.jvm.JvmSynthetic
-        @kotlin.jvm.JvmName("setSignatures")
+@kotlin.jvm.JvmName("setSignatures")
         public operator fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>.set(index: kotlin.Int, value: cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data) {
           _builder.setSignatures(index, value)
         }
@@ -478,11 +478,10 @@ public object SignatureDescriptorKt {
          * `repeated .cosmos.tx.signing.v1beta1.SignatureDescriptor.Data signatures = 2 [json_name = "signatures"];`
          */
         @kotlin.jvm.JvmSynthetic
-        @kotlin.jvm.JvmName("clearSignatures")
+@kotlin.jvm.JvmName("clearSignatures")
         public fun com.google.protobuf.kotlin.DslList<cosmos.tx.signing.v1beta1.Signing.SignatureDescriptor.Data, SignaturesProxy>.clear() {
           _builder.clearSignatures()
         }
-
       }
     }
   }

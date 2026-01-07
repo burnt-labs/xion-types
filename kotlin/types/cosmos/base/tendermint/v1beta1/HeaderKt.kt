@@ -40,10 +40,10 @@ public object HeaderKt {
      * `.tendermint.version.Consensus version = 1 [json_name = "version", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var version: tendermint.version.Types.Consensus
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -75,10 +75,10 @@ public object HeaderKt {
      * `string chain_id = 2 [json_name = "chainId", (.gogoproto.customname) = "ChainID"];`
      */
     public var chainId: kotlin.String
-      @JvmName("getChainId")
-      get() = _builder.chainId
-      @JvmName("setChainId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChainId")
+        get() = _builder.chainId
+      @kotlin.jvm.JvmName("setChainId")
+        set(value) {
         _builder.chainId = value
       }
     /**
@@ -92,10 +92,10 @@ public object HeaderKt {
      * `int64 height = 3 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -109,10 +109,10 @@ public object HeaderKt {
      * `.google.protobuf.Timestamp time = 4 [json_name = "time", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var time: com.google.protobuf.Timestamp
-      @JvmName("getTime")
-      get() = _builder.time
-      @JvmName("setTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTime")
+        get() = _builder.time
+      @kotlin.jvm.JvmName("setTime")
+        set(value) {
         _builder.time = value
       }
     /**
@@ -140,10 +140,10 @@ public object HeaderKt {
      * `.tendermint.types.BlockID last_block_id = 5 [json_name = "lastBlockId", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var lastBlockId: tendermint.types.Types.BlockID
-      @JvmName("getLastBlockId")
-      get() = _builder.lastBlockId
-      @JvmName("setLastBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastBlockId")
+        get() = _builder.lastBlockId
+      @kotlin.jvm.JvmName("setLastBlockId")
+        set(value) {
         _builder.lastBlockId = value
       }
     /**
@@ -179,10 +179,10 @@ public object HeaderKt {
      * `bytes last_commit_hash = 6 [json_name = "lastCommitHash"];`
      */
     public var lastCommitHash: com.google.protobuf.ByteString
-      @JvmName("getLastCommitHash")
-      get() = _builder.lastCommitHash
-      @JvmName("setLastCommitHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastCommitHash")
+        get() = _builder.lastCommitHash
+      @kotlin.jvm.JvmName("setLastCommitHash")
+        set(value) {
         _builder.lastCommitHash = value
       }
     /**
@@ -204,10 +204,10 @@ public object HeaderKt {
      * `bytes data_hash = 7 [json_name = "dataHash"];`
      */
     public var dataHash: com.google.protobuf.ByteString
-      @JvmName("getDataHash")
-      get() = _builder.dataHash
-      @JvmName("setDataHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getDataHash")
+        get() = _builder.dataHash
+      @kotlin.jvm.JvmName("setDataHash")
+        set(value) {
         _builder.dataHash = value
       }
     /**
@@ -229,10 +229,10 @@ public object HeaderKt {
      * `bytes validators_hash = 8 [json_name = "validatorsHash"];`
      */
     public var validatorsHash: com.google.protobuf.ByteString
-      @JvmName("getValidatorsHash")
-      get() = _builder.validatorsHash
-      @JvmName("setValidatorsHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorsHash")
+        get() = _builder.validatorsHash
+      @kotlin.jvm.JvmName("setValidatorsHash")
+        set(value) {
         _builder.validatorsHash = value
       }
     /**
@@ -254,10 +254,10 @@ public object HeaderKt {
      * `bytes next_validators_hash = 9 [json_name = "nextValidatorsHash"];`
      */
     public var nextValidatorsHash: com.google.protobuf.ByteString
-      @JvmName("getNextValidatorsHash")
-      get() = _builder.nextValidatorsHash
-      @JvmName("setNextValidatorsHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextValidatorsHash")
+        get() = _builder.nextValidatorsHash
+      @kotlin.jvm.JvmName("setNextValidatorsHash")
+        set(value) {
         _builder.nextValidatorsHash = value
       }
     /**
@@ -279,10 +279,10 @@ public object HeaderKt {
      * `bytes consensus_hash = 10 [json_name = "consensusHash"];`
      */
     public var consensusHash: com.google.protobuf.ByteString
-      @JvmName("getConsensusHash")
-      get() = _builder.consensusHash
-      @JvmName("setConsensusHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusHash")
+        get() = _builder.consensusHash
+      @kotlin.jvm.JvmName("setConsensusHash")
+        set(value) {
         _builder.consensusHash = value
       }
     /**
@@ -304,10 +304,10 @@ public object HeaderKt {
      * `bytes app_hash = 11 [json_name = "appHash"];`
      */
     public var appHash: com.google.protobuf.ByteString
-      @JvmName("getAppHash")
-      get() = _builder.appHash
-      @JvmName("setAppHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppHash")
+        get() = _builder.appHash
+      @kotlin.jvm.JvmName("setAppHash")
+        set(value) {
         _builder.appHash = value
       }
     /**
@@ -329,10 +329,10 @@ public object HeaderKt {
      * `bytes last_results_hash = 12 [json_name = "lastResultsHash"];`
      */
     public var lastResultsHash: com.google.protobuf.ByteString
-      @JvmName("getLastResultsHash")
-      get() = _builder.lastResultsHash
-      @JvmName("setLastResultsHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastResultsHash")
+        get() = _builder.lastResultsHash
+      @kotlin.jvm.JvmName("setLastResultsHash")
+        set(value) {
         _builder.lastResultsHash = value
       }
     /**
@@ -354,10 +354,10 @@ public object HeaderKt {
      * `bytes evidence_hash = 13 [json_name = "evidenceHash"];`
      */
     public var evidenceHash: com.google.protobuf.ByteString
-      @JvmName("getEvidenceHash")
-      get() = _builder.evidenceHash
-      @JvmName("setEvidenceHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getEvidenceHash")
+        get() = _builder.evidenceHash
+      @kotlin.jvm.JvmName("setEvidenceHash")
+        set(value) {
         _builder.evidenceHash = value
       }
     /**
@@ -381,10 +381,10 @@ public object HeaderKt {
      * `string proposer_address = 14 [json_name = "proposerAddress"];`
      */
     public var proposerAddress: kotlin.String
-      @JvmName("getProposerAddress")
-      get() = _builder.proposerAddress
-      @JvmName("setProposerAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposerAddress")
+        get() = _builder.proposerAddress
+      @kotlin.jvm.JvmName("setProposerAddress")
+        set(value) {
         _builder.proposerAddress = value
       }
     /**

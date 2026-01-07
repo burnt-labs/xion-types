@@ -40,10 +40,10 @@ public object MsgPruneAllowancesKt {
      * `string pruner = 1 [json_name = "pruner", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var pruner: kotlin.String
-      @JvmName("getPruner")
-      get() = _builder.pruner
-      @JvmName("setPruner")
-      set(value) {
+      @kotlin.jvm.JvmName("getPruner")
+        get() = _builder.pruner
+      @kotlin.jvm.JvmName("setPruner")
+        set(value) {
         _builder.pruner = value
       }
     /**

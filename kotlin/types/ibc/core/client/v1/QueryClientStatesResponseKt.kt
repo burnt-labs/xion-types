@@ -48,7 +48,7 @@ public object QueryClientStatesResponseKt {
      */
      public val clientStates: com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.clientStatesList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryClientStatesResponseKt {
      * @param value The clientStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClientStates")
+@kotlin.jvm.JvmName("addClientStates")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>.add(value: ibc.core.client.v1.Client.IdentifiedClientState) {
       _builder.addClientStates(value)
     }
@@ -73,7 +73,7 @@ public object QueryClientStatesResponseKt {
      * @param value The clientStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClientStates")
+@kotlin.jvm.JvmName("plusAssignClientStates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>.plusAssign(value: ibc.core.client.v1.Client.IdentifiedClientState) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryClientStatesResponseKt {
      * @param values The clientStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClientStates")
+@kotlin.jvm.JvmName("addAllClientStates")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.IdentifiedClientState>) {
       _builder.addAllClientStates(values)
     }
@@ -100,7 +100,7 @@ public object QueryClientStatesResponseKt {
      * @param values The clientStates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClientStates")
+@kotlin.jvm.JvmName("plusAssignAllClientStates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.client.v1.Client.IdentifiedClientState>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryClientStatesResponseKt {
      * @param value The clientStates to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClientStates")
+@kotlin.jvm.JvmName("setClientStates")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>.set(index: kotlin.Int, value: ibc.core.client.v1.Client.IdentifiedClientState) {
       _builder.setClientStates(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryClientStatesResponseKt {
      * `repeated .ibc.core.client.v1.IdentifiedClientState client_states = 1 [json_name = "clientStates", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "IdentifiedClientStates"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClientStates")
+@kotlin.jvm.JvmName("clearClientStates")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.client.v1.Client.IdentifiedClientState, ClientStatesProxy>.clear() {
       _builder.clearClientStates()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryClientStatesResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

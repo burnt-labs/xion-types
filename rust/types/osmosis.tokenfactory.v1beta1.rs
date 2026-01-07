@@ -13,7 +13,7 @@ pub struct DenomAuthorityMetadata {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     #[prost(message, repeated, tag="1")]
-    pub denom_creation_fee: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub denom_creation_fee: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// if denom_creation_fee is an empty array, then this field is used to add more gas consumption
     /// to the base cost.
     /// <https://github.com/CosmWasm/token-factory/issues/11>
@@ -123,7 +123,7 @@ pub struct MsgMint {
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
     #[prost(message, optional, tag="2")]
-    pub amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(string, tag="3")]
     pub mint_to_address: ::prost::alloc::string::String,
 }
@@ -137,7 +137,7 @@ pub struct MsgBurn {
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
     #[prost(message, optional, tag="2")]
-    pub amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(string, tag="3")]
     pub burn_from_address: ::prost::alloc::string::String,
 }
@@ -167,7 +167,7 @@ pub struct MsgSetDenomMetadata {
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
     #[prost(message, optional, tag="2")]
-    pub metadata: ::core::option::Option<super::super::super::cosmos::bank::v1beta1::Metadata>,
+    pub metadata: ::core::option::Option<crate::types::cosmos_bank_v1beta1::Metadata>,
 }
 /// MsgSetDenomMetadataResponse defines the response structure for an executed
 /// MsgSetDenomMetadata message.
@@ -179,7 +179,7 @@ pub struct MsgForceTransfer {
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
     #[prost(message, optional, tag="2")]
-    pub amount: ::core::option::Option<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(string, tag="3")]
     pub transfer_from_address: ::prost::alloc::string::String,
     #[prost(string, tag="4")]

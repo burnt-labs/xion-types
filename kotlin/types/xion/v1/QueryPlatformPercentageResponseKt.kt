@@ -10,6 +10,11 @@ package xion.v1;
 public inline fun queryPlatformPercentageResponse(block: xion.v1.QueryPlatformPercentageResponseKt.Dsl.() -> kotlin.Unit): xion.v1.QueryOuterClass.QueryPlatformPercentageResponse =
   xion.v1.QueryPlatformPercentageResponseKt.Dsl._create(xion.v1.QueryOuterClass.QueryPlatformPercentageResponse.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryPlatformPercentageResponse is the response type for querying platform
+ * percentage
+ * ```
+ *
  * Protobuf type `xion.v1.QueryPlatformPercentageResponse`
  */
 public object QueryPlatformPercentageResponseKt {
@@ -29,16 +34,24 @@ public object QueryPlatformPercentageResponseKt {
     internal fun _build(): xion.v1.QueryOuterClass.QueryPlatformPercentageResponse = _builder.build()
 
     /**
+     * ```
+     * The platform percentage fee
+     * ```
+     *
      * `uint64 platform_percentage = 1 [json_name = "platformPercentage"];`
      */
     public var platformPercentage: kotlin.Long
-      @JvmName("getPlatformPercentage")
-      get() = _builder.platformPercentage
-      @JvmName("setPlatformPercentage")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlatformPercentage")
+        get() = _builder.platformPercentage
+      @kotlin.jvm.JvmName("setPlatformPercentage")
+        set(value) {
         _builder.platformPercentage = value
       }
     /**
+     * ```
+     * The platform percentage fee
+     * ```
+     *
      * `uint64 platform_percentage = 1 [json_name = "platformPercentage"];`
      */
     public fun clearPlatformPercentage() {

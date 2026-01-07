@@ -52,7 +52,7 @@ pub struct EpochInfo {
     pub current_epoch_start_height: i64,
 }
 /// ExponentialBackoff defines backoff epoch
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExponentialBackoff {
     #[prost(int64, tag="1")]
     pub jump: i64,
@@ -144,14 +144,14 @@ pub struct InterchainQueryRequestPacket {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmosQuery {
     #[prost(message, repeated, tag="1")]
-    pub requests: ::prost::alloc::vec::Vec<super::super::super::tendermint::abci::RequestQuery>,
+    pub requests: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::RequestQuery>,
 }
 /// CosmosResponse contains a list of tendermint ABCI query responses. It should
 /// be used when receiving responses from an SDK host chain.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmosResponse {
     #[prost(message, repeated, tag="1")]
-    pub responses: ::prost::alloc::vec::Vec<super::super::super::tendermint::abci::ResponseQuery>,
+    pub responses: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ResponseQuery>,
 }
 /// HostChainFeeAbsConfig
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -265,19 +265,19 @@ pub struct QueryOsmosisArithmeticTwapResponse {
 }
 /// QueryFeeabsModuleBalacesRequest is the request type for the Query/Feeabs RPC
 /// method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFeeabsModuleBalacesRequest {
 }
 /// QueryFeeabsModuleBalacesResponse
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryFeeabsModuleBalacesResponse {
     #[prost(message, repeated, tag="1")]
-    pub balances: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub balances: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(string, tag="2")]
     pub address: ::prost::alloc::string::String,
 }
 /// AllQueryHostChainConfigRequest
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllQueryHostChainConfigRequest {
 }
 /// AllQueryHostChainConfigResponse
@@ -293,10 +293,10 @@ pub struct MsgFundFeeAbsModuleAccount {
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgFundFeeAbsModuleAccountResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFundFeeAbsModuleAccountResponse {
 }
 /// MsgSendQueryIbcDenomTWAP
@@ -307,7 +307,7 @@ pub struct MsgSendQueryIbcDenomTwap {
     pub sender: ::prost::alloc::string::String,
 }
 /// MsgSendQueryIbcDenomTWAPResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSendQueryIbcDenomTwapResponse {
 }
 /// MsgSwapCrossChain
@@ -320,7 +320,7 @@ pub struct MsgSwapCrossChain {
     pub ibc_denom: ::prost::alloc::string::String,
 }
 /// MsgSwapCrossChainResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapCrossChainResponse {
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
@@ -337,7 +337,7 @@ pub struct MsgUpdateParams {
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {
 }
 /// MsgAddHostZone is the Msg/AddHostZone request type.
@@ -351,7 +351,7 @@ pub struct MsgAddHostZone {
     pub host_chain_config: ::core::option::Option<HostChainFeeAbsConfig>,
 }
 /// MsgAddHostZoneResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddHostZoneResponse {
 }
 /// MsgUpdateHostZone is the Msg/UpdateHostZone request type.
@@ -365,7 +365,7 @@ pub struct MsgUpdateHostZone {
     pub host_chain_config: ::core::option::Option<HostChainFeeAbsConfig>,
 }
 /// MsgUpdateHostZoneResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateHostZoneResponse {
 }
 /// MsgRemoveHostZone is the Msg/RemoveHostZone request type.
@@ -378,7 +378,7 @@ pub struct MsgRemoveHostZone {
     pub ibc_denom: ::prost::alloc::string::String,
 }
 /// MsgRemoveHostZoneResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRemoveHostZoneResponse {
 }
 // @@protoc_insertion_point(module)

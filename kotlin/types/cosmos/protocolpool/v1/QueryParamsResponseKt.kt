@@ -36,10 +36,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.protocolpool.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: cosmos.protocolpool.v1.Types.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

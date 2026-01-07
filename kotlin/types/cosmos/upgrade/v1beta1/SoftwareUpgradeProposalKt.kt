@@ -43,10 +43,10 @@ public object SoftwareUpgradeProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -68,10 +68,10 @@ public object SoftwareUpgradeProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -93,10 +93,10 @@ public object SoftwareUpgradeProposalKt {
      * `.cosmos.upgrade.v1beta1.Plan plan = 3 [json_name = "plan", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var plan: cosmos.upgrade.v1beta1.Upgrade.Plan
-      @JvmName("getPlan")
-      get() = _builder.plan
-      @JvmName("setPlan")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlan")
+        get() = _builder.plan
+      @kotlin.jvm.JvmName("setPlan")
+        set(value) {
         _builder.plan = value
       }
     /**

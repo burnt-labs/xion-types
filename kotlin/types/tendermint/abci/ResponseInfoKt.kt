@@ -32,10 +32,10 @@ public object ResponseInfoKt {
      * `string data = 1 [json_name = "data"];`
      */
     public var data: kotlin.String
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -49,10 +49,10 @@ public object ResponseInfoKt {
      * `string version = 2 [json_name = "version"];`
      */
     public var version: kotlin.String
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -66,10 +66,10 @@ public object ResponseInfoKt {
      * `uint64 app_version = 3 [json_name = "appVersion"];`
      */
     public var appVersion: kotlin.Long
-      @JvmName("getAppVersion")
-      get() = _builder.appVersion
-      @JvmName("setAppVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppVersion")
+        get() = _builder.appVersion
+      @kotlin.jvm.JvmName("setAppVersion")
+        set(value) {
         _builder.appVersion = value
       }
     /**
@@ -83,10 +83,10 @@ public object ResponseInfoKt {
      * `int64 last_block_height = 4 [json_name = "lastBlockHeight"];`
      */
     public var lastBlockHeight: kotlin.Long
-      @JvmName("getLastBlockHeight")
-      get() = _builder.lastBlockHeight
-      @JvmName("setLastBlockHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastBlockHeight")
+        get() = _builder.lastBlockHeight
+      @kotlin.jvm.JvmName("setLastBlockHeight")
+        set(value) {
         _builder.lastBlockHeight = value
       }
     /**
@@ -100,10 +100,10 @@ public object ResponseInfoKt {
      * `bytes last_block_app_hash = 5 [json_name = "lastBlockAppHash"];`
      */
     public var lastBlockAppHash: com.google.protobuf.ByteString
-      @JvmName("getLastBlockAppHash")
-      get() = _builder.lastBlockAppHash
-      @JvmName("setLastBlockAppHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getLastBlockAppHash")
+        get() = _builder.lastBlockAppHash
+      @kotlin.jvm.JvmName("setLastBlockAppHash")
+        set(value) {
         _builder.lastBlockAppHash = value
       }
     /**

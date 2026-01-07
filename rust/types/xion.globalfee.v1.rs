@@ -16,7 +16,7 @@ pub struct Params {
     /// values allowed. For more information see
     /// <https://docs.cosmos.network/main/modules/auth#concepts>
     #[prost(message, repeated, tag="1")]
-    pub minimum_gas_prices: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::DecCoin>,
+    pub minimum_gas_prices: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::DecCoin>,
     /// bypass_min_fee_msg_types defines a list of message type urls
     /// that are free of fee charge.
     #[prost(string, repeated, tag="2")]

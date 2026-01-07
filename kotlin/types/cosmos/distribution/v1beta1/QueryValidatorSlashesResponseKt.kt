@@ -48,7 +48,7 @@ public object QueryValidatorSlashesResponseKt {
      */
      public val slashes: com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.slashesList
       )
     /**
@@ -60,7 +60,7 @@ public object QueryValidatorSlashesResponseKt {
      * @param value The slashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSlashes")
+@kotlin.jvm.JvmName("addSlashes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>.add(value: cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent) {
       _builder.addSlashes(value)
     }
@@ -73,7 +73,7 @@ public object QueryValidatorSlashesResponseKt {
      * @param value The slashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSlashes")
+@kotlin.jvm.JvmName("plusAssignSlashes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>.plusAssign(value: cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent) {
       add(value)
@@ -87,7 +87,7 @@ public object QueryValidatorSlashesResponseKt {
      * @param values The slashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSlashes")
+@kotlin.jvm.JvmName("addAllSlashes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent>) {
       _builder.addAllSlashes(values)
     }
@@ -100,7 +100,7 @@ public object QueryValidatorSlashesResponseKt {
      * @param values The slashes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSlashes")
+@kotlin.jvm.JvmName("plusAssignAllSlashes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object QueryValidatorSlashesResponseKt {
      * @param value The slashes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSlashes")
+@kotlin.jvm.JvmName("setSlashes")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>.set(index: kotlin.Int, value: cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent) {
       _builder.setSlashes(index, value)
     }
@@ -127,11 +127,10 @@ public object QueryValidatorSlashesResponseKt {
      * `repeated .cosmos.distribution.v1beta1.ValidatorSlashEvent slashes = 1 [json_name = "slashes", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSlashes")
+@kotlin.jvm.JvmName("clearSlashes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.distribution.v1beta1.Distribution.ValidatorSlashEvent, SlashesProxy>.clear() {
       _builder.clearSlashes()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object QueryValidatorSlashesResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

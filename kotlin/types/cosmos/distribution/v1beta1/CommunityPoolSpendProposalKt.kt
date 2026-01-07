@@ -43,10 +43,10 @@ public object CommunityPoolSpendProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -60,10 +60,10 @@ public object CommunityPoolSpendProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -77,10 +77,10 @@ public object CommunityPoolSpendProposalKt {
      * `string recipient = 3 [json_name = "recipient"];`
      */
     public var recipient: kotlin.String
-      @JvmName("getRecipient")
-      get() = _builder.recipient
-      @JvmName("setRecipient")
-      set(value) {
+      @kotlin.jvm.JvmName("getRecipient")
+        get() = _builder.recipient
+      @kotlin.jvm.JvmName("setRecipient")
+        set(value) {
         _builder.recipient = value
       }
     /**
@@ -101,7 +101,7 @@ public object CommunityPoolSpendProposalKt {
      */
      public val amount: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.amountList
       )
     /**
@@ -109,7 +109,7 @@ public object CommunityPoolSpendProposalKt {
      * @param value The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAmount")
+@kotlin.jvm.JvmName("addAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addAmount(value)
     }
@@ -118,7 +118,7 @@ public object CommunityPoolSpendProposalKt {
      * @param value The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAmount")
+@kotlin.jvm.JvmName("plusAssignAmount")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -128,7 +128,7 @@ public object CommunityPoolSpendProposalKt {
      * @param values The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAmount")
+@kotlin.jvm.JvmName("addAllAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllAmount(values)
     }
@@ -137,7 +137,7 @@ public object CommunityPoolSpendProposalKt {
      * @param values The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAmount")
+@kotlin.jvm.JvmName("plusAssignAllAmount")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -148,7 +148,7 @@ public object CommunityPoolSpendProposalKt {
      * @param value The amount to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAmount")
+@kotlin.jvm.JvmName("setAmount")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setAmount(index, value)
     }
@@ -156,11 +156,10 @@ public object CommunityPoolSpendProposalKt {
      * `repeated .cosmos.base.v1beta1.Coin amount = 4 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAmount")
+@kotlin.jvm.JvmName("clearAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.clear() {
       _builder.clearAmount()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

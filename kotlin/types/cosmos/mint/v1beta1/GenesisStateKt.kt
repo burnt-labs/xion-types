@@ -40,10 +40,10 @@ public object GenesisStateKt {
      * `.cosmos.mint.v1beta1.Minter minter = 1 [json_name = "minter", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var minter: cosmos.mint.v1beta1.Mint.Minter
-      @JvmName("getMinter")
-      get() = _builder.minter
-      @JvmName("setMinter")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinter")
+        get() = _builder.minter
+      @kotlin.jvm.JvmName("setMinter")
+        set(value) {
         _builder.minter = value
       }
     /**
@@ -79,10 +79,10 @@ public object GenesisStateKt {
      * `.cosmos.mint.v1beta1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmos.mint.v1beta1.Mint.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

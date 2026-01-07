@@ -14,7 +14,7 @@ pub struct Validator {
     #[prost(bytes="vec", tag="1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
+    pub pub_key: ::core::option::Option<crate::types::tendermint_crypto::PublicKey>,
     #[prost(int64, tag="3")]
     pub voting_power: i64,
     #[prost(int64, tag="4")]
@@ -23,7 +23,7 @@ pub struct Validator {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SimpleValidator {
     #[prost(message, optional, tag="1")]
-    pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
+    pub pub_key: ::core::option::Option<crate::types::tendermint_crypto::PublicKey>,
     #[prost(int64, tag="2")]
     pub voting_power: i64,
 }
@@ -79,7 +79,7 @@ pub struct Part {
     #[prost(bytes="vec", tag="2")]
     pub bytes: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof: ::core::option::Option<super::crypto::Proof>,
+    pub proof: ::core::option::Option<crate::types::tendermint_crypto::Proof>,
 }
 /// BlockID
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -96,7 +96,7 @@ pub struct BlockId {
 pub struct Header {
     /// basic block info
     #[prost(message, optional, tag="1")]
-    pub version: ::core::option::Option<super::version::Consensus>,
+    pub version: ::core::option::Option<crate::types::tendermint_version::Consensus>,
     #[prost(string, tag="2")]
     pub chain_id: ::prost::alloc::string::String,
     #[prost(int64, tag="3")]
@@ -287,7 +287,7 @@ pub struct TxProof {
     #[prost(bytes="vec", tag="2")]
     pub data: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof: ::core::option::Option<super::crypto::Proof>,
+    pub proof: ::core::option::Option<crate::types::tendermint_crypto::Proof>,
 }
 /// SignedMsgType is a type of signed message in the consensus.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -399,7 +399,7 @@ pub struct ConsensusParams {
     pub abci: ::core::option::Option<AbciParams>,
 }
 /// BlockParams contains limits on the block size.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockParams {
     /// Max block size, in bytes.
     /// Note: must be greater than 0
@@ -411,7 +411,7 @@ pub struct BlockParams {
     pub max_gas: i64,
 }
 /// EvidenceParams determine how we handle evidence of malfeasance.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EvidenceParams {
     /// Max age of evidence, in blocks.
     ///
@@ -440,7 +440,7 @@ pub struct ValidatorParams {
     pub pub_key_types: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// VersionParams contains the ABCI application version.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VersionParams {
     #[prost(uint64, tag="1")]
     pub app: u64,
@@ -448,7 +448,7 @@ pub struct VersionParams {
 /// HashedParams is a subset of ConsensusParams.
 ///
 /// It is hashed into the Header.ConsensusHash.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HashedParams {
     #[prost(int64, tag="1")]
     pub block_max_bytes: i64,
@@ -456,7 +456,7 @@ pub struct HashedParams {
     pub block_max_gas: i64,
 }
 /// ABCIParams configure functionality specific to the Application Blockchain Interface.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbciParams {
     /// vote_extensions_enable_height configures the first height during which
     /// vote extensions will be enabled. During this specified height, and for all

@@ -40,10 +40,10 @@ public object HeaderDataKt {
      * `.google.protobuf.Any new_pub_key = 1 [json_name = "newPubKey"];`
      */
     public var newPubKey: com.google.protobuf.Any
-      @JvmName("getNewPubKey")
-      get() = _builder.newPubKey
-      @JvmName("setNewPubKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewPubKey")
+        get() = _builder.newPubKey
+      @kotlin.jvm.JvmName("setNewPubKey")
+        set(value) {
         _builder.newPubKey = value
       }
     /**
@@ -79,10 +79,10 @@ public object HeaderDataKt {
      * `string new_diversifier = 2 [json_name = "newDiversifier"];`
      */
     public var newDiversifier: kotlin.String
-      @JvmName("getNewDiversifier")
-      get() = _builder.newDiversifier
-      @JvmName("setNewDiversifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewDiversifier")
+        get() = _builder.newDiversifier
+      @kotlin.jvm.JvmName("setNewDiversifier")
+        set(value) {
         _builder.newDiversifier = value
       }
     /**

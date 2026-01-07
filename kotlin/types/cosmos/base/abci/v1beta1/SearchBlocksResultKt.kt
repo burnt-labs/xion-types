@@ -40,10 +40,10 @@ public object SearchBlocksResultKt {
      * `int64 total_count = 1 [json_name = "totalCount"];`
      */
     public var totalCount: kotlin.Long
-      @JvmName("getTotalCount")
-      get() = _builder.totalCount
-      @JvmName("setTotalCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalCount")
+        get() = _builder.totalCount
+      @kotlin.jvm.JvmName("setTotalCount")
+        set(value) {
         _builder.totalCount = value
       }
     /**
@@ -65,10 +65,10 @@ public object SearchBlocksResultKt {
      * `int64 count = 2 [json_name = "count"];`
      */
     public var count: kotlin.Long
-      @JvmName("getCount")
-      get() = _builder.count
-      @JvmName("setCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getCount")
+        get() = _builder.count
+      @kotlin.jvm.JvmName("setCount")
+        set(value) {
         _builder.count = value
       }
     /**
@@ -90,10 +90,10 @@ public object SearchBlocksResultKt {
      * `int64 page_number = 3 [json_name = "pageNumber"];`
      */
     public var pageNumber: kotlin.Long
-      @JvmName("getPageNumber")
-      get() = _builder.pageNumber
-      @JvmName("setPageNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getPageNumber")
+        get() = _builder.pageNumber
+      @kotlin.jvm.JvmName("setPageNumber")
+        set(value) {
         _builder.pageNumber = value
       }
     /**
@@ -115,10 +115,10 @@ public object SearchBlocksResultKt {
      * `int64 page_total = 4 [json_name = "pageTotal"];`
      */
     public var pageTotal: kotlin.Long
-      @JvmName("getPageTotal")
-      get() = _builder.pageTotal
-      @JvmName("setPageTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getPageTotal")
+        get() = _builder.pageTotal
+      @kotlin.jvm.JvmName("setPageTotal")
+        set(value) {
         _builder.pageTotal = value
       }
     /**
@@ -140,10 +140,10 @@ public object SearchBlocksResultKt {
      * `int64 limit = 5 [json_name = "limit"];`
      */
     public var limit: kotlin.Long
-      @JvmName("getLimit")
-      get() = _builder.limit
-      @JvmName("setLimit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLimit")
+        get() = _builder.limit
+      @kotlin.jvm.JvmName("setLimit")
+        set(value) {
         _builder.limit = value
       }
     /**
@@ -172,7 +172,7 @@ public object SearchBlocksResultKt {
      */
      public val blocks: com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.blocksList
       )
     /**
@@ -184,7 +184,7 @@ public object SearchBlocksResultKt {
      * @param value The blocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addBlocks")
+@kotlin.jvm.JvmName("addBlocks")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>.add(value: tendermint.types.BlockOuterClass.Block) {
       _builder.addBlocks(value)
     }
@@ -197,7 +197,7 @@ public object SearchBlocksResultKt {
      * @param value The blocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignBlocks")
+@kotlin.jvm.JvmName("plusAssignBlocks")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>.plusAssign(value: tendermint.types.BlockOuterClass.Block) {
       add(value)
@@ -211,7 +211,7 @@ public object SearchBlocksResultKt {
      * @param values The blocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllBlocks")
+@kotlin.jvm.JvmName("addAllBlocks")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>.addAll(values: kotlin.collections.Iterable<tendermint.types.BlockOuterClass.Block>) {
       _builder.addAllBlocks(values)
     }
@@ -224,7 +224,7 @@ public object SearchBlocksResultKt {
      * @param values The blocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllBlocks")
+@kotlin.jvm.JvmName("plusAssignAllBlocks")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.types.BlockOuterClass.Block>) {
       addAll(values)
@@ -239,7 +239,7 @@ public object SearchBlocksResultKt {
      * @param value The blocks to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setBlocks")
+@kotlin.jvm.JvmName("setBlocks")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>.set(index: kotlin.Int, value: tendermint.types.BlockOuterClass.Block) {
       _builder.setBlocks(index, value)
     }
@@ -251,11 +251,10 @@ public object SearchBlocksResultKt {
      * `repeated .tendermint.types.Block blocks = 6 [json_name = "blocks"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearBlocks")
+@kotlin.jvm.JvmName("clearBlocks")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.BlockOuterClass.Block, BlocksProxy>.clear() {
       _builder.clearBlocks()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -40,10 +40,10 @@ public object VoteKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,10 +65,10 @@ public object VoteKt {
      * `string voter = 2 [json_name = "voter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var voter: kotlin.String
-      @JvmName("getVoter")
-      get() = _builder.voter
-      @JvmName("setVoter")
-      set(value) {
+      @kotlin.jvm.JvmName("getVoter")
+        get() = _builder.voter
+      @kotlin.jvm.JvmName("setVoter")
+        set(value) {
         _builder.voter = value
       }
     /**
@@ -90,17 +90,17 @@ public object VoteKt {
      * `.cosmos.group.v1.VoteOption option = 3 [json_name = "option"];`
      */
     public var option: cosmos.group.v1.Types.VoteOption
-      @JvmName("getOption")
-      get() = _builder.option
-      @JvmName("setOption")
-      set(value) {
+      @kotlin.jvm.JvmName("getOption")
+        get() = _builder.option
+      @kotlin.jvm.JvmName("setOption")
+        set(value) {
         _builder.option = value
       }
     public var optionValue: kotlin.Int
-      @JvmName("getOptionValue")
-      get() = _builder.optionValue
-      @JvmName("setOptionValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getOptionValue")
+        get() = _builder.optionValue
+      @kotlin.jvm.JvmName("setOptionValue")
+        set(value) {
         _builder.optionValue = value
       }
     /**
@@ -123,10 +123,10 @@ public object VoteKt {
      * `string metadata = 4 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**
@@ -149,10 +149,10 @@ public object VoteKt {
      * `.google.protobuf.Timestamp submit_time = 5 [json_name = "submitTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var submitTime: com.google.protobuf.Timestamp
-      @JvmName("getSubmitTime")
-      get() = _builder.submitTime
-      @JvmName("setSubmitTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubmitTime")
+        get() = _builder.submitTime
+      @kotlin.jvm.JvmName("setSubmitTime")
+        set(value) {
         _builder.submitTime = value
       }
     /**

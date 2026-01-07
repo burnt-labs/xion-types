@@ -40,10 +40,10 @@ public object GenesisStateKt {
      * `.cosmos.slashing.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var params: cosmos.slashing.v1beta1.Slashing.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -87,7 +87,7 @@ public object GenesisStateKt {
      */
      public val signingInfos: com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signingInfosList
       )
     /**
@@ -100,7 +100,7 @@ public object GenesisStateKt {
      * @param value The signingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSigningInfos")
+@kotlin.jvm.JvmName("addSigningInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>.add(value: cosmos.slashing.v1beta1.Genesis.SigningInfo) {
       _builder.addSigningInfos(value)
     }
@@ -114,7 +114,7 @@ public object GenesisStateKt {
      * @param value The signingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSigningInfos")
+@kotlin.jvm.JvmName("plusAssignSigningInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>.plusAssign(value: cosmos.slashing.v1beta1.Genesis.SigningInfo) {
       add(value)
@@ -129,7 +129,7 @@ public object GenesisStateKt {
      * @param values The signingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSigningInfos")
+@kotlin.jvm.JvmName("addAllSigningInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>.addAll(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Genesis.SigningInfo>) {
       _builder.addAllSigningInfos(values)
     }
@@ -143,7 +143,7 @@ public object GenesisStateKt {
      * @param values The signingInfos to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSigningInfos")
+@kotlin.jvm.JvmName("plusAssignAllSigningInfos")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Genesis.SigningInfo>) {
       addAll(values)
@@ -159,7 +159,7 @@ public object GenesisStateKt {
      * @param value The signingInfos to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSigningInfos")
+@kotlin.jvm.JvmName("setSigningInfos")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>.set(index: kotlin.Int, value: cosmos.slashing.v1beta1.Genesis.SigningInfo) {
       _builder.setSigningInfos(index, value)
     }
@@ -172,11 +172,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.slashing.v1beta1.SigningInfo signing_infos = 2 [json_name = "signingInfos", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSigningInfos")
+@kotlin.jvm.JvmName("clearSigningInfos")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.SigningInfo, SigningInfosProxy>.clear() {
       _builder.clearSigningInfos()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -194,7 +193,7 @@ public object GenesisStateKt {
      */
      public val missedBlocks: com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.missedBlocksList
       )
     /**
@@ -207,7 +206,7 @@ public object GenesisStateKt {
      * @param value The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMissedBlocks")
+@kotlin.jvm.JvmName("addMissedBlocks")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>.add(value: cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks) {
       _builder.addMissedBlocks(value)
     }
@@ -221,7 +220,7 @@ public object GenesisStateKt {
      * @param value The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMissedBlocks")
+@kotlin.jvm.JvmName("plusAssignMissedBlocks")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>.plusAssign(value: cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks) {
       add(value)
@@ -236,7 +235,7 @@ public object GenesisStateKt {
      * @param values The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMissedBlocks")
+@kotlin.jvm.JvmName("addAllMissedBlocks")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>.addAll(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks>) {
       _builder.addAllMissedBlocks(values)
     }
@@ -250,7 +249,7 @@ public object GenesisStateKt {
      * @param values The missedBlocks to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMissedBlocks")
+@kotlin.jvm.JvmName("plusAssignAllMissedBlocks")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks>) {
       addAll(values)
@@ -266,7 +265,7 @@ public object GenesisStateKt {
      * @param value The missedBlocks to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMissedBlocks")
+@kotlin.jvm.JvmName("setMissedBlocks")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>.set(index: kotlin.Int, value: cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks) {
       _builder.setMissedBlocks(index, value)
     }
@@ -279,11 +278,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.slashing.v1beta1.ValidatorMissedBlocks missed_blocks = 3 [json_name = "missedBlocks", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMissedBlocks")
+@kotlin.jvm.JvmName("clearMissedBlocks")
     public fun com.google.protobuf.kotlin.DslList<cosmos.slashing.v1beta1.Genesis.ValidatorMissedBlocks, MissedBlocksProxy>.clear() {
       _builder.clearMissedBlocks()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

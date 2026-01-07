@@ -46,10 +46,10 @@ public object PercentageDecisionPolicyKt {
      * `string percentage = 1 [json_name = "percentage"];`
      */
     public var percentage: kotlin.String
-      @JvmName("getPercentage")
-      get() = _builder.percentage
-      @JvmName("setPercentage")
-      set(value) {
+      @kotlin.jvm.JvmName("getPercentage")
+        get() = _builder.percentage
+      @kotlin.jvm.JvmName("setPercentage")
+        set(value) {
         _builder.percentage = value
       }
     /**
@@ -72,10 +72,10 @@ public object PercentageDecisionPolicyKt {
      * `.cosmos.group.v1.DecisionPolicyWindows windows = 2 [json_name = "windows"];`
      */
     public var windows: cosmos.group.v1.Types.DecisionPolicyWindows
-      @JvmName("getWindows")
-      get() = _builder.windows
-      @JvmName("setWindows")
-      set(value) {
+      @kotlin.jvm.JvmName("getWindows")
+        get() = _builder.windows
+      @kotlin.jvm.JvmName("setWindows")
+        set(value) {
         _builder.windows = value
       }
     /**

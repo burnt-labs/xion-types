@@ -32,10 +32,10 @@ public object BlockMetaKt {
      * `.tendermint.types.BlockID block_id = 1 [json_name = "blockId", (.gogoproto.nullable) = false, (.gogoproto.customname) = "BlockID"];`
      */
     public var blockId: tendermint.types.Types.BlockID
-      @JvmName("getBlockId")
-      get() = _builder.blockId
-      @JvmName("setBlockId")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockId")
+        get() = _builder.blockId
+      @kotlin.jvm.JvmName("setBlockId")
+        set(value) {
         _builder.blockId = value
       }
     /**
@@ -59,10 +59,10 @@ public object BlockMetaKt {
      * `int64 block_size = 2 [json_name = "blockSize"];`
      */
     public var blockSize: kotlin.Long
-      @JvmName("getBlockSize")
-      get() = _builder.blockSize
-      @JvmName("setBlockSize")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockSize")
+        get() = _builder.blockSize
+      @kotlin.jvm.JvmName("setBlockSize")
+        set(value) {
         _builder.blockSize = value
       }
     /**
@@ -76,10 +76,10 @@ public object BlockMetaKt {
      * `.tendermint.types.Header header = 3 [json_name = "header", (.gogoproto.nullable) = false];`
      */
     public var header: tendermint.types.Types.Header
-      @JvmName("getHeader")
-      get() = _builder.header
-      @JvmName("setHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeader")
+        get() = _builder.header
+      @kotlin.jvm.JvmName("setHeader")
+        set(value) {
         _builder.header = value
       }
     /**
@@ -103,10 +103,10 @@ public object BlockMetaKt {
      * `int64 num_txs = 4 [json_name = "numTxs"];`
      */
     public var numTxs: kotlin.Long
-      @JvmName("getNumTxs")
-      get() = _builder.numTxs
-      @JvmName("setNumTxs")
-      set(value) {
+      @kotlin.jvm.JvmName("getNumTxs")
+        get() = _builder.numTxs
+      @kotlin.jvm.JvmName("setNumTxs")
+        set(value) {
         _builder.numTxs = value
       }
     /**

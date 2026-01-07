@@ -32,10 +32,10 @@ public object PartKt {
      * `uint32 index = 1 [json_name = "index"];`
      */
     public var index: kotlin.Int
-      @JvmName("getIndex")
-      get() = _builder.index
-      @JvmName("setIndex")
-      set(value) {
+      @kotlin.jvm.JvmName("getIndex")
+        get() = _builder.index
+      @kotlin.jvm.JvmName("setIndex")
+        set(value) {
         _builder.index = value
       }
     /**
@@ -49,10 +49,10 @@ public object PartKt {
      * `bytes bytes = 2 [json_name = "bytes"];`
      */
     public var bytes: com.google.protobuf.ByteString
-      @JvmName("getBytes")
-      get() = _builder.bytes
-      @JvmName("setBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getBytes")
+        get() = _builder.bytes
+      @kotlin.jvm.JvmName("setBytes")
+        set(value) {
         _builder.bytes = value
       }
     /**
@@ -66,10 +66,10 @@ public object PartKt {
      * `.tendermint.crypto.Proof proof = 3 [json_name = "proof", (.gogoproto.nullable) = false];`
      */
     public var proof: tendermint.crypto.ProofOuterClass.Proof
-      @JvmName("getProof")
-      get() = _builder.proof
-      @JvmName("setProof")
-      set(value) {
+      @kotlin.jvm.JvmName("getProof")
+        get() = _builder.proof
+      @kotlin.jvm.JvmName("setProof")
+        set(value) {
         _builder.proof = value
       }
     /**

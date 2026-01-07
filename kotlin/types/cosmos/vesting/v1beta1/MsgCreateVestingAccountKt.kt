@@ -37,10 +37,10 @@ public object MsgCreateVestingAccountKt {
      * `string from_address = 1 [json_name = "fromAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var fromAddress: kotlin.String
-      @JvmName("getFromAddress")
-      get() = _builder.fromAddress
-      @JvmName("setFromAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getFromAddress")
+        get() = _builder.fromAddress
+      @kotlin.jvm.JvmName("setFromAddress")
+        set(value) {
         _builder.fromAddress = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgCreateVestingAccountKt {
      * `string to_address = 2 [json_name = "toAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var toAddress: kotlin.String
-      @JvmName("getToAddress")
-      get() = _builder.toAddress
-      @JvmName("setToAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getToAddress")
+        get() = _builder.toAddress
+      @kotlin.jvm.JvmName("setToAddress")
+        set(value) {
         _builder.toAddress = value
       }
     /**
@@ -78,7 +78,7 @@ public object MsgCreateVestingAccountKt {
      */
      public val amount: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.amountList
       )
     /**
@@ -86,7 +86,7 @@ public object MsgCreateVestingAccountKt {
      * @param value The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAmount")
+@kotlin.jvm.JvmName("addAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addAmount(value)
     }
@@ -95,7 +95,7 @@ public object MsgCreateVestingAccountKt {
      * @param value The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAmount")
+@kotlin.jvm.JvmName("plusAssignAmount")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -105,7 +105,7 @@ public object MsgCreateVestingAccountKt {
      * @param values The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAmount")
+@kotlin.jvm.JvmName("addAllAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllAmount(values)
     }
@@ -114,7 +114,7 @@ public object MsgCreateVestingAccountKt {
      * @param values The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAmount")
+@kotlin.jvm.JvmName("plusAssignAllAmount")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -125,7 +125,7 @@ public object MsgCreateVestingAccountKt {
      * @param value The amount to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAmount")
+@kotlin.jvm.JvmName("setAmount")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setAmount(index, value)
     }
@@ -133,11 +133,10 @@ public object MsgCreateVestingAccountKt {
      * `repeated .cosmos.base.v1beta1.Coin amount = 3 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (.amino.encoding) = "legacy_coins", (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAmount")
+@kotlin.jvm.JvmName("clearAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.clear() {
       _builder.clearAmount()
     }
-
 
     /**
      * ```
@@ -147,10 +146,10 @@ public object MsgCreateVestingAccountKt {
      * `int64 end_time = 4 [json_name = "endTime"];`
      */
     public var endTime: kotlin.Long
-      @JvmName("getEndTime")
-      get() = _builder.endTime
-      @JvmName("setEndTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getEndTime")
+        get() = _builder.endTime
+      @kotlin.jvm.JvmName("setEndTime")
+        set(value) {
         _builder.endTime = value
       }
     /**
@@ -168,10 +167,10 @@ public object MsgCreateVestingAccountKt {
      * `bool delayed = 5 [json_name = "delayed"];`
      */
     public var delayed: kotlin.Boolean
-      @JvmName("getDelayed")
-      get() = _builder.delayed
-      @JvmName("setDelayed")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelayed")
+        get() = _builder.delayed
+      @kotlin.jvm.JvmName("setDelayed")
+        set(value) {
         _builder.delayed = value
       }
     /**

@@ -41,10 +41,10 @@ public object QueryHistoricalInfoResponseKt {
      * `.cosmos.staking.v1beta1.HistoricalInfo hist = 1 [json_name = "hist"];`
      */
     public var hist: cosmos.staking.v1beta1.Staking.HistoricalInfo
-      @JvmName("getHist")
-      get() = _builder.hist
-      @JvmName("setHist")
-      set(value) {
+      @kotlin.jvm.JvmName("getHist")
+        get() = _builder.hist
+      @kotlin.jvm.JvmName("setHist")
+        set(value) {
         _builder.hist = value
       }
     /**

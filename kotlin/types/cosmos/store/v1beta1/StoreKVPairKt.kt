@@ -42,10 +42,10 @@ public object StoreKVPairKt {
      * `string store_key = 1 [json_name = "storeKey"];`
      */
     public var storeKey: kotlin.String
-      @JvmName("getStoreKey")
-      get() = _builder.storeKey
-      @JvmName("setStoreKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getStoreKey")
+        get() = _builder.storeKey
+      @kotlin.jvm.JvmName("setStoreKey")
+        set(value) {
         _builder.storeKey = value
       }
     /**
@@ -67,10 +67,10 @@ public object StoreKVPairKt {
      * `bool delete = 2 [json_name = "delete"];`
      */
     public var delete: kotlin.Boolean
-      @JvmName("getDelete")
-      get() = _builder.delete
-      @JvmName("setDelete")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelete")
+        get() = _builder.delete
+      @kotlin.jvm.JvmName("setDelete")
+        set(value) {
         _builder.delete = value
       }
     /**
@@ -88,10 +88,10 @@ public object StoreKVPairKt {
      * `bytes key = 3 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -105,10 +105,10 @@ public object StoreKVPairKt {
      * `bytes value = 4 [json_name = "value"];`
      */
     public var value: com.google.protobuf.ByteString
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**

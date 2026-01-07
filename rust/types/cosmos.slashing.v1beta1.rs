@@ -78,7 +78,7 @@ pub struct ValidatorMissedBlocks {
     pub missed_blocks: ::prost::alloc::vec::Vec<MissedBlock>,
 }
 /// MissedBlock contains height and missed status as boolean.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MissedBlock {
     /// index is the height at which the block was missed.
     #[prost(int64, tag="1")]
@@ -88,7 +88,7 @@ pub struct MissedBlock {
     pub missed: bool,
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {
 }
 /// QueryParamsResponse is the response type for the Query/Params RPC method
@@ -118,7 +118,7 @@ pub struct QuerySigningInfoResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySigningInfosRequest {
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QuerySigningInfosResponse is the response type for the Query/SigningInfos RPC
 /// method
@@ -128,7 +128,7 @@ pub struct QuerySigningInfosResponse {
     #[prost(message, repeated, tag="1")]
     pub info: ::prost::alloc::vec::Vec<ValidatorSigningInfo>,
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// MsgUnjail defines the Msg/Unjail request type
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -137,7 +137,7 @@ pub struct MsgUnjail {
     pub validator_addr: ::prost::alloc::string::String,
 }
 /// MsgUnjailResponse defines the Msg/Unjail response type
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUnjailResponse {
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
@@ -154,7 +154,7 @@ pub struct MsgUpdateParams {
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {
 }
 // @@protoc_insertion_point(module)

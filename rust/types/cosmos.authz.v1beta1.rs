@@ -84,7 +84,7 @@ pub struct QueryGrantsRequest {
     pub msg_type_url: ::prost::alloc::string::String,
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGrantsResponse is the response type for the Query/Authorizations RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -94,7 +94,7 @@ pub struct QueryGrantsResponse {
     pub grants: ::prost::alloc::vec::Vec<Grant>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -103,7 +103,7 @@ pub struct QueryGranterGrantsRequest {
     pub granter: ::prost::alloc::string::String,
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGranterGrantsResponse is the response type for the Query/GranterGrants RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -113,7 +113,7 @@ pub struct QueryGranterGrantsResponse {
     pub grants: ::prost::alloc::vec::Vec<GrantAuthorization>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryGranteeGrantsRequest is the request type for the Query/GranteeGrants RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -122,7 +122,7 @@ pub struct QueryGranteeGrantsRequest {
     pub grantee: ::prost::alloc::string::String,
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -132,7 +132,7 @@ pub struct QueryGranteeGrantsResponse {
     pub grants: ::prost::alloc::vec::Vec<GrantAuthorization>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// MsgGrant is a request type for Grant method. It declares authorization to the grantee
 /// on behalf of the granter with the provided expiration time.
@@ -146,7 +146,7 @@ pub struct MsgGrant {
     pub grant: ::core::option::Option<Grant>,
 }
 /// MsgGrantResponse defines the Msg/MsgGrant response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgGrantResponse {
 }
 /// MsgExec attempts to execute the provided messages using
@@ -180,7 +180,7 @@ pub struct MsgRevoke {
     pub msg_type_url: ::prost::alloc::string::String,
 }
 /// MsgRevokeResponse defines the Msg/MsgRevokeResponse response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRevokeResponse {
 }
 // @@protoc_insertion_point(module)

@@ -40,10 +40,10 @@ public object MsgFundFeeAbsModuleAccountKt {
      * `string sender = 1 [json_name = "sender", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -64,70 +64,97 @@ public object MsgFundFeeAbsModuleAccountKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class AmountProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
      public val amount: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.amountList
       )
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param value The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAmount")
+@kotlin.jvm.JvmName("addAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addAmount(value)
     }
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param value The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAmount")
+@kotlin.jvm.JvmName("plusAssignAmount")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
     }
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param values The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAmount")
+@kotlin.jvm.JvmName("addAllAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllAmount(values)
     }
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param values The amount to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAmount")
+@kotlin.jvm.JvmName("plusAssignAllAmount")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
     }
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      * @param index The index to set the value at.
      * @param value The amount to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAmount")
+@kotlin.jvm.JvmName("setAmount")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setAmount(index, value)
     }
     /**
+     * ```
+     * The amount of coins to fund to the feeabs module account
+     * ```
+     *
      * `repeated .cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"amount\"", (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAmount")
+@kotlin.jvm.JvmName("clearAmount")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, AmountProxy>.clear() {
       _builder.clearAmount()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

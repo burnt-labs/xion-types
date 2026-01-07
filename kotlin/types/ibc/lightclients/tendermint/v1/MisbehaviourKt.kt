@@ -41,10 +41,10 @@ public object MisbehaviourKt {
      * `string client_id = 1 [json_name = "clientId", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field clientId is deprecated") public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -62,10 +62,10 @@ public object MisbehaviourKt {
      * `.ibc.lightclients.tendermint.v1.Header header_1 = 2 [json_name = "header1", (.gogoproto.customname) = "Header1"];`
      */
     public var header1: ibc.lightclients.tendermint.v1.Tendermint.Header
-      @JvmName("getHeader1")
-      get() = _builder.header1
-      @JvmName("setHeader1")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeader1")
+        get() = _builder.header1
+      @kotlin.jvm.JvmName("setHeader1")
+        set(value) {
         _builder.header1 = value
       }
     /**
@@ -89,10 +89,10 @@ public object MisbehaviourKt {
      * `.ibc.lightclients.tendermint.v1.Header header_2 = 3 [json_name = "header2", (.gogoproto.customname) = "Header2"];`
      */
     public var header2: ibc.lightclients.tendermint.v1.Tendermint.Header
-      @JvmName("getHeader2")
-      get() = _builder.header2
-      @JvmName("setHeader2")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeader2")
+        get() = _builder.header2
+      @kotlin.jvm.JvmName("setHeader2")
+        set(value) {
         _builder.header2 = value
       }
     /**

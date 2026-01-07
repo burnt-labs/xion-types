@@ -32,10 +32,10 @@ public object LightBlockKt {
      * `.tendermint.types.SignedHeader signed_header = 1 [json_name = "signedHeader"];`
      */
     public var signedHeader: tendermint.types.Types.SignedHeader
-      @JvmName("getSignedHeader")
-      get() = _builder.signedHeader
-      @JvmName("setSignedHeader")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignedHeader")
+        get() = _builder.signedHeader
+      @kotlin.jvm.JvmName("setSignedHeader")
+        set(value) {
         _builder.signedHeader = value
       }
     /**
@@ -59,10 +59,10 @@ public object LightBlockKt {
      * `.tendermint.types.ValidatorSet validator_set = 2 [json_name = "validatorSet"];`
      */
     public var validatorSet: tendermint.types.ValidatorOuterClass.ValidatorSet
-      @JvmName("getValidatorSet")
-      get() = _builder.validatorSet
-      @JvmName("setValidatorSet")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorSet")
+        get() = _builder.validatorSet
+      @kotlin.jvm.JvmName("setValidatorSet")
+        set(value) {
         _builder.validatorSet = value
       }
     /**

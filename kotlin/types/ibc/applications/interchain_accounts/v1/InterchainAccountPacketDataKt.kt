@@ -36,17 +36,17 @@ public object InterchainAccountPacketDataKt {
      * `.ibc.applications.interchain_accounts.v1.Type type = 1 [json_name = "type"];`
      */
     public var type: ibc.applications.interchain_accounts.v1.Packet.Type
-      @JvmName("getType")
-      get() = _builder.type
-      @JvmName("setType")
-      set(value) {
+      @kotlin.jvm.JvmName("getType")
+        get() = _builder.type
+      @kotlin.jvm.JvmName("setType")
+        set(value) {
         _builder.type = value
       }
     public var typeValue: kotlin.Int
-      @JvmName("getTypeValue")
-      get() = _builder.typeValue
-      @JvmName("setTypeValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getTypeValue")
+        get() = _builder.typeValue
+      @kotlin.jvm.JvmName("setTypeValue")
+        set(value) {
         _builder.typeValue = value
       }
     /**
@@ -60,10 +60,10 @@ public object InterchainAccountPacketDataKt {
      * `bytes data = 2 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
@@ -77,10 +77,10 @@ public object InterchainAccountPacketDataKt {
      * `string memo = 3 [json_name = "memo"];`
      */
     public var memo: kotlin.String
-      @JvmName("getMemo")
-      get() = _builder.memo
-      @JvmName("setMemo")
-      set(value) {
+      @kotlin.jvm.JvmName("getMemo")
+        get() = _builder.memo
+      @kotlin.jvm.JvmName("setMemo")
+        set(value) {
         _builder.memo = value
       }
     /**

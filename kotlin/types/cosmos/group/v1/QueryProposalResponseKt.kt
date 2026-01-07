@@ -40,10 +40,10 @@ public object QueryProposalResponseKt {
      * `.cosmos.group.v1.Proposal proposal = 1 [json_name = "proposal"];`
      */
     public var proposal: cosmos.group.v1.Types.Proposal
-      @JvmName("getProposal")
-      get() = _builder.proposal
-      @JvmName("setProposal")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposal")
+        get() = _builder.proposal
+      @kotlin.jvm.JvmName("setProposal")
+        set(value) {
         _builder.proposal = value
       }
     /**

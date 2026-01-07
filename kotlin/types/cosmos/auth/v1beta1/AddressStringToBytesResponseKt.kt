@@ -36,10 +36,10 @@ public object AddressStringToBytesResponseKt {
      * `bytes address_bytes = 1 [json_name = "addressBytes"];`
      */
     public var addressBytes: com.google.protobuf.ByteString
-      @JvmName("getAddressBytes")
-      get() = _builder.addressBytes
-      @JvmName("setAddressBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getAddressBytes")
+        get() = _builder.addressBytes
+      @kotlin.jvm.JvmName("setAddressBytes")
+        set(value) {
         _builder.addressBytes = value
       }
     /**

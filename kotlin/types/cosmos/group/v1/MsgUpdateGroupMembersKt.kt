@@ -40,10 +40,10 @@ public object MsgUpdateGroupMembersKt {
      * `string admin = 1 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgUpdateGroupMembersKt {
      * `uint64 group_id = 2 [json_name = "groupId"];`
      */
     public var groupId: kotlin.Long
-      @JvmName("getGroupId")
-      get() = _builder.groupId
-      @JvmName("setGroupId")
-      set(value) {
+      @kotlin.jvm.JvmName("getGroupId")
+        get() = _builder.groupId
+      @kotlin.jvm.JvmName("setGroupId")
+        set(value) {
         _builder.groupId = value
       }
     /**
@@ -98,7 +98,7 @@ public object MsgUpdateGroupMembersKt {
      */
      public val memberUpdates: com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.memberUpdatesList
       )
     /**
@@ -111,7 +111,7 @@ public object MsgUpdateGroupMembersKt {
      * @param value The memberUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMemberUpdates")
+@kotlin.jvm.JvmName("addMemberUpdates")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>.add(value: cosmos.group.v1.Types.MemberRequest) {
       _builder.addMemberUpdates(value)
     }
@@ -125,7 +125,7 @@ public object MsgUpdateGroupMembersKt {
      * @param value The memberUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMemberUpdates")
+@kotlin.jvm.JvmName("plusAssignMemberUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>.plusAssign(value: cosmos.group.v1.Types.MemberRequest) {
       add(value)
@@ -140,7 +140,7 @@ public object MsgUpdateGroupMembersKt {
      * @param values The memberUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMemberUpdates")
+@kotlin.jvm.JvmName("addAllMemberUpdates")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.group.v1.Types.MemberRequest>) {
       _builder.addAllMemberUpdates(values)
     }
@@ -154,7 +154,7 @@ public object MsgUpdateGroupMembersKt {
      * @param values The memberUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMemberUpdates")
+@kotlin.jvm.JvmName("plusAssignAllMemberUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.group.v1.Types.MemberRequest>) {
       addAll(values)
@@ -170,7 +170,7 @@ public object MsgUpdateGroupMembersKt {
      * @param value The memberUpdates to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMemberUpdates")
+@kotlin.jvm.JvmName("setMemberUpdates")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>.set(index: kotlin.Int, value: cosmos.group.v1.Types.MemberRequest) {
       _builder.setMemberUpdates(index, value)
     }
@@ -183,11 +183,10 @@ public object MsgUpdateGroupMembersKt {
      * `repeated .cosmos.group.v1.MemberRequest member_updates = 3 [json_name = "memberUpdates", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMemberUpdates")
+@kotlin.jvm.JvmName("clearMemberUpdates")
     public fun com.google.protobuf.kotlin.DslList<cosmos.group.v1.Types.MemberRequest, MemberUpdatesProxy>.clear() {
       _builder.clearMemberUpdates()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

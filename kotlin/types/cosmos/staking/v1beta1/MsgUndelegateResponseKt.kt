@@ -36,10 +36,10 @@ public object MsgUndelegateResponseKt {
      * `.google.protobuf.Timestamp completion_time = 1 [json_name = "completionTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var completionTime: com.google.protobuf.Timestamp
-      @JvmName("getCompletionTime")
-      get() = _builder.completionTime
-      @JvmName("setCompletionTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getCompletionTime")
+        get() = _builder.completionTime
+      @kotlin.jvm.JvmName("setCompletionTime")
+        set(value) {
         _builder.completionTime = value
       }
     /**
@@ -67,10 +67,10 @@ public object MsgUndelegateResponseKt {
      * `.cosmos.base.v1beta1.Coin amount = 2 [json_name = "amount", (.gogoproto.nullable) = false, (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50", (.amino.dont_omitempty) = true];`
      */
     public var amount: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**

@@ -48,10 +48,10 @@ public object PageRequestKt {
      * `bytes key = 1 [json_name = "key"];`
      */
     public var key: com.google.protobuf.ByteString
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
@@ -77,10 +77,10 @@ public object PageRequestKt {
      * `uint64 offset = 2 [json_name = "offset"];`
      */
     public var offset: kotlin.Long
-      @JvmName("getOffset")
-      get() = _builder.offset
-      @JvmName("setOffset")
-      set(value) {
+      @kotlin.jvm.JvmName("getOffset")
+        get() = _builder.offset
+      @kotlin.jvm.JvmName("setOffset")
+        set(value) {
         _builder.offset = value
       }
     /**
@@ -105,10 +105,10 @@ public object PageRequestKt {
      * `uint64 limit = 3 [json_name = "limit"];`
      */
     public var limit: kotlin.Long
-      @JvmName("getLimit")
-      get() = _builder.limit
-      @JvmName("setLimit")
-      set(value) {
+      @kotlin.jvm.JvmName("getLimit")
+        get() = _builder.limit
+      @kotlin.jvm.JvmName("setLimit")
+        set(value) {
         _builder.limit = value
       }
     /**
@@ -134,10 +134,10 @@ public object PageRequestKt {
      * `bool count_total = 4 [json_name = "countTotal"];`
      */
     public var countTotal: kotlin.Boolean
-      @JvmName("getCountTotal")
-      get() = _builder.countTotal
-      @JvmName("setCountTotal")
-      set(value) {
+      @kotlin.jvm.JvmName("getCountTotal")
+        get() = _builder.countTotal
+      @kotlin.jvm.JvmName("setCountTotal")
+        set(value) {
         _builder.countTotal = value
       }
     /**
@@ -162,10 +162,10 @@ public object PageRequestKt {
      * `bool reverse = 5 [json_name = "reverse", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.43"];`
      */
     public var reverse: kotlin.Boolean
-      @JvmName("getReverse")
-      get() = _builder.reverse
-      @JvmName("setReverse")
-      set(value) {
+      @kotlin.jvm.JvmName("getReverse")
+        get() = _builder.reverse
+      @kotlin.jvm.JvmName("setReverse")
+        set(value) {
         _builder.reverse = value
       }
     /**

@@ -43,7 +43,7 @@ public object ValAddressesKt {
      * @return A list containing the addresses.
      */
     public val addresses: com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.addressesList
       )
@@ -52,7 +52,7 @@ public object ValAddressesKt {
      * @param value The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAddresses")
+@kotlin.jvm.JvmName("addAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.add(value: kotlin.String) {
       _builder.addAddresses(value)
     }
@@ -61,7 +61,7 @@ public object ValAddressesKt {
      * @param value The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAddresses")
+@kotlin.jvm.JvmName("plusAssignAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -71,7 +71,7 @@ public object ValAddressesKt {
      * @param values The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAddresses")
+@kotlin.jvm.JvmName("addAllAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllAddresses(values)
     }
@@ -80,7 +80,7 @@ public object ValAddressesKt {
      * @param values The addresses to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAddresses")
+@kotlin.jvm.JvmName("plusAssignAllAddresses")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -91,14 +91,14 @@ public object ValAddressesKt {
      * @param value The addresses to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAddresses")
+@kotlin.jvm.JvmName("setAddresses")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setAddresses(index, value)
     }/**
      * `repeated string addresses = 1 [json_name = "addresses", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAddresses")
+@kotlin.jvm.JvmName("setAddresses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, AddressesProxy>.clear() {
       _builder.clearAddresses()
     }}

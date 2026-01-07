@@ -40,10 +40,10 @@ public object AuthzAllowanceKt {
      * `.google.protobuf.Any allowance = 1 [json_name = "allowance", (.cosmos_proto.accepts_interface) = "cosmos.feegrant.v1beta1.FeeAllowanceI"];`
      */
     public var allowance: com.google.protobuf.Any
-      @JvmName("getAllowance")
-      get() = _builder.allowance
-      @JvmName("setAllowance")
-      set(value) {
+      @kotlin.jvm.JvmName("getAllowance")
+        get() = _builder.allowance
+      @kotlin.jvm.JvmName("setAllowance")
+        set(value) {
         _builder.allowance = value
       }
     /**
@@ -72,16 +72,24 @@ public object AuthzAllowanceKt {
       get() = _builder.allowanceOrNull
 
     /**
+     * ```
+     * The address that can use this authorization-based allowance
+     * ```
+     *
      * `string authz_grantee = 2 [json_name = "authzGrantee", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authzGrantee: kotlin.String
-      @JvmName("getAuthzGrantee")
-      get() = _builder.authzGrantee
-      @JvmName("setAuthzGrantee")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthzGrantee")
+        get() = _builder.authzGrantee
+      @kotlin.jvm.JvmName("setAuthzGrantee")
+        set(value) {
         _builder.authzGrantee = value
       }
     /**
+     * ```
+     * The address that can use this authorization-based allowance
+     * ```
+     *
      * `string authz_grantee = 2 [json_name = "authzGrantee", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public fun clearAuthzGrantee() {

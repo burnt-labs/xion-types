@@ -34,16 +34,24 @@ public object InterchainQueryPacketAckKt {
     internal fun _build(): xion.feeabs.v1beta1.Osmosisibc.InterchainQueryPacketAck = _builder.build()
 
     /**
+     * ```
+     * data defines the query response data
+     * ```
+     *
      * `bytes data = 1 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
-      @JvmName("getData")
-      get() = _builder.data
-      @JvmName("setData")
-      set(value) {
+      @kotlin.jvm.JvmName("getData")
+        get() = _builder.data
+      @kotlin.jvm.JvmName("setData")
+        set(value) {
         _builder.data = value
       }
     /**
+     * ```
+     * data defines the query response data
+     * ```
+     *
      * `bytes data = 1 [json_name = "data"];`
      */
     public fun clearData() {

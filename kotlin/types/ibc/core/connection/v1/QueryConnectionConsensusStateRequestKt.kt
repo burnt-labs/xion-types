@@ -41,10 +41,10 @@ public object QueryConnectionConsensusStateRequestKt {
      * `string connection_id = 1 [json_name = "connectionId"];`
      */
     public var connectionId: kotlin.String
-      @JvmName("getConnectionId")
-      get() = _builder.connectionId
-      @JvmName("setConnectionId")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnectionId")
+        get() = _builder.connectionId
+      @kotlin.jvm.JvmName("setConnectionId")
+        set(value) {
         _builder.connectionId = value
       }
     /**
@@ -62,10 +62,10 @@ public object QueryConnectionConsensusStateRequestKt {
      * `uint64 revision_number = 2 [json_name = "revisionNumber"];`
      */
     public var revisionNumber: kotlin.Long
-      @JvmName("getRevisionNumber")
-      get() = _builder.revisionNumber
-      @JvmName("setRevisionNumber")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevisionNumber")
+        get() = _builder.revisionNumber
+      @kotlin.jvm.JvmName("setRevisionNumber")
+        set(value) {
         _builder.revisionNumber = value
       }
     /**
@@ -79,10 +79,10 @@ public object QueryConnectionConsensusStateRequestKt {
      * `uint64 revision_height = 3 [json_name = "revisionHeight"];`
      */
     public var revisionHeight: kotlin.Long
-      @JvmName("getRevisionHeight")
-      get() = _builder.revisionHeight
-      @JvmName("setRevisionHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getRevisionHeight")
+        get() = _builder.revisionHeight
+      @kotlin.jvm.JvmName("setRevisionHeight")
+        set(value) {
         _builder.revisionHeight = value
       }
     /**

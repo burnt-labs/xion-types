@@ -38,10 +38,10 @@ public object RedelegationEntryResponseKt {
      * `.cosmos.staking.v1beta1.RedelegationEntry redelegation_entry = 1 [json_name = "redelegationEntry", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var redelegationEntry: cosmos.staking.v1beta1.Staking.RedelegationEntry
-      @JvmName("getRedelegationEntry")
-      get() = _builder.redelegationEntry
-      @JvmName("setRedelegationEntry")
-      set(value) {
+      @kotlin.jvm.JvmName("getRedelegationEntry")
+        get() = _builder.redelegationEntry
+      @kotlin.jvm.JvmName("setRedelegationEntry")
+        set(value) {
         _builder.redelegationEntry = value
       }
     /**
@@ -65,10 +65,10 @@ public object RedelegationEntryResponseKt {
      * `string balance = 4 [json_name = "balance", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var balance: kotlin.String
-      @JvmName("getBalance")
-      get() = _builder.balance
-      @JvmName("setBalance")
-      set(value) {
+      @kotlin.jvm.JvmName("getBalance")
+        get() = _builder.balance
+      @kotlin.jvm.JvmName("setBalance")
+        set(value) {
         _builder.balance = value
       }
     /**

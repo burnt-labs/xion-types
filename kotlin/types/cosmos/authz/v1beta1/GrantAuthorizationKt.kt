@@ -37,10 +37,10 @@ public object GrantAuthorizationKt {
      * `string granter = 1 [json_name = "granter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var granter: kotlin.String
-      @JvmName("getGranter")
-      get() = _builder.granter
-      @JvmName("setGranter")
-      set(value) {
+      @kotlin.jvm.JvmName("getGranter")
+        get() = _builder.granter
+      @kotlin.jvm.JvmName("setGranter")
+        set(value) {
         _builder.granter = value
       }
     /**
@@ -54,10 +54,10 @@ public object GrantAuthorizationKt {
      * `string grantee = 2 [json_name = "grantee", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var grantee: kotlin.String
-      @JvmName("getGrantee")
-      get() = _builder.grantee
-      @JvmName("setGrantee")
-      set(value) {
+      @kotlin.jvm.JvmName("getGrantee")
+        get() = _builder.grantee
+      @kotlin.jvm.JvmName("setGrantee")
+        set(value) {
         _builder.grantee = value
       }
     /**
@@ -71,10 +71,10 @@ public object GrantAuthorizationKt {
      * `.google.protobuf.Any authorization = 3 [json_name = "authorization", (.cosmos_proto.accepts_interface) = "cosmos.authz.v1beta1.Authorization"];`
      */
     public var authorization: com.google.protobuf.Any
-      @JvmName("getAuthorization")
-      get() = _builder.authorization
-      @JvmName("setAuthorization")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthorization")
+        get() = _builder.authorization
+      @kotlin.jvm.JvmName("setAuthorization")
+        set(value) {
         _builder.authorization = value
       }
     /**
@@ -98,10 +98,10 @@ public object GrantAuthorizationKt {
      * `.google.protobuf.Timestamp expiration = 4 [json_name = "expiration", (.gogoproto.stdtime) = true];`
      */
     public var expiration: com.google.protobuf.Timestamp
-      @JvmName("getExpiration")
-      get() = _builder.expiration
-      @JvmName("setExpiration")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpiration")
+        get() = _builder.expiration
+      @kotlin.jvm.JvmName("setExpiration")
+        set(value) {
         _builder.expiration = value
       }
     /**

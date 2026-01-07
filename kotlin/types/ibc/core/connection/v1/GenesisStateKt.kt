@@ -43,7 +43,7 @@ public object GenesisStateKt {
      */
      public val connections: com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.connectionsList
       )
     /**
@@ -51,7 +51,7 @@ public object GenesisStateKt {
      * @param value The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addConnections")
+@kotlin.jvm.JvmName("addConnections")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.add(value: ibc.core.connection.v1.Connection.IdentifiedConnection) {
       _builder.addConnections(value)
     }
@@ -60,7 +60,7 @@ public object GenesisStateKt {
      * @param value The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignConnections")
+@kotlin.jvm.JvmName("plusAssignConnections")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.plusAssign(value: ibc.core.connection.v1.Connection.IdentifiedConnection) {
       add(value)
@@ -70,7 +70,7 @@ public object GenesisStateKt {
      * @param values The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllConnections")
+@kotlin.jvm.JvmName("addAllConnections")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.IdentifiedConnection>) {
       _builder.addAllConnections(values)
     }
@@ -79,7 +79,7 @@ public object GenesisStateKt {
      * @param values The connections to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllConnections")
+@kotlin.jvm.JvmName("plusAssignAllConnections")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.IdentifiedConnection>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object GenesisStateKt {
      * @param value The connections to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setConnections")
+@kotlin.jvm.JvmName("setConnections")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.set(index: kotlin.Int, value: ibc.core.connection.v1.Connection.IdentifiedConnection) {
       _builder.setConnections(index, value)
     }
@@ -98,11 +98,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.connection.v1.IdentifiedConnection connections = 1 [json_name = "connections", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearConnections")
+@kotlin.jvm.JvmName("clearConnections")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.IdentifiedConnection, ConnectionsProxy>.clear() {
       _builder.clearConnections()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -115,7 +114,7 @@ public object GenesisStateKt {
      */
      public val clientConnectionPaths: com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.clientConnectionPathsList
       )
     /**
@@ -123,7 +122,7 @@ public object GenesisStateKt {
      * @param value The clientConnectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addClientConnectionPaths")
+@kotlin.jvm.JvmName("addClientConnectionPaths")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>.add(value: ibc.core.connection.v1.Connection.ConnectionPaths) {
       _builder.addClientConnectionPaths(value)
     }
@@ -132,7 +131,7 @@ public object GenesisStateKt {
      * @param value The clientConnectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignClientConnectionPaths")
+@kotlin.jvm.JvmName("plusAssignClientConnectionPaths")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>.plusAssign(value: ibc.core.connection.v1.Connection.ConnectionPaths) {
       add(value)
@@ -142,7 +141,7 @@ public object GenesisStateKt {
      * @param values The clientConnectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllClientConnectionPaths")
+@kotlin.jvm.JvmName("addAllClientConnectionPaths")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.ConnectionPaths>) {
       _builder.addAllClientConnectionPaths(values)
     }
@@ -151,7 +150,7 @@ public object GenesisStateKt {
      * @param values The clientConnectionPaths to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllClientConnectionPaths")
+@kotlin.jvm.JvmName("plusAssignAllClientConnectionPaths")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.connection.v1.Connection.ConnectionPaths>) {
       addAll(values)
@@ -162,7 +161,7 @@ public object GenesisStateKt {
      * @param value The clientConnectionPaths to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setClientConnectionPaths")
+@kotlin.jvm.JvmName("setClientConnectionPaths")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>.set(index: kotlin.Int, value: ibc.core.connection.v1.Connection.ConnectionPaths) {
       _builder.setClientConnectionPaths(index, value)
     }
@@ -170,11 +169,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.connection.v1.ConnectionPaths client_connection_paths = 2 [json_name = "clientConnectionPaths", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearClientConnectionPaths")
+@kotlin.jvm.JvmName("clearClientConnectionPaths")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.connection.v1.Connection.ConnectionPaths, ClientConnectionPathsProxy>.clear() {
       _builder.clearClientConnectionPaths()
     }
-
 
     /**
      * ```
@@ -184,10 +182,10 @@ public object GenesisStateKt {
      * `uint64 next_connection_sequence = 3 [json_name = "nextConnectionSequence"];`
      */
     public var nextConnectionSequence: kotlin.Long
-      @JvmName("getNextConnectionSequence")
-      get() = _builder.nextConnectionSequence
-      @JvmName("setNextConnectionSequence")
-      set(value) {
+      @kotlin.jvm.JvmName("getNextConnectionSequence")
+        get() = _builder.nextConnectionSequence
+      @kotlin.jvm.JvmName("setNextConnectionSequence")
+        set(value) {
         _builder.nextConnectionSequence = value
       }
     /**
@@ -205,10 +203,10 @@ public object GenesisStateKt {
      * `.ibc.core.connection.v1.Params params = 4 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: ibc.core.connection.v1.Connection.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

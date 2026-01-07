@@ -6,7 +6,7 @@ pub struct StakeAuthorization {
     /// max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is
     /// empty, there is no spend limit and any amount of coins can be delegated.
     #[prost(message, optional, tag="1")]
-    pub max_tokens: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub max_tokens: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     /// authorization_type defines one of AuthorizationType.
     #[prost(enumeration="AuthorizationType", tag="4")]
     pub authorization_type: i32,
@@ -82,7 +82,7 @@ impl AuthorizationType {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HistoricalInfo {
     #[prost(message, optional, tag="1")]
-    pub header: ::core::option::Option<super::super::super::tendermint::types::Header>,
+    pub header: ::core::option::Option<crate::types::tendermint_types::Header>,
     #[prost(message, repeated, tag="2")]
     pub valset: ::prost::alloc::vec::Vec<Validator>,
 }
@@ -343,7 +343,7 @@ pub struct DelegationResponse {
     #[prost(message, optional, tag="1")]
     pub delegation: ::core::option::Option<Delegation>,
     #[prost(message, optional, tag="2")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// RedelegationEntryResponse is equivalent to a RedelegationEntry except that it
 /// contains a balance in addition to shares which is more suitable for client
@@ -379,7 +379,7 @@ pub struct Pool {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorUpdates {
     #[prost(message, repeated, tag="1")]
-    pub updates: ::prost::alloc::vec::Vec<super::super::super::tendermint::abci::ValidatorUpdate>,
+    pub updates: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ValidatorUpdate>,
 }
 /// BondStatus is the status of a validator.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -499,7 +499,7 @@ pub struct QueryValidatorsRequest {
     pub status: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryValidatorsResponse is response type for the Query/Validators RPC method
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -509,7 +509,7 @@ pub struct QueryValidatorsResponse {
     pub validators: ::prost::alloc::vec::Vec<Validator>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryValidatorRequest is response type for the Query/Validator RPC method
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -534,7 +534,7 @@ pub struct QueryValidatorDelegationsRequest {
     pub validator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryValidatorDelegationsResponse is response type for the
 /// Query/ValidatorDelegations RPC method
@@ -544,7 +544,7 @@ pub struct QueryValidatorDelegationsResponse {
     pub delegation_responses: ::prost::alloc::vec::Vec<DelegationResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryValidatorUnbondingDelegationsRequest is required type for the
 /// Query/ValidatorUnbondingDelegations RPC method
@@ -555,7 +555,7 @@ pub struct QueryValidatorUnbondingDelegationsRequest {
     pub validator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryValidatorUnbondingDelegationsResponse is response type for the
 /// Query/ValidatorUnbondingDelegations RPC method.
@@ -565,7 +565,7 @@ pub struct QueryValidatorUnbondingDelegationsResponse {
     pub unbonding_responses: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDelegationRequest is request type for the Query/Delegation RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -612,7 +612,7 @@ pub struct QueryDelegatorDelegationsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryDelegatorDelegationsResponse is response type for the
 /// Query/DelegatorDelegations RPC method.
@@ -623,7 +623,7 @@ pub struct QueryDelegatorDelegationsResponse {
     pub delegation_responses: ::prost::alloc::vec::Vec<DelegationResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDelegatorUnbondingDelegationsRequest is request type for the
 /// Query/DelegatorUnbondingDelegations RPC method.
@@ -634,7 +634,7 @@ pub struct QueryDelegatorUnbondingDelegationsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryUnbondingDelegatorDelegationsResponse is response type for the
 /// Query/UnbondingDelegatorDelegations RPC method.
@@ -644,7 +644,7 @@ pub struct QueryDelegatorUnbondingDelegationsResponse {
     pub unbonding_responses: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryRedelegationsRequest is request type for the Query/Redelegations RPC
 /// method.
@@ -661,7 +661,7 @@ pub struct QueryRedelegationsRequest {
     pub dst_validator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryRedelegationsResponse is response type for the Query/Redelegations RPC
 /// method.
@@ -671,7 +671,7 @@ pub struct QueryRedelegationsResponse {
     pub redelegation_responses: ::prost::alloc::vec::Vec<RedelegationResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDelegatorValidatorsRequest is request type for the
 /// Query/DelegatorValidators RPC method.
@@ -682,7 +682,7 @@ pub struct QueryDelegatorValidatorsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryDelegatorValidatorsResponse is response type for the
 /// Query/DelegatorValidators RPC method.
@@ -693,7 +693,7 @@ pub struct QueryDelegatorValidatorsResponse {
     pub validators: ::prost::alloc::vec::Vec<Validator>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryDelegatorValidatorRequest is request type for the
 /// Query/DelegatorValidator RPC method.
@@ -716,7 +716,7 @@ pub struct QueryDelegatorValidatorResponse {
 }
 /// QueryHistoricalInfoRequest is request type for the Query/HistoricalInfo RPC
 /// method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryHistoricalInfoRequest {
     /// height defines at which height to query the historical info.
     #[prost(int64, tag="1")]
@@ -731,7 +731,7 @@ pub struct QueryHistoricalInfoResponse {
     pub hist: ::core::option::Option<HistoricalInfo>,
 }
 /// QueryPoolRequest is request type for the Query/Pool RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolRequest {
 }
 /// QueryPoolResponse is response type for the Query/Pool RPC method.
@@ -742,7 +742,7 @@ pub struct QueryPoolResponse {
     pub pool: ::core::option::Option<Pool>,
 }
 /// QueryParamsRequest is request type for the Query/Params RPC method.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {
 }
 /// QueryParamsResponse is response type for the Query/Params RPC method.
@@ -772,10 +772,10 @@ pub struct MsgCreateValidator {
     #[prost(message, optional, tag="6")]
     pub pubkey: ::core::option::Option<::prost_types::Any>,
     #[prost(message, optional, tag="7")]
-    pub value: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub value: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgCreateValidatorResponse defines the Msg/CreateValidator response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateValidatorResponse {
 }
 /// MsgEditValidator defines a SDK message for editing an existing validator.
@@ -795,7 +795,7 @@ pub struct MsgEditValidator {
     pub min_self_delegation: ::prost::alloc::string::String,
 }
 /// MsgEditValidatorResponse defines the Msg/EditValidator response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgEditValidatorResponse {
 }
 /// MsgDelegate defines a SDK message for performing a delegation of coins
@@ -807,10 +807,10 @@ pub struct MsgDelegate {
     #[prost(string, tag="2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgDelegateResponse defines the Msg/Delegate response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateResponse {
 }
 /// MsgBeginRedelegate defines a SDK message for performing a redelegation
@@ -824,10 +824,10 @@ pub struct MsgBeginRedelegate {
     #[prost(string, tag="3")]
     pub validator_dst_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="4")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginRedelegateResponse {
     #[prost(message, optional, tag="1")]
     pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
@@ -841,7 +841,7 @@ pub struct MsgUndelegate {
     #[prost(string, tag="2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgUndelegateResponse defines the Msg/Undelegate response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -850,7 +850,7 @@ pub struct MsgUndelegateResponse {
     pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
     /// amount returns the amount of undelegated coins
     #[prost(message, optional, tag="2")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -861,13 +861,13 @@ pub struct MsgCancelUnbondingDelegation {
     pub validator_address: ::prost::alloc::string::String,
     /// amount is always less than or equal to unbonding delegation entry balance
     #[prost(message, optional, tag="3")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     /// creation_height is the height which the unbonding took place.
     #[prost(int64, tag="4")]
     pub creation_height: i64,
 }
 /// MsgCancelUnbondingDelegationResponse
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCancelUnbondingDelegationResponse {
 }
 /// MsgUpdateParams is the Msg/UpdateParams request type.
@@ -884,7 +884,7 @@ pub struct MsgUpdateParams {
 }
 /// MsgUpdateParamsResponse defines the response structure for executing a
 /// MsgUpdateParams message.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParamsResponse {
 }
 // @@protoc_insertion_point(module)

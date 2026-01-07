@@ -41,10 +41,10 @@ public object BroadcastTxResponseKt {
      * `.cosmos.base.abci.v1beta1.TxResponse tx_response = 1 [json_name = "txResponse"];`
      */
     public var txResponse: cosmos.base.abci.v1beta1.Abci.TxResponse
-      @JvmName("getTxResponse")
-      get() = _builder.txResponse
-      @JvmName("setTxResponse")
-      set(value) {
+      @kotlin.jvm.JvmName("getTxResponse")
+        get() = _builder.txResponse
+      @kotlin.jvm.JvmName("setTxResponse")
+        set(value) {
         _builder.txResponse = value
       }
     /**

@@ -37,10 +37,10 @@ public object MsgChannelCloseConfirmKt {
      * `string port_id = 1 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -54,10 +54,10 @@ public object MsgChannelCloseConfirmKt {
      * `string channel_id = 2 [json_name = "channelId"];`
      */
     public var channelId: kotlin.String
-      @JvmName("getChannelId")
-      get() = _builder.channelId
-      @JvmName("setChannelId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChannelId")
+        get() = _builder.channelId
+      @kotlin.jvm.JvmName("setChannelId")
+        set(value) {
         _builder.channelId = value
       }
     /**
@@ -71,10 +71,10 @@ public object MsgChannelCloseConfirmKt {
      * `bytes proof_init = 3 [json_name = "proofInit"];`
      */
     public var proofInit: com.google.protobuf.ByteString
-      @JvmName("getProofInit")
-      get() = _builder.proofInit
-      @JvmName("setProofInit")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofInit")
+        get() = _builder.proofInit
+      @kotlin.jvm.JvmName("setProofInit")
+        set(value) {
         _builder.proofInit = value
       }
     /**
@@ -88,10 +88,10 @@ public object MsgChannelCloseConfirmKt {
      * `.ibc.core.client.v1.Height proof_height = 4 [json_name = "proofHeight", (.gogoproto.nullable) = false];`
      */
     public var proofHeight: ibc.core.client.v1.Client.Height
-      @JvmName("getProofHeight")
-      get() = _builder.proofHeight
-      @JvmName("setProofHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getProofHeight")
+        get() = _builder.proofHeight
+      @kotlin.jvm.JvmName("setProofHeight")
+        set(value) {
         _builder.proofHeight = value
       }
     /**
@@ -115,10 +115,10 @@ public object MsgChannelCloseConfirmKt {
      * `string signer = 5 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

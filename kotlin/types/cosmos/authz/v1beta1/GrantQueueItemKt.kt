@@ -47,7 +47,7 @@ public object GrantQueueItemKt {
      * @return A list containing the msgTypeUrls.
      */
     public val msgTypeUrls: com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.msgTypeUrlsList
       )
@@ -60,7 +60,7 @@ public object GrantQueueItemKt {
      * @param value The msgTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMsgTypeUrls")
+@kotlin.jvm.JvmName("addMsgTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>.add(value: kotlin.String) {
       _builder.addMsgTypeUrls(value)
     }
@@ -73,7 +73,7 @@ public object GrantQueueItemKt {
      * @param value The msgTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMsgTypeUrls")
+@kotlin.jvm.JvmName("plusAssignMsgTypeUrls")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -87,7 +87,7 @@ public object GrantQueueItemKt {
      * @param values The msgTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMsgTypeUrls")
+@kotlin.jvm.JvmName("addAllMsgTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllMsgTypeUrls(values)
     }
@@ -100,7 +100,7 @@ public object GrantQueueItemKt {
      * @param values The msgTypeUrls to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMsgTypeUrls")
+@kotlin.jvm.JvmName("plusAssignAllMsgTypeUrls")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object GrantQueueItemKt {
      * @param value The msgTypeUrls to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMsgTypeUrls")
+@kotlin.jvm.JvmName("setMsgTypeUrls")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setMsgTypeUrls(index, value)
     }/**
@@ -126,7 +126,7 @@ public object GrantQueueItemKt {
      * `repeated string msg_type_urls = 1 [json_name = "msgTypeUrls"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMsgTypeUrls")
+@kotlin.jvm.JvmName("setMsgTypeUrls")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, MsgTypeUrlsProxy>.clear() {
       _builder.clearMsgTypeUrls()
     }}

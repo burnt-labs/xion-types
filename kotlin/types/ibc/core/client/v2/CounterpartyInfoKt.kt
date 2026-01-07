@@ -47,7 +47,7 @@ public object CounterpartyInfoKt {
      */
      public val merklePrefix: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.merklePrefixList
       )
     /**
@@ -59,7 +59,7 @@ public object CounterpartyInfoKt {
      * @param value The merklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMerklePrefix")
+@kotlin.jvm.JvmName("addMerklePrefix")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addMerklePrefix(value)
     }/**
@@ -71,7 +71,7 @@ public object CounterpartyInfoKt {
      * @param value The merklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMerklePrefix")
+@kotlin.jvm.JvmName("plusAssignMerklePrefix")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -84,7 +84,7 @@ public object CounterpartyInfoKt {
      * @param values The merklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMerklePrefix")
+@kotlin.jvm.JvmName("addAllMerklePrefix")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllMerklePrefix(values)
     }/**
@@ -96,7 +96,7 @@ public object CounterpartyInfoKt {
      * @param values The merklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMerklePrefix")
+@kotlin.jvm.JvmName("plusAssignAllMerklePrefix")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -110,7 +110,7 @@ public object CounterpartyInfoKt {
      * @param value The merklePrefix to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMerklePrefix")
+@kotlin.jvm.JvmName("setMerklePrefix")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setMerklePrefix(index, value)
     }/**
@@ -121,7 +121,7 @@ public object CounterpartyInfoKt {
      * `repeated bytes merkle_prefix = 1 [json_name = "merklePrefix"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMerklePrefix")
+@kotlin.jvm.JvmName("clearMerklePrefix")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, MerklePrefixProxy>.clear() {
       _builder.clearMerklePrefix()
     }
@@ -133,10 +133,10 @@ public object CounterpartyInfoKt {
      * `string client_id = 2 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**

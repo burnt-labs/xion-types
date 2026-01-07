@@ -34,16 +34,24 @@ public object QueryOsmosisArithmeticTwapRequestKt {
     internal fun _build(): xion.feeabs.v1beta1.QueryOuterClass.QueryOsmosisArithmeticTwapRequest = _builder.build()
 
     /**
+     * ```
+     * The IBC denomination to query TWAP for
+     * ```
+     *
      * `string ibc_denom = 1 [json_name = "ibcDenom"];`
      */
     public var ibcDenom: kotlin.String
-      @JvmName("getIbcDenom")
-      get() = _builder.ibcDenom
-      @JvmName("setIbcDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getIbcDenom")
+        get() = _builder.ibcDenom
+      @kotlin.jvm.JvmName("setIbcDenom")
+        set(value) {
         _builder.ibcDenom = value
       }
     /**
+     * ```
+     * The IBC denomination to query TWAP for
+     * ```
+     *
      * `string ibc_denom = 1 [json_name = "ibcDenom"];`
      */
     public fun clearIbcDenom() {

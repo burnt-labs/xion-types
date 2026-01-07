@@ -47,10 +47,10 @@ public object ValidatorKt {
      * `string operator_address = 1 [json_name = "operatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var operatorAddress: kotlin.String
-      @JvmName("getOperatorAddress")
-      get() = _builder.operatorAddress
-      @JvmName("setOperatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getOperatorAddress")
+        get() = _builder.operatorAddress
+      @kotlin.jvm.JvmName("setOperatorAddress")
+        set(value) {
         _builder.operatorAddress = value
       }
     /**
@@ -72,10 +72,10 @@ public object ValidatorKt {
      * `.google.protobuf.Any consensus_pubkey = 2 [json_name = "consensusPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];`
      */
     public var consensusPubkey: com.google.protobuf.Any
-      @JvmName("getConsensusPubkey")
-      get() = _builder.consensusPubkey
-      @JvmName("setConsensusPubkey")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusPubkey")
+        get() = _builder.consensusPubkey
+      @kotlin.jvm.JvmName("setConsensusPubkey")
+        set(value) {
         _builder.consensusPubkey = value
       }
     /**
@@ -111,10 +111,10 @@ public object ValidatorKt {
      * `bool jailed = 3 [json_name = "jailed"];`
      */
     public var jailed: kotlin.Boolean
-      @JvmName("getJailed")
-      get() = _builder.jailed
-      @JvmName("setJailed")
-      set(value) {
+      @kotlin.jvm.JvmName("getJailed")
+        get() = _builder.jailed
+      @kotlin.jvm.JvmName("setJailed")
+        set(value) {
         _builder.jailed = value
       }
     /**
@@ -136,17 +136,17 @@ public object ValidatorKt {
      * `.cosmos.staking.v1beta1.BondStatus status = 4 [json_name = "status"];`
      */
     public var status: cosmos.staking.v1beta1.Staking.BondStatus
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     public var statusValue: kotlin.Int
-      @JvmName("getStatusValue")
-      get() = _builder.statusValue
-      @JvmName("setStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatusValue")
+        get() = _builder.statusValue
+      @kotlin.jvm.JvmName("setStatusValue")
+        set(value) {
         _builder.statusValue = value
       }
     /**
@@ -168,10 +168,10 @@ public object ValidatorKt {
      * `string tokens = 5 [json_name = "tokens", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int"];`
      */
     public var tokens: kotlin.String
-      @JvmName("getTokens")
-      get() = _builder.tokens
-      @JvmName("setTokens")
-      set(value) {
+      @kotlin.jvm.JvmName("getTokens")
+        get() = _builder.tokens
+      @kotlin.jvm.JvmName("setTokens")
+        set(value) {
         _builder.tokens = value
       }
     /**
@@ -193,10 +193,10 @@ public object ValidatorKt {
      * `string delegator_shares = 6 [json_name = "delegatorShares", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var delegatorShares: kotlin.String
-      @JvmName("getDelegatorShares")
-      get() = _builder.delegatorShares
-      @JvmName("setDelegatorShares")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorShares")
+        get() = _builder.delegatorShares
+      @kotlin.jvm.JvmName("setDelegatorShares")
+        set(value) {
         _builder.delegatorShares = value
       }
     /**
@@ -218,10 +218,10 @@ public object ValidatorKt {
      * `.cosmos.staking.v1beta1.Description description = 7 [json_name = "description", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var description: cosmos.staking.v1beta1.Staking.Description
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -257,10 +257,10 @@ public object ValidatorKt {
      * `int64 unbonding_height = 8 [json_name = "unbondingHeight"];`
      */
     public var unbondingHeight: kotlin.Long
-      @JvmName("getUnbondingHeight")
-      get() = _builder.unbondingHeight
-      @JvmName("setUnbondingHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbondingHeight")
+        get() = _builder.unbondingHeight
+      @kotlin.jvm.JvmName("setUnbondingHeight")
+        set(value) {
         _builder.unbondingHeight = value
       }
     /**
@@ -282,10 +282,10 @@ public object ValidatorKt {
      * `.google.protobuf.Timestamp unbonding_time = 9 [json_name = "unbondingTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var unbondingTime: com.google.protobuf.Timestamp
-      @JvmName("getUnbondingTime")
-      get() = _builder.unbondingTime
-      @JvmName("setUnbondingTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbondingTime")
+        get() = _builder.unbondingTime
+      @kotlin.jvm.JvmName("setUnbondingTime")
+        set(value) {
         _builder.unbondingTime = value
       }
     /**
@@ -321,10 +321,10 @@ public object ValidatorKt {
      * `.cosmos.staking.v1beta1.Commission commission = 10 [json_name = "commission", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var commission: cosmos.staking.v1beta1.Staking.Commission
-      @JvmName("getCommission")
-      get() = _builder.commission
-      @JvmName("setCommission")
-      set(value) {
+      @kotlin.jvm.JvmName("getCommission")
+        get() = _builder.commission
+      @kotlin.jvm.JvmName("setCommission")
+        set(value) {
         _builder.commission = value
       }
     /**
@@ -360,10 +360,10 @@ public object ValidatorKt {
      * `string min_self_delegation = 11 [json_name = "minSelfDelegation", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.46"];`
      */
     public var minSelfDelegation: kotlin.String
-      @JvmName("getMinSelfDelegation")
-      get() = _builder.minSelfDelegation
-      @JvmName("setMinSelfDelegation")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinSelfDelegation")
+        get() = _builder.minSelfDelegation
+      @kotlin.jvm.JvmName("setMinSelfDelegation")
+        set(value) {
         _builder.minSelfDelegation = value
       }
     /**
@@ -385,10 +385,10 @@ public object ValidatorKt {
      * `int64 unbonding_on_hold_ref_count = 12 [json_name = "unbondingOnHoldRefCount"];`
      */
     public var unbondingOnHoldRefCount: kotlin.Long
-      @JvmName("getUnbondingOnHoldRefCount")
-      get() = _builder.unbondingOnHoldRefCount
-      @JvmName("setUnbondingOnHoldRefCount")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnbondingOnHoldRefCount")
+        get() = _builder.unbondingOnHoldRefCount
+      @kotlin.jvm.JvmName("setUnbondingOnHoldRefCount")
+        set(value) {
         _builder.unbondingOnHoldRefCount = value
       }
     /**
@@ -417,7 +417,7 @@ public object ValidatorKt {
      */
      public val unbondingIds: com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.unbondingIdsList
       )
     /**
@@ -429,7 +429,7 @@ public object ValidatorKt {
      * @param value The unbondingIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addUnbondingIds")
+@kotlin.jvm.JvmName("addUnbondingIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>.add(value: kotlin.Long) {
       _builder.addUnbondingIds(value)
     }/**
@@ -441,7 +441,7 @@ public object ValidatorKt {
      * @param value The unbondingIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignUnbondingIds")
+@kotlin.jvm.JvmName("plusAssignUnbondingIds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>.plusAssign(value: kotlin.Long) {
       add(value)
@@ -454,7 +454,7 @@ public object ValidatorKt {
      * @param values The unbondingIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllUnbondingIds")
+@kotlin.jvm.JvmName("addAllUnbondingIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Long>) {
       _builder.addAllUnbondingIds(values)
     }/**
@@ -466,7 +466,7 @@ public object ValidatorKt {
      * @param values The unbondingIds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllUnbondingIds")
+@kotlin.jvm.JvmName("plusAssignAllUnbondingIds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Long>) {
       addAll(values)
@@ -480,7 +480,7 @@ public object ValidatorKt {
      * @param value The unbondingIds to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setUnbondingIds")
+@kotlin.jvm.JvmName("setUnbondingIds")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>.set(index: kotlin.Int, value: kotlin.Long) {
       _builder.setUnbondingIds(index, value)
     }/**
@@ -491,7 +491,7 @@ public object ValidatorKt {
      * `repeated uint64 unbonding_ids = 13 [json_name = "unbondingIds"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearUnbondingIds")
+@kotlin.jvm.JvmName("clearUnbondingIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Long, UnbondingIdsProxy>.clear() {
       _builder.clearUnbondingIds()
     }}

@@ -47,7 +47,7 @@ public object ParamsKt {
      */
      public val minDeposit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.minDepositList
       )
     /**
@@ -59,7 +59,7 @@ public object ParamsKt {
      * @param value The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addMinDeposit")
+@kotlin.jvm.JvmName("addMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addMinDeposit(value)
     }
@@ -72,7 +72,7 @@ public object ParamsKt {
      * @param value The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignMinDeposit")
+@kotlin.jvm.JvmName("plusAssignMinDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -86,7 +86,7 @@ public object ParamsKt {
      * @param values The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllMinDeposit")
+@kotlin.jvm.JvmName("addAllMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllMinDeposit(values)
     }
@@ -99,7 +99,7 @@ public object ParamsKt {
      * @param values The minDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllMinDeposit")
+@kotlin.jvm.JvmName("plusAssignAllMinDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object ParamsKt {
      * @param value The minDeposit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setMinDeposit")
+@kotlin.jvm.JvmName("setMinDeposit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setMinDeposit(index, value)
     }
@@ -126,11 +126,10 @@ public object ParamsKt {
      * `repeated .cosmos.base.v1beta1.Coin min_deposit = 1 [json_name = "minDeposit", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearMinDeposit")
+@kotlin.jvm.JvmName("clearMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, MinDepositProxy>.clear() {
       _builder.clearMinDeposit()
     }
-
 
     /**
      * ```
@@ -141,10 +140,10 @@ public object ParamsKt {
      * `.google.protobuf.Duration max_deposit_period = 2 [json_name = "maxDepositPeriod", (.gogoproto.stdduration) = true];`
      */
     public var maxDepositPeriod: com.google.protobuf.Duration
-      @JvmName("getMaxDepositPeriod")
-      get() = _builder.maxDepositPeriod
-      @JvmName("setMaxDepositPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxDepositPeriod")
+        get() = _builder.maxDepositPeriod
+      @kotlin.jvm.JvmName("setMaxDepositPeriod")
+        set(value) {
         _builder.maxDepositPeriod = value
       }
     /**
@@ -182,10 +181,10 @@ public object ParamsKt {
      * `.google.protobuf.Duration voting_period = 3 [json_name = "votingPeriod", (.gogoproto.stdduration) = true];`
      */
     public var votingPeriod: com.google.protobuf.Duration
-      @JvmName("getVotingPeriod")
-      get() = _builder.votingPeriod
-      @JvmName("setVotingPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingPeriod")
+        get() = _builder.votingPeriod
+      @kotlin.jvm.JvmName("setVotingPeriod")
+        set(value) {
         _builder.votingPeriod = value
       }
     /**
@@ -222,10 +221,10 @@ public object ParamsKt {
      * `string quorum = 4 [json_name = "quorum", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var quorum: kotlin.String
-      @JvmName("getQuorum")
-      get() = _builder.quorum
-      @JvmName("setQuorum")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuorum")
+        get() = _builder.quorum
+      @kotlin.jvm.JvmName("setQuorum")
+        set(value) {
         _builder.quorum = value
       }
     /**
@@ -248,10 +247,10 @@ public object ParamsKt {
      * `string threshold = 5 [json_name = "threshold", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var threshold: kotlin.String
-      @JvmName("getThreshold")
-      get() = _builder.threshold
-      @JvmName("setThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getThreshold")
+        get() = _builder.threshold
+      @kotlin.jvm.JvmName("setThreshold")
+        set(value) {
         _builder.threshold = value
       }
     /**
@@ -274,10 +273,10 @@ public object ParamsKt {
      * `string veto_threshold = 6 [json_name = "vetoThreshold", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var vetoThreshold: kotlin.String
-      @JvmName("getVetoThreshold")
-      get() = _builder.vetoThreshold
-      @JvmName("setVetoThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getVetoThreshold")
+        get() = _builder.vetoThreshold
+      @kotlin.jvm.JvmName("setVetoThreshold")
+        set(value) {
         _builder.vetoThreshold = value
       }
     /**
@@ -300,10 +299,10 @@ public object ParamsKt {
      * `string min_initial_deposit_ratio = 7 [json_name = "minInitialDepositRatio", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var minInitialDepositRatio: kotlin.String
-      @JvmName("getMinInitialDepositRatio")
-      get() = _builder.minInitialDepositRatio
-      @JvmName("setMinInitialDepositRatio")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinInitialDepositRatio")
+        get() = _builder.minInitialDepositRatio
+      @kotlin.jvm.JvmName("setMinInitialDepositRatio")
+        set(value) {
         _builder.minInitialDepositRatio = value
       }
     /**
@@ -325,10 +324,10 @@ public object ParamsKt {
      * `string proposal_cancel_ratio = 8 [json_name = "proposalCancelRatio", (.cosmos_proto.scalar) = "cosmos.Dec", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var proposalCancelRatio: kotlin.String
-      @JvmName("getProposalCancelRatio")
-      get() = _builder.proposalCancelRatio
-      @JvmName("setProposalCancelRatio")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalCancelRatio")
+        get() = _builder.proposalCancelRatio
+      @kotlin.jvm.JvmName("setProposalCancelRatio")
+        set(value) {
         _builder.proposalCancelRatio = value
       }
     /**
@@ -351,10 +350,10 @@ public object ParamsKt {
      * `string proposal_cancel_dest = 9 [json_name = "proposalCancelDest", (.cosmos_proto.scalar) = "cosmos.AddressString", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var proposalCancelDest: kotlin.String
-      @JvmName("getProposalCancelDest")
-      get() = _builder.proposalCancelDest
-      @JvmName("setProposalCancelDest")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalCancelDest")
+        get() = _builder.proposalCancelDest
+      @kotlin.jvm.JvmName("setProposalCancelDest")
+        set(value) {
         _builder.proposalCancelDest = value
       }
     /**
@@ -377,10 +376,10 @@ public object ParamsKt {
      * `.google.protobuf.Duration expedited_voting_period = 10 [json_name = "expeditedVotingPeriod", (.gogoproto.stdduration) = true, (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var expeditedVotingPeriod: com.google.protobuf.Duration
-      @JvmName("getExpeditedVotingPeriod")
-      get() = _builder.expeditedVotingPeriod
-      @JvmName("setExpeditedVotingPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpeditedVotingPeriod")
+        get() = _builder.expeditedVotingPeriod
+      @kotlin.jvm.JvmName("setExpeditedVotingPeriod")
+        set(value) {
         _builder.expeditedVotingPeriod = value
       }
     /**
@@ -416,10 +415,10 @@ public object ParamsKt {
      * `string expedited_threshold = 11 [json_name = "expeditedThreshold", (.cosmos_proto.scalar) = "cosmos.Dec", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var expeditedThreshold: kotlin.String
-      @JvmName("getExpeditedThreshold")
-      get() = _builder.expeditedThreshold
-      @JvmName("setExpeditedThreshold")
-      set(value) {
+      @kotlin.jvm.JvmName("getExpeditedThreshold")
+        get() = _builder.expeditedThreshold
+      @kotlin.jvm.JvmName("setExpeditedThreshold")
+        set(value) {
         _builder.expeditedThreshold = value
       }
     /**
@@ -448,7 +447,7 @@ public object ParamsKt {
      */
      public val expeditedMinDeposit: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.expeditedMinDepositList
       )
     /**
@@ -460,7 +459,7 @@ public object ParamsKt {
      * @param value The expeditedMinDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addExpeditedMinDeposit")
+@kotlin.jvm.JvmName("addExpeditedMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addExpeditedMinDeposit(value)
     }
@@ -473,7 +472,7 @@ public object ParamsKt {
      * @param value The expeditedMinDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignExpeditedMinDeposit")
+@kotlin.jvm.JvmName("plusAssignExpeditedMinDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -487,7 +486,7 @@ public object ParamsKt {
      * @param values The expeditedMinDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllExpeditedMinDeposit")
+@kotlin.jvm.JvmName("addAllExpeditedMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllExpeditedMinDeposit(values)
     }
@@ -500,7 +499,7 @@ public object ParamsKt {
      * @param values The expeditedMinDeposit to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllExpeditedMinDeposit")
+@kotlin.jvm.JvmName("plusAssignAllExpeditedMinDeposit")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -515,7 +514,7 @@ public object ParamsKt {
      * @param value The expeditedMinDeposit to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setExpeditedMinDeposit")
+@kotlin.jvm.JvmName("setExpeditedMinDeposit")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setExpeditedMinDeposit(index, value)
     }
@@ -527,11 +526,10 @@ public object ParamsKt {
      * `repeated .cosmos.base.v1beta1.Coin expedited_min_deposit = 12 [json_name = "expeditedMinDeposit", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearExpeditedMinDeposit")
+@kotlin.jvm.JvmName("clearExpeditedMinDeposit")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, ExpeditedMinDepositProxy>.clear() {
       _builder.clearExpeditedMinDeposit()
     }
-
 
     /**
      * ```
@@ -541,10 +539,10 @@ public object ParamsKt {
      * `bool burn_vote_quorum = 13 [json_name = "burnVoteQuorum"];`
      */
     public var burnVoteQuorum: kotlin.Boolean
-      @JvmName("getBurnVoteQuorum")
-      get() = _builder.burnVoteQuorum
-      @JvmName("setBurnVoteQuorum")
-      set(value) {
+      @kotlin.jvm.JvmName("getBurnVoteQuorum")
+        get() = _builder.burnVoteQuorum
+      @kotlin.jvm.JvmName("setBurnVoteQuorum")
+        set(value) {
         _builder.burnVoteQuorum = value
       }
     /**
@@ -566,10 +564,10 @@ public object ParamsKt {
      * `bool burn_proposal_deposit_prevote = 14 [json_name = "burnProposalDepositPrevote"];`
      */
     public var burnProposalDepositPrevote: kotlin.Boolean
-      @JvmName("getBurnProposalDepositPrevote")
-      get() = _builder.burnProposalDepositPrevote
-      @JvmName("setBurnProposalDepositPrevote")
-      set(value) {
+      @kotlin.jvm.JvmName("getBurnProposalDepositPrevote")
+        get() = _builder.burnProposalDepositPrevote
+      @kotlin.jvm.JvmName("setBurnProposalDepositPrevote")
+        set(value) {
         _builder.burnProposalDepositPrevote = value
       }
     /**
@@ -591,10 +589,10 @@ public object ParamsKt {
      * `bool burn_vote_veto = 15 [json_name = "burnVoteVeto"];`
      */
     public var burnVoteVeto: kotlin.Boolean
-      @JvmName("getBurnVoteVeto")
-      get() = _builder.burnVoteVeto
-      @JvmName("setBurnVoteVeto")
-      set(value) {
+      @kotlin.jvm.JvmName("getBurnVoteVeto")
+        get() = _builder.burnVoteVeto
+      @kotlin.jvm.JvmName("setBurnVoteVeto")
+        set(value) {
         _builder.burnVoteVeto = value
       }
     /**
@@ -618,10 +616,10 @@ public object ParamsKt {
      * `string min_deposit_ratio = 16 [json_name = "minDepositRatio", (.cosmos_proto.scalar) = "cosmos.Dec", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];`
      */
     public var minDepositRatio: kotlin.String
-      @JvmName("getMinDepositRatio")
-      get() = _builder.minDepositRatio
-      @JvmName("setMinDepositRatio")
-      set(value) {
+      @kotlin.jvm.JvmName("getMinDepositRatio")
+        get() = _builder.minDepositRatio
+      @kotlin.jvm.JvmName("setMinDepositRatio")
+        set(value) {
         _builder.minDepositRatio = value
       }
     /**

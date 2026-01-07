@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun queryGetAudienceClaimRequest(block: xion.jwk.v1.QueryGetAudienceClaimRequestKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryGetAudienceClaimRequest =
   xion.jwk.v1.QueryGetAudienceClaimRequestKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryGetAudienceClaimRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryGetAudienceClaimRequest is the legacy request type for querying an
+ * audience claim (deprecated)
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryGetAudienceClaimRequest`
  */
 public object QueryGetAudienceClaimRequestKt {
@@ -29,16 +34,24 @@ public object QueryGetAudienceClaimRequestKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.QueryGetAudienceClaimRequest = _builder.build()
 
     /**
+     * ```
+     * The hash of the audience claim to query
+     * ```
+     *
      * `bytes hash = 1 [json_name = "hash"];`
      */
     public var hash: com.google.protobuf.ByteString
-      @JvmName("getHash")
-      get() = _builder.hash
-      @JvmName("setHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getHash")
+        get() = _builder.hash
+      @kotlin.jvm.JvmName("setHash")
+        set(value) {
         _builder.hash = value
       }
     /**
+     * ```
+     * The hash of the audience claim to query
+     * ```
+     *
      * `bytes hash = 1 [json_name = "hash"];`
      */
     public fun clearHash() {

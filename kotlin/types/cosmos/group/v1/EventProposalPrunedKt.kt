@@ -40,10 +40,10 @@ public object EventProposalPrunedKt {
      * `uint64 proposal_id = 1 [json_name = "proposalId"];`
      */
     public var proposalId: kotlin.Long
-      @JvmName("getProposalId")
-      get() = _builder.proposalId
-      @JvmName("setProposalId")
-      set(value) {
+      @kotlin.jvm.JvmName("getProposalId")
+        get() = _builder.proposalId
+      @kotlin.jvm.JvmName("setProposalId")
+        set(value) {
         _builder.proposalId = value
       }
     /**
@@ -65,17 +65,17 @@ public object EventProposalPrunedKt {
      * `.cosmos.group.v1.ProposalStatus status = 2 [json_name = "status"];`
      */
     public var status: cosmos.group.v1.Types.ProposalStatus
-      @JvmName("getStatus")
-      get() = _builder.status
-      @JvmName("setStatus")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatus")
+        get() = _builder.status
+      @kotlin.jvm.JvmName("setStatus")
+        set(value) {
         _builder.status = value
       }
     public var statusValue: kotlin.Int
-      @JvmName("getStatusValue")
-      get() = _builder.statusValue
-      @JvmName("setStatusValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getStatusValue")
+        get() = _builder.statusValue
+      @kotlin.jvm.JvmName("setStatusValue")
+        set(value) {
         _builder.statusValue = value
       }
     /**
@@ -97,10 +97,10 @@ public object EventProposalPrunedKt {
      * `.cosmos.group.v1.TallyResult tally_result = 3 [json_name = "tallyResult"];`
      */
     public var tallyResult: cosmos.group.v1.Types.TallyResult
-      @JvmName("getTallyResult")
-      get() = _builder.tallyResult
-      @JvmName("setTallyResult")
-      set(value) {
+      @kotlin.jvm.JvmName("getTallyResult")
+        get() = _builder.tallyResult
+      @kotlin.jvm.JvmName("setTallyResult")
+        set(value) {
         _builder.tallyResult = value
       }
     /**

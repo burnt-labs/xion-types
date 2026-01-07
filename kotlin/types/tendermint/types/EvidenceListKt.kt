@@ -39,7 +39,7 @@ public object EvidenceListKt {
      */
      public val evidence: com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.evidenceList
       )
     /**
@@ -47,7 +47,7 @@ public object EvidenceListKt {
      * @param value The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addEvidence")
+@kotlin.jvm.JvmName("addEvidence")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>.add(value: tendermint.types.EvidenceOuterClass.Evidence) {
       _builder.addEvidence(value)
     }
@@ -56,7 +56,7 @@ public object EvidenceListKt {
      * @param value The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignEvidence")
+@kotlin.jvm.JvmName("plusAssignEvidence")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>.plusAssign(value: tendermint.types.EvidenceOuterClass.Evidence) {
       add(value)
@@ -66,7 +66,7 @@ public object EvidenceListKt {
      * @param values The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllEvidence")
+@kotlin.jvm.JvmName("addAllEvidence")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>.addAll(values: kotlin.collections.Iterable<tendermint.types.EvidenceOuterClass.Evidence>) {
       _builder.addAllEvidence(values)
     }
@@ -75,7 +75,7 @@ public object EvidenceListKt {
      * @param values The evidence to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllEvidence")
+@kotlin.jvm.JvmName("plusAssignAllEvidence")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.types.EvidenceOuterClass.Evidence>) {
       addAll(values)
@@ -86,7 +86,7 @@ public object EvidenceListKt {
      * @param value The evidence to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setEvidence")
+@kotlin.jvm.JvmName("setEvidence")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>.set(index: kotlin.Int, value: tendermint.types.EvidenceOuterClass.Evidence) {
       _builder.setEvidence(index, value)
     }
@@ -94,11 +94,10 @@ public object EvidenceListKt {
      * `repeated .tendermint.types.Evidence evidence = 1 [json_name = "evidence", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearEvidence")
+@kotlin.jvm.JvmName("clearEvidence")
     public fun com.google.protobuf.kotlin.DslList<tendermint.types.EvidenceOuterClass.Evidence, EvidenceProxy>.clear() {
       _builder.clearEvidence()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

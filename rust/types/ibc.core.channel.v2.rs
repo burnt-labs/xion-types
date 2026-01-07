@@ -156,7 +156,7 @@ pub struct QueryNextSequenceSendResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryPacketCommitmentRequest is the request type for the Query/PacketCommitment RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -179,7 +179,7 @@ pub struct QueryPacketCommitmentResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryPacketCommitmentsRequest is the request type for the Query/PacketCommitments RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -189,7 +189,7 @@ pub struct QueryPacketCommitmentsRequest {
     pub client_id: ::prost::alloc::string::String,
     /// pagination request
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryPacketCommitmentResponse is the response type for the Query/PacketCommitment RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -199,10 +199,10 @@ pub struct QueryPacketCommitmentsResponse {
     pub commitments: ::prost::alloc::vec::Vec<PacketState>,
     /// pagination response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
     /// query block height.
     #[prost(message, optional, tag="3")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryPacketAcknowledgementRequest is the request type for the Query/PacketAcknowledgement RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -225,7 +225,7 @@ pub struct QueryPacketAcknowledgementResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryPacketAcknowledgementsRequest is the request type for the
 /// Query/QueryPacketCommitments RPC method
@@ -236,7 +236,7 @@ pub struct QueryPacketAcknowledgementsRequest {
     pub client_id: ::prost::alloc::string::String,
     /// pagination request
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
     /// list of packet sequences
     #[prost(uint64, repeated, tag="3")]
     pub packet_commitment_sequences: ::prost::alloc::vec::Vec<u64>,
@@ -249,10 +249,10 @@ pub struct QueryPacketAcknowledgementsResponse {
     pub acknowledgements: ::prost::alloc::vec::Vec<PacketState>,
     /// pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
     /// query block height
     #[prost(message, optional, tag="3")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryPacketReceiptRequest is the request type for the Query/PacketReceipt RPC method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -275,7 +275,7 @@ pub struct QueryPacketReceiptResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="4")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryUnreceivedPacketsRequest is the request type for the Query/UnreceivedPackets RPC method
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -295,7 +295,7 @@ pub struct QueryUnreceivedPacketsResponse {
     pub sequences: ::prost::alloc::vec::Vec<u64>,
     /// query block height
     #[prost(message, optional, tag="2")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryUnreceivedAcks is the request type for the
 /// Query/UnreceivedAcks RPC method
@@ -317,7 +317,7 @@ pub struct QueryUnreceivedAcksResponse {
     pub sequences: ::prost::alloc::vec::Vec<u64>,
     /// query block height
     #[prost(message, optional, tag="2")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// MsgSendPacket sends an outgoing IBC packet.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -345,7 +345,7 @@ pub struct MsgRecvPacket {
     #[prost(bytes="vec", tag="2")]
     pub proof_commitment: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="4")]
     pub signer: ::prost::alloc::string::String,
 }
@@ -363,7 +363,7 @@ pub struct MsgTimeout {
     #[prost(bytes="vec", tag="2")]
     pub proof_unreceived: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="5")]
     pub signer: ::prost::alloc::string::String,
 }
@@ -383,7 +383,7 @@ pub struct MsgAcknowledgement {
     #[prost(bytes="vec", tag="3")]
     pub proof_acked: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="4")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="5")]
     pub signer: ::prost::alloc::string::String,
 }

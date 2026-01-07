@@ -43,10 +43,10 @@ public object StoreCodeProposalKt {
      * `string title = 1 [json_name = "title"];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -68,10 +68,10 @@ public object StoreCodeProposalKt {
      * `string description = 2 [json_name = "description"];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -93,10 +93,10 @@ public object StoreCodeProposalKt {
      * `string run_as = 3 [json_name = "runAs", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var runAs: kotlin.String
-      @JvmName("getRunAs")
-      get() = _builder.runAs
-      @JvmName("setRunAs")
-      set(value) {
+      @kotlin.jvm.JvmName("getRunAs")
+        get() = _builder.runAs
+      @kotlin.jvm.JvmName("setRunAs")
+        set(value) {
         _builder.runAs = value
       }
     /**
@@ -118,10 +118,10 @@ public object StoreCodeProposalKt {
      * `bytes wasm_byte_code = 4 [json_name = "wasmByteCode", (.gogoproto.customname) = "WASMByteCode"];`
      */
     public var wasmByteCode: com.google.protobuf.ByteString
-      @JvmName("getWasmByteCode")
-      get() = _builder.wasmByteCode
-      @JvmName("setWasmByteCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getWasmByteCode")
+        get() = _builder.wasmByteCode
+      @kotlin.jvm.JvmName("setWasmByteCode")
+        set(value) {
         _builder.wasmByteCode = value
       }
     /**
@@ -143,10 +143,10 @@ public object StoreCodeProposalKt {
      * `.cosmwasm.wasm.v1.AccessConfig instantiate_permission = 7 [json_name = "instantiatePermission"];`
      */
     public var instantiatePermission: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getInstantiatePermission")
-      get() = _builder.instantiatePermission
-      @JvmName("setInstantiatePermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiatePermission")
+        get() = _builder.instantiatePermission
+      @kotlin.jvm.JvmName("setInstantiatePermission")
+        set(value) {
         _builder.instantiatePermission = value
       }
     /**
@@ -182,10 +182,10 @@ public object StoreCodeProposalKt {
      * `bool unpin_code = 8 [json_name = "unpinCode"];`
      */
     public var unpinCode: kotlin.Boolean
-      @JvmName("getUnpinCode")
-      get() = _builder.unpinCode
-      @JvmName("setUnpinCode")
-      set(value) {
+      @kotlin.jvm.JvmName("getUnpinCode")
+        get() = _builder.unpinCode
+      @kotlin.jvm.JvmName("setUnpinCode")
+        set(value) {
         _builder.unpinCode = value
       }
     /**
@@ -207,10 +207,10 @@ public object StoreCodeProposalKt {
      * `string source = 9 [json_name = "source"];`
      */
     public var source: kotlin.String
-      @JvmName("getSource")
-      get() = _builder.source
-      @JvmName("setSource")
-      set(value) {
+      @kotlin.jvm.JvmName("getSource")
+        get() = _builder.source
+      @kotlin.jvm.JvmName("setSource")
+        set(value) {
         _builder.source = value
       }
     /**
@@ -233,10 +233,10 @@ public object StoreCodeProposalKt {
      * `string builder = 10 [json_name = "builder"];`
      */
     public var builder: kotlin.String
-      @JvmName("getBuilder")
-      get() = _builder.builder
-      @JvmName("setBuilder")
-      set(value) {
+      @kotlin.jvm.JvmName("getBuilder")
+        get() = _builder.builder
+      @kotlin.jvm.JvmName("setBuilder")
+        set(value) {
         _builder.builder = value
       }
     /**
@@ -260,10 +260,10 @@ public object StoreCodeProposalKt {
      * `bytes code_hash = 11 [json_name = "codeHash"];`
      */
     public var codeHash: com.google.protobuf.ByteString
-      @JvmName("getCodeHash")
-      get() = _builder.codeHash
-      @JvmName("setCodeHash")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeHash")
+        get() = _builder.codeHash
+      @kotlin.jvm.JvmName("setCodeHash")
+        set(value) {
         _builder.codeHash = value
       }
     /**

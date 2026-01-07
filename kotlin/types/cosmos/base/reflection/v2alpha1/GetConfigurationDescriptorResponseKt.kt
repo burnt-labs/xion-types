@@ -40,10 +40,10 @@ public object GetConfigurationDescriptorResponseKt {
      * `.cosmos.base.reflection.v2alpha1.ConfigurationDescriptor config = 1 [json_name = "config"];`
      */
     public var config: cosmos.base.reflection.v2alpha1.Reflection.ConfigurationDescriptor
-      @JvmName("getConfig")
-      get() = _builder.config
-      @JvmName("setConfig")
-      set(value) {
+      @kotlin.jvm.JvmName("getConfig")
+        get() = _builder.config
+      @kotlin.jvm.JvmName("setConfig")
+        set(value) {
         _builder.config = value
       }
     /**

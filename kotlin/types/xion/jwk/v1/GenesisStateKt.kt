@@ -33,22 +33,34 @@ public object GenesisStateKt {
     internal fun _build(): xion.jwk.v1.Genesis.GenesisState = _builder.build()
 
     /**
+     * ```
+     * The module parameters
+     * ```
+     *
      * `.xion.jwk.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: xion.jwk.v1.ParamsOuterClass.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
+     * ```
+     * The module parameters
+     * ```
+     *
      * `.xion.jwk.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public fun clearParams() {
       _builder.clearParams()
     }
     /**
+     * ```
+     * The module parameters
+     * ```
+     *
      * `.xion.jwk.v1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false];`
      * @return Whether the params field is set.
      */
@@ -66,70 +78,97 @@ public object GenesisStateKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class AudienceListProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      */
      public val audienceList: com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.audienceListList
       )
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      * @param value The audienceList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAudienceList")
+@kotlin.jvm.JvmName("addAudienceList")
     public fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>.add(value: xion.jwk.v1.AudienceOuterClass.Audience) {
       _builder.addAudienceList(value)
     }
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      * @param value The audienceList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAudienceList")
+@kotlin.jvm.JvmName("plusAssignAudienceList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>.plusAssign(value: xion.jwk.v1.AudienceOuterClass.Audience) {
       add(value)
     }
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      * @param values The audienceList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAudienceList")
+@kotlin.jvm.JvmName("addAllAudienceList")
     public fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>.addAll(values: kotlin.collections.Iterable<xion.jwk.v1.AudienceOuterClass.Audience>) {
       _builder.addAllAudienceList(values)
     }
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      * @param values The audienceList to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAudienceList")
+@kotlin.jvm.JvmName("plusAssignAllAudienceList")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>.plusAssign(values: kotlin.collections.Iterable<xion.jwk.v1.AudienceOuterClass.Audience>) {
       addAll(values)
     }
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      * @param index The index to set the value at.
      * @param value The audienceList to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAudienceList")
+@kotlin.jvm.JvmName("setAudienceList")
     public operator fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>.set(index: kotlin.Int, value: xion.jwk.v1.AudienceOuterClass.Audience) {
       _builder.setAudienceList(index, value)
     }
     /**
-     * `repeated .xion.jwk.v1.Audience audienceList = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
+     * ```
+     * List of all audiences
+     * ```
+     *
+     * `repeated .xion.jwk.v1.Audience audience_list = 2 [json_name = "audienceList", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAudienceList")
+@kotlin.jvm.JvmName("clearAudienceList")
     public fun com.google.protobuf.kotlin.DslList<xion.jwk.v1.AudienceOuterClass.Audience, AudienceListProxy>.clear() {
       _builder.clearAudienceList()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

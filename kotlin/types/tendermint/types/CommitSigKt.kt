@@ -36,17 +36,17 @@ public object CommitSigKt {
      * `.tendermint.types.BlockIDFlag block_id_flag = 1 [json_name = "blockIdFlag"];`
      */
     public var blockIdFlag: tendermint.types.ValidatorOuterClass.BlockIDFlag
-      @JvmName("getBlockIdFlag")
-      get() = _builder.blockIdFlag
-      @JvmName("setBlockIdFlag")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockIdFlag")
+        get() = _builder.blockIdFlag
+      @kotlin.jvm.JvmName("setBlockIdFlag")
+        set(value) {
         _builder.blockIdFlag = value
       }
     public var blockIdFlagValue: kotlin.Int
-      @JvmName("getBlockIdFlagValue")
-      get() = _builder.blockIdFlagValue
-      @JvmName("setBlockIdFlagValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getBlockIdFlagValue")
+        get() = _builder.blockIdFlagValue
+      @kotlin.jvm.JvmName("setBlockIdFlagValue")
+        set(value) {
         _builder.blockIdFlagValue = value
       }
     /**
@@ -60,10 +60,10 @@ public object CommitSigKt {
      * `bytes validator_address = 2 [json_name = "validatorAddress"];`
      */
     public var validatorAddress: com.google.protobuf.ByteString
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -77,10 +77,10 @@ public object CommitSigKt {
      * `.google.protobuf.Timestamp timestamp = 3 [json_name = "timestamp", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var timestamp: com.google.protobuf.Timestamp
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -104,10 +104,10 @@ public object CommitSigKt {
      * `bytes signature = 4 [json_name = "signature"];`
      */
     public var signature: com.google.protobuf.ByteString
-      @JvmName("getSignature")
-      get() = _builder.signature
-      @JvmName("setSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignature")
+        get() = _builder.signature
+      @kotlin.jvm.JvmName("setSignature")
+        set(value) {
         _builder.signature = value
       }
     /**

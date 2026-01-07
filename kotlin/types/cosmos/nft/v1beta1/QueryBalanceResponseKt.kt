@@ -40,10 +40,10 @@ public object QueryBalanceResponseKt {
      * `uint64 amount = 1 [json_name = "amount"];`
      */
     public var amount: kotlin.Long
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**

@@ -41,10 +41,10 @@ public object ModuleKt {
      * `uint64 max_metadata_len = 1 [json_name = "maxMetadataLen"];`
      */
     public var maxMetadataLen: kotlin.Long
-      @JvmName("getMaxMetadataLen")
-      get() = _builder.maxMetadataLen
-      @JvmName("setMaxMetadataLen")
-      set(value) {
+      @kotlin.jvm.JvmName("getMaxMetadataLen")
+        get() = _builder.maxMetadataLen
+      @kotlin.jvm.JvmName("setMaxMetadataLen")
+        set(value) {
         _builder.maxMetadataLen = value
       }
     /**
@@ -67,10 +67,10 @@ public object ModuleKt {
      * `string authority = 2 [json_name = "authority"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**

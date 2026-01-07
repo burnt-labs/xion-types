@@ -10,6 +10,11 @@ package xion.jwk.v1;
 public inline fun queryGetAudienceRequest(block: xion.jwk.v1.QueryGetAudienceRequestKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.QueryGetAudienceRequest =
   xion.jwk.v1.QueryGetAudienceRequestKt.Dsl._create(xion.jwk.v1.QueryOuterClass.QueryGetAudienceRequest.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * QueryGetAudienceRequest is the legacy request type for querying an audience
+ * (deprecated)
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.QueryGetAudienceRequest`
  */
 public object QueryGetAudienceRequestKt {
@@ -29,16 +34,24 @@ public object QueryGetAudienceRequestKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.QueryGetAudienceRequest = _builder.build()
 
     /**
+     * ```
+     * The audience identifier to query
+     * ```
+     *
      * `string aud = 1 [json_name = "aud"];`
      */
     public var aud: kotlin.String
-      @JvmName("getAud")
-      get() = _builder.aud
-      @JvmName("setAud")
-      set(value) {
+      @kotlin.jvm.JvmName("getAud")
+        get() = _builder.aud
+      @kotlin.jvm.JvmName("setAud")
+        set(value) {
         _builder.aud = value
       }
     /**
+     * ```
+     * The audience identifier to query
+     * ```
+     *
      * `string aud = 1 [json_name = "aud"];`
      */
     public fun clearAud() {

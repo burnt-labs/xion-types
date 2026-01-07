@@ -34,16 +34,24 @@ public object MintIncentiveTokensKt {
     internal fun _build(): xion.mint.v1.Event.MintIncentiveTokens = _builder.build()
 
     /**
+     * ```
+     * The ratio of bonded tokens to total supply
+     * ```
+     *
      * `string bonded_ratio = 1 [json_name = "bondedRatio", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"bonded_ratio\"", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var bondedRatio: kotlin.String
-      @JvmName("getBondedRatio")
-      get() = _builder.bondedRatio
-      @JvmName("setBondedRatio")
-      set(value) {
+      @kotlin.jvm.JvmName("getBondedRatio")
+        get() = _builder.bondedRatio
+      @kotlin.jvm.JvmName("setBondedRatio")
+        set(value) {
         _builder.bondedRatio = value
       }
     /**
+     * ```
+     * The ratio of bonded tokens to total supply
+     * ```
+     *
      * `string bonded_ratio = 1 [json_name = "bondedRatio", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"bonded_ratio\"", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public fun clearBondedRatio() {
@@ -51,16 +59,24 @@ public object MintIncentiveTokensKt {
     }
 
     /**
+     * ```
+     * The current inflation rate
+     * ```
+     *
      * `string inflation = 2 [json_name = "inflation", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"inflation\"", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var inflation: kotlin.String
-      @JvmName("getInflation")
-      get() = _builder.inflation
-      @JvmName("setInflation")
-      set(value) {
+      @kotlin.jvm.JvmName("getInflation")
+        get() = _builder.inflation
+      @kotlin.jvm.JvmName("setInflation")
+        set(value) {
         _builder.inflation = value
       }
     /**
+     * ```
+     * The current inflation rate
+     * ```
+     *
      * `string inflation = 2 [json_name = "inflation", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"inflation\"", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public fun clearInflation() {
@@ -68,16 +84,24 @@ public object MintIncentiveTokensKt {
     }
 
     /**
+     * ```
+     * The total annual provisions for minting
+     * ```
+     *
      * `string annual_provisions = 3 [json_name = "annualProvisions", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"annual_provisions\"", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var annualProvisions: kotlin.String
-      @JvmName("getAnnualProvisions")
-      get() = _builder.annualProvisions
-      @JvmName("setAnnualProvisions")
-      set(value) {
+      @kotlin.jvm.JvmName("getAnnualProvisions")
+        get() = _builder.annualProvisions
+      @kotlin.jvm.JvmName("setAnnualProvisions")
+        set(value) {
         _builder.annualProvisions = value
       }
     /**
+     * ```
+     * The total annual provisions for minting
+     * ```
+     *
      * `string annual_provisions = 3 [json_name = "annualProvisions", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"annual_provisions\"", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public fun clearAnnualProvisions() {
@@ -85,16 +109,24 @@ public object MintIncentiveTokensKt {
     }
 
     /**
+     * ```
+     * The amount of tokens needed for incentives
+     * ```
+     *
      * `uint64 needed_amount = 4 [json_name = "neededAmount"];`
      */
     public var neededAmount: kotlin.Long
-      @JvmName("getNeededAmount")
-      get() = _builder.neededAmount
-      @JvmName("setNeededAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getNeededAmount")
+        get() = _builder.neededAmount
+      @kotlin.jvm.JvmName("setNeededAmount")
+        set(value) {
         _builder.neededAmount = value
       }
     /**
+     * ```
+     * The amount of tokens needed for incentives
+     * ```
+     *
      * `uint64 needed_amount = 4 [json_name = "neededAmount"];`
      */
     public fun clearNeededAmount() {
@@ -102,16 +134,24 @@ public object MintIncentiveTokensKt {
     }
 
     /**
+     * ```
+     * The amount of tokens collected for incentives
+     * ```
+     *
      * `uint64 collected_amount = 5 [json_name = "collectedAmount"];`
      */
     public var collectedAmount: kotlin.Long
-      @JvmName("getCollectedAmount")
-      get() = _builder.collectedAmount
-      @JvmName("setCollectedAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getCollectedAmount")
+        get() = _builder.collectedAmount
+      @kotlin.jvm.JvmName("setCollectedAmount")
+        set(value) {
         _builder.collectedAmount = value
       }
     /**
+     * ```
+     * The amount of tokens collected for incentives
+     * ```
+     *
      * `uint64 collected_amount = 5 [json_name = "collectedAmount"];`
      */
     public fun clearCollectedAmount() {
@@ -119,16 +159,24 @@ public object MintIncentiveTokensKt {
     }
 
     /**
+     * ```
+     * The amount of tokens minted
+     * ```
+     *
      * `uint64 minted_amount = 6 [json_name = "mintedAmount"];`
      */
     public var mintedAmount: kotlin.Long
-      @JvmName("getMintedAmount")
-      get() = _builder.mintedAmount
-      @JvmName("setMintedAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getMintedAmount")
+        get() = _builder.mintedAmount
+      @kotlin.jvm.JvmName("setMintedAmount")
+        set(value) {
         _builder.mintedAmount = value
       }
     /**
+     * ```
+     * The amount of tokens minted
+     * ```
+     *
      * `uint64 minted_amount = 6 [json_name = "mintedAmount"];`
      */
     public fun clearMintedAmount() {
@@ -136,16 +184,24 @@ public object MintIncentiveTokensKt {
     }
 
     /**
+     * ```
+     * The amount of tokens burned
+     * ```
+     *
      * `uint64 burned_amount = 7 [json_name = "burnedAmount"];`
      */
     public var burnedAmount: kotlin.Long
-      @JvmName("getBurnedAmount")
-      get() = _builder.burnedAmount
-      @JvmName("setBurnedAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getBurnedAmount")
+        get() = _builder.burnedAmount
+      @kotlin.jvm.JvmName("setBurnedAmount")
+        set(value) {
         _builder.burnedAmount = value
       }
     /**
+     * ```
+     * The amount of tokens burned
+     * ```
+     *
      * `uint64 burned_amount = 7 [json_name = "burnedAmount"];`
      */
     public fun clearBurnedAmount() {

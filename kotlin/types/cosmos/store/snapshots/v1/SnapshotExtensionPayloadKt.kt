@@ -36,10 +36,10 @@ public object SnapshotExtensionPayloadKt {
      * `bytes payload = 1 [json_name = "payload"];`
      */
     public var payload: com.google.protobuf.ByteString
-      @JvmName("getPayload")
-      get() = _builder.payload
-      @JvmName("setPayload")
-      set(value) {
+      @kotlin.jvm.JvmName("getPayload")
+        get() = _builder.payload
+      @kotlin.jvm.JvmName("setPayload")
+        set(value) {
         _builder.payload = value
       }
     /**

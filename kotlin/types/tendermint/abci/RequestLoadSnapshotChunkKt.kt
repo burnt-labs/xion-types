@@ -36,10 +36,10 @@ public object RequestLoadSnapshotChunkKt {
      * `uint64 height = 1 [json_name = "height"];`
      */
     public var height: kotlin.Long
-      @JvmName("getHeight")
-      get() = _builder.height
-      @JvmName("setHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getHeight")
+        get() = _builder.height
+      @kotlin.jvm.JvmName("setHeight")
+        set(value) {
         _builder.height = value
       }
     /**
@@ -53,10 +53,10 @@ public object RequestLoadSnapshotChunkKt {
      * `uint32 format = 2 [json_name = "format"];`
      */
     public var format: kotlin.Int
-      @JvmName("getFormat")
-      get() = _builder.format
-      @JvmName("setFormat")
-      set(value) {
+      @kotlin.jvm.JvmName("getFormat")
+        get() = _builder.format
+      @kotlin.jvm.JvmName("setFormat")
+        set(value) {
         _builder.format = value
       }
     /**
@@ -70,10 +70,10 @@ public object RequestLoadSnapshotChunkKt {
      * `uint32 chunk = 3 [json_name = "chunk"];`
      */
     public var chunk: kotlin.Int
-      @JvmName("getChunk")
-      get() = _builder.chunk
-      @JvmName("setChunk")
-      set(value) {
+      @kotlin.jvm.JvmName("getChunk")
+        get() = _builder.chunk
+      @kotlin.jvm.JvmName("setChunk")
+        set(value) {
         _builder.chunk = value
       }
     /**

@@ -240,7 +240,7 @@ pub struct MaxCallsLimit {
 pub struct MaxFundsLimit {
     /// Amounts is the maximal amount of tokens transferable to the contract.
     #[prost(message, repeated, tag="1")]
-    pub amounts: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amounts: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// CombinedLimit defines the maximal amounts that can be sent to a contract and
 /// the maximal number of calls executable. Both need to remain >0 to be valid.
@@ -252,7 +252,7 @@ pub struct CombinedLimit {
     pub calls_remaining: u64,
     /// Amounts is the maximal amount of tokens transferable to the contract.
     #[prost(message, repeated, tag="2")]
-    pub amounts: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amounts: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// AllowAllMessagesFilter is a wildcard to allow any type of contract payload
 /// message.
@@ -424,7 +424,7 @@ pub struct InstantiateContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on instantiation
     #[prost(message, repeated, tag="8")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
 /// an explicit InstantiateContract2Proposal. To instantiate contract 2,
@@ -455,7 +455,7 @@ pub struct InstantiateContract2Proposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on instantiation
     #[prost(message, repeated, tag="8")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Salt is an arbitrary value provided by the sender. Size can be 1 to 64.
     #[prost(bytes="vec", tag="9")]
     pub salt: ::prost::alloc::vec::Vec<u8>,
@@ -530,7 +530,7 @@ pub struct ExecuteContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on instantiation
     #[prost(message, repeated, tag="6")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
 /// an explicit UpdateAdminProposal. To set an admin for a contract,
@@ -662,7 +662,7 @@ pub struct StoreAndInstantiateContractProposal {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on instantiation
     #[prost(message, repeated, tag="10")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Source is the URL where the code is hosted
     #[prost(string, tag="11")]
     pub source: ::prost::alloc::string::String,
@@ -702,7 +702,7 @@ pub struct QueryContractHistoryRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryContractHistoryResponse is the response type for the
 /// Query/ContractHistory RPC method
@@ -712,7 +712,7 @@ pub struct QueryContractHistoryResponse {
     pub entries: ::prost::alloc::vec::Vec<ContractCodeHistoryEntry>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryContractsByCodeRequest is the request type for the Query/ContractsByCode
 /// RPC method
@@ -723,7 +723,7 @@ pub struct QueryContractsByCodeRequest {
     pub code_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryContractsByCodeResponse is the response type for the
 /// Query/ContractsByCode RPC method
@@ -734,7 +734,7 @@ pub struct QueryContractsByCodeResponse {
     pub contracts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryAllContractStateRequest is the request type for the
 /// Query/AllContractState RPC method
@@ -745,7 +745,7 @@ pub struct QueryAllContractStateRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryAllContractStateResponse is the response type for the
 /// Query/AllContractState RPC method
@@ -755,7 +755,7 @@ pub struct QueryAllContractStateResponse {
     pub models: ::prost::alloc::vec::Vec<Model>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryRawContractStateRequest is the request type for the
 /// Query/RawContractState RPC method
@@ -846,7 +846,7 @@ pub struct QueryCodeResponse {
 pub struct QueryCodesRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryCodesResponse is the response type for the Query/Codes RPC method
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -855,7 +855,7 @@ pub struct QueryCodesResponse {
     pub code_infos: ::prost::alloc::vec::Vec<CodeInfoResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryPinnedCodesRequest is the request type for the Query/PinnedCodes
 /// RPC method
@@ -863,7 +863,7 @@ pub struct QueryCodesResponse {
 pub struct QueryPinnedCodesRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryPinnedCodesResponse is the response type for the
 /// Query/PinnedCodes RPC method
@@ -873,7 +873,7 @@ pub struct QueryPinnedCodesResponse {
     pub code_ids: ::prost::alloc::vec::Vec<u64>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -895,7 +895,7 @@ pub struct QueryContractsByCreatorRequest {
     pub creator_address: ::prost::alloc::string::String,
     /// Pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryContractsByCreatorResponse is the response type for the
 /// Query/ContractsByCreator RPC method.
@@ -906,7 +906,7 @@ pub struct QueryContractsByCreatorResponse {
     pub contract_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// Pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 /// QueryWasmLimitsConfigRequest is the request type for the
 /// Query/WasmLimitsConfig RPC method.
@@ -992,7 +992,7 @@ pub struct MsgInstantiateContract {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on instantiation
     #[prost(message, repeated, tag="6")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgInstantiateContractResponse return instantiation result data
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1025,7 +1025,7 @@ pub struct MsgInstantiateContract2 {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on instantiation
     #[prost(message, repeated, tag="6")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Salt is an arbitrary value provided by the sender. Size can be 1 to 64.
     #[prost(bytes="vec", tag="7")]
     pub salt: ::prost::alloc::vec::Vec<u8>,
@@ -1058,7 +1058,7 @@ pub struct MsgExecuteContract {
     pub msg: ::prost::alloc::vec::Vec<u8>,
     /// Funds coins that are transferred to the contract on execution
     #[prost(message, repeated, tag="5")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 /// MsgExecuteContractResponse returns execution result data.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1254,7 +1254,7 @@ pub struct MsgStoreAndInstantiateContract {
     /// Funds coins that are transferred from the authority account to the contract
     /// on instantiation
     #[prost(message, repeated, tag="9")]
-    pub funds: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Source is the URL where the code is hosted
     #[prost(string, tag="10")]
     pub source: ::prost::alloc::string::String,

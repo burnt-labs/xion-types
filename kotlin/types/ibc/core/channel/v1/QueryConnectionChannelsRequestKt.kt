@@ -41,10 +41,10 @@ public object QueryConnectionChannelsRequestKt {
      * `string connection = 1 [json_name = "connection"];`
      */
     public var connection: kotlin.String
-      @JvmName("getConnection")
-      get() = _builder.connection
-      @JvmName("setConnection")
-      set(value) {
+      @kotlin.jvm.JvmName("getConnection")
+        get() = _builder.connection
+      @kotlin.jvm.JvmName("setConnection")
+        set(value) {
         _builder.connection = value
       }
     /**
@@ -66,10 +66,10 @@ public object QueryConnectionChannelsRequestKt {
      * `.cosmos.base.query.v1beta1.PageRequest pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageRequest
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

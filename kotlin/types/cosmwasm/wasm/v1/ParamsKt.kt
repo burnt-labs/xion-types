@@ -36,10 +36,10 @@ public object ParamsKt {
      * `.cosmwasm.wasm.v1.AccessConfig code_upload_access = 1 [json_name = "codeUploadAccess", (.gogoproto.nullable) = false, (.gogoproto.moretags) = "yaml:\"code_upload_access\"", (.amino.dont_omitempty) = true];`
      */
     public var codeUploadAccess: cosmwasm.wasm.v1.Types.AccessConfig
-      @JvmName("getCodeUploadAccess")
-      get() = _builder.codeUploadAccess
-      @JvmName("setCodeUploadAccess")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeUploadAccess")
+        get() = _builder.codeUploadAccess
+      @kotlin.jvm.JvmName("setCodeUploadAccess")
+        set(value) {
         _builder.codeUploadAccess = value
       }
     /**
@@ -63,17 +63,17 @@ public object ParamsKt {
      * `.cosmwasm.wasm.v1.AccessType instantiate_default_permission = 2 [json_name = "instantiateDefaultPermission", (.gogoproto.moretags) = "yaml:\"instantiate_default_permission\""];`
      */
     public var instantiateDefaultPermission: cosmwasm.wasm.v1.Types.AccessType
-      @JvmName("getInstantiateDefaultPermission")
-      get() = _builder.instantiateDefaultPermission
-      @JvmName("setInstantiateDefaultPermission")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiateDefaultPermission")
+        get() = _builder.instantiateDefaultPermission
+      @kotlin.jvm.JvmName("setInstantiateDefaultPermission")
+        set(value) {
         _builder.instantiateDefaultPermission = value
       }
     public var instantiateDefaultPermissionValue: kotlin.Int
-      @JvmName("getInstantiateDefaultPermissionValue")
-      get() = _builder.instantiateDefaultPermissionValue
-      @JvmName("setInstantiateDefaultPermissionValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getInstantiateDefaultPermissionValue")
+        get() = _builder.instantiateDefaultPermissionValue
+      @kotlin.jvm.JvmName("setInstantiateDefaultPermissionValue")
+        set(value) {
         _builder.instantiateDefaultPermissionValue = value
       }
     /**

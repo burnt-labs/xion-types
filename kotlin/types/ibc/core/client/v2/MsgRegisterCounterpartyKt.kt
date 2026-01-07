@@ -40,10 +40,10 @@ public object MsgRegisterCounterpartyKt {
      * `string client_id = 1 [json_name = "clientId"];`
      */
     public var clientId: kotlin.String
-      @JvmName("getClientId")
-      get() = _builder.clientId
-      @JvmName("setClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getClientId")
+        get() = _builder.clientId
+      @kotlin.jvm.JvmName("setClientId")
+        set(value) {
         _builder.clientId = value
       }
     /**
@@ -72,7 +72,7 @@ public object MsgRegisterCounterpartyKt {
      */
      public val counterpartyMerklePrefix: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.counterpartyMerklePrefixList
       )
     /**
@@ -84,7 +84,7 @@ public object MsgRegisterCounterpartyKt {
      * @param value The counterpartyMerklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCounterpartyMerklePrefix")
+@kotlin.jvm.JvmName("addCounterpartyMerklePrefix")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addCounterpartyMerklePrefix(value)
     }/**
@@ -96,7 +96,7 @@ public object MsgRegisterCounterpartyKt {
      * @param value The counterpartyMerklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCounterpartyMerklePrefix")
+@kotlin.jvm.JvmName("plusAssignCounterpartyMerklePrefix")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
@@ -109,7 +109,7 @@ public object MsgRegisterCounterpartyKt {
      * @param values The counterpartyMerklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCounterpartyMerklePrefix")
+@kotlin.jvm.JvmName("addAllCounterpartyMerklePrefix")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllCounterpartyMerklePrefix(values)
     }/**
@@ -121,7 +121,7 @@ public object MsgRegisterCounterpartyKt {
      * @param values The counterpartyMerklePrefix to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCounterpartyMerklePrefix")
+@kotlin.jvm.JvmName("plusAssignAllCounterpartyMerklePrefix")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
@@ -135,7 +135,7 @@ public object MsgRegisterCounterpartyKt {
      * @param value The counterpartyMerklePrefix to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCounterpartyMerklePrefix")
+@kotlin.jvm.JvmName("setCounterpartyMerklePrefix")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setCounterpartyMerklePrefix(index, value)
     }/**
@@ -146,7 +146,7 @@ public object MsgRegisterCounterpartyKt {
      * `repeated bytes counterparty_merkle_prefix = 2 [json_name = "counterpartyMerklePrefix"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCounterpartyMerklePrefix")
+@kotlin.jvm.JvmName("clearCounterpartyMerklePrefix")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, CounterpartyMerklePrefixProxy>.clear() {
       _builder.clearCounterpartyMerklePrefix()
     }
@@ -158,10 +158,10 @@ public object MsgRegisterCounterpartyKt {
      * `string counterparty_client_id = 3 [json_name = "counterpartyClientId"];`
      */
     public var counterpartyClientId: kotlin.String
-      @JvmName("getCounterpartyClientId")
-      get() = _builder.counterpartyClientId
-      @JvmName("setCounterpartyClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCounterpartyClientId")
+        get() = _builder.counterpartyClientId
+      @kotlin.jvm.JvmName("setCounterpartyClientId")
+        set(value) {
         _builder.counterpartyClientId = value
       }
     /**
@@ -183,10 +183,10 @@ public object MsgRegisterCounterpartyKt {
      * `string signer = 4 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

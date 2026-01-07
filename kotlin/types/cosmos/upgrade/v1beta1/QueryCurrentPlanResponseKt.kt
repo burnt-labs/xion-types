@@ -41,10 +41,10 @@ public object QueryCurrentPlanResponseKt {
      * `.cosmos.upgrade.v1beta1.Plan plan = 1 [json_name = "plan"];`
      */
     public var plan: cosmos.upgrade.v1beta1.Upgrade.Plan
-      @JvmName("getPlan")
-      get() = _builder.plan
-      @JvmName("setPlan")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlan")
+        get() = _builder.plan
+      @kotlin.jvm.JvmName("setPlan")
+        set(value) {
         _builder.plan = value
       }
     /**

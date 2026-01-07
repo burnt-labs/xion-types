@@ -65,7 +65,7 @@ pub struct Counterparty {
     pub connection_id: ::prost::alloc::string::String,
     /// commitment merkle prefix of the counterparty chain.
     #[prost(message, optional, tag="3")]
-    pub prefix: ::core::option::Option<super::super::commitment::v1::MerklePrefix>,
+    pub prefix: ::core::option::Option<crate::types::ibc_core_commitment_v1::MerklePrefix>,
 }
 /// ClientPaths define all the connection paths for a client state.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -177,14 +177,14 @@ pub struct QueryConnectionResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryConnectionsRequest is the request type for the Query/Connections RPC
 /// method
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryConnectionsRequest {
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 /// QueryConnectionsResponse is the response type for the Query/Connections RPC
 /// method.
@@ -195,10 +195,10 @@ pub struct QueryConnectionsResponse {
     pub connections: ::prost::alloc::vec::Vec<IdentifiedConnection>,
     /// pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
     /// query block height
     #[prost(message, optional, tag="3")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryClientConnectionsRequest is the request type for the
 /// Query/ClientConnections RPC method
@@ -220,7 +220,7 @@ pub struct QueryClientConnectionsResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was generated
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryConnectionClientStateRequest is the request type for the
 /// Query/ConnectionClientState RPC method
@@ -236,13 +236,13 @@ pub struct QueryConnectionClientStateRequest {
 pub struct QueryConnectionClientStateResponse {
     /// client state associated with the channel
     #[prost(message, optional, tag="1")]
-    pub identified_client_state: ::core::option::Option<super::super::client::v1::IdentifiedClientState>,
+    pub identified_client_state: ::core::option::Option<crate::types::ibc_core_client_v1::IdentifiedClientState>,
     /// merkle proof of existence
     #[prost(bytes="vec", tag="2")]
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryConnectionConsensusStateRequest is the request type for the
 /// Query/ConnectionConsensusState RPC method
@@ -271,7 +271,7 @@ pub struct QueryConnectionConsensusStateResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="4")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 /// QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method.
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
@@ -325,7 +325,7 @@ pub struct MsgConnectionOpenTry {
     #[prost(message, repeated, tag="6")]
     pub counterparty_versions: ::prost::alloc::vec::Vec<Version>,
     #[prost(message, optional, tag="7")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     /// proof of the initialization the connection on Chain A: `UNINITIALIZED ->
     /// INIT`
     #[prost(bytes="vec", tag="8")]
@@ -341,7 +341,7 @@ pub struct MsgConnectionOpenTry {
     /// Deprecated: this field is unused.
     #[deprecated]
     #[prost(message, optional, tag="11")]
-    pub consensus_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub consensus_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="12")]
     pub signer: ::prost::alloc::string::String,
     /// Deprecated: this field is unused.
@@ -368,7 +368,7 @@ pub struct MsgConnectionOpenAck {
     #[prost(message, optional, tag="4")]
     pub client_state: ::core::option::Option<::prost_types::Any>,
     #[prost(message, optional, tag="5")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     /// proof of the initialization the connection on Chain B: `UNINITIALIZED ->
     /// TRYOPEN`
     #[prost(bytes="vec", tag="6")]
@@ -384,7 +384,7 @@ pub struct MsgConnectionOpenAck {
     /// Deprecated: this field is unused.
     #[deprecated]
     #[prost(message, optional, tag="9")]
-    pub consensus_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub consensus_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="10")]
     pub signer: ::prost::alloc::string::String,
     /// Deprecated: this field is unused.
@@ -406,7 +406,7 @@ pub struct MsgConnectionOpenConfirm {
     #[prost(bytes="vec", tag="2")]
     pub proof_ack: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="4")]
     pub signer: ::prost::alloc::string::String,
 }

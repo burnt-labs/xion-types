@@ -18,7 +18,7 @@ pub struct ControllerGenesisState {
     #[prost(string, repeated, tag="3")]
     pub ports: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[prost(message, optional, tag="4")]
-    pub params: ::core::option::Option<super::super::controller::v1::Params>,
+    pub params: ::core::option::Option<crate::types::ibc_applications_interchain_accounts_controller_v1::Params>,
 }
 /// HostGenesisState defines the interchain accounts host genesis state
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -30,7 +30,7 @@ pub struct HostGenesisState {
     #[prost(string, tag="3")]
     pub port: ::prost::alloc::string::String,
     #[prost(message, optional, tag="4")]
-    pub params: ::core::option::Option<super::super::host::v1::Params>,
+    pub params: ::core::option::Option<crate::types::ibc_applications_interchain_accounts_host_v1::Params>,
 }
 /// ActiveChannel contains a connection ID, port ID and associated active channel ID, as well as a boolean flag to
 /// indicate if the channel is middleware enabled

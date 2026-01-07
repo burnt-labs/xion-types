@@ -40,10 +40,10 @@ public object GroupInfoKt {
      * `uint64 id = 1 [json_name = "id"];`
      */
     public var id: kotlin.Long
-      @JvmName("getId")
-      get() = _builder.id
-      @JvmName("setId")
-      set(value) {
+      @kotlin.jvm.JvmName("getId")
+        get() = _builder.id
+      @kotlin.jvm.JvmName("setId")
+        set(value) {
         _builder.id = value
       }
     /**
@@ -65,10 +65,10 @@ public object GroupInfoKt {
      * `string admin = 2 [json_name = "admin", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var admin: kotlin.String
-      @JvmName("getAdmin")
-      get() = _builder.admin
-      @JvmName("setAdmin")
-      set(value) {
+      @kotlin.jvm.JvmName("getAdmin")
+        get() = _builder.admin
+      @kotlin.jvm.JvmName("setAdmin")
+        set(value) {
         _builder.admin = value
       }
     /**
@@ -91,10 +91,10 @@ public object GroupInfoKt {
      * `string metadata = 3 [json_name = "metadata"];`
      */
     public var metadata: kotlin.String
-      @JvmName("getMetadata")
-      get() = _builder.metadata
-      @JvmName("setMetadata")
-      set(value) {
+      @kotlin.jvm.JvmName("getMetadata")
+        get() = _builder.metadata
+      @kotlin.jvm.JvmName("setMetadata")
+        set(value) {
         _builder.metadata = value
       }
     /**
@@ -120,10 +120,10 @@ public object GroupInfoKt {
      * `uint64 version = 4 [json_name = "version"];`
      */
     public var version: kotlin.Long
-      @JvmName("getVersion")
-      get() = _builder.version
-      @JvmName("setVersion")
-      set(value) {
+      @kotlin.jvm.JvmName("getVersion")
+        get() = _builder.version
+      @kotlin.jvm.JvmName("setVersion")
+        set(value) {
         _builder.version = value
       }
     /**
@@ -148,10 +148,10 @@ public object GroupInfoKt {
      * `string total_weight = 5 [json_name = "totalWeight"];`
      */
     public var totalWeight: kotlin.String
-      @JvmName("getTotalWeight")
-      get() = _builder.totalWeight
-      @JvmName("setTotalWeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getTotalWeight")
+        get() = _builder.totalWeight
+      @kotlin.jvm.JvmName("setTotalWeight")
+        set(value) {
         _builder.totalWeight = value
       }
     /**
@@ -173,10 +173,10 @@ public object GroupInfoKt {
      * `.google.protobuf.Timestamp created_at = 6 [json_name = "createdAt", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];`
      */
     public var createdAt: com.google.protobuf.Timestamp
-      @JvmName("getCreatedAt")
-      get() = _builder.createdAt
-      @JvmName("setCreatedAt")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreatedAt")
+        get() = _builder.createdAt
+      @kotlin.jvm.JvmName("setCreatedAt")
+        set(value) {
         _builder.createdAt = value
       }
     /**

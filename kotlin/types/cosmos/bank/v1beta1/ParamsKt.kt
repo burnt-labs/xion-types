@@ -51,7 +51,7 @@ public object ParamsKt {
      */
     @kotlin.Deprecated(message = "Field sendEnabled is deprecated")  public val sendEnabled: com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.sendEnabledList
       )
     /**
@@ -67,7 +67,7 @@ public object ParamsKt {
      * @param value The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSendEnabled")
+@kotlin.jvm.JvmName("addSendEnabled")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.add(value: cosmos.bank.v1beta1.Bank.SendEnabled) {
       _builder.addSendEnabled(value)
     }
@@ -84,7 +84,7 @@ public object ParamsKt {
      * @param value The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSendEnabled")
+@kotlin.jvm.JvmName("plusAssignSendEnabled")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.plusAssign(value: cosmos.bank.v1beta1.Bank.SendEnabled) {
       add(value)
@@ -102,7 +102,7 @@ public object ParamsKt {
      * @param values The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSendEnabled")
+@kotlin.jvm.JvmName("addAllSendEnabled")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.addAll(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.SendEnabled>) {
       _builder.addAllSendEnabled(values)
     }
@@ -119,7 +119,7 @@ public object ParamsKt {
      * @param values The sendEnabled to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSendEnabled")
+@kotlin.jvm.JvmName("plusAssignAllSendEnabled")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.bank.v1beta1.Bank.SendEnabled>) {
       addAll(values)
@@ -138,7 +138,7 @@ public object ParamsKt {
      * @param value The sendEnabled to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSendEnabled")
+@kotlin.jvm.JvmName("setSendEnabled")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.set(index: kotlin.Int, value: cosmos.bank.v1beta1.Bank.SendEnabled) {
       _builder.setSendEnabled(index, value)
     }
@@ -154,20 +154,19 @@ public object ParamsKt {
      * `repeated .cosmos.bank.v1beta1.SendEnabled send_enabled = 1 [json_name = "sendEnabled", deprecated = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSendEnabled")
+@kotlin.jvm.JvmName("clearSendEnabled")
     public fun com.google.protobuf.kotlin.DslList<cosmos.bank.v1beta1.Bank.SendEnabled, SendEnabledProxy>.clear() {
       _builder.clearSendEnabled()
     }
-
 
     /**
      * `bool default_send_enabled = 2 [json_name = "defaultSendEnabled"];`
      */
     public var defaultSendEnabled: kotlin.Boolean
-      @JvmName("getDefaultSendEnabled")
-      get() = _builder.defaultSendEnabled
-      @JvmName("setDefaultSendEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getDefaultSendEnabled")
+        get() = _builder.defaultSendEnabled
+      @kotlin.jvm.JvmName("setDefaultSendEnabled")
+        set(value) {
         _builder.defaultSendEnabled = value
       }
     /**

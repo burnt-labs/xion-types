@@ -40,10 +40,10 @@ public object MsgRecoverClientKt {
      * `string subject_client_id = 1 [json_name = "subjectClientId"];`
      */
     public var subjectClientId: kotlin.String
-      @JvmName("getSubjectClientId")
-      get() = _builder.subjectClientId
-      @JvmName("setSubjectClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubjectClientId")
+        get() = _builder.subjectClientId
+      @kotlin.jvm.JvmName("setSubjectClientId")
+        set(value) {
         _builder.subjectClientId = value
       }
     /**
@@ -66,10 +66,10 @@ public object MsgRecoverClientKt {
      * `string substitute_client_id = 2 [json_name = "substituteClientId"];`
      */
     public var substituteClientId: kotlin.String
-      @JvmName("getSubstituteClientId")
-      get() = _builder.substituteClientId
-      @JvmName("setSubstituteClientId")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubstituteClientId")
+        get() = _builder.substituteClientId
+      @kotlin.jvm.JvmName("setSubstituteClientId")
+        set(value) {
         _builder.substituteClientId = value
       }
     /**
@@ -92,10 +92,10 @@ public object MsgRecoverClientKt {
      * `string signer = 3 [json_name = "signer"];`
      */
     public var signer: kotlin.String
-      @JvmName("getSigner")
-      get() = _builder.signer
-      @JvmName("setSigner")
-      set(value) {
+      @kotlin.jvm.JvmName("getSigner")
+        get() = _builder.signer
+      @kotlin.jvm.JvmName("setSigner")
+        set(value) {
         _builder.signer = value
       }
     /**

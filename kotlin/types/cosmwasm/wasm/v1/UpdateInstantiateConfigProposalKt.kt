@@ -43,10 +43,10 @@ public object UpdateInstantiateConfigProposalKt {
      * `string title = 1 [json_name = "title", (.gogoproto.moretags) = "yaml:\"title\""];`
      */
     public var title: kotlin.String
-      @JvmName("getTitle")
-      get() = _builder.title
-      @JvmName("setTitle")
-      set(value) {
+      @kotlin.jvm.JvmName("getTitle")
+        get() = _builder.title
+      @kotlin.jvm.JvmName("setTitle")
+        set(value) {
         _builder.title = value
       }
     /**
@@ -68,10 +68,10 @@ public object UpdateInstantiateConfigProposalKt {
      * `string description = 2 [json_name = "description", (.gogoproto.moretags) = "yaml:\"description\""];`
      */
     public var description: kotlin.String
-      @JvmName("getDescription")
-      get() = _builder.description
-      @JvmName("setDescription")
-      set(value) {
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
         _builder.description = value
       }
     /**
@@ -101,7 +101,7 @@ public object UpdateInstantiateConfigProposalKt {
      */
      public val accessConfigUpdates: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.accessConfigUpdatesList
       )
     /**
@@ -114,7 +114,7 @@ public object UpdateInstantiateConfigProposalKt {
      * @param value The accessConfigUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAccessConfigUpdates")
+@kotlin.jvm.JvmName("addAccessConfigUpdates")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>.add(value: cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate) {
       _builder.addAccessConfigUpdates(value)
     }
@@ -128,7 +128,7 @@ public object UpdateInstantiateConfigProposalKt {
      * @param value The accessConfigUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAccessConfigUpdates")
+@kotlin.jvm.JvmName("plusAssignAccessConfigUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>.plusAssign(value: cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate) {
       add(value)
@@ -143,7 +143,7 @@ public object UpdateInstantiateConfigProposalKt {
      * @param values The accessConfigUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAccessConfigUpdates")
+@kotlin.jvm.JvmName("addAllAccessConfigUpdates")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate>) {
       _builder.addAllAccessConfigUpdates(values)
     }
@@ -157,7 +157,7 @@ public object UpdateInstantiateConfigProposalKt {
      * @param values The accessConfigUpdates to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAccessConfigUpdates")
+@kotlin.jvm.JvmName("plusAssignAllAccessConfigUpdates")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate>) {
       addAll(values)
@@ -173,7 +173,7 @@ public object UpdateInstantiateConfigProposalKt {
      * @param value The accessConfigUpdates to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAccessConfigUpdates")
+@kotlin.jvm.JvmName("setAccessConfigUpdates")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate) {
       _builder.setAccessConfigUpdates(index, value)
     }
@@ -186,11 +186,10 @@ public object UpdateInstantiateConfigProposalKt {
      * `repeated .cosmwasm.wasm.v1.AccessConfigUpdate access_config_updates = 3 [json_name = "accessConfigUpdates", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAccessConfigUpdates")
+@kotlin.jvm.JvmName("clearAccessConfigUpdates")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.ProposalLegacy.AccessConfigUpdate, AccessConfigUpdatesProxy>.clear() {
       _builder.clearAccessConfigUpdates()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

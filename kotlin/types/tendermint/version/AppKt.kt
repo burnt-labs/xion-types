@@ -38,10 +38,10 @@ public object AppKt {
      * `uint64 protocol = 1 [json_name = "protocol"];`
      */
     public var protocol: kotlin.Long
-      @JvmName("getProtocol")
-      get() = _builder.protocol
-      @JvmName("setProtocol")
-      set(value) {
+      @kotlin.jvm.JvmName("getProtocol")
+        get() = _builder.protocol
+      @kotlin.jvm.JvmName("setProtocol")
+        set(value) {
         _builder.protocol = value
       }
     /**
@@ -55,10 +55,10 @@ public object AppKt {
      * `string software = 2 [json_name = "software"];`
      */
     public var software: kotlin.String
-      @JvmName("getSoftware")
-      get() = _builder.software
-      @JvmName("setSoftware")
-      set(value) {
+      @kotlin.jvm.JvmName("getSoftware")
+        get() = _builder.software
+      @kotlin.jvm.JvmName("setSoftware")
+        set(value) {
         _builder.software = value
       }
     /**

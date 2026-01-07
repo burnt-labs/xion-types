@@ -41,10 +41,10 @@ public object ValidatorHistoricalRewardsRecordKt {
      * `string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -66,10 +66,10 @@ public object ValidatorHistoricalRewardsRecordKt {
      * `uint64 period = 2 [json_name = "period"];`
      */
     public var period: kotlin.Long
-      @JvmName("getPeriod")
-      get() = _builder.period
-      @JvmName("setPeriod")
-      set(value) {
+      @kotlin.jvm.JvmName("getPeriod")
+        get() = _builder.period
+      @kotlin.jvm.JvmName("setPeriod")
+        set(value) {
         _builder.period = value
       }
     /**
@@ -91,10 +91,10 @@ public object ValidatorHistoricalRewardsRecordKt {
      * `.cosmos.distribution.v1beta1.ValidatorHistoricalRewards rewards = 3 [json_name = "rewards", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var rewards: cosmos.distribution.v1beta1.Distribution.ValidatorHistoricalRewards
-      @JvmName("getRewards")
-      get() = _builder.rewards
-      @JvmName("setRewards")
-      set(value) {
+      @kotlin.jvm.JvmName("getRewards")
+        get() = _builder.rewards
+      @kotlin.jvm.JvmName("setRewards")
+        set(value) {
         _builder.rewards = value
       }
     /**

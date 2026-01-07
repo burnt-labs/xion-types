@@ -40,10 +40,10 @@ public object ModuleOptionsKt {
      * `.cosmos.autocli.v1.ServiceCommandDescriptor tx = 1 [json_name = "tx"];`
      */
     public var tx: cosmos.autocli.v1.Options.ServiceCommandDescriptor
-      @JvmName("getTx")
-      get() = _builder.tx
-      @JvmName("setTx")
-      set(value) {
+      @kotlin.jvm.JvmName("getTx")
+        get() = _builder.tx
+      @kotlin.jvm.JvmName("setTx")
+        set(value) {
         _builder.tx = value
       }
     /**
@@ -79,10 +79,10 @@ public object ModuleOptionsKt {
      * `.cosmos.autocli.v1.ServiceCommandDescriptor query = 2 [json_name = "query"];`
      */
     public var query: cosmos.autocli.v1.Options.ServiceCommandDescriptor
-      @JvmName("getQuery")
-      get() = _builder.query
-      @JvmName("setQuery")
-      set(value) {
+      @kotlin.jvm.JvmName("getQuery")
+        get() = _builder.query
+      @kotlin.jvm.JvmName("setQuery")
+        set(value) {
         _builder.query = value
       }
     /**

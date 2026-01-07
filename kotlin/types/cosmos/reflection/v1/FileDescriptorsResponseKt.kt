@@ -47,7 +47,7 @@ public object FileDescriptorsResponseKt {
      */
      public val files: com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.filesList
       )
     /**
@@ -59,7 +59,7 @@ public object FileDescriptorsResponseKt {
      * @param value The files to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addFiles")
+@kotlin.jvm.JvmName("addFiles")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>.add(value: com.google.protobuf.DescriptorProtos.FileDescriptorProto) {
       _builder.addFiles(value)
     }
@@ -72,7 +72,7 @@ public object FileDescriptorsResponseKt {
      * @param value The files to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignFiles")
+@kotlin.jvm.JvmName("plusAssignFiles")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>.plusAssign(value: com.google.protobuf.DescriptorProtos.FileDescriptorProto) {
       add(value)
@@ -86,7 +86,7 @@ public object FileDescriptorsResponseKt {
      * @param values The files to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllFiles")
+@kotlin.jvm.JvmName("addAllFiles")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.DescriptorProtos.FileDescriptorProto>) {
       _builder.addAllFiles(values)
     }
@@ -99,7 +99,7 @@ public object FileDescriptorsResponseKt {
      * @param values The files to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllFiles")
+@kotlin.jvm.JvmName("plusAssignAllFiles")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.DescriptorProtos.FileDescriptorProto>) {
       addAll(values)
@@ -114,7 +114,7 @@ public object FileDescriptorsResponseKt {
      * @param value The files to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setFiles")
+@kotlin.jvm.JvmName("setFiles")
     public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>.set(index: kotlin.Int, value: com.google.protobuf.DescriptorProtos.FileDescriptorProto) {
       _builder.setFiles(index, value)
     }
@@ -126,11 +126,10 @@ public object FileDescriptorsResponseKt {
      * `repeated .google.protobuf.FileDescriptorProto files = 1 [json_name = "files"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearFiles")
+@kotlin.jvm.JvmName("clearFiles")
     public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.DescriptorProtos.FileDescriptorProto, FilesProxy>.clear() {
       _builder.clearFiles()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -10,6 +10,10 @@ package xion.jwk.v1;
 public inline fun privateClaim(block: xion.jwk.v1.PrivateClaimKt.Dsl.() -> kotlin.Unit): xion.jwk.v1.QueryOuterClass.PrivateClaim =
   xion.jwk.v1.PrivateClaimKt.Dsl._create(xion.jwk.v1.QueryOuterClass.PrivateClaim.newBuilder()).apply { block() }._build()
 /**
+ * ```
+ * PrivateClaim represents a private claim in a JWT
+ * ```
+ *
  * Protobuf type `xion.jwk.v1.PrivateClaim`
  */
 public object PrivateClaimKt {
@@ -29,16 +33,24 @@ public object PrivateClaimKt {
     internal fun _build(): xion.jwk.v1.QueryOuterClass.PrivateClaim = _builder.build()
 
     /**
+     * ```
+     * The claim key
+     * ```
+     *
      * `string key = 1 [json_name = "key"];`
      */
     public var key: kotlin.String
-      @JvmName("getKey")
-      get() = _builder.key
-      @JvmName("setKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getKey")
+        get() = _builder.key
+      @kotlin.jvm.JvmName("setKey")
+        set(value) {
         _builder.key = value
       }
     /**
+     * ```
+     * The claim key
+     * ```
+     *
      * `string key = 1 [json_name = "key"];`
      */
     public fun clearKey() {
@@ -46,16 +58,24 @@ public object PrivateClaimKt {
     }
 
     /**
+     * ```
+     * The claim value
+     * ```
+     *
      * `string value = 2 [json_name = "value"];`
      */
     public var value: kotlin.String
-      @JvmName("getValue")
-      get() = _builder.value
-      @JvmName("setValue")
-      set(value) {
+      @kotlin.jvm.JvmName("getValue")
+        get() = _builder.value
+      @kotlin.jvm.JvmName("setValue")
+        set(value) {
         _builder.value = value
       }
     /**
+     * ```
+     * The claim value
+     * ```
+     *
      * `string value = 2 [json_name = "value"];`
      */
     public fun clearValue() {

@@ -36,10 +36,10 @@ public object HeaderKt {
      * `uint64 timestamp = 1 [json_name = "timestamp"];`
      */
     public var timestamp: kotlin.Long
-      @JvmName("getTimestamp")
-      get() = _builder.timestamp
-      @JvmName("setTimestamp")
-      set(value) {
+      @kotlin.jvm.JvmName("getTimestamp")
+        get() = _builder.timestamp
+      @kotlin.jvm.JvmName("setTimestamp")
+        set(value) {
         _builder.timestamp = value
       }
     /**
@@ -53,10 +53,10 @@ public object HeaderKt {
      * `bytes signature = 2 [json_name = "signature"];`
      */
     public var signature: com.google.protobuf.ByteString
-      @JvmName("getSignature")
-      get() = _builder.signature
-      @JvmName("setSignature")
-      set(value) {
+      @kotlin.jvm.JvmName("getSignature")
+        get() = _builder.signature
+      @kotlin.jvm.JvmName("setSignature")
+        set(value) {
         _builder.signature = value
       }
     /**
@@ -70,10 +70,10 @@ public object HeaderKt {
      * `.google.protobuf.Any new_public_key = 3 [json_name = "newPublicKey"];`
      */
     public var newPublicKey: com.google.protobuf.Any
-      @JvmName("getNewPublicKey")
-      get() = _builder.newPublicKey
-      @JvmName("setNewPublicKey")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewPublicKey")
+        get() = _builder.newPublicKey
+      @kotlin.jvm.JvmName("setNewPublicKey")
+        set(value) {
         _builder.newPublicKey = value
       }
     /**
@@ -97,10 +97,10 @@ public object HeaderKt {
      * `string new_diversifier = 4 [json_name = "newDiversifier"];`
      */
     public var newDiversifier: kotlin.String
-      @JvmName("getNewDiversifier")
-      get() = _builder.newDiversifier
-      @JvmName("setNewDiversifier")
-      set(value) {
+      @kotlin.jvm.JvmName("getNewDiversifier")
+        get() = _builder.newDiversifier
+      @kotlin.jvm.JvmName("setNewDiversifier")
+        set(value) {
         _builder.newDiversifier = value
       }
     /**

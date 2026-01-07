@@ -32,10 +32,10 @@ public object RequestInitChainKt {
      * `.google.protobuf.Timestamp time = 1 [json_name = "time", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true];`
      */
     public var time: com.google.protobuf.Timestamp
-      @JvmName("getTime")
-      get() = _builder.time
-      @JvmName("setTime")
-      set(value) {
+      @kotlin.jvm.JvmName("getTime")
+        get() = _builder.time
+      @kotlin.jvm.JvmName("setTime")
+        set(value) {
         _builder.time = value
       }
     /**
@@ -59,10 +59,10 @@ public object RequestInitChainKt {
      * `string chain_id = 2 [json_name = "chainId"];`
      */
     public var chainId: kotlin.String
-      @JvmName("getChainId")
-      get() = _builder.chainId
-      @JvmName("setChainId")
-      set(value) {
+      @kotlin.jvm.JvmName("getChainId")
+        get() = _builder.chainId
+      @kotlin.jvm.JvmName("setChainId")
+        set(value) {
         _builder.chainId = value
       }
     /**
@@ -76,10 +76,10 @@ public object RequestInitChainKt {
      * `.tendermint.types.ConsensusParams consensus_params = 3 [json_name = "consensusParams"];`
      */
     public var consensusParams: tendermint.types.Params.ConsensusParams
-      @JvmName("getConsensusParams")
-      get() = _builder.consensusParams
-      @JvmName("setConsensusParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getConsensusParams")
+        get() = _builder.consensusParams
+      @kotlin.jvm.JvmName("setConsensusParams")
+        set(value) {
         _builder.consensusParams = value
       }
     /**
@@ -110,7 +110,7 @@ public object RequestInitChainKt {
      */
      public val validators: com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.validatorsList
       )
     /**
@@ -118,7 +118,7 @@ public object RequestInitChainKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addValidators")
+@kotlin.jvm.JvmName("addValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.add(value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.addValidators(value)
     }
@@ -127,7 +127,7 @@ public object RequestInitChainKt {
      * @param value The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignValidators")
+@kotlin.jvm.JvmName("plusAssignValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.plusAssign(value: tendermint.abci.Types.ValidatorUpdate) {
       add(value)
@@ -137,7 +137,7 @@ public object RequestInitChainKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllValidators")
+@kotlin.jvm.JvmName("addAllValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.addAll(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       _builder.addAllValidators(values)
     }
@@ -146,7 +146,7 @@ public object RequestInitChainKt {
      * @param values The validators to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllValidators")
+@kotlin.jvm.JvmName("plusAssignAllValidators")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.plusAssign(values: kotlin.collections.Iterable<tendermint.abci.Types.ValidatorUpdate>) {
       addAll(values)
@@ -157,7 +157,7 @@ public object RequestInitChainKt {
      * @param value The validators to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setValidators")
+@kotlin.jvm.JvmName("setValidators")
     public operator fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.set(index: kotlin.Int, value: tendermint.abci.Types.ValidatorUpdate) {
       _builder.setValidators(index, value)
     }
@@ -165,20 +165,19 @@ public object RequestInitChainKt {
      * `repeated .tendermint.abci.ValidatorUpdate validators = 4 [json_name = "validators", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearValidators")
+@kotlin.jvm.JvmName("clearValidators")
     public fun com.google.protobuf.kotlin.DslList<tendermint.abci.Types.ValidatorUpdate, ValidatorsProxy>.clear() {
       _builder.clearValidators()
     }
-
 
     /**
      * `bytes app_state_bytes = 5 [json_name = "appStateBytes"];`
      */
     public var appStateBytes: com.google.protobuf.ByteString
-      @JvmName("getAppStateBytes")
-      get() = _builder.appStateBytes
-      @JvmName("setAppStateBytes")
-      set(value) {
+      @kotlin.jvm.JvmName("getAppStateBytes")
+        get() = _builder.appStateBytes
+      @kotlin.jvm.JvmName("setAppStateBytes")
+        set(value) {
         _builder.appStateBytes = value
       }
     /**
@@ -192,10 +191,10 @@ public object RequestInitChainKt {
      * `int64 initial_height = 6 [json_name = "initialHeight"];`
      */
     public var initialHeight: kotlin.Long
-      @JvmName("getInitialHeight")
-      get() = _builder.initialHeight
-      @JvmName("setInitialHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getInitialHeight")
+        get() = _builder.initialHeight
+      @kotlin.jvm.JvmName("setInitialHeight")
+        set(value) {
         _builder.initialHeight = value
       }
     /**

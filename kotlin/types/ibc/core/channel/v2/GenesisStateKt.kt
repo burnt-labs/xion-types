@@ -43,7 +43,7 @@ public object GenesisStateKt {
      */
      public val acknowledgements: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.acknowledgementsList
       )
     /**
@@ -51,7 +51,7 @@ public object GenesisStateKt {
      * @param value The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAcknowledgements")
+@kotlin.jvm.JvmName("addAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.add(value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.addAcknowledgements(value)
     }
@@ -60,7 +60,7 @@ public object GenesisStateKt {
      * @param value The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAcknowledgements")
+@kotlin.jvm.JvmName("plusAssignAcknowledgements")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.plusAssign(value: ibc.core.channel.v2.Genesis.PacketState) {
       add(value)
@@ -70,7 +70,7 @@ public object GenesisStateKt {
      * @param values The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAcknowledgements")
+@kotlin.jvm.JvmName("addAllAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       _builder.addAllAcknowledgements(values)
     }
@@ -79,7 +79,7 @@ public object GenesisStateKt {
      * @param values The acknowledgements to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAcknowledgements")
+@kotlin.jvm.JvmName("plusAssignAllAcknowledgements")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       addAll(values)
@@ -90,7 +90,7 @@ public object GenesisStateKt {
      * @param value The acknowledgements to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAcknowledgements")
+@kotlin.jvm.JvmName("setAcknowledgements")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.setAcknowledgements(index, value)
     }
@@ -98,11 +98,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.channel.v2.PacketState acknowledgements = 2 [json_name = "acknowledgements", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAcknowledgements")
+@kotlin.jvm.JvmName("clearAcknowledgements")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AcknowledgementsProxy>.clear() {
       _builder.clearAcknowledgements()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -115,7 +114,7 @@ public object GenesisStateKt {
      */
      public val commitments: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.commitmentsList
       )
     /**
@@ -123,7 +122,7 @@ public object GenesisStateKt {
      * @param value The commitments to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addCommitments")
+@kotlin.jvm.JvmName("addCommitments")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>.add(value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.addCommitments(value)
     }
@@ -132,7 +131,7 @@ public object GenesisStateKt {
      * @param value The commitments to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignCommitments")
+@kotlin.jvm.JvmName("plusAssignCommitments")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>.plusAssign(value: ibc.core.channel.v2.Genesis.PacketState) {
       add(value)
@@ -142,7 +141,7 @@ public object GenesisStateKt {
      * @param values The commitments to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllCommitments")
+@kotlin.jvm.JvmName("addAllCommitments")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       _builder.addAllCommitments(values)
     }
@@ -151,7 +150,7 @@ public object GenesisStateKt {
      * @param values The commitments to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllCommitments")
+@kotlin.jvm.JvmName("plusAssignAllCommitments")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       addAll(values)
@@ -162,7 +161,7 @@ public object GenesisStateKt {
      * @param value The commitments to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setCommitments")
+@kotlin.jvm.JvmName("setCommitments")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.setCommitments(index, value)
     }
@@ -170,11 +169,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.channel.v2.PacketState commitments = 3 [json_name = "commitments", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearCommitments")
+@kotlin.jvm.JvmName("clearCommitments")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, CommitmentsProxy>.clear() {
       _builder.clearCommitments()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -187,7 +185,7 @@ public object GenesisStateKt {
      */
      public val receipts: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.receiptsList
       )
     /**
@@ -195,7 +193,7 @@ public object GenesisStateKt {
      * @param value The receipts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addReceipts")
+@kotlin.jvm.JvmName("addReceipts")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>.add(value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.addReceipts(value)
     }
@@ -204,7 +202,7 @@ public object GenesisStateKt {
      * @param value The receipts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignReceipts")
+@kotlin.jvm.JvmName("plusAssignReceipts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>.plusAssign(value: ibc.core.channel.v2.Genesis.PacketState) {
       add(value)
@@ -214,7 +212,7 @@ public object GenesisStateKt {
      * @param values The receipts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllReceipts")
+@kotlin.jvm.JvmName("addAllReceipts")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       _builder.addAllReceipts(values)
     }
@@ -223,7 +221,7 @@ public object GenesisStateKt {
      * @param values The receipts to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllReceipts")
+@kotlin.jvm.JvmName("plusAssignAllReceipts")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       addAll(values)
@@ -234,7 +232,7 @@ public object GenesisStateKt {
      * @param value The receipts to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setReceipts")
+@kotlin.jvm.JvmName("setReceipts")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.setReceipts(index, value)
     }
@@ -242,11 +240,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.channel.v2.PacketState receipts = 4 [json_name = "receipts", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearReceipts")
+@kotlin.jvm.JvmName("clearReceipts")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, ReceiptsProxy>.clear() {
       _builder.clearReceipts()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -259,7 +256,7 @@ public object GenesisStateKt {
      */
      public val asyncPackets: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.asyncPacketsList
       )
     /**
@@ -267,7 +264,7 @@ public object GenesisStateKt {
      * @param value The asyncPackets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAsyncPackets")
+@kotlin.jvm.JvmName("addAsyncPackets")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>.add(value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.addAsyncPackets(value)
     }
@@ -276,7 +273,7 @@ public object GenesisStateKt {
      * @param value The asyncPackets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAsyncPackets")
+@kotlin.jvm.JvmName("plusAssignAsyncPackets")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>.plusAssign(value: ibc.core.channel.v2.Genesis.PacketState) {
       add(value)
@@ -286,7 +283,7 @@ public object GenesisStateKt {
      * @param values The asyncPackets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllAsyncPackets")
+@kotlin.jvm.JvmName("addAllAsyncPackets")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       _builder.addAllAsyncPackets(values)
     }
@@ -295,7 +292,7 @@ public object GenesisStateKt {
      * @param values The asyncPackets to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllAsyncPackets")
+@kotlin.jvm.JvmName("plusAssignAllAsyncPackets")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketState>) {
       addAll(values)
@@ -306,7 +303,7 @@ public object GenesisStateKt {
      * @param value The asyncPackets to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setAsyncPackets")
+@kotlin.jvm.JvmName("setAsyncPackets")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.Genesis.PacketState) {
       _builder.setAsyncPackets(index, value)
     }
@@ -314,11 +311,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.channel.v2.PacketState async_packets = 5 [json_name = "asyncPackets", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearAsyncPackets")
+@kotlin.jvm.JvmName("clearAsyncPackets")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketState, AsyncPacketsProxy>.clear() {
       _builder.clearAsyncPackets()
     }
-
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -331,7 +327,7 @@ public object GenesisStateKt {
      */
      public val sendSequences: com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.sendSequencesList
       )
     /**
@@ -339,7 +335,7 @@ public object GenesisStateKt {
      * @param value The sendSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSendSequences")
+@kotlin.jvm.JvmName("addSendSequences")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>.add(value: ibc.core.channel.v2.Genesis.PacketSequence) {
       _builder.addSendSequences(value)
     }
@@ -348,7 +344,7 @@ public object GenesisStateKt {
      * @param value The sendSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSendSequences")
+@kotlin.jvm.JvmName("plusAssignSendSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>.plusAssign(value: ibc.core.channel.v2.Genesis.PacketSequence) {
       add(value)
@@ -358,7 +354,7 @@ public object GenesisStateKt {
      * @param values The sendSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSendSequences")
+@kotlin.jvm.JvmName("addAllSendSequences")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>.addAll(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketSequence>) {
       _builder.addAllSendSequences(values)
     }
@@ -367,7 +363,7 @@ public object GenesisStateKt {
      * @param values The sendSequences to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSendSequences")
+@kotlin.jvm.JvmName("plusAssignAllSendSequences")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.core.channel.v2.Genesis.PacketSequence>) {
       addAll(values)
@@ -378,7 +374,7 @@ public object GenesisStateKt {
      * @param value The sendSequences to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSendSequences")
+@kotlin.jvm.JvmName("setSendSequences")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>.set(index: kotlin.Int, value: ibc.core.channel.v2.Genesis.PacketSequence) {
       _builder.setSendSequences(index, value)
     }
@@ -386,11 +382,10 @@ public object GenesisStateKt {
      * `repeated .ibc.core.channel.v2.PacketSequence send_sequences = 6 [json_name = "sendSequences", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSendSequences")
+@kotlin.jvm.JvmName("clearSendSequences")
     public fun com.google.protobuf.kotlin.DslList<ibc.core.channel.v2.Genesis.PacketSequence, SendSequencesProxy>.clear() {
       _builder.clearSendSequences()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

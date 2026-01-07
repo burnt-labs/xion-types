@@ -40,10 +40,10 @@ public object MsgRegisterAccountKt {
      * `string sender = 1 [json_name = "sender"];`
      */
     public var sender: kotlin.String
-      @JvmName("getSender")
-      get() = _builder.sender
-      @JvmName("setSender")
-      set(value) {
+      @kotlin.jvm.JvmName("getSender")
+        get() = _builder.sender
+      @kotlin.jvm.JvmName("setSender")
+        set(value) {
         _builder.sender = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgRegisterAccountKt {
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
-      @JvmName("getCodeId")
-      get() = _builder.codeId
-      @JvmName("setCodeId")
-      set(value) {
+      @kotlin.jvm.JvmName("getCodeId")
+        get() = _builder.codeId
+      @kotlin.jvm.JvmName("setCodeId")
+        set(value) {
         _builder.codeId = value
       }
     /**
@@ -90,10 +90,10 @@ public object MsgRegisterAccountKt {
      * `bytes msg = 3 [json_name = "msg", (.gogoproto.casttype) = "github.com/CosmWasm/wasmd/x/wasm/types.RawContractMessage"];`
      */
     public var msg: com.google.protobuf.ByteString
-      @JvmName("getMsg")
-      get() = _builder.msg
-      @JvmName("setMsg")
-      set(value) {
+      @kotlin.jvm.JvmName("getMsg")
+        get() = _builder.msg
+      @kotlin.jvm.JvmName("setMsg")
+        set(value) {
         _builder.msg = value
       }
     /**
@@ -122,7 +122,7 @@ public object MsgRegisterAccountKt {
      */
      public val funds: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.fundsList
       )
     /**
@@ -134,7 +134,7 @@ public object MsgRegisterAccountKt {
      * @param value The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addFunds")
+@kotlin.jvm.JvmName("addFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addFunds(value)
     }
@@ -147,7 +147,7 @@ public object MsgRegisterAccountKt {
      * @param value The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignFunds")
+@kotlin.jvm.JvmName("plusAssignFunds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -161,7 +161,7 @@ public object MsgRegisterAccountKt {
      * @param values The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllFunds")
+@kotlin.jvm.JvmName("addAllFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllFunds(values)
     }
@@ -174,7 +174,7 @@ public object MsgRegisterAccountKt {
      * @param values The funds to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllFunds")
+@kotlin.jvm.JvmName("plusAssignAllFunds")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -189,7 +189,7 @@ public object MsgRegisterAccountKt {
      * @param value The funds to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setFunds")
+@kotlin.jvm.JvmName("setFunds")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setFunds(index, value)
     }
@@ -201,11 +201,10 @@ public object MsgRegisterAccountKt {
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearFunds")
+@kotlin.jvm.JvmName("clearFunds")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, FundsProxy>.clear() {
       _builder.clearFunds()
     }
-
 
     /**
      * ```
@@ -216,10 +215,10 @@ public object MsgRegisterAccountKt {
      * `bytes salt = 5 [json_name = "salt"];`
      */
     public var salt: com.google.protobuf.ByteString
-      @JvmName("getSalt")
-      get() = _builder.salt
-      @JvmName("setSalt")
-      set(value) {
+      @kotlin.jvm.JvmName("getSalt")
+        get() = _builder.salt
+      @kotlin.jvm.JvmName("setSalt")
+        set(value) {
         _builder.salt = value
       }
     /**

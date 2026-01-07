@@ -40,10 +40,10 @@ public object DenomKt {
      * `string base = 1 [json_name = "base"];`
      */
     public var base: kotlin.String
-      @JvmName("getBase")
-      get() = _builder.base
-      @JvmName("setBase")
-      set(value) {
+      @kotlin.jvm.JvmName("getBase")
+        get() = _builder.base
+      @kotlin.jvm.JvmName("setBase")
+        set(value) {
         _builder.base = value
       }
     /**
@@ -72,7 +72,7 @@ public object DenomKt {
      */
      public val trace: com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.traceList
       )
     /**
@@ -84,7 +84,7 @@ public object DenomKt {
      * @param value The trace to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTrace")
+@kotlin.jvm.JvmName("addTrace")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>.add(value: ibc.applications.transfer.v1.TokenOuterClass.Hop) {
       _builder.addTrace(value)
     }
@@ -97,7 +97,7 @@ public object DenomKt {
      * @param value The trace to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTrace")
+@kotlin.jvm.JvmName("plusAssignTrace")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>.plusAssign(value: ibc.applications.transfer.v1.TokenOuterClass.Hop) {
       add(value)
@@ -111,7 +111,7 @@ public object DenomKt {
      * @param values The trace to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTrace")
+@kotlin.jvm.JvmName("addAllTrace")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.TokenOuterClass.Hop>) {
       _builder.addAllTrace(values)
     }
@@ -124,7 +124,7 @@ public object DenomKt {
      * @param values The trace to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTrace")
+@kotlin.jvm.JvmName("plusAssignAllTrace")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.TokenOuterClass.Hop>) {
       addAll(values)
@@ -139,7 +139,7 @@ public object DenomKt {
      * @param value The trace to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTrace")
+@kotlin.jvm.JvmName("setTrace")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>.set(index: kotlin.Int, value: ibc.applications.transfer.v1.TokenOuterClass.Hop) {
       _builder.setTrace(index, value)
     }
@@ -151,11 +151,10 @@ public object DenomKt {
      * `repeated .ibc.applications.transfer.v1.Hop trace = 3 [json_name = "trace", (.gogoproto.nullable) = false];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTrace")
+@kotlin.jvm.JvmName("clearTrace")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Hop, TraceProxy>.clear() {
       _builder.clearTrace()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

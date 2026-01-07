@@ -41,10 +41,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1.VotingParams voting_params = 1 [json_name = "votingParams", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field votingParams is deprecated") public var votingParams: cosmos.gov.v1.Gov.VotingParams
-      @JvmName("getVotingParams")
-      get() = _builder.votingParams
-      @JvmName("setVotingParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getVotingParams")
+        get() = _builder.votingParams
+      @kotlin.jvm.JvmName("setVotingParams")
+        set(value) {
         _builder.votingParams = value
       }
     /**
@@ -83,10 +83,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1.DepositParams deposit_params = 2 [json_name = "depositParams", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field depositParams is deprecated") public var depositParams: cosmos.gov.v1.Gov.DepositParams
-      @JvmName("getDepositParams")
-      get() = _builder.depositParams
-      @JvmName("setDepositParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getDepositParams")
+        get() = _builder.depositParams
+      @kotlin.jvm.JvmName("setDepositParams")
+        set(value) {
         _builder.depositParams = value
       }
     /**
@@ -125,10 +125,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1.TallyParams tally_params = 3 [json_name = "tallyParams", deprecated = true];`
      */
     @kotlin.Deprecated(message = "Field tallyParams is deprecated") public var tallyParams: cosmos.gov.v1.Gov.TallyParams
-      @JvmName("getTallyParams")
-      get() = _builder.tallyParams
-      @JvmName("setTallyParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getTallyParams")
+        get() = _builder.tallyParams
+      @kotlin.jvm.JvmName("setTallyParams")
+        set(value) {
         _builder.tallyParams = value
       }
     /**
@@ -166,10 +166,10 @@ public object QueryParamsResponseKt {
      * `.cosmos.gov.v1.Params params = 4 [json_name = "params", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.47"];`
      */
     public var params: cosmos.gov.v1.Gov.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**

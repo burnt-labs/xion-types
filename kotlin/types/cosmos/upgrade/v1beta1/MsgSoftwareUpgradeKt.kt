@@ -40,10 +40,10 @@ public object MsgSoftwareUpgradeKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgSoftwareUpgradeKt {
      * `.cosmos.upgrade.v1beta1.Plan plan = 2 [json_name = "plan", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var plan: cosmos.upgrade.v1beta1.Upgrade.Plan
-      @JvmName("getPlan")
-      get() = _builder.plan
-      @JvmName("setPlan")
-      set(value) {
+      @kotlin.jvm.JvmName("getPlan")
+        get() = _builder.plan
+      @kotlin.jvm.JvmName("setPlan")
+        set(value) {
         _builder.plan = value
       }
     /**

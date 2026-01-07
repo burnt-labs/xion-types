@@ -36,10 +36,10 @@ public object GenesisStateKt {
      * `string port_id = 1 [json_name = "portId"];`
      */
     public var portId: kotlin.String
-      @JvmName("getPortId")
-      get() = _builder.portId
-      @JvmName("setPortId")
-      set(value) {
+      @kotlin.jvm.JvmName("getPortId")
+        get() = _builder.portId
+      @kotlin.jvm.JvmName("setPortId")
+        set(value) {
         _builder.portId = value
       }
     /**
@@ -60,7 +60,7 @@ public object GenesisStateKt {
      */
      public val denoms: com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.denomsList
       )
     /**
@@ -68,7 +68,7 @@ public object GenesisStateKt {
      * @param value The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addDenoms")
+@kotlin.jvm.JvmName("addDenoms")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.add(value: ibc.applications.transfer.v1.TokenOuterClass.Denom) {
       _builder.addDenoms(value)
     }
@@ -77,7 +77,7 @@ public object GenesisStateKt {
      * @param value The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignDenoms")
+@kotlin.jvm.JvmName("plusAssignDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.plusAssign(value: ibc.applications.transfer.v1.TokenOuterClass.Denom) {
       add(value)
@@ -87,7 +87,7 @@ public object GenesisStateKt {
      * @param values The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllDenoms")
+@kotlin.jvm.JvmName("addAllDenoms")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.addAll(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.TokenOuterClass.Denom>) {
       _builder.addAllDenoms(values)
     }
@@ -96,7 +96,7 @@ public object GenesisStateKt {
      * @param values The denoms to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllDenoms")
+@kotlin.jvm.JvmName("plusAssignAllDenoms")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.plusAssign(values: kotlin.collections.Iterable<ibc.applications.transfer.v1.TokenOuterClass.Denom>) {
       addAll(values)
@@ -107,7 +107,7 @@ public object GenesisStateKt {
      * @param value The denoms to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setDenoms")
+@kotlin.jvm.JvmName("setDenoms")
     public operator fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.set(index: kotlin.Int, value: ibc.applications.transfer.v1.TokenOuterClass.Denom) {
       _builder.setDenoms(index, value)
     }
@@ -115,20 +115,19 @@ public object GenesisStateKt {
      * `repeated .ibc.applications.transfer.v1.Denom denoms = 2 [json_name = "denoms", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "Denoms"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearDenoms")
+@kotlin.jvm.JvmName("clearDenoms")
     public fun com.google.protobuf.kotlin.DslList<ibc.applications.transfer.v1.TokenOuterClass.Denom, DenomsProxy>.clear() {
       _builder.clearDenoms()
     }
-
 
     /**
      * `.ibc.applications.transfer.v1.Params params = 3 [json_name = "params", (.gogoproto.nullable) = false];`
      */
     public var params: ibc.applications.transfer.v1.Transfer.Params
-      @JvmName("getParams")
-      get() = _builder.params
-      @JvmName("setParams")
-      set(value) {
+      @kotlin.jvm.JvmName("getParams")
+        get() = _builder.params
+      @kotlin.jvm.JvmName("setParams")
+        set(value) {
         _builder.params = value
       }
     /**
@@ -164,7 +163,7 @@ public object GenesisStateKt {
      */
      public val totalEscrowed: com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.totalEscrowedList
       )
     /**
@@ -177,7 +176,7 @@ public object GenesisStateKt {
      * @param value The totalEscrowed to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addTotalEscrowed")
+@kotlin.jvm.JvmName("addTotalEscrowed")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>.add(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.addTotalEscrowed(value)
     }
@@ -191,7 +190,7 @@ public object GenesisStateKt {
      * @param value The totalEscrowed to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignTotalEscrowed")
+@kotlin.jvm.JvmName("plusAssignTotalEscrowed")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>.plusAssign(value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       add(value)
@@ -206,7 +205,7 @@ public object GenesisStateKt {
      * @param values The totalEscrowed to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllTotalEscrowed")
+@kotlin.jvm.JvmName("addAllTotalEscrowed")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       _builder.addAllTotalEscrowed(values)
     }
@@ -220,7 +219,7 @@ public object GenesisStateKt {
      * @param values The totalEscrowed to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllTotalEscrowed")
+@kotlin.jvm.JvmName("plusAssignAllTotalEscrowed")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.v1beta1.CoinOuterClass.Coin>) {
       addAll(values)
@@ -236,7 +235,7 @@ public object GenesisStateKt {
      * @param value The totalEscrowed to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setTotalEscrowed")
+@kotlin.jvm.JvmName("setTotalEscrowed")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>.set(index: kotlin.Int, value: cosmos.base.v1beta1.CoinOuterClass.Coin) {
       _builder.setTotalEscrowed(index, value)
     }
@@ -249,11 +248,10 @@ public object GenesisStateKt {
      * `repeated .cosmos.base.v1beta1.Coin total_escrowed = 4 [json_name = "totalEscrowed", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearTotalEscrowed")
+@kotlin.jvm.JvmName("clearTotalEscrowed")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.v1beta1.CoinOuterClass.Coin, TotalEscrowedProxy>.clear() {
       _builder.clearTotalEscrowed()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic

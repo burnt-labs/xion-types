@@ -41,10 +41,10 @@ public object MsgSubmitEvidenceKt {
      * `string submitter = 1 [json_name = "submitter", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var submitter: kotlin.String
-      @JvmName("getSubmitter")
-      get() = _builder.submitter
-      @JvmName("setSubmitter")
-      set(value) {
+      @kotlin.jvm.JvmName("getSubmitter")
+        get() = _builder.submitter
+      @kotlin.jvm.JvmName("setSubmitter")
+        set(value) {
         _builder.submitter = value
       }
     /**
@@ -66,10 +66,10 @@ public object MsgSubmitEvidenceKt {
      * `.google.protobuf.Any evidence = 2 [json_name = "evidence", (.cosmos_proto.accepts_interface) = "cosmos.evidence.v1beta1.Evidence"];`
      */
     public var evidence: com.google.protobuf.Any
-      @JvmName("getEvidence")
-      get() = _builder.evidence
-      @JvmName("setEvidence")
-      set(value) {
+      @kotlin.jvm.JvmName("getEvidence")
+        get() = _builder.evidence
+      @kotlin.jvm.JvmName("setEvidence")
+        set(value) {
         _builder.evidence = value
       }
     /**

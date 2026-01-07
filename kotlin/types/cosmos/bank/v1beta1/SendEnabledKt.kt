@@ -37,10 +37,10 @@ public object SendEnabledKt {
      * `string denom = 1 [json_name = "denom"];`
      */
     public var denom: kotlin.String
-      @JvmName("getDenom")
-      get() = _builder.denom
-      @JvmName("setDenom")
-      set(value) {
+      @kotlin.jvm.JvmName("getDenom")
+        get() = _builder.denom
+      @kotlin.jvm.JvmName("setDenom")
+        set(value) {
         _builder.denom = value
       }
     /**
@@ -54,10 +54,10 @@ public object SendEnabledKt {
      * `bool enabled = 2 [json_name = "enabled"];`
      */
     public var enabled: kotlin.Boolean
-      @JvmName("getEnabled")
-      get() = _builder.enabled
-      @JvmName("setEnabled")
-      set(value) {
+      @kotlin.jvm.JvmName("getEnabled")
+        get() = _builder.enabled
+      @kotlin.jvm.JvmName("setEnabled")
+        set(value) {
         _builder.enabled = value
       }
     /**

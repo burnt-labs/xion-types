@@ -36,10 +36,10 @@ public object MsgCancelUnbondingDelegationKt {
      * `string delegator_address = 1 [json_name = "delegatorAddress", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var delegatorAddress: kotlin.String
-      @JvmName("getDelegatorAddress")
-      get() = _builder.delegatorAddress
-      @JvmName("setDelegatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getDelegatorAddress")
+        get() = _builder.delegatorAddress
+      @kotlin.jvm.JvmName("setDelegatorAddress")
+        set(value) {
         _builder.delegatorAddress = value
       }
     /**
@@ -53,10 +53,10 @@ public object MsgCancelUnbondingDelegationKt {
      * `string validator_address = 2 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];`
      */
     public var validatorAddress: kotlin.String
-      @JvmName("getValidatorAddress")
-      get() = _builder.validatorAddress
-      @JvmName("setValidatorAddress")
-      set(value) {
+      @kotlin.jvm.JvmName("getValidatorAddress")
+        get() = _builder.validatorAddress
+      @kotlin.jvm.JvmName("setValidatorAddress")
+        set(value) {
         _builder.validatorAddress = value
       }
     /**
@@ -74,10 +74,10 @@ public object MsgCancelUnbondingDelegationKt {
      * `.cosmos.base.v1beta1.Coin amount = 3 [json_name = "amount", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     public var amount: cosmos.base.v1beta1.CoinOuterClass.Coin
-      @JvmName("getAmount")
-      get() = _builder.amount
-      @JvmName("setAmount")
-      set(value) {
+      @kotlin.jvm.JvmName("getAmount")
+        get() = _builder.amount
+      @kotlin.jvm.JvmName("setAmount")
+        set(value) {
         _builder.amount = value
       }
     /**
@@ -113,10 +113,10 @@ public object MsgCancelUnbondingDelegationKt {
      * `int64 creation_height = 4 [json_name = "creationHeight"];`
      */
     public var creationHeight: kotlin.Long
-      @JvmName("getCreationHeight")
-      get() = _builder.creationHeight
-      @JvmName("setCreationHeight")
-      set(value) {
+      @kotlin.jvm.JvmName("getCreationHeight")
+        get() = _builder.creationHeight
+      @kotlin.jvm.JvmName("setCreationHeight")
+        set(value) {
         _builder.creationHeight = value
       }
     /**

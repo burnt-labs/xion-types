@@ -42,7 +42,7 @@ pub struct MsgRegisterInterchainAccount {
     pub connection_id: ::prost::alloc::string::String,
     #[prost(string, tag="3")]
     pub version: ::prost::alloc::string::String,
-    #[prost(enumeration="super::super::super::super::core::channel::v1::Order", tag="4")]
+    #[prost(enumeration="crate::types::ibc_core_channel_v1::Order", tag="4")]
     pub ordering: i32,
 }
 /// MsgRegisterInterchainAccountResponse defines the response for Msg/RegisterAccount
@@ -61,7 +61,7 @@ pub struct MsgSendTx {
     #[prost(string, tag="2")]
     pub connection_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
-    pub packet_data: ::core::option::Option<super::super::v1::InterchainAccountPacketData>,
+    pub packet_data: ::core::option::Option<crate::types::ibc_applications_interchain_accounts_v1::InterchainAccountPacketData>,
     /// Relative timeout timestamp provided will be added to the current block time during transaction execution.
     /// The timeout timestamp must be non-zero.
     #[prost(uint64, tag="4")]

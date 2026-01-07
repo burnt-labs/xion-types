@@ -40,10 +40,10 @@ public object MinterKt {
      * `string inflation = 1 [json_name = "inflation", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var inflation: kotlin.String
-      @JvmName("getInflation")
-      get() = _builder.inflation
-      @JvmName("setInflation")
-      set(value) {
+      @kotlin.jvm.JvmName("getInflation")
+        get() = _builder.inflation
+      @kotlin.jvm.JvmName("setInflation")
+        set(value) {
         _builder.inflation = value
       }
     /**
@@ -65,10 +65,10 @@ public object MinterKt {
      * `string annual_provisions = 2 [json_name = "annualProvisions", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.cosmos_proto.scalar) = "cosmos.Dec"];`
      */
     public var annualProvisions: kotlin.String
-      @JvmName("getAnnualProvisions")
-      get() = _builder.annualProvisions
-      @JvmName("setAnnualProvisions")
-      set(value) {
+      @kotlin.jvm.JvmName("getAnnualProvisions")
+        get() = _builder.annualProvisions
+      @kotlin.jvm.JvmName("setAnnualProvisions")
+        set(value) {
         _builder.annualProvisions = value
       }
     /**

@@ -40,10 +40,10 @@ public object MsgCancelContinuousFundKt {
      * `string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var authority: kotlin.String
-      @JvmName("getAuthority")
-      get() = _builder.authority
-      @JvmName("setAuthority")
-      set(value) {
+      @kotlin.jvm.JvmName("getAuthority")
+        get() = _builder.authority
+      @kotlin.jvm.JvmName("setAuthority")
+        set(value) {
         _builder.authority = value
       }
     /**
@@ -65,10 +65,10 @@ public object MsgCancelContinuousFundKt {
      * `string recipient = 2 [json_name = "recipient", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var recipient: kotlin.String
-      @JvmName("getRecipient")
-      get() = _builder.recipient
-      @JvmName("setRecipient")
-      set(value) {
+      @kotlin.jvm.JvmName("getRecipient")
+        get() = _builder.recipient
+      @kotlin.jvm.JvmName("setRecipient")
+        set(value) {
         _builder.recipient = value
       }
     /**

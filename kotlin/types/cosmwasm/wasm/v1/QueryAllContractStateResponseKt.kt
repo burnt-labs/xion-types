@@ -44,7 +44,7 @@ public object QueryAllContractStateResponseKt {
      */
      public val models: com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.modelsList
       )
     /**
@@ -52,7 +52,7 @@ public object QueryAllContractStateResponseKt {
      * @param value The models to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addModels")
+@kotlin.jvm.JvmName("addModels")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>.add(value: cosmwasm.wasm.v1.Types.Model) {
       _builder.addModels(value)
     }
@@ -61,7 +61,7 @@ public object QueryAllContractStateResponseKt {
      * @param value The models to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignModels")
+@kotlin.jvm.JvmName("plusAssignModels")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>.plusAssign(value: cosmwasm.wasm.v1.Types.Model) {
       add(value)
@@ -71,7 +71,7 @@ public object QueryAllContractStateResponseKt {
      * @param values The models to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllModels")
+@kotlin.jvm.JvmName("addAllModels")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>.addAll(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.Model>) {
       _builder.addAllModels(values)
     }
@@ -80,7 +80,7 @@ public object QueryAllContractStateResponseKt {
      * @param values The models to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllModels")
+@kotlin.jvm.JvmName("plusAssignAllModels")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmwasm.wasm.v1.Types.Model>) {
       addAll(values)
@@ -91,7 +91,7 @@ public object QueryAllContractStateResponseKt {
      * @param value The models to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setModels")
+@kotlin.jvm.JvmName("setModels")
     public operator fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>.set(index: kotlin.Int, value: cosmwasm.wasm.v1.Types.Model) {
       _builder.setModels(index, value)
     }
@@ -99,11 +99,10 @@ public object QueryAllContractStateResponseKt {
      * `repeated .cosmwasm.wasm.v1.Model models = 1 [json_name = "models", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearModels")
+@kotlin.jvm.JvmName("clearModels")
     public fun com.google.protobuf.kotlin.DslList<cosmwasm.wasm.v1.Types.Model, ModelsProxy>.clear() {
       _builder.clearModels()
     }
-
 
     /**
      * ```
@@ -113,10 +112,10 @@ public object QueryAllContractStateResponseKt {
      * `.cosmos.base.query.v1beta1.PageResponse pagination = 2 [json_name = "pagination"];`
      */
     public var pagination: cosmos.base.query.v1beta1.Pagination.PageResponse
-      @JvmName("getPagination")
-      get() = _builder.pagination
-      @JvmName("setPagination")
-      set(value) {
+      @kotlin.jvm.JvmName("getPagination")
+        get() = _builder.pagination
+      @kotlin.jvm.JvmName("setPagination")
+        set(value) {
         _builder.pagination = value
       }
     /**

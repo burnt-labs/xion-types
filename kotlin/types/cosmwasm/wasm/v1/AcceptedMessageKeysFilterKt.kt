@@ -49,7 +49,7 @@ public object AcceptedMessageKeysFilterKt {
      * @return A list containing the keys.
      */
     public val keys: com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>
-      @kotlin.jvm.JvmSynthetic
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
       get() = com.google.protobuf.kotlin.DslList(
         _builder.keysList
       )
@@ -62,7 +62,7 @@ public object AcceptedMessageKeysFilterKt {
      * @param value The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addKeys")
+@kotlin.jvm.JvmName("addKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.add(value: kotlin.String) {
       _builder.addKeys(value)
     }
@@ -75,7 +75,7 @@ public object AcceptedMessageKeysFilterKt {
      * @param value The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignKeys")
+@kotlin.jvm.JvmName("plusAssignKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.plusAssign(value: kotlin.String) {
       add(value)
@@ -89,7 +89,7 @@ public object AcceptedMessageKeysFilterKt {
      * @param values The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllKeys")
+@kotlin.jvm.JvmName("addAllKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllKeys(values)
     }
@@ -102,7 +102,7 @@ public object AcceptedMessageKeysFilterKt {
      * @param values The keys to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllKeys")
+@kotlin.jvm.JvmName("plusAssignAllKeys")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
       addAll(values)
@@ -117,7 +117,7 @@ public object AcceptedMessageKeysFilterKt {
      * @param value The keys to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setKeys")
+@kotlin.jvm.JvmName("setKeys")
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setKeys(index, value)
     }/**
@@ -128,7 +128,7 @@ public object AcceptedMessageKeysFilterKt {
      * `repeated string keys = 1 [json_name = "keys"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearKeys")
+@kotlin.jvm.JvmName("setKeys")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, KeysProxy>.clear() {
       _builder.clearKeys()
     }}

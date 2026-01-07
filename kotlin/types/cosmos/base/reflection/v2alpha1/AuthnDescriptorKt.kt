@@ -48,7 +48,7 @@ public object AuthnDescriptorKt {
      */
      public val signModes: com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
+  get() = com.google.protobuf.kotlin.DslList(
         _builder.signModesList
       )
     /**
@@ -60,7 +60,7 @@ public object AuthnDescriptorKt {
      * @param value The signModes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSignModes")
+@kotlin.jvm.JvmName("addSignModes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>.add(value: cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor) {
       _builder.addSignModes(value)
     }
@@ -73,7 +73,7 @@ public object AuthnDescriptorKt {
      * @param value The signModes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSignModes")
+@kotlin.jvm.JvmName("plusAssignSignModes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>.plusAssign(value: cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor) {
       add(value)
@@ -87,7 +87,7 @@ public object AuthnDescriptorKt {
      * @param values The signModes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSignModes")
+@kotlin.jvm.JvmName("addAllSignModes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>.addAll(values: kotlin.collections.Iterable<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor>) {
       _builder.addAllSignModes(values)
     }
@@ -100,7 +100,7 @@ public object AuthnDescriptorKt {
      * @param values The signModes to add.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSignModes")
+@kotlin.jvm.JvmName("plusAssignAllSignModes")
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor>) {
       addAll(values)
@@ -115,7 +115,7 @@ public object AuthnDescriptorKt {
      * @param value The signModes to set.
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSignModes")
+@kotlin.jvm.JvmName("setSignModes")
     public operator fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>.set(index: kotlin.Int, value: cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor) {
       _builder.setSignModes(index, value)
     }
@@ -127,11 +127,10 @@ public object AuthnDescriptorKt {
      * `repeated .cosmos.base.reflection.v2alpha1.SigningModeDescriptor sign_modes = 1 [json_name = "signModes"];`
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSignModes")
+@kotlin.jvm.JvmName("clearSignModes")
     public fun com.google.protobuf.kotlin.DslList<cosmos.base.reflection.v2alpha1.Reflection.SigningModeDescriptor, SignModesProxy>.clear() {
       _builder.clearSignModes()
     }
-
   }
 }
 @kotlin.jvm.JvmSynthetic
