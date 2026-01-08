@@ -25,7 +25,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 }
 
 dependencies {
-    implementation(project(":java-types"))
+    // Use compileOnly for java-types since we bundle it in the JAR (not a transitive dependency)
+    compileOnly(project(":java-types"))
     implementation("com.google.protobuf:protobuf-java:4.31.1")
     implementation("com.google.protobuf:protobuf-kotlin:4.31.1")
 }
