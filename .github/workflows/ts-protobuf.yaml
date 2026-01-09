@@ -291,7 +291,9 @@ jobs:
       contents: read
       id-token: write
     # Only run publish for: prerelease, published, manual dispatch
-    if: github.event.client_payload.release_type == 'prerelease' || github.event.client_payload.release_type == 'published' || github.event_name == 'workflow_dispatch'
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -340,9 +342,9 @@ jobs:
           
           # Set appropriate tag based on release type
           if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
-            # Pre-releases get 'beta' tag
-            echo "TAG=beta" >> $GITHUB_ENV
-            echo "Tag: beta"
+            # Pre-releases get version-specific RC tag
+            echo "TAG=${NEW_VERSION}-RC" >> $GITHUB_ENV
+            echo "Tag: ${NEW_VERSION}-RC"
           elif [ "${{ github.event.client_payload.release_type }}" == "published" ]; then
             # Published releases get 'latest' tag
             echo "TAG=latest" >> $GITHUB_ENV

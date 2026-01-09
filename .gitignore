@@ -15,3 +15,19 @@ examples/rust/target
 
 examples/swift/.build
 examples/swift/.swiftpm
+
+# Kotlin/Java
+kotlin/build/
+kotlin/.gradle/
+kotlin/.kotlin/
+kotlin/bin/
+kotlin/java-types/build/
+
+# Proto dependency exports (generated during build)
+proto_deps/
+
+# Generated Java dependencies (built from proto_deps)
+java/types/com/
+java/types/gogoproto/
+java/types/cosmos_proto/
+java/types/cosmos/ics23/
