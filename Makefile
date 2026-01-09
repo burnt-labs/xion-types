@@ -83,6 +83,10 @@ proto-gen-ts: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --ts
 
+package-kotlin: build-proto-builder-image
+	@echo "Packaging Kotlin types into JAR"
+	@$(protoImage) sh -c "cd kotlin && gradle jar"
+
 .PHONY: all install install-debug \
 	go-mod-cache draw-deps clean build format \
 	test test-all test-build test-cover test-unit test-race \
