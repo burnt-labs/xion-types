@@ -1,0 +1,453 @@
+name: Kotlin Protobuf Gen & Publish
+
+on:
+  # push:
+  #   branches: 
+  #   #   - main 
+  #     - feat/add-kotlin-protos
+            
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Specific version to set (e.g., 1.2.3). Required for publishing.'
+        required: true
+        type: string
+
+  repository_dispatch:
+    types: [xion-types-release-trigger]
+
+jobs:
+  generate-protobuf:
+    name: Generate Kotlin Types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Java Definitions
+        run: |
+          make proto-gen-java
+
+      - name: Generate Kotlin Definitions
+        run: |
+          make proto-gen-kotlin
+
+      - name: Check if Types Were Generated
+        run: |
+          if [ -d "./java/types" ] && [ "$(ls -A ./java/types)" ]; then
+            echo "✅ Java definitions generated successfully"
+            ls -la java/types/ | head -20
+          else
+            echo "❌ Failed to generate Java definitions"
+            exit 1
+          fi
+          
+          if [ -d "./kotlin/types" ] && [ "$(ls -A ./kotlin/types)" ]; then
+            echo "✅ Kotlin definitions generated successfully"
+            ls -la kotlin/types/ | head -20
+          else
+            echo "❌ Failed to generate Kotlin definitions"
+            exit 1
+          fi
+
+      - name: Setup Buf
+        uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: "28.x"
+
+      - name: Generate External Proto Dependencies
+        run: |
+          echo "Exporting and generating external proto dependencies..."
+          
+          mkdir -p proto_deps
+          cd xion/proto
+          buf export buf.build/cosmos/cosmos-proto --output ../../proto_deps/cosmos_proto
+          buf export buf.build/cosmos/ics23 --output ../../proto_deps/ics23
+          buf export buf.build/cosmos/gogo-proto --output ../../proto_deps/gogo_proto
+          buf export buf.build/googleapis/googleapis --output ../../proto_deps/googleapis
+          cd ../..
+          
+          # Generate Java for all dependencies
+          for dir in proto_deps/cosmos_proto proto_deps/ics23 proto_deps/gogo_proto proto_deps/googleapis; do
+            echo "Generating Java for $dir"
+            buf generate $dir --template buf/buf.gen.java.yaml --output .
+          done
+          
+          echo "✅ External dependencies generated"
+          ls -la java/types/
+
+      - name: Upload Generated Java Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+          retention-days: 30
+
+      - name: Upload Generated Kotlin Types
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+          retention-days: 30
+
+  determine-version:
+    name: Determine Version
+    needs: [generate-protobuf]
+    runs-on: ubuntu-latest
+    if: |
+        github.event_name == 'push' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      is_rc: ${{ steps.version.outputs.is_rc }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version
+        # Version scenarios:
+        # 1. Manual trigger (workflow_dispatch) → Use input version (e.g., "1.2.3" or "1.2.3-RC1")
+        # 2. Release published (repository_dispatch) → Use release tag (e.g., "v1.2.3" → "1.2.3")
+        # 3. Release prerelease (repository_dispatch) → Use release tag with -RC suffix
+        # 4. Push → Use 0.0.1-RC
+        id: version
+        run: |
+          IS_RC="false"
+          
+          if [ "${{ github.event.inputs.next_version }}" != "" ]; then
+            VERSION="${{ github.event.inputs.next_version }}"
+            if [[ "$VERSION" == *-RC* ]]; then
+              IS_RC="true"
+            fi
+            echo "Using manual version: $VERSION (RC: $IS_RC)"
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
+            RELEASE_TYPE="${{ github.event.client_payload.release_type }}"
+            VERSION=${RELEASE_TAG#v}
+            
+            if [ "$RELEASE_TYPE" == "prerelease" ]; then
+              # For prereleases, append -RC if not already present
+              if [[ "$VERSION" != *-RC* ]]; then
+                VERSION="${VERSION}-RC"
+              fi
+              IS_RC="true"
+              echo "Using prerelease/RC version: $VERSION (from tag: $RELEASE_TAG)"
+            else
+              echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
+            fi
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+            VERSION="0.0.1-RC.${SHORT_SHA}"
+            IS_RC="true"
+            echo "Using dev RC version: $VERSION"
+          else
+            echo "❌ No version specified"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "is_rc=$IS_RC" >> $GITHUB_OUTPUT
+
+  # ============================================
+  # Kotlin JAR Building/Testing
+  # ============================================
+
+  kotlin-build:
+    name: Build JAR
+    needs: [determine-version, generate-protobuf]
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ needs.determine-version.outputs.version }}
+      is_rc: ${{ needs.determine-version.outputs.is_rc }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Java Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.10'
+
+      - name: Update Version in build.gradle.kts
+        env:
+          VERSION: ${{ needs.determine-version.outputs.version }}
+        run: |
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts
+          echo "Updated version to: $VERSION"
+          grep "^version" kotlin/build.gradle.kts
+
+      - name: Remove Duplicate Kotlin Files
+        run: |
+          # Protobuf generates duplicate Kt files with different casing (e.g., NFTKt.kt and NftKt.kt)
+          # On case-sensitive filesystems, both exist and cause conflicts
+          echo "Checking for duplicate Kotlin files..."
+          
+          # Specifically remove the known duplicate (lowercase variant)
+          if [ -f "kotlin/types/cosmos/nft/v1beta1/NftKt.kt" ] && [ -f "kotlin/types/cosmos/nft/v1beta1/NFTKt.kt" ]; then
+            echo "Removing duplicate: kotlin/types/cosmos/nft/v1beta1/NftKt.kt (keeping NFTKt.kt)"
+            rm "kotlin/types/cosmos/nft/v1beta1/NftKt.kt"
+          fi
+          
+          # Generic check for any other case-insensitive duplicates
+          find kotlin/types -type f -name "*Kt.kt" -print0 | while IFS= read -r -d '' file; do
+            dir=$(dirname "$file")
+            base=$(basename "$file")
+            count=$(find "$dir" -maxdepth 1 -iname "$base" | wc -l)
+            if [ "$count" -gt 1 ]; then
+              echo "Warning: Found case-insensitive duplicates for $file"
+            fi
+          done
+
+      - name: Build JAR
+        run: |
+          cd kotlin
+          gradle jar --no-daemon
+          
+      - name: Verify JAR Contents
+        run: |
+          echo "Checking JAR contents:"
+          JAR_FILE=$(ls kotlin/build/libs/xion-types-kotlin-*.jar | head -1)
+          echo "Found JAR: $JAR_FILE"
+          jar tf "$JAR_FILE" | head -50
+          echo "..."
+          echo "JAR size:"
+          ls -lh "$JAR_FILE"
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: kotlin-jar
+          path: kotlin/build/libs/xion-types-kotlin-*.jar
+          retention-days: 30
+
+  kotlin-test:
+    name: Test Kotlin JDK ${{ matrix.java-version }}
+    needs: [kotlin-build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: ['17', '21']
+      fail-fast: false
+    steps:
+      - name: Setup JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'temurin'
+
+      - name: Download JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: kotlin-jar
+          path: libs/
+
+      - name: Test JAR Loading
+        run: |
+          # Create a simple test file
+          cat > TestXionTypes.kt << 'EOF'
+          import cosmos.bank.v1beta1.Tx
+          import cosmos.base.v1beta1.CoinOuterClass
+          
+          fun main() {
+              println("✅ Kotlin protobuf types loaded successfully")
+              println("Testing Cosmos Bank Tx class: ${Tx::class.java.name}")
+              println("Testing Coin class: ${CoinOuterClass.Coin::class.java.name}")
+          }
+          EOF
+          
+          # Download Kotlin compiler
+          curl -sL https://github.com/JetBrains/kotlin/releases/download/v2.1.0/kotlin-compiler-2.1.0.zip -o kotlin-compiler.zip
+          unzip -q kotlin-compiler.zip
+          
+          # Download protobuf-java
+          curl -sL https://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/4.31.1/protobuf-java-4.31.1.jar -o protobuf-java.jar
+          curl -sL https://repo1.maven.org/maven2/com/google/protobuf/protobuf-kotlin/4.31.1/protobuf-kotlin-4.31.1.jar -o protobuf-kotlin.jar
+          
+          # Compile and run test
+          JAR_FILE=$(ls libs/xion-types-kotlin-*.jar | head -1)
+          echo "Using JAR: $JAR_FILE"
+          kotlinc/bin/kotlinc -cp "$JAR_FILE:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypes.kt -include-runtime -d test.jar
+          java -cp "test.jar:$JAR_FILE:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypesKt
+
+  # ============================================
+  # Kotlin Package Publishing to Maven Central
+  # ============================================
+
+  kotlin-publish:
+    name: Upload to Maven Central
+    needs: [kotlin-test, kotlin-build]
+    runs-on: ubuntu-latest
+    # Upload to Maven Central staging for all triggers (RC versions are staged but not auto-published)
+    if: |
+      github.event_name == 'workflow_dispatch' || 
+      github.event_name == 'push' ||
+      (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Generated Java Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+
+      - name: Download Generated Kotlin Types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Remove Duplicate Kotlin Files
+        run: |
+          if [ -f "kotlin/types/cosmos/nft/v1beta1/NftKt.kt" ] && [ -f "kotlin/types/cosmos/nft/v1beta1/NFTKt.kt" ]; then
+            rm "kotlin/types/cosmos/nft/v1beta1/NftKt.kt"
+          fi
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.10'
+
+      - name: Import GPG Key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpgconf --reload gpg-agent
+
+      - name: Update Version
+        env:
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts
+          echo "Updated version to: $VERSION"
+
+      - name: Build and Sign Artifacts
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          cd kotlin
+          gradle publishToMavenLocal --no-daemon \
+            -Psigning.gnupg.passphrase="$GPG_PASSPHRASE" \
+            -Psigning.gnupg.executable=gpg
+          
+          echo "Built artifacts:"
+          find ~/.m2/repository/io/github/burnt-labs -type f | head -30
+
+      - name: Create Maven Central Bundle
+        env:
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          # Create bundle directory structure
+          ARTIFACT_PATH="io/github/burnt-labs/xion-types-kotlin/$VERSION"
+          mkdir -p bundle/$ARTIFACT_PATH
+          
+          # Copy artifacts from local Maven repo (excluding metadata files)
+          cd ~/.m2/repository/io/github/burnt-labs/xion-types-kotlin/$VERSION
+          for file in *.jar *.pom *.module *.asc; do
+            if [ -f "$file" ] && [[ "$file" != *metadata* ]]; then
+              cp "$file" "$OLDPWD/bundle/$ARTIFACT_PATH/"
+            fi
+          done
+          cd "$OLDPWD"
+          
+          # Generate checksums for all files (Maven Central requires md5 and sha1)
+          cd bundle/$ARTIFACT_PATH
+          for file in *.jar *.pom *.module; do
+            if [ -f "$file" ]; then
+              md5sum "$file" | awk '{print $1}' > "$file.md5"
+              sha1sum "$file" | awk '{print $1}' > "$file.sha1"
+            fi
+          done
+          cd "$OLDPWD"
+          
+          # Create the bundle ZIP
+          cd bundle
+          zip -r ../xion-types-kotlin-bundle.zip .
+          cd ..
+          
+          echo "Bundle contents:"
+          unzip -l xion-types-kotlin-bundle.zip
+
+      - name: Upload to Maven Central
+        env:
+          CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          IS_RC: ${{ needs.kotlin-build.outputs.is_rc }}
+          VERSION: ${{ needs.kotlin-build.outputs.version }}
+        run: |
+          # Upload bundle via Central Publisher API (USER_MANAGED = staged, not auto-published)
+          if [ "$IS_RC" == "true" ]; then
+            echo "📦 Uploading RC version: $VERSION (will be staged, NOT auto-published)"
+          else
+            echo "📦 Uploading release version: $VERSION (will be staged for manual publishing)"
+          fi
+          
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -u "$CENTRAL_USERNAME:$CENTRAL_PASSWORD" \
+            -F "bundle=@xion-types-kotlin-bundle.zip" \
+            "https://central.sonatype.com/api/v1/publisher/upload?publishingType=USER_MANAGED")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "Response: $BODY"
+          echo "HTTP Code: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "✅ Bundle uploaded successfully to staging!"
+            echo "Deployment ID: $BODY"
+            echo ""
+            echo "👉 Go to https://central.sonatype.com to:"
+            if [ "$IS_RC" == "true" ]; then
+              echo "   - Review validation results"
+              echo "   - DROP to discard (RC testing)"
+              echo "   - Or PUBLISH if you want to release this RC"
+            else
+              echo "   - Review validation results"
+              echo "   - PUBLISH to make it public on Maven Central"
+            fi
+          else
+            echo "❌ Upload failed"
+            exit 1
+          fi

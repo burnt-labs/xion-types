@@ -34,6 +34,7 @@ RUN apk add --no-cache \
     nodejs \
     npm \
     openjdk17 \
+    gradle \
     protobuf-dev \
     protobuf-c-dev
 
