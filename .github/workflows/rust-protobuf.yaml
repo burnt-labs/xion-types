@@ -57,7 +57,7 @@ jobs:
         github.event_name == 'push' ||    
         github.event_name == 'schedule' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
-        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
+        (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
@@ -79,6 +79,11 @@ jobs:
           elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             RELEASE_TAG="${{ github.event.client_payload.tag_name }}"
             VERSION=${RELEASE_TAG#v}
+            # Safety check: If it's a prerelease but the version string doesn't have a hyphen (no suffix), append -rc.0
+            if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ] && [[ "$VERSION" != *-* ]]; then
+              echo "⚠️ Prerelease detected without suffix in version $VERSION. Appending -rc.0 for safety."
+              VERSION="${VERSION}-rc.0"
+            fi
             echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
           elif [ "${{ github.event_name }}" == "schedule" ]; then
             TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
