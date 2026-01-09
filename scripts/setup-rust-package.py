@@ -1,0 +1,537 @@
+#!/usr/bin/env python3
+import re
+import sys
+from pathlib import Path
+
+types_dir = Path("rust/types")
+if not types_dir.exists():
+    print("❌ rust/types directory not found")
+    sys.exit(1)
+
+# 1. Generate mod.rs files recursively
+def create_mod_rs(dir_path):
+    rs_files = [f for f in dir_path.glob("*.rs") if f.name != "mod.rs"]
+    subdirs = [d for d in dir_path.iterdir() if d.is_dir() and create_mod_rs(d)]
+    
+    if not rs_files and not subdirs:
+        return False
+    
+    with (dir_path / "mod.rs").open("w") as f:
+        f.write("// Auto-generated module\n")
+        for rs_file in sorted(rs_files):
+            modname = rs_file.stem
+            if '.' in modname:
+                f.write(f'#[path = "{rs_file.name}"]\npub mod {modname.replace(".", "_")};\n')
+            else:
+                f.write(f"pub mod {modname};\n")
+        for subdir in subdirs:
+            f.write(f"pub mod {subdir.name};\n")
+    return True
+
+# Process subdirectories first
+for item in sorted(types_dir.iterdir()):
+    if item.is_dir() and any(item.rglob("*.rs")):
+        create_mod_rs(item)
+
+# Create root mod.rs
+with (types_dir / "mod.rs").open("w") as f:
+    f.write("// Auto-generated module\n")
+    for item in sorted(types_dir.iterdir()):
+        if item.is_dir() and (item / "mod.rs").exists():
+            f.write(f"pub mod {item.name};\n")
+        elif item.suffix == ".rs" and item.name != "mod.rs":
+            modname = item.stem
+            if '.' in modname:
+                f.write(f'#[path = "{item.name}"]\npub mod {modname.replace(".", "_")};\n')
+            else:
+                f.write(f"pub mod {modname};\n")
+
+# 2. Create lib.rs
+lib_rs = Path("rust/src/lib.rs")
+lib_rs.parent.mkdir(parents=True, exist_ok=True)
+lib_rs.write_text("""//! Generated Rust types for Xion blockchain protocol buffers
+
+pub mod types {
+    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/types/mod.rs"));
+}
+""")
+
+# 3. Build module name map from actual files
+module_map = {}
+for rs_file in types_dir.rglob("*.rs"):
+    if rs_file.name == "mod.rs":
+        continue
+    # File: cosmos.base.query.v1beta1.rs -> module: cosmos_base_query_v1beta1
+    mod_name = rs_file.stem.replace('.', '_')
+    module_map[mod_name] = rs_file
+
+# 4. Fix module paths in generated files
+# Order matters: most specific first
+path_mappings = [
+    # IBC multi-level paths (most specific)
+    (r'(super::)+ibc::applications::interchain_accounts::controller::v1::', 'crate::types::ibc_applications_interchain_accounts_controller_v1::'),
+    (r'(super::)+ibc::applications::interchain_accounts::host::v1::', 'crate::types::ibc_applications_interchain_accounts_host_v1::'),
+    (r'(super::)+ibc::applications::interchain_accounts::v1::', 'crate::types::ibc_applications_interchain_accounts_v1::'),
+    (r'(super::)+ibc::core::channel::v1::', 'crate::types::ibc_core_channel_v1::'),
+    (r'(super::)+ibc::core::channel::v2::', 'crate::types::ibc_core_channel_v2::'),
+    (r'(super::)+ibc::core::connection::v1::', 'crate::types::ibc_core_connection_v1::'),
+    (r'(super::)+ibc::core::types::v1::', 'crate::types::ibc_core_types_v1::'),
+    (r'(super::)+ibc::core::client::v1::', 'crate::types::ibc_core_client_v1::'),
+    (r'(super::)+ibc::core::client::v2::', 'crate::types::ibc_core_client_v2::'),
+    (r'(super::)+ibc::core::commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+    (r'(super::)+ibc::core::commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+    # Cosmos multi-level paths
+    (r'(super::)+tendermint::libs::bits::', 'crate::types::tendermint_libs_bits::'),
+    (r'(super::)+cosmos::base::tendermint::v1beta1::', 'crate::types::cosmos_base_tendermint_v1beta1::'),
+    (r'(super::)+cosmos::base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+    (r'(super::)+cosmos::base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+    (r'(super::)+cosmos::base::reflection::v1beta1::', 'crate::types::cosmos_base_reflection_v1beta1::'),
+    (r'(super::)+cosmos::base::reflection::v2alpha1::', 'crate::types::cosmos_base_reflection_v2alpha1::'),
+    (r'(super::)+cosmos::base::node::v1beta1::', 'crate::types::cosmos_base_node_v1beta1::'),
+    (r'(super::)+cosmos::crypto::multisig::v1beta1::', 'crate::types::cosmos_crypto_multisig_v1beta1::'),
+    (r'(super::)+cosmos::crypto::hd::v1::', 'crate::types::cosmos_crypto_hd_v1::'),
+    (r'(super::)+cosmos::tx::signing::v1beta1::', 'crate::types::cosmos_tx_signing_v1beta1::'),
+    (r'(super::)+cosmos::ics23::v1::', 'crate::types::cosmos_ics23_v1::'),
+    (r'(super::)+cosmos::upgrade::v1beta1::', 'crate::types::cosmos_upgrade_v1beta1::'),
+    (r'(super::)+cosmos::store::v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
+    # Two-level paths
+    (r'(super::)+tendermint::abci::', 'crate::types::tendermint_abci::'),
+    (r'(super::)+tendermint::types::', 'crate::types::tendermint_types::'),
+    (r'(super::)+tendermint::version::', 'crate::types::tendermint_version::'),
+    (r'(super::)+tendermint::p2p::', 'crate::types::tendermint_p2p::'),
+    (r'(super::)+tendermint::crypto::', 'crate::types::tendermint_crypto::'),
+    (r'(super::)+cosmos::base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+    (r'(super::)+cosmos::bank::v1beta1::', 'crate::types::cosmos_bank_v1beta1::'),
+    (r'(super::)+cosmos::auth::v1beta1::', 'crate::types::cosmos_auth_v1beta1::'),
+    (r'(super::)+cosmos::authz::v1beta1::', 'crate::types::cosmos_authz_v1beta1::'),
+    (r'(super::)+base::query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+    (r'(super::)+base::v1beta1::', 'crate::types::cosmos_base_v1beta1::'),
+    (r'(super::)+base::abci::v1beta1::', 'crate::types::cosmos_base_abci_v1beta1::'),
+    # Single-level paths that need context
+    (r'(super::)+query::v1beta1::', 'crate::types::cosmos_base_query_v1beta1::'),
+    (r'(super::)+hd::v1::', 'crate::types::cosmos_crypto_hd_v1::'),
+    (r'(super::)+crypto::multisig::v1beta1::', 'crate::types::cosmos_crypto_multisig_v1beta1::'),
+    (r'(super::)+signing::v1beta1::', 'crate::types::cosmos_tx_signing_v1beta1::'),
+    (r'(super::)+client::v1::', 'crate::types::ibc_core_client_v1::'),
+    (r'(super::)+client::v2::', 'crate::types::ibc_core_client_v2::'),
+    (r'(super::)+commitment::v1::', 'crate::types::ibc_core_commitment_v1::'),
+    (r'(super::)+commitment::v2::', 'crate::types::ibc_core_commitment_v2::'),
+    (r'(super::)+channel::v1::', 'crate::types::ibc_core_channel_v1::'),
+    (r'(super::)+channel::v2::', 'crate::types::ibc_core_channel_v2::'),
+    (r'(super::)+connection::v1::', 'crate::types::ibc_core_connection_v1::'),
+    (r'(super::)+controller::v1::', 'crate::types::ibc_applications_interchain_accounts_controller_v1::'),
+    (r'(super::)+host::v1::', 'crate::types::ibc_applications_interchain_accounts_host_v1::'),
+    (r'(super::)+v1::', 'crate::types::ibc_applications_interchain_accounts_v1::'),
+    (r'(super::)+v1beta1::', 'crate::types::cosmos_store_v1beta1::'),
+]
+
+# Helper function to convert hierarchical path to flat module name
+def path_to_module(path_parts):
+    """Convert ['cosmos', 'base', 'query', 'v1beta1'] to 'cosmos_base_query_v1beta1'"""
+    return '_'.join(path_parts)
+
+files_processed = 0
+for rs_file in types_dir.rglob("*.rs"):
+    if rs_file.name == "mod.rs":
+        continue
+    
+    content = rs_file.read_text()
+    original = content
+    
+    # Apply specific mappings first
+    for pattern_str, replacement in path_mappings:
+        content = re.sub(pattern_str, replacement, content)
+    
+    # Handle remaining super::super::... paths by converting to flat module names
+    def replace_path(match):
+        path_parts = match.group(2).split('::')
+        mod_name = path_to_module(path_parts)
+        # Check if module exists, otherwise try common prefixes
+        if mod_name in module_map:
+            return f'crate::types::{mod_name}::'
+        # Try with cosmos prefix
+        cosmos_mod = f'cosmos_{mod_name}'
+        if cosmos_mod in module_map:
+            return f'crate::types::{cosmos_mod}::'
+        # Try with ibc prefix
+        ibc_mod = f'ibc_{mod_name}'
+        if ibc_mod in module_map:
+            return f'crate::types::{ibc_mod}::'
+        return match.group(0)  # Keep original if can't resolve
+    
+    # Match remaining super::... paths
+    content = re.sub(
+        r'(super::)+([a-z_][a-z0-9_]*(?:::[a-z_][a-z0-9_]*)*)::',
+        replace_path,
+        content
+    )
+    
+    # Fix super::types::, super::crypto::, and super::version:: in tendermint files
+    if 'tendermint' in rs_file.stem:
+        content = re.sub(r'super::types::', 'crate::types::tendermint_types::', content)
+        content = re.sub(r'super::crypto::', 'crate::types::tendermint_crypto::', content)
+        content = re.sub(r'super::version::', 'crate::types::tendermint_version::', content)
+    
+    # Fix context-dependent paths like super::super::v1:: in IBC files
+    # From ibc.applications.interchain_accounts.controller.v1.rs, super::super::v1:: -> interchain_accounts.v1
+    if 'ibc.applications.interchain_accounts' in rs_file.stem:
+        # Extract parent module from filename
+        parts = rs_file.stem.split('.')
+        if 'controller' in parts or 'host' in parts:
+            # super::super::v1:: means go up to interchain_accounts.v1
+            parent_mod = '_'.join(parts[:-2])  # Remove controller.v1 or host.v1
+            content = re.sub(
+                r'super::super::v1::',
+                f'crate::types::{parent_mod}_v1::',
+                content
+            )
+    
+    # Fix already-converted paths that reference nested modules (e.g., crate::types::query::v1beta1::)
+    def fix_nested_path(match):
+        path_parts = match.group(1).split('::')
+        mod_name = path_to_module(path_parts)
+        if mod_name in module_map:
+            return f'crate::types::{mod_name}::'
+        # Try with cosmos prefix
+        cosmos_mod = f'cosmos_{mod_name}'
+        if cosmos_mod in module_map:
+            return f'crate::types::{cosmos_mod}::'
+        # Try with ibc prefix  
+        ibc_mod = f'ibc_{mod_name}'
+        if ibc_mod in module_map:
+            return f'crate::types::{ibc_mod}::'
+        return match.group(0)
+    
+    # Fix paths like crate::types::query::v1beta1:: -> crate::types::cosmos_base_query_v1beta1::
+    content = re.sub(
+        r'crate::types::([a-z_][a-z0-9_]*(?:::[a-z_][a-z0-9_]*)+)::',
+        fix_nested_path,
+        content
+    )
+    
+    # Clean up invalid patterns
+    content = re.sub(r'crate::types::super::+', 'crate::types::', content)
+    
+    # Fix MerklePath path issue - the root-level ibc.core.commitment.v1.rs doesn't have MerklePath
+    # but the subdirectory file does. The path should use the ibc::core::commitment::v1 module
+    # Check if we're in a file that references ibc_core_commitment_v1::MerklePath
+    if 'ibc_core_commitment_v1::MerklePath' in content:
+        # Replace with the correct path through the ibc module hierarchy
+        content = re.sub(
+            r'crate::types::ibc_core_commitment_v1::MerklePath',
+            'crate::types::ibc::core::commitment::v1::ibc_core_commitment_v1::MerklePath',
+            content
+        )
+    
+    # Fix keyring Item enum - remove Eq/Hash because it contains structs with prost_types::Any
+    if 'cosmos.crypto.keyring.v1.rs' in rs_file.name or 'cosmos_crypto_keyring_v1.rs' in rs_file.name:
+        # Remove Eq and Hash from Item enum derive
+        content = re.sub(
+            r'#\[derive\(Clone,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Oneof\)\]',
+            '#[derive(Clone, PartialEq, ::prost::Oneof)]',
+            content
+        )
+    
+    # Fix ORM query enum - remove Eq/Hash if it contains Duration (not in Option, direct field)
+    if 'cosmos.orm.query.v1alpha1.rs' in rs_file.name and ('Duration(::prost_types::Duration)' in content or '::prost_types::Duration' in content):
+        # Remove Eq and Hash from enum derives that contain Duration
+        content = re.sub(
+            r'#\[derive\(Clone,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Oneof\)\]',
+            '#[derive(Clone, PartialEq, ::prost::Oneof)]',
+            content
+        )
+    
+    # Fix Validators duplicate (enum conflicts with struct)
+    if rs_file.name == 'cosmos.staking.v1beta1.rs':
+        # Rename the enum to ValidatorsEnum
+        content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
+        # Update oneof reference from Validators to ValidatorsEnum
+        content = re.sub(
+            r'oneof="stake_authorization::Validators"',
+            'oneof="stake_authorization::ValidatorsEnum"',
+            content
+        )
+        # Update Option<stake_authorization::Validators> to ValidatorsEnum (but keep struct Validators)
+        # This is tricky - we need to update the enum type, not the struct type
+        content = re.sub(
+            r'Option<stake_authorization::Validators>',
+            'Option<stake_authorization::ValidatorsEnum>',
+            content
+        )
+        # Update enum variant references that use the enum type
+        content = re.sub(
+            r'ValidatorsEnum::(AllowList|DenyList)\(Validators\)',
+            r'ValidatorsEnum::\1(Validators)',
+            content
+        )
+        # Remove Eq and Hash from ValidatorsEnum if it contains Validators struct
+        # The Validators struct doesn't implement Eq/Hash, so the enum can't either
+        if 'ValidatorsEnum' in content and 'pub struct Validators' in content:
+            # Find the ValidatorsEnum derive and remove Eq, Hash
+            content = re.sub(
+                r'#\[derive\(([^,]+),\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Oneof\)\]',
+                r'#[derive(\1, PartialEq, ::prost::Oneof)]',
+                content
+            )
+            # Also handle if it's in a different order
+            content = re.sub(
+                r'#\[derive\(([^,]+),\s*Eq,\s*Hash,\s*PartialEq,\s*::prost::Oneof\)\]',
+                r'#[derive(\1, PartialEq, ::prost::Oneof)]',
+                content
+            )
+    
+    # Remove Copy from derive when struct contains non-Copy fields (Duration, Timestamp)
+    # Check if struct contains Option<Duration> or Option<Timestamp>
+    # Also check for any struct that has fields with prost_types types (they're not Copy)
+    # Also check for Option<Height> and other non-Copy types
+    has_non_copy_field = (
+        'Option<::prost_types::Duration>' in content or 
+        'Option<::prost_types::Timestamp>' in content or
+        'Option<::prost_types::' in content or
+        'Option<crate::types::ibc_core_client_v1::Height>' in content or
+        'Option<crate::types::ibc_core_client_v2::Height>' in content
+    )
+    
+    if has_non_copy_field:
+        # Remove Copy from derive attributes that include prost::Message
+        # Pattern: #[derive(Clone, Copy, PartialEq, ::prost::Message)]
+        content = re.sub(
+            r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*::prost::Message\)\]',
+            '#[derive(Clone, PartialEq, ::prost::Message)]',
+            content
+        )
+        # Pattern: #[derive(Clone, Copy, ::prost::Message)]
+        content = re.sub(
+            r'#\[derive\(Clone,\s*Copy,\s*::prost::Message\)\]',
+            '#[derive(Clone, ::prost::Message)]',
+            content
+        )
+        # Pattern: #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+        content = re.sub(
+            r'#\[derive\(Clone,\s*Copy,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Message\)\]',
+            '#[derive(Clone, PartialEq, ::prost::Message)]',
+            content
+        )
+        # Pattern: #[derive(Clone, Copy, PartialEq)]
+        content = re.sub(
+            r'#\[derive\(Clone,\s*Copy,\s*PartialEq\)\]',
+            '#[derive(Clone, PartialEq)]',
+            content
+        )
+    
+    # Remove Eq and Hash from derive when struct contains fields that don't implement these traits
+    # Check for problematic types that don't implement Eq/Hash
+    problematic_patterns = [
+        r'Option<::prost_types::Duration>',
+        r'Option<::prost_types::Timestamp>',
+        r'Option<::prost_types::Any>',
+        r'Option<crate::types::cosmos_base_v1beta1::Coin>',
+        r'Option<crate::types::ibc_core_client_v1::Height>',
+        r'Option<crate::types::cosmos_auth_v1beta1::BaseAccount>',
+        r'Option<crate::types::ibc_applications_interchain_accounts_v1::InterchainAccountPacketData>',
+        r'Option<crate::types::tendermint_crypto::PublicKey>',
+        r'Option<crate::types::tendermint_crypto::Proof>',
+        r'Option<crate::types::tendermint_version::Consensus>',
+        r'Option<crate::types::cosmos_base_query_v1beta1::PageRequest>',
+        r'Option<crate::types::cosmos_feegrant_v1beta1::Grant>',
+        r'Option<crate::types::tendermint_types::ConsensusParams>',
+        r'Option<crate::types::tendermint_types::BlockParams>',
+        r'Option<crate::types::tendermint_types::EvidenceParams>',
+        r'Option<crate::types::tendermint_types::ValidatorParams>',
+        r'Option<crate::types::tendermint_types::AbciParams>',
+        r'Option<crate::types::cosmos_crypto_keyring_v1::record::Local>',
+        r'Option<crate::types::cosmos_crypto_keyring_v1::record::Ledger>',
+        r'Option<crate::types::cosmos_crypto_keyring_v1::record::Multi>',
+        r'Option<crate::types::cosmos_crypto_keyring_v1::record::Offline>',
+        r'Option<stake_authorization::Validators>',
+        r'Option<stake_authorization::ValidatorsEnum>',
+        r'Option<record::Local>',
+        r'Option<record::Ledger>',
+        r'Option<record::Multi>',
+        r'Option<record::Offline>',
+        r'Option<keyring::v1::cosmos_crypto_keyring_v1::record::Local>',
+        r'Option<keyring::v1::cosmos_crypto_keyring_v1::record::Ledger>',
+        r'Option<keyring::v1::cosmos_crypto_keyring_v1::record::Multi>',
+        r'Option<keyring::v1::cosmos_crypto_keyring_v1::record::Offline>',
+        r'Option<stake_authorization::Validators>',
+        r'Option<staking::v1beta1::cosmos_staking_v1beta1::stake_authorization::Validators>',
+        r'Option<staking::v1beta1::cosmos_staking_v1beta1::stake_authorization::ValidatorsEnum>',
+        # Also check for structs that contain Duration/Timestamp fields directly (not in Option)
+        r'::prost_types::Duration',
+        r'::prost_types::Timestamp',
+    ]
+    
+    has_problematic_field = any(re.search(pattern, content) for pattern in problematic_patterns)
+    
+    # Also check if this is an enum (Oneof) that contains structs with problematic fields
+    # Enums that contain structs with prost_types::Any, Duration, etc. can't implement Eq/Hash
+    # Check if enum contains variants with types that don't implement Eq/Hash
+    is_enum_with_problematic_variants = False
+    if '::prost::Oneof' in content:
+        # Check if enum variants contain problematic types
+        enum_problematic_patterns = [
+            r'Local\(Local\)',
+            r'Ledger\(Ledger\)',
+            r'Multi\(Multi\)',
+            r'Offline\(Offline\)',
+            r'Validators\(Validators\)',
+            r'ValidatorsEnum\(Validators\)',
+            r'Local\(record::Local\)',
+            r'Ledger\(record::Ledger\)',
+            r'Multi\(record::Multi\)',
+            r'Offline\(record::Offline\)',
+            r'Local\(keyring::v1::cosmos_crypto_keyring_v1::record::Local\)',
+            r'Ledger\(keyring::v1::cosmos_crypto_keyring_v1::record::Ledger\)',
+            r'Multi\(keyring::v1::cosmos_crypto_keyring_v1::record::Multi\)',
+            r'Offline\(keyring::v1::cosmos_crypto_keyring_v1::record::Offline\)',
+        ]
+        is_enum_with_problematic_variants = any(re.search(pattern, content) for pattern in enum_problematic_patterns)
+        
+        # Also check if the enum is in a file that defines Local/Ledger/Multi/Offline structs
+        # that contain prost_types::Any (which doesn't implement Eq/Hash)
+        if 'pub struct Local' in content and 'Option<::prost_types::Any>' in content:
+            is_enum_with_problematic_variants = True
+        
+        # Check for Validators enum in staking file
+        if 'pub enum ValidatorsEnum' in content or 'pub enum Validators' in content:
+            if 'stake_authorization' in content or 'staking' in rs_file.stem:
+                is_enum_with_problematic_variants = True
+    
+    if has_problematic_field or is_enum_with_problematic_variants:
+        # Remove Eq and Hash from derive attributes
+        # Pattern: #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+        content = re.sub(
+            r'#\[derive\(([^,]+),\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Message\)\]',
+            r'#[derive(\1, PartialEq, ::prost::Message)]',
+            content
+        )
+        # Pattern: #[derive(Clone, Eq, Hash, ::prost::Message)]
+        content = re.sub(
+            r'#\[derive\(([^,]+),\s*Eq,\s*Hash,\s*::prost::Message\)\]',
+            r'#[derive(\1, ::prost::Message)]',
+            content
+        )
+        # Pattern: #[derive(Clone, PartialEq, Eq, Hash)]
+        content = re.sub(
+            r'#\[derive\(([^,]+),\s*PartialEq,\s*Eq,\s*Hash\)\]',
+            r'#[derive(\1, PartialEq)]',
+            content
+        )
+        # Pattern: #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+        content = re.sub(
+            r'#\[derive\(([^,]+),\s*Copy,\s*PartialEq,\s*Eq,\s*Hash,\s*::prost::Message\)\]',
+            r'#[derive(\1, Copy, PartialEq, ::prost::Message)]',
+            content
+        )
+    
+    # Fix doctest issues: prevent protobuf/YAML/EBNF code blocks from being compiled
+    # Rust doctests extract indented code blocks (4+ spaces) and try to compile them
+    # We add `# ` prefix to protobuf examples to make them comments (hidden from doctests)
+    def fix_protobuf_code_blocks(text):
+        lines = text.split('\n')
+        result = []
+        i = 0
+        in_protobuf_block = False
+        
+        while i < len(lines):
+            line = lines[i]
+            protobuf_syntax = False
+            
+            # Check for ``` code blocks
+            if re.match(r'\s*///\s*```(?:rust)?\s*$', line):
+                # Look ahead to see if this code block contains protobuf syntax
+                j = i + 1
+                while j < len(lines) and j < i + 100:
+                    if re.match(r'\s*///\s*```\s*$', lines[j]):
+                        break
+                    if re.search(r'\bservice\s+\w+\s*\{', lines[j]) or \
+                       re.search(r'\brpc\s+\w+\(', lines[j]) or \
+                       re.search(r'\bmessage\s+\w+\s*\{', lines[j]) or \
+                       re.search(r'^\s*http:', lines[j]) or \
+                       re.search(r'\\\[.*\\\]', lines[j]):
+                        protobuf_syntax = True
+                        break
+                    j += 1
+                
+                if protobuf_syntax:
+                    result.append(re.sub(r'```(?:rust)?\s*$', '```text', line))
+                    in_protobuf_block = True
+                else:
+                    result.append(line)
+            # Check for indented code blocks (4+ spaces after ///) - these are treated as doctests
+            elif re.match(r'\s*///\s{4,}', line):
+                # If we're already in a protobuf block, continue adding # to this line
+                if in_protobuf_block:
+                    result.append(re.sub(r'(///)(\s+)', r'\1 #\2', line))
+                else:
+                    # Check current line first for quick detection
+                    protobuf_syntax = (
+                        re.search(r'///.*\bservice\s+\w+\s*\{', line) or
+                        re.search(r'///.*\brpc\s+\w+\(', line) or
+                        re.search(r'///.*\bmessage\s+\w+\s*\{', line) or
+                        re.search(r'///.*http:', line) or
+                        re.search(r'///.*\\\[.*\\\]', line) or
+                        re.search(r'///.*Template\s*=\s*"/"', line) or
+                        re.search(r'///.*Variable\s*=\s*"\{', line) or
+                        re.search(r'///.*rules:', line) or
+                        re.search(r'///.*selector:', line)
+                    )
+                    
+                    # If not found in current line, check nearby lines
+                    if not protobuf_syntax:
+                        check_lines = [line]
+                        for j in range(i + 1, min(i + 20, len(lines))):
+                            if not re.match(r'\s*///', lines[j]):
+                                break
+                            check_lines.append(lines[j])
+                        
+                        block_text = '\n'.join(check_lines)
+                        protobuf_syntax = (
+                            re.search(r'///.*\bservice\s+\w+\s*\{', block_text) or
+                            re.search(r'///.*\brpc\s+\w+\(', block_text) or
+                            re.search(r'///.*\bmessage\s+\w+\s*\{', block_text) or
+                            re.search(r'///.*http:', block_text) or
+                            re.search(r'///.*\\\[.*\\\]', block_text) or
+                            re.search(r'///.*Template\s*=\s*"/"', block_text) or
+                            re.search(r'///.*Variable\s*=\s*"\{', block_text) or
+                            re.search(r'///.*rules:', block_text) or
+                            re.search(r'///.*selector:', block_text)
+                        )
+                    
+                    if protobuf_syntax:
+                        in_protobuf_block = True
+                        # Add `# ` prefix after /// to make it a comment (hidden from doctests)
+                        # Change `///      code` to `/// #      code` to prevent doctest extraction
+                        result.append(re.sub(r'(///)(\s+)', r'\1 #\2', line))
+                    else:
+                        result.append(line)
+            else:
+                # Check if we're ending a protobuf block
+                if in_protobuf_block:
+                    if re.match(r'\s*///\s*```\s*$', line):
+                        in_protobuf_block = False
+                        result.append(line)
+                    elif not re.match(r'\s*///', line):
+                        in_protobuf_block = False
+                        result.append(line)
+                    elif re.match(r'\s*///\s*$', line) or re.match(r'\s*///\s{1,3}\S', line):
+                        # Non-indented doc comment line - end the block
+                        in_protobuf_block = False
+                        result.append(line)
+                    else:
+                        # Still in block but not indented - shouldn't happen, but handle it
+                        result.append(line)
+                else:
+                    result.append(line)
+            
+            i += 1
+        
+        return '\n'.join(result)
+    
+    content = fix_protobuf_code_blocks(content)
+    
+    if content != original:
+        rs_file.write_text(content)
+        files_processed += 1
+
+print(f"✅ Setup complete: processed {files_processed} files")
