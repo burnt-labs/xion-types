@@ -1,10 +1,9 @@
 name: Rust Protobuf Gen & Publish
 
 on:
-#   push:
-#     branches: 
-#     #   - main 
-#       -  sdfdsf #feat/protobufs
+  # push:
+  #   branches: 
+  #     - fix/rust-protobuf-build
             
   workflow_dispatch:
     inputs:
@@ -55,6 +54,7 @@ jobs:
     needs: [generate-protobuf]
     runs-on: ubuntu-latest
     if: |
+        github.event_name == 'push' ||    
         github.event_name == 'schedule' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
         (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
@@ -128,8 +128,8 @@ jobs:
 
       - name: Create Rust Package Structure
         run: |
-          chmod +x scripts/create-rust-package.sh
-          ./scripts/create-rust-package.sh
+          mkdir -p rust/src
+          python3 scripts/setup-rust-types.py
 
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
@@ -176,7 +176,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rust-version: ['1.70', '1.75', 'stable']
+        rust-version: ['1.72', '1.75', 'stable']
       fail-fast: false
     steps:
       - name: Checkout Repository
@@ -196,8 +196,8 @@ jobs:
 
       - name: Create Rust Package Structure
         run: |
-          chmod +x scripts/create-rust-package.sh
-          ./scripts/create-rust-package.sh
+          mkdir -p rust/src
+          python3 scripts/setup-rust-types.py
 
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
@@ -228,8 +228,10 @@ jobs:
     needs: [rust-test, rust-build]
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'workflow_dispatch' || 
-      (github.event_name == 'repository_dispatch' && (github.event.client_payload.release_type == 'published' || github.event.client_payload.release_type == 'prerelease'))
+        github.event_name == 'push' || 
+        github.event_name == 'schedule' ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.next_version != '') || 
+        (github.event_name == 'repository_dispatch' && github.event.client_payload.release_type == 'published')
     steps:
       - name: Download Rust Source Directory
         uses: actions/download-artifact@v4
