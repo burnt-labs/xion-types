@@ -5,6 +5,7 @@
   "required": [
     "fee_config",
     "grant_configs",
+    "params",
     "type_urls"
   ],
   "properties": {
@@ -26,6 +27,9 @@
       "items": {
         "$ref": "#/definitions/GrantConfig"
       }
+    },
+    "params": {
+      "$ref": "#/definitions/Params"
     },
     "type_urls": {
       "type": "array",
@@ -106,6 +110,26 @@
         },
         "optional": {
           "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Params": {
+      "type": "object",
+      "required": [
+        "icon_url",
+        "metadata",
+        "redirect_url"
+      ],
+      "properties": {
+        "icon_url": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "redirect_url": {
+          "type": "string"
         }
       },
       "additionalProperties": false

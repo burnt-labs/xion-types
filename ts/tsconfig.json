@@ -14,5 +14,15 @@
     "rootDir": "types",
   },
   "include": ["**/*.ts"],
-  "exclude": ["dist", "node_modules", "scripts", "**/*.spec.*", "**/*.test.*"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "scripts",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "types/contracts/**/*.client.ts",
+    "types/contracts/**/*.react-query.ts",
+    "types/contracts/**/*.message-composer.ts",
+    "types/contracts/**/baseClient.ts"
+  ],
 }

@@ -12,7 +12,7 @@ fi
 : ${base_dir:="$(dirname $scripts_dir)"}
 : ${contracts_repo_dir:="$base_dir/contracts"}
 : ${contracts_dir:="$contracts_repo_dir/contracts"}
-: ${codegen_dir:="$base_dir/ts-codegen"}
+: ${codegen_dir:="$base_dir/ts/types/contracts"}
 
 rm -rf $codegen_dir
 
