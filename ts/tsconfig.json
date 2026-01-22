@@ -19,10 +19,6 @@
     "node_modules",
     "scripts",
     "**/*.spec.*",
-    "**/*.test.*",
-    "types/contracts/**/*.client.ts",
-    "types/contracts/**/*.react-query.ts",
-    "types/contracts/**/*.message-composer.ts",
-    "types/contracts/**/baseClient.ts"
-  ],
+    "**/*.test.*"
+  ]
 }

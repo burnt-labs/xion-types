@@ -40,6 +40,10 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.8.0",
+    "@cosmjs/amino": "^0.32.4",
+    "@cosmjs/cosmwasm-stargate": "^0.32.4",
+    "@cosmjs/encoding": "^0.32.4",
+    "cosmjs-types": "^0.9.0",
     "@cosmology/lcd": "^0.14.0",
     "@cosmology/telescope": "^1.12.20",
     "@improbable-eng/grpc-web": "^0.15.0",
@@ -48,8 +52,7 @@
     "@interchainjs/encoding": "1.11.5",
     "@interchainjs/pubkey": "1.11.5",
     "@interchainjs/types": "1.11.5",
-    "@interchainjs/utils": "1.11.5",
-    "@tanstack/react-query": "^5.89.0"
+    "@interchainjs/utils": "1.11.5"
   },
   "keywords": [],
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
