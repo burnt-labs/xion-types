@@ -776,8 +776,17 @@ jobs:
             exit 0
           fi
           
-          # For release versions, do full validation and publish
-          echo "Publishing release version: $VERSION"
+          # Check if this is a prerelease version (contains -rc, -beta, -alpha, etc.)
+          if [[ "$VERSION" == *-* ]]; then
+            echo "⚠️ Prerelease version detected: $VERSION"
+            echo "Prereleases are not published to CocoaPods (no git tag in xion-types)"
+            echo "CocoaPods publishing is reserved for stable releases only"
+            echo "⚠️ Skipping CocoaPods publishing for prerelease"
+            exit 0
+          fi
+          
+          # For stable release versions, do full validation and publish
+          echo "Publishing stable release version: $VERSION"
           pod trunk push XionTypes.podspec
           echo "✅ Published to CocoaPods Trunk"
 
