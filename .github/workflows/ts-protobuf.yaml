@@ -366,7 +366,7 @@ jobs:
         working-directory: ./ts
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
-          npm publish --provenance --access public --tag ${{ env.TAG }}
+          npm publish --provenance --access public --tag ${{ env.TAG }} --verbose
           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
   validate-on-npm:
