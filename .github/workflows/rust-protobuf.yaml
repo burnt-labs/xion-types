@@ -86,7 +86,7 @@ jobs:
             fi
             echo "Using release version: $VERSION (from tag: $RELEASE_TAG)"
           elif [ "${{ github.event_name }}" == "schedule" ]; then
-            TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
+            TIMESTAMP=$(date -u +%Y%m%d%H%M)
             VERSION="0.0.0-nightly.${TIMESTAMP}"
             echo "Using nightly version: $VERSION"
           elif [ "${{ github.event_name }}" == "push" ]; then

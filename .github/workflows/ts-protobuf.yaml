@@ -255,7 +255,7 @@ jobs:
         run: |
           # Get the latest published version and create nightly version with timestamp
           LATEST_VERSION=$(npm view @burnt-labs/xion-types version)
-          TIMESTAMP=$(date -u +%Y.%m.%d.%H.%M)
+          TIMESTAMP=$(date -u +%Y%m%d%H%M)
           NIGHTLY_VERSION="${LATEST_VERSION}-nightly.${TIMESTAMP}"
           echo "Creating nightly package version: $NIGHTLY_VERSION"
           npm version $NIGHTLY_VERSION --no-git-tag-version
