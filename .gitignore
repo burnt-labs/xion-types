@@ -2,6 +2,9 @@
 go
 .claude
 
+# Sensitive docs (contains internal URLs/emails)
+.github/workflows/COCOAPODS_TOKEN_RENEWAL.md
+
 ts/git-modules
 ts/protos
 ts/node_modules
