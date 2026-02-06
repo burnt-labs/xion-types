@@ -30,6 +30,24 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout xion submodule to release tag
+        if: github.event_name == 'repository_dispatch' && github.event.client_payload.tag_name != ''
+        run: |
+          TAG="${{ github.event.client_payload.tag_name }}"
+          echo "Checking out xion submodule to tag: $TAG"
+          git submodule init xion
+          git submodule update --init xion
+          cd xion
+          git fetch --tags
+          if ! git rev-parse --verify "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag '$TAG' does not exist in xion repo"
+            exit 1
+          fi
+          git checkout "$TAG"
+          cd ..
+          git add xion
+          echo "Xion submodule checked out to tag: $TAG ($(cd xion && git rev-parse --short HEAD))"
+
       - name: Generate Ruby Definitions
         run: |
           make proto-gen-ruby
