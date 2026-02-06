@@ -67,7 +67,7 @@ proto-gen-ruby: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --ruby
 
-proto-gen-rust: build-proto-builWder-image submodules
+proto-gen-rust: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --rust
 
