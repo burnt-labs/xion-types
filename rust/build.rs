@@ -24,7 +24,7 @@ fn main() {
     )
     .unwrap();
 
-    // Find all .rs files in the types directory
+    // Find all .rs files in the types directory (flat structure)
     let mut files: Vec<_> = glob("types/*.rs")
         .unwrap()
         .filter_map(Result::ok)
@@ -49,7 +49,6 @@ fn main() {
         } else {
             // For nested modules like cosmos.crypto.multisig.rs:
             // - File goes in the parent path [cosmos, crypto, multisig]
-            // - Not [cosmos, crypto] as before
             // This allows cosmos.crypto.multisig.v1beta1.rs to nest under it
             let parent_path = parts[..parts.len() - 1].to_vec();
             module_files.insert((parent_path, filename));
@@ -57,103 +56,113 @@ fn main() {
     }
 
     // Generate nested module structure
-    fn write_modules(
-        file: &mut fs::File,
-        module_files: &BTreeSet<(Vec<String>, String)>,
-        manifest_dir: &str,
-    ) {
-        // Collect all unique module paths (including intermediate ones)
-        let mut all_paths: BTreeSet<Vec<String>> = BTreeSet::new();
-        for (path, _) in module_files.iter() {
-            // Add all prefixes of this path
-            for i in 0..=path.len() {
-                all_paths.insert(path[..i].to_vec());
-            }
-        }
-
-        // Build the tree recursively
-        fn write_path(
-            file: &mut fs::File,
-            all_paths: &BTreeSet<Vec<String>>,
-            module_files: &BTreeSet<(Vec<String>, String)>,
-            current_path: &[String],
-            indent: usize,
-            manifest_dir: &str,
-        ) {
-            let indent_str = "    ".repeat(indent);
-            let types_dir = Path::new(manifest_dir).join("types");
-
-            // Find child modules at this level
-            let mut children: BTreeSet<String> = BTreeSet::new();
-            for path in all_paths.iter() {
-                if path.len() == current_path.len() + 1 && path[..current_path.len()] == current_path[..] {
-                    children.insert(path[current_path.len()].clone());
-                }
-            }
-
-            // Write child modules
-            for child in &children {
-                let mut child_path = current_path.to_vec();
-                child_path.push(child.clone());
-
-                writeln!(file, "{}pub mod {} {{", indent_str, child).unwrap();
-
-                // Check if there's a base file for this module (e.g., cosmos.crypto.multisig.rs)
-                // that should be included at this level before the nested modules
-                let base_filename = if current_path.is_empty() {
-                    format!("{}.rs", child)
-                } else {
-                    format!("{}.{}.rs", current_path.join("."), child)
-                };
-
-                let base_file_path = types_dir.join(&base_filename);
-                if base_file_path.exists() {
-                    let child_indent = "    ".repeat(indent + 1);
-                    writeln!(file, "{}include!(\"{}\");\n", child_indent, base_file_path.display()).unwrap();
-                }
-
-                write_path(file, all_paths, module_files, &child_path, indent + 1, manifest_dir);
-                writeln!(file, "{}}}\n", indent_str).unwrap();
-            }
-
-            // Write files at this level
-            // Group files by their final module name to detect conflicts
-            let mut files_at_level: Vec<(Vec<&str>, String)> = Vec::new();
-            for (path, filename) in module_files.iter() {
-                if path == current_path {
-                    let stem = filename.strip_suffix(".rs").unwrap();
-                    let parts: Vec<&str> = stem.split('.').collect();
-                    files_at_level.push((parts, filename.clone()));
-                }
-            }
-
-            for (parts, filename) in files_at_level {
-                let mod_name = parts.last().unwrap().replace('-', "_");
-                let full_path = types_dir.join(&filename);
-
-                // Check if this is a base module that has versioned siblings
-                // E.g., cosmos.crypto.multisig.rs when cosmos.crypto.multisig.v1beta1.rs exists
-                let is_base_with_versions = children.contains(&mod_name);
-
-                if is_base_with_versions {
-                    // This file should be included inside the module block
-                    // It will be handled when we write the child module
-                    continue;
-                }
-
-                writeln!(file, "{}#[path = \"{}\"]", indent_str, full_path.display()).unwrap();
-                writeln!(file, "{}pub mod {};\n", indent_str, mod_name).unwrap();
-            }
-        }
-
-        write_path(file, &all_paths, module_files, &[], 0, manifest_dir);
-    }
-
     write_modules(&mut lib_file, &module_files, &manifest_dir);
 }
 
+fn write_modules(
+    file: &mut fs::File,
+    module_files: &BTreeSet<(Vec<String>, String)>,
+    manifest_dir: &str,
+) {
+    // Collect all unique module paths (including intermediate ones)
+    let mut all_paths: BTreeSet<Vec<String>> = BTreeSet::new();
+    for (path, _) in module_files.iter() {
+        // Add all prefixes of this path
+        for i in 0..=path.len() {
+            all_paths.insert(path[..i].to_vec());
+        }
+    }
+
+    // Build the tree recursively
+    write_path(file, &all_paths, module_files, &[], 0, manifest_dir);
+}
+
+fn write_path(
+    file: &mut fs::File,
+    all_paths: &BTreeSet<Vec<String>>,
+    module_files: &BTreeSet<(Vec<String>, String)>,
+    current_path: &[String],
+    indent: usize,
+    manifest_dir: &str,
+) {
+    let indent_str = "    ".repeat(indent);
+    let types_dir = Path::new(manifest_dir).join("types");
+
+    // Find child modules at this level
+    let mut children: BTreeSet<String> = BTreeSet::new();
+    for path in all_paths.iter() {
+        if path.len() == current_path.len() + 1 && path[..current_path.len()] == current_path[..] {
+            children.insert(path[current_path.len()].clone());
+        }
+    }
+
+    // Write child modules
+    for child in &children {
+        let mut child_path = current_path.to_vec();
+        child_path.push(child.clone());
+
+        // Add feature flag for top-level modules
+        if current_path.is_empty() {
+            match child.as_str() {
+                "cosmos" | "cosmwasm" | "ibc" | "tendermint" | "xion" => {
+                    writeln!(file, "{}#[cfg(feature = \"{}\")]", indent_str, child).unwrap();
+                }
+                _ => {}
+            }
+        }
+
+        writeln!(file, "{}pub mod {} {{", indent_str, child).unwrap();
+
+        // Check if there's a base file for this module (e.g., cosmos.crypto.multisig.rs)
+        // that should be included at this level before the nested modules
+        let base_filename = if current_path.is_empty() {
+            format!("{}.rs", child)
+        } else {
+            format!("{}.{}.rs", current_path.join("."), child)
+        };
+
+        let base_file_path = types_dir.join(&base_filename);
+        if base_file_path.exists() {
+            let child_indent = "    ".repeat(indent + 1);
+            writeln!(file, "{}include!(\"{}\");\n", child_indent, base_file_path.display()).unwrap();
+        }
+
+        write_path(file, all_paths, module_files, &child_path, indent + 1, manifest_dir);
+        writeln!(file, "{}}}\n", indent_str).unwrap();
+    }
+
+    // Write files at this level
+    // Group files by their final module name to detect conflicts
+    let mut files_at_level: Vec<(Vec<&str>, String)> = Vec::new();
+    for (path, filename) in module_files.iter() {
+        if path == current_path {
+            let stem = filename.strip_suffix(".rs").unwrap();
+            let parts: Vec<&str> = stem.split('.').collect();
+            files_at_level.push((parts, filename.clone()));
+        }
+    }
+
+    for (parts, filename) in files_at_level {
+        let mod_name = parts.last().unwrap().replace('-', "_");
+        let full_path = types_dir.join(&filename);
+
+        // Check if this is a base module that has versioned siblings
+        // E.g., cosmos.crypto.multisig.rs when cosmos.crypto.multisig.v1beta1.rs exists
+        let is_base_with_versions = children.contains(&mod_name);
+
+        if is_base_with_versions {
+            // This file should be included inside the module block
+            // It will be handled when we write the child module
+            continue;
+        }
+
+        writeln!(file, "{}pub mod {} {{", indent_str, mod_name).unwrap();
+        writeln!(file, "{}    include!(\"{}\");", indent_str, full_path.display()).unwrap();
+        writeln!(file, "{}}}\n", indent_str).unwrap();
+    }
+}
+
 /// Apply patches to fix naming conflicts in generated protobuf files
-/// Following the cosmos-rust pattern
 fn apply_patches(types_dir: &Path) {
     // Fix Validators enum/struct conflict in cosmos.staking.v1beta1
     let staking_file = types_dir.join("cosmos.staking.v1beta1.rs");
