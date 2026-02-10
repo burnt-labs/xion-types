@@ -312,7 +312,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
-          token: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Bump Version
         id: version
@@ -365,11 +364,9 @@ jobs:
 
       - name: Publish to NPM 
         working-directory: ./ts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
         run: |
           echo "Publishing package version: ${{ env.NEW_VERSION }} with tag: ${{ env.TAG }}"
-          npm publish --verbose --access public --tag ${{ env.TAG }}
+          npm publish --provenance --access public --tag ${{ env.TAG }} --verbose
           echo "Successfully published @burnt-labs/xion-types@${{ env.NEW_VERSION }} with tag ${{ env.TAG }}"
 
   validate-on-npm:
