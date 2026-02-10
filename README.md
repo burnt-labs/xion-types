@@ -19,6 +19,11 @@ The repository generates **type-safe definitions** for multiple programming lang
 - **TypeScript/JavaScript** - For web apps and Node.js projects
 - **Swift** - For iOS/macOS apps
 - **Kotlin** - For Android apps
+- **Python** - For Python projects
+- **Go** - For Go projects
+- **Rust** - For Rust projects
+- **Java** - For Java applications
+- **And more** - Including C, C++, C#, Objective-C, PHP, Ruby, and Scala
 
 These type definitions ensure that when developers work with Xion blockchain data (like transactions, account information, or smart contract calls), they get:
 - **Autocomplete** in their code editor
@@ -102,49 +107,63 @@ processData(sampleData);
 
 ## Development
 
-If you want to modify or regenerate the TypeScript definitions from Protobuf files, follow these steps:
+If you want to modify or regenerate type definitions from Protobuf files, follow these steps:
 
 1. **Initialize and Update Submodules**
    ```bash
-   # Initialize and update all submodules
+   # Initialize and update all submodules (contracts and xion)
    make submodules
 
    # Alternatively, you can run these commands manually:
-   git submodule init
-   git submodule update --init
+   git submodule init contracts
+   git submodule update --init contracts
+   git submodule init xion
+   git submodule update --init xion
    ```
 
 2. **Build Docker Image**
    ```bash
-   # Build the Swift protobuf builder image
-   make build-swiftbuilder-image
-
-   # Alternatively, you can run these commands manually:
-   cd docker && docker build . --tag swiftbuilder
+   # Build the protobuf builder image (required for code generation)
+   make build-proto-builder-image
 
    # You can verify the image was built successfully with:
-   docker images | grep swiftbuilder
+   docker images | grep proto-builder
    ```
 
-3. **Install Dependencies**
+3. **Generate Type Definitions**
+
+   Generate types for all supported languages:
    ```bash
-   npm install
+   make proto-gen-all
    ```
 
-4. **Generate TypeScript Definitions**
+   Or generate types for a specific language:
    ```bash
-   npx protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts \
-     --ts_out=./generated \
-     --proto_path=./proto \
-     $(find ./proto -name '*.proto')
+   # TypeScript/JavaScript
+   make proto-gen-ts
+
+   # Python
+   make proto-gen-python
+
+   # Swift
+   make proto-gen-swift
+
+   # Kotlin
+   make proto-gen-kotlin
+
+   # Go (uses xion's built-in proto generation)
+   make proto-gen
+
+   # Other languages: proto-gen-c, proto-gen-cpp, proto-gen-java,
+   # proto-gen-objc, proto-gen-php, proto-gen-ruby, proto-gen-rust, proto-gen-scala
    ```
 
-5. **Compile TypeScript Files**
+4. **Generate Contract Code (TypeScript)**
    ```bash
-   tsc --noEmit
+   make contract-code-gen
    ```
 
-> These steps will generate the TypeScript definitions from the Protobuf files located in the `proto` directory.
+> These steps will generate type definitions from the Protobuf files located in the `xion` submodule.
 
 ---
 
