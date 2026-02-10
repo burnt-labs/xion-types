@@ -49,6 +49,32 @@ jobs:
           submodules: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout xion submodule to release tag
+        if: github.event_name == 'repository_dispatch' && github.event.client_payload.tag_name != ''
+        run: |
+          TAG="${{ github.event.client_payload.tag_name }}"
+          echo "Checking out xion submodule to tag: $TAG"
+
+          # Initialize and clone the xion submodule
+          git submodule init xion
+          git submodule update --init xion
+
+          # Checkout the specific release tag
+          cd xion
+          git fetch --tags
+          if ! git rev-parse --verify "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag '$TAG' does not exist in xion repo"
+            exit 1
+          fi
+          git checkout "$TAG"
+          cd ..
+
+          # Update the submodule pointer in the index so that Make's
+          # submodule target does not reset it back to the old commit.
+          git add xion
+
+          echo "Xion submodule checked out to tag: $TAG ($(cd xion && git rev-parse --short HEAD))"
+
       - name: Generate ${{ matrix.language }} Definitions
         run: |
           make proto-gen-${{ matrix.language }}
@@ -339,17 +365,17 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           
-          # Set appropriate tag based on release type
-          if [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
-            # Pre-releases get version-specific RC tag
-            echo "TAG=${NEW_VERSION}-RC" >> $GITHUB_ENV
-            echo "Tag: ${NEW_VERSION}-RC"
-          elif [ "${{ github.event.client_payload.release_type }}" == "published" ]; then
-            # Published releases get 'latest' tag
-            echo "TAG=latest" >> $GITHUB_ENV
-            echo "Tag: latest"
+          # Determine npm dist-tag.
+          # Primary: detect from version string (defense in depth — matches trigger-types.yaml logic).
+          # Fallback: use release_type from dispatch payload.
+          if echo "$NEW_VERSION" | grep -qE '\-rc[0-9]*$'; then
+            echo "TAG=rc" >> $GITHUB_ENV
+            echo "Tag: rc (detected -rc in version: $NEW_VERSION)"
+          elif [ "${{ github.event.client_payload.release_type }}" == "prerelease" ]; then
+            echo "TAG=rc" >> $GITHUB_ENV
+            echo "Tag: rc (from release_type: prerelease)"
           else
-            # Other releases default to 'latest' tag (npm doesn't allow SemVer as tag names)
+            #Note: (npm doesn't allow SemVer as tag names)
             echo "TAG=latest" >> $GITHUB_ENV
             echo "Tag: latest"
           fi
