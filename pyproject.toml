@@ -22,6 +22,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 requires-python = ">=3.9"
+dependencies = [
+    "protobuf>=5.29.0",
+]
 
 [project.urls]
 Repository = "https://github.com/burnt-labs/xion-types"
@@ -29,8 +32,10 @@ Repository = "https://github.com/burnt-labs/xion-types"
 [project.optional-dependencies]
 dev = []
 
+[tool.setuptools.packages.find]
+where = ["python"]
+
 [tool.setuptools]
-packages = ["xion_types"]
 package-dir = {"" = "python"}
 
 [tool.setuptools.package-data]
