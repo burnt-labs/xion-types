@@ -261,11 +261,21 @@ jobs:
 
       - name: Verify Package Contents
         run: |
-          echo "Checking what's in the wheel:"
-          unzip -l dist/*.whl | grep -E "gogoproto|xion_types/" | head -20
+          echo "Checking wheel contents:"
+          unzip -l dist/*.whl | head -50
           echo "---"
-          echo "Checking if gogoproto exists:"
-          unzip -l dist/*.whl | grep gogoproto || echo "⚠️ gogoproto not found in wheel"
+          echo "Verifying critical subpackages exist in wheel:"
+          unzip -l dist/*.whl | grep -q "xion_types/cosmos/" || { echo "FAIL: cosmos subpackage missing"; exit 1; }
+          unzip -l dist/*.whl | grep -q "xion_types/xion/" || { echo "FAIL: xion subpackage missing"; exit 1; }
+          unzip -l dist/*.whl | grep -q "xion_types/ibc/" || { echo "FAIL: ibc subpackage missing"; exit 1; }
+          unzip -l dist/*.whl | grep -q "xion_types/gogoproto/" || { echo "FAIL: gogoproto subpackage missing"; exit 1; }
+          TOTAL=$(unzip -l dist/*.whl | grep "xion_types/" | wc -l)
+          echo "Total files in wheel under xion_types/: $TOTAL"
+          if [ "$TOTAL" -lt 50 ]; then
+            echo "FAIL: Expected at least 50 files in wheel, got $TOTAL"
+            exit 1
+          fi
+          echo "Wheel verification passed"
 
       - name: Upload Package
         uses: actions/upload-artifact@v4

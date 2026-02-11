@@ -29,8 +29,10 @@ Repository = "https://github.com/burnt-labs/xion-types"
 [project.optional-dependencies]
 dev = []
 
+[tool.setuptools.packages.find]
+where = ["python"]
+
 [tool.setuptools]
-packages = ["xion_types"]
 package-dir = {"" = "python"}
 
 [tool.setuptools.package-data]
