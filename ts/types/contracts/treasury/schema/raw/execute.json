@@ -206,6 +206,33 @@
         }
       },
       "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "migrate"
+      ],
+      "properties": {
+        "migrate": {
+          "type": "object",
+          "required": [
+            "migrate_msg",
+            "new_code_id"
+          ],
+          "properties": {
+            "migrate_msg": {
+              "$ref": "#/definitions/Binary"
+            },
+            "new_code_id": {
+              "type": "integer",
+              "format": "uint64",
+              "minimum": 0.0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     }
   ],
   "definitions": {
@@ -302,15 +329,15 @@
     "Params": {
       "type": "object",
       "required": [
-        "display_url",
         "icon_url",
+        "metadata",
         "redirect_url"
       ],
       "properties": {
-        "display_url": {
+        "icon_url": {
           "type": "string"
         },
-        "icon_url": {
+        "metadata": {
           "type": "string"
         },
         "redirect_url": {
