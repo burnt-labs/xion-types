@@ -30,11 +30,11 @@ plugins:
 
   # Python
   - protoc_builtin: python
-    out: python/types
+    out: python/xion_types
 
   # Ruby
   - protoc_builtin: ruby
-    out: ruby/types
+    out: ruby/lib/xion_types
 
   # Rust
   - local: protoc-gen-prost

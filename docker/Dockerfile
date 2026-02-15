@@ -36,7 +36,13 @@ RUN apk add --no-cache \
     openjdk17 \
     gradle \
     protobuf-dev \
-    protobuf-c-dev
+    protobuf-c-dev \
+    python3 \
+    py3-pip
+
+# Python tools needed by post-processing (e.g. fix-python-imports.py)
+RUN pip3 install --break-system-packages grpcio-tools || \
+    pip3 install grpcio-tools
 
 RUN npm install -g ts-proto
 RUN npm install -g swagger-combine

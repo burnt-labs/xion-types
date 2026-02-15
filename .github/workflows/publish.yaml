@@ -1,0 +1,113 @@
+name: Publish
+
+# Triggered when a GitHub release is published (by release.yaml).
+# Publishes generated types from the repo to all package registries.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to publish (e.g. v26.0.0)"
+        required: true
+        type: string
+
+jobs:
+  resolve:
+    name: Resolve Tag
+    runs-on: ubuntu-latest
+    outputs:
+      release_tag: ${{ steps.tag.outputs.release_tag }}
+    steps:
+      - id: tag
+        run: |
+          TAG="${{ inputs.release_tag || github.event.release.tag_name }}"
+          echo "release_tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Publishing for tag: $TAG"
+
+  publish-ts:
+    name: TypeScript
+    needs: [resolve]
+    uses: ./.github/workflows/publish-ts.yaml
+    with:
+      release_tag: ${{ needs.resolve.outputs.release_tag }}
+    secrets: inherit
+
+  publish-python:
+    name: Python
+    needs: [resolve]
+    uses: ./.github/workflows/publish-python.yaml
+    with:
+      release_tag: ${{ needs.resolve.outputs.release_tag }}
+    secrets: inherit
+
+  publish-rust:
+    name: Rust
+    needs: [resolve]
+    uses: ./.github/workflows/publish-rust.yaml
+    with:
+      release_tag: ${{ needs.resolve.outputs.release_tag }}
+    secrets: inherit
+
+  publish-ruby:
+    name: Ruby
+    needs: [resolve]
+    uses: ./.github/workflows/publish-ruby.yaml
+    with:
+      release_tag: ${{ needs.resolve.outputs.release_tag }}
+    secrets: inherit
+
+  publish-swift:
+    name: Swift
+    needs: [resolve]
+    uses: ./.github/workflows/publish-swift.yaml
+    with:
+      release_tag: ${{ needs.resolve.outputs.release_tag }}
+    secrets: inherit
+
+  publish-kotlin:
+    name: Kotlin
+    needs: [resolve]
+    uses: ./.github/workflows/publish-kotlin.yaml
+    with:
+      release_tag: ${{ needs.resolve.outputs.release_tag }}
+    secrets: inherit
+
+  summary:
+    name: Summary
+    needs: [publish-ts, publish-python, publish-rust, publish-ruby, publish-swift, publish-kotlin]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Report results
+        run: |
+          echo "## Publish Summary for ${{ needs.resolve.outputs.release_tag || inputs.release_tag }}"
+          echo ""
+          echo "| Language | Result |"
+          echo "|----------|--------|"
+          echo "| TypeScript (npm) | ${{ needs.publish-ts.result }} |"
+          echo "| Python (PyPI) | ${{ needs.publish-python.result }} |"
+          echo "| Rust (crates.io) | ${{ needs.publish-rust.result }} |"
+          echo "| Ruby (RubyGems) | ${{ needs.publish-ruby.result }} |"
+          echo "| Swift (CocoaPods) | ${{ needs.publish-swift.result }} |"
+          echo "| Kotlin (Maven Central) | ${{ needs.publish-kotlin.result }} |"
+
+          FAILED=0
+          for result in \
+            "${{ needs.publish-ts.result }}" \
+            "${{ needs.publish-python.result }}" \
+            "${{ needs.publish-rust.result }}" \
+            "${{ needs.publish-ruby.result }}" \
+            "${{ needs.publish-swift.result }}" \
+            "${{ needs.publish-kotlin.result }}"; do
+            if [ "$result" = "failure" ]; then
+              FAILED=$((FAILED + 1))
+            fi
+          done
+
+          if [ "$FAILED" -gt 0 ]; then
+            echo "❌ $FAILED publish job(s) failed"
+            exit 1
+          fi
+          echo "✅ All publishes succeeded"
