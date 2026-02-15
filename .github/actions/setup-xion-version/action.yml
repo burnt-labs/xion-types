@@ -1,0 +1,26 @@
+name: Setup Xion Version
+description: Setup xion submodule at specific version and determine package version
+
+inputs:
+  version:
+    description: 'Version to use (e.g., "v1.2.3", "v1.2.3-rc1", "v1.2.3-abcd124", or "dev")'
+    required: true
+
+outputs:
+  package_version:
+    description: 'Package version without "v" prefix (e.g., "1.2.3" or "0.0.0-dev.abc1234")'
+    value: ${{ steps.determine-version.outputs.package_version }}
+  xion_sha:
+    description: 'Git SHA of xion submodule after checkout'
+    value: ${{ steps.determine-version.outputs.xion_sha }}
+
+runs:
+  using: composite
+  steps:
+    - name: Determine version and checkout xion
+      id: determine-version
+      shell: bash
+      run: |
+        bash ${{ github.action_path }}/setup-version.sh
+      env:
+        INPUT_VERSION: ${{ inputs.version }}

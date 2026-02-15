@@ -1,0 +1,112 @@
+name: Publish TypeScript to NPM
+
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        required: true
+        type: string
+
+env:
+  NODE_VERSION: "20"
+  REGISTRY_URL: "https://registry.npmjs.org"
+
+jobs:
+  test-dependent-projects:
+    name: Test ${{ matrix.project }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - xion-explorer
+          - xion-faucet
+          - xion-staking
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+          path: xion-types
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Build xion-types tarball
+        working-directory: xion-types/ts
+        run: |
+          npm install
+          npm run build
+          cd dist
+          node -e "const p=require('./package.json');delete p.scripts.prepare;require('fs').writeFileSync('./package.json',JSON.stringify(p,null,2))"
+          npm pack --pack-destination ..
+          cd ..
+          echo "📦 $(ls *.tgz | head -1)"
+
+      - name: Checkout Dependent Project
+        uses: actions/checkout@v4
+        with:
+          repository: burnt-labs/${{ matrix.project }}
+          path: dependent-project
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Test proto compatibility
+        run: |
+          cd dependent-project
+          npm install --ignore-scripts --legacy-peer-deps
+
+          # Nuxt projects need type generation
+          if grep -q '"nuxt"' package.json; then
+            NUXT_PUBLIC_TURNSTILE_SITE_KEY=x NUXT_FAUCET_MNEMONIC=x NUXT_FAUCET_PATH_PATTERN=x \
+            NUXT_TURNSTILE_SECRET_KEY=x NUXT_XION_TESTNET_1_MNEMONIC=x NUXT_XION_TESTNET_2_MNEMONIC=x \
+            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS=x NUXT_PUBLIC_FAUCET_ADDRESS_PREFIX=x \
+            NUXT_PUBLIC_FAUCET_AMOUNT_GIVEN=1 NUXT_PUBLIC_FAUCET_COOLDOWN_TIME=1 \
+            NUXT_PUBLIC_FAUCET_DENOM=x NUXT_PUBLIC_FAUCET_GAS_LIMIT=1 NUXT_PUBLIC_FAUCET_GAS_PRICE=0 \
+            NUXT_PUBLIC_FAUCET_LOGGING=false NUXT_PUBLIC_FAUCET_MEMO=x NUXT_PUBLIC_FAUCET_TOKENS=x \
+            NUXT_PUBLIC_XION_TESTNET_1_ADDRESS=x NUXT_PUBLIC_XION_TESTNET_1_RPC_URL=https://x \
+            NUXT_PUBLIC_XION_TESTNET_2_RPC_URL=https://x NUXT_DISCORD_APP_ID=x \
+            npx nuxt prepare || true
+          fi
+
+          PACKAGE_TGZ=$(ls ../xion-types/ts/*.tgz 2>/dev/null | head -1)
+          npm install "$PACKAGE_TGZ" --no-save --legacy-peer-deps
+
+          npx tsc --noEmit --skipLibCheck > /tmp/tsc.log 2>&1 || true
+          PROTO_ERRORS=$(grep -E "error TS" /tmp/tsc.log | grep -iE "(xion-types|protobuf|proto)" | grep -vE "(Cannot read file|\.nuxt|node_modules)" || true)
+          if [ -n "$PROTO_ERRORS" ]; then
+            echo "❌ Proto-related TS errors:"
+            echo "$PROTO_ERRORS" | head -10
+            exit 1
+          fi
+          echo "✅ Proto compatibility confirmed for ${{ matrix.project }}"
+
+  publish:
+    name: Publish to NPM
+    needs: [test-dependent-projects]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
+
+      - name: Publish
+        env:
+          VERSION: ${{ inputs.release_tag }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          export VERSION="${VERSION#v}"
+          bash scripts/ts/publish-ts.sh

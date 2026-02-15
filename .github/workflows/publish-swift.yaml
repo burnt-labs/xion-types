@@ -1,0 +1,125 @@
+name: Publish Swift to CocoaPods
+
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build Swift Package
+    runs-on: macos-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+
+      - name: Derive version
+        id: version
+        run: |
+          VERSION="${{ inputs.release_tag }}"
+          VERSION="${VERSION#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Setup package structure
+        run: python3 scripts/swift/setup-swift-package.py
+
+      - name: Stamp version
+        working-directory: ./swift
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          sed -i '' "s/version = .*/version = \"$VERSION\"/" Package.swift 2>/dev/null || \
+          sed -i "s/version = .*/version = \"$VERSION\"/" Package.swift
+          sed -i '' "s/static let version = .*/static let version = \"$VERSION\"/" Sources/XionTypes/Version.swift 2>/dev/null || \
+          sed -i "s/static let version = .*/static let version = \"$VERSION\"/" Sources/XionTypes/Version.swift
+
+      - name: Build
+        run: bash scripts/swift/build-swift-targets.sh
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: swift-package
+          path: swift/
+          retention-days: 1
+
+  test:
+    name: Test Swift Package
+    needs: [build]
+    runs-on: macos-latest
+    steps:
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: swift-package
+          path: swift/
+
+      - name: Test
+        working-directory: ./swift
+        run: swift test -c release -Xswiftc -j1
+
+  publish:
+    name: Publish to CocoaPods
+    needs: [test, build]
+    runs-on: macos-latest
+    steps:
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: swift-package
+          path: swift/
+
+      - name: Setup CocoaPods
+        run: sudo gem install cocoapods
+
+      - name: Create Podspec & Publish
+        working-directory: ./swift
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+          VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          cat > XionTypes.podspec << 'PODSPEC'
+          Pod::Spec.new do |spec|
+            spec.name         = "XionTypes"
+            spec.version      = "--ADD-HERE-YOUR-VALUE--"
+            spec.summary      = "Generated Swift types for Xion blockchain protocol buffers"
+            spec.description  = <<-DESC
+              Complete Swift type definitions generated from Xion blockchain protocol buffers.
+              Includes support for Cosmos SDK, Tendermint, and Xion-specific modules.
+            DESC
+            spec.homepage     = "https://github.com/burnt-labs/xion-types"
+            spec.license      = { :type => "Apache-2.0" }
+            spec.author       = { "Burnt Labs" => "devops@burnt.com" }
+            spec.source       = { :git => "https://github.com/burnt-labs/xion-types.git", :tag => "#{spec.version}" }
+            spec.source_files = "Sources/XionTypes/**/*.swift"
+            spec.ios.deployment_target = "13.0"
+            spec.osx.deployment_target = "10.15"
+            spec.watchos.deployment_target = "6.0"
+            spec.tvos.deployment_target = "13.0"
+            spec.dependency "SwiftProtobuf", "~> 1.25"
+            spec.swift_version = "5.9"
+          end
+          PODSPEC
+
+          sed -i '' "s/--ADD-HERE-YOUR-VALUE--/$VERSION/" XionTypes.podspec 2>/dev/null || \
+          sed -i "s/--ADD-HERE-YOUR-VALUE--/$VERSION/" XionTypes.podspec
+
+          # Skip dev/prerelease versions
+          if [[ "$VERSION" == 0.0.0.dev* ]] || [[ "$VERSION" == *-* ]]; then
+            echo "⏭️  Skipping CocoaPods publish for non-stable version: $VERSION"
+            exit 0
+          fi
+
+          if [ -z "$COCOAPODS_TRUNK_TOKEN" ]; then
+            echo "⚠️  COCOAPODS_TRUNK_TOKEN not set, skipping"
+            exit 0
+          fi
+
+          pod trunk push XionTypes.podspec
+          echo "✅ Published XionTypes $VERSION to CocoaPods"

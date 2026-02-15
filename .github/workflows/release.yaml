@@ -1,0 +1,206 @@
+name: Release
+
+# Called by upstream xion publish-release.yaml (workflow_call)
+# or triggered manually. Generates all types, commits to a branch,
+# creates a PR to main, auto-merges, and creates a GitHub release.
+
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        description: "Xion release tag (e.g. v26.0.0)"
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Xion release tag (e.g. v26.0.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  # ─── Stage 1: Generate all protobuf types ──────────────────────────
+  generate:
+    name: Generate
+    uses: ./.github/workflows/generate-protobuf.yaml
+    with:
+      release_tag: ${{ inputs.release_tag }}
+    secrets: inherit
+
+  # ─── Stage 2: Commit, PR, merge, release ───────────────────────────
+  commit-and-release:
+    name: Commit & Release
+    needs: [generate]
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.release_tag }}
+      BRANCH: types/${{ inputs.release_tag }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Create types branch
+        run: |
+          git checkout -b "$BRANCH"
+
+      # Download all generated artifacts into their correct locations
+      - name: Download TypeScript types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ts
+          path: ts/types
+
+      - name: Download Python types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-python
+          path: python/xion_types
+
+      - name: Download Rust types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-rust
+          path: rust/types
+
+      - name: Download Ruby types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-ruby
+          path: ruby/
+
+      - name: Download Swift types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-swift
+          path: swift/types
+
+      - name: Download Kotlin types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-kotlin
+          path: kotlin/types
+
+      - name: Download Java types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-java
+          path: java/types
+
+      - name: Download C types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-c
+          path: c/types
+
+      - name: Download C++ types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-cpp
+          path: cpp/types
+
+      - name: Download C# types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-csharp
+          path: csharp/types
+
+      - name: Download ObjC types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-objc
+          path: objc/types
+
+      - name: Download PHP types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-php
+          path: php/types
+
+      - name: Download Scala types
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-scala
+          path: scala/types
+
+      - name: Download Docs
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-types-docs
+          path: docs
+
+      - name: Commit generated types
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "chore: generate types for $RELEASE_TAG"
+          git push -u origin "$BRANCH"
+
+      - name: Create Pull Request
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          PR_URL=$(gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "chore: update types for $RELEASE_TAG" \
+            --body "Auto-generated protobuf types for xion [\`$RELEASE_TAG\`](https://github.com/burnt-labs/xion/releases/tag/$RELEASE_TAG)." \
+            --label "automated")
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+          echo "✅ Created PR: $PR_URL"
+
+      - name: Auto-merge Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh pr merge "${{ steps.pr.outputs.pr_url }}" \
+            --merge \
+            --auto \
+            --delete-branch
+          echo "✅ PR set to auto-merge"
+
+      - name: Wait for merge
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          PR_URL="${{ steps.pr.outputs.pr_url }}"
+          for i in $(seq 1 30); do
+            STATE=$(gh pr view "$PR_URL" --json state -q '.state')
+            if [ "$STATE" = "MERGED" ]; then
+              echo "✅ PR merged"
+              exit 0
+            fi
+            echo "Waiting for merge... ($i/30, state=$STATE)"
+            sleep 10
+          done
+          echo "❌ PR did not merge within 5 minutes"
+          exit 1
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          # Pull latest main (contains the merge commit)
+          git checkout main
+          git pull origin main
+
+          # Create release matching upstream xion tag
+          gh release create "$RELEASE_TAG" \
+            --title "$RELEASE_TAG" \
+            --notes "Generated protobuf types for xion [\`$RELEASE_TAG\`](https://github.com/burnt-labs/xion/releases/tag/$RELEASE_TAG)." \
+            --target main
+          echo "✅ Created release $RELEASE_TAG"

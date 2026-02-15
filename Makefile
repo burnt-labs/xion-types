@@ -10,7 +10,7 @@ protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspa
 HTTPS_GIT := https://github.com/burnt-labs/xion.git
 
 contract-code-gen:
-	@$(protoImage) ./scripts/ts-codegen.sh
+	@$(protoImage) ./scripts/ts/ts-codegen.sh
 
 submodules:
 	@echo "Initializing and updating git submodules"
@@ -19,13 +19,8 @@ submodules:
 	git submodule init xion
 	git submodule update --init xion
 
-# ./scripts/checkout-xion-tag.sh $(XION_VERSION)
-
 build-proto-builder-image:
 	cd docker && $(DOCKER) build . --build-arg PROTO_VERSION=${protoVer} --tag localhost/proto-builder:${protoVer}
-
-proto-gen:
-	cd xion && make proto-gen
 
 proto-gen-all: build-proto-builder-image submodules
 	@echo "Generating Protobuf files for all languages"
@@ -39,9 +34,9 @@ proto-gen-cpp: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --cpp
 
-proto-gen-docs:
+proto-gen-docs: build-proto-builder-image submodules
 	@echo "Generating Protobuf Docs"
-	@$(protoImage) sh ./scripts/proto-gen-ext.sh --docs
+	@$(protoImage) ./scripts/proto-gen-ext.sh --docs
 
 proto-gen-java: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
@@ -83,12 +78,11 @@ proto-gen-ts: build-proto-builder-image submodules
 	@echo "Generating Protobuf files"
 	@$(protoImage) ./scripts/proto-gen-ext.sh --ts
 
-package-kotlin: build-proto-builder-image
-	@echo "Packaging Kotlin types into JAR"
-	@$(protoImage) sh -c "cd kotlin && gradle jar"
+proto-gen-csharp: build-proto-builder-image submodules
+	@echo "Generating Protobuf files for C#"
+	@$(protoImage) ./scripts/proto-gen-ext.sh --csharp
 
-.PHONY: all install install-debug \
-	go-mod-cache draw-deps clean build format \
-	test test-all test-build test-cover test-unit test-race \
-	test-sim-import-export build-windows-client submodules \
+LANGUAGES := c cpp csharp docs java kotlin objc php python ruby rust scala swift ts
 
+.PHONY: all submodules build-proto-builder-image contract-code-gen \
+	$(addprefix proto-gen-,all $(LANGUAGES))
