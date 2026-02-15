@@ -9,7 +9,7 @@ fi
 . "$HOME/.cargo/env"
 
 : ${scripts_dir:="$(realpath $(dirname $0))"}
-: ${base_dir:="$(dirname $scripts_dir)"}
+: ${base_dir:="$(dirname $(dirname $scripts_dir))"}
 : ${contracts_repo_dir:="$base_dir/contracts"}
 : ${contracts_dir:="$contracts_repo_dir/contracts"}
 : ${codegen_dir:="$base_dir/ts/types/contracts"}

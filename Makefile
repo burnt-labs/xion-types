@@ -10,7 +10,7 @@ protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspa
 HTTPS_GIT := https://github.com/burnt-labs/xion.git
 
 contract-code-gen:
-	@$(protoImage) ./scripts/ts-codegen.sh
+	@$(protoImage) ./scripts/ts/ts-codegen.sh
 
 submodules:
 	@echo "Initializing and updating git submodules"
