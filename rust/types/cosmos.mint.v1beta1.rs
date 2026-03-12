@@ -38,6 +38,11 @@ pub struct Params {
     /// expected blocks per year
     #[prost(uint64, tag="6")]
     pub blocks_per_year: u64,
+    /// maximum supply for the token.
+    ///
+    /// A value of "0" indicates an unlimited (infinite) maximum supply.
+    #[prost(string, tag="7")]
+    pub max_supply: ::prost::alloc::string::String,
 }
 impl ::prost::Name for Params {
 const NAME: &'static str = "Params";

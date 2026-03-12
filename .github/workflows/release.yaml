@@ -25,104 +25,11 @@ permissions:
 jobs:
   # ─── Stage 1: Generate all protobuf types ──────────────────────────
   generate:
-    name: Generate ${{ matrix.language }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        language:
-          - c
-          - cpp
-          - csharp
-          - docs
-          - kotlin
-          - objc
-          - php
-          - python
-          - ruby
-          - rust
-          - scala
-          - swift
-          - ts
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup xion submodule
-        uses: ./.github/actions/setup-xion-version
-        with:
-          version: ${{ inputs.release_tag }}
-
-      - name: Generate ${{ matrix.language }} definitions
-        run: make proto-gen-${{ matrix.language }}
-
-      - name: Check types generated
-        run: |
-          case "${{ matrix.language }}" in
-            python) DIR="python/xion_types" ;;
-            ruby)   DIR="ruby/lib/xion_types" ;;
-            docs)   DIR="docs" ;;
-            *)      DIR="${{ matrix.language }}/types" ;;
-          esac
-
-          if [ -d "$DIR" ] && [ "$(ls -A "$DIR")" ]; then
-            COUNT=$(find "$DIR" -type f | wc -l)
-            echo "✅ ${{ matrix.language }}: $COUNT files generated in $DIR"
-          else
-            echo "❌ ${{ matrix.language }}: no output in $DIR"
-            exit 1
-          fi
-
-      - name: Upload generated types
-        if: matrix.language != 'python' && matrix.language != 'docs' && matrix.language != 'kotlin' && matrix.language != 'ruby'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types-${{ matrix.language }}
-          path: ${{ matrix.language }}/types
-          retention-days: 7
-
-      - name: Upload generated Ruby gem
-        if: matrix.language == 'ruby'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types-ruby
-          path: ruby/
-          retention-days: 7
-
-      - name: Upload generated Python package
-        if: matrix.language == 'python'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types-python
-          path: python/xion_types
-          retention-days: 7
-
-      - name: Upload generated docs
-        if: matrix.language == 'docs'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types-docs
-          path: docs
-          retention-days: 7
-
-      - name: Upload Kotlin types
-        if: matrix.language == 'kotlin'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types-kotlin
-          path: kotlin/types
-          retention-days: 7
-
-      - name: Upload Java types (Kotlin dep)
-        if: matrix.language == 'kotlin'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-types-java
-          path: java/types
-          retention-days: 7
+    name: Generate
+    uses: ./.github/workflows/generate-protobuf.yaml
+    with:
+      release_tag: ${{ inputs.release_tag }}
+    secrets: inherit
 
   # ─── Stage 2: Commit, PR, merge, release ───────────────────────────
   commit-and-release:
@@ -140,93 +47,16 @@ jobs:
           fetch-depth: 0
 
       - name: Create types branch
-        run: |
-          git checkout -b "$BRANCH"
+        run: git checkout -b "$BRANCH"
 
-      # Download all generated artifacts into their correct locations
-      - name: Download TypeScript types
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: generated-types-ts
-          path: ts/types
+          pattern: generated-types-*
+          merge-multiple: false
 
-      - name: Download Python types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-python
-          path: python/xion_types
-
-      - name: Download Rust types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-rust
-          path: rust/types
-
-      - name: Download Ruby types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-ruby
-          path: ruby/
-
-      - name: Download Swift types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-swift
-          path: swift/types
-
-      - name: Download Kotlin types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-kotlin
-          path: kotlin/types
-
-      - name: Download Java types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-java
-          path: java/types
-
-      - name: Download C types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-c
-          path: c/types
-
-      - name: Download C++ types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-cpp
-          path: cpp/types
-
-      - name: Download C# types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-csharp
-          path: csharp/types
-
-      - name: Download ObjC types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-objc
-          path: objc/types
-
-      - name: Download PHP types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-php
-          path: php/types
-
-      - name: Download Scala types
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-scala
-          path: scala/types
-
-      - name: Download Docs
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-types-docs
-          path: docs
+      - name: Organize artifacts
+        run: bash scripts/ci/helper/organize-artifacts.sh
 
       - name: Commit generated types
         run: |
@@ -297,3 +127,27 @@ jobs:
             --notes "Generated protobuf types for xion [\`$RELEASE_TAG\`](https://github.com/burnt-labs/xion/releases/tag/$RELEASE_TAG)." \
             --target main
           echo "✅ Created release $RELEASE_TAG"
+
+  # ─── Summary ───────────────────────────────────────────────────────
+  summary:
+    name: Summary
+    needs: [generate, commit-and-release]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report
+        run: |
+          echo "## Release Summary for ${{ inputs.release_tag }}"
+          echo ""
+          echo "| Stage | Result |"
+          echo "|-------|--------|"
+          echo "| Generate | ${{ needs.generate.result }} |"
+          echo "| Commit & Release | ${{ needs.commit-and-release.result }} |"
+
+          if [ "${{ needs.generate.result }}" = "failure" ] || [ "${{ needs.commit-and-release.result }}" = "failure" ]; then
+            echo ""
+            echo "❌ Release pipeline failed"
+            exit 1
+          fi
+          echo ""
+          echo "✅ Release pipeline succeeded"

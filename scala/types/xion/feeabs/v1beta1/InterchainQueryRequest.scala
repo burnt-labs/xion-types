@@ -6,6 +6,11 @@
 package xion.feeabs.v1beta1
 
 /** InterchainQueryRequest
+  *
+  * @param data
+  *   data defines the raw query data
+  * @param path
+  *   path defines the query path
   */
 @SerialVersionUID(0L)
 final case class InterchainQueryRequest(

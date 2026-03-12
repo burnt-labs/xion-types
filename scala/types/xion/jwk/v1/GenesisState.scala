@@ -6,6 +6,11 @@
 package xion.jwk.v1
 
 /** GenesisState defines the jwk module's genesis state.
+  *
+  * @param params
+  *   The module parameters
+  * @param audienceList
+  *   List of all audiences
   */
 @SerialVersionUID(0L)
 final case class GenesisState(
@@ -138,7 +143,7 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[xion.jwk.v1.Genesi
     def audienceList: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[xion.jwk.v1.Audience]] = field(_.audienceList)((c_, f_) => c_.copy(audienceList = f_))
   }
   final val PARAMS_FIELD_NUMBER = 1
-  final val AUDIENCELIST_FIELD_NUMBER = 2
+  final val AUDIENCE_LIST_FIELD_NUMBER = 2
   def of(
     params: _root_.scala.Option[xion.jwk.v1.Params],
     audienceList: _root_.scala.Seq[xion.jwk.v1.Audience]

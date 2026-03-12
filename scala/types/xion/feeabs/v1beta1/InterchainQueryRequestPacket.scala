@@ -6,6 +6,9 @@
 package xion.feeabs.v1beta1
 
 /** InterchainQueryRequestPacket
+  *
+  * @param requests
+  *   requests defines the list of interchain query requests
   */
 @SerialVersionUID(0L)
 final case class InterchainQueryRequestPacket(

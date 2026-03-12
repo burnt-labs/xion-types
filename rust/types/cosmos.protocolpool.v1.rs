@@ -75,7 +75,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryCommunityPoolResponse {
     /// pool defines community pool's coins.
     #[prost(message, repeated, tag="1")]
-    pub pool: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub pool: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for QueryCommunityPoolResponse {
 const NAME: &'static str = "QueryCommunityPoolResponse";
@@ -172,7 +172,7 @@ pub struct MsgFundCommunityPool {
     #[prost(string, tag="1")]
     pub depositor: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgFundCommunityPool {
 const NAME: &'static str = "MsgFundCommunityPool";
@@ -203,7 +203,7 @@ pub struct MsgCommunityPoolSpend {
     #[prost(string, tag="2")]
     pub recipient: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgCommunityPoolSpend {
 const NAME: &'static str = "MsgCommunityPoolSpend";

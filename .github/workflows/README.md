@@ -1,197 +1,86 @@
-# Xion Types CI/CD Workflow
+# Xion Types CI/CD Workflows
 
-This document explains the automated workflow for publishing TypeScript types based on releases from the main Xion repository.
-
-## Overview
-
-The workflow system consists of three interconnected components that work together to automatically generate and publish TypeScript type definitions when new releases are created in the `burnt-labs/xion` repository.
+Automated pipelines for generating and publishing multi-language protobuf types from the [xion](https://github.com/burnt-labs/xion) blockchain.
 
 ## Architecture
 
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────────┐
-│   xion repo     │    │publish-types.yaml│    │   xion-types repo   │
-│                 │    │    workflow      │    │                     │
-│ create-release  │───▶│                  │───▶│  typescript-ci.yaml │
-│                 │    │                  │    │                     │
-└─────────────────┘    └──────────────────┘    └─────────────────────┘
+┌─────────────────────┐     workflow_call      ┌─────────────────────┐
+│  xion repo          │ ─────────────────────▶ │  release.yaml       │
+│  create-release.yaml│                        │  (generate → PR →   │
+└─────────────────────┘                        │   merge → release)  │
+                                               └────────┬────────────┘
+                                                        │ on: release published
+                                                        ▼
+                                               ┌─────────────────────┐
+                                               │  publish.yaml       │
+                                               │  (fan-out to all    │
+                                               │   publish-*.yaml)   │
+                                               └─────────────────────┘
 ```
 
-## Workflow Components
+## Workflows
 
-### 1. Xion Repository (`burnt-labs/xion`)
+### Core Pipeline
 
-**File:** `.github/workflows/create-release.yaml`
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| **release.yaml** | `workflow_call` from xion, `workflow_dispatch` | Generates all types, commits to branch, opens PR, auto-merges, creates GitHub release |
+| **publish.yaml** | `release: published`, `workflow_dispatch` | Fans out to all `publish-*.yaml` workflows |
+| **generate-protobuf.yaml** | `workflow_call`, `workflow_dispatch` | Reusable: generates types for all 13 languages via matrix strategy |
 
-- **Trigger:** Manual release creation or automated release process
-- **Action:** Calls the `publish-types.yaml` workflow
-- **Purpose:** Initiates the type generation and publishing process
+### Per-Language Publish
 
-```yaml
-publish-types:
-  name: Publish Typescript Types
-  needs: build-release
-  uses: burnt-labs/xion/.github/workflows/publish-types.yaml@workflows/main
-  secrets: inherit
-```
+Each is a reusable `workflow_call` workflow with build → test → publish stages:
 
-### 2. Publish Types Workflow (`burnt-labs/xion`)
+| Workflow | Registry | Package |
+|----------|----------|---------|
+| **publish-ts.yaml** | npm | `@burnt-labs/xion-types` |
+| **publish-python.yaml** | PyPI | `xion-types` |
+| **publish-rust.yaml** | crates.io | `xion-types` |
+| **publish-ruby.yaml** | RubyGems | `xion_types` |
+| **publish-kotlin.yaml** | Maven Central | `io.github.burnt-labs:xion-types-kotlin` |
+| **publish-swift.yaml** | CocoaPods | `XionTypes` |
 
-**File:** `.github/workflows/publish-types.yaml`
+### Utility
 
-- **Trigger:** Called by `create-release.yaml`
-- **Action:** Sends `repository_dispatch` event to `xion-types` repository
-- **Purpose:** Bridge between xion releases and type generation
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| **dev-build.yaml** | `workflow_dispatch` | Manual dev builds for any/all languages with optional publish |
+| **check-unpublished-tags.yaml** | Weekly cron, `workflow_dispatch` | Detects release tags missing from package registries, alerts Slack |
 
-**Key Features:**
-- Determines release type (`latest` vs `published`) based on release properties
-- Sends release metadata (tag name, release name, type) to xion-types
-- Uses `REPO_DISPATCH_TOKEN` for cross-repository communication
+## Release Flow
 
-```yaml
-client-payload: |
-  {
-    "release_type": "${{ github.event.release.prerelease == false && github.event.release.draft == false && github.event.release.make_latest == 'true' && 'latest' || 'published' }}",
-    "tag_name": "${{ github.event.release.tag_name }}",
-    "release_name": "${{ github.event.release.name }}"
-  }
-```
+1. **xion** creates a release → calls `release.yaml` via `workflow_call`
+2. `release.yaml` calls `generate-protobuf.yaml` (13 languages in parallel)
+3. Downloads all artifacts, commits to a `types/<tag>` branch, opens PR to main
+4. PR auto-merges, then a GitHub release is created matching the xion tag
+5. The `release: published` event triggers `publish.yaml`
+6. `publish.yaml` fans out to 6 per-language publish workflows in parallel
 
-### 3. TypeScript CI/CD Workflow (`burnt-labs/xion-types`)
+## Dev Build Flow
 
-**File:** `.github/workflows/typescript-ci.yaml`
+1. Manually trigger `dev-build.yaml` with a language, xion ref, and optional base version
+2. Resolves version (e.g. `0.0.0-dev.<sha>` or explicit tag)
+3. Calls `generate-protobuf.yaml`
+4. Optionally commits, tags, and publishes to registries
 
-- **Triggers:**
-  - `repository_dispatch` with type `xion-types-release-trigger`
-  - `workflow_dispatch` (manual)
-- **Purpose:** Generates protobuf types and conditionally publishes to NPM
+## Shared Components
 
-## Workflow Behavior
-
-### Release Type Logic
-
-The workflow behaves differently based on the release type:
-
-| Release Type | Generate Types | Publish to NPM | Use Case |
-|-------------|----------------|----------------|----------|
-| `latest`    | ✅ Yes         | ✅ Yes         | Stable releases |
-| `published` | ✅ Yes         | ❌ No          | Prereleases, beta versions |
-
-### Version Handling
-
-The workflow supports three version sources:
-
-1. **Manual Input** (`workflow_dispatch`):
-   - Uses the `next_version` input parameter
-   - Always publishes to NPM
-
-2. **Repository Dispatch** (`repository_dispatch`):
-   - Uses the `tag_name` from the release payload
-   - Removes 'v' prefix if present (e.g., `v1.2.3` → `1.2.3`)
-   - Conditional publishing based on `release_type`
-
-3. **Direct Release** (legacy, currently disabled):
-   - Would use `github.event.release.tag_name`
-   - Currently not used in the flow
-
-## Workflow Steps
-
-### 1. Generate Protobuf Types
-
-**Job:** `generate-protobuf`
-- **Always runs** for all triggers
-- Generates TypeScript definitions from protobuf files
-- Uploads generated types as artifacts
-- Supports matrix strategy for multiple languages (currently only TypeScript)
-
-### 2. Publish to NPM
-
-**Job:** `publish`
-- **Conditional execution** based on trigger type
-- Downloads generated types from previous job
-- Sets package version in `package.json`
-- Publishes to NPM with appropriate tag
-
-**Publish Conditions:**
-```yaml
-if: github.event.client_payload.release_type == 'latest' || github.event_name == 'workflow_dispatch'
-```
-
-## Environment Variables
-
-| Variable | Source | Purpose |
-|----------|--------|---------|
-| `NEW_VERSION` | Generated from `package.json` | Package version for publishing |
-| `TAG` | Same as `NEW_VERSION` | NPM distribution tag |
-| `NODE_VERSION` | Workflow env | Node.js version for builds |
-| `REGISTRY_URL` | Workflow env | NPM registry URL |
+- **`.github/actions/setup-xion-version`** — Composite action that checks out the xion submodule at a specific version/tag/commit and determines the package version
+- **`scripts/proto-gen-ext.sh`** — Post-processing hooks (`post_swift`, `post_python`, etc.) that make `make proto-gen-<lang>` produce publish-ready packages
 
 ## Required Secrets
 
-| Secret | Repository | Purpose |
-|--------|------------|---------|
-| `NPM_TOKEN` | xion-types | NPM publishing authentication |
-| `GITHUB_TOKEN` | xion-types | Repository access (auto-provided) |
-| `REPO_DISPATCH_TOKEN` | xion | Cross-repository workflow triggering |
-
-## Example Flow
-
-### Stable Release (v1.2.3)
-
-1. **xion** creates release with tag `v1.2.3` (not prerelease, not draft, make_latest=true)
-2. **create-release.yaml** triggers **publish-types.yaml**
-3. **publish-types.yaml** determines `release_type: "latest"`
-4. **publish-types.yaml** sends `repository_dispatch` to **xion-types**
-5. **xion-types** runs `generate-protobuf` job
-6. **xion-types** runs `publish` job (because `release_type == "latest"`)
-7. Package `@burnt-labs/xion-types@1.2.3` is published to NPM
-
-### Prerelease (v1.3.0-beta.1)
-
-1. **xion** creates prerelease with tag `v1.3.0-beta.1`
-2. **create-release.yaml** triggers **publish-types.yaml**
-3. **publish-types.yaml** determines `release_type: "published"`
-4. **publish-types.yaml** sends `repository_dispatch` to **xion-types**
-5. **xion-types** runs `generate-protobuf` job
-6. **xion-types** skips `publish` job (because `release_type != "latest"`)
-7. Types are generated but not published to NPM
-
-## Manual Trigger
-
-You can manually trigger the workflow with a specific version:
-
-1. Go to **Actions** → **Publish Types CI/CD** → **Run workflow**
-2. Enter the desired version (e.g., `1.2.3`)
-3. The workflow will generate types and publish to NPM
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Workflow not triggering:**
-   - Check that `REPO_DISPATCH_TOKEN` is set in xion repository
-   - Verify event type matches (`xion-types-release-trigger`)
-
-2. **Version not found:**
-   - Ensure release has a valid tag name
-   - Check that tag follows semantic versioning
-
-3. **Publish job skipped:**
-   - Verify `release_type` is `"latest"` for stable releases
-   - Check publish job condition logic
-
-### Debug Information
-
-The workflow includes detailed logging:
-- Version resolution steps
-- Release type determination
-- NPM publish dry-run output
-- Artifact upload/download status
-
-## Future Enhancements
-
-- [ ] Support for multiple languages (currently only TypeScript)
-- [ ] Dependent project compatibility testing
-- [ ] Automated package validation
-- [ ] Release notes generation
-- [ ] Rollback capabilities
+| Secret | Purpose |
+|--------|---------|
+| `GH_PAT` | Cross-repo operations, PR creation/merge |
+| `NPM_TOKEN` | npm publish |
+| `PYPI_TOKEN` | PyPI publish |
+| `CRATESIO_ACCESS_TOKEN` | crates.io publish |
+| `RUBYGEMS_API_KEY` | RubyGems publish |
+| `COCOAPODS_TRUNK_TOKEN` | CocoaPods publish |
+| `GPG_PRIVATE_KEY` / `GPG_PASSPHRASE` | Maven Central signing |
+| `MAVEN_CENTRAL_USERNAME` / `MAVEN_CENTRAL_PASSWORD` | Maven Central upload |
+| `NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN` | Slack notifications |
+| `DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID` | Slack channel target |

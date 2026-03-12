@@ -7,7 +7,7 @@ package cosmos.tx.v1beta1
 
 /** Fee includes the amount of coins paid in fees and the maximum
   * gas to be used by the transaction. The ratio yields an effective "gasprice",
-  * which must be above some miminum to be accepted into the mempool.
+  * which must be above some minimum to be accepted into the mempool.
   *
   * @param amount
   *   amount is the amount of coins to be paid as a fee

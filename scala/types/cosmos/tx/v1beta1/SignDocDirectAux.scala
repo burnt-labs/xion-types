@@ -22,7 +22,7 @@ package cosmos.tx.v1beta1
   * @param sequence
   *   sequence is the sequence number of the signing account.
   * @param tip
-  *   tips have been depreacted and should not be used
+  *   tips have been deprecated and should not be used
   */
 @SerialVersionUID(0L)
 final case class SignDocDirectAux(

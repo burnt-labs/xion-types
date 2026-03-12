@@ -1,7 +1,7 @@
 name: Dev Build
 
 # Manually trigger a dev build (and optional publish) for one or all languages.
-# Uses the xion submodule HEAD or a specific commit/tag to generate types.
+# Sources protos from buf.build/burnt-labs/xion (BSR).
 # Publishes with a pre-release version like 0.0.0-dev.<sha>.
 
 on:
@@ -20,12 +20,12 @@ on:
           - swift
           - kotlin
       xion_ref:
-        description: "Xion ref — tag (v26.0.0), branch, commit (abc1234), or 'dev' for HEAD"
+        description: "BSR label — tag (v26.0.0), commit label, or empty for latest"
         required: false
-        default: "dev"
+        default: ""
         type: string
       base_version:
-        description: "Base version override (e.g. v26.1.0). Leave empty to auto-detect from nearest tag."
+        description: "Base version override (e.g. v26.1.0). Leave empty to auto-detect from BSR label."
         required: false
         default: ""
         type: string
@@ -48,49 +48,23 @@ jobs:
     outputs:
       version: ${{ steps.ver.outputs.version }}
       release_tag: ${{ steps.ver.outputs.release_tag }}
+      bsr_module: ${{ steps.ver.outputs.bsr_module }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: false
-
-      - name: Setup xion submodule
-        uses: ./.github/actions/setup-xion-version
-        with:
-          version: ${{ inputs.xion_ref }}
+          sparse-checkout: scripts/ci/helper
 
       - name: Set outputs
         id: ver
         run: |
-          REF="${{ inputs.xion_ref }}"
-          BASE="${{ inputs.base_version }}"
-          SHA=$(git -C xion rev-parse --short HEAD)
-
-          if [[ "$REF" == v* ]] && [[ -z "$BASE" ]]; then
-            # Explicit tag like v26.0.0 — use as-is
-            VERSION="${REF#v}"
-            TAG="$REF"
-          else
-            # Commit hash, branch, or "dev" — build a pre-release version
-            if [[ -n "$BASE" ]]; then
-              # User provided base version (e.g. v26.1.0)
-              BASE_VER="${BASE#v}"
-            else
-              # Auto-detect: find nearest tag in xion, bump patch
-              NEAREST=$(git -C xion describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-              NEAREST="${NEAREST#v}"
-              MAJOR=$(echo "$NEAREST" | cut -d. -f1)
-              MINOR=$(echo "$NEAREST" | cut -d. -f2)
-              PATCH=$(echo "$NEAREST" | cut -d. -f3)
-              BASE_VER="${MAJOR}.${MINOR}.$((PATCH + 1))"
-            fi
-            VERSION="${BASE_VER}-${SHA}"
-            TAG="v${VERSION}"
-          fi
-
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "release_tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "📦 Version: $VERSION  Tag: $TAG"
+          eval "$(bash scripts/ci/helper/resolve-dev-version.sh \
+            --ref "${{ inputs.xion_ref }}" \
+            --base "${{ inputs.base_version }}")"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
+          echo "bsr_module=$bsr_module" >> "$GITHUB_OUTPUT"
+          echo "Version: $version  Tag: $release_tag  BSR: $bsr_module"
 
   # ─── Generate types ─────────────────────────────────────────────────
   generate:
@@ -125,17 +99,7 @@ jobs:
 
       # Place each artifact in its correct location
       - name: Organize artifacts
-        run: |
-          # download-artifact creates dirs named after each artifact
-          for dir in generated-types-*/; do
-            lang="${dir#generated-types-}"
-            lang="${lang%/}"
-            case "$lang" in
-              python) cp -r "$dir"/* python/xion_types/ 2>/dev/null || mkdir -p python/xion_types && cp -r "$dir"/* python/xion_types/ ;;
-              ruby)   cp -r "$dir"/* ruby/ ;;
-              *)      mkdir -p "$lang/types" && cp -r "$dir"/* "$lang/types/" ;;
-            esac
-          done
+        run: bash scripts/ci/helper/organize-artifacts.sh
 
       - name: Commit & push tag
         env:
@@ -214,7 +178,7 @@ jobs:
         run: |
           echo "## Dev Build Summary"
           echo ""
-          echo "- **Xion ref:** ${{ inputs.xion_ref }}"
+          echo "- **BSR ref:** ${{ inputs.xion_ref || 'latest' }}"
           echo "- **Version:** ${{ needs.resolve.outputs.version }}"
           echo "- **Language:** ${{ inputs.language }}"
           echo "- **Publish:** ${{ inputs.publish }}"

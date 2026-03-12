@@ -5,6 +5,12 @@
 
 package xion.v1
 
+/** QueryWebAuthNVerifyRegisterResponse is the response type for WebAuthN
+  * registration verification
+  *
+  * @param credential
+  *   The generated credential
+  */
 @SerialVersionUID(0L)
 final case class QueryWebAuthNVerifyRegisterResponse(
     credential: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY,

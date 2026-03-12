@@ -5,6 +5,15 @@
 
 package xion.jwk.v1
 
+/** MsgCreateAudience defines the message for creating an audience
+  *
+  * @param admin
+  *   The admin address creating the audience
+  * @param aud
+  *   The audience identifier
+  * @param key
+  *   The public key for this audience
+  */
 @SerialVersionUID(0L)
 final case class MsgCreateAudience(
     admin: _root_.scala.Predef.String = "",

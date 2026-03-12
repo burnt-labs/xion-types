@@ -48,7 +48,7 @@ pub struct TxResponse {
     /// emitted from the ante. Whereas Logs contains the events, with
     /// additional metadata, emitted only by processing the messages.
     #[prost(message, repeated, tag="13")]
-    pub events: ::prost::alloc::vec::Vec<super::super::super::super::tendermint::abci::Event>,
+    pub events: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::Event>,
 }
 impl ::prost::Name for TxResponse {
 const NAME: &'static str = "TxResponse";
@@ -141,7 +141,7 @@ pub struct Result {
     /// Events contains a slice of Event objects that were emitted during message
     /// or handler execution.
     #[prost(message, repeated, tag="3")]
-    pub events: ::prost::alloc::vec::Vec<super::super::super::super::tendermint::abci::Event>,
+    pub events: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::Event>,
     /// msg_responses contains the Msg handler responses type packed in Anys.
     #[prost(message, repeated, tag="4")]
     pub msg_responses: ::prost::alloc::vec::Vec<::prost_types::Any>,
@@ -253,7 +253,7 @@ pub struct SearchBlocksResult {
     pub limit: i64,
     /// List of blocks in current page
     #[prost(message, repeated, tag="6")]
-    pub blocks: ::prost::alloc::vec::Vec<super::super::super::super::tendermint::types::Block>,
+    pub blocks: ::prost::alloc::vec::Vec<crate::types::tendermint_types::Block>,
 }
 impl ::prost::Name for SearchBlocksResult {
 const NAME: &'static str = "SearchBlocksResult";

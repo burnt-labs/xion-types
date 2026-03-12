@@ -24,7 +24,7 @@ object EvidenceProto extends _root_.scalapb.GeneratedFileObject {
   gR0aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIW4j8GEgR0aW1lyN4fAJDfHwGo57AqAVIEdGltZRIgCgVwb
   3dlchgDIAEoA0IK4j8HEgVwb3dlclIFcG93ZXISWgoRY29uc2Vuc3VzX2FkZHJlc3MYBCABKAlCLeI/EhIQY29uc2Vuc3VzQWRkc
   mVzc9K0LRRjb3Ntb3MuQWRkcmVzc1N0cmluZ1IQY29uc2Vuc3VzQWRkcmVzczokiKAfAOigHwCK57AqF2Nvc21vcy1zZGsvRXF1a
-  XZvY2F0aW9uQiNaHWNvc21vc3Nkay5pby94L2V2aWRlbmNlL3R5cGVzqOIeAWIGcHJvdG8z"""
+  XZvY2F0aW9uQjNaLWdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsveC9ldmlkZW5jZS90eXBlc6jiHgFiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

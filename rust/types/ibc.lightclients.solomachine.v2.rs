@@ -203,7 +203,7 @@ pub struct ConnectionStateData {
     #[prost(bytes="vec", tag="1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub connection: ::core::option::Option<super::super::super::core::connection::v1::ConnectionEnd>,
+    pub connection: ::core::option::Option<crate::types::ibc_core_connection_v1::ConnectionEnd>,
 }
 impl ::prost::Name for ConnectionStateData {
 const NAME: &'static str = "ConnectionStateData";
@@ -219,7 +219,7 @@ pub struct ChannelStateData {
     #[prost(bytes="vec", tag="1")]
     pub path: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub channel: ::core::option::Option<super::super::super::core::channel::v1::Channel>,
+    pub channel: ::core::option::Option<crate::types::ibc_core_channel_v1::Channel>,
 }
 impl ::prost::Name for ChannelStateData {
 const NAME: &'static str = "ChannelStateData";

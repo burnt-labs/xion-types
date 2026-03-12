@@ -47,7 +47,7 @@ pub struct Deposit {
     pub depositor: ::prost::alloc::string::String,
     /// amount to be deposited by depositor.
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Deposit {
 const NAME: &'static str = "Deposit";
@@ -81,7 +81,7 @@ pub struct Proposal {
     pub deposit_end_time: ::core::option::Option<::prost_types::Timestamp>,
     /// total_deposit is the total deposit on the proposal.
     #[prost(message, repeated, tag="7")]
-    pub total_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub total_deposit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// voting_start_time is the starting time to vote on a proposal.
     #[prost(message, optional, tag="8")]
     pub voting_start_time: ::core::option::Option<::prost_types::Timestamp>,
@@ -151,7 +151,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct DepositParams {
     /// Minimum deposit for a proposal to enter voting period.
     #[prost(message, repeated, tag="1")]
-    pub min_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub min_deposit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Maximum period for Atom holders to deposit on a proposal. Initial value: 2
     /// months.
     #[prost(message, optional, tag="2")]
@@ -364,7 +364,7 @@ pub struct QueryProposalsRequest {
     pub depositor: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryProposalsRequest {
 const NAME: &'static str = "QueryProposalsRequest";
@@ -382,7 +382,7 @@ pub struct QueryProposalsResponse {
     pub proposals: ::prost::alloc::vec::Vec<Proposal>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryProposalsResponse {
 const NAME: &'static str = "QueryProposalsResponse";
@@ -430,7 +430,7 @@ pub struct QueryVotesRequest {
     pub proposal_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVotesRequest {
 const NAME: &'static str = "QueryVotesRequest";
@@ -447,7 +447,7 @@ pub struct QueryVotesResponse {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVotesResponse {
 const NAME: &'static str = "QueryVotesResponse";
@@ -530,7 +530,7 @@ pub struct QueryDepositsRequest {
     pub proposal_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDepositsRequest {
 const NAME: &'static str = "QueryDepositsRequest";
@@ -547,7 +547,7 @@ pub struct QueryDepositsResponse {
     pub deposits: ::prost::alloc::vec::Vec<Deposit>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDepositsResponse {
 const NAME: &'static str = "QueryDepositsResponse";
@@ -593,7 +593,7 @@ pub struct MsgSubmitProposal {
     pub content: ::core::option::Option<::prost_types::Any>,
     /// initial_deposit is the deposit value that must be paid at proposal submission.
     #[prost(message, repeated, tag="2")]
-    pub initial_deposit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub initial_deposit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// proposer is the account address of the proposer.
     #[prost(string, tag="3")]
     pub proposer: ::prost::alloc::string::String,
@@ -692,7 +692,7 @@ pub struct MsgDeposit {
     pub depositor: ::prost::alloc::string::String,
     /// amount to be deposited by depositor.
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgDeposit {
 const NAME: &'static str = "MsgDeposit";

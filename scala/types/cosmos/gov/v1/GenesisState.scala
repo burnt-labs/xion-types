@@ -17,15 +17,15 @@ package cosmos.gov.v1
   *   proposals defines all the proposals present at genesis.
   * @param depositParams
   *   Deprecated: Prefer to use `params` instead.
-  *   deposit_params defines all the paramaters of related to deposit.
+  *   deposit_params defines all the parameters of related to deposit.
   * @param votingParams
   *   Deprecated: Prefer to use `params` instead.
-  *   voting_params defines all the paramaters of related to voting.
+  *   voting_params defines all the parameters of related to voting.
   * @param tallyParams
   *   Deprecated: Prefer to use `params` instead.
-  *   tally_params defines all the paramaters of related to tally.
+  *   tally_params defines all the parameters of related to tally.
   * @param params
-  *   params defines all the paramaters of x/gov module.
+  *   params defines all the parameters of x/gov module.
   * @param constitution
   *   The constitution allows builders to lay a foundation and define purpose.
   *   This is an immutable string set in genesis.

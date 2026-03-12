@@ -5,6 +5,13 @@
 
 package xion.v1
 
+/** GenesisState defines the xion module's genesis state
+  *
+  * @param platformPercentage
+  *   The percentage fee taken by the platform
+  * @param platformMinimums
+  *   Minimum amounts required for platform operations
+  */
 @SerialVersionUID(0L)
 final case class GenesisState(
     platformPercentage: _root_.scala.Int = 0,

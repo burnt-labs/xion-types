@@ -7,6 +7,9 @@ package xion.globalfee.v1
 
 /** QueryMinimumGasPricesResponse is the response type for the
   * Query/MinimumGasPrices RPC method.
+  *
+  * @param params
+  *   The global fee parameters
   */
 @SerialVersionUID(0L)
 final case class QueryParamsResponse(

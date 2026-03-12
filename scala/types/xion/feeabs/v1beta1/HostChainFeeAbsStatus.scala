@@ -5,14 +5,16 @@
 
 package xion.feeabs.v1beta1
 
-/** HostChainFeeAbsStatus
+/** HostChainFeeAbsStatus represents the status of a host chain fee abstraction
+  * configuration
   */
 sealed abstract class HostChainFeeAbsStatus(val value: _root_.scala.Int) extends _root_.scalapb.GeneratedEnum {
   type EnumType = xion.feeabs.v1beta1.HostChainFeeAbsStatus
   type RecognizedType = xion.feeabs.v1beta1.HostChainFeeAbsStatus.Recognized
-  def isUpdated: _root_.scala.Boolean = false
-  def isOutdated: _root_.scala.Boolean = false
-  def isFrozen: _root_.scala.Boolean = false
+  def isHostChainFeeAbsStatusUnspecified: _root_.scala.Boolean = false
+  def isHostChainFeeAbsStatusUpdated: _root_.scala.Boolean = false
+  def isHostChainFeeAbsStatusOutdated: _root_.scala.Boolean = false
+  def isHostChainFeeAbsStatusFrozen: _root_.scala.Boolean = false
   def companion: _root_.scalapb.GeneratedEnumCompanion[HostChainFeeAbsStatus] = xion.feeabs.v1beta1.HostChainFeeAbsStatus
   final def asRecognized: _root_.scala.Option[xion.feeabs.v1beta1.HostChainFeeAbsStatus.Recognized] = if (isUnrecognized) _root_.scala.None else _root_.scala.Some(this.asInstanceOf[xion.feeabs.v1beta1.HostChainFeeAbsStatus.Recognized])
 }
@@ -21,34 +23,50 @@ object HostChainFeeAbsStatus extends _root_.scalapb.GeneratedEnumCompanion[HostC
   sealed trait Recognized extends HostChainFeeAbsStatus
   implicit def enumCompanion: _root_.scalapb.GeneratedEnumCompanion[HostChainFeeAbsStatus] = this
   
+  /** HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED indicates an unspecified status
+    */
   @SerialVersionUID(0L)
-  case object UPDATED extends HostChainFeeAbsStatus(0) with HostChainFeeAbsStatus.Recognized {
+  case object HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED extends HostChainFeeAbsStatus(0) with HostChainFeeAbsStatus.Recognized {
     val index = 0
-    val name = "UPDATED"
-    override def isUpdated: _root_.scala.Boolean = true
+    val name = "HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED"
+    override def isHostChainFeeAbsStatusUnspecified: _root_.scala.Boolean = true
   }
   
+  /** HOST_CHAIN_FEE_ABS_STATUS_UPDATED indicates the configuration is up to date
+    */
   @SerialVersionUID(0L)
-  case object OUTDATED extends HostChainFeeAbsStatus(1) with HostChainFeeAbsStatus.Recognized {
+  case object HOST_CHAIN_FEE_ABS_STATUS_UPDATED extends HostChainFeeAbsStatus(1) with HostChainFeeAbsStatus.Recognized {
     val index = 1
-    val name = "OUTDATED"
-    override def isOutdated: _root_.scala.Boolean = true
+    val name = "HOST_CHAIN_FEE_ABS_STATUS_UPDATED"
+    override def isHostChainFeeAbsStatusUpdated: _root_.scala.Boolean = true
   }
   
+  /** HOST_CHAIN_FEE_ABS_STATUS_OUTDATED indicates the configuration is outdated
+    */
   @SerialVersionUID(0L)
-  case object FROZEN extends HostChainFeeAbsStatus(2) with HostChainFeeAbsStatus.Recognized {
+  case object HOST_CHAIN_FEE_ABS_STATUS_OUTDATED extends HostChainFeeAbsStatus(2) with HostChainFeeAbsStatus.Recognized {
     val index = 2
-    val name = "FROZEN"
-    override def isFrozen: _root_.scala.Boolean = true
+    val name = "HOST_CHAIN_FEE_ABS_STATUS_OUTDATED"
+    override def isHostChainFeeAbsStatusOutdated: _root_.scala.Boolean = true
+  }
+  
+  /** HOST_CHAIN_FEE_ABS_STATUS_FROZEN indicates the configuration is frozen
+    */
+  @SerialVersionUID(0L)
+  case object HOST_CHAIN_FEE_ABS_STATUS_FROZEN extends HostChainFeeAbsStatus(3) with HostChainFeeAbsStatus.Recognized {
+    val index = 3
+    val name = "HOST_CHAIN_FEE_ABS_STATUS_FROZEN"
+    override def isHostChainFeeAbsStatusFrozen: _root_.scala.Boolean = true
   }
   
   @SerialVersionUID(0L)
   final case class Unrecognized(unrecognizedValue: _root_.scala.Int) extends HostChainFeeAbsStatus(unrecognizedValue) with _root_.scalapb.UnrecognizedEnum
-  lazy val values: scala.collection.immutable.Seq[ValueType] = scala.collection.immutable.Seq(UPDATED, OUTDATED, FROZEN)
+  lazy val values: scala.collection.immutable.Seq[ValueType] = scala.collection.immutable.Seq(HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED, HOST_CHAIN_FEE_ABS_STATUS_UPDATED, HOST_CHAIN_FEE_ABS_STATUS_OUTDATED, HOST_CHAIN_FEE_ABS_STATUS_FROZEN)
   def fromValue(__value: _root_.scala.Int): HostChainFeeAbsStatus = __value match {
-    case 0 => UPDATED
-    case 1 => OUTDATED
-    case 2 => FROZEN
+    case 0 => HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED
+    case 1 => HOST_CHAIN_FEE_ABS_STATUS_UPDATED
+    case 2 => HOST_CHAIN_FEE_ABS_STATUS_OUTDATED
+    case 3 => HOST_CHAIN_FEE_ABS_STATUS_FROZEN
     case __other => Unrecognized(__other)
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.EnumDescriptor = xion.feeabs.v1beta1.ProposalProto.javaDescriptor.getEnumTypes().get(0)

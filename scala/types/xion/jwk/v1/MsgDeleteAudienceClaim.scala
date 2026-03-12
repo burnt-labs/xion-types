@@ -5,6 +5,13 @@
 
 package xion.jwk.v1
 
+/** MsgDeleteAudienceClaim defines the message for deleting an audience claim
+  *
+  * @param admin
+  *   The admin address deleting the claim
+  * @param audHash
+  *   The hash of the audience for this claim
+  */
 @SerialVersionUID(0L)
 final case class MsgDeleteAudienceClaim(
     admin: _root_.scala.Predef.String = "",

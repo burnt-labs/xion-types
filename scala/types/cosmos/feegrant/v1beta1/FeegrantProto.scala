@@ -47,8 +47,8 @@ object FeegrantProto extends _root_.scalapb.GeneratedFileObject {
   3dhbmNlSYrnsCoeY29zbW9zLXNkay9BbGxvd2VkTXNnQWxsb3dhbmNlIvQBCgVHcmFudBI+CgdncmFudGVyGAEgASgJQiTiPwkSB
   2dyYW50ZXLStC0UY29zbW9zLkFkZHJlc3NTdHJpbmdSB2dyYW50ZXISPgoHZ3JhbnRlZRgCIAEoCUIk4j8JEgdncmFudGVl0rQtF
   GNvc21vcy5BZGRyZXNzU3RyaW5nUgdncmFudGVlEmsKCWFsbG93YW5jZRgDIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlCN+I/C
-  xIJYWxsb3dhbmNlyrQtJWNvc21vcy5mZWVncmFudC52MWJldGExLkZlZUFsbG93YW5jZUlSCWFsbG93YW5jZUIZWhdjb3Ntb3NzZ
-  GsuaW8veC9mZWVncmFudGIGcHJvdG8z"""
+  xIJYWxsb3dhbmNlyrQtJWNvc21vcy5mZWVncmFudC52MWJldGExLkZlZUFsbG93YW5jZUlSCWFsbG93YW5jZUIpWidnaXRodWIuY
+  29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3gvZmVlZ3JhbnRiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

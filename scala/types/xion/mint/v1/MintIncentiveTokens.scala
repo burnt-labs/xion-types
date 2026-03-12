@@ -7,6 +7,21 @@ package xion.mint.v1
 
 /** MintIncentiveTokens defines an event emitted on each block from the mint
   * module EndBlocker
+  *
+  * @param bondedRatio
+  *   The ratio of bonded tokens to total supply
+  * @param inflation
+  *   The current inflation rate
+  * @param annualProvisions
+  *   The total annual provisions for minting
+  * @param neededAmount
+  *   The amount of tokens needed for incentives
+  * @param collectedAmount
+  *   The amount of tokens collected for incentives
+  * @param mintedAmount
+  *   The amount of tokens minted
+  * @param burnedAmount
+  *   The amount of tokens burned
   */
 @SerialVersionUID(0L)
 final case class MintIncentiveTokens(

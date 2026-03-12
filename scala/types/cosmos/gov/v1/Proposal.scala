@@ -36,7 +36,7 @@ package cosmos.gov.v1
   * @param summary
   *   summary is a short summary of the proposal
   * @param proposer
-  *   proposer is the address of the proposal sumbitter
+  *   proposer is the address of the proposal submitter
   * @param expedited
   *   expedited defines if the proposal is expedited
   * @param failedReason

@@ -5,6 +5,11 @@
 
 package xion.jwk.v1
 
+/** AudienceClaim represents a claim for an audience
+  *
+  * @param signer
+  *   The signer of the audience claim
+  */
 @SerialVersionUID(0L)
 final case class AudienceClaim(
     signer: _root_.scala.Predef.String = "",

@@ -5,6 +5,9 @@
 
 package xion.v1
 
+/** QueryWebAuthNVerifyAuthenticateResponse is the response type for WebAuthN
+  * authentication verification
+  */
 @SerialVersionUID(0L)
 final case class QueryWebAuthNVerifyAuthenticateResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

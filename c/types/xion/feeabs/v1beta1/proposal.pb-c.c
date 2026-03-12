@@ -456,20 +456,22 @@ const ProtobufCMessageDescriptor xion__feeabs__v1beta1__set_host_zone_proposal__
   (ProtobufCMessageInit) xion__feeabs__v1beta1__set_host_zone_proposal__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue xion__feeabs__v1beta1__host_chain_fee_abs_status__enum_values_by_number[3] =
+static const ProtobufCEnumValue xion__feeabs__v1beta1__host_chain_fee_abs_status__enum_values_by_number[4] =
 {
-  { "UPDATED", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__UPDATED", 0 },
-  { "OUTDATED", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__OUTDATED", 1 },
-  { "FROZEN", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__FROZEN", 2 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED", 0 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_UPDATED", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__HOST_CHAIN_FEE_ABS_STATUS_UPDATED", 1 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_OUTDATED", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__HOST_CHAIN_FEE_ABS_STATUS_OUTDATED", 2 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_FROZEN", "XION__FEEABS__V1BETA1__HOST_CHAIN_FEE_ABS_STATUS__HOST_CHAIN_FEE_ABS_STATUS_FROZEN", 3 },
 };
 static const ProtobufCIntRange xion__feeabs__v1beta1__host_chain_fee_abs_status__value_ranges[] = {
-{0, 0},{0, 3}
+{0, 0},{0, 4}
 };
-static const ProtobufCEnumValueIndex xion__feeabs__v1beta1__host_chain_fee_abs_status__enum_values_by_name[3] =
+static const ProtobufCEnumValueIndex xion__feeabs__v1beta1__host_chain_fee_abs_status__enum_values_by_name[4] =
 {
-  { "FROZEN", 2 },
-  { "OUTDATED", 1 },
-  { "UPDATED", 0 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_FROZEN", 3 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_OUTDATED", 2 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED", 0 },
+  { "HOST_CHAIN_FEE_ABS_STATUS_UPDATED", 1 },
 };
 const ProtobufCEnumDescriptor xion__feeabs__v1beta1__host_chain_fee_abs_status__descriptor =
 {
@@ -478,9 +480,9 @@ const ProtobufCEnumDescriptor xion__feeabs__v1beta1__host_chain_fee_abs_status__
   "HostChainFeeAbsStatus",
   "Xion__Feeabs__V1beta1__HostChainFeeAbsStatus",
   "xion.feeabs.v1beta1",
-  3,
+  4,
   xion__feeabs__v1beta1__host_chain_fee_abs_status__enum_values_by_number,
-  3,
+  4,
   xion__feeabs__v1beta1__host_chain_fee_abs_status__enum_values_by_name,
   1,
   xion__feeabs__v1beta1__host_chain_fee_abs_status__value_ranges,

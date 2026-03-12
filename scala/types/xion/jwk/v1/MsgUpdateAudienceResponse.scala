@@ -5,6 +5,11 @@
 
 package xion.jwk.v1
 
+/** MsgUpdateAudienceResponse defines the response for updating an audience
+  *
+  * @param audience
+  *   The updated audience
+  */
 @SerialVersionUID(0L)
 final case class MsgUpdateAudienceResponse(
     audience: _root_.scala.Option[xion.jwk.v1.Audience] = _root_.scala.None,

@@ -5,6 +5,13 @@
 
 package xion.jwk.v1
 
+/** MsgCreateAudienceClaim defines the message for creating an audience claim
+  *
+  * @param admin
+  *   The admin address creating the claim
+  * @param audHash
+  *   The hash of the audience for this claim
+  */
 @SerialVersionUID(0L)
 final case class MsgCreateAudienceClaim(
     admin: _root_.scala.Predef.String = "",

@@ -8,7 +8,7 @@ package cosmos.feegrant.v1beta1
 /** QueryAllowanceResponse is the response type for the Query/Allowance RPC method.
   *
   * @param allowance
-  *   allowance is a allowance granted for grantee by granter.
+  *   allowance is an allowance granted for grantee by granter.
   */
 @SerialVersionUID(0L)
 final case class QueryAllowanceResponse(

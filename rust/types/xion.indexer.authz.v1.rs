@@ -15,7 +15,7 @@ pub struct QueryGrantsRequest {
     pub msg_type_url: ::prost::alloc::string::String,
     /// pagination defines pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGrantsRequest {
 const NAME: &'static str = "QueryGrantsRequest";
@@ -30,10 +30,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryGrantsResponse {
     /// authorizations is a list of grants granted for grantee by granter.
     #[prost(message, repeated, tag="1")]
-    pub grants: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::authz::v1beta1::Grant>,
+    pub grants: ::prost::alloc::vec::Vec<crate::types::cosmos_authz_v1beta1::Grant>,
     /// pagination defines pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGrantsResponse {
 const NAME: &'static str = "QueryGrantsResponse";
@@ -51,7 +51,7 @@ pub struct QueryGranterGrantsRequest {
     pub granter: ::prost::alloc::string::String,
     /// pagination defines pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGranterGrantsRequest {
 const NAME: &'static str = "QueryGranterGrantsRequest";
@@ -66,10 +66,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryGranterGrantsResponse {
     /// grants is a list of grants granted by the granter.
     #[prost(message, repeated, tag="1")]
-    pub grants: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::authz::v1beta1::GrantAuthorization>,
+    pub grants: ::prost::alloc::vec::Vec<crate::types::cosmos_authz_v1beta1::GrantAuthorization>,
     /// pagination defines pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGranterGrantsResponse {
 const NAME: &'static str = "QueryGranterGrantsResponse";
@@ -87,7 +87,7 @@ pub struct QueryGranteeGrantsRequest {
     pub grantee: ::prost::alloc::string::String,
     /// pagination defines pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGranteeGrantsRequest {
 const NAME: &'static str = "QueryGranteeGrantsRequest";
@@ -102,10 +102,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryGranteeGrantsResponse {
     /// grants is a list of grants granted to the grantee.
     #[prost(message, repeated, tag="1")]
-    pub grants: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::authz::v1beta1::GrantAuthorization>,
+    pub grants: ::prost::alloc::vec::Vec<crate::types::cosmos_authz_v1beta1::GrantAuthorization>,
     /// pagination defines pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGranteeGrantsResponse {
 const NAME: &'static str = "QueryGranteeGrantsResponse";

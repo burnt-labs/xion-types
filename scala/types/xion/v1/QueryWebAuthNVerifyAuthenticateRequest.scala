@@ -5,6 +5,20 @@
 
 package xion.v1
 
+/** QueryWebAuthNVerifyAuthenticateRequest is the request type for WebAuthN
+  * authentication verification
+  *
+  * @param addr
+  *   The account address
+  * @param challenge
+  *   The challenge string for authentication
+  * @param rp
+  *   The relying party identifier
+  * @param credential
+  *   The credential to verify
+  * @param data
+  *   The authentication data
+  */
 @SerialVersionUID(0L)
 final case class QueryWebAuthNVerifyAuthenticateRequest(
     addr: _root_.scala.Predef.String = "",

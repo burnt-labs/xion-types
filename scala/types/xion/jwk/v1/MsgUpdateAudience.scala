@@ -5,6 +5,19 @@
 
 package xion.jwk.v1
 
+/** MsgUpdateAudience defines the message for updating an audience
+  *
+  * @param admin
+  *   The current admin address
+  * @param newAdmin
+  *   The new admin address
+  * @param aud
+  *   The current audience identifier
+  * @param key
+  *   The current public key
+  * @param newAud
+  *   The new audience identifier
+  */
 @SerialVersionUID(0L)
 final case class MsgUpdateAudience(
     admin: _root_.scala.Predef.String = "",

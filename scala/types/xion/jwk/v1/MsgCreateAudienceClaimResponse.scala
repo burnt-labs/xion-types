@@ -5,6 +5,9 @@
 
 package xion.jwk.v1
 
+/** MsgCreateAudienceClaimResponse defines the response for creating an audience
+  * claim
+  */
 @SerialVersionUID(0L)
 final case class MsgCreateAudienceClaimResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

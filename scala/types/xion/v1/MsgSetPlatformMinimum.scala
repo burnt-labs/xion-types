@@ -5,6 +5,13 @@
 
 package xion.v1
 
+/** MsgSetPlatformMinimum defines the message for setting platform minimum fees
+  *
+  * @param authority
+  *   The authority address that can set the platform minimums
+  * @param minimums
+  *   The minimum fees required by the platform
+  */
 @SerialVersionUID(0L)
 final case class MsgSetPlatformMinimum(
     authority: _root_.scala.Predef.String = "",

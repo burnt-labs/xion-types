@@ -8,7 +8,7 @@ package cosmos.base.reflection.v2alpha1
 /** CodecDescriptor describes the registered interfaces and provides metadata information on the types
   *
   * @param interfaces
-  *   interfaces is a list of the registerted interfaces descriptors
+  *   interfaces is a list of the registered interfaces descriptors
   */
 @SerialVersionUID(0L)
 final case class CodecDescriptor(

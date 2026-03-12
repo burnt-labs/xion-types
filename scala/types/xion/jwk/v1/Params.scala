@@ -8,9 +8,9 @@ package xion.jwk.v1
 /** Params defines the parameters for the module.
   *
   * @param timeOffset
-  *   in nanoseconds
+  *   Time offset in nanoseconds for JWT validation
   * @param deploymentGas
-  *   gas to deploy a new project/audience
+  *   Gas required to deploy a new project/audience
   */
 @SerialVersionUID(0L)
 final case class Params(

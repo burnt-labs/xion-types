@@ -5,6 +5,15 @@
 
 package xion.jwk.v1
 
+/** Audience represents a JWT audience configuration
+  *
+  * @param aud
+  *   The audience identifier
+  * @param key
+  *   The public key associated with this audience
+  * @param admin
+  *   The admin address for this audience
+  */
 @SerialVersionUID(0L)
 final case class Audience(
     aud: _root_.scala.Predef.String = "",

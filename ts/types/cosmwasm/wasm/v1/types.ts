@@ -238,12 +238,12 @@ export interface ContractInfo {
   /** Created Tx position when the contract was instantiated. */
   created?: AbsoluteTxPosition;
   ibcPortId: string;
-  ibc2PortId: string;
   /**
    * Extension is an extension point to store custom metadata within the
    * persistence model.
    */
   extension?: Any | undefined;
+  ibc2PortId: string;
 }
 export interface ContractInfoProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.ContractInfo";
@@ -284,12 +284,12 @@ export interface ContractInfoAmino {
    */
   created?: AbsoluteTxPositionAmino;
   ibc_port_id?: string;
-  ibc2_port_id?: string;
   /**
    * Extension is an extension point to store custom metadata within the
    * persistence model.
    */
   extension?: AnyAmino;
+  ibc2_port_id?: string;
 }
 export interface ContractInfoAminoMsg {
   type: "wasm/ContractInfo";
@@ -303,8 +303,8 @@ export interface ContractInfoSDKType {
   label: string;
   created?: AbsoluteTxPositionSDKType;
   ibc_port_id: string;
-  ibc2_port_id: string;
   extension?: AnySDKType | undefined;
+  ibc2_port_id: string;
 }
 /** ContractCodeHistoryEntry metadata to a contract. */
 export interface ContractCodeHistoryEntry {
@@ -765,8 +765,8 @@ function createBaseContractInfo(): ContractInfo {
     label: "",
     created: undefined,
     ibcPortId: "",
-    ibc2PortId: "",
-    extension: undefined
+    extension: undefined,
+    ibc2PortId: ""
   };
 }
 export const ContractInfo = {
@@ -790,11 +790,11 @@ export const ContractInfo = {
     if (message.ibcPortId !== "") {
       writer.uint32(50).string(message.ibcPortId);
     }
-    if (message.ibc2PortId !== "") {
-      writer.uint32(58).string(message.ibc2PortId);
-    }
     if (message.extension !== undefined) {
-      Any.encode(message.extension as Any, writer.uint32(66).fork()).ldelim();
+      Any.encode(message.extension as Any, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.ibc2PortId !== "") {
+      writer.uint32(66).string(message.ibc2PortId);
     }
     return writer;
   },
@@ -824,10 +824,10 @@ export const ContractInfo = {
           message.ibcPortId = reader.string();
           break;
         case 7:
-          message.ibc2PortId = reader.string();
+          message.extension = Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder(reader) as Any;
           break;
         case 8:
-          message.extension = Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder(reader) as Any;
+          message.ibc2PortId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -844,8 +844,8 @@ export const ContractInfo = {
     message.label = object.label ?? "";
     message.created = object.created !== undefined && object.created !== null ? AbsoluteTxPosition.fromPartial(object.created) : undefined;
     message.ibcPortId = object.ibcPortId ?? "";
-    message.ibc2PortId = object.ibc2PortId ?? "";
     message.extension = object.extension !== undefined && object.extension !== null ? Any.fromPartial(object.extension) : undefined;
+    message.ibc2PortId = object.ibc2PortId ?? "";
     return message;
   },
   fromAmino(object: ContractInfoAmino): ContractInfo {
@@ -868,11 +868,11 @@ export const ContractInfo = {
     if (object.ibc_port_id !== undefined && object.ibc_port_id !== null) {
       message.ibcPortId = object.ibc_port_id;
     }
-    if (object.ibc2_port_id !== undefined && object.ibc2_port_id !== null) {
-      message.ibc2PortId = object.ibc2_port_id;
-    }
     if (object.extension !== undefined && object.extension !== null) {
       message.extension = Cosmwasm_wasmv1ContractInfoExtension_FromAmino(object.extension);
+    }
+    if (object.ibc2_port_id !== undefined && object.ibc2_port_id !== null) {
+      message.ibc2PortId = object.ibc2_port_id;
     }
     return message;
   },
@@ -884,8 +884,8 @@ export const ContractInfo = {
     obj.label = message.label === "" ? undefined : message.label;
     obj.created = message.created ? AbsoluteTxPosition.toAmino(message.created) : undefined;
     obj.ibc_port_id = message.ibcPortId === "" ? undefined : message.ibcPortId;
-    obj.ibc2_port_id = message.ibc2PortId === "" ? undefined : message.ibc2PortId;
     obj.extension = message.extension ? Cosmwasm_wasmv1ContractInfoExtension_ToAmino(message.extension as Any) : undefined;
+    obj.ibc2_port_id = message.ibc2PortId === "" ? undefined : message.ibc2PortId;
     return obj;
   },
   fromAminoMsg(object: ContractInfoAminoMsg): ContractInfo {

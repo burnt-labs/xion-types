@@ -7,6 +7,7 @@ export interface AuthzAllowance {
   $typeUrl?: "/xion.v1.AuthzAllowance";
   /** allowance can be any of basic and periodic fee allowance. */
   allowance?: AuthzAllowance | ContractsAllowance | MultiAnyAllowance | BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any | undefined;
+  /** The address that can use this authorization-based allowance */
   authzGrantee: string;
 }
 export interface AuthzAllowanceProtoMsg {
@@ -27,6 +28,9 @@ export interface AuthzAllowanceAmino {
    * allowance can be any of basic and periodic fee allowance.
    */
   allowance?: AnyAmino;
+  /**
+   * The address that can use this authorization-based allowance
+   */
   authz_grantee?: string;
 }
 export interface AuthzAllowanceAminoMsg {
@@ -44,6 +48,7 @@ export interface ContractsAllowance {
   $typeUrl?: "/xion.v1.ContractsAllowance";
   /** allowance can be any allowance interface type. */
   allowance?: AuthzAllowance | ContractsAllowance | MultiAnyAllowance | BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any | undefined;
+  /** List of contract addresses that this allowance applies to */
   contractAddresses: string[];
 }
 export interface ContractsAllowanceProtoMsg {
@@ -64,6 +69,9 @@ export interface ContractsAllowanceAmino {
    * allowance can be any allowance interface type.
    */
   allowance?: AnyAmino;
+  /**
+   * List of contract addresses that this allowance applies to
+   */
   contract_addresses?: string[];
 }
 export interface ContractsAllowanceAminoMsg {

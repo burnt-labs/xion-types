@@ -5,6 +5,18 @@
 
 package xion.v1
 
+/** QueryWebAuthNVerifyRegisterRequest is the request type for WebAuthN
+  * registration verification
+  *
+  * @param addr
+  *   The account address
+  * @param challenge
+  *   The challenge string for registration
+  * @param rp
+  *   The relying party identifier
+  * @param data
+  *   The registration data
+  */
 @SerialVersionUID(0L)
 final case class QueryWebAuthNVerifyRegisterRequest(
     addr: _root_.scala.Predef.String = "",

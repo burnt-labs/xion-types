@@ -17,7 +17,7 @@ package cosmos.gov.v1
   *   Deprecated: Prefer to use `params` instead.
   *   tally_params defines the parameters related to tally.
   * @param params
-  *   params defines all the paramaters of x/gov module.
+  *   params defines all the parameters of x/gov module.
   */
 @SerialVersionUID(0L)
 final case class QueryParamsResponse(

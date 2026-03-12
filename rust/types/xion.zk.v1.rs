@@ -169,7 +169,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryVKeysRequest {
     /// pagination defines an optional pagination for the request
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVKeysRequest {
 const NAME: &'static str = "QueryVKeysRequest";
@@ -186,7 +186,7 @@ pub struct QueryVKeysResponse {
     pub vkeys: ::prost::alloc::vec::Vec<VKeyWithId>,
     /// pagination defines the pagination in the response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVKeysResponse {
 const NAME: &'static str = "QueryVKeysResponse";

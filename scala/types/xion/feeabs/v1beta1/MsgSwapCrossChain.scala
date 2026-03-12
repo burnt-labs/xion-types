@@ -9,6 +9,8 @@ package xion.feeabs.v1beta1
   *
   * @param sender
   *   Sender is the that actor that signed the messages
+  * @param ibcDenom
+  *   The IBC denomination to swap
   */
 @SerialVersionUID(0L)
 final case class MsgSwapCrossChain(

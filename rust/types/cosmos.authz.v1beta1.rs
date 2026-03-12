@@ -71,7 +71,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventGrant {
-    /// Msg type URL for which an autorization is granted
+    /// Msg type URL for which an authorization is granted
     #[prost(string, tag="2")]
     pub msg_type_url: ::prost::alloc::string::String,
     /// Granter account address
@@ -91,7 +91,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventRevoke {
-    /// Msg type URL for which an autorization is revoked
+    /// Msg type URL for which an authorization is revoked
     #[prost(string, tag="2")]
     pub msg_type_url: ::prost::alloc::string::String,
     /// Granter account address
@@ -131,9 +131,9 @@ pub struct QueryGrantsRequest {
     /// Optional, msg_type_url, when set, will query only grants matching given msg type.
     #[prost(string, tag="3")]
     pub msg_type_url: ::prost::alloc::string::String,
-    /// pagination defines an pagination for the request.
+    /// pagination defines a pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGrantsRequest {
 const NAME: &'static str = "QueryGrantsRequest";
@@ -148,9 +148,9 @@ pub struct QueryGrantsResponse {
     /// authorizations is a list of grants granted for grantee by granter.
     #[prost(message, repeated, tag="1")]
     pub grants: ::prost::alloc::vec::Vec<Grant>,
-    /// pagination defines an pagination for the response.
+    /// pagination defines a pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGrantsResponse {
 const NAME: &'static str = "QueryGrantsResponse";
@@ -164,9 +164,9 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryGranterGrantsRequest {
     #[prost(string, tag="1")]
     pub granter: ::prost::alloc::string::String,
-    /// pagination defines an pagination for the request.
+    /// pagination defines a pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGranterGrantsRequest {
 const NAME: &'static str = "QueryGranterGrantsRequest";
@@ -181,9 +181,9 @@ pub struct QueryGranterGrantsResponse {
     /// grants is a list of grants granted by the granter.
     #[prost(message, repeated, tag="1")]
     pub grants: ::prost::alloc::vec::Vec<GrantAuthorization>,
-    /// pagination defines an pagination for the response.
+    /// pagination defines a pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGranterGrantsResponse {
 const NAME: &'static str = "QueryGranterGrantsResponse";
@@ -197,9 +197,9 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryGranteeGrantsRequest {
     #[prost(string, tag="1")]
     pub grantee: ::prost::alloc::string::String,
-    /// pagination defines an pagination for the request.
+    /// pagination defines a pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGranteeGrantsRequest {
 const NAME: &'static str = "QueryGranteeGrantsRequest";
@@ -214,9 +214,9 @@ pub struct QueryGranteeGrantsResponse {
     /// grants is a list of grants granted to the grantee.
     #[prost(message, repeated, tag="1")]
     pub grants: ::prost::alloc::vec::Vec<GrantAuthorization>,
-    /// pagination defines an pagination for the response.
+    /// pagination defines a pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGranteeGrantsResponse {
 const NAME: &'static str = "QueryGranteeGrantsResponse";

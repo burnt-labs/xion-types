@@ -212,7 +212,7 @@ pub struct QueryNextSequenceSendResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryNextSequenceSendResponse {
 const NAME: &'static str = "QueryNextSequenceSendResponse";
@@ -249,7 +249,7 @@ pub struct QueryPacketCommitmentResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryPacketCommitmentResponse {
 const NAME: &'static str = "QueryPacketCommitmentResponse";
@@ -266,7 +266,7 @@ pub struct QueryPacketCommitmentsRequest {
     pub client_id: ::prost::alloc::string::String,
     /// pagination request
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryPacketCommitmentsRequest {
 const NAME: &'static str = "QueryPacketCommitmentsRequest";
@@ -283,10 +283,10 @@ pub struct QueryPacketCommitmentsResponse {
     pub commitments: ::prost::alloc::vec::Vec<PacketState>,
     /// pagination response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
     /// query block height.
     #[prost(message, optional, tag="3")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryPacketCommitmentsResponse {
 const NAME: &'static str = "QueryPacketCommitmentsResponse";
@@ -323,7 +323,7 @@ pub struct QueryPacketAcknowledgementResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryPacketAcknowledgementResponse {
 const NAME: &'static str = "QueryPacketAcknowledgementResponse";
@@ -341,7 +341,7 @@ pub struct QueryPacketAcknowledgementsRequest {
     pub client_id: ::prost::alloc::string::String,
     /// pagination request
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
     /// list of packet sequences
     #[prost(uint64, repeated, tag="3")]
     pub packet_commitment_sequences: ::prost::alloc::vec::Vec<u64>,
@@ -361,10 +361,10 @@ pub struct QueryPacketAcknowledgementsResponse {
     pub acknowledgements: ::prost::alloc::vec::Vec<PacketState>,
     /// pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
     /// query block height
     #[prost(message, optional, tag="3")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryPacketAcknowledgementsResponse {
 const NAME: &'static str = "QueryPacketAcknowledgementsResponse";
@@ -401,7 +401,7 @@ pub struct QueryPacketReceiptResponse {
     pub proof: ::prost::alloc::vec::Vec<u8>,
     /// height at which the proof was retrieved
     #[prost(message, optional, tag="4")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryPacketReceiptResponse {
 const NAME: &'static str = "QueryPacketReceiptResponse";
@@ -435,7 +435,7 @@ pub struct QueryUnreceivedPacketsResponse {
     pub sequences: ::prost::alloc::vec::Vec<u64>,
     /// query block height
     #[prost(message, optional, tag="2")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryUnreceivedPacketsResponse {
 const NAME: &'static str = "QueryUnreceivedPacketsResponse";
@@ -471,7 +471,7 @@ pub struct QueryUnreceivedAcksResponse {
     pub sequences: ::prost::alloc::vec::Vec<u64>,
     /// query block height
     #[prost(message, optional, tag="2")]
-    pub height: ::core::option::Option<super::super::client::v1::Height>,
+    pub height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for QueryUnreceivedAcksResponse {
 const NAME: &'static str = "QueryUnreceivedAcksResponse";
@@ -520,7 +520,7 @@ pub struct MsgRecvPacket {
     #[prost(bytes="vec", tag="2")]
     pub proof_commitment: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="4")]
     pub signer: ::prost::alloc::string::String,
 }
@@ -552,7 +552,7 @@ pub struct MsgTimeout {
     #[prost(bytes="vec", tag="2")]
     pub proof_unreceived: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="5")]
     pub signer: ::prost::alloc::string::String,
 }
@@ -586,7 +586,7 @@ pub struct MsgAcknowledgement {
     #[prost(bytes="vec", tag="3")]
     pub proof_acked: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="4")]
-    pub proof_height: ::core::option::Option<super::super::client::v1::Height>,
+    pub proof_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     #[prost(string, tag="5")]
     pub signer: ::prost::alloc::string::String,
 }

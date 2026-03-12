@@ -2,7 +2,6 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsAmino, ParamsSDKType, BaseAccount, BaseAccountProtoMsg, BaseAccountAmino, BaseAccountSDKType, ModuleAccount, ModuleAccountProtoMsg, ModuleAccountSDKType } from "./auth";
-import { AbstractAccount, AbstractAccountProtoMsg, AbstractAccountSDKType } from "../../../abstractaccount/v1/account";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** QueryAccountsRequest is the request type for the Query/Accounts RPC method. */
@@ -37,7 +36,7 @@ export interface QueryAccountsRequestSDKType {
 /** QueryAccountsResponse is the response type for the Query/Accounts RPC method. */
 export interface QueryAccountsResponse {
   /** accounts are the existing accounts */
-  accounts: (BaseAccount | AbstractAccount | Any)[] | Any[];
+  accounts: (BaseAccount | Any)[] | Any[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
 }
@@ -46,7 +45,7 @@ export interface QueryAccountsResponseProtoMsg {
   value: Uint8Array;
 }
 export type QueryAccountsResponseEncoded = Omit<QueryAccountsResponse, "accounts"> & {
-  /** accounts are the existing accounts */accounts: (BaseAccountProtoMsg | AbstractAccountProtoMsg | AnyProtoMsg)[];
+  /** accounts are the existing accounts */accounts: (BaseAccountProtoMsg | AnyProtoMsg)[];
 };
 /**
  * QueryAccountsResponse is the response type for the Query/Accounts RPC method.
@@ -70,7 +69,7 @@ export interface QueryAccountsResponseAminoMsg {
 }
 /** QueryAccountsResponse is the response type for the Query/Accounts RPC method. */
 export interface QueryAccountsResponseSDKType {
-  accounts: (BaseAccountSDKType | AbstractAccountSDKType | AnySDKType)[];
+  accounts: (BaseAccountSDKType | AnySDKType)[];
   pagination?: PageResponseSDKType;
 }
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
@@ -105,14 +104,14 @@ export interface QueryAccountRequestSDKType {
 /** QueryAccountResponse is the response type for the Query/Account RPC method. */
 export interface QueryAccountResponse {
   /** account defines the account of the corresponding address. */
-  account?: BaseAccount | AbstractAccount | Any | undefined;
+  account?: BaseAccount | Any | undefined;
 }
 export interface QueryAccountResponseProtoMsg {
   typeUrl: "/cosmos.auth.v1beta1.QueryAccountResponse";
   value: Uint8Array;
 }
 export type QueryAccountResponseEncoded = Omit<QueryAccountResponse, "account"> & {
-  /** account defines the account of the corresponding address. */account?: BaseAccountProtoMsg | AbstractAccountProtoMsg | AnyProtoMsg | undefined;
+  /** account defines the account of the corresponding address. */account?: BaseAccountProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * QueryAccountResponse is the response type for the Query/Account RPC method.
@@ -132,7 +131,7 @@ export interface QueryAccountResponseAminoMsg {
 }
 /** QueryAccountResponse is the response type for the Query/Account RPC method. */
 export interface QueryAccountResponseSDKType {
-  account?: BaseAccountSDKType | AbstractAccountSDKType | AnySDKType | undefined;
+  account?: BaseAccountSDKType | AnySDKType | undefined;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -1927,12 +1926,10 @@ export const QueryAccountInfoResponse = {
     };
   }
 };
-export const Cosmos_authv1beta1AccountI_InterfaceDecoder = (input: BinaryReader | Uint8Array): AbstractAccount | BaseAccount | Any => {
+export const Cosmos_authv1beta1AccountI_InterfaceDecoder = (input: BinaryReader | Uint8Array): BaseAccount | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
-    case "/abstractaccount.v1.AbstractAccount":
-      return AbstractAccount.decode(data.value);
     case "/cosmos.auth.v1beta1.BaseAccount":
       return BaseAccount.decode(data.value);
     default:
@@ -1941,11 +1938,6 @@ export const Cosmos_authv1beta1AccountI_InterfaceDecoder = (input: BinaryReader 
 };
 export const Cosmos_authv1beta1AccountI_FromAmino = (content: AnyAmino): Any => {
   switch (content.type) {
-    case "/abstractaccount.v1.AbstractAccount":
-      return Any.fromPartial({
-        typeUrl: "/abstractaccount.v1.AbstractAccount",
-        value: AbstractAccount.encode(AbstractAccount.fromPartial(AbstractAccount.fromAmino(content.value))).finish()
-      });
     case "cosmos-sdk/BaseAccount":
       return Any.fromPartial({
         typeUrl: "/cosmos.auth.v1beta1.BaseAccount",
@@ -1957,11 +1949,6 @@ export const Cosmos_authv1beta1AccountI_FromAmino = (content: AnyAmino): Any => 
 };
 export const Cosmos_authv1beta1AccountI_ToAmino = (content: Any) => {
   switch (content.typeUrl) {
-    case "/abstractaccount.v1.AbstractAccount":
-      return {
-        type: "/abstractaccount.v1.AbstractAccount",
-        value: AbstractAccount.toAmino(AbstractAccount.decode(content.value, undefined))
-      };
     case "/cosmos.auth.v1beta1.BaseAccount":
       return {
         type: "cosmos-sdk/BaseAccount",

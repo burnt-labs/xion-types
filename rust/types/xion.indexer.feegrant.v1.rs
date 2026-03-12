@@ -24,7 +24,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllowanceResponse {
     /// allowance is a allowance granted for grantee by granter.
     #[prost(message, optional, tag="1")]
-    pub allowance: ::core::option::Option<super::super::super::super::cosmos::feegrant::v1beta1::Grant>,
+    pub allowance: ::core::option::Option<crate::types::cosmos_feegrant_v1beta1::Grant>,
 }
 impl ::prost::Name for QueryAllowanceResponse {
 const NAME: &'static str = "QueryAllowanceResponse";
@@ -42,7 +42,7 @@ pub struct QueryAllowancesRequest {
     pub grantee: ::prost::alloc::string::String,
     /// pagination defines pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllowancesRequest {
 const NAME: &'static str = "QueryAllowancesRequest";
@@ -57,10 +57,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllowancesResponse {
     /// allowances are allowances granted for grantee by granter.
     #[prost(message, repeated, tag="1")]
-    pub allowances: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::feegrant::v1beta1::Grant>,
+    pub allowances: ::prost::alloc::vec::Vec<crate::types::cosmos_feegrant_v1beta1::Grant>,
     /// pagination defines pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllowancesResponse {
 const NAME: &'static str = "QueryAllowancesResponse";
@@ -78,7 +78,7 @@ pub struct QueryAllowancesByGranterRequest {
     pub granter: ::prost::alloc::string::String,
     /// pagination defines pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllowancesByGranterRequest {
 const NAME: &'static str = "QueryAllowancesByGranterRequest";
@@ -93,10 +93,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllowancesByGranterResponse {
     /// allowances that have been issued by the granter.
     #[prost(message, repeated, tag="1")]
-    pub allowances: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::feegrant::v1beta1::Grant>,
+    pub allowances: ::prost::alloc::vec::Vec<crate::types::cosmos_feegrant_v1beta1::Grant>,
     /// pagination defines pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllowancesByGranterResponse {
 const NAME: &'static str = "QueryAllowancesByGranterResponse";

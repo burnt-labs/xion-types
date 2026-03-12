@@ -10,7 +10,7 @@ package cosmos.feegrant.v1beta1
   * @param allowances
   *   allowances are allowance's granted for grantee by granter.
   * @param pagination
-  *   pagination defines an pagination for the response.
+  *   pagination defines a pagination for the response.
   */
 @SerialVersionUID(0L)
 final case class QueryAllowancesResponse(

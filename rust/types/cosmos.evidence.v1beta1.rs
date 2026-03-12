@@ -77,7 +77,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllEvidenceRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllEvidenceRequest {
 const NAME: &'static str = "QueryAllEvidenceRequest";
@@ -95,7 +95,7 @@ pub struct QueryAllEvidenceResponse {
     pub evidence: ::prost::alloc::vec::Vec<::prost_types::Any>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllEvidenceResponse {
 const NAME: &'static str = "QueryAllEvidenceResponse";

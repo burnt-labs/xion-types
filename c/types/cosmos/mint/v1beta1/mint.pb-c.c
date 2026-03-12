@@ -148,7 +148,7 @@ const ProtobufCMessageDescriptor cosmos__mint__v1beta1__minter__descriptor =
   (ProtobufCMessageInit) cosmos__mint__v1beta1__minter__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor cosmos__mint__v1beta1__params__field_descriptors[6] =
+static const ProtobufCFieldDescriptor cosmos__mint__v1beta1__params__field_descriptors[7] =
 {
   {
     "mint_denom",
@@ -222,6 +222,18 @@ static const ProtobufCFieldDescriptor cosmos__mint__v1beta1__params__field_descr
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "max_supply",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Mint__V1beta1__Params, max_supply),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmos__mint__v1beta1__params__field_indices_by_name[] = {
   5,   /* field[5] = blocks_per_year */
@@ -229,12 +241,13 @@ static const unsigned cosmos__mint__v1beta1__params__field_indices_by_name[] = {
   2,   /* field[2] = inflation_max */
   3,   /* field[3] = inflation_min */
   1,   /* field[1] = inflation_rate_change */
+  6,   /* field[6] = max_supply */
   0,   /* field[0] = mint_denom */
 };
 static const ProtobufCIntRange cosmos__mint__v1beta1__params__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor cosmos__mint__v1beta1__params__descriptor =
 {
@@ -244,7 +257,7 @@ const ProtobufCMessageDescriptor cosmos__mint__v1beta1__params__descriptor =
   "Cosmos__Mint__V1beta1__Params",
   "cosmos.mint.v1beta1",
   sizeof(Cosmos__Mint__V1beta1__Params),
-  6,
+  7,
   cosmos__mint__v1beta1__params__field_descriptors,
   cosmos__mint__v1beta1__params__field_indices_by_name,
   1,  cosmos__mint__v1beta1__params__number_ranges,

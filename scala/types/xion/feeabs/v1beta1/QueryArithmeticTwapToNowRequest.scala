@@ -6,6 +6,15 @@
 package xion.feeabs.v1beta1
 
 /** QueryArithmeticTwapToNowRequest
+  *
+  * @param poolId
+  *   pool_id defines the pool identifier
+  * @param baseAsset
+  *   base_asset defines the base asset for the TWAP calculation
+  * @param quoteAsset
+  *   quote_asset defines the quote asset for the TWAP calculation
+  * @param startTime
+  *   start_time defines the start time for the TWAP calculation
   */
 @SerialVersionUID(0L)
 final case class QueryArithmeticTwapToNowRequest(

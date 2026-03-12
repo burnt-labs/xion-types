@@ -34,7 +34,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Ledger {
         #[prost(message, optional, tag="1")]
-        pub path: ::core::option::Option<super::super::super::hd::v1::Bip44Params>,
+        pub path: ::core::option::Option<crate::types::cosmos_crypto_hd_v1::Bip44Params>,
     }
 impl ::prost::Name for Ledger {
 const NAME: &'static str = "Ledger";

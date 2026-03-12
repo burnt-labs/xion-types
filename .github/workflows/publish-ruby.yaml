@@ -23,18 +23,7 @@ jobs:
           ruby-version: "3.3"
 
       - name: Build gem
-        env:
-          VERSION: ${{ inputs.release_tag }}
-        run: |
-          VERSION="${VERSION#v}"
-          cd ruby
-
-          # Stamp version
-          sed -i "s/VERSION = .*/VERSION = \"$VERSION\"/" lib/xion_types/version.rb
-
-          bundle install
-          gem build xion_types.gemspec
-          echo "✅ Gem built: $(ls *.gem)"
+        run: bash scripts/ci/ruby.sh "${{ inputs.release_tag }}"
 
       - name: Upload gem
         uses: actions/upload-artifact@v4
@@ -94,5 +83,5 @@ jobs:
         run: |
           mkdir -p ~/.gem
           printf -- "---\n:rubygems_api_key: %s\n" "$RUBYGEMS_API_KEY" > ~/.gem/credentials
-          chmod 600 ~/.gem/credentials
+          chmod 0600 ~/.gem/credentials
           gem push gem/*.gem

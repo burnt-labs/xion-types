@@ -8,7 +8,7 @@ package cosmos.authz.v1beta1
 /** QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method.
   *
   * @param pagination
-  *   pagination defines an pagination for the request.
+  *   pagination defines a pagination for the request.
   */
 @SerialVersionUID(0L)
 final case class QueryGranterGrantsRequest(

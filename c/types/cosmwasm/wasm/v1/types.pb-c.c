@@ -648,20 +648,8 @@ static const ProtobufCFieldDescriptor cosmwasm__wasm__v1__contract_info__field_d
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "ibc2_port_id",
-    7,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Cosmwasm__Wasm__V1__ContractInfo, ibc2_port_id),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
     "extension",
-    8,
+    7,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
@@ -671,14 +659,26 @@ static const ProtobufCFieldDescriptor cosmwasm__wasm__v1__contract_info__field_d
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "ibc2_port_id",
+    8,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmwasm__Wasm__V1__ContractInfo, ibc2_port_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmwasm__wasm__v1__contract_info__field_indices_by_name[] = {
   2,   /* field[2] = admin */
   0,   /* field[0] = code_id */
   4,   /* field[4] = created */
   1,   /* field[1] = creator */
-  7,   /* field[7] = extension */
-  6,   /* field[6] = ibc2_port_id */
+  6,   /* field[6] = extension */
+  7,   /* field[7] = ibc2_port_id */
   5,   /* field[5] = ibc_port_id */
   3,   /* field[3] = label */
 };

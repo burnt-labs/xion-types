@@ -18,7 +18,7 @@ pub struct QueryParamsResponse {
     /// Please note that `params.version` is not populated in this response, it is
     /// tracked separately in the x/upgrade module.
     #[prost(message, optional, tag="1")]
-    pub params: ::core::option::Option<super::super::super::tendermint::types::ConsensusParams>,
+    pub params: ::core::option::Option<crate::types::tendermint_types::ConsensusParams>,
 }
 impl ::prost::Name for QueryParamsResponse {
 const NAME: &'static str = "QueryParamsResponse";
@@ -39,13 +39,13 @@ pub struct MsgUpdateParams {
     ///
     /// NOTE: All parameters must be supplied.
     #[prost(message, optional, tag="2")]
-    pub block: ::core::option::Option<super::super::super::tendermint::types::BlockParams>,
+    pub block: ::core::option::Option<crate::types::tendermint_types::BlockParams>,
     #[prost(message, optional, tag="3")]
-    pub evidence: ::core::option::Option<super::super::super::tendermint::types::EvidenceParams>,
+    pub evidence: ::core::option::Option<crate::types::tendermint_types::EvidenceParams>,
     #[prost(message, optional, tag="4")]
-    pub validator: ::core::option::Option<super::super::super::tendermint::types::ValidatorParams>,
+    pub validator: ::core::option::Option<crate::types::tendermint_types::ValidatorParams>,
     #[prost(message, optional, tag="5")]
-    pub abci: ::core::option::Option<super::super::super::tendermint::types::AbciParams>,
+    pub abci: ::core::option::Option<crate::types::tendermint_types::AbciParams>,
 }
 impl ::prost::Name for MsgUpdateParams {
 const NAME: &'static str = "MsgUpdateParams";

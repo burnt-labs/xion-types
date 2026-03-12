@@ -10,6 +10,8 @@ package xion.v1
   * @param inputs
   *   Inputs, despite being `repeated`, only allows one sender input. This is
   *   checked in MsgMultiSend's ValidateBasic.
+  * @param outputs
+  *   The outputs specifying recipient addresses and amounts
   */
 @SerialVersionUID(0L)
 final case class MsgMultiSend(

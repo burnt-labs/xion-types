@@ -67,12 +67,12 @@ static const ProtobufCFieldDescriptor xion__jwk__v1__genesis_state__field_descri
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "audienceList",
+    "audience_list",
     2,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Xion__Jwk__V1__GenesisState, n_audiencelist),
-    offsetof(Xion__Jwk__V1__GenesisState, audiencelist),
+    offsetof(Xion__Jwk__V1__GenesisState, n_audience_list),
+    offsetof(Xion__Jwk__V1__GenesisState, audience_list),
     &xion__jwk__v1__audience__descriptor,
     NULL,
     0,             /* flags */
@@ -80,7 +80,7 @@ static const ProtobufCFieldDescriptor xion__jwk__v1__genesis_state__field_descri
   },
 };
 static const unsigned xion__jwk__v1__genesis_state__field_indices_by_name[] = {
-  1,   /* field[1] = audienceList */
+  1,   /* field[1] = audience_list */
   0,   /* field[0] = params */
 };
 static const ProtobufCIntRange xion__jwk__v1__genesis_state__number_ranges[1 + 1] =

@@ -140,7 +140,9 @@ export interface EpochInfoSDKType {
 }
 /** ExponentialBackoff defines backoff epoch */
 export interface ExponentialBackoff {
+  /** jump defines the exponential backoff multiplier */
   jump: bigint;
+  /** future_epoch defines the target epoch for the backoff */
   futureEpoch: bigint;
 }
 export interface ExponentialBackoffProtoMsg {
@@ -154,7 +156,13 @@ export interface ExponentialBackoffProtoMsg {
  * @see proto type: xion.feeabs.v1beta1.ExponentialBackoff
  */
 export interface ExponentialBackoffAmino {
+  /**
+   * jump defines the exponential backoff multiplier
+   */
   jump?: string;
+  /**
+   * future_epoch defines the target epoch for the backoff
+   */
   future_epoch?: string;
 }
 export interface ExponentialBackoffAminoMsg {

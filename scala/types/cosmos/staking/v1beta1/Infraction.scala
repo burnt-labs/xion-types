@@ -5,7 +5,7 @@
 
 package cosmos.staking.v1beta1
 
-/** Infraction indicates the infraction a validator commited.
+/** Infraction indicates the infraction a validator committed.
   */
 sealed abstract class Infraction(val value: _root_.scala.Int) extends _root_.scalapb.GeneratedEnum {
   type EnumType = cosmos.staking.v1beta1.Infraction

@@ -5,6 +5,12 @@
 
 package xion.jwk.v1
 
+/** QueryGetAudienceClaimResponse is the legacy response type for querying an
+  * audience claim (deprecated)
+  *
+  * @param claim
+  *   The audience claim
+  */
 @SerialVersionUID(0L)
 final case class QueryGetAudienceClaimResponse(
     claim: _root_.scala.Option[xion.jwk.v1.AudienceClaim] = _root_.scala.None,
@@ -92,8 +98,8 @@ object QueryGetAudienceClaimResponse extends scalapb.GeneratedMessageCompanion[x
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(3)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(3)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(5)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(5)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
     var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
     (__number: @_root_.scala.unchecked) match {

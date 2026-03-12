@@ -8,7 +8,7 @@ package cosmos.feegrant.v1beta1
 /** QueryAllowancesRequest is the request type for the Query/Allowances RPC method.
   *
   * @param pagination
-  *   pagination defines an pagination for the request.
+  *   pagination defines a pagination for the request.
   */
 @SerialVersionUID(0L)
 final case class QueryAllowancesRequest(

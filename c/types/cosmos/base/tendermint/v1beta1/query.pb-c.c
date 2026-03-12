@@ -862,6 +862,186 @@ void   cosmos__base__tendermint__v1beta1__proof_ops__free_unpacked
   assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__proof_ops__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   cosmos__base__tendermint__v1beta1__get_block_results_request__init
+                     (Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest         *message)
+{
+  static const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest init_value = COSMOS__BASE__TENDERMINT__V1BETA1__GET_BLOCK_RESULTS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t cosmos__base__tendermint__v1beta1__get_block_results_request__get_packed_size
+                     (const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *message)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__base__tendermint__v1beta1__get_block_results_request__pack
+                     (const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__base__tendermint__v1beta1__get_block_results_request__pack_to_buffer
+                     (const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *
+       cosmos__base__tendermint__v1beta1__get_block_results_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *)
+     protobuf_c_message_unpack (&cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__base__tendermint__v1beta1__get_block_results_request__free_unpacked
+                     (Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__base__tendermint__v1beta1__get_latest_block_results_request__init
+                     (Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest         *message)
+{
+  static const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest init_value = COSMOS__BASE__TENDERMINT__V1BETA1__GET_LATEST_BLOCK_RESULTS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t cosmos__base__tendermint__v1beta1__get_latest_block_results_request__get_packed_size
+                     (const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *message)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__base__tendermint__v1beta1__get_latest_block_results_request__pack
+                     (const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__base__tendermint__v1beta1__get_latest_block_results_request__pack_to_buffer
+                     (const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *
+       cosmos__base__tendermint__v1beta1__get_latest_block_results_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *)
+     protobuf_c_message_unpack (&cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__base__tendermint__v1beta1__get_latest_block_results_request__free_unpacked
+                     (Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__base__tendermint__v1beta1__get_block_results_response__init
+                     (Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse         *message)
+{
+  static const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse init_value = COSMOS__BASE__TENDERMINT__V1BETA1__GET_BLOCK_RESULTS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t cosmos__base__tendermint__v1beta1__get_block_results_response__get_packed_size
+                     (const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse *message)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__base__tendermint__v1beta1__get_block_results_response__pack
+                     (const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__base__tendermint__v1beta1__get_block_results_response__pack_to_buffer
+                     (const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse *
+       cosmos__base__tendermint__v1beta1__get_block_results_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse *)
+     protobuf_c_message_unpack (&cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__base__tendermint__v1beta1__get_block_results_response__free_unpacked
+                     (Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__base__tendermint__v1beta1__get_latest_block_results_response__init
+                     (Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse         *message)
+{
+  static const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse init_value = COSMOS__BASE__TENDERMINT__V1BETA1__GET_LATEST_BLOCK_RESULTS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t cosmos__base__tendermint__v1beta1__get_latest_block_results_response__get_packed_size
+                     (const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse *message)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__base__tendermint__v1beta1__get_latest_block_results_response__pack
+                     (const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__base__tendermint__v1beta1__get_latest_block_results_response__pack_to_buffer
+                     (const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse *
+       cosmos__base__tendermint__v1beta1__get_latest_block_results_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse *)
+     protobuf_c_message_unpack (&cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__base__tendermint__v1beta1__get_latest_block_results_response__free_unpacked
+                     (Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_validator_set_by_height_request__field_descriptors[2] =
 {
   {
@@ -1358,7 +1538,7 @@ const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_syncing_
   (ProtobufCMessageInit) cosmos__base__tendermint__v1beta1__get_syncing_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_syncing_response__field_descriptors[1] =
+static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_syncing_response__field_descriptors[3] =
 {
   {
     "syncing",
@@ -1372,14 +1552,40 @@ static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_syn
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "earliest_block_height",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetSyncingResponse, earliest_block_height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "latest_block_height",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetSyncingResponse, latest_block_height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmos__base__tendermint__v1beta1__get_syncing_response__field_indices_by_name[] = {
+  1,   /* field[1] = earliest_block_height */
+  2,   /* field[2] = latest_block_height */
   0,   /* field[0] = syncing */
 };
 static const ProtobufCIntRange cosmos__base__tendermint__v1beta1__get_syncing_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_syncing_response__descriptor =
 {
@@ -1389,7 +1595,7 @@ const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_syncing_
   "Cosmos__Base__Tendermint__V1beta1__GetSyncingResponse",
   "cosmos.base.tendermint.v1beta1",
   sizeof(Cosmos__Base__Tendermint__V1beta1__GetSyncingResponse),
-  1,
+  3,
   cosmos__base__tendermint__v1beta1__get_syncing_response__field_descriptors,
   cosmos__base__tendermint__v1beta1__get_syncing_response__field_indices_by_name,
   1,  cosmos__base__tendermint__v1beta1__get_syncing_response__number_ranges,
@@ -1980,7 +2186,269 @@ const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__proof_ops__d
   (ProtobufCMessageInit) cosmos__base__tendermint__v1beta1__proof_ops__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor cosmos__base__tendermint__v1beta1__service__method_descriptors[7] =
+static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_block_results_request__field_descriptors[1] =
+{
+  {
+    "height",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest, height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__base__tendermint__v1beta1__get_block_results_request__field_indices_by_name[] = {
+  0,   /* field[0] = height */
+};
+static const ProtobufCIntRange cosmos__base__tendermint__v1beta1__get_block_results_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.base.tendermint.v1beta1.GetBlockResultsRequest",
+  "GetBlockResultsRequest",
+  "Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest",
+  "cosmos.base.tendermint.v1beta1",
+  sizeof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest),
+  1,
+  cosmos__base__tendermint__v1beta1__get_block_results_request__field_descriptors,
+  cosmos__base__tendermint__v1beta1__get_block_results_request__field_indices_by_name,
+  1,  cosmos__base__tendermint__v1beta1__get_block_results_request__number_ranges,
+  (ProtobufCMessageInit) cosmos__base__tendermint__v1beta1__get_block_results_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define cosmos__base__tendermint__v1beta1__get_latest_block_results_request__field_descriptors NULL
+#define cosmos__base__tendermint__v1beta1__get_latest_block_results_request__field_indices_by_name NULL
+#define cosmos__base__tendermint__v1beta1__get_latest_block_results_request__number_ranges NULL
+const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.base.tendermint.v1beta1.GetLatestBlockResultsRequest",
+  "GetLatestBlockResultsRequest",
+  "Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest",
+  "cosmos.base.tendermint.v1beta1",
+  sizeof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest),
+  0,
+  cosmos__base__tendermint__v1beta1__get_latest_block_results_request__field_descriptors,
+  cosmos__base__tendermint__v1beta1__get_latest_block_results_request__field_indices_by_name,
+  0,  cosmos__base__tendermint__v1beta1__get_latest_block_results_request__number_ranges,
+  (ProtobufCMessageInit) cosmos__base__tendermint__v1beta1__get_latest_block_results_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_block_results_response__field_descriptors[6] =
+{
+  {
+    "height",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "txs_results",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, n_txs_results),
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, txs_results),
+    &tendermint__abci__exec_tx_result__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "finalize_block_events",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, n_finalize_block_events),
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, finalize_block_events),
+    &tendermint__abci__event__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "validator_updates",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, n_validator_updates),
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, validator_updates),
+    &tendermint__abci__validator_update__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "consensus_param_updates",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, consensus_param_updates),
+    &tendermint__types__consensus_params__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "app_hash",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse, app_hash),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__base__tendermint__v1beta1__get_block_results_response__field_indices_by_name[] = {
+  5,   /* field[5] = app_hash */
+  4,   /* field[4] = consensus_param_updates */
+  2,   /* field[2] = finalize_block_events */
+  0,   /* field[0] = height */
+  1,   /* field[1] = txs_results */
+  3,   /* field[3] = validator_updates */
+};
+static const ProtobufCIntRange cosmos__base__tendermint__v1beta1__get_block_results_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 6 }
+};
+const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.base.tendermint.v1beta1.GetBlockResultsResponse",
+  "GetBlockResultsResponse",
+  "Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse",
+  "cosmos.base.tendermint.v1beta1",
+  sizeof(Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse),
+  6,
+  cosmos__base__tendermint__v1beta1__get_block_results_response__field_descriptors,
+  cosmos__base__tendermint__v1beta1__get_block_results_response__field_indices_by_name,
+  1,  cosmos__base__tendermint__v1beta1__get_block_results_response__number_ranges,
+  (ProtobufCMessageInit) cosmos__base__tendermint__v1beta1__get_block_results_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__base__tendermint__v1beta1__get_latest_block_results_response__field_descriptors[6] =
+{
+  {
+    "height",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "txs_results",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, n_txs_results),
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, txs_results),
+    &tendermint__abci__exec_tx_result__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "finalize_block_events",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, n_finalize_block_events),
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, finalize_block_events),
+    &tendermint__abci__event__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "validator_updates",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, n_validator_updates),
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, validator_updates),
+    &tendermint__abci__validator_update__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "consensus_param_updates",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, consensus_param_updates),
+    &tendermint__types__consensus_params__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "app_hash",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse, app_hash),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__base__tendermint__v1beta1__get_latest_block_results_response__field_indices_by_name[] = {
+  5,   /* field[5] = app_hash */
+  4,   /* field[4] = consensus_param_updates */
+  2,   /* field[2] = finalize_block_events */
+  0,   /* field[0] = height */
+  1,   /* field[1] = txs_results */
+  3,   /* field[3] = validator_updates */
+};
+static const ProtobufCIntRange cosmos__base__tendermint__v1beta1__get_latest_block_results_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 6 }
+};
+const ProtobufCMessageDescriptor cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.base.tendermint.v1beta1.GetLatestBlockResultsResponse",
+  "GetLatestBlockResultsResponse",
+  "Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse",
+  "cosmos.base.tendermint.v1beta1",
+  sizeof(Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse),
+  6,
+  cosmos__base__tendermint__v1beta1__get_latest_block_results_response__field_descriptors,
+  cosmos__base__tendermint__v1beta1__get_latest_block_results_response__field_indices_by_name,
+  1,  cosmos__base__tendermint__v1beta1__get_latest_block_results_response__number_ranges,
+  (ProtobufCMessageInit) cosmos__base__tendermint__v1beta1__get_latest_block_results_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor cosmos__base__tendermint__v1beta1__service__method_descriptors[9] =
 {
   { "GetNodeInfo", &cosmos__base__tendermint__v1beta1__get_node_info_request__descriptor, &cosmos__base__tendermint__v1beta1__get_node_info_response__descriptor },
   { "GetSyncing", &cosmos__base__tendermint__v1beta1__get_syncing_request__descriptor, &cosmos__base__tendermint__v1beta1__get_syncing_response__descriptor },
@@ -1989,11 +2457,15 @@ static const ProtobufCMethodDescriptor cosmos__base__tendermint__v1beta1__servic
   { "GetLatestValidatorSet", &cosmos__base__tendermint__v1beta1__get_latest_validator_set_request__descriptor, &cosmos__base__tendermint__v1beta1__get_latest_validator_set_response__descriptor },
   { "GetValidatorSetByHeight", &cosmos__base__tendermint__v1beta1__get_validator_set_by_height_request__descriptor, &cosmos__base__tendermint__v1beta1__get_validator_set_by_height_response__descriptor },
   { "ABCIQuery", &cosmos__base__tendermint__v1beta1__abciquery_request__descriptor, &cosmos__base__tendermint__v1beta1__abciquery_response__descriptor },
+  { "GetLatestBlockResults", &cosmos__base__tendermint__v1beta1__get_latest_block_results_request__descriptor, &cosmos__base__tendermint__v1beta1__get_latest_block_results_response__descriptor },
+  { "GetBlockResults", &cosmos__base__tendermint__v1beta1__get_block_results_request__descriptor, &cosmos__base__tendermint__v1beta1__get_block_results_response__descriptor },
 };
 const unsigned cosmos__base__tendermint__v1beta1__service__method_indices_by_name[] = {
   6,        /* ABCIQuery */
   3,        /* GetBlockByHeight */
+  8,        /* GetBlockResults */
   2,        /* GetLatestBlock */
+  7,        /* GetLatestBlockResults */
   4,        /* GetLatestValidatorSet */
   0,        /* GetNodeInfo */
   1,        /* GetSyncing */
@@ -2006,7 +2478,7 @@ const ProtobufCServiceDescriptor cosmos__base__tendermint__v1beta1__service__des
   "Service",
   "Cosmos__Base__Tendermint__V1beta1__Service",
   "cosmos.base.tendermint.v1beta1",
-  7,
+  9,
   cosmos__base__tendermint__v1beta1__service__method_descriptors,
   cosmos__base__tendermint__v1beta1__service__method_indices_by_name
 };
@@ -2065,6 +2537,22 @@ void cosmos__base__tendermint__v1beta1__service__abciquery(ProtobufCService *ser
 {
   assert(service->descriptor == &cosmos__base__tendermint__v1beta1__service__descriptor);
   service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void cosmos__base__tendermint__v1beta1__service__get_latest_block_results(ProtobufCService *service,
+                                                                          const Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsRequest *input,
+                                                                          Cosmos__Base__Tendermint__V1beta1__GetLatestBlockResultsResponse_Closure closure,
+                                                                          void *closure_data)
+{
+  assert(service->descriptor == &cosmos__base__tendermint__v1beta1__service__descriptor);
+  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void cosmos__base__tendermint__v1beta1__service__get_block_results(ProtobufCService *service,
+                                                                   const Cosmos__Base__Tendermint__V1beta1__GetBlockResultsRequest *input,
+                                                                   Cosmos__Base__Tendermint__V1beta1__GetBlockResultsResponse_Closure closure,
+                                                                   void *closure_data)
+{
+  assert(service->descriptor == &cosmos__base__tendermint__v1beta1__service__descriptor);
+  service->invoke(service, 8, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void cosmos__base__tendermint__v1beta1__service__init (Cosmos__Base__Tendermint__V1beta1__Service_Service *service,
                                                        Cosmos__Base__Tendermint__V1beta1__Service_ServiceDestroy destroy)

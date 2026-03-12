@@ -206,7 +206,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryClientStatesRequest {
     /// pagination request
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryClientStatesRequest {
 const NAME: &'static str = "QueryClientStatesRequest";
@@ -224,7 +224,7 @@ pub struct QueryClientStatesResponse {
     pub client_states: ::prost::alloc::vec::Vec<IdentifiedClientState>,
     /// pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryClientStatesResponse {
 const NAME: &'static str = "QueryClientStatesResponse";
@@ -289,7 +289,7 @@ pub struct QueryConsensusStatesRequest {
     pub client_id: ::prost::alloc::string::String,
     /// pagination request
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryConsensusStatesRequest {
 const NAME: &'static str = "QueryConsensusStatesRequest";
@@ -307,7 +307,7 @@ pub struct QueryConsensusStatesResponse {
     pub consensus_states: ::prost::alloc::vec::Vec<ConsensusStateWithHeight>,
     /// pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryConsensusStatesResponse {
 const NAME: &'static str = "QueryConsensusStatesResponse";
@@ -325,7 +325,7 @@ pub struct QueryConsensusStateHeightsRequest {
     pub client_id: ::prost::alloc::string::String,
     /// pagination request
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryConsensusStateHeightsRequest {
 const NAME: &'static str = "QueryConsensusStateHeightsRequest";
@@ -343,7 +343,7 @@ pub struct QueryConsensusStateHeightsResponse {
     pub consensus_state_heights: ::prost::alloc::vec::Vec<Height>,
     /// pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryConsensusStateHeightsResponse {
 const NAME: &'static str = "QueryConsensusStateHeightsResponse";
@@ -515,7 +515,7 @@ pub struct QueryVerifyMembershipRequest {
     pub block_delay: u64,
     /// the commitment key path.
     #[prost(message, optional, tag="8")]
-    pub merkle_path: ::core::option::Option<super::super::commitment::v2::MerklePath>,
+    pub merkle_path: ::core::option::Option<crate::types::ibc_core_commitment_v2::MerklePath>,
 }
 impl ::prost::Name for QueryVerifyMembershipRequest {
 const NAME: &'static str = "QueryVerifyMembershipRequest";
@@ -716,7 +716,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgIbcSoftwareUpgrade {
     #[prost(message, optional, tag="1")]
-    pub plan: ::core::option::Option<super::super::super::super::cosmos::upgrade::v1beta1::Plan>,
+    pub plan: ::core::option::Option<crate::types::cosmos_upgrade_v1beta1::Plan>,
     /// An UpgradedClientState must be provided to perform an IBC breaking upgrade.
     /// This will make the chain commit to the correct upgraded (self) client state
     /// before the upgrade occurs, so that connecting chains can verify that the

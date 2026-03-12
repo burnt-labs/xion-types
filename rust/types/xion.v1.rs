@@ -57,7 +57,7 @@ pub struct GenesisState {
     pub platform_percentage: u32,
     /// Minimum amounts required for platform operations
     #[prost(message, repeated, tag="2")]
-    pub platform_minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub platform_minimums: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for GenesisState {
 const NAME: &'static str = "GenesisState";
@@ -189,7 +189,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryPlatformMinimumResponse {
     /// The minimum fees required by the platform
     #[prost(message, repeated, tag="3")]
-    pub minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub minimums: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for QueryPlatformMinimumResponse {
 const NAME: &'static str = "QueryPlatformMinimumResponse";
@@ -209,7 +209,7 @@ pub struct MsgSend {
     pub to_address: ::prost::alloc::string::String,
     /// The amount of coins to send
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgSend {
 const NAME: &'static str = "MsgSend";
@@ -235,10 +235,10 @@ pub struct MsgMultiSend {
     /// Inputs, despite being `repeated`, only allows one sender input. This is
     /// checked in MsgMultiSend's ValidateBasic.
     #[prost(message, repeated, tag="1")]
-    pub inputs: ::prost::alloc::vec::Vec<super::super::cosmos::bank::v1beta1::Input>,
+    pub inputs: ::prost::alloc::vec::Vec<crate::types::cosmos_bank_v1beta1::Input>,
     /// The outputs specifying recipient addresses and amounts
     #[prost(message, repeated, tag="2")]
-    pub outputs: ::prost::alloc::vec::Vec<super::super::cosmos::bank::v1beta1::Output>,
+    pub outputs: ::prost::alloc::vec::Vec<crate::types::cosmos_bank_v1beta1::Output>,
 }
 impl ::prost::Name for MsgMultiSend {
 const NAME: &'static str = "MsgMultiSend";
@@ -295,7 +295,7 @@ pub struct MsgSetPlatformMinimum {
     pub authority: ::prost::alloc::string::String,
     /// The minimum fees required by the platform
     #[prost(message, repeated, tag="3")]
-    pub minimums: ::prost::alloc::vec::Vec<super::super::cosmos::base::v1beta1::Coin>,
+    pub minimums: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgSetPlatformMinimum {
 const NAME: &'static str = "MsgSetPlatformMinimum";

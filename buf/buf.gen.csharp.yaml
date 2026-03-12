@@ -2,4 +2,6 @@ version: v2
 plugins:
   - protoc_builtin: csharp
     out: csharp/types
+    opt:
+      - base_namespace=
 

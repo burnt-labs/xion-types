@@ -6,6 +6,9 @@
 package xion.feeabs.v1beta1
 
 /** QueryHostChainConfigResponse
+  *
+  * @param hostChainConfig
+  *   The host chain fee abstraction configuration
   */
 @SerialVersionUID(0L)
 final case class QueryHostChainConfigResponse(

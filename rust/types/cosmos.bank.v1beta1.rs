@@ -1,22 +1,4 @@
 // @generated
-/// SendAuthorization allows the grantee to spend up to spend_limit coins from
-/// the granter's account.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SendAuthorization {
-    #[prost(message, repeated, tag="1")]
-    pub spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
-    /// allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
-    /// granter. If omitted, any recipient is allowed.
-    #[prost(string, repeated, tag="2")]
-    pub allow_list: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-impl ::prost::Name for SendAuthorization {
-const NAME: &'static str = "SendAuthorization";
-const PACKAGE: &'static str = "cosmos.bank.v1beta1";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("cosmos.bank.v1beta1.{}", Self::NAME)
-            }}
 /// Params defines the parameters for the bank module.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -61,7 +43,7 @@ pub struct Input {
     #[prost(string, tag="1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub coins: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Input {
 const NAME: &'static str = "Input";
@@ -76,7 +58,7 @@ pub struct Output {
     #[prost(string, tag="1")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub coins: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Output {
 const NAME: &'static str = "Output";
@@ -91,7 +73,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Supply {
     #[prost(message, repeated, tag="1")]
-    pub total: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub total: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Supply {
 const NAME: &'static str = "Supply";
@@ -162,6 +144,24 @@ const PACKAGE: &'static str = "cosmos.bank.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.bank.v1beta1.{}", Self::NAME)
             }}
+/// SendAuthorization allows the grantee to spend up to spend_limit coins from
+/// the granter's account.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SendAuthorization {
+    #[prost(message, repeated, tag="1")]
+    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
+    /// allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
+    /// granter. If omitted, any recipient is allowed.
+    #[prost(string, repeated, tag="2")]
+    pub allow_list: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for SendAuthorization {
+const NAME: &'static str = "SendAuthorization";
+const PACKAGE: &'static str = "cosmos.bank.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.bank.v1beta1.{}", Self::NAME)
+            }}
 /// GenesisState defines the bank module's genesis state.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -175,7 +175,7 @@ pub struct GenesisState {
     /// supply represents the total supply. If it is left empty, then supply will be calculated based on the provided
     /// balances. Otherwise, it will be used to validate that the sum of the balances equals this amount.
     #[prost(message, repeated, tag="3")]
-    pub supply: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub supply: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// denom_metadata defines the metadata of the different coins.
     #[prost(message, repeated, tag="4")]
     pub denom_metadata: ::prost::alloc::vec::Vec<Metadata>,
@@ -199,7 +199,7 @@ pub struct Balance {
     pub address: ::prost::alloc::string::String,
     /// coins defines the different coins this balance holds.
     #[prost(message, repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub coins: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Balance {
 const NAME: &'static str = "Balance";
@@ -230,7 +230,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryBalanceResponse {
     /// balance is the balance of the coin.
     #[prost(message, optional, tag="1")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for QueryBalanceResponse {
 const NAME: &'static str = "QueryBalanceResponse";
@@ -247,7 +247,7 @@ pub struct QueryAllBalancesRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
     /// resolve_denom is the flag to resolve the denom into a human-readable form from the metadata.
     #[prost(bool, tag="3")]
     pub resolve_denom: bool,
@@ -265,10 +265,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllBalancesResponse {
     /// balances is the balances of all the coins.
     #[prost(message, repeated, tag="1")]
-    pub balances: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub balances: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllBalancesResponse {
 const NAME: &'static str = "QueryAllBalancesResponse";
@@ -286,7 +286,7 @@ pub struct QuerySpendableBalancesRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QuerySpendableBalancesRequest {
 const NAME: &'static str = "QuerySpendableBalancesRequest";
@@ -301,10 +301,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QuerySpendableBalancesResponse {
     /// balances is the spendable balances of all the coins.
     #[prost(message, repeated, tag="1")]
-    pub balances: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub balances: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QuerySpendableBalancesResponse {
 const NAME: &'static str = "QuerySpendableBalancesResponse";
@@ -337,7 +337,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QuerySpendableBalanceByDenomResponse {
     /// balance is the balance of the coin.
     #[prost(message, optional, tag="1")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for QuerySpendableBalanceByDenomResponse {
 const NAME: &'static str = "QuerySpendableBalanceByDenomResponse";
@@ -352,7 +352,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryTotalSupplyRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryTotalSupplyRequest {
 const NAME: &'static str = "QueryTotalSupplyRequest";
@@ -367,10 +367,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryTotalSupplyResponse {
     /// supply is the supply of the coins
     #[prost(message, repeated, tag="1")]
-    pub supply: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub supply: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryTotalSupplyResponse {
 const NAME: &'static str = "QueryTotalSupplyResponse";
@@ -398,7 +398,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QuerySupplyOfResponse {
     /// amount is the supply of the coin.
     #[prost(message, optional, tag="1")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for QuerySupplyOfResponse {
 const NAME: &'static str = "QuerySupplyOfResponse";
@@ -437,7 +437,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryDenomsMetadataRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDenomsMetadataRequest {
 const NAME: &'static str = "QueryDenomsMetadataRequest";
@@ -455,7 +455,7 @@ pub struct QueryDenomsMetadataResponse {
     pub metadatas: ::prost::alloc::vec::Vec<Metadata>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDenomsMetadataResponse {
 const NAME: &'static str = "QueryDenomsMetadataResponse";
@@ -533,7 +533,7 @@ pub struct QueryDenomOwnersRequest {
     pub denom: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDenomOwnersRequest {
 const NAME: &'static str = "QueryDenomOwnersRequest";
@@ -552,7 +552,7 @@ pub struct DenomOwner {
     pub address: ::prost::alloc::string::String,
     /// balance is the balance of the denominated coin for an account.
     #[prost(message, optional, tag="2")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for DenomOwner {
 const NAME: &'static str = "DenomOwner";
@@ -568,7 +568,7 @@ pub struct QueryDenomOwnersResponse {
     pub denom_owners: ::prost::alloc::vec::Vec<DenomOwner>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDenomOwnersResponse {
 const NAME: &'static str = "QueryDenomOwnersResponse";
@@ -587,7 +587,7 @@ pub struct QueryDenomOwnersByQueryRequest {
     pub denom: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDenomOwnersByQueryRequest {
 const NAME: &'static str = "QueryDenomOwnersByQueryRequest";
@@ -603,7 +603,7 @@ pub struct QueryDenomOwnersByQueryResponse {
     pub denom_owners: ::prost::alloc::vec::Vec<DenomOwner>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDenomOwnersByQueryResponse {
 const NAME: &'static str = "QueryDenomOwnersByQueryResponse";
@@ -621,7 +621,7 @@ pub struct QuerySendEnabledRequest {
     /// pagination defines an optional pagination for the request. This field is
     /// only read if the denoms field is empty.
     #[prost(message, optional, tag="99")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QuerySendEnabledRequest {
 const NAME: &'static str = "QuerySendEnabledRequest";
@@ -638,7 +638,7 @@ pub struct QuerySendEnabledResponse {
     /// pagination defines the pagination in the response. This field is only
     /// populated if the denoms field in the request is empty.
     #[prost(message, optional, tag="99")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QuerySendEnabledResponse {
 const NAME: &'static str = "QuerySendEnabledResponse";
@@ -655,7 +655,7 @@ pub struct MsgSend {
     #[prost(string, tag="2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgSend {
 const NAME: &'static str = "MsgSend";

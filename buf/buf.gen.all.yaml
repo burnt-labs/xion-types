@@ -52,5 +52,5 @@ plugins:
 
   # TypeScript
   # - local: protoc-gen-ts_proto
-  #   out: ts/types
+  #   out: ts-proto/types
   #   opt: "esModuleInterop=true,forceLong=long,useOptionals=messages,outputClientImpl=grpc-web"

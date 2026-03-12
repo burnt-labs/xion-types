@@ -6,6 +6,10 @@
 package xion.feeabs.v1beta1
 
 /** QueryArithmeticTwapToNowResponse
+  *
+  * @param arithmeticTwap
+  *   arithmetic_twap defines the calculated arithmetic time-weighted average
+  *   price
   */
 @SerialVersionUID(0L)
 final case class QueryArithmeticTwapToNowResponse(

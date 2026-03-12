@@ -5,6 +5,12 @@
 
 package xion.v1
 
+/** QueryPlatformPercentageResponse is the response type for querying platform
+  * percentage
+  *
+  * @param platformPercentage
+  *   The platform percentage fee
+  */
 @SerialVersionUID(0L)
 final case class QueryPlatformPercentageResponse(
     platformPercentage: _root_.scala.Long = 0L,

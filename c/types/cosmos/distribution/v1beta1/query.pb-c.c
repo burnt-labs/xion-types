@@ -907,6 +907,276 @@ void   cosmos__distribution__v1beta1__query_community_pool_response__free_unpack
   assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_community_pool_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   cosmos__distribution__v1beta1__query_validator_historical_rewards_request__init
+                     (Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest         *message)
+{
+  static const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest init_value = COSMOS__DISTRIBUTION__V1BETA1__QUERY_VALIDATOR_HISTORICAL_REWARDS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t cosmos__distribution__v1beta1__query_validator_historical_rewards_request__get_packed_size
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *message)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__distribution__v1beta1__query_validator_historical_rewards_request__pack
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__distribution__v1beta1__query_validator_historical_rewards_request__pack_to_buffer
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *
+       cosmos__distribution__v1beta1__query_validator_historical_rewards_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *)
+     protobuf_c_message_unpack (&cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__distribution__v1beta1__query_validator_historical_rewards_request__free_unpacked
+                     (Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__distribution__v1beta1__query_validator_historical_rewards_response__init
+                     (Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse         *message)
+{
+  static const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse init_value = COSMOS__DISTRIBUTION__V1BETA1__QUERY_VALIDATOR_HISTORICAL_REWARDS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t cosmos__distribution__v1beta1__query_validator_historical_rewards_response__get_packed_size
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse *message)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__distribution__v1beta1__query_validator_historical_rewards_response__pack
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__distribution__v1beta1__query_validator_historical_rewards_response__pack_to_buffer
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse *
+       cosmos__distribution__v1beta1__query_validator_historical_rewards_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse *)
+     protobuf_c_message_unpack (&cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__distribution__v1beta1__query_validator_historical_rewards_response__free_unpacked
+                     (Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__distribution__v1beta1__query_validator_current_rewards_request__init
+                     (Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest         *message)
+{
+  static const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest init_value = COSMOS__DISTRIBUTION__V1BETA1__QUERY_VALIDATOR_CURRENT_REWARDS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t cosmos__distribution__v1beta1__query_validator_current_rewards_request__get_packed_size
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *message)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__distribution__v1beta1__query_validator_current_rewards_request__pack
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__distribution__v1beta1__query_validator_current_rewards_request__pack_to_buffer
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *
+       cosmos__distribution__v1beta1__query_validator_current_rewards_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *)
+     protobuf_c_message_unpack (&cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__distribution__v1beta1__query_validator_current_rewards_request__free_unpacked
+                     (Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__distribution__v1beta1__query_validator_current_rewards_response__init
+                     (Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse         *message)
+{
+  static const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse init_value = COSMOS__DISTRIBUTION__V1BETA1__QUERY_VALIDATOR_CURRENT_REWARDS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t cosmos__distribution__v1beta1__query_validator_current_rewards_response__get_packed_size
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse *message)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__distribution__v1beta1__query_validator_current_rewards_response__pack
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__distribution__v1beta1__query_validator_current_rewards_response__pack_to_buffer
+                     (const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse *
+       cosmos__distribution__v1beta1__query_validator_current_rewards_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse *)
+     protobuf_c_message_unpack (&cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__distribution__v1beta1__query_validator_current_rewards_response__free_unpacked
+                     (Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__distribution__v1beta1__query_delegator_starting_info_request__init
+                     (Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest         *message)
+{
+  static const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest init_value = COSMOS__DISTRIBUTION__V1BETA1__QUERY_DELEGATOR_STARTING_INFO_REQUEST__INIT;
+  *message = init_value;
+}
+size_t cosmos__distribution__v1beta1__query_delegator_starting_info_request__get_packed_size
+                     (const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *message)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__distribution__v1beta1__query_delegator_starting_info_request__pack
+                     (const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__distribution__v1beta1__query_delegator_starting_info_request__pack_to_buffer
+                     (const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *
+       cosmos__distribution__v1beta1__query_delegator_starting_info_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *)
+     protobuf_c_message_unpack (&cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__distribution__v1beta1__query_delegator_starting_info_request__free_unpacked
+                     (Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__distribution__v1beta1__query_delegator_starting_info_response__init
+                     (Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse         *message)
+{
+  static const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse init_value = COSMOS__DISTRIBUTION__V1BETA1__QUERY_DELEGATOR_STARTING_INFO_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t cosmos__distribution__v1beta1__query_delegator_starting_info_response__get_packed_size
+                     (const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse *message)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__distribution__v1beta1__query_delegator_starting_info_response__pack
+                     (const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__distribution__v1beta1__query_delegator_starting_info_response__pack_to_buffer
+                     (const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse *
+       cosmos__distribution__v1beta1__query_delegator_starting_info_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse *)
+     protobuf_c_message_unpack (&cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__distribution__v1beta1__query_delegator_starting_info_response__free_unpacked
+                     (Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 #define cosmos__distribution__v1beta1__query_params_request__field_descriptors NULL
 #define cosmos__distribution__v1beta1__query_params_request__field_indices_by_name NULL
 #define cosmos__distribution__v1beta1__query_params_request__number_ranges NULL
@@ -1731,7 +2001,261 @@ const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_community_
   (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_community_pool_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor cosmos__distribution__v1beta1__query__method_descriptors[10] =
+static const ProtobufCFieldDescriptor cosmos__distribution__v1beta1__query_validator_historical_rewards_request__field_descriptors[2] =
+{
+  {
+    "validator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest, validator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "period",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest, period),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__distribution__v1beta1__query_validator_historical_rewards_request__field_indices_by_name[] = {
+  1,   /* field[1] = period */
+  0,   /* field[0] = validator_address */
+};
+static const ProtobufCIntRange cosmos__distribution__v1beta1__query_validator_historical_rewards_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.distribution.v1beta1.QueryValidatorHistoricalRewardsRequest",
+  "QueryValidatorHistoricalRewardsRequest",
+  "Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest",
+  "cosmos.distribution.v1beta1",
+  sizeof(Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest),
+  2,
+  cosmos__distribution__v1beta1__query_validator_historical_rewards_request__field_descriptors,
+  cosmos__distribution__v1beta1__query_validator_historical_rewards_request__field_indices_by_name,
+  1,  cosmos__distribution__v1beta1__query_validator_historical_rewards_request__number_ranges,
+  (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_validator_historical_rewards_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__distribution__v1beta1__query_validator_historical_rewards_response__field_descriptors[1] =
+{
+  {
+    "rewards",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse, rewards),
+    &cosmos__distribution__v1beta1__validator_historical_rewards__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__distribution__v1beta1__query_validator_historical_rewards_response__field_indices_by_name[] = {
+  0,   /* field[0] = rewards */
+};
+static const ProtobufCIntRange cosmos__distribution__v1beta1__query_validator_historical_rewards_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.distribution.v1beta1.QueryValidatorHistoricalRewardsResponse",
+  "QueryValidatorHistoricalRewardsResponse",
+  "Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse",
+  "cosmos.distribution.v1beta1",
+  sizeof(Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse),
+  1,
+  cosmos__distribution__v1beta1__query_validator_historical_rewards_response__field_descriptors,
+  cosmos__distribution__v1beta1__query_validator_historical_rewards_response__field_indices_by_name,
+  1,  cosmos__distribution__v1beta1__query_validator_historical_rewards_response__number_ranges,
+  (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_validator_historical_rewards_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__distribution__v1beta1__query_validator_current_rewards_request__field_descriptors[1] =
+{
+  {
+    "validator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest, validator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__distribution__v1beta1__query_validator_current_rewards_request__field_indices_by_name[] = {
+  0,   /* field[0] = validator_address */
+};
+static const ProtobufCIntRange cosmos__distribution__v1beta1__query_validator_current_rewards_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.distribution.v1beta1.QueryValidatorCurrentRewardsRequest",
+  "QueryValidatorCurrentRewardsRequest",
+  "Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest",
+  "cosmos.distribution.v1beta1",
+  sizeof(Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest),
+  1,
+  cosmos__distribution__v1beta1__query_validator_current_rewards_request__field_descriptors,
+  cosmos__distribution__v1beta1__query_validator_current_rewards_request__field_indices_by_name,
+  1,  cosmos__distribution__v1beta1__query_validator_current_rewards_request__number_ranges,
+  (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_validator_current_rewards_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__distribution__v1beta1__query_validator_current_rewards_response__field_descriptors[1] =
+{
+  {
+    "rewards",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse, rewards),
+    &cosmos__distribution__v1beta1__validator_current_rewards__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__distribution__v1beta1__query_validator_current_rewards_response__field_indices_by_name[] = {
+  0,   /* field[0] = rewards */
+};
+static const ProtobufCIntRange cosmos__distribution__v1beta1__query_validator_current_rewards_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.distribution.v1beta1.QueryValidatorCurrentRewardsResponse",
+  "QueryValidatorCurrentRewardsResponse",
+  "Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse",
+  "cosmos.distribution.v1beta1",
+  sizeof(Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse),
+  1,
+  cosmos__distribution__v1beta1__query_validator_current_rewards_response__field_descriptors,
+  cosmos__distribution__v1beta1__query_validator_current_rewards_response__field_indices_by_name,
+  1,  cosmos__distribution__v1beta1__query_validator_current_rewards_response__number_ranges,
+  (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_validator_current_rewards_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__distribution__v1beta1__query_delegator_starting_info_request__field_descriptors[2] =
+{
+  {
+    "delegator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest, delegator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "validator_address",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest, validator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__distribution__v1beta1__query_delegator_starting_info_request__field_indices_by_name[] = {
+  0,   /* field[0] = delegator_address */
+  1,   /* field[1] = validator_address */
+};
+static const ProtobufCIntRange cosmos__distribution__v1beta1__query_delegator_starting_info_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.distribution.v1beta1.QueryDelegatorStartingInfoRequest",
+  "QueryDelegatorStartingInfoRequest",
+  "Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest",
+  "cosmos.distribution.v1beta1",
+  sizeof(Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest),
+  2,
+  cosmos__distribution__v1beta1__query_delegator_starting_info_request__field_descriptors,
+  cosmos__distribution__v1beta1__query_delegator_starting_info_request__field_indices_by_name,
+  1,  cosmos__distribution__v1beta1__query_delegator_starting_info_request__number_ranges,
+  (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_delegator_starting_info_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__distribution__v1beta1__query_delegator_starting_info_response__field_descriptors[1] =
+{
+  {
+    "starting_info",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse, starting_info),
+    &cosmos__distribution__v1beta1__delegator_starting_info__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__distribution__v1beta1__query_delegator_starting_info_response__field_indices_by_name[] = {
+  0,   /* field[0] = starting_info */
+};
+static const ProtobufCIntRange cosmos__distribution__v1beta1__query_delegator_starting_info_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.distribution.v1beta1.QueryDelegatorStartingInfoResponse",
+  "QueryDelegatorStartingInfoResponse",
+  "Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse",
+  "cosmos.distribution.v1beta1",
+  sizeof(Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse),
+  1,
+  cosmos__distribution__v1beta1__query_delegator_starting_info_response__field_descriptors,
+  cosmos__distribution__v1beta1__query_delegator_starting_info_response__field_indices_by_name,
+  1,  cosmos__distribution__v1beta1__query_delegator_starting_info_response__number_ranges,
+  (ProtobufCMessageInit) cosmos__distribution__v1beta1__query_delegator_starting_info_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor cosmos__distribution__v1beta1__query__method_descriptors[13] =
 {
   { "Params", &cosmos__distribution__v1beta1__query_params_request__descriptor, &cosmos__distribution__v1beta1__query_params_response__descriptor },
   { "ValidatorDistributionInfo", &cosmos__distribution__v1beta1__query_validator_distribution_info_request__descriptor, &cosmos__distribution__v1beta1__query_validator_distribution_info_response__descriptor },
@@ -1743,16 +2267,22 @@ static const ProtobufCMethodDescriptor cosmos__distribution__v1beta1__query__met
   { "DelegatorValidators", &cosmos__distribution__v1beta1__query_delegator_validators_request__descriptor, &cosmos__distribution__v1beta1__query_delegator_validators_response__descriptor },
   { "DelegatorWithdrawAddress", &cosmos__distribution__v1beta1__query_delegator_withdraw_address_request__descriptor, &cosmos__distribution__v1beta1__query_delegator_withdraw_address_response__descriptor },
   { "CommunityPool", &cosmos__distribution__v1beta1__query_community_pool_request__descriptor, &cosmos__distribution__v1beta1__query_community_pool_response__descriptor },
+  { "ValidatorHistoricalRewards", &cosmos__distribution__v1beta1__query_validator_historical_rewards_request__descriptor, &cosmos__distribution__v1beta1__query_validator_historical_rewards_response__descriptor },
+  { "ValidatorCurrentRewards", &cosmos__distribution__v1beta1__query_validator_current_rewards_request__descriptor, &cosmos__distribution__v1beta1__query_validator_current_rewards_response__descriptor },
+  { "DelegatorStartingInfo", &cosmos__distribution__v1beta1__query_delegator_starting_info_request__descriptor, &cosmos__distribution__v1beta1__query_delegator_starting_info_response__descriptor },
 };
 const unsigned cosmos__distribution__v1beta1__query__method_indices_by_name[] = {
   9,        /* CommunityPool */
   5,        /* DelegationRewards */
   6,        /* DelegationTotalRewards */
+  12,        /* DelegatorStartingInfo */
   7,        /* DelegatorValidators */
   8,        /* DelegatorWithdrawAddress */
   0,        /* Params */
   3,        /* ValidatorCommission */
+  11,        /* ValidatorCurrentRewards */
   1,        /* ValidatorDistributionInfo */
+  10,        /* ValidatorHistoricalRewards */
   2,        /* ValidatorOutstandingRewards */
   4         /* ValidatorSlashes */
 };
@@ -1763,7 +2293,7 @@ const ProtobufCServiceDescriptor cosmos__distribution__v1beta1__query__descripto
   "Query",
   "Cosmos__Distribution__V1beta1__Query",
   "cosmos.distribution.v1beta1",
-  10,
+  13,
   cosmos__distribution__v1beta1__query__method_descriptors,
   cosmos__distribution__v1beta1__query__method_indices_by_name
 };
@@ -1846,6 +2376,30 @@ void cosmos__distribution__v1beta1__query__community_pool(ProtobufCService *serv
 {
   assert(service->descriptor == &cosmos__distribution__v1beta1__query__descriptor);
   service->invoke(service, 9, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void cosmos__distribution__v1beta1__query__validator_historical_rewards(ProtobufCService *service,
+                                                                        const Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsRequest *input,
+                                                                        Cosmos__Distribution__V1beta1__QueryValidatorHistoricalRewardsResponse_Closure closure,
+                                                                        void *closure_data)
+{
+  assert(service->descriptor == &cosmos__distribution__v1beta1__query__descriptor);
+  service->invoke(service, 10, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void cosmos__distribution__v1beta1__query__validator_current_rewards(ProtobufCService *service,
+                                                                     const Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsRequest *input,
+                                                                     Cosmos__Distribution__V1beta1__QueryValidatorCurrentRewardsResponse_Closure closure,
+                                                                     void *closure_data)
+{
+  assert(service->descriptor == &cosmos__distribution__v1beta1__query__descriptor);
+  service->invoke(service, 11, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void cosmos__distribution__v1beta1__query__delegator_starting_info(ProtobufCService *service,
+                                                                   const Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoRequest *input,
+                                                                   Cosmos__Distribution__V1beta1__QueryDelegatorStartingInfoResponse_Closure closure,
+                                                                   void *closure_data)
+{
+  assert(service->descriptor == &cosmos__distribution__v1beta1__query__descriptor);
+  service->invoke(service, 12, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void cosmos__distribution__v1beta1__query__init (Cosmos__Distribution__V1beta1__Query_Service *service,
                                                  Cosmos__Distribution__V1beta1__Query_ServiceDestroy destroy)
