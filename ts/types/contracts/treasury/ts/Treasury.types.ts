@@ -10,6 +10,7 @@ export interface InstantiateMsg {
   admin?: Addr | null;
   fee_config: FeeConfig;
   grant_configs: GrantConfig[];
+  params: Params;
   type_urls: string[];
 }
 export interface FeeConfig {
@@ -25,6 +26,11 @@ export interface GrantConfig {
   authorization: Any;
   description: string;
   optional: boolean;
+}
+export interface Params {
+  icon_url: string;
+  metadata: string;
+  redirect_url: string;
 }
 export type ExecuteMsg = {
   propose_admin: {
@@ -64,13 +70,13 @@ export type ExecuteMsg = {
   withdraw: {
     coins: Coin[];
   };
+} | {
+  migrate: {
+    migrate_msg: Binary;
+    new_code_id: number;
+  };
 };
 export type Uint128 = string;
-export interface Params {
-  display_url: string;
-  icon_url: string;
-  redirect_url: string;
-}
 export interface Coin {
   amount: Uint128;
   denom: string;

@@ -9,10 +9,10 @@ fi
 . "$HOME/.cargo/env"
 
 : ${scripts_dir:="$(realpath $(dirname $0))"}
-: ${base_dir:="$(dirname $scripts_dir)"}
+: ${base_dir:="$(dirname $(dirname $scripts_dir))"}
 : ${contracts_repo_dir:="$base_dir/contracts"}
 : ${contracts_dir:="$contracts_repo_dir/contracts"}
-: ${codegen_dir:="$base_dir/ts-codegen"}
+: ${codegen_dir:="$base_dir/ts/types/contracts"}
 
 rm -rf $codegen_dir
 
@@ -29,7 +29,7 @@ cd $base_dir
 for contract in "account" "treasury"
 do
     echo $contract
-    echo ts-codegen generate --plugin client --plugin react-query --plugin message-composer --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle --version v4 --optionalClient --mutations --queryKeys --queryFactory
-    ts-codegen generate --plugin client --plugin react-query --plugin message-composer --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle --version v4 --optionalClient --mutations --queryKeys --queryFactory
+    echo ts-codegen generate --plugin client --plugin message-composer --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle --version v4
+    ts-codegen generate --plugin client --plugin message-composer --schema $codegen_dir/$contract/schema --out $codegen_dir/$contract/ts --name $contract --no-bundle --version v4
 
 done

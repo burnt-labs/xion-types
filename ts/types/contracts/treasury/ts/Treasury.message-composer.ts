@@ -7,7 +7,7 @@
 import { MsgExecuteContractEncodeObject } from "@cosmjs/cosmwasm-stargate";
 import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@cosmjs/encoding";
-import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, ExecuteMsg, Uint128, Params, Coin, QueryMsg } from "./Treasury.types";
+import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, Params, ExecuteMsg, Uint128, Coin, QueryMsg } from "./Treasury.types";
 export interface TreasuryMsg {
   contractAddress: string;
   sender: string;
@@ -15,52 +15,60 @@ export interface TreasuryMsg {
     newAdmin
   }: {
     newAdmin: Addr;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
-  acceptAdmin: (funds_?: Coin[]) => MsgExecuteContractEncodeObject;
-  cancelProposedAdmin: (funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
+  acceptAdmin: (_funds?: Coin[]) => MsgExecuteContractEncodeObject;
+  cancelProposedAdmin: (_funds?: Coin[]) => MsgExecuteContractEncodeObject;
   updateGrantConfig: ({
     grantConfig,
     msgTypeUrl
   }: {
     grantConfig: GrantConfig;
     msgTypeUrl: string;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
   removeGrantConfig: ({
     msgTypeUrl
   }: {
     msgTypeUrl: string;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
   updateFeeConfig: ({
     feeConfig
   }: {
     feeConfig: FeeConfig;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
   deployFeeGrant: ({
     authzGrantee,
     authzGranter
   }: {
     authzGrantee: Addr;
     authzGranter: Addr;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
   revokeAllowance: ({
     grantee
   }: {
     grantee: Addr;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
   updateParams: ({
     params
   }: {
     params: Params;
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
   withdraw: ({
     coins
   }: {
     coins: Coin[];
-  }, funds_?: Coin[]) => MsgExecuteContractEncodeObject;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
+  migrate: ({
+    migrateMsg,
+    newCodeId
+  }: {
+    migrateMsg: Binary;
+    newCodeId: number;
+  }, _funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export class TreasuryMsgComposer implements TreasuryMsg {
   sender: string;
   contractAddress: string;
+
   constructor(sender: string, contractAddress: string) {
     this.sender = sender;
     this.contractAddress = contractAddress;
@@ -74,12 +82,14 @@ export class TreasuryMsgComposer implements TreasuryMsg {
     this.revokeAllowance = this.revokeAllowance.bind(this);
     this.updateParams = this.updateParams.bind(this);
     this.withdraw = this.withdraw.bind(this);
+    this.migrate = this.migrate.bind(this);
   }
+
   proposeAdmin = ({
     newAdmin
   }: {
     newAdmin: Addr;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -90,11 +100,11 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             new_admin: newAdmin
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
-  acceptAdmin = (funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  acceptAdmin = (_funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -103,11 +113,11 @@ export class TreasuryMsgComposer implements TreasuryMsg {
         msg: toUtf8(JSON.stringify({
           accept_admin: {}
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
-  cancelProposedAdmin = (funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  cancelProposedAdmin = (_funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -116,7 +126,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
         msg: toUtf8(JSON.stringify({
           cancel_proposed_admin: {}
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -126,7 +136,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
   }: {
     grantConfig: GrantConfig;
     msgTypeUrl: string;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -138,7 +148,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             msg_type_url: msgTypeUrl
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -146,7 +156,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
     msgTypeUrl
   }: {
     msgTypeUrl: string;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -157,7 +167,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             msg_type_url: msgTypeUrl
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -165,7 +175,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
     feeConfig
   }: {
     feeConfig: FeeConfig;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -176,7 +186,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             fee_config: feeConfig
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -186,7 +196,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
   }: {
     authzGrantee: Addr;
     authzGranter: Addr;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -198,7 +208,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             authz_granter: authzGranter
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -206,7 +216,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
     grantee
   }: {
     grantee: Addr;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -217,7 +227,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             grantee
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -225,7 +235,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
     params
   }: {
     params: Params;
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -236,7 +246,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             params
           }
         })),
-        funds: funds_
+        funds: _funds
       })
     };
   };
@@ -244,7 +254,7 @@ export class TreasuryMsgComposer implements TreasuryMsg {
     coins
   }: {
     coins: Coin[];
-  }, funds_?: Coin[]): MsgExecuteContractEncodeObject => {
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
@@ -255,7 +265,29 @@ export class TreasuryMsgComposer implements TreasuryMsg {
             coins
           }
         })),
-        funds: funds_
+        funds: _funds
+      })
+    };
+  };
+  migrate = ({
+    migrateMsg,
+    newCodeId
+  }: {
+    migrateMsg: Binary;
+    newCodeId: number;
+  }, _funds?: Coin[]): MsgExecuteContractEncodeObject => {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+      value: MsgExecuteContract.fromPartial({
+        sender: this.sender,
+        contract: this.contractAddress,
+        msg: toUtf8(JSON.stringify({
+          migrate: {
+            migrate_msg: migrateMsg,
+            new_code_id: newCodeId
+          }
+        })),
+        funds: _funds
       })
     };
   };

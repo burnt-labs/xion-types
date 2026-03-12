@@ -6,7 +6,7 @@
 
 import { CosmWasmClient, SigningCosmWasmClient, ExecuteResult } from "@cosmjs/cosmwasm-stargate";
 import { StdFee } from "@cosmjs/amino";
-import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, ExecuteMsg, Uint128, Params, Coin, QueryMsg } from "./Treasury.types";
+import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, Params, ExecuteMsg, Uint128, Coin, QueryMsg } from "./Treasury.types";
 export interface TreasuryReadOnlyInterface {
   contractAddress: string;
   grantConfigByTypeUrl: ({
@@ -23,6 +23,7 @@ export interface TreasuryReadOnlyInterface {
 export class TreasuryQueryClient implements TreasuryReadOnlyInterface {
   client: CosmWasmClient;
   contractAddress: string;
+
   constructor(client: CosmWasmClient, contractAddress: string) {
     this.client = client;
     this.contractAddress = contractAddress;
@@ -33,6 +34,7 @@ export class TreasuryQueryClient implements TreasuryReadOnlyInterface {
     this.pendingAdmin = this.pendingAdmin.bind(this);
     this.params = this.params.bind(this);
   }
+
   grantConfigByTypeUrl = async ({
     msgTypeUrl
   }: {
@@ -77,53 +79,61 @@ export interface TreasuryInterface extends TreasuryReadOnlyInterface {
     newAdmin
   }: {
     newAdmin: Addr;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
-  acceptAdmin: (fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
-  cancelProposedAdmin: (fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
+  acceptAdmin: (fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
+  cancelProposedAdmin: (fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   updateGrantConfig: ({
     grantConfig,
     msgTypeUrl
   }: {
     grantConfig: GrantConfig;
     msgTypeUrl: string;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   removeGrantConfig: ({
     msgTypeUrl
   }: {
     msgTypeUrl: string;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   updateFeeConfig: ({
     feeConfig
   }: {
     feeConfig: FeeConfig;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   deployFeeGrant: ({
     authzGrantee,
     authzGranter
   }: {
     authzGrantee: Addr;
     authzGranter: Addr;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   revokeAllowance: ({
     grantee
   }: {
     grantee: Addr;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   updateParams: ({
     params
   }: {
     params: Params;
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
   withdraw: ({
     coins
   }: {
     coins: Coin[];
-  }, fee_?: number | StdFee | "auto", memo_?: string, funds_?: Coin[]) => Promise<ExecuteResult>;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
+  migrate: ({
+    migrateMsg,
+    newCodeId
+  }: {
+    migrateMsg: Binary;
+    newCodeId: number;
+  }, fee?: number | StdFee | "auto", memo?: string, _funds?: Coin[]) => Promise<ExecuteResult>;
 }
 export class TreasuryClient extends TreasuryQueryClient implements TreasuryInterface {
   client: SigningCosmWasmClient;
   sender: string;
   contractAddress: string;
+
   constructor(client: SigningCosmWasmClient, sender: string, contractAddress: string) {
     super(client, contractAddress);
     this.client = client;
@@ -139,27 +149,29 @@ export class TreasuryClient extends TreasuryQueryClient implements TreasuryInter
     this.revokeAllowance = this.revokeAllowance.bind(this);
     this.updateParams = this.updateParams.bind(this);
     this.withdraw = this.withdraw.bind(this);
+    this.migrate = this.migrate.bind(this);
   }
+
   proposeAdmin = async ({
     newAdmin
   }: {
     newAdmin: Addr;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       propose_admin: {
         new_admin: newAdmin
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
-  acceptAdmin = async (fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  acceptAdmin = async (fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       accept_admin: {}
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
-  cancelProposedAdmin = async (fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  cancelProposedAdmin = async (fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       cancel_proposed_admin: {}
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   updateGrantConfig = async ({
     grantConfig,
@@ -167,35 +179,35 @@ export class TreasuryClient extends TreasuryQueryClient implements TreasuryInter
   }: {
     grantConfig: GrantConfig;
     msgTypeUrl: string;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       update_grant_config: {
         grant_config: grantConfig,
         msg_type_url: msgTypeUrl
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   removeGrantConfig = async ({
     msgTypeUrl
   }: {
     msgTypeUrl: string;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       remove_grant_config: {
         msg_type_url: msgTypeUrl
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   updateFeeConfig = async ({
     feeConfig
   }: {
     feeConfig: FeeConfig;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       update_fee_config: {
         fee_config: feeConfig
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   deployFeeGrant = async ({
     authzGrantee,
@@ -203,45 +215,59 @@ export class TreasuryClient extends TreasuryQueryClient implements TreasuryInter
   }: {
     authzGrantee: Addr;
     authzGranter: Addr;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       deploy_fee_grant: {
         authz_grantee: authzGrantee,
         authz_granter: authzGranter
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   revokeAllowance = async ({
     grantee
   }: {
     grantee: Addr;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       revoke_allowance: {
         grantee
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   updateParams = async ({
     params
   }: {
     params: Params;
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       update_params: {
         params
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
   };
   withdraw = async ({
     coins
   }: {
     coins: Coin[];
-  }, fee_: number | StdFee | "auto" = "auto", memo_?: string, funds_?: Coin[]): Promise<ExecuteResult> => {
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       withdraw: {
         coins
       }
-    }, fee_, memo_, funds_);
+    }, fee, memo, _funds);
+  };
+  migrate = async ({
+    migrateMsg,
+    newCodeId
+  }: {
+    migrateMsg: Binary;
+    newCodeId: number;
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, _funds?: Coin[]): Promise<ExecuteResult> => {
+    return await this.client.execute(this.sender, this.contractAddress, {
+      migrate: {
+        migrate_msg: migrateMsg,
+        new_code_id: newCodeId
+      }
+    }, fee, memo, _funds);
   };
 }

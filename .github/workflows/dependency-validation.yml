@@ -1,0 +1,145 @@
+name: Dependency Validation
+
+on:
+  pull_request:
+    paths:
+      - 'ts/**'
+      - '.github/workflows/dependency-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'ts/**'
+      - '.github/workflows/dependency-validation.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-dependencies:
+    name: Validate Dependencies Against xion.js
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout xion-types
+        uses: actions/checkout@v6
+
+      - name: Checkout xion.js (reference)
+        uses: actions/checkout@v6
+        with:
+          repository: burnt-labs/xion.js
+          path: _xion_js_ref
+          sparse-checkout: packages
+
+      - name: Check @cosmjs version alignment with xion.js
+        run: |
+          echo "Checking @cosmjs version alignment between xion-types and xion.js..."
+
+          ERRORS=0
+
+          # Extract @cosmjs versions from xion-types ts/package.json (dependencies + peerDependencies)
+          XION_TYPES_VERSIONS=$(jq -r '
+            [(.dependencies // {}), (.peerDependencies // {})] |
+            add |
+            to_entries[] |
+            select(.key | startswith("@cosmjs/")) |
+            "\(.key)=\(.value)"
+          ' ts/package.json 2>/dev/null | sort -u)
+
+          if [ -z "$XION_TYPES_VERSIONS" ]; then
+            echo "No @cosmjs dependencies found in xion-types — skipping alignment check"
+            exit 0
+          fi
+
+          echo "xion-types @cosmjs versions:"
+          echo "$XION_TYPES_VERSIONS" | while read line; do echo "  $line"; done
+
+          # Collect @cosmjs versions from xion.js packages
+          XIONJS_VERSIONS=""
+          for pkg_file in _xion_js_ref/packages/*/package.json; do
+            versions=$(jq -r '
+              [(.dependencies // {}), (.peerDependencies // {})] |
+              add |
+              to_entries[] |
+              select(.key | startswith("@cosmjs/")) |
+              "\(.key)=\(.value)"
+            ' "$pkg_file" 2>/dev/null)
+
+            if [ -n "$versions" ]; then
+              XIONJS_VERSIONS="$XIONJS_VERSIONS$versions"$'\n'
+            fi
+          done
+          XIONJS_VERSIONS=$(echo "$XIONJS_VERSIONS" | grep -v '^$' | sort -u)
+
+          echo ""
+          echo "xion.js @cosmjs versions:"
+          echo "$XIONJS_VERSIONS" | while read line; do echo "  $line"; done
+
+          # For each @cosmjs package in xion-types, verify the version range is compatible with xion.js
+          echo ""
+          echo "$XION_TYPES_VERSIONS" | while read xt_entry; do
+            xt_pkg=$(echo "$xt_entry" | cut -d= -f1)
+            xt_ver=$(echo "$xt_entry" | cut -d= -f2)
+
+            # Find matching package in xion.js
+            xjs_ver=$(echo "$XIONJS_VERSIONS" | grep "^${xt_pkg}=" | head -1 | cut -d= -f2)
+
+            if [ -n "$xjs_ver" ]; then
+              if [ "$xt_ver" != "$xjs_ver" ]; then
+                echo "MISMATCH: $xt_pkg"
+                echo "  xion-types: $xt_ver"
+                echo "  xion.js:    $xjs_ver"
+                echo "  These must match to avoid duplicate @cosmjs bundles"
+                exit 1
+              else
+                echo "OK: $xt_pkg ($xt_ver)"
+              fi
+            else
+              echo "INFO: $xt_pkg ($xt_ver) — not found in xion.js packages (may be fine)"
+            fi
+          done
+
+      - name: Validate ts-codegen version consistency
+        run: |
+          echo "Checking ts-codegen version consistency in generated files..."
+
+          VERSIONS=$(grep -rh "@cosmwasm/ts-codegen@" ts/types/contracts/ 2>/dev/null | \
+            sed 's/.*@cosmwasm\/ts-codegen@//' | sed 's/\..*//' | sort -u || true)
+
+          # Get full version strings
+          FULL_VERSIONS=$(grep -rh "@cosmwasm/ts-codegen@" ts/types/contracts/ 2>/dev/null | \
+            sed 's/.*@cosmwasm\/ts-codegen@//' | sed 's/\./\n/' | head -1 || true)
+
+          FULL_VERSIONS=$(grep -rh "@cosmwasm/ts-codegen@" ts/types/contracts/ 2>/dev/null | \
+            grep -oP '@cosmwasm/ts-codegen@[\d.]+' | sort -u || true)
+
+          if [ -z "$FULL_VERSIONS" ]; then
+            # Try without -P (macOS compatible)
+            FULL_VERSIONS=$(grep -roh '@cosmwasm/ts-codegen@[0-9.]*' ts/types/contracts/ 2>/dev/null | sort -u || true)
+          fi
+
+          VERSION_COUNT=$(echo "$FULL_VERSIONS" | grep -c . || true)
+
+          if [ "$VERSION_COUNT" -gt 1 ]; then
+            echo "MIXED ts-codegen versions detected in generated files:"
+            echo "$FULL_VERSIONS" | while read v; do
+              echo "  $v"
+              grep -rl "$v" ts/types/contracts/ 2>/dev/null | while read f; do
+                echo "    - $f"
+              done
+            done
+            echo ""
+            echo "All contract types must be generated with the same ts-codegen version."
+            echo "Re-run the codegen script to regenerate all files."
+            exit 1
+          elif [ "$VERSION_COUNT" -eq 1 ]; then
+            echo "OK: All generated files use $FULL_VERSIONS"
+          else
+            echo "No ts-codegen version headers found — skipping"
+          fi
+
+      - name: Summary
+        if: success()
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "All dependency validation checks passed!"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

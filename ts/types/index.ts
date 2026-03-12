@@ -23,3 +23,6 @@ export * from "./xion/client";
 export * from "./varint";
 export * from "./utf8";
 export * from "./binary";
+
+// CosmWasm contract types
+export * from "./contracts";
