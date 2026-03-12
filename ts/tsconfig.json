@@ -19,6 +19,8 @@
     "node_modules",
     "scripts",
     "**/*.spec.*",
-    "**/*.test.*"
+    "**/*.test.*",
+    "types/contracts/**/*.client.ts",
+    "types/contracts/**/*.message-composer.ts"
   ]
 }

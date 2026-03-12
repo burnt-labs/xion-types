@@ -40,10 +40,6 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.8.0",
-    "@cosmjs/amino": "^0.32.4",
-    "@cosmjs/cosmwasm-stargate": "^0.32.4",
-    "@cosmjs/encoding": "^0.32.4",
-    "cosmjs-types": "^0.9.0",
     "@cosmology/lcd": "^0.14.0",
     "@cosmology/telescope": "^1.12.20",
     "@improbable-eng/grpc-web": "^0.15.0",
@@ -53,6 +49,18 @@
     "@interchainjs/pubkey": "1.11.5",
     "@interchainjs/types": "1.11.5",
     "@interchainjs/utils": "1.11.5"
+  },
+  "peerDependencies": {
+    "@cosmjs/amino": "^0.36.0",
+    "@cosmjs/cosmwasm-stargate": "^0.36.0",
+    "@cosmjs/encoding": "^0.36.0",
+    "cosmjs-types": "^0.9.0"
+  },
+  "peerDependenciesMeta": {
+    "@cosmjs/amino": { "optional": true },
+    "@cosmjs/cosmwasm-stargate": { "optional": true },
+    "@cosmjs/encoding": { "optional": true },
+    "cosmjs-types": { "optional": true }
   },
   "keywords": [],
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"

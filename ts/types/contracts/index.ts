@@ -1,6 +1,9 @@
 /**
  * CosmWasm Contract Types
  * Auto-generated from contract schemas using @cosmwasm/ts-codegen
+ *
+ * Types are always available. Client classes and message composers
+ * require @cosmjs/* peer dependencies to be installed.
  */
 
 // Treasury contract types
@@ -18,20 +21,6 @@ export type {
   QueryMsg as TreasuryQueryMsg,
 } from "./treasury/ts/Treasury.types";
 
-// Treasury contract clients (cosmjs-based)
-export {
-  TreasuryQueryClient,
-  TreasuryClient,
-  type TreasuryReadOnlyInterface,
-  type TreasuryInterface,
-} from "./treasury/ts/Treasury.client";
-
-// Treasury message composer (cosmjs-based)
-export {
-  TreasuryMsgComposer,
-  type TreasuryMsg,
-} from "./treasury/ts/Treasury.message-composer";
-
 // Account contract types
 export type {
   Binary as AccountBinary,
@@ -42,7 +31,21 @@ export type {
   MigrateMsg as AccountMigrateMsg,
 } from "./account/ts/Account.types";
 
-// Account contract clients (cosmjs-based)
+// Treasury contract clients (require @cosmjs/cosmwasm-stargate peer dependency)
+export {
+  TreasuryQueryClient,
+  TreasuryClient,
+  type TreasuryReadOnlyInterface,
+  type TreasuryInterface,
+} from "./treasury/ts/Treasury.client";
+
+// Treasury message composer (require @cosmjs/cosmwasm-stargate, @cosmjs/encoding, cosmjs-types peer dependencies)
+export {
+  TreasuryMsgComposer,
+  type TreasuryMsg,
+} from "./treasury/ts/Treasury.message-composer";
+
+// Account contract clients (require @cosmjs/cosmwasm-stargate peer dependency)
 export {
   AccountQueryClient,
   AccountClient,
@@ -50,7 +53,7 @@ export {
   type AccountInterface,
 } from "./account/ts/Account.client";
 
-// Account message composer (cosmjs-based)
+// Account message composer (require @cosmjs/cosmwasm-stargate, @cosmjs/encoding, cosmjs-types peer dependencies)
 export {
   AccountMsgComposer,
   type AccountMsg,
