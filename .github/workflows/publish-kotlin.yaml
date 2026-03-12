@@ -1,0 +1,183 @@
+name: Publish Kotlin to Maven Central
+
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build JAR
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10"
+
+      - name: Derive version
+        id: version
+        run: |
+          VERSION="${{ inputs.release_tag }}"
+          VERSION="${VERSION#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Remove duplicates & stamp version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          bash scripts/kotlin/remove-duplicates.sh
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/build.gradle.kts
+          sed -i "s/^version = .*/version = \"$VERSION\"/" kotlin/java-types/build.gradle.kts 2>/dev/null || true
+
+      - name: Build JAR
+        run: |
+          cd kotlin
+          gradle jar --no-daemon
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: kotlin-build
+          path: kotlin/
+          retention-days: 1
+
+  test:
+    name: Test (JDK ${{ matrix.jdk }})
+    needs: [build]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        jdk: ["17", "21"]
+    steps:
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.jdk }}
+          distribution: temurin
+
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: kotlin-build
+          path: kotlin/
+
+      - name: Download Kotlin compiler & test
+        run: |
+          # Get Kotlin compiler
+          curl -sL "https://github.com/JetBrains/kotlin/releases/download/v1.9.22/kotlin-compiler-1.9.22.zip" -o kotlin-compiler.zip
+          unzip -q kotlin-compiler.zip
+
+          # Get protobuf JARs
+          curl -sL "https://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.25.1/protobuf-java-3.25.1.jar" -o protobuf-java.jar
+          curl -sL "https://repo1.maven.org/maven2/com/google/protobuf/protobuf-kotlin/3.25.1/protobuf-kotlin-3.25.1.jar" -o protobuf-kotlin.jar
+
+          # Find JAR
+          JAR_FILE=$(find kotlin -name "xion-types-kotlin-*.jar" | head -1)
+          [ -z "$JAR_FILE" ] && { echo "❌ No JAR found"; exit 1; }
+
+          # Compile and run test
+          cat > TestXionTypes.kt << 'EOF'
+          import cosmos.bank.v1beta1.Tx
+          import cosmos.base.v1beta1.CoinOuterClass
+          fun main() {
+              println("✅ Kotlin protobuf types loaded successfully")
+              println("Tx: ${Tx::class.java.name}")
+              println("Coin: ${CoinOuterClass.Coin::class.java.name}")
+          }
+          EOF
+
+          kotlinc/bin/kotlinc -cp "$JAR_FILE:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypes.kt -include-runtime -d test.jar
+          java -cp "test.jar:$JAR_FILE:protobuf-java.jar:protobuf-kotlin.jar" TestXionTypesKt
+
+  publish:
+    name: Publish to Maven Central
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10"
+
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: kotlin-build
+          path: kotlin/
+
+      - name: Publish
+        env:
+          VERSION: ${{ needs.build.outputs.version }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+        run: |
+          cd kotlin
+
+          # Import GPG key
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpgconf --reload gpg-agent
+
+          # Sign and publish to local Maven repo
+          gradle publishToMavenLocal --no-daemon \
+            -Psigning.gnupg.passphrase="$GPG_PASSPHRASE" \
+            -Psigning.gnupg.executable=gpg
+
+          # Create Maven Central bundle
+          ARTIFACT_PATH="io/github/burnt-labs/xion-types-kotlin/$VERSION"
+          mkdir -p "bundle/$ARTIFACT_PATH"
+          M2_PATH="$HOME/.m2/repository/io/github/burnt-labs/xion-types-kotlin/$VERSION"
+
+          for file in "$M2_PATH"/*.jar "$M2_PATH"/*.pom "$M2_PATH"/*.module "$M2_PATH"/*.asc; do
+            [[ -f "$file" ]] && [[ "$file" != *metadata* ]] && cp "$file" "bundle/$ARTIFACT_PATH/"
+          done
+
+          # Generate checksums
+          pushd "bundle/$ARTIFACT_PATH" > /dev/null
+          for file in *.jar *.pom *.module; do
+            if [[ -f "$file" ]]; then
+              md5sum "$file" | awk '{print $1}' > "$file.md5"
+              sha1sum "$file" | awk '{print $1}' > "$file.sha1"
+            fi
+          done
+          popd > /dev/null
+
+          # Upload bundle
+          cd bundle && zip -r ../xion-types-kotlin-bundle.zip . && cd ..
+          HTTP_CODE=$(curl -s -o /tmp/maven-response.txt -w '%{http_code}' \
+            -u "$MAVEN_CENTRAL_USERNAME:$MAVEN_CENTRAL_PASSWORD" \
+            -F "bundle=@xion-types-kotlin-bundle.zip" \
+            "https://central.sonatype.com/api/v1/publisher/upload?publishingType=USER_MANAGED")
+
+          if [[ "$HTTP_CODE" -ge 200 && "$HTTP_CODE" -lt 300 ]]; then
+            echo "✅ Published xion-types-kotlin $VERSION to Maven Central (staged)"
+          else
+            echo "❌ Upload failed (HTTP $HTTP_CODE)"
+            cat /tmp/maven-response.txt
+            exit 1
+          fi

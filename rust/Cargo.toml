@@ -11,9 +11,18 @@ readme = "README.md"
 name = "xion_types"
 path = "src/lib.rs"
 
+[features]
+default = ["cosmos", "cosmwasm", "ibc", "tendermint", "xion"]
+cosmos = ["tendermint"]
+cosmwasm = ["cosmos"]
+ibc = ["cosmos"]
+tendermint = []
+xion = ["cosmos"]
+
 [dependencies]
 prost = "0.13"
 prost-types = "0.13"
+ics23 = "0.12"
 
 [build-dependencies]
 glob = "0.3"

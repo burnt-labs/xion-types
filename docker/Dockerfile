@@ -36,7 +36,13 @@ RUN apk add --no-cache \
     openjdk17 \
     gradle \
     protobuf-dev \
-    protobuf-c-dev
+    protobuf-c-dev \
+    python3 \
+    py3-pip
+
+# Python tools needed by post-processing (e.g. fix-python-imports.py)
+RUN pip3 install --break-system-packages grpcio-tools || \
+    pip3 install grpcio-tools
 
 RUN npm install -g ts-proto
 RUN npm install -g swagger-combine
@@ -59,10 +65,11 @@ RUN git clone https://github.com/cosmos/gogoproto.git; \
 
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Install Rust toolchain and protoc-gen-prost
+# Install Rust toolchain and prost plugins
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
 ENV PATH="/root/.cargo/bin:$PATH"
-RUN cargo install protoc-gen-prost
+# Install neoeinstein-prost v0.3.1 to match cosmos-rust (generates flat files)
+RUN cargo install protoc-gen-prost --version 0.3.1 --locked
 
 # Install protoc-gen-scala JAR (following Buf plugins pattern)
 RUN curl -fsSL -o /usr/local/bin/protoc-gen-scala.jar \

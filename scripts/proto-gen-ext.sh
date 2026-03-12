@@ -89,19 +89,16 @@ gen_language() {
   local skip_problematic=${2:-true}  # Default to true if not specified
   
   local dirs="$proto_dir $proto_paths"  # Use both local and dependency paths
-  lang_dir=$xion_types_dir/$language
-  types_dir=$lang_dir/types
-  mkdir -p $types_dir
 
   # Work from the proto directory where buf.yaml has dependencies defined
   cd $proto_dir
 
   # For local plugins, generate file by file (existing behavior)
   for dir in $dirs; do
-    # Skip problematic files if skip_problematic is true
-    if [ "$skip_problematic" = "true" ] && echo "$file" | grep -q \
+    # Skip problematic directories if skip_problematic is true
+    if [ "$skip_problematic" = "true" ] && echo "$dir" | grep -q \
         -e "poa"; then
-      echo "skipping problematic dir $file"
+      echo "skipping problematic dir $dir"
       continue
     fi
     echo "generating $language for dir $dir"
@@ -112,10 +109,60 @@ gen_language() {
   done
 }
 
-post_kotlin() { 
-  # Special post-processing for Kotlin
-    echo "Cleaning up .proto.kt files..."
-    find "$lang_dir/types" -name "*.proto.kt" -delete 2>/dev/null || true
+post_swift() {
+  echo "🔧 Setting up Swift package structure..."
+  cd $xion_types_dir
+  python3 scripts/swift/setup-swift-package.py
+  echo "✅ Complete Swift package ready in swift/"
+}
+
+post_python() {
+  echo "🔧 Fixing Python imports and creating package structure..."
+  cd $xion_types_dir
+  python3 scripts/python/fix-python-imports.py
+  echo "✅ Complete Python package ready in python/"
+}
+
+post_kotlin() {
+  echo "🔧 Setting up Kotlin package..."
+  cd $xion_types_dir
+
+  # Also generate Java types (Kotlin depends on them)
+  gen_language java
+
+  # Generate external proto dependencies needed at compile time
+  echo "Generating external proto dependencies for Kotlin/Java..."
+  mkdir -p proto_deps
+  cd "$proto_dir"
+  buf export buf.build/cosmos/cosmos-proto --output "$xion_types_dir/proto_deps/cosmos_proto"
+  buf export buf.build/cosmos/ics23 --output "$xion_types_dir/proto_deps/ics23"
+  buf export buf.build/cosmos/gogo-proto --output "$xion_types_dir/proto_deps/gogo_proto"
+  buf export buf.build/googleapis/googleapis --output "$xion_types_dir/proto_deps/googleapis"
+  cd "$xion_types_dir"
+  for dir in proto_deps/cosmos_proto proto_deps/ics23 proto_deps/gogo_proto proto_deps/googleapis; do
+    echo "Generating Java for $dir"
+    buf generate "$dir" --template buf/buf.gen.java.yaml --output .
+  done
+
+  # Clean up .proto.kt files
+  find kotlin/types -name "*.proto.kt" -delete 2>/dev/null || true
+  # Remove case-insensitive duplicate files
+  bash scripts/kotlin/remove-duplicates.sh
+  echo "✅ Complete Kotlin package ready in kotlin/"
+}
+
+post_ruby() {
+  echo "🔧 Creating Ruby gem structure..."
+  cd $xion_types_dir
+  bash scripts/ruby/create-gem-structure.sh
+  echo "✅ Complete Ruby gem ready in ruby/"
+}
+
+post_rust() {
+  echo "🔧 Setting up Rust package structure..."
+  cd $xion_types_dir
+  python3 scripts/rust/setup-rust-types.py
+  echo "✅ Complete Rust crate ready in rust/"
 }
 
 gen_ts() {
@@ -181,6 +228,7 @@ show_help() {
   echo "OPTIONS:"
   echo "  --c          Generate C types"
   echo "  --cpp        Generate C++ types"
+  echo "  --csharp     Generate C# types"
   echo "  --docs       Generate Markdown documentation"
   echo "  --java       Generate Java types"
   echo "  --kotlin     Generate Kotlin types"
@@ -207,7 +255,7 @@ main() {
   while [[ $# -gt 0 ]]; do
     case $1 in
     --all)
-      gen_language all && post_kotlin && gen_ts && gen_docs
+      gen_language all && post_swift && post_python && post_kotlin && post_ruby && post_rust && gen_ts && gen_docs
       shift
       ;;
     --c)
@@ -216,6 +264,10 @@ main() {
       ;;
     --cpp)
       gen_language cpp
+      shift
+      ;;
+    --csharp)
+      gen_language csharp
       shift
       ;;
     --docs)
@@ -239,15 +291,15 @@ main() {
       shift
       ;;
     --python)
-      gen_language python
+      gen_language python && post_python
       shift
       ;;
     --ruby)
-      gen_language ruby
+      gen_language ruby && post_ruby
       shift
       ;;
     --rust)
-      gen_language rust
+      gen_language rust && post_rust
       shift
       ;;
     --scala)
@@ -255,11 +307,11 @@ main() {
       shift
       ;;
     --swift)
-      gen_language swift
+      gen_language swift && post_swift
       shift
       ;;
     --ts)
-      #gen_language ts && 
+      #gen_language ts &&
       gen_ts
       shift
       ;;

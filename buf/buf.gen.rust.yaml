@@ -2,3 +2,8 @@ version: v2
 plugins:
   - local: protoc-gen-prost
     out: rust/types
+    opt:
+      - compile_well_known_types
+      - enable_type_names
+      - extern_path=.google.protobuf=::prost_types
+      - extern_path=.cosmos.ics23.v1=::ics23

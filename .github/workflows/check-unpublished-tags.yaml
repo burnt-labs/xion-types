@@ -1,0 +1,256 @@
+name: Check Unpublished Tags
+
+# Safety-net workflow that detects xion release tags whose types
+# were never successfully published to one or more package registries.
+#
+# This should rarely find anything — releases are driven from upstream
+# (xion create-release.yaml → publish-types.yaml → per-language workflows).
+# If a language workflow failed during a release, this will catch it.
+#
+# Runs weekly and can also be triggered manually per-language.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      language:
+        description: "Check a specific language (leave empty to check all)"
+        required: false
+        type: choice
+        options:
+          - all
+          - ts
+          - python
+          - rust
+          - ruby
+          - kotlin
+          - swift
+
+jobs:
+  # ------------------------------------------------------------------
+  # 1. Discover which xion tags exist and which versions are published
+  # ------------------------------------------------------------------
+  check-registries:
+    name: Check ${{ matrix.language }} registry
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ts, python, rust, ruby, kotlin, swift]
+    # When manually triggered for a single language, skip the others
+    if: >-
+      inputs.language == '' ||
+      inputs.language == 'all' ||
+      inputs.language == matrix.language
+    outputs:
+      # Each matrix leg sets its own output via the step id; the
+      # notify job reads from the artifact instead.
+      has-missing: ${{ steps.check.outputs.has-missing }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Collect xion release tags
+        id: tags
+        run: |
+          cd xion
+          git fetch --tags origin
+
+          # Stable releases only (vX.Y.Z), skip RCs for now
+          TAGS=$(git tag -l 'v[0-9]*.[0-9]*.[0-9]*' | grep -vE '\-rc[0-9]*$' | sort -V | tail -10)
+          echo "Recent stable tags:"
+          echo "$TAGS"
+
+          # Export as JSON array for the next step
+          JSON=$(echo "$TAGS" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "tags=$JSON" >> $GITHUB_OUTPUT
+
+      - name: Check published versions
+        id: check
+        env:
+          LANGUAGE: ${{ matrix.language }}
+          TAGS_JSON: ${{ steps.tags.outputs.tags }}
+        run: |
+          MISSING=""
+
+          for TAG in $(echo "$TAGS_JSON" | jq -r '.[]'); do
+            VERSION="${TAG#v}"
+            PUBLISHED=false
+
+            case "$LANGUAGE" in
+              ts)
+                # npm: @burnt-labs/xion-types
+                if npm view "@burnt-labs/xion-types@$VERSION" version >/dev/null 2>&1; then
+                  PUBLISHED=true
+                fi
+                ;;
+              python)
+                # PyPI: xion-types
+                HTTP=$(curl -s -o /dev/null -w '%{http_code}' "https://pypi.org/pypi/xion-types/$VERSION/json")
+                if [ "$HTTP" = "200" ]; then
+                  PUBLISHED=true
+                fi
+                ;;
+              rust)
+                # crates.io: xion-types
+                HTTP=$(curl -s -o /dev/null -w '%{http_code}' "https://crates.io/api/v1/crates/xion-types/$VERSION")
+                if [ "$HTTP" = "200" ]; then
+                  PUBLISHED=true
+                fi
+                ;;
+              ruby)
+                # RubyGems: xion_types
+                VERSIONS=$(curl -s "https://rubygems.org/api/v1/versions/xion_types.json" 2>/dev/null || echo "[]")
+                if echo "$VERSIONS" | jq -e ".[] | select(.number == \"$VERSION\")" >/dev/null 2>&1; then
+                  PUBLISHED=true
+                fi
+                ;;
+              kotlin)
+                # Maven Central: io.github.burnt-labs:xion-types-kotlin
+                HTTP=$(curl -s -o /dev/null -w '%{http_code}' \
+                  "https://repo1.maven.org/maven2/io/github/burnt-labs/xion-types-kotlin/$VERSION/xion-types-kotlin-$VERSION.pom")
+                if [ "$HTTP" = "200" ]; then
+                  PUBLISHED=true
+                fi
+                ;;
+              swift)
+                # CocoaPods: XionTypes — check the spec repo
+                HTTP=$(curl -s -o /dev/null -w '%{http_code}' \
+                  "https://cdn.cocoapods.org/all_pods_versions_a_7_5.txt" 2>/dev/null || echo "000")
+                # Fallback: check if a git tag exists in this repo for SPM
+                if git tag -l "$TAG" | grep -q "$TAG"; then
+                  PUBLISHED=true
+                fi
+                ;;
+            esac
+
+            if [ "$PUBLISHED" = "false" ]; then
+              echo "❌ $LANGUAGE: version $VERSION (tag $TAG) NOT published"
+              MISSING="$MISSING $TAG"
+            else
+              echo "✅ $LANGUAGE: version $VERSION (tag $TAG) published"
+            fi
+          done
+
+          MISSING=$(echo "$MISSING" | xargs) # trim
+          if [ -n "$MISSING" ]; then
+            echo "has-missing=true" >> $GITHUB_OUTPUT
+            echo "missing-tags=$MISSING" >> $GITHUB_OUTPUT
+          else
+            echo "has-missing=false" >> $GITHUB_OUTPUT
+            echo "missing-tags=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Write result artifact
+        if: steps.check.outputs.has-missing == 'true'
+        run: |
+          mkdir -p /tmp/results
+          echo "${{ matrix.language }}=${{ steps.check.outputs.missing-tags }}" \
+            > /tmp/results/${{ matrix.language }}.txt
+
+      - name: Upload result
+        if: steps.check.outputs.has-missing == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: unpublished-${{ matrix.language }}
+          path: /tmp/results/
+          retention-days: 7
+
+  # ------------------------------------------------------------------
+  # 2. Aggregate and notify
+  # ------------------------------------------------------------------
+  notify-slack:
+    name: Notify Slack
+    runs-on: ubuntu-latest
+    needs: [check-registries]
+    if: always()
+    steps:
+      - name: Download all result artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/results
+          merge-multiple: true
+        continue-on-error: true # No artifacts means nothing is missing
+
+      - name: Build summary
+        id: summary
+        run: |
+          if [ -d /tmp/results ] && ls /tmp/results/*.txt >/dev/null 2>&1; then
+            BODY=""
+            while IFS= read -r line; do
+              BODY="$BODY\n$line"
+            done < <(cat /tmp/results/*.txt)
+            echo "has-missing=true" >> $GITHUB_OUTPUT
+            echo "body<<EOF" >> $GITHUB_OUTPUT
+            echo -e "$BODY" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "has-missing=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Slack alert for missing publications
+        if: steps.summary.outputs.has-missing == 'true'
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          payload: |
+            {
+              "channel": "${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}",
+              "text": "⚠️ Unpublished xion-types detected",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "⚠️ Unpublished xion-types versions"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "The following release tags have not been published to their package registries:\n```${{ steps.summary.outputs.body }}```"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Re-run the failed language workflow(s) via `workflow_dispatch` with the missing `release_tag`."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Workflow Run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Send Slack all-clear
+        if: steps.summary.outputs.has-missing == 'false'
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.NOTIFY_DEVOPS_SLACK_APP_BOT_TOKEN }}
+          payload: |
+            {
+              "channel": "${{ secrets.DEVOPS_NOTIFICATIONS_SLACK_CHANNEL_ID }}",
+              "text": "✅ All recent xion-types versions are published across all registries."
+            }
