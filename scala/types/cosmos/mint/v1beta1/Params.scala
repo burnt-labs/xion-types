@@ -19,6 +19,10 @@ package cosmos.mint.v1beta1
   *   goal of percent bonded atoms
   * @param blocksPerYear
   *   expected blocks per year
+  * @param maxSupply
+  *   maximum supply for the token.
+  *  
+  *   A value of "0" indicates an unlimited (infinite) maximum supply.
   */
 @SerialVersionUID(0L)
 final case class Params(
@@ -28,6 +32,7 @@ final case class Params(
     inflationMin: _root_.scala.Predef.String = "",
     goalBonded: _root_.scala.Predef.String = "",
     blocksPerYear: _root_.scala.Long = 0L,
+    maxSupply: _root_.scala.Predef.String = "",
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Params] {
     @transient
@@ -74,6 +79,13 @@ final case class Params(
         val __value = blocksPerYear
         if (__value != 0L) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(6, __value)
+        }
+      };
+      
+      {
+        val __value = maxSupply
+        if (!__value.isEmpty) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(7, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -125,6 +137,12 @@ final case class Params(
           _output__.writeUInt64(6, __v)
         }
       };
+      {
+        val __v = maxSupply
+        if (!__v.isEmpty) {
+          _output__.writeString(7, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withMintDenom(__v: _root_.scala.Predef.String): Params = copy(mintDenom = __v)
@@ -133,6 +151,7 @@ final case class Params(
     def withInflationMin(__v: _root_.scala.Predef.String): Params = copy(inflationMin = __v)
     def withGoalBonded(__v: _root_.scala.Predef.String): Params = copy(goalBonded = __v)
     def withBlocksPerYear(__v: _root_.scala.Long): Params = copy(blocksPerYear = __v)
+    def withMaxSupply(__v: _root_.scala.Predef.String): Params = copy(maxSupply = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -161,6 +180,10 @@ final case class Params(
           val __t = blocksPerYear
           if (__t != 0L) __t else null
         }
+        case 7 => {
+          val __t = maxSupply
+          if (__t != "") __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -172,6 +195,7 @@ final case class Params(
         case 4 => _root_.scalapb.descriptors.PString(inflationMin)
         case 5 => _root_.scalapb.descriptors.PString(goalBonded)
         case 6 => _root_.scalapb.descriptors.PLong(blocksPerYear)
+        case 7 => _root_.scalapb.descriptors.PString(maxSupply)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -188,6 +212,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
     var __inflationMin: _root_.scala.Predef.String = ""
     var __goalBonded: _root_.scala.Predef.String = ""
     var __blocksPerYear: _root_.scala.Long = 0L
+    var __maxSupply: _root_.scala.Predef.String = ""
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -206,6 +231,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
           __goalBonded = _input__.readStringRequireUtf8()
         case 48 =>
           __blocksPerYear = _input__.readUInt64()
+        case 58 =>
+          __maxSupply = _input__.readStringRequireUtf8()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -220,6 +247,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
         inflationMin = __inflationMin,
         goalBonded = __goalBonded,
         blocksPerYear = __blocksPerYear,
+        maxSupply = __maxSupply,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -232,7 +260,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
         inflationMax = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         inflationMin = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         goalBonded = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        blocksPerYear = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
+        blocksPerYear = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxSupply = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -247,7 +276,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
     inflationMax = "",
     inflationMin = "",
     goalBonded = "",
-    blocksPerYear = 0L
+    blocksPerYear = 0L,
+    maxSupply = ""
   )
   implicit class ParamsLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmos.mint.v1beta1.Params]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmos.mint.v1beta1.Params](_l) {
     def mintDenom: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.mintDenom)((c_, f_) => c_.copy(mintDenom = f_))
@@ -256,6 +286,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
     def inflationMin: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.inflationMin)((c_, f_) => c_.copy(inflationMin = f_))
     def goalBonded: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.goalBonded)((c_, f_) => c_.copy(goalBonded = f_))
     def blocksPerYear: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.blocksPerYear)((c_, f_) => c_.copy(blocksPerYear = f_))
+    def maxSupply: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.maxSupply)((c_, f_) => c_.copy(maxSupply = f_))
   }
   final val MINT_DENOM_FIELD_NUMBER = 1
   final val INFLATION_RATE_CHANGE_FIELD_NUMBER = 2
@@ -263,20 +294,23 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.mint.v1beta1.Para
   final val INFLATION_MIN_FIELD_NUMBER = 4
   final val GOAL_BONDED_FIELD_NUMBER = 5
   final val BLOCKS_PER_YEAR_FIELD_NUMBER = 6
+  final val MAX_SUPPLY_FIELD_NUMBER = 7
   def of(
     mintDenom: _root_.scala.Predef.String,
     inflationRateChange: _root_.scala.Predef.String,
     inflationMax: _root_.scala.Predef.String,
     inflationMin: _root_.scala.Predef.String,
     goalBonded: _root_.scala.Predef.String,
-    blocksPerYear: _root_.scala.Long
+    blocksPerYear: _root_.scala.Long,
+    maxSupply: _root_.scala.Predef.String
   ): _root_.cosmos.mint.v1beta1.Params = _root_.cosmos.mint.v1beta1.Params(
     mintDenom,
     inflationRateChange,
     inflationMax,
     inflationMin,
     goalBonded,
-    blocksPerYear
+    blocksPerYear,
+    maxSupply
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmos.mint.v1beta1.Params])
 }

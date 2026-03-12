@@ -8,7 +8,7 @@ package cosmos.authz.v1beta1
 /** EventRevoke is emitted on Msg/Revoke
   *
   * @param msgTypeUrl
-  *   Msg type URL for which an autorization is revoked
+  *   Msg type URL for which an authorization is revoked
   * @param granter
   *   Granter account address
   * @param grantee

@@ -6,7 +6,7 @@ pub struct GenesisState {
     /// constant_fee is the fee used to verify the invariant in the crisis
     /// module.
     #[prost(message, optional, tag="3")]
-    pub constant_fee: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub constant_fee: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for GenesisState {
 const NAME: &'static str = "GenesisState";
@@ -54,7 +54,7 @@ pub struct MsgUpdateParams {
     pub authority: ::prost::alloc::string::String,
     /// constant_fee defines the x/crisis parameter.
     #[prost(message, optional, tag="2")]
-    pub constant_fee: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub constant_fee: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgUpdateParams {
 const NAME: &'static str = "MsgUpdateParams";

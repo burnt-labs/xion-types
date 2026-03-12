@@ -6,6 +6,9 @@
 package xion.feeabs.v1beta1
 
 /** QueryHostChainConfigRequest
+  *
+  * @param ibcDenom
+  *   The IBC denomination to query configuration for
   */
 @SerialVersionUID(0L)
 final case class QueryHostChainConfigRequest(

@@ -7,6 +7,9 @@ package xion.feeabs.v1beta1
 
 /** QueryOsmosisArithmeticTwapRequest is the request type for the Query/Feeabs
   * RPC method.
+  *
+  * @param ibcDenom
+  *   The IBC denomination to query TWAP for
   */
 @SerialVersionUID(0L)
 final case class QueryOsmosisArithmeticTwapRequest(

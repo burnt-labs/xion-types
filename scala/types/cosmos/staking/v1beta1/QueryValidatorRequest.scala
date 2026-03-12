@@ -5,7 +5,7 @@
 
 package cosmos.staking.v1beta1
 
-/** QueryValidatorRequest is response type for the Query/Validator RPC method
+/** QueryValidatorRequest is request type for the Query/Validator RPC method
   *
   * @param validatorAddr
   *   validator_addr defines the validator address to query for.

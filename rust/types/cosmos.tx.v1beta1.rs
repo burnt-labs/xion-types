@@ -100,7 +100,7 @@ pub struct SignDocDirectAux {
     /// sequence is the sequence number of the signing account.
     #[prost(uint64, tag="5")]
     pub sequence: u64,
-    /// tips have been depreacted and should not be used
+    /// tips have been deprecated and should not be used
     #[deprecated]
     #[prost(message, optional, tag="6")]
     pub tip: ::core::option::Option<Tip>,
@@ -249,7 +249,7 @@ pub mod mode_info {
 #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Single {
         /// mode is the signing mode of the single signer
-        #[prost(enumeration="super::super::signing::v1beta1::SignMode", tag="1")]
+        #[prost(enumeration="crate::types::cosmos_tx_signing_v1beta1::SignMode", tag="1")]
         pub mode: i32,
     }
 impl ::prost::Name for Single {
@@ -264,7 +264,7 @@ fn full_name() -> ::prost::alloc::string::String {
     pub struct Multi {
         /// bitarray specifies which keys within the multisig are signing
         #[prost(message, optional, tag="1")]
-        pub bitarray: ::core::option::Option<super::super::super::crypto::multisig::v1beta1::CompactBitArray>,
+        pub bitarray: ::core::option::Option<crate::types::cosmos_crypto_multisig_v1beta1::CompactBitArray>,
         /// mode_infos is the corresponding modes of the signers of the multisig
         /// which could include nested multisig public keys
         #[prost(message, repeated, tag="2")]
@@ -297,13 +297,13 @@ fn full_name() -> ::prost::alloc::string::String {
             }}
 /// Fee includes the amount of coins paid in fees and the maximum
 /// gas to be used by the transaction. The ratio yields an effective "gasprice",
-/// which must be above some miminum to be accepted into the mempool.
+/// which must be above some minimum to be accepted into the mempool.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Fee {
     /// amount is the amount of coins to be paid as a fee
     #[prost(message, repeated, tag="1")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// gas_limit is the maximum gas that can be used in transaction processing
     /// before an out of gas error occurs
     #[prost(uint64, tag="2")]
@@ -333,7 +333,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct Tip {
     /// amount is the amount of the tip
     #[prost(message, repeated, tag="1")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// tipper is the address of the account paying for the tip
     #[prost(string, tag="2")]
     pub tipper: ::prost::alloc::string::String,
@@ -362,7 +362,7 @@ pub struct AuxSignerData {
     #[prost(message, optional, tag="2")]
     pub sign_doc: ::core::option::Option<SignDocDirectAux>,
     /// mode is the signing mode of the single signer.
-    #[prost(enumeration="super::signing::v1beta1::SignMode", tag="3")]
+    #[prost(enumeration="crate::types::cosmos_tx_signing_v1beta1::SignMode", tag="3")]
     pub mode: i32,
     /// sig is the signature of the sign doc.
     #[prost(bytes="vec", tag="4")]
@@ -389,7 +389,7 @@ pub struct GetTxsEventRequest {
     /// Deprecated post v0.46.x: use page and limit instead.
     #[deprecated]
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
     #[prost(enumeration="OrderBy", tag="3")]
     pub order_by: i32,
     /// page is the page number to query, starts at 1. If not provided, will
@@ -421,12 +421,12 @@ pub struct GetTxsEventResponse {
     pub txs: ::prost::alloc::vec::Vec<Tx>,
     /// tx_responses is the list of queried TxResponses.
     #[prost(message, repeated, tag="2")]
-    pub tx_responses: ::prost::alloc::vec::Vec<super::super::base::abci::v1beta1::TxResponse>,
+    pub tx_responses: ::prost::alloc::vec::Vec<crate::types::cosmos_base_abci_v1beta1::TxResponse>,
     /// pagination defines a pagination for the response.
     /// Deprecated post v0.46.x: use total instead.
     #[deprecated]
     #[prost(message, optional, tag="3")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
     /// total is total number of results available
     #[prost(uint64, tag="4")]
     pub total: u64,
@@ -461,7 +461,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct BroadcastTxResponse {
     /// tx_response is the queried TxResponses.
     #[prost(message, optional, tag="1")]
-    pub tx_response: ::core::option::Option<super::super::base::abci::v1beta1::TxResponse>,
+    pub tx_response: ::core::option::Option<crate::types::cosmos_base_abci_v1beta1::TxResponse>,
 }
 impl ::prost::Name for BroadcastTxResponse {
 const NAME: &'static str = "BroadcastTxResponse";
@@ -496,10 +496,10 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct SimulateResponse {
     /// gas_info is the information about gas used in the simulation.
     #[prost(message, optional, tag="1")]
-    pub gas_info: ::core::option::Option<super::super::base::abci::v1beta1::GasInfo>,
+    pub gas_info: ::core::option::Option<crate::types::cosmos_base_abci_v1beta1::GasInfo>,
     /// result is the result of the simulation.
     #[prost(message, optional, tag="2")]
-    pub result: ::core::option::Option<super::super::base::abci::v1beta1::Result>,
+    pub result: ::core::option::Option<crate::types::cosmos_base_abci_v1beta1::Result>,
 }
 impl ::prost::Name for SimulateResponse {
 const NAME: &'static str = "SimulateResponse";
@@ -531,7 +531,7 @@ pub struct GetTxResponse {
     pub tx: ::core::option::Option<Tx>,
     /// tx_response is the queried TxResponses.
     #[prost(message, optional, tag="2")]
-    pub tx_response: ::core::option::Option<super::super::base::abci::v1beta1::TxResponse>,
+    pub tx_response: ::core::option::Option<crate::types::cosmos_base_abci_v1beta1::TxResponse>,
 }
 impl ::prost::Name for GetTxResponse {
 const NAME: &'static str = "GetTxResponse";
@@ -549,7 +549,7 @@ pub struct GetBlockWithTxsRequest {
     pub height: i64,
     /// pagination defines a pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for GetBlockWithTxsRequest {
 const NAME: &'static str = "GetBlockWithTxsRequest";
@@ -566,12 +566,12 @@ pub struct GetBlockWithTxsResponse {
     #[prost(message, repeated, tag="1")]
     pub txs: ::prost::alloc::vec::Vec<Tx>,
     #[prost(message, optional, tag="2")]
-    pub block_id: ::core::option::Option<super::super::super::tendermint::types::BlockId>,
+    pub block_id: ::core::option::Option<crate::types::tendermint_types::BlockId>,
     #[prost(message, optional, tag="3")]
-    pub block: ::core::option::Option<super::super::super::tendermint::types::Block>,
+    pub block: ::core::option::Option<crate::types::tendermint_types::Block>,
     /// pagination defines a pagination for the response.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for GetBlockWithTxsResponse {
 const NAME: &'static str = "GetBlockWithTxsResponse";

@@ -7,11 +7,11 @@ pub struct Block {
     #[prost(message, optional, tag="1")]
     pub header: ::core::option::Option<Header>,
     #[prost(message, optional, tag="2")]
-    pub data: ::core::option::Option<super::super::super::super::tendermint::types::Data>,
+    pub data: ::core::option::Option<crate::types::tendermint_types::Data>,
     #[prost(message, optional, tag="3")]
-    pub evidence: ::core::option::Option<super::super::super::super::tendermint::types::EvidenceList>,
+    pub evidence: ::core::option::Option<crate::types::tendermint_types::EvidenceList>,
     #[prost(message, optional, tag="4")]
-    pub last_commit: ::core::option::Option<super::super::super::super::tendermint::types::Commit>,
+    pub last_commit: ::core::option::Option<crate::types::tendermint_types::Commit>,
 }
 impl ::prost::Name for Block {
 const NAME: &'static str = "Block";
@@ -25,7 +25,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct Header {
     /// basic block info
     #[prost(message, optional, tag="1")]
-    pub version: ::core::option::Option<super::super::super::super::tendermint::version::Consensus>,
+    pub version: ::core::option::Option<crate::types::tendermint_version::Consensus>,
     #[prost(string, tag="2")]
     pub chain_id: ::prost::alloc::string::String,
     #[prost(int64, tag="3")]
@@ -34,7 +34,7 @@ pub struct Header {
     pub time: ::core::option::Option<::prost_types::Timestamp>,
     /// prev block info
     #[prost(message, optional, tag="5")]
-    pub last_block_id: ::core::option::Option<super::super::super::super::tendermint::types::BlockId>,
+    pub last_block_id: ::core::option::Option<crate::types::tendermint_types::BlockId>,
     /// hashes of block data
     ///
     /// commit from validators from the last block
@@ -87,7 +87,7 @@ pub struct GetValidatorSetByHeightRequest {
     pub height: i64,
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for GetValidatorSetByHeightRequest {
 const NAME: &'static str = "GetValidatorSetByHeightRequest";
@@ -105,7 +105,7 @@ pub struct GetValidatorSetByHeightResponse {
     pub validators: ::prost::alloc::vec::Vec<Validator>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="3")]
-    pub pagination: ::core::option::Option<super::super::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for GetValidatorSetByHeightResponse {
 const NAME: &'static str = "GetValidatorSetByHeightResponse";
@@ -119,7 +119,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct GetLatestValidatorSetRequest {
     /// pagination defines an pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for GetLatestValidatorSetRequest {
 const NAME: &'static str = "GetLatestValidatorSetRequest";
@@ -137,7 +137,7 @@ pub struct GetLatestValidatorSetResponse {
     pub validators: ::prost::alloc::vec::Vec<Validator>,
     /// pagination defines an pagination for the response.
     #[prost(message, optional, tag="3")]
-    pub pagination: ::core::option::Option<super::super::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for GetLatestValidatorSetResponse {
 const NAME: &'static str = "GetLatestValidatorSetResponse";
@@ -182,10 +182,10 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetBlockByHeightResponse {
     #[prost(message, optional, tag="1")]
-    pub block_id: ::core::option::Option<super::super::super::super::tendermint::types::BlockId>,
+    pub block_id: ::core::option::Option<crate::types::tendermint_types::BlockId>,
     /// Deprecated: please use `sdk_block` instead
     #[prost(message, optional, tag="2")]
-    pub block: ::core::option::Option<super::super::super::super::tendermint::types::Block>,
+    pub block: ::core::option::Option<crate::types::tendermint_types::Block>,
     #[prost(message, optional, tag="3")]
     pub sdk_block: ::core::option::Option<Block>,
 }
@@ -211,10 +211,10 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetLatestBlockResponse {
     #[prost(message, optional, tag="1")]
-    pub block_id: ::core::option::Option<super::super::super::super::tendermint::types::BlockId>,
+    pub block_id: ::core::option::Option<crate::types::tendermint_types::BlockId>,
     /// Deprecated: please use `sdk_block` instead
     #[prost(message, optional, tag="2")]
-    pub block: ::core::option::Option<super::super::super::super::tendermint::types::Block>,
+    pub block: ::core::option::Option<crate::types::tendermint_types::Block>,
     #[prost(message, optional, tag="3")]
     pub sdk_block: ::core::option::Option<Block>,
 }
@@ -241,6 +241,12 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct GetSyncingResponse {
     #[prost(bool, tag="1")]
     pub syncing: bool,
+    /// earliest_block_height is the earliest block height available on this node.
+    #[prost(int64, tag="2")]
+    pub earliest_block_height: i64,
+    /// latest_block_height is the latest block height available on this node.
+    #[prost(int64, tag="3")]
+    pub latest_block_height: i64,
 }
 impl ::prost::Name for GetSyncingResponse {
 const NAME: &'static str = "GetSyncingResponse";
@@ -264,7 +270,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetNodeInfoResponse {
     #[prost(message, optional, tag="1")]
-    pub default_node_info: ::core::option::Option<super::super::super::super::tendermint::p2p::DefaultNodeInfo>,
+    pub default_node_info: ::core::option::Option<crate::types::tendermint_p2p::DefaultNodeInfo>,
     #[prost(message, optional, tag="2")]
     pub application_version: ::core::option::Option<VersionInfo>,
 }
@@ -406,6 +412,90 @@ pub struct ProofOps {
 }
 impl ::prost::Name for ProofOps {
 const NAME: &'static str = "ProofOps";
+const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.base.tendermint.v1beta1.{}", Self::NAME)
+            }}
+/// GetBlockResultsRequest is the request type for the Query/GetBlockResults RPC method.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetBlockResultsRequest {
+    #[prost(int64, tag="1")]
+    pub height: i64,
+}
+impl ::prost::Name for GetBlockResultsRequest {
+const NAME: &'static str = "GetBlockResultsRequest";
+const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.base.tendermint.v1beta1.{}", Self::NAME)
+            }}
+/// GetLatestBlockResultsRequest is the request type for the Query/GetLatestBlockResults RPC method.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetLatestBlockResultsRequest {
+}
+impl ::prost::Name for GetLatestBlockResultsRequest {
+const NAME: &'static str = "GetLatestBlockResultsRequest";
+const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.base.tendermint.v1beta1.{}", Self::NAME)
+            }}
+/// GetBlockResultsResponse is the response type for the Query/GetBlockResults RPC method.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetBlockResultsResponse {
+    /// height is the block height.
+    #[prost(int64, tag="1")]
+    pub height: i64,
+    /// txs_results contains the results of each transaction execution.
+    #[prost(message, repeated, tag="2")]
+    pub txs_results: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ExecTxResult>,
+    /// finalize_block_events contains consensus-level events emitted during block
+    /// finalization, including slashing, jailing, and validator set updates.
+    #[prost(message, repeated, tag="3")]
+    pub finalize_block_events: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::Event>,
+    /// validator_updates contains the validator updates for this block.
+    #[prost(message, repeated, tag="4")]
+    pub validator_updates: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ValidatorUpdate>,
+    /// consensus_param_updates contains any consensus parameter updates for this block.
+    #[prost(message, optional, tag="5")]
+    pub consensus_param_updates: ::core::option::Option<crate::types::tendermint_types::ConsensusParams>,
+    /// app_hash is the app hash after processing this block.
+    #[prost(bytes="vec", tag="6")]
+    pub app_hash: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for GetBlockResultsResponse {
+const NAME: &'static str = "GetBlockResultsResponse";
+const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.base.tendermint.v1beta1.{}", Self::NAME)
+            }}
+/// GetLatestBlockResultsResponse is the response type for the Query/GetLatestBlockResults RPC method.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetLatestBlockResultsResponse {
+    /// height is the block height.
+    #[prost(int64, tag="1")]
+    pub height: i64,
+    /// txs_results contains the results of each transaction execution.
+    #[prost(message, repeated, tag="2")]
+    pub txs_results: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ExecTxResult>,
+    /// finalize_block_events contains consensus-level events emitted during block
+    /// finalization, including slashing, jailing, and validator set updates.
+    #[prost(message, repeated, tag="3")]
+    pub finalize_block_events: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::Event>,
+    /// validator_updates contains the validator updates for this block.
+    #[prost(message, repeated, tag="4")]
+    pub validator_updates: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ValidatorUpdate>,
+    /// consensus_param_updates contains any consensus parameter updates for this block.
+    #[prost(message, optional, tag="5")]
+    pub consensus_param_updates: ::core::option::Option<crate::types::tendermint_types::ConsensusParams>,
+    /// app_hash is the app hash after processing this block.
+    #[prost(bytes="vec", tag="6")]
+    pub app_hash: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for GetLatestBlockResultsResponse {
+const NAME: &'static str = "GetLatestBlockResultsResponse";
 const PACKAGE: &'static str = "cosmos.base.tendermint.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.base.tendermint.v1beta1.{}", Self::NAME)

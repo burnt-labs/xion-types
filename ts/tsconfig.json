@@ -11,7 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "outDir": "dist",
-    "rootDir": "types",
+    "rootDir": "types"
   },
   "include": ["**/*.ts"],
   "exclude": [
@@ -19,8 +19,6 @@
     "node_modules",
     "scripts",
     "**/*.spec.*",
-    "**/*.test.*",
-    "types/contracts/**/*.client.ts",
-    "types/contracts/**/*.message-composer.ts"
+    "**/*.test.*"
   ]
 }

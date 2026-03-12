@@ -51,22 +51,22 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Collect xion release tags
         id: tags
         run: |
-          cd xion
-          git fetch --tags origin
-
-          # Stable releases only (vX.Y.Z), skip RCs for now
-          TAGS=$(git tag -l 'v[0-9]*.[0-9]*.[0-9]*' | grep -vE '\-rc[0-9]*$' | sort -V | tail -10)
+          # Fetch tags from GitHub API (no submodule needed)
+          TAGS=$(curl -sH "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/burnt-labs/xion/tags?per_page=100" \
+            | jq -r '.[].name' \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | sort -V \
+            | tail -10)
           echo "Recent stable tags:"
           echo "$TAGS"
 
-          # Export as JSON array for the next step
           JSON=$(echo "$TAGS" | jq -R -s -c 'split("\n") | map(select(length > 0))')
           echo "tags=$JSON" >> $GITHUB_OUTPUT
 
@@ -76,68 +76,10 @@ jobs:
           LANGUAGE: ${{ matrix.language }}
           TAGS_JSON: ${{ steps.tags.outputs.tags }}
         run: |
-          MISSING=""
-
-          for TAG in $(echo "$TAGS_JSON" | jq -r '.[]'); do
-            VERSION="${TAG#v}"
-            PUBLISHED=false
-
-            case "$LANGUAGE" in
-              ts)
-                # npm: @burnt-labs/xion-types
-                if npm view "@burnt-labs/xion-types@$VERSION" version >/dev/null 2>&1; then
-                  PUBLISHED=true
-                fi
-                ;;
-              python)
-                # PyPI: xion-types
-                HTTP=$(curl -s -o /dev/null -w '%{http_code}' "https://pypi.org/pypi/xion-types/$VERSION/json")
-                if [ "$HTTP" = "200" ]; then
-                  PUBLISHED=true
-                fi
-                ;;
-              rust)
-                # crates.io: xion-types
-                HTTP=$(curl -s -o /dev/null -w '%{http_code}' "https://crates.io/api/v1/crates/xion-types/$VERSION")
-                if [ "$HTTP" = "200" ]; then
-                  PUBLISHED=true
-                fi
-                ;;
-              ruby)
-                # RubyGems: xion_types
-                VERSIONS=$(curl -s "https://rubygems.org/api/v1/versions/xion_types.json" 2>/dev/null || echo "[]")
-                if echo "$VERSIONS" | jq -e ".[] | select(.number == \"$VERSION\")" >/dev/null 2>&1; then
-                  PUBLISHED=true
-                fi
-                ;;
-              kotlin)
-                # Maven Central: io.github.burnt-labs:xion-types-kotlin
-                HTTP=$(curl -s -o /dev/null -w '%{http_code}' \
-                  "https://repo1.maven.org/maven2/io/github/burnt-labs/xion-types-kotlin/$VERSION/xion-types-kotlin-$VERSION.pom")
-                if [ "$HTTP" = "200" ]; then
-                  PUBLISHED=true
-                fi
-                ;;
-              swift)
-                # CocoaPods: XionTypes — check the spec repo
-                HTTP=$(curl -s -o /dev/null -w '%{http_code}' \
-                  "https://cdn.cocoapods.org/all_pods_versions_a_7_5.txt" 2>/dev/null || echo "000")
-                # Fallback: check if a git tag exists in this repo for SPM
-                if git tag -l "$TAG" | grep -q "$TAG"; then
-                  PUBLISHED=true
-                fi
-                ;;
-            esac
-
-            if [ "$PUBLISHED" = "false" ]; then
-              echo "❌ $LANGUAGE: version $VERSION (tag $TAG) NOT published"
-              MISSING="$MISSING $TAG"
-            else
-              echo "✅ $LANGUAGE: version $VERSION (tag $TAG) published"
-            fi
-          done
-
-          MISSING=$(echo "$MISSING" | xargs) # trim
+          OUTPUT=$(bash scripts/ci/helper/check-registries.sh "$LANGUAGE" "$TAGS_JSON")
+          echo "$OUTPUT"
+          MISSING_LINE=$(echo "$OUTPUT" | grep '^missing=' | head -1)
+          MISSING="${MISSING_LINE#missing=}"
           if [ -n "$MISSING" ]; then
             echo "has-missing=true" >> $GITHUB_OUTPUT
             echo "missing-tags=$MISSING" >> $GITHUB_OUTPUT

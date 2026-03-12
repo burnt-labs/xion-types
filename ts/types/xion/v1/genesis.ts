@@ -1,8 +1,11 @@
 //@ts-nocheck
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
+/** GenesisState defines the xion module's genesis state */
 export interface GenesisState {
+  /** The percentage fee taken by the platform */
   platformPercentage: number;
+  /** Minimum amounts required for platform operations */
   platformMinimums: Coin[];
 }
 export interface GenesisStateProtoMsg {
@@ -10,18 +13,26 @@ export interface GenesisStateProtoMsg {
   value: Uint8Array;
 }
 /**
+ * GenesisState defines the xion module's genesis state
  * @name GenesisStateAmino
  * @package xion.v1
  * @see proto type: xion.v1.GenesisState
  */
 export interface GenesisStateAmino {
+  /**
+   * The percentage fee taken by the platform
+   */
   platform_percentage?: number;
+  /**
+   * Minimum amounts required for platform operations
+   */
   platform_minimums?: CoinAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/xion.v1.GenesisState";
   value: GenesisStateAmino;
 }
+/** GenesisState defines the xion module's genesis state */
 export interface GenesisStateSDKType {
   platform_percentage: number;
   platform_minimums: CoinSDKType[];

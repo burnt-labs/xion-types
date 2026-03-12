@@ -5,7 +5,7 @@
 
 package cosmos.base.reflection.v2alpha1
 
-/** QueryServicesDescriptor contains the list of cosmos-sdk queriable services
+/** QueryServicesDescriptor contains the list of cosmos-sdk queryable services
   *
   * @param queryServices
   *   query_services is a list of cosmos-sdk QueryServiceDescriptor

@@ -17,7 +17,7 @@ package cosmos.base.reflection.v2alpha1
   * @param configuration
   *   configuration provides metadata information regarding the sdk.Config type
   * @param queryServices
-  *   query_services provides metadata information regarding the available queriable endpoints
+  *   query_services provides metadata information regarding the available queryable endpoints
   * @param tx
   *   tx provides metadata information regarding how to send transactions to the given application
   */

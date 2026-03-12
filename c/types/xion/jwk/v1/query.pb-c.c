@@ -97,6 +97,96 @@ void   xion__jwk__v1__query_params_response__free_unpacked
   assert(message->base.descriptor == &xion__jwk__v1__query_params_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   xion__jwk__v1__query_audience_claim_request__init
+                     (Xion__Jwk__V1__QueryAudienceClaimRequest         *message)
+{
+  static const Xion__Jwk__V1__QueryAudienceClaimRequest init_value = XION__JWK__V1__QUERY_AUDIENCE_CLAIM_REQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_audience_claim_request__get_packed_size
+                     (const Xion__Jwk__V1__QueryAudienceClaimRequest *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_audience_claim_request__pack
+                     (const Xion__Jwk__V1__QueryAudienceClaimRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_audience_claim_request__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryAudienceClaimRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryAudienceClaimRequest *
+       xion__jwk__v1__query_audience_claim_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryAudienceClaimRequest *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_audience_claim_request__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_audience_claim_request__free_unpacked
+                     (Xion__Jwk__V1__QueryAudienceClaimRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_audience_claim_response__init
+                     (Xion__Jwk__V1__QueryAudienceClaimResponse         *message)
+{
+  static const Xion__Jwk__V1__QueryAudienceClaimResponse init_value = XION__JWK__V1__QUERY_AUDIENCE_CLAIM_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_audience_claim_response__get_packed_size
+                     (const Xion__Jwk__V1__QueryAudienceClaimResponse *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_audience_claim_response__pack
+                     (const Xion__Jwk__V1__QueryAudienceClaimResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_audience_claim_response__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryAudienceClaimResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryAudienceClaimResponse *
+       xion__jwk__v1__query_audience_claim_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryAudienceClaimResponse *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_audience_claim_response__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_audience_claim_response__free_unpacked
+                     (Xion__Jwk__V1__QueryAudienceClaimResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_claim_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   xion__jwk__v1__query_get_audience_claim_request__init
                      (Xion__Jwk__V1__QueryGetAudienceClaimRequest         *message)
 {
@@ -187,6 +277,96 @@ void   xion__jwk__v1__query_get_audience_claim_response__free_unpacked
   assert(message->base.descriptor == &xion__jwk__v1__query_get_audience_claim_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   xion__jwk__v1__query_audience_request__init
+                     (Xion__Jwk__V1__QueryAudienceRequest         *message)
+{
+  static const Xion__Jwk__V1__QueryAudienceRequest init_value = XION__JWK__V1__QUERY_AUDIENCE_REQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_audience_request__get_packed_size
+                     (const Xion__Jwk__V1__QueryAudienceRequest *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_audience_request__pack
+                     (const Xion__Jwk__V1__QueryAudienceRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_audience_request__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryAudienceRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryAudienceRequest *
+       xion__jwk__v1__query_audience_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryAudienceRequest *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_audience_request__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_audience_request__free_unpacked
+                     (Xion__Jwk__V1__QueryAudienceRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_audience_response__init
+                     (Xion__Jwk__V1__QueryAudienceResponse         *message)
+{
+  static const Xion__Jwk__V1__QueryAudienceResponse init_value = XION__JWK__V1__QUERY_AUDIENCE_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_audience_response__get_packed_size
+                     (const Xion__Jwk__V1__QueryAudienceResponse *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_audience_response__pack
+                     (const Xion__Jwk__V1__QueryAudienceResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_audience_response__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryAudienceResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryAudienceResponse *
+       xion__jwk__v1__query_audience_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryAudienceResponse *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_audience_response__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_audience_response__free_unpacked
+                     (Xion__Jwk__V1__QueryAudienceResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   xion__jwk__v1__query_get_audience_request__init
                      (Xion__Jwk__V1__QueryGetAudienceRequest         *message)
 {
@@ -275,6 +455,96 @@ void   xion__jwk__v1__query_get_audience_response__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &xion__jwk__v1__query_get_audience_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_audience_all_request__init
+                     (Xion__Jwk__V1__QueryAudienceAllRequest         *message)
+{
+  static const Xion__Jwk__V1__QueryAudienceAllRequest init_value = XION__JWK__V1__QUERY_AUDIENCE_ALL_REQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_audience_all_request__get_packed_size
+                     (const Xion__Jwk__V1__QueryAudienceAllRequest *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_audience_all_request__pack
+                     (const Xion__Jwk__V1__QueryAudienceAllRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_audience_all_request__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryAudienceAllRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryAudienceAllRequest *
+       xion__jwk__v1__query_audience_all_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryAudienceAllRequest *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_audience_all_request__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_audience_all_request__free_unpacked
+                     (Xion__Jwk__V1__QueryAudienceAllRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_audience_all_response__init
+                     (Xion__Jwk__V1__QueryAudienceAllResponse         *message)
+{
+  static const Xion__Jwk__V1__QueryAudienceAllResponse init_value = XION__JWK__V1__QUERY_AUDIENCE_ALL_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_audience_all_response__get_packed_size
+                     (const Xion__Jwk__V1__QueryAudienceAllResponse *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_audience_all_response__pack
+                     (const Xion__Jwk__V1__QueryAudienceAllResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_audience_all_response__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryAudienceAllResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryAudienceAllResponse *
+       xion__jwk__v1__query_audience_all_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryAudienceAllResponse *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_audience_all_response__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_audience_all_response__free_unpacked
+                     (Xion__Jwk__V1__QueryAudienceAllResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_audience_all_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   xion__jwk__v1__query_all_audience_request__init
@@ -558,6 +828,82 @@ const ProtobufCMessageDescriptor xion__jwk__v1__query_params_response__descripto
   (ProtobufCMessageInit) xion__jwk__v1__query_params_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_audience_claim_request__field_descriptors[1] =
+{
+  {
+    "hash",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryAudienceClaimRequest, hash),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_audience_claim_request__field_indices_by_name[] = {
+  0,   /* field[0] = hash */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_audience_claim_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_audience_claim_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryAudienceClaimRequest",
+  "QueryAudienceClaimRequest",
+  "Xion__Jwk__V1__QueryAudienceClaimRequest",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryAudienceClaimRequest),
+  1,
+  xion__jwk__v1__query_audience_claim_request__field_descriptors,
+  xion__jwk__v1__query_audience_claim_request__field_indices_by_name,
+  1,  xion__jwk__v1__query_audience_claim_request__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_audience_claim_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_audience_claim_response__field_descriptors[1] =
+{
+  {
+    "claim",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryAudienceClaimResponse, claim),
+    &xion__jwk__v1__audience_claim__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_audience_claim_response__field_indices_by_name[] = {
+  0,   /* field[0] = claim */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_audience_claim_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_audience_claim_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryAudienceClaimResponse",
+  "QueryAudienceClaimResponse",
+  "Xion__Jwk__V1__QueryAudienceClaimResponse",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryAudienceClaimResponse),
+  1,
+  xion__jwk__v1__query_audience_claim_response__field_descriptors,
+  xion__jwk__v1__query_audience_claim_response__field_indices_by_name,
+  1,  xion__jwk__v1__query_audience_claim_response__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_audience_claim_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor xion__jwk__v1__query_get_audience_claim_request__field_descriptors[1] =
 {
   {
@@ -634,6 +980,82 @@ const ProtobufCMessageDescriptor xion__jwk__v1__query_get_audience_claim_respons
   (ProtobufCMessageInit) xion__jwk__v1__query_get_audience_claim_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_audience_request__field_descriptors[1] =
+{
+  {
+    "aud",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryAudienceRequest, aud),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_audience_request__field_indices_by_name[] = {
+  0,   /* field[0] = aud */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_audience_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_audience_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryAudienceRequest",
+  "QueryAudienceRequest",
+  "Xion__Jwk__V1__QueryAudienceRequest",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryAudienceRequest),
+  1,
+  xion__jwk__v1__query_audience_request__field_descriptors,
+  xion__jwk__v1__query_audience_request__field_indices_by_name,
+  1,  xion__jwk__v1__query_audience_request__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_audience_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_audience_response__field_descriptors[1] =
+{
+  {
+    "audience",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryAudienceResponse, audience),
+    &xion__jwk__v1__audience__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_audience_response__field_indices_by_name[] = {
+  0,   /* field[0] = audience */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_audience_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_audience_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryAudienceResponse",
+  "QueryAudienceResponse",
+  "Xion__Jwk__V1__QueryAudienceResponse",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryAudienceResponse),
+  1,
+  xion__jwk__v1__query_audience_response__field_descriptors,
+  xion__jwk__v1__query_audience_response__field_indices_by_name,
+  1,  xion__jwk__v1__query_audience_response__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_audience_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor xion__jwk__v1__query_get_audience_request__field_descriptors[1] =
 {
   {
@@ -708,6 +1130,95 @@ const ProtobufCMessageDescriptor xion__jwk__v1__query_get_audience_response__des
   xion__jwk__v1__query_get_audience_response__field_indices_by_name,
   1,  xion__jwk__v1__query_get_audience_response__number_ranges,
   (ProtobufCMessageInit) xion__jwk__v1__query_get_audience_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_audience_all_request__field_descriptors[1] =
+{
+  {
+    "pagination",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryAudienceAllRequest, pagination),
+    &cosmos__base__query__v1beta1__page_request__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_audience_all_request__field_indices_by_name[] = {
+  0,   /* field[0] = pagination */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_audience_all_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_audience_all_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryAudienceAllRequest",
+  "QueryAudienceAllRequest",
+  "Xion__Jwk__V1__QueryAudienceAllRequest",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryAudienceAllRequest),
+  1,
+  xion__jwk__v1__query_audience_all_request__field_descriptors,
+  xion__jwk__v1__query_audience_all_request__field_indices_by_name,
+  1,  xion__jwk__v1__query_audience_all_request__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_audience_all_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_audience_all_response__field_descriptors[2] =
+{
+  {
+    "audience",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Xion__Jwk__V1__QueryAudienceAllResponse, n_audience),
+    offsetof(Xion__Jwk__V1__QueryAudienceAllResponse, audience),
+    &xion__jwk__v1__audience__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "pagination",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryAudienceAllResponse, pagination),
+    &cosmos__base__query__v1beta1__page_response__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_audience_all_response__field_indices_by_name[] = {
+  0,   /* field[0] = audience */
+  1,   /* field[1] = pagination */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_audience_all_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_audience_all_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryAudienceAllResponse",
+  "QueryAudienceAllResponse",
+  "Xion__Jwk__V1__QueryAudienceAllResponse",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryAudienceAllResponse),
+  2,
+  xion__jwk__v1__query_audience_all_response__field_descriptors,
+  xion__jwk__v1__query_audience_all_response__field_indices_by_name,
+  1,  xion__jwk__v1__query_audience_all_response__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_audience_all_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor xion__jwk__v1__query_all_audience_request__field_descriptors[1] =
@@ -826,12 +1337,12 @@ static const ProtobufCFieldDescriptor xion__jwk__v1__query_validate_jwtrequest__
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "sigBytes",
+    "sig_bytes",
     3,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
-    offsetof(Xion__Jwk__V1__QueryValidateJWTRequest, sigbytes),
+    offsetof(Xion__Jwk__V1__QueryValidateJWTRequest, sig_bytes),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -840,7 +1351,7 @@ static const ProtobufCFieldDescriptor xion__jwk__v1__query_validate_jwtrequest__
 };
 static const unsigned xion__jwk__v1__query_validate_jwtrequest__field_indices_by_name[] = {
   0,   /* field[0] = aud */
-  2,   /* field[2] = sigBytes */
+  2,   /* field[2] = sig_bytes */
   1,   /* field[1] = sub */
 };
 static const ProtobufCIntRange xion__jwk__v1__query_validate_jwtrequest__number_ranges[1 + 1] =
@@ -917,12 +1428,12 @@ const ProtobufCMessageDescriptor xion__jwk__v1__private_claim__descriptor =
 static const ProtobufCFieldDescriptor xion__jwk__v1__query_validate_jwtresponse__field_descriptors[1] =
 {
   {
-    "privateClaims",
+    "private_claims",
     1,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Xion__Jwk__V1__QueryValidateJWTResponse, n_privateclaims),
-    offsetof(Xion__Jwk__V1__QueryValidateJWTResponse, privateclaims),
+    offsetof(Xion__Jwk__V1__QueryValidateJWTResponse, n_private_claims),
+    offsetof(Xion__Jwk__V1__QueryValidateJWTResponse, private_claims),
     &xion__jwk__v1__private_claim__descriptor,
     NULL,
     0,             /* flags */
@@ -930,7 +1441,7 @@ static const ProtobufCFieldDescriptor xion__jwk__v1__query_validate_jwtresponse_
   },
 };
 static const unsigned xion__jwk__v1__query_validate_jwtresponse__field_indices_by_name[] = {
-  0,   /* field[0] = privateClaims */
+  0,   /* field[0] = private_claims */
 };
 static const ProtobufCIntRange xion__jwk__v1__query_validate_jwtresponse__number_ranges[1 + 1] =
 {
@@ -955,9 +1466,9 @@ const ProtobufCMessageDescriptor xion__jwk__v1__query_validate_jwtresponse__desc
 static const ProtobufCMethodDescriptor xion__jwk__v1__query__method_descriptors[5] =
 {
   { "Params", &xion__jwk__v1__query_params_request__descriptor, &xion__jwk__v1__query_params_response__descriptor },
-  { "AudienceClaim", &xion__jwk__v1__query_get_audience_claim_request__descriptor, &xion__jwk__v1__query_get_audience_claim_response__descriptor },
-  { "Audience", &xion__jwk__v1__query_get_audience_request__descriptor, &xion__jwk__v1__query_get_audience_response__descriptor },
-  { "AudienceAll", &xion__jwk__v1__query_all_audience_request__descriptor, &xion__jwk__v1__query_all_audience_response__descriptor },
+  { "AudienceClaim", &xion__jwk__v1__query_audience_claim_request__descriptor, &xion__jwk__v1__query_audience_claim_response__descriptor },
+  { "Audience", &xion__jwk__v1__query_audience_request__descriptor, &xion__jwk__v1__query_audience_response__descriptor },
+  { "AudienceAll", &xion__jwk__v1__query_audience_all_request__descriptor, &xion__jwk__v1__query_audience_all_response__descriptor },
   { "ValidateJWT", &xion__jwk__v1__query_validate_jwtrequest__descriptor, &xion__jwk__v1__query_validate_jwtresponse__descriptor },
 };
 const unsigned xion__jwk__v1__query__method_indices_by_name[] = {
@@ -987,24 +1498,24 @@ void xion__jwk__v1__query__params(ProtobufCService *service,
   service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__jwk__v1__query__audience_claim(ProtobufCService *service,
-                                          const Xion__Jwk__V1__QueryGetAudienceClaimRequest *input,
-                                          Xion__Jwk__V1__QueryGetAudienceClaimResponse_Closure closure,
+                                          const Xion__Jwk__V1__QueryAudienceClaimRequest *input,
+                                          Xion__Jwk__V1__QueryAudienceClaimResponse_Closure closure,
                                           void *closure_data)
 {
   assert(service->descriptor == &xion__jwk__v1__query__descriptor);
   service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__jwk__v1__query__audience(ProtobufCService *service,
-                                    const Xion__Jwk__V1__QueryGetAudienceRequest *input,
-                                    Xion__Jwk__V1__QueryGetAudienceResponse_Closure closure,
+                                    const Xion__Jwk__V1__QueryAudienceRequest *input,
+                                    Xion__Jwk__V1__QueryAudienceResponse_Closure closure,
                                     void *closure_data)
 {
   assert(service->descriptor == &xion__jwk__v1__query__descriptor);
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__jwk__v1__query__audience_all(ProtobufCService *service,
-                                        const Xion__Jwk__V1__QueryAllAudienceRequest *input,
-                                        Xion__Jwk__V1__QueryAllAudienceResponse_Closure closure,
+                                        const Xion__Jwk__V1__QueryAudienceAllRequest *input,
+                                        Xion__Jwk__V1__QueryAudienceAllResponse_Closure closure,
                                         void *closure_data)
 {
   assert(service->descriptor == &xion__jwk__v1__query__descriptor);

@@ -5,6 +5,13 @@
 
 package xion.jwk.v1
 
+/** PrivateClaim represents a private claim in a JWT
+  *
+  * @param key
+  *   The claim key
+  * @param value
+  *   The claim value
+  */
 @SerialVersionUID(0L)
 final case class PrivateClaim(
     key: _root_.scala.Predef.String = "",
@@ -121,8 +128,8 @@ object PrivateClaim extends scalapb.GeneratedMessageCompanion[xion.jwk.v1.Privat
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(9)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(9)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(15)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(15)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)

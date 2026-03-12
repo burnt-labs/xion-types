@@ -1,0 +1,5 @@
+version: v2
+plugins:
+  - local: protoc-gen-ts_proto
+    out: ts-proto/types
+    opt: "esModuleInterop=true,forceLong=long,useOptionals=messages,outputClientImpl=grpc-web"

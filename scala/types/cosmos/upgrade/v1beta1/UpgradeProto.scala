@@ -36,7 +36,8 @@ object UpgradeProto extends _root_.scalapb.GeneratedFileObject {
   gV0aXRsZRIyCgtkZXNjcmlwdGlvbhgCIAEoCUIQ4j8NEgtkZXNjcmlwdGlvblILZGVzY3JpcHRpb246URgB6KAfAcq0LRpjb3Ntb
   3MuZ292LnYxYmV0YTEuQ29udGVudIrnsCooY29zbW9zLXNkay9DYW5jZWxTb2Z0d2FyZVVwZ3JhZGVQcm9wb3NhbCJvCg1Nb2R1b
   GVWZXJzaW9uEh0KBG5hbWUYASABKAlCCeI/BhIEbmFtZVIEbmFtZRImCgd2ZXJzaW9uGAIgASgEQgziPwkSB3ZlcnNpb25SB3Zlc
-  nNpb246F+igHwHStC0PY29zbW9zLXNkayAwLjQzQiJaHGNvc21vc3Nkay5pby94L3VwZ3JhZGUvdHlwZXPI4R4AYgZwcm90bzM="""
+  nNpb246F+igHwHStC0PY29zbW9zLXNkayAwLjQzQjJaLGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsveC91cGdyYWRlL3R5c
+  GVzyOEeAGIGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

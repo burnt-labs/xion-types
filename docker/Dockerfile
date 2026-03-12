@@ -1,4 +1,4 @@
-FROM bufbuild/buf:1.54.0 AS builder
+FROM bufbuild/buf:1.54.0 AS buf-binary
 FROM swift:5.10-jammy AS swift-builder
 
 # Clone and build swift-protobuf
@@ -15,11 +15,13 @@ RUN swift build -c release \
     -Xlinker -static-libgcc \
     || swift build -c release --static-swift-stdlib
 
-FROM golang:1.25-alpine
+# ─── Final image ─────────────────────────────────────────────────────
+# No Go required — protos come from BSR, not go.mod.
+FROM alpine:3.21
 
 RUN apk add --no-cache \
+    bash \
     build-base \
-    clang-extra-tools \
     curl \
     g++ \
     gcompat \
@@ -40,65 +42,49 @@ RUN apk add --no-cache \
     python3 \
     py3-pip
 
-# Python tools needed by post-processing (e.g. fix-python-imports.py)
+# Python tools needed by post-processors
 RUN pip3 install --break-system-packages grpcio-tools || \
     pip3 install grpcio-tools
 
-RUN npm install -g ts-proto
-RUN npm install -g swagger-combine
+RUN npm install -g pnpm ts-proto
 
-ENV GOLANG_PROTOBUF_VERSION=1.36.6 \
-    GRPC_GATEWAY_VERSION=1.16.0 \
-    GRPC_GATEWAY_PROTOC_GEN_OPENAPIV2_VERSION=2.26.3
+# buf CLI (from builder stage)
+COPY --from=buf-binary /usr/local/bin/buf /usr/local/bin/buf
 
-RUN go install github.com/cosmos/cosmos-proto/cmd/protoc-gen-go-pulsar@latest && \
-    go install google.golang.org/protobuf/cmd/protoc-gen-go@v${GOLANG_PROTOBUF_VERSION} && \
-    go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v${GRPC_GATEWAY_VERSION} && \
-    go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@v${GRPC_GATEWAY_PROTOC_GEN_OPENAPIV2_VERSION} && \
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-
-# install all gogo protobuf binaries
-RUN git clone https://github.com/cosmos/gogoproto.git; \
-    cd gogoproto; \
-    go mod download; \
-    make install
-
-COPY --from=builder /usr/local/bin /usr/local/bin
-
-# Install Rust toolchain and prost plugins
+# Install Rust toolchain and prost plugin
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
 ENV PATH="/root/.cargo/bin:$PATH"
-# Install neoeinstein-prost v0.3.1 to match cosmos-rust (generates flat files)
 RUN cargo install protoc-gen-prost --version 0.3.1 --locked
 
-# Install protoc-gen-scala JAR (following Buf plugins pattern)
+# Install protoc-gen-scala
 RUN curl -fsSL -o /usr/local/bin/protoc-gen-scala.jar \
     https://repo1.maven.org/maven2/com/thesamet/scalapb/protoc-gen-scala/0.11.20/protoc-gen-scala-0.11.20-unix.sh && \
     chmod +x /usr/local/bin/protoc-gen-scala.jar
-
-# Create wrapper script for protoc-gen-scala
 RUN echo '#!/bin/sh' > /usr/local/bin/protoc-gen-scala && \
     echo 'exec java -jar /usr/local/bin/protoc-gen-scala.jar "$@"' >> /usr/local/bin/protoc-gen-scala && \
     chmod +x /usr/local/bin/protoc-gen-scala
 
-# Create symlinks for fts functions to be available
+# Create symlinks for fts functions
 RUN ln -sf /usr/lib/libfts.so.0.0.0 /usr/lib/libfts.so.1
 
-# Set up environment paths for swift
+# Swift protobuf plugin
 COPY --from=swift-builder /build/.build/release/protoc-gen-swift /usr/local/bin/protoc-gen-swift-binary
-
-# Create a wrapper script that sets up the environment for protoc-gen-swift
 RUN echo '#!/bin/sh' > /usr/local/bin/protoc-gen-swift && \
     echo 'LD_PRELOAD=/usr/lib/libfts.so.0.0.0 exec /usr/local/bin/protoc-gen-swift-binary "$@"' >> /usr/local/bin/protoc-gen-swift && \
     chmod +x /usr/local/bin/protoc-gen-swift
 
+# protoc-gen-doc (pre-built binary, no Go needed)
+RUN curl -fsSL -o /tmp/protoc-gen-doc.tar.gz \
+    https://github.com/pseudomuto/protoc-gen-doc/releases/download/v1.5.1/protoc-gen-doc_1.5.1_linux_amd64.tar.gz && \
+    tar -xzf /tmp/protoc-gen-doc.tar.gz -C /usr/local/bin protoc-gen-doc && \
+    chmod +x /usr/local/bin/protoc-gen-doc && \
+    rm /tmp/protoc-gen-doc.tar.gz
+
 # Verify all plugins are available
 RUN protoc --version && \
-    which protoc-gen-go && \
-    which protoc-gen-go-grpc && \
+    which protoc-gen-doc && \
     which protoc-gen-prost && \
     which protoc-gen-scala && \
     which protoc-gen-swift && \
-    which protoc-gen-c && \
     which protoc-gen-ts_proto && \
     buf --version

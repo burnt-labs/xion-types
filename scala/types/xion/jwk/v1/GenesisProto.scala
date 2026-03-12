@@ -18,10 +18,10 @@ object GenesisProto extends _root_.scalapb.GeneratedFileObject {
   private lazy val ProtoBytes: _root_.scala.Array[Byte] =
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """Chl4aW9uL2p3ay92MS9nZW5lc2lzLnByb3RvEgt4aW9uLmp3ay52MRoUZ29nb3Byb3RvL2dvZ28ucHJvdG8aGHhpb24vandrL
-  3YxL3BhcmFtcy5wcm90bxoaeGlvbi9qd2svdjEvYXVkaWVuY2UucHJvdG8ingEKDEdlbmVzaXNTdGF0ZRI8CgZwYXJhbXMYASABK
-  AsyEy54aW9uLmp3ay52MS5QYXJhbXNCD+I/CBIGcGFyYW1zyN4fAFIGcGFyYW1zElAKDGF1ZGllbmNlTGlzdBgCIAMoCzIVLnhpb
-  24uandrLnYxLkF1ZGllbmNlQhXiPw4SDGF1ZGllbmNlTGlzdMjeHwBSDGF1ZGllbmNlTGlzdEIoWiZnaXRodWIuY29tL2J1cm50L
-  WxhYnMveGlvbi94L2p3ay90eXBlc2IGcHJvdG8z"""
+  3YxL3BhcmFtcy5wcm90bxoaeGlvbi9qd2svdjEvYXVkaWVuY2UucHJvdG8inwEKDEdlbmVzaXNTdGF0ZRI8CgZwYXJhbXMYASABK
+  AsyEy54aW9uLmp3ay52MS5QYXJhbXNCD+I/CBIGcGFyYW1zyN4fAFIGcGFyYW1zElEKDWF1ZGllbmNlX2xpc3QYAiADKAsyFS54a
+  W9uLmp3ay52MS5BdWRpZW5jZUIV4j8OEgxhdWRpZW5jZUxpc3TI3h8AUgxhdWRpZW5jZUxpc3RCKFomZ2l0aHViLmNvbS9idXJud
+  C1sYWJzL3hpb24veC9qd2svdHlwZXNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

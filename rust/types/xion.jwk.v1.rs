@@ -215,7 +215,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAudienceAllRequest {
     /// Pagination parameters
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAudienceAllRequest {
 const NAME: &'static str = "QueryAudienceAllRequest";
@@ -232,7 +232,7 @@ pub struct QueryAudienceAllResponse {
     pub audience: ::prost::alloc::vec::Vec<Audience>,
     /// Pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAudienceAllResponse {
 const NAME: &'static str = "QueryAudienceAllResponse";
@@ -247,7 +247,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllAudienceRequest {
     /// Pagination parameters
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllAudienceRequest {
 const NAME: &'static str = "QueryAllAudienceRequest";
@@ -265,7 +265,7 @@ pub struct QueryAllAudienceResponse {
     pub audience: ::prost::alloc::vec::Vec<Audience>,
     /// Pagination response
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllAudienceResponse {
 const NAME: &'static str = "QueryAllAudienceResponse";

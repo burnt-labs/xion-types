@@ -9,6 +9,8 @@ package xion.v1
   *
   * @param allowance
   *   allowance can be any of basic and periodic fee allowance.
+  * @param authzGrantee
+  *   The address that can use this authorization-based allowance
   */
 @SerialVersionUID(0L)
 final case class AuthzAllowance(

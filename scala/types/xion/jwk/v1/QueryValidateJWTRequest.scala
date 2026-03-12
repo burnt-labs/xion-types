@@ -5,6 +5,15 @@
 
 package xion.jwk.v1
 
+/** QueryValidateJWTRequest is the request type for validating a JWT
+  *
+  * @param aud
+  *   The audience identifier
+  * @param sub
+  *   The subject
+  * @param sigBytes
+  *   The signature bytes
+  */
 @SerialVersionUID(0L)
 final case class QueryValidateJWTRequest(
     aud: _root_.scala.Predef.String = "",
@@ -146,8 +155,8 @@ object QueryValidateJWTRequest extends scalapb.GeneratedMessageCompanion[xion.jw
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(8)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(8)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(14)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(14)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
@@ -163,7 +172,7 @@ object QueryValidateJWTRequest extends scalapb.GeneratedMessageCompanion[xion.jw
   }
   final val AUD_FIELD_NUMBER = 1
   final val SUB_FIELD_NUMBER = 2
-  final val SIGBYTES_FIELD_NUMBER = 3
+  final val SIG_BYTES_FIELD_NUMBER = 3
   def of(
     aud: _root_.scala.Predef.String,
     sub: _root_.scala.Predef.String,

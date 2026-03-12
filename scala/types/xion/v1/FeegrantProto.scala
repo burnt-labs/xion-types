@@ -10,10 +10,7 @@ object FeegrantProto extends _root_.scalapb.GeneratedFileObject {
     com.google.protobuf.GogoProto,
     com.google.protobuf.any.AnyProto,
     cosmos_proto.CosmosProto,
-    cosmos.base.v1beta1.CoinProto,
-    amino.AminoProto,
-    com.google.protobuf.timestamp.TimestampProto,
-    com.google.protobuf.duration.DurationProto
+    amino.AminoProto
   )
   lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
     Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
@@ -24,20 +21,18 @@ object FeegrantProto extends _root_.scalapb.GeneratedFileObject {
   private lazy val ProtoBytes: _root_.scala.Array[Byte] =
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """ChZ4aW9uL3YxL2ZlZWdyYW50LnByb3RvEgd4aW9uLnYxGhRnb2dvcHJvdG8vZ29nby5wcm90bxoZZ29vZ2xlL3Byb3RvYnVmL
-  2FueS5wcm90bxoZY29zbW9zX3Byb3RvL2Nvc21vcy5wcm90bxoeY29zbW9zL2Jhc2UvdjFiZXRhMS9jb2luLnByb3RvGhFhbWlub
-  y9hbWluby5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb
-  3RvIpQCCg5BdXRoekFsbG93YW5jZRJrCglhbGxvd2FuY2UYASABKAsyFC5nb29nbGUucHJvdG9idWYuQW55QjfiPwsSCWFsbG93Y
-  W5jZcq0LSVjb3Ntb3MuZmVlZ3JhbnQudjFiZXRhMS5GZWVBbGxvd2FuY2VJUglhbGxvd2FuY2USTgoNYXV0aHpfZ3JhbnRlZRgCI
-  AEoCUIp4j8OEgxhdXRoekdyYW50ZWXStC0UY29zbW9zLkFkZHJlc3NTdHJpbmdSDGF1dGh6R3JhbnRlZTpFiKAfAMq0LSVjb3Ntb
-  3MuZmVlZ3JhbnQudjFiZXRhMS5GZWVBbGxvd2FuY2VJiuewKhN4aW9uL0F1dGh6QWxsb3dhbmNlIqsCChJDb250cmFjdHNBbGxvd
-  2FuY2USawoJYWxsb3dhbmNlGAEgASgLMhQuZ29vZ2xlLnByb3RvYnVmLkFueUI34j8LEglhbGxvd2FuY2XKtC0lY29zbW9zLmZlZ
-  WdyYW50LnYxYmV0YTEuRmVlQWxsb3dhbmNlSVIJYWxsb3dhbmNlEl0KEmNvbnRyYWN0X2FkZHJlc3NlcxgCIAMoCUIu4j8TEhFjb
-  250cmFjdEFkZHJlc3Nlc9K0LRRjb3Ntb3MuQWRkcmVzc1N0cmluZ1IRY29udHJhY3RBZGRyZXNzZXM6SYigHwDKtC0lY29zbW9zL
-  mZlZWdyYW50LnYxYmV0YTEuRmVlQWxsb3dhbmNlSYrnsCoXeGlvbi9Db250cmFjdHNBbGxvd2FuY2UizQEKEU11bHRpQW55QWxsb
-  3dhbmNlEm4KCmFsbG93YW5jZXMYASADKAsyFC5nb29nbGUucHJvdG9idWYuQW55QjjiPwwSCmFsbG93YW5jZXPKtC0lY29zbW9zL
-  mZlZWdyYW50LnYxYmV0YTEuRmVlQWxsb3dhbmNlSVIKYWxsb3dhbmNlczpIiKAfAMq0LSVjb3Ntb3MuZmVlZ3JhbnQudjFiZXRhM
-  S5GZWVBbGxvd2FuY2VJiuewKhZ4aW9uL011bHRpQW55QWxsb3dhbmNlQilaJ2dpdGh1Yi5jb20vYnVybnQtbGFicy94aW9uL3gve
-  Glvbi90eXBlc2IGcHJvdG8z"""
+  2FueS5wcm90bxoZY29zbW9zX3Byb3RvL2Nvc21vcy5wcm90bxoRYW1pbm8vYW1pbm8ucHJvdG8ilAIKDkF1dGh6QWxsb3dhbmNlE
+  msKCWFsbG93YW5jZRgBIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlCN+I/CxIJYWxsb3dhbmNlyrQtJWNvc21vcy5mZWVncmFud
+  C52MWJldGExLkZlZUFsbG93YW5jZUlSCWFsbG93YW5jZRJOCg1hdXRoel9ncmFudGVlGAIgASgJQiniPw4SDGF1dGh6R3JhbnRlZ
+  dK0LRRjb3Ntb3MuQWRkcmVzc1N0cmluZ1IMYXV0aHpHcmFudGVlOkWIoB8AyrQtJWNvc21vcy5mZWVncmFudC52MWJldGExLkZlZ
+  UFsbG93YW5jZUmK57AqE3hpb24vQXV0aHpBbGxvd2FuY2UiqwIKEkNvbnRyYWN0c0FsbG93YW5jZRJrCglhbGxvd2FuY2UYASABK
+  AsyFC5nb29nbGUucHJvdG9idWYuQW55QjfiPwsSCWFsbG93YW5jZcq0LSVjb3Ntb3MuZmVlZ3JhbnQudjFiZXRhMS5GZWVBbGxvd
+  2FuY2VJUglhbGxvd2FuY2USXQoSY29udHJhY3RfYWRkcmVzc2VzGAIgAygJQi7iPxMSEWNvbnRyYWN0QWRkcmVzc2Vz0rQtFGNvc
+  21vcy5BZGRyZXNzU3RyaW5nUhFjb250cmFjdEFkZHJlc3NlczpJiKAfAMq0LSVjb3Ntb3MuZmVlZ3JhbnQudjFiZXRhMS5GZWVBb
+  Gxvd2FuY2VJiuewKhd4aW9uL0NvbnRyYWN0c0FsbG93YW5jZSLNAQoRTXVsdGlBbnlBbGxvd2FuY2USbgoKYWxsb3dhbmNlcxgBI
+  AMoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlCOOI/DBIKYWxsb3dhbmNlc8q0LSVjb3Ntb3MuZmVlZ3JhbnQudjFiZXRhMS5GZWVBb
+  Gxvd2FuY2VJUgphbGxvd2FuY2VzOkiIoB8AyrQtJWNvc21vcy5mZWVncmFudC52MWJldGExLkZlZUFsbG93YW5jZUmK57AqFnhpb
+  24vTXVsdGlBbnlBbGxvd2FuY2VCKVonZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24veC94aW9uL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)
@@ -49,10 +44,7 @@ object FeegrantProto extends _root_.scalapb.GeneratedFileObject {
       com.google.protobuf.GogoProto.javaDescriptor,
       com.google.protobuf.any.AnyProto.javaDescriptor,
       cosmos_proto.CosmosProto.javaDescriptor,
-      cosmos.base.v1beta1.CoinProto.javaDescriptor,
-      amino.AminoProto.javaDescriptor,
-      com.google.protobuf.timestamp.TimestampProto.javaDescriptor,
-      com.google.protobuf.duration.DurationProto.javaDescriptor
+      amino.AminoProto.javaDescriptor
     ))
   }
   @deprecated("Use javaDescriptor instead. In a future version this will refer to scalaDescriptor.", "ScalaPB 0.5.47")

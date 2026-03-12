@@ -5,6 +5,12 @@
 
 package xion.v1
 
+/** QueryPlatformMinimumResponse is the response type for querying platform
+  * minimum fees
+  *
+  * @param minimums
+  *   The minimum fees required by the platform
+  */
 @SerialVersionUID(0L)
 final case class QueryPlatformMinimumResponse(
     minimums: _root_.scala.Seq[cosmos.base.v1beta1.Coin] = _root_.scala.Seq.empty,

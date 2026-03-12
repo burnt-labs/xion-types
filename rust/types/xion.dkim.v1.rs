@@ -208,7 +208,7 @@ pub struct QueryDkimPubKeysRequest {
     pub poseidon_hash: ::prost::alloc::vec::Vec<u8>,
     /// pagination defines the pagination parameters.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDkimPubKeysRequest {
 const NAME: &'static str = "QueryDkimPubKeysRequest";
@@ -226,7 +226,7 @@ pub struct QueryDkimPubKeysResponse {
     pub dkim_pub_keys: ::prost::alloc::vec::Vec<DkimPubKey>,
     /// pagination defines the pagination response.
     #[prost(message, optional, tag="3")]
-    pub pagination: ::core::option::Option<super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDkimPubKeysResponse {
 const NAME: &'static str = "QueryDkimPubKeysResponse";

@@ -28,7 +28,8 @@ object TxProto extends _root_.scalapb.GeneratedFileObject {
   jeIoB8A6KAfAILnsCoJc3VibWl0dGVyiuewKhxjb3Ntb3Mtc2RrL01zZ1N1Ym1pdEV2aWRlbmNlIjoKGU1zZ1N1Ym1pdEV2aWRlb
   mNlUmVzcG9uc2USHQoEaGFzaBgEIAEoDEIJ4j8GEgRoYXNoUgRoYXNoMn4KA01zZxJwCg5TdWJtaXRFdmlkZW5jZRIqLmNvc21vc
   y5ldmlkZW5jZS52MWJldGExLk1zZ1N1Ym1pdEV2aWRlbmNlGjIuY29zbW9zLmV2aWRlbmNlLnYxYmV0YTEuTXNnU3VibWl0RXZpZ
-  GVuY2VSZXNwb25zZRoFgOewKgFCI1odY29zbW9zc2RrLmlvL3gvZXZpZGVuY2UvdHlwZXOo4h4BYgZwcm90bzM="""
+  GVuY2VSZXNwb25zZRoFgOewKgFCM1otZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay94L2V2aWRlbmNlL3R5cGVzqOIeAWIGc
+  HJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

@@ -1,117 +1,183 @@
 //@ts-nocheck
-import * as _265 from "./feeabs/v1beta1/epoch";
-import * as _266 from "./feeabs/v1beta1/genesis";
-import * as _267 from "./feeabs/v1beta1/osmosisibc";
-import * as _268 from "./feeabs/v1beta1/params";
-import * as _269 from "./feeabs/v1beta1/proposal";
-import * as _270 from "./feeabs/v1beta1/query";
-import * as _271 from "./feeabs/v1beta1/tx";
-import * as _272 from "./globalfee/v1/genesis";
-import * as _273 from "./globalfee/v1/query";
-import * as _274 from "./jwk/v1/audience";
-import * as _275 from "./jwk/v1/genesis";
-import * as _276 from "./jwk/v1/params";
-import * as _277 from "./jwk/v1/query";
-import * as _278 from "./jwk/v1/tx";
-import * as _279 from "./mint/v1/event";
-import * as _280 from "./mint/v1/genesis";
-import * as _281 from "./mint/v1/mint";
-import * as _282 from "./mint/v1/query";
-import * as _283 from "./mint/v1/tx";
-import * as _284 from "./v1/feegrant";
-import * as _285 from "./v1/genesis";
-import * as _286 from "./v1/query";
-import * as _287 from "./v1/tx";
-import * as _453 from "./feeabs/v1beta1/tx.amino";
-import * as _454 from "./jwk/v1/tx.amino";
-import * as _455 from "./mint/v1/tx.amino";
-import * as _456 from "./v1/tx.amino";
-import * as _457 from "./feeabs/v1beta1/tx.registry";
-import * as _458 from "./jwk/v1/tx.registry";
-import * as _459 from "./mint/v1/tx.registry";
-import * as _460 from "./v1/tx.registry";
-import * as _461 from "./feeabs/v1beta1/query.lcd";
-import * as _462 from "./globalfee/v1/query.lcd";
-import * as _463 from "./jwk/v1/query.lcd";
-import * as _464 from "./mint/v1/query.lcd";
-import * as _465 from "./feeabs/v1beta1/query.rpc.Query";
-import * as _466 from "./globalfee/v1/query.rpc.Query";
-import * as _467 from "./jwk/v1/query.rpc.Query";
-import * as _468 from "./mint/v1/query.rpc.Query";
-import * as _469 from "./v1/query.rpc.Query";
-import * as _470 from "./feeabs/v1beta1/tx.rpc.msg";
-import * as _471 from "./jwk/v1/tx.rpc.msg";
-import * as _472 from "./mint/v1/tx.rpc.msg";
-import * as _473 from "./v1/tx.rpc.msg";
-import * as _486 from "./lcd";
-import * as _487 from "./rpc.query";
-import * as _488 from "./rpc.tx";
+import * as _216 from "./dkim/v1/genesis";
+import * as _217 from "./dkim/v1/query";
+import * as _218 from "./dkim/v1/state";
+import * as _219 from "./dkim/v1/tx";
+import * as _220 from "./feeabs/v1beta1/epoch";
+import * as _221 from "./feeabs/v1beta1/genesis";
+import * as _222 from "./feeabs/v1beta1/osmosisibc";
+import * as _223 from "./feeabs/v1beta1/params";
+import * as _224 from "./feeabs/v1beta1/proposal";
+import * as _225 from "./feeabs/v1beta1/query";
+import * as _226 from "./feeabs/v1beta1/tx";
+import * as _227 from "./globalfee/v1/genesis";
+import * as _228 from "./globalfee/v1/query";
+import * as _229 from "./indexer/authz/v1/query";
+import * as _230 from "./indexer/feegrant/v1/query";
+import * as _231 from "./jwk/v1/audience";
+import * as _232 from "./jwk/v1/genesis";
+import * as _233 from "./jwk/v1/params";
+import * as _234 from "./jwk/v1/query";
+import * as _235 from "./jwk/v1/tx";
+import * as _236 from "./mint/v1/event";
+import * as _237 from "./mint/v1/genesis";
+import * as _238 from "./mint/v1/mint";
+import * as _239 from "./mint/v1/query";
+import * as _240 from "./mint/v1/tx";
+import * as _241 from "./v1/feegrant";
+import * as _242 from "./v1/genesis";
+import * as _243 from "./v1/query";
+import * as _244 from "./v1/tx";
+import * as _245 from "./zk/v1/genesis";
+import * as _246 from "./zk/v1/params";
+import * as _247 from "./zk/v1/query";
+import * as _248 from "./zk/v1/tx";
+import * as _409 from "./dkim/v1/tx.amino";
+import * as _410 from "./feeabs/v1beta1/tx.amino";
+import * as _411 from "./jwk/v1/tx.amino";
+import * as _412 from "./mint/v1/tx.amino";
+import * as _413 from "./v1/tx.amino";
+import * as _414 from "./zk/v1/tx.amino";
+import * as _415 from "./dkim/v1/tx.registry";
+import * as _416 from "./feeabs/v1beta1/tx.registry";
+import * as _417 from "./jwk/v1/tx.registry";
+import * as _418 from "./mint/v1/tx.registry";
+import * as _419 from "./v1/tx.registry";
+import * as _420 from "./zk/v1/tx.registry";
+import * as _421 from "./dkim/v1/query.lcd";
+import * as _422 from "./feeabs/v1beta1/query.lcd";
+import * as _423 from "./globalfee/v1/query.lcd";
+import * as _424 from "./indexer/authz/v1/query.lcd";
+import * as _425 from "./indexer/feegrant/v1/query.lcd";
+import * as _426 from "./jwk/v1/query.lcd";
+import * as _427 from "./mint/v1/query.lcd";
+import * as _428 from "./zk/v1/query.lcd";
+import * as _429 from "./dkim/v1/query.rpc.Query";
+import * as _430 from "./feeabs/v1beta1/query.rpc.Query";
+import * as _431 from "./globalfee/v1/query.rpc.Query";
+import * as _432 from "./indexer/authz/v1/query.rpc.Query";
+import * as _433 from "./indexer/feegrant/v1/query.rpc.Query";
+import * as _434 from "./jwk/v1/query.rpc.Query";
+import * as _435 from "./mint/v1/query.rpc.Query";
+import * as _436 from "./v1/query.rpc.Query";
+import * as _437 from "./zk/v1/query.rpc.Query";
+import * as _438 from "./dkim/v1/tx.rpc.msg";
+import * as _439 from "./feeabs/v1beta1/tx.rpc.msg";
+import * as _440 from "./jwk/v1/tx.rpc.msg";
+import * as _441 from "./mint/v1/tx.rpc.msg";
+import * as _442 from "./v1/tx.rpc.msg";
+import * as _443 from "./zk/v1/tx.rpc.msg";
+import * as _453 from "./lcd";
+import * as _454 from "./rpc.query";
+import * as _455 from "./rpc.tx";
 export namespace xion {
+  export namespace dkim {
+    export const v1 = {
+      ..._216,
+      ..._217,
+      ..._218,
+      ..._219,
+      ..._409,
+      ..._415,
+      ..._421,
+      ..._429,
+      ..._438
+    };
+  }
   export namespace feeabs {
     export const v1beta1 = {
-      ..._265,
-      ..._266,
-      ..._267,
-      ..._268,
-      ..._269,
-      ..._270,
-      ..._271,
-      ..._453,
-      ..._457,
-      ..._461,
-      ..._465,
-      ..._470
+      ..._220,
+      ..._221,
+      ..._222,
+      ..._223,
+      ..._224,
+      ..._225,
+      ..._226,
+      ..._410,
+      ..._416,
+      ..._422,
+      ..._430,
+      ..._439
     };
   }
   export namespace globalfee {
     export const v1 = {
-      ..._272,
-      ..._273,
-      ..._462,
-      ..._466
+      ..._227,
+      ..._228,
+      ..._423,
+      ..._431
     };
+  }
+  export namespace indexer {
+    export namespace authz {
+      export const v1 = {
+        ..._229,
+        ..._424,
+        ..._432
+      };
+    }
+    export namespace feegrant {
+      export const v1 = {
+        ..._230,
+        ..._425,
+        ..._433
+      };
+    }
   }
   export namespace jwk {
     export const v1 = {
-      ..._274,
-      ..._275,
-      ..._276,
-      ..._277,
-      ..._278,
-      ..._454,
-      ..._458,
-      ..._463,
-      ..._467,
-      ..._471
+      ..._231,
+      ..._232,
+      ..._233,
+      ..._234,
+      ..._235,
+      ..._411,
+      ..._417,
+      ..._426,
+      ..._434,
+      ..._440
     };
   }
   export namespace mint {
     export const v1 = {
-      ..._279,
-      ..._280,
-      ..._281,
-      ..._282,
-      ..._283,
-      ..._455,
-      ..._459,
-      ..._464,
-      ..._468,
-      ..._472
+      ..._236,
+      ..._237,
+      ..._238,
+      ..._239,
+      ..._240,
+      ..._412,
+      ..._418,
+      ..._427,
+      ..._435,
+      ..._441
     };
   }
   export const v1 = {
-    ..._284,
-    ..._285,
-    ..._286,
-    ..._287,
-    ..._456,
-    ..._460,
-    ..._469,
-    ..._473
+    ..._241,
+    ..._242,
+    ..._243,
+    ..._244,
+    ..._413,
+    ..._419,
+    ..._436,
+    ..._442
   };
+  export namespace zk {
+    export const v1 = {
+      ..._245,
+      ..._246,
+      ..._247,
+      ..._248,
+      ..._414,
+      ..._420,
+      ..._428,
+      ..._437,
+      ..._443
+    };
+  }
   export const ClientFactory = {
-    ..._486,
-    ..._487,
-    ..._488
+    ..._453,
+    ..._454,
+    ..._455
   };
 }

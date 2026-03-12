@@ -187,184 +187,184 @@ void   xion__feeabs__v1beta1__query_osmosis_arithmetic_twap_response__free_unpac
   assert(message->base.descriptor == &xion__feeabs__v1beta1__query_osmosis_arithmetic_twap_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   xion__feeabs__v1beta1__query_feeabs_module_balaces_request__init
-                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest         *message)
+void   xion__feeabs__v1beta1__query_feeabs_module_balances_request__init
+                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest         *message)
 {
-  static const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest init_value = XION__FEEABS__V1BETA1__QUERY_FEEABS_MODULE_BALACES_REQUEST__INIT;
+  static const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest init_value = XION__FEEABS__V1BETA1__QUERY_FEEABS_MODULE_BALANCES_REQUEST__INIT;
   *message = init_value;
 }
-size_t xion__feeabs__v1beta1__query_feeabs_module_balaces_request__get_packed_size
-                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *message)
+size_t xion__feeabs__v1beta1__query_feeabs_module_balances_request__get_packed_size
+                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *message)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t xion__feeabs__v1beta1__query_feeabs_module_balaces_request__pack
-                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *message,
+size_t xion__feeabs__v1beta1__query_feeabs_module_balances_request__pack
+                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t xion__feeabs__v1beta1__query_feeabs_module_balaces_request__pack_to_buffer
-                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *message,
+size_t xion__feeabs__v1beta1__query_feeabs_module_balances_request__pack_to_buffer
+                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *
-       xion__feeabs__v1beta1__query_feeabs_module_balaces_request__unpack
+Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *
+       xion__feeabs__v1beta1__query_feeabs_module_balances_request__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *)
-     protobuf_c_message_unpack (&xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor,
+  return (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *)
+     protobuf_c_message_unpack (&xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor,
                                 allocator, len, data);
 }
-void   xion__feeabs__v1beta1__query_feeabs_module_balaces_request__free_unpacked
-                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *message,
+void   xion__feeabs__v1beta1__query_feeabs_module_balances_request__free_unpacked
+                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *message,
                       ProtobufCAllocator *allocator)
 {
   if(!message)
     return;
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   xion__feeabs__v1beta1__query_feeabs_module_balaces_response__init
-                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse         *message)
+void   xion__feeabs__v1beta1__query_feeabs_module_balances_response__init
+                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse         *message)
 {
-  static const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse init_value = XION__FEEABS__V1BETA1__QUERY_FEEABS_MODULE_BALACES_RESPONSE__INIT;
+  static const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse init_value = XION__FEEABS__V1BETA1__QUERY_FEEABS_MODULE_BALANCES_RESPONSE__INIT;
   *message = init_value;
 }
-size_t xion__feeabs__v1beta1__query_feeabs_module_balaces_response__get_packed_size
-                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse *message)
+size_t xion__feeabs__v1beta1__query_feeabs_module_balances_response__get_packed_size
+                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse *message)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t xion__feeabs__v1beta1__query_feeabs_module_balaces_response__pack
-                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse *message,
+size_t xion__feeabs__v1beta1__query_feeabs_module_balances_response__pack
+                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t xion__feeabs__v1beta1__query_feeabs_module_balaces_response__pack_to_buffer
-                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse *message,
+size_t xion__feeabs__v1beta1__query_feeabs_module_balances_response__pack_to_buffer
+                     (const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse *
-       xion__feeabs__v1beta1__query_feeabs_module_balaces_response__unpack
+Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse *
+       xion__feeabs__v1beta1__query_feeabs_module_balances_response__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse *)
-     protobuf_c_message_unpack (&xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor,
+  return (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse *)
+     protobuf_c_message_unpack (&xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor,
                                 allocator, len, data);
 }
-void   xion__feeabs__v1beta1__query_feeabs_module_balaces_response__free_unpacked
-                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse *message,
+void   xion__feeabs__v1beta1__query_feeabs_module_balances_response__free_unpacked
+                     (Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse *message,
                       ProtobufCAllocator *allocator)
 {
   if(!message)
     return;
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   xion__feeabs__v1beta1__all_query_host_chain_config_request__init
-                     (Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest         *message)
+void   xion__feeabs__v1beta1__query_all_host_chain_config_request__init
+                     (Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest         *message)
 {
-  static const Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest init_value = XION__FEEABS__V1BETA1__ALL_QUERY_HOST_CHAIN_CONFIG_REQUEST__INIT;
+  static const Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest init_value = XION__FEEABS__V1BETA1__QUERY_ALL_HOST_CHAIN_CONFIG_REQUEST__INIT;
   *message = init_value;
 }
-size_t xion__feeabs__v1beta1__all_query_host_chain_config_request__get_packed_size
-                     (const Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *message)
+size_t xion__feeabs__v1beta1__query_all_host_chain_config_request__get_packed_size
+                     (const Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *message)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t xion__feeabs__v1beta1__all_query_host_chain_config_request__pack
-                     (const Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *message,
+size_t xion__feeabs__v1beta1__query_all_host_chain_config_request__pack
+                     (const Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t xion__feeabs__v1beta1__all_query_host_chain_config_request__pack_to_buffer
-                     (const Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *message,
+size_t xion__feeabs__v1beta1__query_all_host_chain_config_request__pack_to_buffer
+                     (const Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *
-       xion__feeabs__v1beta1__all_query_host_chain_config_request__unpack
+Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *
+       xion__feeabs__v1beta1__query_all_host_chain_config_request__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *)
-     protobuf_c_message_unpack (&xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor,
+  return (Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *)
+     protobuf_c_message_unpack (&xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor,
                                 allocator, len, data);
 }
-void   xion__feeabs__v1beta1__all_query_host_chain_config_request__free_unpacked
-                     (Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *message,
+void   xion__feeabs__v1beta1__query_all_host_chain_config_request__free_unpacked
+                     (Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *message,
                       ProtobufCAllocator *allocator)
 {
   if(!message)
     return;
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   xion__feeabs__v1beta1__all_query_host_chain_config_response__init
-                     (Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse         *message)
+void   xion__feeabs__v1beta1__query_all_host_chain_config_response__init
+                     (Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse         *message)
 {
-  static const Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse init_value = XION__FEEABS__V1BETA1__ALL_QUERY_HOST_CHAIN_CONFIG_RESPONSE__INIT;
+  static const Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse init_value = XION__FEEABS__V1BETA1__QUERY_ALL_HOST_CHAIN_CONFIG_RESPONSE__INIT;
   *message = init_value;
 }
-size_t xion__feeabs__v1beta1__all_query_host_chain_config_response__get_packed_size
-                     (const Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse *message)
+size_t xion__feeabs__v1beta1__query_all_host_chain_config_response__get_packed_size
+                     (const Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse *message)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t xion__feeabs__v1beta1__all_query_host_chain_config_response__pack
-                     (const Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse *message,
+size_t xion__feeabs__v1beta1__query_all_host_chain_config_response__pack
+                     (const Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t xion__feeabs__v1beta1__all_query_host_chain_config_response__pack_to_buffer
-                     (const Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse *message,
+size_t xion__feeabs__v1beta1__query_all_host_chain_config_response__pack_to_buffer
+                     (const Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse *
-       xion__feeabs__v1beta1__all_query_host_chain_config_response__unpack
+Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse *
+       xion__feeabs__v1beta1__query_all_host_chain_config_response__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse *)
-     protobuf_c_message_unpack (&xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor,
+  return (Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse *)
+     protobuf_c_message_unpack (&xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor,
                                 allocator, len, data);
 }
-void   xion__feeabs__v1beta1__all_query_host_chain_config_response__free_unpacked
-                     (Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse *message,
+void   xion__feeabs__v1beta1__query_all_host_chain_config_response__free_unpacked
+                     (Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse *message,
                       ProtobufCAllocator *allocator)
 {
   if(!message)
     return;
-  assert(message->base.descriptor == &xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor);
+  assert(message->base.descriptor == &xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor xion__feeabs__v1beta1__query_host_chain_config_request__field_descriptors[1] =
@@ -519,33 +519,33 @@ const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_osmosis_arithmetic
   (ProtobufCMessageInit) xion__feeabs__v1beta1__query_osmosis_arithmetic_twap_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-#define xion__feeabs__v1beta1__query_feeabs_module_balaces_request__field_descriptors NULL
-#define xion__feeabs__v1beta1__query_feeabs_module_balaces_request__field_indices_by_name NULL
-#define xion__feeabs__v1beta1__query_feeabs_module_balaces_request__number_ranges NULL
-const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor =
+#define xion__feeabs__v1beta1__query_feeabs_module_balances_request__field_descriptors NULL
+#define xion__feeabs__v1beta1__query_feeabs_module_balances_request__field_indices_by_name NULL
+#define xion__feeabs__v1beta1__query_feeabs_module_balances_request__number_ranges NULL
+const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "xion.feeabs.v1beta1.QueryFeeabsModuleBalacesRequest",
-  "QueryFeeabsModuleBalacesRequest",
-  "Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest",
+  "xion.feeabs.v1beta1.QueryFeeabsModuleBalancesRequest",
+  "QueryFeeabsModuleBalancesRequest",
+  "Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest",
   "xion.feeabs.v1beta1",
-  sizeof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest),
+  sizeof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest),
   0,
-  xion__feeabs__v1beta1__query_feeabs_module_balaces_request__field_descriptors,
-  xion__feeabs__v1beta1__query_feeabs_module_balaces_request__field_indices_by_name,
-  0,  xion__feeabs__v1beta1__query_feeabs_module_balaces_request__number_ranges,
-  (ProtobufCMessageInit) xion__feeabs__v1beta1__query_feeabs_module_balaces_request__init,
+  xion__feeabs__v1beta1__query_feeabs_module_balances_request__field_descriptors,
+  xion__feeabs__v1beta1__query_feeabs_module_balances_request__field_indices_by_name,
+  0,  xion__feeabs__v1beta1__query_feeabs_module_balances_request__number_ranges,
+  (ProtobufCMessageInit) xion__feeabs__v1beta1__query_feeabs_module_balances_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor xion__feeabs__v1beta1__query_feeabs_module_balaces_response__field_descriptors[2] =
+static const ProtobufCFieldDescriptor xion__feeabs__v1beta1__query_feeabs_module_balances_response__field_descriptors[2] =
 {
   {
     "balances",
     1,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse, n_balances),
-    offsetof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse, balances),
+    offsetof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse, n_balances),
+    offsetof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse, balances),
     &cosmos__base__v1beta1__coin__descriptor,
     NULL,
     0,             /* flags */
@@ -557,99 +557,99 @@ static const ProtobufCFieldDescriptor xion__feeabs__v1beta1__query_feeabs_module
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
-    offsetof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse, address),
+    offsetof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse, address),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned xion__feeabs__v1beta1__query_feeabs_module_balaces_response__field_indices_by_name[] = {
+static const unsigned xion__feeabs__v1beta1__query_feeabs_module_balances_response__field_indices_by_name[] = {
   1,   /* field[1] = address */
   0,   /* field[0] = balances */
 };
-static const ProtobufCIntRange xion__feeabs__v1beta1__query_feeabs_module_balaces_response__number_ranges[1 + 1] =
+static const ProtobufCIntRange xion__feeabs__v1beta1__query_feeabs_module_balances_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
   { 0, 2 }
 };
-const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor =
+const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "xion.feeabs.v1beta1.QueryFeeabsModuleBalacesResponse",
-  "QueryFeeabsModuleBalacesResponse",
-  "Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse",
+  "xion.feeabs.v1beta1.QueryFeeabsModuleBalancesResponse",
+  "QueryFeeabsModuleBalancesResponse",
+  "Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse",
   "xion.feeabs.v1beta1",
-  sizeof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse),
+  sizeof(Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse),
   2,
-  xion__feeabs__v1beta1__query_feeabs_module_balaces_response__field_descriptors,
-  xion__feeabs__v1beta1__query_feeabs_module_balaces_response__field_indices_by_name,
-  1,  xion__feeabs__v1beta1__query_feeabs_module_balaces_response__number_ranges,
-  (ProtobufCMessageInit) xion__feeabs__v1beta1__query_feeabs_module_balaces_response__init,
+  xion__feeabs__v1beta1__query_feeabs_module_balances_response__field_descriptors,
+  xion__feeabs__v1beta1__query_feeabs_module_balances_response__field_indices_by_name,
+  1,  xion__feeabs__v1beta1__query_feeabs_module_balances_response__number_ranges,
+  (ProtobufCMessageInit) xion__feeabs__v1beta1__query_feeabs_module_balances_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-#define xion__feeabs__v1beta1__all_query_host_chain_config_request__field_descriptors NULL
-#define xion__feeabs__v1beta1__all_query_host_chain_config_request__field_indices_by_name NULL
-#define xion__feeabs__v1beta1__all_query_host_chain_config_request__number_ranges NULL
-const ProtobufCMessageDescriptor xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor =
+#define xion__feeabs__v1beta1__query_all_host_chain_config_request__field_descriptors NULL
+#define xion__feeabs__v1beta1__query_all_host_chain_config_request__field_indices_by_name NULL
+#define xion__feeabs__v1beta1__query_all_host_chain_config_request__number_ranges NULL
+const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "xion.feeabs.v1beta1.AllQueryHostChainConfigRequest",
-  "AllQueryHostChainConfigRequest",
-  "Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest",
+  "xion.feeabs.v1beta1.QueryAllHostChainConfigRequest",
+  "QueryAllHostChainConfigRequest",
+  "Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest",
   "xion.feeabs.v1beta1",
-  sizeof(Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest),
+  sizeof(Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest),
   0,
-  xion__feeabs__v1beta1__all_query_host_chain_config_request__field_descriptors,
-  xion__feeabs__v1beta1__all_query_host_chain_config_request__field_indices_by_name,
-  0,  xion__feeabs__v1beta1__all_query_host_chain_config_request__number_ranges,
-  (ProtobufCMessageInit) xion__feeabs__v1beta1__all_query_host_chain_config_request__init,
+  xion__feeabs__v1beta1__query_all_host_chain_config_request__field_descriptors,
+  xion__feeabs__v1beta1__query_all_host_chain_config_request__field_indices_by_name,
+  0,  xion__feeabs__v1beta1__query_all_host_chain_config_request__number_ranges,
+  (ProtobufCMessageInit) xion__feeabs__v1beta1__query_all_host_chain_config_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor xion__feeabs__v1beta1__all_query_host_chain_config_response__field_descriptors[1] =
+static const ProtobufCFieldDescriptor xion__feeabs__v1beta1__query_all_host_chain_config_response__field_descriptors[1] =
 {
   {
     "all_host_chain_config",
     1,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse, n_all_host_chain_config),
-    offsetof(Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse, all_host_chain_config),
+    offsetof(Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse, n_all_host_chain_config),
+    offsetof(Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse, all_host_chain_config),
     &xion__feeabs__v1beta1__host_chain_fee_abs_config__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned xion__feeabs__v1beta1__all_query_host_chain_config_response__field_indices_by_name[] = {
+static const unsigned xion__feeabs__v1beta1__query_all_host_chain_config_response__field_indices_by_name[] = {
   0,   /* field[0] = all_host_chain_config */
 };
-static const ProtobufCIntRange xion__feeabs__v1beta1__all_query_host_chain_config_response__number_ranges[1 + 1] =
+static const ProtobufCIntRange xion__feeabs__v1beta1__query_all_host_chain_config_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
   { 0, 1 }
 };
-const ProtobufCMessageDescriptor xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor =
+const ProtobufCMessageDescriptor xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "xion.feeabs.v1beta1.AllQueryHostChainConfigResponse",
-  "AllQueryHostChainConfigResponse",
-  "Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse",
+  "xion.feeabs.v1beta1.QueryAllHostChainConfigResponse",
+  "QueryAllHostChainConfigResponse",
+  "Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse",
   "xion.feeabs.v1beta1",
-  sizeof(Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse),
+  sizeof(Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse),
   1,
-  xion__feeabs__v1beta1__all_query_host_chain_config_response__field_descriptors,
-  xion__feeabs__v1beta1__all_query_host_chain_config_response__field_indices_by_name,
-  1,  xion__feeabs__v1beta1__all_query_host_chain_config_response__number_ranges,
-  (ProtobufCMessageInit) xion__feeabs__v1beta1__all_query_host_chain_config_response__init,
+  xion__feeabs__v1beta1__query_all_host_chain_config_response__field_descriptors,
+  xion__feeabs__v1beta1__query_all_host_chain_config_response__field_indices_by_name,
+  1,  xion__feeabs__v1beta1__query_all_host_chain_config_response__number_ranges,
+  (ProtobufCMessageInit) xion__feeabs__v1beta1__query_all_host_chain_config_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCMethodDescriptor xion__feeabs__v1beta1__query__method_descriptors[4] =
 {
   { "OsmosisArithmeticTwap", &xion__feeabs__v1beta1__query_osmosis_arithmetic_twap_request__descriptor, &xion__feeabs__v1beta1__query_osmosis_arithmetic_twap_response__descriptor },
-  { "FeeabsModuleBalances", &xion__feeabs__v1beta1__query_feeabs_module_balaces_request__descriptor, &xion__feeabs__v1beta1__query_feeabs_module_balaces_response__descriptor },
+  { "FeeabsModuleBalances", &xion__feeabs__v1beta1__query_feeabs_module_balances_request__descriptor, &xion__feeabs__v1beta1__query_feeabs_module_balances_response__descriptor },
   { "HostChainConfig", &xion__feeabs__v1beta1__query_host_chain_config_request__descriptor, &xion__feeabs__v1beta1__query_host_chain_config_response__descriptor },
-  { "AllHostChainConfig", &xion__feeabs__v1beta1__all_query_host_chain_config_request__descriptor, &xion__feeabs__v1beta1__all_query_host_chain_config_response__descriptor },
+  { "AllHostChainConfig", &xion__feeabs__v1beta1__query_all_host_chain_config_request__descriptor, &xion__feeabs__v1beta1__query_all_host_chain_config_response__descriptor },
 };
 const unsigned xion__feeabs__v1beta1__query__method_indices_by_name[] = {
   3,        /* AllHostChainConfig */
@@ -677,8 +677,8 @@ void xion__feeabs__v1beta1__query__osmosis_arithmetic_twap(ProtobufCService *ser
   service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__feeabs__v1beta1__query__feeabs_module_balances(ProtobufCService *service,
-                                                          const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesRequest *input,
-                                                          Xion__Feeabs__V1beta1__QueryFeeabsModuleBalacesResponse_Closure closure,
+                                                          const Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesRequest *input,
+                                                          Xion__Feeabs__V1beta1__QueryFeeabsModuleBalancesResponse_Closure closure,
                                                           void *closure_data)
 {
   assert(service->descriptor == &xion__feeabs__v1beta1__query__descriptor);
@@ -693,8 +693,8 @@ void xion__feeabs__v1beta1__query__host_chain_config(ProtobufCService *service,
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__feeabs__v1beta1__query__all_host_chain_config(ProtobufCService *service,
-                                                         const Xion__Feeabs__V1beta1__AllQueryHostChainConfigRequest *input,
-                                                         Xion__Feeabs__V1beta1__AllQueryHostChainConfigResponse_Closure closure,
+                                                         const Xion__Feeabs__V1beta1__QueryAllHostChainConfigRequest *input,
+                                                         Xion__Feeabs__V1beta1__QueryAllHostChainConfigResponse_Closure closure,
                                                          void *closure_data)
 {
   assert(service->descriptor == &xion__feeabs__v1beta1__query__descriptor);

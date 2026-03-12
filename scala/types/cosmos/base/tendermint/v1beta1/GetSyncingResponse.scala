@@ -6,10 +6,17 @@
 package cosmos.base.tendermint.v1beta1
 
 /** GetSyncingResponse is the response type for the Query/GetSyncing RPC method.
+  *
+  * @param earliestBlockHeight
+  *   earliest_block_height is the earliest block height available on this node.
+  * @param latestBlockHeight
+  *   latest_block_height is the latest block height available on this node.
   */
 @SerialVersionUID(0L)
 final case class GetSyncingResponse(
     syncing: _root_.scala.Boolean = false,
+    earliestBlockHeight: _root_.scala.Long = 0L,
+    latestBlockHeight: _root_.scala.Long = 0L,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[GetSyncingResponse] {
     @transient
@@ -21,6 +28,20 @@ final case class GetSyncingResponse(
         val __value = syncing
         if (__value != false) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeBoolSize(1, __value)
+        }
+      };
+      
+      {
+        val __value = earliestBlockHeight
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeInt64Size(2, __value)
+        }
+      };
+      
+      {
+        val __value = latestBlockHeight
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeInt64Size(3, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -42,9 +63,23 @@ final case class GetSyncingResponse(
           _output__.writeBool(1, __v)
         }
       };
+      {
+        val __v = earliestBlockHeight
+        if (__v != 0L) {
+          _output__.writeInt64(2, __v)
+        }
+      };
+      {
+        val __v = latestBlockHeight
+        if (__v != 0L) {
+          _output__.writeInt64(3, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withSyncing(__v: _root_.scala.Boolean): GetSyncingResponse = copy(syncing = __v)
+    def withEarliestBlockHeight(__v: _root_.scala.Long): GetSyncingResponse = copy(earliestBlockHeight = __v)
+    def withLatestBlockHeight(__v: _root_.scala.Long): GetSyncingResponse = copy(latestBlockHeight = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -53,12 +88,22 @@ final case class GetSyncingResponse(
           val __t = syncing
           if (__t != false) __t else null
         }
+        case 2 => {
+          val __t = earliestBlockHeight
+          if (__t != 0L) __t else null
+        }
+        case 3 => {
+          val __t = latestBlockHeight
+          if (__t != 0L) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
       _root_.scala.Predef.require(__field.containingMessage eq companion.scalaDescriptor)
       (__field.number: @_root_.scala.unchecked) match {
         case 1 => _root_.scalapb.descriptors.PBoolean(syncing)
+        case 2 => _root_.scalapb.descriptors.PLong(earliestBlockHeight)
+        case 3 => _root_.scalapb.descriptors.PLong(latestBlockHeight)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -70,6 +115,8 @@ object GetSyncingResponse extends scalapb.GeneratedMessageCompanion[cosmos.base.
   implicit def messageCompanion: scalapb.GeneratedMessageCompanion[cosmos.base.tendermint.v1beta1.GetSyncingResponse] = this
   def parseFrom(`_input__`: _root_.com.google.protobuf.CodedInputStream): cosmos.base.tendermint.v1beta1.GetSyncingResponse = {
     var __syncing: _root_.scala.Boolean = false
+    var __earliestBlockHeight: _root_.scala.Long = 0L
+    var __latestBlockHeight: _root_.scala.Long = 0L
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -78,6 +125,10 @@ object GetSyncingResponse extends scalapb.GeneratedMessageCompanion[cosmos.base.
         case 0 => _done__ = true
         case 8 =>
           __syncing = _input__.readBool()
+        case 16 =>
+          __earliestBlockHeight = _input__.readInt64()
+        case 24 =>
+          __latestBlockHeight = _input__.readInt64()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -87,6 +138,8 @@ object GetSyncingResponse extends scalapb.GeneratedMessageCompanion[cosmos.base.
     }
     cosmos.base.tendermint.v1beta1.GetSyncingResponse(
         syncing = __syncing,
+        earliestBlockHeight = __earliestBlockHeight,
+        latestBlockHeight = __latestBlockHeight,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -94,7 +147,9 @@ object GetSyncingResponse extends scalapb.GeneratedMessageCompanion[cosmos.base.
     case _root_.scalapb.descriptors.PMessage(__fieldsMap) =>
       _root_.scala.Predef.require(__fieldsMap.keys.forall(_.containingMessage eq scalaDescriptor), "FieldDescriptor does not match message type.")
       cosmos.base.tendermint.v1beta1.GetSyncingResponse(
-        syncing = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Boolean]).getOrElse(false)
+        syncing = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Boolean]).getOrElse(false),
+        earliestBlockHeight = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        latestBlockHeight = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -104,16 +159,26 @@ object GetSyncingResponse extends scalapb.GeneratedMessageCompanion[cosmos.base.
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = cosmos.base.tendermint.v1beta1.GetSyncingResponse(
-    syncing = false
+    syncing = false,
+    earliestBlockHeight = 0L,
+    latestBlockHeight = 0L
   )
   implicit class GetSyncingResponseLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmos.base.tendermint.v1beta1.GetSyncingResponse]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmos.base.tendermint.v1beta1.GetSyncingResponse](_l) {
     def syncing: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.syncing)((c_, f_) => c_.copy(syncing = f_))
+    def earliestBlockHeight: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.earliestBlockHeight)((c_, f_) => c_.copy(earliestBlockHeight = f_))
+    def latestBlockHeight: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.latestBlockHeight)((c_, f_) => c_.copy(latestBlockHeight = f_))
   }
   final val SYNCING_FIELD_NUMBER = 1
+  final val EARLIEST_BLOCK_HEIGHT_FIELD_NUMBER = 2
+  final val LATEST_BLOCK_HEIGHT_FIELD_NUMBER = 3
   def of(
-    syncing: _root_.scala.Boolean
+    syncing: _root_.scala.Boolean,
+    earliestBlockHeight: _root_.scala.Long,
+    latestBlockHeight: _root_.scala.Long
   ): _root_.cosmos.base.tendermint.v1beta1.GetSyncingResponse = _root_.cosmos.base.tendermint.v1beta1.GetSyncingResponse(
-    syncing
+    syncing,
+    earliestBlockHeight,
+    latestBlockHeight
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmos.base.tendermint.v1beta1.GetSyncingResponse])
 }

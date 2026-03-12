@@ -5,7 +5,11 @@
 
 package xion.v1
 
-/** @param platformPercentage
+/** MsgSetPlatformPercentage defines the message for setting platform percentage
+  *
+  * @param authority
+  *   The authority address that can set the platform percentage
+  * @param platformPercentage
   *   platform_percentage is the platform fee percentage to multiplied by 10000
   */
 @SerialVersionUID(0L)

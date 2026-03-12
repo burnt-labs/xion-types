@@ -7,6 +7,9 @@ package xion.feeabs.v1beta1
 
 /** InterchainQueryPacketAck is comprised of an ABCI query response with
   * non-deterministic fields left empty (e.g. Codespace, Log, Info and ...).
+  *
+  * @param data
+  *   data defines the query response data
   */
 @SerialVersionUID(0L)
 final case class InterchainQueryPacketAck(

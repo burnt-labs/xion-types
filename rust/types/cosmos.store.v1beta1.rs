@@ -78,12 +78,12 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockMetadata {
     #[prost(message, optional, tag="6")]
-    pub response_commit: ::core::option::Option<super::super::super::tendermint::abci::ResponseCommit>,
+    pub response_commit: ::core::option::Option<crate::types::tendermint_abci::ResponseCommit>,
     #[prost(message, optional, tag="7")]
-    pub request_finalize_block: ::core::option::Option<super::super::super::tendermint::abci::RequestFinalizeBlock>,
+    pub request_finalize_block: ::core::option::Option<crate::types::tendermint_abci::RequestFinalizeBlock>,
     /// TODO: should we renumber this?
     #[prost(message, optional, tag="8")]
-    pub response_finalize_block: ::core::option::Option<super::super::super::tendermint::abci::ResponseFinalizeBlock>,
+    pub response_finalize_block: ::core::option::Option<crate::types::tendermint_abci::ResponseFinalizeBlock>,
 }
 impl ::prost::Name for BlockMetadata {
 const NAME: &'static str = "BlockMetadata";

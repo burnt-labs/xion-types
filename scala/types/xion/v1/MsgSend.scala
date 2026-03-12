@@ -6,6 +6,13 @@
 package xion.v1
 
 /** MsgSend represents a message to send coins from one account to another.
+  *
+  * @param fromAddress
+  *   The address sending the coins
+  * @param toAddress
+  *   The address receiving the coins
+  * @param amount
+  *   The amount of coins to send
   */
 @SerialVersionUID(0L)
 final case class MsgSend(

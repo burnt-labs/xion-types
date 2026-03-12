@@ -5,6 +5,9 @@
 
 package xion.v1
 
+/** QueryPlatformPercentageRequest is the request type for querying platform
+  * percentage
+  */
 @SerialVersionUID(0L)
 final case class QueryPlatformPercentageRequest(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

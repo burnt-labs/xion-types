@@ -5,6 +5,12 @@
 
 package xion.jwk.v1
 
+/** QueryGetAudienceClaimRequest is the legacy request type for querying an
+  * audience claim (deprecated)
+  *
+  * @param hash
+  *   The hash of the audience claim to query
+  */
 @SerialVersionUID(0L)
 final case class QueryGetAudienceClaimRequest(
     hash: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY,
@@ -96,8 +102,8 @@ object QueryGetAudienceClaimRequest extends scalapb.GeneratedMessageCompanion[xi
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(2)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(2)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(4)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(4)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)

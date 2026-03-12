@@ -7,6 +7,9 @@ package xion.feeabs.v1beta1
 
 /** CosmosResponse contains a list of tendermint ABCI query responses. It should
   * be used when receiving responses from an SDK host chain.
+  *
+  * @param responses
+  *   responses defines the list of ABCI query responses
   */
 @SerialVersionUID(0L)
 final case class CosmosResponse(

@@ -6,6 +6,11 @@
 package xion.feeabs.v1beta1
 
 /** ExponentialBackoff defines backoff epoch
+  *
+  * @param jump
+  *   jump defines the exponential backoff multiplier
+  * @param futureEpoch
+  *   future_epoch defines the target epoch for the backoff
   */
 @SerialVersionUID(0L)
 final case class ExponentialBackoff(

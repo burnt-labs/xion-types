@@ -16,8 +16,7 @@ package tendermint.abci
   * @param consensusParamUpdates
   *   updates to the consensus params, if any.
   * @param appHash
-  *   app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
-  *   deterministic. It is up to the application to decide which algorithm to use.
+  *   app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
   */
 @SerialVersionUID(0L)
 final case class ResponseFinalizeBlock(

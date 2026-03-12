@@ -5,6 +5,9 @@
 
 package xion.v1
 
+/** QueryPlatformMinimumRequest is the request type for querying platform minimum
+  * fees
+  */
 @SerialVersionUID(0L)
 final case class QueryPlatformMinimumRequest(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

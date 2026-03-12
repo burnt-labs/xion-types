@@ -6,6 +6,9 @@
 package xion.feeabs.v1beta1
 
 /** QueryOsmosisArithmeticTwapResponse
+  *
+  * @param arithmeticTwap
+  *   The arithmetic time-weighted average price
   */
 @SerialVersionUID(0L)
 final case class QueryOsmosisArithmeticTwapResponse(

@@ -5,6 +5,11 @@
 
 package xion.jwk.v1
 
+/** MsgCreateAudienceResponse defines the response for creating an audience
+  *
+  * @param audience
+  *   The created audience
+  */
 @SerialVersionUID(0L)
 final case class MsgCreateAudienceResponse(
     audience: _root_.scala.Option[xion.jwk.v1.Audience] = _root_.scala.None,

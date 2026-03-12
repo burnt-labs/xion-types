@@ -11,7 +11,7 @@ pub struct Allocation {
     pub source_channel: ::prost::alloc::string::String,
     /// spend limitation on the channel
     #[prost(message, repeated, tag="3")]
-    pub spend_limit: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::base::v1beta1::Coin>,
+    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// allow list of receivers, an empty allow list permits any receiver address
     #[prost(string, repeated, tag="4")]
     pub allow_list: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -144,7 +144,7 @@ pub struct GenesisState {
     /// total_escrowed contains the total amount of tokens escrowed
     /// by the transfer module
     #[prost(message, repeated, tag="4")]
-    pub total_escrowed: ::prost::alloc::vec::Vec<super::super::super::super::cosmos::base::v1beta1::Coin>,
+    pub total_escrowed: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for GenesisState {
 const NAME: &'static str = "GenesisState";
@@ -242,7 +242,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryDenomsRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDenomsRequest {
 const NAME: &'static str = "QueryDenomsRequest";
@@ -260,7 +260,7 @@ pub struct QueryDenomsResponse {
     pub denoms: ::prost::alloc::vec::Vec<Denom>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDenomsResponse {
 const NAME: &'static str = "QueryDenomsResponse";
@@ -347,7 +347,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalEscrowForDenomResponse {
     #[prost(message, optional, tag="1")]
-    pub amount: ::core::option::Option<super::super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for QueryTotalEscrowForDenomResponse {
 const NAME: &'static str = "QueryTotalEscrowForDenomResponse";
@@ -369,7 +369,7 @@ pub struct MsgTransfer {
     pub source_channel: ::prost::alloc::string::String,
     /// token to be transferred
     #[prost(message, optional, tag="3")]
-    pub token: ::core::option::Option<super::super::super::super::cosmos::base::v1beta1::Coin>,
+    pub token: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     /// the sender address
     #[prost(string, tag="4")]
     pub sender: ::prost::alloc::string::String,
@@ -380,7 +380,7 @@ pub struct MsgTransfer {
     /// If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
     /// If you are sending with IBC v2 protocol, timeout_timestamp must be set, and timeout_height must be omitted.
     #[prost(message, optional, tag="6")]
-    pub timeout_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
+    pub timeout_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
     /// Timeout timestamp in absolute nanoseconds since unix epoch.
     /// If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
     /// If you are sending with IBC v2 protocol, timeout_timestamp must be set.

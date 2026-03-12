@@ -17,7 +17,8 @@ object GenesisProto extends _root_.scalapb.GeneratedFileObject {
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """CiVjb3Ntb3MvZXZpZGVuY2UvdjFiZXRhMS9nZW5lc2lzLnByb3RvEhdjb3Ntb3MuZXZpZGVuY2UudjFiZXRhMRoZZ29vZ2xlL
   3Byb3RvYnVmL2FueS5wcm90byJPCgxHZW5lc2lzU3RhdGUSPwoIZXZpZGVuY2UYASADKAsyFC5nb29nbGUucHJvdG9idWYuQW55Q
-  g3iPwoSCGV2aWRlbmNlUghldmlkZW5jZUIfWh1jb3Ntb3NzZGsuaW8veC9ldmlkZW5jZS90eXBlc2IGcHJvdG8z"""
+  g3iPwoSCGV2aWRlbmNlUghldmlkZW5jZUIvWi1naXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3gvZXZpZGVuY2UvdHlwZXNiB
+  nByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

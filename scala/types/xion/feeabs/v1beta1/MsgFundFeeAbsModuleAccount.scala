@@ -9,6 +9,8 @@ package xion.feeabs.v1beta1
   *
   * @param sender
   *   sender is the that actor that signed the messages
+  * @param amount
+  *   The amount of coins to fund to the feeabs module account
   */
 @SerialVersionUID(0L)
 final case class MsgFundFeeAbsModuleAccount(

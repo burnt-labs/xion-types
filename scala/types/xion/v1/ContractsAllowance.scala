@@ -9,6 +9,8 @@ package xion.v1
   *
   * @param allowance
   *   allowance can be any allowance interface type.
+  * @param contractAddresses
+  *   List of contract addresses that this allowance applies to
   */
 @SerialVersionUID(0L)
 final case class ContractsAllowance(

@@ -231,7 +231,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct CosmosQuery {
     /// requests defines the list of ABCI query requests
     #[prost(message, repeated, tag="1")]
-    pub requests: ::prost::alloc::vec::Vec<super::super::super::tendermint::abci::RequestQuery>,
+    pub requests: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::RequestQuery>,
 }
 impl ::prost::Name for CosmosQuery {
 const NAME: &'static str = "CosmosQuery";
@@ -246,7 +246,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct CosmosResponse {
     /// responses defines the list of ABCI query responses
     #[prost(message, repeated, tag="1")]
-    pub responses: ::prost::alloc::vec::Vec<super::super::super::tendermint::abci::ResponseQuery>,
+    pub responses: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ResponseQuery>,
 }
 impl ::prost::Name for CosmosResponse {
 const NAME: &'static str = "CosmosResponse";
@@ -450,7 +450,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryFeeabsModuleBalancesResponse {
     /// The coin balances held by the feeabs module
     #[prost(message, repeated, tag="1")]
-    pub balances: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub balances: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// The address of the feeabs module
     #[prost(string, tag="2")]
     pub address: ::prost::alloc::string::String,
@@ -495,7 +495,7 @@ pub struct MsgFundFeeAbsModuleAccount {
     pub sender: ::prost::alloc::string::String,
     /// The amount of coins to fund to the feeabs module account
     #[prost(message, repeated, tag="2")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::super::cosmos::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgFundFeeAbsModuleAccount {
 const NAME: &'static str = "MsgFundFeeAbsModuleAccount";

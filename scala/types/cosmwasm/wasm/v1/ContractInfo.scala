@@ -29,8 +29,8 @@ final case class ContractInfo(
     label: _root_.scala.Predef.String = "",
     created: _root_.scala.Option[cosmwasm.wasm.v1.AbsoluteTxPosition] = _root_.scala.None,
     ibcPortId: _root_.scala.Predef.String = "",
-    ibc2PortId: _root_.scala.Predef.String = "",
     extension: _root_.scala.Option[com.google.protobuf.any.Any] = _root_.scala.None,
+    ibc2PortId: _root_.scala.Predef.String = "",
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[ContractInfo] {
     @transient
@@ -76,16 +76,16 @@ final case class ContractInfo(
           __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(6, __value)
         }
       };
+      if (extension.isDefined) {
+        val __value = extension.get
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
+      };
       
       {
         val __value = ibc2PortId
         if (!__value.isEmpty) {
-          __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(7, __value)
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(8, __value)
         }
-      };
-      if (extension.isDefined) {
-        val __value = extension.get
-        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
       };
       __size += unknownFields.serializedSize
       __size
@@ -136,17 +136,17 @@ final case class ContractInfo(
           _output__.writeString(6, __v)
         }
       };
+      extension.foreach { __v =>
+        val __m = __v
+        _output__.writeTag(7, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
       {
         val __v = ibc2PortId
         if (!__v.isEmpty) {
-          _output__.writeString(7, __v)
+          _output__.writeString(8, __v)
         }
-      };
-      extension.foreach { __v =>
-        val __m = __v
-        _output__.writeTag(8, 2)
-        _output__.writeUInt32NoTag(__m.serializedSize)
-        __m.writeTo(_output__)
       };
       unknownFields.writeTo(_output__)
     }
@@ -158,10 +158,10 @@ final case class ContractInfo(
     def clearCreated: ContractInfo = copy(created = _root_.scala.None)
     def withCreated(__v: cosmwasm.wasm.v1.AbsoluteTxPosition): ContractInfo = copy(created = Option(__v))
     def withIbcPortId(__v: _root_.scala.Predef.String): ContractInfo = copy(ibcPortId = __v)
-    def withIbc2PortId(__v: _root_.scala.Predef.String): ContractInfo = copy(ibc2PortId = __v)
     def getExtension: com.google.protobuf.any.Any = extension.getOrElse(com.google.protobuf.any.Any.defaultInstance)
     def clearExtension: ContractInfo = copy(extension = _root_.scala.None)
     def withExtension(__v: com.google.protobuf.any.Any): ContractInfo = copy(extension = Option(__v))
+    def withIbc2PortId(__v: _root_.scala.Predef.String): ContractInfo = copy(ibc2PortId = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -187,11 +187,11 @@ final case class ContractInfo(
           val __t = ibcPortId
           if (__t != "") __t else null
         }
-        case 7 => {
+        case 7 => extension.orNull
+        case 8 => {
           val __t = ibc2PortId
           if (__t != "") __t else null
         }
-        case 8 => extension.orNull
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -203,8 +203,8 @@ final case class ContractInfo(
         case 4 => _root_.scalapb.descriptors.PString(label)
         case 5 => created.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
         case 6 => _root_.scalapb.descriptors.PString(ibcPortId)
-        case 7 => _root_.scalapb.descriptors.PString(ibc2PortId)
-        case 8 => extension.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
+        case 7 => extension.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
+        case 8 => _root_.scalapb.descriptors.PString(ibc2PortId)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -221,8 +221,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
     var __label: _root_.scala.Predef.String = ""
     var __created: _root_.scala.Option[cosmwasm.wasm.v1.AbsoluteTxPosition] = _root_.scala.None
     var __ibcPortId: _root_.scala.Predef.String = ""
-    var __ibc2PortId: _root_.scala.Predef.String = ""
     var __extension: _root_.scala.Option[com.google.protobuf.any.Any] = _root_.scala.None
+    var __ibc2PortId: _root_.scala.Predef.String = ""
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -242,9 +242,9 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
         case 50 =>
           __ibcPortId = _input__.readStringRequireUtf8()
         case 58 =>
-          __ibc2PortId = _input__.readStringRequireUtf8()
-        case 66 =>
           __extension = _root_.scala.Option(__extension.fold(_root_.scalapb.LiteParser.readMessage[com.google.protobuf.any.Any](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _)))
+        case 66 =>
+          __ibc2PortId = _input__.readStringRequireUtf8()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -259,8 +259,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
         label = __label,
         created = __created,
         ibcPortId = __ibcPortId,
-        ibc2PortId = __ibc2PortId,
         extension = __extension,
+        ibc2PortId = __ibc2PortId,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -274,8 +274,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
         label = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         created = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).flatMap(_.as[_root_.scala.Option[cosmwasm.wasm.v1.AbsoluteTxPosition]]),
         ibcPortId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        ibc2PortId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        extension = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).flatMap(_.as[_root_.scala.Option[com.google.protobuf.any.Any]])
+        extension = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).flatMap(_.as[_root_.scala.Option[com.google.protobuf.any.Any]]),
+        ibc2PortId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -285,7 +285,7 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
     var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
     (__number: @_root_.scala.unchecked) match {
       case 5 => __out = cosmwasm.wasm.v1.AbsoluteTxPosition
-      case 8 => __out = com.google.protobuf.any.Any
+      case 7 => __out = com.google.protobuf.any.Any
     }
     __out
   }
@@ -298,8 +298,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
     label = "",
     created = _root_.scala.None,
     ibcPortId = "",
-    ibc2PortId = "",
-    extension = _root_.scala.None
+    extension = _root_.scala.None,
+    ibc2PortId = ""
   )
   implicit class ContractInfoLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmwasm.wasm.v1.ContractInfo]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmwasm.wasm.v1.ContractInfo](_l) {
     def codeId: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.codeId)((c_, f_) => c_.copy(codeId = f_))
@@ -309,9 +309,9 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
     def created: _root_.scalapb.lenses.Lens[UpperPB, cosmwasm.wasm.v1.AbsoluteTxPosition] = field(_.getCreated)((c_, f_) => c_.copy(created = _root_.scala.Option(f_)))
     def optionalCreated: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[cosmwasm.wasm.v1.AbsoluteTxPosition]] = field(_.created)((c_, f_) => c_.copy(created = f_))
     def ibcPortId: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.ibcPortId)((c_, f_) => c_.copy(ibcPortId = f_))
-    def ibc2PortId: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.ibc2PortId)((c_, f_) => c_.copy(ibc2PortId = f_))
     def extension: _root_.scalapb.lenses.Lens[UpperPB, com.google.protobuf.any.Any] = field(_.getExtension)((c_, f_) => c_.copy(extension = _root_.scala.Option(f_)))
     def optionalExtension: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[com.google.protobuf.any.Any]] = field(_.extension)((c_, f_) => c_.copy(extension = f_))
+    def ibc2PortId: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.ibc2PortId)((c_, f_) => c_.copy(ibc2PortId = f_))
   }
   final val CODE_ID_FIELD_NUMBER = 1
   final val CREATOR_FIELD_NUMBER = 2
@@ -319,8 +319,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
   final val LABEL_FIELD_NUMBER = 4
   final val CREATED_FIELD_NUMBER = 5
   final val IBC_PORT_ID_FIELD_NUMBER = 6
-  final val IBC2_PORT_ID_FIELD_NUMBER = 7
-  final val EXTENSION_FIELD_NUMBER = 8
+  final val EXTENSION_FIELD_NUMBER = 7
+  final val IBC2_PORT_ID_FIELD_NUMBER = 8
   def of(
     codeId: _root_.scala.Long,
     creator: _root_.scala.Predef.String,
@@ -328,8 +328,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
     label: _root_.scala.Predef.String,
     created: _root_.scala.Option[cosmwasm.wasm.v1.AbsoluteTxPosition],
     ibcPortId: _root_.scala.Predef.String,
-    ibc2PortId: _root_.scala.Predef.String,
-    extension: _root_.scala.Option[com.google.protobuf.any.Any]
+    extension: _root_.scala.Option[com.google.protobuf.any.Any],
+    ibc2PortId: _root_.scala.Predef.String
   ): _root_.cosmwasm.wasm.v1.ContractInfo = _root_.cosmwasm.wasm.v1.ContractInfo(
     codeId,
     creator,
@@ -337,8 +337,8 @@ object ContractInfo extends scalapb.GeneratedMessageCompanion[cosmwasm.wasm.v1.C
     label,
     created,
     ibcPortId,
-    ibc2PortId,
-    extension
+    extension,
+    ibc2PortId
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmwasm.wasm.v1.ContractInfo])
 }

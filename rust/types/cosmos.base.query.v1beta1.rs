@@ -30,6 +30,8 @@ pub struct PageRequest {
     #[prost(bool, tag="4")]
     pub count_total: bool,
     /// reverse is set to true if results are to be returned in the descending order.
+    ///
+    /// Since: cosmos-sdk 0.43
     #[prost(bool, tag="5")]
     pub reverse: bool,
 }
@@ -39,13 +41,6 @@ const PACKAGE: &'static str = "cosmos.base.query.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.base.query.v1beta1.{}", Self::NAME)
             }}
-/// PageResponse is to be embedded in gRPC response messages where the
-/// corresponding request message has used PageRequest.
-///
-///   message SomeResponse {
-///           repeated Bar results = 1;
-///           PageResponse page = 2;
-///   }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PageResponse {

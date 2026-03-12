@@ -5,6 +5,8 @@
 
 package xion.jwk.v1
 
+/** MsgDeleteAudienceResponse defines the response for deleting an audience
+  */
 @SerialVersionUID(0L)
 final case class MsgDeleteAudienceResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

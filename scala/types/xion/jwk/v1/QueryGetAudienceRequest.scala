@@ -5,6 +5,12 @@
 
 package xion.jwk.v1
 
+/** QueryGetAudienceRequest is the legacy request type for querying an audience
+  * (deprecated)
+  *
+  * @param aud
+  *   The audience identifier to query
+  */
 @SerialVersionUID(0L)
 final case class QueryGetAudienceRequest(
     aud: _root_.scala.Predef.String = "",
@@ -96,8 +102,8 @@ object QueryGetAudienceRequest extends scalapb.GeneratedMessageCompanion[xion.jw
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(4)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(4)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(8)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(8)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)

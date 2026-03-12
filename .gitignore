@@ -1,6 +1,7 @@
 .idea
 go
 .claude
+.pnpm-store
 
 # Sensitive docs (contains internal URLs/emails)
 .github/workflows/COCOAPODS_TOKEN_RENEWAL.md
@@ -26,11 +27,12 @@ kotlin/.kotlin/
 kotlin/bin/
 kotlin/java-types/build/
 
-# Proto dependency exports (generated during build)
+__pycache__/
+
+# Build temporaries
+.buf-stderr
+.rust-staged/
+.ts-codegen-tmp/
+swift-types-temp/
 proto_deps/
 
-# Generated Java dependencies (built from proto_deps)
-java/types/com/
-java/types/gogoproto/
-java/types/cosmos_proto/
-java/types/cosmos/ics23/

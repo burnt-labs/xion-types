@@ -6,6 +6,13 @@
 package xion.feeabs.v1beta1
 
 /** GenesisState defines the feeabs module's genesis state.
+  *
+  * @param params
+  *   params defines the parameters for the feeabs module
+  * @param epochs
+  *   epochs defines the list of epoch information
+  * @param portId
+  *   port_id defines the IBC port identifier
   */
 @SerialVersionUID(0L)
 final case class GenesisState(

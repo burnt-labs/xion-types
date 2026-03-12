@@ -8,7 +8,7 @@ pub struct BasicAllowance {
     /// by this allowance and will be updated as coins are spent. If it is
     /// empty, there is no spend limit and any amount of coins can be spent.
     #[prost(message, repeated, tag="1")]
-    pub spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// expiration specifies an optional time when this allowance expires
     #[prost(message, optional, tag="2")]
     pub expiration: ::core::option::Option<::prost_types::Timestamp>,
@@ -34,10 +34,10 @@ pub struct PeriodicAllowance {
     /// period_spend_limit specifies the maximum number of coins that can be spent
     /// in the period
     #[prost(message, repeated, tag="3")]
-    pub period_spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub period_spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// period_can_spend is the number of coins left to be spent before the period_reset time
     #[prost(message, repeated, tag="4")]
-    pub period_can_spend: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub period_can_spend: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// period_reset is the time at which this period resets and a new one begins,
     /// it is calculated from the start time of the first transaction after the
     /// last period ended
@@ -121,7 +121,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllowanceResponse {
-    /// allowance is a allowance granted for grantee by granter.
+    /// allowance is an allowance granted for grantee by granter.
     #[prost(message, optional, tag="1")]
     pub allowance: ::core::option::Option<Grant>,
 }
@@ -137,9 +137,9 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllowancesRequest {
     #[prost(string, tag="1")]
     pub grantee: ::prost::alloc::string::String,
-    /// pagination defines an pagination for the request.
+    /// pagination defines a pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllowancesRequest {
 const NAME: &'static str = "QueryAllowancesRequest";
@@ -154,9 +154,9 @@ pub struct QueryAllowancesResponse {
     /// allowances are allowance's granted for grantee by granter.
     #[prost(message, repeated, tag="1")]
     pub allowances: ::prost::alloc::vec::Vec<Grant>,
-    /// pagination defines an pagination for the response.
+    /// pagination defines a pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllowancesResponse {
 const NAME: &'static str = "QueryAllowancesResponse";
@@ -170,9 +170,9 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAllowancesByGranterRequest {
     #[prost(string, tag="1")]
     pub granter: ::prost::alloc::string::String,
-    /// pagination defines an pagination for the request.
+    /// pagination defines a pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAllowancesByGranterRequest {
 const NAME: &'static str = "QueryAllowancesByGranterRequest";
@@ -187,9 +187,9 @@ pub struct QueryAllowancesByGranterResponse {
     /// allowances that have been issued by the granter.
     #[prost(message, repeated, tag="1")]
     pub allowances: ::prost::alloc::vec::Vec<Grant>,
-    /// pagination defines an pagination for the response.
+    /// pagination defines a pagination for the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAllowancesByGranterResponse {
 const NAME: &'static str = "QueryAllowancesByGranterResponse";

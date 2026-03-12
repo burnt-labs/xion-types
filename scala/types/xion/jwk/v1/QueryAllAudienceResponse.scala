@@ -5,6 +5,14 @@
 
 package xion.jwk.v1
 
+/** QueryAllAudienceResponse is the legacy response type for querying all
+  * audiences (deprecated)
+  *
+  * @param audience
+  *   List of all audiences
+  * @param pagination
+  *   Pagination response
+  */
 @SerialVersionUID(0L)
 final case class QueryAllAudienceResponse(
     audience: _root_.scala.Seq[xion.jwk.v1.Audience] = _root_.scala.Seq.empty,
@@ -114,8 +122,8 @@ object QueryAllAudienceResponse extends scalapb.GeneratedMessageCompanion[xion.j
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(7)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(7)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(13)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(13)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
     var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
     (__number: @_root_.scala.unchecked) match {

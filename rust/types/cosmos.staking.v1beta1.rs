@@ -6,13 +6,13 @@ pub struct StakeAuthorization {
     /// max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is
     /// empty, there is no spend limit and any amount of coins can be delegated.
     #[prost(message, optional, tag="1")]
-    pub max_tokens: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub max_tokens: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     /// authorization_type defines one of AuthorizationType.
     #[prost(enumeration="AuthorizationType", tag="4")]
     pub authorization_type: i32,
     /// validators is the oneof that represents either allow_list or deny_list
-    #[prost(oneof="stake_authorization::ValidatorPolicy", tags="2, 3")]
-    pub validators: ::core::option::Option<stake_authorization::ValidatorPolicy>,
+    #[prost(oneof="stake_authorization::ValidatorPolicyEnum", tags="2, 3")]
+    pub validators: ::core::option::Option<stake_authorization::ValidatorPolicyEnum>,
 }
 /// Nested message and enum types in `StakeAuthorization`.
 pub mod stake_authorization {
@@ -32,7 +32,7 @@ fn full_name() -> ::prost::alloc::string::String {
     /// validators is the oneof that represents either allow_list or deny_list
     #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum ValidatorPolicy {
+    pub enum ValidatorPolicyEnum {
         /// allow_list specifies list of validator addresses to whom grantee can delegate tokens on behalf of granter's
         /// account.
         #[prost(message, tag="2")]
@@ -97,7 +97,7 @@ impl AuthorizationType {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HistoricalInfo {
     #[prost(message, optional, tag="1")]
-    pub header: ::core::option::Option<super::super::super::tendermint::types::Header>,
+    pub header: ::core::option::Option<crate::types::tendermint_types::Header>,
     #[prost(message, repeated, tag="2")]
     pub valset: ::prost::alloc::vec::Vec<Validator>,
 }
@@ -218,7 +218,7 @@ pub struct Validator {
     /// strictly positive if this validator's unbonding has been stopped by external modules
     #[prost(int64, tag="12")]
     pub unbonding_on_hold_ref_count: i64,
-    /// list of unbonding ids, each uniquely identifing an unbonding of this validator
+    /// list of unbonding ids, each uniquely identifying an unbonding of this validator
     #[prost(uint64, repeated, tag="13")]
     pub unbonding_ids: ::prost::alloc::vec::Vec<u64>,
 }
@@ -470,7 +470,7 @@ pub struct DelegationResponse {
     #[prost(message, optional, tag="1")]
     pub delegation: ::core::option::Option<Delegation>,
     #[prost(message, optional, tag="2")]
-    pub balance: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub balance: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for DelegationResponse {
 const NAME: &'static str = "DelegationResponse";
@@ -534,7 +534,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorUpdates {
     #[prost(message, repeated, tag="1")]
-    pub updates: ::prost::alloc::vec::Vec<super::super::super::tendermint::abci::ValidatorUpdate>,
+    pub updates: ::prost::alloc::vec::Vec<crate::types::tendermint_abci::ValidatorUpdate>,
 }
 impl ::prost::Name for ValidatorUpdates {
 const NAME: &'static str = "ValidatorUpdates";
@@ -579,7 +579,7 @@ impl BondStatus {
         }
     }
 }
-/// Infraction indicates the infraction a validator commited.
+/// Infraction indicates the infraction a validator committed.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum Infraction {
@@ -675,7 +675,7 @@ pub struct QueryValidatorsRequest {
     pub status: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryValidatorsRequest {
 const NAME: &'static str = "QueryValidatorsRequest";
@@ -692,7 +692,7 @@ pub struct QueryValidatorsResponse {
     pub validators: ::prost::alloc::vec::Vec<Validator>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryValidatorsResponse {
 const NAME: &'static str = "QueryValidatorsResponse";
@@ -700,7 +700,7 @@ const PACKAGE: &'static str = "cosmos.staking.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
             }}
-/// QueryValidatorRequest is response type for the Query/Validator RPC method
+/// QueryValidatorRequest is request type for the Query/Validator RPC method
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryValidatorRequest {
@@ -738,7 +738,7 @@ pub struct QueryValidatorDelegationsRequest {
     pub validator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryValidatorDelegationsRequest {
 const NAME: &'static str = "QueryValidatorDelegationsRequest";
@@ -755,7 +755,7 @@ pub struct QueryValidatorDelegationsResponse {
     pub delegation_responses: ::prost::alloc::vec::Vec<DelegationResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryValidatorDelegationsResponse {
 const NAME: &'static str = "QueryValidatorDelegationsResponse";
@@ -773,7 +773,7 @@ pub struct QueryValidatorUnbondingDelegationsRequest {
     pub validator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryValidatorUnbondingDelegationsRequest {
 const NAME: &'static str = "QueryValidatorUnbondingDelegationsRequest";
@@ -790,7 +790,7 @@ pub struct QueryValidatorUnbondingDelegationsResponse {
     pub unbonding_responses: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryValidatorUnbondingDelegationsResponse {
 const NAME: &'static str = "QueryValidatorUnbondingDelegationsResponse";
@@ -872,7 +872,7 @@ pub struct QueryDelegatorDelegationsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDelegatorDelegationsRequest {
 const NAME: &'static str = "QueryDelegatorDelegationsRequest";
@@ -890,7 +890,7 @@ pub struct QueryDelegatorDelegationsResponse {
     pub delegation_responses: ::prost::alloc::vec::Vec<DelegationResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDelegatorDelegationsResponse {
 const NAME: &'static str = "QueryDelegatorDelegationsResponse";
@@ -908,7 +908,7 @@ pub struct QueryDelegatorUnbondingDelegationsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDelegatorUnbondingDelegationsRequest {
 const NAME: &'static str = "QueryDelegatorUnbondingDelegationsRequest";
@@ -925,7 +925,7 @@ pub struct QueryDelegatorUnbondingDelegationsResponse {
     pub unbonding_responses: ::prost::alloc::vec::Vec<UnbondingDelegation>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDelegatorUnbondingDelegationsResponse {
 const NAME: &'static str = "QueryDelegatorUnbondingDelegationsResponse";
@@ -949,7 +949,7 @@ pub struct QueryRedelegationsRequest {
     pub dst_validator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="4")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryRedelegationsRequest {
 const NAME: &'static str = "QueryRedelegationsRequest";
@@ -966,7 +966,7 @@ pub struct QueryRedelegationsResponse {
     pub redelegation_responses: ::prost::alloc::vec::Vec<RedelegationResponse>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryRedelegationsResponse {
 const NAME: &'static str = "QueryRedelegationsResponse";
@@ -984,7 +984,7 @@ pub struct QueryDelegatorValidatorsRequest {
     pub delegator_addr: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryDelegatorValidatorsRequest {
 const NAME: &'static str = "QueryDelegatorValidatorsRequest";
@@ -1002,7 +1002,7 @@ pub struct QueryDelegatorValidatorsResponse {
     pub validators: ::prost::alloc::vec::Vec<Validator>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryDelegatorValidatorsResponse {
 const NAME: &'static str = "QueryDelegatorValidatorsResponse";
@@ -1144,7 +1144,7 @@ pub struct MsgCreateValidator {
     #[prost(message, optional, tag="6")]
     pub pubkey: ::core::option::Option<::prost_types::Any>,
     #[prost(message, optional, tag="7")]
-    pub value: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub value: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgCreateValidator {
 const NAME: &'static str = "MsgCreateValidator";
@@ -1207,7 +1207,7 @@ pub struct MsgDelegate {
     #[prost(string, tag="2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgDelegate {
 const NAME: &'static str = "MsgDelegate";
@@ -1238,7 +1238,7 @@ pub struct MsgBeginRedelegate {
     #[prost(string, tag="3")]
     pub validator_dst_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="4")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgBeginRedelegate {
 const NAME: &'static str = "MsgBeginRedelegate";
@@ -1269,7 +1269,7 @@ pub struct MsgUndelegate {
     #[prost(string, tag="2")]
     pub validator_address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgUndelegate {
 const NAME: &'static str = "MsgUndelegate";
@@ -1285,7 +1285,7 @@ pub struct MsgUndelegateResponse {
     pub completion_time: ::core::option::Option<::prost_types::Timestamp>,
     /// amount returns the amount of undelegated coins
     #[prost(message, optional, tag="2")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgUndelegateResponse {
 const NAME: &'static str = "MsgUndelegateResponse";
@@ -1303,7 +1303,7 @@ pub struct MsgCancelUnbondingDelegation {
     pub validator_address: ::prost::alloc::string::String,
     /// amount is always less than or equal to unbonding delegation entry balance
     #[prost(message, optional, tag="3")]
-    pub amount: ::core::option::Option<super::super::base::v1beta1::Coin>,
+    pub amount: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
     /// creation_height is the height which the unbonding took place.
     #[prost(int64, tag="4")]
     pub creation_height: i64,

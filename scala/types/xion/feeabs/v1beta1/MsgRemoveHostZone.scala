@@ -9,6 +9,8 @@ package xion.feeabs.v1beta1
   *
   * @param authority
   *   authority is the address of the governance account.
+  * @param ibcDenom
+  *   The IBC denomination of the host zone to remove
   */
 @SerialVersionUID(0L)
 final case class MsgRemoveHostZone(

@@ -1,4 +1,140 @@
 // @generated
+/// ConsensusParams contains consensus critical parameters that determine the
+/// validity of blocks.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConsensusParams {
+    #[prost(message, optional, tag="1")]
+    pub block: ::core::option::Option<BlockParams>,
+    #[prost(message, optional, tag="2")]
+    pub evidence: ::core::option::Option<EvidenceParams>,
+    #[prost(message, optional, tag="3")]
+    pub validator: ::core::option::Option<ValidatorParams>,
+    #[prost(message, optional, tag="4")]
+    pub version: ::core::option::Option<VersionParams>,
+    #[prost(message, optional, tag="5")]
+    pub abci: ::core::option::Option<AbciParams>,
+}
+impl ::prost::Name for ConsensusParams {
+const NAME: &'static str = "ConsensusParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+/// BlockParams contains limits on the block size.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct BlockParams {
+    /// Max block size, in bytes.
+    /// Note: must be greater than 0
+    #[prost(int64, tag="1")]
+    pub max_bytes: i64,
+    /// Max gas per block.
+    /// Note: must be greater or equal to -1
+    #[prost(int64, tag="2")]
+    pub max_gas: i64,
+}
+impl ::prost::Name for BlockParams {
+const NAME: &'static str = "BlockParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+/// EvidenceParams determine how we handle evidence of malfeasance.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EvidenceParams {
+    /// Max age of evidence, in blocks.
+    ///
+    /// The basic formula for calculating this is: MaxAgeDuration / {average block
+    /// time}.
+    #[prost(int64, tag="1")]
+    pub max_age_num_blocks: i64,
+    /// Max age of evidence, in time.
+    ///
+    /// It should correspond with an app's "unbonding period" or other similar
+    /// mechanism for handling [Nothing-At-Stake
+    /// attacks](<https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed>).
+    #[prost(message, optional, tag="2")]
+    pub max_age_duration: ::core::option::Option<::prost_types::Duration>,
+    /// This sets the maximum size of total evidence in bytes that can be committed in a single block.
+    /// and should fall comfortably under the max block bytes.
+    /// Default is 1048576 or 1MB
+    #[prost(int64, tag="3")]
+    pub max_bytes: i64,
+}
+impl ::prost::Name for EvidenceParams {
+const NAME: &'static str = "EvidenceParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+/// ValidatorParams restrict the public key types validators can use.
+/// NOTE: uses ABCI pubkey naming, not Amino names.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ValidatorParams {
+    #[prost(string, repeated, tag="1")]
+    pub pub_key_types: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for ValidatorParams {
+const NAME: &'static str = "ValidatorParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+/// VersionParams contains the ABCI application version.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct VersionParams {
+    #[prost(uint64, tag="1")]
+    pub app: u64,
+}
+impl ::prost::Name for VersionParams {
+const NAME: &'static str = "VersionParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+/// HashedParams is a subset of ConsensusParams.
+///
+/// It is hashed into the Header.ConsensusHash.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct HashedParams {
+    #[prost(int64, tag="1")]
+    pub block_max_bytes: i64,
+    #[prost(int64, tag="2")]
+    pub block_max_gas: i64,
+}
+impl ::prost::Name for HashedParams {
+const NAME: &'static str = "HashedParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+/// ABCIParams configure functionality specific to the Application Blockchain Interface.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AbciParams {
+    /// vote_extensions_enable_height configures the first height during which
+    /// vote extensions will be enabled. During this specified height, and for all
+    /// subsequent heights, precommit messages that do not contain valid extension data
+    /// will be considered invalid. Prior to this height, vote extensions will not
+    /// be used or accepted by validators on the network.
+    ///
+    /// Once enabled, vote extensions will be created by the application in ExtendVote,
+    /// passed to the application for validation in VerifyVoteExtension and given
+    /// to the application to use when proposing a block during PrepareProposal.
+    #[prost(int64, tag="1")]
+    pub vote_extensions_enable_height: i64,
+}
+impl ::prost::Name for AbciParams {
+const NAME: &'static str = "ABCIParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorSet {
@@ -21,7 +157,7 @@ pub struct Validator {
     #[prost(bytes="vec", tag="1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
+    pub pub_key: ::core::option::Option<crate::types::tendermint_crypto::PublicKey>,
     #[prost(int64, tag="3")]
     pub voting_power: i64,
     #[prost(int64, tag="4")]
@@ -37,7 +173,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SimpleValidator {
     #[prost(message, optional, tag="1")]
-    pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
+    pub pub_key: ::core::option::Option<crate::types::tendermint_crypto::PublicKey>,
     #[prost(int64, tag="2")]
     pub voting_power: i64,
 }
@@ -107,7 +243,7 @@ pub struct Part {
     #[prost(bytes="vec", tag="2")]
     pub bytes: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof: ::core::option::Option<super::crypto::Proof>,
+    pub proof: ::core::option::Option<crate::types::tendermint_crypto::Proof>,
 }
 impl ::prost::Name for Part {
 const NAME: &'static str = "Part";
@@ -138,7 +274,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct Header {
     /// basic block info
     #[prost(message, optional, tag="1")]
-    pub version: ::core::option::Option<super::version::Consensus>,
+    pub version: ::core::option::Option<crate::types::tendermint_version::Consensus>,
     #[prost(string, tag="2")]
     pub chain_id: ::prost::alloc::string::String,
     #[prost(int64, tag="3")]
@@ -406,7 +542,7 @@ pub struct TxProof {
     #[prost(bytes="vec", tag="2")]
     pub data: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub proof: ::core::option::Option<super::crypto::Proof>,
+    pub proof: ::core::option::Option<crate::types::tendermint_crypto::Proof>,
 }
 impl ::prost::Name for TxProof {
 const NAME: &'static str = "TxProof";
@@ -540,142 +676,6 @@ pub struct Block {
 }
 impl ::prost::Name for Block {
 const NAME: &'static str = "Block";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// ConsensusParams contains consensus critical parameters that determine the
-/// validity of blocks.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConsensusParams {
-    #[prost(message, optional, tag="1")]
-    pub block: ::core::option::Option<BlockParams>,
-    #[prost(message, optional, tag="2")]
-    pub evidence: ::core::option::Option<EvidenceParams>,
-    #[prost(message, optional, tag="3")]
-    pub validator: ::core::option::Option<ValidatorParams>,
-    #[prost(message, optional, tag="4")]
-    pub version: ::core::option::Option<VersionParams>,
-    #[prost(message, optional, tag="5")]
-    pub abci: ::core::option::Option<AbciParams>,
-}
-impl ::prost::Name for ConsensusParams {
-const NAME: &'static str = "ConsensusParams";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// BlockParams contains limits on the block size.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct BlockParams {
-    /// Max block size, in bytes.
-    /// Note: must be greater than 0
-    #[prost(int64, tag="1")]
-    pub max_bytes: i64,
-    /// Max gas per block.
-    /// Note: must be greater or equal to -1
-    #[prost(int64, tag="2")]
-    pub max_gas: i64,
-}
-impl ::prost::Name for BlockParams {
-const NAME: &'static str = "BlockParams";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// EvidenceParams determine how we handle evidence of malfeasance.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct EvidenceParams {
-    /// Max age of evidence, in blocks.
-    ///
-    /// The basic formula for calculating this is: MaxAgeDuration / {average block
-    /// time}.
-    #[prost(int64, tag="1")]
-    pub max_age_num_blocks: i64,
-    /// Max age of evidence, in time.
-    ///
-    /// It should correspond with an app's "unbonding period" or other similar
-    /// mechanism for handling [Nothing-At-Stake
-    /// attacks](<https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed>).
-    #[prost(message, optional, tag="2")]
-    pub max_age_duration: ::core::option::Option<::prost_types::Duration>,
-    /// This sets the maximum size of total evidence in bytes that can be committed in a single block.
-    /// and should fall comfortably under the max block bytes.
-    /// Default is 1048576 or 1MB
-    #[prost(int64, tag="3")]
-    pub max_bytes: i64,
-}
-impl ::prost::Name for EvidenceParams {
-const NAME: &'static str = "EvidenceParams";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// ValidatorParams restrict the public key types validators can use.
-/// NOTE: uses ABCI pubkey naming, not Amino names.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ValidatorParams {
-    #[prost(string, repeated, tag="1")]
-    pub pub_key_types: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-impl ::prost::Name for ValidatorParams {
-const NAME: &'static str = "ValidatorParams";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// VersionParams contains the ABCI application version.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct VersionParams {
-    #[prost(uint64, tag="1")]
-    pub app: u64,
-}
-impl ::prost::Name for VersionParams {
-const NAME: &'static str = "VersionParams";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// HashedParams is a subset of ConsensusParams.
-///
-/// It is hashed into the Header.ConsensusHash.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct HashedParams {
-    #[prost(int64, tag="1")]
-    pub block_max_bytes: i64,
-    #[prost(int64, tag="2")]
-    pub block_max_gas: i64,
-}
-impl ::prost::Name for HashedParams {
-const NAME: &'static str = "HashedParams";
-const PACKAGE: &'static str = "tendermint.types";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
-            }}
-/// ABCIParams configure functionality specific to the Application Blockchain Interface.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AbciParams {
-    /// vote_extensions_enable_height configures the first height during which
-    /// vote extensions will be enabled. During this specified height, and for all
-    /// subsequent heights, precommit messages that do not contain valid extension data
-    /// will be considered invalid. Prior to this height, vote extensions will not
-    /// be used or accepted by validators on the network.
-    ///
-    /// Once enabled, vote extensions will be created by the application in ExtendVote,
-    /// passed to the application for validation in VerifyVoteExtension and given
-    /// to the application to use when proposing a block during PrepareProposal.
-    #[prost(int64, tag="1")]
-    pub vote_extensions_enable_height: i64,
-}
-impl ::prost::Name for AbciParams {
-const NAME: &'static str = "ABCIParams";
 const PACKAGE: &'static str = "tendermint.types";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("tendermint.types.{}", Self::NAME)

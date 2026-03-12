@@ -5,6 +5,11 @@
 
 package xion.jwk.v1
 
+/** QueryValidateJWTResponse is the response type for validating a JWT
+  *
+  * @param privateClaims
+  *   The private claims from the JWT
+  */
 @SerialVersionUID(0L)
 final case class QueryValidateJWTResponse(
     privateClaims: _root_.scala.Seq[xion.jwk.v1.PrivateClaim] = _root_.scala.Seq.empty,
@@ -93,8 +98,8 @@ object QueryValidateJWTResponse extends scalapb.GeneratedMessageCompanion[xion.j
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(10)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(10)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.jwk.v1.QueryProto.javaDescriptor.getMessageTypes().get(16)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.jwk.v1.QueryProto.scalaDescriptor.messages(16)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
     var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
     (__number: @_root_.scala.unchecked) match {
@@ -110,7 +115,7 @@ object QueryValidateJWTResponse extends scalapb.GeneratedMessageCompanion[xion.j
   implicit class QueryValidateJWTResponseLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, xion.jwk.v1.QueryValidateJWTResponse]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, xion.jwk.v1.QueryValidateJWTResponse](_l) {
     def privateClaims: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[xion.jwk.v1.PrivateClaim]] = field(_.privateClaims)((c_, f_) => c_.copy(privateClaims = f_))
   }
-  final val PRIVATECLAIMS_FIELD_NUMBER = 1
+  final val PRIVATE_CLAIMS_FIELD_NUMBER = 1
   def of(
     privateClaims: _root_.scala.Seq[xion.jwk.v1.PrivateClaim]
   ): _root_.xion.jwk.v1.QueryValidateJWTResponse = _root_.xion.jwk.v1.QueryValidateJWTResponse(

@@ -7,6 +7,9 @@ package xion.feeabs.v1beta1
 
 /** CosmosQuery contains a list of tendermint ABCI query requests. It should be
   * used when sending queries to an SDK host chain.
+  *
+  * @param requests
+  *   requests defines the list of ABCI query requests
   */
 @SerialVersionUID(0L)
 final case class CosmosQuery(

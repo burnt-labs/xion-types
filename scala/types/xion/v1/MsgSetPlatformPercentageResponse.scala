@@ -5,6 +5,9 @@
 
 package xion.v1
 
+/** MsgSetPlatformPercentageResponse defines the response for setting platform
+  * percentage
+  */
 @SerialVersionUID(0L)
 final case class MsgSetPlatformPercentageResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

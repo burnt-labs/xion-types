@@ -730,7 +730,7 @@ pub struct QueryGroupMembersRequest {
     pub group_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupMembersRequest {
 const NAME: &'static str = "QueryGroupMembersRequest";
@@ -747,7 +747,7 @@ pub struct QueryGroupMembersResponse {
     pub members: ::prost::alloc::vec::Vec<GroupMember>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupMembersResponse {
 const NAME: &'static str = "QueryGroupMembersResponse";
@@ -764,7 +764,7 @@ pub struct QueryGroupsByAdminRequest {
     pub admin: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupsByAdminRequest {
 const NAME: &'static str = "QueryGroupsByAdminRequest";
@@ -781,7 +781,7 @@ pub struct QueryGroupsByAdminResponse {
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupsByAdminResponse {
 const NAME: &'static str = "QueryGroupsByAdminResponse";
@@ -798,7 +798,7 @@ pub struct QueryGroupPoliciesByGroupRequest {
     pub group_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupPoliciesByGroupRequest {
 const NAME: &'static str = "QueryGroupPoliciesByGroupRequest";
@@ -815,7 +815,7 @@ pub struct QueryGroupPoliciesByGroupResponse {
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupPoliciesByGroupResponse {
 const NAME: &'static str = "QueryGroupPoliciesByGroupResponse";
@@ -832,7 +832,7 @@ pub struct QueryGroupPoliciesByAdminRequest {
     pub admin: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupPoliciesByAdminRequest {
 const NAME: &'static str = "QueryGroupPoliciesByAdminRequest";
@@ -849,7 +849,7 @@ pub struct QueryGroupPoliciesByAdminResponse {
     pub group_policies: ::prost::alloc::vec::Vec<GroupPolicyInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupPoliciesByAdminResponse {
 const NAME: &'static str = "QueryGroupPoliciesByAdminResponse";
@@ -894,7 +894,7 @@ pub struct QueryProposalsByGroupPolicyRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryProposalsByGroupPolicyRequest {
 const NAME: &'static str = "QueryProposalsByGroupPolicyRequest";
@@ -911,7 +911,7 @@ pub struct QueryProposalsByGroupPolicyResponse {
     pub proposals: ::prost::alloc::vec::Vec<Proposal>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryProposalsByGroupPolicyResponse {
 const NAME: &'static str = "QueryProposalsByGroupPolicyResponse";
@@ -959,7 +959,7 @@ pub struct QueryVotesByProposalRequest {
     pub proposal_id: u64,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVotesByProposalRequest {
 const NAME: &'static str = "QueryVotesByProposalRequest";
@@ -976,7 +976,7 @@ pub struct QueryVotesByProposalResponse {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVotesByProposalResponse {
 const NAME: &'static str = "QueryVotesByProposalResponse";
@@ -993,7 +993,7 @@ pub struct QueryVotesByVoterRequest {
     pub voter: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryVotesByVoterRequest {
 const NAME: &'static str = "QueryVotesByVoterRequest";
@@ -1010,7 +1010,7 @@ pub struct QueryVotesByVoterResponse {
     pub votes: ::prost::alloc::vec::Vec<Vote>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryVotesByVoterResponse {
 const NAME: &'static str = "QueryVotesByVoterResponse";
@@ -1027,7 +1027,7 @@ pub struct QueryGroupsByMemberRequest {
     pub address: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupsByMemberRequest {
 const NAME: &'static str = "QueryGroupsByMemberRequest";
@@ -1044,7 +1044,7 @@ pub struct QueryGroupsByMemberResponse {
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupsByMemberResponse {
 const NAME: &'static str = "QueryGroupsByMemberResponse";
@@ -1086,7 +1086,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryGroupsRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryGroupsRequest {
 const NAME: &'static str = "QueryGroupsRequest";
@@ -1103,7 +1103,7 @@ pub struct QueryGroupsResponse {
     pub groups: ::prost::alloc::vec::Vec<GroupInfo>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryGroupsResponse {
 const NAME: &'static str = "QueryGroupsResponse";

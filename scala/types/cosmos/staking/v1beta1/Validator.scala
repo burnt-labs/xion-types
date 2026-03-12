@@ -39,7 +39,7 @@ package cosmos.staking.v1beta1
   * @param unbondingOnHoldRefCount
   *   strictly positive if this validator's unbonding has been stopped by external modules
   * @param unbondingIds
-  *   list of unbonding ids, each uniquely identifing an unbonding of this validator
+  *   list of unbonding ids, each uniquely identifying an unbonding of this validator
   */
 @SerialVersionUID(0L)
 final case class Validator(

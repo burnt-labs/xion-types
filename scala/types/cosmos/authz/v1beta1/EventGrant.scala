@@ -8,7 +8,7 @@ package cosmos.authz.v1beta1
 /** EventGrant is emitted on Msg/Grant
   *
   * @param msgTypeUrl
-  *   Msg type URL for which an autorization is granted
+  *   Msg type URL for which an authorization is granted
   * @param granter
   *   Granter account address
   * @param grantee

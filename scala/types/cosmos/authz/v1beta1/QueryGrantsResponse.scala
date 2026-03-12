@@ -10,7 +10,7 @@ package cosmos.authz.v1beta1
   * @param grants
   *   authorizations is a list of grants granted for grantee by granter.
   * @param pagination
-  *   pagination defines an pagination for the response.
+  *   pagination defines a pagination for the response.
   */
 @SerialVersionUID(0L)
 final case class QueryGrantsResponse(

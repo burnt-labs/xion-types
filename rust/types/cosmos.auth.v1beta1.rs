@@ -38,6 +38,8 @@ fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.auth.v1beta1.{}", Self::NAME)
             }}
 /// ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
+///
+/// Since: cosmos-sdk 0.47
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleCredential {
@@ -99,7 +101,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryAccountsRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryAccountsRequest {
 const NAME: &'static str = "QueryAccountsRequest";
@@ -116,7 +118,7 @@ pub struct QueryAccountsResponse {
     pub accounts: ::prost::alloc::vec::Vec<::prost_types::Any>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryAccountsResponse {
 const NAME: &'static str = "QueryAccountsResponse";

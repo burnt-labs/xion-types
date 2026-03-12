@@ -256,7 +256,7 @@ pub struct QueryNfTsRequest {
     pub owner: ::prost::alloc::string::String,
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="3")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryNfTsRequest {
 const NAME: &'static str = "QueryNFTsRequest";
@@ -273,7 +273,7 @@ pub struct QueryNfTsResponse {
     pub nfts: ::prost::alloc::vec::Vec<Nft>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryNfTsResponse {
 const NAME: &'static str = "QueryNFTsResponse";
@@ -346,7 +346,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryClassesRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryClassesRequest {
 const NAME: &'static str = "QueryClassesRequest";
@@ -363,7 +363,7 @@ pub struct QueryClassesResponse {
     pub classes: ::prost::alloc::vec::Vec<Class>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryClassesResponse {
 const NAME: &'static str = "QueryClassesResponse";

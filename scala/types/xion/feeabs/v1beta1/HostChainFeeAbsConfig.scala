@@ -21,7 +21,7 @@ final case class HostChainFeeAbsConfig(
     ibcDenom: _root_.scala.Predef.String = "",
     osmosisPoolTokenDenomIn: _root_.scala.Predef.String = "",
     poolId: _root_.scala.Long = 0L,
-    status: xion.feeabs.v1beta1.HostChainFeeAbsStatus = xion.feeabs.v1beta1.HostChainFeeAbsStatus.UPDATED,
+    status: xion.feeabs.v1beta1.HostChainFeeAbsStatus = xion.feeabs.v1beta1.HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[HostChainFeeAbsConfig] {
     @transient
@@ -141,7 +141,7 @@ object HostChainFeeAbsConfig extends scalapb.GeneratedMessageCompanion[xion.feea
     var __ibcDenom: _root_.scala.Predef.String = ""
     var __osmosisPoolTokenDenomIn: _root_.scala.Predef.String = ""
     var __poolId: _root_.scala.Long = 0L
-    var __status: xion.feeabs.v1beta1.HostChainFeeAbsStatus = xion.feeabs.v1beta1.HostChainFeeAbsStatus.UPDATED
+    var __status: xion.feeabs.v1beta1.HostChainFeeAbsStatus = xion.feeabs.v1beta1.HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -178,7 +178,7 @@ object HostChainFeeAbsConfig extends scalapb.GeneratedMessageCompanion[xion.feea
         ibcDenom = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         osmosisPoolTokenDenomIn = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         poolId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
-        status = xion.feeabs.v1beta1.HostChainFeeAbsStatus.fromValue(__fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scalapb.descriptors.EnumValueDescriptor]).getOrElse(xion.feeabs.v1beta1.HostChainFeeAbsStatus.UPDATED.scalaValueDescriptor).number)
+        status = xion.feeabs.v1beta1.HostChainFeeAbsStatus.fromValue(__fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scalapb.descriptors.EnumValueDescriptor]).getOrElse(xion.feeabs.v1beta1.HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED.scalaValueDescriptor).number)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -195,7 +195,7 @@ object HostChainFeeAbsConfig extends scalapb.GeneratedMessageCompanion[xion.feea
     ibcDenom = "",
     osmosisPoolTokenDenomIn = "",
     poolId = 0L,
-    status = xion.feeabs.v1beta1.HostChainFeeAbsStatus.UPDATED
+    status = xion.feeabs.v1beta1.HostChainFeeAbsStatus.HOST_CHAIN_FEE_ABS_STATUS_UNSPECIFIED
   )
   implicit class HostChainFeeAbsConfigLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, xion.feeabs.v1beta1.HostChainFeeAbsConfig]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, xion.feeabs.v1beta1.HostChainFeeAbsConfig](_l) {
     def ibcDenom: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.ibcDenom)((c_, f_) => c_.copy(ibcDenom = f_))

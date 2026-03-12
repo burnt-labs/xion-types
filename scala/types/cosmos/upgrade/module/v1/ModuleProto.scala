@@ -16,8 +16,8 @@ object ModuleProto extends _root_.scalapb.GeneratedFileObject {
   private lazy val ProtoBytes: _root_.scala.Array[Byte] =
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """CiVjb3Ntb3MvdXBncmFkZS9tb2R1bGUvdjEvbW9kdWxlLnByb3RvEhhjb3Ntb3MudXBncmFkZS5tb2R1bGUudjEaIGNvc21vc
-  y9hcHAvdjFhbHBoYTEvbW9kdWxlLnByb3RvIlYKBk1vZHVsZRIsCglhdXRob3JpdHkYASABKAlCDuI/CxIJYXV0aG9yaXR5Uglhd
-  XRob3JpdHk6HrrAltoBGAoWY29zbW9zc2RrLmlvL3gvdXBncmFkZWIGcHJvdG8z"""
+  y9hcHAvdjFhbHBoYTEvbW9kdWxlLnByb3RvImYKBk1vZHVsZRIsCglhdXRob3JpdHkYASABKAlCDuI/CxIJYXV0aG9yaXR5Uglhd
+  XRob3JpdHk6LrrAltoBKAomZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay94L3VwZ3JhZGViBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

@@ -2,8 +2,11 @@
 import { Audience, AudienceAmino, AudienceSDKType } from "./audience";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+/** MsgCreateAudienceClaim defines the message for creating an audience claim */
 export interface MsgCreateAudienceClaim {
+  /** The admin address creating the claim */
   admin: string;
+  /** The hash of the audience for this claim */
   audHash: Uint8Array;
 }
 export interface MsgCreateAudienceClaimProtoMsg {
@@ -11,28 +14,42 @@ export interface MsgCreateAudienceClaimProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgCreateAudienceClaim defines the message for creating an audience claim
  * @name MsgCreateAudienceClaimAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgCreateAudienceClaim
  */
 export interface MsgCreateAudienceClaimAmino {
+  /**
+   * The admin address creating the claim
+   */
   admin?: string;
+  /**
+   * The hash of the audience for this claim
+   */
   aud_hash?: string;
 }
 export interface MsgCreateAudienceClaimAminoMsg {
   type: "/xion.jwk.v1.MsgCreateAudienceClaim";
   value: MsgCreateAudienceClaimAmino;
 }
+/** MsgCreateAudienceClaim defines the message for creating an audience claim */
 export interface MsgCreateAudienceClaimSDKType {
   admin: string;
   aud_hash: Uint8Array;
 }
+/**
+ * MsgCreateAudienceClaimResponse defines the response for creating an audience
+ * claim
+ */
 export interface MsgCreateAudienceClaimResponse {}
 export interface MsgCreateAudienceClaimResponseProtoMsg {
   typeUrl: "/xion.jwk.v1.MsgCreateAudienceClaimResponse";
   value: Uint8Array;
 }
 /**
+ * MsgCreateAudienceClaimResponse defines the response for creating an audience
+ * claim
  * @name MsgCreateAudienceClaimResponseAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgCreateAudienceClaimResponse
@@ -42,9 +59,16 @@ export interface MsgCreateAudienceClaimResponseAminoMsg {
   type: "/xion.jwk.v1.MsgCreateAudienceClaimResponse";
   value: MsgCreateAudienceClaimResponseAmino;
 }
+/**
+ * MsgCreateAudienceClaimResponse defines the response for creating an audience
+ * claim
+ */
 export interface MsgCreateAudienceClaimResponseSDKType {}
+/** MsgDeleteAudienceClaim defines the message for deleting an audience claim */
 export interface MsgDeleteAudienceClaim {
+  /** The admin address deleting the claim */
   admin: string;
+  /** The hash of the audience for this claim */
   audHash: Uint8Array;
 }
 export interface MsgDeleteAudienceClaimProtoMsg {
@@ -52,28 +76,42 @@ export interface MsgDeleteAudienceClaimProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgDeleteAudienceClaim defines the message for deleting an audience claim
  * @name MsgDeleteAudienceClaimAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgDeleteAudienceClaim
  */
 export interface MsgDeleteAudienceClaimAmino {
+  /**
+   * The admin address deleting the claim
+   */
   admin?: string;
+  /**
+   * The hash of the audience for this claim
+   */
   aud_hash?: string;
 }
 export interface MsgDeleteAudienceClaimAminoMsg {
   type: "/xion.jwk.v1.MsgDeleteAudienceClaim";
   value: MsgDeleteAudienceClaimAmino;
 }
+/** MsgDeleteAudienceClaim defines the message for deleting an audience claim */
 export interface MsgDeleteAudienceClaimSDKType {
   admin: string;
   aud_hash: Uint8Array;
 }
+/**
+ * MsgDeleteAudienceClaimResponse defines the response for deleting an audience
+ * claim
+ */
 export interface MsgDeleteAudienceClaimResponse {}
 export interface MsgDeleteAudienceClaimResponseProtoMsg {
   typeUrl: "/xion.jwk.v1.MsgDeleteAudienceClaimResponse";
   value: Uint8Array;
 }
 /**
+ * MsgDeleteAudienceClaimResponse defines the response for deleting an audience
+ * claim
  * @name MsgDeleteAudienceClaimResponseAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgDeleteAudienceClaimResponse
@@ -83,10 +121,18 @@ export interface MsgDeleteAudienceClaimResponseAminoMsg {
   type: "/xion.jwk.v1.MsgDeleteAudienceClaimResponse";
   value: MsgDeleteAudienceClaimResponseAmino;
 }
+/**
+ * MsgDeleteAudienceClaimResponse defines the response for deleting an audience
+ * claim
+ */
 export interface MsgDeleteAudienceClaimResponseSDKType {}
+/** MsgCreateAudience defines the message for creating an audience */
 export interface MsgCreateAudience {
+  /** The admin address creating the audience */
   admin: string;
+  /** The audience identifier */
   aud: string;
+  /** The public key for this audience */
   key: string;
 }
 export interface MsgCreateAudienceProtoMsg {
@@ -94,25 +140,38 @@ export interface MsgCreateAudienceProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgCreateAudience defines the message for creating an audience
  * @name MsgCreateAudienceAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgCreateAudience
  */
 export interface MsgCreateAudienceAmino {
+  /**
+   * The admin address creating the audience
+   */
   admin?: string;
+  /**
+   * The audience identifier
+   */
   aud?: string;
+  /**
+   * The public key for this audience
+   */
   key?: string;
 }
 export interface MsgCreateAudienceAminoMsg {
   type: "/xion.jwk.v1.MsgCreateAudience";
   value: MsgCreateAudienceAmino;
 }
+/** MsgCreateAudience defines the message for creating an audience */
 export interface MsgCreateAudienceSDKType {
   admin: string;
   aud: string;
   key: string;
 }
+/** MsgCreateAudienceResponse defines the response for creating an audience */
 export interface MsgCreateAudienceResponse {
+  /** The created audience */
   audience?: Audience;
 }
 export interface MsgCreateAudienceResponseProtoMsg {
@@ -120,25 +179,36 @@ export interface MsgCreateAudienceResponseProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgCreateAudienceResponse defines the response for creating an audience
  * @name MsgCreateAudienceResponseAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgCreateAudienceResponse
  */
 export interface MsgCreateAudienceResponseAmino {
+  /**
+   * The created audience
+   */
   audience?: AudienceAmino;
 }
 export interface MsgCreateAudienceResponseAminoMsg {
   type: "/xion.jwk.v1.MsgCreateAudienceResponse";
   value: MsgCreateAudienceResponseAmino;
 }
+/** MsgCreateAudienceResponse defines the response for creating an audience */
 export interface MsgCreateAudienceResponseSDKType {
   audience?: AudienceSDKType;
 }
+/** MsgUpdateAudience defines the message for updating an audience */
 export interface MsgUpdateAudience {
+  /** The current admin address */
   admin: string;
+  /** The new admin address */
   newAdmin: string;
+  /** The current audience identifier */
   aud: string;
+  /** The current public key */
   key: string;
+  /** The new audience identifier */
   newAud: string;
 }
 export interface MsgUpdateAudienceProtoMsg {
@@ -146,21 +216,38 @@ export interface MsgUpdateAudienceProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgUpdateAudience defines the message for updating an audience
  * @name MsgUpdateAudienceAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgUpdateAudience
  */
 export interface MsgUpdateAudienceAmino {
+  /**
+   * The current admin address
+   */
   admin?: string;
+  /**
+   * The new admin address
+   */
   new_admin?: string;
+  /**
+   * The current audience identifier
+   */
   aud?: string;
+  /**
+   * The current public key
+   */
   key?: string;
+  /**
+   * The new audience identifier
+   */
   new_aud?: string;
 }
 export interface MsgUpdateAudienceAminoMsg {
   type: "/xion.jwk.v1.MsgUpdateAudience";
   value: MsgUpdateAudienceAmino;
 }
+/** MsgUpdateAudience defines the message for updating an audience */
 export interface MsgUpdateAudienceSDKType {
   admin: string;
   new_admin: string;
@@ -168,7 +255,9 @@ export interface MsgUpdateAudienceSDKType {
   key: string;
   new_aud: string;
 }
+/** MsgUpdateAudienceResponse defines the response for updating an audience */
 export interface MsgUpdateAudienceResponse {
+  /** The updated audience */
   audience?: Audience;
 }
 export interface MsgUpdateAudienceResponseProtoMsg {
@@ -176,22 +265,30 @@ export interface MsgUpdateAudienceResponseProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgUpdateAudienceResponse defines the response for updating an audience
  * @name MsgUpdateAudienceResponseAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgUpdateAudienceResponse
  */
 export interface MsgUpdateAudienceResponseAmino {
+  /**
+   * The updated audience
+   */
   audience?: AudienceAmino;
 }
 export interface MsgUpdateAudienceResponseAminoMsg {
   type: "/xion.jwk.v1.MsgUpdateAudienceResponse";
   value: MsgUpdateAudienceResponseAmino;
 }
+/** MsgUpdateAudienceResponse defines the response for updating an audience */
 export interface MsgUpdateAudienceResponseSDKType {
   audience?: AudienceSDKType;
 }
+/** MsgDeleteAudience defines the message for deleting an audience */
 export interface MsgDeleteAudience {
+  /** The admin address deleting the audience */
   admin: string;
+  /** The audience identifier to delete */
   aud: string;
 }
 export interface MsgDeleteAudienceProtoMsg {
@@ -199,28 +296,38 @@ export interface MsgDeleteAudienceProtoMsg {
   value: Uint8Array;
 }
 /**
+ * MsgDeleteAudience defines the message for deleting an audience
  * @name MsgDeleteAudienceAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgDeleteAudience
  */
 export interface MsgDeleteAudienceAmino {
+  /**
+   * The admin address deleting the audience
+   */
   admin?: string;
+  /**
+   * The audience identifier to delete
+   */
   aud?: string;
 }
 export interface MsgDeleteAudienceAminoMsg {
   type: "/xion.jwk.v1.MsgDeleteAudience";
   value: MsgDeleteAudienceAmino;
 }
+/** MsgDeleteAudience defines the message for deleting an audience */
 export interface MsgDeleteAudienceSDKType {
   admin: string;
   aud: string;
 }
+/** MsgDeleteAudienceResponse defines the response for deleting an audience */
 export interface MsgDeleteAudienceResponse {}
 export interface MsgDeleteAudienceResponseProtoMsg {
   typeUrl: "/xion.jwk.v1.MsgDeleteAudienceResponse";
   value: Uint8Array;
 }
 /**
+ * MsgDeleteAudienceResponse defines the response for deleting an audience
  * @name MsgDeleteAudienceResponseAmino
  * @package xion.jwk.v1
  * @see proto type: xion.jwk.v1.MsgDeleteAudienceResponse
@@ -230,6 +337,7 @@ export interface MsgDeleteAudienceResponseAminoMsg {
   type: "/xion.jwk.v1.MsgDeleteAudienceResponse";
   value: MsgDeleteAudienceResponseAmino;
 }
+/** MsgDeleteAudienceResponse defines the response for deleting an audience */
 export interface MsgDeleteAudienceResponseSDKType {}
 function createBaseMsgCreateAudienceClaim(): MsgCreateAudienceClaim {
   return {

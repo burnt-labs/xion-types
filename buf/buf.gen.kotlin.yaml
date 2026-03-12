@@ -1,4 +1,4 @@
-version: v1
+version: v2
 plugins:
-  - name: kotlin
+  - protoc_builtin: kotlin
     out: kotlin/types

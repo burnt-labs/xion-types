@@ -5,6 +5,9 @@
 
 package xion.v1
 
+/** MsgSetPlatformMinimumResponse defines the response for setting platform
+  * minimum fees
+  */
 @SerialVersionUID(0L)
 final case class MsgSetPlatformMinimumResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty

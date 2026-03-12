@@ -1,8 +1,8 @@
 {
   "name": "@burnt-labs/xion-types",
-  "version": "0.0.1",
+  "version": "28.1.0",
   "author": "burnt-labs <devops@burnt.com>",
-  "description": "xion-types",
+  "description": "xion-types (Telescope-generated with Amino, LCD, RPC clients)",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
@@ -22,11 +22,10 @@
   "scripts": {
     "copy": "copyfiles -f ./LICENSE README.md package.json dist",
     "clean": "rimraf dist",
-    "prepare": "npm run build",
     "download-protos": "ts-node scripts/download-protos.ts",
     "codegen": "ts-node scripts/codegen.ts",
-    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && npm run copy",
-    "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json && npm run copy",
+    "build": "pnpm run clean && tsc && tsc -p tsconfig.esm.json && pnpm run copy",
+    "build:dev": "pnpm run clean && pnpm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json && pnpm run copy",
     "lint": "eslint . --fix",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -63,5 +62,5 @@
     "cosmjs-types": { "optional": true }
   },
   "keywords": [],
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "packageManager": "pnpm@9.15.4"
 }

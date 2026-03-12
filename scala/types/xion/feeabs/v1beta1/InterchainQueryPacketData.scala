@@ -7,6 +7,8 @@ package xion.feeabs.v1beta1
 
 /** InterchainQueryPacketData is comprised of raw query.
   *
+  * @param data
+  *   data defines the raw query data
   * @param memo
   *   optional memo
   */

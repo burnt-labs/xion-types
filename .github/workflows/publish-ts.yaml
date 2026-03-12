@@ -9,6 +9,7 @@ on:
 
 env:
   NODE_VERSION: "20"
+  PNPM_VERSION: "9"
   REGISTRY_URL: "https://registry.npmjs.org"
 
 jobs:
@@ -35,16 +36,14 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - name: Build xion-types tarball
-        working-directory: xion-types/ts
-        run: |
-          npm install
-          npm run build
-          cd dist
-          node -e "const p=require('./package.json');delete p.scripts.prepare;require('fs').writeFileSync('./package.json',JSON.stringify(p,null,2))"
-          npm pack --pack-destination ..
-          cd ..
-          echo "📦 $(ls *.tgz | head -1)"
+        working-directory: xion-types
+        run: bash scripts/ci/helper/build-ts-tarball.sh ts/
 
       - name: Checkout Dependent Project
         uses: actions/checkout@v4
@@ -56,33 +55,8 @@ jobs:
 
       - name: Test proto compatibility
         run: |
-          cd dependent-project
-          npm install --ignore-scripts --legacy-peer-deps
-
-          # Nuxt projects need type generation
-          if grep -q '"nuxt"' package.json; then
-            NUXT_PUBLIC_TURNSTILE_SITE_KEY=x NUXT_FAUCET_MNEMONIC=x NUXT_FAUCET_PATH_PATTERN=x \
-            NUXT_TURNSTILE_SECRET_KEY=x NUXT_XION_TESTNET_1_MNEMONIC=x NUXT_XION_TESTNET_2_MNEMONIC=x \
-            NUXT_PUBLIC_XION_TESTNET_2_ADDRESS=x NUXT_PUBLIC_FAUCET_ADDRESS_PREFIX=x \
-            NUXT_PUBLIC_FAUCET_AMOUNT_GIVEN=1 NUXT_PUBLIC_FAUCET_COOLDOWN_TIME=1 \
-            NUXT_PUBLIC_FAUCET_DENOM=x NUXT_PUBLIC_FAUCET_GAS_LIMIT=1 NUXT_PUBLIC_FAUCET_GAS_PRICE=0 \
-            NUXT_PUBLIC_FAUCET_LOGGING=false NUXT_PUBLIC_FAUCET_MEMO=x NUXT_PUBLIC_FAUCET_TOKENS=x \
-            NUXT_PUBLIC_XION_TESTNET_1_ADDRESS=x NUXT_PUBLIC_XION_TESTNET_1_RPC_URL=https://x \
-            NUXT_PUBLIC_XION_TESTNET_2_RPC_URL=https://x NUXT_DISCORD_APP_ID=x \
-            npx nuxt prepare || true
-          fi
-
-          PACKAGE_TGZ=$(ls ../xion-types/ts/*.tgz 2>/dev/null | head -1)
-          npm install "$PACKAGE_TGZ" --no-save --legacy-peer-deps
-
-          npx tsc --noEmit --skipLibCheck > /tmp/tsc.log 2>&1 || true
-          PROTO_ERRORS=$(grep -E "error TS" /tmp/tsc.log | grep -iE "(xion-types|protobuf|proto)" | grep -vE "(Cannot read file|\.nuxt|node_modules)" || true)
-          if [ -n "$PROTO_ERRORS" ]; then
-            echo "❌ Proto-related TS errors:"
-            echo "$PROTO_ERRORS" | head -10
-            exit 1
-          fi
-          echo "✅ Proto compatibility confirmed for ${{ matrix.project }}"
+          TARBALL=$(ls xion-types/ts/*.tgz 2>/dev/null | head -1)
+          bash xion-types/scripts/ci/helper/test-ts-compat.sh dependent-project "$TARBALL"
 
   publish:
     name: Publish to NPM
@@ -103,10 +77,12 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - name: Publish
         env:
-          VERSION: ${{ inputs.release_tag }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          export VERSION="${VERSION#v}"
-          bash scripts/ts/publish-ts.sh
+        run: bash scripts/ci/ts.sh "${{ inputs.release_tag }}"

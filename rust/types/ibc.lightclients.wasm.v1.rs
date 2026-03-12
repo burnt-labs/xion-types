@@ -33,7 +33,7 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct QueryChecksumsRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QueryChecksumsRequest {
 const NAME: &'static str = "QueryChecksumsRequest";
@@ -50,7 +50,7 @@ pub struct QueryChecksumsResponse {
     pub checksums: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// pagination defines the pagination in the response.
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::super::super::cosmos::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QueryChecksumsResponse {
 const NAME: &'static str = "QueryChecksumsResponse";
@@ -189,7 +189,7 @@ pub struct ClientState {
     #[prost(bytes="vec", tag="2")]
     pub checksum: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="3")]
-    pub latest_height: ::core::option::Option<super::super::super::core::client::v1::Height>,
+    pub latest_height: ::core::option::Option<crate::types::ibc_core_client_v1::Height>,
 }
 impl ::prost::Name for ClientState {
 const NAME: &'static str = "ClientState";

@@ -188,7 +188,7 @@ fn full_name() -> ::prost::alloc::string::String {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySigningInfosRequest {
     #[prost(message, optional, tag="1")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageRequest>,
 }
 impl ::prost::Name for QuerySigningInfosRequest {
 const NAME: &'static str = "QuerySigningInfosRequest";
@@ -205,7 +205,7 @@ pub struct QuerySigningInfosResponse {
     #[prost(message, repeated, tag="1")]
     pub info: ::prost::alloc::vec::Vec<ValidatorSigningInfo>,
     #[prost(message, optional, tag="2")]
-    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+    pub pagination: ::core::option::Option<crate::types::cosmos_base_query_v1beta1::PageResponse>,
 }
 impl ::prost::Name for QuerySigningInfosResponse {
 const NAME: &'static str = "QuerySigningInfosResponse";

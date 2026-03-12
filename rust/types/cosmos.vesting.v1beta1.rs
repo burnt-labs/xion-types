@@ -5,13 +5,13 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BaseVestingAccount {
     #[prost(message, optional, tag="1")]
-    pub base_account: ::core::option::Option<super::super::auth::v1beta1::BaseAccount>,
+    pub base_account: ::core::option::Option<crate::types::cosmos_auth_v1beta1::BaseAccount>,
     #[prost(message, repeated, tag="2")]
-    pub original_vesting: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub original_vesting: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(message, repeated, tag="3")]
-    pub delegated_free: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub delegated_free: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     #[prost(message, repeated, tag="4")]
-    pub delegated_vesting: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub delegated_vesting: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// Vesting end time, as unix timestamp (in seconds).
     #[prost(int64, tag="5")]
     pub end_time: i64,
@@ -40,7 +40,7 @@ fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.vesting.v1beta1.{}", Self::NAME)
             }}
 /// DelayedVestingAccount implements the VestingAccount interface. It vests all
-/// coins after a specific time, but non prior. In other words, it keeps them
+/// coins after a specific time, but not prior. In other words, it keeps them
 /// locked until a specified time.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -62,7 +62,7 @@ pub struct Period {
     #[prost(int64, tag="1")]
     pub length: i64,
     #[prost(message, repeated, tag="2")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Period {
 const NAME: &'static str = "Period";
@@ -113,7 +113,7 @@ pub struct MsgCreateVestingAccount {
     #[prost(string, tag="2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
     /// end of vesting as unix time (in seconds).
     #[prost(int64, tag="4")]
     pub end_time: i64,
@@ -147,7 +147,7 @@ pub struct MsgCreatePermanentLockedAccount {
     #[prost(string, tag="2")]
     pub to_address: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
-    pub amount: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    pub amount: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for MsgCreatePermanentLockedAccount {
 const NAME: &'static str = "MsgCreatePermanentLockedAccount";

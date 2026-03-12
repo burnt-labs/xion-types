@@ -10,7 +10,7 @@ package cosmos.authz.v1beta1
   * @param msgTypeUrl
   *   Optional, msg_type_url, when set, will query only grants matching given msg type.
   * @param pagination
-  *   pagination defines an pagination for the request.
+  *   pagination defines a pagination for the request.
   */
 @SerialVersionUID(0L)
 final case class QueryGrantsRequest(
