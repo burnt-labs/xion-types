@@ -87,22 +87,11 @@ export const createRPCQueryClient = async ({
       }
     },
     xion: {
-      dkim: {
-        v1: (await import("./dkim/v1/query.rpc.Query")).createRpcQueryExtension(client)
-      },
       feeabs: {
         v1beta1: (await import("./feeabs/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       globalfee: {
         v1: (await import("./globalfee/v1/query.rpc.Query")).createRpcQueryExtension(client)
-      },
-      indexer: {
-        authz: {
-          v1: (await import("./indexer/authz/v1/query.rpc.Query")).createRpcQueryExtension(client)
-        },
-        feegrant: {
-          v1: (await import("./indexer/feegrant/v1/query.rpc.Query")).createRpcQueryExtension(client)
-        }
       },
       jwk: {
         v1: (await import("./jwk/v1/query.rpc.Query")).createRpcQueryExtension(client)
@@ -110,10 +99,7 @@ export const createRPCQueryClient = async ({
       mint: {
         v1: (await import("./mint/v1/query.rpc.Query")).createRpcQueryExtension(client)
       },
-      v1: (await import("./v1/query.rpc.Query")).createRpcQueryExtension(client),
-      zk: {
-        v1: (await import("./zk/v1/query.rpc.Query")).createRpcQueryExtension(client)
-      }
+      v1: (await import("./v1/query.rpc.Query")).createRpcQueryExtension(client)
     }
   };
 };

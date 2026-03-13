@@ -1,5 +1,5 @@
 #!/bin/bash
-# Post-processor for ts (Telescope): generate CosmWasm contract client types
+# Post-processor for ts: generate CosmWasm contract client types
 set -eo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$(dirname "$(dirname "$0")")")" && pwd)"

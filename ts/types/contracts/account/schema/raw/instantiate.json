@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InstantiateMsg",
+  "type": "object",
+  "required": [
+    "authenticator"
+  ],
+  "properties": {
+    "authenticator": {
+      "$ref": "#/definitions/AddAuthenticator"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "AddAuthenticator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "Secp256K1"
+          ],
+          "properties": {
+            "Secp256K1": {
+              "type": "object",
+              "required": [
+                "id",
+                "pubkey",
+                "signature"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "uint8",
+                  "minimum": 0.0
+                },
+                "pubkey": {
+                  "$ref": "#/definitions/Binary"
+                },
+                "signature": {
+                  "$ref": "#/definitions/Binary"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "Ed25519"
+          ],
+          "properties": {
+            "Ed25519": {
+              "type": "object",
+              "required": [
+                "id",
+                "pubkey",
+                "signature"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "uint8",
+                  "minimum": 0.0
+                },
+                "pubkey": {
+                  "$ref": "#/definitions/Binary"
+                },
+                "signature": {
+                  "$ref": "#/definitions/Binary"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "EthWallet"
+          ],
+          "properties": {
+            "EthWallet": {
+              "type": "object",
+              "required": [
+                "address",
+                "id",
+                "signature"
+              ],
+              "properties": {
+                "address": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer",
+                  "format": "uint8",
+                  "minimum": 0.0
+                },
+                "signature": {
+                  "$ref": "#/definitions/Binary"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "Jwt"
+          ],
+          "properties": {
+            "Jwt": {
+              "type": "object",
+              "required": [
+                "aud",
+                "id",
+                "sub",
+                "token"
+              ],
+              "properties": {
+                "aud": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer",
+                  "format": "uint8",
+                  "minimum": 0.0
+                },
+                "sub": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/Binary"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "Secp256R1"
+          ],
+          "properties": {
+            "Secp256R1": {
+              "type": "object",
+              "required": [
+                "id",
+                "pubkey",
+                "signature"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "uint8",
+                  "minimum": 0.0
+                },
+                "pubkey": {
+                  "$ref": "#/definitions/Binary"
+                },
+                "signature": {
+                  "$ref": "#/definitions/Binary"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "Passkey"
+          ],
+          "properties": {
+            "Passkey": {
+              "type": "object",
+              "required": [
+                "credential",
+                "id",
+                "url"
+              ],
+              "properties": {
+                "credential": {
+                  "$ref": "#/definitions/Binary"
+                },
+                "id": {
+                  "type": "integer",
+                  "format": "uint8",
+                  "minimum": 0.0
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Binary": {
+      "description": "Binary is a wrapper around Vec<u8> to add base64 de/serialization with serde. It also adds some helper methods to help encode inline.\n\nThis is only needed as serde-json-{core,wasm} has a horrible encoding for Vec<u8>. See also <https://github.com/CosmWasm/cosmwasm/blob/main/docs/MESSAGE_TYPES.md>.",
+      "type": "string"
+    }
+  }
+}

@@ -148,7 +148,7 @@ export class LCDQueryClient {
     if (typeof params?.initArgs !== "undefined") {
       options.params.init_args = params.initArgs;
     }
-    const endpoint = `cosmwasm/wasm/v1/build_address`;
+    const endpoint = `cosmwasm/wasm/v1/contract/build_address`;
     return await this.req.get<QueryBuildAddressResponseSDKType>(endpoint, options);
   }
 }

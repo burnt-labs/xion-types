@@ -3,15 +3,10 @@ import { Rpc } from "../../helpers";
 import { BinaryReader } from "../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryWebAuthNVerifyRegisterRequest, QueryWebAuthNVerifyRegisterResponse, QueryWebAuthNVerifyAuthenticateRequest, QueryWebAuthNVerifyAuthenticateResponse, QueryPlatformPercentageRequest, QueryPlatformPercentageResponse, QueryPlatformMinimumRequest, QueryPlatformMinimumResponse } from "./query";
-/** Query defines the gRPC querier service */
 export interface Query {
-  /** WebAuthNVerifyRegister verifies a WebAuthN registration */
   webAuthNVerifyRegister(request: QueryWebAuthNVerifyRegisterRequest): Promise<QueryWebAuthNVerifyRegisterResponse>;
-  /** WebAuthNVerifyAuthenticate verifies a WebAuthN authentication */
   webAuthNVerifyAuthenticate(request: QueryWebAuthNVerifyAuthenticateRequest): Promise<QueryWebAuthNVerifyAuthenticateResponse>;
-  /** PlatformPercentage queries the platform percentage fee */
   platformPercentage(request?: QueryPlatformPercentageRequest): Promise<QueryPlatformPercentageResponse>;
-  /** PlatformMinimum queries the platform minimum fees */
   platformMinimum(request?: QueryPlatformMinimumRequest): Promise<QueryPlatformMinimumResponse>;
 }
 export class QueryClientImpl implements Query {

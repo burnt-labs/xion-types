@@ -122,11 +122,6 @@ export const createLCDClient = async ({
       }
     },
     xion: {
-      dkim: {
-        v1: new (await import("./dkim/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
       feeabs: {
         v1beta1: new (await import("./feeabs/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -137,18 +132,6 @@ export const createLCDClient = async ({
           requestClient
         })
       },
-      indexer: {
-        authz: {
-          v1: new (await import("./indexer/authz/v1/query.lcd")).LCDQueryClient({
-            requestClient
-          })
-        },
-        feegrant: {
-          v1: new (await import("./indexer/feegrant/v1/query.lcd")).LCDQueryClient({
-            requestClient
-          })
-        }
-      },
       jwk: {
         v1: new (await import("./jwk/v1/query.lcd")).LCDQueryClient({
           requestClient
@@ -156,11 +139,6 @@ export const createLCDClient = async ({
       },
       mint: {
         v1: new (await import("./mint/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      zk: {
-        v1: new (await import("./zk/v1/query.lcd")).LCDQueryClient({
           requestClient
         })
       }

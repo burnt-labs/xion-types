@@ -4,15 +4,10 @@ import { BinaryReader } from "../../../binary";
 import { MsgCreateAudienceClaim, MsgCreateAudienceClaimResponse, MsgDeleteAudienceClaim, MsgDeleteAudienceClaimResponse, MsgCreateAudience, MsgCreateAudienceResponse, MsgUpdateAudience, MsgUpdateAudienceResponse, MsgDeleteAudience, MsgDeleteAudienceResponse } from "./tx";
 /** Msg defines the Msg service. */
 export interface Msg {
-  /** CreateAudienceClaim creates a new audience claim */
   createAudienceClaim(request: MsgCreateAudienceClaim): Promise<MsgCreateAudienceClaimResponse>;
-  /** DeleteAudienceClaim deletes an existing audience claim */
   deleteAudienceClaim(request: MsgDeleteAudienceClaim): Promise<MsgDeleteAudienceClaimResponse>;
-  /** CreateAudience creates a new audience */
   createAudience(request: MsgCreateAudience): Promise<MsgCreateAudienceResponse>;
-  /** UpdateAudience updates an existing audience */
   updateAudience(request: MsgUpdateAudience): Promise<MsgUpdateAudienceResponse>;
-  /** DeleteAudience deletes an existing audience */
   deleteAudience(request: MsgDeleteAudience): Promise<MsgDeleteAudienceResponse>;
 }
 export class MsgClientImpl implements Msg {

@@ -18,6 +18,9 @@ ROOT_DIR="$(cd "$(dirname "$(dirname "$0")")" && pwd)"
 BUF_DIR="$ROOT_DIR/buf"
 POST_DIR="$ROOT_DIR/scripts/post"
 
+# Make locally-installed buf plugins (ts-proto, etc.) available without global install
+export PATH="$ROOT_DIR/ts/node_modules/.bin:$PATH"
+
 # Override the xion BSR label (e.g. buf.build/burnt-labs/xion:v26.0.0)
 XION_BSR="${XION_BSR_MODULE:-buf.build/burnt-labs/xion}"
 
@@ -38,7 +41,7 @@ load_sources() {
 
 load_sources
 
-ALL_LANGUAGES="c cpp csharp docs java kotlin objc python ruby rust scala swift ts ts-proto"
+ALL_LANGUAGES="c cpp csharp docs java kotlin objc python ruby rust scala swift ts"
 
 # Leaked test/internal packages to remove after generation.
 # These get pulled in by --include-imports but should not be shipped.
@@ -90,15 +93,6 @@ clean_excluded_packages() {
 }
 
 # ─── Core generation ─────────────────────────────────────────────────
-
-gen_ts() {
-  echo "  Generating Telescope types..."
-  cd "$ROOT_DIR/ts"
-  pnpm install
-  pnpm run download-protos
-  pnpm run codegen
-  cd "$ROOT_DIR"
-}
 
 gen_buf() {
   local language="$1"
@@ -158,11 +152,9 @@ gen_buf() {
       fi
       rm -rf "$tmp_dir"
     elif [ "$language" = "rust" ]; then
-      # Prost merges all types from the same protobuf package into one .rs
-      # file. Different BSR sources may include different protos from the
-      # same package, so each source's output is a different subset.
-      # Strategy: generate into a separate temp dir per source, then merge
-      # all temp dirs at the end using the Rust post-processor.
+      # Prost merges types from the same package into one .rs file, so different
+      # BSR sources producing different subsets would silently overwrite each other.
+      # Stage each source separately; the Rust post-processor merges and deduplicates.
       local tmp_dir
       tmp_dir=$(mktemp -d)
       echo "  generating $language from $source (staged)"
@@ -172,13 +164,11 @@ gen_buf() {
         --output "$tmp_dir" 2>"$ROOT_DIR/.buf-stderr" || true
       filter_buf_warnings "$ROOT_DIR/.buf-stderr"
 
-      # Stash this source's output for later merge
-      local rust_stage="$ROOT_DIR/.rust-staged"
-      mkdir -p "$rust_stage"
       local stage_id
       stage_id=$(echo "$source" | sed 's|[^a-zA-Z0-9]|_|g')
+      mkdir -p "$ROOT_DIR/.rust-staged"
       if [ -d "$tmp_dir" ]; then
-        mv "$tmp_dir" "$rust_stage/$stage_id"
+        mv "$tmp_dir" "$ROOT_DIR/.rust-staged/$stage_id"
       fi
     else
       echo "  generating $language from $source (with imports)"
@@ -190,58 +180,6 @@ gen_buf() {
     fi
   done
 
-  # Rust: merge staged outputs from all sources.
-  # For each file, if all sources produced identical content, just copy it.
-  # If sources differ (different proto subsets for the same package), concatenate
-  # them and let the post-processor deduplicate the merged content.
-  if [ "$language" = "rust" ] && [ -d "$ROOT_DIR/.rust-staged" ]; then
-    echo "  merging staged Rust outputs..."
-    # Collect all unique file paths across all staged dirs
-    local all_files
-    all_files=$(find "$ROOT_DIR/.rust-staged" -type f -name "*.rs" | \
-      sed "s|$ROOT_DIR/.rust-staged/[^/]*/||" | sort -u)
-
-    echo "$all_files" | while IFS= read -r rel_path; do
-      [ -z "$rel_path" ] && continue
-      local dest="$ROOT_DIR/$rel_path"
-      mkdir -p "$(dirname "$dest")"
-
-      # Collect all versions of this file
-      local versions=""
-      for staged_dir in "$ROOT_DIR/.rust-staged"/*/; do
-        local src="$staged_dir$rel_path"
-        if [ -f "$src" ]; then
-          versions="$versions $src"
-        fi
-      done
-
-      # If only one version, just copy it
-      local count
-      count=$(echo $versions | wc -w | tr -d ' ')
-      if [ "$count" = "1" ]; then
-        cp $versions "$dest"
-      else
-        # Check if all versions are identical
-        local first
-        first=$(echo $versions | awk '{print $1}')
-        local all_same=true
-        for v in $versions; do
-          if ! cmp -s "$first" "$v"; then
-            all_same=false
-            break
-          fi
-        done
-
-        if [ "$all_same" = true ]; then
-          cp "$first" "$dest"
-        else
-          # Different content: concatenate all versions, post-processor deduplicates
-          cat $versions > "$dest"
-        fi
-      fi
-    done
-    rm -rf "$ROOT_DIR/.rust-staged"
-  fi
 }
 
 gen_docs() {
@@ -280,7 +218,6 @@ generate_one() {
 
   case "$language" in
     docs)      gen_docs ;;
-    ts)        gen_ts ;;
     *)         gen_buf "$language" ;;
   esac
 

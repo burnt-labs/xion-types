@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { LCDClient } from "@cosmology/lcd";
-import { QueryOsmosisArithmeticTwapRequest, QueryOsmosisArithmeticTwapResponseSDKType, QueryFeeabsModuleBalancesRequest, QueryFeeabsModuleBalancesResponseSDKType, QueryHostChainConfigRequest, QueryHostChainConfigResponseSDKType, QueryAllHostChainConfigRequest, QueryAllHostChainConfigResponseSDKType } from "./query";
+import { QueryOsmosisArithmeticTwapRequest, QueryOsmosisArithmeticTwapResponseSDKType, QueryFeeabsModuleBalacesRequest, QueryFeeabsModuleBalacesResponseSDKType, QueryHostChainConfigRequest, QueryHostChainConfigResponseSDKType, AllQueryHostChainConfigRequest, AllQueryHostChainConfigResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -20,9 +20,9 @@ export class LCDQueryClient {
     return await this.req.get<QueryOsmosisArithmeticTwapResponseSDKType>(endpoint);
   }
   /* FeeabsModuleBalances return total balances of feeabs module */
-  async feeabsModuleBalances(_params: QueryFeeabsModuleBalancesRequest = {}): Promise<QueryFeeabsModuleBalancesResponseSDKType> {
+  async feeabsModuleBalances(_params: QueryFeeabsModuleBalacesRequest = {}): Promise<QueryFeeabsModuleBalacesResponseSDKType> {
     const endpoint = `fee-abstraction/feeabs/v1/module-balances`;
-    return await this.req.get<QueryFeeabsModuleBalancesResponseSDKType>(endpoint);
+    return await this.req.get<QueryFeeabsModuleBalacesResponseSDKType>(endpoint);
   }
   /* HostChainConfig */
   async hostChainConfig(params: QueryHostChainConfigRequest): Promise<QueryHostChainConfigResponseSDKType> {
@@ -30,8 +30,8 @@ export class LCDQueryClient {
     return await this.req.get<QueryHostChainConfigResponseSDKType>(endpoint);
   }
   /* AllHostChainConfig */
-  async allHostChainConfig(_params: QueryAllHostChainConfigRequest = {}): Promise<QueryAllHostChainConfigResponseSDKType> {
+  async allHostChainConfig(_params: AllQueryHostChainConfigRequest = {}): Promise<AllQueryHostChainConfigResponseSDKType> {
     const endpoint = `fee-abstraction/feeabs/v1/all-host-chain-config`;
-    return await this.req.get<QueryAllHostChainConfigResponseSDKType>(endpoint);
+    return await this.req.get<AllQueryHostChainConfigResponseSDKType>(endpoint);
   }
 }

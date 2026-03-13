@@ -2,7 +2,6 @@
 import { Rpc } from "../../helpers";
 import { BinaryReader } from "../../binary";
 import { MsgSend, MsgSendResponse, MsgMultiSend, MsgMultiSendResponse, MsgSetPlatformPercentage, MsgSetPlatformPercentageResponse, MsgSetPlatformMinimum, MsgSetPlatformMinimumResponse } from "./tx";
-/** Msg defines the xion Msg service */
 export interface Msg {
   /**
    * Send defines a method for sending coins from one account to another
