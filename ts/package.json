@@ -56,10 +56,18 @@
     "cosmjs-types": "^0.9.0"
   },
   "peerDependenciesMeta": {
-    "@cosmjs/amino": { "optional": true },
-    "@cosmjs/cosmwasm-stargate": { "optional": true },
-    "@cosmjs/encoding": { "optional": true },
-    "cosmjs-types": { "optional": true }
+    "@cosmjs/amino": {
+      "optional": true
+    },
+    "@cosmjs/cosmwasm-stargate": {
+      "optional": true
+    },
+    "@cosmjs/encoding": {
+      "optional": true
+    },
+    "cosmjs-types": {
+      "optional": true
+    }
   },
   "keywords": [],
   "packageManager": "pnpm@9.15.4"
