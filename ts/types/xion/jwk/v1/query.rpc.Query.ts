@@ -2,17 +2,15 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryAudienceClaimRequest, QueryAudienceClaimResponse, QueryAudienceRequest, QueryAudienceResponse, QueryAudienceAllRequest, QueryAudienceAllResponse, QueryValidateJWTRequest, QueryValidateJWTResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetAudienceClaimRequest, QueryGetAudienceClaimResponse, QueryGetAudienceRequest, QueryGetAudienceResponse, QueryAllAudienceRequest, QueryAllAudienceResponse, QueryValidateJWTRequest, QueryValidateJWTResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /** AudienceClaim queries an audience claim by hash */
-  audienceClaim(request: QueryAudienceClaimRequest): Promise<QueryAudienceClaimResponse>;
+  audienceClaim(request: QueryGetAudienceClaimRequest): Promise<QueryGetAudienceClaimResponse>;
   /** Queries a list of Audience items. */
-  audience(request: QueryAudienceRequest): Promise<QueryAudienceResponse>;
-  /** AudienceAll queries all audiences */
-  audienceAll(request?: QueryAudienceAllRequest): Promise<QueryAudienceAllResponse>;
+  audience(request: QueryGetAudienceRequest): Promise<QueryGetAudienceResponse>;
+  audienceAll(request?: QueryAllAudienceRequest): Promise<QueryAllAudienceResponse>;
   /** Queries a list of ValidateJWT items. */
   validateJWT(request: QueryValidateJWTRequest): Promise<QueryValidateJWTResponse>;
 }
@@ -31,22 +29,22 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("xion.jwk.v1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
   }
-  audienceClaim(request: QueryAudienceClaimRequest): Promise<QueryAudienceClaimResponse> {
-    const data = QueryAudienceClaimRequest.encode(request).finish();
+  audienceClaim(request: QueryGetAudienceClaimRequest): Promise<QueryGetAudienceClaimResponse> {
+    const data = QueryGetAudienceClaimRequest.encode(request).finish();
     const promise = this.rpc.request("xion.jwk.v1.Query", "AudienceClaim", data);
-    return promise.then(data => QueryAudienceClaimResponse.decode(new BinaryReader(data)));
+    return promise.then(data => QueryGetAudienceClaimResponse.decode(new BinaryReader(data)));
   }
-  audience(request: QueryAudienceRequest): Promise<QueryAudienceResponse> {
-    const data = QueryAudienceRequest.encode(request).finish();
+  audience(request: QueryGetAudienceRequest): Promise<QueryGetAudienceResponse> {
+    const data = QueryGetAudienceRequest.encode(request).finish();
     const promise = this.rpc.request("xion.jwk.v1.Query", "Audience", data);
-    return promise.then(data => QueryAudienceResponse.decode(new BinaryReader(data)));
+    return promise.then(data => QueryGetAudienceResponse.decode(new BinaryReader(data)));
   }
-  audienceAll(request: QueryAudienceAllRequest = {
+  audienceAll(request: QueryAllAudienceRequest = {
     pagination: undefined
-  }): Promise<QueryAudienceAllResponse> {
-    const data = QueryAudienceAllRequest.encode(request).finish();
+  }): Promise<QueryAllAudienceResponse> {
+    const data = QueryAllAudienceRequest.encode(request).finish();
     const promise = this.rpc.request("xion.jwk.v1.Query", "AudienceAll", data);
-    return promise.then(data => QueryAudienceAllResponse.decode(new BinaryReader(data)));
+    return promise.then(data => QueryAllAudienceResponse.decode(new BinaryReader(data)));
   }
   validateJWT(request: QueryValidateJWTRequest): Promise<QueryValidateJWTResponse> {
     const data = QueryValidateJWTRequest.encode(request).finish();
@@ -61,13 +59,13 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
     },
-    audienceClaim(request: QueryAudienceClaimRequest): Promise<QueryAudienceClaimResponse> {
+    audienceClaim(request: QueryGetAudienceClaimRequest): Promise<QueryGetAudienceClaimResponse> {
       return queryService.audienceClaim(request);
     },
-    audience(request: QueryAudienceRequest): Promise<QueryAudienceResponse> {
+    audience(request: QueryGetAudienceRequest): Promise<QueryGetAudienceResponse> {
       return queryService.audience(request);
     },
-    audienceAll(request?: QueryAudienceAllRequest): Promise<QueryAudienceAllResponse> {
+    audienceAll(request?: QueryAllAudienceRequest): Promise<QueryAllAudienceResponse> {
       return queryService.audienceAll(request);
     },
     validateJWT(request: QueryValidateJWTRequest): Promise<QueryValidateJWTResponse> {

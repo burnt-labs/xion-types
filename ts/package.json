@@ -1,8 +1,8 @@
 {
   "name": "@burnt-labs/xion-types",
-  "version": "28.1.0",
+  "version": "0.0.1",
   "author": "burnt-labs <devops@burnt.com>",
-  "description": "xion-types (Telescope-generated with Amino, LCD, RPC clients)",
+  "description": "xion-types",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
@@ -31,10 +31,12 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@cosmwasm/ts-codegen": "1.12.1",
     "@types/node": "^22.14.1",
     "copyfiles": "^2.4.1",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
+    "ts-proto": "2.11.5",
     "typescript": "^5.8.3"
   },
   "dependencies": {

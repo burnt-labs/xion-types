@@ -202,6 +202,7 @@ pub mod ibc_lightclients_wasm_v1;
 pub mod osmosis_tokenfactory_v1beta1;
 #[path = "packetforward.v1.rs"]
 pub mod packetforward_v1;
+pub mod rust;
 #[path = "tendermint.abci.rs"]
 pub mod tendermint_abci;
 #[path = "tendermint.crypto.rs"]

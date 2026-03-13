@@ -3,7 +3,7 @@
 #
 # Usage: contracts-codegen.sh <output-dir>
 #
-# Generates JSON schemas from Rust contracts via `cargo schema`,
+# Generates JSON schemas from Rust contracts via `cargo run --example schema`,
 # then TypeScript client types via `ts-codegen`.
 #
 # Required tools: cargo, ts-codegen
@@ -20,6 +20,7 @@ fi
 ROOT_DIR="$(cd "$(dirname "$(dirname "$(dirname "$0")")")" && pwd)"
 CONTRACTS_DIR="$ROOT_DIR/contracts/contracts"
 CODEGEN_TMP="$ROOT_DIR/.ts-codegen-tmp"
+TS_CODEGEN="$ROOT_DIR/ts/node_modules/.bin/ts-codegen"
 
 if [ ! -d "$CONTRACTS_DIR" ]; then
   echo "⚠️  contracts submodule not found, skipping contract codegen"
@@ -30,40 +31,42 @@ if ! command -v cargo &>/dev/null; then
   echo "⚠️  cargo not found, skipping contract codegen"
   exit 0
 fi
-if ! command -v ts-codegen &>/dev/null; then
-  echo "⚠️  ts-codegen not found, skipping contract codegen"
+if [ ! -x "$TS_CODEGEN" ]; then
+  echo "⚠️  ts-codegen not found at $TS_CODEGEN (run pnpm install in ts/)"
   exit 0
 fi
 
 rm -rf "$CODEGEN_TMP"
+# Clean up any stale schema dirs that would confuse the cargo workspace resolver
+rm -rf "$CONTRACTS_DIR/schema"
 
-# Generate JSON schemas from Rust contracts
-cd "$CONTRACTS_DIR"
-for dir in */; do
+# Generate JSON schemas from Rust contracts (only those with examples/schema.rs)
+for dir in "$CONTRACTS_DIR"/*/; do
   dir="${dir%/}"
-  echo "  schema: $dir"
-  cargo schema --manifest-path "$dir/Cargo.toml"
-  mkdir -p "$CODEGEN_TMP/$dir/schema"
-  mv schema "$CODEGEN_TMP/$dir/"
+  name="$(basename "$dir")"
+  [ -f "$dir/examples/schema.rs" ] || continue
+  echo "  schema: $name"
+  rm -rf "$dir/schema"
+  (cd "$dir" && cargo run --example schema)
+  mkdir -p "$CODEGEN_TMP/$name"
+  mv "$dir/schema" "$CODEGEN_TMP/$name/"
 done
 
-# Generate TypeScript client types from schemas
+# Generate TypeScript client types from schemas and copy schema files to output
 cd "$ROOT_DIR"
 for contract in "account" "treasury"; do
   echo "  ts-codegen: $contract"
-  ts-codegen generate \
+  "$TS_CODEGEN" generate \
     --plugin client \
-    --plugin react-query \
     --plugin message-composer \
     --schema "$CODEGEN_TMP/$contract/schema" \
     --out "$OUTPUT_DIR/$contract/ts" \
     --name "$contract" \
     --no-bundle \
-    --version v4 \
-    --optionalClient \
-    --mutations \
-    --queryKeys \
-    --queryFactory
+    --optionalClient
+
+  # Copy schema files to output (alongside the generated ts/ dir)
+  cp -r "$CODEGEN_TMP/$contract/schema" "$OUTPUT_DIR/$contract/"
 done
 
 # Clean up temp dir

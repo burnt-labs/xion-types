@@ -69,9 +69,6 @@ export const createRPCMsgClient = async ({
     }
   },
   xion: {
-    dkim: {
-      v1: new (await import("./dkim/v1/tx.rpc.msg")).MsgClientImpl(rpc)
-    },
     feeabs: {
       v1beta1: new (await import("./feeabs/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
@@ -81,9 +78,6 @@ export const createRPCMsgClient = async ({
     mint: {
       v1: new (await import("./mint/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
-    v1: new (await import("./v1/tx.rpc.msg")).MsgClientImpl(rpc),
-    zk: {
-      v1: new (await import("./zk/v1/tx.rpc.msg")).MsgClientImpl(rpc)
-    }
+    v1: new (await import("./v1/tx.rpc.msg")).MsgClientImpl(rpc)
   }
 });

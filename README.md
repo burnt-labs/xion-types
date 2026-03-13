@@ -3,59 +3,94 @@
 
 ## Table of Contents
 
-- [xion/mint/v1/event.proto](#xion_mint_v1_event-proto)
-    - [MintIncentiveTokens](#xion-mint-v1-MintIncentiveTokens)
+- [cosmos/authz/v1beta1/authz.proto](#cosmos_authz_v1beta1_authz-proto)
+    - [GenericAuthorization](#cosmos-authz-v1beta1-GenericAuthorization)
+    - [Grant](#cosmos-authz-v1beta1-Grant)
+    - [GrantAuthorization](#cosmos-authz-v1beta1-GrantAuthorization)
+    - [GrantQueueItem](#cosmos-authz-v1beta1-GrantQueueItem)
   
-- [xion/mint/v1/mint.proto](#xion_mint_v1_mint-proto)
-    - [Minter](#xion-mint-v1-Minter)
-    - [Params](#xion-mint-v1-Params)
+- [xion/indexer/authz/v1/query.proto](#xion_indexer_authz_v1_query-proto)
+    - [QueryGranteeGrantsRequest](#xion-indexer-authz-v1-QueryGranteeGrantsRequest)
+    - [QueryGranteeGrantsResponse](#xion-indexer-authz-v1-QueryGranteeGrantsResponse)
+    - [QueryGranterGrantsRequest](#xion-indexer-authz-v1-QueryGranterGrantsRequest)
+    - [QueryGranterGrantsResponse](#xion-indexer-authz-v1-QueryGranterGrantsResponse)
+    - [QueryGrantsRequest](#xion-indexer-authz-v1-QueryGrantsRequest)
+    - [QueryGrantsResponse](#xion-indexer-authz-v1-QueryGrantsResponse)
   
-- [xion/mint/v1/genesis.proto](#xion_mint_v1_genesis-proto)
-    - [GenesisState](#xion-mint-v1-GenesisState)
-  
-- [xion/mint/v1/query.proto](#xion_mint_v1_query-proto)
-    - [QueryAnnualProvisionsRequest](#xion-mint-v1-QueryAnnualProvisionsRequest)
-    - [QueryAnnualProvisionsResponse](#xion-mint-v1-QueryAnnualProvisionsResponse)
-    - [QueryInflationRequest](#xion-mint-v1-QueryInflationRequest)
-    - [QueryInflationResponse](#xion-mint-v1-QueryInflationResponse)
-    - [QueryParamsRequest](#xion-mint-v1-QueryParamsRequest)
-    - [QueryParamsResponse](#xion-mint-v1-QueryParamsResponse)
-  
-    - [Query](#xion-mint-v1-Query)
-  
-- [xion/mint/v1/tx.proto](#xion_mint_v1_tx-proto)
-    - [MsgUpdateParams](#xion-mint-v1-MsgUpdateParams)
-    - [MsgUpdateParamsResponse](#xion-mint-v1-MsgUpdateParamsResponse)
-  
-    - [Msg](#xion-mint-v1-Msg)
+    - [Query](#xion-indexer-authz-v1-Query)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="xion_mint_v1_event-proto"></a>
+<a name="cosmos_authz_v1beta1_authz-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## xion/mint/v1/event.proto
+## cosmos/authz/v1beta1/authz.proto
 
 
 
-<a name="xion-mint-v1-MintIncentiveTokens"></a>
+<a name="cosmos-authz-v1beta1-GenericAuthorization"></a>
 
-### MintIncentiveTokens
-MintIncentiveTokens defines an event emitted on each block from the mint
-module EndBlocker
+### GenericAuthorization
+GenericAuthorization gives the grantee unrestricted permissions to execute
+the provided method on behalf of the granter&#39;s account.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| bonded_ratio | [string](#string) |  | The ratio of bonded tokens to total supply |
-| inflation | [string](#string) |  | The current inflation rate |
-| annual_provisions | [string](#string) |  | The total annual provisions for minting |
-| needed_amount | [uint64](#uint64) |  | The amount of tokens needed for incentives |
-| collected_amount | [uint64](#uint64) |  | The amount of tokens collected for incentives |
-| minted_amount | [uint64](#uint64) |  | The amount of tokens minted |
-| burned_amount | [uint64](#uint64) |  | The amount of tokens burned |
+| msg | [string](#string) |  | Msg, identified by it&#39;s type URL, to grant unrestricted permissions to execute |
+
+
+
+
+
+
+<a name="cosmos-authz-v1beta1-Grant"></a>
+
+### Grant
+Grant gives permissions to execute
+the provide method with expiration time.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| authorization | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+| expiration | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | time when the grant will expire and will be pruned. If null, then the grant doesn&#39;t have a time expiration (other conditions in `authorization` may apply to invalidate the grant) |
+
+
+
+
+
+
+<a name="cosmos-authz-v1beta1-GrantAuthorization"></a>
+
+### GrantAuthorization
+GrantAuthorization extends a grant with both the addresses of the grantee and granter.
+It is used in genesis.proto and query.proto
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| granter | [string](#string) |  |  |
+| grantee | [string](#string) |  |  |
+| authorization | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+| expiration | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="cosmos-authz-v1beta1-GrantQueueItem"></a>
+
+### GrantQueueItem
+GrantQueueItem contains the list of TypeURL of a sdk.Msg.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| msg_type_urls | [string](#string) | repeated | msg_type_urls contains the list of TypeURL of a sdk.Msg. |
 
 
 
@@ -71,169 +106,110 @@ module EndBlocker
 
 
 
-<a name="xion_mint_v1_mint-proto"></a>
+<a name="xion_indexer_authz_v1_query-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## xion/mint/v1/mint.proto
+## xion/indexer/authz/v1/query.proto
+Since: cosmos-sdk 0.43
 
 
+<a name="xion-indexer-authz-v1-QueryGranteeGrantsRequest"></a>
 
-<a name="xion-mint-v1-Minter"></a>
-
-### Minter
-Minter represents the minting state.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| inflation | [string](#string) |  | current annual inflation rate |
-| annual_provisions | [string](#string) |  | current annual expected provisions |
-
-
-
-
-
-
-<a name="xion-mint-v1-Params"></a>
-
-### Params
-Params defines the parameters for the x/mint module.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| mint_denom | [string](#string) |  | type of coin to mint |
-| inflation_rate_change | [string](#string) |  | maximum annual change in inflation rate |
-| inflation_max | [string](#string) |  | maximum inflation rate |
-| inflation_min | [string](#string) |  | minimum inflation rate |
-| goal_bonded | [string](#string) |  | goal of percent bonded atoms |
-| blocks_per_year | [uint64](#uint64) |  | expected blocks per year |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="xion_mint_v1_genesis-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## xion/mint/v1/genesis.proto
-
-
-
-<a name="xion-mint-v1-GenesisState"></a>
-
-### GenesisState
-GenesisState defines the mint module&#39;s genesis state.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| minter | [Minter](#xion-mint-v1-Minter) |  | minter is a space for holding current inflation information. |
-| params | [Params](#xion-mint-v1-Params) |  | params defines all the parameters of the module. |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="xion_mint_v1_query-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## xion/mint/v1/query.proto
-
-
-
-<a name="xion-mint-v1-QueryAnnualProvisionsRequest"></a>
-
-### QueryAnnualProvisionsRequest
-QueryAnnualProvisionsRequest is the request type for the
-Query/AnnualProvisions RPC method.
-
-
-
-
-
-
-<a name="xion-mint-v1-QueryAnnualProvisionsResponse"></a>
-
-### QueryAnnualProvisionsResponse
-QueryAnnualProvisionsResponse is the response type for the
-Query/AnnualProvisions RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| annual_provisions | [bytes](#bytes) |  | annual_provisions is the current minting annual provisions value. |
-
-
-
-
-
-
-<a name="xion-mint-v1-QueryInflationRequest"></a>
-
-### QueryInflationRequest
-QueryInflationRequest is the request type for the Query/Inflation RPC method.
-
-
-
-
-
-
-<a name="xion-mint-v1-QueryInflationResponse"></a>
-
-### QueryInflationResponse
-QueryInflationResponse is the response type for the Query/Inflation RPC
+### QueryGranteeGrantsRequest
+QueryGranteeGrantsRequest is the request type for the Query/GranteeGrants RPC
 method.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| inflation | [bytes](#bytes) |  | inflation is the current minting inflation value. |
+| grantee | [string](#string) |  | grantee is the address of the user receiving an authorization |
+| pagination | [cosmos.base.query.v1beta1.PageRequest](#cosmos-base-query-v1beta1-PageRequest) |  | pagination defines pagination for the request. |
 
 
 
 
 
 
-<a name="xion-mint-v1-QueryParamsRequest"></a>
+<a name="xion-indexer-authz-v1-QueryGranteeGrantsResponse"></a>
 
-### QueryParamsRequest
-QueryParamsRequest is the request type for the Query/Params RPC method.
-
-
-
-
-
-
-<a name="xion-mint-v1-QueryParamsResponse"></a>
-
-### QueryParamsResponse
-QueryParamsResponse is the response type for the Query/Params RPC method.
+### QueryGranteeGrantsResponse
+QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants
+RPC method.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| params | [Params](#xion-mint-v1-Params) |  | params defines the parameters of the module. |
+| grants | [cosmos.authz.v1beta1.GrantAuthorization](#cosmos-authz-v1beta1-GrantAuthorization) | repeated | grants is a list of grants granted to the grantee. |
+| pagination | [cosmos.base.query.v1beta1.PageResponse](#cosmos-base-query-v1beta1-PageResponse) |  | pagination defines pagination for the response. |
+
+
+
+
+
+
+<a name="xion-indexer-authz-v1-QueryGranterGrantsRequest"></a>
+
+### QueryGranterGrantsRequest
+QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC
+method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| granter | [string](#string) |  | granter is the address of the user granting an authorization |
+| pagination | [cosmos.base.query.v1beta1.PageRequest](#cosmos-base-query-v1beta1-PageRequest) |  | pagination defines pagination for the request. |
+
+
+
+
+
+
+<a name="xion-indexer-authz-v1-QueryGranterGrantsResponse"></a>
+
+### QueryGranterGrantsResponse
+QueryGranterGrantsResponse is the response type for the Query/GranterGrants
+RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| grants | [cosmos.authz.v1beta1.GrantAuthorization](#cosmos-authz-v1beta1-GrantAuthorization) | repeated | grants is a list of grants granted by the granter. |
+| pagination | [cosmos.base.query.v1beta1.PageResponse](#cosmos-base-query-v1beta1-PageResponse) |  | pagination defines pagination for the response. |
+
+
+
+
+
+
+<a name="xion-indexer-authz-v1-QueryGrantsRequest"></a>
+
+### QueryGrantsRequest
+QueryGrantsRequest is the request type for the Query/Grants RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| granter | [string](#string) |  | granter is the address of the user granting an authorization |
+| grantee | [string](#string) |  | grantee is the address of the user receiving an authorization |
+| msg_type_url | [string](#string) |  | Optional, msg_type_url, when set, will query only grants matching given msg type. |
+| pagination | [cosmos.base.query.v1beta1.PageRequest](#cosmos-base-query-v1beta1-PageRequest) |  | pagination defines pagination for the request. |
+
+
+
+
+
+
+<a name="xion-indexer-authz-v1-QueryGrantsResponse"></a>
+
+### QueryGrantsResponse
+QueryGrantsResponse is the response type for the Query/Authorizations RPC
+method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| grants | [cosmos.authz.v1beta1.Grant](#cosmos-authz-v1beta1-Grant) | repeated | authorizations is a list of grants granted for grantee by granter. |
+| pagination | [cosmos.base.query.v1beta1.PageResponse](#cosmos-base-query-v1beta1-PageResponse) |  | pagination defines pagination for the response. |
 
 
 
@@ -246,77 +222,20 @@ QueryParamsResponse is the response type for the Query/Params RPC method.
  
 
 
-<a name="xion-mint-v1-Query"></a>
+<a name="xion-indexer-authz-v1-Query"></a>
 
 ### Query
-Query provides defines the gRPC querier service.
+Query defines the gRPC querier service.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Params | [QueryParamsRequest](#xion-mint-v1-QueryParamsRequest) | [QueryParamsResponse](#xion-mint-v1-QueryParamsResponse) | Params returns the total set of minting parameters. |
-| Inflation | [QueryInflationRequest](#xion-mint-v1-QueryInflationRequest) | [QueryInflationResponse](#xion-mint-v1-QueryInflationResponse) | Inflation returns the current minting inflation value. |
-| AnnualProvisions | [QueryAnnualProvisionsRequest](#xion-mint-v1-QueryAnnualProvisionsRequest) | [QueryAnnualProvisionsResponse](#xion-mint-v1-QueryAnnualProvisionsResponse) | AnnualProvisions current minting annual provisions value. |
+| Grants | [QueryGrantsRequest](#xion-indexer-authz-v1-QueryGrantsRequest) | [QueryGrantsResponse](#xion-indexer-authz-v1-QueryGrantsResponse) | Returns list of `Authorization`, granted to the grantee by the granter. |
+| GranterGrants | [QueryGranterGrantsRequest](#xion-indexer-authz-v1-QueryGranterGrantsRequest) | [QueryGranterGrantsResponse](#xion-indexer-authz-v1-QueryGranterGrantsResponse) | GranterGrants returns list of `GrantAuthorization`, granted by granter.
 
- 
+Since: cosmos-sdk 0.46 |
+| GranteeGrants | [QueryGranteeGrantsRequest](#xion-indexer-authz-v1-QueryGranteeGrantsRequest) | [QueryGranteeGrantsResponse](#xion-indexer-authz-v1-QueryGranteeGrantsResponse) | GranteeGrants returns a list of `GrantAuthorization` by grantee.
 
-
-
-<a name="xion_mint_v1_tx-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## xion/mint/v1/tx.proto
-
-
-
-<a name="xion-mint-v1-MsgUpdateParams"></a>
-
-### MsgUpdateParams
-MsgUpdateParams is the Msg/UpdateParams request type.
-
-Since: cosmos-sdk 0.47
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| authority | [string](#string) |  | authority is the address that controls the module (defaults to x/gov unless overwritten). |
-| params | [Params](#xion-mint-v1-Params) |  | params defines the x/mint parameters to update.
-
-NOTE: All parameters must be supplied. |
-
-
-
-
-
-
-<a name="xion-mint-v1-MsgUpdateParamsResponse"></a>
-
-### MsgUpdateParamsResponse
-MsgUpdateParamsResponse defines the response structure for executing a
-MsgUpdateParams message.
-
-Since: cosmos-sdk 0.47
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="xion-mint-v1-Msg"></a>
-
-### Msg
-Msg defines the x/mint Msg service.
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| UpdateParams | [MsgUpdateParams](#xion-mint-v1-MsgUpdateParams) | [MsgUpdateParamsResponse](#xion-mint-v1-MsgUpdateParamsResponse) | UpdateParams defines a governance operation for updating the x/mint module parameters. The authority is defaults to the x/gov module account.
-
-Since: cosmos-sdk 0.47 |
+Since: cosmos-sdk 0.46 |
 
  
 

@@ -112,11 +112,60 @@ def dedup_prost_file(filepath):
     return False
 
 
+def merge_staged(repo_root, types_dir):
+    """Merge staged Rust outputs from multiple BSR sources into rust/types/.
+
+    gen_buf stages each BSR source separately into .rust-staged/<id>/ to avoid
+    prost silently overwriting types from earlier sources. This function merges
+    them: identical files are copied once; differing files are concatenated so
+    dedup_prost_file can deduplicate the result.
+    """
+    staged_root = repo_root / ".rust-staged"
+    if not staged_root.exists():
+        return
+
+    staged_dirs = sorted(d for d in staged_root.iterdir() if d.is_dir())
+    if not staged_dirs:
+        shutil.rmtree(staged_root)
+        return
+
+    types_dir.mkdir(parents=True, exist_ok=True)
+
+    all_files = set()
+    for staged_dir in staged_dirs:
+        for f in staged_dir.rglob("*.rs"):
+            all_files.add(f.relative_to(staged_dir))
+
+    merged = 0
+    for rel_path in sorted(all_files):
+        versions = [d / rel_path for d in staged_dirs if (d / rel_path).exists()]
+        dest = types_dir / rel_path
+        dest.parent.mkdir(parents=True, exist_ok=True)
+
+        if len(versions) == 1:
+            shutil.copy2(versions[0], dest)
+        elif all(v.read_bytes() == versions[0].read_bytes() for v in versions[1:]):
+            shutil.copy2(versions[0], dest)
+        else:
+            # Concatenate — dedup_prost_file will deduplicate below
+            with dest.open("w") as out:
+                for v in versions:
+                    out.write(v.read_text())
+            merged += 1
+
+    shutil.rmtree(staged_root)
+    if merged:
+        print(f"  Merged {merged} .rs files from {len(staged_dirs)} BSR sources")
+
+
 def main():
     # Get the directory of this script, then go up to the repo root
     script_dir = Path(__file__).parent.resolve()
     repo_root = script_dir.parent.parent
     types_dir = repo_root / "rust" / "types"
+
+    # Merge staged outputs from gen_buf before anything else
+    merge_staged(repo_root, types_dir)
 
     if not types_dir.exists():
         print("❌ rust/types directory not found")
