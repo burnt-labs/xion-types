@@ -38,10 +38,6 @@ pub mod cosmos_base_v1beta1;
 pub mod cosmos_benchmark_module_v1;
 #[path = "cosmos.benchmark.v1.rs"]
 pub mod cosmos_benchmark_v1;
-#[path = "cosmos.circuit.module.v1.rs"]
-pub mod cosmos_circuit_module_v1;
-#[path = "cosmos.circuit.v1.rs"]
-pub mod cosmos_circuit_v1;
 #[path = "cosmos.consensus.module.v1.rs"]
 pub mod cosmos_consensus_module_v1;
 #[path = "cosmos.consensus.v1.rs"]
@@ -50,10 +46,6 @@ pub mod cosmos_consensus_v1;
 pub mod cosmos_counter_module_v1;
 #[path = "cosmos.counter.v1.rs"]
 pub mod cosmos_counter_v1;
-#[path = "cosmos.crisis.module.v1.rs"]
-pub mod cosmos_crisis_module_v1;
-#[path = "cosmos.crisis.v1beta1.rs"]
-pub mod cosmos_crisis_v1beta1;
 #[path = "cosmos.crypto.bls12_381.rs"]
 pub mod cosmos_crypto_bls12_381;
 #[path = "cosmos.crypto.ed25519.rs"]
@@ -96,10 +88,6 @@ pub mod cosmos_gov_module_v1;
 pub mod cosmos_gov_v1;
 #[path = "cosmos.gov.v1beta1.rs"]
 pub mod cosmos_gov_v1beta1;
-#[path = "cosmos.group.module.v1.rs"]
-pub mod cosmos_group_module_v1;
-#[path = "cosmos.group.v1.rs"]
-pub mod cosmos_group_v1;
 #[path = "cosmos.ics23.v1.rs"]
 pub mod cosmos_ics23_v1;
 #[path = "cosmos.mint.module.v1.rs"]
@@ -110,10 +98,6 @@ pub mod cosmos_mint_v1beta1;
 pub mod cosmos_msg_textual_v1;
 #[path = "cosmos.msg.v1.rs"]
 pub mod cosmos_msg_v1;
-#[path = "cosmos.nft.module.v1.rs"]
-pub mod cosmos_nft_module_v1;
-#[path = "cosmos.nft.v1beta1.rs"]
-pub mod cosmos_nft_v1beta1;
 #[path = "cosmos.params.module.v1.rs"]
 pub mod cosmos_params_module_v1;
 #[path = "cosmos.params.v1beta1.rs"]
@@ -200,9 +184,6 @@ pub mod ibc_lightclients_tendermint_v1;
 pub mod ibc_lightclients_wasm_v1;
 #[path = "osmosis.tokenfactory.v1beta1.rs"]
 pub mod osmosis_tokenfactory_v1beta1;
-#[path = "packetforward.v1.rs"]
-pub mod packetforward_v1;
-pub mod rust;
 #[path = "tendermint.abci.rs"]
 pub mod tendermint_abci;
 #[path = "tendermint.crypto.rs"]

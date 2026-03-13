@@ -139,7 +139,7 @@ def merge_staged(repo_root, types_dir):
     merged = 0
     for rel_path in sorted(all_files):
         versions = [d / rel_path for d in staged_dirs if (d / rel_path).exists()]
-        dest = types_dir / rel_path
+        dest = repo_root / rel_path
         dest.parent.mkdir(parents=True, exist_ok=True)
 
         if len(versions) == 1:
