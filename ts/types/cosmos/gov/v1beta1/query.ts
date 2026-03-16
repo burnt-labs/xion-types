@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import {
   Deposit,
@@ -27,7 +28,7 @@ export const protobufPackage = "cosmos.gov.v1beta1";
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
 }
 
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
@@ -61,7 +62,7 @@ export interface QueryProposalsResponse {
 /** QueryVoteRequest is the request type for the Query/Vote RPC method. */
 export interface QueryVoteRequest {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** voter defines the voter address for the proposals. */
   voter: string;
 }
@@ -75,7 +76,7 @@ export interface QueryVoteResponse {
 /** QueryVotesRequest is the request type for the Query/Votes RPC method. */
 export interface QueryVotesRequest {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest | undefined;
 }
@@ -114,7 +115,7 @@ export interface QueryParamsResponse {
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** depositor defines the deposit addresses from the proposals. */
   depositor: string;
 }
@@ -128,7 +129,7 @@ export interface QueryDepositResponse {
 /** QueryDepositsRequest is the request type for the Query/Deposits RPC method. */
 export interface QueryDepositsRequest {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest | undefined;
 }
@@ -144,7 +145,7 @@ export interface QueryDepositsResponse {
 /** QueryTallyResultRequest is the request type for the Query/Tally RPC method. */
 export interface QueryTallyResultRequest {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
 }
 
 /** QueryTallyResultResponse is the response type for the Query/Tally RPC method. */
@@ -154,16 +155,13 @@ export interface QueryTallyResultResponse {
 }
 
 function createBaseQueryProposalRequest(): QueryProposalRequest {
-  return { proposalId: 0n };
+  return { proposalId: Long.UZERO };
 }
 
 export const QueryProposalRequest: MessageFns<QueryProposalRequest> = {
   encode(message: QueryProposalRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     return writer;
   },
@@ -180,7 +178,7 @@ export const QueryProposalRequest: MessageFns<QueryProposalRequest> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -195,17 +193,17 @@ export const QueryProposalRequest: MessageFns<QueryProposalRequest> = {
   fromJSON(object: any): QueryProposalRequest {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: QueryProposalRequest): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     return obj;
   },
@@ -215,7 +213,9 @@ export const QueryProposalRequest: MessageFns<QueryProposalRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryProposalRequest>, I>>(object: I): QueryProposalRequest {
     const message = createBaseQueryProposalRequest();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     return message;
   },
 };
@@ -475,16 +475,13 @@ export const QueryProposalsResponse: MessageFns<QueryProposalsResponse> = {
 };
 
 function createBaseQueryVoteRequest(): QueryVoteRequest {
-  return { proposalId: 0n, voter: "" };
+  return { proposalId: Long.UZERO, voter: "" };
 }
 
 export const QueryVoteRequest: MessageFns<QueryVoteRequest> = {
   encode(message: QueryVoteRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.voter !== "") {
       writer.uint32(18).string(message.voter);
@@ -504,7 +501,7 @@ export const QueryVoteRequest: MessageFns<QueryVoteRequest> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -527,18 +524,18 @@ export const QueryVoteRequest: MessageFns<QueryVoteRequest> = {
   fromJSON(object: any): QueryVoteRequest {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       voter: isSet(object.voter) ? globalThis.String(object.voter) : "",
     };
   },
 
   toJSON(message: QueryVoteRequest): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.voter !== "") {
       obj.voter = message.voter;
@@ -551,7 +548,9 @@ export const QueryVoteRequest: MessageFns<QueryVoteRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryVoteRequest>, I>>(object: I): QueryVoteRequest {
     const message = createBaseQueryVoteRequest();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.voter = object.voter ?? "";
     return message;
   },
@@ -616,16 +615,13 @@ export const QueryVoteResponse: MessageFns<QueryVoteResponse> = {
 };
 
 function createBaseQueryVotesRequest(): QueryVotesRequest {
-  return { proposalId: 0n, pagination: undefined };
+  return { proposalId: Long.UZERO, pagination: undefined };
 }
 
 export const QueryVotesRequest: MessageFns<QueryVotesRequest> = {
   encode(message: QueryVotesRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).join();
@@ -645,7 +641,7 @@ export const QueryVotesRequest: MessageFns<QueryVotesRequest> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -668,18 +664,18 @@ export const QueryVotesRequest: MessageFns<QueryVotesRequest> = {
   fromJSON(object: any): QueryVotesRequest {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
 
   toJSON(message: QueryVotesRequest): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.pagination !== undefined) {
       obj.pagination = PageRequest.toJSON(message.pagination);
@@ -692,7 +688,9 @@ export const QueryVotesRequest: MessageFns<QueryVotesRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryVotesRequest>, I>>(object: I): QueryVotesRequest {
     const message = createBaseQueryVotesRequest();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.pagination = (object.pagination !== undefined && object.pagination !== null)
       ? PageRequest.fromPartial(object.pagination)
       : undefined;
@@ -953,16 +951,13 @@ export const QueryParamsResponse: MessageFns<QueryParamsResponse> = {
 };
 
 function createBaseQueryDepositRequest(): QueryDepositRequest {
-  return { proposalId: 0n, depositor: "" };
+  return { proposalId: Long.UZERO, depositor: "" };
 }
 
 export const QueryDepositRequest: MessageFns<QueryDepositRequest> = {
   encode(message: QueryDepositRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.depositor !== "") {
       writer.uint32(18).string(message.depositor);
@@ -982,7 +977,7 @@ export const QueryDepositRequest: MessageFns<QueryDepositRequest> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -1005,18 +1000,18 @@ export const QueryDepositRequest: MessageFns<QueryDepositRequest> = {
   fromJSON(object: any): QueryDepositRequest {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       depositor: isSet(object.depositor) ? globalThis.String(object.depositor) : "",
     };
   },
 
   toJSON(message: QueryDepositRequest): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.depositor !== "") {
       obj.depositor = message.depositor;
@@ -1029,7 +1024,9 @@ export const QueryDepositRequest: MessageFns<QueryDepositRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryDepositRequest>, I>>(object: I): QueryDepositRequest {
     const message = createBaseQueryDepositRequest();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.depositor = object.depositor ?? "";
     return message;
   },
@@ -1096,16 +1093,13 @@ export const QueryDepositResponse: MessageFns<QueryDepositResponse> = {
 };
 
 function createBaseQueryDepositsRequest(): QueryDepositsRequest {
-  return { proposalId: 0n, pagination: undefined };
+  return { proposalId: Long.UZERO, pagination: undefined };
 }
 
 export const QueryDepositsRequest: MessageFns<QueryDepositsRequest> = {
   encode(message: QueryDepositsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).join();
@@ -1125,7 +1119,7 @@ export const QueryDepositsRequest: MessageFns<QueryDepositsRequest> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -1148,18 +1142,18 @@ export const QueryDepositsRequest: MessageFns<QueryDepositsRequest> = {
   fromJSON(object: any): QueryDepositsRequest {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
 
   toJSON(message: QueryDepositsRequest): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.pagination !== undefined) {
       obj.pagination = PageRequest.toJSON(message.pagination);
@@ -1172,7 +1166,9 @@ export const QueryDepositsRequest: MessageFns<QueryDepositsRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryDepositsRequest>, I>>(object: I): QueryDepositsRequest {
     const message = createBaseQueryDepositsRequest();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.pagination = (object.pagination !== undefined && object.pagination !== null)
       ? PageRequest.fromPartial(object.pagination)
       : undefined;
@@ -1259,16 +1255,13 @@ export const QueryDepositsResponse: MessageFns<QueryDepositsResponse> = {
 };
 
 function createBaseQueryTallyResultRequest(): QueryTallyResultRequest {
-  return { proposalId: 0n };
+  return { proposalId: Long.UZERO };
 }
 
 export const QueryTallyResultRequest: MessageFns<QueryTallyResultRequest> = {
   encode(message: QueryTallyResultRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     return writer;
   },
@@ -1285,7 +1278,7 @@ export const QueryTallyResultRequest: MessageFns<QueryTallyResultRequest> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -1300,17 +1293,17 @@ export const QueryTallyResultRequest: MessageFns<QueryTallyResultRequest> = {
   fromJSON(object: any): QueryTallyResultRequest {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: QueryTallyResultRequest): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     return obj;
   },
@@ -1320,7 +1313,9 @@ export const QueryTallyResultRequest: MessageFns<QueryTallyResultRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryTallyResultRequest>, I>>(object: I): QueryTallyResultRequest {
     const message = createBaseQueryTallyResultRequest();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     return message;
   },
 };
@@ -1645,7 +1640,7 @@ export const QueryTallyResultDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -1713,10 +1708,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

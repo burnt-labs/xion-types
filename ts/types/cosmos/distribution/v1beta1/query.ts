@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { DecCoin } from "../../base/v1beta1/coin";
 import {
@@ -92,9 +93,9 @@ export interface QueryValidatorSlashesRequest {
   /** validator_address defines the validator address to query for. */
   validatorAddress: string;
   /** starting_height defines the optional starting height to query the slashes. */
-  startingHeight: bigint;
+  startingHeight: Long;
   /** starting_height defines the optional ending height to query the slashes. */
-  endingHeight: bigint;
+  endingHeight: Long;
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest | undefined;
 }
@@ -210,7 +211,7 @@ export interface QueryValidatorHistoricalRewardsRequest {
   /** validator_address defines the validator address to query for. */
   validatorAddress: string;
   /** period defines the period to query historical rewards for. */
-  period: bigint;
+  period: Long;
 }
 
 /**
@@ -802,7 +803,7 @@ export const QueryValidatorCommissionResponse: MessageFns<QueryValidatorCommissi
 };
 
 function createBaseQueryValidatorSlashesRequest(): QueryValidatorSlashesRequest {
-  return { validatorAddress: "", startingHeight: 0n, endingHeight: 0n, pagination: undefined };
+  return { validatorAddress: "", startingHeight: Long.UZERO, endingHeight: Long.UZERO, pagination: undefined };
 }
 
 export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesRequest> = {
@@ -810,17 +811,11 @@ export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesReque
     if (message.validatorAddress !== "") {
       writer.uint32(10).string(message.validatorAddress);
     }
-    if (message.startingHeight !== 0n) {
-      if (BigInt.asUintN(64, message.startingHeight) !== message.startingHeight) {
-        throw new globalThis.Error("value provided for field message.startingHeight of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.startingHeight);
+    if (!message.startingHeight.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.startingHeight.toString());
     }
-    if (message.endingHeight !== 0n) {
-      if (BigInt.asUintN(64, message.endingHeight) !== message.endingHeight) {
-        throw new globalThis.Error("value provided for field message.endingHeight of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.endingHeight);
+    if (!message.endingHeight.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.endingHeight.toString());
     }
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(34).fork()).join();
@@ -848,7 +843,7 @@ export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesReque
             break;
           }
 
-          message.startingHeight = reader.uint64() as bigint;
+          message.startingHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -856,7 +851,7 @@ export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesReque
             break;
           }
 
-          message.endingHeight = reader.uint64() as bigint;
+          message.endingHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 4: {
@@ -884,15 +879,15 @@ export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesReque
         ? globalThis.String(object.validator_address)
         : "",
       startingHeight: isSet(object.startingHeight)
-        ? BigInt(object.startingHeight)
+        ? Long.fromValue(object.startingHeight)
         : isSet(object.starting_height)
-        ? BigInt(object.starting_height)
-        : 0n,
+        ? Long.fromValue(object.starting_height)
+        : Long.UZERO,
       endingHeight: isSet(object.endingHeight)
-        ? BigInt(object.endingHeight)
+        ? Long.fromValue(object.endingHeight)
         : isSet(object.ending_height)
-        ? BigInt(object.ending_height)
-        : 0n,
+        ? Long.fromValue(object.ending_height)
+        : Long.UZERO,
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
@@ -902,11 +897,11 @@ export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesReque
     if (message.validatorAddress !== "") {
       obj.validatorAddress = message.validatorAddress;
     }
-    if (message.startingHeight !== 0n) {
-      obj.startingHeight = message.startingHeight.toString();
+    if (!message.startingHeight.equals(Long.UZERO)) {
+      obj.startingHeight = (message.startingHeight || Long.UZERO).toString();
     }
-    if (message.endingHeight !== 0n) {
-      obj.endingHeight = message.endingHeight.toString();
+    if (!message.endingHeight.equals(Long.UZERO)) {
+      obj.endingHeight = (message.endingHeight || Long.UZERO).toString();
     }
     if (message.pagination !== undefined) {
       obj.pagination = PageRequest.toJSON(message.pagination);
@@ -920,8 +915,12 @@ export const QueryValidatorSlashesRequest: MessageFns<QueryValidatorSlashesReque
   fromPartial<I extends Exact<DeepPartial<QueryValidatorSlashesRequest>, I>>(object: I): QueryValidatorSlashesRequest {
     const message = createBaseQueryValidatorSlashesRequest();
     message.validatorAddress = object.validatorAddress ?? "";
-    message.startingHeight = object.startingHeight ?? 0n;
-    message.endingHeight = object.endingHeight ?? 0n;
+    message.startingHeight = (object.startingHeight !== undefined && object.startingHeight !== null)
+      ? Long.fromValue(object.startingHeight)
+      : Long.UZERO;
+    message.endingHeight = (object.endingHeight !== undefined && object.endingHeight !== null)
+      ? Long.fromValue(object.endingHeight)
+      : Long.UZERO;
     message.pagination = (object.pagination !== undefined && object.pagination !== null)
       ? PageRequest.fromPartial(object.pagination)
       : undefined;
@@ -1679,7 +1678,7 @@ export const QueryCommunityPoolResponse: MessageFns<QueryCommunityPoolResponse> 
 };
 
 function createBaseQueryValidatorHistoricalRewardsRequest(): QueryValidatorHistoricalRewardsRequest {
-  return { validatorAddress: "", period: 0n };
+  return { validatorAddress: "", period: Long.UZERO };
 }
 
 export const QueryValidatorHistoricalRewardsRequest: MessageFns<QueryValidatorHistoricalRewardsRequest> = {
@@ -1687,11 +1686,8 @@ export const QueryValidatorHistoricalRewardsRequest: MessageFns<QueryValidatorHi
     if (message.validatorAddress !== "") {
       writer.uint32(10).string(message.validatorAddress);
     }
-    if (message.period !== 0n) {
-      if (BigInt.asUintN(64, message.period) !== message.period) {
-        throw new globalThis.Error("value provided for field message.period of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.period);
+    if (!message.period.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.period.toString());
     }
     return writer;
   },
@@ -1716,7 +1712,7 @@ export const QueryValidatorHistoricalRewardsRequest: MessageFns<QueryValidatorHi
             break;
           }
 
-          message.period = reader.uint64() as bigint;
+          message.period = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -1735,7 +1731,7 @@ export const QueryValidatorHistoricalRewardsRequest: MessageFns<QueryValidatorHi
         : isSet(object.validator_address)
         ? globalThis.String(object.validator_address)
         : "",
-      period: isSet(object.period) ? BigInt(object.period) : 0n,
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO,
     };
   },
 
@@ -1744,8 +1740,8 @@ export const QueryValidatorHistoricalRewardsRequest: MessageFns<QueryValidatorHi
     if (message.validatorAddress !== "") {
       obj.validatorAddress = message.validatorAddress;
     }
-    if (message.period !== 0n) {
-      obj.period = message.period.toString();
+    if (!message.period.equals(Long.UZERO)) {
+      obj.period = (message.period || Long.UZERO).toString();
     }
     return obj;
   },
@@ -1760,7 +1756,9 @@ export const QueryValidatorHistoricalRewardsRequest: MessageFns<QueryValidatorHi
   ): QueryValidatorHistoricalRewardsRequest {
     const message = createBaseQueryValidatorHistoricalRewardsRequest();
     message.validatorAddress = object.validatorAddress ?? "";
-    message.period = object.period ?? 0n;
+    message.period = (object.period !== undefined && object.period !== null)
+      ? Long.fromValue(object.period)
+      : Long.UZERO;
     return message;
   },
 };
@@ -2630,7 +2628,7 @@ export const QueryDelegatorStartingInfoDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -2698,10 +2696,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

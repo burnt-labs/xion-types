@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 
 export const protobufPackage = "cosmos.base.node.v1beta1";
@@ -21,7 +22,7 @@ export interface ConfigResponse {
   minimumGasPrice: string;
   pruningKeepRecent: string;
   pruningInterval: string;
-  haltHeight: bigint;
+  haltHeight: Long;
 }
 
 /** StateRequest defines the request structure for the status of a node. */
@@ -31,9 +32,9 @@ export interface StatusRequest {
 /** StateResponse defines the response structure for the status of a node. */
 export interface StatusResponse {
   /** earliest block height available in the store */
-  earliestStoreHeight: bigint;
+  earliestStoreHeight: Long;
   /** current block height */
-  height: bigint;
+  height: Long;
   /** block height timestamp */
   timestamp?:
     | Date
@@ -88,7 +89,7 @@ export const ConfigRequest: MessageFns<ConfigRequest> = {
 };
 
 function createBaseConfigResponse(): ConfigResponse {
-  return { minimumGasPrice: "", pruningKeepRecent: "", pruningInterval: "", haltHeight: 0n };
+  return { minimumGasPrice: "", pruningKeepRecent: "", pruningInterval: "", haltHeight: Long.UZERO };
 }
 
 export const ConfigResponse: MessageFns<ConfigResponse> = {
@@ -102,11 +103,8 @@ export const ConfigResponse: MessageFns<ConfigResponse> = {
     if (message.pruningInterval !== "") {
       writer.uint32(26).string(message.pruningInterval);
     }
-    if (message.haltHeight !== 0n) {
-      if (BigInt.asUintN(64, message.haltHeight) !== message.haltHeight) {
-        throw new globalThis.Error("value provided for field message.haltHeight of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.haltHeight);
+    if (!message.haltHeight.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.haltHeight.toString());
     }
     return writer;
   },
@@ -147,7 +145,7 @@ export const ConfigResponse: MessageFns<ConfigResponse> = {
             break;
           }
 
-          message.haltHeight = reader.uint64() as bigint;
+          message.haltHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -177,10 +175,10 @@ export const ConfigResponse: MessageFns<ConfigResponse> = {
         ? globalThis.String(object.pruning_interval)
         : "",
       haltHeight: isSet(object.haltHeight)
-        ? BigInt(object.haltHeight)
+        ? Long.fromValue(object.haltHeight)
         : isSet(object.halt_height)
-        ? BigInt(object.halt_height)
-        : 0n,
+        ? Long.fromValue(object.halt_height)
+        : Long.UZERO,
     };
   },
 
@@ -195,8 +193,8 @@ export const ConfigResponse: MessageFns<ConfigResponse> = {
     if (message.pruningInterval !== "") {
       obj.pruningInterval = message.pruningInterval;
     }
-    if (message.haltHeight !== 0n) {
-      obj.haltHeight = message.haltHeight.toString();
+    if (!message.haltHeight.equals(Long.UZERO)) {
+      obj.haltHeight = (message.haltHeight || Long.UZERO).toString();
     }
     return obj;
   },
@@ -209,7 +207,9 @@ export const ConfigResponse: MessageFns<ConfigResponse> = {
     message.minimumGasPrice = object.minimumGasPrice ?? "";
     message.pruningKeepRecent = object.pruningKeepRecent ?? "";
     message.pruningInterval = object.pruningInterval ?? "";
-    message.haltHeight = object.haltHeight ?? 0n;
+    message.haltHeight = (object.haltHeight !== undefined && object.haltHeight !== null)
+      ? Long.fromValue(object.haltHeight)
+      : Long.UZERO;
     return message;
   },
 };
@@ -259,8 +259,8 @@ export const StatusRequest: MessageFns<StatusRequest> = {
 
 function createBaseStatusResponse(): StatusResponse {
   return {
-    earliestStoreHeight: 0n,
-    height: 0n,
+    earliestStoreHeight: Long.UZERO,
+    height: Long.UZERO,
     timestamp: undefined,
     appHash: new Uint8Array(0),
     validatorHash: new Uint8Array(0),
@@ -269,17 +269,11 @@ function createBaseStatusResponse(): StatusResponse {
 
 export const StatusResponse: MessageFns<StatusResponse> = {
   encode(message: StatusResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.earliestStoreHeight !== 0n) {
-      if (BigInt.asUintN(64, message.earliestStoreHeight) !== message.earliestStoreHeight) {
-        throw new globalThis.Error("value provided for field message.earliestStoreHeight of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.earliestStoreHeight);
+    if (!message.earliestStoreHeight.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.earliestStoreHeight.toString());
     }
-    if (message.height !== 0n) {
-      if (BigInt.asUintN(64, message.height) !== message.height) {
-        throw new globalThis.Error("value provided for field message.height of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.height);
+    if (!message.height.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.height.toString());
     }
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(26).fork()).join();
@@ -305,7 +299,7 @@ export const StatusResponse: MessageFns<StatusResponse> = {
             break;
           }
 
-          message.earliestStoreHeight = reader.uint64() as bigint;
+          message.earliestStoreHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -313,7 +307,7 @@ export const StatusResponse: MessageFns<StatusResponse> = {
             break;
           }
 
-          message.height = reader.uint64() as bigint;
+          message.height = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -352,11 +346,11 @@ export const StatusResponse: MessageFns<StatusResponse> = {
   fromJSON(object: any): StatusResponse {
     return {
       earliestStoreHeight: isSet(object.earliestStoreHeight)
-        ? BigInt(object.earliestStoreHeight)
+        ? Long.fromValue(object.earliestStoreHeight)
         : isSet(object.earliest_store_height)
-        ? BigInt(object.earliest_store_height)
-        : 0n,
-      height: isSet(object.height) ? BigInt(object.height) : 0n,
+        ? Long.fromValue(object.earliest_store_height)
+        : Long.UZERO,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
       timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
       appHash: isSet(object.appHash)
         ? bytesFromBase64(object.appHash)
@@ -373,11 +367,11 @@ export const StatusResponse: MessageFns<StatusResponse> = {
 
   toJSON(message: StatusResponse): unknown {
     const obj: any = {};
-    if (message.earliestStoreHeight !== 0n) {
-      obj.earliestStoreHeight = message.earliestStoreHeight.toString();
+    if (!message.earliestStoreHeight.equals(Long.UZERO)) {
+      obj.earliestStoreHeight = (message.earliestStoreHeight || Long.UZERO).toString();
     }
-    if (message.height !== 0n) {
-      obj.height = message.height.toString();
+    if (!message.height.equals(Long.UZERO)) {
+      obj.height = (message.height || Long.UZERO).toString();
     }
     if (message.timestamp !== undefined) {
       obj.timestamp = message.timestamp.toISOString();
@@ -396,8 +390,12 @@ export const StatusResponse: MessageFns<StatusResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<StatusResponse>, I>>(object: I): StatusResponse {
     const message = createBaseStatusResponse();
-    message.earliestStoreHeight = object.earliestStoreHeight ?? 0n;
-    message.height = object.height ?? 0n;
+    message.earliestStoreHeight = (object.earliestStoreHeight !== undefined && object.earliestStoreHeight !== null)
+      ? Long.fromValue(object.earliestStoreHeight)
+      : Long.UZERO;
+    message.height = (object.height !== undefined && object.height !== null)
+      ? Long.fromValue(object.height)
+      : Long.UZERO;
     message.timestamp = object.timestamp ?? undefined;
     message.appHash = object.appHash ?? new Uint8Array(0);
     message.validatorHash = object.validatorHash ?? new Uint8Array(0);
@@ -479,7 +477,7 @@ export const ServiceStatusDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -572,10 +570,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -585,13 +583,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
+  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
+  let millis = (t.seconds.toNumber() || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -604,6 +602,10 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
+}
+
+function numberToLong(number: number) {
+  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

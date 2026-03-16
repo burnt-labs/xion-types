@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import {
   DelegationResponse,
@@ -241,7 +242,7 @@ export interface QueryDelegatorValidatorResponse {
  */
 export interface QueryHistoricalInfoRequest {
   /** height defines at which height to query the historical info. */
-  height: bigint;
+  height: Long;
 }
 
 /**
@@ -2064,16 +2065,13 @@ export const QueryDelegatorValidatorResponse: MessageFns<QueryDelegatorValidator
 };
 
 function createBaseQueryHistoricalInfoRequest(): QueryHistoricalInfoRequest {
-  return { height: 0n };
+  return { height: Long.ZERO };
 }
 
 export const QueryHistoricalInfoRequest: MessageFns<QueryHistoricalInfoRequest> = {
   encode(message: QueryHistoricalInfoRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.height !== 0n) {
-      if (BigInt.asIntN(64, message.height) !== message.height) {
-        throw new globalThis.Error("value provided for field message.height of type int64 too large");
-      }
-      writer.uint32(8).int64(message.height);
+    if (!message.height.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.height.toString());
     }
     return writer;
   },
@@ -2090,7 +2088,7 @@ export const QueryHistoricalInfoRequest: MessageFns<QueryHistoricalInfoRequest> 
             break;
           }
 
-          message.height = reader.int64() as bigint;
+          message.height = Long.fromString(reader.int64().toString());
           continue;
         }
       }
@@ -2103,13 +2101,13 @@ export const QueryHistoricalInfoRequest: MessageFns<QueryHistoricalInfoRequest> 
   },
 
   fromJSON(object: any): QueryHistoricalInfoRequest {
-    return { height: isSet(object.height) ? BigInt(object.height) : 0n };
+    return { height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO };
   },
 
   toJSON(message: QueryHistoricalInfoRequest): unknown {
     const obj: any = {};
-    if (message.height !== 0n) {
-      obj.height = message.height.toString();
+    if (!message.height.equals(Long.ZERO)) {
+      obj.height = (message.height || Long.ZERO).toString();
     }
     return obj;
   },
@@ -2119,7 +2117,9 @@ export const QueryHistoricalInfoRequest: MessageFns<QueryHistoricalInfoRequest> 
   },
   fromPartial<I extends Exact<DeepPartial<QueryHistoricalInfoRequest>, I>>(object: I): QueryHistoricalInfoRequest {
     const message = createBaseQueryHistoricalInfoRequest();
-    message.height = object.height ?? 0n;
+    message.height = (object.height !== undefined && object.height !== null)
+      ? Long.fromValue(object.height)
+      : Long.ZERO;
     return message;
   },
 };
@@ -2935,7 +2935,7 @@ export const QueryParamsDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -3003,10 +3003,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

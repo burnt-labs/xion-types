@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "xion.mint.v1";
 
@@ -21,13 +22,13 @@ export interface MintIncentiveTokens {
   /** The total annual provisions for minting */
   annualProvisions: string;
   /** The amount of tokens needed for incentives */
-  neededAmount: bigint;
+  neededAmount: Long;
   /** The amount of tokens collected for incentives */
-  collectedAmount: bigint;
+  collectedAmount: Long;
   /** The amount of tokens minted */
-  mintedAmount: bigint;
+  mintedAmount: Long;
   /** The amount of tokens burned */
-  burnedAmount: bigint;
+  burnedAmount: Long;
 }
 
 function createBaseMintIncentiveTokens(): MintIncentiveTokens {
@@ -35,10 +36,10 @@ function createBaseMintIncentiveTokens(): MintIncentiveTokens {
     bondedRatio: "",
     inflation: "",
     annualProvisions: "",
-    neededAmount: 0n,
-    collectedAmount: 0n,
-    mintedAmount: 0n,
-    burnedAmount: 0n,
+    neededAmount: Long.UZERO,
+    collectedAmount: Long.UZERO,
+    mintedAmount: Long.UZERO,
+    burnedAmount: Long.UZERO,
   };
 }
 
@@ -53,29 +54,17 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
     if (message.annualProvisions !== "") {
       writer.uint32(26).string(message.annualProvisions);
     }
-    if (message.neededAmount !== 0n) {
-      if (BigInt.asUintN(64, message.neededAmount) !== message.neededAmount) {
-        throw new globalThis.Error("value provided for field message.neededAmount of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.neededAmount);
+    if (!message.neededAmount.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.neededAmount.toString());
     }
-    if (message.collectedAmount !== 0n) {
-      if (BigInt.asUintN(64, message.collectedAmount) !== message.collectedAmount) {
-        throw new globalThis.Error("value provided for field message.collectedAmount of type uint64 too large");
-      }
-      writer.uint32(40).uint64(message.collectedAmount);
+    if (!message.collectedAmount.equals(Long.UZERO)) {
+      writer.uint32(40).uint64(message.collectedAmount.toString());
     }
-    if (message.mintedAmount !== 0n) {
-      if (BigInt.asUintN(64, message.mintedAmount) !== message.mintedAmount) {
-        throw new globalThis.Error("value provided for field message.mintedAmount of type uint64 too large");
-      }
-      writer.uint32(48).uint64(message.mintedAmount);
+    if (!message.mintedAmount.equals(Long.UZERO)) {
+      writer.uint32(48).uint64(message.mintedAmount.toString());
     }
-    if (message.burnedAmount !== 0n) {
-      if (BigInt.asUintN(64, message.burnedAmount) !== message.burnedAmount) {
-        throw new globalThis.Error("value provided for field message.burnedAmount of type uint64 too large");
-      }
-      writer.uint32(56).uint64(message.burnedAmount);
+    if (!message.burnedAmount.equals(Long.UZERO)) {
+      writer.uint32(56).uint64(message.burnedAmount.toString());
     }
     return writer;
   },
@@ -116,7 +105,7 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
             break;
           }
 
-          message.neededAmount = reader.uint64() as bigint;
+          message.neededAmount = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 5: {
@@ -124,7 +113,7 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
             break;
           }
 
-          message.collectedAmount = reader.uint64() as bigint;
+          message.collectedAmount = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 6: {
@@ -132,7 +121,7 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
             break;
           }
 
-          message.mintedAmount = reader.uint64() as bigint;
+          message.mintedAmount = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 7: {
@@ -140,7 +129,7 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
             break;
           }
 
-          message.burnedAmount = reader.uint64() as bigint;
+          message.burnedAmount = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -166,25 +155,25 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
         ? globalThis.String(object.annual_provisions)
         : "",
       neededAmount: isSet(object.neededAmount)
-        ? BigInt(object.neededAmount)
+        ? Long.fromValue(object.neededAmount)
         : isSet(object.needed_amount)
-        ? BigInt(object.needed_amount)
-        : 0n,
+        ? Long.fromValue(object.needed_amount)
+        : Long.UZERO,
       collectedAmount: isSet(object.collectedAmount)
-        ? BigInt(object.collectedAmount)
+        ? Long.fromValue(object.collectedAmount)
         : isSet(object.collected_amount)
-        ? BigInt(object.collected_amount)
-        : 0n,
+        ? Long.fromValue(object.collected_amount)
+        : Long.UZERO,
       mintedAmount: isSet(object.mintedAmount)
-        ? BigInt(object.mintedAmount)
+        ? Long.fromValue(object.mintedAmount)
         : isSet(object.minted_amount)
-        ? BigInt(object.minted_amount)
-        : 0n,
+        ? Long.fromValue(object.minted_amount)
+        : Long.UZERO,
       burnedAmount: isSet(object.burnedAmount)
-        ? BigInt(object.burnedAmount)
+        ? Long.fromValue(object.burnedAmount)
         : isSet(object.burned_amount)
-        ? BigInt(object.burned_amount)
-        : 0n,
+        ? Long.fromValue(object.burned_amount)
+        : Long.UZERO,
     };
   },
 
@@ -199,17 +188,17 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
     if (message.annualProvisions !== "") {
       obj.annualProvisions = message.annualProvisions;
     }
-    if (message.neededAmount !== 0n) {
-      obj.neededAmount = message.neededAmount.toString();
+    if (!message.neededAmount.equals(Long.UZERO)) {
+      obj.neededAmount = (message.neededAmount || Long.UZERO).toString();
     }
-    if (message.collectedAmount !== 0n) {
-      obj.collectedAmount = message.collectedAmount.toString();
+    if (!message.collectedAmount.equals(Long.UZERO)) {
+      obj.collectedAmount = (message.collectedAmount || Long.UZERO).toString();
     }
-    if (message.mintedAmount !== 0n) {
-      obj.mintedAmount = message.mintedAmount.toString();
+    if (!message.mintedAmount.equals(Long.UZERO)) {
+      obj.mintedAmount = (message.mintedAmount || Long.UZERO).toString();
     }
-    if (message.burnedAmount !== 0n) {
-      obj.burnedAmount = message.burnedAmount.toString();
+    if (!message.burnedAmount.equals(Long.UZERO)) {
+      obj.burnedAmount = (message.burnedAmount || Long.UZERO).toString();
     }
     return obj;
   },
@@ -222,18 +211,26 @@ export const MintIncentiveTokens: MessageFns<MintIncentiveTokens> = {
     message.bondedRatio = object.bondedRatio ?? "";
     message.inflation = object.inflation ?? "";
     message.annualProvisions = object.annualProvisions ?? "";
-    message.neededAmount = object.neededAmount ?? 0n;
-    message.collectedAmount = object.collectedAmount ?? 0n;
-    message.mintedAmount = object.mintedAmount ?? 0n;
-    message.burnedAmount = object.burnedAmount ?? 0n;
+    message.neededAmount = (object.neededAmount !== undefined && object.neededAmount !== null)
+      ? Long.fromValue(object.neededAmount)
+      : Long.UZERO;
+    message.collectedAmount = (object.collectedAmount !== undefined && object.collectedAmount !== null)
+      ? Long.fromValue(object.collectedAmount)
+      : Long.UZERO;
+    message.mintedAmount = (object.mintedAmount !== undefined && object.mintedAmount !== null)
+      ? Long.fromValue(object.mintedAmount)
+      : Long.UZERO;
+    message.burnedAmount = (object.burnedAmount !== undefined && object.burnedAmount !== null)
+      ? Long.fromValue(object.burnedAmount)
+      : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

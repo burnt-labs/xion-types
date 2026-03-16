@@ -6,34 +6,29 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "xion.jwk.v1";
 
 /** Params defines the parameters for the module. */
 export interface Params {
   /** Time offset in nanoseconds for JWT validation */
-  timeOffset: bigint;
+  timeOffset: Long;
   /** Gas required to deploy a new project/audience */
-  deploymentGas: bigint;
+  deploymentGas: Long;
 }
 
 function createBaseParams(): Params {
-  return { timeOffset: 0n, deploymentGas: 0n };
+  return { timeOffset: Long.UZERO, deploymentGas: Long.UZERO };
 }
 
 export const Params: MessageFns<Params> = {
   encode(message: Params, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.timeOffset !== 0n) {
-      if (BigInt.asUintN(64, message.timeOffset) !== message.timeOffset) {
-        throw new globalThis.Error("value provided for field message.timeOffset of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.timeOffset);
+    if (!message.timeOffset.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.timeOffset.toString());
     }
-    if (message.deploymentGas !== 0n) {
-      if (BigInt.asUintN(64, message.deploymentGas) !== message.deploymentGas) {
-        throw new globalThis.Error("value provided for field message.deploymentGas of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.deploymentGas);
+    if (!message.deploymentGas.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.deploymentGas.toString());
     }
     return writer;
   },
@@ -50,7 +45,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.timeOffset = reader.uint64() as bigint;
+          message.timeOffset = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -58,7 +53,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.deploymentGas = reader.uint64() as bigint;
+          message.deploymentGas = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -73,25 +68,25 @@ export const Params: MessageFns<Params> = {
   fromJSON(object: any): Params {
     return {
       timeOffset: isSet(object.timeOffset)
-        ? BigInt(object.timeOffset)
+        ? Long.fromValue(object.timeOffset)
         : isSet(object.time_offset)
-        ? BigInt(object.time_offset)
-        : 0n,
+        ? Long.fromValue(object.time_offset)
+        : Long.UZERO,
       deploymentGas: isSet(object.deploymentGas)
-        ? BigInt(object.deploymentGas)
+        ? Long.fromValue(object.deploymentGas)
         : isSet(object.deployment_gas)
-        ? BigInt(object.deployment_gas)
-        : 0n,
+        ? Long.fromValue(object.deployment_gas)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    if (message.timeOffset !== 0n) {
-      obj.timeOffset = message.timeOffset.toString();
+    if (!message.timeOffset.equals(Long.UZERO)) {
+      obj.timeOffset = (message.timeOffset || Long.UZERO).toString();
     }
-    if (message.deploymentGas !== 0n) {
-      obj.deploymentGas = message.deploymentGas.toString();
+    if (!message.deploymentGas.equals(Long.UZERO)) {
+      obj.deploymentGas = (message.deploymentGas || Long.UZERO).toString();
     }
     return obj;
   },
@@ -101,16 +96,20 @@ export const Params: MessageFns<Params> = {
   },
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
-    message.timeOffset = object.timeOffset ?? 0n;
-    message.deploymentGas = object.deploymentGas ?? 0n;
+    message.timeOffset = (object.timeOffset !== undefined && object.timeOffset !== null)
+      ? Long.fromValue(object.timeOffset)
+      : Long.UZERO;
+    message.deploymentGas = (object.deploymentGas !== undefined && object.deploymentGas !== null)
+      ? Long.fromValue(object.deploymentGas)
+      : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

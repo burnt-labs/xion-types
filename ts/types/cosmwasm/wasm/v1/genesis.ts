@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { CodeInfo, ContractCodeHistoryEntry, ContractInfo, Model, Params } from "./types";
 
 export const protobufPackage = "cosmwasm.wasm.v1";
@@ -20,7 +21,7 @@ export interface GenesisState {
 
 /** Code struct encompasses CodeInfo and CodeBytes */
 export interface Code {
-  codeId: bigint;
+  codeId: Long;
   codeInfo?: CodeInfo | undefined;
   codeBytes: Uint8Array;
   /** Pinned to wasmvm cache */
@@ -38,7 +39,7 @@ export interface Contract {
 /** Sequence key and value of an id generation counter */
 export interface Sequence {
   idKey: Uint8Array;
-  value: bigint;
+  value: Long;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -156,16 +157,13 @@ export const GenesisState: MessageFns<GenesisState> = {
 };
 
 function createBaseCode(): Code {
-  return { codeId: 0n, codeInfo: undefined, codeBytes: new Uint8Array(0), pinned: false };
+  return { codeId: Long.UZERO, codeInfo: undefined, codeBytes: new Uint8Array(0), pinned: false };
 }
 
 export const Code: MessageFns<Code> = {
   encode(message: Code, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.codeId !== 0n) {
-      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
-        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.codeId);
+    if (!message.codeId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.codeId.toString());
     }
     if (message.codeInfo !== undefined) {
       CodeInfo.encode(message.codeInfo, writer.uint32(18).fork()).join();
@@ -191,7 +189,7 @@ export const Code: MessageFns<Code> = {
             break;
           }
 
-          message.codeId = reader.uint64() as bigint;
+          message.codeId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -229,7 +227,11 @@ export const Code: MessageFns<Code> = {
 
   fromJSON(object: any): Code {
     return {
-      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
+      codeId: isSet(object.codeId)
+        ? Long.fromValue(object.codeId)
+        : isSet(object.code_id)
+        ? Long.fromValue(object.code_id)
+        : Long.UZERO,
       codeInfo: isSet(object.codeInfo)
         ? CodeInfo.fromJSON(object.codeInfo)
         : isSet(object.code_info)
@@ -246,8 +248,8 @@ export const Code: MessageFns<Code> = {
 
   toJSON(message: Code): unknown {
     const obj: any = {};
-    if (message.codeId !== 0n) {
-      obj.codeId = message.codeId.toString();
+    if (!message.codeId.equals(Long.UZERO)) {
+      obj.codeId = (message.codeId || Long.UZERO).toString();
     }
     if (message.codeInfo !== undefined) {
       obj.codeInfo = CodeInfo.toJSON(message.codeInfo);
@@ -266,7 +268,9 @@ export const Code: MessageFns<Code> = {
   },
   fromPartial<I extends Exact<DeepPartial<Code>, I>>(object: I): Code {
     const message = createBaseCode();
-    message.codeId = object.codeId ?? 0n;
+    message.codeId = (object.codeId !== undefined && object.codeId !== null)
+      ? Long.fromValue(object.codeId)
+      : Long.UZERO;
     message.codeInfo = (object.codeInfo !== undefined && object.codeInfo !== null)
       ? CodeInfo.fromPartial(object.codeInfo)
       : undefined;
@@ -403,7 +407,7 @@ export const Contract: MessageFns<Contract> = {
 };
 
 function createBaseSequence(): Sequence {
-  return { idKey: new Uint8Array(0), value: 0n };
+  return { idKey: new Uint8Array(0), value: Long.UZERO };
 }
 
 export const Sequence: MessageFns<Sequence> = {
@@ -411,11 +415,8 @@ export const Sequence: MessageFns<Sequence> = {
     if (message.idKey.length !== 0) {
       writer.uint32(10).bytes(message.idKey);
     }
-    if (message.value !== 0n) {
-      if (BigInt.asUintN(64, message.value) !== message.value) {
-        throw new globalThis.Error("value provided for field message.value of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.value);
+    if (!message.value.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.value.toString());
     }
     return writer;
   },
@@ -440,7 +441,7 @@ export const Sequence: MessageFns<Sequence> = {
             break;
           }
 
-          message.value = reader.uint64() as bigint;
+          message.value = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -459,7 +460,7 @@ export const Sequence: MessageFns<Sequence> = {
         : isSet(object.id_key)
         ? bytesFromBase64(object.id_key)
         : new Uint8Array(0),
-      value: isSet(object.value) ? BigInt(object.value) : 0n,
+      value: isSet(object.value) ? Long.fromValue(object.value) : Long.UZERO,
     };
   },
 
@@ -468,8 +469,8 @@ export const Sequence: MessageFns<Sequence> = {
     if (message.idKey.length !== 0) {
       obj.idKey = base64FromBytes(message.idKey);
     }
-    if (message.value !== 0n) {
-      obj.value = message.value.toString();
+    if (!message.value.equals(Long.UZERO)) {
+      obj.value = (message.value || Long.UZERO).toString();
     }
     return obj;
   },
@@ -480,7 +481,7 @@ export const Sequence: MessageFns<Sequence> = {
   fromPartial<I extends Exact<DeepPartial<Sequence>, I>>(object: I): Sequence {
     const message = createBaseSequence();
     message.idKey = object.idKey ?? new Uint8Array(0);
-    message.value = object.value ?? 0n;
+    message.value = (object.value !== undefined && object.value !== null) ? Long.fromValue(object.value) : Long.UZERO;
     return message;
   },
 };
@@ -510,10 +511,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

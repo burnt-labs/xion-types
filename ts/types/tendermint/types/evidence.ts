@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { LightBlock, Vote } from "./types";
 import { Validator } from "./validator";
@@ -21,17 +22,17 @@ export interface Evidence {
 export interface DuplicateVoteEvidence {
   voteA?: Vote | undefined;
   voteB?: Vote | undefined;
-  totalVotingPower: bigint;
-  validatorPower: bigint;
+  totalVotingPower: Long;
+  validatorPower: Long;
   timestamp?: Date | undefined;
 }
 
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 export interface LightClientAttackEvidence {
   conflictingBlock?: LightBlock | undefined;
-  commonHeight: bigint;
+  commonHeight: Long;
   byzantineValidators: Validator[];
-  totalVotingPower: bigint;
+  totalVotingPower: Long;
   timestamp?: Date | undefined;
 }
 
@@ -130,7 +131,13 @@ export const Evidence: MessageFns<Evidence> = {
 };
 
 function createBaseDuplicateVoteEvidence(): DuplicateVoteEvidence {
-  return { voteA: undefined, voteB: undefined, totalVotingPower: 0n, validatorPower: 0n, timestamp: undefined };
+  return {
+    voteA: undefined,
+    voteB: undefined,
+    totalVotingPower: Long.ZERO,
+    validatorPower: Long.ZERO,
+    timestamp: undefined,
+  };
 }
 
 export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
@@ -141,17 +148,11 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
     if (message.voteB !== undefined) {
       Vote.encode(message.voteB, writer.uint32(18).fork()).join();
     }
-    if (message.totalVotingPower !== 0n) {
-      if (BigInt.asIntN(64, message.totalVotingPower) !== message.totalVotingPower) {
-        throw new globalThis.Error("value provided for field message.totalVotingPower of type int64 too large");
-      }
-      writer.uint32(24).int64(message.totalVotingPower);
+    if (!message.totalVotingPower.equals(Long.ZERO)) {
+      writer.uint32(24).int64(message.totalVotingPower.toString());
     }
-    if (message.validatorPower !== 0n) {
-      if (BigInt.asIntN(64, message.validatorPower) !== message.validatorPower) {
-        throw new globalThis.Error("value provided for field message.validatorPower of type int64 too large");
-      }
-      writer.uint32(32).int64(message.validatorPower);
+    if (!message.validatorPower.equals(Long.ZERO)) {
+      writer.uint32(32).int64(message.validatorPower.toString());
     }
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(42).fork()).join();
@@ -187,7 +188,7 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
             break;
           }
 
-          message.totalVotingPower = reader.int64() as bigint;
+          message.totalVotingPower = Long.fromString(reader.int64().toString());
           continue;
         }
         case 4: {
@@ -195,7 +196,7 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
             break;
           }
 
-          message.validatorPower = reader.int64() as bigint;
+          message.validatorPower = Long.fromString(reader.int64().toString());
           continue;
         }
         case 5: {
@@ -228,15 +229,15 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
         ? Vote.fromJSON(object.vote_b)
         : undefined,
       totalVotingPower: isSet(object.totalVotingPower)
-        ? BigInt(object.totalVotingPower)
+        ? Long.fromValue(object.totalVotingPower)
         : isSet(object.total_voting_power)
-        ? BigInt(object.total_voting_power)
-        : 0n,
+        ? Long.fromValue(object.total_voting_power)
+        : Long.ZERO,
       validatorPower: isSet(object.validatorPower)
-        ? BigInt(object.validatorPower)
+        ? Long.fromValue(object.validatorPower)
         : isSet(object.validator_power)
-        ? BigInt(object.validator_power)
-        : 0n,
+        ? Long.fromValue(object.validator_power)
+        : Long.ZERO,
       timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
     };
   },
@@ -249,11 +250,11 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
     if (message.voteB !== undefined) {
       obj.voteB = Vote.toJSON(message.voteB);
     }
-    if (message.totalVotingPower !== 0n) {
-      obj.totalVotingPower = message.totalVotingPower.toString();
+    if (!message.totalVotingPower.equals(Long.ZERO)) {
+      obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString();
     }
-    if (message.validatorPower !== 0n) {
-      obj.validatorPower = message.validatorPower.toString();
+    if (!message.validatorPower.equals(Long.ZERO)) {
+      obj.validatorPower = (message.validatorPower || Long.ZERO).toString();
     }
     if (message.timestamp !== undefined) {
       obj.timestamp = message.timestamp.toISOString();
@@ -268,8 +269,12 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
     const message = createBaseDuplicateVoteEvidence();
     message.voteA = (object.voteA !== undefined && object.voteA !== null) ? Vote.fromPartial(object.voteA) : undefined;
     message.voteB = (object.voteB !== undefined && object.voteB !== null) ? Vote.fromPartial(object.voteB) : undefined;
-    message.totalVotingPower = object.totalVotingPower ?? 0n;
-    message.validatorPower = object.validatorPower ?? 0n;
+    message.totalVotingPower = (object.totalVotingPower !== undefined && object.totalVotingPower !== null)
+      ? Long.fromValue(object.totalVotingPower)
+      : Long.ZERO;
+    message.validatorPower = (object.validatorPower !== undefined && object.validatorPower !== null)
+      ? Long.fromValue(object.validatorPower)
+      : Long.ZERO;
     message.timestamp = object.timestamp ?? undefined;
     return message;
   },
@@ -278,9 +283,9 @@ export const DuplicateVoteEvidence: MessageFns<DuplicateVoteEvidence> = {
 function createBaseLightClientAttackEvidence(): LightClientAttackEvidence {
   return {
     conflictingBlock: undefined,
-    commonHeight: 0n,
+    commonHeight: Long.ZERO,
     byzantineValidators: [],
-    totalVotingPower: 0n,
+    totalVotingPower: Long.ZERO,
     timestamp: undefined,
   };
 }
@@ -290,20 +295,14 @@ export const LightClientAttackEvidence: MessageFns<LightClientAttackEvidence> = 
     if (message.conflictingBlock !== undefined) {
       LightBlock.encode(message.conflictingBlock, writer.uint32(10).fork()).join();
     }
-    if (message.commonHeight !== 0n) {
-      if (BigInt.asIntN(64, message.commonHeight) !== message.commonHeight) {
-        throw new globalThis.Error("value provided for field message.commonHeight of type int64 too large");
-      }
-      writer.uint32(16).int64(message.commonHeight);
+    if (!message.commonHeight.equals(Long.ZERO)) {
+      writer.uint32(16).int64(message.commonHeight.toString());
     }
     for (const v of message.byzantineValidators) {
       Validator.encode(v!, writer.uint32(26).fork()).join();
     }
-    if (message.totalVotingPower !== 0n) {
-      if (BigInt.asIntN(64, message.totalVotingPower) !== message.totalVotingPower) {
-        throw new globalThis.Error("value provided for field message.totalVotingPower of type int64 too large");
-      }
-      writer.uint32(32).int64(message.totalVotingPower);
+    if (!message.totalVotingPower.equals(Long.ZERO)) {
+      writer.uint32(32).int64(message.totalVotingPower.toString());
     }
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(42).fork()).join();
@@ -331,7 +330,7 @@ export const LightClientAttackEvidence: MessageFns<LightClientAttackEvidence> = 
             break;
           }
 
-          message.commonHeight = reader.int64() as bigint;
+          message.commonHeight = Long.fromString(reader.int64().toString());
           continue;
         }
         case 3: {
@@ -347,7 +346,7 @@ export const LightClientAttackEvidence: MessageFns<LightClientAttackEvidence> = 
             break;
           }
 
-          message.totalVotingPower = reader.int64() as bigint;
+          message.totalVotingPower = Long.fromString(reader.int64().toString());
           continue;
         }
         case 5: {
@@ -375,20 +374,20 @@ export const LightClientAttackEvidence: MessageFns<LightClientAttackEvidence> = 
         ? LightBlock.fromJSON(object.conflicting_block)
         : undefined,
       commonHeight: isSet(object.commonHeight)
-        ? BigInt(object.commonHeight)
+        ? Long.fromValue(object.commonHeight)
         : isSet(object.common_height)
-        ? BigInt(object.common_height)
-        : 0n,
+        ? Long.fromValue(object.common_height)
+        : Long.ZERO,
       byzantineValidators: globalThis.Array.isArray(object?.byzantineValidators)
         ? object.byzantineValidators.map((e: any) => Validator.fromJSON(e))
         : globalThis.Array.isArray(object?.byzantine_validators)
         ? object.byzantine_validators.map((e: any) => Validator.fromJSON(e))
         : [],
       totalVotingPower: isSet(object.totalVotingPower)
-        ? BigInt(object.totalVotingPower)
+        ? Long.fromValue(object.totalVotingPower)
         : isSet(object.total_voting_power)
-        ? BigInt(object.total_voting_power)
-        : 0n,
+        ? Long.fromValue(object.total_voting_power)
+        : Long.ZERO,
       timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
     };
   },
@@ -398,14 +397,14 @@ export const LightClientAttackEvidence: MessageFns<LightClientAttackEvidence> = 
     if (message.conflictingBlock !== undefined) {
       obj.conflictingBlock = LightBlock.toJSON(message.conflictingBlock);
     }
-    if (message.commonHeight !== 0n) {
-      obj.commonHeight = message.commonHeight.toString();
+    if (!message.commonHeight.equals(Long.ZERO)) {
+      obj.commonHeight = (message.commonHeight || Long.ZERO).toString();
     }
     if (message.byzantineValidators?.length) {
       obj.byzantineValidators = message.byzantineValidators.map((e) => Validator.toJSON(e));
     }
-    if (message.totalVotingPower !== 0n) {
-      obj.totalVotingPower = message.totalVotingPower.toString();
+    if (!message.totalVotingPower.equals(Long.ZERO)) {
+      obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString();
     }
     if (message.timestamp !== undefined) {
       obj.timestamp = message.timestamp.toISOString();
@@ -421,9 +420,13 @@ export const LightClientAttackEvidence: MessageFns<LightClientAttackEvidence> = 
     message.conflictingBlock = (object.conflictingBlock !== undefined && object.conflictingBlock !== null)
       ? LightBlock.fromPartial(object.conflictingBlock)
       : undefined;
-    message.commonHeight = object.commonHeight ?? 0n;
+    message.commonHeight = (object.commonHeight !== undefined && object.commonHeight !== null)
+      ? Long.fromValue(object.commonHeight)
+      : Long.ZERO;
     message.byzantineValidators = object.byzantineValidators?.map((e) => Validator.fromPartial(e)) || [];
-    message.totalVotingPower = object.totalVotingPower ?? 0n;
+    message.totalVotingPower = (object.totalVotingPower !== undefined && object.totalVotingPower !== null)
+      ? Long.fromValue(object.totalVotingPower)
+      : Long.ZERO;
     message.timestamp = object.timestamp ?? undefined;
     return message;
   },
@@ -489,10 +492,10 @@ export const EvidenceList: MessageFns<EvidenceList> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -502,13 +505,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
+  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
+  let millis = (t.seconds.toNumber() || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -521,6 +524,10 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
+}
+
+function numberToLong(number: number) {
+  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

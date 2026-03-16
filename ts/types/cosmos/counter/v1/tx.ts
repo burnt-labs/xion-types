@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 
 export const protobufPackage = "cosmos.counter.v1";
 
@@ -16,17 +17,17 @@ export interface MsgIncreaseCounter {
   /** signer is the address that controls the module (defaults to x/gov unless overwritten). */
   signer: string;
   /** count is the number of times to increment the counter. */
-  count: bigint;
+  count: Long;
 }
 
 /** MsgIncreaseCountResponse is the Msg/Counter response type. */
 export interface MsgIncreaseCountResponse {
   /** new_count is the number of times the counter was incremented. */
-  newCount: bigint;
+  newCount: Long;
 }
 
 function createBaseMsgIncreaseCounter(): MsgIncreaseCounter {
-  return { signer: "", count: 0n };
+  return { signer: "", count: Long.ZERO };
 }
 
 export const MsgIncreaseCounter: MessageFns<MsgIncreaseCounter> = {
@@ -34,11 +35,8 @@ export const MsgIncreaseCounter: MessageFns<MsgIncreaseCounter> = {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
     }
-    if (message.count !== 0n) {
-      if (BigInt.asIntN(64, message.count) !== message.count) {
-        throw new globalThis.Error("value provided for field message.count of type int64 too large");
-      }
-      writer.uint32(16).int64(message.count);
+    if (!message.count.equals(Long.ZERO)) {
+      writer.uint32(16).int64(message.count.toString());
     }
     return writer;
   },
@@ -63,7 +61,7 @@ export const MsgIncreaseCounter: MessageFns<MsgIncreaseCounter> = {
             break;
           }
 
-          message.count = reader.int64() as bigint;
+          message.count = Long.fromString(reader.int64().toString());
           continue;
         }
       }
@@ -78,7 +76,7 @@ export const MsgIncreaseCounter: MessageFns<MsgIncreaseCounter> = {
   fromJSON(object: any): MsgIncreaseCounter {
     return {
       signer: isSet(object.signer) ? globalThis.String(object.signer) : "",
-      count: isSet(object.count) ? BigInt(object.count) : 0n,
+      count: isSet(object.count) ? Long.fromValue(object.count) : Long.ZERO,
     };
   },
 
@@ -87,8 +85,8 @@ export const MsgIncreaseCounter: MessageFns<MsgIncreaseCounter> = {
     if (message.signer !== "") {
       obj.signer = message.signer;
     }
-    if (message.count !== 0n) {
-      obj.count = message.count.toString();
+    if (!message.count.equals(Long.ZERO)) {
+      obj.count = (message.count || Long.ZERO).toString();
     }
     return obj;
   },
@@ -99,22 +97,19 @@ export const MsgIncreaseCounter: MessageFns<MsgIncreaseCounter> = {
   fromPartial<I extends Exact<DeepPartial<MsgIncreaseCounter>, I>>(object: I): MsgIncreaseCounter {
     const message = createBaseMsgIncreaseCounter();
     message.signer = object.signer ?? "";
-    message.count = object.count ?? 0n;
+    message.count = (object.count !== undefined && object.count !== null) ? Long.fromValue(object.count) : Long.ZERO;
     return message;
   },
 };
 
 function createBaseMsgIncreaseCountResponse(): MsgIncreaseCountResponse {
-  return { newCount: 0n };
+  return { newCount: Long.ZERO };
 }
 
 export const MsgIncreaseCountResponse: MessageFns<MsgIncreaseCountResponse> = {
   encode(message: MsgIncreaseCountResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.newCount !== 0n) {
-      if (BigInt.asIntN(64, message.newCount) !== message.newCount) {
-        throw new globalThis.Error("value provided for field message.newCount of type int64 too large");
-      }
-      writer.uint32(8).int64(message.newCount);
+    if (!message.newCount.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.newCount.toString());
     }
     return writer;
   },
@@ -131,7 +126,7 @@ export const MsgIncreaseCountResponse: MessageFns<MsgIncreaseCountResponse> = {
             break;
           }
 
-          message.newCount = reader.int64() as bigint;
+          message.newCount = Long.fromString(reader.int64().toString());
           continue;
         }
       }
@@ -146,17 +141,17 @@ export const MsgIncreaseCountResponse: MessageFns<MsgIncreaseCountResponse> = {
   fromJSON(object: any): MsgIncreaseCountResponse {
     return {
       newCount: isSet(object.newCount)
-        ? BigInt(object.newCount)
+        ? Long.fromValue(object.newCount)
         : isSet(object.new_count)
-        ? BigInt(object.new_count)
-        : 0n,
+        ? Long.fromValue(object.new_count)
+        : Long.ZERO,
     };
   },
 
   toJSON(message: MsgIncreaseCountResponse): unknown {
     const obj: any = {};
-    if (message.newCount !== 0n) {
-      obj.newCount = message.newCount.toString();
+    if (!message.newCount.equals(Long.ZERO)) {
+      obj.newCount = (message.newCount || Long.ZERO).toString();
     }
     return obj;
   },
@@ -166,7 +161,9 @@ export const MsgIncreaseCountResponse: MessageFns<MsgIncreaseCountResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgIncreaseCountResponse>, I>>(object: I): MsgIncreaseCountResponse {
     const message = createBaseMsgIncreaseCountResponse();
-    message.newCount = object.newCount ?? 0n;
+    message.newCount = (object.newCount !== undefined && object.newCount !== null)
+      ? Long.fromValue(object.newCount)
+      : Long.ZERO;
     return message;
   },
 };
@@ -215,7 +212,7 @@ export const MsgIncreaseCountDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -283,10 +280,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

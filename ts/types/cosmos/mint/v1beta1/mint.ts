@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "cosmos.mint.v1beta1";
 
@@ -30,7 +31,7 @@ export interface Params {
   /** goal of percent bonded atoms */
   goalBonded: string;
   /** expected blocks per year */
-  blocksPerYear: bigint;
+  blocksPerYear: Long;
   /**
    * maximum supply for the token.
    *
@@ -126,7 +127,7 @@ function createBaseParams(): Params {
     inflationMax: "",
     inflationMin: "",
     goalBonded: "",
-    blocksPerYear: 0n,
+    blocksPerYear: Long.UZERO,
     maxSupply: "",
   };
 }
@@ -148,11 +149,8 @@ export const Params: MessageFns<Params> = {
     if (message.goalBonded !== "") {
       writer.uint32(42).string(message.goalBonded);
     }
-    if (message.blocksPerYear !== 0n) {
-      if (BigInt.asUintN(64, message.blocksPerYear) !== message.blocksPerYear) {
-        throw new globalThis.Error("value provided for field message.blocksPerYear of type uint64 too large");
-      }
-      writer.uint32(48).uint64(message.blocksPerYear);
+    if (!message.blocksPerYear.equals(Long.UZERO)) {
+      writer.uint32(48).uint64(message.blocksPerYear.toString());
     }
     if (message.maxSupply !== "") {
       writer.uint32(58).string(message.maxSupply);
@@ -212,7 +210,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.blocksPerYear = reader.uint64() as bigint;
+          message.blocksPerYear = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 7: {
@@ -260,10 +258,10 @@ export const Params: MessageFns<Params> = {
         ? globalThis.String(object.goal_bonded)
         : "",
       blocksPerYear: isSet(object.blocksPerYear)
-        ? BigInt(object.blocksPerYear)
+        ? Long.fromValue(object.blocksPerYear)
         : isSet(object.blocks_per_year)
-        ? BigInt(object.blocks_per_year)
-        : 0n,
+        ? Long.fromValue(object.blocks_per_year)
+        : Long.UZERO,
       maxSupply: isSet(object.maxSupply)
         ? globalThis.String(object.maxSupply)
         : isSet(object.max_supply)
@@ -289,8 +287,8 @@ export const Params: MessageFns<Params> = {
     if (message.goalBonded !== "") {
       obj.goalBonded = message.goalBonded;
     }
-    if (message.blocksPerYear !== 0n) {
-      obj.blocksPerYear = message.blocksPerYear.toString();
+    if (!message.blocksPerYear.equals(Long.UZERO)) {
+      obj.blocksPerYear = (message.blocksPerYear || Long.UZERO).toString();
     }
     if (message.maxSupply !== "") {
       obj.maxSupply = message.maxSupply;
@@ -308,16 +306,18 @@ export const Params: MessageFns<Params> = {
     message.inflationMax = object.inflationMax ?? "";
     message.inflationMin = object.inflationMin ?? "";
     message.goalBonded = object.goalBonded ?? "";
-    message.blocksPerYear = object.blocksPerYear ?? 0n;
+    message.blocksPerYear = (object.blocksPerYear !== undefined && object.blocksPerYear !== null)
+      ? Long.fromValue(object.blocksPerYear)
+      : Long.UZERO;
     message.maxSupply = object.maxSupply ?? "";
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

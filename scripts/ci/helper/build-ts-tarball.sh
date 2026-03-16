@@ -20,6 +20,8 @@ fi
 
 ROOT="$(git rev-parse --show-toplevel)"
 OUTPUT_DIR="${1:-$ROOT/ts}"
+# Resolve to absolute path before changing directories
+OUTPUT_DIR="$(cd "$ROOT" && mkdir -p "$OUTPUT_DIR" && cd "$OUTPUT_DIR" && pwd)"
 
 cd "$ROOT/ts"
 pnpm install

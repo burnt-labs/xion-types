@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Any } from "../../../../google/protobuf/any";
 
 export const protobufPackage = "ibc.core.client.v1";
@@ -62,9 +63,9 @@ export interface ClientConsensusStates {
  */
 export interface Height {
   /** the revision that the client is currently on */
-  revisionNumber: bigint;
+  revisionNumber: Long;
   /** the height within the given revision */
-  revisionHeight: bigint;
+  revisionHeight: Long;
 }
 
 /** Params defines the set of IBC light client parameters. */
@@ -332,22 +333,16 @@ export const ClientConsensusStates: MessageFns<ClientConsensusStates> = {
 };
 
 function createBaseHeight(): Height {
-  return { revisionNumber: 0n, revisionHeight: 0n };
+  return { revisionNumber: Long.UZERO, revisionHeight: Long.UZERO };
 }
 
 export const Height: MessageFns<Height> = {
   encode(message: Height, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.revisionNumber !== 0n) {
-      if (BigInt.asUintN(64, message.revisionNumber) !== message.revisionNumber) {
-        throw new globalThis.Error("value provided for field message.revisionNumber of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.revisionNumber);
+    if (!message.revisionNumber.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.revisionNumber.toString());
     }
-    if (message.revisionHeight !== 0n) {
-      if (BigInt.asUintN(64, message.revisionHeight) !== message.revisionHeight) {
-        throw new globalThis.Error("value provided for field message.revisionHeight of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.revisionHeight);
+    if (!message.revisionHeight.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.revisionHeight.toString());
     }
     return writer;
   },
@@ -364,7 +359,7 @@ export const Height: MessageFns<Height> = {
             break;
           }
 
-          message.revisionNumber = reader.uint64() as bigint;
+          message.revisionNumber = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -372,7 +367,7 @@ export const Height: MessageFns<Height> = {
             break;
           }
 
-          message.revisionHeight = reader.uint64() as bigint;
+          message.revisionHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -387,25 +382,25 @@ export const Height: MessageFns<Height> = {
   fromJSON(object: any): Height {
     return {
       revisionNumber: isSet(object.revisionNumber)
-        ? BigInt(object.revisionNumber)
+        ? Long.fromValue(object.revisionNumber)
         : isSet(object.revision_number)
-        ? BigInt(object.revision_number)
-        : 0n,
+        ? Long.fromValue(object.revision_number)
+        : Long.UZERO,
       revisionHeight: isSet(object.revisionHeight)
-        ? BigInt(object.revisionHeight)
+        ? Long.fromValue(object.revisionHeight)
         : isSet(object.revision_height)
-        ? BigInt(object.revision_height)
-        : 0n,
+        ? Long.fromValue(object.revision_height)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: Height): unknown {
     const obj: any = {};
-    if (message.revisionNumber !== 0n) {
-      obj.revisionNumber = message.revisionNumber.toString();
+    if (!message.revisionNumber.equals(Long.UZERO)) {
+      obj.revisionNumber = (message.revisionNumber || Long.UZERO).toString();
     }
-    if (message.revisionHeight !== 0n) {
-      obj.revisionHeight = message.revisionHeight.toString();
+    if (!message.revisionHeight.equals(Long.UZERO)) {
+      obj.revisionHeight = (message.revisionHeight || Long.UZERO).toString();
     }
     return obj;
   },
@@ -415,8 +410,12 @@ export const Height: MessageFns<Height> = {
   },
   fromPartial<I extends Exact<DeepPartial<Height>, I>>(object: I): Height {
     const message = createBaseHeight();
-    message.revisionNumber = object.revisionNumber ?? 0n;
-    message.revisionHeight = object.revisionHeight ?? 0n;
+    message.revisionNumber = (object.revisionNumber !== undefined && object.revisionNumber !== null)
+      ? Long.fromValue(object.revisionNumber)
+      : Long.UZERO;
+    message.revisionHeight = (object.revisionHeight !== undefined && object.revisionHeight !== null)
+      ? Long.fromValue(object.revisionHeight)
+      : Long.UZERO;
     return message;
   },
 };
@@ -485,10 +484,10 @@ export const Params: MessageFns<Params> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

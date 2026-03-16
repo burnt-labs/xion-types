@@ -4,10 +4,12 @@ on:
   pull_request:
     paths:
       - 'ts/**'
+      - 'ts/**'
       - '.github/workflows/dependency-validation.yml'
   push:
     branches: [main]
     paths:
+      - 'ts/**'
       - 'ts/**'
       - '.github/workflows/dependency-validation.yml'
   workflow_dispatch:

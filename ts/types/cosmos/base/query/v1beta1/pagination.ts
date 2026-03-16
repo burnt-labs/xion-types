@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "cosmos.base.query.v1beta1";
 
@@ -30,12 +31,12 @@ export interface PageRequest {
    * It is less efficient than using key. Only one of offset or key should
    * be set.
    */
-  offset: bigint;
+  offset: Long;
   /**
    * limit is the total number of results to be returned in the result page.
    * If left empty it will default to a value to be set by each app.
    */
-  limit: bigint;
+  limit: Long;
   /**
    * count_total is set to true  to indicate that the result set should include
    * a count of the total number of items available for pagination in UIs.
@@ -67,11 +68,11 @@ export interface PageResponse {
    * total is total number of results available if PageRequest.count_total
    * was set, its value is undefined otherwise
    */
-  total: bigint;
+  total: Long;
 }
 
 function createBasePageRequest(): PageRequest {
-  return { key: new Uint8Array(0), offset: 0n, limit: 0n, countTotal: false, reverse: false };
+  return { key: new Uint8Array(0), offset: Long.UZERO, limit: Long.UZERO, countTotal: false, reverse: false };
 }
 
 export const PageRequest: MessageFns<PageRequest> = {
@@ -79,17 +80,11 @@ export const PageRequest: MessageFns<PageRequest> = {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
     }
-    if (message.offset !== 0n) {
-      if (BigInt.asUintN(64, message.offset) !== message.offset) {
-        throw new globalThis.Error("value provided for field message.offset of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.offset);
+    if (!message.offset.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.offset.toString());
     }
-    if (message.limit !== 0n) {
-      if (BigInt.asUintN(64, message.limit) !== message.limit) {
-        throw new globalThis.Error("value provided for field message.limit of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.limit);
+    if (!message.limit.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.limit.toString());
     }
     if (message.countTotal !== false) {
       writer.uint32(32).bool(message.countTotal);
@@ -120,7 +115,7 @@ export const PageRequest: MessageFns<PageRequest> = {
             break;
           }
 
-          message.offset = reader.uint64() as bigint;
+          message.offset = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -128,7 +123,7 @@ export const PageRequest: MessageFns<PageRequest> = {
             break;
           }
 
-          message.limit = reader.uint64() as bigint;
+          message.limit = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 4: {
@@ -159,8 +154,8 @@ export const PageRequest: MessageFns<PageRequest> = {
   fromJSON(object: any): PageRequest {
     return {
       key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(0),
-      offset: isSet(object.offset) ? BigInt(object.offset) : 0n,
-      limit: isSet(object.limit) ? BigInt(object.limit) : 0n,
+      offset: isSet(object.offset) ? Long.fromValue(object.offset) : Long.UZERO,
+      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.UZERO,
       countTotal: isSet(object.countTotal)
         ? globalThis.Boolean(object.countTotal)
         : isSet(object.count_total)
@@ -175,11 +170,11 @@ export const PageRequest: MessageFns<PageRequest> = {
     if (message.key.length !== 0) {
       obj.key = base64FromBytes(message.key);
     }
-    if (message.offset !== 0n) {
-      obj.offset = message.offset.toString();
+    if (!message.offset.equals(Long.UZERO)) {
+      obj.offset = (message.offset || Long.UZERO).toString();
     }
-    if (message.limit !== 0n) {
-      obj.limit = message.limit.toString();
+    if (!message.limit.equals(Long.UZERO)) {
+      obj.limit = (message.limit || Long.UZERO).toString();
     }
     if (message.countTotal !== false) {
       obj.countTotal = message.countTotal;
@@ -196,8 +191,10 @@ export const PageRequest: MessageFns<PageRequest> = {
   fromPartial<I extends Exact<DeepPartial<PageRequest>, I>>(object: I): PageRequest {
     const message = createBasePageRequest();
     message.key = object.key ?? new Uint8Array(0);
-    message.offset = object.offset ?? 0n;
-    message.limit = object.limit ?? 0n;
+    message.offset = (object.offset !== undefined && object.offset !== null)
+      ? Long.fromValue(object.offset)
+      : Long.UZERO;
+    message.limit = (object.limit !== undefined && object.limit !== null) ? Long.fromValue(object.limit) : Long.UZERO;
     message.countTotal = object.countTotal ?? false;
     message.reverse = object.reverse ?? false;
     return message;
@@ -205,7 +202,7 @@ export const PageRequest: MessageFns<PageRequest> = {
 };
 
 function createBasePageResponse(): PageResponse {
-  return { nextKey: new Uint8Array(0), total: 0n };
+  return { nextKey: new Uint8Array(0), total: Long.UZERO };
 }
 
 export const PageResponse: MessageFns<PageResponse> = {
@@ -213,11 +210,8 @@ export const PageResponse: MessageFns<PageResponse> = {
     if (message.nextKey.length !== 0) {
       writer.uint32(10).bytes(message.nextKey);
     }
-    if (message.total !== 0n) {
-      if (BigInt.asUintN(64, message.total) !== message.total) {
-        throw new globalThis.Error("value provided for field message.total of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.total);
+    if (!message.total.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.total.toString());
     }
     return writer;
   },
@@ -242,7 +236,7 @@ export const PageResponse: MessageFns<PageResponse> = {
             break;
           }
 
-          message.total = reader.uint64() as bigint;
+          message.total = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -261,7 +255,7 @@ export const PageResponse: MessageFns<PageResponse> = {
         : isSet(object.next_key)
         ? bytesFromBase64(object.next_key)
         : new Uint8Array(0),
-      total: isSet(object.total) ? BigInt(object.total) : 0n,
+      total: isSet(object.total) ? Long.fromValue(object.total) : Long.UZERO,
     };
   },
 
@@ -270,8 +264,8 @@ export const PageResponse: MessageFns<PageResponse> = {
     if (message.nextKey.length !== 0) {
       obj.nextKey = base64FromBytes(message.nextKey);
     }
-    if (message.total !== 0n) {
-      obj.total = message.total.toString();
+    if (!message.total.equals(Long.UZERO)) {
+      obj.total = (message.total || Long.UZERO).toString();
     }
     return obj;
   },
@@ -282,7 +276,7 @@ export const PageResponse: MessageFns<PageResponse> = {
   fromPartial<I extends Exact<DeepPartial<PageResponse>, I>>(object: I): PageResponse {
     const message = createBasePageResponse();
     message.nextKey = object.nextKey ?? new Uint8Array(0);
-    message.total = object.total ?? 0n;
+    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.UZERO;
     return message;
   },
 };
@@ -312,10 +306,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

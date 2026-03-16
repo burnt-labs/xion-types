@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { RequestFinalizeBlock, ResponseCommit, ResponseFinalizeBlock } from "../../../../tendermint/abci/types";
 import { StoreKVPair } from "../../v1beta1/listening";
 
@@ -26,7 +27,7 @@ export interface ListenFinalizeBlockResponse {
 /** ListenCommitRequest is the request type for the ListenCommit RPC method */
 export interface ListenCommitRequest {
   /** explicitly pass in block height as ResponseCommit does not contain this info */
-  blockHeight: bigint;
+  blockHeight: Long;
   res?: ResponseCommit | undefined;
   changeSet: StoreKVPair[];
 }
@@ -159,16 +160,13 @@ export const ListenFinalizeBlockResponse: MessageFns<ListenFinalizeBlockResponse
 };
 
 function createBaseListenCommitRequest(): ListenCommitRequest {
-  return { blockHeight: 0n, res: undefined, changeSet: [] };
+  return { blockHeight: Long.ZERO, res: undefined, changeSet: [] };
 }
 
 export const ListenCommitRequest: MessageFns<ListenCommitRequest> = {
   encode(message: ListenCommitRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.blockHeight !== 0n) {
-      if (BigInt.asIntN(64, message.blockHeight) !== message.blockHeight) {
-        throw new globalThis.Error("value provided for field message.blockHeight of type int64 too large");
-      }
-      writer.uint32(8).int64(message.blockHeight);
+    if (!message.blockHeight.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.blockHeight.toString());
     }
     if (message.res !== undefined) {
       ResponseCommit.encode(message.res, writer.uint32(18).fork()).join();
@@ -191,7 +189,7 @@ export const ListenCommitRequest: MessageFns<ListenCommitRequest> = {
             break;
           }
 
-          message.blockHeight = reader.int64() as bigint;
+          message.blockHeight = Long.fromString(reader.int64().toString());
           continue;
         }
         case 2: {
@@ -222,10 +220,10 @@ export const ListenCommitRequest: MessageFns<ListenCommitRequest> = {
   fromJSON(object: any): ListenCommitRequest {
     return {
       blockHeight: isSet(object.blockHeight)
-        ? BigInt(object.blockHeight)
+        ? Long.fromValue(object.blockHeight)
         : isSet(object.block_height)
-        ? BigInt(object.block_height)
-        : 0n,
+        ? Long.fromValue(object.block_height)
+        : Long.ZERO,
       res: isSet(object.res) ? ResponseCommit.fromJSON(object.res) : undefined,
       changeSet: globalThis.Array.isArray(object?.changeSet)
         ? object.changeSet.map((e: any) => StoreKVPair.fromJSON(e))
@@ -237,8 +235,8 @@ export const ListenCommitRequest: MessageFns<ListenCommitRequest> = {
 
   toJSON(message: ListenCommitRequest): unknown {
     const obj: any = {};
-    if (message.blockHeight !== 0n) {
-      obj.blockHeight = message.blockHeight.toString();
+    if (!message.blockHeight.equals(Long.ZERO)) {
+      obj.blockHeight = (message.blockHeight || Long.ZERO).toString();
     }
     if (message.res !== undefined) {
       obj.res = ResponseCommit.toJSON(message.res);
@@ -254,7 +252,9 @@ export const ListenCommitRequest: MessageFns<ListenCommitRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<ListenCommitRequest>, I>>(object: I): ListenCommitRequest {
     const message = createBaseListenCommitRequest();
-    message.blockHeight = object.blockHeight ?? 0n;
+    message.blockHeight = (object.blockHeight !== undefined && object.blockHeight !== null)
+      ? Long.fromValue(object.blockHeight)
+      : Long.ZERO;
     message.res = (object.res !== undefined && object.res !== null)
       ? ResponseCommit.fromPartial(object.res)
       : undefined;
@@ -390,7 +390,7 @@ export const ABCIListenerServiceListenCommitDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -458,10 +458,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

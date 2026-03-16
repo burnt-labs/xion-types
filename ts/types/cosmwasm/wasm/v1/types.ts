@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 
 export const protobufPackage = "cosmwasm.wasm.v1";
@@ -140,7 +141,7 @@ export interface CodeInfo {
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfo {
   /** CodeID is the reference to the stored Wasm code */
-  codeId: bigint;
+  codeId: Long;
   /** Creator address who initially instantiated the contract */
   creator: string;
   /** Admin is an optional address that can execute migrations */
@@ -162,7 +163,7 @@ export interface ContractInfo {
 export interface ContractCodeHistoryEntry {
   operation: ContractCodeHistoryOperationType;
   /** CodeID is the reference to the stored WASM code */
-  codeId: bigint;
+  codeId: Long;
   /** Updated Tx position when the operation was executed. */
   updated?: AbsoluteTxPosition | undefined;
   msg: Uint8Array;
@@ -174,12 +175,12 @@ export interface ContractCodeHistoryEntry {
  */
 export interface AbsoluteTxPosition {
   /** BlockHeight is the block the contract was created at */
-  blockHeight: bigint;
+  blockHeight: Long;
   /**
    * TxIndex is a monotonic counter within the block (actual transaction index,
    * or gas consumed)
    */
-  txIndex: bigint;
+  txIndex: Long;
 }
 
 /** Model is a struct that holds a KV pair */
@@ -516,7 +517,7 @@ export const CodeInfo: MessageFns<CodeInfo> = {
 
 function createBaseContractInfo(): ContractInfo {
   return {
-    codeId: 0n,
+    codeId: Long.UZERO,
     creator: "",
     admin: "",
     label: "",
@@ -529,11 +530,8 @@ function createBaseContractInfo(): ContractInfo {
 
 export const ContractInfo: MessageFns<ContractInfo> = {
   encode(message: ContractInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.codeId !== 0n) {
-      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
-        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.codeId);
+    if (!message.codeId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.codeId.toString());
     }
     if (message.creator !== "") {
       writer.uint32(18).string(message.creator);
@@ -571,7 +569,7 @@ export const ContractInfo: MessageFns<ContractInfo> = {
             break;
           }
 
-          message.codeId = reader.uint64() as bigint;
+          message.codeId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -641,7 +639,11 @@ export const ContractInfo: MessageFns<ContractInfo> = {
 
   fromJSON(object: any): ContractInfo {
     return {
-      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
+      codeId: isSet(object.codeId)
+        ? Long.fromValue(object.codeId)
+        : isSet(object.code_id)
+        ? Long.fromValue(object.code_id)
+        : Long.UZERO,
       creator: isSet(object.creator) ? globalThis.String(object.creator) : "",
       admin: isSet(object.admin) ? globalThis.String(object.admin) : "",
       label: isSet(object.label) ? globalThis.String(object.label) : "",
@@ -662,8 +664,8 @@ export const ContractInfo: MessageFns<ContractInfo> = {
 
   toJSON(message: ContractInfo): unknown {
     const obj: any = {};
-    if (message.codeId !== 0n) {
-      obj.codeId = message.codeId.toString();
+    if (!message.codeId.equals(Long.UZERO)) {
+      obj.codeId = (message.codeId || Long.UZERO).toString();
     }
     if (message.creator !== "") {
       obj.creator = message.creator;
@@ -694,7 +696,9 @@ export const ContractInfo: MessageFns<ContractInfo> = {
   },
   fromPartial<I extends Exact<DeepPartial<ContractInfo>, I>>(object: I): ContractInfo {
     const message = createBaseContractInfo();
-    message.codeId = object.codeId ?? 0n;
+    message.codeId = (object.codeId !== undefined && object.codeId !== null)
+      ? Long.fromValue(object.codeId)
+      : Long.UZERO;
     message.creator = object.creator ?? "";
     message.admin = object.admin ?? "";
     message.label = object.label ?? "";
@@ -711,7 +715,7 @@ export const ContractInfo: MessageFns<ContractInfo> = {
 };
 
 function createBaseContractCodeHistoryEntry(): ContractCodeHistoryEntry {
-  return { operation: 0, codeId: 0n, updated: undefined, msg: new Uint8Array(0) };
+  return { operation: 0, codeId: Long.UZERO, updated: undefined, msg: new Uint8Array(0) };
 }
 
 export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
@@ -719,11 +723,8 @@ export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
     if (message.operation !== 0) {
       writer.uint32(8).int32(message.operation);
     }
-    if (message.codeId !== 0n) {
-      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
-        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.codeId);
+    if (!message.codeId.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.codeId.toString());
     }
     if (message.updated !== undefined) {
       AbsoluteTxPosition.encode(message.updated, writer.uint32(26).fork()).join();
@@ -754,7 +755,7 @@ export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
             break;
           }
 
-          message.codeId = reader.uint64() as bigint;
+          message.codeId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -785,7 +786,11 @@ export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
   fromJSON(object: any): ContractCodeHistoryEntry {
     return {
       operation: isSet(object.operation) ? contractCodeHistoryOperationTypeFromJSON(object.operation) : 0,
-      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
+      codeId: isSet(object.codeId)
+        ? Long.fromValue(object.codeId)
+        : isSet(object.code_id)
+        ? Long.fromValue(object.code_id)
+        : Long.UZERO,
       updated: isSet(object.updated) ? AbsoluteTxPosition.fromJSON(object.updated) : undefined,
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(0),
     };
@@ -796,8 +801,8 @@ export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
     if (message.operation !== 0) {
       obj.operation = contractCodeHistoryOperationTypeToJSON(message.operation);
     }
-    if (message.codeId !== 0n) {
-      obj.codeId = message.codeId.toString();
+    if (!message.codeId.equals(Long.UZERO)) {
+      obj.codeId = (message.codeId || Long.UZERO).toString();
     }
     if (message.updated !== undefined) {
       obj.updated = AbsoluteTxPosition.toJSON(message.updated);
@@ -814,7 +819,9 @@ export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
   fromPartial<I extends Exact<DeepPartial<ContractCodeHistoryEntry>, I>>(object: I): ContractCodeHistoryEntry {
     const message = createBaseContractCodeHistoryEntry();
     message.operation = object.operation ?? 0;
-    message.codeId = object.codeId ?? 0n;
+    message.codeId = (object.codeId !== undefined && object.codeId !== null)
+      ? Long.fromValue(object.codeId)
+      : Long.UZERO;
     message.updated = (object.updated !== undefined && object.updated !== null)
       ? AbsoluteTxPosition.fromPartial(object.updated)
       : undefined;
@@ -824,22 +831,16 @@ export const ContractCodeHistoryEntry: MessageFns<ContractCodeHistoryEntry> = {
 };
 
 function createBaseAbsoluteTxPosition(): AbsoluteTxPosition {
-  return { blockHeight: 0n, txIndex: 0n };
+  return { blockHeight: Long.UZERO, txIndex: Long.UZERO };
 }
 
 export const AbsoluteTxPosition: MessageFns<AbsoluteTxPosition> = {
   encode(message: AbsoluteTxPosition, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.blockHeight !== 0n) {
-      if (BigInt.asUintN(64, message.blockHeight) !== message.blockHeight) {
-        throw new globalThis.Error("value provided for field message.blockHeight of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.blockHeight);
+    if (!message.blockHeight.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.blockHeight.toString());
     }
-    if (message.txIndex !== 0n) {
-      if (BigInt.asUintN(64, message.txIndex) !== message.txIndex) {
-        throw new globalThis.Error("value provided for field message.txIndex of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.txIndex);
+    if (!message.txIndex.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.txIndex.toString());
     }
     return writer;
   },
@@ -856,7 +857,7 @@ export const AbsoluteTxPosition: MessageFns<AbsoluteTxPosition> = {
             break;
           }
 
-          message.blockHeight = reader.uint64() as bigint;
+          message.blockHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -864,7 +865,7 @@ export const AbsoluteTxPosition: MessageFns<AbsoluteTxPosition> = {
             break;
           }
 
-          message.txIndex = reader.uint64() as bigint;
+          message.txIndex = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -879,21 +880,25 @@ export const AbsoluteTxPosition: MessageFns<AbsoluteTxPosition> = {
   fromJSON(object: any): AbsoluteTxPosition {
     return {
       blockHeight: isSet(object.blockHeight)
-        ? BigInt(object.blockHeight)
+        ? Long.fromValue(object.blockHeight)
         : isSet(object.block_height)
-        ? BigInt(object.block_height)
-        : 0n,
-      txIndex: isSet(object.txIndex) ? BigInt(object.txIndex) : isSet(object.tx_index) ? BigInt(object.tx_index) : 0n,
+        ? Long.fromValue(object.block_height)
+        : Long.UZERO,
+      txIndex: isSet(object.txIndex)
+        ? Long.fromValue(object.txIndex)
+        : isSet(object.tx_index)
+        ? Long.fromValue(object.tx_index)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: AbsoluteTxPosition): unknown {
     const obj: any = {};
-    if (message.blockHeight !== 0n) {
-      obj.blockHeight = message.blockHeight.toString();
+    if (!message.blockHeight.equals(Long.UZERO)) {
+      obj.blockHeight = (message.blockHeight || Long.UZERO).toString();
     }
-    if (message.txIndex !== 0n) {
-      obj.txIndex = message.txIndex.toString();
+    if (!message.txIndex.equals(Long.UZERO)) {
+      obj.txIndex = (message.txIndex || Long.UZERO).toString();
     }
     return obj;
   },
@@ -903,8 +908,12 @@ export const AbsoluteTxPosition: MessageFns<AbsoluteTxPosition> = {
   },
   fromPartial<I extends Exact<DeepPartial<AbsoluteTxPosition>, I>>(object: I): AbsoluteTxPosition {
     const message = createBaseAbsoluteTxPosition();
-    message.blockHeight = object.blockHeight ?? 0n;
-    message.txIndex = object.txIndex ?? 0n;
+    message.blockHeight = (object.blockHeight !== undefined && object.blockHeight !== null)
+      ? Long.fromValue(object.blockHeight)
+      : Long.UZERO;
+    message.txIndex = (object.txIndex !== undefined && object.txIndex !== null)
+      ? Long.fromValue(object.txIndex)
+      : Long.UZERO;
     return message;
   },
 };
@@ -1010,10 +1019,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

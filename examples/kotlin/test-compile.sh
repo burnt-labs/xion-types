@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Simple test script to validate Kotlin examples
 
 set -e

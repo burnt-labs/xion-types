@@ -2,4 +2,4 @@ version: v2
 plugins:
   - local: protoc-gen-ts_proto
     out: ts/types
-    opt: "esModuleInterop=true,forceLong=bigint,useOptionals=messages,outputClientImpl=grpc-web"
+    opt: "esModuleInterop=true,forceLong=long,useOptionals=messages,outputClientImpl=grpc-web"

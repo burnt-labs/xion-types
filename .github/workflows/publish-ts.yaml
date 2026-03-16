@@ -6,6 +6,12 @@ on:
       release_tag:
         required: true
         type: string
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to publish"
+        required: true
+        type: string
 
 env:
   NODE_VERSION: "20"
@@ -13,23 +19,14 @@ env:
   REGISTRY_URL: "https://registry.npmjs.org"
 
 jobs:
-  test-dependent-projects:
-    name: Test ${{ matrix.project }}
+  build:
+    name: Build tarball
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        project:
-          - xion-explorer
-          - xion-faucet
-          - xion-staking
     steps:
-      - name: Checkout Main Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_tag }}
-          path: xion-types
-          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event_name != 'workflow_dispatch' && inputs.release_tag || '' }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,8 +39,44 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
 
       - name: Build xion-types tarball
-        working-directory: xion-types
         run: bash scripts/ci/helper/build-ts-tarball.sh ts/
+
+      - name: Upload tarball
+        uses: actions/upload-artifact@v4
+        with:
+          name: xion-types-tarball
+          path: ts/*.tgz
+          retention-days: 1
+
+  test-dependent-projects:
+    name: Test ${{ matrix.project }}
+    needs: [build]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - xion-explorer
+          - xion-faucet
+          - xion-staking
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          path: xion-types
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event_name != 'workflow_dispatch' && inputs.release_tag || '' }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Download tarball
+        uses: actions/download-artifact@v4
+        with:
+          name: xion-types-tarball
+          path: xion-types/ts/
 
       - name: Checkout Dependent Project
         uses: actions/checkout@v4
@@ -69,7 +102,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_tag }}
+          ref: ${{ github.event_name != 'workflow_dispatch' && inputs.release_tag || '' }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

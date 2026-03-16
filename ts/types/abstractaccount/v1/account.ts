@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "abstractaccount.v1";
 
@@ -17,8 +18,8 @@ export const protobufPackage = "abstractaccount.v1";
  */
 export interface AbstractAccount {
   address: string;
-  accountNumber: bigint;
-  sequence: bigint;
+  accountNumber: Long;
+  sequence: Long;
 }
 
 /**
@@ -34,7 +35,7 @@ export interface NilPubKey {
 }
 
 function createBaseAbstractAccount(): AbstractAccount {
-  return { address: "", accountNumber: 0n, sequence: 0n };
+  return { address: "", accountNumber: Long.UZERO, sequence: Long.UZERO };
 }
 
 export const AbstractAccount: MessageFns<AbstractAccount> = {
@@ -42,17 +43,11 @@ export const AbstractAccount: MessageFns<AbstractAccount> = {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
-    if (message.accountNumber !== 0n) {
-      if (BigInt.asUintN(64, message.accountNumber) !== message.accountNumber) {
-        throw new globalThis.Error("value provided for field message.accountNumber of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.accountNumber);
+    if (!message.accountNumber.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.accountNumber.toString());
     }
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.sequence.toString());
     }
     return writer;
   },
@@ -77,7 +72,7 @@ export const AbstractAccount: MessageFns<AbstractAccount> = {
             break;
           }
 
-          message.accountNumber = reader.uint64() as bigint;
+          message.accountNumber = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -85,7 +80,7 @@ export const AbstractAccount: MessageFns<AbstractAccount> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -101,11 +96,11 @@ export const AbstractAccount: MessageFns<AbstractAccount> = {
     return {
       address: isSet(object.address) ? globalThis.String(object.address) : "",
       accountNumber: isSet(object.accountNumber)
-        ? BigInt(object.accountNumber)
+        ? Long.fromValue(object.accountNumber)
         : isSet(object.account_number)
-        ? BigInt(object.account_number)
-        : 0n,
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+        ? Long.fromValue(object.account_number)
+        : Long.UZERO,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
     };
   },
 
@@ -114,11 +109,11 @@ export const AbstractAccount: MessageFns<AbstractAccount> = {
     if (message.address !== "") {
       obj.address = message.address;
     }
-    if (message.accountNumber !== 0n) {
-      obj.accountNumber = message.accountNumber.toString();
+    if (!message.accountNumber.equals(Long.UZERO)) {
+      obj.accountNumber = (message.accountNumber || Long.UZERO).toString();
     }
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     return obj;
   },
@@ -129,8 +124,12 @@ export const AbstractAccount: MessageFns<AbstractAccount> = {
   fromPartial<I extends Exact<DeepPartial<AbstractAccount>, I>>(object: I): AbstractAccount {
     const message = createBaseAbstractAccount();
     message.address = object.address ?? "";
-    message.accountNumber = object.accountNumber ?? 0n;
-    message.sequence = object.sequence ?? 0n;
+    message.accountNumber = (object.accountNumber !== undefined && object.accountNumber !== null)
+      ? Long.fromValue(object.accountNumber)
+      : Long.UZERO;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     return message;
   },
 };
@@ -224,10 +223,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

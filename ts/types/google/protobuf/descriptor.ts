@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "google.protobuf";
 
@@ -1617,8 +1618,8 @@ export interface UninterpretedOption {
    * identified it as during parsing. Exactly one of these should be set.
    */
   identifierValue?: string | undefined;
-  positiveIntValue?: bigint | undefined;
-  negativeIntValue?: bigint | undefined;
+  positiveIntValue?: Long | undefined;
+  negativeIntValue?: Long | undefined;
   doubleValue?: number | undefined;
   stringValue?: Uint8Array | undefined;
   aggregateValue?: string | undefined;
@@ -6055,8 +6056,8 @@ function createBaseUninterpretedOption(): UninterpretedOption {
   return {
     name: [],
     identifierValue: "",
-    positiveIntValue: 0n,
-    negativeIntValue: 0n,
+    positiveIntValue: Long.UZERO,
+    negativeIntValue: Long.ZERO,
     doubleValue: 0,
     stringValue: new Uint8Array(0),
     aggregateValue: "",
@@ -6071,17 +6072,11 @@ export const UninterpretedOption: MessageFns<UninterpretedOption> = {
     if (message.identifierValue !== undefined && message.identifierValue !== "") {
       writer.uint32(26).string(message.identifierValue);
     }
-    if (message.positiveIntValue !== undefined && message.positiveIntValue !== 0n) {
-      if (BigInt.asUintN(64, message.positiveIntValue) !== message.positiveIntValue) {
-        throw new globalThis.Error("value provided for field message.positiveIntValue of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.positiveIntValue);
+    if (message.positiveIntValue !== undefined && !message.positiveIntValue.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.positiveIntValue.toString());
     }
-    if (message.negativeIntValue !== undefined && message.negativeIntValue !== 0n) {
-      if (BigInt.asIntN(64, message.negativeIntValue) !== message.negativeIntValue) {
-        throw new globalThis.Error("value provided for field message.negativeIntValue of type int64 too large");
-      }
-      writer.uint32(40).int64(message.negativeIntValue);
+    if (message.negativeIntValue !== undefined && !message.negativeIntValue.equals(Long.ZERO)) {
+      writer.uint32(40).int64(message.negativeIntValue.toString());
     }
     if (message.doubleValue !== undefined && message.doubleValue !== 0) {
       writer.uint32(49).double(message.doubleValue);
@@ -6123,7 +6118,7 @@ export const UninterpretedOption: MessageFns<UninterpretedOption> = {
             break;
           }
 
-          message.positiveIntValue = reader.uint64() as bigint;
+          message.positiveIntValue = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 5: {
@@ -6131,7 +6126,7 @@ export const UninterpretedOption: MessageFns<UninterpretedOption> = {
             break;
           }
 
-          message.negativeIntValue = reader.int64() as bigint;
+          message.negativeIntValue = Long.fromString(reader.int64().toString());
           continue;
         }
         case 6: {
@@ -6178,15 +6173,15 @@ export const UninterpretedOption: MessageFns<UninterpretedOption> = {
         ? globalThis.String(object.identifier_value)
         : "",
       positiveIntValue: isSet(object.positiveIntValue)
-        ? BigInt(object.positiveIntValue)
+        ? Long.fromValue(object.positiveIntValue)
         : isSet(object.positive_int_value)
-        ? BigInt(object.positive_int_value)
-        : 0n,
+        ? Long.fromValue(object.positive_int_value)
+        : Long.UZERO,
       negativeIntValue: isSet(object.negativeIntValue)
-        ? BigInt(object.negativeIntValue)
+        ? Long.fromValue(object.negativeIntValue)
         : isSet(object.negative_int_value)
-        ? BigInt(object.negative_int_value)
-        : 0n,
+        ? Long.fromValue(object.negative_int_value)
+        : Long.ZERO,
       doubleValue: isSet(object.doubleValue)
         ? globalThis.Number(object.doubleValue)
         : isSet(object.double_value)
@@ -6213,11 +6208,11 @@ export const UninterpretedOption: MessageFns<UninterpretedOption> = {
     if (message.identifierValue !== undefined && message.identifierValue !== "") {
       obj.identifierValue = message.identifierValue;
     }
-    if (message.positiveIntValue !== undefined && message.positiveIntValue !== 0n) {
-      obj.positiveIntValue = message.positiveIntValue.toString();
+    if (message.positiveIntValue !== undefined && !message.positiveIntValue.equals(Long.UZERO)) {
+      obj.positiveIntValue = (message.positiveIntValue || Long.UZERO).toString();
     }
-    if (message.negativeIntValue !== undefined && message.negativeIntValue !== 0n) {
-      obj.negativeIntValue = message.negativeIntValue.toString();
+    if (message.negativeIntValue !== undefined && !message.negativeIntValue.equals(Long.ZERO)) {
+      obj.negativeIntValue = (message.negativeIntValue || Long.ZERO).toString();
     }
     if (message.doubleValue !== undefined && message.doubleValue !== 0) {
       obj.doubleValue = message.doubleValue;
@@ -6238,8 +6233,12 @@ export const UninterpretedOption: MessageFns<UninterpretedOption> = {
     const message = createBaseUninterpretedOption();
     message.name = object.name?.map((e) => UninterpretedOption_NamePart.fromPartial(e)) || [];
     message.identifierValue = object.identifierValue ?? "";
-    message.positiveIntValue = object.positiveIntValue ?? 0n;
-    message.negativeIntValue = object.negativeIntValue ?? 0n;
+    message.positiveIntValue = (object.positiveIntValue !== undefined && object.positiveIntValue !== null)
+      ? Long.fromValue(object.positiveIntValue)
+      : Long.UZERO;
+    message.negativeIntValue = (object.negativeIntValue !== undefined && object.negativeIntValue !== null)
+      ? Long.fromValue(object.negativeIntValue)
+      : Long.ZERO;
     message.doubleValue = object.doubleValue ?? 0;
     message.stringValue = object.stringValue ?? new Uint8Array(0);
     message.aggregateValue = object.aggregateValue ?? "";
@@ -7251,10 +7250,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

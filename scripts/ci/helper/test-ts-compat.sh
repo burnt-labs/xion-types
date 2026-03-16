@@ -26,6 +26,9 @@ if [[ -z "$PROJECT_DIR" ]] || [[ -z "$TARBALL" ]]; then
   exit 1
 fi
 
+# Resolve tarball to absolute path before changing directories
+TARBALL="$(cd "$(dirname "$TARBALL")" && pwd)/$(basename "$TARBALL")"
+
 cd "$PROJECT_DIR"
 npm install --ignore-scripts --legacy-peer-deps
 
@@ -38,14 +41,14 @@ if grep -q '"nuxt"' package.json; then
   NUXT_PUBLIC_FAUCET_DENOM=x NUXT_PUBLIC_FAUCET_GAS_LIMIT=1 NUXT_PUBLIC_FAUCET_GAS_PRICE=0 \
   NUXT_PUBLIC_FAUCET_LOGGING=false NUXT_PUBLIC_FAUCET_MEMO=x NUXT_PUBLIC_FAUCET_TOKENS=x \
   NUXT_PUBLIC_XION_TESTNET_1_ADDRESS=x NUXT_PUBLIC_XION_TESTNET_1_RPC_URL=https://x \
-  NUXT_PUBLIC_XION_TESTNET_2_RPC_URL=https://x NUXT_DISCORD_APP_ID=x \
+  NUXT_PUBLIC_XION_TESTNET_2_RPC_URL=https://x NUXT_DISCORD_APP_ID=x NUXT_DISCORD_TOKEN=x \
   npx nuxt prepare || true
 fi
 
 npm install "$TARBALL" --no-save --legacy-peer-deps
 
 npx tsc --noEmit --skipLibCheck > /tmp/tsc.log 2>&1 || true
-PROTO_ERRORS=$(grep -E "error TS" /tmp/tsc.log | grep -iE "(xion-types|protobuf|proto)" | grep -vE "(Cannot read file|\.nuxt|node_modules)" || true)
+PROTO_ERRORS=$(grep -E "error TS" /tmp/tsc.log | grep -iE "(xion-types|protobuf|\.proto)" | grep -vE "(Cannot read file|\.nuxt|node_modules|prototype)" || true)
 if [ -n "$PROTO_ERRORS" ]; then
   echo "Proto-related TS errors:" >&2
   echo "$PROTO_ERRORS" | head -10 >&2

@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "cosmos.benchmark.module.v1";
 
@@ -17,19 +18,19 @@ export interface Module {
 /** GenesisParams defines the genesis parameters for the benchmark module. */
 export interface GeneratorParams {
   /** seed is the seed for the random number generator. */
-  seed: bigint;
+  seed: Long;
   /** bucket_count is the number of store keys to uniformly distribute genesis_count keys across. */
-  bucketCount: bigint;
+  bucketCount: Long;
   /** key_mean is the mean size (in normal distribution) of keys in each bucket. */
-  keyMean: bigint;
+  keyMean: Long;
   /** key_std_dev is the standard deviation of key sizes in each bucket. */
-  keyStdDev: bigint;
+  keyStdDev: Long;
   /** value_mean is the mean size (in normal distribution) of values in each bucket. */
-  valueMean: bigint;
+  valueMean: Long;
   /** value_std_dev is the standard deviation of value sizes in each bucket. */
-  valueStdDev: bigint;
+  valueStdDev: Long;
   /** genesis_count is the number of keys to insert in the store, distributed across all buckets. */
-  genesisCount: bigint;
+  genesisCount: Long;
   /** insert_weight is the weight of insert operations. */
   insertWeight: number;
   /** update_weight is the weight of update operations. */
@@ -108,13 +109,13 @@ export const Module: MessageFns<Module> = {
 
 function createBaseGeneratorParams(): GeneratorParams {
   return {
-    seed: 0n,
-    bucketCount: 0n,
-    keyMean: 0n,
-    keyStdDev: 0n,
-    valueMean: 0n,
-    valueStdDev: 0n,
-    genesisCount: 0n,
+    seed: Long.UZERO,
+    bucketCount: Long.UZERO,
+    keyMean: Long.UZERO,
+    keyStdDev: Long.UZERO,
+    valueMean: Long.UZERO,
+    valueStdDev: Long.UZERO,
+    genesisCount: Long.UZERO,
     insertWeight: 0,
     updateWeight: 0,
     getWeight: 0,
@@ -124,47 +125,26 @@ function createBaseGeneratorParams(): GeneratorParams {
 
 export const GeneratorParams: MessageFns<GeneratorParams> = {
   encode(message: GeneratorParams, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.seed !== 0n) {
-      if (BigInt.asUintN(64, message.seed) !== message.seed) {
-        throw new globalThis.Error("value provided for field message.seed of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.seed);
+    if (!message.seed.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.seed.toString());
     }
-    if (message.bucketCount !== 0n) {
-      if (BigInt.asUintN(64, message.bucketCount) !== message.bucketCount) {
-        throw new globalThis.Error("value provided for field message.bucketCount of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.bucketCount);
+    if (!message.bucketCount.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.bucketCount.toString());
     }
-    if (message.keyMean !== 0n) {
-      if (BigInt.asUintN(64, message.keyMean) !== message.keyMean) {
-        throw new globalThis.Error("value provided for field message.keyMean of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.keyMean);
+    if (!message.keyMean.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.keyMean.toString());
     }
-    if (message.keyStdDev !== 0n) {
-      if (BigInt.asUintN(64, message.keyStdDev) !== message.keyStdDev) {
-        throw new globalThis.Error("value provided for field message.keyStdDev of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.keyStdDev);
+    if (!message.keyStdDev.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.keyStdDev.toString());
     }
-    if (message.valueMean !== 0n) {
-      if (BigInt.asUintN(64, message.valueMean) !== message.valueMean) {
-        throw new globalThis.Error("value provided for field message.valueMean of type uint64 too large");
-      }
-      writer.uint32(48).uint64(message.valueMean);
+    if (!message.valueMean.equals(Long.UZERO)) {
+      writer.uint32(48).uint64(message.valueMean.toString());
     }
-    if (message.valueStdDev !== 0n) {
-      if (BigInt.asUintN(64, message.valueStdDev) !== message.valueStdDev) {
-        throw new globalThis.Error("value provided for field message.valueStdDev of type uint64 too large");
-      }
-      writer.uint32(56).uint64(message.valueStdDev);
+    if (!message.valueStdDev.equals(Long.UZERO)) {
+      writer.uint32(56).uint64(message.valueStdDev.toString());
     }
-    if (message.genesisCount !== 0n) {
-      if (BigInt.asUintN(64, message.genesisCount) !== message.genesisCount) {
-        throw new globalThis.Error("value provided for field message.genesisCount of type uint64 too large");
-      }
-      writer.uint32(64).uint64(message.genesisCount);
+    if (!message.genesisCount.equals(Long.UZERO)) {
+      writer.uint32(64).uint64(message.genesisCount.toString());
     }
     if (message.insertWeight !== 0) {
       writer.uint32(77).float(message.insertWeight);
@@ -193,7 +173,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.seed = reader.uint64() as bigint;
+          message.seed = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -201,7 +181,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.bucketCount = reader.uint64() as bigint;
+          message.bucketCount = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -209,7 +189,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.keyMean = reader.uint64() as bigint;
+          message.keyMean = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 4: {
@@ -217,7 +197,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.keyStdDev = reader.uint64() as bigint;
+          message.keyStdDev = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 6: {
@@ -225,7 +205,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.valueMean = reader.uint64() as bigint;
+          message.valueMean = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 7: {
@@ -233,7 +213,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.valueStdDev = reader.uint64() as bigint;
+          message.valueStdDev = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 8: {
@@ -241,7 +221,7 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
             break;
           }
 
-          message.genesisCount = reader.uint64() as bigint;
+          message.genesisCount = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 9: {
@@ -287,33 +267,37 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
 
   fromJSON(object: any): GeneratorParams {
     return {
-      seed: isSet(object.seed) ? BigInt(object.seed) : 0n,
+      seed: isSet(object.seed) ? Long.fromValue(object.seed) : Long.UZERO,
       bucketCount: isSet(object.bucketCount)
-        ? BigInt(object.bucketCount)
+        ? Long.fromValue(object.bucketCount)
         : isSet(object.bucket_count)
-        ? BigInt(object.bucket_count)
-        : 0n,
-      keyMean: isSet(object.keyMean) ? BigInt(object.keyMean) : isSet(object.key_mean) ? BigInt(object.key_mean) : 0n,
+        ? Long.fromValue(object.bucket_count)
+        : Long.UZERO,
+      keyMean: isSet(object.keyMean)
+        ? Long.fromValue(object.keyMean)
+        : isSet(object.key_mean)
+        ? Long.fromValue(object.key_mean)
+        : Long.UZERO,
       keyStdDev: isSet(object.keyStdDev)
-        ? BigInt(object.keyStdDev)
+        ? Long.fromValue(object.keyStdDev)
         : isSet(object.key_std_dev)
-        ? BigInt(object.key_std_dev)
-        : 0n,
+        ? Long.fromValue(object.key_std_dev)
+        : Long.UZERO,
       valueMean: isSet(object.valueMean)
-        ? BigInt(object.valueMean)
+        ? Long.fromValue(object.valueMean)
         : isSet(object.value_mean)
-        ? BigInt(object.value_mean)
-        : 0n,
+        ? Long.fromValue(object.value_mean)
+        : Long.UZERO,
       valueStdDev: isSet(object.valueStdDev)
-        ? BigInt(object.valueStdDev)
+        ? Long.fromValue(object.valueStdDev)
         : isSet(object.value_std_dev)
-        ? BigInt(object.value_std_dev)
-        : 0n,
+        ? Long.fromValue(object.value_std_dev)
+        : Long.UZERO,
       genesisCount: isSet(object.genesisCount)
-        ? BigInt(object.genesisCount)
+        ? Long.fromValue(object.genesisCount)
         : isSet(object.genesis_count)
-        ? BigInt(object.genesis_count)
-        : 0n,
+        ? Long.fromValue(object.genesis_count)
+        : Long.UZERO,
       insertWeight: isSet(object.insertWeight)
         ? globalThis.Number(object.insertWeight)
         : isSet(object.insert_weight)
@@ -339,26 +323,26 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
 
   toJSON(message: GeneratorParams): unknown {
     const obj: any = {};
-    if (message.seed !== 0n) {
-      obj.seed = message.seed.toString();
+    if (!message.seed.equals(Long.UZERO)) {
+      obj.seed = (message.seed || Long.UZERO).toString();
     }
-    if (message.bucketCount !== 0n) {
-      obj.bucketCount = message.bucketCount.toString();
+    if (!message.bucketCount.equals(Long.UZERO)) {
+      obj.bucketCount = (message.bucketCount || Long.UZERO).toString();
     }
-    if (message.keyMean !== 0n) {
-      obj.keyMean = message.keyMean.toString();
+    if (!message.keyMean.equals(Long.UZERO)) {
+      obj.keyMean = (message.keyMean || Long.UZERO).toString();
     }
-    if (message.keyStdDev !== 0n) {
-      obj.keyStdDev = message.keyStdDev.toString();
+    if (!message.keyStdDev.equals(Long.UZERO)) {
+      obj.keyStdDev = (message.keyStdDev || Long.UZERO).toString();
     }
-    if (message.valueMean !== 0n) {
-      obj.valueMean = message.valueMean.toString();
+    if (!message.valueMean.equals(Long.UZERO)) {
+      obj.valueMean = (message.valueMean || Long.UZERO).toString();
     }
-    if (message.valueStdDev !== 0n) {
-      obj.valueStdDev = message.valueStdDev.toString();
+    if (!message.valueStdDev.equals(Long.UZERO)) {
+      obj.valueStdDev = (message.valueStdDev || Long.UZERO).toString();
     }
-    if (message.genesisCount !== 0n) {
-      obj.genesisCount = message.genesisCount.toString();
+    if (!message.genesisCount.equals(Long.UZERO)) {
+      obj.genesisCount = (message.genesisCount || Long.UZERO).toString();
     }
     if (message.insertWeight !== 0) {
       obj.insertWeight = message.insertWeight;
@@ -380,13 +364,25 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
   },
   fromPartial<I extends Exact<DeepPartial<GeneratorParams>, I>>(object: I): GeneratorParams {
     const message = createBaseGeneratorParams();
-    message.seed = object.seed ?? 0n;
-    message.bucketCount = object.bucketCount ?? 0n;
-    message.keyMean = object.keyMean ?? 0n;
-    message.keyStdDev = object.keyStdDev ?? 0n;
-    message.valueMean = object.valueMean ?? 0n;
-    message.valueStdDev = object.valueStdDev ?? 0n;
-    message.genesisCount = object.genesisCount ?? 0n;
+    message.seed = (object.seed !== undefined && object.seed !== null) ? Long.fromValue(object.seed) : Long.UZERO;
+    message.bucketCount = (object.bucketCount !== undefined && object.bucketCount !== null)
+      ? Long.fromValue(object.bucketCount)
+      : Long.UZERO;
+    message.keyMean = (object.keyMean !== undefined && object.keyMean !== null)
+      ? Long.fromValue(object.keyMean)
+      : Long.UZERO;
+    message.keyStdDev = (object.keyStdDev !== undefined && object.keyStdDev !== null)
+      ? Long.fromValue(object.keyStdDev)
+      : Long.UZERO;
+    message.valueMean = (object.valueMean !== undefined && object.valueMean !== null)
+      ? Long.fromValue(object.valueMean)
+      : Long.UZERO;
+    message.valueStdDev = (object.valueStdDev !== undefined && object.valueStdDev !== null)
+      ? Long.fromValue(object.valueStdDev)
+      : Long.UZERO;
+    message.genesisCount = (object.genesisCount !== undefined && object.genesisCount !== null)
+      ? Long.fromValue(object.genesisCount)
+      : Long.UZERO;
     message.insertWeight = object.insertWeight ?? 0;
     message.updateWeight = object.updateWeight ?? 0;
     message.getWeight = object.getWeight ?? 0;
@@ -395,10 +391,10 @@ export const GeneratorParams: MessageFns<GeneratorParams> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

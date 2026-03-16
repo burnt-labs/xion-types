@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Any } from "../../../../google/protobuf/any";
 import { Height } from "../../client/v1/client";
 import { Counterparty, Params, Version } from "./connection";
@@ -22,7 +23,7 @@ export interface MsgConnectionOpenInit {
   clientId: string;
   counterparty?: Counterparty | undefined;
   version?: Version | undefined;
-  delayPeriod: bigint;
+  delayPeriod: Long;
   signer: string;
 }
 
@@ -52,7 +53,7 @@ export interface MsgConnectionOpenTry {
    */
   clientState?: Any | undefined;
   counterparty?: Counterparty | undefined;
-  delayPeriod: bigint;
+  delayPeriod: Long;
   counterpartyVersions: Version[];
   proofHeight?:
     | Height
@@ -184,7 +185,7 @@ export interface MsgUpdateParamsResponse {
 }
 
 function createBaseMsgConnectionOpenInit(): MsgConnectionOpenInit {
-  return { clientId: "", counterparty: undefined, version: undefined, delayPeriod: 0n, signer: "" };
+  return { clientId: "", counterparty: undefined, version: undefined, delayPeriod: Long.UZERO, signer: "" };
 }
 
 export const MsgConnectionOpenInit: MessageFns<MsgConnectionOpenInit> = {
@@ -198,11 +199,8 @@ export const MsgConnectionOpenInit: MessageFns<MsgConnectionOpenInit> = {
     if (message.version !== undefined) {
       Version.encode(message.version, writer.uint32(26).fork()).join();
     }
-    if (message.delayPeriod !== 0n) {
-      if (BigInt.asUintN(64, message.delayPeriod) !== message.delayPeriod) {
-        throw new globalThis.Error("value provided for field message.delayPeriod of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.delayPeriod);
+    if (!message.delayPeriod.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.delayPeriod.toString());
     }
     if (message.signer !== "") {
       writer.uint32(42).string(message.signer);
@@ -246,7 +244,7 @@ export const MsgConnectionOpenInit: MessageFns<MsgConnectionOpenInit> = {
             break;
           }
 
-          message.delayPeriod = reader.uint64() as bigint;
+          message.delayPeriod = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 5: {
@@ -276,10 +274,10 @@ export const MsgConnectionOpenInit: MessageFns<MsgConnectionOpenInit> = {
       counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
       version: isSet(object.version) ? Version.fromJSON(object.version) : undefined,
       delayPeriod: isSet(object.delayPeriod)
-        ? BigInt(object.delayPeriod)
+        ? Long.fromValue(object.delayPeriod)
         : isSet(object.delay_period)
-        ? BigInt(object.delay_period)
-        : 0n,
+        ? Long.fromValue(object.delay_period)
+        : Long.UZERO,
       signer: isSet(object.signer) ? globalThis.String(object.signer) : "",
     };
   },
@@ -295,8 +293,8 @@ export const MsgConnectionOpenInit: MessageFns<MsgConnectionOpenInit> = {
     if (message.version !== undefined) {
       obj.version = Version.toJSON(message.version);
     }
-    if (message.delayPeriod !== 0n) {
-      obj.delayPeriod = message.delayPeriod.toString();
+    if (!message.delayPeriod.equals(Long.UZERO)) {
+      obj.delayPeriod = (message.delayPeriod || Long.UZERO).toString();
     }
     if (message.signer !== "") {
       obj.signer = message.signer;
@@ -316,7 +314,9 @@ export const MsgConnectionOpenInit: MessageFns<MsgConnectionOpenInit> = {
     message.version = (object.version !== undefined && object.version !== null)
       ? Version.fromPartial(object.version)
       : undefined;
-    message.delayPeriod = object.delayPeriod ?? 0n;
+    message.delayPeriod = (object.delayPeriod !== undefined && object.delayPeriod !== null)
+      ? Long.fromValue(object.delayPeriod)
+      : Long.UZERO;
     message.signer = object.signer ?? "";
     return message;
   },
@@ -371,7 +371,7 @@ function createBaseMsgConnectionOpenTry(): MsgConnectionOpenTry {
     previousConnectionId: "",
     clientState: undefined,
     counterparty: undefined,
-    delayPeriod: 0n,
+    delayPeriod: Long.UZERO,
     counterpartyVersions: [],
     proofHeight: undefined,
     proofInit: new Uint8Array(0),
@@ -397,11 +397,8 @@ export const MsgConnectionOpenTry: MessageFns<MsgConnectionOpenTry> = {
     if (message.counterparty !== undefined) {
       Counterparty.encode(message.counterparty, writer.uint32(34).fork()).join();
     }
-    if (message.delayPeriod !== 0n) {
-      if (BigInt.asUintN(64, message.delayPeriod) !== message.delayPeriod) {
-        throw new globalThis.Error("value provided for field message.delayPeriod of type uint64 too large");
-      }
-      writer.uint32(40).uint64(message.delayPeriod);
+    if (!message.delayPeriod.equals(Long.UZERO)) {
+      writer.uint32(40).uint64(message.delayPeriod.toString());
     }
     for (const v of message.counterpartyVersions) {
       Version.encode(v!, writer.uint32(50).fork()).join();
@@ -474,7 +471,7 @@ export const MsgConnectionOpenTry: MessageFns<MsgConnectionOpenTry> = {
             break;
           }
 
-          message.delayPeriod = reader.uint64() as bigint;
+          message.delayPeriod = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 6: {
@@ -569,10 +566,10 @@ export const MsgConnectionOpenTry: MessageFns<MsgConnectionOpenTry> = {
         : undefined,
       counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
       delayPeriod: isSet(object.delayPeriod)
-        ? BigInt(object.delayPeriod)
+        ? Long.fromValue(object.delayPeriod)
         : isSet(object.delay_period)
-        ? BigInt(object.delay_period)
-        : 0n,
+        ? Long.fromValue(object.delay_period)
+        : Long.UZERO,
       counterpartyVersions: globalThis.Array.isArray(object?.counterpartyVersions)
         ? object.counterpartyVersions.map((e: any) => Version.fromJSON(e))
         : globalThis.Array.isArray(object?.counterparty_versions)
@@ -626,8 +623,8 @@ export const MsgConnectionOpenTry: MessageFns<MsgConnectionOpenTry> = {
     if (message.counterparty !== undefined) {
       obj.counterparty = Counterparty.toJSON(message.counterparty);
     }
-    if (message.delayPeriod !== 0n) {
-      obj.delayPeriod = message.delayPeriod.toString();
+    if (!message.delayPeriod.equals(Long.UZERO)) {
+      obj.delayPeriod = (message.delayPeriod || Long.UZERO).toString();
     }
     if (message.counterpartyVersions?.length) {
       obj.counterpartyVersions = message.counterpartyVersions.map((e) => Version.toJSON(e));
@@ -669,7 +666,9 @@ export const MsgConnectionOpenTry: MessageFns<MsgConnectionOpenTry> = {
     message.counterparty = (object.counterparty !== undefined && object.counterparty !== null)
       ? Counterparty.fromPartial(object.counterparty)
       : undefined;
-    message.delayPeriod = object.delayPeriod ?? 0n;
+    message.delayPeriod = (object.delayPeriod !== undefined && object.delayPeriod !== null)
+      ? Long.fromValue(object.delayPeriod)
+      : Long.UZERO;
     message.counterpartyVersions = object.counterpartyVersions?.map((e) => Version.fromPartial(e)) || [];
     message.proofHeight = (object.proofHeight !== undefined && object.proofHeight !== null)
       ? Height.fromPartial(object.proofHeight)
@@ -1538,7 +1537,7 @@ export const MsgUpdateConnectionParamsDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -1631,10 +1630,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

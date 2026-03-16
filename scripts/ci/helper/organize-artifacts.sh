@@ -30,6 +30,7 @@ for dir in generated-types-*/; do
     python) mkdir -p python/xion_types && cp -r "$dir"/* python/xion_types/ ;;
     ruby)   cp -r "$dir"/* ruby/ ;;
     docs)   cp -r "$dir"/* docs/ ;;
+    swift)  mkdir -p swift/Sources && cp -r "$dir"/* swift/Sources/ ;;
     *)      mkdir -p "$lang/types" && cp -r "$dir"/* "$lang/types/" ;;
   esac
   echo "Organized: $lang"

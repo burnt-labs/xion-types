@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "cosmwasm.wasm.v1";
 
@@ -17,12 +18,12 @@ export interface MsgIBCSend {
    * Timeout height relative to the current block height.
    * The timeout is disabled when set to 0.
    */
-  timeoutHeight: bigint;
+  timeoutHeight: Long;
   /**
    * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
    * The timeout is disabled when set to 0.
    */
-  timeoutTimestamp: bigint;
+  timeoutTimestamp: Long;
   /**
    * Data is the payload to transfer. We must not make assumption what format or
    * content is in here.
@@ -33,7 +34,7 @@ export interface MsgIBCSend {
 /** MsgIBCSendResponse */
 export interface MsgIBCSendResponse {
   /** Sequence number of the IBC packet sent */
-  sequence: bigint;
+  sequence: Long;
 }
 
 /** MsgIBCWriteAcknowledgementResponse */
@@ -46,7 +47,7 @@ export interface MsgIBCCloseChannel {
 }
 
 function createBaseMsgIBCSend(): MsgIBCSend {
-  return { channel: "", timeoutHeight: 0n, timeoutTimestamp: 0n, data: new Uint8Array(0) };
+  return { channel: "", timeoutHeight: Long.UZERO, timeoutTimestamp: Long.UZERO, data: new Uint8Array(0) };
 }
 
 export const MsgIBCSend: MessageFns<MsgIBCSend> = {
@@ -54,17 +55,11 @@ export const MsgIBCSend: MessageFns<MsgIBCSend> = {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
     }
-    if (message.timeoutHeight !== 0n) {
-      if (BigInt.asUintN(64, message.timeoutHeight) !== message.timeoutHeight) {
-        throw new globalThis.Error("value provided for field message.timeoutHeight of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.timeoutHeight);
+    if (!message.timeoutHeight.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.timeoutHeight.toString());
     }
-    if (message.timeoutTimestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timeoutTimestamp) !== message.timeoutTimestamp) {
-        throw new globalThis.Error("value provided for field message.timeoutTimestamp of type uint64 too large");
-      }
-      writer.uint32(40).uint64(message.timeoutTimestamp);
+    if (!message.timeoutTimestamp.equals(Long.UZERO)) {
+      writer.uint32(40).uint64(message.timeoutTimestamp.toString());
     }
     if (message.data.length !== 0) {
       writer.uint32(50).bytes(message.data);
@@ -92,7 +87,7 @@ export const MsgIBCSend: MessageFns<MsgIBCSend> = {
             break;
           }
 
-          message.timeoutHeight = reader.uint64() as bigint;
+          message.timeoutHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 5: {
@@ -100,7 +95,7 @@ export const MsgIBCSend: MessageFns<MsgIBCSend> = {
             break;
           }
 
-          message.timeoutTimestamp = reader.uint64() as bigint;
+          message.timeoutTimestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 6: {
@@ -124,15 +119,15 @@ export const MsgIBCSend: MessageFns<MsgIBCSend> = {
     return {
       channel: isSet(object.channel) ? globalThis.String(object.channel) : "",
       timeoutHeight: isSet(object.timeoutHeight)
-        ? BigInt(object.timeoutHeight)
+        ? Long.fromValue(object.timeoutHeight)
         : isSet(object.timeout_height)
-        ? BigInt(object.timeout_height)
-        : 0n,
+        ? Long.fromValue(object.timeout_height)
+        : Long.UZERO,
       timeoutTimestamp: isSet(object.timeoutTimestamp)
-        ? BigInt(object.timeoutTimestamp)
+        ? Long.fromValue(object.timeoutTimestamp)
         : isSet(object.timeout_timestamp)
-        ? BigInt(object.timeout_timestamp)
-        : 0n,
+        ? Long.fromValue(object.timeout_timestamp)
+        : Long.UZERO,
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
     };
   },
@@ -142,11 +137,11 @@ export const MsgIBCSend: MessageFns<MsgIBCSend> = {
     if (message.channel !== "") {
       obj.channel = message.channel;
     }
-    if (message.timeoutHeight !== 0n) {
-      obj.timeoutHeight = message.timeoutHeight.toString();
+    if (!message.timeoutHeight.equals(Long.UZERO)) {
+      obj.timeoutHeight = (message.timeoutHeight || Long.UZERO).toString();
     }
-    if (message.timeoutTimestamp !== 0n) {
-      obj.timeoutTimestamp = message.timeoutTimestamp.toString();
+    if (!message.timeoutTimestamp.equals(Long.UZERO)) {
+      obj.timeoutTimestamp = (message.timeoutTimestamp || Long.UZERO).toString();
     }
     if (message.data.length !== 0) {
       obj.data = base64FromBytes(message.data);
@@ -160,24 +155,25 @@ export const MsgIBCSend: MessageFns<MsgIBCSend> = {
   fromPartial<I extends Exact<DeepPartial<MsgIBCSend>, I>>(object: I): MsgIBCSend {
     const message = createBaseMsgIBCSend();
     message.channel = object.channel ?? "";
-    message.timeoutHeight = object.timeoutHeight ?? 0n;
-    message.timeoutTimestamp = object.timeoutTimestamp ?? 0n;
+    message.timeoutHeight = (object.timeoutHeight !== undefined && object.timeoutHeight !== null)
+      ? Long.fromValue(object.timeoutHeight)
+      : Long.UZERO;
+    message.timeoutTimestamp = (object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null)
+      ? Long.fromValue(object.timeoutTimestamp)
+      : Long.UZERO;
     message.data = object.data ?? new Uint8Array(0);
     return message;
   },
 };
 
 function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
-  return { sequence: 0n };
+  return { sequence: Long.UZERO };
 }
 
 export const MsgIBCSendResponse: MessageFns<MsgIBCSendResponse> = {
   encode(message: MsgIBCSendResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.sequence.toString());
     }
     return writer;
   },
@@ -194,7 +190,7 @@ export const MsgIBCSendResponse: MessageFns<MsgIBCSendResponse> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -207,13 +203,13 @@ export const MsgIBCSendResponse: MessageFns<MsgIBCSendResponse> = {
   },
 
   fromJSON(object: any): MsgIBCSendResponse {
-    return { sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n };
+    return { sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO };
   },
 
   toJSON(message: MsgIBCSendResponse): unknown {
     const obj: any = {};
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     return obj;
   },
@@ -223,7 +219,9 @@ export const MsgIBCSendResponse: MessageFns<MsgIBCSendResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgIBCSendResponse>, I>>(object: I): MsgIBCSendResponse {
     const message = createBaseMsgIBCSendResponse();
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     return message;
   },
 };
@@ -358,10 +356,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

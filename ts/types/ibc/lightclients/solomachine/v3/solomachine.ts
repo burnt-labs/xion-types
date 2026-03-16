@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Any } from "../../../../google/protobuf/any";
 
 export const protobufPackage = "ibc.lightclients.solomachine.v3";
@@ -16,7 +17,7 @@ export const protobufPackage = "ibc.lightclients.solomachine.v3";
  */
 export interface ClientState {
   /** latest sequence of the client state */
-  sequence: bigint;
+  sequence: Long;
   /** frozen sequence of the solo machine */
   isFrozen: boolean;
   consensusState?: ConsensusState | undefined;
@@ -38,12 +39,12 @@ export interface ConsensusState {
    * misbehaviour.
    */
   diversifier: string;
-  timestamp: bigint;
+  timestamp: Long;
 }
 
 /** Header defines a solo machine consensus header */
 export interface Header {
-  timestamp: bigint;
+  timestamp: Long;
   signature: Uint8Array;
   newPublicKey?: Any | undefined;
   newDiversifier: string;
@@ -54,7 +55,7 @@ export interface Header {
  * of a sequence and two signatures over different messages at that sequence.
  */
 export interface Misbehaviour {
-  sequence: bigint;
+  sequence: Long;
   signatureOne?: SignatureAndData | undefined;
   signatureTwo?: SignatureAndData | undefined;
 }
@@ -67,7 +68,7 @@ export interface SignatureAndData {
   signature: Uint8Array;
   path: Uint8Array;
   data: Uint8Array;
-  timestamp: bigint;
+  timestamp: Long;
 }
 
 /**
@@ -76,15 +77,15 @@ export interface SignatureAndData {
  */
 export interface TimestampedSignatureData {
   signatureData: Uint8Array;
-  timestamp: bigint;
+  timestamp: Long;
 }
 
 /** SignBytes defines the signed bytes used for signature verification. */
 export interface SignBytes {
   /** the sequence number */
-  sequence: bigint;
+  sequence: Long;
   /** the proof timestamp */
-  timestamp: bigint;
+  timestamp: Long;
   /** the public key diversifier */
   diversifier: string;
   /** the standardised path bytes */
@@ -104,16 +105,13 @@ export interface HeaderData {
 }
 
 function createBaseClientState(): ClientState {
-  return { sequence: 0n, isFrozen: false, consensusState: undefined };
+  return { sequence: Long.UZERO, isFrozen: false, consensusState: undefined };
 }
 
 export const ClientState: MessageFns<ClientState> = {
   encode(message: ClientState, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.sequence.toString());
     }
     if (message.isFrozen !== false) {
       writer.uint32(16).bool(message.isFrozen);
@@ -136,7 +134,7 @@ export const ClientState: MessageFns<ClientState> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -166,7 +164,7 @@ export const ClientState: MessageFns<ClientState> = {
 
   fromJSON(object: any): ClientState {
     return {
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
       isFrozen: isSet(object.isFrozen)
         ? globalThis.Boolean(object.isFrozen)
         : isSet(object.is_frozen)
@@ -182,8 +180,8 @@ export const ClientState: MessageFns<ClientState> = {
 
   toJSON(message: ClientState): unknown {
     const obj: any = {};
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     if (message.isFrozen !== false) {
       obj.isFrozen = message.isFrozen;
@@ -199,7 +197,9 @@ export const ClientState: MessageFns<ClientState> = {
   },
   fromPartial<I extends Exact<DeepPartial<ClientState>, I>>(object: I): ClientState {
     const message = createBaseClientState();
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     message.isFrozen = object.isFrozen ?? false;
     message.consensusState = (object.consensusState !== undefined && object.consensusState !== null)
       ? ConsensusState.fromPartial(object.consensusState)
@@ -209,7 +209,7 @@ export const ClientState: MessageFns<ClientState> = {
 };
 
 function createBaseConsensusState(): ConsensusState {
-  return { publicKey: undefined, diversifier: "", timestamp: 0n };
+  return { publicKey: undefined, diversifier: "", timestamp: Long.UZERO };
 }
 
 export const ConsensusState: MessageFns<ConsensusState> = {
@@ -220,11 +220,8 @@ export const ConsensusState: MessageFns<ConsensusState> = {
     if (message.diversifier !== "") {
       writer.uint32(18).string(message.diversifier);
     }
-    if (message.timestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timestamp) !== message.timestamp) {
-        throw new globalThis.Error("value provided for field message.timestamp of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.timestamp);
+    if (!message.timestamp.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.timestamp.toString());
     }
     return writer;
   },
@@ -257,7 +254,7 @@ export const ConsensusState: MessageFns<ConsensusState> = {
             break;
           }
 
-          message.timestamp = reader.uint64() as bigint;
+          message.timestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -277,7 +274,7 @@ export const ConsensusState: MessageFns<ConsensusState> = {
         ? Any.fromJSON(object.public_key)
         : undefined,
       diversifier: isSet(object.diversifier) ? globalThis.String(object.diversifier) : "",
-      timestamp: isSet(object.timestamp) ? BigInt(object.timestamp) : 0n,
+      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.UZERO,
     };
   },
 
@@ -289,8 +286,8 @@ export const ConsensusState: MessageFns<ConsensusState> = {
     if (message.diversifier !== "") {
       obj.diversifier = message.diversifier;
     }
-    if (message.timestamp !== 0n) {
-      obj.timestamp = message.timestamp.toString();
+    if (!message.timestamp.equals(Long.UZERO)) {
+      obj.timestamp = (message.timestamp || Long.UZERO).toString();
     }
     return obj;
   },
@@ -304,22 +301,21 @@ export const ConsensusState: MessageFns<ConsensusState> = {
       ? Any.fromPartial(object.publicKey)
       : undefined;
     message.diversifier = object.diversifier ?? "";
-    message.timestamp = object.timestamp ?? 0n;
+    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
+      ? Long.fromValue(object.timestamp)
+      : Long.UZERO;
     return message;
   },
 };
 
 function createBaseHeader(): Header {
-  return { timestamp: 0n, signature: new Uint8Array(0), newPublicKey: undefined, newDiversifier: "" };
+  return { timestamp: Long.UZERO, signature: new Uint8Array(0), newPublicKey: undefined, newDiversifier: "" };
 }
 
 export const Header: MessageFns<Header> = {
   encode(message: Header, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.timestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timestamp) !== message.timestamp) {
-        throw new globalThis.Error("value provided for field message.timestamp of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.timestamp);
+    if (!message.timestamp.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.timestamp.toString());
     }
     if (message.signature.length !== 0) {
       writer.uint32(18).bytes(message.signature);
@@ -345,7 +341,7 @@ export const Header: MessageFns<Header> = {
             break;
           }
 
-          message.timestamp = reader.uint64() as bigint;
+          message.timestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -383,7 +379,7 @@ export const Header: MessageFns<Header> = {
 
   fromJSON(object: any): Header {
     return {
-      timestamp: isSet(object.timestamp) ? BigInt(object.timestamp) : 0n,
+      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.UZERO,
       signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(0),
       newPublicKey: isSet(object.newPublicKey)
         ? Any.fromJSON(object.newPublicKey)
@@ -400,8 +396,8 @@ export const Header: MessageFns<Header> = {
 
   toJSON(message: Header): unknown {
     const obj: any = {};
-    if (message.timestamp !== 0n) {
-      obj.timestamp = message.timestamp.toString();
+    if (!message.timestamp.equals(Long.UZERO)) {
+      obj.timestamp = (message.timestamp || Long.UZERO).toString();
     }
     if (message.signature.length !== 0) {
       obj.signature = base64FromBytes(message.signature);
@@ -420,7 +416,9 @@ export const Header: MessageFns<Header> = {
   },
   fromPartial<I extends Exact<DeepPartial<Header>, I>>(object: I): Header {
     const message = createBaseHeader();
-    message.timestamp = object.timestamp ?? 0n;
+    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
+      ? Long.fromValue(object.timestamp)
+      : Long.UZERO;
     message.signature = object.signature ?? new Uint8Array(0);
     message.newPublicKey = (object.newPublicKey !== undefined && object.newPublicKey !== null)
       ? Any.fromPartial(object.newPublicKey)
@@ -431,16 +429,13 @@ export const Header: MessageFns<Header> = {
 };
 
 function createBaseMisbehaviour(): Misbehaviour {
-  return { sequence: 0n, signatureOne: undefined, signatureTwo: undefined };
+  return { sequence: Long.UZERO, signatureOne: undefined, signatureTwo: undefined };
 }
 
 export const Misbehaviour: MessageFns<Misbehaviour> = {
   encode(message: Misbehaviour, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.sequence.toString());
     }
     if (message.signatureOne !== undefined) {
       SignatureAndData.encode(message.signatureOne, writer.uint32(18).fork()).join();
@@ -463,7 +458,7 @@ export const Misbehaviour: MessageFns<Misbehaviour> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -493,7 +488,7 @@ export const Misbehaviour: MessageFns<Misbehaviour> = {
 
   fromJSON(object: any): Misbehaviour {
     return {
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
       signatureOne: isSet(object.signatureOne)
         ? SignatureAndData.fromJSON(object.signatureOne)
         : isSet(object.signature_one)
@@ -509,8 +504,8 @@ export const Misbehaviour: MessageFns<Misbehaviour> = {
 
   toJSON(message: Misbehaviour): unknown {
     const obj: any = {};
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     if (message.signatureOne !== undefined) {
       obj.signatureOne = SignatureAndData.toJSON(message.signatureOne);
@@ -526,7 +521,9 @@ export const Misbehaviour: MessageFns<Misbehaviour> = {
   },
   fromPartial<I extends Exact<DeepPartial<Misbehaviour>, I>>(object: I): Misbehaviour {
     const message = createBaseMisbehaviour();
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     message.signatureOne = (object.signatureOne !== undefined && object.signatureOne !== null)
       ? SignatureAndData.fromPartial(object.signatureOne)
       : undefined;
@@ -538,7 +535,7 @@ export const Misbehaviour: MessageFns<Misbehaviour> = {
 };
 
 function createBaseSignatureAndData(): SignatureAndData {
-  return { signature: new Uint8Array(0), path: new Uint8Array(0), data: new Uint8Array(0), timestamp: 0n };
+  return { signature: new Uint8Array(0), path: new Uint8Array(0), data: new Uint8Array(0), timestamp: Long.UZERO };
 }
 
 export const SignatureAndData: MessageFns<SignatureAndData> = {
@@ -552,11 +549,8 @@ export const SignatureAndData: MessageFns<SignatureAndData> = {
     if (message.data.length !== 0) {
       writer.uint32(26).bytes(message.data);
     }
-    if (message.timestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timestamp) !== message.timestamp) {
-        throw new globalThis.Error("value provided for field message.timestamp of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.timestamp);
+    if (!message.timestamp.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.timestamp.toString());
     }
     return writer;
   },
@@ -597,7 +591,7 @@ export const SignatureAndData: MessageFns<SignatureAndData> = {
             break;
           }
 
-          message.timestamp = reader.uint64() as bigint;
+          message.timestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -614,7 +608,7 @@ export const SignatureAndData: MessageFns<SignatureAndData> = {
       signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(0),
       path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(0),
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
-      timestamp: isSet(object.timestamp) ? BigInt(object.timestamp) : 0n,
+      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.UZERO,
     };
   },
 
@@ -629,8 +623,8 @@ export const SignatureAndData: MessageFns<SignatureAndData> = {
     if (message.data.length !== 0) {
       obj.data = base64FromBytes(message.data);
     }
-    if (message.timestamp !== 0n) {
-      obj.timestamp = message.timestamp.toString();
+    if (!message.timestamp.equals(Long.UZERO)) {
+      obj.timestamp = (message.timestamp || Long.UZERO).toString();
     }
     return obj;
   },
@@ -643,13 +637,15 @@ export const SignatureAndData: MessageFns<SignatureAndData> = {
     message.signature = object.signature ?? new Uint8Array(0);
     message.path = object.path ?? new Uint8Array(0);
     message.data = object.data ?? new Uint8Array(0);
-    message.timestamp = object.timestamp ?? 0n;
+    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
+      ? Long.fromValue(object.timestamp)
+      : Long.UZERO;
     return message;
   },
 };
 
 function createBaseTimestampedSignatureData(): TimestampedSignatureData {
-  return { signatureData: new Uint8Array(0), timestamp: 0n };
+  return { signatureData: new Uint8Array(0), timestamp: Long.UZERO };
 }
 
 export const TimestampedSignatureData: MessageFns<TimestampedSignatureData> = {
@@ -657,11 +653,8 @@ export const TimestampedSignatureData: MessageFns<TimestampedSignatureData> = {
     if (message.signatureData.length !== 0) {
       writer.uint32(10).bytes(message.signatureData);
     }
-    if (message.timestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timestamp) !== message.timestamp) {
-        throw new globalThis.Error("value provided for field message.timestamp of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.timestamp);
+    if (!message.timestamp.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.timestamp.toString());
     }
     return writer;
   },
@@ -686,7 +679,7 @@ export const TimestampedSignatureData: MessageFns<TimestampedSignatureData> = {
             break;
           }
 
-          message.timestamp = reader.uint64() as bigint;
+          message.timestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -705,7 +698,7 @@ export const TimestampedSignatureData: MessageFns<TimestampedSignatureData> = {
         : isSet(object.signature_data)
         ? bytesFromBase64(object.signature_data)
         : new Uint8Array(0),
-      timestamp: isSet(object.timestamp) ? BigInt(object.timestamp) : 0n,
+      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.UZERO,
     };
   },
 
@@ -714,8 +707,8 @@ export const TimestampedSignatureData: MessageFns<TimestampedSignatureData> = {
     if (message.signatureData.length !== 0) {
       obj.signatureData = base64FromBytes(message.signatureData);
     }
-    if (message.timestamp !== 0n) {
-      obj.timestamp = message.timestamp.toString();
+    if (!message.timestamp.equals(Long.UZERO)) {
+      obj.timestamp = (message.timestamp || Long.UZERO).toString();
     }
     return obj;
   },
@@ -726,28 +719,30 @@ export const TimestampedSignatureData: MessageFns<TimestampedSignatureData> = {
   fromPartial<I extends Exact<DeepPartial<TimestampedSignatureData>, I>>(object: I): TimestampedSignatureData {
     const message = createBaseTimestampedSignatureData();
     message.signatureData = object.signatureData ?? new Uint8Array(0);
-    message.timestamp = object.timestamp ?? 0n;
+    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
+      ? Long.fromValue(object.timestamp)
+      : Long.UZERO;
     return message;
   },
 };
 
 function createBaseSignBytes(): SignBytes {
-  return { sequence: 0n, timestamp: 0n, diversifier: "", path: new Uint8Array(0), data: new Uint8Array(0) };
+  return {
+    sequence: Long.UZERO,
+    timestamp: Long.UZERO,
+    diversifier: "",
+    path: new Uint8Array(0),
+    data: new Uint8Array(0),
+  };
 }
 
 export const SignBytes: MessageFns<SignBytes> = {
   encode(message: SignBytes, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.sequence.toString());
     }
-    if (message.timestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timestamp) !== message.timestamp) {
-        throw new globalThis.Error("value provided for field message.timestamp of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.timestamp);
+    if (!message.timestamp.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.timestamp.toString());
     }
     if (message.diversifier !== "") {
       writer.uint32(26).string(message.diversifier);
@@ -773,7 +768,7 @@ export const SignBytes: MessageFns<SignBytes> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -781,7 +776,7 @@ export const SignBytes: MessageFns<SignBytes> = {
             break;
           }
 
-          message.timestamp = reader.uint64() as bigint;
+          message.timestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -819,8 +814,8 @@ export const SignBytes: MessageFns<SignBytes> = {
 
   fromJSON(object: any): SignBytes {
     return {
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
-      timestamp: isSet(object.timestamp) ? BigInt(object.timestamp) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.UZERO,
       diversifier: isSet(object.diversifier) ? globalThis.String(object.diversifier) : "",
       path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(0),
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
@@ -829,11 +824,11 @@ export const SignBytes: MessageFns<SignBytes> = {
 
   toJSON(message: SignBytes): unknown {
     const obj: any = {};
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
-    if (message.timestamp !== 0n) {
-      obj.timestamp = message.timestamp.toString();
+    if (!message.timestamp.equals(Long.UZERO)) {
+      obj.timestamp = (message.timestamp || Long.UZERO).toString();
     }
     if (message.diversifier !== "") {
       obj.diversifier = message.diversifier;
@@ -852,8 +847,12 @@ export const SignBytes: MessageFns<SignBytes> = {
   },
   fromPartial<I extends Exact<DeepPartial<SignBytes>, I>>(object: I): SignBytes {
     const message = createBaseSignBytes();
-    message.sequence = object.sequence ?? 0n;
-    message.timestamp = object.timestamp ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
+    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
+      ? Long.fromValue(object.timestamp)
+      : Long.UZERO;
     message.diversifier = object.diversifier ?? "";
     message.path = object.path ?? new Uint8Array(0);
     message.data = object.data ?? new Uint8Array(0);
@@ -972,10 +971,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

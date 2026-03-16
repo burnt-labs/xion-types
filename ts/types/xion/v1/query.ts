@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 
 export const protobufPackage = "xion.v1";
@@ -73,7 +74,7 @@ export interface QueryPlatformPercentageRequest {
  */
 export interface QueryPlatformPercentageResponse {
   /** The platform percentage fee */
-  platformPercentage: bigint;
+  platformPercentage: Long;
 }
 
 /**
@@ -485,16 +486,13 @@ export const QueryPlatformPercentageRequest: MessageFns<QueryPlatformPercentageR
 };
 
 function createBaseQueryPlatformPercentageResponse(): QueryPlatformPercentageResponse {
-  return { platformPercentage: 0n };
+  return { platformPercentage: Long.UZERO };
 }
 
 export const QueryPlatformPercentageResponse: MessageFns<QueryPlatformPercentageResponse> = {
   encode(message: QueryPlatformPercentageResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.platformPercentage !== 0n) {
-      if (BigInt.asUintN(64, message.platformPercentage) !== message.platformPercentage) {
-        throw new globalThis.Error("value provided for field message.platformPercentage of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.platformPercentage);
+    if (!message.platformPercentage.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.platformPercentage.toString());
     }
     return writer;
   },
@@ -511,7 +509,7 @@ export const QueryPlatformPercentageResponse: MessageFns<QueryPlatformPercentage
             break;
           }
 
-          message.platformPercentage = reader.uint64() as bigint;
+          message.platformPercentage = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -526,17 +524,17 @@ export const QueryPlatformPercentageResponse: MessageFns<QueryPlatformPercentage
   fromJSON(object: any): QueryPlatformPercentageResponse {
     return {
       platformPercentage: isSet(object.platformPercentage)
-        ? BigInt(object.platformPercentage)
+        ? Long.fromValue(object.platformPercentage)
         : isSet(object.platform_percentage)
-        ? BigInt(object.platform_percentage)
-        : 0n,
+        ? Long.fromValue(object.platform_percentage)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: QueryPlatformPercentageResponse): unknown {
     const obj: any = {};
-    if (message.platformPercentage !== 0n) {
-      obj.platformPercentage = message.platformPercentage.toString();
+    if (!message.platformPercentage.equals(Long.UZERO)) {
+      obj.platformPercentage = (message.platformPercentage || Long.UZERO).toString();
     }
     return obj;
   },
@@ -548,7 +546,9 @@ export const QueryPlatformPercentageResponse: MessageFns<QueryPlatformPercentage
     object: I,
   ): QueryPlatformPercentageResponse {
     const message = createBaseQueryPlatformPercentageResponse();
-    message.platformPercentage = object.platformPercentage ?? 0n;
+    message.platformPercentage = (object.platformPercentage !== undefined && object.platformPercentage !== null)
+      ? Long.fromValue(object.platformPercentage)
+      : Long.UZERO;
     return message;
   },
 };
@@ -822,7 +822,7 @@ export const QueryPlatformMinimumDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -915,10 +915,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

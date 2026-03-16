@@ -6,42 +6,34 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "xion.zk.v1";
 
 /** Params defines the zk module parameters. */
 export interface Params {
   /** max_vkey_size_bytes caps the size of a verification key JSON payload. */
-  maxVkeySizeBytes: bigint;
+  maxVkeySizeBytes: Long;
   /** upload_chunk_size defines the byte-size of each gas tier. */
-  uploadChunkSize: bigint;
+  uploadChunkSize: Long;
   /** upload_chunk_gas defines the gas cost per upload chunk. */
-  uploadChunkGas: bigint;
+  uploadChunkGas: Long;
 }
 
 function createBaseParams(): Params {
-  return { maxVkeySizeBytes: 0n, uploadChunkSize: 0n, uploadChunkGas: 0n };
+  return { maxVkeySizeBytes: Long.UZERO, uploadChunkSize: Long.UZERO, uploadChunkGas: Long.UZERO };
 }
 
 export const Params: MessageFns<Params> = {
   encode(message: Params, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.maxVkeySizeBytes !== 0n) {
-      if (BigInt.asUintN(64, message.maxVkeySizeBytes) !== message.maxVkeySizeBytes) {
-        throw new globalThis.Error("value provided for field message.maxVkeySizeBytes of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.maxVkeySizeBytes);
+    if (!message.maxVkeySizeBytes.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.maxVkeySizeBytes.toString());
     }
-    if (message.uploadChunkSize !== 0n) {
-      if (BigInt.asUintN(64, message.uploadChunkSize) !== message.uploadChunkSize) {
-        throw new globalThis.Error("value provided for field message.uploadChunkSize of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.uploadChunkSize);
+    if (!message.uploadChunkSize.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.uploadChunkSize.toString());
     }
-    if (message.uploadChunkGas !== 0n) {
-      if (BigInt.asUintN(64, message.uploadChunkGas) !== message.uploadChunkGas) {
-        throw new globalThis.Error("value provided for field message.uploadChunkGas of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.uploadChunkGas);
+    if (!message.uploadChunkGas.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.uploadChunkGas.toString());
     }
     return writer;
   },
@@ -58,7 +50,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxVkeySizeBytes = reader.uint64() as bigint;
+          message.maxVkeySizeBytes = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -66,7 +58,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.uploadChunkSize = reader.uint64() as bigint;
+          message.uploadChunkSize = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -74,7 +66,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.uploadChunkGas = reader.uint64() as bigint;
+          message.uploadChunkGas = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -89,33 +81,33 @@ export const Params: MessageFns<Params> = {
   fromJSON(object: any): Params {
     return {
       maxVkeySizeBytes: isSet(object.maxVkeySizeBytes)
-        ? BigInt(object.maxVkeySizeBytes)
+        ? Long.fromValue(object.maxVkeySizeBytes)
         : isSet(object.max_vkey_size_bytes)
-        ? BigInt(object.max_vkey_size_bytes)
-        : 0n,
+        ? Long.fromValue(object.max_vkey_size_bytes)
+        : Long.UZERO,
       uploadChunkSize: isSet(object.uploadChunkSize)
-        ? BigInt(object.uploadChunkSize)
+        ? Long.fromValue(object.uploadChunkSize)
         : isSet(object.upload_chunk_size)
-        ? BigInt(object.upload_chunk_size)
-        : 0n,
+        ? Long.fromValue(object.upload_chunk_size)
+        : Long.UZERO,
       uploadChunkGas: isSet(object.uploadChunkGas)
-        ? BigInt(object.uploadChunkGas)
+        ? Long.fromValue(object.uploadChunkGas)
         : isSet(object.upload_chunk_gas)
-        ? BigInt(object.upload_chunk_gas)
-        : 0n,
+        ? Long.fromValue(object.upload_chunk_gas)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    if (message.maxVkeySizeBytes !== 0n) {
-      obj.maxVkeySizeBytes = message.maxVkeySizeBytes.toString();
+    if (!message.maxVkeySizeBytes.equals(Long.UZERO)) {
+      obj.maxVkeySizeBytes = (message.maxVkeySizeBytes || Long.UZERO).toString();
     }
-    if (message.uploadChunkSize !== 0n) {
-      obj.uploadChunkSize = message.uploadChunkSize.toString();
+    if (!message.uploadChunkSize.equals(Long.UZERO)) {
+      obj.uploadChunkSize = (message.uploadChunkSize || Long.UZERO).toString();
     }
-    if (message.uploadChunkGas !== 0n) {
-      obj.uploadChunkGas = message.uploadChunkGas.toString();
+    if (!message.uploadChunkGas.equals(Long.UZERO)) {
+      obj.uploadChunkGas = (message.uploadChunkGas || Long.UZERO).toString();
     }
     return obj;
   },
@@ -125,17 +117,23 @@ export const Params: MessageFns<Params> = {
   },
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
-    message.maxVkeySizeBytes = object.maxVkeySizeBytes ?? 0n;
-    message.uploadChunkSize = object.uploadChunkSize ?? 0n;
-    message.uploadChunkGas = object.uploadChunkGas ?? 0n;
+    message.maxVkeySizeBytes = (object.maxVkeySizeBytes !== undefined && object.maxVkeySizeBytes !== null)
+      ? Long.fromValue(object.maxVkeySizeBytes)
+      : Long.UZERO;
+    message.uploadChunkSize = (object.uploadChunkSize !== undefined && object.uploadChunkSize !== null)
+      ? Long.fromValue(object.uploadChunkSize)
+      : Long.UZERO;
+    message.uploadChunkGas = (object.uploadChunkGas !== undefined && object.uploadChunkGas !== null)
+      ? Long.fromValue(object.uploadChunkGas)
+      : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

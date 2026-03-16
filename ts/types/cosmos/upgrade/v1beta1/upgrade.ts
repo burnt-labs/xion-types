@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 
@@ -34,7 +35,7 @@ export interface Plan {
     | Date
     | undefined;
   /** The height at which the upgrade must be performed. */
-  height: bigint;
+  height: Long;
   /**
    * Any application specific upgrade info to be included on-chain
    * such as a git commit that validators could automatically upgrade to
@@ -87,11 +88,11 @@ export interface ModuleVersion {
   /** name of the app module */
   name: string;
   /** consensus version of the app module */
-  version: bigint;
+  version: Long;
 }
 
 function createBasePlan(): Plan {
-  return { name: "", time: undefined, height: 0n, info: "", upgradedClientState: undefined };
+  return { name: "", time: undefined, height: Long.ZERO, info: "", upgradedClientState: undefined };
 }
 
 export const Plan: MessageFns<Plan> = {
@@ -102,11 +103,8 @@ export const Plan: MessageFns<Plan> = {
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(18).fork()).join();
     }
-    if (message.height !== 0n) {
-      if (BigInt.asIntN(64, message.height) !== message.height) {
-        throw new globalThis.Error("value provided for field message.height of type int64 too large");
-      }
-      writer.uint32(24).int64(message.height);
+    if (!message.height.equals(Long.ZERO)) {
+      writer.uint32(24).int64(message.height.toString());
     }
     if (message.info !== "") {
       writer.uint32(34).string(message.info);
@@ -145,7 +143,7 @@ export const Plan: MessageFns<Plan> = {
             break;
           }
 
-          message.height = reader.int64() as bigint;
+          message.height = Long.fromString(reader.int64().toString());
           continue;
         }
         case 4: {
@@ -177,7 +175,7 @@ export const Plan: MessageFns<Plan> = {
     return {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
-      height: isSet(object.height) ? BigInt(object.height) : 0n,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
       info: isSet(object.info) ? globalThis.String(object.info) : "",
       upgradedClientState: isSet(object.upgradedClientState)
         ? Any.fromJSON(object.upgradedClientState)
@@ -195,8 +193,8 @@ export const Plan: MessageFns<Plan> = {
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
     }
-    if (message.height !== 0n) {
-      obj.height = message.height.toString();
+    if (!message.height.equals(Long.ZERO)) {
+      obj.height = (message.height || Long.ZERO).toString();
     }
     if (message.info !== "") {
       obj.info = message.info;
@@ -214,7 +212,9 @@ export const Plan: MessageFns<Plan> = {
     const message = createBasePlan();
     message.name = object.name ?? "";
     message.time = object.time ?? undefined;
-    message.height = object.height ?? 0n;
+    message.height = (object.height !== undefined && object.height !== null)
+      ? Long.fromValue(object.height)
+      : Long.ZERO;
     message.info = object.info ?? "";
     message.upgradedClientState = (object.upgradedClientState !== undefined && object.upgradedClientState !== null)
       ? Any.fromPartial(object.upgradedClientState)
@@ -394,7 +394,7 @@ export const CancelSoftwareUpgradeProposal: MessageFns<CancelSoftwareUpgradeProp
 };
 
 function createBaseModuleVersion(): ModuleVersion {
-  return { name: "", version: 0n };
+  return { name: "", version: Long.UZERO };
 }
 
 export const ModuleVersion: MessageFns<ModuleVersion> = {
@@ -402,11 +402,8 @@ export const ModuleVersion: MessageFns<ModuleVersion> = {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
-    if (message.version !== 0n) {
-      if (BigInt.asUintN(64, message.version) !== message.version) {
-        throw new globalThis.Error("value provided for field message.version of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.version);
+    if (!message.version.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.version.toString());
     }
     return writer;
   },
@@ -431,7 +428,7 @@ export const ModuleVersion: MessageFns<ModuleVersion> = {
             break;
           }
 
-          message.version = reader.uint64() as bigint;
+          message.version = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -446,7 +443,7 @@ export const ModuleVersion: MessageFns<ModuleVersion> = {
   fromJSON(object: any): ModuleVersion {
     return {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
-      version: isSet(object.version) ? BigInt(object.version) : 0n,
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.UZERO,
     };
   },
 
@@ -455,8 +452,8 @@ export const ModuleVersion: MessageFns<ModuleVersion> = {
     if (message.name !== "") {
       obj.name = message.name;
     }
-    if (message.version !== 0n) {
-      obj.version = message.version.toString();
+    if (!message.version.equals(Long.UZERO)) {
+      obj.version = (message.version || Long.UZERO).toString();
     }
     return obj;
   },
@@ -467,15 +464,17 @@ export const ModuleVersion: MessageFns<ModuleVersion> = {
   fromPartial<I extends Exact<DeepPartial<ModuleVersion>, I>>(object: I): ModuleVersion {
     const message = createBaseModuleVersion();
     message.name = object.name ?? "";
-    message.version = object.version ?? 0n;
+    message.version = (object.version !== undefined && object.version !== null)
+      ? Long.fromValue(object.version)
+      : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -485,13 +484,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
+  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
+  let millis = (t.seconds.toNumber() || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -504,6 +503,10 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
+}
+
+function numberToLong(number: number) {
+  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

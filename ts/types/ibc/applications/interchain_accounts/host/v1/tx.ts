@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Params, QueryRequest } from "./host";
 
 export const protobufPackage = "ibc.applications.interchain_accounts.host.v1";
@@ -39,7 +40,7 @@ export interface MsgModuleQuerySafe {
 /** MsgModuleQuerySafeResponse defines the response for Msg/ModuleQuerySafe */
 export interface MsgModuleQuerySafeResponse {
   /** height at which the responses were queried */
-  height: bigint;
+  height: Long;
   /** protobuf encoded responses for each query */
   responses: Uint8Array[];
 }
@@ -244,16 +245,13 @@ export const MsgModuleQuerySafe: MessageFns<MsgModuleQuerySafe> = {
 };
 
 function createBaseMsgModuleQuerySafeResponse(): MsgModuleQuerySafeResponse {
-  return { height: 0n, responses: [] };
+  return { height: Long.UZERO, responses: [] };
 }
 
 export const MsgModuleQuerySafeResponse: MessageFns<MsgModuleQuerySafeResponse> = {
   encode(message: MsgModuleQuerySafeResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.height !== 0n) {
-      if (BigInt.asUintN(64, message.height) !== message.height) {
-        throw new globalThis.Error("value provided for field message.height of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.height);
+    if (!message.height.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.height.toString());
     }
     for (const v of message.responses) {
       writer.uint32(18).bytes(v!);
@@ -273,7 +271,7 @@ export const MsgModuleQuerySafeResponse: MessageFns<MsgModuleQuerySafeResponse> 
             break;
           }
 
-          message.height = reader.uint64() as bigint;
+          message.height = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -295,7 +293,7 @@ export const MsgModuleQuerySafeResponse: MessageFns<MsgModuleQuerySafeResponse> 
 
   fromJSON(object: any): MsgModuleQuerySafeResponse {
     return {
-      height: isSet(object.height) ? BigInt(object.height) : 0n,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
       responses: globalThis.Array.isArray(object?.responses)
         ? object.responses.map((e: any) => bytesFromBase64(e))
         : [],
@@ -304,8 +302,8 @@ export const MsgModuleQuerySafeResponse: MessageFns<MsgModuleQuerySafeResponse> 
 
   toJSON(message: MsgModuleQuerySafeResponse): unknown {
     const obj: any = {};
-    if (message.height !== 0n) {
-      obj.height = message.height.toString();
+    if (!message.height.equals(Long.UZERO)) {
+      obj.height = (message.height || Long.UZERO).toString();
     }
     if (message.responses?.length) {
       obj.responses = message.responses.map((e) => base64FromBytes(e));
@@ -318,7 +316,9 @@ export const MsgModuleQuerySafeResponse: MessageFns<MsgModuleQuerySafeResponse> 
   },
   fromPartial<I extends Exact<DeepPartial<MsgModuleQuerySafeResponse>, I>>(object: I): MsgModuleQuerySafeResponse {
     const message = createBaseMsgModuleQuerySafeResponse();
-    message.height = object.height ?? 0n;
+    message.height = (object.height !== undefined && object.height !== null)
+      ? Long.fromValue(object.height)
+      : Long.UZERO;
     message.responses = object.responses?.map((e) => e) || [];
     return message;
   },
@@ -404,7 +404,7 @@ export const MsgModuleQuerySafeDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -497,10 +497,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

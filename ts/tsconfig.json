@@ -18,6 +18,7 @@
     "dist",
     "node_modules",
     "scripts",
+    "__type_tests__",
     "**/*.spec.*",
     "**/*.test.*",
     "types/contracts/**/*.client.ts",

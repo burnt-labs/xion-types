@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "tendermint.version";
 
@@ -15,7 +16,7 @@ export const protobufPackage = "tendermint.version";
  * updated in ResponseEndBlock.
  */
 export interface App {
-  protocol: bigint;
+  protocol: Long;
   software: string;
 }
 
@@ -25,21 +26,18 @@ export interface App {
  * state transition machine.
  */
 export interface Consensus {
-  block: bigint;
-  app: bigint;
+  block: Long;
+  app: Long;
 }
 
 function createBaseApp(): App {
-  return { protocol: 0n, software: "" };
+  return { protocol: Long.UZERO, software: "" };
 }
 
 export const App: MessageFns<App> = {
   encode(message: App, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.protocol !== 0n) {
-      if (BigInt.asUintN(64, message.protocol) !== message.protocol) {
-        throw new globalThis.Error("value provided for field message.protocol of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.protocol);
+    if (!message.protocol.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.protocol.toString());
     }
     if (message.software !== "") {
       writer.uint32(18).string(message.software);
@@ -59,7 +57,7 @@ export const App: MessageFns<App> = {
             break;
           }
 
-          message.protocol = reader.uint64() as bigint;
+          message.protocol = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -81,15 +79,15 @@ export const App: MessageFns<App> = {
 
   fromJSON(object: any): App {
     return {
-      protocol: isSet(object.protocol) ? BigInt(object.protocol) : 0n,
+      protocol: isSet(object.protocol) ? Long.fromValue(object.protocol) : Long.UZERO,
       software: isSet(object.software) ? globalThis.String(object.software) : "",
     };
   },
 
   toJSON(message: App): unknown {
     const obj: any = {};
-    if (message.protocol !== 0n) {
-      obj.protocol = message.protocol.toString();
+    if (!message.protocol.equals(Long.UZERO)) {
+      obj.protocol = (message.protocol || Long.UZERO).toString();
     }
     if (message.software !== "") {
       obj.software = message.software;
@@ -102,29 +100,25 @@ export const App: MessageFns<App> = {
   },
   fromPartial<I extends Exact<DeepPartial<App>, I>>(object: I): App {
     const message = createBaseApp();
-    message.protocol = object.protocol ?? 0n;
+    message.protocol = (object.protocol !== undefined && object.protocol !== null)
+      ? Long.fromValue(object.protocol)
+      : Long.UZERO;
     message.software = object.software ?? "";
     return message;
   },
 };
 
 function createBaseConsensus(): Consensus {
-  return { block: 0n, app: 0n };
+  return { block: Long.UZERO, app: Long.UZERO };
 }
 
 export const Consensus: MessageFns<Consensus> = {
   encode(message: Consensus, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.block !== 0n) {
-      if (BigInt.asUintN(64, message.block) !== message.block) {
-        throw new globalThis.Error("value provided for field message.block of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.block);
+    if (!message.block.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.block.toString());
     }
-    if (message.app !== 0n) {
-      if (BigInt.asUintN(64, message.app) !== message.app) {
-        throw new globalThis.Error("value provided for field message.app of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.app);
+    if (!message.app.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.app.toString());
     }
     return writer;
   },
@@ -141,7 +135,7 @@ export const Consensus: MessageFns<Consensus> = {
             break;
           }
 
-          message.block = reader.uint64() as bigint;
+          message.block = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -149,7 +143,7 @@ export const Consensus: MessageFns<Consensus> = {
             break;
           }
 
-          message.app = reader.uint64() as bigint;
+          message.app = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -162,16 +156,19 @@ export const Consensus: MessageFns<Consensus> = {
   },
 
   fromJSON(object: any): Consensus {
-    return { block: isSet(object.block) ? BigInt(object.block) : 0n, app: isSet(object.app) ? BigInt(object.app) : 0n };
+    return {
+      block: isSet(object.block) ? Long.fromValue(object.block) : Long.UZERO,
+      app: isSet(object.app) ? Long.fromValue(object.app) : Long.UZERO,
+    };
   },
 
   toJSON(message: Consensus): unknown {
     const obj: any = {};
-    if (message.block !== 0n) {
-      obj.block = message.block.toString();
+    if (!message.block.equals(Long.UZERO)) {
+      obj.block = (message.block || Long.UZERO).toString();
     }
-    if (message.app !== 0n) {
-      obj.app = message.app.toString();
+    if (!message.app.equals(Long.UZERO)) {
+      obj.app = (message.app || Long.UZERO).toString();
     }
     return obj;
   },
@@ -181,16 +178,16 @@ export const Consensus: MessageFns<Consensus> = {
   },
   fromPartial<I extends Exact<DeepPartial<Consensus>, I>>(object: I): Consensus {
     const message = createBaseConsensus();
-    message.block = object.block ?? 0n;
-    message.app = object.app ?? 0n;
+    message.block = (object.block !== undefined && object.block !== null) ? Long.fromValue(object.block) : Long.UZERO;
+    message.app = (object.app !== undefined && object.app !== null) ? Long.fromValue(object.app) : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

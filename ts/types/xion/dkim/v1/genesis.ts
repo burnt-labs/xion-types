@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { DkimPubKey } from "./state";
 
 export const protobufPackage = "xion.dkim.v1";
@@ -24,16 +25,16 @@ export interface GenesisState {
 
 /** IndexRange defines a range of indices [start, end) in the public inputs array. */
 export interface IndexRange {
-  start: bigint;
-  end: bigint;
+  start: Long;
+  end: Long;
 }
 
 /** PublicInputIndices defines the indices for extracting data from public inputs. */
 export interface PublicInputIndices {
-  minLength: bigint;
-  emailHashIndex: bigint;
+  minLength: Long;
+  emailHashIndex: Long;
   dkimDomainRange?: IndexRange | undefined;
-  dkimHashIndex: bigint;
+  dkimHashIndex: Long;
   txBytesRange?: IndexRange | undefined;
   emailHostRange?: IndexRange | undefined;
   emailSubjectRange?: IndexRange | undefined;
@@ -42,12 +43,12 @@ export interface PublicInputIndices {
 /** Params defines the set of module parameters. */
 export interface Params {
   /** vkey defines the verification key used by the module. */
-  vkeyIdentifier: bigint;
+  vkeyIdentifier: Long;
   /**
    * max_pubkey_size_bytes caps the allowed DKIM public key size (base64
    * decoded).
    */
-  maxPubkeySizeBytes: bigint;
+  maxPubkeySizeBytes: Long;
   /** public_input_indices defines the indices for extracting data from public inputs. */
   publicInputIndices?: PublicInputIndices | undefined;
 }
@@ -155,22 +156,16 @@ export const GenesisState: MessageFns<GenesisState> = {
 };
 
 function createBaseIndexRange(): IndexRange {
-  return { start: 0n, end: 0n };
+  return { start: Long.UZERO, end: Long.UZERO };
 }
 
 export const IndexRange: MessageFns<IndexRange> = {
   encode(message: IndexRange, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.start !== 0n) {
-      if (BigInt.asUintN(64, message.start) !== message.start) {
-        throw new globalThis.Error("value provided for field message.start of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.start);
+    if (!message.start.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.start.toString());
     }
-    if (message.end !== 0n) {
-      if (BigInt.asUintN(64, message.end) !== message.end) {
-        throw new globalThis.Error("value provided for field message.end of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.end);
+    if (!message.end.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.end.toString());
     }
     return writer;
   },
@@ -187,7 +182,7 @@ export const IndexRange: MessageFns<IndexRange> = {
             break;
           }
 
-          message.start = reader.uint64() as bigint;
+          message.start = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -195,7 +190,7 @@ export const IndexRange: MessageFns<IndexRange> = {
             break;
           }
 
-          message.end = reader.uint64() as bigint;
+          message.end = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -208,16 +203,19 @@ export const IndexRange: MessageFns<IndexRange> = {
   },
 
   fromJSON(object: any): IndexRange {
-    return { start: isSet(object.start) ? BigInt(object.start) : 0n, end: isSet(object.end) ? BigInt(object.end) : 0n };
+    return {
+      start: isSet(object.start) ? Long.fromValue(object.start) : Long.UZERO,
+      end: isSet(object.end) ? Long.fromValue(object.end) : Long.UZERO,
+    };
   },
 
   toJSON(message: IndexRange): unknown {
     const obj: any = {};
-    if (message.start !== 0n) {
-      obj.start = message.start.toString();
+    if (!message.start.equals(Long.UZERO)) {
+      obj.start = (message.start || Long.UZERO).toString();
     }
-    if (message.end !== 0n) {
-      obj.end = message.end.toString();
+    if (!message.end.equals(Long.UZERO)) {
+      obj.end = (message.end || Long.UZERO).toString();
     }
     return obj;
   },
@@ -227,18 +225,18 @@ export const IndexRange: MessageFns<IndexRange> = {
   },
   fromPartial<I extends Exact<DeepPartial<IndexRange>, I>>(object: I): IndexRange {
     const message = createBaseIndexRange();
-    message.start = object.start ?? 0n;
-    message.end = object.end ?? 0n;
+    message.start = (object.start !== undefined && object.start !== null) ? Long.fromValue(object.start) : Long.UZERO;
+    message.end = (object.end !== undefined && object.end !== null) ? Long.fromValue(object.end) : Long.UZERO;
     return message;
   },
 };
 
 function createBasePublicInputIndices(): PublicInputIndices {
   return {
-    minLength: 0n,
-    emailHashIndex: 0n,
+    minLength: Long.UZERO,
+    emailHashIndex: Long.UZERO,
     dkimDomainRange: undefined,
-    dkimHashIndex: 0n,
+    dkimHashIndex: Long.UZERO,
     txBytesRange: undefined,
     emailHostRange: undefined,
     emailSubjectRange: undefined,
@@ -247,26 +245,17 @@ function createBasePublicInputIndices(): PublicInputIndices {
 
 export const PublicInputIndices: MessageFns<PublicInputIndices> = {
   encode(message: PublicInputIndices, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.minLength !== 0n) {
-      if (BigInt.asUintN(64, message.minLength) !== message.minLength) {
-        throw new globalThis.Error("value provided for field message.minLength of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.minLength);
+    if (!message.minLength.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.minLength.toString());
     }
-    if (message.emailHashIndex !== 0n) {
-      if (BigInt.asUintN(64, message.emailHashIndex) !== message.emailHashIndex) {
-        throw new globalThis.Error("value provided for field message.emailHashIndex of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.emailHashIndex);
+    if (!message.emailHashIndex.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.emailHashIndex.toString());
     }
     if (message.dkimDomainRange !== undefined) {
       IndexRange.encode(message.dkimDomainRange, writer.uint32(26).fork()).join();
     }
-    if (message.dkimHashIndex !== 0n) {
-      if (BigInt.asUintN(64, message.dkimHashIndex) !== message.dkimHashIndex) {
-        throw new globalThis.Error("value provided for field message.dkimHashIndex of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.dkimHashIndex);
+    if (!message.dkimHashIndex.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.dkimHashIndex.toString());
     }
     if (message.txBytesRange !== undefined) {
       IndexRange.encode(message.txBytesRange, writer.uint32(42).fork()).join();
@@ -292,7 +281,7 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
             break;
           }
 
-          message.minLength = reader.uint64() as bigint;
+          message.minLength = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -300,7 +289,7 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
             break;
           }
 
-          message.emailHashIndex = reader.uint64() as bigint;
+          message.emailHashIndex = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -316,7 +305,7 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
             break;
           }
 
-          message.dkimHashIndex = reader.uint64() as bigint;
+          message.dkimHashIndex = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 5: {
@@ -355,25 +344,25 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
   fromJSON(object: any): PublicInputIndices {
     return {
       minLength: isSet(object.minLength)
-        ? BigInt(object.minLength)
+        ? Long.fromValue(object.minLength)
         : isSet(object.min_length)
-        ? BigInt(object.min_length)
-        : 0n,
+        ? Long.fromValue(object.min_length)
+        : Long.UZERO,
       emailHashIndex: isSet(object.emailHashIndex)
-        ? BigInt(object.emailHashIndex)
+        ? Long.fromValue(object.emailHashIndex)
         : isSet(object.email_hash_index)
-        ? BigInt(object.email_hash_index)
-        : 0n,
+        ? Long.fromValue(object.email_hash_index)
+        : Long.UZERO,
       dkimDomainRange: isSet(object.dkimDomainRange)
         ? IndexRange.fromJSON(object.dkimDomainRange)
         : isSet(object.dkim_domain_range)
         ? IndexRange.fromJSON(object.dkim_domain_range)
         : undefined,
       dkimHashIndex: isSet(object.dkimHashIndex)
-        ? BigInt(object.dkimHashIndex)
+        ? Long.fromValue(object.dkimHashIndex)
         : isSet(object.dkim_hash_index)
-        ? BigInt(object.dkim_hash_index)
-        : 0n,
+        ? Long.fromValue(object.dkim_hash_index)
+        : Long.UZERO,
       txBytesRange: isSet(object.txBytesRange)
         ? IndexRange.fromJSON(object.txBytesRange)
         : isSet(object.tx_bytes_range)
@@ -394,17 +383,17 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
 
   toJSON(message: PublicInputIndices): unknown {
     const obj: any = {};
-    if (message.minLength !== 0n) {
-      obj.minLength = message.minLength.toString();
+    if (!message.minLength.equals(Long.UZERO)) {
+      obj.minLength = (message.minLength || Long.UZERO).toString();
     }
-    if (message.emailHashIndex !== 0n) {
-      obj.emailHashIndex = message.emailHashIndex.toString();
+    if (!message.emailHashIndex.equals(Long.UZERO)) {
+      obj.emailHashIndex = (message.emailHashIndex || Long.UZERO).toString();
     }
     if (message.dkimDomainRange !== undefined) {
       obj.dkimDomainRange = IndexRange.toJSON(message.dkimDomainRange);
     }
-    if (message.dkimHashIndex !== 0n) {
-      obj.dkimHashIndex = message.dkimHashIndex.toString();
+    if (!message.dkimHashIndex.equals(Long.UZERO)) {
+      obj.dkimHashIndex = (message.dkimHashIndex || Long.UZERO).toString();
     }
     if (message.txBytesRange !== undefined) {
       obj.txBytesRange = IndexRange.toJSON(message.txBytesRange);
@@ -423,12 +412,18 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
   },
   fromPartial<I extends Exact<DeepPartial<PublicInputIndices>, I>>(object: I): PublicInputIndices {
     const message = createBasePublicInputIndices();
-    message.minLength = object.minLength ?? 0n;
-    message.emailHashIndex = object.emailHashIndex ?? 0n;
+    message.minLength = (object.minLength !== undefined && object.minLength !== null)
+      ? Long.fromValue(object.minLength)
+      : Long.UZERO;
+    message.emailHashIndex = (object.emailHashIndex !== undefined && object.emailHashIndex !== null)
+      ? Long.fromValue(object.emailHashIndex)
+      : Long.UZERO;
     message.dkimDomainRange = (object.dkimDomainRange !== undefined && object.dkimDomainRange !== null)
       ? IndexRange.fromPartial(object.dkimDomainRange)
       : undefined;
-    message.dkimHashIndex = object.dkimHashIndex ?? 0n;
+    message.dkimHashIndex = (object.dkimHashIndex !== undefined && object.dkimHashIndex !== null)
+      ? Long.fromValue(object.dkimHashIndex)
+      : Long.UZERO;
     message.txBytesRange = (object.txBytesRange !== undefined && object.txBytesRange !== null)
       ? IndexRange.fromPartial(object.txBytesRange)
       : undefined;
@@ -443,22 +438,16 @@ export const PublicInputIndices: MessageFns<PublicInputIndices> = {
 };
 
 function createBaseParams(): Params {
-  return { vkeyIdentifier: 0n, maxPubkeySizeBytes: 0n, publicInputIndices: undefined };
+  return { vkeyIdentifier: Long.UZERO, maxPubkeySizeBytes: Long.UZERO, publicInputIndices: undefined };
 }
 
 export const Params: MessageFns<Params> = {
   encode(message: Params, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.vkeyIdentifier !== 0n) {
-      if (BigInt.asUintN(64, message.vkeyIdentifier) !== message.vkeyIdentifier) {
-        throw new globalThis.Error("value provided for field message.vkeyIdentifier of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.vkeyIdentifier);
+    if (!message.vkeyIdentifier.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.vkeyIdentifier.toString());
     }
-    if (message.maxPubkeySizeBytes !== 0n) {
-      if (BigInt.asUintN(64, message.maxPubkeySizeBytes) !== message.maxPubkeySizeBytes) {
-        throw new globalThis.Error("value provided for field message.maxPubkeySizeBytes of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.maxPubkeySizeBytes);
+    if (!message.maxPubkeySizeBytes.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.maxPubkeySizeBytes.toString());
     }
     if (message.publicInputIndices !== undefined) {
       PublicInputIndices.encode(message.publicInputIndices, writer.uint32(26).fork()).join();
@@ -478,7 +467,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.vkeyIdentifier = reader.uint64() as bigint;
+          message.vkeyIdentifier = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -486,7 +475,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxPubkeySizeBytes = reader.uint64() as bigint;
+          message.maxPubkeySizeBytes = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -509,15 +498,15 @@ export const Params: MessageFns<Params> = {
   fromJSON(object: any): Params {
     return {
       vkeyIdentifier: isSet(object.vkeyIdentifier)
-        ? BigInt(object.vkeyIdentifier)
+        ? Long.fromValue(object.vkeyIdentifier)
         : isSet(object.vkey_identifier)
-        ? BigInt(object.vkey_identifier)
-        : 0n,
+        ? Long.fromValue(object.vkey_identifier)
+        : Long.UZERO,
       maxPubkeySizeBytes: isSet(object.maxPubkeySizeBytes)
-        ? BigInt(object.maxPubkeySizeBytes)
+        ? Long.fromValue(object.maxPubkeySizeBytes)
         : isSet(object.max_pubkey_size_bytes)
-        ? BigInt(object.max_pubkey_size_bytes)
-        : 0n,
+        ? Long.fromValue(object.max_pubkey_size_bytes)
+        : Long.UZERO,
       publicInputIndices: isSet(object.publicInputIndices)
         ? PublicInputIndices.fromJSON(object.publicInputIndices)
         : isSet(object.public_input_indices)
@@ -528,11 +517,11 @@ export const Params: MessageFns<Params> = {
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    if (message.vkeyIdentifier !== 0n) {
-      obj.vkeyIdentifier = message.vkeyIdentifier.toString();
+    if (!message.vkeyIdentifier.equals(Long.UZERO)) {
+      obj.vkeyIdentifier = (message.vkeyIdentifier || Long.UZERO).toString();
     }
-    if (message.maxPubkeySizeBytes !== 0n) {
-      obj.maxPubkeySizeBytes = message.maxPubkeySizeBytes.toString();
+    if (!message.maxPubkeySizeBytes.equals(Long.UZERO)) {
+      obj.maxPubkeySizeBytes = (message.maxPubkeySizeBytes || Long.UZERO).toString();
     }
     if (message.publicInputIndices !== undefined) {
       obj.publicInputIndices = PublicInputIndices.toJSON(message.publicInputIndices);
@@ -545,8 +534,12 @@ export const Params: MessageFns<Params> = {
   },
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
-    message.vkeyIdentifier = object.vkeyIdentifier ?? 0n;
-    message.maxPubkeySizeBytes = object.maxPubkeySizeBytes ?? 0n;
+    message.vkeyIdentifier = (object.vkeyIdentifier !== undefined && object.vkeyIdentifier !== null)
+      ? Long.fromValue(object.vkeyIdentifier)
+      : Long.UZERO;
+    message.maxPubkeySizeBytes = (object.maxPubkeySizeBytes !== undefined && object.maxPubkeySizeBytes !== null)
+      ? Long.fromValue(object.maxPubkeySizeBytes)
+      : Long.UZERO;
     message.publicInputIndices = (object.publicInputIndices !== undefined && object.publicInputIndices !== null)
       ? PublicInputIndices.fromPartial(object.publicInputIndices)
       : undefined;
@@ -554,10 +547,10 @@ export const Params: MessageFns<Params> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
