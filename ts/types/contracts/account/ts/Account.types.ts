@@ -67,3 +67,31 @@ export type QueryMsg = {
   };
 };
 export interface MigrateMsg {}
+export type Authenticator = {
+  secp256_k1: {
+    pubkey: Binary;
+  };
+} | {
+  ed25519: {
+    pubkey: Binary;
+  };
+} | {
+  eth_wallet: {
+    address: string;
+  };
+} | {
+  jwt: {
+    aud: string;
+    sub: string;
+  };
+} | {
+  secp256_r1: {
+    pubkey: Binary;
+  };
+} | {
+  passkey: {
+    passkey: Binary;
+    url: string;
+  };
+};
+export type ArrayOfUint8 = number[];
