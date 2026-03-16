@@ -1,6 +1,6 @@
 {
   "name": "@burnt-labs/xion-types",
-  "version": "28.2.0",
+  "version": "0.0.1",
   "author": "burnt-labs <devops@burnt.com>",
   "description": "xion-types",
   "main": "index.js",
