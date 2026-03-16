@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # proto-gen-ext.sh — Generate protobuf types from BSR for all supported languages.
 #
 # Usage:
