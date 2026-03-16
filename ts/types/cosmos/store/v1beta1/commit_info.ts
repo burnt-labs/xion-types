@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 
 export const protobufPackage = "cosmos.store.v1beta1";
@@ -16,7 +15,7 @@ export const protobufPackage = "cosmos.store.v1beta1";
  * a version/height.
  */
 export interface CommitInfo {
-  version: Long;
+  version: bigint;
   storeInfos: StoreInfo[];
   timestamp?: Date | undefined;
 }
@@ -35,18 +34,21 @@ export interface StoreInfo {
  * committed.
  */
 export interface CommitID {
-  version: Long;
+  version: bigint;
   hash: Uint8Array;
 }
 
 function createBaseCommitInfo(): CommitInfo {
-  return { version: Long.ZERO, storeInfos: [], timestamp: undefined };
+  return { version: 0n, storeInfos: [], timestamp: undefined };
 }
 
 export const CommitInfo: MessageFns<CommitInfo> = {
   encode(message: CommitInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.version.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.version.toString());
+    if (message.version !== 0n) {
+      if (BigInt.asIntN(64, message.version) !== message.version) {
+        throw new globalThis.Error("value provided for field message.version of type int64 too large");
+      }
+      writer.uint32(8).int64(message.version);
     }
     for (const v of message.storeInfos) {
       StoreInfo.encode(v!, writer.uint32(18).fork()).join();
@@ -69,7 +71,7 @@ export const CommitInfo: MessageFns<CommitInfo> = {
             break;
           }
 
-          message.version = Long.fromString(reader.int64().toString());
+          message.version = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -99,7 +101,7 @@ export const CommitInfo: MessageFns<CommitInfo> = {
 
   fromJSON(object: any): CommitInfo {
     return {
-      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
+      version: isSet(object.version) ? BigInt(object.version) : 0n,
       storeInfos: globalThis.Array.isArray(object?.storeInfos)
         ? object.storeInfos.map((e: any) => StoreInfo.fromJSON(e))
         : globalThis.Array.isArray(object?.store_infos)
@@ -111,8 +113,8 @@ export const CommitInfo: MessageFns<CommitInfo> = {
 
   toJSON(message: CommitInfo): unknown {
     const obj: any = {};
-    if (!message.version.equals(Long.ZERO)) {
-      obj.version = (message.version || Long.ZERO).toString();
+    if (message.version !== 0n) {
+      obj.version = message.version.toString();
     }
     if (message.storeInfos?.length) {
       obj.storeInfos = message.storeInfos.map((e) => StoreInfo.toJSON(e));
@@ -128,9 +130,7 @@ export const CommitInfo: MessageFns<CommitInfo> = {
   },
   fromPartial<I extends Exact<DeepPartial<CommitInfo>, I>>(object: I): CommitInfo {
     const message = createBaseCommitInfo();
-    message.version = (object.version !== undefined && object.version !== null)
-      ? Long.fromValue(object.version)
-      : Long.ZERO;
+    message.version = object.version ?? 0n;
     message.storeInfos = object.storeInfos?.map((e) => StoreInfo.fromPartial(e)) || [];
     message.timestamp = object.timestamp ?? undefined;
     return message;
@@ -220,13 +220,16 @@ export const StoreInfo: MessageFns<StoreInfo> = {
 };
 
 function createBaseCommitID(): CommitID {
-  return { version: Long.ZERO, hash: new Uint8Array(0) };
+  return { version: 0n, hash: new Uint8Array(0) };
 }
 
 export const CommitID: MessageFns<CommitID> = {
   encode(message: CommitID, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.version.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.version.toString());
+    if (message.version !== 0n) {
+      if (BigInt.asIntN(64, message.version) !== message.version) {
+        throw new globalThis.Error("value provided for field message.version of type int64 too large");
+      }
+      writer.uint32(8).int64(message.version);
     }
     if (message.hash.length !== 0) {
       writer.uint32(18).bytes(message.hash);
@@ -246,7 +249,7 @@ export const CommitID: MessageFns<CommitID> = {
             break;
           }
 
-          message.version = Long.fromString(reader.int64().toString());
+          message.version = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -268,15 +271,15 @@ export const CommitID: MessageFns<CommitID> = {
 
   fromJSON(object: any): CommitID {
     return {
-      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
+      version: isSet(object.version) ? BigInt(object.version) : 0n,
       hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(0),
     };
   },
 
   toJSON(message: CommitID): unknown {
     const obj: any = {};
-    if (!message.version.equals(Long.ZERO)) {
-      obj.version = (message.version || Long.ZERO).toString();
+    if (message.version !== 0n) {
+      obj.version = message.version.toString();
     }
     if (message.hash.length !== 0) {
       obj.hash = base64FromBytes(message.hash);
@@ -289,9 +292,7 @@ export const CommitID: MessageFns<CommitID> = {
   },
   fromPartial<I extends Exact<DeepPartial<CommitID>, I>>(object: I): CommitID {
     const message = createBaseCommitID();
-    message.version = (object.version !== undefined && object.version !== null)
-      ? Long.fromValue(object.version)
-      : Long.ZERO;
+    message.version = object.version ?? 0n;
     message.hash = object.hash ?? new Uint8Array(0);
     return message;
   },
@@ -322,10 +323,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -335,13 +336,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -354,10 +355,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

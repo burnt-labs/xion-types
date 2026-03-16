@@ -6,13 +6,12 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "tendermint.crypto";
 
 export interface Proof {
-  total: Long;
-  index: Long;
+  total: bigint;
+  index: bigint;
   leafHash: Uint8Array;
   aunts: Uint8Array[];
 }
@@ -47,16 +46,22 @@ export interface ProofOps {
 }
 
 function createBaseProof(): Proof {
-  return { total: Long.ZERO, index: Long.ZERO, leafHash: new Uint8Array(0), aunts: [] };
+  return { total: 0n, index: 0n, leafHash: new Uint8Array(0), aunts: [] };
 }
 
 export const Proof: MessageFns<Proof> = {
   encode(message: Proof, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.total.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.total.toString());
+    if (message.total !== 0n) {
+      if (BigInt.asIntN(64, message.total) !== message.total) {
+        throw new globalThis.Error("value provided for field message.total of type int64 too large");
+      }
+      writer.uint32(8).int64(message.total);
     }
-    if (!message.index.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.index.toString());
+    if (message.index !== 0n) {
+      if (BigInt.asIntN(64, message.index) !== message.index) {
+        throw new globalThis.Error("value provided for field message.index of type int64 too large");
+      }
+      writer.uint32(16).int64(message.index);
     }
     if (message.leafHash.length !== 0) {
       writer.uint32(26).bytes(message.leafHash);
@@ -79,7 +84,7 @@ export const Proof: MessageFns<Proof> = {
             break;
           }
 
-          message.total = Long.fromString(reader.int64().toString());
+          message.total = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -87,7 +92,7 @@ export const Proof: MessageFns<Proof> = {
             break;
           }
 
-          message.index = Long.fromString(reader.int64().toString());
+          message.index = reader.int64() as bigint;
           continue;
         }
         case 3: {
@@ -117,8 +122,8 @@ export const Proof: MessageFns<Proof> = {
 
   fromJSON(object: any): Proof {
     return {
-      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
-      index: isSet(object.index) ? Long.fromValue(object.index) : Long.ZERO,
+      total: isSet(object.total) ? BigInt(object.total) : 0n,
+      index: isSet(object.index) ? BigInt(object.index) : 0n,
       leafHash: isSet(object.leafHash)
         ? bytesFromBase64(object.leafHash)
         : isSet(object.leaf_hash)
@@ -130,11 +135,11 @@ export const Proof: MessageFns<Proof> = {
 
   toJSON(message: Proof): unknown {
     const obj: any = {};
-    if (!message.total.equals(Long.ZERO)) {
-      obj.total = (message.total || Long.ZERO).toString();
+    if (message.total !== 0n) {
+      obj.total = message.total.toString();
     }
-    if (!message.index.equals(Long.ZERO)) {
-      obj.index = (message.index || Long.ZERO).toString();
+    if (message.index !== 0n) {
+      obj.index = message.index.toString();
     }
     if (message.leafHash.length !== 0) {
       obj.leafHash = base64FromBytes(message.leafHash);
@@ -150,8 +155,8 @@ export const Proof: MessageFns<Proof> = {
   },
   fromPartial<I extends Exact<DeepPartial<Proof>, I>>(object: I): Proof {
     const message = createBaseProof();
-    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.ZERO;
-    message.index = (object.index !== undefined && object.index !== null) ? Long.fromValue(object.index) : Long.ZERO;
+    message.total = object.total ?? 0n;
+    message.index = object.index ?? 0n;
     message.leafHash = object.leafHash ?? new Uint8Array(0);
     message.aunts = object.aunts?.map((e) => e) || [];
     return message;
@@ -501,10 +506,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

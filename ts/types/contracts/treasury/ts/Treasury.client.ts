@@ -6,19 +6,19 @@
 
 import { ICosmWasmClient, ISigningCosmWasmClient } from "./baseClient";
 import { StdFee } from "@interchainjs/types";
-import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, Params, ExecuteMsg, Uint128, Coin, QueryMsg } from "./Treasury.types";
+import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, ExecuteMsg, Uint128, Params, Coin, QueryMsg, NullableAddr, ArrayOfString } from "./Treasury.types";
 export interface TreasuryReadOnlyInterface {
   contractAddress: string;
   grantConfigByTypeUrl: ({
     msgTypeUrl
   }: {
     msgTypeUrl: string;
-  }) => Promise<Binary>;
-  grantConfigTypeUrls: () => Promise<Binary>;
-  feeConfig: () => Promise<Binary>;
-  admin: () => Promise<Binary>;
-  pendingAdmin: () => Promise<Binary>;
-  params: () => Promise<Binary>;
+  }) => Promise<GrantConfig>;
+  grantConfigTypeUrls: () => Promise<ArrayOfString>;
+  feeConfig: () => Promise<FeeConfig>;
+  admin: () => Promise<NullableAddr>;
+  pendingAdmin: () => Promise<NullableAddr>;
+  params: () => Promise<Params>;
 }
 export class TreasuryQueryClient implements TreasuryReadOnlyInterface {
   client: ICosmWasmClient;
@@ -37,34 +37,34 @@ export class TreasuryQueryClient implements TreasuryReadOnlyInterface {
     msgTypeUrl
   }: {
     msgTypeUrl: string;
-  }): Promise<Binary> => {
+  }): Promise<GrantConfig> => {
     return this.client.queryContractSmart(this.contractAddress, {
       grant_config_by_type_url: {
         msg_type_url: msgTypeUrl
       }
     });
   };
-  grantConfigTypeUrls = async (): Promise<Binary> => {
+  grantConfigTypeUrls = async (): Promise<ArrayOfString> => {
     return this.client.queryContractSmart(this.contractAddress, {
       grant_config_type_urls: {}
     });
   };
-  feeConfig = async (): Promise<Binary> => {
+  feeConfig = async (): Promise<FeeConfig> => {
     return this.client.queryContractSmart(this.contractAddress, {
       fee_config: {}
     });
   };
-  admin = async (): Promise<Binary> => {
+  admin = async (): Promise<NullableAddr> => {
     return this.client.queryContractSmart(this.contractAddress, {
       admin: {}
     });
   };
-  pendingAdmin = async (): Promise<Binary> => {
+  pendingAdmin = async (): Promise<NullableAddr> => {
     return this.client.queryContractSmart(this.contractAddress, {
       pending_admin: {}
     });
   };
-  params = async (): Promise<Binary> => {
+  params = async (): Promise<Params> => {
     return this.client.queryContractSmart(this.contractAddress, {
       params: {}
     });

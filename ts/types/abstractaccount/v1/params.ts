@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "abstractaccount.v1";
 
@@ -24,25 +23,25 @@ export interface Params {
    * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
    * regiseter AbstractAccounts.
    */
-  allowedCodeIds: Long[];
+  allowedCodeIds: bigint[];
   /**
    * MaxGasBefore is the maximum amount of gas that can be consumed by the
    * contract call in the before_tx decorator.
    *
    * Must be greater than zero.
    */
-  maxGasBefore: Long;
+  maxGasBefore: bigint;
   /**
    * MaxGasAfter is the maximum amount of gas that can be consumed by the
    * contract call in the after_tx decorator.
    *
    * Must be greater than zero.
    */
-  maxGasAfter: Long;
+  maxGasAfter: bigint;
 }
 
 function createBaseParams(): Params {
-  return { allowAllCodeIds: false, allowedCodeIds: [], maxGasBefore: Long.UZERO, maxGasAfter: Long.UZERO };
+  return { allowAllCodeIds: false, allowedCodeIds: [], maxGasBefore: 0n, maxGasAfter: 0n };
 }
 
 export const Params: MessageFns<Params> = {
@@ -51,13 +50,22 @@ export const Params: MessageFns<Params> = {
       writer.uint32(8).bool(message.allowAllCodeIds);
     }
     for (const v of message.allowedCodeIds) {
-      writer.uint32(16).uint64(v!.toString());
+      if (BigInt.asUintN(64, v!) !== v!) {
+        throw new globalThis.Error("value provided for field v! of type uint64 too large");
+      }
+      writer.uint32(16).uint64(v!);
     }
-    if (!message.maxGasBefore.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.maxGasBefore.toString());
+    if (message.maxGasBefore !== 0n) {
+      if (BigInt.asUintN(64, message.maxGasBefore) !== message.maxGasBefore) {
+        throw new globalThis.Error("value provided for field message.maxGasBefore of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.maxGasBefore);
     }
-    if (!message.maxGasAfter.equals(Long.UZERO)) {
-      writer.uint32(32).uint64(message.maxGasAfter.toString());
+    if (message.maxGasAfter !== 0n) {
+      if (BigInt.asUintN(64, message.maxGasAfter) !== message.maxGasAfter) {
+        throw new globalThis.Error("value provided for field message.maxGasAfter of type uint64 too large");
+      }
+      writer.uint32(32).uint64(message.maxGasAfter);
     }
     return writer;
   },
@@ -79,7 +87,7 @@ export const Params: MessageFns<Params> = {
         }
         case 2: {
           if (tag === 16) {
-            message.allowedCodeIds.push(Long.fromString(reader.uint64().toString(), true));
+            message.allowedCodeIds.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -87,7 +95,7 @@ export const Params: MessageFns<Params> = {
           if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.allowedCodeIds.push(Long.fromString(reader.uint64().toString(), true));
+              message.allowedCodeIds.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -100,7 +108,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxGasBefore = Long.fromString(reader.uint64().toString(), true);
+          message.maxGasBefore = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -108,7 +116,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxGasAfter = Long.fromString(reader.uint64().toString(), true);
+          message.maxGasAfter = reader.uint64() as bigint;
           continue;
         }
       }
@@ -128,20 +136,20 @@ export const Params: MessageFns<Params> = {
         ? globalThis.Boolean(object.allow_all_code_ids)
         : false,
       allowedCodeIds: globalThis.Array.isArray(object?.allowedCodeIds)
-        ? object.allowedCodeIds.map((e: any) => Long.fromValue(e))
+        ? object.allowedCodeIds.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.allowed_code_ids)
-        ? object.allowed_code_ids.map((e: any) => Long.fromValue(e))
+        ? object.allowed_code_ids.map((e: any) => BigInt(e))
         : [],
       maxGasBefore: isSet(object.maxGasBefore)
-        ? Long.fromValue(object.maxGasBefore)
+        ? BigInt(object.maxGasBefore)
         : isSet(object.max_gas_before)
-        ? Long.fromValue(object.max_gas_before)
-        : Long.UZERO,
+        ? BigInt(object.max_gas_before)
+        : 0n,
       maxGasAfter: isSet(object.maxGasAfter)
-        ? Long.fromValue(object.maxGasAfter)
+        ? BigInt(object.maxGasAfter)
         : isSet(object.max_gas_after)
-        ? Long.fromValue(object.max_gas_after)
-        : Long.UZERO,
+        ? BigInt(object.max_gas_after)
+        : 0n,
     };
   },
 
@@ -151,13 +159,13 @@ export const Params: MessageFns<Params> = {
       obj.allowAllCodeIds = message.allowAllCodeIds;
     }
     if (message.allowedCodeIds?.length) {
-      obj.allowedCodeIds = message.allowedCodeIds.map((e) => (e || Long.UZERO).toString());
+      obj.allowedCodeIds = message.allowedCodeIds.map((e) => e.toString());
     }
-    if (!message.maxGasBefore.equals(Long.UZERO)) {
-      obj.maxGasBefore = (message.maxGasBefore || Long.UZERO).toString();
+    if (message.maxGasBefore !== 0n) {
+      obj.maxGasBefore = message.maxGasBefore.toString();
     }
-    if (!message.maxGasAfter.equals(Long.UZERO)) {
-      obj.maxGasAfter = (message.maxGasAfter || Long.UZERO).toString();
+    if (message.maxGasAfter !== 0n) {
+      obj.maxGasAfter = message.maxGasAfter.toString();
     }
     return obj;
   },
@@ -168,21 +176,17 @@ export const Params: MessageFns<Params> = {
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
     message.allowAllCodeIds = object.allowAllCodeIds ?? false;
-    message.allowedCodeIds = object.allowedCodeIds?.map((e) => Long.fromValue(e)) || [];
-    message.maxGasBefore = (object.maxGasBefore !== undefined && object.maxGasBefore !== null)
-      ? Long.fromValue(object.maxGasBefore)
-      : Long.UZERO;
-    message.maxGasAfter = (object.maxGasAfter !== undefined && object.maxGasAfter !== null)
-      ? Long.fromValue(object.maxGasAfter)
-      : Long.UZERO;
+    message.allowedCodeIds = object.allowedCodeIds?.map((e) => e) || [];
+    message.maxGasBefore = object.maxGasBefore ?? 0n;
+    message.maxGasAfter = object.maxGasAfter ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 
 export const protobufPackage = "cosmos.counter.v1";
 
@@ -18,7 +17,7 @@ export interface QueryGetCountRequest {
 
 /** QueryGetCountResponse defines the response type for querying x/mock count. */
 export interface QueryGetCountResponse {
-  totalCount: Long;
+  totalCount: bigint;
 }
 
 function createBaseQueryGetCountRequest(): QueryGetCountRequest {
@@ -65,13 +64,16 @@ export const QueryGetCountRequest: MessageFns<QueryGetCountRequest> = {
 };
 
 function createBaseQueryGetCountResponse(): QueryGetCountResponse {
-  return { totalCount: Long.ZERO };
+  return { totalCount: 0n };
 }
 
 export const QueryGetCountResponse: MessageFns<QueryGetCountResponse> = {
   encode(message: QueryGetCountResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.totalCount.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.totalCount.toString());
+    if (message.totalCount !== 0n) {
+      if (BigInt.asIntN(64, message.totalCount) !== message.totalCount) {
+        throw new globalThis.Error("value provided for field message.totalCount of type int64 too large");
+      }
+      writer.uint32(8).int64(message.totalCount);
     }
     return writer;
   },
@@ -88,7 +90,7 @@ export const QueryGetCountResponse: MessageFns<QueryGetCountResponse> = {
             break;
           }
 
-          message.totalCount = Long.fromString(reader.int64().toString());
+          message.totalCount = reader.int64() as bigint;
           continue;
         }
       }
@@ -103,17 +105,17 @@ export const QueryGetCountResponse: MessageFns<QueryGetCountResponse> = {
   fromJSON(object: any): QueryGetCountResponse {
     return {
       totalCount: isSet(object.totalCount)
-        ? Long.fromValue(object.totalCount)
+        ? BigInt(object.totalCount)
         : isSet(object.total_count)
-        ? Long.fromValue(object.total_count)
-        : Long.ZERO,
+        ? BigInt(object.total_count)
+        : 0n,
     };
   },
 
   toJSON(message: QueryGetCountResponse): unknown {
     const obj: any = {};
-    if (!message.totalCount.equals(Long.ZERO)) {
-      obj.totalCount = (message.totalCount || Long.ZERO).toString();
+    if (message.totalCount !== 0n) {
+      obj.totalCount = message.totalCount.toString();
     }
     return obj;
   },
@@ -123,9 +125,7 @@ export const QueryGetCountResponse: MessageFns<QueryGetCountResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryGetCountResponse>, I>>(object: I): QueryGetCountResponse {
     const message = createBaseQueryGetCountResponse();
-    message.totalCount = (object.totalCount !== undefined && object.totalCount !== null)
-      ? Long.fromValue(object.totalCount)
-      : Long.ZERO;
+    message.totalCount = object.totalCount ?? 0n;
     return message;
   },
 };
@@ -242,10 +242,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

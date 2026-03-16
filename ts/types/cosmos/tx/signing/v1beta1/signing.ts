@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Any } from "../../../../google/protobuf/any";
 import { CompactBitArray } from "../../../crypto/multisig/v1beta1/multisig";
 
@@ -140,7 +139,7 @@ export interface SignatureDescriptor {
    * number of committed transactions signed by a given address. It is used to prevent
    * replay attacks.
    */
-  sequence: Long;
+  sequence: bigint;
 }
 
 /** Data represents signature data */
@@ -234,7 +233,7 @@ export const SignatureDescriptors: MessageFns<SignatureDescriptors> = {
 };
 
 function createBaseSignatureDescriptor(): SignatureDescriptor {
-  return { publicKey: undefined, data: undefined, sequence: Long.UZERO };
+  return { publicKey: undefined, data: undefined, sequence: 0n };
 }
 
 export const SignatureDescriptor: MessageFns<SignatureDescriptor> = {
@@ -245,8 +244,11 @@ export const SignatureDescriptor: MessageFns<SignatureDescriptor> = {
     if (message.data !== undefined) {
       SignatureDescriptor_Data.encode(message.data, writer.uint32(18).fork()).join();
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.sequence);
     }
     return writer;
   },
@@ -279,7 +281,7 @@ export const SignatureDescriptor: MessageFns<SignatureDescriptor> = {
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -299,7 +301,7 @@ export const SignatureDescriptor: MessageFns<SignatureDescriptor> = {
         ? Any.fromJSON(object.public_key)
         : undefined,
       data: isSet(object.data) ? SignatureDescriptor_Data.fromJSON(object.data) : undefined,
-      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
     };
   },
 
@@ -311,8 +313,8 @@ export const SignatureDescriptor: MessageFns<SignatureDescriptor> = {
     if (message.data !== undefined) {
       obj.data = SignatureDescriptor_Data.toJSON(message.data);
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -328,9 +330,7 @@ export const SignatureDescriptor: MessageFns<SignatureDescriptor> = {
     message.data = (object.data !== undefined && object.data !== null)
       ? SignatureDescriptor_Data.fromPartial(object.data)
       : undefined;
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
@@ -600,10 +600,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

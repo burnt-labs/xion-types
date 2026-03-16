@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../base/v1beta1/coin";
 import { VoteOption, voteOptionFromJSON, voteOptionToJSON, WeightedVoteOption } from "./gov";
@@ -33,13 +32,13 @@ export interface MsgSubmitProposal {
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: Long;
+  proposalId: bigint;
 }
 
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVote {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: Long;
+  proposalId: bigint;
   /** voter is the voter address for the proposal. */
   voter: string;
   /** option defines the vote option. */
@@ -53,7 +52,7 @@ export interface MsgVoteResponse {
 /** MsgVoteWeighted defines a message to cast a vote. */
 export interface MsgVoteWeighted {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: Long;
+  proposalId: bigint;
   /** voter is the voter address for the proposal. */
   voter: string;
   /** options defines the weighted vote options. */
@@ -67,7 +66,7 @@ export interface MsgVoteWeightedResponse {
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDeposit {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: Long;
+  proposalId: bigint;
   /** depositor defines the deposit addresses from the proposals. */
   depositor: string;
   /** amount to be deposited by depositor. */
@@ -177,13 +176,16 @@ export const MsgSubmitProposal: MessageFns<MsgSubmitProposal> = {
 };
 
 function createBaseMsgSubmitProposalResponse(): MsgSubmitProposalResponse {
-  return { proposalId: Long.UZERO };
+  return { proposalId: 0n };
 }
 
 export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = {
   encode(message: MsgSubmitProposalResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.proposalId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.proposalId.toString());
+    if (message.proposalId !== 0n) {
+      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
+        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.proposalId);
     }
     return writer;
   },
@@ -200,7 +202,7 @@ export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = 
             break;
           }
 
-          message.proposalId = Long.fromString(reader.uint64().toString(), true);
+          message.proposalId = reader.uint64() as bigint;
           continue;
         }
       }
@@ -215,17 +217,17 @@ export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = 
   fromJSON(object: any): MsgSubmitProposalResponse {
     return {
       proposalId: isSet(object.proposalId)
-        ? Long.fromValue(object.proposalId)
+        ? BigInt(object.proposalId)
         : isSet(object.proposal_id)
-        ? Long.fromValue(object.proposal_id)
-        : Long.UZERO,
+        ? BigInt(object.proposal_id)
+        : 0n,
     };
   },
 
   toJSON(message: MsgSubmitProposalResponse): unknown {
     const obj: any = {};
-    if (!message.proposalId.equals(Long.UZERO)) {
-      obj.proposalId = (message.proposalId || Long.UZERO).toString();
+    if (message.proposalId !== 0n) {
+      obj.proposalId = message.proposalId.toString();
     }
     return obj;
   },
@@ -235,21 +237,22 @@ export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = 
   },
   fromPartial<I extends Exact<DeepPartial<MsgSubmitProposalResponse>, I>>(object: I): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
-    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
-      ? Long.fromValue(object.proposalId)
-      : Long.UZERO;
+    message.proposalId = object.proposalId ?? 0n;
     return message;
   },
 };
 
 function createBaseMsgVote(): MsgVote {
-  return { proposalId: Long.UZERO, voter: "", option: 0 };
+  return { proposalId: 0n, voter: "", option: 0 };
 }
 
 export const MsgVote: MessageFns<MsgVote> = {
   encode(message: MsgVote, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.proposalId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.proposalId.toString());
+    if (message.proposalId !== 0n) {
+      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
+        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.proposalId);
     }
     if (message.voter !== "") {
       writer.uint32(18).string(message.voter);
@@ -272,7 +275,7 @@ export const MsgVote: MessageFns<MsgVote> = {
             break;
           }
 
-          message.proposalId = Long.fromString(reader.uint64().toString(), true);
+          message.proposalId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -303,10 +306,10 @@ export const MsgVote: MessageFns<MsgVote> = {
   fromJSON(object: any): MsgVote {
     return {
       proposalId: isSet(object.proposalId)
-        ? Long.fromValue(object.proposalId)
+        ? BigInt(object.proposalId)
         : isSet(object.proposal_id)
-        ? Long.fromValue(object.proposal_id)
-        : Long.UZERO,
+        ? BigInt(object.proposal_id)
+        : 0n,
       voter: isSet(object.voter) ? globalThis.String(object.voter) : "",
       option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
     };
@@ -314,8 +317,8 @@ export const MsgVote: MessageFns<MsgVote> = {
 
   toJSON(message: MsgVote): unknown {
     const obj: any = {};
-    if (!message.proposalId.equals(Long.UZERO)) {
-      obj.proposalId = (message.proposalId || Long.UZERO).toString();
+    if (message.proposalId !== 0n) {
+      obj.proposalId = message.proposalId.toString();
     }
     if (message.voter !== "") {
       obj.voter = message.voter;
@@ -331,9 +334,7 @@ export const MsgVote: MessageFns<MsgVote> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgVote>, I>>(object: I): MsgVote {
     const message = createBaseMsgVote();
-    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
-      ? Long.fromValue(object.proposalId)
-      : Long.UZERO;
+    message.proposalId = object.proposalId ?? 0n;
     message.voter = object.voter ?? "";
     message.option = object.option ?? 0;
     return message;
@@ -384,13 +385,16 @@ export const MsgVoteResponse: MessageFns<MsgVoteResponse> = {
 };
 
 function createBaseMsgVoteWeighted(): MsgVoteWeighted {
-  return { proposalId: Long.UZERO, voter: "", options: [] };
+  return { proposalId: 0n, voter: "", options: [] };
 }
 
 export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
   encode(message: MsgVoteWeighted, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.proposalId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.proposalId.toString());
+    if (message.proposalId !== 0n) {
+      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
+        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.proposalId);
     }
     if (message.voter !== "") {
       writer.uint32(18).string(message.voter);
@@ -413,7 +417,7 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
             break;
           }
 
-          message.proposalId = Long.fromString(reader.uint64().toString(), true);
+          message.proposalId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -444,10 +448,10 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
   fromJSON(object: any): MsgVoteWeighted {
     return {
       proposalId: isSet(object.proposalId)
-        ? Long.fromValue(object.proposalId)
+        ? BigInt(object.proposalId)
         : isSet(object.proposal_id)
-        ? Long.fromValue(object.proposal_id)
-        : Long.UZERO,
+        ? BigInt(object.proposal_id)
+        : 0n,
       voter: isSet(object.voter) ? globalThis.String(object.voter) : "",
       options: globalThis.Array.isArray(object?.options)
         ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e))
@@ -457,8 +461,8 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
 
   toJSON(message: MsgVoteWeighted): unknown {
     const obj: any = {};
-    if (!message.proposalId.equals(Long.UZERO)) {
-      obj.proposalId = (message.proposalId || Long.UZERO).toString();
+    if (message.proposalId !== 0n) {
+      obj.proposalId = message.proposalId.toString();
     }
     if (message.voter !== "") {
       obj.voter = message.voter;
@@ -474,9 +478,7 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgVoteWeighted>, I>>(object: I): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
-    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
-      ? Long.fromValue(object.proposalId)
-      : Long.UZERO;
+    message.proposalId = object.proposalId ?? 0n;
     message.voter = object.voter ?? "";
     message.options = object.options?.map((e) => WeightedVoteOption.fromPartial(e)) || [];
     return message;
@@ -527,13 +529,16 @@ export const MsgVoteWeightedResponse: MessageFns<MsgVoteWeightedResponse> = {
 };
 
 function createBaseMsgDeposit(): MsgDeposit {
-  return { proposalId: Long.UZERO, depositor: "", amount: [] };
+  return { proposalId: 0n, depositor: "", amount: [] };
 }
 
 export const MsgDeposit: MessageFns<MsgDeposit> = {
   encode(message: MsgDeposit, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.proposalId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.proposalId.toString());
+    if (message.proposalId !== 0n) {
+      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
+        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.proposalId);
     }
     if (message.depositor !== "") {
       writer.uint32(18).string(message.depositor);
@@ -556,7 +561,7 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
             break;
           }
 
-          message.proposalId = Long.fromString(reader.uint64().toString(), true);
+          message.proposalId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -587,10 +592,10 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
   fromJSON(object: any): MsgDeposit {
     return {
       proposalId: isSet(object.proposalId)
-        ? Long.fromValue(object.proposalId)
+        ? BigInt(object.proposalId)
         : isSet(object.proposal_id)
-        ? Long.fromValue(object.proposal_id)
-        : Long.UZERO,
+        ? BigInt(object.proposal_id)
+        : 0n,
       depositor: isSet(object.depositor) ? globalThis.String(object.depositor) : "",
       amount: globalThis.Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : [],
     };
@@ -598,8 +603,8 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
 
   toJSON(message: MsgDeposit): unknown {
     const obj: any = {};
-    if (!message.proposalId.equals(Long.UZERO)) {
-      obj.proposalId = (message.proposalId || Long.UZERO).toString();
+    if (message.proposalId !== 0n) {
+      obj.proposalId = message.proposalId.toString();
     }
     if (message.depositor !== "") {
       obj.depositor = message.depositor;
@@ -615,9 +620,7 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgDeposit>, I>>(object: I): MsgDeposit {
     const message = createBaseMsgDeposit();
-    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
-      ? Long.fromValue(object.proposalId)
-      : Long.UZERO;
+    message.proposalId = object.proposalId ?? 0n;
     message.depositor = object.depositor ?? "";
     message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
     return message;
@@ -872,10 +875,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

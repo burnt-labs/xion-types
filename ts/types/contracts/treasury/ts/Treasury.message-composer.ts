@@ -7,7 +7,7 @@
 import { EncodeObject } from "@interchainjs/cosmos-types";
 import { MsgExecuteContract } from "interchainjs/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@interchainjs/encoding";
-import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, Params, ExecuteMsg, Uint128, Coin, QueryMsg } from "./Treasury.types";
+import { Addr, Binary, InstantiateMsg, FeeConfig, Any, GrantConfig, ExecuteMsg, Uint128, Params, Coin, QueryMsg, NullableAddr, ArrayOfString } from "./Treasury.types";
 export interface TreasuryMsg {
   contractAddress: string;
   sender: string;
