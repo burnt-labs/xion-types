@@ -38,7 +38,7 @@ load_sources() {
 
 load_sources
 
-ALL_LANGUAGES="c cpp csharp docs java kotlin objc python ruby rust scala swift ts ts-proto"
+ALL_LANGUAGES="c cpp csharp docs java kotlin objc php python ruby rust scala swift ts ts-proto"
 
 # Leaked test/internal packages to remove after generation.
 # These get pulled in by --include-imports but should not be shipped.
