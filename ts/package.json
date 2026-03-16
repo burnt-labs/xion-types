@@ -1,6 +1,6 @@
 {
   "name": "@burnt-labs/xion-types",
-  "version": "0.0.1",
+  "version": "28.2.0",
   "author": "burnt-labs <devops@burnt.com>",
   "description": "xion-types",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "url": "https://github.com/burnt-labs/xion-types/issues"
   },
   "scripts": {
-    "copy": "copyfiles -f ./LICENSE README.md package.json dist",
+    "copy": "copyfiles -f ./LICENSE README.md package.json dist && copyfiles -u 1 'types/contracts/*/schema/**/*.json' dist",
     "clean": "rimraf dist",
     "download-protos": "ts-node scripts/download-protos.ts",
     "codegen": "ts-node scripts/codegen.ts",

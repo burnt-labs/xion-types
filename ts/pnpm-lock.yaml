@@ -67,7 +67,7 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.19.15)(typescript@5.9.3)
       ts-proto:
-        specifier: '*'
+        specifier: 2.11.5
         version: 2.11.5
       typescript:
         specifier: ^5.8.3
