@@ -23,6 +23,7 @@
     "copy": "copyfiles -f ./LICENSE README.md package.json dist && copyfiles -u 1 'types/contracts/*/schema/**/*.json' dist",
     "clean": "rimraf dist",
     "build": "pnpm run clean && tsc && tsc -p tsconfig.esm.json && pnpm run copy",
+    "typecheck": "tsc -p tsconfig.typecheck.json",
     "lint": "eslint . --fix",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -37,7 +38,8 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.8.0",
-    "@improbable-eng/grpc-web": "^0.15.0"
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "browser-headers": "^0.4.1"
   },
   "peerDependencies": {
     "@cosmjs/amino": "^0.36.0",
