@@ -36,7 +36,7 @@ Requires `buf` CLI and internet access. No Go toolchain needed.
 
 ```bash
 # Regenerate a specific language (e.g. ts)
-XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh ts
+XION_BSR_MODULE="buf.build/burnt-labs/xion:v28.1.0" ./scripts/proto-gen-ext.sh ts
 
 # Regenerate all languages
 XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh all

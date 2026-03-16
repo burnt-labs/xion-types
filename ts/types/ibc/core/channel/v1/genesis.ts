@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { IdentifiedChannel, PacketState } from "./channel";
 
 export const protobufPackage = "ibc.core.channel.v1";
@@ -21,7 +20,7 @@ export interface GenesisState {
   recvSequences: PacketSequence[];
   ackSequences: PacketSequence[];
   /** the sequence for the next generated channel identifier */
-  nextChannelSequence: Long;
+  nextChannelSequence: bigint;
 }
 
 /**
@@ -31,7 +30,7 @@ export interface GenesisState {
 export interface PacketSequence {
   portId: string;
   channelId: string;
-  sequence: Long;
+  sequence: bigint;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -43,7 +42,7 @@ function createBaseGenesisState(): GenesisState {
     sendSequences: [],
     recvSequences: [],
     ackSequences: [],
-    nextChannelSequence: Long.UZERO,
+    nextChannelSequence: 0n,
   };
 }
 
@@ -70,8 +69,11 @@ export const GenesisState: MessageFns<GenesisState> = {
     for (const v of message.ackSequences) {
       PacketSequence.encode(v!, writer.uint32(58).fork()).join();
     }
-    if (!message.nextChannelSequence.equals(Long.UZERO)) {
-      writer.uint32(64).uint64(message.nextChannelSequence.toString());
+    if (message.nextChannelSequence !== 0n) {
+      if (BigInt.asUintN(64, message.nextChannelSequence) !== message.nextChannelSequence) {
+        throw new globalThis.Error("value provided for field message.nextChannelSequence of type uint64 too large");
+      }
+      writer.uint32(64).uint64(message.nextChannelSequence);
     }
     return writer;
   },
@@ -144,7 +146,7 @@ export const GenesisState: MessageFns<GenesisState> = {
             break;
           }
 
-          message.nextChannelSequence = Long.fromString(reader.uint64().toString(), true);
+          message.nextChannelSequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -186,10 +188,10 @@ export const GenesisState: MessageFns<GenesisState> = {
         ? object.ack_sequences.map((e: any) => PacketSequence.fromJSON(e))
         : [],
       nextChannelSequence: isSet(object.nextChannelSequence)
-        ? Long.fromValue(object.nextChannelSequence)
+        ? BigInt(object.nextChannelSequence)
         : isSet(object.next_channel_sequence)
-        ? Long.fromValue(object.next_channel_sequence)
-        : Long.UZERO,
+        ? BigInt(object.next_channel_sequence)
+        : 0n,
     };
   },
 
@@ -216,8 +218,8 @@ export const GenesisState: MessageFns<GenesisState> = {
     if (message.ackSequences?.length) {
       obj.ackSequences = message.ackSequences.map((e) => PacketSequence.toJSON(e));
     }
-    if (!message.nextChannelSequence.equals(Long.UZERO)) {
-      obj.nextChannelSequence = (message.nextChannelSequence || Long.UZERO).toString();
+    if (message.nextChannelSequence !== 0n) {
+      obj.nextChannelSequence = message.nextChannelSequence.toString();
     }
     return obj;
   },
@@ -234,15 +236,13 @@ export const GenesisState: MessageFns<GenesisState> = {
     message.sendSequences = object.sendSequences?.map((e) => PacketSequence.fromPartial(e)) || [];
     message.recvSequences = object.recvSequences?.map((e) => PacketSequence.fromPartial(e)) || [];
     message.ackSequences = object.ackSequences?.map((e) => PacketSequence.fromPartial(e)) || [];
-    message.nextChannelSequence = (object.nextChannelSequence !== undefined && object.nextChannelSequence !== null)
-      ? Long.fromValue(object.nextChannelSequence)
-      : Long.UZERO;
+    message.nextChannelSequence = object.nextChannelSequence ?? 0n;
     return message;
   },
 };
 
 function createBasePacketSequence(): PacketSequence {
-  return { portId: "", channelId: "", sequence: Long.UZERO };
+  return { portId: "", channelId: "", sequence: 0n };
 }
 
 export const PacketSequence: MessageFns<PacketSequence> = {
@@ -253,8 +253,11 @@ export const PacketSequence: MessageFns<PacketSequence> = {
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.sequence);
     }
     return writer;
   },
@@ -287,7 +290,7 @@ export const PacketSequence: MessageFns<PacketSequence> = {
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -311,7 +314,7 @@ export const PacketSequence: MessageFns<PacketSequence> = {
         : isSet(object.channel_id)
         ? globalThis.String(object.channel_id)
         : "",
-      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
     };
   },
 
@@ -323,8 +326,8 @@ export const PacketSequence: MessageFns<PacketSequence> = {
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -336,17 +339,15 @@ export const PacketSequence: MessageFns<PacketSequence> = {
     const message = createBasePacketSequence();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

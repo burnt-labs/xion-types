@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { ProofSpec } from "../../../../cosmos/ics23/v1/proofs";
 import { Duration } from "../../../../google/protobuf/duration";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
@@ -130,8 +129,8 @@ export interface Header {
  * supports positive values.
  */
 export interface Fraction {
-  numerator: Long;
-  denominator: Long;
+  numerator: bigint;
+  denominator: bigint;
 }
 
 function createBaseClientState(): ClientState {
@@ -761,16 +760,22 @@ export const Header: MessageFns<Header> = {
 };
 
 function createBaseFraction(): Fraction {
-  return { numerator: Long.UZERO, denominator: Long.UZERO };
+  return { numerator: 0n, denominator: 0n };
 }
 
 export const Fraction: MessageFns<Fraction> = {
   encode(message: Fraction, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.numerator.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.numerator.toString());
+    if (message.numerator !== 0n) {
+      if (BigInt.asUintN(64, message.numerator) !== message.numerator) {
+        throw new globalThis.Error("value provided for field message.numerator of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.numerator);
     }
-    if (!message.denominator.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.denominator.toString());
+    if (message.denominator !== 0n) {
+      if (BigInt.asUintN(64, message.denominator) !== message.denominator) {
+        throw new globalThis.Error("value provided for field message.denominator of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.denominator);
     }
     return writer;
   },
@@ -787,7 +792,7 @@ export const Fraction: MessageFns<Fraction> = {
             break;
           }
 
-          message.numerator = Long.fromString(reader.uint64().toString(), true);
+          message.numerator = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -795,7 +800,7 @@ export const Fraction: MessageFns<Fraction> = {
             break;
           }
 
-          message.denominator = Long.fromString(reader.uint64().toString(), true);
+          message.denominator = reader.uint64() as bigint;
           continue;
         }
       }
@@ -809,18 +814,18 @@ export const Fraction: MessageFns<Fraction> = {
 
   fromJSON(object: any): Fraction {
     return {
-      numerator: isSet(object.numerator) ? Long.fromValue(object.numerator) : Long.UZERO,
-      denominator: isSet(object.denominator) ? Long.fromValue(object.denominator) : Long.UZERO,
+      numerator: isSet(object.numerator) ? BigInt(object.numerator) : 0n,
+      denominator: isSet(object.denominator) ? BigInt(object.denominator) : 0n,
     };
   },
 
   toJSON(message: Fraction): unknown {
     const obj: any = {};
-    if (!message.numerator.equals(Long.UZERO)) {
-      obj.numerator = (message.numerator || Long.UZERO).toString();
+    if (message.numerator !== 0n) {
+      obj.numerator = message.numerator.toString();
     }
-    if (!message.denominator.equals(Long.UZERO)) {
-      obj.denominator = (message.denominator || Long.UZERO).toString();
+    if (message.denominator !== 0n) {
+      obj.denominator = message.denominator.toString();
     }
     return obj;
   },
@@ -830,12 +835,8 @@ export const Fraction: MessageFns<Fraction> = {
   },
   fromPartial<I extends Exact<DeepPartial<Fraction>, I>>(object: I): Fraction {
     const message = createBaseFraction();
-    message.numerator = (object.numerator !== undefined && object.numerator !== null)
-      ? Long.fromValue(object.numerator)
-      : Long.UZERO;
-    message.denominator = (object.denominator !== undefined && object.denominator !== null)
-      ? Long.fromValue(object.denominator)
-      : Long.UZERO;
+    message.numerator = object.numerator ?? 0n;
+    message.denominator = object.denominator ?? 0n;
     return message;
   },
 };
@@ -865,10 +866,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -878,13 +879,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -897,10 +898,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

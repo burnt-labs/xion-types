@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { Params } from "./params";
 
@@ -29,7 +28,7 @@ export interface MsgRegisterAccount {
   /** Sender is the actor who signs the message */
   sender: string;
   /** CodeID indicates which wasm binary code is to be used for this contract */
-  codeId: Long;
+  codeId: bigint;
   /** Msg is the JSON-encoded instantiate message for the contract */
   msg: Uint8Array;
   /** Funds are coins to be deposited to the contract on instantiattion */
@@ -169,7 +168,7 @@ export const MsgUpdateParamsResponse: MessageFns<MsgUpdateParamsResponse> = {
 };
 
 function createBaseMsgRegisterAccount(): MsgRegisterAccount {
-  return { sender: "", codeId: Long.UZERO, msg: new Uint8Array(0), funds: [], salt: new Uint8Array(0) };
+  return { sender: "", codeId: 0n, msg: new Uint8Array(0), funds: [], salt: new Uint8Array(0) };
 }
 
 export const MsgRegisterAccount: MessageFns<MsgRegisterAccount> = {
@@ -177,8 +176,11 @@ export const MsgRegisterAccount: MessageFns<MsgRegisterAccount> = {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.codeId);
     }
     if (message.msg.length !== 0) {
       writer.uint32(26).bytes(message.msg);
@@ -212,7 +214,7 @@ export const MsgRegisterAccount: MessageFns<MsgRegisterAccount> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 3: {
@@ -251,11 +253,7 @@ export const MsgRegisterAccount: MessageFns<MsgRegisterAccount> = {
   fromJSON(object: any): MsgRegisterAccount {
     return {
       sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(0),
       funds: globalThis.Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : [],
       salt: isSet(object.salt) ? bytesFromBase64(object.salt) : new Uint8Array(0),
@@ -267,8 +265,8 @@ export const MsgRegisterAccount: MessageFns<MsgRegisterAccount> = {
     if (message.sender !== "") {
       obj.sender = message.sender;
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.msg.length !== 0) {
       obj.msg = base64FromBytes(message.msg);
@@ -288,9 +286,7 @@ export const MsgRegisterAccount: MessageFns<MsgRegisterAccount> = {
   fromPartial<I extends Exact<DeepPartial<MsgRegisterAccount>, I>>(object: I): MsgRegisterAccount {
     const message = createBaseMsgRegisterAccount();
     message.sender = object.sender ?? "";
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.msg = object.msg ?? new Uint8Array(0);
     message.funds = object.funds?.map((e) => Coin.fromPartial(e)) || [];
     message.salt = object.salt ?? new Uint8Array(0);
@@ -547,10 +543,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Any } from "../../../../google/protobuf/any";
 import { Event } from "../../../../tendermint/abci/types";
 import { Block } from "../../../../tendermint/types/block";
@@ -19,7 +18,7 @@ export const protobufPackage = "cosmos.base.abci.v1beta1";
  */
 export interface TxResponse {
   /** The block height */
-  height: Long;
+  height: bigint;
   /** The transaction hash. */
   txhash: string;
   /** Namespace for the Code */
@@ -38,9 +37,9 @@ export interface TxResponse {
   /** Additional information. May be non-deterministic. */
   info: string;
   /** Amount of gas requested for transaction. */
-  gasWanted: Long;
+  gasWanted: bigint;
   /** Amount of gas consumed by transaction. */
-  gasUsed: Long;
+  gasUsed: bigint;
   /** The request transaction bytes. */
   tx?:
     | Any
@@ -92,9 +91,9 @@ export interface Attribute {
 /** GasInfo defines tx execution gas context. */
 export interface GasInfo {
   /** GasWanted is the maximum units of work we allow this tx to perform. */
-  gasWanted: Long;
+  gasWanted: bigint;
   /** GasUsed is the amount of gas actually consumed. */
-  gasUsed: Long;
+  gasUsed: bigint;
 }
 
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
@@ -157,15 +156,15 @@ export interface TxMsgData {
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResult {
   /** Count of all txs */
-  totalCount: Long;
+  totalCount: bigint;
   /** Count of txs in current page */
-  count: Long;
+  count: bigint;
   /** Index of current page, start from 1 */
-  pageNumber: Long;
+  pageNumber: bigint;
   /** Count of total pages */
-  pageTotal: Long;
+  pageTotal: bigint;
   /** Max count txs per page */
-  limit: Long;
+  limit: bigint;
   /** List of txs in current page */
   txs: TxResponse[];
 }
@@ -173,22 +172,22 @@ export interface SearchTxsResult {
 /** SearchBlocksResult defines a structure for querying blocks pageable */
 export interface SearchBlocksResult {
   /** Count of all blocks */
-  totalCount: Long;
+  totalCount: bigint;
   /** Count of blocks in current page */
-  count: Long;
+  count: bigint;
   /** Index of current page, start from 1 */
-  pageNumber: Long;
+  pageNumber: bigint;
   /** Count of total pages */
-  pageTotal: Long;
+  pageTotal: bigint;
   /** Max count blocks per page */
-  limit: Long;
+  limit: bigint;
   /** List of blocks in current page */
   blocks: Block[];
 }
 
 function createBaseTxResponse(): TxResponse {
   return {
-    height: Long.ZERO,
+    height: 0n,
     txhash: "",
     codespace: "",
     code: 0,
@@ -196,8 +195,8 @@ function createBaseTxResponse(): TxResponse {
     rawLog: "",
     logs: [],
     info: "",
-    gasWanted: Long.ZERO,
-    gasUsed: Long.ZERO,
+    gasWanted: 0n,
+    gasUsed: 0n,
     tx: undefined,
     timestamp: "",
     events: [],
@@ -206,8 +205,11 @@ function createBaseTxResponse(): TxResponse {
 
 export const TxResponse: MessageFns<TxResponse> = {
   encode(message: TxResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(8).int64(message.height);
     }
     if (message.txhash !== "") {
       writer.uint32(18).string(message.txhash);
@@ -230,11 +232,17 @@ export const TxResponse: MessageFns<TxResponse> = {
     if (message.info !== "") {
       writer.uint32(66).string(message.info);
     }
-    if (!message.gasWanted.equals(Long.ZERO)) {
-      writer.uint32(72).int64(message.gasWanted.toString());
+    if (message.gasWanted !== 0n) {
+      if (BigInt.asIntN(64, message.gasWanted) !== message.gasWanted) {
+        throw new globalThis.Error("value provided for field message.gasWanted of type int64 too large");
+      }
+      writer.uint32(72).int64(message.gasWanted);
     }
-    if (!message.gasUsed.equals(Long.ZERO)) {
-      writer.uint32(80).int64(message.gasUsed.toString());
+    if (message.gasUsed !== 0n) {
+      if (BigInt.asIntN(64, message.gasUsed) !== message.gasUsed) {
+        throw new globalThis.Error("value provided for field message.gasUsed of type int64 too large");
+      }
+      writer.uint32(80).int64(message.gasUsed);
     }
     if (message.tx !== undefined) {
       Any.encode(message.tx, writer.uint32(90).fork()).join();
@@ -260,7 +268,7 @@ export const TxResponse: MessageFns<TxResponse> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -324,7 +332,7 @@ export const TxResponse: MessageFns<TxResponse> = {
             break;
           }
 
-          message.gasWanted = Long.fromString(reader.int64().toString());
+          message.gasWanted = reader.int64() as bigint;
           continue;
         }
         case 10: {
@@ -332,7 +340,7 @@ export const TxResponse: MessageFns<TxResponse> = {
             break;
           }
 
-          message.gasUsed = Long.fromString(reader.int64().toString());
+          message.gasUsed = reader.int64() as bigint;
           continue;
         }
         case 11: {
@@ -370,7 +378,7 @@ export const TxResponse: MessageFns<TxResponse> = {
 
   fromJSON(object: any): TxResponse {
     return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       txhash: isSet(object.txhash) ? globalThis.String(object.txhash) : "",
       codespace: isSet(object.codespace) ? globalThis.String(object.codespace) : "",
       code: isSet(object.code) ? globalThis.Number(object.code) : 0,
@@ -383,27 +391,21 @@ export const TxResponse: MessageFns<TxResponse> = {
       logs: globalThis.Array.isArray(object?.logs) ? object.logs.map((e: any) => ABCIMessageLog.fromJSON(e)) : [],
       info: isSet(object.info) ? globalThis.String(object.info) : "",
       gasWanted: isSet(object.gasWanted)
-        ? Long.fromValue(object.gasWanted)
+        ? BigInt(object.gasWanted)
         : isSet(object.gas_wanted)
-        ? Long.fromValue(object.gas_wanted)
-        : Long.ZERO,
-      gasUsed: isSet(object.gasUsed)
-        ? Long.fromValue(object.gasUsed)
-        : isSet(object.gas_used)
-        ? Long.fromValue(object.gas_used)
-        : Long.ZERO,
+        ? BigInt(object.gas_wanted)
+        : 0n,
+      gasUsed: isSet(object.gasUsed) ? BigInt(object.gasUsed) : isSet(object.gas_used) ? BigInt(object.gas_used) : 0n,
       tx: isSet(object.tx) ? Any.fromJSON(object.tx) : undefined,
       timestamp: isSet(object.timestamp) ? globalThis.String(object.timestamp) : "",
-      events: globalThis.Array.isArray(object?.events)
-        ? object.events.map((e: any) => Event.fromJSON(e))
-        : [],
+      events: globalThis.Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : [],
     };
   },
 
   toJSON(message: TxResponse): unknown {
     const obj: any = {};
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.txhash !== "") {
       obj.txhash = message.txhash;
@@ -426,11 +428,11 @@ export const TxResponse: MessageFns<TxResponse> = {
     if (message.info !== "") {
       obj.info = message.info;
     }
-    if (!message.gasWanted.equals(Long.ZERO)) {
-      obj.gasWanted = (message.gasWanted || Long.ZERO).toString();
+    if (message.gasWanted !== 0n) {
+      obj.gasWanted = message.gasWanted.toString();
     }
-    if (!message.gasUsed.equals(Long.ZERO)) {
-      obj.gasUsed = (message.gasUsed || Long.ZERO).toString();
+    if (message.gasUsed !== 0n) {
+      obj.gasUsed = message.gasUsed.toString();
     }
     if (message.tx !== undefined) {
       obj.tx = Any.toJSON(message.tx);
@@ -449,9 +451,7 @@ export const TxResponse: MessageFns<TxResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<TxResponse>, I>>(object: I): TxResponse {
     const message = createBaseTxResponse();
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.txhash = object.txhash ?? "";
     message.codespace = object.codespace ?? "";
     message.code = object.code ?? 0;
@@ -459,12 +459,8 @@ export const TxResponse: MessageFns<TxResponse> = {
     message.rawLog = object.rawLog ?? "";
     message.logs = object.logs?.map((e) => ABCIMessageLog.fromPartial(e)) || [];
     message.info = object.info ?? "";
-    message.gasWanted = (object.gasWanted !== undefined && object.gasWanted !== null)
-      ? Long.fromValue(object.gasWanted)
-      : Long.ZERO;
-    message.gasUsed = (object.gasUsed !== undefined && object.gasUsed !== null)
-      ? Long.fromValue(object.gasUsed)
-      : Long.ZERO;
+    message.gasWanted = object.gasWanted ?? 0n;
+    message.gasUsed = object.gasUsed ?? 0n;
     message.tx = (object.tx !== undefined && object.tx !== null) ? Any.fromPartial(object.tx) : undefined;
     message.timestamp = object.timestamp ?? "";
     message.events = object.events?.map((e) => Event.fromPartial(e)) || [];
@@ -723,16 +719,22 @@ export const Attribute: MessageFns<Attribute> = {
 };
 
 function createBaseGasInfo(): GasInfo {
-  return { gasWanted: Long.UZERO, gasUsed: Long.UZERO };
+  return { gasWanted: 0n, gasUsed: 0n };
 }
 
 export const GasInfo: MessageFns<GasInfo> = {
   encode(message: GasInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.gasWanted.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.gasWanted.toString());
+    if (message.gasWanted !== 0n) {
+      if (BigInt.asUintN(64, message.gasWanted) !== message.gasWanted) {
+        throw new globalThis.Error("value provided for field message.gasWanted of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.gasWanted);
     }
-    if (!message.gasUsed.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.gasUsed.toString());
+    if (message.gasUsed !== 0n) {
+      if (BigInt.asUintN(64, message.gasUsed) !== message.gasUsed) {
+        throw new globalThis.Error("value provided for field message.gasUsed of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.gasUsed);
     }
     return writer;
   },
@@ -749,7 +751,7 @@ export const GasInfo: MessageFns<GasInfo> = {
             break;
           }
 
-          message.gasWanted = Long.fromString(reader.uint64().toString(), true);
+          message.gasWanted = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -757,7 +759,7 @@ export const GasInfo: MessageFns<GasInfo> = {
             break;
           }
 
-          message.gasUsed = Long.fromString(reader.uint64().toString(), true);
+          message.gasUsed = reader.uint64() as bigint;
           continue;
         }
       }
@@ -772,25 +774,21 @@ export const GasInfo: MessageFns<GasInfo> = {
   fromJSON(object: any): GasInfo {
     return {
       gasWanted: isSet(object.gasWanted)
-        ? Long.fromValue(object.gasWanted)
+        ? BigInt(object.gasWanted)
         : isSet(object.gas_wanted)
-        ? Long.fromValue(object.gas_wanted)
-        : Long.UZERO,
-      gasUsed: isSet(object.gasUsed)
-        ? Long.fromValue(object.gasUsed)
-        : isSet(object.gas_used)
-        ? Long.fromValue(object.gas_used)
-        : Long.UZERO,
+        ? BigInt(object.gas_wanted)
+        : 0n,
+      gasUsed: isSet(object.gasUsed) ? BigInt(object.gasUsed) : isSet(object.gas_used) ? BigInt(object.gas_used) : 0n,
     };
   },
 
   toJSON(message: GasInfo): unknown {
     const obj: any = {};
-    if (!message.gasWanted.equals(Long.UZERO)) {
-      obj.gasWanted = (message.gasWanted || Long.UZERO).toString();
+    if (message.gasWanted !== 0n) {
+      obj.gasWanted = message.gasWanted.toString();
     }
-    if (!message.gasUsed.equals(Long.UZERO)) {
-      obj.gasUsed = (message.gasUsed || Long.UZERO).toString();
+    if (message.gasUsed !== 0n) {
+      obj.gasUsed = message.gasUsed.toString();
     }
     return obj;
   },
@@ -800,12 +798,8 @@ export const GasInfo: MessageFns<GasInfo> = {
   },
   fromPartial<I extends Exact<DeepPartial<GasInfo>, I>>(object: I): GasInfo {
     const message = createBaseGasInfo();
-    message.gasWanted = (object.gasWanted !== undefined && object.gasWanted !== null)
-      ? Long.fromValue(object.gasWanted)
-      : Long.UZERO;
-    message.gasUsed = (object.gasUsed !== undefined && object.gasUsed !== null)
-      ? Long.fromValue(object.gasUsed)
-      : Long.UZERO;
+    message.gasWanted = object.gasWanted ?? 0n;
+    message.gasUsed = object.gasUsed ?? 0n;
     return message;
   },
 };
@@ -1167,32 +1161,40 @@ export const TxMsgData: MessageFns<TxMsgData> = {
 };
 
 function createBaseSearchTxsResult(): SearchTxsResult {
-  return {
-    totalCount: Long.UZERO,
-    count: Long.UZERO,
-    pageNumber: Long.UZERO,
-    pageTotal: Long.UZERO,
-    limit: Long.UZERO,
-    txs: [],
-  };
+  return { totalCount: 0n, count: 0n, pageNumber: 0n, pageTotal: 0n, limit: 0n, txs: [] };
 }
 
 export const SearchTxsResult: MessageFns<SearchTxsResult> = {
   encode(message: SearchTxsResult, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.totalCount.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.totalCount.toString());
+    if (message.totalCount !== 0n) {
+      if (BigInt.asUintN(64, message.totalCount) !== message.totalCount) {
+        throw new globalThis.Error("value provided for field message.totalCount of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.totalCount);
     }
-    if (!message.count.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.count.toString());
+    if (message.count !== 0n) {
+      if (BigInt.asUintN(64, message.count) !== message.count) {
+        throw new globalThis.Error("value provided for field message.count of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.count);
     }
-    if (!message.pageNumber.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.pageNumber.toString());
+    if (message.pageNumber !== 0n) {
+      if (BigInt.asUintN(64, message.pageNumber) !== message.pageNumber) {
+        throw new globalThis.Error("value provided for field message.pageNumber of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.pageNumber);
     }
-    if (!message.pageTotal.equals(Long.UZERO)) {
-      writer.uint32(32).uint64(message.pageTotal.toString());
+    if (message.pageTotal !== 0n) {
+      if (BigInt.asUintN(64, message.pageTotal) !== message.pageTotal) {
+        throw new globalThis.Error("value provided for field message.pageTotal of type uint64 too large");
+      }
+      writer.uint32(32).uint64(message.pageTotal);
     }
-    if (!message.limit.equals(Long.UZERO)) {
-      writer.uint32(40).uint64(message.limit.toString());
+    if (message.limit !== 0n) {
+      if (BigInt.asUintN(64, message.limit) !== message.limit) {
+        throw new globalThis.Error("value provided for field message.limit of type uint64 too large");
+      }
+      writer.uint32(40).uint64(message.limit);
     }
     for (const v of message.txs) {
       TxResponse.encode(v!, writer.uint32(50).fork()).join();
@@ -1212,7 +1214,7 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
             break;
           }
 
-          message.totalCount = Long.fromString(reader.uint64().toString(), true);
+          message.totalCount = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -1220,7 +1222,7 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
             break;
           }
 
-          message.count = Long.fromString(reader.uint64().toString(), true);
+          message.count = reader.uint64() as bigint;
           continue;
         }
         case 3: {
@@ -1228,7 +1230,7 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
             break;
           }
 
-          message.pageNumber = Long.fromString(reader.uint64().toString(), true);
+          message.pageNumber = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -1236,7 +1238,7 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
             break;
           }
 
-          message.pageTotal = Long.fromString(reader.uint64().toString(), true);
+          message.pageTotal = reader.uint64() as bigint;
           continue;
         }
         case 5: {
@@ -1244,7 +1246,7 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
             break;
           }
 
-          message.limit = Long.fromString(reader.uint64().toString(), true);
+          message.limit = reader.uint64() as bigint;
           continue;
         }
         case 6: {
@@ -1267,42 +1269,44 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
   fromJSON(object: any): SearchTxsResult {
     return {
       totalCount: isSet(object.totalCount)
-        ? Long.fromValue(object.totalCount)
+        ? BigInt(object.totalCount)
         : isSet(object.total_count)
-        ? Long.fromValue(object.total_count)
-        : Long.UZERO,
-      count: isSet(object.count) ? Long.fromValue(object.count) : Long.UZERO,
+        ? BigInt(object.total_count)
+        : 0n,
+      count: isSet(object.count) ? BigInt(object.count) : 0n,
       pageNumber: isSet(object.pageNumber)
-        ? Long.fromValue(object.pageNumber)
+        ? BigInt(object.pageNumber)
         : isSet(object.page_number)
-        ? Long.fromValue(object.page_number)
-        : Long.UZERO,
+        ? BigInt(object.page_number)
+        : 0n,
       pageTotal: isSet(object.pageTotal)
-        ? Long.fromValue(object.pageTotal)
+        ? BigInt(object.pageTotal)
         : isSet(object.page_total)
-        ? Long.fromValue(object.page_total)
-        : Long.UZERO,
-      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.UZERO,
-      txs: globalThis.Array.isArray(object?.txs) ? object.txs.map((e: any) => TxResponse.fromJSON(e)) : [],
+        ? BigInt(object.page_total)
+        : 0n,
+      limit: isSet(object.limit) ? BigInt(object.limit) : 0n,
+      txs: globalThis.Array.isArray(object?.txs)
+        ? object.txs.map((e: any) => TxResponse.fromJSON(e))
+        : [],
     };
   },
 
   toJSON(message: SearchTxsResult): unknown {
     const obj: any = {};
-    if (!message.totalCount.equals(Long.UZERO)) {
-      obj.totalCount = (message.totalCount || Long.UZERO).toString();
+    if (message.totalCount !== 0n) {
+      obj.totalCount = message.totalCount.toString();
     }
-    if (!message.count.equals(Long.UZERO)) {
-      obj.count = (message.count || Long.UZERO).toString();
+    if (message.count !== 0n) {
+      obj.count = message.count.toString();
     }
-    if (!message.pageNumber.equals(Long.UZERO)) {
-      obj.pageNumber = (message.pageNumber || Long.UZERO).toString();
+    if (message.pageNumber !== 0n) {
+      obj.pageNumber = message.pageNumber.toString();
     }
-    if (!message.pageTotal.equals(Long.UZERO)) {
-      obj.pageTotal = (message.pageTotal || Long.UZERO).toString();
+    if (message.pageTotal !== 0n) {
+      obj.pageTotal = message.pageTotal.toString();
     }
-    if (!message.limit.equals(Long.UZERO)) {
-      obj.limit = (message.limit || Long.UZERO).toString();
+    if (message.limit !== 0n) {
+      obj.limit = message.limit.toString();
     }
     if (message.txs?.length) {
       obj.txs = message.txs.map((e) => TxResponse.toJSON(e));
@@ -1315,49 +1319,51 @@ export const SearchTxsResult: MessageFns<SearchTxsResult> = {
   },
   fromPartial<I extends Exact<DeepPartial<SearchTxsResult>, I>>(object: I): SearchTxsResult {
     const message = createBaseSearchTxsResult();
-    message.totalCount = (object.totalCount !== undefined && object.totalCount !== null)
-      ? Long.fromValue(object.totalCount)
-      : Long.UZERO;
-    message.count = (object.count !== undefined && object.count !== null) ? Long.fromValue(object.count) : Long.UZERO;
-    message.pageNumber = (object.pageNumber !== undefined && object.pageNumber !== null)
-      ? Long.fromValue(object.pageNumber)
-      : Long.UZERO;
-    message.pageTotal = (object.pageTotal !== undefined && object.pageTotal !== null)
-      ? Long.fromValue(object.pageTotal)
-      : Long.UZERO;
-    message.limit = (object.limit !== undefined && object.limit !== null) ? Long.fromValue(object.limit) : Long.UZERO;
+    message.totalCount = object.totalCount ?? 0n;
+    message.count = object.count ?? 0n;
+    message.pageNumber = object.pageNumber ?? 0n;
+    message.pageTotal = object.pageTotal ?? 0n;
+    message.limit = object.limit ?? 0n;
     message.txs = object.txs?.map((e) => TxResponse.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseSearchBlocksResult(): SearchBlocksResult {
-  return {
-    totalCount: Long.ZERO,
-    count: Long.ZERO,
-    pageNumber: Long.ZERO,
-    pageTotal: Long.ZERO,
-    limit: Long.ZERO,
-    blocks: [],
-  };
+  return { totalCount: 0n, count: 0n, pageNumber: 0n, pageTotal: 0n, limit: 0n, blocks: [] };
 }
 
 export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
   encode(message: SearchBlocksResult, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.totalCount.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.totalCount.toString());
+    if (message.totalCount !== 0n) {
+      if (BigInt.asIntN(64, message.totalCount) !== message.totalCount) {
+        throw new globalThis.Error("value provided for field message.totalCount of type int64 too large");
+      }
+      writer.uint32(8).int64(message.totalCount);
     }
-    if (!message.count.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.count.toString());
+    if (message.count !== 0n) {
+      if (BigInt.asIntN(64, message.count) !== message.count) {
+        throw new globalThis.Error("value provided for field message.count of type int64 too large");
+      }
+      writer.uint32(16).int64(message.count);
     }
-    if (!message.pageNumber.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.pageNumber.toString());
+    if (message.pageNumber !== 0n) {
+      if (BigInt.asIntN(64, message.pageNumber) !== message.pageNumber) {
+        throw new globalThis.Error("value provided for field message.pageNumber of type int64 too large");
+      }
+      writer.uint32(24).int64(message.pageNumber);
     }
-    if (!message.pageTotal.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.pageTotal.toString());
+    if (message.pageTotal !== 0n) {
+      if (BigInt.asIntN(64, message.pageTotal) !== message.pageTotal) {
+        throw new globalThis.Error("value provided for field message.pageTotal of type int64 too large");
+      }
+      writer.uint32(32).int64(message.pageTotal);
     }
-    if (!message.limit.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.limit.toString());
+    if (message.limit !== 0n) {
+      if (BigInt.asIntN(64, message.limit) !== message.limit) {
+        throw new globalThis.Error("value provided for field message.limit of type int64 too large");
+      }
+      writer.uint32(40).int64(message.limit);
     }
     for (const v of message.blocks) {
       Block.encode(v!, writer.uint32(50).fork()).join();
@@ -1377,7 +1383,7 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
             break;
           }
 
-          message.totalCount = Long.fromString(reader.int64().toString());
+          message.totalCount = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -1385,7 +1391,7 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
             break;
           }
 
-          message.count = Long.fromString(reader.int64().toString());
+          message.count = reader.int64() as bigint;
           continue;
         }
         case 3: {
@@ -1393,7 +1399,7 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
             break;
           }
 
-          message.pageNumber = Long.fromString(reader.int64().toString());
+          message.pageNumber = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -1401,7 +1407,7 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
             break;
           }
 
-          message.pageTotal = Long.fromString(reader.int64().toString());
+          message.pageTotal = reader.int64() as bigint;
           continue;
         }
         case 5: {
@@ -1409,7 +1415,7 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
             break;
           }
 
-          message.limit = Long.fromString(reader.int64().toString());
+          message.limit = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -1432,42 +1438,44 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
   fromJSON(object: any): SearchBlocksResult {
     return {
       totalCount: isSet(object.totalCount)
-        ? Long.fromValue(object.totalCount)
+        ? BigInt(object.totalCount)
         : isSet(object.total_count)
-        ? Long.fromValue(object.total_count)
-        : Long.ZERO,
-      count: isSet(object.count) ? Long.fromValue(object.count) : Long.ZERO,
+        ? BigInt(object.total_count)
+        : 0n,
+      count: isSet(object.count) ? BigInt(object.count) : 0n,
       pageNumber: isSet(object.pageNumber)
-        ? Long.fromValue(object.pageNumber)
+        ? BigInt(object.pageNumber)
         : isSet(object.page_number)
-        ? Long.fromValue(object.page_number)
-        : Long.ZERO,
+        ? BigInt(object.page_number)
+        : 0n,
       pageTotal: isSet(object.pageTotal)
-        ? Long.fromValue(object.pageTotal)
+        ? BigInt(object.pageTotal)
         : isSet(object.page_total)
-        ? Long.fromValue(object.page_total)
-        : Long.ZERO,
-      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.ZERO,
-      blocks: globalThis.Array.isArray(object?.blocks) ? object.blocks.map((e: any) => Block.fromJSON(e)) : [],
+        ? BigInt(object.page_total)
+        : 0n,
+      limit: isSet(object.limit) ? BigInt(object.limit) : 0n,
+      blocks: globalThis.Array.isArray(object?.blocks)
+        ? object.blocks.map((e: any) => Block.fromJSON(e))
+        : [],
     };
   },
 
   toJSON(message: SearchBlocksResult): unknown {
     const obj: any = {};
-    if (!message.totalCount.equals(Long.ZERO)) {
-      obj.totalCount = (message.totalCount || Long.ZERO).toString();
+    if (message.totalCount !== 0n) {
+      obj.totalCount = message.totalCount.toString();
     }
-    if (!message.count.equals(Long.ZERO)) {
-      obj.count = (message.count || Long.ZERO).toString();
+    if (message.count !== 0n) {
+      obj.count = message.count.toString();
     }
-    if (!message.pageNumber.equals(Long.ZERO)) {
-      obj.pageNumber = (message.pageNumber || Long.ZERO).toString();
+    if (message.pageNumber !== 0n) {
+      obj.pageNumber = message.pageNumber.toString();
     }
-    if (!message.pageTotal.equals(Long.ZERO)) {
-      obj.pageTotal = (message.pageTotal || Long.ZERO).toString();
+    if (message.pageTotal !== 0n) {
+      obj.pageTotal = message.pageTotal.toString();
     }
-    if (!message.limit.equals(Long.ZERO)) {
-      obj.limit = (message.limit || Long.ZERO).toString();
+    if (message.limit !== 0n) {
+      obj.limit = message.limit.toString();
     }
     if (message.blocks?.length) {
       obj.blocks = message.blocks.map((e) => Block.toJSON(e));
@@ -1480,17 +1488,11 @@ export const SearchBlocksResult: MessageFns<SearchBlocksResult> = {
   },
   fromPartial<I extends Exact<DeepPartial<SearchBlocksResult>, I>>(object: I): SearchBlocksResult {
     const message = createBaseSearchBlocksResult();
-    message.totalCount = (object.totalCount !== undefined && object.totalCount !== null)
-      ? Long.fromValue(object.totalCount)
-      : Long.ZERO;
-    message.count = (object.count !== undefined && object.count !== null) ? Long.fromValue(object.count) : Long.ZERO;
-    message.pageNumber = (object.pageNumber !== undefined && object.pageNumber !== null)
-      ? Long.fromValue(object.pageNumber)
-      : Long.ZERO;
-    message.pageTotal = (object.pageTotal !== undefined && object.pageTotal !== null)
-      ? Long.fromValue(object.pageTotal)
-      : Long.ZERO;
-    message.limit = (object.limit !== undefined && object.limit !== null) ? Long.fromValue(object.limit) : Long.ZERO;
+    message.totalCount = object.totalCount ?? 0n;
+    message.count = object.count ?? 0n;
+    message.pageNumber = object.pageNumber ?? 0n;
+    message.pageTotal = object.pageTotal ?? 0n;
+    message.limit = object.limit ?? 0n;
     message.blocks = object.blocks?.map((e) => Block.fromPartial(e)) || [];
     return message;
   },
@@ -1521,10 +1523,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

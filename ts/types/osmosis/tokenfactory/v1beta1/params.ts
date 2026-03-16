@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 
 export const protobufPackage = "osmosis.tokenfactory.v1beta1";
@@ -19,11 +18,11 @@ export interface Params {
    * to the base cost.
    * https://github.com/CosmWasm/token-factory/issues/11
    */
-  denomCreationGasConsume: Long;
+  denomCreationGasConsume: bigint;
 }
 
 function createBaseParams(): Params {
-  return { denomCreationFee: [], denomCreationGasConsume: Long.UZERO };
+  return { denomCreationFee: [], denomCreationGasConsume: 0n };
 }
 
 export const Params: MessageFns<Params> = {
@@ -31,8 +30,11 @@ export const Params: MessageFns<Params> = {
     for (const v of message.denomCreationFee) {
       Coin.encode(v!, writer.uint32(10).fork()).join();
     }
-    if (!message.denomCreationGasConsume.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.denomCreationGasConsume.toString());
+    if (message.denomCreationGasConsume !== 0n) {
+      if (BigInt.asUintN(64, message.denomCreationGasConsume) !== message.denomCreationGasConsume) {
+        throw new globalThis.Error("value provided for field message.denomCreationGasConsume of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.denomCreationGasConsume);
     }
     return writer;
   },
@@ -57,7 +59,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.denomCreationGasConsume = Long.fromString(reader.uint64().toString(), true);
+          message.denomCreationGasConsume = reader.uint64() as bigint;
           continue;
         }
       }
@@ -77,10 +79,10 @@ export const Params: MessageFns<Params> = {
         ? object.denom_creation_fee.map((e: any) => Coin.fromJSON(e))
         : [],
       denomCreationGasConsume: isSet(object.denomCreationGasConsume)
-        ? Long.fromValue(object.denomCreationGasConsume)
+        ? BigInt(object.denomCreationGasConsume)
         : isSet(object.denom_creation_gas_consume)
-        ? Long.fromValue(object.denom_creation_gas_consume)
-        : Long.UZERO,
+        ? BigInt(object.denom_creation_gas_consume)
+        : 0n,
     };
   },
 
@@ -89,8 +91,8 @@ export const Params: MessageFns<Params> = {
     if (message.denomCreationFee?.length) {
       obj.denomCreationFee = message.denomCreationFee.map((e) => Coin.toJSON(e));
     }
-    if (!message.denomCreationGasConsume.equals(Long.UZERO)) {
-      obj.denomCreationGasConsume = (message.denomCreationGasConsume || Long.UZERO).toString();
+    if (message.denomCreationGasConsume !== 0n) {
+      obj.denomCreationGasConsume = message.denomCreationGasConsume.toString();
     }
     return obj;
   },
@@ -101,18 +103,15 @@ export const Params: MessageFns<Params> = {
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
     message.denomCreationFee = object.denomCreationFee?.map((e) => Coin.fromPartial(e)) || [];
-    message.denomCreationGasConsume =
-      (object.denomCreationGasConsume !== undefined && object.denomCreationGasConsume !== null)
-        ? Long.fromValue(object.denomCreationGasConsume)
-        : Long.UZERO;
+    message.denomCreationGasConsume = object.denomCreationGasConsume ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

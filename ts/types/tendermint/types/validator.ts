@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { PublicKey } from "../crypto/keys";
 
 export const protobufPackage = "tendermint.types";
@@ -64,23 +63,23 @@ export function blockIDFlagToJSON(object: BlockIDFlag): string {
 export interface ValidatorSet {
   validators: Validator[];
   proposer?: Validator | undefined;
-  totalVotingPower: Long;
+  totalVotingPower: bigint;
 }
 
 export interface Validator {
   address: Uint8Array;
   pubKey?: PublicKey | undefined;
-  votingPower: Long;
-  proposerPriority: Long;
+  votingPower: bigint;
+  proposerPriority: bigint;
 }
 
 export interface SimpleValidator {
   pubKey?: PublicKey | undefined;
-  votingPower: Long;
+  votingPower: bigint;
 }
 
 function createBaseValidatorSet(): ValidatorSet {
-  return { validators: [], proposer: undefined, totalVotingPower: Long.ZERO };
+  return { validators: [], proposer: undefined, totalVotingPower: 0n };
 }
 
 export const ValidatorSet: MessageFns<ValidatorSet> = {
@@ -91,8 +90,11 @@ export const ValidatorSet: MessageFns<ValidatorSet> = {
     if (message.proposer !== undefined) {
       Validator.encode(message.proposer, writer.uint32(18).fork()).join();
     }
-    if (!message.totalVotingPower.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.totalVotingPower.toString());
+    if (message.totalVotingPower !== 0n) {
+      if (BigInt.asIntN(64, message.totalVotingPower) !== message.totalVotingPower) {
+        throw new globalThis.Error("value provided for field message.totalVotingPower of type int64 too large");
+      }
+      writer.uint32(24).int64(message.totalVotingPower);
     }
     return writer;
   },
@@ -125,7 +127,7 @@ export const ValidatorSet: MessageFns<ValidatorSet> = {
             break;
           }
 
-          message.totalVotingPower = Long.fromString(reader.int64().toString());
+          message.totalVotingPower = reader.int64() as bigint;
           continue;
         }
       }
@@ -144,10 +146,10 @@ export const ValidatorSet: MessageFns<ValidatorSet> = {
         : [],
       proposer: isSet(object.proposer) ? Validator.fromJSON(object.proposer) : undefined,
       totalVotingPower: isSet(object.totalVotingPower)
-        ? Long.fromValue(object.totalVotingPower)
+        ? BigInt(object.totalVotingPower)
         : isSet(object.total_voting_power)
-        ? Long.fromValue(object.total_voting_power)
-        : Long.ZERO,
+        ? BigInt(object.total_voting_power)
+        : 0n,
     };
   },
 
@@ -159,8 +161,8 @@ export const ValidatorSet: MessageFns<ValidatorSet> = {
     if (message.proposer !== undefined) {
       obj.proposer = Validator.toJSON(message.proposer);
     }
-    if (!message.totalVotingPower.equals(Long.ZERO)) {
-      obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString();
+    if (message.totalVotingPower !== 0n) {
+      obj.totalVotingPower = message.totalVotingPower.toString();
     }
     return obj;
   },
@@ -174,15 +176,13 @@ export const ValidatorSet: MessageFns<ValidatorSet> = {
     message.proposer = (object.proposer !== undefined && object.proposer !== null)
       ? Validator.fromPartial(object.proposer)
       : undefined;
-    message.totalVotingPower = (object.totalVotingPower !== undefined && object.totalVotingPower !== null)
-      ? Long.fromValue(object.totalVotingPower)
-      : Long.ZERO;
+    message.totalVotingPower = object.totalVotingPower ?? 0n;
     return message;
   },
 };
 
 function createBaseValidator(): Validator {
-  return { address: new Uint8Array(0), pubKey: undefined, votingPower: Long.ZERO, proposerPriority: Long.ZERO };
+  return { address: new Uint8Array(0), pubKey: undefined, votingPower: 0n, proposerPriority: 0n };
 }
 
 export const Validator: MessageFns<Validator> = {
@@ -193,11 +193,17 @@ export const Validator: MessageFns<Validator> = {
     if (message.pubKey !== undefined) {
       PublicKey.encode(message.pubKey, writer.uint32(18).fork()).join();
     }
-    if (!message.votingPower.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.votingPower.toString());
+    if (message.votingPower !== 0n) {
+      if (BigInt.asIntN(64, message.votingPower) !== message.votingPower) {
+        throw new globalThis.Error("value provided for field message.votingPower of type int64 too large");
+      }
+      writer.uint32(24).int64(message.votingPower);
     }
-    if (!message.proposerPriority.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.proposerPriority.toString());
+    if (message.proposerPriority !== 0n) {
+      if (BigInt.asIntN(64, message.proposerPriority) !== message.proposerPriority) {
+        throw new globalThis.Error("value provided for field message.proposerPriority of type int64 too large");
+      }
+      writer.uint32(32).int64(message.proposerPriority);
     }
     return writer;
   },
@@ -230,7 +236,7 @@ export const Validator: MessageFns<Validator> = {
             break;
           }
 
-          message.votingPower = Long.fromString(reader.int64().toString());
+          message.votingPower = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -238,7 +244,7 @@ export const Validator: MessageFns<Validator> = {
             break;
           }
 
-          message.proposerPriority = Long.fromString(reader.int64().toString());
+          message.proposerPriority = reader.int64() as bigint;
           continue;
         }
       }
@@ -259,15 +265,15 @@ export const Validator: MessageFns<Validator> = {
         ? PublicKey.fromJSON(object.pub_key)
         : undefined,
       votingPower: isSet(object.votingPower)
-        ? Long.fromValue(object.votingPower)
+        ? BigInt(object.votingPower)
         : isSet(object.voting_power)
-        ? Long.fromValue(object.voting_power)
-        : Long.ZERO,
+        ? BigInt(object.voting_power)
+        : 0n,
       proposerPriority: isSet(object.proposerPriority)
-        ? Long.fromValue(object.proposerPriority)
+        ? BigInt(object.proposerPriority)
         : isSet(object.proposer_priority)
-        ? Long.fromValue(object.proposer_priority)
-        : Long.ZERO,
+        ? BigInt(object.proposer_priority)
+        : 0n,
     };
   },
 
@@ -279,11 +285,11 @@ export const Validator: MessageFns<Validator> = {
     if (message.pubKey !== undefined) {
       obj.pubKey = PublicKey.toJSON(message.pubKey);
     }
-    if (!message.votingPower.equals(Long.ZERO)) {
-      obj.votingPower = (message.votingPower || Long.ZERO).toString();
+    if (message.votingPower !== 0n) {
+      obj.votingPower = message.votingPower.toString();
     }
-    if (!message.proposerPriority.equals(Long.ZERO)) {
-      obj.proposerPriority = (message.proposerPriority || Long.ZERO).toString();
+    if (message.proposerPriority !== 0n) {
+      obj.proposerPriority = message.proposerPriority.toString();
     }
     return obj;
   },
@@ -297,18 +303,14 @@ export const Validator: MessageFns<Validator> = {
     message.pubKey = (object.pubKey !== undefined && object.pubKey !== null)
       ? PublicKey.fromPartial(object.pubKey)
       : undefined;
-    message.votingPower = (object.votingPower !== undefined && object.votingPower !== null)
-      ? Long.fromValue(object.votingPower)
-      : Long.ZERO;
-    message.proposerPriority = (object.proposerPriority !== undefined && object.proposerPriority !== null)
-      ? Long.fromValue(object.proposerPriority)
-      : Long.ZERO;
+    message.votingPower = object.votingPower ?? 0n;
+    message.proposerPriority = object.proposerPriority ?? 0n;
     return message;
   },
 };
 
 function createBaseSimpleValidator(): SimpleValidator {
-  return { pubKey: undefined, votingPower: Long.ZERO };
+  return { pubKey: undefined, votingPower: 0n };
 }
 
 export const SimpleValidator: MessageFns<SimpleValidator> = {
@@ -316,8 +318,11 @@ export const SimpleValidator: MessageFns<SimpleValidator> = {
     if (message.pubKey !== undefined) {
       PublicKey.encode(message.pubKey, writer.uint32(10).fork()).join();
     }
-    if (!message.votingPower.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.votingPower.toString());
+    if (message.votingPower !== 0n) {
+      if (BigInt.asIntN(64, message.votingPower) !== message.votingPower) {
+        throw new globalThis.Error("value provided for field message.votingPower of type int64 too large");
+      }
+      writer.uint32(16).int64(message.votingPower);
     }
     return writer;
   },
@@ -342,7 +347,7 @@ export const SimpleValidator: MessageFns<SimpleValidator> = {
             break;
           }
 
-          message.votingPower = Long.fromString(reader.int64().toString());
+          message.votingPower = reader.int64() as bigint;
           continue;
         }
       }
@@ -362,10 +367,10 @@ export const SimpleValidator: MessageFns<SimpleValidator> = {
         ? PublicKey.fromJSON(object.pub_key)
         : undefined,
       votingPower: isSet(object.votingPower)
-        ? Long.fromValue(object.votingPower)
+        ? BigInt(object.votingPower)
         : isSet(object.voting_power)
-        ? Long.fromValue(object.voting_power)
-        : Long.ZERO,
+        ? BigInt(object.voting_power)
+        : 0n,
     };
   },
 
@@ -374,8 +379,8 @@ export const SimpleValidator: MessageFns<SimpleValidator> = {
     if (message.pubKey !== undefined) {
       obj.pubKey = PublicKey.toJSON(message.pubKey);
     }
-    if (!message.votingPower.equals(Long.ZERO)) {
-      obj.votingPower = (message.votingPower || Long.ZERO).toString();
+    if (message.votingPower !== 0n) {
+      obj.votingPower = message.votingPower.toString();
     }
     return obj;
   },
@@ -388,9 +393,7 @@ export const SimpleValidator: MessageFns<SimpleValidator> = {
     message.pubKey = (object.pubKey !== undefined && object.pubKey !== null)
       ? PublicKey.fromPartial(object.pubKey)
       : undefined;
-    message.votingPower = (object.votingPower !== undefined && object.votingPower !== null)
-      ? Long.fromValue(object.votingPower)
-      : Long.ZERO;
+    message.votingPower = object.votingPower ?? 0n;
     return message;
   },
 };
@@ -420,10 +423,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

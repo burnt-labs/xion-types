@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { ClientConsensusStates, IdentifiedClientState, Params } from "./client";
 
 export const protobufPackage = "ibc.core.client.v1";
@@ -30,7 +29,7 @@ export interface GenesisState {
    */
   createLocalhost: boolean;
   /** the sequence for the next generated client identifier */
-  nextClientSequence: Long;
+  nextClientSequence: bigint;
 }
 
 /**
@@ -60,7 +59,7 @@ function createBaseGenesisState(): GenesisState {
     clientsMetadata: [],
     params: undefined,
     createLocalhost: false,
-    nextClientSequence: Long.UZERO,
+    nextClientSequence: 0n,
   };
 }
 
@@ -81,8 +80,11 @@ export const GenesisState: MessageFns<GenesisState> = {
     if (message.createLocalhost !== false) {
       writer.uint32(40).bool(message.createLocalhost);
     }
-    if (!message.nextClientSequence.equals(Long.UZERO)) {
-      writer.uint32(48).uint64(message.nextClientSequence.toString());
+    if (message.nextClientSequence !== 0n) {
+      if (BigInt.asUintN(64, message.nextClientSequence) !== message.nextClientSequence) {
+        throw new globalThis.Error("value provided for field message.nextClientSequence of type uint64 too large");
+      }
+      writer.uint32(48).uint64(message.nextClientSequence);
     }
     return writer;
   },
@@ -139,7 +141,7 @@ export const GenesisState: MessageFns<GenesisState> = {
             break;
           }
 
-          message.nextClientSequence = Long.fromString(reader.uint64().toString(), true);
+          message.nextClientSequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -173,10 +175,10 @@ export const GenesisState: MessageFns<GenesisState> = {
         ? globalThis.Boolean(object.create_localhost)
         : false,
       nextClientSequence: isSet(object.nextClientSequence)
-        ? Long.fromValue(object.nextClientSequence)
+        ? BigInt(object.nextClientSequence)
         : isSet(object.next_client_sequence)
-        ? Long.fromValue(object.next_client_sequence)
-        : Long.UZERO,
+        ? BigInt(object.next_client_sequence)
+        : 0n,
     };
   },
 
@@ -197,8 +199,8 @@ export const GenesisState: MessageFns<GenesisState> = {
     if (message.createLocalhost !== false) {
       obj.createLocalhost = message.createLocalhost;
     }
-    if (!message.nextClientSequence.equals(Long.UZERO)) {
-      obj.nextClientSequence = (message.nextClientSequence || Long.UZERO).toString();
+    if (message.nextClientSequence !== 0n) {
+      obj.nextClientSequence = message.nextClientSequence.toString();
     }
     return obj;
   },
@@ -215,9 +217,7 @@ export const GenesisState: MessageFns<GenesisState> = {
       ? Params.fromPartial(object.params)
       : undefined;
     message.createLocalhost = object.createLocalhost ?? false;
-    message.nextClientSequence = (object.nextClientSequence !== undefined && object.nextClientSequence !== null)
-      ? Long.fromValue(object.nextClientSequence)
-      : Long.UZERO;
+    message.nextClientSequence = object.nextClientSequence ?? 0n;
     return message;
   },
 };
@@ -407,10 +407,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

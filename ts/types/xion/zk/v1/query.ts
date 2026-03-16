@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination";
 import { Params } from "./params";
 
@@ -33,7 +32,7 @@ export interface QueryVerifyRequest {
   /** vkey_name is the name of the verification key to use. */
   vkeyName: string;
   /** vkey_id is the ID of the verification key to use. */
-  vkeyId: Long;
+  vkeyId: bigint;
 }
 
 /** ProofVerifyResponse defines the response structure for proof verification. */
@@ -59,7 +58,7 @@ export interface VKey {
 /** QueryVKeyRequest is the request type for the Query/VKey RPC method */
 export interface QueryVKeyRequest {
   /** id is the unique identifier of the verification key */
-  id: Long;
+  id: bigint;
 }
 
 /** QueryVKeyResponse is the response type for the Query/VKey RPC method */
@@ -87,7 +86,7 @@ export interface QueryVKeyByNameResponse {
     | VKey
     | undefined;
   /** id is the numeric identifier of the verification key */
-  id: Long;
+  id: bigint;
 }
 
 /** QueryVKeysRequest is the request type for the Query/VKeys RPC method */
@@ -107,7 +106,7 @@ export interface QueryVKeysResponse {
 /** VKeyWithID combines a verification key with its ID */
 export interface VKeyWithID {
   /** id is the unique identifier */
-  id: Long;
+  id: bigint;
   /** vkey is the verification key */
   vkey?: VKey | undefined;
 }
@@ -123,7 +122,7 @@ export interface QueryHasVKeyResponse {
   /** exists indicates whether the verification key exists */
   exists: boolean;
   /** id is the numeric identifier if the key exists (0 if not found) */
-  id: Long;
+  id: bigint;
 }
 
 /**
@@ -139,7 +138,7 @@ export interface QueryNextVKeyIDRequest {
  */
 export interface QueryNextVKeyIDResponse {
   /** next_id is the next available verification key ID. */
-  nextId: Long;
+  nextId: bigint;
 }
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method */
@@ -257,7 +256,7 @@ export const SnarkJsProof: MessageFns<SnarkJsProof> = {
 };
 
 function createBaseQueryVerifyRequest(): QueryVerifyRequest {
-  return { proof: new Uint8Array(0), publicInputs: [], vkeyName: "", vkeyId: Long.UZERO };
+  return { proof: new Uint8Array(0), publicInputs: [], vkeyName: "", vkeyId: 0n };
 }
 
 export const QueryVerifyRequest: MessageFns<QueryVerifyRequest> = {
@@ -271,8 +270,11 @@ export const QueryVerifyRequest: MessageFns<QueryVerifyRequest> = {
     if (message.vkeyName !== "") {
       writer.uint32(26).string(message.vkeyName);
     }
-    if (!message.vkeyId.equals(Long.UZERO)) {
-      writer.uint32(32).uint64(message.vkeyId.toString());
+    if (message.vkeyId !== 0n) {
+      if (BigInt.asUintN(64, message.vkeyId) !== message.vkeyId) {
+        throw new globalThis.Error("value provided for field message.vkeyId of type uint64 too large");
+      }
+      writer.uint32(32).uint64(message.vkeyId);
     }
     return writer;
   },
@@ -313,7 +315,7 @@ export const QueryVerifyRequest: MessageFns<QueryVerifyRequest> = {
             break;
           }
 
-          message.vkeyId = Long.fromString(reader.uint64().toString(), true);
+          message.vkeyId = reader.uint64() as bigint;
           continue;
         }
       }
@@ -338,11 +340,7 @@ export const QueryVerifyRequest: MessageFns<QueryVerifyRequest> = {
         : isSet(object.vkey_name)
         ? globalThis.String(object.vkey_name)
         : "",
-      vkeyId: isSet(object.vkeyId)
-        ? Long.fromValue(object.vkeyId)
-        : isSet(object.vkey_id)
-        ? Long.fromValue(object.vkey_id)
-        : Long.UZERO,
+      vkeyId: isSet(object.vkeyId) ? BigInt(object.vkeyId) : isSet(object.vkey_id) ? BigInt(object.vkey_id) : 0n,
     };
   },
 
@@ -357,8 +355,8 @@ export const QueryVerifyRequest: MessageFns<QueryVerifyRequest> = {
     if (message.vkeyName !== "") {
       obj.vkeyName = message.vkeyName;
     }
-    if (!message.vkeyId.equals(Long.UZERO)) {
-      obj.vkeyId = (message.vkeyId || Long.UZERO).toString();
+    if (message.vkeyId !== 0n) {
+      obj.vkeyId = message.vkeyId.toString();
     }
     return obj;
   },
@@ -371,9 +369,7 @@ export const QueryVerifyRequest: MessageFns<QueryVerifyRequest> = {
     message.proof = object.proof ?? new Uint8Array(0);
     message.publicInputs = object.publicInputs?.map((e) => e) || [];
     message.vkeyName = object.vkeyName ?? "";
-    message.vkeyId = (object.vkeyId !== undefined && object.vkeyId !== null)
-      ? Long.fromValue(object.vkeyId)
-      : Long.UZERO;
+    message.vkeyId = object.vkeyId ?? 0n;
     return message;
   },
 };
@@ -569,13 +565,16 @@ export const VKey: MessageFns<VKey> = {
 };
 
 function createBaseQueryVKeyRequest(): QueryVKeyRequest {
-  return { id: Long.UZERO };
+  return { id: 0n };
 }
 
 export const QueryVKeyRequest: MessageFns<QueryVKeyRequest> = {
   encode(message: QueryVKeyRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.id.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.id.toString());
+    if (message.id !== 0n) {
+      if (BigInt.asUintN(64, message.id) !== message.id) {
+        throw new globalThis.Error("value provided for field message.id of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.id);
     }
     return writer;
   },
@@ -592,7 +591,7 @@ export const QueryVKeyRequest: MessageFns<QueryVKeyRequest> = {
             break;
           }
 
-          message.id = Long.fromString(reader.uint64().toString(), true);
+          message.id = reader.uint64() as bigint;
           continue;
         }
       }
@@ -605,13 +604,13 @@ export const QueryVKeyRequest: MessageFns<QueryVKeyRequest> = {
   },
 
   fromJSON(object: any): QueryVKeyRequest {
-    return { id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO };
+    return { id: isSet(object.id) ? BigInt(object.id) : 0n };
   },
 
   toJSON(message: QueryVKeyRequest): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.UZERO)) {
-      obj.id = (message.id || Long.UZERO).toString();
+    if (message.id !== 0n) {
+      obj.id = message.id.toString();
     }
     return obj;
   },
@@ -621,7 +620,7 @@ export const QueryVKeyRequest: MessageFns<QueryVKeyRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryVKeyRequest>, I>>(object: I): QueryVKeyRequest {
     const message = createBaseQueryVKeyRequest();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id ?? 0n;
     return message;
   },
 };
@@ -743,7 +742,7 @@ export const QueryVKeyByNameRequest: MessageFns<QueryVKeyByNameRequest> = {
 };
 
 function createBaseQueryVKeyByNameResponse(): QueryVKeyByNameResponse {
-  return { vkey: undefined, id: Long.UZERO };
+  return { vkey: undefined, id: 0n };
 }
 
 export const QueryVKeyByNameResponse: MessageFns<QueryVKeyByNameResponse> = {
@@ -751,8 +750,11 @@ export const QueryVKeyByNameResponse: MessageFns<QueryVKeyByNameResponse> = {
     if (message.vkey !== undefined) {
       VKey.encode(message.vkey, writer.uint32(10).fork()).join();
     }
-    if (!message.id.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.id.toString());
+    if (message.id !== 0n) {
+      if (BigInt.asUintN(64, message.id) !== message.id) {
+        throw new globalThis.Error("value provided for field message.id of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.id);
     }
     return writer;
   },
@@ -777,7 +779,7 @@ export const QueryVKeyByNameResponse: MessageFns<QueryVKeyByNameResponse> = {
             break;
           }
 
-          message.id = Long.fromString(reader.uint64().toString(), true);
+          message.id = reader.uint64() as bigint;
           continue;
         }
       }
@@ -792,7 +794,7 @@ export const QueryVKeyByNameResponse: MessageFns<QueryVKeyByNameResponse> = {
   fromJSON(object: any): QueryVKeyByNameResponse {
     return {
       vkey: isSet(object.vkey) ? VKey.fromJSON(object.vkey) : undefined,
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      id: isSet(object.id) ? BigInt(object.id) : 0n,
     };
   },
 
@@ -801,8 +803,8 @@ export const QueryVKeyByNameResponse: MessageFns<QueryVKeyByNameResponse> = {
     if (message.vkey !== undefined) {
       obj.vkey = VKey.toJSON(message.vkey);
     }
-    if (!message.id.equals(Long.UZERO)) {
-      obj.id = (message.id || Long.UZERO).toString();
+    if (message.id !== 0n) {
+      obj.id = message.id.toString();
     }
     return obj;
   },
@@ -813,7 +815,7 @@ export const QueryVKeyByNameResponse: MessageFns<QueryVKeyByNameResponse> = {
   fromPartial<I extends Exact<DeepPartial<QueryVKeyByNameResponse>, I>>(object: I): QueryVKeyByNameResponse {
     const message = createBaseQueryVKeyByNameResponse();
     message.vkey = (object.vkey !== undefined && object.vkey !== null) ? VKey.fromPartial(object.vkey) : undefined;
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id ?? 0n;
     return message;
   },
 };
@@ -957,13 +959,16 @@ export const QueryVKeysResponse: MessageFns<QueryVKeysResponse> = {
 };
 
 function createBaseVKeyWithID(): VKeyWithID {
-  return { id: Long.UZERO, vkey: undefined };
+  return { id: 0n, vkey: undefined };
 }
 
 export const VKeyWithID: MessageFns<VKeyWithID> = {
   encode(message: VKeyWithID, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.id.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.id.toString());
+    if (message.id !== 0n) {
+      if (BigInt.asUintN(64, message.id) !== message.id) {
+        throw new globalThis.Error("value provided for field message.id of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.id);
     }
     if (message.vkey !== undefined) {
       VKey.encode(message.vkey, writer.uint32(18).fork()).join();
@@ -983,7 +988,7 @@ export const VKeyWithID: MessageFns<VKeyWithID> = {
             break;
           }
 
-          message.id = Long.fromString(reader.uint64().toString(), true);
+          message.id = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -1005,15 +1010,15 @@ export const VKeyWithID: MessageFns<VKeyWithID> = {
 
   fromJSON(object: any): VKeyWithID {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      id: isSet(object.id) ? BigInt(object.id) : 0n,
       vkey: isSet(object.vkey) ? VKey.fromJSON(object.vkey) : undefined,
     };
   },
 
   toJSON(message: VKeyWithID): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.UZERO)) {
-      obj.id = (message.id || Long.UZERO).toString();
+    if (message.id !== 0n) {
+      obj.id = message.id.toString();
     }
     if (message.vkey !== undefined) {
       obj.vkey = VKey.toJSON(message.vkey);
@@ -1026,7 +1031,7 @@ export const VKeyWithID: MessageFns<VKeyWithID> = {
   },
   fromPartial<I extends Exact<DeepPartial<VKeyWithID>, I>>(object: I): VKeyWithID {
     const message = createBaseVKeyWithID();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id ?? 0n;
     message.vkey = (object.vkey !== undefined && object.vkey !== null) ? VKey.fromPartial(object.vkey) : undefined;
     return message;
   },
@@ -1091,7 +1096,7 @@ export const QueryHasVKeyRequest: MessageFns<QueryHasVKeyRequest> = {
 };
 
 function createBaseQueryHasVKeyResponse(): QueryHasVKeyResponse {
-  return { exists: false, id: Long.UZERO };
+  return { exists: false, id: 0n };
 }
 
 export const QueryHasVKeyResponse: MessageFns<QueryHasVKeyResponse> = {
@@ -1099,8 +1104,11 @@ export const QueryHasVKeyResponse: MessageFns<QueryHasVKeyResponse> = {
     if (message.exists !== false) {
       writer.uint32(8).bool(message.exists);
     }
-    if (!message.id.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.id.toString());
+    if (message.id !== 0n) {
+      if (BigInt.asUintN(64, message.id) !== message.id) {
+        throw new globalThis.Error("value provided for field message.id of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.id);
     }
     return writer;
   },
@@ -1125,7 +1133,7 @@ export const QueryHasVKeyResponse: MessageFns<QueryHasVKeyResponse> = {
             break;
           }
 
-          message.id = Long.fromString(reader.uint64().toString(), true);
+          message.id = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1140,7 +1148,7 @@ export const QueryHasVKeyResponse: MessageFns<QueryHasVKeyResponse> = {
   fromJSON(object: any): QueryHasVKeyResponse {
     return {
       exists: isSet(object.exists) ? globalThis.Boolean(object.exists) : false,
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      id: isSet(object.id) ? BigInt(object.id) : 0n,
     };
   },
 
@@ -1149,8 +1157,8 @@ export const QueryHasVKeyResponse: MessageFns<QueryHasVKeyResponse> = {
     if (message.exists !== false) {
       obj.exists = message.exists;
     }
-    if (!message.id.equals(Long.UZERO)) {
-      obj.id = (message.id || Long.UZERO).toString();
+    if (message.id !== 0n) {
+      obj.id = message.id.toString();
     }
     return obj;
   },
@@ -1161,7 +1169,7 @@ export const QueryHasVKeyResponse: MessageFns<QueryHasVKeyResponse> = {
   fromPartial<I extends Exact<DeepPartial<QueryHasVKeyResponse>, I>>(object: I): QueryHasVKeyResponse {
     const message = createBaseQueryHasVKeyResponse();
     message.exists = object.exists ?? false;
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id ?? 0n;
     return message;
   },
 };
@@ -1210,13 +1218,16 @@ export const QueryNextVKeyIDRequest: MessageFns<QueryNextVKeyIDRequest> = {
 };
 
 function createBaseQueryNextVKeyIDResponse(): QueryNextVKeyIDResponse {
-  return { nextId: Long.UZERO };
+  return { nextId: 0n };
 }
 
 export const QueryNextVKeyIDResponse: MessageFns<QueryNextVKeyIDResponse> = {
   encode(message: QueryNextVKeyIDResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.nextId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.nextId.toString());
+    if (message.nextId !== 0n) {
+      if (BigInt.asUintN(64, message.nextId) !== message.nextId) {
+        throw new globalThis.Error("value provided for field message.nextId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.nextId);
     }
     return writer;
   },
@@ -1233,7 +1244,7 @@ export const QueryNextVKeyIDResponse: MessageFns<QueryNextVKeyIDResponse> = {
             break;
           }
 
-          message.nextId = Long.fromString(reader.uint64().toString(), true);
+          message.nextId = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1247,18 +1258,14 @@ export const QueryNextVKeyIDResponse: MessageFns<QueryNextVKeyIDResponse> = {
 
   fromJSON(object: any): QueryNextVKeyIDResponse {
     return {
-      nextId: isSet(object.nextId)
-        ? Long.fromValue(object.nextId)
-        : isSet(object.next_id)
-        ? Long.fromValue(object.next_id)
-        : Long.UZERO,
+      nextId: isSet(object.nextId) ? BigInt(object.nextId) : isSet(object.next_id) ? BigInt(object.next_id) : 0n,
     };
   },
 
   toJSON(message: QueryNextVKeyIDResponse): unknown {
     const obj: any = {};
-    if (!message.nextId.equals(Long.UZERO)) {
-      obj.nextId = (message.nextId || Long.UZERO).toString();
+    if (message.nextId !== 0n) {
+      obj.nextId = message.nextId.toString();
     }
     return obj;
   },
@@ -1268,9 +1275,7 @@ export const QueryNextVKeyIDResponse: MessageFns<QueryNextVKeyIDResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryNextVKeyIDResponse>, I>>(object: I): QueryNextVKeyIDResponse {
     const message = createBaseQueryNextVKeyIDResponse();
-    message.nextId = (object.nextId !== undefined && object.nextId !== null)
-      ? Long.fromValue(object.nextId)
-      : Long.UZERO;
+    message.nextId = object.nextId ?? 0n;
     return message;
   },
 };
@@ -1695,10 +1700,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

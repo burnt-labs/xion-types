@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
 import { Height } from "../../../core/client/v1/client";
 import { Params } from "./transfer";
@@ -46,7 +45,7 @@ export interface MsgTransfer {
    * If you are sending with IBC v1 protocol, either timeout_height or timeout_timestamp must be set.
    * If you are sending with IBC v2 protocol, timeout_timestamp must be set.
    */
-  timeoutTimestamp: Long;
+  timeoutTimestamp: bigint;
   /** optional memo */
   memo: string;
   /** optional encoding */
@@ -56,7 +55,7 @@ export interface MsgTransfer {
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponse {
   /** sequence number of the transfer packet sent */
-  sequence: Long;
+  sequence: bigint;
 }
 
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
@@ -86,7 +85,7 @@ function createBaseMsgTransfer(): MsgTransfer {
     sender: "",
     receiver: "",
     timeoutHeight: undefined,
-    timeoutTimestamp: Long.UZERO,
+    timeoutTimestamp: 0n,
     memo: "",
     encoding: "",
   };
@@ -112,8 +111,11 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
     if (message.timeoutHeight !== undefined) {
       Height.encode(message.timeoutHeight, writer.uint32(50).fork()).join();
     }
-    if (!message.timeoutTimestamp.equals(Long.UZERO)) {
-      writer.uint32(56).uint64(message.timeoutTimestamp.toString());
+    if (message.timeoutTimestamp !== 0n) {
+      if (BigInt.asUintN(64, message.timeoutTimestamp) !== message.timeoutTimestamp) {
+        throw new globalThis.Error("value provided for field message.timeoutTimestamp of type uint64 too large");
+      }
+      writer.uint32(56).uint64(message.timeoutTimestamp);
     }
     if (message.memo !== "") {
       writer.uint32(66).string(message.memo);
@@ -184,7 +186,7 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
             break;
           }
 
-          message.timeoutTimestamp = Long.fromString(reader.uint64().toString(), true);
+          message.timeoutTimestamp = reader.uint64() as bigint;
           continue;
         }
         case 8: {
@@ -233,10 +235,10 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
         ? Height.fromJSON(object.timeout_height)
         : undefined,
       timeoutTimestamp: isSet(object.timeoutTimestamp)
-        ? Long.fromValue(object.timeoutTimestamp)
+        ? BigInt(object.timeoutTimestamp)
         : isSet(object.timeout_timestamp)
-        ? Long.fromValue(object.timeout_timestamp)
-        : Long.UZERO,
+        ? BigInt(object.timeout_timestamp)
+        : 0n,
       memo: isSet(object.memo) ? globalThis.String(object.memo) : "",
       encoding: isSet(object.encoding) ? globalThis.String(object.encoding) : "",
     };
@@ -262,8 +264,8 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
     if (message.timeoutHeight !== undefined) {
       obj.timeoutHeight = Height.toJSON(message.timeoutHeight);
     }
-    if (!message.timeoutTimestamp.equals(Long.UZERO)) {
-      obj.timeoutTimestamp = (message.timeoutTimestamp || Long.UZERO).toString();
+    if (message.timeoutTimestamp !== 0n) {
+      obj.timeoutTimestamp = message.timeoutTimestamp.toString();
     }
     if (message.memo !== "") {
       obj.memo = message.memo;
@@ -287,9 +289,7 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
     message.timeoutHeight = (object.timeoutHeight !== undefined && object.timeoutHeight !== null)
       ? Height.fromPartial(object.timeoutHeight)
       : undefined;
-    message.timeoutTimestamp = (object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null)
-      ? Long.fromValue(object.timeoutTimestamp)
-      : Long.UZERO;
+    message.timeoutTimestamp = object.timeoutTimestamp ?? 0n;
     message.memo = object.memo ?? "";
     message.encoding = object.encoding ?? "";
     return message;
@@ -297,13 +297,16 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
 };
 
 function createBaseMsgTransferResponse(): MsgTransferResponse {
-  return { sequence: Long.UZERO };
+  return { sequence: 0n };
 }
 
 export const MsgTransferResponse: MessageFns<MsgTransferResponse> = {
   encode(message: MsgTransferResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.sequence);
     }
     return writer;
   },
@@ -320,7 +323,7 @@ export const MsgTransferResponse: MessageFns<MsgTransferResponse> = {
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -333,13 +336,13 @@ export const MsgTransferResponse: MessageFns<MsgTransferResponse> = {
   },
 
   fromJSON(object: any): MsgTransferResponse {
-    return { sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO };
+    return { sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n };
   },
 
   toJSON(message: MsgTransferResponse): unknown {
     const obj: any = {};
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -349,9 +352,7 @@ export const MsgTransferResponse: MessageFns<MsgTransferResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgTransferResponse>, I>>(object: I): MsgTransferResponse {
     const message = createBaseMsgTransferResponse();
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
@@ -619,10 +620,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 import { EvidenceList } from "../../../../tendermint/types/evidence";
 import { BlockID, Commit, Data } from "../../../../tendermint/types/types";
@@ -30,7 +29,7 @@ export interface Header {
   /** basic block info */
   version?: Consensus | undefined;
   chainId: string;
-  height: Long;
+  height: bigint;
   time?:
     | Date
     | undefined;
@@ -184,7 +183,7 @@ function createBaseHeader(): Header {
   return {
     version: undefined,
     chainId: "",
-    height: Long.ZERO,
+    height: 0n,
     time: undefined,
     lastBlockId: undefined,
     lastCommitHash: new Uint8Array(0),
@@ -207,8 +206,11 @@ export const Header: MessageFns<Header> = {
     if (message.chainId !== "") {
       writer.uint32(18).string(message.chainId);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(24).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(34).fork()).join();
@@ -274,7 +276,7 @@ export const Header: MessageFns<Header> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -382,7 +384,7 @@ export const Header: MessageFns<Header> = {
         : isSet(object.chain_id)
         ? globalThis.String(object.chain_id)
         : "",
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       lastBlockId: isSet(object.lastBlockId)
         ? BlockID.fromJSON(object.lastBlockId)
@@ -445,8 +447,8 @@ export const Header: MessageFns<Header> = {
     if (message.chainId !== "") {
       obj.chainId = message.chainId;
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
@@ -493,9 +495,7 @@ export const Header: MessageFns<Header> = {
       ? Consensus.fromPartial(object.version)
       : undefined;
     message.chainId = object.chainId ?? "";
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
     message.lastBlockId = (object.lastBlockId !== undefined && object.lastBlockId !== null)
       ? BlockID.fromPartial(object.lastBlockId)
@@ -538,10 +538,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -551,13 +551,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -570,10 +570,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {
