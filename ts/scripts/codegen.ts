@@ -19,6 +19,9 @@ export const options: TelescopeInput = {
     },
     prototypes: {
       enabled: true,
+      typingsFormat: {
+        num64: 'bigint',
+      },
       excluded: {
         packages: [
           //'ibc.applications.fee.v1', // issue with parsing protos (LCD routes with nested objects in params)
