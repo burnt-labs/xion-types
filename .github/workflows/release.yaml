@@ -115,11 +115,18 @@ jobs:
       - name: Generate language
         run: make proto-gen-${{ matrix.language }}
 
+      - name: Stage language artifact with root directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _artifact
+          cp -a "${{ matrix.language }}" "_artifact/"
+
       - name: Upload generated language artifact
         uses: actions/upload-artifact@v4
         with:
           name: generated-${{ matrix.language }}
-          path: ${{ matrix.language }}/
+          path: _artifact/
           if-no-files-found: error
 
   # ─── Stage 4: Assemble artifacts, commit, and create PR ─────────────
