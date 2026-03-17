@@ -9,8 +9,7 @@
   "homepage": "https://github.com/burnt-labs/xion-types",
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
   "repository": {
     "type": "git",
