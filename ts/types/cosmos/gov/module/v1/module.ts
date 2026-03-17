@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "cosmos.gov.module.v1";
 
@@ -16,19 +15,22 @@ export interface Module {
    * max_metadata_len defines the maximum proposal metadata length.
    * Defaults to 255 if not explicitly set.
    */
-  maxMetadataLen: Long;
+  maxMetadataLen: bigint;
   /** authority defines the custom module authority. If not set, defaults to the governance module. */
   authority: string;
 }
 
 function createBaseModule(): Module {
-  return { maxMetadataLen: Long.UZERO, authority: "" };
+  return { maxMetadataLen: 0n, authority: "" };
 }
 
 export const Module: MessageFns<Module> = {
   encode(message: Module, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.maxMetadataLen.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.maxMetadataLen.toString());
+    if (message.maxMetadataLen !== 0n) {
+      if (BigInt.asUintN(64, message.maxMetadataLen) !== message.maxMetadataLen) {
+        throw new globalThis.Error("value provided for field message.maxMetadataLen of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.maxMetadataLen);
     }
     if (message.authority !== "") {
       writer.uint32(18).string(message.authority);
@@ -48,7 +50,7 @@ export const Module: MessageFns<Module> = {
             break;
           }
 
-          message.maxMetadataLen = Long.fromString(reader.uint64().toString(), true);
+          message.maxMetadataLen = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -71,18 +73,18 @@ export const Module: MessageFns<Module> = {
   fromJSON(object: any): Module {
     return {
       maxMetadataLen: isSet(object.maxMetadataLen)
-        ? Long.fromValue(object.maxMetadataLen)
+        ? BigInt(object.maxMetadataLen)
         : isSet(object.max_metadata_len)
-        ? Long.fromValue(object.max_metadata_len)
-        : Long.UZERO,
+        ? BigInt(object.max_metadata_len)
+        : 0n,
       authority: isSet(object.authority) ? globalThis.String(object.authority) : "",
     };
   },
 
   toJSON(message: Module): unknown {
     const obj: any = {};
-    if (!message.maxMetadataLen.equals(Long.UZERO)) {
-      obj.maxMetadataLen = (message.maxMetadataLen || Long.UZERO).toString();
+    if (message.maxMetadataLen !== 0n) {
+      obj.maxMetadataLen = message.maxMetadataLen.toString();
     }
     if (message.authority !== "") {
       obj.authority = message.authority;
@@ -95,18 +97,16 @@ export const Module: MessageFns<Module> = {
   },
   fromPartial<I extends Exact<DeepPartial<Module>, I>>(object: I): Module {
     const message = createBaseModule();
-    message.maxMetadataLen = (object.maxMetadataLen !== undefined && object.maxMetadataLen !== null)
-      ? Long.fromValue(object.maxMetadataLen)
-      : Long.UZERO;
+    message.maxMetadataLen = object.maxMetadataLen ?? 0n;
     message.authority = object.authority ?? "";
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -329,19 +329,26 @@
     "Params": {
       "type": "object",
       "required": [
+        "display_url",
         "icon_url",
         "metadata",
-        "redirect_url"
+        "redirect_urls"
       ],
       "properties": {
+        "display_url": {
+          "type": "string"
+        },
         "icon_url": {
           "type": "string"
         },
         "metadata": {
           "type": "string"
         },
-        "redirect_url": {
-          "type": "string"
+        "redirect_urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": false

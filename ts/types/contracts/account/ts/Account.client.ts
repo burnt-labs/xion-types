@@ -6,15 +6,15 @@
 
 import { ICosmWasmClient, ISigningCosmWasmClient } from "./baseClient";
 import { Coin, StdFee } from "@interchainjs/types";
-import { AddAuthenticator, Binary, InstantiateMsg, ExecuteMsg, QueryMsg, MigrateMsg } from "./Account.types";
+import { AddAuthenticator, Binary, InstantiateMsg, ExecuteMsg, QueryMsg, MigrateMsg, Authenticator, ArrayOfUint8 } from "./Account.types";
 export interface AccountReadOnlyInterface {
   contractAddress: string;
-  authenticatorIDs: () => Promise<Binary>;
+  authenticatorIDs: () => Promise<ArrayOfUint8>;
   authenticatorByID: ({
     id
   }: {
     id: number;
-  }) => Promise<Binary>;
+  }) => Promise<Authenticator>;
 }
 export class AccountQueryClient implements AccountReadOnlyInterface {
   client: ICosmWasmClient;
@@ -25,7 +25,7 @@ export class AccountQueryClient implements AccountReadOnlyInterface {
     this.authenticatorIDs = this.authenticatorIDs.bind(this);
     this.authenticatorByID = this.authenticatorByID.bind(this);
   }
-  authenticatorIDs = async (): Promise<Binary> => {
+  authenticatorIDs = async (): Promise<ArrayOfUint8> => {
     return this.client.queryContractSmart(this.contractAddress, {
       authenticator_i_ds: {}
     });
@@ -34,7 +34,7 @@ export class AccountQueryClient implements AccountReadOnlyInterface {
     id
   }: {
     id: number;
-  }): Promise<Binary> => {
+  }): Promise<Authenticator> => {
     return this.client.queryContractSmart(this.contractAddress, {
       authenticator_by_i_d: {
         id

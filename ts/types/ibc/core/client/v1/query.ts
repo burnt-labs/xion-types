@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { Any } from "../../../../google/protobuf/any";
 import { MerklePath } from "../../commitment/v2/commitment";
@@ -70,9 +69,9 @@ export interface QueryConsensusStateRequest {
   /** client identifier */
   clientId: string;
   /** consensus state revision number */
-  revisionNumber: Long;
+  revisionNumber: bigint;
   /** consensus state revision height */
-  revisionHeight: Long;
+  revisionHeight: bigint;
   /**
    * latest_height overrides the height field and queries the latest stored
    * ConsensusState
@@ -235,9 +234,9 @@ export interface QueryVerifyMembershipRequest {
   /** the value which is proven. */
   value: Uint8Array;
   /** optional time delay */
-  timeDelay: Long;
+  timeDelay: bigint;
   /** optional block delay */
-  blockDelay: Long;
+  blockDelay: bigint;
   /** the commitment key path. */
   merklePath?: MerklePath | undefined;
 }
@@ -559,7 +558,7 @@ export const QueryClientStatesResponse: MessageFns<QueryClientStatesResponse> = 
 };
 
 function createBaseQueryConsensusStateRequest(): QueryConsensusStateRequest {
-  return { clientId: "", revisionNumber: Long.UZERO, revisionHeight: Long.UZERO, latestHeight: false };
+  return { clientId: "", revisionNumber: 0n, revisionHeight: 0n, latestHeight: false };
 }
 
 export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> = {
@@ -567,11 +566,17 @@ export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> 
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
     }
-    if (!message.revisionNumber.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.revisionNumber.toString());
+    if (message.revisionNumber !== 0n) {
+      if (BigInt.asUintN(64, message.revisionNumber) !== message.revisionNumber) {
+        throw new globalThis.Error("value provided for field message.revisionNumber of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.revisionNumber);
     }
-    if (!message.revisionHeight.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.revisionHeight.toString());
+    if (message.revisionHeight !== 0n) {
+      if (BigInt.asUintN(64, message.revisionHeight) !== message.revisionHeight) {
+        throw new globalThis.Error("value provided for field message.revisionHeight of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.revisionHeight);
     }
     if (message.latestHeight !== false) {
       writer.uint32(32).bool(message.latestHeight);
@@ -599,7 +604,7 @@ export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> 
             break;
           }
 
-          message.revisionNumber = Long.fromString(reader.uint64().toString(), true);
+          message.revisionNumber = reader.uint64() as bigint;
           continue;
         }
         case 3: {
@@ -607,7 +612,7 @@ export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> 
             break;
           }
 
-          message.revisionHeight = Long.fromString(reader.uint64().toString(), true);
+          message.revisionHeight = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -635,15 +640,15 @@ export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> 
         ? globalThis.String(object.client_id)
         : "",
       revisionNumber: isSet(object.revisionNumber)
-        ? Long.fromValue(object.revisionNumber)
+        ? BigInt(object.revisionNumber)
         : isSet(object.revision_number)
-        ? Long.fromValue(object.revision_number)
-        : Long.UZERO,
+        ? BigInt(object.revision_number)
+        : 0n,
       revisionHeight: isSet(object.revisionHeight)
-        ? Long.fromValue(object.revisionHeight)
+        ? BigInt(object.revisionHeight)
         : isSet(object.revision_height)
-        ? Long.fromValue(object.revision_height)
-        : Long.UZERO,
+        ? BigInt(object.revision_height)
+        : 0n,
       latestHeight: isSet(object.latestHeight)
         ? globalThis.Boolean(object.latestHeight)
         : isSet(object.latest_height)
@@ -657,11 +662,11 @@ export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> 
     if (message.clientId !== "") {
       obj.clientId = message.clientId;
     }
-    if (!message.revisionNumber.equals(Long.UZERO)) {
-      obj.revisionNumber = (message.revisionNumber || Long.UZERO).toString();
+    if (message.revisionNumber !== 0n) {
+      obj.revisionNumber = message.revisionNumber.toString();
     }
-    if (!message.revisionHeight.equals(Long.UZERO)) {
-      obj.revisionHeight = (message.revisionHeight || Long.UZERO).toString();
+    if (message.revisionHeight !== 0n) {
+      obj.revisionHeight = message.revisionHeight.toString();
     }
     if (message.latestHeight !== false) {
       obj.latestHeight = message.latestHeight;
@@ -675,12 +680,8 @@ export const QueryConsensusStateRequest: MessageFns<QueryConsensusStateRequest> 
   fromPartial<I extends Exact<DeepPartial<QueryConsensusStateRequest>, I>>(object: I): QueryConsensusStateRequest {
     const message = createBaseQueryConsensusStateRequest();
     message.clientId = object.clientId ?? "";
-    message.revisionNumber = (object.revisionNumber !== undefined && object.revisionNumber !== null)
-      ? Long.fromValue(object.revisionNumber)
-      : Long.UZERO;
-    message.revisionHeight = (object.revisionHeight !== undefined && object.revisionHeight !== null)
-      ? Long.fromValue(object.revisionHeight)
-      : Long.UZERO;
+    message.revisionNumber = object.revisionNumber ?? 0n;
+    message.revisionHeight = object.revisionHeight ?? 0n;
     message.latestHeight = object.latestHeight ?? false;
     return message;
   },
@@ -1710,8 +1711,8 @@ function createBaseQueryVerifyMembershipRequest(): QueryVerifyMembershipRequest 
     proof: new Uint8Array(0),
     proofHeight: undefined,
     value: new Uint8Array(0),
-    timeDelay: Long.UZERO,
-    blockDelay: Long.UZERO,
+    timeDelay: 0n,
+    blockDelay: 0n,
     merklePath: undefined,
   };
 }
@@ -1730,11 +1731,17 @@ export const QueryVerifyMembershipRequest: MessageFns<QueryVerifyMembershipReque
     if (message.value.length !== 0) {
       writer.uint32(42).bytes(message.value);
     }
-    if (!message.timeDelay.equals(Long.UZERO)) {
-      writer.uint32(48).uint64(message.timeDelay.toString());
+    if (message.timeDelay !== 0n) {
+      if (BigInt.asUintN(64, message.timeDelay) !== message.timeDelay) {
+        throw new globalThis.Error("value provided for field message.timeDelay of type uint64 too large");
+      }
+      writer.uint32(48).uint64(message.timeDelay);
     }
-    if (!message.blockDelay.equals(Long.UZERO)) {
-      writer.uint32(56).uint64(message.blockDelay.toString());
+    if (message.blockDelay !== 0n) {
+      if (BigInt.asUintN(64, message.blockDelay) !== message.blockDelay) {
+        throw new globalThis.Error("value provided for field message.blockDelay of type uint64 too large");
+      }
+      writer.uint32(56).uint64(message.blockDelay);
     }
     if (message.merklePath !== undefined) {
       MerklePath.encode(message.merklePath, writer.uint32(66).fork()).join();
@@ -1786,7 +1793,7 @@ export const QueryVerifyMembershipRequest: MessageFns<QueryVerifyMembershipReque
             break;
           }
 
-          message.timeDelay = Long.fromString(reader.uint64().toString(), true);
+          message.timeDelay = reader.uint64() as bigint;
           continue;
         }
         case 7: {
@@ -1794,7 +1801,7 @@ export const QueryVerifyMembershipRequest: MessageFns<QueryVerifyMembershipReque
             break;
           }
 
-          message.blockDelay = Long.fromString(reader.uint64().toString(), true);
+          message.blockDelay = reader.uint64() as bigint;
           continue;
         }
         case 8: {
@@ -1829,15 +1836,15 @@ export const QueryVerifyMembershipRequest: MessageFns<QueryVerifyMembershipReque
         : undefined,
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(0),
       timeDelay: isSet(object.timeDelay)
-        ? Long.fromValue(object.timeDelay)
+        ? BigInt(object.timeDelay)
         : isSet(object.time_delay)
-        ? Long.fromValue(object.time_delay)
-        : Long.UZERO,
+        ? BigInt(object.time_delay)
+        : 0n,
       blockDelay: isSet(object.blockDelay)
-        ? Long.fromValue(object.blockDelay)
+        ? BigInt(object.blockDelay)
         : isSet(object.block_delay)
-        ? Long.fromValue(object.block_delay)
-        : Long.UZERO,
+        ? BigInt(object.block_delay)
+        : 0n,
       merklePath: isSet(object.merklePath)
         ? MerklePath.fromJSON(object.merklePath)
         : isSet(object.merkle_path)
@@ -1860,11 +1867,11 @@ export const QueryVerifyMembershipRequest: MessageFns<QueryVerifyMembershipReque
     if (message.value.length !== 0) {
       obj.value = base64FromBytes(message.value);
     }
-    if (!message.timeDelay.equals(Long.UZERO)) {
-      obj.timeDelay = (message.timeDelay || Long.UZERO).toString();
+    if (message.timeDelay !== 0n) {
+      obj.timeDelay = message.timeDelay.toString();
     }
-    if (!message.blockDelay.equals(Long.UZERO)) {
-      obj.blockDelay = (message.blockDelay || Long.UZERO).toString();
+    if (message.blockDelay !== 0n) {
+      obj.blockDelay = message.blockDelay.toString();
     }
     if (message.merklePath !== undefined) {
       obj.merklePath = MerklePath.toJSON(message.merklePath);
@@ -1883,12 +1890,8 @@ export const QueryVerifyMembershipRequest: MessageFns<QueryVerifyMembershipReque
       ? Height.fromPartial(object.proofHeight)
       : undefined;
     message.value = object.value ?? new Uint8Array(0);
-    message.timeDelay = (object.timeDelay !== undefined && object.timeDelay !== null)
-      ? Long.fromValue(object.timeDelay)
-      : Long.UZERO;
-    message.blockDelay = (object.blockDelay !== undefined && object.blockDelay !== null)
-      ? Long.fromValue(object.blockDelay)
-      : Long.UZERO;
+    message.timeDelay = object.timeDelay ?? 0n;
+    message.blockDelay = object.blockDelay ?? 0n;
     message.merklePath = (object.merklePath !== undefined && object.merklePath !== null)
       ? MerklePath.fromPartial(object.merklePath)
       : undefined;
@@ -2473,10 +2476,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

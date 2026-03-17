@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Params } from "./params";
 
 export const protobufPackage = "xion.zk.v1";
@@ -28,7 +27,7 @@ export interface MsgAddVKey {
 /** MsgAddVKeyResponse is the response for MsgAddVKey */
 export interface MsgAddVKeyResponse {
   /** id is the unique numeric identifier assigned to the vkey */
-  id: Long;
+  id: bigint;
 }
 
 /** MsgUpdateVKey is the message for updating a verification key */
@@ -191,13 +190,16 @@ export const MsgAddVKey: MessageFns<MsgAddVKey> = {
 };
 
 function createBaseMsgAddVKeyResponse(): MsgAddVKeyResponse {
-  return { id: Long.UZERO };
+  return { id: 0n };
 }
 
 export const MsgAddVKeyResponse: MessageFns<MsgAddVKeyResponse> = {
   encode(message: MsgAddVKeyResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.id.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.id.toString());
+    if (message.id !== 0n) {
+      if (BigInt.asUintN(64, message.id) !== message.id) {
+        throw new globalThis.Error("value provided for field message.id of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.id);
     }
     return writer;
   },
@@ -214,7 +216,7 @@ export const MsgAddVKeyResponse: MessageFns<MsgAddVKeyResponse> = {
             break;
           }
 
-          message.id = Long.fromString(reader.uint64().toString(), true);
+          message.id = reader.uint64() as bigint;
           continue;
         }
       }
@@ -227,13 +229,13 @@ export const MsgAddVKeyResponse: MessageFns<MsgAddVKeyResponse> = {
   },
 
   fromJSON(object: any): MsgAddVKeyResponse {
-    return { id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO };
+    return { id: isSet(object.id) ? BigInt(object.id) : 0n };
   },
 
   toJSON(message: MsgAddVKeyResponse): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.UZERO)) {
-      obj.id = (message.id || Long.UZERO).toString();
+    if (message.id !== 0n) {
+      obj.id = message.id.toString();
     }
     return obj;
   },
@@ -243,7 +245,7 @@ export const MsgAddVKeyResponse: MessageFns<MsgAddVKeyResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgAddVKeyResponse>, I>>(object: I): MsgAddVKeyResponse {
     const message = createBaseMsgAddVKeyResponse();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id ?? 0n;
     return message;
   },
 };
@@ -870,10 +872,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

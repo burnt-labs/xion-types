@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "xion.feeabs.v1beta1";
 
@@ -70,7 +69,7 @@ export interface HostChainFeeAbsConfig {
   /** token_in in cross_chain swap contract. */
   osmosisPoolTokenDenomIn: string;
   /** pool id */
-  poolId: Long;
+  poolId: bigint;
   /** Host chain fee abstraction connection status */
   status: HostChainFeeAbsStatus;
 }
@@ -106,7 +105,7 @@ export interface SetHostZoneProposal {
 }
 
 function createBaseHostChainFeeAbsConfig(): HostChainFeeAbsConfig {
-  return { ibcDenom: "", osmosisPoolTokenDenomIn: "", poolId: Long.UZERO, status: 0 };
+  return { ibcDenom: "", osmosisPoolTokenDenomIn: "", poolId: 0n, status: 0 };
 }
 
 export const HostChainFeeAbsConfig: MessageFns<HostChainFeeAbsConfig> = {
@@ -117,8 +116,11 @@ export const HostChainFeeAbsConfig: MessageFns<HostChainFeeAbsConfig> = {
     if (message.osmosisPoolTokenDenomIn !== "") {
       writer.uint32(18).string(message.osmosisPoolTokenDenomIn);
     }
-    if (!message.poolId.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.poolId.toString());
+    if (message.poolId !== 0n) {
+      if (BigInt.asUintN(64, message.poolId) !== message.poolId) {
+        throw new globalThis.Error("value provided for field message.poolId of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.poolId);
     }
     if (message.status !== 0) {
       writer.uint32(32).int32(message.status);
@@ -154,7 +156,7 @@ export const HostChainFeeAbsConfig: MessageFns<HostChainFeeAbsConfig> = {
             break;
           }
 
-          message.poolId = Long.fromString(reader.uint64().toString(), true);
+          message.poolId = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -186,11 +188,7 @@ export const HostChainFeeAbsConfig: MessageFns<HostChainFeeAbsConfig> = {
         : isSet(object.osmosis_pool_token_denom_in)
         ? globalThis.String(object.osmosis_pool_token_denom_in)
         : "",
-      poolId: isSet(object.poolId)
-        ? Long.fromValue(object.poolId)
-        : isSet(object.pool_id)
-        ? Long.fromValue(object.pool_id)
-        : Long.UZERO,
+      poolId: isSet(object.poolId) ? BigInt(object.poolId) : isSet(object.pool_id) ? BigInt(object.pool_id) : 0n,
       status: isSet(object.status) ? hostChainFeeAbsStatusFromJSON(object.status) : 0,
     };
   },
@@ -203,8 +201,8 @@ export const HostChainFeeAbsConfig: MessageFns<HostChainFeeAbsConfig> = {
     if (message.osmosisPoolTokenDenomIn !== "") {
       obj.osmosisPoolTokenDenomIn = message.osmosisPoolTokenDenomIn;
     }
-    if (!message.poolId.equals(Long.UZERO)) {
-      obj.poolId = (message.poolId || Long.UZERO).toString();
+    if (message.poolId !== 0n) {
+      obj.poolId = message.poolId.toString();
     }
     if (message.status !== 0) {
       obj.status = hostChainFeeAbsStatusToJSON(message.status);
@@ -219,9 +217,7 @@ export const HostChainFeeAbsConfig: MessageFns<HostChainFeeAbsConfig> = {
     const message = createBaseHostChainFeeAbsConfig();
     message.ibcDenom = object.ibcDenom ?? "";
     message.osmosisPoolTokenDenomIn = object.osmosisPoolTokenDenomIn ?? "";
-    message.poolId = (object.poolId !== undefined && object.poolId !== null)
-      ? Long.fromValue(object.poolId)
-      : Long.UZERO;
+    message.poolId = object.poolId ?? 0n;
     message.status = object.status ?? 0;
     return message;
   },
@@ -519,10 +515,10 @@ export const SetHostZoneProposal: MessageFns<SetHostZoneProposal> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination";
 import { AccessConfig, ContractCodeHistoryEntry, ContractInfo, Model, Params } from "./types";
 
@@ -60,7 +59,7 @@ export interface QueryContractHistoryResponse {
  */
 export interface QueryContractsByCodeRequest {
   /** grpc-gateway_out does not support Go style CodeID */
-  codeId: Long;
+  codeId: bigint;
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest | undefined;
 }
@@ -139,18 +138,18 @@ export interface QuerySmartContractStateResponse {
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
 export interface QueryCodeRequest {
   /** grpc-gateway_out does not support Go style CodeID */
-  codeId: Long;
+  codeId: bigint;
 }
 
 /** QueryCodeInfoRequest is the request type for the Query/CodeInfo RPC method */
 export interface QueryCodeInfoRequest {
   /** grpc-gateway_out does not support Go style CodeID */
-  codeId: Long;
+  codeId: bigint;
 }
 
 /** QueryCodeInfoResponse is the response type for the Query/CodeInfo RPC method */
 export interface QueryCodeInfoResponse {
-  codeId: Long;
+  codeId: bigint;
   creator: string;
   checksum: Uint8Array;
   instantiatePermission?: AccessConfig | undefined;
@@ -159,7 +158,7 @@ export interface QueryCodeInfoResponse {
 /** CodeInfoResponse contains code meta data from CodeInfo */
 export interface CodeInfoResponse {
   /** id for legacy support */
-  codeId: Long;
+  codeId: bigint;
   creator: string;
   dataHash: Uint8Array;
   instantiatePermission?: AccessConfig | undefined;
@@ -198,7 +197,7 @@ export interface QueryPinnedCodesRequest {
  * Query/PinnedCodes RPC method
  */
 export interface QueryPinnedCodesResponse {
-  codeIds: Long[];
+  codeIds: bigint[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse | undefined;
 }
@@ -577,13 +576,16 @@ export const QueryContractHistoryResponse: MessageFns<QueryContractHistoryRespon
 };
 
 function createBaseQueryContractsByCodeRequest(): QueryContractsByCodeRequest {
-  return { codeId: Long.UZERO, pagination: undefined };
+  return { codeId: 0n, pagination: undefined };
 }
 
 export const QueryContractsByCodeRequest: MessageFns<QueryContractsByCodeRequest> = {
   encode(message: QueryContractsByCodeRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).join();
@@ -603,7 +605,7 @@ export const QueryContractsByCodeRequest: MessageFns<QueryContractsByCodeRequest
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -625,19 +627,15 @@ export const QueryContractsByCodeRequest: MessageFns<QueryContractsByCodeRequest
 
   fromJSON(object: any): QueryContractsByCodeRequest {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
     };
   },
 
   toJSON(message: QueryContractsByCodeRequest): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.pagination !== undefined) {
       obj.pagination = PageRequest.toJSON(message.pagination);
@@ -650,9 +648,7 @@ export const QueryContractsByCodeRequest: MessageFns<QueryContractsByCodeRequest
   },
   fromPartial<I extends Exact<DeepPartial<QueryContractsByCodeRequest>, I>>(object: I): QueryContractsByCodeRequest {
     const message = createBaseQueryContractsByCodeRequest();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.pagination = (object.pagination !== undefined && object.pagination !== null)
       ? PageRequest.fromPartial(object.pagination)
       : undefined;
@@ -1181,13 +1177,16 @@ export const QuerySmartContractStateResponse: MessageFns<QuerySmartContractState
 };
 
 function createBaseQueryCodeRequest(): QueryCodeRequest {
-  return { codeId: Long.UZERO };
+  return { codeId: 0n };
 }
 
 export const QueryCodeRequest: MessageFns<QueryCodeRequest> = {
   encode(message: QueryCodeRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     return writer;
   },
@@ -1204,7 +1203,7 @@ export const QueryCodeRequest: MessageFns<QueryCodeRequest> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1218,18 +1217,14 @@ export const QueryCodeRequest: MessageFns<QueryCodeRequest> = {
 
   fromJSON(object: any): QueryCodeRequest {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
     };
   },
 
   toJSON(message: QueryCodeRequest): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     return obj;
   },
@@ -1239,21 +1234,22 @@ export const QueryCodeRequest: MessageFns<QueryCodeRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryCodeRequest>, I>>(object: I): QueryCodeRequest {
     const message = createBaseQueryCodeRequest();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     return message;
   },
 };
 
 function createBaseQueryCodeInfoRequest(): QueryCodeInfoRequest {
-  return { codeId: Long.UZERO };
+  return { codeId: 0n };
 }
 
 export const QueryCodeInfoRequest: MessageFns<QueryCodeInfoRequest> = {
   encode(message: QueryCodeInfoRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     return writer;
   },
@@ -1270,7 +1266,7 @@ export const QueryCodeInfoRequest: MessageFns<QueryCodeInfoRequest> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1284,18 +1280,14 @@ export const QueryCodeInfoRequest: MessageFns<QueryCodeInfoRequest> = {
 
   fromJSON(object: any): QueryCodeInfoRequest {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
     };
   },
 
   toJSON(message: QueryCodeInfoRequest): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     return obj;
   },
@@ -1305,21 +1297,22 @@ export const QueryCodeInfoRequest: MessageFns<QueryCodeInfoRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryCodeInfoRequest>, I>>(object: I): QueryCodeInfoRequest {
     const message = createBaseQueryCodeInfoRequest();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     return message;
   },
 };
 
 function createBaseQueryCodeInfoResponse(): QueryCodeInfoResponse {
-  return { codeId: Long.UZERO, creator: "", checksum: new Uint8Array(0), instantiatePermission: undefined };
+  return { codeId: 0n, creator: "", checksum: new Uint8Array(0), instantiatePermission: undefined };
 }
 
 export const QueryCodeInfoResponse: MessageFns<QueryCodeInfoResponse> = {
   encode(message: QueryCodeInfoResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     if (message.creator !== "") {
       writer.uint32(18).string(message.creator);
@@ -1345,7 +1338,7 @@ export const QueryCodeInfoResponse: MessageFns<QueryCodeInfoResponse> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -1383,11 +1376,7 @@ export const QueryCodeInfoResponse: MessageFns<QueryCodeInfoResponse> = {
 
   fromJSON(object: any): QueryCodeInfoResponse {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       creator: isSet(object.creator) ? globalThis.String(object.creator) : "",
       checksum: isSet(object.checksum) ? bytesFromBase64(object.checksum) : new Uint8Array(0),
       instantiatePermission: isSet(object.instantiatePermission)
@@ -1400,8 +1389,8 @@ export const QueryCodeInfoResponse: MessageFns<QueryCodeInfoResponse> = {
 
   toJSON(message: QueryCodeInfoResponse): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.creator !== "") {
       obj.creator = message.creator;
@@ -1420,9 +1409,7 @@ export const QueryCodeInfoResponse: MessageFns<QueryCodeInfoResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryCodeInfoResponse>, I>>(object: I): QueryCodeInfoResponse {
     const message = createBaseQueryCodeInfoResponse();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.creator = object.creator ?? "";
     message.checksum = object.checksum ?? new Uint8Array(0);
     message.instantiatePermission =
@@ -1434,13 +1421,16 @@ export const QueryCodeInfoResponse: MessageFns<QueryCodeInfoResponse> = {
 };
 
 function createBaseCodeInfoResponse(): CodeInfoResponse {
-  return { codeId: Long.UZERO, creator: "", dataHash: new Uint8Array(0), instantiatePermission: undefined };
+  return { codeId: 0n, creator: "", dataHash: new Uint8Array(0), instantiatePermission: undefined };
 }
 
 export const CodeInfoResponse: MessageFns<CodeInfoResponse> = {
   encode(message: CodeInfoResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     if (message.creator !== "") {
       writer.uint32(18).string(message.creator);
@@ -1466,7 +1456,7 @@ export const CodeInfoResponse: MessageFns<CodeInfoResponse> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -1504,11 +1494,7 @@ export const CodeInfoResponse: MessageFns<CodeInfoResponse> = {
 
   fromJSON(object: any): CodeInfoResponse {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       creator: isSet(object.creator) ? globalThis.String(object.creator) : "",
       dataHash: isSet(object.dataHash)
         ? bytesFromBase64(object.dataHash)
@@ -1525,8 +1511,8 @@ export const CodeInfoResponse: MessageFns<CodeInfoResponse> = {
 
   toJSON(message: CodeInfoResponse): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.creator !== "") {
       obj.creator = message.creator;
@@ -1545,9 +1531,7 @@ export const CodeInfoResponse: MessageFns<CodeInfoResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<CodeInfoResponse>, I>>(object: I): CodeInfoResponse {
     const message = createBaseCodeInfoResponse();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.creator = object.creator ?? "";
     message.dataHash = object.dataHash ?? new Uint8Array(0);
     message.instantiatePermission =
@@ -1849,7 +1833,10 @@ function createBaseQueryPinnedCodesResponse(): QueryPinnedCodesResponse {
 export const QueryPinnedCodesResponse: MessageFns<QueryPinnedCodesResponse> = {
   encode(message: QueryPinnedCodesResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.codeIds) {
-      writer.uint32(8).uint64(v!.toString());
+      if (BigInt.asUintN(64, v!) !== v!) {
+        throw new globalThis.Error("value provided for field v! of type uint64 too large");
+      }
+      writer.uint32(8).uint64(v!);
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).join();
@@ -1866,7 +1853,7 @@ export const QueryPinnedCodesResponse: MessageFns<QueryPinnedCodesResponse> = {
       switch (tag >>> 3) {
         case 1: {
           if (tag === 8) {
-            message.codeIds.push(Long.fromString(reader.uint64().toString(), true));
+            message.codeIds.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -1874,7 +1861,7 @@ export const QueryPinnedCodesResponse: MessageFns<QueryPinnedCodesResponse> = {
           if (tag === 10) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.codeIds.push(Long.fromString(reader.uint64().toString(), true));
+              message.codeIds.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -1902,9 +1889,9 @@ export const QueryPinnedCodesResponse: MessageFns<QueryPinnedCodesResponse> = {
   fromJSON(object: any): QueryPinnedCodesResponse {
     return {
       codeIds: globalThis.Array.isArray(object?.codeIds)
-        ? object.codeIds.map((e: any) => Long.fromValue(e))
+        ? object.codeIds.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.code_ids)
-        ? object.code_ids.map((e: any) => Long.fromValue(e))
+        ? object.code_ids.map((e: any) => BigInt(e))
         : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
     };
@@ -1913,7 +1900,7 @@ export const QueryPinnedCodesResponse: MessageFns<QueryPinnedCodesResponse> = {
   toJSON(message: QueryPinnedCodesResponse): unknown {
     const obj: any = {};
     if (message.codeIds?.length) {
-      obj.codeIds = message.codeIds.map((e) => (e || Long.UZERO).toString());
+      obj.codeIds = message.codeIds.map((e) => e.toString());
     }
     if (message.pagination !== undefined) {
       obj.pagination = PageResponse.toJSON(message.pagination);
@@ -1926,7 +1913,7 @@ export const QueryPinnedCodesResponse: MessageFns<QueryPinnedCodesResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryPinnedCodesResponse>, I>>(object: I): QueryPinnedCodesResponse {
     const message = createBaseQueryPinnedCodesResponse();
-    message.codeIds = object.codeIds?.map((e) => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map((e) => e) || [];
     message.pagination = (object.pagination !== undefined && object.pagination !== null)
       ? PageResponse.fromPartial(object.pagination)
       : undefined;
@@ -3076,10 +3063,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

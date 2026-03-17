@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Duration } from "../../../google/protobuf/duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 
@@ -39,7 +38,7 @@ export interface EpochInfo {
    * The first tick (current_epoch=1) is defined as
    * the first block whose blocktime is greater than the EpochInfo start_time.
    */
-  currentEpoch: Long;
+  currentEpoch: bigint;
   /**
    * current_epoch_start_time describes the start time of the current timer
    * interval. The interval is (current_epoch_start_time,
@@ -71,15 +70,15 @@ export interface EpochInfo {
    * current_epoch_start_height is the block height at which the current epoch
    * started. (The block height at which the timer last ticked)
    */
-  currentEpochStartHeight: Long;
+  currentEpochStartHeight: bigint;
 }
 
 /** ExponentialBackoff defines backoff epoch */
 export interface ExponentialBackoff {
   /** jump defines the exponential backoff multiplier */
-  jump: Long;
+  jump: bigint;
   /** future_epoch defines the target epoch for the backoff */
-  futureEpoch: Long;
+  futureEpoch: bigint;
 }
 
 function createBaseEpochInfo(): EpochInfo {
@@ -87,10 +86,10 @@ function createBaseEpochInfo(): EpochInfo {
     identifier: "",
     startTime: undefined,
     duration: undefined,
-    currentEpoch: Long.ZERO,
+    currentEpoch: 0n,
     currentEpochStartTime: undefined,
     epochCountingStarted: false,
-    currentEpochStartHeight: Long.ZERO,
+    currentEpochStartHeight: 0n,
   };
 }
 
@@ -105,8 +104,11 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.duration !== undefined) {
       Duration.encode(message.duration, writer.uint32(26).fork()).join();
     }
-    if (!message.currentEpoch.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.currentEpoch.toString());
+    if (message.currentEpoch !== 0n) {
+      if (BigInt.asIntN(64, message.currentEpoch) !== message.currentEpoch) {
+        throw new globalThis.Error("value provided for field message.currentEpoch of type int64 too large");
+      }
+      writer.uint32(32).int64(message.currentEpoch);
     }
     if (message.currentEpochStartTime !== undefined) {
       Timestamp.encode(toTimestamp(message.currentEpochStartTime), writer.uint32(42).fork()).join();
@@ -114,8 +116,11 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.epochCountingStarted !== false) {
       writer.uint32(48).bool(message.epochCountingStarted);
     }
-    if (!message.currentEpochStartHeight.equals(Long.ZERO)) {
-      writer.uint32(64).int64(message.currentEpochStartHeight.toString());
+    if (message.currentEpochStartHeight !== 0n) {
+      if (BigInt.asIntN(64, message.currentEpochStartHeight) !== message.currentEpochStartHeight) {
+        throw new globalThis.Error("value provided for field message.currentEpochStartHeight of type int64 too large");
+      }
+      writer.uint32(64).int64(message.currentEpochStartHeight);
     }
     return writer;
   },
@@ -156,7 +161,7 @@ export const EpochInfo: MessageFns<EpochInfo> = {
             break;
           }
 
-          message.currentEpoch = Long.fromString(reader.int64().toString());
+          message.currentEpoch = reader.int64() as bigint;
           continue;
         }
         case 5: {
@@ -180,7 +185,7 @@ export const EpochInfo: MessageFns<EpochInfo> = {
             break;
           }
 
-          message.currentEpochStartHeight = Long.fromString(reader.int64().toString());
+          message.currentEpochStartHeight = reader.int64() as bigint;
           continue;
         }
       }
@@ -202,10 +207,10 @@ export const EpochInfo: MessageFns<EpochInfo> = {
         : undefined,
       duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
       currentEpoch: isSet(object.currentEpoch)
-        ? Long.fromValue(object.currentEpoch)
+        ? BigInt(object.currentEpoch)
         : isSet(object.current_epoch)
-        ? Long.fromValue(object.current_epoch)
-        : Long.ZERO,
+        ? BigInt(object.current_epoch)
+        : 0n,
       currentEpochStartTime: isSet(object.currentEpochStartTime)
         ? fromJsonTimestamp(object.currentEpochStartTime)
         : isSet(object.current_epoch_start_time)
@@ -217,10 +222,10 @@ export const EpochInfo: MessageFns<EpochInfo> = {
         ? globalThis.Boolean(object.epoch_counting_started)
         : false,
       currentEpochStartHeight: isSet(object.currentEpochStartHeight)
-        ? Long.fromValue(object.currentEpochStartHeight)
+        ? BigInt(object.currentEpochStartHeight)
         : isSet(object.current_epoch_start_height)
-        ? Long.fromValue(object.current_epoch_start_height)
-        : Long.ZERO,
+        ? BigInt(object.current_epoch_start_height)
+        : 0n,
     };
   },
 
@@ -235,8 +240,8 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.duration !== undefined) {
       obj.duration = Duration.toJSON(message.duration);
     }
-    if (!message.currentEpoch.equals(Long.ZERO)) {
-      obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString();
+    if (message.currentEpoch !== 0n) {
+      obj.currentEpoch = message.currentEpoch.toString();
     }
     if (message.currentEpochStartTime !== undefined) {
       obj.currentEpochStartTime = message.currentEpochStartTime.toISOString();
@@ -244,8 +249,8 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.epochCountingStarted !== false) {
       obj.epochCountingStarted = message.epochCountingStarted;
     }
-    if (!message.currentEpochStartHeight.equals(Long.ZERO)) {
-      obj.currentEpochStartHeight = (message.currentEpochStartHeight || Long.ZERO).toString();
+    if (message.currentEpochStartHeight !== 0n) {
+      obj.currentEpochStartHeight = message.currentEpochStartHeight.toString();
     }
     return obj;
   },
@@ -260,30 +265,31 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     message.duration = (object.duration !== undefined && object.duration !== null)
       ? Duration.fromPartial(object.duration)
       : undefined;
-    message.currentEpoch = (object.currentEpoch !== undefined && object.currentEpoch !== null)
-      ? Long.fromValue(object.currentEpoch)
-      : Long.ZERO;
+    message.currentEpoch = object.currentEpoch ?? 0n;
     message.currentEpochStartTime = object.currentEpochStartTime ?? undefined;
     message.epochCountingStarted = object.epochCountingStarted ?? false;
-    message.currentEpochStartHeight =
-      (object.currentEpochStartHeight !== undefined && object.currentEpochStartHeight !== null)
-        ? Long.fromValue(object.currentEpochStartHeight)
-        : Long.ZERO;
+    message.currentEpochStartHeight = object.currentEpochStartHeight ?? 0n;
     return message;
   },
 };
 
 function createBaseExponentialBackoff(): ExponentialBackoff {
-  return { jump: Long.ZERO, futureEpoch: Long.ZERO };
+  return { jump: 0n, futureEpoch: 0n };
 }
 
 export const ExponentialBackoff: MessageFns<ExponentialBackoff> = {
   encode(message: ExponentialBackoff, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.jump.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.jump.toString());
+    if (message.jump !== 0n) {
+      if (BigInt.asIntN(64, message.jump) !== message.jump) {
+        throw new globalThis.Error("value provided for field message.jump of type int64 too large");
+      }
+      writer.uint32(8).int64(message.jump);
     }
-    if (!message.futureEpoch.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.futureEpoch.toString());
+    if (message.futureEpoch !== 0n) {
+      if (BigInt.asIntN(64, message.futureEpoch) !== message.futureEpoch) {
+        throw new globalThis.Error("value provided for field message.futureEpoch of type int64 too large");
+      }
+      writer.uint32(16).int64(message.futureEpoch);
     }
     return writer;
   },
@@ -300,7 +306,7 @@ export const ExponentialBackoff: MessageFns<ExponentialBackoff> = {
             break;
           }
 
-          message.jump = Long.fromString(reader.int64().toString());
+          message.jump = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -308,7 +314,7 @@ export const ExponentialBackoff: MessageFns<ExponentialBackoff> = {
             break;
           }
 
-          message.futureEpoch = Long.fromString(reader.int64().toString());
+          message.futureEpoch = reader.int64() as bigint;
           continue;
         }
       }
@@ -322,22 +328,22 @@ export const ExponentialBackoff: MessageFns<ExponentialBackoff> = {
 
   fromJSON(object: any): ExponentialBackoff {
     return {
-      jump: isSet(object.jump) ? Long.fromValue(object.jump) : Long.ZERO,
+      jump: isSet(object.jump) ? BigInt(object.jump) : 0n,
       futureEpoch: isSet(object.futureEpoch)
-        ? Long.fromValue(object.futureEpoch)
+        ? BigInt(object.futureEpoch)
         : isSet(object.future_epoch)
-        ? Long.fromValue(object.future_epoch)
-        : Long.ZERO,
+        ? BigInt(object.future_epoch)
+        : 0n,
     };
   },
 
   toJSON(message: ExponentialBackoff): unknown {
     const obj: any = {};
-    if (!message.jump.equals(Long.ZERO)) {
-      obj.jump = (message.jump || Long.ZERO).toString();
+    if (message.jump !== 0n) {
+      obj.jump = message.jump.toString();
     }
-    if (!message.futureEpoch.equals(Long.ZERO)) {
-      obj.futureEpoch = (message.futureEpoch || Long.ZERO).toString();
+    if (message.futureEpoch !== 0n) {
+      obj.futureEpoch = message.futureEpoch.toString();
     }
     return obj;
   },
@@ -347,18 +353,16 @@ export const ExponentialBackoff: MessageFns<ExponentialBackoff> = {
   },
   fromPartial<I extends Exact<DeepPartial<ExponentialBackoff>, I>>(object: I): ExponentialBackoff {
     const message = createBaseExponentialBackoff();
-    message.jump = (object.jump !== undefined && object.jump !== null) ? Long.fromValue(object.jump) : Long.ZERO;
-    message.futureEpoch = (object.futureEpoch !== undefined && object.futureEpoch !== null)
-      ? Long.fromValue(object.futureEpoch)
-      : Long.ZERO;
+    message.jump = object.jump ?? 0n;
+    message.futureEpoch = object.futureEpoch ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -368,13 +372,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -387,10 +391,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

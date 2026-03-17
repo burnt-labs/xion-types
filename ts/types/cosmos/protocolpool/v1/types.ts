@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 
 export const protobufPackage = "cosmos.protocolpool.v1";
@@ -32,7 +31,7 @@ export interface Params {
    * DistributionFrequency is the frequency (in terms of blocks) that funds are distributed out from the
    * x/protocolpool module.
    */
-  distributionFrequency: Long;
+  distributionFrequency: bigint;
 }
 
 function createBaseContinuousFund(): ContinuousFund {
@@ -128,7 +127,7 @@ export const ContinuousFund: MessageFns<ContinuousFund> = {
 };
 
 function createBaseParams(): Params {
-  return { enabledDistributionDenoms: [], distributionFrequency: Long.UZERO };
+  return { enabledDistributionDenoms: [], distributionFrequency: 0n };
 }
 
 export const Params: MessageFns<Params> = {
@@ -136,8 +135,11 @@ export const Params: MessageFns<Params> = {
     for (const v of message.enabledDistributionDenoms) {
       writer.uint32(10).string(v!);
     }
-    if (!message.distributionFrequency.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.distributionFrequency.toString());
+    if (message.distributionFrequency !== 0n) {
+      if (BigInt.asUintN(64, message.distributionFrequency) !== message.distributionFrequency) {
+        throw new globalThis.Error("value provided for field message.distributionFrequency of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.distributionFrequency);
     }
     return writer;
   },
@@ -162,7 +164,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.distributionFrequency = Long.fromString(reader.uint64().toString(), true);
+          message.distributionFrequency = reader.uint64() as bigint;
           continue;
         }
       }
@@ -182,10 +184,10 @@ export const Params: MessageFns<Params> = {
         ? object.enabled_distribution_denoms.map((e: any) => globalThis.String(e))
         : [],
       distributionFrequency: isSet(object.distributionFrequency)
-        ? Long.fromValue(object.distributionFrequency)
+        ? BigInt(object.distributionFrequency)
         : isSet(object.distribution_frequency)
-        ? Long.fromValue(object.distribution_frequency)
-        : Long.UZERO,
+        ? BigInt(object.distribution_frequency)
+        : 0n,
     };
   },
 
@@ -194,8 +196,8 @@ export const Params: MessageFns<Params> = {
     if (message.enabledDistributionDenoms?.length) {
       obj.enabledDistributionDenoms = message.enabledDistributionDenoms;
     }
-    if (!message.distributionFrequency.equals(Long.UZERO)) {
-      obj.distributionFrequency = (message.distributionFrequency || Long.UZERO).toString();
+    if (message.distributionFrequency !== 0n) {
+      obj.distributionFrequency = message.distributionFrequency.toString();
     }
     return obj;
   },
@@ -206,18 +208,15 @@ export const Params: MessageFns<Params> = {
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
     message.enabledDistributionDenoms = object.enabledDistributionDenoms?.map((e) => e) || [];
-    message.distributionFrequency =
-      (object.distributionFrequency !== undefined && object.distributionFrequency !== null)
-        ? Long.fromValue(object.distributionFrequency)
-        : Long.UZERO;
+    message.distributionFrequency = object.distributionFrequency ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -227,13 +226,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -246,10 +245,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

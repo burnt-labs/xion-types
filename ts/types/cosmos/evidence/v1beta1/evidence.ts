@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 
 export const protobufPackage = "cosmos.evidence.v1beta1";
@@ -17,31 +16,37 @@ export const protobufPackage = "cosmos.evidence.v1beta1";
  */
 export interface Equivocation {
   /** height is the equivocation height. */
-  height: Long;
+  height: bigint;
   /** time is the equivocation time. */
   time?:
     | Date
     | undefined;
   /** power is the equivocation validator power. */
-  power: Long;
+  power: bigint;
   /** consensus_address is the equivocation validator consensus address. */
   consensusAddress: string;
 }
 
 function createBaseEquivocation(): Equivocation {
-  return { height: Long.ZERO, time: undefined, power: Long.ZERO, consensusAddress: "" };
+  return { height: 0n, time: undefined, power: 0n, consensusAddress: "" };
 }
 
 export const Equivocation: MessageFns<Equivocation> = {
   encode(message: Equivocation, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(8).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(18).fork()).join();
     }
-    if (!message.power.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.power.toString());
+    if (message.power !== 0n) {
+      if (BigInt.asIntN(64, message.power) !== message.power) {
+        throw new globalThis.Error("value provided for field message.power of type int64 too large");
+      }
+      writer.uint32(24).int64(message.power);
     }
     if (message.consensusAddress !== "") {
       writer.uint32(34).string(message.consensusAddress);
@@ -61,7 +66,7 @@ export const Equivocation: MessageFns<Equivocation> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -77,7 +82,7 @@ export const Equivocation: MessageFns<Equivocation> = {
             break;
           }
 
-          message.power = Long.fromString(reader.int64().toString());
+          message.power = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -99,9 +104,9 @@ export const Equivocation: MessageFns<Equivocation> = {
 
   fromJSON(object: any): Equivocation {
     return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
-      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO,
+      power: isSet(object.power) ? BigInt(object.power) : 0n,
       consensusAddress: isSet(object.consensusAddress)
         ? globalThis.String(object.consensusAddress)
         : isSet(object.consensus_address)
@@ -112,14 +117,14 @@ export const Equivocation: MessageFns<Equivocation> = {
 
   toJSON(message: Equivocation): unknown {
     const obj: any = {};
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
     }
-    if (!message.power.equals(Long.ZERO)) {
-      obj.power = (message.power || Long.ZERO).toString();
+    if (message.power !== 0n) {
+      obj.power = message.power.toString();
     }
     if (message.consensusAddress !== "") {
       obj.consensusAddress = message.consensusAddress;
@@ -132,20 +137,18 @@ export const Equivocation: MessageFns<Equivocation> = {
   },
   fromPartial<I extends Exact<DeepPartial<Equivocation>, I>>(object: I): Equivocation {
     const message = createBaseEquivocation();
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
-    message.power = (object.power !== undefined && object.power !== null) ? Long.fromValue(object.power) : Long.ZERO;
+    message.power = object.power ?? 0n;
     message.consensusAddress = object.consensusAddress ?? "";
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -155,13 +158,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -174,10 +177,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

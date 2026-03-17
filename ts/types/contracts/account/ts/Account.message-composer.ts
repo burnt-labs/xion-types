@@ -8,7 +8,7 @@ import { Coin } from "@interchainjs/types";
 import { EncodeObject } from "@interchainjs/cosmos-types";
 import { MsgExecuteContract } from "interchainjs/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@interchainjs/encoding";
-import { AddAuthenticator, Binary, InstantiateMsg, ExecuteMsg, QueryMsg, MigrateMsg } from "./Account.types";
+import { AddAuthenticator, Binary, InstantiateMsg, ExecuteMsg, QueryMsg, MigrateMsg, Authenticator, ArrayOfUint8 } from "./Account.types";
 export interface AccountMsg {
   contractAddress: string;
   sender: string;
