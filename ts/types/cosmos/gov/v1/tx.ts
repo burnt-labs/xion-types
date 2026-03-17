@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin } from "../../base/v1beta1/coin";
@@ -39,7 +40,7 @@ export interface MsgSubmitProposal {
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
 }
 
 /**
@@ -62,7 +63,7 @@ export interface MsgExecLegacyContentResponse {
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVote {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** voter is the voter address for the proposal. */
   voter: string;
   /** option defines the vote option. */
@@ -78,7 +79,7 @@ export interface MsgVoteResponse {
 /** MsgVoteWeighted defines a message to cast a vote. */
 export interface MsgVoteWeighted {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** voter is the voter address for the proposal. */
   voter: string;
   /** options defines the weighted vote options. */
@@ -94,7 +95,7 @@ export interface MsgVoteWeightedResponse {
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDeposit {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** depositor defines the deposit addresses from the proposals. */
   depositor: string;
   /** amount to be deposited by depositor. */
@@ -127,7 +128,7 @@ export interface MsgUpdateParamsResponse {
 /** MsgCancelProposal is the Msg/CancelProposal request type. */
 export interface MsgCancelProposal {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** proposer is the account address of the proposer. */
   proposer: string;
 }
@@ -138,13 +139,13 @@ export interface MsgCancelProposal {
  */
 export interface MsgCancelProposalResponse {
   /** proposal_id defines the unique id of the proposal. */
-  proposalId: bigint;
+  proposalId: Long;
   /** canceled_time is the time when proposal is canceled. */
   canceledTime?:
     | Date
     | undefined;
   /** canceled_height defines the block height at which the proposal is canceled. */
-  canceledHeight: bigint;
+  canceledHeight: Long;
 }
 
 function createBaseMsgSubmitProposal(): MsgSubmitProposal {
@@ -308,16 +309,13 @@ export const MsgSubmitProposal: MessageFns<MsgSubmitProposal> = {
 };
 
 function createBaseMsgSubmitProposalResponse(): MsgSubmitProposalResponse {
-  return { proposalId: 0n };
+  return { proposalId: Long.UZERO };
 }
 
 export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = {
   encode(message: MsgSubmitProposalResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     return writer;
   },
@@ -334,7 +332,7 @@ export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = 
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -349,17 +347,17 @@ export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = 
   fromJSON(object: any): MsgSubmitProposalResponse {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: MsgSubmitProposalResponse): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     return obj;
   },
@@ -369,7 +367,9 @@ export const MsgSubmitProposalResponse: MessageFns<MsgSubmitProposalResponse> = 
   },
   fromPartial<I extends Exact<DeepPartial<MsgSubmitProposalResponse>, I>>(object: I): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     return message;
   },
 };
@@ -496,16 +496,13 @@ export const MsgExecLegacyContentResponse: MessageFns<MsgExecLegacyContentRespon
 };
 
 function createBaseMsgVote(): MsgVote {
-  return { proposalId: 0n, voter: "", option: 0, metadata: "" };
+  return { proposalId: Long.UZERO, voter: "", option: 0, metadata: "" };
 }
 
 export const MsgVote: MessageFns<MsgVote> = {
   encode(message: MsgVote, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.voter !== "") {
       writer.uint32(18).string(message.voter);
@@ -531,7 +528,7 @@ export const MsgVote: MessageFns<MsgVote> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -570,10 +567,10 @@ export const MsgVote: MessageFns<MsgVote> = {
   fromJSON(object: any): MsgVote {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       voter: isSet(object.voter) ? globalThis.String(object.voter) : "",
       option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
       metadata: isSet(object.metadata) ? globalThis.String(object.metadata) : "",
@@ -582,8 +579,8 @@ export const MsgVote: MessageFns<MsgVote> = {
 
   toJSON(message: MsgVote): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.voter !== "") {
       obj.voter = message.voter;
@@ -602,7 +599,9 @@ export const MsgVote: MessageFns<MsgVote> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgVote>, I>>(object: I): MsgVote {
     const message = createBaseMsgVote();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.voter = object.voter ?? "";
     message.option = object.option ?? 0;
     message.metadata = object.metadata ?? "";
@@ -654,16 +653,13 @@ export const MsgVoteResponse: MessageFns<MsgVoteResponse> = {
 };
 
 function createBaseMsgVoteWeighted(): MsgVoteWeighted {
-  return { proposalId: 0n, voter: "", options: [], metadata: "" };
+  return { proposalId: Long.UZERO, voter: "", options: [], metadata: "" };
 }
 
 export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
   encode(message: MsgVoteWeighted, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.voter !== "") {
       writer.uint32(18).string(message.voter);
@@ -689,7 +685,7 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -728,10 +724,10 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
   fromJSON(object: any): MsgVoteWeighted {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       voter: isSet(object.voter) ? globalThis.String(object.voter) : "",
       options: globalThis.Array.isArray(object?.options)
         ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e))
@@ -742,8 +738,8 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
 
   toJSON(message: MsgVoteWeighted): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.voter !== "") {
       obj.voter = message.voter;
@@ -762,7 +758,9 @@ export const MsgVoteWeighted: MessageFns<MsgVoteWeighted> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgVoteWeighted>, I>>(object: I): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.voter = object.voter ?? "";
     message.options = object.options?.map((e) => WeightedVoteOption.fromPartial(e)) || [];
     message.metadata = object.metadata ?? "";
@@ -814,16 +812,13 @@ export const MsgVoteWeightedResponse: MessageFns<MsgVoteWeightedResponse> = {
 };
 
 function createBaseMsgDeposit(): MsgDeposit {
-  return { proposalId: 0n, depositor: "", amount: [] };
+  return { proposalId: Long.UZERO, depositor: "", amount: [] };
 }
 
 export const MsgDeposit: MessageFns<MsgDeposit> = {
   encode(message: MsgDeposit, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.depositor !== "") {
       writer.uint32(18).string(message.depositor);
@@ -846,7 +841,7 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -877,10 +872,10 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
   fromJSON(object: any): MsgDeposit {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       depositor: isSet(object.depositor) ? globalThis.String(object.depositor) : "",
       amount: globalThis.Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : [],
     };
@@ -888,8 +883,8 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
 
   toJSON(message: MsgDeposit): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.depositor !== "") {
       obj.depositor = message.depositor;
@@ -905,7 +900,9 @@ export const MsgDeposit: MessageFns<MsgDeposit> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgDeposit>, I>>(object: I): MsgDeposit {
     const message = createBaseMsgDeposit();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.depositor = object.depositor ?? "";
     message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
     return message;
@@ -1077,16 +1074,13 @@ export const MsgUpdateParamsResponse: MessageFns<MsgUpdateParamsResponse> = {
 };
 
 function createBaseMsgCancelProposal(): MsgCancelProposal {
-  return { proposalId: 0n, proposer: "" };
+  return { proposalId: Long.UZERO, proposer: "" };
 }
 
 export const MsgCancelProposal: MessageFns<MsgCancelProposal> = {
   encode(message: MsgCancelProposal, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.proposer !== "") {
       writer.uint32(18).string(message.proposer);
@@ -1106,7 +1100,7 @@ export const MsgCancelProposal: MessageFns<MsgCancelProposal> = {
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -1129,18 +1123,18 @@ export const MsgCancelProposal: MessageFns<MsgCancelProposal> = {
   fromJSON(object: any): MsgCancelProposal {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       proposer: isSet(object.proposer) ? globalThis.String(object.proposer) : "",
     };
   },
 
   toJSON(message: MsgCancelProposal): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.proposer !== "") {
       obj.proposer = message.proposer;
@@ -1153,32 +1147,28 @@ export const MsgCancelProposal: MessageFns<MsgCancelProposal> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgCancelProposal>, I>>(object: I): MsgCancelProposal {
     const message = createBaseMsgCancelProposal();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.proposer = object.proposer ?? "";
     return message;
   },
 };
 
 function createBaseMsgCancelProposalResponse(): MsgCancelProposalResponse {
-  return { proposalId: 0n, canceledTime: undefined, canceledHeight: 0n };
+  return { proposalId: Long.UZERO, canceledTime: undefined, canceledHeight: Long.UZERO };
 }
 
 export const MsgCancelProposalResponse: MessageFns<MsgCancelProposalResponse> = {
   encode(message: MsgCancelProposalResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.proposalId !== 0n) {
-      if (BigInt.asUintN(64, message.proposalId) !== message.proposalId) {
-        throw new globalThis.Error("value provided for field message.proposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.proposalId);
+    if (!message.proposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.proposalId.toString());
     }
     if (message.canceledTime !== undefined) {
       Timestamp.encode(toTimestamp(message.canceledTime), writer.uint32(18).fork()).join();
     }
-    if (message.canceledHeight !== 0n) {
-      if (BigInt.asUintN(64, message.canceledHeight) !== message.canceledHeight) {
-        throw new globalThis.Error("value provided for field message.canceledHeight of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.canceledHeight);
+    if (!message.canceledHeight.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.canceledHeight.toString());
     }
     return writer;
   },
@@ -1195,7 +1185,7 @@ export const MsgCancelProposalResponse: MessageFns<MsgCancelProposalResponse> = 
             break;
           }
 
-          message.proposalId = reader.uint64() as bigint;
+          message.proposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -1211,7 +1201,7 @@ export const MsgCancelProposalResponse: MessageFns<MsgCancelProposalResponse> = 
             break;
           }
 
-          message.canceledHeight = reader.uint64() as bigint;
+          message.canceledHeight = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -1226,33 +1216,33 @@ export const MsgCancelProposalResponse: MessageFns<MsgCancelProposalResponse> = 
   fromJSON(object: any): MsgCancelProposalResponse {
     return {
       proposalId: isSet(object.proposalId)
-        ? BigInt(object.proposalId)
+        ? Long.fromValue(object.proposalId)
         : isSet(object.proposal_id)
-        ? BigInt(object.proposal_id)
-        : 0n,
+        ? Long.fromValue(object.proposal_id)
+        : Long.UZERO,
       canceledTime: isSet(object.canceledTime)
         ? fromJsonTimestamp(object.canceledTime)
         : isSet(object.canceled_time)
         ? fromJsonTimestamp(object.canceled_time)
         : undefined,
       canceledHeight: isSet(object.canceledHeight)
-        ? BigInt(object.canceledHeight)
+        ? Long.fromValue(object.canceledHeight)
         : isSet(object.canceled_height)
-        ? BigInt(object.canceled_height)
-        : 0n,
+        ? Long.fromValue(object.canceled_height)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: MsgCancelProposalResponse): unknown {
     const obj: any = {};
-    if (message.proposalId !== 0n) {
-      obj.proposalId = message.proposalId.toString();
+    if (!message.proposalId.equals(Long.UZERO)) {
+      obj.proposalId = (message.proposalId || Long.UZERO).toString();
     }
     if (message.canceledTime !== undefined) {
       obj.canceledTime = message.canceledTime.toISOString();
     }
-    if (message.canceledHeight !== 0n) {
-      obj.canceledHeight = message.canceledHeight.toString();
+    if (!message.canceledHeight.equals(Long.UZERO)) {
+      obj.canceledHeight = (message.canceledHeight || Long.UZERO).toString();
     }
     return obj;
   },
@@ -1262,9 +1252,13 @@ export const MsgCancelProposalResponse: MessageFns<MsgCancelProposalResponse> = 
   },
   fromPartial<I extends Exact<DeepPartial<MsgCancelProposalResponse>, I>>(object: I): MsgCancelProposalResponse {
     const message = createBaseMsgCancelProposalResponse();
-    message.proposalId = object.proposalId ?? 0n;
+    message.proposalId = (object.proposalId !== undefined && object.proposalId !== null)
+      ? Long.fromValue(object.proposalId)
+      : Long.UZERO;
     message.canceledTime = object.canceledTime ?? undefined;
-    message.canceledHeight = object.canceledHeight ?? 0n;
+    message.canceledHeight = (object.canceledHeight !== undefined && object.canceledHeight !== null)
+      ? Long.fromValue(object.canceledHeight)
+      : Long.UZERO;
     return message;
   },
 };
@@ -1511,7 +1505,7 @@ export const MsgCancelProposalDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -1579,10 +1573,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -1592,13 +1586,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
+  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
+  let millis = (t.seconds.toNumber() || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -1611,6 +1605,10 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
+}
+
+function numberToLong(number: number) {
+  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

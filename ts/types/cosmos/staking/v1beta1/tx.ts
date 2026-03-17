@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin } from "../../base/v1beta1/coin";
@@ -113,7 +114,7 @@ export interface MsgCancelUnbondingDelegation {
     | Coin
     | undefined;
   /** creation_height is the height which the unbonding took place. */
-  creationHeight: bigint;
+  creationHeight: Long;
 }
 
 /** MsgCancelUnbondingDelegationResponse */
@@ -1045,7 +1046,7 @@ export const MsgUndelegateResponse: MessageFns<MsgUndelegateResponse> = {
 };
 
 function createBaseMsgCancelUnbondingDelegation(): MsgCancelUnbondingDelegation {
-  return { delegatorAddress: "", validatorAddress: "", amount: undefined, creationHeight: 0n };
+  return { delegatorAddress: "", validatorAddress: "", amount: undefined, creationHeight: Long.ZERO };
 }
 
 export const MsgCancelUnbondingDelegation: MessageFns<MsgCancelUnbondingDelegation> = {
@@ -1059,11 +1060,8 @@ export const MsgCancelUnbondingDelegation: MessageFns<MsgCancelUnbondingDelegati
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(26).fork()).join();
     }
-    if (message.creationHeight !== 0n) {
-      if (BigInt.asIntN(64, message.creationHeight) !== message.creationHeight) {
-        throw new globalThis.Error("value provided for field message.creationHeight of type int64 too large");
-      }
-      writer.uint32(32).int64(message.creationHeight);
+    if (!message.creationHeight.equals(Long.ZERO)) {
+      writer.uint32(32).int64(message.creationHeight.toString());
     }
     return writer;
   },
@@ -1104,7 +1102,7 @@ export const MsgCancelUnbondingDelegation: MessageFns<MsgCancelUnbondingDelegati
             break;
           }
 
-          message.creationHeight = reader.int64() as bigint;
+          message.creationHeight = Long.fromString(reader.int64().toString());
           continue;
         }
       }
@@ -1130,10 +1128,10 @@ export const MsgCancelUnbondingDelegation: MessageFns<MsgCancelUnbondingDelegati
         : "",
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined,
       creationHeight: isSet(object.creationHeight)
-        ? BigInt(object.creationHeight)
+        ? Long.fromValue(object.creationHeight)
         : isSet(object.creation_height)
-        ? BigInt(object.creation_height)
-        : 0n,
+        ? Long.fromValue(object.creation_height)
+        : Long.ZERO,
     };
   },
 
@@ -1148,8 +1146,8 @@ export const MsgCancelUnbondingDelegation: MessageFns<MsgCancelUnbondingDelegati
     if (message.amount !== undefined) {
       obj.amount = Coin.toJSON(message.amount);
     }
-    if (message.creationHeight !== 0n) {
-      obj.creationHeight = message.creationHeight.toString();
+    if (!message.creationHeight.equals(Long.ZERO)) {
+      obj.creationHeight = (message.creationHeight || Long.ZERO).toString();
     }
     return obj;
   },
@@ -1164,7 +1162,9 @@ export const MsgCancelUnbondingDelegation: MessageFns<MsgCancelUnbondingDelegati
     message.amount = (object.amount !== undefined && object.amount !== null)
       ? Coin.fromPartial(object.amount)
       : undefined;
-    message.creationHeight = object.creationHeight ?? 0n;
+    message.creationHeight = (object.creationHeight !== undefined && object.creationHeight !== null)
+      ? Long.fromValue(object.creationHeight)
+      : Long.ZERO;
     return message;
   },
 };
@@ -1598,7 +1598,7 @@ export const MsgUpdateParamsDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -1666,10 +1666,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -1679,13 +1679,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
+  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
+  let millis = (t.seconds.toNumber() || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -1698,6 +1698,10 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
+}
+
+function numberToLong(number: number) {
+  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

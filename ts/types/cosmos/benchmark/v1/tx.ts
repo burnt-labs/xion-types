@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Op } from "./benchmark";
 
 export const protobufPackage = "cosmos.benchmark.v1";
@@ -20,8 +21,8 @@ export interface MsgLoadTest {
 
 /** MsgLoadTestResponse defines a message containing the results of a load test operation. */
 export interface MsgLoadTestResponse {
-  totalTime: bigint;
-  totalErrors: bigint;
+  totalTime: Long;
+  totalErrors: Long;
 }
 
 function createBaseMsgLoadTest(): MsgLoadTest {
@@ -101,22 +102,16 @@ export const MsgLoadTest: MessageFns<MsgLoadTest> = {
 };
 
 function createBaseMsgLoadTestResponse(): MsgLoadTestResponse {
-  return { totalTime: 0n, totalErrors: 0n };
+  return { totalTime: Long.UZERO, totalErrors: Long.UZERO };
 }
 
 export const MsgLoadTestResponse: MessageFns<MsgLoadTestResponse> = {
   encode(message: MsgLoadTestResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.totalTime !== 0n) {
-      if (BigInt.asUintN(64, message.totalTime) !== message.totalTime) {
-        throw new globalThis.Error("value provided for field message.totalTime of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.totalTime);
+    if (!message.totalTime.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.totalTime.toString());
     }
-    if (message.totalErrors !== 0n) {
-      if (BigInt.asUintN(64, message.totalErrors) !== message.totalErrors) {
-        throw new globalThis.Error("value provided for field message.totalErrors of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.totalErrors);
+    if (!message.totalErrors.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.totalErrors.toString());
     }
     return writer;
   },
@@ -133,7 +128,7 @@ export const MsgLoadTestResponse: MessageFns<MsgLoadTestResponse> = {
             break;
           }
 
-          message.totalTime = reader.uint64() as bigint;
+          message.totalTime = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -141,7 +136,7 @@ export const MsgLoadTestResponse: MessageFns<MsgLoadTestResponse> = {
             break;
           }
 
-          message.totalErrors = reader.uint64() as bigint;
+          message.totalErrors = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -156,25 +151,25 @@ export const MsgLoadTestResponse: MessageFns<MsgLoadTestResponse> = {
   fromJSON(object: any): MsgLoadTestResponse {
     return {
       totalTime: isSet(object.totalTime)
-        ? BigInt(object.totalTime)
+        ? Long.fromValue(object.totalTime)
         : isSet(object.total_time)
-        ? BigInt(object.total_time)
-        : 0n,
+        ? Long.fromValue(object.total_time)
+        : Long.UZERO,
       totalErrors: isSet(object.totalErrors)
-        ? BigInt(object.totalErrors)
+        ? Long.fromValue(object.totalErrors)
         : isSet(object.total_errors)
-        ? BigInt(object.total_errors)
-        : 0n,
+        ? Long.fromValue(object.total_errors)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: MsgLoadTestResponse): unknown {
     const obj: any = {};
-    if (message.totalTime !== 0n) {
-      obj.totalTime = message.totalTime.toString();
+    if (!message.totalTime.equals(Long.UZERO)) {
+      obj.totalTime = (message.totalTime || Long.UZERO).toString();
     }
-    if (message.totalErrors !== 0n) {
-      obj.totalErrors = message.totalErrors.toString();
+    if (!message.totalErrors.equals(Long.UZERO)) {
+      obj.totalErrors = (message.totalErrors || Long.UZERO).toString();
     }
     return obj;
   },
@@ -184,8 +179,12 @@ export const MsgLoadTestResponse: MessageFns<MsgLoadTestResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgLoadTestResponse>, I>>(object: I): MsgLoadTestResponse {
     const message = createBaseMsgLoadTestResponse();
-    message.totalTime = object.totalTime ?? 0n;
-    message.totalErrors = object.totalErrors ?? 0n;
+    message.totalTime = (object.totalTime !== undefined && object.totalTime !== null)
+      ? Long.fromValue(object.totalTime)
+      : Long.UZERO;
+    message.totalErrors = (object.totalErrors !== undefined && object.totalErrors !== null)
+      ? Long.fromValue(object.totalErrors)
+      : Long.UZERO;
     return message;
   },
 };
@@ -234,7 +233,7 @@ export const MsgLoadTestDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -327,10 +326,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

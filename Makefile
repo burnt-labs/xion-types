@@ -18,17 +18,16 @@ contract-code-gen:
 build-proto-builder-image:
 	cd docker && $(DOCKER) build . --build-arg PROTO_VERSION=${protoVer} --tag localhost/proto-builder:${protoVer}
 
-# ts generation runs on the host (needs cargo for CosmWasm contract schema gen)
-proto-gen-ts: FORCE
-	@echo "Generating Protobuf files for ts"
-	@env XION_BSR_MODULE=$(BSR_MODULE) ./scripts/proto-gen-ext.sh ts
+# Build image only if not already loaded (CI pre-loads it from artifact)
+ensure-proto-builder-image:
+	@$(DOCKER) image inspect localhost/proto-builder:$(protoVer) >/dev/null 2>&1 || $(MAKE) build-proto-builder-image
 
 # Pattern rule: make proto-gen-<language> for any language
 # FORCE prerequisite ensures the recipe always runs (pattern rules can't be .PHONY)
-proto-gen-%: build-proto-builder-image FORCE
+proto-gen-%: ensure-proto-builder-image FORCE
 	@echo "Generating Protobuf files for $*"
 	@$(protoImage) env XION_BSR_MODULE=$(BSR_MODULE) ./scripts/proto-gen-ext.sh $*
 
 FORCE:
 
-.PHONY: build-proto-builder-image contract-code-gen proto-gen-ts FORCE
+.PHONY: build-proto-builder-image contract-code-gen FORCE

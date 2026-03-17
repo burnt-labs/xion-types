@@ -29,6 +29,7 @@ case "$LANGUAGE" in
   python) DIR="python/xion_types" ;;
   ruby)   DIR="ruby/lib/xion_types" ;;
   docs)   DIR="docs" ;;
+  swift)  DIR="swift/Sources" ;;
   *)      DIR="${LANGUAGE}/types" ;;
 esac
 

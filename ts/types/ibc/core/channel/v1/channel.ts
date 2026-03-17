@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Height } from "../../client/v1/client";
 
 export const protobufPackage = "ibc.core.channel.v1";
@@ -186,7 +187,7 @@ export interface Packet {
    * with an earlier sequence number must be sent and received before a Packet
    * with a later sequence number.
    */
-  sequence: bigint;
+  sequence: Long;
   /** identifies the port on the sending chain. */
   sourcePort: string;
   /** identifies the channel end on the sending chain. */
@@ -202,7 +203,7 @@ export interface Packet {
     | Height
     | undefined;
   /** block timestamp (in nanoseconds) after which the packet times out */
-  timeoutTimestamp: bigint;
+  timeoutTimestamp: Long;
 }
 
 /**
@@ -217,7 +218,7 @@ export interface PacketState {
   /** channel unique identifier. */
   channelId: string;
   /** packet sequence. */
-  sequence: bigint;
+  sequence: Long;
   /** embedded data that represents packet state. */
   data: Uint8Array;
 }
@@ -233,7 +234,7 @@ export interface PacketId {
   /** channel unique identifier */
   channelId: string;
   /** packet sequence */
-  sequence: bigint;
+  sequence: Long;
 }
 
 /**
@@ -261,7 +262,7 @@ export interface Timeout {
     | Height
     | undefined;
   /** block timestamp (in nanoseconds) after which the packet times out */
-  timestamp: bigint;
+  timestamp: Long;
 }
 
 function createBaseChannel(): Channel {
@@ -650,24 +651,21 @@ export const Counterparty: MessageFns<Counterparty> = {
 
 function createBasePacket(): Packet {
   return {
-    sequence: 0n,
+    sequence: Long.UZERO,
     sourcePort: "",
     sourceChannel: "",
     destinationPort: "",
     destinationChannel: "",
     data: new Uint8Array(0),
     timeoutHeight: undefined,
-    timeoutTimestamp: 0n,
+    timeoutTimestamp: Long.UZERO,
   };
 }
 
 export const Packet: MessageFns<Packet> = {
   encode(message: Packet, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.sequence.toString());
     }
     if (message.sourcePort !== "") {
       writer.uint32(18).string(message.sourcePort);
@@ -687,11 +685,8 @@ export const Packet: MessageFns<Packet> = {
     if (message.timeoutHeight !== undefined) {
       Height.encode(message.timeoutHeight, writer.uint32(58).fork()).join();
     }
-    if (message.timeoutTimestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timeoutTimestamp) !== message.timeoutTimestamp) {
-        throw new globalThis.Error("value provided for field message.timeoutTimestamp of type uint64 too large");
-      }
-      writer.uint32(64).uint64(message.timeoutTimestamp);
+    if (!message.timeoutTimestamp.equals(Long.UZERO)) {
+      writer.uint32(64).uint64(message.timeoutTimestamp.toString());
     }
     return writer;
   },
@@ -708,7 +703,7 @@ export const Packet: MessageFns<Packet> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -764,7 +759,7 @@ export const Packet: MessageFns<Packet> = {
             break;
           }
 
-          message.timeoutTimestamp = reader.uint64() as bigint;
+          message.timeoutTimestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -778,7 +773,7 @@ export const Packet: MessageFns<Packet> = {
 
   fromJSON(object: any): Packet {
     return {
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
       sourcePort: isSet(object.sourcePort)
         ? globalThis.String(object.sourcePort)
         : isSet(object.source_port)
@@ -806,17 +801,17 @@ export const Packet: MessageFns<Packet> = {
         ? Height.fromJSON(object.timeout_height)
         : undefined,
       timeoutTimestamp: isSet(object.timeoutTimestamp)
-        ? BigInt(object.timeoutTimestamp)
+        ? Long.fromValue(object.timeoutTimestamp)
         : isSet(object.timeout_timestamp)
-        ? BigInt(object.timeout_timestamp)
-        : 0n,
+        ? Long.fromValue(object.timeout_timestamp)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: Packet): unknown {
     const obj: any = {};
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     if (message.sourcePort !== "") {
       obj.sourcePort = message.sourcePort;
@@ -836,8 +831,8 @@ export const Packet: MessageFns<Packet> = {
     if (message.timeoutHeight !== undefined) {
       obj.timeoutHeight = Height.toJSON(message.timeoutHeight);
     }
-    if (message.timeoutTimestamp !== 0n) {
-      obj.timeoutTimestamp = message.timeoutTimestamp.toString();
+    if (!message.timeoutTimestamp.equals(Long.UZERO)) {
+      obj.timeoutTimestamp = (message.timeoutTimestamp || Long.UZERO).toString();
     }
     return obj;
   },
@@ -847,7 +842,9 @@ export const Packet: MessageFns<Packet> = {
   },
   fromPartial<I extends Exact<DeepPartial<Packet>, I>>(object: I): Packet {
     const message = createBasePacket();
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     message.sourcePort = object.sourcePort ?? "";
     message.sourceChannel = object.sourceChannel ?? "";
     message.destinationPort = object.destinationPort ?? "";
@@ -856,13 +853,15 @@ export const Packet: MessageFns<Packet> = {
     message.timeoutHeight = (object.timeoutHeight !== undefined && object.timeoutHeight !== null)
       ? Height.fromPartial(object.timeoutHeight)
       : undefined;
-    message.timeoutTimestamp = object.timeoutTimestamp ?? 0n;
+    message.timeoutTimestamp = (object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null)
+      ? Long.fromValue(object.timeoutTimestamp)
+      : Long.UZERO;
     return message;
   },
 };
 
 function createBasePacketState(): PacketState {
-  return { portId: "", channelId: "", sequence: 0n, data: new Uint8Array(0) };
+  return { portId: "", channelId: "", sequence: Long.UZERO, data: new Uint8Array(0) };
 }
 
 export const PacketState: MessageFns<PacketState> = {
@@ -873,11 +872,8 @@ export const PacketState: MessageFns<PacketState> = {
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.sequence.toString());
     }
     if (message.data.length !== 0) {
       writer.uint32(34).bytes(message.data);
@@ -913,7 +909,7 @@ export const PacketState: MessageFns<PacketState> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 4: {
@@ -945,7 +941,7 @@ export const PacketState: MessageFns<PacketState> = {
         : isSet(object.channel_id)
         ? globalThis.String(object.channel_id)
         : "",
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
     };
   },
@@ -958,8 +954,8 @@ export const PacketState: MessageFns<PacketState> = {
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     if (message.data.length !== 0) {
       obj.data = base64FromBytes(message.data);
@@ -974,14 +970,16 @@ export const PacketState: MessageFns<PacketState> = {
     const message = createBasePacketState();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     message.data = object.data ?? new Uint8Array(0);
     return message;
   },
 };
 
 function createBasePacketId(): PacketId {
-  return { portId: "", channelId: "", sequence: 0n };
+  return { portId: "", channelId: "", sequence: Long.UZERO };
 }
 
 export const PacketId: MessageFns<PacketId> = {
@@ -992,11 +990,8 @@ export const PacketId: MessageFns<PacketId> = {
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.sequence.toString());
     }
     return writer;
   },
@@ -1029,7 +1024,7 @@ export const PacketId: MessageFns<PacketId> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -1053,7 +1048,7 @@ export const PacketId: MessageFns<PacketId> = {
         : isSet(object.channel_id)
         ? globalThis.String(object.channel_id)
         : "",
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
     };
   },
 
@@ -1065,8 +1060,8 @@ export const PacketId: MessageFns<PacketId> = {
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     return obj;
   },
@@ -1078,7 +1073,9 @@ export const PacketId: MessageFns<PacketId> = {
     const message = createBasePacketId();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     return message;
   },
 };
@@ -1160,7 +1157,7 @@ export const Acknowledgement: MessageFns<Acknowledgement> = {
 };
 
 function createBaseTimeout(): Timeout {
-  return { height: undefined, timestamp: 0n };
+  return { height: undefined, timestamp: Long.UZERO };
 }
 
 export const Timeout: MessageFns<Timeout> = {
@@ -1168,11 +1165,8 @@ export const Timeout: MessageFns<Timeout> = {
     if (message.height !== undefined) {
       Height.encode(message.height, writer.uint32(10).fork()).join();
     }
-    if (message.timestamp !== 0n) {
-      if (BigInt.asUintN(64, message.timestamp) !== message.timestamp) {
-        throw new globalThis.Error("value provided for field message.timestamp of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.timestamp);
+    if (!message.timestamp.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.timestamp.toString());
     }
     return writer;
   },
@@ -1197,7 +1191,7 @@ export const Timeout: MessageFns<Timeout> = {
             break;
           }
 
-          message.timestamp = reader.uint64() as bigint;
+          message.timestamp = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -1212,7 +1206,7 @@ export const Timeout: MessageFns<Timeout> = {
   fromJSON(object: any): Timeout {
     return {
       height: isSet(object.height) ? Height.fromJSON(object.height) : undefined,
-      timestamp: isSet(object.timestamp) ? BigInt(object.timestamp) : 0n,
+      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.UZERO,
     };
   },
 
@@ -1221,8 +1215,8 @@ export const Timeout: MessageFns<Timeout> = {
     if (message.height !== undefined) {
       obj.height = Height.toJSON(message.height);
     }
-    if (message.timestamp !== 0n) {
-      obj.timestamp = message.timestamp.toString();
+    if (!message.timestamp.equals(Long.UZERO)) {
+      obj.timestamp = (message.timestamp || Long.UZERO).toString();
     }
     return obj;
   },
@@ -1235,7 +1229,9 @@ export const Timeout: MessageFns<Timeout> = {
     message.height = (object.height !== undefined && object.height !== null)
       ? Height.fromPartial(object.height)
       : undefined;
-    message.timestamp = object.timestamp ?? 0n;
+    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
+      ? Long.fromValue(object.timestamp)
+      : Long.UZERO;
     return message;
   },
 };
@@ -1265,10 +1261,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { Any } from "../../../google/protobuf/any";
 import { AccessConfig } from "./types";
@@ -82,7 +83,7 @@ export interface ContractGrant {
  */
 export interface MaxCallsLimit {
   /** Remaining number that is decremented on each execution */
-  remaining: bigint;
+  remaining: Long;
 }
 
 /**
@@ -101,7 +102,7 @@ export interface MaxFundsLimit {
  */
 export interface CombinedLimit {
   /** Remaining number that is decremented on each execution */
-  callsRemaining: bigint;
+  callsRemaining: Long;
   /** Amounts is the maximal amount of tokens transferable to the contract. */
   amounts: Coin[];
 }
@@ -500,16 +501,13 @@ export const ContractGrant: MessageFns<ContractGrant> = {
 };
 
 function createBaseMaxCallsLimit(): MaxCallsLimit {
-  return { remaining: 0n };
+  return { remaining: Long.UZERO };
 }
 
 export const MaxCallsLimit: MessageFns<MaxCallsLimit> = {
   encode(message: MaxCallsLimit, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.remaining !== 0n) {
-      if (BigInt.asUintN(64, message.remaining) !== message.remaining) {
-        throw new globalThis.Error("value provided for field message.remaining of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.remaining);
+    if (!message.remaining.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.remaining.toString());
     }
     return writer;
   },
@@ -526,7 +524,7 @@ export const MaxCallsLimit: MessageFns<MaxCallsLimit> = {
             break;
           }
 
-          message.remaining = reader.uint64() as bigint;
+          message.remaining = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -539,13 +537,13 @@ export const MaxCallsLimit: MessageFns<MaxCallsLimit> = {
   },
 
   fromJSON(object: any): MaxCallsLimit {
-    return { remaining: isSet(object.remaining) ? BigInt(object.remaining) : 0n };
+    return { remaining: isSet(object.remaining) ? Long.fromValue(object.remaining) : Long.UZERO };
   },
 
   toJSON(message: MaxCallsLimit): unknown {
     const obj: any = {};
-    if (message.remaining !== 0n) {
-      obj.remaining = message.remaining.toString();
+    if (!message.remaining.equals(Long.UZERO)) {
+      obj.remaining = (message.remaining || Long.UZERO).toString();
     }
     return obj;
   },
@@ -555,7 +553,9 @@ export const MaxCallsLimit: MessageFns<MaxCallsLimit> = {
   },
   fromPartial<I extends Exact<DeepPartial<MaxCallsLimit>, I>>(object: I): MaxCallsLimit {
     const message = createBaseMaxCallsLimit();
-    message.remaining = object.remaining ?? 0n;
+    message.remaining = (object.remaining !== undefined && object.remaining !== null)
+      ? Long.fromValue(object.remaining)
+      : Long.UZERO;
     return message;
   },
 };
@@ -621,16 +621,13 @@ export const MaxFundsLimit: MessageFns<MaxFundsLimit> = {
 };
 
 function createBaseCombinedLimit(): CombinedLimit {
-  return { callsRemaining: 0n, amounts: [] };
+  return { callsRemaining: Long.UZERO, amounts: [] };
 }
 
 export const CombinedLimit: MessageFns<CombinedLimit> = {
   encode(message: CombinedLimit, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.callsRemaining !== 0n) {
-      if (BigInt.asUintN(64, message.callsRemaining) !== message.callsRemaining) {
-        throw new globalThis.Error("value provided for field message.callsRemaining of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.callsRemaining);
+    if (!message.callsRemaining.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.callsRemaining.toString());
     }
     for (const v of message.amounts) {
       Coin.encode(v!, writer.uint32(18).fork()).join();
@@ -650,7 +647,7 @@ export const CombinedLimit: MessageFns<CombinedLimit> = {
             break;
           }
 
-          message.callsRemaining = reader.uint64() as bigint;
+          message.callsRemaining = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -673,18 +670,18 @@ export const CombinedLimit: MessageFns<CombinedLimit> = {
   fromJSON(object: any): CombinedLimit {
     return {
       callsRemaining: isSet(object.callsRemaining)
-        ? BigInt(object.callsRemaining)
+        ? Long.fromValue(object.callsRemaining)
         : isSet(object.calls_remaining)
-        ? BigInt(object.calls_remaining)
-        : 0n,
+        ? Long.fromValue(object.calls_remaining)
+        : Long.UZERO,
       amounts: globalThis.Array.isArray(object?.amounts) ? object.amounts.map((e: any) => Coin.fromJSON(e)) : [],
     };
   },
 
   toJSON(message: CombinedLimit): unknown {
     const obj: any = {};
-    if (message.callsRemaining !== 0n) {
-      obj.callsRemaining = message.callsRemaining.toString();
+    if (!message.callsRemaining.equals(Long.UZERO)) {
+      obj.callsRemaining = (message.callsRemaining || Long.UZERO).toString();
     }
     if (message.amounts?.length) {
       obj.amounts = message.amounts.map((e) => Coin.toJSON(e));
@@ -697,7 +694,9 @@ export const CombinedLimit: MessageFns<CombinedLimit> = {
   },
   fromPartial<I extends Exact<DeepPartial<CombinedLimit>, I>>(object: I): CombinedLimit {
     const message = createBaseCombinedLimit();
-    message.callsRemaining = object.callsRemaining ?? 0n;
+    message.callsRemaining = (object.callsRemaining !== undefined && object.callsRemaining !== null)
+      ? Long.fromValue(object.callsRemaining)
+      : Long.UZERO;
     message.amounts = object.amounts?.map((e) => Coin.fromPartial(e)) || [];
     return message;
   },
@@ -889,10 +888,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

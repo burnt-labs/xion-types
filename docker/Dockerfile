@@ -7,7 +7,9 @@ RUN git clone --depth 1 --branch 1.28.2 https://github.com/apple/swift-protobuf 
 COPY extramoduleimports.patch /build/extramoduleimports.patch
 RUN git apply /build/extramoduleimports.patch
 
-# Build swift-protobuf with maximum static linking
+# Build swift-protobuf with maximum static linking.
+# Try fully static first; fall back to --static-swift-stdlib which embeds
+# the Swift runtime so the binary runs on Alpine with gcompat/libc6-compat.
 ENV SWIFTPM_USE_IMPLICT_DEPENDENCIES=true
 RUN swift build -c release \
     --static-swift-stdlib \

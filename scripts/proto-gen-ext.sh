@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # proto-gen-ext.sh — Generate protobuf types from BSR for all supported languages.
 #
 # Usage:
@@ -41,7 +41,7 @@ load_sources() {
 
 load_sources
 
-ALL_LANGUAGES="c cpp csharp docs java kotlin objc python ruby rust scala swift ts"
+ALL_LANGUAGES="c cpp csharp docs java kotlin objc php python ruby rust scala swift ts"
 
 # Leaked test/internal packages to remove after generation.
 # These get pulled in by --include-imports but should not be shipped.

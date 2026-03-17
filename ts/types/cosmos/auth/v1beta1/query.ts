@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { BaseAccount, Params } from "./auth";
@@ -109,9 +110,9 @@ export interface QueryAccountAddressByIDRequest {
    *
    * @deprecated
    */
-  id: bigint;
+  id: Long;
   /** account_id is the account number of the address to be queried. */
-  accountId: bigint;
+  accountId: Long;
 }
 
 /** QueryAccountAddressByIDResponse is the response type for AccountAddressByID rpc method */
@@ -1081,22 +1082,16 @@ export const AddressStringToBytesResponse: MessageFns<AddressStringToBytesRespon
 };
 
 function createBaseQueryAccountAddressByIDRequest(): QueryAccountAddressByIDRequest {
-  return { id: 0n, accountId: 0n };
+  return { id: Long.ZERO, accountId: Long.UZERO };
 }
 
 export const QueryAccountAddressByIDRequest: MessageFns<QueryAccountAddressByIDRequest> = {
   encode(message: QueryAccountAddressByIDRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== 0n) {
-      if (BigInt.asIntN(64, message.id) !== message.id) {
-        throw new globalThis.Error("value provided for field message.id of type int64 too large");
-      }
-      writer.uint32(8).int64(message.id);
+    if (!message.id.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.id.toString());
     }
-    if (message.accountId !== 0n) {
-      if (BigInt.asUintN(64, message.accountId) !== message.accountId) {
-        throw new globalThis.Error("value provided for field message.accountId of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.accountId);
+    if (!message.accountId.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.accountId.toString());
     }
     return writer;
   },
@@ -1113,7 +1108,7 @@ export const QueryAccountAddressByIDRequest: MessageFns<QueryAccountAddressByIDR
             break;
           }
 
-          message.id = reader.int64() as bigint;
+          message.id = Long.fromString(reader.int64().toString());
           continue;
         }
         case 2: {
@@ -1121,7 +1116,7 @@ export const QueryAccountAddressByIDRequest: MessageFns<QueryAccountAddressByIDR
             break;
           }
 
-          message.accountId = reader.uint64() as bigint;
+          message.accountId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -1135,22 +1130,22 @@ export const QueryAccountAddressByIDRequest: MessageFns<QueryAccountAddressByIDR
 
   fromJSON(object: any): QueryAccountAddressByIDRequest {
     return {
-      id: isSet(object.id) ? BigInt(object.id) : 0n,
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
       accountId: isSet(object.accountId)
-        ? BigInt(object.accountId)
+        ? Long.fromValue(object.accountId)
         : isSet(object.account_id)
-        ? BigInt(object.account_id)
-        : 0n,
+        ? Long.fromValue(object.account_id)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: QueryAccountAddressByIDRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0n) {
-      obj.id = message.id.toString();
+    if (!message.id.equals(Long.ZERO)) {
+      obj.id = (message.id || Long.ZERO).toString();
     }
-    if (message.accountId !== 0n) {
-      obj.accountId = message.accountId.toString();
+    if (!message.accountId.equals(Long.UZERO)) {
+      obj.accountId = (message.accountId || Long.UZERO).toString();
     }
     return obj;
   },
@@ -1162,8 +1157,10 @@ export const QueryAccountAddressByIDRequest: MessageFns<QueryAccountAddressByIDR
     object: I,
   ): QueryAccountAddressByIDRequest {
     const message = createBaseQueryAccountAddressByIDRequest();
-    message.id = object.id ?? 0n;
-    message.accountId = object.accountId ?? 0n;
+    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.accountId = (object.accountId !== undefined && object.accountId !== null)
+      ? Long.fromValue(object.accountId)
+      : Long.UZERO;
     return message;
   },
 };
@@ -1707,7 +1704,7 @@ export const QueryAccountInfoDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -1800,10 +1797,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

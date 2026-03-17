@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "ibc.core.channel.v2";
 
@@ -28,7 +29,7 @@ export interface PacketState {
   /** client unique identifier. */
   clientId: string;
   /** packet sequence. */
-  sequence: bigint;
+  sequence: Long;
   /** embedded data that represents packet state. */
   data: Uint8Array;
 }
@@ -38,7 +39,7 @@ export interface PacketSequence {
   /** client unique identifier. */
   clientId: string;
   /** packet sequence */
-  sequence: bigint;
+  sequence: Long;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -180,7 +181,7 @@ export const GenesisState: MessageFns<GenesisState> = {
 };
 
 function createBasePacketState(): PacketState {
-  return { clientId: "", sequence: 0n, data: new Uint8Array(0) };
+  return { clientId: "", sequence: Long.UZERO, data: new Uint8Array(0) };
 }
 
 export const PacketState: MessageFns<PacketState> = {
@@ -188,11 +189,8 @@ export const PacketState: MessageFns<PacketState> = {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
     }
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.sequence.toString());
     }
     if (message.data.length !== 0) {
       writer.uint32(26).bytes(message.data);
@@ -220,7 +218,7 @@ export const PacketState: MessageFns<PacketState> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -247,7 +245,7 @@ export const PacketState: MessageFns<PacketState> = {
         : isSet(object.client_id)
         ? globalThis.String(object.client_id)
         : "",
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
     };
   },
@@ -257,8 +255,8 @@ export const PacketState: MessageFns<PacketState> = {
     if (message.clientId !== "") {
       obj.clientId = message.clientId;
     }
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     if (message.data.length !== 0) {
       obj.data = base64FromBytes(message.data);
@@ -272,14 +270,16 @@ export const PacketState: MessageFns<PacketState> = {
   fromPartial<I extends Exact<DeepPartial<PacketState>, I>>(object: I): PacketState {
     const message = createBasePacketState();
     message.clientId = object.clientId ?? "";
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     message.data = object.data ?? new Uint8Array(0);
     return message;
   },
 };
 
 function createBasePacketSequence(): PacketSequence {
-  return { clientId: "", sequence: 0n };
+  return { clientId: "", sequence: Long.UZERO };
 }
 
 export const PacketSequence: MessageFns<PacketSequence> = {
@@ -287,11 +287,8 @@ export const PacketSequence: MessageFns<PacketSequence> = {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
     }
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.sequence.toString());
     }
     return writer;
   },
@@ -316,7 +313,7 @@ export const PacketSequence: MessageFns<PacketSequence> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -335,7 +332,7 @@ export const PacketSequence: MessageFns<PacketSequence> = {
         : isSet(object.client_id)
         ? globalThis.String(object.client_id)
         : "",
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
     };
   },
 
@@ -344,8 +341,8 @@ export const PacketSequence: MessageFns<PacketSequence> = {
     if (message.clientId !== "") {
       obj.clientId = message.clientId;
     }
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     return obj;
   },
@@ -356,7 +353,9 @@ export const PacketSequence: MessageFns<PacketSequence> = {
   fromPartial<I extends Exact<DeepPartial<PacketSequence>, I>>(object: I): PacketSequence {
     const message = createBasePacketSequence();
     message.clientId = object.clientId ?? "";
-    message.sequence = object.sequence ?? 0n;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     return message;
   },
 };
@@ -386,10 +385,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

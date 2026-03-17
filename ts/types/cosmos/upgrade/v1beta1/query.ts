@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
+import Long from "long";
 import { ModuleVersion, Plan } from "./upgrade";
 
 export const protobufPackage = "cosmos.upgrade.v1beta1";
@@ -43,7 +44,7 @@ export interface QueryAppliedPlanRequest {
  */
 export interface QueryAppliedPlanResponse {
   /** height is the block height at which the plan was applied. */
-  height: bigint;
+  height: Long;
 }
 
 /**
@@ -57,7 +58,7 @@ export interface QueryUpgradedConsensusStateRequest {
    * last height of the current chain must be sent in request
    * as this is the height under which next consensus state is stored
    */
-  lastHeight: bigint;
+  lastHeight: Long;
 }
 
 /**
@@ -261,16 +262,13 @@ export const QueryAppliedPlanRequest: MessageFns<QueryAppliedPlanRequest> = {
 };
 
 function createBaseQueryAppliedPlanResponse(): QueryAppliedPlanResponse {
-  return { height: 0n };
+  return { height: Long.ZERO };
 }
 
 export const QueryAppliedPlanResponse: MessageFns<QueryAppliedPlanResponse> = {
   encode(message: QueryAppliedPlanResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.height !== 0n) {
-      if (BigInt.asIntN(64, message.height) !== message.height) {
-        throw new globalThis.Error("value provided for field message.height of type int64 too large");
-      }
-      writer.uint32(8).int64(message.height);
+    if (!message.height.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.height.toString());
     }
     return writer;
   },
@@ -287,7 +285,7 @@ export const QueryAppliedPlanResponse: MessageFns<QueryAppliedPlanResponse> = {
             break;
           }
 
-          message.height = reader.int64() as bigint;
+          message.height = Long.fromString(reader.int64().toString());
           continue;
         }
       }
@@ -300,13 +298,13 @@ export const QueryAppliedPlanResponse: MessageFns<QueryAppliedPlanResponse> = {
   },
 
   fromJSON(object: any): QueryAppliedPlanResponse {
-    return { height: isSet(object.height) ? BigInt(object.height) : 0n };
+    return { height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO };
   },
 
   toJSON(message: QueryAppliedPlanResponse): unknown {
     const obj: any = {};
-    if (message.height !== 0n) {
-      obj.height = message.height.toString();
+    if (!message.height.equals(Long.ZERO)) {
+      obj.height = (message.height || Long.ZERO).toString();
     }
     return obj;
   },
@@ -316,22 +314,21 @@ export const QueryAppliedPlanResponse: MessageFns<QueryAppliedPlanResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<QueryAppliedPlanResponse>, I>>(object: I): QueryAppliedPlanResponse {
     const message = createBaseQueryAppliedPlanResponse();
-    message.height = object.height ?? 0n;
+    message.height = (object.height !== undefined && object.height !== null)
+      ? Long.fromValue(object.height)
+      : Long.ZERO;
     return message;
   },
 };
 
 function createBaseQueryUpgradedConsensusStateRequest(): QueryUpgradedConsensusStateRequest {
-  return { lastHeight: 0n };
+  return { lastHeight: Long.ZERO };
 }
 
 export const QueryUpgradedConsensusStateRequest: MessageFns<QueryUpgradedConsensusStateRequest> = {
   encode(message: QueryUpgradedConsensusStateRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.lastHeight !== 0n) {
-      if (BigInt.asIntN(64, message.lastHeight) !== message.lastHeight) {
-        throw new globalThis.Error("value provided for field message.lastHeight of type int64 too large");
-      }
-      writer.uint32(8).int64(message.lastHeight);
+    if (!message.lastHeight.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.lastHeight.toString());
     }
     return writer;
   },
@@ -348,7 +345,7 @@ export const QueryUpgradedConsensusStateRequest: MessageFns<QueryUpgradedConsens
             break;
           }
 
-          message.lastHeight = reader.int64() as bigint;
+          message.lastHeight = Long.fromString(reader.int64().toString());
           continue;
         }
       }
@@ -363,17 +360,17 @@ export const QueryUpgradedConsensusStateRequest: MessageFns<QueryUpgradedConsens
   fromJSON(object: any): QueryUpgradedConsensusStateRequest {
     return {
       lastHeight: isSet(object.lastHeight)
-        ? BigInt(object.lastHeight)
+        ? Long.fromValue(object.lastHeight)
         : isSet(object.last_height)
-        ? BigInt(object.last_height)
-        : 0n,
+        ? Long.fromValue(object.last_height)
+        : Long.ZERO,
     };
   },
 
   toJSON(message: QueryUpgradedConsensusStateRequest): unknown {
     const obj: any = {};
-    if (message.lastHeight !== 0n) {
-      obj.lastHeight = message.lastHeight.toString();
+    if (!message.lastHeight.equals(Long.ZERO)) {
+      obj.lastHeight = (message.lastHeight || Long.ZERO).toString();
     }
     return obj;
   },
@@ -387,7 +384,9 @@ export const QueryUpgradedConsensusStateRequest: MessageFns<QueryUpgradedConsens
     object: I,
   ): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
-    message.lastHeight = object.lastHeight ?? 0n;
+    message.lastHeight = (object.lastHeight !== undefined && object.lastHeight !== null)
+      ? Long.fromValue(object.lastHeight)
+      : Long.ZERO;
     return message;
   },
 };
@@ -890,7 +889,7 @@ export const QueryAuthorityDesc: UnaryMethodDefinitionish = {
   } as any,
 };
 
-interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
+export interface UnaryMethodDefinitionishR extends grpc.UnaryMethodDefinition<any, any> {
   requestStream: any;
   responseStream: any;
 }
@@ -983,10 +982,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

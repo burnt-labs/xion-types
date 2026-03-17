@@ -6,19 +6,20 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "abstractaccount.v1";
 
 /** EventAccountRegistered is emitted when an AbstractAccount is registered. */
 export interface EventAccountRegistered {
   creator: string;
-  codeId: bigint;
+  codeId: Long;
   contractAddr: string;
-  accountNumber: bigint;
+  accountNumber: Long;
 }
 
 function createBaseEventAccountRegistered(): EventAccountRegistered {
-  return { creator: "", codeId: 0n, contractAddr: "", accountNumber: 0n };
+  return { creator: "", codeId: Long.UZERO, contractAddr: "", accountNumber: Long.UZERO };
 }
 
 export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
@@ -26,20 +27,14 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.codeId !== 0n) {
-      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
-        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.codeId);
+    if (!message.codeId.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.codeId.toString());
     }
     if (message.contractAddr !== "") {
       writer.uint32(26).string(message.contractAddr);
     }
-    if (message.accountNumber !== 0n) {
-      if (BigInt.asUintN(64, message.accountNumber) !== message.accountNumber) {
-        throw new globalThis.Error("value provided for field message.accountNumber of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.accountNumber);
+    if (!message.accountNumber.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.accountNumber.toString());
     }
     return writer;
   },
@@ -64,7 +59,7 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
             break;
           }
 
-          message.codeId = reader.uint64() as bigint;
+          message.codeId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -80,7 +75,7 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
             break;
           }
 
-          message.accountNumber = reader.uint64() as bigint;
+          message.accountNumber = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -95,17 +90,21 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
   fromJSON(object: any): EventAccountRegistered {
     return {
       creator: isSet(object.creator) ? globalThis.String(object.creator) : "",
-      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
+      codeId: isSet(object.codeId)
+        ? Long.fromValue(object.codeId)
+        : isSet(object.code_id)
+        ? Long.fromValue(object.code_id)
+        : Long.UZERO,
       contractAddr: isSet(object.contractAddr)
         ? globalThis.String(object.contractAddr)
         : isSet(object.contract_addr)
         ? globalThis.String(object.contract_addr)
         : "",
       accountNumber: isSet(object.accountNumber)
-        ? BigInt(object.accountNumber)
+        ? Long.fromValue(object.accountNumber)
         : isSet(object.account_number)
-        ? BigInt(object.account_number)
-        : 0n,
+        ? Long.fromValue(object.account_number)
+        : Long.UZERO,
     };
   },
 
@@ -114,14 +113,14 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
     if (message.creator !== "") {
       obj.creator = message.creator;
     }
-    if (message.codeId !== 0n) {
-      obj.codeId = message.codeId.toString();
+    if (!message.codeId.equals(Long.UZERO)) {
+      obj.codeId = (message.codeId || Long.UZERO).toString();
     }
     if (message.contractAddr !== "") {
       obj.contractAddr = message.contractAddr;
     }
-    if (message.accountNumber !== 0n) {
-      obj.accountNumber = message.accountNumber.toString();
+    if (!message.accountNumber.equals(Long.UZERO)) {
+      obj.accountNumber = (message.accountNumber || Long.UZERO).toString();
     }
     return obj;
   },
@@ -132,17 +131,21 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
   fromPartial<I extends Exact<DeepPartial<EventAccountRegistered>, I>>(object: I): EventAccountRegistered {
     const message = createBaseEventAccountRegistered();
     message.creator = object.creator ?? "";
-    message.codeId = object.codeId ?? 0n;
+    message.codeId = (object.codeId !== undefined && object.codeId !== null)
+      ? Long.fromValue(object.codeId)
+      : Long.UZERO;
     message.contractAddr = object.contractAddr ?? "";
-    message.accountNumber = object.accountNumber ?? 0n;
+    message.accountNumber = (object.accountNumber !== undefined && object.accountNumber !== null)
+      ? Long.fromValue(object.accountNumber)
+      : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

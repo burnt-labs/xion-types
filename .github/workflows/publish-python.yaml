@@ -6,6 +6,12 @@ on:
       release_tag:
         required: true
         type: string
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to publish"
+        required: true
+        type: string
 
 jobs:
   build:
@@ -15,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_tag }}
+          ref: ${{ github.event_name != 'workflow_dispatch' && inputs.release_tag || '' }}
 
       - name: Setup Python
         uses: actions/setup-python@v5

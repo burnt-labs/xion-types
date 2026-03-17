@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Deposit, DepositParams, Proposal, TallyParams, Vote, VotingParams } from "./gov";
 
 export const protobufPackage = "cosmos.gov.v1beta1";
@@ -13,7 +14,7 @@ export const protobufPackage = "cosmos.gov.v1beta1";
 /** GenesisState defines the gov module's genesis state. */
 export interface GenesisState {
   /** starting_proposal_id is the ID of the starting proposal. */
-  startingProposalId: bigint;
+  startingProposalId: Long;
   /** deposits defines all the deposits present at genesis. */
   deposits: Deposit[];
   /** votes defines all the votes present at genesis. */
@@ -34,7 +35,7 @@ export interface GenesisState {
 
 function createBaseGenesisState(): GenesisState {
   return {
-    startingProposalId: 0n,
+    startingProposalId: Long.UZERO,
     deposits: [],
     votes: [],
     proposals: [],
@@ -46,11 +47,8 @@ function createBaseGenesisState(): GenesisState {
 
 export const GenesisState: MessageFns<GenesisState> = {
   encode(message: GenesisState, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.startingProposalId !== 0n) {
-      if (BigInt.asUintN(64, message.startingProposalId) !== message.startingProposalId) {
-        throw new globalThis.Error("value provided for field message.startingProposalId of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.startingProposalId);
+    if (!message.startingProposalId.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.startingProposalId.toString());
     }
     for (const v of message.deposits) {
       Deposit.encode(v!, writer.uint32(18).fork()).join();
@@ -85,7 +83,7 @@ export const GenesisState: MessageFns<GenesisState> = {
             break;
           }
 
-          message.startingProposalId = reader.uint64() as bigint;
+          message.startingProposalId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -148,10 +146,10 @@ export const GenesisState: MessageFns<GenesisState> = {
   fromJSON(object: any): GenesisState {
     return {
       startingProposalId: isSet(object.startingProposalId)
-        ? BigInt(object.startingProposalId)
+        ? Long.fromValue(object.startingProposalId)
         : isSet(object.starting_proposal_id)
-        ? BigInt(object.starting_proposal_id)
-        : 0n,
+        ? Long.fromValue(object.starting_proposal_id)
+        : Long.UZERO,
       deposits: globalThis.Array.isArray(object?.deposits) ? object.deposits.map((e: any) => Deposit.fromJSON(e)) : [],
       votes: globalThis.Array.isArray(object?.votes) ? object.votes.map((e: any) => Vote.fromJSON(e)) : [],
       proposals: globalThis.Array.isArray(object?.proposals)
@@ -177,8 +175,8 @@ export const GenesisState: MessageFns<GenesisState> = {
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {};
-    if (message.startingProposalId !== 0n) {
-      obj.startingProposalId = message.startingProposalId.toString();
+    if (!message.startingProposalId.equals(Long.UZERO)) {
+      obj.startingProposalId = (message.startingProposalId || Long.UZERO).toString();
     }
     if (message.deposits?.length) {
       obj.deposits = message.deposits.map((e) => Deposit.toJSON(e));
@@ -206,7 +204,9 @@ export const GenesisState: MessageFns<GenesisState> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenesisState>, I>>(object: I): GenesisState {
     const message = createBaseGenesisState();
-    message.startingProposalId = object.startingProposalId ?? 0n;
+    message.startingProposalId = (object.startingProposalId !== undefined && object.startingProposalId !== null)
+      ? Long.fromValue(object.startingProposalId)
+      : Long.UZERO;
     message.deposits = object.deposits?.map((e) => Deposit.fromPartial(e)) || [];
     message.votes = object.votes?.map((e) => Vote.fromPartial(e)) || [];
     message.proposals = object.proposals?.map((e) => Proposal.fromPartial(e)) || [];
@@ -223,10 +223,10 @@ export const GenesisState: MessageFns<GenesisState> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

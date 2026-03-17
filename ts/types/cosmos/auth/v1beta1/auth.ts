@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Any } from "../../../google/protobuf/any";
 
 export const protobufPackage = "cosmos.auth.v1beta1";
@@ -18,8 +19,8 @@ export const protobufPackage = "cosmos.auth.v1beta1";
 export interface BaseAccount {
   address: string;
   pubKey?: Any | undefined;
-  accountNumber: bigint;
-  sequence: bigint;
+  accountNumber: Long;
+  sequence: Long;
 }
 
 /** ModuleAccount defines an account for modules that holds coins on a pool. */
@@ -42,15 +43,15 @@ export interface ModuleCredential {
 
 /** Params defines the parameters for the auth module. */
 export interface Params {
-  maxMemoCharacters: bigint;
-  txSigLimit: bigint;
-  txSizeCostPerByte: bigint;
-  sigVerifyCostEd25519: bigint;
-  sigVerifyCostSecp256k1: bigint;
+  maxMemoCharacters: Long;
+  txSigLimit: Long;
+  txSizeCostPerByte: Long;
+  sigVerifyCostEd25519: Long;
+  sigVerifyCostSecp256k1: Long;
 }
 
 function createBaseBaseAccount(): BaseAccount {
-  return { address: "", pubKey: undefined, accountNumber: 0n, sequence: 0n };
+  return { address: "", pubKey: undefined, accountNumber: Long.UZERO, sequence: Long.UZERO };
 }
 
 export const BaseAccount: MessageFns<BaseAccount> = {
@@ -61,17 +62,11 @@ export const BaseAccount: MessageFns<BaseAccount> = {
     if (message.pubKey !== undefined) {
       Any.encode(message.pubKey, writer.uint32(18).fork()).join();
     }
-    if (message.accountNumber !== 0n) {
-      if (BigInt.asUintN(64, message.accountNumber) !== message.accountNumber) {
-        throw new globalThis.Error("value provided for field message.accountNumber of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.accountNumber);
+    if (!message.accountNumber.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.accountNumber.toString());
     }
-    if (message.sequence !== 0n) {
-      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
-        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.sequence);
+    if (!message.sequence.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.sequence.toString());
     }
     return writer;
   },
@@ -104,7 +99,7 @@ export const BaseAccount: MessageFns<BaseAccount> = {
             break;
           }
 
-          message.accountNumber = reader.uint64() as bigint;
+          message.accountNumber = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 4: {
@@ -112,7 +107,7 @@ export const BaseAccount: MessageFns<BaseAccount> = {
             break;
           }
 
-          message.sequence = reader.uint64() as bigint;
+          message.sequence = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -133,11 +128,11 @@ export const BaseAccount: MessageFns<BaseAccount> = {
         ? Any.fromJSON(object.pub_key)
         : undefined,
       accountNumber: isSet(object.accountNumber)
-        ? BigInt(object.accountNumber)
+        ? Long.fromValue(object.accountNumber)
         : isSet(object.account_number)
-        ? BigInt(object.account_number)
-        : 0n,
-      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
+        ? Long.fromValue(object.account_number)
+        : Long.UZERO,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
     };
   },
 
@@ -149,11 +144,11 @@ export const BaseAccount: MessageFns<BaseAccount> = {
     if (message.pubKey !== undefined) {
       obj.pubKey = Any.toJSON(message.pubKey);
     }
-    if (message.accountNumber !== 0n) {
-      obj.accountNumber = message.accountNumber.toString();
+    if (!message.accountNumber.equals(Long.UZERO)) {
+      obj.accountNumber = (message.accountNumber || Long.UZERO).toString();
     }
-    if (message.sequence !== 0n) {
-      obj.sequence = message.sequence.toString();
+    if (!message.sequence.equals(Long.UZERO)) {
+      obj.sequence = (message.sequence || Long.UZERO).toString();
     }
     return obj;
   },
@@ -167,8 +162,12 @@ export const BaseAccount: MessageFns<BaseAccount> = {
     message.pubKey = (object.pubKey !== undefined && object.pubKey !== null)
       ? Any.fromPartial(object.pubKey)
       : undefined;
-    message.accountNumber = object.accountNumber ?? 0n;
-    message.sequence = object.sequence ?? 0n;
+    message.accountNumber = (object.accountNumber !== undefined && object.accountNumber !== null)
+      ? Long.fromValue(object.accountNumber)
+      : Long.UZERO;
+    message.sequence = (object.sequence !== undefined && object.sequence !== null)
+      ? Long.fromValue(object.sequence)
+      : Long.UZERO;
     return message;
   },
 };
@@ -359,45 +358,30 @@ export const ModuleCredential: MessageFns<ModuleCredential> = {
 
 function createBaseParams(): Params {
   return {
-    maxMemoCharacters: 0n,
-    txSigLimit: 0n,
-    txSizeCostPerByte: 0n,
-    sigVerifyCostEd25519: 0n,
-    sigVerifyCostSecp256k1: 0n,
+    maxMemoCharacters: Long.UZERO,
+    txSigLimit: Long.UZERO,
+    txSizeCostPerByte: Long.UZERO,
+    sigVerifyCostEd25519: Long.UZERO,
+    sigVerifyCostSecp256k1: Long.UZERO,
   };
 }
 
 export const Params: MessageFns<Params> = {
   encode(message: Params, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.maxMemoCharacters !== 0n) {
-      if (BigInt.asUintN(64, message.maxMemoCharacters) !== message.maxMemoCharacters) {
-        throw new globalThis.Error("value provided for field message.maxMemoCharacters of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.maxMemoCharacters);
+    if (!message.maxMemoCharacters.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.maxMemoCharacters.toString());
     }
-    if (message.txSigLimit !== 0n) {
-      if (BigInt.asUintN(64, message.txSigLimit) !== message.txSigLimit) {
-        throw new globalThis.Error("value provided for field message.txSigLimit of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.txSigLimit);
+    if (!message.txSigLimit.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.txSigLimit.toString());
     }
-    if (message.txSizeCostPerByte !== 0n) {
-      if (BigInt.asUintN(64, message.txSizeCostPerByte) !== message.txSizeCostPerByte) {
-        throw new globalThis.Error("value provided for field message.txSizeCostPerByte of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.txSizeCostPerByte);
+    if (!message.txSizeCostPerByte.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.txSizeCostPerByte.toString());
     }
-    if (message.sigVerifyCostEd25519 !== 0n) {
-      if (BigInt.asUintN(64, message.sigVerifyCostEd25519) !== message.sigVerifyCostEd25519) {
-        throw new globalThis.Error("value provided for field message.sigVerifyCostEd25519 of type uint64 too large");
-      }
-      writer.uint32(32).uint64(message.sigVerifyCostEd25519);
+    if (!message.sigVerifyCostEd25519.equals(Long.UZERO)) {
+      writer.uint32(32).uint64(message.sigVerifyCostEd25519.toString());
     }
-    if (message.sigVerifyCostSecp256k1 !== 0n) {
-      if (BigInt.asUintN(64, message.sigVerifyCostSecp256k1) !== message.sigVerifyCostSecp256k1) {
-        throw new globalThis.Error("value provided for field message.sigVerifyCostSecp256k1 of type uint64 too large");
-      }
-      writer.uint32(40).uint64(message.sigVerifyCostSecp256k1);
+    if (!message.sigVerifyCostSecp256k1.equals(Long.UZERO)) {
+      writer.uint32(40).uint64(message.sigVerifyCostSecp256k1.toString());
     }
     return writer;
   },
@@ -414,7 +398,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxMemoCharacters = reader.uint64() as bigint;
+          message.maxMemoCharacters = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -422,7 +406,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.txSigLimit = reader.uint64() as bigint;
+          message.txSigLimit = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -430,7 +414,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.txSizeCostPerByte = reader.uint64() as bigint;
+          message.txSizeCostPerByte = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 4: {
@@ -438,7 +422,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.sigVerifyCostEd25519 = reader.uint64() as bigint;
+          message.sigVerifyCostEd25519 = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 5: {
@@ -446,7 +430,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.sigVerifyCostSecp256k1 = reader.uint64() as bigint;
+          message.sigVerifyCostSecp256k1 = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -461,49 +445,49 @@ export const Params: MessageFns<Params> = {
   fromJSON(object: any): Params {
     return {
       maxMemoCharacters: isSet(object.maxMemoCharacters)
-        ? BigInt(object.maxMemoCharacters)
+        ? Long.fromValue(object.maxMemoCharacters)
         : isSet(object.max_memo_characters)
-        ? BigInt(object.max_memo_characters)
-        : 0n,
+        ? Long.fromValue(object.max_memo_characters)
+        : Long.UZERO,
       txSigLimit: isSet(object.txSigLimit)
-        ? BigInt(object.txSigLimit)
+        ? Long.fromValue(object.txSigLimit)
         : isSet(object.tx_sig_limit)
-        ? BigInt(object.tx_sig_limit)
-        : 0n,
+        ? Long.fromValue(object.tx_sig_limit)
+        : Long.UZERO,
       txSizeCostPerByte: isSet(object.txSizeCostPerByte)
-        ? BigInt(object.txSizeCostPerByte)
+        ? Long.fromValue(object.txSizeCostPerByte)
         : isSet(object.tx_size_cost_per_byte)
-        ? BigInt(object.tx_size_cost_per_byte)
-        : 0n,
+        ? Long.fromValue(object.tx_size_cost_per_byte)
+        : Long.UZERO,
       sigVerifyCostEd25519: isSet(object.sigVerifyCostEd25519)
-        ? BigInt(object.sigVerifyCostEd25519)
+        ? Long.fromValue(object.sigVerifyCostEd25519)
         : isSet(object.sig_verify_cost_ed25519)
-        ? BigInt(object.sig_verify_cost_ed25519)
-        : 0n,
+        ? Long.fromValue(object.sig_verify_cost_ed25519)
+        : Long.UZERO,
       sigVerifyCostSecp256k1: isSet(object.sigVerifyCostSecp256k1)
-        ? BigInt(object.sigVerifyCostSecp256k1)
+        ? Long.fromValue(object.sigVerifyCostSecp256k1)
         : isSet(object.sig_verify_cost_secp256k1)
-        ? BigInt(object.sig_verify_cost_secp256k1)
-        : 0n,
+        ? Long.fromValue(object.sig_verify_cost_secp256k1)
+        : Long.UZERO,
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    if (message.maxMemoCharacters !== 0n) {
-      obj.maxMemoCharacters = message.maxMemoCharacters.toString();
+    if (!message.maxMemoCharacters.equals(Long.UZERO)) {
+      obj.maxMemoCharacters = (message.maxMemoCharacters || Long.UZERO).toString();
     }
-    if (message.txSigLimit !== 0n) {
-      obj.txSigLimit = message.txSigLimit.toString();
+    if (!message.txSigLimit.equals(Long.UZERO)) {
+      obj.txSigLimit = (message.txSigLimit || Long.UZERO).toString();
     }
-    if (message.txSizeCostPerByte !== 0n) {
-      obj.txSizeCostPerByte = message.txSizeCostPerByte.toString();
+    if (!message.txSizeCostPerByte.equals(Long.UZERO)) {
+      obj.txSizeCostPerByte = (message.txSizeCostPerByte || Long.UZERO).toString();
     }
-    if (message.sigVerifyCostEd25519 !== 0n) {
-      obj.sigVerifyCostEd25519 = message.sigVerifyCostEd25519.toString();
+    if (!message.sigVerifyCostEd25519.equals(Long.UZERO)) {
+      obj.sigVerifyCostEd25519 = (message.sigVerifyCostEd25519 || Long.UZERO).toString();
     }
-    if (message.sigVerifyCostSecp256k1 !== 0n) {
-      obj.sigVerifyCostSecp256k1 = message.sigVerifyCostSecp256k1.toString();
+    if (!message.sigVerifyCostSecp256k1.equals(Long.UZERO)) {
+      obj.sigVerifyCostSecp256k1 = (message.sigVerifyCostSecp256k1 || Long.UZERO).toString();
     }
     return obj;
   },
@@ -513,11 +497,22 @@ export const Params: MessageFns<Params> = {
   },
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
-    message.maxMemoCharacters = object.maxMemoCharacters ?? 0n;
-    message.txSigLimit = object.txSigLimit ?? 0n;
-    message.txSizeCostPerByte = object.txSizeCostPerByte ?? 0n;
-    message.sigVerifyCostEd25519 = object.sigVerifyCostEd25519 ?? 0n;
-    message.sigVerifyCostSecp256k1 = object.sigVerifyCostSecp256k1 ?? 0n;
+    message.maxMemoCharacters = (object.maxMemoCharacters !== undefined && object.maxMemoCharacters !== null)
+      ? Long.fromValue(object.maxMemoCharacters)
+      : Long.UZERO;
+    message.txSigLimit = (object.txSigLimit !== undefined && object.txSigLimit !== null)
+      ? Long.fromValue(object.txSigLimit)
+      : Long.UZERO;
+    message.txSizeCostPerByte = (object.txSizeCostPerByte !== undefined && object.txSizeCostPerByte !== null)
+      ? Long.fromValue(object.txSizeCostPerByte)
+      : Long.UZERO;
+    message.sigVerifyCostEd25519 = (object.sigVerifyCostEd25519 !== undefined && object.sigVerifyCostEd25519 !== null)
+      ? Long.fromValue(object.sigVerifyCostEd25519)
+      : Long.UZERO;
+    message.sigVerifyCostSecp256k1 =
+      (object.sigVerifyCostSecp256k1 !== undefined && object.sigVerifyCostSecp256k1 !== null)
+        ? Long.fromValue(object.sigVerifyCostSecp256k1)
+        : Long.UZERO;
     return message;
   },
 };
@@ -547,10 +542,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 
 export const protobufPackage = "tendermint.p2p";
 
@@ -16,9 +17,9 @@ export interface NetAddress {
 }
 
 export interface ProtocolVersion {
-  p2p: bigint;
-  block: bigint;
-  app: bigint;
+  p2p: Long;
+  block: Long;
+  app: Long;
 }
 
 export interface DefaultNodeInfo {
@@ -130,28 +131,19 @@ export const NetAddress: MessageFns<NetAddress> = {
 };
 
 function createBaseProtocolVersion(): ProtocolVersion {
-  return { p2p: 0n, block: 0n, app: 0n };
+  return { p2p: Long.UZERO, block: Long.UZERO, app: Long.UZERO };
 }
 
 export const ProtocolVersion: MessageFns<ProtocolVersion> = {
   encode(message: ProtocolVersion, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.p2p !== 0n) {
-      if (BigInt.asUintN(64, message.p2p) !== message.p2p) {
-        throw new globalThis.Error("value provided for field message.p2p of type uint64 too large");
-      }
-      writer.uint32(8).uint64(message.p2p);
+    if (!message.p2p.equals(Long.UZERO)) {
+      writer.uint32(8).uint64(message.p2p.toString());
     }
-    if (message.block !== 0n) {
-      if (BigInt.asUintN(64, message.block) !== message.block) {
-        throw new globalThis.Error("value provided for field message.block of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.block);
+    if (!message.block.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.block.toString());
     }
-    if (message.app !== 0n) {
-      if (BigInt.asUintN(64, message.app) !== message.app) {
-        throw new globalThis.Error("value provided for field message.app of type uint64 too large");
-      }
-      writer.uint32(24).uint64(message.app);
+    if (!message.app.equals(Long.UZERO)) {
+      writer.uint32(24).uint64(message.app.toString());
     }
     return writer;
   },
@@ -168,7 +160,7 @@ export const ProtocolVersion: MessageFns<ProtocolVersion> = {
             break;
           }
 
-          message.p2p = reader.uint64() as bigint;
+          message.p2p = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 2: {
@@ -176,7 +168,7 @@ export const ProtocolVersion: MessageFns<ProtocolVersion> = {
             break;
           }
 
-          message.block = reader.uint64() as bigint;
+          message.block = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
         case 3: {
@@ -184,7 +176,7 @@ export const ProtocolVersion: MessageFns<ProtocolVersion> = {
             break;
           }
 
-          message.app = reader.uint64() as bigint;
+          message.app = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -198,22 +190,22 @@ export const ProtocolVersion: MessageFns<ProtocolVersion> = {
 
   fromJSON(object: any): ProtocolVersion {
     return {
-      p2p: isSet(object.p2p) ? BigInt(object.p2p) : 0n,
-      block: isSet(object.block) ? BigInt(object.block) : 0n,
-      app: isSet(object.app) ? BigInt(object.app) : 0n,
+      p2p: isSet(object.p2p) ? Long.fromValue(object.p2p) : Long.UZERO,
+      block: isSet(object.block) ? Long.fromValue(object.block) : Long.UZERO,
+      app: isSet(object.app) ? Long.fromValue(object.app) : Long.UZERO,
     };
   },
 
   toJSON(message: ProtocolVersion): unknown {
     const obj: any = {};
-    if (message.p2p !== 0n) {
-      obj.p2p = message.p2p.toString();
+    if (!message.p2p.equals(Long.UZERO)) {
+      obj.p2p = (message.p2p || Long.UZERO).toString();
     }
-    if (message.block !== 0n) {
-      obj.block = message.block.toString();
+    if (!message.block.equals(Long.UZERO)) {
+      obj.block = (message.block || Long.UZERO).toString();
     }
-    if (message.app !== 0n) {
-      obj.app = message.app.toString();
+    if (!message.app.equals(Long.UZERO)) {
+      obj.app = (message.app || Long.UZERO).toString();
     }
     return obj;
   },
@@ -223,9 +215,9 @@ export const ProtocolVersion: MessageFns<ProtocolVersion> = {
   },
   fromPartial<I extends Exact<DeepPartial<ProtocolVersion>, I>>(object: I): ProtocolVersion {
     const message = createBaseProtocolVersion();
-    message.p2p = object.p2p ?? 0n;
-    message.block = object.block ?? 0n;
-    message.app = object.app ?? 0n;
+    message.p2p = (object.p2p !== undefined && object.p2p !== null) ? Long.fromValue(object.p2p) : Long.UZERO;
+    message.block = (object.block !== undefined && object.block !== null) ? Long.fromValue(object.block) : Long.UZERO;
+    message.app = (object.app !== undefined && object.app !== null) ? Long.fromValue(object.app) : Long.UZERO;
     return message;
   },
 };
@@ -536,10 +528,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import Long from "long";
 import { Params } from "./params";
 
 export const protobufPackage = "abstractaccount.v1";
@@ -13,11 +14,11 @@ export const protobufPackage = "abstractaccount.v1";
 /** GenesisState defines the genesis state of the abstractaccount module. */
 export interface GenesisState {
   params?: Params | undefined;
-  nextAccountId: bigint;
+  nextAccountId: Long;
 }
 
 function createBaseGenesisState(): GenesisState {
-  return { params: undefined, nextAccountId: 0n };
+  return { params: undefined, nextAccountId: Long.UZERO };
 }
 
 export const GenesisState: MessageFns<GenesisState> = {
@@ -25,11 +26,8 @@ export const GenesisState: MessageFns<GenesisState> = {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).join();
     }
-    if (message.nextAccountId !== 0n) {
-      if (BigInt.asUintN(64, message.nextAccountId) !== message.nextAccountId) {
-        throw new globalThis.Error("value provided for field message.nextAccountId of type uint64 too large");
-      }
-      writer.uint32(16).uint64(message.nextAccountId);
+    if (!message.nextAccountId.equals(Long.UZERO)) {
+      writer.uint32(16).uint64(message.nextAccountId.toString());
     }
     return writer;
   },
@@ -54,7 +52,7 @@ export const GenesisState: MessageFns<GenesisState> = {
             break;
           }
 
-          message.nextAccountId = reader.uint64() as bigint;
+          message.nextAccountId = Long.fromString(reader.uint64().toString(), true);
           continue;
         }
       }
@@ -70,10 +68,10 @@ export const GenesisState: MessageFns<GenesisState> = {
     return {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
       nextAccountId: isSet(object.nextAccountId)
-        ? BigInt(object.nextAccountId)
+        ? Long.fromValue(object.nextAccountId)
         : isSet(object.next_account_id)
-        ? BigInt(object.next_account_id)
-        : 0n,
+        ? Long.fromValue(object.next_account_id)
+        : Long.UZERO,
     };
   },
 
@@ -82,8 +80,8 @@ export const GenesisState: MessageFns<GenesisState> = {
     if (message.params !== undefined) {
       obj.params = Params.toJSON(message.params);
     }
-    if (message.nextAccountId !== 0n) {
-      obj.nextAccountId = message.nextAccountId.toString();
+    if (!message.nextAccountId.equals(Long.UZERO)) {
+      obj.nextAccountId = (message.nextAccountId || Long.UZERO).toString();
     }
     return obj;
   },
@@ -96,15 +94,17 @@ export const GenesisState: MessageFns<GenesisState> = {
     message.params = (object.params !== undefined && object.params !== null)
       ? Params.fromPartial(object.params)
       : undefined;
-    message.nextAccountId = object.nextAccountId ?? 0n;
+    message.nextAccountId = (object.nextAccountId !== undefined && object.nextAccountId !== null)
+      ? Long.fromValue(object.nextAccountId)
+      : Long.UZERO;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

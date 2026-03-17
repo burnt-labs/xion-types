@@ -665,6 +665,13 @@ pub mod types {
             print("  ⚠️  Compilation check failed:")
             print(result.stderr[-500:] if len(result.stderr) > 500 else result.stderr)
 
+    # Clean up build artifacts — target/ contains lock files that break
+    # artifact uploads in CI
+    target_dir = rust_dir / "target"
+    if target_dir.exists():
+        shutil.rmtree(target_dir)
+        print("  Cleaned rust/target/")
+
 
 if __name__ == "__main__":
     main()
