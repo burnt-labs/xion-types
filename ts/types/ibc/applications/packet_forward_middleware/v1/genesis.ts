@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "ibc.applications.packet_forward_middleware.v1";
 
@@ -36,12 +35,12 @@ export interface InFlightPacket {
   refundPortId: string;
   packetSrcChannelId: string;
   packetSrcPortId: string;
-  packetTimeoutTimestamp: Long;
+  packetTimeoutTimestamp: bigint;
   packetTimeoutHeight: string;
   packetData: Uint8Array;
-  refundSequence: Long;
+  refundSequence: bigint;
   retriesRemaining: number;
-  timeout: Long;
+  timeout: bigint;
   nonrefundable: boolean;
 }
 
@@ -225,12 +224,12 @@ function createBaseInFlightPacket(): InFlightPacket {
     refundPortId: "",
     packetSrcChannelId: "",
     packetSrcPortId: "",
-    packetTimeoutTimestamp: Long.UZERO,
+    packetTimeoutTimestamp: 0n,
     packetTimeoutHeight: "",
     packetData: new Uint8Array(0),
-    refundSequence: Long.UZERO,
+    refundSequence: 0n,
     retriesRemaining: 0,
-    timeout: Long.UZERO,
+    timeout: 0n,
     nonrefundable: false,
   };
 }
@@ -252,8 +251,11 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
     if (message.packetSrcPortId !== "") {
       writer.uint32(42).string(message.packetSrcPortId);
     }
-    if (!message.packetTimeoutTimestamp.equals(Long.UZERO)) {
-      writer.uint32(48).uint64(message.packetTimeoutTimestamp.toString());
+    if (message.packetTimeoutTimestamp !== 0n) {
+      if (BigInt.asUintN(64, message.packetTimeoutTimestamp) !== message.packetTimeoutTimestamp) {
+        throw new globalThis.Error("value provided for field message.packetTimeoutTimestamp of type uint64 too large");
+      }
+      writer.uint32(48).uint64(message.packetTimeoutTimestamp);
     }
     if (message.packetTimeoutHeight !== "") {
       writer.uint32(58).string(message.packetTimeoutHeight);
@@ -261,14 +263,20 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
     if (message.packetData.length !== 0) {
       writer.uint32(66).bytes(message.packetData);
     }
-    if (!message.refundSequence.equals(Long.UZERO)) {
-      writer.uint32(72).uint64(message.refundSequence.toString());
+    if (message.refundSequence !== 0n) {
+      if (BigInt.asUintN(64, message.refundSequence) !== message.refundSequence) {
+        throw new globalThis.Error("value provided for field message.refundSequence of type uint64 too large");
+      }
+      writer.uint32(72).uint64(message.refundSequence);
     }
     if (message.retriesRemaining !== 0) {
       writer.uint32(80).int32(message.retriesRemaining);
     }
-    if (!message.timeout.equals(Long.UZERO)) {
-      writer.uint32(88).uint64(message.timeout.toString());
+    if (message.timeout !== 0n) {
+      if (BigInt.asUintN(64, message.timeout) !== message.timeout) {
+        throw new globalThis.Error("value provided for field message.timeout of type uint64 too large");
+      }
+      writer.uint32(88).uint64(message.timeout);
     }
     if (message.nonrefundable !== false) {
       writer.uint32(96).bool(message.nonrefundable);
@@ -328,7 +336,7 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
             break;
           }
 
-          message.packetTimeoutTimestamp = Long.fromString(reader.uint64().toString(), true);
+          message.packetTimeoutTimestamp = reader.uint64() as bigint;
           continue;
         }
         case 7: {
@@ -352,7 +360,7 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
             break;
           }
 
-          message.refundSequence = Long.fromString(reader.uint64().toString(), true);
+          message.refundSequence = reader.uint64() as bigint;
           continue;
         }
         case 10: {
@@ -368,7 +376,7 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
             break;
           }
 
-          message.timeout = Long.fromString(reader.uint64().toString(), true);
+          message.timeout = reader.uint64() as bigint;
           continue;
         }
         case 12: {
@@ -416,10 +424,10 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
         ? globalThis.String(object.packet_src_port_id)
         : "",
       packetTimeoutTimestamp: isSet(object.packetTimeoutTimestamp)
-        ? Long.fromValue(object.packetTimeoutTimestamp)
+        ? BigInt(object.packetTimeoutTimestamp)
         : isSet(object.packet_timeout_timestamp)
-        ? Long.fromValue(object.packet_timeout_timestamp)
-        : Long.UZERO,
+        ? BigInt(object.packet_timeout_timestamp)
+        : 0n,
       packetTimeoutHeight: isSet(object.packetTimeoutHeight)
         ? globalThis.String(object.packetTimeoutHeight)
         : isSet(object.packet_timeout_height)
@@ -431,16 +439,16 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
         ? bytesFromBase64(object.packet_data)
         : new Uint8Array(0),
       refundSequence: isSet(object.refundSequence)
-        ? Long.fromValue(object.refundSequence)
+        ? BigInt(object.refundSequence)
         : isSet(object.refund_sequence)
-        ? Long.fromValue(object.refund_sequence)
-        : Long.UZERO,
+        ? BigInt(object.refund_sequence)
+        : 0n,
       retriesRemaining: isSet(object.retriesRemaining)
         ? globalThis.Number(object.retriesRemaining)
         : isSet(object.retries_remaining)
         ? globalThis.Number(object.retries_remaining)
         : 0,
-      timeout: isSet(object.timeout) ? Long.fromValue(object.timeout) : Long.UZERO,
+      timeout: isSet(object.timeout) ? BigInt(object.timeout) : 0n,
       nonrefundable: isSet(object.nonrefundable) ? globalThis.Boolean(object.nonrefundable) : false,
     };
   },
@@ -462,8 +470,8 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
     if (message.packetSrcPortId !== "") {
       obj.packetSrcPortId = message.packetSrcPortId;
     }
-    if (!message.packetTimeoutTimestamp.equals(Long.UZERO)) {
-      obj.packetTimeoutTimestamp = (message.packetTimeoutTimestamp || Long.UZERO).toString();
+    if (message.packetTimeoutTimestamp !== 0n) {
+      obj.packetTimeoutTimestamp = message.packetTimeoutTimestamp.toString();
     }
     if (message.packetTimeoutHeight !== "") {
       obj.packetTimeoutHeight = message.packetTimeoutHeight;
@@ -471,14 +479,14 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
     if (message.packetData.length !== 0) {
       obj.packetData = base64FromBytes(message.packetData);
     }
-    if (!message.refundSequence.equals(Long.UZERO)) {
-      obj.refundSequence = (message.refundSequence || Long.UZERO).toString();
+    if (message.refundSequence !== 0n) {
+      obj.refundSequence = message.refundSequence.toString();
     }
     if (message.retriesRemaining !== 0) {
       obj.retriesRemaining = Math.round(message.retriesRemaining);
     }
-    if (!message.timeout.equals(Long.UZERO)) {
-      obj.timeout = (message.timeout || Long.UZERO).toString();
+    if (message.timeout !== 0n) {
+      obj.timeout = message.timeout.toString();
     }
     if (message.nonrefundable !== false) {
       obj.nonrefundable = message.nonrefundable;
@@ -496,19 +504,12 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
     message.refundPortId = object.refundPortId ?? "";
     message.packetSrcChannelId = object.packetSrcChannelId ?? "";
     message.packetSrcPortId = object.packetSrcPortId ?? "";
-    message.packetTimeoutTimestamp =
-      (object.packetTimeoutTimestamp !== undefined && object.packetTimeoutTimestamp !== null)
-        ? Long.fromValue(object.packetTimeoutTimestamp)
-        : Long.UZERO;
+    message.packetTimeoutTimestamp = object.packetTimeoutTimestamp ?? 0n;
     message.packetTimeoutHeight = object.packetTimeoutHeight ?? "";
     message.packetData = object.packetData ?? new Uint8Array(0);
-    message.refundSequence = (object.refundSequence !== undefined && object.refundSequence !== null)
-      ? Long.fromValue(object.refundSequence)
-      : Long.UZERO;
+    message.refundSequence = object.refundSequence ?? 0n;
     message.retriesRemaining = object.retriesRemaining ?? 0;
-    message.timeout = (object.timeout !== undefined && object.timeout !== null)
-      ? Long.fromValue(object.timeout)
-      : Long.UZERO;
+    message.timeout = object.timeout ?? 0n;
     message.nonrefundable = object.nonrefundable ?? false;
     return message;
   },
@@ -539,10 +540,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

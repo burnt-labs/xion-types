@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { DecCoin } from "../../../cosmos/base/v1beta1/coin";
 
 export const protobufPackage = "xion.globalfee.v1";
@@ -37,7 +36,7 @@ export interface Params {
    * allowed for a transaction containing only messages of types in
    * bypass_min_fee_msg_types to bypass fee charge.
    */
-  maxTotalBypassMinFeeMsgGasUsage: Long;
+  maxTotalBypassMinFeeMsgGasUsage: bigint;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -101,7 +100,7 @@ export const GenesisState: MessageFns<GenesisState> = {
 };
 
 function createBaseParams(): Params {
-  return { minimumGasPrices: [], bypassMinFeeMsgTypes: [], maxTotalBypassMinFeeMsgGasUsage: Long.UZERO };
+  return { minimumGasPrices: [], bypassMinFeeMsgTypes: [], maxTotalBypassMinFeeMsgGasUsage: 0n };
 }
 
 export const Params: MessageFns<Params> = {
@@ -112,8 +111,13 @@ export const Params: MessageFns<Params> = {
     for (const v of message.bypassMinFeeMsgTypes) {
       writer.uint32(18).string(v!);
     }
-    if (!message.maxTotalBypassMinFeeMsgGasUsage.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.maxTotalBypassMinFeeMsgGasUsage.toString());
+    if (message.maxTotalBypassMinFeeMsgGasUsage !== 0n) {
+      if (BigInt.asUintN(64, message.maxTotalBypassMinFeeMsgGasUsage) !== message.maxTotalBypassMinFeeMsgGasUsage) {
+        throw new globalThis.Error(
+          "value provided for field message.maxTotalBypassMinFeeMsgGasUsage of type uint64 too large",
+        );
+      }
+      writer.uint32(24).uint64(message.maxTotalBypassMinFeeMsgGasUsage);
     }
     return writer;
   },
@@ -146,7 +150,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxTotalBypassMinFeeMsgGasUsage = Long.fromString(reader.uint64().toString(), true);
+          message.maxTotalBypassMinFeeMsgGasUsage = reader.uint64() as bigint;
           continue;
         }
       }
@@ -171,10 +175,10 @@ export const Params: MessageFns<Params> = {
         ? object.bypass_min_fee_msg_types.map((e: any) => globalThis.String(e))
         : [],
       maxTotalBypassMinFeeMsgGasUsage: isSet(object.maxTotalBypassMinFeeMsgGasUsage)
-        ? Long.fromValue(object.maxTotalBypassMinFeeMsgGasUsage)
+        ? BigInt(object.maxTotalBypassMinFeeMsgGasUsage)
         : isSet(object.max_total_bypass_min_fee_msg_gas_usage)
-        ? Long.fromValue(object.max_total_bypass_min_fee_msg_gas_usage)
-        : Long.UZERO,
+        ? BigInt(object.max_total_bypass_min_fee_msg_gas_usage)
+        : 0n,
     };
   },
 
@@ -186,8 +190,8 @@ export const Params: MessageFns<Params> = {
     if (message.bypassMinFeeMsgTypes?.length) {
       obj.bypassMinFeeMsgTypes = message.bypassMinFeeMsgTypes;
     }
-    if (!message.maxTotalBypassMinFeeMsgGasUsage.equals(Long.UZERO)) {
-      obj.maxTotalBypassMinFeeMsgGasUsage = (message.maxTotalBypassMinFeeMsgGasUsage || Long.UZERO).toString();
+    if (message.maxTotalBypassMinFeeMsgGasUsage !== 0n) {
+      obj.maxTotalBypassMinFeeMsgGasUsage = message.maxTotalBypassMinFeeMsgGasUsage.toString();
     }
     return obj;
   },
@@ -199,18 +203,15 @@ export const Params: MessageFns<Params> = {
     const message = createBaseParams();
     message.minimumGasPrices = object.minimumGasPrices?.map((e) => DecCoin.fromPartial(e)) || [];
     message.bypassMinFeeMsgTypes = object.bypassMinFeeMsgTypes?.map((e) => e) || [];
-    message.maxTotalBypassMinFeeMsgGasUsage =
-      (object.maxTotalBypassMinFeeMsgGasUsage !== undefined && object.maxTotalBypassMinFeeMsgGasUsage !== null)
-        ? Long.fromValue(object.maxTotalBypassMinFeeMsgGasUsage)
-        : Long.UZERO;
+    message.maxTotalBypassMinFeeMsgGasUsage = object.maxTotalBypassMinFeeMsgGasUsage ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

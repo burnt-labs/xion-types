@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { MerklePrefix } from "../../commitment/v1/commitment";
 
 export const protobufPackage = "ibc.core.connection.v1";
@@ -92,7 +91,7 @@ export interface ConnectionEnd {
    * packet-verification NOTE: delay period logic is only implemented by some
    * clients.
    */
-  delayPeriod: Long;
+  delayPeriod: bigint;
 }
 
 /**
@@ -116,7 +115,7 @@ export interface IdentifiedConnection {
     | Counterparty
     | undefined;
   /** delay period associated with this connection. */
-  delayPeriod: Long;
+  delayPeriod: bigint;
 }
 
 /** Counterparty defines the counterparty chain associated with a connection end. */
@@ -167,11 +166,11 @@ export interface Params {
    * largest amount of time that the chain might reasonably take to produce the next block under normal operating
    * conditions. A safe choice is 3-5x the expected time per block.
    */
-  maxExpectedTimePerBlock: Long;
+  maxExpectedTimePerBlock: bigint;
 }
 
 function createBaseConnectionEnd(): ConnectionEnd {
-  return { clientId: "", versions: [], state: 0, counterparty: undefined, delayPeriod: Long.UZERO };
+  return { clientId: "", versions: [], state: 0, counterparty: undefined, delayPeriod: 0n };
 }
 
 export const ConnectionEnd: MessageFns<ConnectionEnd> = {
@@ -188,8 +187,11 @@ export const ConnectionEnd: MessageFns<ConnectionEnd> = {
     if (message.counterparty !== undefined) {
       Counterparty.encode(message.counterparty, writer.uint32(34).fork()).join();
     }
-    if (!message.delayPeriod.equals(Long.UZERO)) {
-      writer.uint32(40).uint64(message.delayPeriod.toString());
+    if (message.delayPeriod !== 0n) {
+      if (BigInt.asUintN(64, message.delayPeriod) !== message.delayPeriod) {
+        throw new globalThis.Error("value provided for field message.delayPeriod of type uint64 too large");
+      }
+      writer.uint32(40).uint64(message.delayPeriod);
     }
     return writer;
   },
@@ -238,7 +240,7 @@ export const ConnectionEnd: MessageFns<ConnectionEnd> = {
             break;
           }
 
-          message.delayPeriod = Long.fromString(reader.uint64().toString(), true);
+          message.delayPeriod = reader.uint64() as bigint;
           continue;
         }
       }
@@ -261,10 +263,10 @@ export const ConnectionEnd: MessageFns<ConnectionEnd> = {
       state: isSet(object.state) ? stateFromJSON(object.state) : 0,
       counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
       delayPeriod: isSet(object.delayPeriod)
-        ? Long.fromValue(object.delayPeriod)
+        ? BigInt(object.delayPeriod)
         : isSet(object.delay_period)
-        ? Long.fromValue(object.delay_period)
-        : Long.UZERO,
+        ? BigInt(object.delay_period)
+        : 0n,
     };
   },
 
@@ -282,8 +284,8 @@ export const ConnectionEnd: MessageFns<ConnectionEnd> = {
     if (message.counterparty !== undefined) {
       obj.counterparty = Counterparty.toJSON(message.counterparty);
     }
-    if (!message.delayPeriod.equals(Long.UZERO)) {
-      obj.delayPeriod = (message.delayPeriod || Long.UZERO).toString();
+    if (message.delayPeriod !== 0n) {
+      obj.delayPeriod = message.delayPeriod.toString();
     }
     return obj;
   },
@@ -299,15 +301,13 @@ export const ConnectionEnd: MessageFns<ConnectionEnd> = {
     message.counterparty = (object.counterparty !== undefined && object.counterparty !== null)
       ? Counterparty.fromPartial(object.counterparty)
       : undefined;
-    message.delayPeriod = (object.delayPeriod !== undefined && object.delayPeriod !== null)
-      ? Long.fromValue(object.delayPeriod)
-      : Long.UZERO;
+    message.delayPeriod = object.delayPeriod ?? 0n;
     return message;
   },
 };
 
 function createBaseIdentifiedConnection(): IdentifiedConnection {
-  return { id: "", clientId: "", versions: [], state: 0, counterparty: undefined, delayPeriod: Long.UZERO };
+  return { id: "", clientId: "", versions: [], state: 0, counterparty: undefined, delayPeriod: 0n };
 }
 
 export const IdentifiedConnection: MessageFns<IdentifiedConnection> = {
@@ -327,8 +327,11 @@ export const IdentifiedConnection: MessageFns<IdentifiedConnection> = {
     if (message.counterparty !== undefined) {
       Counterparty.encode(message.counterparty, writer.uint32(42).fork()).join();
     }
-    if (!message.delayPeriod.equals(Long.UZERO)) {
-      writer.uint32(48).uint64(message.delayPeriod.toString());
+    if (message.delayPeriod !== 0n) {
+      if (BigInt.asUintN(64, message.delayPeriod) !== message.delayPeriod) {
+        throw new globalThis.Error("value provided for field message.delayPeriod of type uint64 too large");
+      }
+      writer.uint32(48).uint64(message.delayPeriod);
     }
     return writer;
   },
@@ -385,7 +388,7 @@ export const IdentifiedConnection: MessageFns<IdentifiedConnection> = {
             break;
           }
 
-          message.delayPeriod = Long.fromString(reader.uint64().toString(), true);
+          message.delayPeriod = reader.uint64() as bigint;
           continue;
         }
       }
@@ -409,10 +412,10 @@ export const IdentifiedConnection: MessageFns<IdentifiedConnection> = {
       state: isSet(object.state) ? stateFromJSON(object.state) : 0,
       counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
       delayPeriod: isSet(object.delayPeriod)
-        ? Long.fromValue(object.delayPeriod)
+        ? BigInt(object.delayPeriod)
         : isSet(object.delay_period)
-        ? Long.fromValue(object.delay_period)
-        : Long.UZERO,
+        ? BigInt(object.delay_period)
+        : 0n,
     };
   },
 
@@ -433,8 +436,8 @@ export const IdentifiedConnection: MessageFns<IdentifiedConnection> = {
     if (message.counterparty !== undefined) {
       obj.counterparty = Counterparty.toJSON(message.counterparty);
     }
-    if (!message.delayPeriod.equals(Long.UZERO)) {
-      obj.delayPeriod = (message.delayPeriod || Long.UZERO).toString();
+    if (message.delayPeriod !== 0n) {
+      obj.delayPeriod = message.delayPeriod.toString();
     }
     return obj;
   },
@@ -451,9 +454,7 @@ export const IdentifiedConnection: MessageFns<IdentifiedConnection> = {
     message.counterparty = (object.counterparty !== undefined && object.counterparty !== null)
       ? Counterparty.fromPartial(object.counterparty)
       : undefined;
-    message.delayPeriod = (object.delayPeriod !== undefined && object.delayPeriod !== null)
-      ? Long.fromValue(object.delayPeriod)
-      : Long.UZERO;
+    message.delayPeriod = object.delayPeriod ?? 0n;
     return message;
   },
 };
@@ -775,13 +776,16 @@ export const Version: MessageFns<Version> = {
 };
 
 function createBaseParams(): Params {
-  return { maxExpectedTimePerBlock: Long.UZERO };
+  return { maxExpectedTimePerBlock: 0n };
 }
 
 export const Params: MessageFns<Params> = {
   encode(message: Params, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.maxExpectedTimePerBlock.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.maxExpectedTimePerBlock.toString());
+    if (message.maxExpectedTimePerBlock !== 0n) {
+      if (BigInt.asUintN(64, message.maxExpectedTimePerBlock) !== message.maxExpectedTimePerBlock) {
+        throw new globalThis.Error("value provided for field message.maxExpectedTimePerBlock of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.maxExpectedTimePerBlock);
     }
     return writer;
   },
@@ -798,7 +802,7 @@ export const Params: MessageFns<Params> = {
             break;
           }
 
-          message.maxExpectedTimePerBlock = Long.fromString(reader.uint64().toString(), true);
+          message.maxExpectedTimePerBlock = reader.uint64() as bigint;
           continue;
         }
       }
@@ -813,17 +817,17 @@ export const Params: MessageFns<Params> = {
   fromJSON(object: any): Params {
     return {
       maxExpectedTimePerBlock: isSet(object.maxExpectedTimePerBlock)
-        ? Long.fromValue(object.maxExpectedTimePerBlock)
+        ? BigInt(object.maxExpectedTimePerBlock)
         : isSet(object.max_expected_time_per_block)
-        ? Long.fromValue(object.max_expected_time_per_block)
-        : Long.UZERO,
+        ? BigInt(object.max_expected_time_per_block)
+        : 0n,
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    if (!message.maxExpectedTimePerBlock.equals(Long.UZERO)) {
-      obj.maxExpectedTimePerBlock = (message.maxExpectedTimePerBlock || Long.UZERO).toString();
+    if (message.maxExpectedTimePerBlock !== 0n) {
+      obj.maxExpectedTimePerBlock = message.maxExpectedTimePerBlock.toString();
     }
     return obj;
   },
@@ -833,18 +837,15 @@ export const Params: MessageFns<Params> = {
   },
   fromPartial<I extends Exact<DeepPartial<Params>, I>>(object: I): Params {
     const message = createBaseParams();
-    message.maxExpectedTimePerBlock =
-      (object.maxExpectedTimePerBlock !== undefined && object.maxExpectedTimePerBlock !== null)
-        ? Long.fromValue(object.maxExpectedTimePerBlock)
-        : Long.UZERO;
+    message.maxExpectedTimePerBlock = object.maxExpectedTimePerBlock ?? 0n;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

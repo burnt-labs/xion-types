@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { AccessConfig, Params } from "./types";
 
@@ -30,7 +29,7 @@ export interface MsgStoreCode {
 /** MsgStoreCodeResponse returns store result data. */
 export interface MsgStoreCodeResponse {
   /** CodeID is the reference to the stored WASM code */
-  codeId: Long;
+  codeId: bigint;
   /** Checksum is the sha256 hash of the stored code */
   checksum: Uint8Array;
 }
@@ -45,7 +44,7 @@ export interface MsgInstantiateContract {
   /** Admin is an optional address that can execute migrations */
   admin: string;
   /** CodeID is the reference to the stored WASM code */
-  codeId: Long;
+  codeId: bigint;
   /** Label is optional metadata to be stored with a contract instance. */
   label: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
@@ -72,7 +71,7 @@ export interface MsgInstantiateContract2 {
   /** Admin is an optional address that can execute migrations */
   admin: string;
   /** CodeID is the reference to the stored WASM code */
-  codeId: Long;
+  codeId: bigint;
   /** Label is optional metadata to be stored with a contract instance. */
   label: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
@@ -121,7 +120,7 @@ export interface MsgMigrateContract {
   /** Contract is the address of the smart contract */
   contract: string;
   /** CodeID references the new WASM code */
-  codeId: Long;
+  codeId: bigint;
   /** Msg json encoded message to be passed to the contract on migration */
   msg: Uint8Array;
 }
@@ -166,7 +165,7 @@ export interface MsgUpdateInstantiateConfig {
   /** Sender is the that actor that signed the messages */
   sender: string;
   /** CodeID references the stored WASM code */
-  codeId: Long;
+  codeId: bigint;
   /** NewInstantiatePermission is the new access control */
   newInstantiatePermission?: AccessConfig | undefined;
 }
@@ -234,7 +233,7 @@ export interface MsgPinCodes {
   /** Authority is the address of the governance account. */
   authority: string;
   /** CodeIDs references the new WASM codes */
-  codeIds: Long[];
+  codeIds: bigint[];
 }
 
 /**
@@ -255,7 +254,7 @@ export interface MsgUnpinCodes {
   /** Authority is the address of the governance account. */
   authority: string;
   /** CodeIDs references the WASM codes */
-  codeIds: Long[];
+  codeIds: bigint[];
 }
 
 /**
@@ -388,7 +387,7 @@ export interface MsgStoreAndMigrateContract {
  */
 export interface MsgStoreAndMigrateContractResponse {
   /** CodeID is the reference to the stored WASM code */
-  codeId: Long;
+  codeId: bigint;
   /** Checksum is the sha256 hash of the stored code */
   checksum: Uint8Array;
   /** Data contains bytes to returned from the contract */
@@ -513,13 +512,16 @@ export const MsgStoreCode: MessageFns<MsgStoreCode> = {
 };
 
 function createBaseMsgStoreCodeResponse(): MsgStoreCodeResponse {
-  return { codeId: Long.UZERO, checksum: new Uint8Array(0) };
+  return { codeId: 0n, checksum: new Uint8Array(0) };
 }
 
 export const MsgStoreCodeResponse: MessageFns<MsgStoreCodeResponse> = {
   encode(message: MsgStoreCodeResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     if (message.checksum.length !== 0) {
       writer.uint32(18).bytes(message.checksum);
@@ -539,7 +541,7 @@ export const MsgStoreCodeResponse: MessageFns<MsgStoreCodeResponse> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -561,19 +563,15 @@ export const MsgStoreCodeResponse: MessageFns<MsgStoreCodeResponse> = {
 
   fromJSON(object: any): MsgStoreCodeResponse {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       checksum: isSet(object.checksum) ? bytesFromBase64(object.checksum) : new Uint8Array(0),
     };
   },
 
   toJSON(message: MsgStoreCodeResponse): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.checksum.length !== 0) {
       obj.checksum = base64FromBytes(message.checksum);
@@ -586,16 +584,14 @@ export const MsgStoreCodeResponse: MessageFns<MsgStoreCodeResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgStoreCodeResponse>, I>>(object: I): MsgStoreCodeResponse {
     const message = createBaseMsgStoreCodeResponse();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.checksum = object.checksum ?? new Uint8Array(0);
     return message;
   },
 };
 
 function createBaseMsgInstantiateContract(): MsgInstantiateContract {
-  return { sender: "", admin: "", codeId: Long.UZERO, label: "", msg: new Uint8Array(0), funds: [] };
+  return { sender: "", admin: "", codeId: 0n, label: "", msg: new Uint8Array(0), funds: [] };
 }
 
 export const MsgInstantiateContract: MessageFns<MsgInstantiateContract> = {
@@ -606,8 +602,11 @@ export const MsgInstantiateContract: MessageFns<MsgInstantiateContract> = {
     if (message.admin !== "") {
       writer.uint32(18).string(message.admin);
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.codeId);
     }
     if (message.label !== "") {
       writer.uint32(34).string(message.label);
@@ -649,7 +648,7 @@ export const MsgInstantiateContract: MessageFns<MsgInstantiateContract> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -689,11 +688,7 @@ export const MsgInstantiateContract: MessageFns<MsgInstantiateContract> = {
     return {
       sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
       admin: isSet(object.admin) ? globalThis.String(object.admin) : "",
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       label: isSet(object.label) ? globalThis.String(object.label) : "",
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(0),
       funds: globalThis.Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : [],
@@ -708,8 +703,8 @@ export const MsgInstantiateContract: MessageFns<MsgInstantiateContract> = {
     if (message.admin !== "") {
       obj.admin = message.admin;
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.label !== "") {
       obj.label = message.label;
@@ -730,9 +725,7 @@ export const MsgInstantiateContract: MessageFns<MsgInstantiateContract> = {
     const message = createBaseMsgInstantiateContract();
     message.sender = object.sender ?? "";
     message.admin = object.admin ?? "";
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.label = object.label ?? "";
     message.msg = object.msg ?? new Uint8Array(0);
     message.funds = object.funds?.map((e) => Coin.fromPartial(e)) || [];
@@ -822,7 +815,7 @@ function createBaseMsgInstantiateContract2(): MsgInstantiateContract2 {
   return {
     sender: "",
     admin: "",
-    codeId: Long.UZERO,
+    codeId: 0n,
     label: "",
     msg: new Uint8Array(0),
     funds: [],
@@ -839,8 +832,11 @@ export const MsgInstantiateContract2: MessageFns<MsgInstantiateContract2> = {
     if (message.admin !== "") {
       writer.uint32(18).string(message.admin);
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.codeId);
     }
     if (message.label !== "") {
       writer.uint32(34).string(message.label);
@@ -888,7 +884,7 @@ export const MsgInstantiateContract2: MessageFns<MsgInstantiateContract2> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -944,11 +940,7 @@ export const MsgInstantiateContract2: MessageFns<MsgInstantiateContract2> = {
     return {
       sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
       admin: isSet(object.admin) ? globalThis.String(object.admin) : "",
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       label: isSet(object.label) ? globalThis.String(object.label) : "",
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(0),
       funds: globalThis.Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : [],
@@ -969,8 +961,8 @@ export const MsgInstantiateContract2: MessageFns<MsgInstantiateContract2> = {
     if (message.admin !== "") {
       obj.admin = message.admin;
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.label !== "") {
       obj.label = message.label;
@@ -997,9 +989,7 @@ export const MsgInstantiateContract2: MessageFns<MsgInstantiateContract2> = {
     const message = createBaseMsgInstantiateContract2();
     message.sender = object.sender ?? "";
     message.admin = object.admin ?? "";
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.label = object.label ?? "";
     message.msg = object.msg ?? new Uint8Array(0);
     message.funds = object.funds?.map((e) => Coin.fromPartial(e)) || [];
@@ -1254,7 +1244,7 @@ export const MsgExecuteContractResponse: MessageFns<MsgExecuteContractResponse> 
 };
 
 function createBaseMsgMigrateContract(): MsgMigrateContract {
-  return { sender: "", contract: "", codeId: Long.UZERO, msg: new Uint8Array(0) };
+  return { sender: "", contract: "", codeId: 0n, msg: new Uint8Array(0) };
 }
 
 export const MsgMigrateContract: MessageFns<MsgMigrateContract> = {
@@ -1265,8 +1255,11 @@ export const MsgMigrateContract: MessageFns<MsgMigrateContract> = {
     if (message.contract !== "") {
       writer.uint32(18).string(message.contract);
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.codeId);
     }
     if (message.msg.length !== 0) {
       writer.uint32(34).bytes(message.msg);
@@ -1302,7 +1295,7 @@ export const MsgMigrateContract: MessageFns<MsgMigrateContract> = {
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -1326,11 +1319,7 @@ export const MsgMigrateContract: MessageFns<MsgMigrateContract> = {
     return {
       sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
       contract: isSet(object.contract) ? globalThis.String(object.contract) : "",
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(0),
     };
   },
@@ -1343,8 +1332,8 @@ export const MsgMigrateContract: MessageFns<MsgMigrateContract> = {
     if (message.contract !== "") {
       obj.contract = message.contract;
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.msg.length !== 0) {
       obj.msg = base64FromBytes(message.msg);
@@ -1359,9 +1348,7 @@ export const MsgMigrateContract: MessageFns<MsgMigrateContract> = {
     const message = createBaseMsgMigrateContract();
     message.sender = object.sender ?? "";
     message.contract = object.contract ?? "";
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.msg = object.msg ?? new Uint8Array(0);
     return message;
   },
@@ -1684,7 +1671,7 @@ export const MsgClearAdminResponse: MessageFns<MsgClearAdminResponse> = {
 };
 
 function createBaseMsgUpdateInstantiateConfig(): MsgUpdateInstantiateConfig {
-  return { sender: "", codeId: Long.UZERO, newInstantiatePermission: undefined };
+  return { sender: "", codeId: 0n, newInstantiatePermission: undefined };
 }
 
 export const MsgUpdateInstantiateConfig: MessageFns<MsgUpdateInstantiateConfig> = {
@@ -1692,8 +1679,11 @@ export const MsgUpdateInstantiateConfig: MessageFns<MsgUpdateInstantiateConfig> 
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.codeId);
     }
     if (message.newInstantiatePermission !== undefined) {
       AccessConfig.encode(message.newInstantiatePermission, writer.uint32(26).fork()).join();
@@ -1721,7 +1711,7 @@ export const MsgUpdateInstantiateConfig: MessageFns<MsgUpdateInstantiateConfig> 
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 3: {
@@ -1744,11 +1734,7 @@ export const MsgUpdateInstantiateConfig: MessageFns<MsgUpdateInstantiateConfig> 
   fromJSON(object: any): MsgUpdateInstantiateConfig {
     return {
       sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       newInstantiatePermission: isSet(object.newInstantiatePermission)
         ? AccessConfig.fromJSON(object.newInstantiatePermission)
         : isSet(object.new_instantiate_permission)
@@ -1762,8 +1748,8 @@ export const MsgUpdateInstantiateConfig: MessageFns<MsgUpdateInstantiateConfig> 
     if (message.sender !== "") {
       obj.sender = message.sender;
     }
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.newInstantiatePermission !== undefined) {
       obj.newInstantiatePermission = AccessConfig.toJSON(message.newInstantiatePermission);
@@ -1777,9 +1763,7 @@ export const MsgUpdateInstantiateConfig: MessageFns<MsgUpdateInstantiateConfig> 
   fromPartial<I extends Exact<DeepPartial<MsgUpdateInstantiateConfig>, I>>(object: I): MsgUpdateInstantiateConfig {
     const message = createBaseMsgUpdateInstantiateConfig();
     message.sender = object.sender ?? "";
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.newInstantiatePermission =
       (object.newInstantiatePermission !== undefined && object.newInstantiatePermission !== null)
         ? AccessConfig.fromPartial(object.newInstantiatePermission)
@@ -2116,7 +2100,10 @@ export const MsgPinCodes: MessageFns<MsgPinCodes> = {
       writer.uint32(10).string(message.authority);
     }
     for (const v of message.codeIds) {
-      writer.uint32(16).uint64(v!.toString());
+      if (BigInt.asUintN(64, v!) !== v!) {
+        throw new globalThis.Error("value provided for field v! of type uint64 too large");
+      }
+      writer.uint32(16).uint64(v!);
     }
     return writer;
   },
@@ -2138,7 +2125,7 @@ export const MsgPinCodes: MessageFns<MsgPinCodes> = {
         }
         case 2: {
           if (tag === 16) {
-            message.codeIds.push(Long.fromString(reader.uint64().toString(), true));
+            message.codeIds.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2146,7 +2133,7 @@ export const MsgPinCodes: MessageFns<MsgPinCodes> = {
           if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.codeIds.push(Long.fromString(reader.uint64().toString(), true));
+              message.codeIds.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2167,9 +2154,9 @@ export const MsgPinCodes: MessageFns<MsgPinCodes> = {
     return {
       authority: isSet(object.authority) ? globalThis.String(object.authority) : "",
       codeIds: globalThis.Array.isArray(object?.codeIds)
-        ? object.codeIds.map((e: any) => Long.fromValue(e))
+        ? object.codeIds.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.code_ids)
-        ? object.code_ids.map((e: any) => Long.fromValue(e))
+        ? object.code_ids.map((e: any) => BigInt(e))
         : [],
     };
   },
@@ -2180,7 +2167,7 @@ export const MsgPinCodes: MessageFns<MsgPinCodes> = {
       obj.authority = message.authority;
     }
     if (message.codeIds?.length) {
-      obj.codeIds = message.codeIds.map((e) => (e || Long.UZERO).toString());
+      obj.codeIds = message.codeIds.map((e) => e.toString());
     }
     return obj;
   },
@@ -2191,7 +2178,7 @@ export const MsgPinCodes: MessageFns<MsgPinCodes> = {
   fromPartial<I extends Exact<DeepPartial<MsgPinCodes>, I>>(object: I): MsgPinCodes {
     const message = createBaseMsgPinCodes();
     message.authority = object.authority ?? "";
-    message.codeIds = object.codeIds?.map((e) => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map((e) => e) || [];
     return message;
   },
 };
@@ -2249,7 +2236,10 @@ export const MsgUnpinCodes: MessageFns<MsgUnpinCodes> = {
       writer.uint32(10).string(message.authority);
     }
     for (const v of message.codeIds) {
-      writer.uint32(16).uint64(v!.toString());
+      if (BigInt.asUintN(64, v!) !== v!) {
+        throw new globalThis.Error("value provided for field v! of type uint64 too large");
+      }
+      writer.uint32(16).uint64(v!);
     }
     return writer;
   },
@@ -2271,7 +2261,7 @@ export const MsgUnpinCodes: MessageFns<MsgUnpinCodes> = {
         }
         case 2: {
           if (tag === 16) {
-            message.codeIds.push(Long.fromString(reader.uint64().toString(), true));
+            message.codeIds.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2279,7 +2269,7 @@ export const MsgUnpinCodes: MessageFns<MsgUnpinCodes> = {
           if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.codeIds.push(Long.fromString(reader.uint64().toString(), true));
+              message.codeIds.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2300,9 +2290,9 @@ export const MsgUnpinCodes: MessageFns<MsgUnpinCodes> = {
     return {
       authority: isSet(object.authority) ? globalThis.String(object.authority) : "",
       codeIds: globalThis.Array.isArray(object?.codeIds)
-        ? object.codeIds.map((e: any) => Long.fromValue(e))
+        ? object.codeIds.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.code_ids)
-        ? object.code_ids.map((e: any) => Long.fromValue(e))
+        ? object.code_ids.map((e: any) => BigInt(e))
         : [],
     };
   },
@@ -2313,7 +2303,7 @@ export const MsgUnpinCodes: MessageFns<MsgUnpinCodes> = {
       obj.authority = message.authority;
     }
     if (message.codeIds?.length) {
-      obj.codeIds = message.codeIds.map((e) => (e || Long.UZERO).toString());
+      obj.codeIds = message.codeIds.map((e) => e.toString());
     }
     return obj;
   },
@@ -2324,7 +2314,7 @@ export const MsgUnpinCodes: MessageFns<MsgUnpinCodes> = {
   fromPartial<I extends Exact<DeepPartial<MsgUnpinCodes>, I>>(object: I): MsgUnpinCodes {
     const message = createBaseMsgUnpinCodes();
     message.authority = object.authority ?? "";
-    message.codeIds = object.codeIds?.map((e) => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map((e) => e) || [];
     return message;
   },
 };
@@ -3103,13 +3093,16 @@ export const MsgStoreAndMigrateContract: MessageFns<MsgStoreAndMigrateContract> 
 };
 
 function createBaseMsgStoreAndMigrateContractResponse(): MsgStoreAndMigrateContractResponse {
-  return { codeId: Long.UZERO, checksum: new Uint8Array(0), data: new Uint8Array(0) };
+  return { codeId: 0n, checksum: new Uint8Array(0), data: new Uint8Array(0) };
 }
 
 export const MsgStoreAndMigrateContractResponse: MessageFns<MsgStoreAndMigrateContractResponse> = {
   encode(message: MsgStoreAndMigrateContractResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.codeId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.codeId.toString());
+    if (message.codeId !== 0n) {
+      if (BigInt.asUintN(64, message.codeId) !== message.codeId) {
+        throw new globalThis.Error("value provided for field message.codeId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.codeId);
     }
     if (message.checksum.length !== 0) {
       writer.uint32(18).bytes(message.checksum);
@@ -3132,7 +3125,7 @@ export const MsgStoreAndMigrateContractResponse: MessageFns<MsgStoreAndMigrateCo
             break;
           }
 
-          message.codeId = Long.fromString(reader.uint64().toString(), true);
+          message.codeId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -3162,11 +3155,7 @@ export const MsgStoreAndMigrateContractResponse: MessageFns<MsgStoreAndMigrateCo
 
   fromJSON(object: any): MsgStoreAndMigrateContractResponse {
     return {
-      codeId: isSet(object.codeId)
-        ? Long.fromValue(object.codeId)
-        : isSet(object.code_id)
-        ? Long.fromValue(object.code_id)
-        : Long.UZERO,
+      codeId: isSet(object.codeId) ? BigInt(object.codeId) : isSet(object.code_id) ? BigInt(object.code_id) : 0n,
       checksum: isSet(object.checksum) ? bytesFromBase64(object.checksum) : new Uint8Array(0),
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
     };
@@ -3174,8 +3163,8 @@ export const MsgStoreAndMigrateContractResponse: MessageFns<MsgStoreAndMigrateCo
 
   toJSON(message: MsgStoreAndMigrateContractResponse): unknown {
     const obj: any = {};
-    if (!message.codeId.equals(Long.UZERO)) {
-      obj.codeId = (message.codeId || Long.UZERO).toString();
+    if (message.codeId !== 0n) {
+      obj.codeId = message.codeId.toString();
     }
     if (message.checksum.length !== 0) {
       obj.checksum = base64FromBytes(message.checksum);
@@ -3195,9 +3184,7 @@ export const MsgStoreAndMigrateContractResponse: MessageFns<MsgStoreAndMigrateCo
     object: I,
   ): MsgStoreAndMigrateContractResponse {
     const message = createBaseMsgStoreAndMigrateContractResponse();
-    message.codeId = (object.codeId !== undefined && object.codeId !== null)
-      ? Long.fromValue(object.codeId)
-      : Long.UZERO;
+    message.codeId = object.codeId ?? 0n;
     message.checksum = object.checksum ?? new Uint8Array(0);
     message.data = object.data ?? new Uint8Array(0);
     return message;
@@ -4080,10 +4067,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

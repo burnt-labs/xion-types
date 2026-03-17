@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Coin, DecCoin } from "../../base/v1beta1/coin";
 
 export const protobufPackage = "cosmos.distribution.v1beta1";
@@ -57,7 +56,7 @@ export interface ValidatorHistoricalRewards {
  */
 export interface ValidatorCurrentRewards {
   rewards: DecCoin[];
-  period: Long;
+  period: bigint;
 }
 
 /**
@@ -83,7 +82,7 @@ export interface ValidatorOutstandingRewards {
  * for delegations which are withdrawn after a slash has occurred.
  */
 export interface ValidatorSlashEvent {
-  validatorPeriod: Long;
+  validatorPeriod: bigint;
   fraction: string;
 }
 
@@ -125,9 +124,9 @@ export interface CommunityPoolSpendProposal {
  * thus sdk.Dec is used.
  */
 export interface DelegatorStartingInfo {
-  previousPeriod: Long;
+  previousPeriod: bigint;
   stake: string;
-  height: Long;
+  height: bigint;
 }
 
 /**
@@ -360,7 +359,7 @@ export const ValidatorHistoricalRewards: MessageFns<ValidatorHistoricalRewards> 
 };
 
 function createBaseValidatorCurrentRewards(): ValidatorCurrentRewards {
-  return { rewards: [], period: Long.UZERO };
+  return { rewards: [], period: 0n };
 }
 
 export const ValidatorCurrentRewards: MessageFns<ValidatorCurrentRewards> = {
@@ -368,8 +367,11 @@ export const ValidatorCurrentRewards: MessageFns<ValidatorCurrentRewards> = {
     for (const v of message.rewards) {
       DecCoin.encode(v!, writer.uint32(10).fork()).join();
     }
-    if (!message.period.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.period.toString());
+    if (message.period !== 0n) {
+      if (BigInt.asUintN(64, message.period) !== message.period) {
+        throw new globalThis.Error("value provided for field message.period of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.period);
     }
     return writer;
   },
@@ -394,7 +396,7 @@ export const ValidatorCurrentRewards: MessageFns<ValidatorCurrentRewards> = {
             break;
           }
 
-          message.period = Long.fromString(reader.uint64().toString(), true);
+          message.period = reader.uint64() as bigint;
           continue;
         }
       }
@@ -409,7 +411,7 @@ export const ValidatorCurrentRewards: MessageFns<ValidatorCurrentRewards> = {
   fromJSON(object: any): ValidatorCurrentRewards {
     return {
       rewards: globalThis.Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromJSON(e)) : [],
-      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO,
+      period: isSet(object.period) ? BigInt(object.period) : 0n,
     };
   },
 
@@ -418,8 +420,8 @@ export const ValidatorCurrentRewards: MessageFns<ValidatorCurrentRewards> = {
     if (message.rewards?.length) {
       obj.rewards = message.rewards.map((e) => DecCoin.toJSON(e));
     }
-    if (!message.period.equals(Long.UZERO)) {
-      obj.period = (message.period || Long.UZERO).toString();
+    if (message.period !== 0n) {
+      obj.period = message.period.toString();
     }
     return obj;
   },
@@ -430,9 +432,7 @@ export const ValidatorCurrentRewards: MessageFns<ValidatorCurrentRewards> = {
   fromPartial<I extends Exact<DeepPartial<ValidatorCurrentRewards>, I>>(object: I): ValidatorCurrentRewards {
     const message = createBaseValidatorCurrentRewards();
     message.rewards = object.rewards?.map((e) => DecCoin.fromPartial(e)) || [];
-    message.period = (object.period !== undefined && object.period !== null)
-      ? Long.fromValue(object.period)
-      : Long.UZERO;
+    message.period = object.period ?? 0n;
     return message;
   },
 };
@@ -562,13 +562,16 @@ export const ValidatorOutstandingRewards: MessageFns<ValidatorOutstandingRewards
 };
 
 function createBaseValidatorSlashEvent(): ValidatorSlashEvent {
-  return { validatorPeriod: Long.UZERO, fraction: "" };
+  return { validatorPeriod: 0n, fraction: "" };
 }
 
 export const ValidatorSlashEvent: MessageFns<ValidatorSlashEvent> = {
   encode(message: ValidatorSlashEvent, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.validatorPeriod.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.validatorPeriod.toString());
+    if (message.validatorPeriod !== 0n) {
+      if (BigInt.asUintN(64, message.validatorPeriod) !== message.validatorPeriod) {
+        throw new globalThis.Error("value provided for field message.validatorPeriod of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.validatorPeriod);
     }
     if (message.fraction !== "") {
       writer.uint32(18).string(message.fraction);
@@ -588,7 +591,7 @@ export const ValidatorSlashEvent: MessageFns<ValidatorSlashEvent> = {
             break;
           }
 
-          message.validatorPeriod = Long.fromString(reader.uint64().toString(), true);
+          message.validatorPeriod = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -611,18 +614,18 @@ export const ValidatorSlashEvent: MessageFns<ValidatorSlashEvent> = {
   fromJSON(object: any): ValidatorSlashEvent {
     return {
       validatorPeriod: isSet(object.validatorPeriod)
-        ? Long.fromValue(object.validatorPeriod)
+        ? BigInt(object.validatorPeriod)
         : isSet(object.validator_period)
-        ? Long.fromValue(object.validator_period)
-        : Long.UZERO,
+        ? BigInt(object.validator_period)
+        : 0n,
       fraction: isSet(object.fraction) ? globalThis.String(object.fraction) : "",
     };
   },
 
   toJSON(message: ValidatorSlashEvent): unknown {
     const obj: any = {};
-    if (!message.validatorPeriod.equals(Long.UZERO)) {
-      obj.validatorPeriod = (message.validatorPeriod || Long.UZERO).toString();
+    if (message.validatorPeriod !== 0n) {
+      obj.validatorPeriod = message.validatorPeriod.toString();
     }
     if (message.fraction !== "") {
       obj.fraction = message.fraction;
@@ -635,9 +638,7 @@ export const ValidatorSlashEvent: MessageFns<ValidatorSlashEvent> = {
   },
   fromPartial<I extends Exact<DeepPartial<ValidatorSlashEvent>, I>>(object: I): ValidatorSlashEvent {
     const message = createBaseValidatorSlashEvent();
-    message.validatorPeriod = (object.validatorPeriod !== undefined && object.validatorPeriod !== null)
-      ? Long.fromValue(object.validatorPeriod)
-      : Long.UZERO;
+    message.validatorPeriod = object.validatorPeriod ?? 0n;
     message.fraction = object.fraction ?? "";
     return message;
   },
@@ -880,19 +881,25 @@ export const CommunityPoolSpendProposal: MessageFns<CommunityPoolSpendProposal> 
 };
 
 function createBaseDelegatorStartingInfo(): DelegatorStartingInfo {
-  return { previousPeriod: Long.UZERO, stake: "", height: Long.UZERO };
+  return { previousPeriod: 0n, stake: "", height: 0n };
 }
 
 export const DelegatorStartingInfo: MessageFns<DelegatorStartingInfo> = {
   encode(message: DelegatorStartingInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.previousPeriod.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.previousPeriod.toString());
+    if (message.previousPeriod !== 0n) {
+      if (BigInt.asUintN(64, message.previousPeriod) !== message.previousPeriod) {
+        throw new globalThis.Error("value provided for field message.previousPeriod of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.previousPeriod);
     }
     if (message.stake !== "") {
       writer.uint32(18).string(message.stake);
     }
-    if (!message.height.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asUintN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.height);
     }
     return writer;
   },
@@ -909,7 +916,7 @@ export const DelegatorStartingInfo: MessageFns<DelegatorStartingInfo> = {
             break;
           }
 
-          message.previousPeriod = Long.fromString(reader.uint64().toString(), true);
+          message.previousPeriod = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -925,7 +932,7 @@ export const DelegatorStartingInfo: MessageFns<DelegatorStartingInfo> = {
             break;
           }
 
-          message.height = Long.fromString(reader.uint64().toString(), true);
+          message.height = reader.uint64() as bigint;
           continue;
         }
       }
@@ -940,25 +947,25 @@ export const DelegatorStartingInfo: MessageFns<DelegatorStartingInfo> = {
   fromJSON(object: any): DelegatorStartingInfo {
     return {
       previousPeriod: isSet(object.previousPeriod)
-        ? Long.fromValue(object.previousPeriod)
+        ? BigInt(object.previousPeriod)
         : isSet(object.previous_period)
-        ? Long.fromValue(object.previous_period)
-        : Long.UZERO,
+        ? BigInt(object.previous_period)
+        : 0n,
       stake: isSet(object.stake) ? globalThis.String(object.stake) : "",
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
     };
   },
 
   toJSON(message: DelegatorStartingInfo): unknown {
     const obj: any = {};
-    if (!message.previousPeriod.equals(Long.UZERO)) {
-      obj.previousPeriod = (message.previousPeriod || Long.UZERO).toString();
+    if (message.previousPeriod !== 0n) {
+      obj.previousPeriod = message.previousPeriod.toString();
     }
     if (message.stake !== "") {
       obj.stake = message.stake;
     }
-    if (!message.height.equals(Long.UZERO)) {
-      obj.height = (message.height || Long.UZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     return obj;
   },
@@ -968,13 +975,9 @@ export const DelegatorStartingInfo: MessageFns<DelegatorStartingInfo> = {
   },
   fromPartial<I extends Exact<DeepPartial<DelegatorStartingInfo>, I>>(object: I): DelegatorStartingInfo {
     const message = createBaseDelegatorStartingInfo();
-    message.previousPeriod = (object.previousPeriod !== undefined && object.previousPeriod !== null)
-      ? Long.fromValue(object.previousPeriod)
-      : Long.UZERO;
+    message.previousPeriod = object.previousPeriod ?? 0n;
     message.stake = object.stake ?? "";
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.UZERO;
+    message.height = object.height ?? 0n;
     return message;
   },
 };
@@ -1187,10 +1190,10 @@ export const CommunityPoolSpendProposalWithDeposit: MessageFns<CommunityPoolSpen
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

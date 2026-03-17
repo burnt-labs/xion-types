@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Coin } from "../../base/v1beta1/coin";
 import { Params } from "./types";
@@ -84,7 +83,7 @@ export interface MsgCancelContinuousFundResponse {
     | Date
     | undefined;
   /** CanceledHeight defines the canceled block height. */
-  canceledHeight: Long;
+  canceledHeight: bigint;
   /** Recipient is the account address string of the recipient whose funds are cancelled. */
   recipient: string;
 }
@@ -590,7 +589,7 @@ export const MsgCancelContinuousFund: MessageFns<MsgCancelContinuousFund> = {
 };
 
 function createBaseMsgCancelContinuousFundResponse(): MsgCancelContinuousFundResponse {
-  return { canceledTime: undefined, canceledHeight: Long.UZERO, recipient: "" };
+  return { canceledTime: undefined, canceledHeight: 0n, recipient: "" };
 }
 
 export const MsgCancelContinuousFundResponse: MessageFns<MsgCancelContinuousFundResponse> = {
@@ -598,8 +597,11 @@ export const MsgCancelContinuousFundResponse: MessageFns<MsgCancelContinuousFund
     if (message.canceledTime !== undefined) {
       Timestamp.encode(toTimestamp(message.canceledTime), writer.uint32(10).fork()).join();
     }
-    if (!message.canceledHeight.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.canceledHeight.toString());
+    if (message.canceledHeight !== 0n) {
+      if (BigInt.asUintN(64, message.canceledHeight) !== message.canceledHeight) {
+        throw new globalThis.Error("value provided for field message.canceledHeight of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.canceledHeight);
     }
     if (message.recipient !== "") {
       writer.uint32(26).string(message.recipient);
@@ -627,7 +629,7 @@ export const MsgCancelContinuousFundResponse: MessageFns<MsgCancelContinuousFund
             break;
           }
 
-          message.canceledHeight = Long.fromString(reader.uint64().toString(), true);
+          message.canceledHeight = reader.uint64() as bigint;
           continue;
         }
         case 3: {
@@ -655,10 +657,10 @@ export const MsgCancelContinuousFundResponse: MessageFns<MsgCancelContinuousFund
         ? fromJsonTimestamp(object.canceled_time)
         : undefined,
       canceledHeight: isSet(object.canceledHeight)
-        ? Long.fromValue(object.canceledHeight)
+        ? BigInt(object.canceledHeight)
         : isSet(object.canceled_height)
-        ? Long.fromValue(object.canceled_height)
-        : Long.UZERO,
+        ? BigInt(object.canceled_height)
+        : 0n,
       recipient: isSet(object.recipient) ? globalThis.String(object.recipient) : "",
     };
   },
@@ -668,8 +670,8 @@ export const MsgCancelContinuousFundResponse: MessageFns<MsgCancelContinuousFund
     if (message.canceledTime !== undefined) {
       obj.canceledTime = message.canceledTime.toISOString();
     }
-    if (!message.canceledHeight.equals(Long.UZERO)) {
-      obj.canceledHeight = (message.canceledHeight || Long.UZERO).toString();
+    if (message.canceledHeight !== 0n) {
+      obj.canceledHeight = message.canceledHeight.toString();
     }
     if (message.recipient !== "") {
       obj.recipient = message.recipient;
@@ -685,9 +687,7 @@ export const MsgCancelContinuousFundResponse: MessageFns<MsgCancelContinuousFund
   ): MsgCancelContinuousFundResponse {
     const message = createBaseMsgCancelContinuousFundResponse();
     message.canceledTime = object.canceledTime ?? undefined;
-    message.canceledHeight = (object.canceledHeight !== undefined && object.canceledHeight !== null)
-      ? Long.fromValue(object.canceledHeight)
-      : Long.UZERO;
+    message.canceledHeight = object.canceledHeight ?? 0n;
     message.recipient = object.recipient ?? "";
     return message;
   },
@@ -1086,10 +1086,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -1099,13 +1099,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -1118,10 +1118,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

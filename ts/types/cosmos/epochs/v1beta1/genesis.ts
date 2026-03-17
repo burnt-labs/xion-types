@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Duration } from "../../../google/protobuf/duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 
@@ -42,7 +41,7 @@ export interface EpochInfo {
    * The first tick (current_epoch=1) is defined as
    * the first block whose blocktime is greater than the EpochInfo start_time.
    */
-  currentEpoch: Long;
+  currentEpoch: bigint;
   /**
    * current_epoch_start_time describes the start time of the current timer
    * interval. The interval is (current_epoch_start_time,
@@ -74,7 +73,7 @@ export interface EpochInfo {
    * current_epoch_start_height is the block height at which the current epoch
    * started. (The block height at which the timer last ticked)
    */
-  currentEpochStartHeight: Long;
+  currentEpochStartHeight: bigint;
 }
 
 /** GenesisState defines the epochs module's genesis state. */
@@ -87,10 +86,10 @@ function createBaseEpochInfo(): EpochInfo {
     identifier: "",
     startTime: undefined,
     duration: undefined,
-    currentEpoch: Long.ZERO,
+    currentEpoch: 0n,
     currentEpochStartTime: undefined,
     epochCountingStarted: false,
-    currentEpochStartHeight: Long.ZERO,
+    currentEpochStartHeight: 0n,
   };
 }
 
@@ -105,8 +104,11 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.duration !== undefined) {
       Duration.encode(message.duration, writer.uint32(26).fork()).join();
     }
-    if (!message.currentEpoch.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.currentEpoch.toString());
+    if (message.currentEpoch !== 0n) {
+      if (BigInt.asIntN(64, message.currentEpoch) !== message.currentEpoch) {
+        throw new globalThis.Error("value provided for field message.currentEpoch of type int64 too large");
+      }
+      writer.uint32(32).int64(message.currentEpoch);
     }
     if (message.currentEpochStartTime !== undefined) {
       Timestamp.encode(toTimestamp(message.currentEpochStartTime), writer.uint32(42).fork()).join();
@@ -114,8 +116,11 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.epochCountingStarted !== false) {
       writer.uint32(48).bool(message.epochCountingStarted);
     }
-    if (!message.currentEpochStartHeight.equals(Long.ZERO)) {
-      writer.uint32(64).int64(message.currentEpochStartHeight.toString());
+    if (message.currentEpochStartHeight !== 0n) {
+      if (BigInt.asIntN(64, message.currentEpochStartHeight) !== message.currentEpochStartHeight) {
+        throw new globalThis.Error("value provided for field message.currentEpochStartHeight of type int64 too large");
+      }
+      writer.uint32(64).int64(message.currentEpochStartHeight);
     }
     return writer;
   },
@@ -156,7 +161,7 @@ export const EpochInfo: MessageFns<EpochInfo> = {
             break;
           }
 
-          message.currentEpoch = Long.fromString(reader.int64().toString());
+          message.currentEpoch = reader.int64() as bigint;
           continue;
         }
         case 5: {
@@ -180,7 +185,7 @@ export const EpochInfo: MessageFns<EpochInfo> = {
             break;
           }
 
-          message.currentEpochStartHeight = Long.fromString(reader.int64().toString());
+          message.currentEpochStartHeight = reader.int64() as bigint;
           continue;
         }
       }
@@ -202,10 +207,10 @@ export const EpochInfo: MessageFns<EpochInfo> = {
         : undefined,
       duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
       currentEpoch: isSet(object.currentEpoch)
-        ? Long.fromValue(object.currentEpoch)
+        ? BigInt(object.currentEpoch)
         : isSet(object.current_epoch)
-        ? Long.fromValue(object.current_epoch)
-        : Long.ZERO,
+        ? BigInt(object.current_epoch)
+        : 0n,
       currentEpochStartTime: isSet(object.currentEpochStartTime)
         ? fromJsonTimestamp(object.currentEpochStartTime)
         : isSet(object.current_epoch_start_time)
@@ -217,10 +222,10 @@ export const EpochInfo: MessageFns<EpochInfo> = {
         ? globalThis.Boolean(object.epoch_counting_started)
         : false,
       currentEpochStartHeight: isSet(object.currentEpochStartHeight)
-        ? Long.fromValue(object.currentEpochStartHeight)
+        ? BigInt(object.currentEpochStartHeight)
         : isSet(object.current_epoch_start_height)
-        ? Long.fromValue(object.current_epoch_start_height)
-        : Long.ZERO,
+        ? BigInt(object.current_epoch_start_height)
+        : 0n,
     };
   },
 
@@ -235,8 +240,8 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.duration !== undefined) {
       obj.duration = Duration.toJSON(message.duration);
     }
-    if (!message.currentEpoch.equals(Long.ZERO)) {
-      obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString();
+    if (message.currentEpoch !== 0n) {
+      obj.currentEpoch = message.currentEpoch.toString();
     }
     if (message.currentEpochStartTime !== undefined) {
       obj.currentEpochStartTime = message.currentEpochStartTime.toISOString();
@@ -244,8 +249,8 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     if (message.epochCountingStarted !== false) {
       obj.epochCountingStarted = message.epochCountingStarted;
     }
-    if (!message.currentEpochStartHeight.equals(Long.ZERO)) {
-      obj.currentEpochStartHeight = (message.currentEpochStartHeight || Long.ZERO).toString();
+    if (message.currentEpochStartHeight !== 0n) {
+      obj.currentEpochStartHeight = message.currentEpochStartHeight.toString();
     }
     return obj;
   },
@@ -260,15 +265,10 @@ export const EpochInfo: MessageFns<EpochInfo> = {
     message.duration = (object.duration !== undefined && object.duration !== null)
       ? Duration.fromPartial(object.duration)
       : undefined;
-    message.currentEpoch = (object.currentEpoch !== undefined && object.currentEpoch !== null)
-      ? Long.fromValue(object.currentEpoch)
-      : Long.ZERO;
+    message.currentEpoch = object.currentEpoch ?? 0n;
     message.currentEpochStartTime = object.currentEpochStartTime ?? undefined;
     message.epochCountingStarted = object.epochCountingStarted ?? false;
-    message.currentEpochStartHeight =
-      (object.currentEpochStartHeight !== undefined && object.currentEpochStartHeight !== null)
-        ? Long.fromValue(object.currentEpochStartHeight)
-        : Long.ZERO;
+    message.currentEpochStartHeight = object.currentEpochStartHeight ?? 0n;
     return message;
   },
 };
@@ -333,10 +333,10 @@ export const GenesisState: MessageFns<GenesisState> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -346,13 +346,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -365,10 +365,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {
