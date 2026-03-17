@@ -6,27 +6,32 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "tendermint.libs.bits";
 
 export interface BitArray {
-  bits: Long;
-  elems: Long[];
+  bits: bigint;
+  elems: bigint[];
 }
 
 function createBaseBitArray(): BitArray {
-  return { bits: Long.ZERO, elems: [] };
+  return { bits: 0n, elems: [] };
 }
 
 export const BitArray: MessageFns<BitArray> = {
   encode(message: BitArray, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.bits.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.bits.toString());
+    if (message.bits !== 0n) {
+      if (BigInt.asIntN(64, message.bits) !== message.bits) {
+        throw new globalThis.Error("value provided for field message.bits of type int64 too large");
+      }
+      writer.uint32(8).int64(message.bits);
     }
     writer.uint32(18).fork();
     for (const v of message.elems) {
-      writer.uint64(v.toString());
+      if (BigInt.asUintN(64, v) !== v) {
+        throw new globalThis.Error("a value provided in array field elems of type uint64 is too large");
+      }
+      writer.uint64(v);
     }
     writer.join();
     return writer;
@@ -44,12 +49,12 @@ export const BitArray: MessageFns<BitArray> = {
             break;
           }
 
-          message.bits = Long.fromString(reader.int64().toString());
+          message.bits = reader.int64() as bigint;
           continue;
         }
         case 2: {
           if (tag === 16) {
-            message.elems.push(Long.fromString(reader.uint64().toString(), true));
+            message.elems.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -57,7 +62,7 @@ export const BitArray: MessageFns<BitArray> = {
           if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.elems.push(Long.fromString(reader.uint64().toString(), true));
+              message.elems.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -76,18 +81,18 @@ export const BitArray: MessageFns<BitArray> = {
 
   fromJSON(object: any): BitArray {
     return {
-      bits: isSet(object.bits) ? Long.fromValue(object.bits) : Long.ZERO,
-      elems: globalThis.Array.isArray(object?.elems) ? object.elems.map((e: any) => Long.fromValue(e)) : [],
+      bits: isSet(object.bits) ? BigInt(object.bits) : 0n,
+      elems: globalThis.Array.isArray(object?.elems) ? object.elems.map((e: any) => BigInt(e)) : [],
     };
   },
 
   toJSON(message: BitArray): unknown {
     const obj: any = {};
-    if (!message.bits.equals(Long.ZERO)) {
-      obj.bits = (message.bits || Long.ZERO).toString();
+    if (message.bits !== 0n) {
+      obj.bits = message.bits.toString();
     }
     if (message.elems?.length) {
-      obj.elems = message.elems.map((e) => (e || Long.UZERO).toString());
+      obj.elems = message.elems.map((e) => e.toString());
     }
     return obj;
   },
@@ -97,16 +102,16 @@ export const BitArray: MessageFns<BitArray> = {
   },
   fromPartial<I extends Exact<DeepPartial<BitArray>, I>>(object: I): BitArray {
     const message = createBaseBitArray();
-    message.bits = (object.bits !== undefined && object.bits !== null) ? Long.fromValue(object.bits) : Long.ZERO;
-    message.elems = object.elems?.map((e) => Long.fromValue(e)) || [];
+    message.bits = object.bits ?? 0n;
+    message.elems = object.elems?.map((e) => e) || [];
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

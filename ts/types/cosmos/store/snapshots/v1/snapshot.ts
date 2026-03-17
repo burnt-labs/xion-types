@@ -6,13 +6,12 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 
 export const protobufPackage = "cosmos.store.snapshots.v1";
 
 /** Snapshot contains Tendermint state sync snapshot info. */
 export interface Snapshot {
-  height: Long;
+  height: bigint;
   format: number;
   chunks: number;
   hash: Uint8Array;
@@ -43,7 +42,7 @@ export interface SnapshotIAVLItem {
   key: Uint8Array;
   value: Uint8Array;
   /** version is block height */
-  version: Long;
+  version: bigint;
   /** height is depth of the tree. */
   height: number;
 }
@@ -60,13 +59,16 @@ export interface SnapshotExtensionPayload {
 }
 
 function createBaseSnapshot(): Snapshot {
-  return { height: Long.UZERO, format: 0, chunks: 0, hash: new Uint8Array(0), metadata: undefined };
+  return { height: 0n, format: 0, chunks: 0, hash: new Uint8Array(0), metadata: undefined };
 }
 
 export const Snapshot: MessageFns<Snapshot> = {
   encode(message: Snapshot, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.height.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asUintN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.height);
     }
     if (message.format !== 0) {
       writer.uint32(16).uint32(message.format);
@@ -95,7 +97,7 @@ export const Snapshot: MessageFns<Snapshot> = {
             break;
           }
 
-          message.height = Long.fromString(reader.uint64().toString(), true);
+          message.height = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -141,7 +143,7 @@ export const Snapshot: MessageFns<Snapshot> = {
 
   fromJSON(object: any): Snapshot {
     return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       format: isSet(object.format) ? globalThis.Number(object.format) : 0,
       chunks: isSet(object.chunks) ? globalThis.Number(object.chunks) : 0,
       hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(0),
@@ -151,8 +153,8 @@ export const Snapshot: MessageFns<Snapshot> = {
 
   toJSON(message: Snapshot): unknown {
     const obj: any = {};
-    if (!message.height.equals(Long.UZERO)) {
-      obj.height = (message.height || Long.UZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.format !== 0) {
       obj.format = Math.round(message.format);
@@ -174,9 +176,7 @@ export const Snapshot: MessageFns<Snapshot> = {
   },
   fromPartial<I extends Exact<DeepPartial<Snapshot>, I>>(object: I): Snapshot {
     const message = createBaseSnapshot();
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.UZERO;
+    message.height = object.height ?? 0n;
     message.format = object.format ?? 0;
     message.chunks = object.chunks ?? 0;
     message.hash = object.hash ?? new Uint8Array(0);
@@ -430,7 +430,7 @@ export const SnapshotStoreItem: MessageFns<SnapshotStoreItem> = {
 };
 
 function createBaseSnapshotIAVLItem(): SnapshotIAVLItem {
-  return { key: new Uint8Array(0), value: new Uint8Array(0), version: Long.ZERO, height: 0 };
+  return { key: new Uint8Array(0), value: new Uint8Array(0), version: 0n, height: 0 };
 }
 
 export const SnapshotIAVLItem: MessageFns<SnapshotIAVLItem> = {
@@ -441,8 +441,11 @@ export const SnapshotIAVLItem: MessageFns<SnapshotIAVLItem> = {
     if (message.value.length !== 0) {
       writer.uint32(18).bytes(message.value);
     }
-    if (!message.version.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.version.toString());
+    if (message.version !== 0n) {
+      if (BigInt.asIntN(64, message.version) !== message.version) {
+        throw new globalThis.Error("value provided for field message.version of type int64 too large");
+      }
+      writer.uint32(24).int64(message.version);
     }
     if (message.height !== 0) {
       writer.uint32(32).int32(message.height);
@@ -478,7 +481,7 @@ export const SnapshotIAVLItem: MessageFns<SnapshotIAVLItem> = {
             break;
           }
 
-          message.version = Long.fromString(reader.int64().toString());
+          message.version = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -502,7 +505,7 @@ export const SnapshotIAVLItem: MessageFns<SnapshotIAVLItem> = {
     return {
       key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(0),
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(0),
-      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
+      version: isSet(object.version) ? BigInt(object.version) : 0n,
       height: isSet(object.height) ? globalThis.Number(object.height) : 0,
     };
   },
@@ -515,8 +518,8 @@ export const SnapshotIAVLItem: MessageFns<SnapshotIAVLItem> = {
     if (message.value.length !== 0) {
       obj.value = base64FromBytes(message.value);
     }
-    if (!message.version.equals(Long.ZERO)) {
-      obj.version = (message.version || Long.ZERO).toString();
+    if (message.version !== 0n) {
+      obj.version = message.version.toString();
     }
     if (message.height !== 0) {
       obj.height = Math.round(message.height);
@@ -531,9 +534,7 @@ export const SnapshotIAVLItem: MessageFns<SnapshotIAVLItem> = {
     const message = createBaseSnapshotIAVLItem();
     message.key = object.key ?? new Uint8Array(0);
     message.value = object.value ?? new Uint8Array(0);
-    message.version = (object.version !== undefined && object.version !== null)
-      ? Long.fromValue(object.version)
-      : Long.ZERO;
+    message.version = object.version ?? 0n;
     message.height = object.height ?? 0;
     return message;
   },
@@ -698,10 +699,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

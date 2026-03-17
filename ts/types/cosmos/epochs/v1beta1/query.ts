@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { EpochInfo } from "./genesis";
 
 export const protobufPackage = "cosmos.epochs.v1beta1";
@@ -41,7 +40,7 @@ export interface QueryCurrentEpochRequest {
  * querying an epoch by its identifier.
  */
 export interface QueryCurrentEpochResponse {
-  currentEpoch: Long;
+  currentEpoch: bigint;
 }
 
 function createBaseQueryEpochInfosRequest(): QueryEpochInfosRequest {
@@ -206,13 +205,16 @@ export const QueryCurrentEpochRequest: MessageFns<QueryCurrentEpochRequest> = {
 };
 
 function createBaseQueryCurrentEpochResponse(): QueryCurrentEpochResponse {
-  return { currentEpoch: Long.ZERO };
+  return { currentEpoch: 0n };
 }
 
 export const QueryCurrentEpochResponse: MessageFns<QueryCurrentEpochResponse> = {
   encode(message: QueryCurrentEpochResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.currentEpoch.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.currentEpoch.toString());
+    if (message.currentEpoch !== 0n) {
+      if (BigInt.asIntN(64, message.currentEpoch) !== message.currentEpoch) {
+        throw new globalThis.Error("value provided for field message.currentEpoch of type int64 too large");
+      }
+      writer.uint32(8).int64(message.currentEpoch);
     }
     return writer;
   },
@@ -229,7 +231,7 @@ export const QueryCurrentEpochResponse: MessageFns<QueryCurrentEpochResponse> = 
             break;
           }
 
-          message.currentEpoch = Long.fromString(reader.int64().toString());
+          message.currentEpoch = reader.int64() as bigint;
           continue;
         }
       }
@@ -244,17 +246,17 @@ export const QueryCurrentEpochResponse: MessageFns<QueryCurrentEpochResponse> = 
   fromJSON(object: any): QueryCurrentEpochResponse {
     return {
       currentEpoch: isSet(object.currentEpoch)
-        ? Long.fromValue(object.currentEpoch)
+        ? BigInt(object.currentEpoch)
         : isSet(object.current_epoch)
-        ? Long.fromValue(object.current_epoch)
-        : Long.ZERO,
+        ? BigInt(object.current_epoch)
+        : 0n,
     };
   },
 
   toJSON(message: QueryCurrentEpochResponse): unknown {
     const obj: any = {};
-    if (!message.currentEpoch.equals(Long.ZERO)) {
-      obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString();
+    if (message.currentEpoch !== 0n) {
+      obj.currentEpoch = message.currentEpoch.toString();
     }
     return obj;
   },
@@ -264,9 +266,7 @@ export const QueryCurrentEpochResponse: MessageFns<QueryCurrentEpochResponse> = 
   },
   fromPartial<I extends Exact<DeepPartial<QueryCurrentEpochResponse>, I>>(object: I): QueryCurrentEpochResponse {
     const message = createBaseQueryCurrentEpochResponse();
-    message.currentEpoch = (object.currentEpoch !== undefined && object.currentEpoch !== null)
-      ? Long.fromValue(object.currentEpoch)
-      : Long.ZERO;
+    message.currentEpoch = object.currentEpoch ?? 0n;
     return message;
   },
 };
@@ -419,10 +419,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

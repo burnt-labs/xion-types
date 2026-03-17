@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
-import Long from "long";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { RequestQuery, ResponseQuery } from "../../../tendermint/abci/types";
 
@@ -15,7 +14,7 @@ export const protobufPackage = "xion.feeabs.v1beta1";
 /** QueryArithmeticTwapToNowRequest */
 export interface QueryArithmeticTwapToNowRequest {
   /** pool_id defines the pool identifier */
-  poolId: Long;
+  poolId: bigint;
   /** base_asset defines the base asset for the TWAP calculation */
   baseAsset: string;
   /** quote_asset defines the quote asset for the TWAP calculation */
@@ -83,13 +82,16 @@ export interface CosmosResponse {
 }
 
 function createBaseQueryArithmeticTwapToNowRequest(): QueryArithmeticTwapToNowRequest {
-  return { poolId: Long.UZERO, baseAsset: "", quoteAsset: "", startTime: undefined };
+  return { poolId: 0n, baseAsset: "", quoteAsset: "", startTime: undefined };
 }
 
 export const QueryArithmeticTwapToNowRequest: MessageFns<QueryArithmeticTwapToNowRequest> = {
   encode(message: QueryArithmeticTwapToNowRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.poolId.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.poolId.toString());
+    if (message.poolId !== 0n) {
+      if (BigInt.asUintN(64, message.poolId) !== message.poolId) {
+        throw new globalThis.Error("value provided for field message.poolId of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.poolId);
     }
     if (message.baseAsset !== "") {
       writer.uint32(18).string(message.baseAsset);
@@ -115,7 +117,7 @@ export const QueryArithmeticTwapToNowRequest: MessageFns<QueryArithmeticTwapToNo
             break;
           }
 
-          message.poolId = Long.fromString(reader.uint64().toString(), true);
+          message.poolId = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -153,11 +155,7 @@ export const QueryArithmeticTwapToNowRequest: MessageFns<QueryArithmeticTwapToNo
 
   fromJSON(object: any): QueryArithmeticTwapToNowRequest {
     return {
-      poolId: isSet(object.poolId)
-        ? Long.fromValue(object.poolId)
-        : isSet(object.pool_id)
-        ? Long.fromValue(object.pool_id)
-        : Long.UZERO,
+      poolId: isSet(object.poolId) ? BigInt(object.poolId) : isSet(object.pool_id) ? BigInt(object.pool_id) : 0n,
       baseAsset: isSet(object.baseAsset)
         ? globalThis.String(object.baseAsset)
         : isSet(object.base_asset)
@@ -178,8 +176,8 @@ export const QueryArithmeticTwapToNowRequest: MessageFns<QueryArithmeticTwapToNo
 
   toJSON(message: QueryArithmeticTwapToNowRequest): unknown {
     const obj: any = {};
-    if (!message.poolId.equals(Long.UZERO)) {
-      obj.poolId = (message.poolId || Long.UZERO).toString();
+    if (message.poolId !== 0n) {
+      obj.poolId = message.poolId.toString();
     }
     if (message.baseAsset !== "") {
       obj.baseAsset = message.baseAsset;
@@ -200,9 +198,7 @@ export const QueryArithmeticTwapToNowRequest: MessageFns<QueryArithmeticTwapToNo
     object: I,
   ): QueryArithmeticTwapToNowRequest {
     const message = createBaseQueryArithmeticTwapToNowRequest();
-    message.poolId = (object.poolId !== undefined && object.poolId !== null)
-      ? Long.fromValue(object.poolId)
-      : Long.UZERO;
+    message.poolId = object.poolId ?? 0n;
     message.baseAsset = object.baseAsset ?? "";
     message.quoteAsset = object.quoteAsset ?? "";
     message.startTime = object.startTime ?? undefined;
@@ -699,10 +695,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -712,13 +708,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -731,10 +727,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

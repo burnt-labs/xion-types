@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { Any } from "../../../../google/protobuf/any";
 import { Height, IdentifiedClientState } from "../../client/v1/client";
@@ -120,9 +119,9 @@ export interface QueryChannelConsensusStateRequest {
   /** channel unique identifier */
   channelId: string;
   /** revision number of the consensus state */
-  revisionNumber: Long;
+  revisionNumber: bigint;
   /** revision height of the consensus state */
-  revisionHeight: Long;
+  revisionHeight: bigint;
 }
 
 /**
@@ -152,7 +151,7 @@ export interface QueryPacketCommitmentRequest {
   /** channel unique identifier */
   channelId: string;
   /** packet sequence */
-  sequence: Long;
+  sequence: bigint;
 }
 
 /**
@@ -206,7 +205,7 @@ export interface QueryPacketReceiptRequest {
   /** channel unique identifier */
   channelId: string;
   /** packet sequence */
-  sequence: Long;
+  sequence: bigint;
 }
 
 /**
@@ -233,7 +232,7 @@ export interface QueryPacketAcknowledgementRequest {
   /** channel unique identifier */
   channelId: string;
   /** packet sequence */
-  sequence: Long;
+  sequence: bigint;
 }
 
 /**
@@ -264,7 +263,7 @@ export interface QueryPacketAcknowledgementsRequest {
     | PageRequest
     | undefined;
   /** list of packet sequences */
-  packetCommitmentSequences: Long[];
+  packetCommitmentSequences: bigint[];
 }
 
 /**
@@ -291,7 +290,7 @@ export interface QueryUnreceivedPacketsRequest {
   /** channel unique identifier */
   channelId: string;
   /** list of packet sequences */
-  packetCommitmentSequences: Long[];
+  packetCommitmentSequences: bigint[];
 }
 
 /**
@@ -300,7 +299,7 @@ export interface QueryUnreceivedPacketsRequest {
  */
 export interface QueryUnreceivedPacketsResponse {
   /** list of unreceived packet sequences */
-  sequences: Long[];
+  sequences: bigint[];
   /** query block height */
   height?: Height | undefined;
 }
@@ -315,7 +314,7 @@ export interface QueryUnreceivedAcksRequest {
   /** channel unique identifier */
   channelId: string;
   /** list of acknowledgement sequences */
-  packetAckSequences: Long[];
+  packetAckSequences: bigint[];
 }
 
 /**
@@ -324,7 +323,7 @@ export interface QueryUnreceivedAcksRequest {
  */
 export interface QueryUnreceivedAcksResponse {
   /** list of unreceived acknowledgement sequences */
-  sequences: Long[];
+  sequences: bigint[];
   /** query block height */
   height?: Height | undefined;
 }
@@ -346,7 +345,7 @@ export interface QueryNextSequenceReceiveRequest {
  */
 export interface QueryNextSequenceReceiveResponse {
   /** next sequence receive number */
-  nextSequenceReceive: Long;
+  nextSequenceReceive: bigint;
   /** merkle proof of existence */
   proof: Uint8Array;
   /** height at which the proof was retrieved */
@@ -370,7 +369,7 @@ export interface QueryNextSequenceSendRequest {
  */
 export interface QueryNextSequenceSendResponse {
   /** next sequence send number */
-  nextSequenceSend: Long;
+  nextSequenceSend: bigint;
   /** merkle proof of existence */
   proof: Uint8Array;
   /** height at which the proof was retrieved */
@@ -1093,7 +1092,7 @@ export const QueryChannelClientStateResponse: MessageFns<QueryChannelClientState
 };
 
 function createBaseQueryChannelConsensusStateRequest(): QueryChannelConsensusStateRequest {
-  return { portId: "", channelId: "", revisionNumber: Long.UZERO, revisionHeight: Long.UZERO };
+  return { portId: "", channelId: "", revisionNumber: 0n, revisionHeight: 0n };
 }
 
 export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensusStateRequest> = {
@@ -1104,11 +1103,17 @@ export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensus
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (!message.revisionNumber.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.revisionNumber.toString());
+    if (message.revisionNumber !== 0n) {
+      if (BigInt.asUintN(64, message.revisionNumber) !== message.revisionNumber) {
+        throw new globalThis.Error("value provided for field message.revisionNumber of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.revisionNumber);
     }
-    if (!message.revisionHeight.equals(Long.UZERO)) {
-      writer.uint32(32).uint64(message.revisionHeight.toString());
+    if (message.revisionHeight !== 0n) {
+      if (BigInt.asUintN(64, message.revisionHeight) !== message.revisionHeight) {
+        throw new globalThis.Error("value provided for field message.revisionHeight of type uint64 too large");
+      }
+      writer.uint32(32).uint64(message.revisionHeight);
     }
     return writer;
   },
@@ -1141,7 +1146,7 @@ export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensus
             break;
           }
 
-          message.revisionNumber = Long.fromString(reader.uint64().toString(), true);
+          message.revisionNumber = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -1149,7 +1154,7 @@ export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensus
             break;
           }
 
-          message.revisionHeight = Long.fromString(reader.uint64().toString(), true);
+          message.revisionHeight = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1174,15 +1179,15 @@ export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensus
         ? globalThis.String(object.channel_id)
         : "",
       revisionNumber: isSet(object.revisionNumber)
-        ? Long.fromValue(object.revisionNumber)
+        ? BigInt(object.revisionNumber)
         : isSet(object.revision_number)
-        ? Long.fromValue(object.revision_number)
-        : Long.UZERO,
+        ? BigInt(object.revision_number)
+        : 0n,
       revisionHeight: isSet(object.revisionHeight)
-        ? Long.fromValue(object.revisionHeight)
+        ? BigInt(object.revisionHeight)
         : isSet(object.revision_height)
-        ? Long.fromValue(object.revision_height)
-        : Long.UZERO,
+        ? BigInt(object.revision_height)
+        : 0n,
     };
   },
 
@@ -1194,11 +1199,11 @@ export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensus
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (!message.revisionNumber.equals(Long.UZERO)) {
-      obj.revisionNumber = (message.revisionNumber || Long.UZERO).toString();
+    if (message.revisionNumber !== 0n) {
+      obj.revisionNumber = message.revisionNumber.toString();
     }
-    if (!message.revisionHeight.equals(Long.UZERO)) {
-      obj.revisionHeight = (message.revisionHeight || Long.UZERO).toString();
+    if (message.revisionHeight !== 0n) {
+      obj.revisionHeight = message.revisionHeight.toString();
     }
     return obj;
   },
@@ -1214,12 +1219,8 @@ export const QueryChannelConsensusStateRequest: MessageFns<QueryChannelConsensus
     const message = createBaseQueryChannelConsensusStateRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.revisionNumber = (object.revisionNumber !== undefined && object.revisionNumber !== null)
-      ? Long.fromValue(object.revisionNumber)
-      : Long.UZERO;
-    message.revisionHeight = (object.revisionHeight !== undefined && object.revisionHeight !== null)
-      ? Long.fromValue(object.revisionHeight)
-      : Long.UZERO;
+    message.revisionNumber = object.revisionNumber ?? 0n;
+    message.revisionHeight = object.revisionHeight ?? 0n;
     return message;
   },
 };
@@ -1353,7 +1354,7 @@ export const QueryChannelConsensusStateResponse: MessageFns<QueryChannelConsensu
 };
 
 function createBaseQueryPacketCommitmentRequest(): QueryPacketCommitmentRequest {
-  return { portId: "", channelId: "", sequence: Long.UZERO };
+  return { portId: "", channelId: "", sequence: 0n };
 }
 
 export const QueryPacketCommitmentRequest: MessageFns<QueryPacketCommitmentRequest> = {
@@ -1364,8 +1365,11 @@ export const QueryPacketCommitmentRequest: MessageFns<QueryPacketCommitmentReque
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.sequence);
     }
     return writer;
   },
@@ -1398,7 +1402,7 @@ export const QueryPacketCommitmentRequest: MessageFns<QueryPacketCommitmentReque
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1422,7 +1426,7 @@ export const QueryPacketCommitmentRequest: MessageFns<QueryPacketCommitmentReque
         : isSet(object.channel_id)
         ? globalThis.String(object.channel_id)
         : "",
-      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
     };
   },
 
@@ -1434,8 +1438,8 @@ export const QueryPacketCommitmentRequest: MessageFns<QueryPacketCommitmentReque
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -1447,9 +1451,7 @@ export const QueryPacketCommitmentRequest: MessageFns<QueryPacketCommitmentReque
     const message = createBaseQueryPacketCommitmentRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
@@ -1759,7 +1761,7 @@ export const QueryPacketCommitmentsResponse: MessageFns<QueryPacketCommitmentsRe
 };
 
 function createBaseQueryPacketReceiptRequest(): QueryPacketReceiptRequest {
-  return { portId: "", channelId: "", sequence: Long.UZERO };
+  return { portId: "", channelId: "", sequence: 0n };
 }
 
 export const QueryPacketReceiptRequest: MessageFns<QueryPacketReceiptRequest> = {
@@ -1770,8 +1772,11 @@ export const QueryPacketReceiptRequest: MessageFns<QueryPacketReceiptRequest> = 
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.sequence);
     }
     return writer;
   },
@@ -1804,7 +1809,7 @@ export const QueryPacketReceiptRequest: MessageFns<QueryPacketReceiptRequest> = 
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -1828,7 +1833,7 @@ export const QueryPacketReceiptRequest: MessageFns<QueryPacketReceiptRequest> = 
         : isSet(object.channel_id)
         ? globalThis.String(object.channel_id)
         : "",
-      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
     };
   },
 
@@ -1840,8 +1845,8 @@ export const QueryPacketReceiptRequest: MessageFns<QueryPacketReceiptRequest> = 
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -1853,9 +1858,7 @@ export const QueryPacketReceiptRequest: MessageFns<QueryPacketReceiptRequest> = 
     const message = createBaseQueryPacketReceiptRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
@@ -1959,7 +1962,7 @@ export const QueryPacketReceiptResponse: MessageFns<QueryPacketReceiptResponse> 
 };
 
 function createBaseQueryPacketAcknowledgementRequest(): QueryPacketAcknowledgementRequest {
-  return { portId: "", channelId: "", sequence: Long.UZERO };
+  return { portId: "", channelId: "", sequence: 0n };
 }
 
 export const QueryPacketAcknowledgementRequest: MessageFns<QueryPacketAcknowledgementRequest> = {
@@ -1970,8 +1973,11 @@ export const QueryPacketAcknowledgementRequest: MessageFns<QueryPacketAcknowledg
     if (message.channelId !== "") {
       writer.uint32(18).string(message.channelId);
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.sequence);
     }
     return writer;
   },
@@ -2004,7 +2010,7 @@ export const QueryPacketAcknowledgementRequest: MessageFns<QueryPacketAcknowledg
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -2028,7 +2034,7 @@ export const QueryPacketAcknowledgementRequest: MessageFns<QueryPacketAcknowledg
         : isSet(object.channel_id)
         ? globalThis.String(object.channel_id)
         : "",
-      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n,
     };
   },
 
@@ -2040,8 +2046,8 @@ export const QueryPacketAcknowledgementRequest: MessageFns<QueryPacketAcknowledg
     if (message.channelId !== "") {
       obj.channelId = message.channelId;
     }
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -2057,9 +2063,7 @@ export const QueryPacketAcknowledgementRequest: MessageFns<QueryPacketAcknowledg
     const message = createBaseQueryPacketAcknowledgementRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
@@ -2183,7 +2187,12 @@ export const QueryPacketAcknowledgementsRequest: MessageFns<QueryPacketAcknowled
     }
     writer.uint32(34).fork();
     for (const v of message.packetCommitmentSequences) {
-      writer.uint64(v.toString());
+      if (BigInt.asUintN(64, v) !== v) {
+        throw new globalThis.Error(
+          "a value provided in array field packetCommitmentSequences of type uint64 is too large",
+        );
+      }
+      writer.uint64(v);
     }
     writer.join();
     return writer;
@@ -2222,7 +2231,7 @@ export const QueryPacketAcknowledgementsRequest: MessageFns<QueryPacketAcknowled
         }
         case 4: {
           if (tag === 32) {
-            message.packetCommitmentSequences.push(Long.fromString(reader.uint64().toString(), true));
+            message.packetCommitmentSequences.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2230,7 +2239,7 @@ export const QueryPacketAcknowledgementsRequest: MessageFns<QueryPacketAcknowled
           if (tag === 34) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.packetCommitmentSequences.push(Long.fromString(reader.uint64().toString(), true));
+              message.packetCommitmentSequences.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2261,9 +2270,9 @@ export const QueryPacketAcknowledgementsRequest: MessageFns<QueryPacketAcknowled
         : "",
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
       packetCommitmentSequences: globalThis.Array.isArray(object?.packetCommitmentSequences)
-        ? object.packetCommitmentSequences.map((e: any) => Long.fromValue(e))
+        ? object.packetCommitmentSequences.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.packet_commitment_sequences)
-        ? object.packet_commitment_sequences.map((e: any) => Long.fromValue(e))
+        ? object.packet_commitment_sequences.map((e: any) => BigInt(e))
         : [],
     };
   },
@@ -2280,7 +2289,7 @@ export const QueryPacketAcknowledgementsRequest: MessageFns<QueryPacketAcknowled
       obj.pagination = PageRequest.toJSON(message.pagination);
     }
     if (message.packetCommitmentSequences?.length) {
-      obj.packetCommitmentSequences = message.packetCommitmentSequences.map((e) => (e || Long.UZERO).toString());
+      obj.packetCommitmentSequences = message.packetCommitmentSequences.map((e) => e.toString());
     }
     return obj;
   },
@@ -2299,7 +2308,7 @@ export const QueryPacketAcknowledgementsRequest: MessageFns<QueryPacketAcknowled
     message.pagination = (object.pagination !== undefined && object.pagination !== null)
       ? PageRequest.fromPartial(object.pagination)
       : undefined;
-    message.packetCommitmentSequences = object.packetCommitmentSequences?.map((e) => Long.fromValue(e)) || [];
+    message.packetCommitmentSequences = object.packetCommitmentSequences?.map((e) => e) || [];
     return message;
   },
 };
@@ -2420,7 +2429,12 @@ export const QueryUnreceivedPacketsRequest: MessageFns<QueryUnreceivedPacketsReq
     }
     writer.uint32(26).fork();
     for (const v of message.packetCommitmentSequences) {
-      writer.uint64(v.toString());
+      if (BigInt.asUintN(64, v) !== v) {
+        throw new globalThis.Error(
+          "a value provided in array field packetCommitmentSequences of type uint64 is too large",
+        );
+      }
+      writer.uint64(v);
     }
     writer.join();
     return writer;
@@ -2451,7 +2465,7 @@ export const QueryUnreceivedPacketsRequest: MessageFns<QueryUnreceivedPacketsReq
         }
         case 3: {
           if (tag === 24) {
-            message.packetCommitmentSequences.push(Long.fromString(reader.uint64().toString(), true));
+            message.packetCommitmentSequences.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2459,7 +2473,7 @@ export const QueryUnreceivedPacketsRequest: MessageFns<QueryUnreceivedPacketsReq
           if (tag === 26) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.packetCommitmentSequences.push(Long.fromString(reader.uint64().toString(), true));
+              message.packetCommitmentSequences.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2489,9 +2503,9 @@ export const QueryUnreceivedPacketsRequest: MessageFns<QueryUnreceivedPacketsReq
         ? globalThis.String(object.channel_id)
         : "",
       packetCommitmentSequences: globalThis.Array.isArray(object?.packetCommitmentSequences)
-        ? object.packetCommitmentSequences.map((e: any) => Long.fromValue(e))
+        ? object.packetCommitmentSequences.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.packet_commitment_sequences)
-        ? object.packet_commitment_sequences.map((e: any) => Long.fromValue(e))
+        ? object.packet_commitment_sequences.map((e: any) => BigInt(e))
         : [],
     };
   },
@@ -2505,7 +2519,7 @@ export const QueryUnreceivedPacketsRequest: MessageFns<QueryUnreceivedPacketsReq
       obj.channelId = message.channelId;
     }
     if (message.packetCommitmentSequences?.length) {
-      obj.packetCommitmentSequences = message.packetCommitmentSequences.map((e) => (e || Long.UZERO).toString());
+      obj.packetCommitmentSequences = message.packetCommitmentSequences.map((e) => e.toString());
     }
     return obj;
   },
@@ -2519,7 +2533,7 @@ export const QueryUnreceivedPacketsRequest: MessageFns<QueryUnreceivedPacketsReq
     const message = createBaseQueryUnreceivedPacketsRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.packetCommitmentSequences = object.packetCommitmentSequences?.map((e) => Long.fromValue(e)) || [];
+    message.packetCommitmentSequences = object.packetCommitmentSequences?.map((e) => e) || [];
     return message;
   },
 };
@@ -2532,7 +2546,10 @@ export const QueryUnreceivedPacketsResponse: MessageFns<QueryUnreceivedPacketsRe
   encode(message: QueryUnreceivedPacketsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.sequences) {
-      writer.uint64(v.toString());
+      if (BigInt.asUintN(64, v) !== v) {
+        throw new globalThis.Error("a value provided in array field sequences of type uint64 is too large");
+      }
+      writer.uint64(v);
     }
     writer.join();
     if (message.height !== undefined) {
@@ -2550,7 +2567,7 @@ export const QueryUnreceivedPacketsResponse: MessageFns<QueryUnreceivedPacketsRe
       switch (tag >>> 3) {
         case 1: {
           if (tag === 8) {
-            message.sequences.push(Long.fromString(reader.uint64().toString(), true));
+            message.sequences.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2558,7 +2575,7 @@ export const QueryUnreceivedPacketsResponse: MessageFns<QueryUnreceivedPacketsRe
           if (tag === 10) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.sequences.push(Long.fromString(reader.uint64().toString(), true));
+              message.sequences.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2585,7 +2602,7 @@ export const QueryUnreceivedPacketsResponse: MessageFns<QueryUnreceivedPacketsRe
 
   fromJSON(object: any): QueryUnreceivedPacketsResponse {
     return {
-      sequences: globalThis.Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Long.fromValue(e)) : [],
+      sequences: globalThis.Array.isArray(object?.sequences) ? object.sequences.map((e: any) => BigInt(e)) : [],
       height: isSet(object.height) ? Height.fromJSON(object.height) : undefined,
     };
   },
@@ -2593,7 +2610,7 @@ export const QueryUnreceivedPacketsResponse: MessageFns<QueryUnreceivedPacketsRe
   toJSON(message: QueryUnreceivedPacketsResponse): unknown {
     const obj: any = {};
     if (message.sequences?.length) {
-      obj.sequences = message.sequences.map((e) => (e || Long.UZERO).toString());
+      obj.sequences = message.sequences.map((e) => e.toString());
     }
     if (message.height !== undefined) {
       obj.height = Height.toJSON(message.height);
@@ -2608,7 +2625,7 @@ export const QueryUnreceivedPacketsResponse: MessageFns<QueryUnreceivedPacketsRe
     object: I,
   ): QueryUnreceivedPacketsResponse {
     const message = createBaseQueryUnreceivedPacketsResponse();
-    message.sequences = object.sequences?.map((e) => Long.fromValue(e)) || [];
+    message.sequences = object.sequences?.map((e) => e) || [];
     message.height = (object.height !== undefined && object.height !== null)
       ? Height.fromPartial(object.height)
       : undefined;
@@ -2630,7 +2647,10 @@ export const QueryUnreceivedAcksRequest: MessageFns<QueryUnreceivedAcksRequest> 
     }
     writer.uint32(26).fork();
     for (const v of message.packetAckSequences) {
-      writer.uint64(v.toString());
+      if (BigInt.asUintN(64, v) !== v) {
+        throw new globalThis.Error("a value provided in array field packetAckSequences of type uint64 is too large");
+      }
+      writer.uint64(v);
     }
     writer.join();
     return writer;
@@ -2661,7 +2681,7 @@ export const QueryUnreceivedAcksRequest: MessageFns<QueryUnreceivedAcksRequest> 
         }
         case 3: {
           if (tag === 24) {
-            message.packetAckSequences.push(Long.fromString(reader.uint64().toString(), true));
+            message.packetAckSequences.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2669,7 +2689,7 @@ export const QueryUnreceivedAcksRequest: MessageFns<QueryUnreceivedAcksRequest> 
           if (tag === 26) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.packetAckSequences.push(Long.fromString(reader.uint64().toString(), true));
+              message.packetAckSequences.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2699,9 +2719,9 @@ export const QueryUnreceivedAcksRequest: MessageFns<QueryUnreceivedAcksRequest> 
         ? globalThis.String(object.channel_id)
         : "",
       packetAckSequences: globalThis.Array.isArray(object?.packetAckSequences)
-        ? object.packetAckSequences.map((e: any) => Long.fromValue(e))
+        ? object.packetAckSequences.map((e: any) => BigInt(e))
         : globalThis.Array.isArray(object?.packet_ack_sequences)
-        ? object.packet_ack_sequences.map((e: any) => Long.fromValue(e))
+        ? object.packet_ack_sequences.map((e: any) => BigInt(e))
         : [],
     };
   },
@@ -2715,7 +2735,7 @@ export const QueryUnreceivedAcksRequest: MessageFns<QueryUnreceivedAcksRequest> 
       obj.channelId = message.channelId;
     }
     if (message.packetAckSequences?.length) {
-      obj.packetAckSequences = message.packetAckSequences.map((e) => (e || Long.UZERO).toString());
+      obj.packetAckSequences = message.packetAckSequences.map((e) => e.toString());
     }
     return obj;
   },
@@ -2727,7 +2747,7 @@ export const QueryUnreceivedAcksRequest: MessageFns<QueryUnreceivedAcksRequest> 
     const message = createBaseQueryUnreceivedAcksRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
-    message.packetAckSequences = object.packetAckSequences?.map((e) => Long.fromValue(e)) || [];
+    message.packetAckSequences = object.packetAckSequences?.map((e) => e) || [];
     return message;
   },
 };
@@ -2740,7 +2760,10 @@ export const QueryUnreceivedAcksResponse: MessageFns<QueryUnreceivedAcksResponse
   encode(message: QueryUnreceivedAcksResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.sequences) {
-      writer.uint64(v.toString());
+      if (BigInt.asUintN(64, v) !== v) {
+        throw new globalThis.Error("a value provided in array field sequences of type uint64 is too large");
+      }
+      writer.uint64(v);
     }
     writer.join();
     if (message.height !== undefined) {
@@ -2758,7 +2781,7 @@ export const QueryUnreceivedAcksResponse: MessageFns<QueryUnreceivedAcksResponse
       switch (tag >>> 3) {
         case 1: {
           if (tag === 8) {
-            message.sequences.push(Long.fromString(reader.uint64().toString(), true));
+            message.sequences.push(reader.uint64() as bigint);
 
             continue;
           }
@@ -2766,7 +2789,7 @@ export const QueryUnreceivedAcksResponse: MessageFns<QueryUnreceivedAcksResponse
           if (tag === 10) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.sequences.push(Long.fromString(reader.uint64().toString(), true));
+              message.sequences.push(reader.uint64() as bigint);
             }
 
             continue;
@@ -2793,7 +2816,7 @@ export const QueryUnreceivedAcksResponse: MessageFns<QueryUnreceivedAcksResponse
 
   fromJSON(object: any): QueryUnreceivedAcksResponse {
     return {
-      sequences: globalThis.Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Long.fromValue(e)) : [],
+      sequences: globalThis.Array.isArray(object?.sequences) ? object.sequences.map((e: any) => BigInt(e)) : [],
       height: isSet(object.height) ? Height.fromJSON(object.height) : undefined,
     };
   },
@@ -2801,7 +2824,7 @@ export const QueryUnreceivedAcksResponse: MessageFns<QueryUnreceivedAcksResponse
   toJSON(message: QueryUnreceivedAcksResponse): unknown {
     const obj: any = {};
     if (message.sequences?.length) {
-      obj.sequences = message.sequences.map((e) => (e || Long.UZERO).toString());
+      obj.sequences = message.sequences.map((e) => e.toString());
     }
     if (message.height !== undefined) {
       obj.height = Height.toJSON(message.height);
@@ -2814,7 +2837,7 @@ export const QueryUnreceivedAcksResponse: MessageFns<QueryUnreceivedAcksResponse
   },
   fromPartial<I extends Exact<DeepPartial<QueryUnreceivedAcksResponse>, I>>(object: I): QueryUnreceivedAcksResponse {
     const message = createBaseQueryUnreceivedAcksResponse();
-    message.sequences = object.sequences?.map((e) => Long.fromValue(e)) || [];
+    message.sequences = object.sequences?.map((e) => e) || [];
     message.height = (object.height !== undefined && object.height !== null)
       ? Height.fromPartial(object.height)
       : undefined;
@@ -2909,13 +2932,16 @@ export const QueryNextSequenceReceiveRequest: MessageFns<QueryNextSequenceReceiv
 };
 
 function createBaseQueryNextSequenceReceiveResponse(): QueryNextSequenceReceiveResponse {
-  return { nextSequenceReceive: Long.UZERO, proof: new Uint8Array(0), proofHeight: undefined };
+  return { nextSequenceReceive: 0n, proof: new Uint8Array(0), proofHeight: undefined };
 }
 
 export const QueryNextSequenceReceiveResponse: MessageFns<QueryNextSequenceReceiveResponse> = {
   encode(message: QueryNextSequenceReceiveResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.nextSequenceReceive.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.nextSequenceReceive.toString());
+    if (message.nextSequenceReceive !== 0n) {
+      if (BigInt.asUintN(64, message.nextSequenceReceive) !== message.nextSequenceReceive) {
+        throw new globalThis.Error("value provided for field message.nextSequenceReceive of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.nextSequenceReceive);
     }
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
@@ -2938,7 +2964,7 @@ export const QueryNextSequenceReceiveResponse: MessageFns<QueryNextSequenceRecei
             break;
           }
 
-          message.nextSequenceReceive = Long.fromString(reader.uint64().toString(), true);
+          message.nextSequenceReceive = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -2969,10 +2995,10 @@ export const QueryNextSequenceReceiveResponse: MessageFns<QueryNextSequenceRecei
   fromJSON(object: any): QueryNextSequenceReceiveResponse {
     return {
       nextSequenceReceive: isSet(object.nextSequenceReceive)
-        ? Long.fromValue(object.nextSequenceReceive)
+        ? BigInt(object.nextSequenceReceive)
         : isSet(object.next_sequence_receive)
-        ? Long.fromValue(object.next_sequence_receive)
-        : Long.UZERO,
+        ? BigInt(object.next_sequence_receive)
+        : 0n,
       proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(0),
       proofHeight: isSet(object.proofHeight)
         ? Height.fromJSON(object.proofHeight)
@@ -2984,8 +3010,8 @@ export const QueryNextSequenceReceiveResponse: MessageFns<QueryNextSequenceRecei
 
   toJSON(message: QueryNextSequenceReceiveResponse): unknown {
     const obj: any = {};
-    if (!message.nextSequenceReceive.equals(Long.UZERO)) {
-      obj.nextSequenceReceive = (message.nextSequenceReceive || Long.UZERO).toString();
+    if (message.nextSequenceReceive !== 0n) {
+      obj.nextSequenceReceive = message.nextSequenceReceive.toString();
     }
     if (message.proof.length !== 0) {
       obj.proof = base64FromBytes(message.proof);
@@ -3005,9 +3031,7 @@ export const QueryNextSequenceReceiveResponse: MessageFns<QueryNextSequenceRecei
     object: I,
   ): QueryNextSequenceReceiveResponse {
     const message = createBaseQueryNextSequenceReceiveResponse();
-    message.nextSequenceReceive = (object.nextSequenceReceive !== undefined && object.nextSequenceReceive !== null)
-      ? Long.fromValue(object.nextSequenceReceive)
-      : Long.UZERO;
+    message.nextSequenceReceive = object.nextSequenceReceive ?? 0n;
     message.proof = object.proof ?? new Uint8Array(0);
     message.proofHeight = (object.proofHeight !== undefined && object.proofHeight !== null)
       ? Height.fromPartial(object.proofHeight)
@@ -3101,13 +3125,16 @@ export const QueryNextSequenceSendRequest: MessageFns<QueryNextSequenceSendReque
 };
 
 function createBaseQueryNextSequenceSendResponse(): QueryNextSequenceSendResponse {
-  return { nextSequenceSend: Long.UZERO, proof: new Uint8Array(0), proofHeight: undefined };
+  return { nextSequenceSend: 0n, proof: new Uint8Array(0), proofHeight: undefined };
 }
 
 export const QueryNextSequenceSendResponse: MessageFns<QueryNextSequenceSendResponse> = {
   encode(message: QueryNextSequenceSendResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.nextSequenceSend.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.nextSequenceSend.toString());
+    if (message.nextSequenceSend !== 0n) {
+      if (BigInt.asUintN(64, message.nextSequenceSend) !== message.nextSequenceSend) {
+        throw new globalThis.Error("value provided for field message.nextSequenceSend of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.nextSequenceSend);
     }
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
@@ -3130,7 +3157,7 @@ export const QueryNextSequenceSendResponse: MessageFns<QueryNextSequenceSendResp
             break;
           }
 
-          message.nextSequenceSend = Long.fromString(reader.uint64().toString(), true);
+          message.nextSequenceSend = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -3161,10 +3188,10 @@ export const QueryNextSequenceSendResponse: MessageFns<QueryNextSequenceSendResp
   fromJSON(object: any): QueryNextSequenceSendResponse {
     return {
       nextSequenceSend: isSet(object.nextSequenceSend)
-        ? Long.fromValue(object.nextSequenceSend)
+        ? BigInt(object.nextSequenceSend)
         : isSet(object.next_sequence_send)
-        ? Long.fromValue(object.next_sequence_send)
-        : Long.UZERO,
+        ? BigInt(object.next_sequence_send)
+        : 0n,
       proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(0),
       proofHeight: isSet(object.proofHeight)
         ? Height.fromJSON(object.proofHeight)
@@ -3176,8 +3203,8 @@ export const QueryNextSequenceSendResponse: MessageFns<QueryNextSequenceSendResp
 
   toJSON(message: QueryNextSequenceSendResponse): unknown {
     const obj: any = {};
-    if (!message.nextSequenceSend.equals(Long.UZERO)) {
-      obj.nextSequenceSend = (message.nextSequenceSend || Long.UZERO).toString();
+    if (message.nextSequenceSend !== 0n) {
+      obj.nextSequenceSend = message.nextSequenceSend.toString();
     }
     if (message.proof.length !== 0) {
       obj.proof = base64FromBytes(message.proof);
@@ -3195,9 +3222,7 @@ export const QueryNextSequenceSendResponse: MessageFns<QueryNextSequenceSendResp
     object: I,
   ): QueryNextSequenceSendResponse {
     const message = createBaseQueryNextSequenceSendResponse();
-    message.nextSequenceSend = (object.nextSequenceSend !== undefined && object.nextSequenceSend !== null)
-      ? Long.fromValue(object.nextSequenceSend)
-      : Long.UZERO;
+    message.nextSequenceSend = object.nextSequenceSend ?? 0n;
     message.proof = object.proof ?? new Uint8Array(0);
     message.proofHeight = (object.proofHeight !== undefined && object.proofHeight !== null)
       ? Height.fromPartial(object.proofHeight)
@@ -3841,10 +3866,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;

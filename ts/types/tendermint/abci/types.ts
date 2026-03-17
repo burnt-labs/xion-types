@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { PublicKey } from "../crypto/keys";
 import { ProofOps } from "../crypto/proof";
@@ -117,8 +116,8 @@ export interface RequestFlush {
 
 export interface RequestInfo {
   version: string;
-  blockVersion: Long;
-  p2pVersion: Long;
+  blockVersion: bigint;
+  p2pVersion: bigint;
   abciVersion: string;
 }
 
@@ -128,13 +127,13 @@ export interface RequestInitChain {
   consensusParams?: ConsensusParams | undefined;
   validators: ValidatorUpdate[];
   appStateBytes: Uint8Array;
-  initialHeight: Long;
+  initialHeight: bigint;
 }
 
 export interface RequestQuery {
   data: Uint8Array;
   path: string;
-  height: Long;
+  height: bigint;
   prove: boolean;
 }
 
@@ -162,7 +161,7 @@ export interface RequestOfferSnapshot {
 
 /** loads a snapshot chunk */
 export interface RequestLoadSnapshotChunk {
-  height: Long;
+  height: bigint;
   format: number;
   chunk: number;
 }
@@ -176,7 +175,7 @@ export interface RequestApplySnapshotChunk {
 
 export interface RequestPrepareProposal {
   /** the modified transactions cannot exceed this size. */
-  maxTxBytes: Long;
+  maxTxBytes: bigint;
   /**
    * txs is an array of transactions that will be included in a block,
    * sent to the app for possible modifications.
@@ -184,7 +183,7 @@ export interface RequestPrepareProposal {
   txs: Uint8Array[];
   localLastCommit?: ExtendedCommitInfo | undefined;
   misbehavior: Misbehavior[];
-  height: Long;
+  height: bigint;
   time?: Date | undefined;
   nextValidatorsHash: Uint8Array;
   /** address of the public key of the validator proposing the block. */
@@ -197,7 +196,7 @@ export interface RequestProcessProposal {
   misbehavior: Misbehavior[];
   /** hash is the merkle root hash of the fields of the proposed block. */
   hash: Uint8Array;
-  height: Long;
+  height: bigint;
   time?: Date | undefined;
   nextValidatorsHash: Uint8Array;
   /** address of the public key of the original proposer of the block. */
@@ -209,7 +208,7 @@ export interface RequestExtendVote {
   /** the hash of the block that this vote may be referring to */
   hash: Uint8Array;
   /** the height of the extended vote */
-  height: Long;
+  height: bigint;
   /** info of the block that this vote may be referring to */
   time?: Date | undefined;
   txs: Uint8Array[];
@@ -226,7 +225,7 @@ export interface RequestVerifyVoteExtension {
   hash: Uint8Array;
   /** the validator that signed the vote extension */
   validatorAddress: Uint8Array;
-  height: Long;
+  height: bigint;
   voteExtension: Uint8Array;
 }
 
@@ -236,7 +235,7 @@ export interface RequestFinalizeBlock {
   misbehavior: Misbehavior[];
   /** hash is the merkle root hash of the fields of the decided block. */
   hash: Uint8Array;
-  height: Long;
+  height: bigint;
   time?: Date | undefined;
   nextValidatorsHash: Uint8Array;
   /** proposer_address is the address of the public key of the original proposer of the block. */
@@ -278,8 +277,8 @@ export interface ResponseFlush {
 export interface ResponseInfo {
   data: string;
   version: string;
-  appVersion: Long;
-  lastBlockHeight: Long;
+  appVersion: bigint;
+  lastBlockHeight: bigint;
   lastBlockAppHash: Uint8Array;
 }
 
@@ -295,11 +294,11 @@ export interface ResponseQuery {
   log: string;
   /** nondeterministic */
   info: string;
-  index: Long;
+  index: bigint;
   key: Uint8Array;
   value: Uint8Array;
   proofOps?: ProofOps | undefined;
-  height: Long;
+  height: bigint;
   codespace: string;
 }
 
@@ -310,14 +309,14 @@ export interface ResponseCheckTx {
   log: string;
   /** nondeterministic */
   info: string;
-  gasWanted: Long;
-  gasUsed: Long;
+  gasWanted: bigint;
+  gasUsed: bigint;
   events: Event[];
   codespace: string;
 }
 
 export interface ResponseCommit {
-  retainHeight: Long;
+  retainHeight: bigint;
 }
 
 export interface ResponseListSnapshots {
@@ -639,8 +638,8 @@ export interface ExecTxResult {
   log: string;
   /** nondeterministic */
   info: string;
-  gasWanted: Long;
-  gasUsed: Long;
+  gasWanted: bigint;
+  gasUsed: bigint;
   /** nondeterministic */
   events: Event[];
   codespace: string;
@@ -652,7 +651,7 @@ export interface ExecTxResult {
  * One usage is indexing transaction results.
  */
 export interface TxResult {
-  height: Long;
+  height: bigint;
   index: number;
   tx: Uint8Array;
   result?: ExecTxResult | undefined;
@@ -662,12 +661,12 @@ export interface Validator {
   /** The first 20 bytes of SHA256(public key) */
   address: Uint8Array;
   /** PubKey pub_key = 2 [(gogoproto.nullable)=false]; */
-  power: Long;
+  power: bigint;
 }
 
 export interface ValidatorUpdate {
   pubKey?: PublicKey | undefined;
-  power: Long;
+  power: bigint;
 }
 
 export interface VoteInfo {
@@ -695,7 +694,7 @@ export interface Misbehavior {
     | Validator
     | undefined;
   /** The height when the offense occurred */
-  height: Long;
+  height: bigint;
   /** The corresponding time where the offense occurred */
   time?:
     | Date
@@ -705,12 +704,12 @@ export interface Misbehavior {
    * not store historical validators.
    * https://github.com/tendermint/tendermint/issues/4581
    */
-  totalVotingPower: Long;
+  totalVotingPower: bigint;
 }
 
 export interface Snapshot {
   /** The height at which the snapshot was taken */
-  height: Long;
+  height: bigint;
   /** The application-specific snapshot format */
   format: number;
   /** Number of chunks in the snapshot */
@@ -1216,7 +1215,7 @@ export const RequestFlush: MessageFns<RequestFlush> = {
 };
 
 function createBaseRequestInfo(): RequestInfo {
-  return { version: "", blockVersion: Long.UZERO, p2pVersion: Long.UZERO, abciVersion: "" };
+  return { version: "", blockVersion: 0n, p2pVersion: 0n, abciVersion: "" };
 }
 
 export const RequestInfo: MessageFns<RequestInfo> = {
@@ -1224,11 +1223,17 @@ export const RequestInfo: MessageFns<RequestInfo> = {
     if (message.version !== "") {
       writer.uint32(10).string(message.version);
     }
-    if (!message.blockVersion.equals(Long.UZERO)) {
-      writer.uint32(16).uint64(message.blockVersion.toString());
+    if (message.blockVersion !== 0n) {
+      if (BigInt.asUintN(64, message.blockVersion) !== message.blockVersion) {
+        throw new globalThis.Error("value provided for field message.blockVersion of type uint64 too large");
+      }
+      writer.uint32(16).uint64(message.blockVersion);
     }
-    if (!message.p2pVersion.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.p2pVersion.toString());
+    if (message.p2pVersion !== 0n) {
+      if (BigInt.asUintN(64, message.p2pVersion) !== message.p2pVersion) {
+        throw new globalThis.Error("value provided for field message.p2pVersion of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.p2pVersion);
     }
     if (message.abciVersion !== "") {
       writer.uint32(34).string(message.abciVersion);
@@ -1256,7 +1261,7 @@ export const RequestInfo: MessageFns<RequestInfo> = {
             break;
           }
 
-          message.blockVersion = Long.fromString(reader.uint64().toString(), true);
+          message.blockVersion = reader.uint64() as bigint;
           continue;
         }
         case 3: {
@@ -1264,7 +1269,7 @@ export const RequestInfo: MessageFns<RequestInfo> = {
             break;
           }
 
-          message.p2pVersion = Long.fromString(reader.uint64().toString(), true);
+          message.p2pVersion = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -1288,15 +1293,15 @@ export const RequestInfo: MessageFns<RequestInfo> = {
     return {
       version: isSet(object.version) ? globalThis.String(object.version) : "",
       blockVersion: isSet(object.blockVersion)
-        ? Long.fromValue(object.blockVersion)
+        ? BigInt(object.blockVersion)
         : isSet(object.block_version)
-        ? Long.fromValue(object.block_version)
-        : Long.UZERO,
+        ? BigInt(object.block_version)
+        : 0n,
       p2pVersion: isSet(object.p2pVersion)
-        ? Long.fromValue(object.p2pVersion)
+        ? BigInt(object.p2pVersion)
         : isSet(object.p2p_version)
-        ? Long.fromValue(object.p2p_version)
-        : Long.UZERO,
+        ? BigInt(object.p2p_version)
+        : 0n,
       abciVersion: isSet(object.abciVersion)
         ? globalThis.String(object.abciVersion)
         : isSet(object.abci_version)
@@ -1310,11 +1315,11 @@ export const RequestInfo: MessageFns<RequestInfo> = {
     if (message.version !== "") {
       obj.version = message.version;
     }
-    if (!message.blockVersion.equals(Long.UZERO)) {
-      obj.blockVersion = (message.blockVersion || Long.UZERO).toString();
+    if (message.blockVersion !== 0n) {
+      obj.blockVersion = message.blockVersion.toString();
     }
-    if (!message.p2pVersion.equals(Long.UZERO)) {
-      obj.p2pVersion = (message.p2pVersion || Long.UZERO).toString();
+    if (message.p2pVersion !== 0n) {
+      obj.p2pVersion = message.p2pVersion.toString();
     }
     if (message.abciVersion !== "") {
       obj.abciVersion = message.abciVersion;
@@ -1328,12 +1333,8 @@ export const RequestInfo: MessageFns<RequestInfo> = {
   fromPartial<I extends Exact<DeepPartial<RequestInfo>, I>>(object: I): RequestInfo {
     const message = createBaseRequestInfo();
     message.version = object.version ?? "";
-    message.blockVersion = (object.blockVersion !== undefined && object.blockVersion !== null)
-      ? Long.fromValue(object.blockVersion)
-      : Long.UZERO;
-    message.p2pVersion = (object.p2pVersion !== undefined && object.p2pVersion !== null)
-      ? Long.fromValue(object.p2pVersion)
-      : Long.UZERO;
+    message.blockVersion = object.blockVersion ?? 0n;
+    message.p2pVersion = object.p2pVersion ?? 0n;
     message.abciVersion = object.abciVersion ?? "";
     return message;
   },
@@ -1346,7 +1347,7 @@ function createBaseRequestInitChain(): RequestInitChain {
     consensusParams: undefined,
     validators: [],
     appStateBytes: new Uint8Array(0),
-    initialHeight: Long.ZERO,
+    initialHeight: 0n,
   };
 }
 
@@ -1367,8 +1368,11 @@ export const RequestInitChain: MessageFns<RequestInitChain> = {
     if (message.appStateBytes.length !== 0) {
       writer.uint32(42).bytes(message.appStateBytes);
     }
-    if (!message.initialHeight.equals(Long.ZERO)) {
-      writer.uint32(48).int64(message.initialHeight.toString());
+    if (message.initialHeight !== 0n) {
+      if (BigInt.asIntN(64, message.initialHeight) !== message.initialHeight) {
+        throw new globalThis.Error("value provided for field message.initialHeight of type int64 too large");
+      }
+      writer.uint32(48).int64(message.initialHeight);
     }
     return writer;
   },
@@ -1425,7 +1429,7 @@ export const RequestInitChain: MessageFns<RequestInitChain> = {
             break;
           }
 
-          message.initialHeight = Long.fromString(reader.int64().toString());
+          message.initialHeight = reader.int64() as bigint;
           continue;
         }
       }
@@ -1459,10 +1463,10 @@ export const RequestInitChain: MessageFns<RequestInitChain> = {
         ? bytesFromBase64(object.app_state_bytes)
         : new Uint8Array(0),
       initialHeight: isSet(object.initialHeight)
-        ? Long.fromValue(object.initialHeight)
+        ? BigInt(object.initialHeight)
         : isSet(object.initial_height)
-        ? Long.fromValue(object.initial_height)
-        : Long.ZERO,
+        ? BigInt(object.initial_height)
+        : 0n,
     };
   },
 
@@ -1483,8 +1487,8 @@ export const RequestInitChain: MessageFns<RequestInitChain> = {
     if (message.appStateBytes.length !== 0) {
       obj.appStateBytes = base64FromBytes(message.appStateBytes);
     }
-    if (!message.initialHeight.equals(Long.ZERO)) {
-      obj.initialHeight = (message.initialHeight || Long.ZERO).toString();
+    if (message.initialHeight !== 0n) {
+      obj.initialHeight = message.initialHeight.toString();
     }
     return obj;
   },
@@ -1501,15 +1505,13 @@ export const RequestInitChain: MessageFns<RequestInitChain> = {
       : undefined;
     message.validators = object.validators?.map((e) => ValidatorUpdate.fromPartial(e)) || [];
     message.appStateBytes = object.appStateBytes ?? new Uint8Array(0);
-    message.initialHeight = (object.initialHeight !== undefined && object.initialHeight !== null)
-      ? Long.fromValue(object.initialHeight)
-      : Long.ZERO;
+    message.initialHeight = object.initialHeight ?? 0n;
     return message;
   },
 };
 
 function createBaseRequestQuery(): RequestQuery {
-  return { data: new Uint8Array(0), path: "", height: Long.ZERO, prove: false };
+  return { data: new Uint8Array(0), path: "", height: 0n, prove: false };
 }
 
 export const RequestQuery: MessageFns<RequestQuery> = {
@@ -1520,8 +1522,11 @@ export const RequestQuery: MessageFns<RequestQuery> = {
     if (message.path !== "") {
       writer.uint32(18).string(message.path);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(24).int64(message.height);
     }
     if (message.prove !== false) {
       writer.uint32(32).bool(message.prove);
@@ -1557,7 +1562,7 @@ export const RequestQuery: MessageFns<RequestQuery> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -1581,7 +1586,7 @@ export const RequestQuery: MessageFns<RequestQuery> = {
     return {
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
       path: isSet(object.path) ? globalThis.String(object.path) : "",
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       prove: isSet(object.prove) ? globalThis.Boolean(object.prove) : false,
     };
   },
@@ -1594,8 +1599,8 @@ export const RequestQuery: MessageFns<RequestQuery> = {
     if (message.path !== "") {
       obj.path = message.path;
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.prove !== false) {
       obj.prove = message.prove;
@@ -1610,9 +1615,7 @@ export const RequestQuery: MessageFns<RequestQuery> = {
     const message = createBaseRequestQuery();
     message.data = object.data ?? new Uint8Array(0);
     message.path = object.path ?? "";
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.prove = object.prove ?? false;
     return message;
   },
@@ -1863,13 +1866,16 @@ export const RequestOfferSnapshot: MessageFns<RequestOfferSnapshot> = {
 };
 
 function createBaseRequestLoadSnapshotChunk(): RequestLoadSnapshotChunk {
-  return { height: Long.UZERO, format: 0, chunk: 0 };
+  return { height: 0n, format: 0, chunk: 0 };
 }
 
 export const RequestLoadSnapshotChunk: MessageFns<RequestLoadSnapshotChunk> = {
   encode(message: RequestLoadSnapshotChunk, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.height.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asUintN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.height);
     }
     if (message.format !== 0) {
       writer.uint32(16).uint32(message.format);
@@ -1892,7 +1898,7 @@ export const RequestLoadSnapshotChunk: MessageFns<RequestLoadSnapshotChunk> = {
             break;
           }
 
-          message.height = Long.fromString(reader.uint64().toString(), true);
+          message.height = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -1922,7 +1928,7 @@ export const RequestLoadSnapshotChunk: MessageFns<RequestLoadSnapshotChunk> = {
 
   fromJSON(object: any): RequestLoadSnapshotChunk {
     return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       format: isSet(object.format) ? globalThis.Number(object.format) : 0,
       chunk: isSet(object.chunk) ? globalThis.Number(object.chunk) : 0,
     };
@@ -1930,8 +1936,8 @@ export const RequestLoadSnapshotChunk: MessageFns<RequestLoadSnapshotChunk> = {
 
   toJSON(message: RequestLoadSnapshotChunk): unknown {
     const obj: any = {};
-    if (!message.height.equals(Long.UZERO)) {
-      obj.height = (message.height || Long.UZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.format !== 0) {
       obj.format = Math.round(message.format);
@@ -1947,9 +1953,7 @@ export const RequestLoadSnapshotChunk: MessageFns<RequestLoadSnapshotChunk> = {
   },
   fromPartial<I extends Exact<DeepPartial<RequestLoadSnapshotChunk>, I>>(object: I): RequestLoadSnapshotChunk {
     const message = createBaseRequestLoadSnapshotChunk();
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.UZERO;
+    message.height = object.height ?? 0n;
     message.format = object.format ?? 0;
     message.chunk = object.chunk ?? 0;
     return message;
@@ -2050,11 +2054,11 @@ export const RequestApplySnapshotChunk: MessageFns<RequestApplySnapshotChunk> = 
 
 function createBaseRequestPrepareProposal(): RequestPrepareProposal {
   return {
-    maxTxBytes: Long.ZERO,
+    maxTxBytes: 0n,
     txs: [],
     localLastCommit: undefined,
     misbehavior: [],
-    height: Long.ZERO,
+    height: 0n,
     time: undefined,
     nextValidatorsHash: new Uint8Array(0),
     proposerAddress: new Uint8Array(0),
@@ -2063,8 +2067,11 @@ function createBaseRequestPrepareProposal(): RequestPrepareProposal {
 
 export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
   encode(message: RequestPrepareProposal, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.maxTxBytes.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.maxTxBytes.toString());
+    if (message.maxTxBytes !== 0n) {
+      if (BigInt.asIntN(64, message.maxTxBytes) !== message.maxTxBytes) {
+        throw new globalThis.Error("value provided for field message.maxTxBytes of type int64 too large");
+      }
+      writer.uint32(8).int64(message.maxTxBytes);
     }
     for (const v of message.txs) {
       writer.uint32(18).bytes(v!);
@@ -2075,8 +2082,11 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
     for (const v of message.misbehavior) {
       Misbehavior.encode(v!, writer.uint32(34).fork()).join();
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(40).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(50).fork()).join();
@@ -2102,7 +2112,7 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
             break;
           }
 
-          message.maxTxBytes = Long.fromString(reader.int64().toString());
+          message.maxTxBytes = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -2134,7 +2144,7 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -2173,10 +2183,10 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
   fromJSON(object: any): RequestPrepareProposal {
     return {
       maxTxBytes: isSet(object.maxTxBytes)
-        ? Long.fromValue(object.maxTxBytes)
+        ? BigInt(object.maxTxBytes)
         : isSet(object.max_tx_bytes)
-        ? Long.fromValue(object.max_tx_bytes)
-        : Long.ZERO,
+        ? BigInt(object.max_tx_bytes)
+        : 0n,
       txs: globalThis.Array.isArray(object?.txs) ? object.txs.map((e: any) => bytesFromBase64(e)) : [],
       localLastCommit: isSet(object.localLastCommit)
         ? ExtendedCommitInfo.fromJSON(object.localLastCommit)
@@ -2186,7 +2196,7 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
       misbehavior: globalThis.Array.isArray(object?.misbehavior)
         ? object.misbehavior.map((e: any) => Misbehavior.fromJSON(e))
         : [],
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       nextValidatorsHash: isSet(object.nextValidatorsHash)
         ? bytesFromBase64(object.nextValidatorsHash)
@@ -2203,8 +2213,8 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
 
   toJSON(message: RequestPrepareProposal): unknown {
     const obj: any = {};
-    if (!message.maxTxBytes.equals(Long.ZERO)) {
-      obj.maxTxBytes = (message.maxTxBytes || Long.ZERO).toString();
+    if (message.maxTxBytes !== 0n) {
+      obj.maxTxBytes = message.maxTxBytes.toString();
     }
     if (message.txs?.length) {
       obj.txs = message.txs.map((e) => base64FromBytes(e));
@@ -2215,8 +2225,8 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
     if (message.misbehavior?.length) {
       obj.misbehavior = message.misbehavior.map((e) => Misbehavior.toJSON(e));
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
@@ -2235,17 +2245,13 @@ export const RequestPrepareProposal: MessageFns<RequestPrepareProposal> = {
   },
   fromPartial<I extends Exact<DeepPartial<RequestPrepareProposal>, I>>(object: I): RequestPrepareProposal {
     const message = createBaseRequestPrepareProposal();
-    message.maxTxBytes = (object.maxTxBytes !== undefined && object.maxTxBytes !== null)
-      ? Long.fromValue(object.maxTxBytes)
-      : Long.ZERO;
+    message.maxTxBytes = object.maxTxBytes ?? 0n;
     message.txs = object.txs?.map((e) => e) || [];
     message.localLastCommit = (object.localLastCommit !== undefined && object.localLastCommit !== null)
       ? ExtendedCommitInfo.fromPartial(object.localLastCommit)
       : undefined;
     message.misbehavior = object.misbehavior?.map((e) => Misbehavior.fromPartial(e)) || [];
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
     message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array(0);
     message.proposerAddress = object.proposerAddress ?? new Uint8Array(0);
@@ -2259,7 +2265,7 @@ function createBaseRequestProcessProposal(): RequestProcessProposal {
     proposedLastCommit: undefined,
     misbehavior: [],
     hash: new Uint8Array(0),
-    height: Long.ZERO,
+    height: 0n,
     time: undefined,
     nextValidatorsHash: new Uint8Array(0),
     proposerAddress: new Uint8Array(0),
@@ -2280,8 +2286,11 @@ export const RequestProcessProposal: MessageFns<RequestProcessProposal> = {
     if (message.hash.length !== 0) {
       writer.uint32(34).bytes(message.hash);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(40).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(50).fork()).join();
@@ -2339,7 +2348,7 @@ export const RequestProcessProposal: MessageFns<RequestProcessProposal> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -2387,7 +2396,7 @@ export const RequestProcessProposal: MessageFns<RequestProcessProposal> = {
         ? object.misbehavior.map((e: any) => Misbehavior.fromJSON(e))
         : [],
       hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(0),
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       nextValidatorsHash: isSet(object.nextValidatorsHash)
         ? bytesFromBase64(object.nextValidatorsHash)
@@ -2416,8 +2425,8 @@ export const RequestProcessProposal: MessageFns<RequestProcessProposal> = {
     if (message.hash.length !== 0) {
       obj.hash = base64FromBytes(message.hash);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
@@ -2442,9 +2451,7 @@ export const RequestProcessProposal: MessageFns<RequestProcessProposal> = {
       : undefined;
     message.misbehavior = object.misbehavior?.map((e) => Misbehavior.fromPartial(e)) || [];
     message.hash = object.hash ?? new Uint8Array(0);
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
     message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array(0);
     message.proposerAddress = object.proposerAddress ?? new Uint8Array(0);
@@ -2455,7 +2462,7 @@ export const RequestProcessProposal: MessageFns<RequestProcessProposal> = {
 function createBaseRequestExtendVote(): RequestExtendVote {
   return {
     hash: new Uint8Array(0),
-    height: Long.ZERO,
+    height: 0n,
     time: undefined,
     txs: [],
     proposedLastCommit: undefined,
@@ -2470,8 +2477,11 @@ export const RequestExtendVote: MessageFns<RequestExtendVote> = {
     if (message.hash.length !== 0) {
       writer.uint32(10).bytes(message.hash);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(16).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(26).fork()).join();
@@ -2514,7 +2524,7 @@ export const RequestExtendVote: MessageFns<RequestExtendVote> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 3: {
@@ -2577,7 +2587,7 @@ export const RequestExtendVote: MessageFns<RequestExtendVote> = {
   fromJSON(object: any): RequestExtendVote {
     return {
       hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(0),
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       txs: globalThis.Array.isArray(object?.txs) ? object.txs.map((e: any) => bytesFromBase64(e)) : [],
       proposedLastCommit: isSet(object.proposedLastCommit)
@@ -2606,8 +2616,8 @@ export const RequestExtendVote: MessageFns<RequestExtendVote> = {
     if (message.hash.length !== 0) {
       obj.hash = base64FromBytes(message.hash);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
@@ -2636,9 +2646,7 @@ export const RequestExtendVote: MessageFns<RequestExtendVote> = {
   fromPartial<I extends Exact<DeepPartial<RequestExtendVote>, I>>(object: I): RequestExtendVote {
     const message = createBaseRequestExtendVote();
     message.hash = object.hash ?? new Uint8Array(0);
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
     message.txs = object.txs?.map((e) => e) || [];
     message.proposedLastCommit = (object.proposedLastCommit !== undefined && object.proposedLastCommit !== null)
@@ -2652,12 +2660,7 @@ export const RequestExtendVote: MessageFns<RequestExtendVote> = {
 };
 
 function createBaseRequestVerifyVoteExtension(): RequestVerifyVoteExtension {
-  return {
-    hash: new Uint8Array(0),
-    validatorAddress: new Uint8Array(0),
-    height: Long.ZERO,
-    voteExtension: new Uint8Array(0),
-  };
+  return { hash: new Uint8Array(0), validatorAddress: new Uint8Array(0), height: 0n, voteExtension: new Uint8Array(0) };
 }
 
 export const RequestVerifyVoteExtension: MessageFns<RequestVerifyVoteExtension> = {
@@ -2668,8 +2671,11 @@ export const RequestVerifyVoteExtension: MessageFns<RequestVerifyVoteExtension> 
     if (message.validatorAddress.length !== 0) {
       writer.uint32(18).bytes(message.validatorAddress);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(24).int64(message.height);
     }
     if (message.voteExtension.length !== 0) {
       writer.uint32(34).bytes(message.voteExtension);
@@ -2705,7 +2711,7 @@ export const RequestVerifyVoteExtension: MessageFns<RequestVerifyVoteExtension> 
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -2733,7 +2739,7 @@ export const RequestVerifyVoteExtension: MessageFns<RequestVerifyVoteExtension> 
         : isSet(object.validator_address)
         ? bytesFromBase64(object.validator_address)
         : new Uint8Array(0),
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       voteExtension: isSet(object.voteExtension)
         ? bytesFromBase64(object.voteExtension)
         : isSet(object.vote_extension)
@@ -2750,8 +2756,8 @@ export const RequestVerifyVoteExtension: MessageFns<RequestVerifyVoteExtension> 
     if (message.validatorAddress.length !== 0) {
       obj.validatorAddress = base64FromBytes(message.validatorAddress);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.voteExtension.length !== 0) {
       obj.voteExtension = base64FromBytes(message.voteExtension);
@@ -2766,9 +2772,7 @@ export const RequestVerifyVoteExtension: MessageFns<RequestVerifyVoteExtension> 
     const message = createBaseRequestVerifyVoteExtension();
     message.hash = object.hash ?? new Uint8Array(0);
     message.validatorAddress = object.validatorAddress ?? new Uint8Array(0);
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.voteExtension = object.voteExtension ?? new Uint8Array(0);
     return message;
   },
@@ -2780,7 +2784,7 @@ function createBaseRequestFinalizeBlock(): RequestFinalizeBlock {
     decidedLastCommit: undefined,
     misbehavior: [],
     hash: new Uint8Array(0),
-    height: Long.ZERO,
+    height: 0n,
     time: undefined,
     nextValidatorsHash: new Uint8Array(0),
     proposerAddress: new Uint8Array(0),
@@ -2801,8 +2805,11 @@ export const RequestFinalizeBlock: MessageFns<RequestFinalizeBlock> = {
     if (message.hash.length !== 0) {
       writer.uint32(34).bytes(message.hash);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(40).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(50).fork()).join();
@@ -2860,7 +2867,7 @@ export const RequestFinalizeBlock: MessageFns<RequestFinalizeBlock> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -2908,7 +2915,7 @@ export const RequestFinalizeBlock: MessageFns<RequestFinalizeBlock> = {
         ? object.misbehavior.map((e: any) => Misbehavior.fromJSON(e))
         : [],
       hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(0),
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       nextValidatorsHash: isSet(object.nextValidatorsHash)
         ? bytesFromBase64(object.nextValidatorsHash)
@@ -2937,8 +2944,8 @@ export const RequestFinalizeBlock: MessageFns<RequestFinalizeBlock> = {
     if (message.hash.length !== 0) {
       obj.hash = base64FromBytes(message.hash);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
@@ -2963,9 +2970,7 @@ export const RequestFinalizeBlock: MessageFns<RequestFinalizeBlock> = {
       : undefined;
     message.misbehavior = object.misbehavior?.map((e) => Misbehavior.fromPartial(e)) || [];
     message.hash = object.hash ?? new Uint8Array(0);
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
     message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array(0);
     message.proposerAddress = object.proposerAddress ?? new Uint8Array(0);
@@ -3545,13 +3550,7 @@ export const ResponseFlush: MessageFns<ResponseFlush> = {
 };
 
 function createBaseResponseInfo(): ResponseInfo {
-  return {
-    data: "",
-    version: "",
-    appVersion: Long.UZERO,
-    lastBlockHeight: Long.ZERO,
-    lastBlockAppHash: new Uint8Array(0),
-  };
+  return { data: "", version: "", appVersion: 0n, lastBlockHeight: 0n, lastBlockAppHash: new Uint8Array(0) };
 }
 
 export const ResponseInfo: MessageFns<ResponseInfo> = {
@@ -3562,11 +3561,17 @@ export const ResponseInfo: MessageFns<ResponseInfo> = {
     if (message.version !== "") {
       writer.uint32(18).string(message.version);
     }
-    if (!message.appVersion.equals(Long.UZERO)) {
-      writer.uint32(24).uint64(message.appVersion.toString());
+    if (message.appVersion !== 0n) {
+      if (BigInt.asUintN(64, message.appVersion) !== message.appVersion) {
+        throw new globalThis.Error("value provided for field message.appVersion of type uint64 too large");
+      }
+      writer.uint32(24).uint64(message.appVersion);
     }
-    if (!message.lastBlockHeight.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.lastBlockHeight.toString());
+    if (message.lastBlockHeight !== 0n) {
+      if (BigInt.asIntN(64, message.lastBlockHeight) !== message.lastBlockHeight) {
+        throw new globalThis.Error("value provided for field message.lastBlockHeight of type int64 too large");
+      }
+      writer.uint32(32).int64(message.lastBlockHeight);
     }
     if (message.lastBlockAppHash.length !== 0) {
       writer.uint32(42).bytes(message.lastBlockAppHash);
@@ -3602,7 +3607,7 @@ export const ResponseInfo: MessageFns<ResponseInfo> = {
             break;
           }
 
-          message.appVersion = Long.fromString(reader.uint64().toString(), true);
+          message.appVersion = reader.uint64() as bigint;
           continue;
         }
         case 4: {
@@ -3610,7 +3615,7 @@ export const ResponseInfo: MessageFns<ResponseInfo> = {
             break;
           }
 
-          message.lastBlockHeight = Long.fromString(reader.int64().toString());
+          message.lastBlockHeight = reader.int64() as bigint;
           continue;
         }
         case 5: {
@@ -3635,15 +3640,15 @@ export const ResponseInfo: MessageFns<ResponseInfo> = {
       data: isSet(object.data) ? globalThis.String(object.data) : "",
       version: isSet(object.version) ? globalThis.String(object.version) : "",
       appVersion: isSet(object.appVersion)
-        ? Long.fromValue(object.appVersion)
+        ? BigInt(object.appVersion)
         : isSet(object.app_version)
-        ? Long.fromValue(object.app_version)
-        : Long.UZERO,
+        ? BigInt(object.app_version)
+        : 0n,
       lastBlockHeight: isSet(object.lastBlockHeight)
-        ? Long.fromValue(object.lastBlockHeight)
+        ? BigInt(object.lastBlockHeight)
         : isSet(object.last_block_height)
-        ? Long.fromValue(object.last_block_height)
-        : Long.ZERO,
+        ? BigInt(object.last_block_height)
+        : 0n,
       lastBlockAppHash: isSet(object.lastBlockAppHash)
         ? bytesFromBase64(object.lastBlockAppHash)
         : isSet(object.last_block_app_hash)
@@ -3660,11 +3665,11 @@ export const ResponseInfo: MessageFns<ResponseInfo> = {
     if (message.version !== "") {
       obj.version = message.version;
     }
-    if (!message.appVersion.equals(Long.UZERO)) {
-      obj.appVersion = (message.appVersion || Long.UZERO).toString();
+    if (message.appVersion !== 0n) {
+      obj.appVersion = message.appVersion.toString();
     }
-    if (!message.lastBlockHeight.equals(Long.ZERO)) {
-      obj.lastBlockHeight = (message.lastBlockHeight || Long.ZERO).toString();
+    if (message.lastBlockHeight !== 0n) {
+      obj.lastBlockHeight = message.lastBlockHeight.toString();
     }
     if (message.lastBlockAppHash.length !== 0) {
       obj.lastBlockAppHash = base64FromBytes(message.lastBlockAppHash);
@@ -3679,12 +3684,8 @@ export const ResponseInfo: MessageFns<ResponseInfo> = {
     const message = createBaseResponseInfo();
     message.data = object.data ?? "";
     message.version = object.version ?? "";
-    message.appVersion = (object.appVersion !== undefined && object.appVersion !== null)
-      ? Long.fromValue(object.appVersion)
-      : Long.UZERO;
-    message.lastBlockHeight = (object.lastBlockHeight !== undefined && object.lastBlockHeight !== null)
-      ? Long.fromValue(object.lastBlockHeight)
-      : Long.ZERO;
+    message.appVersion = object.appVersion ?? 0n;
+    message.lastBlockHeight = object.lastBlockHeight ?? 0n;
     message.lastBlockAppHash = object.lastBlockAppHash ?? new Uint8Array(0);
     return message;
   },
@@ -3799,11 +3800,11 @@ function createBaseResponseQuery(): ResponseQuery {
     code: 0,
     log: "",
     info: "",
-    index: Long.ZERO,
+    index: 0n,
     key: new Uint8Array(0),
     value: new Uint8Array(0),
     proofOps: undefined,
-    height: Long.ZERO,
+    height: 0n,
     codespace: "",
   };
 }
@@ -3819,8 +3820,11 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
     if (message.info !== "") {
       writer.uint32(34).string(message.info);
     }
-    if (!message.index.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.index.toString());
+    if (message.index !== 0n) {
+      if (BigInt.asIntN(64, message.index) !== message.index) {
+        throw new globalThis.Error("value provided for field message.index of type int64 too large");
+      }
+      writer.uint32(40).int64(message.index);
     }
     if (message.key.length !== 0) {
       writer.uint32(50).bytes(message.key);
@@ -3831,8 +3835,11 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
     if (message.proofOps !== undefined) {
       ProofOps.encode(message.proofOps, writer.uint32(66).fork()).join();
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(72).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(72).int64(message.height);
     }
     if (message.codespace !== "") {
       writer.uint32(82).string(message.codespace);
@@ -3876,7 +3883,7 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
             break;
           }
 
-          message.index = Long.fromString(reader.int64().toString());
+          message.index = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -3908,7 +3915,7 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 10: {
@@ -3933,7 +3940,7 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
       code: isSet(object.code) ? globalThis.Number(object.code) : 0,
       log: isSet(object.log) ? globalThis.String(object.log) : "",
       info: isSet(object.info) ? globalThis.String(object.info) : "",
-      index: isSet(object.index) ? Long.fromValue(object.index) : Long.ZERO,
+      index: isSet(object.index) ? BigInt(object.index) : 0n,
       key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(0),
       value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(0),
       proofOps: isSet(object.proofOps)
@@ -3941,7 +3948,7 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
         : isSet(object.proof_ops)
         ? ProofOps.fromJSON(object.proof_ops)
         : undefined,
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       codespace: isSet(object.codespace) ? globalThis.String(object.codespace) : "",
     };
   },
@@ -3957,8 +3964,8 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
     if (message.info !== "") {
       obj.info = message.info;
     }
-    if (!message.index.equals(Long.ZERO)) {
-      obj.index = (message.index || Long.ZERO).toString();
+    if (message.index !== 0n) {
+      obj.index = message.index.toString();
     }
     if (message.key.length !== 0) {
       obj.key = base64FromBytes(message.key);
@@ -3969,8 +3976,8 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
     if (message.proofOps !== undefined) {
       obj.proofOps = ProofOps.toJSON(message.proofOps);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.codespace !== "") {
       obj.codespace = message.codespace;
@@ -3986,31 +3993,20 @@ export const ResponseQuery: MessageFns<ResponseQuery> = {
     message.code = object.code ?? 0;
     message.log = object.log ?? "";
     message.info = object.info ?? "";
-    message.index = (object.index !== undefined && object.index !== null) ? Long.fromValue(object.index) : Long.ZERO;
+    message.index = object.index ?? 0n;
     message.key = object.key ?? new Uint8Array(0);
     message.value = object.value ?? new Uint8Array(0);
     message.proofOps = (object.proofOps !== undefined && object.proofOps !== null)
       ? ProofOps.fromPartial(object.proofOps)
       : undefined;
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.codespace = object.codespace ?? "";
     return message;
   },
 };
 
 function createBaseResponseCheckTx(): ResponseCheckTx {
-  return {
-    code: 0,
-    data: new Uint8Array(0),
-    log: "",
-    info: "",
-    gasWanted: Long.ZERO,
-    gasUsed: Long.ZERO,
-    events: [],
-    codespace: "",
-  };
+  return { code: 0, data: new Uint8Array(0), log: "", info: "", gasWanted: 0n, gasUsed: 0n, events: [], codespace: "" };
 }
 
 export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
@@ -4027,11 +4023,17 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
     if (message.info !== "") {
       writer.uint32(34).string(message.info);
     }
-    if (!message.gasWanted.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.gasWanted.toString());
+    if (message.gasWanted !== 0n) {
+      if (BigInt.asIntN(64, message.gasWanted) !== message.gasWanted) {
+        throw new globalThis.Error("value provided for field message.gasWanted of type int64 too large");
+      }
+      writer.uint32(40).int64(message.gasWanted);
     }
-    if (!message.gasUsed.equals(Long.ZERO)) {
-      writer.uint32(48).int64(message.gasUsed.toString());
+    if (message.gasUsed !== 0n) {
+      if (BigInt.asIntN(64, message.gasUsed) !== message.gasUsed) {
+        throw new globalThis.Error("value provided for field message.gasUsed of type int64 too large");
+      }
+      writer.uint32(48).int64(message.gasUsed);
     }
     for (const v of message.events) {
       Event.encode(v!, writer.uint32(58).fork()).join();
@@ -4086,7 +4088,7 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
             break;
           }
 
-          message.gasWanted = Long.fromString(reader.int64().toString());
+          message.gasWanted = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -4094,7 +4096,7 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
             break;
           }
 
-          message.gasUsed = Long.fromString(reader.int64().toString());
+          message.gasUsed = reader.int64() as bigint;
           continue;
         }
         case 7: {
@@ -4128,8 +4130,8 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
       log: isSet(object.log) ? globalThis.String(object.log) : "",
       info: isSet(object.info) ? globalThis.String(object.info) : "",
-      gasWanted: isSet(object.gas_wanted) ? Long.fromValue(object.gas_wanted) : Long.ZERO,
-      gasUsed: isSet(object.gas_used) ? Long.fromValue(object.gas_used) : Long.ZERO,
+      gasWanted: isSet(object.gas_wanted) ? BigInt(object.gas_wanted) : 0n,
+      gasUsed: isSet(object.gas_used) ? BigInt(object.gas_used) : 0n,
       events: globalThis.Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : [],
       codespace: isSet(object.codespace) ? globalThis.String(object.codespace) : "",
     };
@@ -4149,11 +4151,11 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
     if (message.info !== "") {
       obj.info = message.info;
     }
-    if (!message.gasWanted.equals(Long.ZERO)) {
-      obj.gas_wanted = (message.gasWanted || Long.ZERO).toString();
+    if (message.gasWanted !== 0n) {
+      obj.gas_wanted = message.gasWanted.toString();
     }
-    if (!message.gasUsed.equals(Long.ZERO)) {
-      obj.gas_used = (message.gasUsed || Long.ZERO).toString();
+    if (message.gasUsed !== 0n) {
+      obj.gas_used = message.gasUsed.toString();
     }
     if (message.events?.length) {
       obj.events = message.events.map((e) => Event.toJSON(e));
@@ -4173,12 +4175,8 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
     message.data = object.data ?? new Uint8Array(0);
     message.log = object.log ?? "";
     message.info = object.info ?? "";
-    message.gasWanted = (object.gasWanted !== undefined && object.gasWanted !== null)
-      ? Long.fromValue(object.gasWanted)
-      : Long.ZERO;
-    message.gasUsed = (object.gasUsed !== undefined && object.gasUsed !== null)
-      ? Long.fromValue(object.gasUsed)
-      : Long.ZERO;
+    message.gasWanted = object.gasWanted ?? 0n;
+    message.gasUsed = object.gasUsed ?? 0n;
     message.events = object.events?.map((e) => Event.fromPartial(e)) || [];
     message.codespace = object.codespace ?? "";
     return message;
@@ -4186,13 +4184,16 @@ export const ResponseCheckTx: MessageFns<ResponseCheckTx> = {
 };
 
 function createBaseResponseCommit(): ResponseCommit {
-  return { retainHeight: Long.ZERO };
+  return { retainHeight: 0n };
 }
 
 export const ResponseCommit: MessageFns<ResponseCommit> = {
   encode(message: ResponseCommit, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.retainHeight.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.retainHeight.toString());
+    if (message.retainHeight !== 0n) {
+      if (BigInt.asIntN(64, message.retainHeight) !== message.retainHeight) {
+        throw new globalThis.Error("value provided for field message.retainHeight of type int64 too large");
+      }
+      writer.uint32(24).int64(message.retainHeight);
     }
     return writer;
   },
@@ -4209,7 +4210,7 @@ export const ResponseCommit: MessageFns<ResponseCommit> = {
             break;
           }
 
-          message.retainHeight = Long.fromString(reader.int64().toString());
+          message.retainHeight = reader.int64() as bigint;
           continue;
         }
       }
@@ -4224,17 +4225,17 @@ export const ResponseCommit: MessageFns<ResponseCommit> = {
   fromJSON(object: any): ResponseCommit {
     return {
       retainHeight: isSet(object.retainHeight)
-        ? Long.fromValue(object.retainHeight)
+        ? BigInt(object.retainHeight)
         : isSet(object.retain_height)
-        ? Long.fromValue(object.retain_height)
-        : Long.ZERO,
+        ? BigInt(object.retain_height)
+        : 0n,
     };
   },
 
   toJSON(message: ResponseCommit): unknown {
     const obj: any = {};
-    if (!message.retainHeight.equals(Long.ZERO)) {
-      obj.retainHeight = (message.retainHeight || Long.ZERO).toString();
+    if (message.retainHeight !== 0n) {
+      obj.retainHeight = message.retainHeight.toString();
     }
     return obj;
   },
@@ -4244,9 +4245,7 @@ export const ResponseCommit: MessageFns<ResponseCommit> = {
   },
   fromPartial<I extends Exact<DeepPartial<ResponseCommit>, I>>(object: I): ResponseCommit {
     const message = createBaseResponseCommit();
-    message.retainHeight = (object.retainHeight !== undefined && object.retainHeight !== null)
-      ? Long.fromValue(object.retainHeight)
-      : Long.ZERO;
+    message.retainHeight = object.retainHeight ?? 0n;
     return message;
   },
 };
@@ -5251,16 +5250,7 @@ export const EventAttribute: MessageFns<EventAttribute> = {
 };
 
 function createBaseExecTxResult(): ExecTxResult {
-  return {
-    code: 0,
-    data: new Uint8Array(0),
-    log: "",
-    info: "",
-    gasWanted: Long.ZERO,
-    gasUsed: Long.ZERO,
-    events: [],
-    codespace: "",
-  };
+  return { code: 0, data: new Uint8Array(0), log: "", info: "", gasWanted: 0n, gasUsed: 0n, events: [], codespace: "" };
 }
 
 export const ExecTxResult: MessageFns<ExecTxResult> = {
@@ -5277,11 +5267,17 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
     if (message.info !== "") {
       writer.uint32(34).string(message.info);
     }
-    if (!message.gasWanted.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.gasWanted.toString());
+    if (message.gasWanted !== 0n) {
+      if (BigInt.asIntN(64, message.gasWanted) !== message.gasWanted) {
+        throw new globalThis.Error("value provided for field message.gasWanted of type int64 too large");
+      }
+      writer.uint32(40).int64(message.gasWanted);
     }
-    if (!message.gasUsed.equals(Long.ZERO)) {
-      writer.uint32(48).int64(message.gasUsed.toString());
+    if (message.gasUsed !== 0n) {
+      if (BigInt.asIntN(64, message.gasUsed) !== message.gasUsed) {
+        throw new globalThis.Error("value provided for field message.gasUsed of type int64 too large");
+      }
+      writer.uint32(48).int64(message.gasUsed);
     }
     for (const v of message.events) {
       Event.encode(v!, writer.uint32(58).fork()).join();
@@ -5336,7 +5332,7 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
             break;
           }
 
-          message.gasWanted = Long.fromString(reader.int64().toString());
+          message.gasWanted = reader.int64() as bigint;
           continue;
         }
         case 6: {
@@ -5344,7 +5340,7 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
             break;
           }
 
-          message.gasUsed = Long.fromString(reader.int64().toString());
+          message.gasUsed = reader.int64() as bigint;
           continue;
         }
         case 7: {
@@ -5378,8 +5374,8 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(0),
       log: isSet(object.log) ? globalThis.String(object.log) : "",
       info: isSet(object.info) ? globalThis.String(object.info) : "",
-      gasWanted: isSet(object.gas_wanted) ? Long.fromValue(object.gas_wanted) : Long.ZERO,
-      gasUsed: isSet(object.gas_used) ? Long.fromValue(object.gas_used) : Long.ZERO,
+      gasWanted: isSet(object.gas_wanted) ? BigInt(object.gas_wanted) : 0n,
+      gasUsed: isSet(object.gas_used) ? BigInt(object.gas_used) : 0n,
       events: globalThis.Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : [],
       codespace: isSet(object.codespace) ? globalThis.String(object.codespace) : "",
     };
@@ -5399,11 +5395,11 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
     if (message.info !== "") {
       obj.info = message.info;
     }
-    if (!message.gasWanted.equals(Long.ZERO)) {
-      obj.gas_wanted = (message.gasWanted || Long.ZERO).toString();
+    if (message.gasWanted !== 0n) {
+      obj.gas_wanted = message.gasWanted.toString();
     }
-    if (!message.gasUsed.equals(Long.ZERO)) {
-      obj.gas_used = (message.gasUsed || Long.ZERO).toString();
+    if (message.gasUsed !== 0n) {
+      obj.gas_used = message.gasUsed.toString();
     }
     if (message.events?.length) {
       obj.events = message.events.map((e) => Event.toJSON(e));
@@ -5423,12 +5419,8 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
     message.data = object.data ?? new Uint8Array(0);
     message.log = object.log ?? "";
     message.info = object.info ?? "";
-    message.gasWanted = (object.gasWanted !== undefined && object.gasWanted !== null)
-      ? Long.fromValue(object.gasWanted)
-      : Long.ZERO;
-    message.gasUsed = (object.gasUsed !== undefined && object.gasUsed !== null)
-      ? Long.fromValue(object.gasUsed)
-      : Long.ZERO;
+    message.gasWanted = object.gasWanted ?? 0n;
+    message.gasUsed = object.gasUsed ?? 0n;
     message.events = object.events?.map((e) => Event.fromPartial(e)) || [];
     message.codespace = object.codespace ?? "";
     return message;
@@ -5436,13 +5428,16 @@ export const ExecTxResult: MessageFns<ExecTxResult> = {
 };
 
 function createBaseTxResult(): TxResult {
-  return { height: Long.ZERO, index: 0, tx: new Uint8Array(0), result: undefined };
+  return { height: 0n, index: 0, tx: new Uint8Array(0), result: undefined };
 }
 
 export const TxResult: MessageFns<TxResult> = {
   encode(message: TxResult, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(8).int64(message.height);
     }
     if (message.index !== 0) {
       writer.uint32(16).uint32(message.index);
@@ -5468,7 +5463,7 @@ export const TxResult: MessageFns<TxResult> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 2: {
@@ -5506,7 +5501,7 @@ export const TxResult: MessageFns<TxResult> = {
 
   fromJSON(object: any): TxResult {
     return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       index: isSet(object.index) ? globalThis.Number(object.index) : 0,
       tx: isSet(object.tx) ? bytesFromBase64(object.tx) : new Uint8Array(0),
       result: isSet(object.result) ? ExecTxResult.fromJSON(object.result) : undefined,
@@ -5515,8 +5510,8 @@ export const TxResult: MessageFns<TxResult> = {
 
   toJSON(message: TxResult): unknown {
     const obj: any = {};
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.index !== 0) {
       obj.index = Math.round(message.index);
@@ -5535,9 +5530,7 @@ export const TxResult: MessageFns<TxResult> = {
   },
   fromPartial<I extends Exact<DeepPartial<TxResult>, I>>(object: I): TxResult {
     const message = createBaseTxResult();
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.index = object.index ?? 0;
     message.tx = object.tx ?? new Uint8Array(0);
     message.result = (object.result !== undefined && object.result !== null)
@@ -5548,7 +5541,7 @@ export const TxResult: MessageFns<TxResult> = {
 };
 
 function createBaseValidator(): Validator {
-  return { address: new Uint8Array(0), power: Long.ZERO };
+  return { address: new Uint8Array(0), power: 0n };
 }
 
 export const Validator: MessageFns<Validator> = {
@@ -5556,8 +5549,11 @@ export const Validator: MessageFns<Validator> = {
     if (message.address.length !== 0) {
       writer.uint32(10).bytes(message.address);
     }
-    if (!message.power.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.power.toString());
+    if (message.power !== 0n) {
+      if (BigInt.asIntN(64, message.power) !== message.power) {
+        throw new globalThis.Error("value provided for field message.power of type int64 too large");
+      }
+      writer.uint32(24).int64(message.power);
     }
     return writer;
   },
@@ -5582,7 +5578,7 @@ export const Validator: MessageFns<Validator> = {
             break;
           }
 
-          message.power = Long.fromString(reader.int64().toString());
+          message.power = reader.int64() as bigint;
           continue;
         }
       }
@@ -5597,7 +5593,7 @@ export const Validator: MessageFns<Validator> = {
   fromJSON(object: any): Validator {
     return {
       address: isSet(object.address) ? bytesFromBase64(object.address) : new Uint8Array(0),
-      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO,
+      power: isSet(object.power) ? BigInt(object.power) : 0n,
     };
   },
 
@@ -5606,8 +5602,8 @@ export const Validator: MessageFns<Validator> = {
     if (message.address.length !== 0) {
       obj.address = base64FromBytes(message.address);
     }
-    if (!message.power.equals(Long.ZERO)) {
-      obj.power = (message.power || Long.ZERO).toString();
+    if (message.power !== 0n) {
+      obj.power = message.power.toString();
     }
     return obj;
   },
@@ -5618,13 +5614,13 @@ export const Validator: MessageFns<Validator> = {
   fromPartial<I extends Exact<DeepPartial<Validator>, I>>(object: I): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? new Uint8Array(0);
-    message.power = (object.power !== undefined && object.power !== null) ? Long.fromValue(object.power) : Long.ZERO;
+    message.power = object.power ?? 0n;
     return message;
   },
 };
 
 function createBaseValidatorUpdate(): ValidatorUpdate {
-  return { pubKey: undefined, power: Long.ZERO };
+  return { pubKey: undefined, power: 0n };
 }
 
 export const ValidatorUpdate: MessageFns<ValidatorUpdate> = {
@@ -5632,8 +5628,11 @@ export const ValidatorUpdate: MessageFns<ValidatorUpdate> = {
     if (message.pubKey !== undefined) {
       PublicKey.encode(message.pubKey, writer.uint32(10).fork()).join();
     }
-    if (!message.power.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.power.toString());
+    if (message.power !== 0n) {
+      if (BigInt.asIntN(64, message.power) !== message.power) {
+        throw new globalThis.Error("value provided for field message.power of type int64 too large");
+      }
+      writer.uint32(16).int64(message.power);
     }
     return writer;
   },
@@ -5658,7 +5657,7 @@ export const ValidatorUpdate: MessageFns<ValidatorUpdate> = {
             break;
           }
 
-          message.power = Long.fromString(reader.int64().toString());
+          message.power = reader.int64() as bigint;
           continue;
         }
       }
@@ -5677,7 +5676,7 @@ export const ValidatorUpdate: MessageFns<ValidatorUpdate> = {
         : isSet(object.pub_key)
         ? PublicKey.fromJSON(object.pub_key)
         : undefined,
-      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO,
+      power: isSet(object.power) ? BigInt(object.power) : 0n,
     };
   },
 
@@ -5686,8 +5685,8 @@ export const ValidatorUpdate: MessageFns<ValidatorUpdate> = {
     if (message.pubKey !== undefined) {
       obj.pubKey = PublicKey.toJSON(message.pubKey);
     }
-    if (!message.power.equals(Long.ZERO)) {
-      obj.power = (message.power || Long.ZERO).toString();
+    if (message.power !== 0n) {
+      obj.power = message.power.toString();
     }
     return obj;
   },
@@ -5700,7 +5699,7 @@ export const ValidatorUpdate: MessageFns<ValidatorUpdate> = {
     message.pubKey = (object.pubKey !== undefined && object.pubKey !== null)
       ? PublicKey.fromPartial(object.pubKey)
       : undefined;
-    message.power = (object.power !== undefined && object.power !== null) ? Long.fromValue(object.power) : Long.ZERO;
+    message.power = object.power ?? 0n;
     return message;
   },
 };
@@ -5915,7 +5914,7 @@ export const ExtendedVoteInfo: MessageFns<ExtendedVoteInfo> = {
 };
 
 function createBaseMisbehavior(): Misbehavior {
-  return { type: 0, validator: undefined, height: Long.ZERO, time: undefined, totalVotingPower: Long.ZERO };
+  return { type: 0, validator: undefined, height: 0n, time: undefined, totalVotingPower: 0n };
 }
 
 export const Misbehavior: MessageFns<Misbehavior> = {
@@ -5926,14 +5925,20 @@ export const Misbehavior: MessageFns<Misbehavior> = {
     if (message.validator !== undefined) {
       Validator.encode(message.validator, writer.uint32(18).fork()).join();
     }
-    if (!message.height.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asIntN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type int64 too large");
+      }
+      writer.uint32(24).int64(message.height);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(34).fork()).join();
     }
-    if (!message.totalVotingPower.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.totalVotingPower.toString());
+    if (message.totalVotingPower !== 0n) {
+      if (BigInt.asIntN(64, message.totalVotingPower) !== message.totalVotingPower) {
+        throw new globalThis.Error("value provided for field message.totalVotingPower of type int64 too large");
+      }
+      writer.uint32(40).int64(message.totalVotingPower);
     }
     return writer;
   },
@@ -5966,7 +5971,7 @@ export const Misbehavior: MessageFns<Misbehavior> = {
             break;
           }
 
-          message.height = Long.fromString(reader.int64().toString());
+          message.height = reader.int64() as bigint;
           continue;
         }
         case 4: {
@@ -5982,7 +5987,7 @@ export const Misbehavior: MessageFns<Misbehavior> = {
             break;
           }
 
-          message.totalVotingPower = Long.fromString(reader.int64().toString());
+          message.totalVotingPower = reader.int64() as bigint;
           continue;
         }
       }
@@ -5998,13 +6003,13 @@ export const Misbehavior: MessageFns<Misbehavior> = {
     return {
       type: isSet(object.type) ? misbehaviorTypeFromJSON(object.type) : 0,
       validator: isSet(object.validator) ? Validator.fromJSON(object.validator) : undefined,
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       totalVotingPower: isSet(object.totalVotingPower)
-        ? Long.fromValue(object.totalVotingPower)
+        ? BigInt(object.totalVotingPower)
         : isSet(object.total_voting_power)
-        ? Long.fromValue(object.total_voting_power)
-        : Long.ZERO,
+        ? BigInt(object.total_voting_power)
+        : 0n,
     };
   },
 
@@ -6016,14 +6021,14 @@ export const Misbehavior: MessageFns<Misbehavior> = {
     if (message.validator !== undefined) {
       obj.validator = Validator.toJSON(message.validator);
     }
-    if (!message.height.equals(Long.ZERO)) {
-      obj.height = (message.height || Long.ZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.time !== undefined) {
       obj.time = message.time.toISOString();
     }
-    if (!message.totalVotingPower.equals(Long.ZERO)) {
-      obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString();
+    if (message.totalVotingPower !== 0n) {
+      obj.totalVotingPower = message.totalVotingPower.toString();
     }
     return obj;
   },
@@ -6037,25 +6042,24 @@ export const Misbehavior: MessageFns<Misbehavior> = {
     message.validator = (object.validator !== undefined && object.validator !== null)
       ? Validator.fromPartial(object.validator)
       : undefined;
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.ZERO;
+    message.height = object.height ?? 0n;
     message.time = object.time ?? undefined;
-    message.totalVotingPower = (object.totalVotingPower !== undefined && object.totalVotingPower !== null)
-      ? Long.fromValue(object.totalVotingPower)
-      : Long.ZERO;
+    message.totalVotingPower = object.totalVotingPower ?? 0n;
     return message;
   },
 };
 
 function createBaseSnapshot(): Snapshot {
-  return { height: Long.UZERO, format: 0, chunks: 0, hash: new Uint8Array(0), metadata: new Uint8Array(0) };
+  return { height: 0n, format: 0, chunks: 0, hash: new Uint8Array(0), metadata: new Uint8Array(0) };
 }
 
 export const Snapshot: MessageFns<Snapshot> = {
   encode(message: Snapshot, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.height.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.height.toString());
+    if (message.height !== 0n) {
+      if (BigInt.asUintN(64, message.height) !== message.height) {
+        throw new globalThis.Error("value provided for field message.height of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.height);
     }
     if (message.format !== 0) {
       writer.uint32(16).uint32(message.format);
@@ -6084,7 +6088,7 @@ export const Snapshot: MessageFns<Snapshot> = {
             break;
           }
 
-          message.height = Long.fromString(reader.uint64().toString(), true);
+          message.height = reader.uint64() as bigint;
           continue;
         }
         case 2: {
@@ -6130,7 +6134,7 @@ export const Snapshot: MessageFns<Snapshot> = {
 
   fromJSON(object: any): Snapshot {
     return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      height: isSet(object.height) ? BigInt(object.height) : 0n,
       format: isSet(object.format) ? globalThis.Number(object.format) : 0,
       chunks: isSet(object.chunks) ? globalThis.Number(object.chunks) : 0,
       hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(0),
@@ -6140,8 +6144,8 @@ export const Snapshot: MessageFns<Snapshot> = {
 
   toJSON(message: Snapshot): unknown {
     const obj: any = {};
-    if (!message.height.equals(Long.UZERO)) {
-      obj.height = (message.height || Long.UZERO).toString();
+    if (message.height !== 0n) {
+      obj.height = message.height.toString();
     }
     if (message.format !== 0) {
       obj.format = Math.round(message.format);
@@ -6163,9 +6167,7 @@ export const Snapshot: MessageFns<Snapshot> = {
   },
   fromPartial<I extends Exact<DeepPartial<Snapshot>, I>>(object: I): Snapshot {
     const message = createBaseSnapshot();
-    message.height = (object.height !== undefined && object.height !== null)
-      ? Long.fromValue(object.height)
-      : Long.UZERO;
+    message.height = object.height ?? 0n;
     message.format = object.format ?? 0;
     message.chunks = object.chunks ?? 0;
     message.hash = object.hash ?? new Uint8Array(0);
@@ -6774,10 +6776,10 @@ function base64FromBytes(arr: Uint8Array): string {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
@@ -6787,13 +6789,13 @@ export type Exact<P, I extends P> = P extends Builtin ? P
   : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function toTimestamp(date: Date): Timestamp {
-  const seconds = numberToLong(Math.trunc(date.getTime() / 1_000));
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
   const nanos = (date.getTime() % 1_000) * 1_000_000;
   return { seconds, nanos };
 }
 
 function fromTimestamp(t: Timestamp): Date {
-  let millis = (t.seconds.toNumber() || 0) * 1_000;
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
   millis += (t.nanos || 0) / 1_000_000;
   return new globalThis.Date(millis);
 }
@@ -6806,10 +6808,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o));
   }
-}
-
-function numberToLong(number: number) {
-  return Long.fromNumber(number);
 }
 
 function isSet(value: any): boolean {

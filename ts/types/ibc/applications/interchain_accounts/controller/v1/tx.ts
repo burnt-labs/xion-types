@@ -8,7 +8,6 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import Long from "long";
 import { Order, orderFromJSON, orderToJSON } from "../../../../core/channel/v1/channel";
 import { InterchainAccountPacketData } from "../../v1/packet";
 import { Params } from "./controller";
@@ -40,12 +39,12 @@ export interface MsgSendTx {
    * Relative timeout timestamp provided will be added to the current block time during transaction execution.
    * The timeout timestamp must be non-zero.
    */
-  relativeTimeout: Long;
+  relativeTimeout: bigint;
 }
 
 /** MsgSendTxResponse defines the response for MsgSendTx */
 export interface MsgSendTxResponse {
-  sequence: Long;
+  sequence: bigint;
 }
 
 /** MsgUpdateParams defines the payload for Msg/UpdateParams */
@@ -265,7 +264,7 @@ export const MsgRegisterInterchainAccountResponse: MessageFns<MsgRegisterInterch
 };
 
 function createBaseMsgSendTx(): MsgSendTx {
-  return { owner: "", connectionId: "", packetData: undefined, relativeTimeout: Long.UZERO };
+  return { owner: "", connectionId: "", packetData: undefined, relativeTimeout: 0n };
 }
 
 export const MsgSendTx: MessageFns<MsgSendTx> = {
@@ -279,8 +278,11 @@ export const MsgSendTx: MessageFns<MsgSendTx> = {
     if (message.packetData !== undefined) {
       InterchainAccountPacketData.encode(message.packetData, writer.uint32(26).fork()).join();
     }
-    if (!message.relativeTimeout.equals(Long.UZERO)) {
-      writer.uint32(32).uint64(message.relativeTimeout.toString());
+    if (message.relativeTimeout !== 0n) {
+      if (BigInt.asUintN(64, message.relativeTimeout) !== message.relativeTimeout) {
+        throw new globalThis.Error("value provided for field message.relativeTimeout of type uint64 too large");
+      }
+      writer.uint32(32).uint64(message.relativeTimeout);
     }
     return writer;
   },
@@ -321,7 +323,7 @@ export const MsgSendTx: MessageFns<MsgSendTx> = {
             break;
           }
 
-          message.relativeTimeout = Long.fromString(reader.uint64().toString(), true);
+          message.relativeTimeout = reader.uint64() as bigint;
           continue;
         }
       }
@@ -347,10 +349,10 @@ export const MsgSendTx: MessageFns<MsgSendTx> = {
         ? InterchainAccountPacketData.fromJSON(object.packet_data)
         : undefined,
       relativeTimeout: isSet(object.relativeTimeout)
-        ? Long.fromValue(object.relativeTimeout)
+        ? BigInt(object.relativeTimeout)
         : isSet(object.relative_timeout)
-        ? Long.fromValue(object.relative_timeout)
-        : Long.UZERO,
+        ? BigInt(object.relative_timeout)
+        : 0n,
     };
   },
 
@@ -365,8 +367,8 @@ export const MsgSendTx: MessageFns<MsgSendTx> = {
     if (message.packetData !== undefined) {
       obj.packetData = InterchainAccountPacketData.toJSON(message.packetData);
     }
-    if (!message.relativeTimeout.equals(Long.UZERO)) {
-      obj.relativeTimeout = (message.relativeTimeout || Long.UZERO).toString();
+    if (message.relativeTimeout !== 0n) {
+      obj.relativeTimeout = message.relativeTimeout.toString();
     }
     return obj;
   },
@@ -381,21 +383,22 @@ export const MsgSendTx: MessageFns<MsgSendTx> = {
     message.packetData = (object.packetData !== undefined && object.packetData !== null)
       ? InterchainAccountPacketData.fromPartial(object.packetData)
       : undefined;
-    message.relativeTimeout = (object.relativeTimeout !== undefined && object.relativeTimeout !== null)
-      ? Long.fromValue(object.relativeTimeout)
-      : Long.UZERO;
+    message.relativeTimeout = object.relativeTimeout ?? 0n;
     return message;
   },
 };
 
 function createBaseMsgSendTxResponse(): MsgSendTxResponse {
-  return { sequence: Long.UZERO };
+  return { sequence: 0n };
 }
 
 export const MsgSendTxResponse: MessageFns<MsgSendTxResponse> = {
   encode(message: MsgSendTxResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (!message.sequence.equals(Long.UZERO)) {
-      writer.uint32(8).uint64(message.sequence.toString());
+    if (message.sequence !== 0n) {
+      if (BigInt.asUintN(64, message.sequence) !== message.sequence) {
+        throw new globalThis.Error("value provided for field message.sequence of type uint64 too large");
+      }
+      writer.uint32(8).uint64(message.sequence);
     }
     return writer;
   },
@@ -412,7 +415,7 @@ export const MsgSendTxResponse: MessageFns<MsgSendTxResponse> = {
             break;
           }
 
-          message.sequence = Long.fromString(reader.uint64().toString(), true);
+          message.sequence = reader.uint64() as bigint;
           continue;
         }
       }
@@ -425,13 +428,13 @@ export const MsgSendTxResponse: MessageFns<MsgSendTxResponse> = {
   },
 
   fromJSON(object: any): MsgSendTxResponse {
-    return { sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO };
+    return { sequence: isSet(object.sequence) ? BigInt(object.sequence) : 0n };
   },
 
   toJSON(message: MsgSendTxResponse): unknown {
     const obj: any = {};
-    if (!message.sequence.equals(Long.UZERO)) {
-      obj.sequence = (message.sequence || Long.UZERO).toString();
+    if (message.sequence !== 0n) {
+      obj.sequence = message.sequence.toString();
     }
     return obj;
   },
@@ -441,9 +444,7 @@ export const MsgSendTxResponse: MessageFns<MsgSendTxResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<MsgSendTxResponse>, I>>(object: I): MsgSendTxResponse {
     const message = createBaseMsgSendTxResponse();
-    message.sequence = (object.sequence !== undefined && object.sequence !== null)
-      ? Long.fromValue(object.sequence)
-      : Long.UZERO;
+    message.sequence = object.sequence ?? 0n;
     return message;
   },
 };
@@ -751,10 +752,10 @@ export class GrpcWebImpl {
   }
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 
 export type DeepPartial<T> = T extends Builtin ? T
-  : T extends Long ? string | number | Long : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
   : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
   : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
