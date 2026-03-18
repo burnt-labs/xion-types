@@ -58,7 +58,12 @@ if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
   PROVENANCE_FLAG="--provenance"
 fi
 
-# Publish
+# Publish from dist/ (where the compiled output lives)
+cd dist
+
+# Stamp version into the dist copy of package.json
+node -e "const p=require('./package.json');p.version='$VERSION';delete p.scripts;require('fs').writeFileSync('./package.json',JSON.stringify(p,null,2))"
+
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "DRY_RUN: would run pnpm publish $PROVENANCE_FLAG --access public --tag $TAG"
   pnpm pack
