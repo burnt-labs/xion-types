@@ -25,7 +25,11 @@ find "$TS_TYPES" -name '*.ts' -exec \
 INDEX="$TS_TYPES/index.ts"
 OSMOSIS_EXPORTS=(
   "./osmosis/tokenfactory/v1beta1/tx"
+  "./osmosis/tokenfactory/v1beta1/tx.registry"
+  "./osmosis/tokenfactory/v1beta1/tx.rpc.msg"
   "./osmosis/tokenfactory/v1beta1/query"
+  "./osmosis/tokenfactory/v1beta1/query.rpc.Query"
+  "./osmosis/tokenfactory/v1beta1/query.lcd"
   "./osmosis/tokenfactory/v1beta1/genesis"
   "./osmosis/tokenfactory/v1beta1/params"
   "./osmosis/tokenfactory/v1beta1/authorityMetadata"
