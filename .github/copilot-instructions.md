@@ -50,7 +50,7 @@ xion-types/
 │   └── [12+ other language configs]
 │
 ├── scripts/
-│   ├── proto-gen-ext.sh        # Main generation script (290 lines)
+│   ├── proto-gen-ext.sh        # Main generation script
 │   ├── proto-sources.conf      # BSR module sources list
 │   ├── post/                   # Post-processing scripts per language
 │   │   ├── ts.sh              # TypeScript post-processor
