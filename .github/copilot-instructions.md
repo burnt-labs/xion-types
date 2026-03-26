@@ -368,7 +368,9 @@ python -m pip install -e .
 # No test suite defined
 ```
 
-## File Paths Reference
+## File Paths Reference (GitHub Actions Runner Defaults)
+
+> **Note:** These paths reflect the default GitHub Actions runner workspace layout and do not apply to local development or other CI providers. For local development, substitute the actual path where you cloned the repository.
 
 - Root: `/home/runner/work/xion-types/xion-types`
 - TypeScript: `/home/runner/work/xion-types/xion-types/ts`
