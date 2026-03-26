@@ -6,7 +6,7 @@
 
 ### Critical Rule
 
-**DO NOT ADD MANUAL CODE TO THIS REPOSITORY.** All type definitions in language directories (`ts/types/`, `rust/types/`, `python/xion_types/`, etc.) are auto-generated and will be overwritten on the next release.
+**DO NOT ADD MANUAL CODE TO GENERATED OUTPUT DIRECTORIES IN THIS REPOSITORY.** All type definitions in language directories (`ts/types/`, `rust/types/`, `python/xion_types/`, etc.) are auto-generated and will be overwritten on the next release.
 
 ### What This Repository Provides
 
