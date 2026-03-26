@@ -185,7 +185,7 @@ xion repo release → workflow_call → release.yaml
 ### TypeScript Publish Process
 1. Build tarball with `pnpm pack`
 2. Test compatibility with dependent projects (xion-explorer, xion-faucet, xion-staking)
-3. Publish to npm registry with `npm publish`
+3. Publish to npm registry with `pnpm publish` (as in `scripts/ci/ts.sh`)
 
 ## Coding Conventions and Patterns
 
