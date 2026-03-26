@@ -5,3 +5,87 @@
 @file:Suppress("DEPRECATION")
 package ibc.applications.transfer.v1;
 
+@kotlin.jvm.JvmName("-initializedenomTrace")
+public inline fun denomTrace(block: ibc.applications.transfer.v1.DenomTraceKt.Dsl.() -> kotlin.Unit): ibc.applications.transfer.v1.Denomtrace.DenomTrace =
+  ibc.applications.transfer.v1.DenomTraceKt.Dsl._create(ibc.applications.transfer.v1.Denomtrace.DenomTrace.newBuilder()).apply { block() }._build()
+/**
+ * ```
+ * DenomTrace contains the base denomination for ICS20 fungible tokens and the
+ * source tracing information path.
+ * ```
+ *
+ * Protobuf type `ibc.applications.transfer.v1.DenomTrace`
+ */
+public object DenomTraceKt {
+  @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+  @com.google.protobuf.kotlin.ProtoDslMarker
+  public class Dsl private constructor(
+    private val _builder: ibc.applications.transfer.v1.Denomtrace.DenomTrace.Builder
+  ) {
+    public companion object {
+      @kotlin.jvm.JvmSynthetic
+      @kotlin.PublishedApi
+      internal fun _create(builder: ibc.applications.transfer.v1.Denomtrace.DenomTrace.Builder): Dsl = Dsl(builder)
+    }
+
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.PublishedApi
+    internal fun _build(): ibc.applications.transfer.v1.Denomtrace.DenomTrace = _builder.build()
+
+    /**
+     * ```
+     * path defines the chain of port/channel identifiers used for tracing the
+     * source of the fungible token.
+     * ```
+     *
+     * `string path = 1 [json_name = "path"];`
+     */
+    public var path: kotlin.String
+      @JvmName("getPath")
+      get() = _builder.getPath()
+      @JvmName("setPath")
+      set(value) {
+        _builder.setPath(value)
+      }
+    /**
+     * ```
+     * path defines the chain of port/channel identifiers used for tracing the
+     * source of the fungible token.
+     * ```
+     *
+     * `string path = 1 [json_name = "path"];`
+     */
+    public fun clearPath() {
+      _builder.clearPath()
+    }
+
+    /**
+     * ```
+     * base denomination of the relayed fungible token.
+     * ```
+     *
+     * `string base_denom = 2 [json_name = "baseDenom"];`
+     */
+    public var baseDenom: kotlin.String
+      @JvmName("getBaseDenom")
+      get() = _builder.getBaseDenom()
+      @JvmName("setBaseDenom")
+      set(value) {
+        _builder.setBaseDenom(value)
+      }
+    /**
+     * ```
+     * base denomination of the relayed fungible token.
+     * ```
+     *
+     * `string base_denom = 2 [json_name = "baseDenom"];`
+     */
+    public fun clearBaseDenom() {
+      _builder.clearBaseDenom()
+    }
+  }
+}
+@kotlin.jvm.JvmSynthetic
+public inline fun ibc.applications.transfer.v1.Denomtrace.DenomTrace.copy(block: ibc.applications.transfer.v1.DenomTraceKt.Dsl.() -> kotlin.Unit): ibc.applications.transfer.v1.Denomtrace.DenomTrace =
+  ibc.applications.transfer.v1.DenomTraceKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
