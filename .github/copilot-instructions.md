@@ -144,7 +144,7 @@ make proto-gen-python
 
 ### Contract Code Generation
 
-**Only runs if `contracts/` submodule exists:**
+**Only runs if the contracts submodule is checked out/initialized** (checks for `contracts/contracts/` directory):
 ```bash
 make contract-code-gen
 # Internally calls scripts/post/contracts-codegen.sh
@@ -239,19 +239,19 @@ xion repo release → workflow_call → release.yaml
 
 ## Common Issues and Workarounds
 
-### Issue: TypeScript bigint vs Long incompatibility
-**Problem**: Generated proto types currently use `Long` type but CosmJS 0.32+ uses native `bigint`, causing type incompatibility at interface boundaries.
+### Issue: TypeScript bigint vs Long incompatibility (historical)
+**Context**: In releases prior to `forceLong=bigint` being added to `buf/buf.gen.ts.yaml`, generated proto types used the `Long` type, which was incompatible with CosmJS 0.32+ which uses native `bigint`. This caused type errors at interface boundaries in consuming projects.
 
-**Current workaround**: In consuming projects, import standard cosmos types from `cosmjs-types` instead of `@burnt-labs/xion-types` for types with int64/uint64 fields:
+**Current status**: Generated types in this repo already use native `bigint` for int64/uint64 fields (via `forceLong=bigint` in `buf/buf.gen.ts.yaml`). There are no `Long` imports in `ts/types/`. The workaround below applied only to older releases:
+
+**Old workaround** (no longer needed with current types):
 ```typescript
-// Use cosmjs-types for standard cosmos types (current workaround)
+// Previously needed to work around Long/bigint mismatch
 import { SignDoc, TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx';
 
-// Use xion-types for XION-specific types
+// XION-specific types were always fine to import directly
 import { AbstractAccount } from '@burnt-labs/xion-types/abstractaccount/v1/account';
 ```
-
-**Permanent fix**: The `buf/buf.gen.ts.yaml` config now includes `forceLong=bigint`. After the next XION release triggers regeneration, all types will use native `bigint` and be fully compatible.
 
 ### Issue: pnpm not installed
 **Problem**: CI or local builds fail with "pnpm: command not found"
