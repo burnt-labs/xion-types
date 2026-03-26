@@ -18,3 +18,26 @@ else
 fi
 find "$TS_TYPES" -name '*.ts' -exec \
   "${SED_INPLACE[@]}" 's/^interface UnaryMethodDefinitionishR/export interface UnaryMethodDefinitionishR/' {} +
+
+# Ensure osmosis tokenfactory types are exported from index.ts.
+# buf generates them into ts/types/osmosis/ but they are not added
+# to index.ts automatically (no telescope bundle step for osmosis).
+INDEX="$TS_TYPES/index.ts"
+OSMOSIS_EXPORTS=(
+  "./osmosis/tokenfactory/v1beta1/tx"
+  "./osmosis/tokenfactory/v1beta1/tx.registry"
+  "./osmosis/tokenfactory/v1beta1/tx.rpc.msg"
+  "./osmosis/tokenfactory/v1beta1/query"
+  "./osmosis/tokenfactory/v1beta1/query.rpc.Query"
+  "./osmosis/tokenfactory/v1beta1/query.lcd"
+  "./osmosis/tokenfactory/v1beta1/genesis"
+  "./osmosis/tokenfactory/v1beta1/params"
+  "./osmosis/tokenfactory/v1beta1/authorityMetadata"
+)
+for mod in "${OSMOSIS_EXPORTS[@]}"; do
+  export_line="export * from \"$mod\";"
+  if [ -f "$TS_TYPES/${mod}.ts" ] && ! grep -qF "$export_line" "$INDEX"; then
+    echo "$export_line" >> "$INDEX"
+    echo "  added to index.ts: $export_line"
+  fi
+done
