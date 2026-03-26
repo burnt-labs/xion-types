@@ -231,7 +231,7 @@ xion repo release → workflow_call → release.yaml
 - `scripts/post/ts.sh` - Post-generation processing logic
 
 ### Generation & CI/CD
-- `scripts/proto-gen-ext.sh` - Main generation orchestrator (290 lines)
+- `scripts/proto-gen-ext.sh` - Main generation orchestrator
 - `scripts/proto-sources.conf` - Proto source order (XION must be last!)
 - `Makefile` - Make targets for Docker-based generation
 - `.github/workflows/README.md` - Pipeline architecture documentation
