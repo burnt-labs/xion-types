@@ -138,7 +138,7 @@ XION_BSR_MODULE="buf.build/burnt-labs/xion:v28.1.0" ./scripts/proto-gen-ext.sh t
 XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh all
 
 # Using Make targets (requires Docker)
-make proto-gen-ts BSR_MODULE=buf.build/burnt-labs/xion:v26.0.0
+make proto-gen-ts XION_BSR_MODULE=buf.build/burnt-labs/xion:v26.0.0
 make proto-gen-python
 ```
 
