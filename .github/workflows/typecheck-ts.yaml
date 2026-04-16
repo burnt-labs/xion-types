@@ -11,18 +11,24 @@ on:
       - "ts/**"
       - ".github/workflows/typecheck-ts.yaml"
 
+env:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
+
 jobs:
   typecheck:
     name: Verify bigint compatibility
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v5
-
-      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
         with:
-          package_json_file: ts/package.json
+          node-version: ${{ env.NODE_VERSION }}
+
+      - uses: pnpm/action-setup@v5
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Install dependencies
         working-directory: ts

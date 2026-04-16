@@ -1,7 +1,0 @@
-[submodule "xion"]
-	path = xion
-	url = https://github.com/burnt-labs/xion.git
-	branch = main
-[submodule "contracts"]
-	path = contracts
-	url = https://github.com/burnt-labs/contracts.git

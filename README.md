@@ -1,47 +1,60 @@
 # xion-types
 
-Generated multi-language types for the XION blockchain. All content is regenerated on each xion chain release — do not add manual code.
+Auto-generated, multi-language client types for the [XION](https://github.com/burnt-labs/xion) blockchain. Regenerated on every xion release — **do not edit generated files**; improve the tooling instead.
 
 ## Languages
 
-| Language | Output | Published |
-|----------|--------|-----------|
-| TypeScript | `ts/` | npm `@burnt-labs/xion-types` |
-| Rust | `rust/` | crates.io |
-| Python | `python/` | PyPI |
-| Go | via `xion` module directly | — |
-| + C, C++, C#, Java, Kotlin, Ruby, Swift, Scala | `<lang>/` | — |
+| Language | Output | Published as |
+|----------|--------|--------------|
+| TypeScript | [`ts/`](ts/) | npm [`@burnt-labs/xion-types`](https://www.npmjs.com/package/@burnt-labs/xion-types) |
+| Python | [`python/`](python/) | PyPI `xion-types` |
+| Rust | [`rust/`](rust/) | crates.io `xion-types` |
+| Ruby | [`ruby/`](ruby/) | RubyGems `xion_types` |
+| Kotlin | [`kotlin/`](kotlin/) | Maven Central `io.github.burnt-labs:xion-types-kotlin` |
+| Swift | [`swift/`](swift/) | CocoaPods `XionTypes` |
+| C, C++, C#, Java, Objective-C, PHP, Scala | `<lang>/` | — (generated, unpublished) |
 
-## How types are generated
+Proto-derived reference docs are generated into [`docs/`](docs/).
 
-Types are regenerated automatically on each xion chain release:
+## Proto sources
 
-```
-xion release tag
-  → .github/workflows/generate-protobuf.yaml   (buf generate per language)
-  → .github/workflows/publish-ts.yaml          (npm publish)
-  → .github/workflows/publish-*.yaml           (other language registries)
-```
+Sources are pulled from BSR at generation time — no git submodules required. Configured in [`scripts/proto-sources.conf`](scripts/proto-sources.conf):
 
-Proto sources are pulled from BSR and configured in [`scripts/proto-sources.conf`](scripts/proto-sources.conf):
-- `buf.build/cosmos/cosmos-sdk`
-- `buf.build/cosmwasm/wasmd`
+- `github.com/cosmos/ibc-apps` (packet-forward-middleware, git)
 - `buf.build/cosmos/ibc`
+- `buf.build/cosmwasm/wasmd`
+- `buf.build/cosmos/cosmos-sdk`
 - `buf.build/burnt-labs/abstractaccount`
-- `buf.build/burnt-labs/xion`
+- `buf.build/burnt-labs/tokenfactory`
+- `buf.build/burnt-labs/xion` *(pinnable via `BSR_MODULE` / `XION_BSR_MODULE`)*
 
-## Regenerating manually
+Xion contracts (TypeScript client types only) are fetched from [`burnt-labs/contracts`](https://github.com/burnt-labs/contracts) at release time.
 
-Requires `buf` CLI and internet access. No Go toolchain needed.
+## How releases happen
+
+```text
+xion release published
+   └─▶ release.yaml            generate all languages in parallel, open PR, enable auto-merge
+       └─▶ auto-tag.yaml       on merge: cut v0.<xion_major>.<patch>-<xion_short>-<contracts_short>
+           └─▶ publish.yaml    fan out to publish-{ts,python,rust,ruby,kotlin,swift}.yaml
+```
+
+See [`.github/workflows/README.md`](.github/workflows/README.md) for the full workflow reference and tag scheme.
+
+## Regenerating locally
+
+Requires **Docker** (builds a pinned `proto-builder` image). No Go or language toolchains needed on the host.
 
 ```bash
-# Regenerate a specific language (e.g. ts)
-XION_BSR_MODULE="buf.build/burnt-labs/xion:v28.1.0" ./scripts/proto-gen-ext.sh ts
+# One language, specific xion version
+make proto-gen-ts BSR_MODULE=buf.build/burnt-labs/xion:v29.0.0
 
-# Regenerate all languages
-XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh all
+# Any language: c, cpp, csharp, docs, java, kotlin, objc, php, python, ruby, rust, scala, swift, ts
+make proto-gen-python
 ```
 
-## TypeScript
+Without Docker, `./scripts/proto-gen-ext.sh <lang>` works too, but requires `buf` and each language's plugins on `$PATH`.
 
-See [`ts/USAGE.md`](ts/USAGE.md) for import rules, the cosmjs bigint compatibility split, and how to use `@burnt-labs/xion-types` in xion.js projects.
+## TypeScript usage
+
+See [`ts/USAGE.md`](ts/USAGE.md) for import rules, the cosmjs bigint-compatibility split, and integration with xion.js.
