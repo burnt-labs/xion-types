@@ -144,12 +144,14 @@ make proto-gen-python
 
 ### Contract Code Generation
 
-**Only runs if the contracts submodule is checked out/initialized** (checks for `contracts/contracts/` directory):
+Requires the `burnt-labs/contracts` repo checked out at `contracts/`. CI does this via `actions/checkout` using the `contracts_ref` workflow input (default: `v1.0.1`). Locally:
 ```bash
+git clone --branch v1.0.1 --depth 1 https://github.com/burnt-labs/contracts.git contracts
 make contract-code-gen
 # Internally calls scripts/post/contracts-codegen.sh
 # Generates JSON schemas from Rust contracts, then TypeScript types via ts-codegen
 ```
+The post-processor no-ops gracefully if `contracts/` is missing.
 
 ## CI/CD Pipeline Architecture
 
@@ -274,9 +276,9 @@ corepack enable
 ### Issue: Contract codegen fails
 **Problem**: Contract code generation fails or is skipped
 
-**Solution**: Contract codegen requires the `contracts/` git submodule. If not needed, it's safe to skip. If needed:
+**Solution**: Contract codegen requires the `burnt-labs/contracts` repo present at `contracts/`. If not needed, it's safe to skip. If needed:
 ```bash
-git submodule update --init contracts/
+git clone --branch v1.0.1 --depth 1 https://github.com/burnt-labs/contracts.git contracts
 make contract-code-gen
 ```
 

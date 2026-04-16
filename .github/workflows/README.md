@@ -67,8 +67,12 @@ Each is a reusable `workflow_call` workflow with build → test → publish stag
 
 ## Shared Components
 
-- **`.github/actions/setup-xion-version`** — Composite action that checks out the xion submodule at a specific version/tag/commit and determines the package version
 - **`scripts/proto-gen-ext.sh`** — Post-processing hooks (`post_swift`, `post_python`, etc.) that make `make proto-gen-<lang>` produce publish-ready packages
+
+## External Source Refs
+
+- **Xion protos** — Pulled from BSR (`buf.build/burnt-labs/xion:<release_tag>`). No git checkout of `burnt-labs/xion` is required.
+- **CosmWasm contracts** — Checked out from `burnt-labs/contracts` into `contracts/` at the `contracts_ref` workflow input (default: `v1.0.1`). Used only by the TS post-processor to generate client types via `ts-codegen`.
 
 ## Required Secrets
 

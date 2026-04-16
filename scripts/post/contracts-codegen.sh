@@ -7,7 +7,7 @@
 # then TypeScript client types via `ts-codegen`.
 #
 # Required tools: cargo, ts-codegen
-# Required: contracts submodule checked out
+# Required: burnt-labs/contracts repo checked out at ROOT_DIR/contracts
 
 set -eo pipefail
 
@@ -23,7 +23,7 @@ CODEGEN_TMP="$ROOT_DIR/.ts-codegen-tmp"
 TS_CODEGEN="$ROOT_DIR/ts/node_modules/.bin/ts-codegen"
 
 if [ ! -d "$CONTRACTS_DIR" ]; then
-  echo "⚠️  contracts submodule not found, skipping contract codegen"
+  echo "⚠️  contracts/ not found, skipping contract codegen (clone burnt-labs/contracts into ./contracts)"
   exit 0
 fi
 

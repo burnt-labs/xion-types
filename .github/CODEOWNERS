@@ -30,5 +30,3 @@
 ./** @burnt-labs/burnt-protocol
 
 .github/** @burnt-labs/burnt-devops
-./contracts @burnt-labs/burnt-devops
-./xion @burnt-labs/burnt-devops

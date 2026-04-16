@@ -36,3 +36,7 @@ __pycache__/
 swift-types-temp/
 proto_deps/
 
+# External sources checked out locally (not submodules)
+/contracts/
+/xion/
+
