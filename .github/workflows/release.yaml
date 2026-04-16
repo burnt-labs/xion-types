@@ -155,6 +155,7 @@ jobs:
           fetch-depth: 0
 
       - name: Checkout burnt-labs/contracts
+        if: matrix.language == 'ts'
         uses: actions/checkout@v6
         with:
           repository: burnt-labs/contracts

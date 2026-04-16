@@ -22,8 +22,13 @@ CONTRACTS_DIR="$ROOT_DIR/contracts/contracts"
 CODEGEN_TMP="$ROOT_DIR/.ts-codegen-tmp"
 TS_CODEGEN="$ROOT_DIR/ts/node_modules/.bin/ts-codegen"
 
-if [ ! -d "$CONTRACTS_DIR" ]; then
+if [ ! -d "$ROOT_DIR/contracts" ]; then
   echo "⚠️  contracts/ not found, skipping contract codegen (clone burnt-labs/contracts into ./contracts)"
+  exit 0
+fi
+
+if [ ! -d "$CONTRACTS_DIR" ]; then
+  echo "⚠️  contracts/contracts/ not found inside the contracts checkout (expected $CONTRACTS_DIR), skipping contract codegen"
   exit 0
 fi
 
