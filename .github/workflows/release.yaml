@@ -8,22 +8,22 @@ on:
   workflow_call:
     inputs:
       release_tag:
-        description: "Xion release tag"
+        description: "Xion ref (git tag or full/short SHA, e.g. v28.1.0 or 0ae6add)"
         required: true
         type: string
       contracts_ref:
-        description: "burnt-labs/contracts git ref (tag/branch/SHA) used for CosmWasm contract codegen"
+        description: "burnt-labs/contracts git ref (tag or full/short SHA, e.g. v1.0.1 or 3d49b1d)"
         required: false
         type: string
         default: "v1.0.1"
   workflow_dispatch:
     inputs:
       release_tag:
-        description: "Xion release tag"
+        description: "Xion ref (git tag or full/short SHA, e.g. v28.1.0 or 0ae6add)"
         required: true
         type: string
       contracts_ref:
-        description: "burnt-labs/contracts git ref (tag/branch/SHA) used for CosmWasm contract codegen"
+        description: "burnt-labs/contracts git ref (tag or full/short SHA, e.g. v1.0.1 or 3d49b1d)"
         required: false
         type: string
         default: "v1.0.1"
@@ -33,7 +33,45 @@ permissions:
   pull-requests: write
 
 jobs:
-  # ─── Stage 1: Discover language matrix dynamically ──────────────────
+  # ─── Stage 1a: Resolve upstream SHAs and compose release tag ────────
+  resolve-sources:
+    name: Resolve Sources
+    runs-on: ubuntu-latest
+    outputs:
+      xion_sha: ${{ steps.resolve.outputs.xion_sha }}
+      xion_sha_short: ${{ steps.resolve.outputs.xion_sha_short }}
+      contracts_sha: ${{ steps.resolve.outputs.contracts_sha }}
+      contracts_sha_short: ${{ steps.resolve.outputs.contracts_sha_short }}
+      composite_tag: ${{ steps.resolve.outputs.composite_tag }}
+    steps:
+      - name: Resolve xion and contracts refs to SHAs
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          CONTRACTS_REF: ${{ inputs.contracts_ref }}
+        run: |
+          set -euo pipefail
+
+          # GitHub's /commits/{ref} endpoint accepts tags, branches, and SHAs.
+          XION_SHA=$(gh api "repos/burnt-labs/xion/commits/$RELEASE_TAG" --jq '.sha')
+          CONTRACTS_SHA=$(gh api "repos/burnt-labs/contracts/commits/$CONTRACTS_REF" --jq '.sha')
+
+          XION_SHORT="${XION_SHA:0:7}"
+          CONTRACTS_SHORT="${CONTRACTS_SHA:0:7}"
+          COMPOSITE="${RELEASE_TAG}-${XION_SHORT}-${CONTRACTS_SHORT}"
+
+          echo "xion_sha=$XION_SHA" >> "$GITHUB_OUTPUT"
+          echo "xion_sha_short=$XION_SHORT" >> "$GITHUB_OUTPUT"
+          echo "contracts_sha=$CONTRACTS_SHA" >> "$GITHUB_OUTPUT"
+          echo "contracts_sha_short=$CONTRACTS_SHORT" >> "$GITHUB_OUTPUT"
+          echo "composite_tag=$COMPOSITE" >> "$GITHUB_OUTPUT"
+
+          echo "Resolved composite tag: $COMPOSITE"
+          echo "  xion $RELEASE_TAG → $XION_SHA"
+          echo "  contracts $CONTRACTS_REF → $CONTRACTS_SHA"
+
+  # ─── Stage 1b: Discover language matrix dynamically ─────────────────
   discover-languages:
     name: Discover Languages
     runs-on: ubuntu-latest
@@ -41,7 +79,7 @@ jobs:
       matrix: ${{ steps.discover.outputs.matrix }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Build language matrix from top-level dirs
         id: discover
@@ -69,7 +107,7 @@ jobs:
       proto_version: ${{ steps.meta.outputs.proto_version }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Build Docker image
         run: make build-proto-builder-image
@@ -89,7 +127,7 @@ jobs:
           docker save "localhost/proto-builder:${{ steps.meta.outputs.proto_version }}" -o proto-builder-image.tar
 
       - name: Upload Docker image artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: proto-builder-image
           path: proto-builder-image.tar
@@ -98,30 +136,34 @@ jobs:
   # ─── Stage 3: Generate in parallel via matrix ───────────────────────
   generate:
     name: Generate (${{ matrix.language }})
-    needs: [discover-languages, build-proto-image]
+    needs: [discover-languages, build-proto-image, resolve-sources]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.discover-languages.outputs.matrix) }}
     env:
       RELEASE_TAG: ${{ inputs.release_tag }}
+      # Pass the user's literal input through to BSR. BSR accepts named
+      # labels, tags, and its own commit IDs. If a caller passes a git
+      # SHA that BSR hasn't indexed as a label, the `buf generate` call
+      # will fail loudly — that's the caller's responsibility.
       XION_BSR_MODULE: "buf.build/burnt-labs/xion:${{ inputs.release_tag }}"
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout burnt-labs/contracts
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: burnt-labs/contracts
-          ref: ${{ inputs.contracts_ref }}
+          ref: ${{ needs.resolve-sources.outputs.contracts_sha }}
           path: contracts
           fetch-depth: 1
 
       - name: Download Docker image artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: proto-builder-image
           path: .
@@ -140,7 +182,7 @@ jobs:
           cp -a "${{ matrix.language }}" "_artifact/"
 
       - name: Upload generated language artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: generated-${{ matrix.language }}
           path: _artifact/
@@ -149,15 +191,20 @@ jobs:
   # ─── Stage 4: Assemble artifacts, commit, and create PR ─────────────
   commit-and-pr:
     name: Commit & PR
-    needs: [discover-languages, build-proto-image, generate]
+    needs: [discover-languages, build-proto-image, generate, resolve-sources]
     runs-on: ubuntu-latest
     env:
       RELEASE_TAG: ${{ inputs.release_tag }}
       CONTRACTS_REF: ${{ inputs.contracts_ref }}
-      BRANCH: types/${{ inputs.release_tag }}
+      XION_SHA: ${{ needs.resolve-sources.outputs.xion_sha }}
+      XION_SHA_SHORT: ${{ needs.resolve-sources.outputs.xion_sha_short }}
+      CONTRACTS_SHA: ${{ needs.resolve-sources.outputs.contracts_sha }}
+      CONTRACTS_SHA_SHORT: ${{ needs.resolve-sources.outputs.contracts_sha_short }}
+      COMPOSITE_TAG: ${{ needs.resolve-sources.outputs.composite_tag }}
+      BRANCH: types/${{ needs.resolve-sources.outputs.composite_tag }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ github.token }}
           fetch-depth: 0
@@ -166,7 +213,7 @@ jobs:
         run: git checkout -B "$BRANCH"
 
       - name: Download generated artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           pattern: generated-*
           merge-multiple: true
@@ -185,8 +232,12 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore: generate types for $RELEASE_TAG"
-          # Reruns for the same tag should update the same branch cleanly.
+          git commit \
+            -m "chore: generate types for $COMPOSITE_TAG" \
+            -m "xion: $RELEASE_TAG ($XION_SHA)" \
+            -m "contracts: $CONTRACTS_REF ($CONTRACTS_SHA)"
+
+          # Reruns for the same composite tag should update the same branch cleanly.
           git fetch origin "$BRANCH" || true
           git push --force-with-lease -u origin "$BRANCH"
           echo "has_changes=true" >> "$GITHUB_OUTPUT"
@@ -208,11 +259,23 @@ jobs:
             PR_URL="$EXISTING_PR_URL"
             echo "PR already exists for $BRANCH: $PR_URL"
           else
+            PR_BODY_FILE="$(mktemp)"
+            {
+              echo "Auto-generated protobuf types."
+              echo ""
+              echo "| Source | Input | Resolved commit |"
+              echo "|--------|-------|-----------------|"
+              echo "| [burnt-labs/xion](https://github.com/burnt-labs/xion) | \`$RELEASE_TAG\` | [\`$XION_SHA_SHORT\`](https://github.com/burnt-labs/xion/commit/$XION_SHA) |"
+              echo "| [burnt-labs/contracts](https://github.com/burnt-labs/contracts) | \`$CONTRACTS_REF\` | [\`$CONTRACTS_SHA_SHORT\`](https://github.com/burnt-labs/contracts/commit/$CONTRACTS_SHA) |"
+              echo ""
+              echo "Composite release tag: \`$COMPOSITE_TAG\`"
+            } > "$PR_BODY_FILE"
+
             PR_URL=$(gh pr create \
               --base main \
               --head "$BRANCH" \
-              --title "chore: update types for $RELEASE_TAG" \
-              --body "Auto-generated protobuf types for xion [\`$RELEASE_TAG\`](https://github.com/burnt-labs/xion/releases/tag/$RELEASE_TAG). CosmWasm contracts: [\`$CONTRACTS_REF\`](https://github.com/burnt-labs/contracts/tree/$CONTRACTS_REF)." \
+              --title "chore: update types for $COMPOSITE_TAG" \
+              --body-file "$PR_BODY_FILE" \
               --label "automated")
           fi
 
@@ -221,30 +284,40 @@ jobs:
 
       - name: No-op when nothing changed
         if: steps.commit.outputs.has_changes != 'true'
-        run: echo "No generated changes for $RELEASE_TAG; skipping PR creation"
+        run: echo "No generated changes for $COMPOSITE_TAG; skipping PR creation"
 
   # ─── Summary ───────────────────────────────────────────────────────
   summary:
     name: Summary
-    needs: [discover-languages, build-proto-image, generate, commit-and-pr]
+    needs: [resolve-sources, discover-languages, build-proto-image, generate, commit-and-pr]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Report
+        env:
+          COMPOSITE_TAG: ${{ needs.resolve-sources.outputs.composite_tag }}
+          RESOLVE_RESULT: ${{ needs.resolve-sources.result }}
+          DISCOVER_RESULT: ${{ needs.discover-languages.result }}
+          IMAGE_RESULT: ${{ needs.build-proto-image.result }}
+          GENERATE_RESULT: ${{ needs.generate.result }}
+          COMMIT_RESULT: ${{ needs.commit-and-pr.result }}
         run: |
-          echo "## Release Summary for ${{ inputs.release_tag }}"
+          echo "## Release Summary for $COMPOSITE_TAG"
           echo ""
           echo "| Stage | Result |"
           echo "|-------|--------|"
-          echo "| Discover Languages | ${{ needs.discover-languages.result }} |"
-          echo "| Build Proto Image | ${{ needs.build-proto-image.result }} |"
-          echo "| Generate (matrix) | ${{ needs.generate.result }} |"
-          echo "| Commit & PR | ${{ needs.commit-and-pr.result }} |"
+          echo "| Resolve Sources | $RESOLVE_RESULT |"
+          echo "| Discover Languages | $DISCOVER_RESULT |"
+          echo "| Build Proto Image | $IMAGE_RESULT |"
+          echo "| Generate (matrix) | $GENERATE_RESULT |"
+          echo "| Commit & PR | $COMMIT_RESULT |"
 
-          if [ "${{ needs.discover-languages.result }}" = "failure" ] || [ "${{ needs.build-proto-image.result }}" = "failure" ] || [ "${{ needs.generate.result }}" = "failure" ] || [ "${{ needs.commit-and-pr.result }}" = "failure" ]; then
-            echo ""
-            echo "❌ Release pipeline failed"
-            exit 1
-          fi
+          for r in "$RESOLVE_RESULT" "$DISCOVER_RESULT" "$IMAGE_RESULT" "$GENERATE_RESULT" "$COMMIT_RESULT"; do
+            if [ "$r" = "failure" ]; then
+              echo ""
+              echo "❌ Release pipeline failed"
+              exit 1
+            fi
+          done
           echo ""
           echo "✅ Release pipeline succeeded"
