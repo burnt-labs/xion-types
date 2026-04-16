@@ -1291,11 +1291,11 @@ struct Tendermint_Abci_ResponseFinalizeBlock: @unchecked Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// set of block events emmitted as part of executing the block
+  /// set of block events emitted as part of executing the block
   var events: [Tendermint_Abci_Event] = []
 
   /// the result of executing each transaction including the events
-  /// the particular transction emitted. This should match the order
+  /// the particular transaction emitted. This should match the order
   /// of the transactions delivered in the block itself
   var txResults: [Tendermint_Abci_ExecTxResult] = []
 
@@ -1312,7 +1312,8 @@ struct Tendermint_Abci_ResponseFinalizeBlock: @unchecked Sendable {
   /// Clears the value of `consensusParamUpdates`. Subsequent reads from it will return its default value.
   mutating func clearConsensusParamUpdates() {self._consensusParamUpdates = nil}
 
-  /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+  /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+  /// deterministic. It is up to the application to decide which algorithm to use.
   var appHash: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

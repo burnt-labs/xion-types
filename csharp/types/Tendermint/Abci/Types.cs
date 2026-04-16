@@ -11180,7 +11180,7 @@ namespace Tendermint.Abci {
         = pb::FieldCodec.ForMessage(10, global::Tendermint.Abci.Event.Parser);
     private readonly pbc::RepeatedField<global::Tendermint.Abci.Event> events_ = new pbc::RepeatedField<global::Tendermint.Abci.Event>();
     /// <summary>
-    /// set of block events emmitted as part of executing the block
+    /// set of block events emitted as part of executing the block
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -11195,7 +11195,7 @@ namespace Tendermint.Abci {
     private readonly pbc::RepeatedField<global::Tendermint.Abci.ExecTxResult> txResults_ = new pbc::RepeatedField<global::Tendermint.Abci.ExecTxResult>();
     /// <summary>
     /// the result of executing each transaction including the events
-    /// the particular transction emitted. This should match the order
+    /// the particular transaction emitted. This should match the order
     /// of the transactions delivered in the block itself
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11237,7 +11237,8 @@ namespace Tendermint.Abci {
     public const int AppHashFieldNumber = 5;
     private pb::ByteString appHash_ = pb::ByteString.Empty;
     /// <summary>
-    /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+    /// app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+    /// deterministic. It is up to the application to decide which algorithm to use.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
