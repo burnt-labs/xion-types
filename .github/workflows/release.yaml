@@ -282,6 +282,16 @@ jobs:
           echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
           echo "✅ Created PR: $PR_URL"
 
+      - name: Enable auto-merge on PR
+        if: steps.commit.outputs.has_changes == 'true' && steps.pr.outputs.pr_url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+        run: |
+          # Auto-merge kicks in once branch protection checks pass. Idempotent:
+          # re-enabling on a PR that already has auto-merge is a no-op.
+          gh pr merge "$PR_URL" --auto --squash
+
       - name: No-op when nothing changed
         if: steps.commit.outputs.has_changes != 'true'
         run: echo "No generated changes for $COMPOSITE_TAG; skipping PR creation"

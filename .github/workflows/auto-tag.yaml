@@ -1,0 +1,163 @@
+name: Auto-Tag Release
+
+# When an auto-generated types PR merges to main, cut a GitHub release.
+#
+# Tag format:  v0.<xion_major>.<patch>-<xion_short>-<contracts_short>
+# Examples:
+#   xion v29.0.0 initial   → v0.29.0-abc1234-cba4321
+#   xion v29.0.1 (new sha) → v0.29.1-abc1235-cba4321
+#   contracts changes      → v0.29.2-abc1235-cba4322
+#   xion v30.0.0           → v0.30.0-def0000-cba4322   (patch resets per major)
+#
+# The SHAs live in the semver pre-release segment, so package managers
+# treat each as a unique version while the v0.<major>.<patch> prefix
+# orders them normally within a given xion major series.
+#
+# Creating the release fires the release-published event, which
+# fans out to publish.yaml to push packages.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    name: Tag and Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ github.token }}
+
+      - name: Parse merge commit for auto-release
+        id: parse
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          set -euo pipefail
+
+          # Subject = first line of the commit message.
+          SUBJECT="${COMMIT_MSG%%$'\n'*}"
+          echo "Subject: $SUBJECT"
+
+          # Only act on merges of our auto-generated types PRs.
+          # GitHub's squash-merge appends "(#NNN)"; strip it if present.
+          PATTERN='^chore: update types for (.+)$'
+          if [[ ! "$SUBJECT" =~ $PATTERN ]]; then
+            echo "Not an auto-generated types merge; skipping"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          COMPOSITE_TAG="${BASH_REMATCH[1]}"
+          COMPOSITE_TAG="${COMPOSITE_TAG% (#*)}"
+
+          # Composite format from release.yaml:
+          #   <xion_release_tag>-<xion_short7>-<contracts_short7>
+          # The xion release tag may itself contain dashes (v29.0.0-rc1),
+          # so we peel off the two trailing SHA segments from the end.
+          CONTRACTS_SHORT="${COMPOSITE_TAG##*-}"
+          REMAINING="${COMPOSITE_TAG%-*}"
+          XION_SHORT="${REMAINING##*-}"
+          XION_TAG="${REMAINING%-*}"
+
+          # Xion major = leading integer of semver (tolerates v prefix and
+          # pre-release suffixes like -rc1 or -alpha.1).
+          XION_MAJOR=$(echo "$XION_TAG" | sed -E 's/^v?([0-9]+)\..*/\1/')
+          if ! [[ "$XION_MAJOR" =~ ^[0-9]+$ ]]; then
+            echo "::error::Could not parse xion major from '$XION_TAG'"
+            exit 1
+          fi
+
+          echo "xion_tag=$XION_TAG" >> "$GITHUB_OUTPUT"
+          echo "xion_short=$XION_SHORT" >> "$GITHUB_OUTPUT"
+          echo "contracts_short=$CONTRACTS_SHORT" >> "$GITHUB_OUTPUT"
+          echo "xion_major=$XION_MAJOR" >> "$GITHUB_OUTPUT"
+          echo "composite_tag=$COMPOSITE_TAG" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+          echo "Parsed: xion_tag=$XION_TAG xion_major=$XION_MAJOR composite=$COMPOSITE_TAG"
+
+      - name: Compute next version
+        if: steps.parse.outputs.skip == 'false'
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          XION_MAJOR: ${{ steps.parse.outputs.xion_major }}
+          XION_SHORT: ${{ steps.parse.outputs.xion_short }}
+          CONTRACTS_SHORT: ${{ steps.parse.outputs.contracts_short }}
+        run: |
+          set -euo pipefail
+
+          PREFIX="v0.$XION_MAJOR."
+
+          # Highest existing patch in v0.<major>.<N>[-...] — list all tags
+          # in the series, strip prefix and any -sha-sha suffix, numeric
+          # sort, take the top. grep -E filter rejects anything that
+          # wasn't a pure integer after stripping.
+          HIGHEST=$(gh api "repos/$GITHUB_REPOSITORY/tags" --paginate \
+            --jq ".[] | .name | select(startswith(\"$PREFIX\"))" \
+            | sed -E "s|^v0\.${XION_MAJOR}\.([0-9]+)(-.*)?$|\1|" \
+            | grep -E '^[0-9]+$' \
+            | sort -rn | head -1 || true)
+
+          if [ -z "$HIGHEST" ]; then
+            NEXT_PATCH=0
+          else
+            NEXT_PATCH=$((HIGHEST + 1))
+          fi
+
+          NEW_TAG="v0.${XION_MAJOR}.${NEXT_PATCH}-${XION_SHORT}-${CONTRACTS_SHORT}"
+          echo "new_tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
+          echo "Computed next version: $NEW_TAG (previous highest patch in $PREFIX: ${HIGHEST:-none})"
+
+      - name: Create tag and GitHub release
+        if: steps.parse.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW_TAG: ${{ steps.version.outputs.new_tag }}
+          XION_TAG: ${{ steps.parse.outputs.xion_tag }}
+          XION_SHORT: ${{ steps.parse.outputs.xion_short }}
+          CONTRACTS_SHORT: ${{ steps.parse.outputs.contracts_short }}
+          COMPOSITE_TAG: ${{ steps.parse.outputs.composite_tag }}
+        run: |
+          set -euo pipefail
+
+          # Idempotency guard for reruns.
+          if git rev-parse --verify "refs/tags/$NEW_TAG" >/dev/null 2>&1; then
+            echo "Tag $NEW_TAG already exists locally; skipping"
+            exit 0
+          fi
+          if gh release view "$NEW_TAG" >/dev/null 2>&1; then
+            echo "Release $NEW_TAG already exists; skipping"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git tag -a "$NEW_TAG" -m "xion $XION_TAG ($COMPOSITE_TAG)"
+          git push origin "$NEW_TAG"
+
+          NOTES_FILE="$(mktemp)"
+          {
+            echo "Auto-generated types for xion \`$XION_TAG\`."
+            echo ""
+            echo "| Source | Commit |"
+            echo "|--------|--------|"
+            echo "| [burnt-labs/xion](https://github.com/burnt-labs/xion) | \`$XION_SHORT\` |"
+            echo "| [burnt-labs/contracts](https://github.com/burnt-labs/contracts) | \`$CONTRACTS_SHORT\` |"
+            echo ""
+            echo "Composite source tag: \`$COMPOSITE_TAG\`"
+          } > "$NOTES_FILE"
+
+          gh release create "$NEW_TAG" \
+            --title "$NEW_TAG — xion $XION_TAG" \
+            --notes-file "$NOTES_FILE" \
+            --latest
+
+          echo "✅ Created release $NEW_TAG"

@@ -20,14 +20,26 @@ Makefile                  # proto-gen-ts, proto-gen-python, etc.
 
 **Triggered by:**
 - `workflow_call` from **`burnt-labs/xion`** `release-downstream.yaml` (via `trigger-types.yaml`)
-- `workflow_dispatch` — manual with input: `release_tag`
+- `workflow_dispatch` — manual with inputs: `release_tag` (xion ref; tag or SHA), `contracts_ref` (burnt-labs/contracts ref; tag or SHA; default `v1.0.1`)
 
 **What it does:**
-1. Discovers language targets dynamically from `buf/buf.gen.*.yaml` files
-2. Builds a shared `proto-builder` Docker image once
-3. Runs protobuf generation in parallel per language (matrix)
-4. Commits all generated files to branch `types/<release_tag>`
-5. Creates a PR to main
+
+1. `resolve-sources`: resolves both refs to full git SHAs via the GitHub API and composes `<release_tag>-<xion_short>-<contracts_short>` (e.g. `v28.1.0-0ae6add-3d49b1d`)
+2. Discovers language targets dynamically from `buf/buf.gen.*.yaml` files
+3. Builds a shared `proto-builder` Docker image once
+4. Checks out `burnt-labs/contracts` at the resolved SHA (no submodule) and runs protobuf generation in parallel per language (matrix)
+5. Commits all generated files to branch `types/<composite_tag>`
+6. Opens a PR to main and enables auto-merge
+
+### `auto-tag.yaml` — Post-merge release cutter
+
+**Triggered by:** `push: main`
+
+When an auto-generated types PR merges to main, this workflow parses the squash-merge commit subject, looks up the highest existing patch in the `v0.<xion_major>.*` series, and cuts a GitHub release:
+
+`v0.<xion_major>.<patch>-<xion_short>-<contracts_short>`
+
+Patch resets when xion major changes. Creating the release fires `publish.yaml`.
 
 ### Language Publish Workflows (reusable, `workflow_call` + manual)
 
@@ -48,7 +60,7 @@ TypeScript bigint compatibility check — triggered on PRs and manually.
 
 Manual-only: publishes all language packages for a given tag.
 
-### `claude-code-review.yml` / `claude.yml`
+### `claude.yml`
 
 Claude AI PR review and code agent.
 
