@@ -79,7 +79,7 @@ jobs:
           docker save "localhost/proto-builder:${{ steps.meta.outputs.proto_version }}" -o proto-builder-image.tar
 
       - name: Upload Docker image artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: proto-builder-image
           path: proto-builder-image.tar
@@ -104,7 +104,7 @@ jobs:
           submodules: recursive
 
       - name: Download Docker image artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: proto-builder-image
           path: .
@@ -123,7 +123,7 @@ jobs:
           cp -a "${{ matrix.language }}" "_artifact/"
 
       - name: Upload generated language artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: generated-${{ matrix.language }}
           path: _artifact/
@@ -149,7 +149,7 @@ jobs:
         run: git checkout -B "$BRANCH"
 
       - name: Download generated artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           pattern: generated-*
           merge-multiple: true
