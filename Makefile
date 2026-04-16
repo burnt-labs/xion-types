@@ -6,9 +6,10 @@ DOCKER := $(shell which docker)
 protoVer=0.17.1
 protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspace localhost/proto-builder:$(protoVer)
 
-# BSR module ref — override to pin a specific version:
-#   make proto-gen-python BSR_MODULE=buf.build/burnt-labs/xion:v26.0.0
-BSR_MODULE ?= buf.build/burnt-labs/xion
+# Xion BSR module ref — override to pin a specific version:
+#   make proto-gen-python XION_BSR_MODULE=buf.build/burnt-labs/xion:v26.0.0
+# Also honored: XION_BSR_MODULE env var (used by CI).
+XION_BSR_MODULE ?= buf.build/burnt-labs/xion
 
 LANGUAGES := c cpp csharp docs java kotlin objc php python ruby rust scala swift ts
 
@@ -26,7 +27,7 @@ ensure-proto-builder-image:
 # FORCE prerequisite ensures the recipe always runs (pattern rules can't be .PHONY)
 proto-gen-%: ensure-proto-builder-image FORCE
 	@echo "Generating Protobuf files for $*"
-	@$(protoImage) env XION_BSR_MODULE=$(BSR_MODULE) ./scripts/proto-gen-ext.sh $*
+	@$(protoImage) env XION_BSR_MODULE=$(XION_BSR_MODULE) ./scripts/proto-gen-ext.sh $*
 
 FORCE:
 
