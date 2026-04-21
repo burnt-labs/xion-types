@@ -73,7 +73,7 @@ struct  Tendermint__Crypto__DominoOp
 
 /*
  * ProofOp defines an operation used for calculating Merkle root
- * The data could be arbitrary format, providing nessecary data
+ * The data could be arbitrary format, providing necessary data
  * for example neighbouring node hash
  */
 struct  Tendermint__Crypto__ProofOp

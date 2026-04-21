@@ -81,7 +81,7 @@ struct Tendermint_Crypto_DominoOp: Sendable {
 }
 
 /// ProofOp defines an operation used for calculating Merkle root
-/// The data could be arbitrary format, providing nessecary data
+/// The data could be arbitrary format, providing necessary data
 /// for example neighbouring node hash
 struct Tendermint_Crypto_ProofOp: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the

@@ -6,17 +6,18 @@
 package tendermint.abci
 
 /** @param events
-  *   set of block events emmitted as part of executing the block
+  *   set of block events emitted as part of executing the block
   * @param txResults
   *   the result of executing each transaction including the events
-  *   the particular transction emitted. This should match the order
+  *   the particular transaction emitted. This should match the order
   *   of the transactions delivered in the block itself
   * @param validatorUpdates
   *   a list of updates to the validator set. These will reflect the validator set at current height + 2.
   * @param consensusParamUpdates
   *   updates to the consensus params, if any.
   * @param appHash
-  *   app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+  *   app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+  *   deterministic. It is up to the application to decide which algorithm to use.
   */
 @SerialVersionUID(0L)
 final case class ResponseFinalizeBlock(
