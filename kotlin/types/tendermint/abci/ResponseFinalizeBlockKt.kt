@@ -35,7 +35,7 @@ public object ResponseFinalizeBlockKt {
     public class EventsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -47,7 +47,7 @@ public object ResponseFinalizeBlockKt {
       )
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -60,7 +60,7 @@ public object ResponseFinalizeBlockKt {
     }
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -74,7 +74,7 @@ public object ResponseFinalizeBlockKt {
     }
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -87,7 +87,7 @@ public object ResponseFinalizeBlockKt {
     }
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -101,7 +101,7 @@ public object ResponseFinalizeBlockKt {
     }
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -115,7 +115,7 @@ public object ResponseFinalizeBlockKt {
     }
     /**
      * ```
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * ```
      *
      * `repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];`
@@ -136,7 +136,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -150,7 +150,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -165,7 +165,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -181,7 +181,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -196,7 +196,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -212,7 +212,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -228,7 +228,7 @@ public object ResponseFinalizeBlockKt {
     /**
      * ```
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * ```
      *
@@ -379,7 +379,8 @@ public object ResponseFinalizeBlockKt {
 
     /**
      * ```
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * ```
      *
      * `bytes app_hash = 5 [json_name = "appHash"];`
@@ -393,7 +394,8 @@ public object ResponseFinalizeBlockKt {
       }
     /**
      * ```
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * ```
      *
      * `bytes app_hash = 5 [json_name = "appHash"];`

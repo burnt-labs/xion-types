@@ -1180,14 +1180,14 @@ typedef GPB_ENUM(ResponseFinalizeBlock_FieldNumber) {
 
 GPB_FINAL @interface ResponseFinalizeBlock : GPBMessage
 
-/** set of block events emmitted as part of executing the block */
+/** set of block events emitted as part of executing the block */
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Event*> *eventsArray;
 /** The number of items in @c eventsArray without causing the container to be created. */
 @property(nonatomic, readonly) NSUInteger eventsArray_Count;
 
 /**
  * the result of executing each transaction including the events
- * the particular transction emitted. This should match the order
+ * the particular transaction emitted. This should match the order
  * of the transactions delivered in the block itself
  **/
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ExecTxResult*> *txResultsArray;
@@ -1204,7 +1204,10 @@ GPB_FINAL @interface ResponseFinalizeBlock : GPBMessage
 /** Test to see if @c consensusParamUpdates has been set. */
 @property(nonatomic, readwrite) BOOL hasConsensusParamUpdates;
 
-/** app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use. */
+/**
+ * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+ * deterministic. It is up to the application to decide which algorithm to use.
+ **/
 @property(nonatomic, readwrite, copy, null_resettable) NSData *appHash;
 
 @end

@@ -36336,7 +36336,7 @@ public final class Types {
 
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36345,7 +36345,7 @@ public final class Types {
         getEventsList();
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36353,7 +36353,7 @@ public final class Types {
     tendermint.abci.Types.Event getEvents(int index);
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36361,7 +36361,7 @@ public final class Types {
     int getEventsCount();
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36370,7 +36370,7 @@ public final class Types {
         getEventsOrBuilderList();
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36381,7 +36381,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36392,7 +36392,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36402,7 +36402,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36412,7 +36412,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36423,7 +36423,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36505,7 +36505,8 @@ public final class Types {
 
     /**
      * <pre>
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * </pre>
      *
      * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -36558,7 +36559,7 @@ public final class Types {
     private java.util.List<tendermint.abci.Types.Event> events_;
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36569,7 +36570,7 @@ public final class Types {
     }
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36581,7 +36582,7 @@ public final class Types {
     }
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36592,7 +36593,7 @@ public final class Types {
     }
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36603,7 +36604,7 @@ public final class Types {
     }
     /**
      * <pre>
-     * set of block events emmitted as part of executing the block
+     * set of block events emitted as part of executing the block
      * </pre>
      *
      * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -36620,7 +36621,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36633,7 +36634,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36647,7 +36648,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36660,7 +36661,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36673,7 +36674,7 @@ public final class Types {
     /**
      * <pre>
      * the result of executing each transaction including the events
-     * the particular transction emitted. This should match the order
+     * the particular transaction emitted. This should match the order
      * of the transactions delivered in the block itself
      * </pre>
      *
@@ -36788,7 +36789,8 @@ public final class Types {
     private com.google.protobuf.ByteString appHash_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+     * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+     * deterministic. It is up to the application to decide which algorithm to use.
      * </pre>
      *
      * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -37394,7 +37396,7 @@ public final class Types {
 
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37408,7 +37410,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37422,7 +37424,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37436,7 +37438,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37457,7 +37459,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37475,7 +37477,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37495,7 +37497,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37516,7 +37518,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37534,7 +37536,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37552,7 +37554,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37571,7 +37573,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37588,7 +37590,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37605,7 +37607,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37616,7 +37618,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37630,7 +37632,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37645,7 +37647,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37656,7 +37658,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37668,7 +37670,7 @@ public final class Types {
       }
       /**
        * <pre>
-       * set of block events emmitted as part of executing the block
+       * set of block events emitted as part of executing the block
        * </pre>
        *
        * <code>repeated .tendermint.abci.Event events = 1 [json_name = "events", (.gogoproto.nullable) = false, (.gogoproto.jsontag) = "events,omitempty"];</code>
@@ -37707,7 +37709,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37723,7 +37725,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37739,7 +37741,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37755,7 +37757,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37778,7 +37780,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37798,7 +37800,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37820,7 +37822,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37843,7 +37845,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37863,7 +37865,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37883,7 +37885,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37904,7 +37906,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37923,7 +37925,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37942,7 +37944,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37955,7 +37957,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37971,7 +37973,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -37988,7 +37990,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -38001,7 +38003,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -38015,7 +38017,7 @@ public final class Types {
       /**
        * <pre>
        * the result of executing each transaction including the events
-       * the particular transction emitted. This should match the order
+       * the particular transaction emitted. This should match the order
        * of the transactions delivered in the block itself
        * </pre>
        *
@@ -38512,7 +38514,8 @@ public final class Types {
       private com.google.protobuf.ByteString appHash_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+       * deterministic. It is up to the application to decide which algorithm to use.
        * </pre>
        *
        * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -38524,7 +38527,8 @@ public final class Types {
       }
       /**
        * <pre>
-       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+       * deterministic. It is up to the application to decide which algorithm to use.
        * </pre>
        *
        * <code>bytes app_hash = 5 [json_name = "appHash"];</code>
@@ -38540,7 +38544,8 @@ public final class Types {
       }
       /**
        * <pre>
-       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+       * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+       * deterministic. It is up to the application to decide which algorithm to use.
        * </pre>
        *
        * <code>bytes app_hash = 5 [json_name = "appHash"];</code>

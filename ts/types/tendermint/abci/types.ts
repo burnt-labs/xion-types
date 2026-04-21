@@ -570,11 +570,11 @@ export function responseVerifyVoteExtension_VerifyStatusToJSON(
 }
 
 export interface ResponseFinalizeBlock {
-  /** set of block events emmitted as part of executing the block */
+  /** set of block events emitted as part of executing the block */
   events: Event[];
   /**
    * the result of executing each transaction including the events
-   * the particular transction emitted. This should match the order
+   * the particular transaction emitted. This should match the order
    * of the transactions delivered in the block itself
    */
   txResults: ExecTxResult[];
@@ -584,7 +584,10 @@ export interface ResponseFinalizeBlock {
   consensusParamUpdates?:
     | ConsensusParams
     | undefined;
-  /** app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use. */
+  /**
+   * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+   * deterministic. It is up to the application to decide which algorithm to use.
+   */
   appHash: Uint8Array;
 }
 
