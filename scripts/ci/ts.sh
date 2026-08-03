@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Publish TypeScript protobuf types to npm registry via pnpm.
+# Publish TypeScript protobuf types to npm registry via npm (OIDC trusted publishing).
 #
 # Usage: ts.sh [--dry-run] <version>
 #
@@ -65,10 +65,10 @@ cd dist
 node -e "const p=require('./package.json');p.version='$VERSION';delete p.scripts;require('fs').writeFileSync('./package.json',JSON.stringify(p,null,2))"
 
 if [[ "$DRY_RUN" == "true" ]]; then
-  echo "DRY_RUN: would run pnpm publish $PROVENANCE_FLAG --access public --tag $TAG"
-  pnpm pack
+  echo "DRY_RUN: would run npm publish $PROVENANCE_FLAG --access public --tag $TAG"
+  npm pack
 else
-  pnpm publish $PROVENANCE_FLAG --access public --tag "$TAG" --no-git-checks --verbose
+  npm publish $PROVENANCE_FLAG --access public --tag "$TAG"
 fi
 
 echo "Published @burnt-labs/xion-types@$VERSION (tag=$TAG)"
