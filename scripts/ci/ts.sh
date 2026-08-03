@@ -53,11 +53,6 @@ else
 fi
 echo "dist-tag: $TAG"
 
-PROVENANCE_FLAG=""
-if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
-  PROVENANCE_FLAG="--provenance"
-fi
-
 # Publish from dist/ (where the compiled output lives)
 cd dist
 
@@ -65,10 +60,10 @@ cd dist
 node -e "const p=require('./package.json');p.version='$VERSION';delete p.scripts;require('fs').writeFileSync('./package.json',JSON.stringify(p,null,2))"
 
 if [[ "$DRY_RUN" == "true" ]]; then
-  echo "DRY_RUN: would run npm publish $PROVENANCE_FLAG --access public --tag $TAG"
+  echo "DRY_RUN: would run npm publish --access public --tag $TAG"
   npm pack
 else
-  npm publish $PROVENANCE_FLAG --access public --tag "$TAG"
+  npm publish --access public --tag "$TAG"
 fi
 
 echo "Published @burnt-labs/xion-types@$VERSION (tag=$TAG)"
