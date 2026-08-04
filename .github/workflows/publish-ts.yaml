@@ -15,6 +15,8 @@ on:
 
 env:
   NODE_VERSION: "20"
+  # npm OIDC trusted publishing requires Node >= 22.14.0 (publish job only).
+  PUBLISH_NODE_VERSION: "22"
   PNPM_VERSION: "9"
 
 jobs:
@@ -106,7 +108,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ env.PUBLISH_NODE_VERSION }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v5
