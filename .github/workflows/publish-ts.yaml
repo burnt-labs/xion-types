@@ -15,8 +15,9 @@ on:
 
 env:
   NODE_VERSION: "20"
+  # npm OIDC trusted publishing requires Node >= 22.14.0 (publish job only).
+  PUBLISH_NODE_VERSION: "22"
   PNPM_VERSION: "9"
-  REGISTRY_URL: "https://registry.npmjs.org"
 
 jobs:
   build:
@@ -107,15 +108,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: ${{ env.REGISTRY_URL }}
+          node-version: ${{ env.PUBLISH_NODE_VERSION }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v5
         with:
           version: ${{ env.PNPM_VERSION }}
 
+      - name: Upgrade npm for OIDC trusted publishing (requires >= 11.5.1)
+        run: npm install -g npm@^11.5.1
+
       - name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: bash scripts/ci/ts.sh "${{ inputs.release_tag }}"
