@@ -14,9 +14,9 @@ on:
         type: string
 
 env:
-  NODE_VERSION: "20"
+  NODE_VERSION: "24"
   # npm OIDC trusted publishing requires Node >= 22.14.0 (publish job only).
-  PUBLISH_NODE_VERSION: "22"
+  PUBLISH_NODE_VERSION: "24"
   PNPM_VERSION: "9"
 
 jobs:
