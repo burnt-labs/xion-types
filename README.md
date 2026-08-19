@@ -24,7 +24,6 @@ Sources are pulled from BSR at generation time — no git submodules required. C
 - `buf.build/cosmos/ibc`
 - `buf.build/cosmwasm/wasmd`
 - `buf.build/cosmos/cosmos-sdk`
-- `buf.build/burnt-labs/abstractaccount`
 - `buf.build/burnt-labs/tokenfactory`
 - `buf.build/burnt-labs/xion` *(pinnable via `BSR_MODULE` / `XION_BSR_MODULE`)*
 

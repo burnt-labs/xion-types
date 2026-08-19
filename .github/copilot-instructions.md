@@ -99,9 +99,8 @@ Sources are loaded from `scripts/proto-sources.conf` in order:
 2. buf.build/cosmos/ibc
 3. buf.build/cosmwasm/wasmd
 4. buf.build/cosmos/cosmos-sdk
-5. buf.build/burnt-labs/abstractaccount
-6. buf.build/burnt-labs/tokenfactory
-7. **buf.build/burnt-labs/xion (MUST BE LAST - overwrites shared imports)**
+5. buf.build/burnt-labs/tokenfactory
+6. **buf.build/burnt-labs/xion (MUST BE LAST - overwrites shared imports)**
 
 ## Development Workflows
 
