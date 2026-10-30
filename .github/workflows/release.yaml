@@ -36,7 +36,7 @@ jobs:
   # ─── Stage 1a: Resolve upstream SHAs and compose release tag ────────
   resolve-sources:
     name: Resolve Sources
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-2
     outputs:
       xion_sha: ${{ steps.resolve.outputs.xion_sha }}
       xion_sha_short: ${{ steps.resolve.outputs.xion_sha_short }}
@@ -74,7 +74,7 @@ jobs:
   # ─── Stage 1b: Discover language matrix dynamically ─────────────────
   discover-languages:
     name: Discover Languages
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-2
     outputs:
       matrix: ${{ steps.discover.outputs.matrix }}
     steps:
@@ -102,7 +102,7 @@ jobs:
   # ─── Stage 2: Build proto-builder image once ────────────────────────
   build-proto-image:
     name: Build Proto Image
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     outputs:
       proto_version: ${{ steps.meta.outputs.proto_version }}
     steps:
@@ -137,7 +137,7 @@ jobs:
   generate:
     name: Generate (${{ matrix.language }})
     needs: [discover-languages, build-proto-image, resolve-sources]
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.discover-languages.outputs.matrix) }}
@@ -193,7 +193,7 @@ jobs:
   commit-and-pr:
     name: Commit & PR
     needs: [discover-languages, build-proto-image, generate, resolve-sources]
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-2
     env:
       RELEASE_TAG: ${{ inputs.release_tag }}
       CONTRACTS_REF: ${{ inputs.contracts_ref }}
@@ -302,7 +302,7 @@ jobs:
     name: Summary
     needs: [resolve-sources, discover-languages, build-proto-image, generate, commit-and-pr]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-2
     steps:
       - name: Report
         env:

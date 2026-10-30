@@ -16,7 +16,7 @@ on:
 jobs:
   build:
     name: Build JAR
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
@@ -56,7 +56,7 @@ jobs:
   test:
     name: Test (JDK ${{ matrix.jdk }})
     needs: [build]
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     strategy:
       fail-fast: false
       matrix:
@@ -86,7 +86,7 @@ jobs:
   publish:
     name: Publish to Maven Central
     needs: [test, build]
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     steps:
       - name: Setup JDK
         uses: actions/setup-java@v5
