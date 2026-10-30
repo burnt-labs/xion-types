@@ -22,7 +22,7 @@ env:
 jobs:
   build:
     name: Build tarball
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
@@ -52,7 +52,7 @@ jobs:
   test-dependent-projects:
     name: Test ${{ matrix.project }}
     needs: [build]
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-4
     strategy:
       fail-fast: false
       matrix:
@@ -95,6 +95,9 @@ jobs:
   publish:
     name: Publish to NPM
     needs: [test-dependent-projects]
+    # Stays GitHub-hosted: npm trusted publishing (OIDC) supports cloud-hosted
+    # runners only, not self-hosted ones such as Ubicloud.
+    # https://docs.npmjs.com/trusted-publishers/
     runs-on: ubuntu-latest
     permissions:
       contents: read
