@@ -207,7 +207,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
-          token: ${{ github.token }}
+          # PAT instead of github.token: github.token can't open PRs here, and
+          # pushes/PRs made with it don't trigger the checks auto-merge waits on.
+          token: ${{ secrets.BURNT_PAT_GITHUB_ACTIONS_TOKEN }}
           fetch-depth: 0
 
       - name: Create types branch
@@ -247,7 +249,7 @@ jobs:
         id: pr
         if: steps.commit.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.BURNT_PAT_GITHUB_ACTIONS_TOKEN }}
         run: |
           EXISTING_PR_URL=$(gh pr list \
             --base main \
@@ -286,7 +288,7 @@ jobs:
       - name: Enable auto-merge on PR
         if: steps.commit.outputs.has_changes == 'true' && steps.pr.outputs.pr_url != ''
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.BURNT_PAT_GITHUB_ACTIONS_TOKEN }}
           PR_URL: ${{ steps.pr.outputs.pr_url }}
         run: |
           # Auto-merge kicks in once branch protection checks pass. Idempotent:
