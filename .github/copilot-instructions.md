@@ -85,7 +85,7 @@ xion-types/
 
 ### Rust Stack
 - **prost**: Rust protobuf library (v0.13)
-- **protoc-gen-prost**: Rust protobuf plugin (v0.3.1)
+- **protoc-gen-prost**: Rust protobuf plugin (v0.4.0, prost 0.13)
 - **cargo**: Build tool
 
 ### Python Stack

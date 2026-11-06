@@ -56,7 +56,7 @@ COPY --from=buf-binary /usr/local/bin/buf /usr/local/bin/buf
 # Install Rust toolchain and prost plugin
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
 ENV PATH="/root/.cargo/bin:$PATH"
-RUN cargo install protoc-gen-prost --version 0.3.1 --locked
+RUN cargo install protoc-gen-prost --version 0.4.0 --locked
 
 # Install protoc-gen-scala
 RUN curl -fsSL -o /usr/local/bin/protoc-gen-scala.jar \
