@@ -218,7 +218,19 @@ jobs:
         with:
           pattern: generated-*
           merge-multiple: true
-          path: .
+          path: _generated
+
+      - name: Replace generated language directories
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Mirror each artifact so files dropped by generation are deleted too.
+          # Artifacts omit hidden files, so tracked dotfiles (.gitignore) are left alone.
+          for dir in _generated/*/; do
+            lang="$(basename "$dir")"
+            rsync -r --delete --exclude='.*' "$dir" "$lang/"
+          done
+          rm -rf _generated
 
       - name: Commit generated types
         id: commit
