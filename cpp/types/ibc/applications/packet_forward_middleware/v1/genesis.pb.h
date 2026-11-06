@@ -421,7 +421,6 @@ class InFlightPacket final :
     kRefundSequenceFieldNumber = 9,
     kTimeoutFieldNumber = 11,
     kRetriesRemainingFieldNumber = 10,
-    kNonrefundableFieldNumber = 12,
   };
   // string original_sender_address = 1 [json_name = "originalSenderAddress"];
   void clear_original_sender_address() ;
@@ -575,22 +574,12 @@ class InFlightPacket final :
   void _internal_set_retries_remaining(::int32_t value);
 
   public:
-  // bool nonrefundable = 12 [json_name = "nonrefundable"];
-  void clear_nonrefundable() ;
-  bool nonrefundable() const;
-  void set_nonrefundable(bool value);
-
-  private:
-  bool _internal_nonrefundable() const;
-  void _internal_set_nonrefundable(bool value);
-
-  public:
   // @@protoc_insertion_point(class_scope:ibc.applications.packet_forward_middleware.v1.InFlightPacket)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<4, 12, 0, 191, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<4, 11, 0, 191, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -606,7 +595,6 @@ class InFlightPacket final :
     ::uint64_t refund_sequence_;
     ::uint64_t timeout_;
     ::int32_t retries_remaining_;
-    bool nonrefundable_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1106,28 +1094,6 @@ inline void InFlightPacket::_internal_set_timeout(::uint64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.timeout_ = value;
-}
-
-// bool nonrefundable = 12 [json_name = "nonrefundable"];
-inline void InFlightPacket::clear_nonrefundable() {
-  _impl_.nonrefundable_ = false;
-}
-inline bool InFlightPacket::nonrefundable() const {
-  // @@protoc_insertion_point(field_get:ibc.applications.packet_forward_middleware.v1.InFlightPacket.nonrefundable)
-  return _internal_nonrefundable();
-}
-inline void InFlightPacket::set_nonrefundable(bool value) {
-  _internal_set_nonrefundable(value);
-  // @@protoc_insertion_point(field_set:ibc.applications.packet_forward_middleware.v1.InFlightPacket.nonrefundable)
-}
-inline bool InFlightPacket::_internal_nonrefundable() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.nonrefundable_;
-}
-inline void InFlightPacket::_internal_set_nonrefundable(bool value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.nonrefundable_ = value;
 }
 
 #ifdef __GNUC__

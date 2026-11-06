@@ -24,7 +24,7 @@ object PacketProto extends _root_.scalapb.GeneratedFileObject {
   AlCCeI/BhIEbWVtb1IEbWVtbyJLCghDb3Ntb3NUeBI/CghtZXNzYWdlcxgBIAMoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlCDeI/C
   hIIbWVzc2FnZXNSCG1lc3NhZ2VzKoEBCgRUeXBlEjoKEFRZUEVfVU5TUEVDSUZJRUQQABok4j8SEhBUWVBFX1VOU1BFQ0lGSUVEi
   p0gC1VOU1BFQ0lGSUVEEjcKD1RZUEVfRVhFQ1VURV9UWBABGiLiPxESD1RZUEVfRVhFQ1VURV9UWIqdIApFWEVDVVRFX1RYGgSIo
-  x4AQkhaRmdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNjb3VudHMvdHlwZ
+  x4AQkhaRmdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNjb3VudHMvdHlwZ
   XNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

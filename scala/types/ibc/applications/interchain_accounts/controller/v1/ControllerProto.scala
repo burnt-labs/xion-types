@@ -16,7 +16,7 @@ object ControllerProto extends _root_.scalapb.GeneratedFileObject {
   """CkNpYmMvYXBwbGljYXRpb25zL2ludGVyY2hhaW5fYWNjb3VudHMvY29udHJvbGxlci92MS9jb250cm9sbGVyLnByb3RvEjJpY
   mMuYXBwbGljYXRpb25zLmludGVyY2hhaW5fYWNjb3VudHMuY29udHJvbGxlci52MSJPCgZQYXJhbXMSRQoSY29udHJvbGxlcl9lb
   mFibGVkGAEgASgIQhbiPxMSEWNvbnRyb2xsZXJFbmFibGVkUhFjb250cm9sbGVyRW5hYmxlZEJTWlFnaXRodWIuY29tL2Nvc21vc
-  y9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNoYWluLWFjY291bnRzL2NvbnRyb2xsZXIvdHlwZXNiBnByb3RvMw=="""
+  y9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNoYWluLWFjY291bnRzL2NvbnRyb2xsZXIvdHlwZXNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

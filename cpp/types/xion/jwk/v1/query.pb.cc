@@ -332,10 +332,118 @@ struct QueryValidateJWTResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryValidateJWTResponseDefaultTypeInternal _QueryValidateJWTResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryVerifyJWSRequest::QueryVerifyJWSRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.aud_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.sig_bytes_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryVerifyJWSRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryVerifyJWSRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryVerifyJWSRequestDefaultTypeInternal() {}
+  union {
+    QueryVerifyJWSRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryVerifyJWSRequestDefaultTypeInternal _QueryVerifyJWSRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryVerifyJWSResponse::QueryVerifyJWSResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.payload_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryVerifyJWSResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryVerifyJWSResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryVerifyJWSResponseDefaultTypeInternal() {}
+  union {
+    QueryVerifyJWSResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryVerifyJWSResponseDefaultTypeInternal _QueryVerifyJWSResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryDecodeJWTRequest::QueryDecodeJWTRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.aud_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.sub_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.sig_bytes_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryDecodeJWTRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryDecodeJWTRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryDecodeJWTRequestDefaultTypeInternal() {}
+  union {
+    QueryDecodeJWTRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryDecodeJWTRequestDefaultTypeInternal _QueryDecodeJWTRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR JWTClaim::JWTClaim(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.key_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.value_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct JWTClaimDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR JWTClaimDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~JWTClaimDefaultTypeInternal() {}
+  union {
+    JWTClaim _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 JWTClaimDefaultTypeInternal _JWTClaim_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryDecodeJWTResponse::QueryDecodeJWTResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.claims_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryDecodeJWTResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryDecodeJWTResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryDecodeJWTResponseDefaultTypeInternal() {}
+  union {
+    QueryDecodeJWTResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryDecodeJWTResponseDefaultTypeInternal _QueryDecodeJWTResponse_default_instance_;
 }  // namespace v1
 }  // namespace jwk
 }  // namespace xion
-static ::_pb::Metadata file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[17];
+static ::_pb::Metadata file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[22];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_xion_2fjwk_2fv1_2fquery_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -510,6 +618,55 @@ const ::uint32_t TableStruct_xion_2fjwk_2fv1_2fquery_2eproto::offsets[] PROTOBUF
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryValidateJWTResponse, _impl_.private_claims_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryVerifyJWSRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryVerifyJWSRequest, _impl_.aud_),
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryVerifyJWSRequest, _impl_.sig_bytes_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryVerifyJWSResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryVerifyJWSResponse, _impl_.payload_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryDecodeJWTRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryDecodeJWTRequest, _impl_.aud_),
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryDecodeJWTRequest, _impl_.sub_),
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryDecodeJWTRequest, _impl_.sig_bytes_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::JWTClaim, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::JWTClaim, _impl_.key_),
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::JWTClaim, _impl_.value_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryDecodeJWTResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::QueryDecodeJWTResponse, _impl_.claims_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -531,6 +688,11 @@ static const ::_pbi::MigrationSchema
         {138, -1, -1, sizeof(::xion::jwk::v1::QueryValidateJWTRequest)},
         {149, -1, -1, sizeof(::xion::jwk::v1::PrivateClaim)},
         {159, -1, -1, sizeof(::xion::jwk::v1::QueryValidateJWTResponse)},
+        {168, -1, -1, sizeof(::xion::jwk::v1::QueryVerifyJWSRequest)},
+        {178, -1, -1, sizeof(::xion::jwk::v1::QueryVerifyJWSResponse)},
+        {187, -1, -1, sizeof(::xion::jwk::v1::QueryDecodeJWTRequest)},
+        {198, -1, -1, sizeof(::xion::jwk::v1::JWTClaim)},
+        {208, -1, -1, sizeof(::xion::jwk::v1::QueryDecodeJWTResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -551,6 +713,11 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::xion::jwk::v1::_QueryValidateJWTRequest_default_instance_._instance,
     &::xion::jwk::v1::_PrivateClaim_default_instance_._instance,
     &::xion::jwk::v1::_QueryValidateJWTResponse_default_instance_._instance,
+    &::xion::jwk::v1::_QueryVerifyJWSRequest_default_instance_._instance,
+    &::xion::jwk::v1::_QueryVerifyJWSResponse_default_instance_._instance,
+    &::xion::jwk::v1::_QueryDecodeJWTRequest_default_instance_._instance,
+    &::xion::jwk::v1::_JWTClaim_default_instance_._instance,
+    &::xion::jwk::v1::_QueryDecodeJWTResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_xion_2fjwk_2fv1_2fquery_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\027xion/jwk/v1/query.proto\022\013xion.jwk.v1\032\024"
@@ -592,24 +759,39 @@ const char descriptor_table_protodef_xion_2fjwk_2fv1_2fquery_2eproto[] PROTOBUF_
     "\003key\022\024\n\005value\030\002 \001(\tR\005value\"\\\n\030QueryValid"
     "ateJWTResponse\022@\n\016private_claims\030\001 \003(\0132\031"
     ".xion.jwk.v1.PrivateClaimR\rprivateClaims"
-    "2\374\004\n\005Query\022e\n\006Params\022\037.xion.jwk.v1.Query"
-    "ParamsRequest\032 .xion.jwk.v1.QueryParamsR"
-    "esponse\"\030\202\323\344\223\002\022\022\020/xion/jwk/params\022\211\001\n\rAu"
-    "dienceClaim\022&.xion.jwk.v1.QueryAudienceC"
-    "laimRequest\032\'.xion.jwk.v1.QueryAudienceC"
-    "laimResponse\"\'\202\323\344\223\002!\022\037/xion/jwk/audience"
-    "_claim/{hash}\022s\n\010Audience\022!.xion.jwk.v1."
-    "QueryAudienceRequest\032\".xion.jwk.v1.Query"
-    "AudienceResponse\" \202\323\344\223\002\032\022\030/xion/jwk/audi"
-    "ence/{aud}\022v\n\013AudienceAll\022$.xion.jwk.v1."
-    "QueryAudienceAllRequest\032%.xion.jwk.v1.Qu"
-    "eryAudienceAllResponse\"\032\202\323\344\223\002\024\022\022/xion/jw"
-    "k/audience\022\222\001\n\013ValidateJWT\022$.xion.jwk.v1"
-    ".QueryValidateJWTRequest\032%.xion.jwk.v1.Q"
-    "ueryValidateJWTResponse\"6\202\323\344\223\0020\022./xion/j"
-    "wk/validate_jwt/{aud}/{sub}/{sig_bytes}B"
-    "(Z&github.com/burnt-labs/xion/x/jwk/type"
-    "sb\006proto3"
+    "\"F\n\025QueryVerifyJWSRequest\022\020\n\003aud\030\001 \001(\tR\003"
+    "aud\022\033\n\tsig_bytes\030\002 \001(\tR\010sigBytes\"2\n\026Quer"
+    "yVerifyJWSResponse\022\030\n\007payload\030\001 \001(\014R\007pay"
+    "load\"X\n\025QueryDecodeJWTRequest\022\020\n\003aud\030\001 \001"
+    "(\tR\003aud\022\020\n\003sub\030\002 \001(\tR\003sub\022\033\n\tsig_bytes\030\003"
+    " \001(\tR\010sigBytes\"2\n\010JWTClaim\022\020\n\003key\030\001 \001(\tR"
+    "\003key\022\024\n\005value\030\002 \001(\tR\005value\"G\n\026QueryDecod"
+    "eJWTResponse\022-\n\006claims\030\001 \003(\0132\025.xion.jwk."
+    "v1.JWTClaimR\006claims2\223\007\n\005Query\022e\n\006Params\022"
+    "\037.xion.jwk.v1.QueryParamsRequest\032 .xion."
+    "jwk.v1.QueryParamsResponse\"\030\202\323\344\223\002\022\022\020/xio"
+    "n/jwk/params\022\211\001\n\rAudienceClaim\022&.xion.jw"
+    "k.v1.QueryAudienceClaimRequest\032\'.xion.jw"
+    "k.v1.QueryAudienceClaimResponse\"\'\202\323\344\223\002!\022"
+    "\037/xion/jwk/audience_claim/{hash}\022s\n\010Audi"
+    "ence\022!.xion.jwk.v1.QueryAudienceRequest\032"
+    "\".xion.jwk.v1.QueryAudienceResponse\" \202\323\344"
+    "\223\002\032\022\030/xion/jwk/audience/{aud}\022v\n\013Audienc"
+    "eAll\022$.xion.jwk.v1.QueryAudienceAllReque"
+    "st\032%.xion.jwk.v1.QueryAudienceAllRespons"
+    "e\"\032\202\323\344\223\002\024\022\022/xion/jwk/audience\022\225\001\n\013Valida"
+    "teJWT\022$.xion.jwk.v1.QueryValidateJWTRequ"
+    "est\032%.xion.jwk.v1.QueryValidateJWTRespon"
+    "se\"9\210\002\001\202\323\344\223\0020\022./xion/jwk/validate_jwt/{a"
+    "ud}/{sub}/{sig_bytes}\022\204\001\n\tVerifyJWS\022\".xi"
+    "on.jwk.v1.QueryVerifyJWSRequest\032#.xion.j"
+    "wk.v1.QueryVerifyJWSResponse\".\202\323\344\223\002(\022&/x"
+    "ion/jwk/verify_jws/{aud}/{sig_bytes}\022\212\001\n"
+    "\tDecodeJWT\022\".xion.jwk.v1.QueryDecodeJWTR"
+    "equest\032#.xion.jwk.v1.QueryDecodeJWTRespo"
+    "nse\"4\202\323\344\223\002.\022,/xion/jwk/decode_jwt/{aud}/"
+    "{sub}/{sig_bytes}B(Z&github.com/burnt-la"
+    "bs/xion/x/jwk/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_deps[5] =
     {
@@ -623,13 +805,13 @@ static ::absl::once_flag descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto = {
     false,
     false,
-    2249,
+    2867,
     descriptor_table_protodef_xion_2fjwk_2fv1_2fquery_2eproto,
     "xion/jwk/v1/query.proto",
     &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
     descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_deps,
     5,
-    17,
+    22,
     schemas,
     file_default_instances,
     TableStruct_xion_2fjwk_2fv1_2fquery_2eproto::offsets,
@@ -4006,6 +4188,1102 @@ void QueryValidateJWTResponse::InternalSwap(QueryValidateJWTResponse* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
       file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[16]);
+}
+// ===================================================================
+
+class QueryVerifyJWSRequest::_Internal {
+ public:
+};
+
+QueryVerifyJWSRequest::QueryVerifyJWSRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.QueryVerifyJWSRequest)
+}
+QueryVerifyJWSRequest::QueryVerifyJWSRequest(const QueryVerifyJWSRequest& from) : ::google::protobuf::Message() {
+  QueryVerifyJWSRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.aud_){},
+      decltype(_impl_.sig_bytes_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.aud_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.aud_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_aud().empty()) {
+    _this->_impl_.aud_.Set(from._internal_aud(), _this->GetArenaForAllocation());
+  }
+  _impl_.sig_bytes_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sig_bytes_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sig_bytes().empty()) {
+    _this->_impl_.sig_bytes_.Set(from._internal_sig_bytes(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.QueryVerifyJWSRequest)
+}
+inline void QueryVerifyJWSRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.aud_){},
+      decltype(_impl_.sig_bytes_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.aud_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.aud_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.sig_bytes_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sig_bytes_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryVerifyJWSRequest::~QueryVerifyJWSRequest() {
+  // @@protoc_insertion_point(destructor:xion.jwk.v1.QueryVerifyJWSRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryVerifyJWSRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.aud_.Destroy();
+  _impl_.sig_bytes_.Destroy();
+}
+void QueryVerifyJWSRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryVerifyJWSRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.jwk.v1.QueryVerifyJWSRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.aud_.ClearToEmpty();
+  _impl_.sig_bytes_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryVerifyJWSRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 54, 2> QueryVerifyJWSRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryVerifyJWSRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string sig_bytes = 2 [json_name = "sigBytes"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyJWSRequest, _impl_.sig_bytes_)}},
+    // string aud = 1 [json_name = "aud"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyJWSRequest, _impl_.aud_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string aud = 1 [json_name = "aud"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyJWSRequest, _impl_.aud_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string sig_bytes = 2 [json_name = "sigBytes"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyJWSRequest, _impl_.sig_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\41\3\11\0\0\0\0\0"
+    "xion.jwk.v1.QueryVerifyJWSRequest"
+    "aud"
+    "sig_bytes"
+  }},
+};
+
+::uint8_t* QueryVerifyJWSRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.jwk.v1.QueryVerifyJWSRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string aud = 1 [json_name = "aud"];
+  if (!this->_internal_aud().empty()) {
+    const std::string& _s = this->_internal_aud();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.QueryVerifyJWSRequest.aud");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string sig_bytes = 2 [json_name = "sigBytes"];
+  if (!this->_internal_sig_bytes().empty()) {
+    const std::string& _s = this->_internal_sig_bytes();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.QueryVerifyJWSRequest.sig_bytes");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.jwk.v1.QueryVerifyJWSRequest)
+  return target;
+}
+
+::size_t QueryVerifyJWSRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.jwk.v1.QueryVerifyJWSRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string aud = 1 [json_name = "aud"];
+  if (!this->_internal_aud().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_aud());
+  }
+
+  // string sig_bytes = 2 [json_name = "sigBytes"];
+  if (!this->_internal_sig_bytes().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_sig_bytes());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryVerifyJWSRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryVerifyJWSRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryVerifyJWSRequest::GetClassData() const { return &_class_data_; }
+
+
+void QueryVerifyJWSRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryVerifyJWSRequest*>(&to_msg);
+  auto& from = static_cast<const QueryVerifyJWSRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.jwk.v1.QueryVerifyJWSRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_aud().empty()) {
+    _this->_internal_set_aud(from._internal_aud());
+  }
+  if (!from._internal_sig_bytes().empty()) {
+    _this->_internal_set_sig_bytes(from._internal_sig_bytes());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryVerifyJWSRequest::CopyFrom(const QueryVerifyJWSRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.jwk.v1.QueryVerifyJWSRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryVerifyJWSRequest::IsInitialized() const {
+  return true;
+}
+
+void QueryVerifyJWSRequest::InternalSwap(QueryVerifyJWSRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.aud_, lhs_arena,
+                                       &other->_impl_.aud_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sig_bytes_, lhs_arena,
+                                       &other->_impl_.sig_bytes_, rhs_arena);
+}
+
+::google::protobuf::Metadata QueryVerifyJWSRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[17]);
+}
+// ===================================================================
+
+class QueryVerifyJWSResponse::_Internal {
+ public:
+};
+
+QueryVerifyJWSResponse::QueryVerifyJWSResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.QueryVerifyJWSResponse)
+}
+QueryVerifyJWSResponse::QueryVerifyJWSResponse(const QueryVerifyJWSResponse& from) : ::google::protobuf::Message() {
+  QueryVerifyJWSResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.payload_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.payload_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.payload_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_payload().empty()) {
+    _this->_impl_.payload_.Set(from._internal_payload(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.QueryVerifyJWSResponse)
+}
+inline void QueryVerifyJWSResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.payload_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.payload_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.payload_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryVerifyJWSResponse::~QueryVerifyJWSResponse() {
+  // @@protoc_insertion_point(destructor:xion.jwk.v1.QueryVerifyJWSResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryVerifyJWSResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.payload_.Destroy();
+}
+void QueryVerifyJWSResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryVerifyJWSResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.jwk.v1.QueryVerifyJWSResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.payload_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryVerifyJWSResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> QueryVerifyJWSResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryVerifyJWSResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bytes payload = 1 [json_name = "payload"];
+    {::_pbi::TcParser::FastBS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyJWSResponse, _impl_.payload_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bytes payload = 1 [json_name = "payload"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyJWSResponse, _impl_.payload_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* QueryVerifyJWSResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.jwk.v1.QueryVerifyJWSResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // bytes payload = 1 [json_name = "payload"];
+  if (!this->_internal_payload().empty()) {
+    const std::string& _s = this->_internal_payload();
+    target = stream->WriteBytesMaybeAliased(1, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.jwk.v1.QueryVerifyJWSResponse)
+  return target;
+}
+
+::size_t QueryVerifyJWSResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.jwk.v1.QueryVerifyJWSResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes payload = 1 [json_name = "payload"];
+  if (!this->_internal_payload().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_payload());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryVerifyJWSResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryVerifyJWSResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryVerifyJWSResponse::GetClassData() const { return &_class_data_; }
+
+
+void QueryVerifyJWSResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryVerifyJWSResponse*>(&to_msg);
+  auto& from = static_cast<const QueryVerifyJWSResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.jwk.v1.QueryVerifyJWSResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_payload().empty()) {
+    _this->_internal_set_payload(from._internal_payload());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryVerifyJWSResponse::CopyFrom(const QueryVerifyJWSResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.jwk.v1.QueryVerifyJWSResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryVerifyJWSResponse::IsInitialized() const {
+  return true;
+}
+
+void QueryVerifyJWSResponse::InternalSwap(QueryVerifyJWSResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, lhs_arena,
+                                       &other->_impl_.payload_, rhs_arena);
+}
+
+::google::protobuf::Metadata QueryVerifyJWSResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[18]);
+}
+// ===================================================================
+
+class QueryDecodeJWTRequest::_Internal {
+ public:
+};
+
+QueryDecodeJWTRequest::QueryDecodeJWTRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.QueryDecodeJWTRequest)
+}
+QueryDecodeJWTRequest::QueryDecodeJWTRequest(const QueryDecodeJWTRequest& from) : ::google::protobuf::Message() {
+  QueryDecodeJWTRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.aud_){},
+      decltype(_impl_.sub_){},
+      decltype(_impl_.sig_bytes_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.aud_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.aud_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_aud().empty()) {
+    _this->_impl_.aud_.Set(from._internal_aud(), _this->GetArenaForAllocation());
+  }
+  _impl_.sub_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sub_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sub().empty()) {
+    _this->_impl_.sub_.Set(from._internal_sub(), _this->GetArenaForAllocation());
+  }
+  _impl_.sig_bytes_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sig_bytes_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sig_bytes().empty()) {
+    _this->_impl_.sig_bytes_.Set(from._internal_sig_bytes(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.QueryDecodeJWTRequest)
+}
+inline void QueryDecodeJWTRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.aud_){},
+      decltype(_impl_.sub_){},
+      decltype(_impl_.sig_bytes_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.aud_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.aud_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.sub_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sub_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.sig_bytes_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sig_bytes_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryDecodeJWTRequest::~QueryDecodeJWTRequest() {
+  // @@protoc_insertion_point(destructor:xion.jwk.v1.QueryDecodeJWTRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryDecodeJWTRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.aud_.Destroy();
+  _impl_.sub_.Destroy();
+  _impl_.sig_bytes_.Destroy();
+}
+void QueryDecodeJWTRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryDecodeJWTRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.jwk.v1.QueryDecodeJWTRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.aud_.ClearToEmpty();
+  _impl_.sub_.ClearToEmpty();
+  _impl_.sig_bytes_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryDecodeJWTRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 57, 2> QueryDecodeJWTRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryDecodeJWTRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string aud = 1 [json_name = "aud"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryDecodeJWTRequest, _impl_.aud_)}},
+    // string sub = 2 [json_name = "sub"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(QueryDecodeJWTRequest, _impl_.sub_)}},
+    // string sig_bytes = 3 [json_name = "sigBytes"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(QueryDecodeJWTRequest, _impl_.sig_bytes_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string aud = 1 [json_name = "aud"];
+    {PROTOBUF_FIELD_OFFSET(QueryDecodeJWTRequest, _impl_.aud_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string sub = 2 [json_name = "sub"];
+    {PROTOBUF_FIELD_OFFSET(QueryDecodeJWTRequest, _impl_.sub_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string sig_bytes = 3 [json_name = "sigBytes"];
+    {PROTOBUF_FIELD_OFFSET(QueryDecodeJWTRequest, _impl_.sig_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\41\3\3\11\0\0\0\0"
+    "xion.jwk.v1.QueryDecodeJWTRequest"
+    "aud"
+    "sub"
+    "sig_bytes"
+  }},
+};
+
+::uint8_t* QueryDecodeJWTRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.jwk.v1.QueryDecodeJWTRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string aud = 1 [json_name = "aud"];
+  if (!this->_internal_aud().empty()) {
+    const std::string& _s = this->_internal_aud();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.QueryDecodeJWTRequest.aud");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string sub = 2 [json_name = "sub"];
+  if (!this->_internal_sub().empty()) {
+    const std::string& _s = this->_internal_sub();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.QueryDecodeJWTRequest.sub");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string sig_bytes = 3 [json_name = "sigBytes"];
+  if (!this->_internal_sig_bytes().empty()) {
+    const std::string& _s = this->_internal_sig_bytes();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.QueryDecodeJWTRequest.sig_bytes");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.jwk.v1.QueryDecodeJWTRequest)
+  return target;
+}
+
+::size_t QueryDecodeJWTRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.jwk.v1.QueryDecodeJWTRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string aud = 1 [json_name = "aud"];
+  if (!this->_internal_aud().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_aud());
+  }
+
+  // string sub = 2 [json_name = "sub"];
+  if (!this->_internal_sub().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_sub());
+  }
+
+  // string sig_bytes = 3 [json_name = "sigBytes"];
+  if (!this->_internal_sig_bytes().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_sig_bytes());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryDecodeJWTRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryDecodeJWTRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryDecodeJWTRequest::GetClassData() const { return &_class_data_; }
+
+
+void QueryDecodeJWTRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryDecodeJWTRequest*>(&to_msg);
+  auto& from = static_cast<const QueryDecodeJWTRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.jwk.v1.QueryDecodeJWTRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_aud().empty()) {
+    _this->_internal_set_aud(from._internal_aud());
+  }
+  if (!from._internal_sub().empty()) {
+    _this->_internal_set_sub(from._internal_sub());
+  }
+  if (!from._internal_sig_bytes().empty()) {
+    _this->_internal_set_sig_bytes(from._internal_sig_bytes());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryDecodeJWTRequest::CopyFrom(const QueryDecodeJWTRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.jwk.v1.QueryDecodeJWTRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryDecodeJWTRequest::IsInitialized() const {
+  return true;
+}
+
+void QueryDecodeJWTRequest::InternalSwap(QueryDecodeJWTRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.aud_, lhs_arena,
+                                       &other->_impl_.aud_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sub_, lhs_arena,
+                                       &other->_impl_.sub_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sig_bytes_, lhs_arena,
+                                       &other->_impl_.sig_bytes_, rhs_arena);
+}
+
+::google::protobuf::Metadata QueryDecodeJWTRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[19]);
+}
+// ===================================================================
+
+class JWTClaim::_Internal {
+ public:
+};
+
+JWTClaim::JWTClaim(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.JWTClaim)
+}
+JWTClaim::JWTClaim(const JWTClaim& from) : ::google::protobuf::Message() {
+  JWTClaim* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.key_){},
+      decltype(_impl_.value_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.key_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.key_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_key().empty()) {
+    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
+  }
+  _impl_.value_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.value_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_value().empty()) {
+    _this->_impl_.value_.Set(from._internal_value(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.JWTClaim)
+}
+inline void JWTClaim::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.key_){},
+      decltype(_impl_.value_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.key_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.key_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.value_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.value_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+JWTClaim::~JWTClaim() {
+  // @@protoc_insertion_point(destructor:xion.jwk.v1.JWTClaim)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void JWTClaim::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.key_.Destroy();
+  _impl_.value_.Destroy();
+}
+void JWTClaim::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void JWTClaim::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.jwk.v1.JWTClaim)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.key_.ClearToEmpty();
+  _impl_.value_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* JWTClaim::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 37, 2> JWTClaim::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_JWTClaim_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(JWTClaim, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(JWTClaim, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(JWTClaim, _impl_.key_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(JWTClaim, _impl_.value_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\24\3\5\0\0\0\0\0"
+    "xion.jwk.v1.JWTClaim"
+    "key"
+    "value"
+  }},
+};
+
+::uint8_t* JWTClaim::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.jwk.v1.JWTClaim)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string key = 1 [json_name = "key"];
+  if (!this->_internal_key().empty()) {
+    const std::string& _s = this->_internal_key();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.JWTClaim.key");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string value = 2 [json_name = "value"];
+  if (!this->_internal_value().empty()) {
+    const std::string& _s = this->_internal_value();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.JWTClaim.value");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.jwk.v1.JWTClaim)
+  return target;
+}
+
+::size_t JWTClaim::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.jwk.v1.JWTClaim)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string key = 1 [json_name = "key"];
+  if (!this->_internal_key().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_key());
+  }
+
+  // string value = 2 [json_name = "value"];
+  if (!this->_internal_value().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_value());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData JWTClaim::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    JWTClaim::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*JWTClaim::GetClassData() const { return &_class_data_; }
+
+
+void JWTClaim::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<JWTClaim*>(&to_msg);
+  auto& from = static_cast<const JWTClaim&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.jwk.v1.JWTClaim)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_key().empty()) {
+    _this->_internal_set_key(from._internal_key());
+  }
+  if (!from._internal_value().empty()) {
+    _this->_internal_set_value(from._internal_value());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void JWTClaim::CopyFrom(const JWTClaim& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.jwk.v1.JWTClaim)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool JWTClaim::IsInitialized() const {
+  return true;
+}
+
+void JWTClaim::InternalSwap(JWTClaim* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
+                                       &other->_impl_.key_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.value_, lhs_arena,
+                                       &other->_impl_.value_, rhs_arena);
+}
+
+::google::protobuf::Metadata JWTClaim::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[20]);
+}
+// ===================================================================
+
+class QueryDecodeJWTResponse::_Internal {
+ public:
+};
+
+QueryDecodeJWTResponse::QueryDecodeJWTResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.QueryDecodeJWTResponse)
+}
+QueryDecodeJWTResponse::QueryDecodeJWTResponse(const QueryDecodeJWTResponse& from) : ::google::protobuf::Message() {
+  QueryDecodeJWTResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.claims_){from._impl_.claims_},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.QueryDecodeJWTResponse)
+}
+inline void QueryDecodeJWTResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.claims_){arena},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+}
+QueryDecodeJWTResponse::~QueryDecodeJWTResponse() {
+  // @@protoc_insertion_point(destructor:xion.jwk.v1.QueryDecodeJWTResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryDecodeJWTResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.claims_.~RepeatedPtrField();
+}
+void QueryDecodeJWTResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryDecodeJWTResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.jwk.v1.QueryDecodeJWTResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_mutable_claims()->Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryDecodeJWTResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> QueryDecodeJWTResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_QueryDecodeJWTResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryDecodeJWTResponse, _impl_.claims_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];
+    {PROTOBUF_FIELD_OFFSET(QueryDecodeJWTResponse, _impl_.claims_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::xion::jwk::v1::JWTClaim>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* QueryDecodeJWTResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.jwk.v1.QueryDecodeJWTResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_claims_size()); i < n; i++) {
+    const auto& repfield = this->_internal_claims().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.jwk.v1.QueryDecodeJWTResponse)
+  return target;
+}
+
+::size_t QueryDecodeJWTResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.jwk.v1.QueryDecodeJWTResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];
+  total_size += 1UL * this->_internal_claims_size();
+  for (const auto& msg : this->_internal_claims()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryDecodeJWTResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryDecodeJWTResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryDecodeJWTResponse::GetClassData() const { return &_class_data_; }
+
+
+void QueryDecodeJWTResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryDecodeJWTResponse*>(&to_msg);
+  auto& from = static_cast<const QueryDecodeJWTResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.jwk.v1.QueryDecodeJWTResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_claims()->MergeFrom(from._internal_claims());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryDecodeJWTResponse::CopyFrom(const QueryDecodeJWTResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.jwk.v1.QueryDecodeJWTResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryDecodeJWTResponse::IsInitialized() const {
+  return true;
+}
+
+void QueryDecodeJWTResponse::InternalSwap(QueryDecodeJWTResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.claims_.InternalSwap(&other->_impl_.claims_);
+}
+
+::google::protobuf::Metadata QueryDecodeJWTResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2fquery_2eproto[21]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

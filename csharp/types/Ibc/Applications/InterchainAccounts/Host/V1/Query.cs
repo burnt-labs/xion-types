@@ -36,7 +36,7 @@ namespace Ibc.Applications.InterchainAccounts.Host.V1 {
             "YmMuYXBwbGljYXRpb25zLmludGVyY2hhaW5fYWNjb3VudHMuaG9zdC52MS5R",
             "dWVyeVBhcmFtc1Jlc3BvbnNlIjSC0+STAi4SLC9pYmMvYXBwcy9pbnRlcmNo",
             "YWluX2FjY291bnRzL2hvc3QvdjEvcGFyYW1zQk1aS2dpdGh1Yi5jb20vY29z",
-            "bW9zL2liYy1nby92MTAvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNj",
+            "bW9zL2liYy1nby92MTEvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNj",
             "b3VudHMvaG9zdC90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Ibc.Applications.InterchainAccounts.Host.V1.HostReflection.Descriptor, },

@@ -15,7 +15,7 @@ object DenomtraceProto extends _root_.scalapb.GeneratedFileObject {
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """Ci1pYmMvYXBwbGljYXRpb25zL3RyYW5zZmVyL3YxL2Rlbm9tdHJhY2UucHJvdG8SHGliYy5hcHBsaWNhdGlvbnMudHJhbnNmZ
   XIudjEiXgoKRGVub21UcmFjZRIdCgRwYXRoGAEgASgJQgniPwYSBHBhdGhSBHBhdGgSLQoKYmFzZV9kZW5vbRgCIAEoCUIO4j8LE
-  gliYXNlRGVub21SCWJhc2VEZW5vbToCGAFCOlo4Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1bGVzL2FwcHMvdHJhb
+  gliYXNlRGVub21SCWJhc2VEZW5vbToCGAFCOlo4Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9tb2R1bGVzL2FwcHMvdHJhb
   nNmZXIvdHlwZXNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

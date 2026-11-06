@@ -217,6 +217,7 @@ class MsgUpdateParams final :
     kEvidenceFieldNumber = 3,
     kValidatorFieldNumber = 4,
     kAbciFieldNumber = 5,
+    kAuthFieldNumber = 6,
   };
   // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
   void clear_authority() ;
@@ -294,12 +295,27 @@ class MsgUpdateParams final :
   ::tendermint::types::ABCIParams* _internal_mutable_abci();
 
   public:
+  // .tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];
+  bool has_auth() const;
+  void clear_auth() ;
+  const ::tendermint::types::AuthorityParams& auth() const;
+  PROTOBUF_NODISCARD ::tendermint::types::AuthorityParams* release_auth();
+  ::tendermint::types::AuthorityParams* mutable_auth();
+  void set_allocated_auth(::tendermint::types::AuthorityParams* value);
+  void unsafe_arena_set_allocated_auth(::tendermint::types::AuthorityParams* value);
+  ::tendermint::types::AuthorityParams* unsafe_arena_release_auth();
+
+  private:
+  const ::tendermint::types::AuthorityParams& _internal_auth() const;
+  ::tendermint::types::AuthorityParams* _internal_mutable_auth();
+
+  public:
   // @@protoc_insertion_point(class_scope:cosmos.consensus.v1.MsgUpdateParams)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5, 4, 53, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 5, 53, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -311,6 +327,7 @@ class MsgUpdateParams final :
     ::tendermint::types::EvidenceParams* evidence_;
     ::tendermint::types::ValidatorParams* validator_;
     ::tendermint::types::ABCIParams* abci_;
+    ::tendermint::types::AuthorityParams* auth_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -875,6 +892,98 @@ inline void MsgUpdateParams::set_allocated_abci(::tendermint::types::ABCIParams*
 
   _impl_.abci_ = reinterpret_cast<::tendermint::types::ABCIParams*>(value);
   // @@protoc_insertion_point(field_set_allocated:cosmos.consensus.v1.MsgUpdateParams.abci)
+}
+
+// .tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];
+inline bool MsgUpdateParams::has_auth() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.auth_ != nullptr);
+  return value;
+}
+inline const ::tendermint::types::AuthorityParams& MsgUpdateParams::_internal_auth() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::tendermint::types::AuthorityParams* p = _impl_.auth_;
+  return p != nullptr ? *p : reinterpret_cast<const ::tendermint::types::AuthorityParams&>(::tendermint::types::_AuthorityParams_default_instance_);
+}
+inline const ::tendermint::types::AuthorityParams& MsgUpdateParams::auth() const {
+  // @@protoc_insertion_point(field_get:cosmos.consensus.v1.MsgUpdateParams.auth)
+  return _internal_auth();
+}
+inline void MsgUpdateParams::unsafe_arena_set_allocated_auth(::tendermint::types::AuthorityParams* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.auth_);
+  }
+  _impl_.auth_ = reinterpret_cast<::tendermint::types::AuthorityParams*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.consensus.v1.MsgUpdateParams.auth)
+}
+inline ::tendermint::types::AuthorityParams* MsgUpdateParams::release_auth() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::tendermint::types::AuthorityParams* released = _impl_.auth_;
+  _impl_.auth_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::tendermint::types::AuthorityParams* MsgUpdateParams::unsafe_arena_release_auth() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.consensus.v1.MsgUpdateParams.auth)
+
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::tendermint::types::AuthorityParams* temp = _impl_.auth_;
+  _impl_.auth_ = nullptr;
+  return temp;
+}
+inline ::tendermint::types::AuthorityParams* MsgUpdateParams::_internal_mutable_auth() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000010u;
+  if (_impl_.auth_ == nullptr) {
+    auto* p = CreateMaybeMessage<::tendermint::types::AuthorityParams>(GetArenaForAllocation());
+    _impl_.auth_ = reinterpret_cast<::tendermint::types::AuthorityParams*>(p);
+  }
+  return _impl_.auth_;
+}
+inline ::tendermint::types::AuthorityParams* MsgUpdateParams::mutable_auth() {
+  ::tendermint::types::AuthorityParams* _msg = _internal_mutable_auth();
+  // @@protoc_insertion_point(field_mutable:cosmos.consensus.v1.MsgUpdateParams.auth)
+  return _msg;
+}
+inline void MsgUpdateParams::set_allocated_auth(::tendermint::types::AuthorityParams* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.auth_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+
+  _impl_.auth_ = reinterpret_cast<::tendermint::types::AuthorityParams*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.consensus.v1.MsgUpdateParams.auth)
 }
 
 // -------------------------------------------------------------------

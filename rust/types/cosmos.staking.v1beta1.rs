@@ -455,6 +455,9 @@ pub struct Params {
     /// min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
     #[prost(string, tag="6")]
     pub min_commission_rate: ::prost::alloc::string::String,
+    /// key_rotation_fee is the fee charged when rotating a validator's consensus key.
+    #[prost(message, optional, tag="7")]
+    pub key_rotation_fee: ::core::option::Option<crate::types::cosmos_base_v1beta1::Coin>,
 }
 impl ::prost::Name for Params {
 const NAME: &'static str = "Params";
@@ -538,6 +541,28 @@ pub struct ValidatorUpdates {
 }
 impl ::prost::Name for ValidatorUpdates {
 const NAME: &'static str = "ValidatorUpdates";
+const PACKAGE: &'static str = "cosmos.staking.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
+            }}
+/// ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+/// queue: the validator that rotated and the time and height at which its
+/// RotatedFrom lock may be retired because equivocation evidence for the
+/// rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+/// for time-ordered iteration; expiry_time is duplicated here so the record is
+/// self-describing.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConsKeyEvidenceExpiry {
+    #[prost(bytes="vec", tag="1")]
+    pub validator_address: ::prost::alloc::vec::Vec<u8>,
+    #[prost(message, optional, tag="2")]
+    pub expiry_time: ::core::option::Option<::prost_types::Timestamp>,
+    #[prost(int64, tag="3")]
+    pub expiry_height: i64,
+}
+impl ::prost::Name for ConsKeyEvidenceExpiry {
+const NAME: &'static str = "ConsKeyEvidenceExpiry";
 const PACKAGE: &'static str = "cosmos.staking.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
@@ -642,6 +667,14 @@ pub struct GenesisState {
     /// exported defines a bool to identify whether the chain dealing with exported or initialized genesis.
     #[prost(bool, tag="8")]
     pub exported: bool,
+    /// consensus_key_rotation_history defines consensus key rotations that are
+    /// still within the unbonding window.
+    #[prost(message, repeated, tag="9")]
+    pub consensus_key_rotation_history: ::prost::alloc::vec::Vec<ConsensusKeyRotationHistory>,
+    /// pending_consensus_key_rotations defines consensus key rotations whose
+    /// SDK-side validator state has not reached its deferred apply height yet.
+    #[prost(message, repeated, tag="10")]
+    pub pending_consensus_key_rotations: ::prost::alloc::vec::Vec<PendingConsensusKeyRotation>,
 }
 impl ::prost::Name for GenesisState {
 const NAME: &'static str = "GenesisState";
@@ -662,6 +695,60 @@ pub struct LastValidatorPower {
 }
 impl ::prost::Name for LastValidatorPower {
 const NAME: &'static str = "LastValidatorPower";
+const PACKAGE: &'static str = "cosmos.staking.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
+            }}
+/// ConsensusKeyRotationHistory stores the old consensus address for a
+/// validator rotation until the unbonding window has elapsed.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConsensusKeyRotationHistory {
+    /// validator_address is the validator operator address.
+    #[prost(string, tag="1")]
+    pub validator_address: ::prost::alloc::string::String,
+    /// old_consensus_address is the consensus address rotated away from.
+    #[prost(string, tag="2")]
+    pub old_consensus_address: ::prost::alloc::string::String,
+    /// maturity_time is the unbonding-window maturity of this validator's
+    /// re-rotation rate limit, present only while that gate is still active. A
+    /// zero value means the gate has already been retired and only the evidence
+    /// lock (below) remains.
+    #[prost(message, optional, tag="3")]
+    pub maturity_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// evidence_expiry_time is the time after which equivocation evidence for the
+    /// rotated-away key can no longer be admitted on the time dimension.
+    #[prost(message, optional, tag="4")]
+    pub evidence_expiry_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// evidence_expiry_height is the block height after which equivocation evidence
+    /// for the rotated-away key can no longer be admitted on the height dimension.
+    #[prost(int64, tag="5")]
+    pub evidence_expiry_height: i64,
+}
+impl ::prost::Name for ConsensusKeyRotationHistory {
+const NAME: &'static str = "ConsensusKeyRotationHistory";
+const PACKAGE: &'static str = "cosmos.staking.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
+            }}
+/// PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+/// for its deferred SDK-side state update.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct PendingConsensusKeyRotation {
+    /// validator_address is the validator operator address.
+    #[prost(string, tag="1")]
+    pub validator_address: ::prost::alloc::string::String,
+    /// new_pubkey is the consensus public key being rotated to.
+    #[prost(message, optional, tag="2")]
+    pub new_pubkey: ::core::option::Option<::prost_types::Any>,
+    /// apply_height is the block height where the SDK-side state update should
+    /// occur.
+    #[prost(int64, tag="3")]
+    pub apply_height: i64,
+}
+impl ::prost::Name for PendingConsensusKeyRotation {
+const NAME: &'static str = "PendingConsensusKeyRotation";
 const PACKAGE: &'static str = "cosmos.staking.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
@@ -1352,6 +1439,33 @@ pub struct MsgUpdateParamsResponse {
 }
 impl ::prost::Name for MsgUpdateParamsResponse {
 const NAME: &'static str = "MsgUpdateParamsResponse";
+const PACKAGE: &'static str = "cosmos.staking.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
+            }}
+/// MsgRotateConsPubKey is the Msg/RotateConsPubKey request type.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgRotateConsPubKey {
+    #[prost(string, tag="1")]
+    pub validator_address: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="2")]
+    pub new_pubkey: ::core::option::Option<::prost_types::Any>,
+}
+impl ::prost::Name for MsgRotateConsPubKey {
+const NAME: &'static str = "MsgRotateConsPubKey";
+const PACKAGE: &'static str = "cosmos.staking.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)
+            }}
+/// MsgRotateConsPubKeyResponse defines the response structure for executing a
+/// MsgRotateConsPubKey message.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgRotateConsPubKeyResponse {
+}
+impl ::prost::Name for MsgRotateConsPubKeyResponse {
+const NAME: &'static str = "MsgRotateConsPubKeyResponse";
 const PACKAGE: &'static str = "cosmos.staking.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.staking.v1beta1.{}", Self::NAME)

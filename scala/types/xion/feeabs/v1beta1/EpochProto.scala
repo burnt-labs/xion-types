@@ -30,8 +30,8 @@ object EpochProto extends _root_.scalapb.GeneratedFileObject {
   hniPxYSFGVwb2NoQ291bnRpbmdTdGFydGVkUhRlcG9jaENvdW50aW5nU3RhcnRlZBJZChpjdXJyZW50X2Vwb2NoX3N0YXJ0X2hla
   WdodBgIIAEoA0Ic4j8ZEhdjdXJyZW50RXBvY2hTdGFydEhlaWdodFIXY3VycmVudEVwb2NoU3RhcnRIZWlnaHRKBAgHEAgiaAoSR
   Xhwb25lbnRpYWxCYWNrb2ZmEh0KBGp1bXAYASABKANCCeI/BhIEanVtcFIEanVtcBIzCgxmdXR1cmVfZXBvY2gYAiABKANCEOI/D
-  RILZnV0dXJlRXBvY2hSC2Z1dHVyZUVwb2NoQitaKWdpdGh1Yi5jb20vYnVybnQtbGFicy94aW9uL3gvZmVlYWJzL3R5cGVzYgZwc
-  m90bzM="""
+  RILZnV0dXJlRXBvY2hSC2Z1dHVyZUVwb2NoQi5aLGdpdGh1Yi5jb20vYnVybnQtbGFicy94aW9uL2FwcC9sZWdhY3kvZmVlYWJzY
+  gZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

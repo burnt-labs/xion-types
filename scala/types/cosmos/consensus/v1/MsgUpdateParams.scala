@@ -23,6 +23,7 @@ final case class MsgUpdateParams(
     evidence: _root_.scala.Option[tendermint.types.EvidenceParams] = _root_.scala.None,
     validator: _root_.scala.Option[tendermint.types.ValidatorParams] = _root_.scala.None,
     abci: _root_.scala.Option[tendermint.types.ABCIParams] = _root_.scala.None,
+    auth: _root_.scala.Option[tendermint.types.AuthorityParams] = _root_.scala.None,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[MsgUpdateParams] {
     @transient
@@ -50,6 +51,10 @@ final case class MsgUpdateParams(
       };
       if (abci.isDefined) {
         val __value = abci.get
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
+      };
+      if (auth.isDefined) {
+        val __value = auth.get
         __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
       };
       __size += unknownFields.serializedSize
@@ -95,6 +100,12 @@ final case class MsgUpdateParams(
         _output__.writeUInt32NoTag(__m.serializedSize)
         __m.writeTo(_output__)
       };
+      auth.foreach { __v =>
+        val __m = __v
+        _output__.writeTag(6, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
       unknownFields.writeTo(_output__)
     }
     def withAuthority(__v: _root_.scala.Predef.String): MsgUpdateParams = copy(authority = __v)
@@ -110,6 +121,9 @@ final case class MsgUpdateParams(
     def getAbci: tendermint.types.ABCIParams = abci.getOrElse(tendermint.types.ABCIParams.defaultInstance)
     def clearAbci: MsgUpdateParams = copy(abci = _root_.scala.None)
     def withAbci(__v: tendermint.types.ABCIParams): MsgUpdateParams = copy(abci = Option(__v))
+    def getAuth: tendermint.types.AuthorityParams = auth.getOrElse(tendermint.types.AuthorityParams.defaultInstance)
+    def clearAuth: MsgUpdateParams = copy(auth = _root_.scala.None)
+    def withAuth(__v: tendermint.types.AuthorityParams): MsgUpdateParams = copy(auth = Option(__v))
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -122,6 +136,7 @@ final case class MsgUpdateParams(
         case 3 => evidence.orNull
         case 4 => validator.orNull
         case 5 => abci.orNull
+        case 6 => auth.orNull
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -132,6 +147,7 @@ final case class MsgUpdateParams(
         case 3 => evidence.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
         case 4 => validator.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
         case 5 => abci.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
+        case 6 => auth.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -147,6 +163,7 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
     var __evidence: _root_.scala.Option[tendermint.types.EvidenceParams] = _root_.scala.None
     var __validator: _root_.scala.Option[tendermint.types.ValidatorParams] = _root_.scala.None
     var __abci: _root_.scala.Option[tendermint.types.ABCIParams] = _root_.scala.None
+    var __auth: _root_.scala.Option[tendermint.types.AuthorityParams] = _root_.scala.None
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -163,6 +180,8 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
           __validator = _root_.scala.Option(__validator.fold(_root_.scalapb.LiteParser.readMessage[tendermint.types.ValidatorParams](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _)))
         case 42 =>
           __abci = _root_.scala.Option(__abci.fold(_root_.scalapb.LiteParser.readMessage[tendermint.types.ABCIParams](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _)))
+        case 50 =>
+          __auth = _root_.scala.Option(__auth.fold(_root_.scalapb.LiteParser.readMessage[tendermint.types.AuthorityParams](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _)))
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -176,6 +195,7 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
         evidence = __evidence,
         validator = __validator,
         abci = __abci,
+        auth = __auth,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -187,7 +207,8 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
         block = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).flatMap(_.as[_root_.scala.Option[tendermint.types.BlockParams]]),
         evidence = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).flatMap(_.as[_root_.scala.Option[tendermint.types.EvidenceParams]]),
         validator = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).flatMap(_.as[_root_.scala.Option[tendermint.types.ValidatorParams]]),
-        abci = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).flatMap(_.as[_root_.scala.Option[tendermint.types.ABCIParams]])
+        abci = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).flatMap(_.as[_root_.scala.Option[tendermint.types.ABCIParams]]),
+        auth = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).flatMap(_.as[_root_.scala.Option[tendermint.types.AuthorityParams]])
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -200,6 +221,7 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
       case 3 => __out = tendermint.types.EvidenceParams
       case 4 => __out = tendermint.types.ValidatorParams
       case 5 => __out = tendermint.types.ABCIParams
+      case 6 => __out = tendermint.types.AuthorityParams
     }
     __out
   }
@@ -210,7 +232,8 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
     block = _root_.scala.None,
     evidence = _root_.scala.None,
     validator = _root_.scala.None,
-    abci = _root_.scala.None
+    abci = _root_.scala.None,
+    auth = _root_.scala.None
   )
   implicit class MsgUpdateParamsLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmos.consensus.v1.MsgUpdateParams]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmos.consensus.v1.MsgUpdateParams](_l) {
     def authority: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.authority)((c_, f_) => c_.copy(authority = f_))
@@ -222,24 +245,29 @@ object MsgUpdateParams extends scalapb.GeneratedMessageCompanion[cosmos.consensu
     def optionalValidator: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[tendermint.types.ValidatorParams]] = field(_.validator)((c_, f_) => c_.copy(validator = f_))
     def abci: _root_.scalapb.lenses.Lens[UpperPB, tendermint.types.ABCIParams] = field(_.getAbci)((c_, f_) => c_.copy(abci = _root_.scala.Option(f_)))
     def optionalAbci: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[tendermint.types.ABCIParams]] = field(_.abci)((c_, f_) => c_.copy(abci = f_))
+    def auth: _root_.scalapb.lenses.Lens[UpperPB, tendermint.types.AuthorityParams] = field(_.getAuth)((c_, f_) => c_.copy(auth = _root_.scala.Option(f_)))
+    def optionalAuth: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[tendermint.types.AuthorityParams]] = field(_.auth)((c_, f_) => c_.copy(auth = f_))
   }
   final val AUTHORITY_FIELD_NUMBER = 1
   final val BLOCK_FIELD_NUMBER = 2
   final val EVIDENCE_FIELD_NUMBER = 3
   final val VALIDATOR_FIELD_NUMBER = 4
   final val ABCI_FIELD_NUMBER = 5
+  final val AUTH_FIELD_NUMBER = 6
   def of(
     authority: _root_.scala.Predef.String,
     block: _root_.scala.Option[tendermint.types.BlockParams],
     evidence: _root_.scala.Option[tendermint.types.EvidenceParams],
     validator: _root_.scala.Option[tendermint.types.ValidatorParams],
-    abci: _root_.scala.Option[tendermint.types.ABCIParams]
+    abci: _root_.scala.Option[tendermint.types.ABCIParams],
+    auth: _root_.scala.Option[tendermint.types.AuthorityParams]
   ): _root_.cosmos.consensus.v1.MsgUpdateParams = _root_.cosmos.consensus.v1.MsgUpdateParams(
     authority,
     block,
     evidence,
     validator,
-    abci
+    abci,
+    auth
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmos.consensus.v1.MsgUpdateParams])
 }

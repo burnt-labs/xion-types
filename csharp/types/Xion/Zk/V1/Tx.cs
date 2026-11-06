@@ -27,38 +27,41 @@ namespace Xion.Zk.V1 {
             "ChN4aW9uL3prL3YxL3R4LnByb3RvEgp4aW9uLnprLnYxGhdjb3Ntb3MvbXNn",
             "L3YxL21zZy5wcm90bxoZY29zbW9zX3Byb3RvL2Nvc21vcy5wcm90bxoUZ29n",
             "b3Byb3RvL2dvZ28ucHJvdG8aEWFtaW5vL2FtaW5vLnByb3RvGhd4aW9uL3pr",
-            "L3YxL3BhcmFtcy5wcm90byK7AQoKTXNnQWRkVktleRI2CglhdXRob3JpdHkY",
+            "L3YxL3BhcmFtcy5wcm90byL3AQoKTXNnQWRkVktleRI2CglhdXRob3JpdHkY",
             "ASABKAlCGNK0LRRjb3Ntb3MuQWRkcmVzc1N0cmluZ1IJYXV0aG9yaXR5EhIK",
             "BG5hbWUYAiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YAyABKAlSC2Rlc2Ny",
-            "aXB0aW9uEh0KCnZrZXlfYnl0ZXMYBCABKAxSCXZrZXlCeXRlczogguewKglh",
-            "dXRob3JpdHmK57AqDXprL01zZ0FkZFZLZXkiJAoSTXNnQWRkVktleVJlc3Bv",
-            "bnNlEg4KAmlkGAEgASgEUgJpZCLBAQoNTXNnVXBkYXRlVktleRI2CglhdXRo",
-            "b3JpdHkYASABKAlCGNK0LRRjb3Ntb3MuQWRkcmVzc1N0cmluZ1IJYXV0aG9y",
-            "aXR5EhIKBG5hbWUYAiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YAyABKAlS",
-            "C2Rlc2NyaXB0aW9uEh0KCnZrZXlfYnl0ZXMYBCABKAxSCXZrZXlCeXRlczoj",
-            "guewKglhdXRob3JpdHmK57AqEHprL01zZ1VwZGF0ZVZLZXkiFwoVTXNnVXBk",
-            "YXRlVktleVJlc3BvbnNlIoABCg1Nc2dSZW1vdmVWS2V5EjYKCWF1dGhvcml0",
-            "eRgBIAEoCUIY0rQtFGNvc21vcy5BZGRyZXNzU3RyaW5nUglhdXRob3JpdHkS",
-            "EgoEbmFtZRgCIAEoCVIEbmFtZTojguewKglhdXRob3JpdHmK57AqEHprL01z",
-            "Z1JlbW92ZVZLZXkiFwoVTXNnUmVtb3ZlVktleVJlc3BvbnNlIosBCg9Nc2dV",
-            "cGRhdGVQYXJhbXMSNgoJYXV0aG9yaXR5GAEgASgJQhjStC0UY29zbW9zLkFk",
-            "ZHJlc3NTdHJpbmdSCWF1dGhvcml0eRIwCgZwYXJhbXMYAiABKAsyEi54aW9u",
-            "LnprLnYxLlBhcmFtc0IEyN4fAFIGcGFyYW1zOg6C57AqCWF1dGhvcml0eSIZ",
-            "ChdNc2dVcGRhdGVQYXJhbXNSZXNwb25zZTK5AgoDTXNnEkEKB0FkZFZLZXkS",
-            "Fi54aW9uLnprLnYxLk1zZ0FkZFZLZXkaHi54aW9uLnprLnYxLk1zZ0FkZFZL",
-            "ZXlSZXNwb25zZRJKCgpVcGRhdGVWS2V5EhkueGlvbi56ay52MS5Nc2dVcGRh",
-            "dGVWS2V5GiEueGlvbi56ay52MS5Nc2dVcGRhdGVWS2V5UmVzcG9uc2USSgoK",
-            "UmVtb3ZlVktleRIZLnhpb24uemsudjEuTXNnUmVtb3ZlVktleRohLnhpb24u",
-            "emsudjEuTXNnUmVtb3ZlVktleVJlc3BvbnNlElAKDFVwZGF0ZVBhcmFtcxIb",
-            "Lnhpb24uemsudjEuTXNnVXBkYXRlUGFyYW1zGiMueGlvbi56ay52MS5Nc2dV",
-            "cGRhdGVQYXJhbXNSZXNwb25zZRoFgOewKgFCJ1olZ2l0aHViLmNvbS9idXJu",
-            "dC1sYWJzL3hpb24veC96ay90eXBlc2IGcHJvdG8z"));
+            "aXB0aW9uEh0KCnZrZXlfYnl0ZXMYBCABKAxSCXZrZXlCeXRlcxI6Cgxwcm9v",
+            "Zl9zeXN0ZW0YBSABKA4yFy54aW9uLnprLnYxLlByb29mU3lzdGVtUgtwcm9v",
+            "ZlN5c3RlbTogguewKglhdXRob3JpdHmK57AqDXprL01zZ0FkZFZLZXkiJAoS",
+            "TXNnQWRkVktleVJlc3BvbnNlEg4KAmlkGAEgASgEUgJpZCL9AQoNTXNnVXBk",
+            "YXRlVktleRI2CglhdXRob3JpdHkYASABKAlCGNK0LRRjb3Ntb3MuQWRkcmVz",
+            "c1N0cmluZ1IJYXV0aG9yaXR5EhIKBG5hbWUYAiABKAlSBG5hbWUSIAoLZGVz",
+            "Y3JpcHRpb24YAyABKAlSC2Rlc2NyaXB0aW9uEh0KCnZrZXlfYnl0ZXMYBCAB",
+            "KAxSCXZrZXlCeXRlcxI6Cgxwcm9vZl9zeXN0ZW0YBSABKA4yFy54aW9uLnpr",
+            "LnYxLlByb29mU3lzdGVtUgtwcm9vZlN5c3RlbTojguewKglhdXRob3JpdHmK",
+            "57AqEHprL01zZ1VwZGF0ZVZLZXkiFwoVTXNnVXBkYXRlVktleVJlc3BvbnNl",
+            "IoABCg1Nc2dSZW1vdmVWS2V5EjYKCWF1dGhvcml0eRgBIAEoCUIY0rQtFGNv",
+            "c21vcy5BZGRyZXNzU3RyaW5nUglhdXRob3JpdHkSEgoEbmFtZRgCIAEoCVIE",
+            "bmFtZTojguewKglhdXRob3JpdHmK57AqEHprL01zZ1JlbW92ZVZLZXkiFwoV",
+            "TXNnUmVtb3ZlVktleVJlc3BvbnNlIosBCg9Nc2dVcGRhdGVQYXJhbXMSNgoJ",
+            "YXV0aG9yaXR5GAEgASgJQhjStC0UY29zbW9zLkFkZHJlc3NTdHJpbmdSCWF1",
+            "dGhvcml0eRIwCgZwYXJhbXMYAiABKAsyEi54aW9uLnprLnYxLlBhcmFtc0IE",
+            "yN4fAFIGcGFyYW1zOg6C57AqCWF1dGhvcml0eSIZChdNc2dVcGRhdGVQYXJh",
+            "bXNSZXNwb25zZTK5AgoDTXNnEkEKB0FkZFZLZXkSFi54aW9uLnprLnYxLk1z",
+            "Z0FkZFZLZXkaHi54aW9uLnprLnYxLk1zZ0FkZFZLZXlSZXNwb25zZRJKCgpV",
+            "cGRhdGVWS2V5EhkueGlvbi56ay52MS5Nc2dVcGRhdGVWS2V5GiEueGlvbi56",
+            "ay52MS5Nc2dVcGRhdGVWS2V5UmVzcG9uc2USSgoKUmVtb3ZlVktleRIZLnhp",
+            "b24uemsudjEuTXNnUmVtb3ZlVktleRohLnhpb24uemsudjEuTXNnUmVtb3Zl",
+            "VktleVJlc3BvbnNlElAKDFVwZGF0ZVBhcmFtcxIbLnhpb24uemsudjEuTXNn",
+            "VXBkYXRlUGFyYW1zGiMueGlvbi56ay52MS5Nc2dVcGRhdGVQYXJhbXNSZXNw",
+            "b25zZRoFgOewKgFCJ1olZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24veC96",
+            "ay90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Amino.AminoReflection.Descriptor, global::Xion.Zk.V1.ParamsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgAddVKey), global::Xion.Zk.V1.MsgAddVKey.Parser, new[]{ "Authority", "Name", "Description", "VkeyBytes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgAddVKey), global::Xion.Zk.V1.MsgAddVKey.Parser, new[]{ "Authority", "Name", "Description", "VkeyBytes", "ProofSystem" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgAddVKeyResponse), global::Xion.Zk.V1.MsgAddVKeyResponse.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgUpdateVKey), global::Xion.Zk.V1.MsgUpdateVKey.Parser, new[]{ "Authority", "Name", "Description", "VkeyBytes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgUpdateVKey), global::Xion.Zk.V1.MsgUpdateVKey.Parser, new[]{ "Authority", "Name", "Description", "VkeyBytes", "ProofSystem" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgUpdateVKeyResponse), global::Xion.Zk.V1.MsgUpdateVKeyResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgRemoveVKey), global::Xion.Zk.V1.MsgRemoveVKey.Parser, new[]{ "Authority", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.MsgRemoveVKeyResponse), global::Xion.Zk.V1.MsgRemoveVKeyResponse.Parser, null, null, null, null, null),
@@ -111,6 +114,7 @@ namespace Xion.Zk.V1 {
       name_ = other.name_;
       description_ = other.description_;
       vkeyBytes_ = other.vkeyBytes_;
+      proofSystem_ = other.proofSystem_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -169,7 +173,8 @@ namespace Xion.Zk.V1 {
     public const int VkeyBytesFieldNumber = 4;
     private pb::ByteString vkeyBytes_ = pb::ByteString.Empty;
     /// <summary>
-    /// vkey_json is the JSON representation of the verification key
+    /// vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+    /// proof_system).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -177,6 +182,21 @@ namespace Xion.Zk.V1 {
       get { return vkeyBytes_; }
       set {
         vkeyBytes_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "proof_system" field.</summary>
+    public const int ProofSystemFieldNumber = 5;
+    private global::Xion.Zk.V1.ProofSystem proofSystem_ = global::Xion.Zk.V1.ProofSystem.Unspecified;
+    /// <summary>
+    /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Xion.Zk.V1.ProofSystem ProofSystem {
+      get { return proofSystem_; }
+      set {
+        proofSystem_ = value;
       }
     }
 
@@ -199,6 +219,7 @@ namespace Xion.Zk.V1 {
       if (Name != other.Name) return false;
       if (Description != other.Description) return false;
       if (VkeyBytes != other.VkeyBytes) return false;
+      if (ProofSystem != other.ProofSystem) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -210,6 +231,7 @@ namespace Xion.Zk.V1 {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (VkeyBytes.Length != 0) hash ^= VkeyBytes.GetHashCode();
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) hash ^= ProofSystem.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -244,6 +266,10 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(34);
         output.WriteBytes(VkeyBytes);
       }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) ProofSystem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -270,6 +296,10 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(34);
         output.WriteBytes(VkeyBytes);
       }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) ProofSystem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -291,6 +321,9 @@ namespace Xion.Zk.V1 {
       }
       if (VkeyBytes.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(VkeyBytes);
+      }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProofSystem);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -315,6 +348,9 @@ namespace Xion.Zk.V1 {
       }
       if (other.VkeyBytes.Length != 0) {
         VkeyBytes = other.VkeyBytes;
+      }
+      if (other.ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        ProofSystem = other.ProofSystem;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -347,6 +383,10 @@ namespace Xion.Zk.V1 {
             VkeyBytes = input.ReadBytes();
             break;
           }
+          case 40: {
+            ProofSystem = (global::Xion.Zk.V1.ProofSystem) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -376,6 +416,10 @@ namespace Xion.Zk.V1 {
           }
           case 34: {
             VkeyBytes = input.ReadBytes();
+            break;
+          }
+          case 40: {
+            ProofSystem = (global::Xion.Zk.V1.ProofSystem) input.ReadEnum();
             break;
           }
         }
@@ -621,6 +665,7 @@ namespace Xion.Zk.V1 {
       name_ = other.name_;
       description_ = other.description_;
       vkeyBytes_ = other.vkeyBytes_;
+      proofSystem_ = other.proofSystem_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -679,7 +724,8 @@ namespace Xion.Zk.V1 {
     public const int VkeyBytesFieldNumber = 4;
     private pb::ByteString vkeyBytes_ = pb::ByteString.Empty;
     /// <summary>
-    /// vkey_json is the new JSON representation of the verification key
+    /// vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+    /// per proof_system).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -687,6 +733,21 @@ namespace Xion.Zk.V1 {
       get { return vkeyBytes_; }
       set {
         vkeyBytes_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "proof_system" field.</summary>
+    public const int ProofSystemFieldNumber = 5;
+    private global::Xion.Zk.V1.ProofSystem proofSystem_ = global::Xion.Zk.V1.ProofSystem.Unspecified;
+    /// <summary>
+    /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Xion.Zk.V1.ProofSystem ProofSystem {
+      get { return proofSystem_; }
+      set {
+        proofSystem_ = value;
       }
     }
 
@@ -709,6 +770,7 @@ namespace Xion.Zk.V1 {
       if (Name != other.Name) return false;
       if (Description != other.Description) return false;
       if (VkeyBytes != other.VkeyBytes) return false;
+      if (ProofSystem != other.ProofSystem) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -720,6 +782,7 @@ namespace Xion.Zk.V1 {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (VkeyBytes.Length != 0) hash ^= VkeyBytes.GetHashCode();
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) hash ^= ProofSystem.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -754,6 +817,10 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(34);
         output.WriteBytes(VkeyBytes);
       }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) ProofSystem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -780,6 +847,10 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(34);
         output.WriteBytes(VkeyBytes);
       }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) ProofSystem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -801,6 +872,9 @@ namespace Xion.Zk.V1 {
       }
       if (VkeyBytes.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(VkeyBytes);
+      }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProofSystem);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -825,6 +899,9 @@ namespace Xion.Zk.V1 {
       }
       if (other.VkeyBytes.Length != 0) {
         VkeyBytes = other.VkeyBytes;
+      }
+      if (other.ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        ProofSystem = other.ProofSystem;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -857,6 +934,10 @@ namespace Xion.Zk.V1 {
             VkeyBytes = input.ReadBytes();
             break;
           }
+          case 40: {
+            ProofSystem = (global::Xion.Zk.V1.ProofSystem) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -886,6 +967,10 @@ namespace Xion.Zk.V1 {
           }
           case 34: {
             VkeyBytes = input.ReadBytes();
+            break;
+          }
+          case 40: {
+            ProofSystem = (global::Xion.Zk.V1.ProofSystem) input.ReadEnum();
             break;
           }
         }

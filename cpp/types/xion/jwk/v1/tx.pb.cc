@@ -224,10 +224,43 @@ struct MsgDeleteAudienceResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgDeleteAudienceResponseDefaultTypeInternal _MsgDeleteAudienceResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR MsgUpdateParams::MsgUpdateParams(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.authority_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.params_)*/ nullptr,
+    } {}
+struct MsgUpdateParamsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MsgUpdateParamsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MsgUpdateParamsDefaultTypeInternal() {}
+  union {
+    MsgUpdateParams _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgUpdateParamsDefaultTypeInternal _MsgUpdateParams_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR MsgUpdateParamsResponse::MsgUpdateParamsResponse(::_pbi::ConstantInitialized) {}
+struct MsgUpdateParamsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MsgUpdateParamsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MsgUpdateParamsResponseDefaultTypeInternal() {}
+  union {
+    MsgUpdateParamsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgUpdateParamsResponseDefaultTypeInternal _MsgUpdateParamsResponse_default_instance_;
 }  // namespace v1
 }  // namespace jwk
 }  // namespace xion
-static ::_pb::Metadata file_level_metadata_xion_2fjwk_2fv1_2ftx_2eproto[10];
+static ::_pb::Metadata file_level_metadata_xion_2fjwk_2fv1_2ftx_2eproto[12];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_xion_2fjwk_2fv1_2ftx_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -332,6 +365,26 @@ const ::uint32_t TableStruct_xion_2fjwk_2fv1_2ftx_2eproto::offsets[] PROTOBUF_SE
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::MsgUpdateParams, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::MsgUpdateParams, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::MsgUpdateParams, _impl_.authority_),
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::MsgUpdateParams, _impl_.params_),
+    ~0u,
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::jwk::v1::MsgUpdateParamsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
 };
 
 static const ::_pbi::MigrationSchema
@@ -346,6 +399,8 @@ static const ::_pbi::MigrationSchema
         {70, 79, -1, sizeof(::xion::jwk::v1::MsgUpdateAudienceResponse)},
         {80, -1, -1, sizeof(::xion::jwk::v1::MsgDeleteAudience)},
         {90, -1, -1, sizeof(::xion::jwk::v1::MsgDeleteAudienceResponse)},
+        {98, 108, -1, sizeof(::xion::jwk::v1::MsgUpdateParams)},
+        {110, -1, -1, sizeof(::xion::jwk::v1::MsgUpdateParamsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -359,60 +414,75 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::xion::jwk::v1::_MsgUpdateAudienceResponse_default_instance_._instance,
     &::xion::jwk::v1::_MsgDeleteAudience_default_instance_._instance,
     &::xion::jwk::v1::_MsgDeleteAudienceResponse_default_instance_._instance,
+    &::xion::jwk::v1::_MsgUpdateParams_default_instance_._instance,
+    &::xion::jwk::v1::_MsgUpdateParamsResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_xion_2fjwk_2fv1_2ftx_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\024xion/jwk/v1/tx.proto\022\013xion.jwk.v1\032\032xio"
-    "n/jwk/v1/audience.proto\032\027cosmos/msg/v1/m"
-    "sg.proto\"U\n\026MsgCreateAudienceClaim\022\024\n\005ad"
-    "min\030\001 \001(\tR\005admin\022\031\n\010aud_hash\030\002 \001(\014R\007audH"
-    "ash:\n\202\347\260*\005admin\" \n\036MsgCreateAudienceClai"
-    "mResponse\"U\n\026MsgDeleteAudienceClaim\022\024\n\005a"
-    "dmin\030\001 \001(\tR\005admin\022\031\n\010aud_hash\030\002 \001(\014R\007aud"
-    "Hash:\n\202\347\260*\005admin\" \n\036MsgDeleteAudienceCla"
-    "imResponse\"Y\n\021MsgCreateAudience\022\024\n\005admin"
-    "\030\001 \001(\tR\005admin\022\020\n\003aud\030\002 \001(\tR\003aud\022\020\n\003key\030\003"
-    " \001(\tR\003key:\n\202\347\260*\005admin\"N\n\031MsgCreateAudien"
+    "\n\024xion/jwk/v1/tx.proto\022\013xion.jwk.v1\032\021ami"
+    "no/amino.proto\032\027cosmos/msg/v1/msg.proto\032"
+    "\031cosmos_proto/cosmos.proto\032\024gogoproto/go"
+    "go.proto\032\032xion/jwk/v1/audience.proto\032\030xi"
+    "on/jwk/v1/params.proto\"U\n\026MsgCreateAudie"
+    "nceClaim\022\024\n\005admin\030\001 \001(\tR\005admin\022\031\n\010aud_ha"
+    "sh\030\002 \001(\014R\007audHash:\n\202\347\260*\005admin\" \n\036MsgCrea"
+    "teAudienceClaimResponse\"U\n\026MsgDeleteAudi"
+    "enceClaim\022\024\n\005admin\030\001 \001(\tR\005admin\022\031\n\010aud_h"
+    "ash\030\002 \001(\014R\007audHash:\n\202\347\260*\005admin\" \n\036MsgDel"
+    "eteAudienceClaimResponse\"Y\n\021MsgCreateAud"
+    "ience\022\024\n\005admin\030\001 \001(\tR\005admin\022\020\n\003aud\030\002 \001(\t"
+    "R\003aud\022\020\n\003key\030\003 \001(\tR\003key:\n\202\347\260*\005admin\"N\n\031M"
+    "sgCreateAudienceResponse\0221\n\010audience\030\001 \001"
+    "(\0132\025.xion.jwk.v1.AudienceR\010audience\"\217\001\n\021"
+    "MsgUpdateAudience\022\024\n\005admin\030\001 \001(\tR\005admin\022"
+    "\033\n\tnew_admin\030\002 \001(\tR\010newAdmin\022\020\n\003aud\030\003 \001("
+    "\tR\003aud\022\020\n\003key\030\004 \001(\tR\003key\022\027\n\007new_aud\030\005 \001("
+    "\tR\006newAud:\n\202\347\260*\005admin\"N\n\031MsgUpdateAudien"
     "ceResponse\0221\n\010audience\030\001 \001(\0132\025.xion.jwk."
-    "v1.AudienceR\010audience\"\217\001\n\021MsgUpdateAudie"
-    "nce\022\024\n\005admin\030\001 \001(\tR\005admin\022\033\n\tnew_admin\030\002"
-    " \001(\tR\010newAdmin\022\020\n\003aud\030\003 \001(\tR\003aud\022\020\n\003key\030"
-    "\004 \001(\tR\003key\022\027\n\007new_aud\030\005 \001(\tR\006newAud:\n\202\347\260"
-    "*\005admin\"N\n\031MsgUpdateAudienceResponse\0221\n\010"
-    "audience\030\001 \001(\0132\025.xion.jwk.v1.AudienceR\010a"
-    "udience\"G\n\021MsgDeleteAudience\022\024\n\005admin\030\001 "
-    "\001(\tR\005admin\022\020\n\003aud\030\002 \001(\tR\003aud:\n\202\347\260*\005admin"
-    "\"\033\n\031MsgDeleteAudienceResponse2\345\003\n\003Msg\022g\n"
-    "\023CreateAudienceClaim\022#.xion.jwk.v1.MsgCr"
-    "eateAudienceClaim\032+.xion.jwk.v1.MsgCreat"
-    "eAudienceClaimResponse\022g\n\023DeleteAudience"
-    "Claim\022#.xion.jwk.v1.MsgDeleteAudienceCla"
-    "im\032+.xion.jwk.v1.MsgDeleteAudienceClaimR"
-    "esponse\022X\n\016CreateAudience\022\036.xion.jwk.v1."
-    "MsgCreateAudience\032&.xion.jwk.v1.MsgCreat"
-    "eAudienceResponse\022X\n\016UpdateAudience\022\036.xi"
-    "on.jwk.v1.MsgUpdateAudience\032&.xion.jwk.v"
-    "1.MsgUpdateAudienceResponse\022X\n\016DeleteAud"
-    "ience\022\036.xion.jwk.v1.MsgDeleteAudience\032&."
-    "xion.jwk.v1.MsgDeleteAudienceResponseB(Z"
-    "&github.com/burnt-labs/xion/x/jwk/typesb"
-    "\006proto3"
+    "v1.AudienceR\010audience\"G\n\021MsgDeleteAudien"
+    "ce\022\024\n\005admin\030\001 \001(\tR\005admin\022\020\n\003aud\030\002 \001(\tR\003a"
+    "ud:\n\202\347\260*\005admin\"\033\n\031MsgDeleteAudienceRespo"
+    "nse\"\244\001\n\017MsgUpdateParams\0226\n\tauthority\030\001 \001"
+    "(\tB\030\322\264-\024cosmos.AddressStringR\tauthority\022"
+    "1\n\006params\030\002 \001(\0132\023.xion.jwk.v1.ParamsB\004\310\336"
+    "\037\000R\006params:&\202\347\260*\tauthority\212\347\260*\023jwk/MsgUp"
+    "dateParams\"\031\n\027MsgUpdateParamsResponse2\300\004"
+    "\n\003Msg\022g\n\023CreateAudienceClaim\022#.xion.jwk."
+    "v1.MsgCreateAudienceClaim\032+.xion.jwk.v1."
+    "MsgCreateAudienceClaimResponse\022g\n\023Delete"
+    "AudienceClaim\022#.xion.jwk.v1.MsgDeleteAud"
+    "ienceClaim\032+.xion.jwk.v1.MsgDeleteAudien"
+    "ceClaimResponse\022X\n\016CreateAudience\022\036.xion"
+    ".jwk.v1.MsgCreateAudience\032&.xion.jwk.v1."
+    "MsgCreateAudienceResponse\022X\n\016UpdateAudie"
+    "nce\022\036.xion.jwk.v1.MsgUpdateAudience\032&.xi"
+    "on.jwk.v1.MsgUpdateAudienceResponse\022X\n\016D"
+    "eleteAudience\022\036.xion.jwk.v1.MsgDeleteAud"
+    "ience\032&.xion.jwk.v1.MsgDeleteAudienceRes"
+    "ponse\022R\n\014UpdateParams\022\034.xion.jwk.v1.MsgU"
+    "pdateParams\032$.xion.jwk.v1.MsgUpdateParam"
+    "sResponse\032\005\200\347\260*\001B(Z&github.com/burnt-lab"
+    "s/xion/x/jwk/typesb\006proto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_deps[2] =
+static const ::_pbi::DescriptorTable* const descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_deps[6] =
     {
+        &::descriptor_table_amino_2famino_2eproto,
         &::descriptor_table_cosmos_2fmsg_2fv1_2fmsg_2eproto,
+        &::descriptor_table_cosmos_5fproto_2fcosmos_2eproto,
+        &::descriptor_table_gogoproto_2fgogo_2eproto,
         &::descriptor_table_xion_2fjwk_2fv1_2faudience_2eproto,
+        &::descriptor_table_xion_2fjwk_2fv1_2fparams_2eproto,
 };
 static ::absl::once_flag descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto = {
     false,
     false,
-    1367,
+    1746,
     descriptor_table_protodef_xion_2fjwk_2fv1_2ftx_2eproto,
     "xion/jwk/v1/tx.proto",
     &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_once,
     descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_deps,
-    2,
-    10,
+    6,
+    12,
     schemas,
     file_default_instances,
     TableStruct_xion_2fjwk_2fv1_2ftx_2eproto::offsets,
@@ -2283,6 +2353,292 @@ const ::google::protobuf::Message::ClassData*MsgDeleteAudienceResponse::GetClass
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_once,
       file_level_metadata_xion_2fjwk_2fv1_2ftx_2eproto[9]);
+}
+// ===================================================================
+
+class MsgUpdateParams::_Internal {
+ public:
+  using HasBits = decltype(std::declval<MsgUpdateParams>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_._has_bits_);
+  static const ::xion::jwk::v1::Params& params(const MsgUpdateParams* msg);
+  static void set_has_params(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::xion::jwk::v1::Params& MsgUpdateParams::_Internal::params(const MsgUpdateParams* msg) {
+  return *msg->_impl_.params_;
+}
+void MsgUpdateParams::clear_params() {
+  if (_impl_.params_ != nullptr) _impl_.params_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+MsgUpdateParams::MsgUpdateParams(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.MsgUpdateParams)
+}
+MsgUpdateParams::MsgUpdateParams(const MsgUpdateParams& from) : ::google::protobuf::Message() {
+  MsgUpdateParams* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.authority_){},
+      decltype(_impl_.params_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.authority_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.authority_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_authority().empty()) {
+    _this->_impl_.authority_.Set(from._internal_authority(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.params_ = new ::xion::jwk::v1::Params(*from._impl_.params_);
+  }
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.MsgUpdateParams)
+}
+inline void MsgUpdateParams::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.authority_){},
+      decltype(_impl_.params_){nullptr},
+  };
+  _impl_.authority_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.authority_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+MsgUpdateParams::~MsgUpdateParams() {
+  // @@protoc_insertion_point(destructor:xion.jwk.v1.MsgUpdateParams)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void MsgUpdateParams::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.authority_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.params_;
+}
+void MsgUpdateParams::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void MsgUpdateParams::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.jwk.v1.MsgUpdateParams)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.authority_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.params_ != nullptr);
+    _impl_.params_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* MsgUpdateParams::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 45, 2> MsgUpdateParams::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_MsgUpdateParams_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .xion.jwk.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.params_)}},
+    // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.authority_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
+    {PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.authority_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .xion.jwk.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];
+    {PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.params_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::xion::jwk::v1::Params>()},
+  }}, {{
+    "\33\11\0\0\0\0\0\0"
+    "xion.jwk.v1.MsgUpdateParams"
+    "authority"
+  }},
+};
+
+::uint8_t* MsgUpdateParams::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.jwk.v1.MsgUpdateParams)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
+  if (!this->_internal_authority().empty()) {
+    const std::string& _s = this->_internal_authority();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.jwk.v1.MsgUpdateParams.authority");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .xion.jwk.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::params(this),
+        _Internal::params(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.jwk.v1.MsgUpdateParams)
+  return target;
+}
+
+::size_t MsgUpdateParams::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.jwk.v1.MsgUpdateParams)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
+  if (!this->_internal_authority().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_authority());
+  }
+
+  // .xion.jwk.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.params_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData MsgUpdateParams::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    MsgUpdateParams::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*MsgUpdateParams::GetClassData() const { return &_class_data_; }
+
+
+void MsgUpdateParams::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<MsgUpdateParams*>(&to_msg);
+  auto& from = static_cast<const MsgUpdateParams&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.jwk.v1.MsgUpdateParams)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_authority().empty()) {
+    _this->_internal_set_authority(from._internal_authority());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_params()->::xion::jwk::v1::Params::MergeFrom(
+        from._internal_params());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MsgUpdateParams::CopyFrom(const MsgUpdateParams& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.jwk.v1.MsgUpdateParams)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool MsgUpdateParams::IsInitialized() const {
+  return true;
+}
+
+void MsgUpdateParams::InternalSwap(MsgUpdateParams* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.authority_, lhs_arena,
+                                       &other->_impl_.authority_, rhs_arena);
+  swap(_impl_.params_, other->_impl_.params_);
+}
+
+::google::protobuf::Metadata MsgUpdateParams::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2ftx_2eproto[10]);
+}
+// ===================================================================
+
+class MsgUpdateParamsResponse::_Internal {
+ public:
+};
+
+MsgUpdateParamsResponse::MsgUpdateParamsResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:xion.jwk.v1.MsgUpdateParamsResponse)
+}
+MsgUpdateParamsResponse::MsgUpdateParamsResponse(const MsgUpdateParamsResponse& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+  MsgUpdateParamsResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:xion.jwk.v1.MsgUpdateParamsResponse)
+}
+
+
+
+
+const ::google::protobuf::Message::ClassData MsgUpdateParamsResponse::_class_data_ = {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::google::protobuf::Message::ClassData*MsgUpdateParamsResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::google::protobuf::Metadata MsgUpdateParamsResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_getter, &descriptor_table_xion_2fjwk_2fv1_2ftx_2eproto_once,
+      file_level_metadata_xion_2fjwk_2fv1_2ftx_2eproto[11]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

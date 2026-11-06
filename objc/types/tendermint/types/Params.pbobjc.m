@@ -34,6 +34,7 @@
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
 GPBObjCClassDeclaration(ABCIParams);
+GPBObjCClassDeclaration(AuthorityParams);
 GPBObjCClassDeclaration(BlockParams);
 GPBObjCClassDeclaration(ConsensusParams);
 GPBObjCClassDeclaration(EvidenceParams);
@@ -76,6 +77,7 @@ static GPBFileDescription ParamsRoot_FileDescription = {
 @dynamic hasValidator, validator;
 @dynamic hasVersion, version;
 @dynamic hasAbci, abci;
+@dynamic hasAuthority, authority;
 
 typedef struct ConsensusParams__storage_ {
   uint32_t _has_storage_[1];
@@ -84,6 +86,7 @@ typedef struct ConsensusParams__storage_ {
   ValidatorParams *validator;
   VersionParams *version;
   ABCIParams *abci;
+  AuthorityParams *authority;
 } ConsensusParams__storage_;
 
 // This method is threadsafe because it is initially called
@@ -135,6 +138,15 @@ typedef struct ConsensusParams__storage_ {
         .number = ConsensusParams_FieldNumber_Abci,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(ConsensusParams__storage_, abci),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "authority",
+        .dataTypeSpecific.clazz = GPBObjCClass(AuthorityParams),
+        .number = ConsensusParams_FieldNumber_Authority,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(ConsensusParams__storage_, authority),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -466,6 +478,52 @@ typedef struct ABCIParams__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(ABCIParams__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - AuthorityParams
+
+@implementation AuthorityParams
+
+@dynamic authority;
+
+typedef struct AuthorityParams__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *authority;
+} AuthorityParams__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "authority",
+        .dataTypeSpecific.clazz = Nil,
+        .number = AuthorityParams_FieldNumber_Authority,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(AuthorityParams__storage_, authority),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(AuthorityParams)
+                                   messageName:@"AuthorityParams"
+                               fileDescription:&ParamsRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(AuthorityParams__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

@@ -26,7 +26,7 @@ object ListeningProto extends _root_.scalapb.GeneratedFileObject {
   GVybWludC5hYmNpLlJlcXVlc3RGaW5hbGl6ZUJsb2NrQhniPxYSFHJlcXVlc3RGaW5hbGl6ZUJsb2NrUhRyZXF1ZXN0RmluYWxpe
   mVCbG9jaxJ6ChdyZXNwb25zZV9maW5hbGl6ZV9ibG9jaxgIIAEoCzImLnRlbmRlcm1pbnQuYWJjaS5SZXNwb25zZUZpbmFsaXplQ
   mxvY2tCGuI/FxIVcmVzcG9uc2VGaW5hbGl6ZUJsb2NrUhVyZXNwb25zZUZpbmFsaXplQmxvY2tKBAgBEAJKBAgCEANKBAgDEARKB
-  AgEEAVKBAgFEAZCGloYY29zbW9zc2RrLmlvL3N0b3JlL3R5cGVzYgZwcm90bzM="""
+  AgEEAVKBAgFEAZCLVorZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay9zdG9yZS92Mi90eXBlc2IGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

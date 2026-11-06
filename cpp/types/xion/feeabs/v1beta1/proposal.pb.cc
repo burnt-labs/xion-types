@@ -226,8 +226,8 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fproposal_2eproto[
     "ECIFIED\020\000\022%\n!HOST_CHAIN_FEE_ABS_STATUS_U"
     "PDATED\020\001\022&\n\"HOST_CHAIN_FEE_ABS_STATUS_OU"
     "TDATED\020\002\022$\n HOST_CHAIN_FEE_ABS_STATUS_FR"
-    "OZEN\020\003B+Z)github.com/burnt-labs/xion/x/f"
-    "eeabs/typesb\006proto3"
+    "OZEN\020\003B.Z,github.com/burnt-labs/xion/app"
+    "/legacy/feeabsb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2ffeeabs_2fv1beta1_2fproposal_2eproto_deps[1] =
     {
@@ -237,7 +237,7 @@ static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2fproposal_2ep
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2fproposal_2eproto = {
     false,
     false,
-    1019,
+    1022,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fproposal_2eproto,
     "xion/feeabs/v1beta1/proposal.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2fproposal_2eproto_once,

@@ -35,8 +35,17 @@ typedef struct Abstractaccount__V1__NilPubKey Abstractaccount__V1__NilPubKey;
 struct  Abstractaccount__V1__AbstractAccount
 {
   ProtobufCMessage base;
+  /*
+   * address is the bech32-encoded address of the account's contract.
+   */
   char *address;
+  /*
+   * account_number is the account's number assigned by the auth module.
+   */
   uint64_t account_number;
+  /*
+   * sequence is the account's current transaction sequence.
+   */
   uint64_t sequence;
 };
 #define ABSTRACTACCOUNT__V1__ABSTRACT_ACCOUNT__INIT \
@@ -54,6 +63,10 @@ struct  Abstractaccount__V1__AbstractAccount
 struct  Abstractaccount__V1__NilPubKey
 {
   ProtobufCMessage base;
+  /*
+   * address_bytes is the raw address bytes of the account the pubkey
+   * stands in for.
+   */
   ProtobufCBinaryData address_bytes;
 };
 #define ABSTRACTACCOUNT__V1__NIL_PUB_KEY__INIT \

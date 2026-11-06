@@ -83,6 +83,102 @@ struct ProofVerifyResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProofVerifyResponseDefaultTypeInternal _ProofVerifyResponse_default_instance_;
         template <typename>
+PROTOBUF_CONSTEXPR ProofVerifyUltraHonkResponse::ProofVerifyUltraHonkResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.vkey_sha256_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.verified_)*/ false,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct ProofVerifyUltraHonkResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ProofVerifyUltraHonkResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ProofVerifyUltraHonkResponseDefaultTypeInternal() {}
+  union {
+    ProofVerifyUltraHonkResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProofVerifyUltraHonkResponseDefaultTypeInternal _ProofVerifyUltraHonkResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ProofVerifyGnarkResponse::ProofVerifyGnarkResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.verified_)*/ false,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct ProofVerifyGnarkResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ProofVerifyGnarkResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ProofVerifyGnarkResponseDefaultTypeInternal() {}
+  union {
+    ProofVerifyGnarkResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProofVerifyGnarkResponseDefaultTypeInternal _ProofVerifyGnarkResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryVerifyUltraHonkRequest::QueryVerifyUltraHonkRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.proof_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.public_inputs_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.vkey_name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.expected_vkey_sha256_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.vkey_id_)*/ ::uint64_t{0u},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryVerifyUltraHonkRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryVerifyUltraHonkRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryVerifyUltraHonkRequestDefaultTypeInternal() {}
+  union {
+    QueryVerifyUltraHonkRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryVerifyUltraHonkRequestDefaultTypeInternal _QueryVerifyUltraHonkRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryVerifyGnarkRequest::QueryVerifyGnarkRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.proof_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.public_inputs_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.vkey_name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.vkey_id_)*/ ::uint64_t{0u},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryVerifyGnarkRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryVerifyGnarkRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryVerifyGnarkRequestDefaultTypeInternal() {}
+  union {
+    QueryVerifyGnarkRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryVerifyGnarkRequestDefaultTypeInternal _QueryVerifyGnarkRequest_default_instance_;
+        template <typename>
 PROTOBUF_CONSTEXPR VKey::VKey(::_pbi::ConstantInitialized)
     : _impl_{
       /*decltype(_impl_.key_bytes_)*/ {
@@ -105,6 +201,7 @@ PROTOBUF_CONSTEXPR VKey::VKey(::_pbi::ConstantInitialized)
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.proof_system_)*/ 0,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct VKeyDefaultTypeInternal {
@@ -336,7 +433,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v1
 }  // namespace zk
 }  // namespace xion
-static ::_pb::Metadata file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[17];
+static ::_pb::Metadata file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[21];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_xion_2fzk_2fv1_2fquery_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -376,6 +473,50 @@ const ::uint32_t TableStruct_xion_2fzk_2fv1_2fquery_2eproto::offsets[] PROTOBUF_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::ProofVerifyResponse, _impl_.verified_),
     ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::ProofVerifyUltraHonkResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::ProofVerifyUltraHonkResponse, _impl_.verified_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::ProofVerifyUltraHonkResponse, _impl_.vkey_sha256_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::ProofVerifyGnarkResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::ProofVerifyGnarkResponse, _impl_.verified_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyUltraHonkRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyUltraHonkRequest, _impl_.proof_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyUltraHonkRequest, _impl_.public_inputs_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyUltraHonkRequest, _impl_.vkey_name_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyUltraHonkRequest, _impl_.vkey_id_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyUltraHonkRequest, _impl_.expected_vkey_sha256_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyGnarkRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyGnarkRequest, _impl_.proof_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyGnarkRequest, _impl_.public_inputs_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyGnarkRequest, _impl_.vkey_name_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVerifyGnarkRequest, _impl_.vkey_id_),
+    ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::VKey, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
@@ -388,6 +529,7 @@ const ::uint32_t TableStruct_xion_2fzk_2fv1_2fquery_2eproto::offsets[] PROTOBUF_
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::VKey, _impl_.description_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::VKey, _impl_.circuit_hash_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::VKey, _impl_.authority_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::VKey, _impl_.proof_system_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::QueryVKeyRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -523,26 +665,34 @@ static const ::_pbi::MigrationSchema
         {0, -1, -1, sizeof(::xion::zk::v1::SnarkJsProof)},
         {11, -1, -1, sizeof(::xion::zk::v1::QueryVerifyRequest)},
         {23, -1, -1, sizeof(::xion::zk::v1::ProofVerifyResponse)},
-        {32, -1, -1, sizeof(::xion::zk::v1::VKey)},
-        {45, -1, -1, sizeof(::xion::zk::v1::QueryVKeyRequest)},
-        {54, 63, -1, sizeof(::xion::zk::v1::QueryVKeyResponse)},
-        {64, -1, -1, sizeof(::xion::zk::v1::QueryVKeyByNameRequest)},
-        {73, 83, -1, sizeof(::xion::zk::v1::QueryVKeyByNameResponse)},
-        {85, 94, -1, sizeof(::xion::zk::v1::QueryVKeysRequest)},
-        {95, 105, -1, sizeof(::xion::zk::v1::QueryVKeysResponse)},
-        {107, 117, -1, sizeof(::xion::zk::v1::VKeyWithID)},
-        {119, -1, -1, sizeof(::xion::zk::v1::QueryHasVKeyRequest)},
-        {128, -1, -1, sizeof(::xion::zk::v1::QueryHasVKeyResponse)},
-        {138, -1, -1, sizeof(::xion::zk::v1::QueryNextVKeyIDRequest)},
-        {146, -1, -1, sizeof(::xion::zk::v1::QueryNextVKeyIDResponse)},
-        {155, -1, -1, sizeof(::xion::zk::v1::QueryParamsRequest)},
-        {163, 172, -1, sizeof(::xion::zk::v1::QueryParamsResponse)},
+        {32, -1, -1, sizeof(::xion::zk::v1::ProofVerifyUltraHonkResponse)},
+        {42, -1, -1, sizeof(::xion::zk::v1::ProofVerifyGnarkResponse)},
+        {51, -1, -1, sizeof(::xion::zk::v1::QueryVerifyUltraHonkRequest)},
+        {64, -1, -1, sizeof(::xion::zk::v1::QueryVerifyGnarkRequest)},
+        {76, -1, -1, sizeof(::xion::zk::v1::VKey)},
+        {90, -1, -1, sizeof(::xion::zk::v1::QueryVKeyRequest)},
+        {99, 108, -1, sizeof(::xion::zk::v1::QueryVKeyResponse)},
+        {109, -1, -1, sizeof(::xion::zk::v1::QueryVKeyByNameRequest)},
+        {118, 128, -1, sizeof(::xion::zk::v1::QueryVKeyByNameResponse)},
+        {130, 139, -1, sizeof(::xion::zk::v1::QueryVKeysRequest)},
+        {140, 150, -1, sizeof(::xion::zk::v1::QueryVKeysResponse)},
+        {152, 162, -1, sizeof(::xion::zk::v1::VKeyWithID)},
+        {164, -1, -1, sizeof(::xion::zk::v1::QueryHasVKeyRequest)},
+        {173, -1, -1, sizeof(::xion::zk::v1::QueryHasVKeyResponse)},
+        {183, -1, -1, sizeof(::xion::zk::v1::QueryNextVKeyIDRequest)},
+        {191, -1, -1, sizeof(::xion::zk::v1::QueryNextVKeyIDResponse)},
+        {200, -1, -1, sizeof(::xion::zk::v1::QueryParamsRequest)},
+        {208, 217, -1, sizeof(::xion::zk::v1::QueryParamsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::xion::zk::v1::_SnarkJsProof_default_instance_._instance,
     &::xion::zk::v1::_QueryVerifyRequest_default_instance_._instance,
     &::xion::zk::v1::_ProofVerifyResponse_default_instance_._instance,
+    &::xion::zk::v1::_ProofVerifyUltraHonkResponse_default_instance_._instance,
+    &::xion::zk::v1::_ProofVerifyGnarkResponse_default_instance_._instance,
+    &::xion::zk::v1::_QueryVerifyUltraHonkRequest_default_instance_._instance,
+    &::xion::zk::v1::_QueryVerifyGnarkRequest_default_instance_._instance,
     &::xion::zk::v1::_VKey_default_instance_._instance,
     &::xion::zk::v1::_QueryVKeyRequest_default_instance_._instance,
     &::xion::zk::v1::_QueryVKeyResponse_default_instance_._instance,
@@ -569,53 +719,74 @@ const char descriptor_table_protodef_xion_2fzk_2fv1_2fquery_2eproto[] PROTOBUF_S
     "ublic_inputs\030\002 \003(\tR\014publicInputs\022\033\n\tvkey"
     "_name\030\003 \001(\tR\010vkeyName\022\027\n\007vkey_id\030\004 \001(\004R\006"
     "vkeyId\"1\n\023ProofVerifyResponse\022\032\n\010verifie"
-    "d\030\001 \001(\010R\010verified\"\232\001\n\004VKey\022\033\n\tkey_bytes\030"
-    "\001 \001(\014R\010keyBytes\022\022\n\004name\030\002 \001(\tR\004name\022 \n\013d"
-    "escription\030\003 \001(\tR\013description\022!\n\014circuit"
-    "_hash\030\004 \001(\tR\013circuitHash\022\034\n\tauthority\030\005 "
-    "\001(\tR\tauthority\"\"\n\020QueryVKeyRequest\022\016\n\002id"
-    "\030\001 \001(\004R\002id\"\?\n\021QueryVKeyResponse\022*\n\004vkey\030"
-    "\001 \001(\0132\020.xion.zk.v1.VKeyB\004\310\336\037\000R\004vkey\",\n\026Q"
-    "ueryVKeyByNameRequest\022\022\n\004name\030\001 \001(\tR\004nam"
-    "e\"U\n\027QueryVKeyByNameResponse\022*\n\004vkey\030\001 \001"
-    "(\0132\020.xion.zk.v1.VKeyB\004\310\336\037\000R\004vkey\022\016\n\002id\030\002"
-    " \001(\004R\002id\"[\n\021QueryVKeysRequest\022F\n\npaginat"
-    "ion\030\001 \001(\0132&.cosmos.base.query.v1beta1.Pa"
-    "geRequestR\npagination\"\221\001\n\022QueryVKeysResp"
-    "onse\0222\n\005vkeys\030\001 \003(\0132\026.xion.zk.v1.VKeyWit"
-    "hIDB\004\310\336\037\000R\005vkeys\022G\n\npagination\030\002 \001(\0132\'.c"
-    "osmos.base.query.v1beta1.PageResponseR\np"
-    "agination\"H\n\nVKeyWithID\022\016\n\002id\030\001 \001(\004R\002id\022"
-    "*\n\004vkey\030\002 \001(\0132\020.xion.zk.v1.VKeyB\004\310\336\037\000R\004v"
-    "key\")\n\023QueryHasVKeyRequest\022\022\n\004name\030\001 \001(\t"
-    "R\004name\">\n\024QueryHasVKeyResponse\022\026\n\006exists"
-    "\030\001 \001(\010R\006exists\022\016\n\002id\030\002 \001(\004R\002id\"\030\n\026QueryN"
-    "extVKeyIDRequest\"2\n\027QueryNextVKeyIDRespo"
-    "nse\022\027\n\007next_id\030\001 \001(\004R\006nextId\"\024\n\022QueryPar"
-    "amsRequest\"G\n\023QueryParamsResponse\0220\n\006par"
-    "ams\030\001 \001(\0132\022.xion.zk.v1.ParamsB\004\310\336\037\000R\006par"
-    "ams2\261\006\n\005Query\022e\n\013ProofVerify\022\036.xion.zk.v"
-    "1.QueryVerifyRequest\032\037.xion.zk.v1.ProofV"
-    "erifyResponse\"\025\202\323\344\223\002\017\022\r/zk/v1/verify\022i\n\004"
-    "VKey\022\034.xion.zk.v1.QueryVKeyRequest\032\035.xio"
-    "n.zk.v1.QueryVKeyResponse\"$\202\323\344\223\002\036\022\034/burn"
-    "t/xion/zk/v1/vkeys/{id}\022\202\001\n\nVKeyByName\022\""
-    ".xion.zk.v1.QueryVKeyByNameRequest\032#.xio"
-    "n.zk.v1.QueryVKeyByNameResponse\"+\202\323\344\223\002%\022"
-    "#/burnt/xion/zk/v1/vkeys/name/{name}\022g\n\005"
-    "VKeys\022\035.xion.zk.v1.QueryVKeysRequest\032\036.x"
-    "ion.zk.v1.QueryVKeysResponse\"\037\202\323\344\223\002\031\022\027/b"
-    "urnt/xion/zk/v1/vkeys\022{\n\007HasVKey\022\037.xion."
-    "zk.v1.QueryHasVKeyRequest\032 .xion.zk.v1.Q"
-    "ueryHasVKeyResponse\"-\202\323\344\223\002\'\022%/burnt/xion"
-    "/zk/v1/vkeys/exists/{name}\022~\n\nNextVKeyID"
-    "\022\".xion.zk.v1.QueryNextVKeyIDRequest\032#.x"
-    "ion.zk.v1.QueryNextVKeyIDResponse\"\'\202\323\344\223\002"
-    "!\022\037/burnt/xion/zk/v1/vkeys/next-id\022k\n\006Pa"
-    "rams\022\036.xion.zk.v1.QueryParamsRequest\032\037.x"
-    "ion.zk.v1.QueryParamsResponse\" \202\323\344\223\002\032\022\030/"
-    "burnt/xion/zk/v1/paramsB\'Z%github.com/bu"
-    "rnt-labs/xion/x/zk/typesb\006proto3"
+    "d\030\001 \001(\010R\010verified\"[\n\034ProofVerifyUltraHon"
+    "kResponse\022\032\n\010verified\030\001 \001(\010R\010verified\022\037\n"
+    "\013vkey_sha256\030\002 \001(\014R\nvkeySha256\"6\n\030ProofV"
+    "erifyGnarkResponse\022\032\n\010verified\030\001 \001(\010R\010ve"
+    "rified\"\300\001\n\033QueryVerifyUltraHonkRequest\022\024"
+    "\n\005proof\030\001 \001(\014R\005proof\022#\n\rpublic_inputs\030\002 "
+    "\001(\014R\014publicInputs\022\033\n\tvkey_name\030\003 \001(\tR\010vk"
+    "eyName\022\027\n\007vkey_id\030\004 \001(\004R\006vkeyId\0220\n\024expec"
+    "ted_vkey_sha256\030\005 \001(\014R\022expectedVkeySha25"
+    "6\"\212\001\n\027QueryVerifyGnarkRequest\022\024\n\005proof\030\001"
+    " \001(\014R\005proof\022#\n\rpublic_inputs\030\002 \001(\014R\014publ"
+    "icInputs\022\033\n\tvkey_name\030\003 \001(\tR\010vkeyName\022\027\n"
+    "\007vkey_id\030\004 \001(\004R\006vkeyId\"\326\001\n\004VKey\022\033\n\tkey_b"
+    "ytes\030\001 \001(\014R\010keyBytes\022\022\n\004name\030\002 \001(\tR\004name"
+    "\022 \n\013description\030\003 \001(\tR\013description\022!\n\014ci"
+    "rcuit_hash\030\004 \001(\tR\013circuitHash\022\034\n\tauthori"
+    "ty\030\005 \001(\tR\tauthority\022:\n\014proof_system\030\006 \001("
+    "\0162\027.xion.zk.v1.ProofSystemR\013proofSystem\""
+    "\"\n\020QueryVKeyRequest\022\016\n\002id\030\001 \001(\004R\002id\"\?\n\021Q"
+    "ueryVKeyResponse\022*\n\004vkey\030\001 \001(\0132\020.xion.zk"
+    ".v1.VKeyB\004\310\336\037\000R\004vkey\",\n\026QueryVKeyByNameR"
+    "equest\022\022\n\004name\030\001 \001(\tR\004name\"U\n\027QueryVKeyB"
+    "yNameResponse\022*\n\004vkey\030\001 \001(\0132\020.xion.zk.v1"
+    ".VKeyB\004\310\336\037\000R\004vkey\022\016\n\002id\030\002 \001(\004R\002id\"[\n\021Que"
+    "ryVKeysRequest\022F\n\npagination\030\001 \001(\0132&.cos"
+    "mos.base.query.v1beta1.PageRequestR\npagi"
+    "nation\"\221\001\n\022QueryVKeysResponse\0222\n\005vkeys\030\001"
+    " \003(\0132\026.xion.zk.v1.VKeyWithIDB\004\310\336\037\000R\005vkey"
+    "s\022G\n\npagination\030\002 \001(\0132\'.cosmos.base.quer"
+    "y.v1beta1.PageResponseR\npagination\"H\n\nVK"
+    "eyWithID\022\016\n\002id\030\001 \001(\004R\002id\022*\n\004vkey\030\002 \001(\0132\020"
+    ".xion.zk.v1.VKeyB\004\310\336\037\000R\004vkey\")\n\023QueryHas"
+    "VKeyRequest\022\022\n\004name\030\001 \001(\tR\004name\">\n\024Query"
+    "HasVKeyResponse\022\026\n\006exists\030\001 \001(\010R\006exists\022"
+    "\016\n\002id\030\002 \001(\004R\002id\"\030\n\026QueryNextVKeyIDReques"
+    "t\"2\n\027QueryNextVKeyIDResponse\022\027\n\007next_id\030"
+    "\001 \001(\004R\006nextId\"\024\n\022QueryParamsRequest\"G\n\023Q"
+    "ueryParamsResponse\0220\n\006params\030\001 \001(\0132\022.xio"
+    "n.zk.v1.ParamsB\004\310\336\037\000R\006params2\327\010\n\005Query\022e"
+    "\n\013ProofVerify\022\036.xion.zk.v1.QueryVerifyRe"
+    "quest\032\037.xion.zk.v1.ProofVerifyResponse\"\025"
+    "\202\323\344\223\002\017\022\r/zk/v1/verify\022\230\001\n\024ProofVerifyUlt"
+    "raHonk\022\'.xion.zk.v1.QueryVerifyUltraHonk"
+    "Request\032(.xion.zk.v1.ProofVerifyUltraHon"
+    "kResponse\"-\202\323\344\223\002\'\"\"/burnt/xion/zk/v1/ver"
+    "ify-ultrahonk:\001*\022\210\001\n\020ProofVerifyGnark\022#."
+    "xion.zk.v1.QueryVerifyGnarkRequest\032$.xio"
+    "n.zk.v1.ProofVerifyGnarkResponse\")\202\323\344\223\002#"
+    "\"\036/burnt/xion/zk/v1/verify-gnark:\001*\022i\n\004V"
+    "Key\022\034.xion.zk.v1.QueryVKeyRequest\032\035.xion"
+    ".zk.v1.QueryVKeyResponse\"$\202\323\344\223\002\036\022\034/burnt"
+    "/xion/zk/v1/vkeys/{id}\022\202\001\n\nVKeyByName\022\"."
+    "xion.zk.v1.QueryVKeyByNameRequest\032#.xion"
+    ".zk.v1.QueryVKeyByNameResponse\"+\202\323\344\223\002%\022#"
+    "/burnt/xion/zk/v1/vkeys/name/{name}\022g\n\005V"
+    "Keys\022\035.xion.zk.v1.QueryVKeysRequest\032\036.xi"
+    "on.zk.v1.QueryVKeysResponse\"\037\202\323\344\223\002\031\022\027/bu"
+    "rnt/xion/zk/v1/vkeys\022{\n\007HasVKey\022\037.xion.z"
+    "k.v1.QueryHasVKeyRequest\032 .xion.zk.v1.Qu"
+    "eryHasVKeyResponse\"-\202\323\344\223\002\'\022%/burnt/xion/"
+    "zk/v1/vkeys/exists/{name}\022~\n\nNextVKeyID\022"
+    "\".xion.zk.v1.QueryNextVKeyIDRequest\032#.xi"
+    "on.zk.v1.QueryNextVKeyIDResponse\"\'\202\323\344\223\002!"
+    "\022\037/burnt/xion/zk/v1/vkeys/next-id\022k\n\006Par"
+    "ams\022\036.xion.zk.v1.QueryParamsRequest\032\037.xi"
+    "on.zk.v1.QueryParamsResponse\" \202\323\344\223\002\032\022\030/b"
+    "urnt/xion/zk/v1/paramsB\'Z%github.com/bur"
+    "nt-labs/xion/x/zk/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_deps[4] =
     {
@@ -628,13 +799,13 @@ static ::absl::once_flag descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_xion_2fzk_2fv1_2fquery_2eproto = {
     false,
     false,
-    2272,
+    3111,
     descriptor_table_protodef_xion_2fzk_2fv1_2fquery_2eproto,
     "xion/zk/v1/query.proto",
     &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
     descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_deps,
     4,
-    17,
+    21,
     schemas,
     file_default_instances,
     TableStruct_xion_2fzk_2fv1_2fquery_2eproto::offsets,
@@ -1332,6 +1503,1012 @@ void ProofVerifyResponse::InternalSwap(ProofVerifyResponse* other) {
 }
 // ===================================================================
 
+class ProofVerifyUltraHonkResponse::_Internal {
+ public:
+};
+
+ProofVerifyUltraHonkResponse::ProofVerifyUltraHonkResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.zk.v1.ProofVerifyUltraHonkResponse)
+}
+ProofVerifyUltraHonkResponse::ProofVerifyUltraHonkResponse(const ProofVerifyUltraHonkResponse& from) : ::google::protobuf::Message() {
+  ProofVerifyUltraHonkResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.vkey_sha256_){},
+      decltype(_impl_.verified_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.vkey_sha256_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.vkey_sha256_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_vkey_sha256().empty()) {
+    _this->_impl_.vkey_sha256_.Set(from._internal_vkey_sha256(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.verified_ = from._impl_.verified_;
+
+  // @@protoc_insertion_point(copy_constructor:xion.zk.v1.ProofVerifyUltraHonkResponse)
+}
+inline void ProofVerifyUltraHonkResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.vkey_sha256_){},
+      decltype(_impl_.verified_){false},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.vkey_sha256_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.vkey_sha256_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+ProofVerifyUltraHonkResponse::~ProofVerifyUltraHonkResponse() {
+  // @@protoc_insertion_point(destructor:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ProofVerifyUltraHonkResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.vkey_sha256_.Destroy();
+}
+void ProofVerifyUltraHonkResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void ProofVerifyUltraHonkResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.vkey_sha256_.ClearToEmpty();
+  _impl_.verified_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ProofVerifyUltraHonkResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> ProofVerifyUltraHonkResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ProofVerifyUltraHonkResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bytes vkey_sha256 = 2 [json_name = "vkeySha256"];
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ProofVerifyUltraHonkResponse, _impl_.vkey_sha256_)}},
+    // bool verified = 1 [json_name = "verified"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ProofVerifyUltraHonkResponse, _impl_.verified_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ProofVerifyUltraHonkResponse, _impl_.verified_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool verified = 1 [json_name = "verified"];
+    {PROTOBUF_FIELD_OFFSET(ProofVerifyUltraHonkResponse, _impl_.verified_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // bytes vkey_sha256 = 2 [json_name = "vkeySha256"];
+    {PROTOBUF_FIELD_OFFSET(ProofVerifyUltraHonkResponse, _impl_.vkey_sha256_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* ProofVerifyUltraHonkResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // bool verified = 1 [json_name = "verified"];
+  if (this->_internal_verified() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        1, this->_internal_verified(), target);
+  }
+
+  // bytes vkey_sha256 = 2 [json_name = "vkeySha256"];
+  if (!this->_internal_vkey_sha256().empty()) {
+    const std::string& _s = this->_internal_vkey_sha256();
+    target = stream->WriteBytesMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  return target;
+}
+
+::size_t ProofVerifyUltraHonkResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes vkey_sha256 = 2 [json_name = "vkeySha256"];
+  if (!this->_internal_vkey_sha256().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_vkey_sha256());
+  }
+
+  // bool verified = 1 [json_name = "verified"];
+  if (this->_internal_verified() != 0) {
+    total_size += 2;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ProofVerifyUltraHonkResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ProofVerifyUltraHonkResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ProofVerifyUltraHonkResponse::GetClassData() const { return &_class_data_; }
+
+
+void ProofVerifyUltraHonkResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ProofVerifyUltraHonkResponse*>(&to_msg);
+  auto& from = static_cast<const ProofVerifyUltraHonkResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_vkey_sha256().empty()) {
+    _this->_internal_set_vkey_sha256(from._internal_vkey_sha256());
+  }
+  if (from._internal_verified() != 0) {
+    _this->_internal_set_verified(from._internal_verified());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ProofVerifyUltraHonkResponse::CopyFrom(const ProofVerifyUltraHonkResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.zk.v1.ProofVerifyUltraHonkResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ProofVerifyUltraHonkResponse::IsInitialized() const {
+  return true;
+}
+
+void ProofVerifyUltraHonkResponse::InternalSwap(ProofVerifyUltraHonkResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vkey_sha256_, lhs_arena,
+                                       &other->_impl_.vkey_sha256_, rhs_arena);
+        swap(_impl_.verified_, other->_impl_.verified_);
+}
+
+::google::protobuf::Metadata ProofVerifyUltraHonkResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[3]);
+}
+// ===================================================================
+
+class ProofVerifyGnarkResponse::_Internal {
+ public:
+};
+
+ProofVerifyGnarkResponse::ProofVerifyGnarkResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.zk.v1.ProofVerifyGnarkResponse)
+}
+ProofVerifyGnarkResponse::ProofVerifyGnarkResponse(const ProofVerifyGnarkResponse& from)
+    : ::google::protobuf::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:xion.zk.v1.ProofVerifyGnarkResponse)
+}
+inline void ProofVerifyGnarkResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.verified_){false},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+}
+ProofVerifyGnarkResponse::~ProofVerifyGnarkResponse() {
+  // @@protoc_insertion_point(destructor:xion.zk.v1.ProofVerifyGnarkResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ProofVerifyGnarkResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+}
+void ProofVerifyGnarkResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void ProofVerifyGnarkResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.zk.v1.ProofVerifyGnarkResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.verified_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ProofVerifyGnarkResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ProofVerifyGnarkResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ProofVerifyGnarkResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bool verified = 1 [json_name = "verified"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ProofVerifyGnarkResponse, _impl_.verified_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ProofVerifyGnarkResponse, _impl_.verified_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool verified = 1 [json_name = "verified"];
+    {PROTOBUF_FIELD_OFFSET(ProofVerifyGnarkResponse, _impl_.verified_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* ProofVerifyGnarkResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.zk.v1.ProofVerifyGnarkResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // bool verified = 1 [json_name = "verified"];
+  if (this->_internal_verified() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        1, this->_internal_verified(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.zk.v1.ProofVerifyGnarkResponse)
+  return target;
+}
+
+::size_t ProofVerifyGnarkResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.zk.v1.ProofVerifyGnarkResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool verified = 1 [json_name = "verified"];
+  if (this->_internal_verified() != 0) {
+    total_size += 2;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ProofVerifyGnarkResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ProofVerifyGnarkResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ProofVerifyGnarkResponse::GetClassData() const { return &_class_data_; }
+
+
+void ProofVerifyGnarkResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ProofVerifyGnarkResponse*>(&to_msg);
+  auto& from = static_cast<const ProofVerifyGnarkResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.zk.v1.ProofVerifyGnarkResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_verified() != 0) {
+    _this->_internal_set_verified(from._internal_verified());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ProofVerifyGnarkResponse::CopyFrom(const ProofVerifyGnarkResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.zk.v1.ProofVerifyGnarkResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ProofVerifyGnarkResponse::IsInitialized() const {
+  return true;
+}
+
+void ProofVerifyGnarkResponse::InternalSwap(ProofVerifyGnarkResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.verified_, other->_impl_.verified_);
+}
+
+::google::protobuf::Metadata ProofVerifyGnarkResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[4]);
+}
+// ===================================================================
+
+class QueryVerifyUltraHonkRequest::_Internal {
+ public:
+};
+
+QueryVerifyUltraHonkRequest::QueryVerifyUltraHonkRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.zk.v1.QueryVerifyUltraHonkRequest)
+}
+QueryVerifyUltraHonkRequest::QueryVerifyUltraHonkRequest(const QueryVerifyUltraHonkRequest& from) : ::google::protobuf::Message() {
+  QueryVerifyUltraHonkRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.proof_){},
+      decltype(_impl_.public_inputs_){},
+      decltype(_impl_.vkey_name_){},
+      decltype(_impl_.expected_vkey_sha256_){},
+      decltype(_impl_.vkey_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.proof_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.proof_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_proof().empty()) {
+    _this->_impl_.proof_.Set(from._internal_proof(), _this->GetArenaForAllocation());
+  }
+  _impl_.public_inputs_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.public_inputs_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_public_inputs().empty()) {
+    _this->_impl_.public_inputs_.Set(from._internal_public_inputs(), _this->GetArenaForAllocation());
+  }
+  _impl_.vkey_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.vkey_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_vkey_name().empty()) {
+    _this->_impl_.vkey_name_.Set(from._internal_vkey_name(), _this->GetArenaForAllocation());
+  }
+  _impl_.expected_vkey_sha256_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.expected_vkey_sha256_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_expected_vkey_sha256().empty()) {
+    _this->_impl_.expected_vkey_sha256_.Set(from._internal_expected_vkey_sha256(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.vkey_id_ = from._impl_.vkey_id_;
+
+  // @@protoc_insertion_point(copy_constructor:xion.zk.v1.QueryVerifyUltraHonkRequest)
+}
+inline void QueryVerifyUltraHonkRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.proof_){},
+      decltype(_impl_.public_inputs_){},
+      decltype(_impl_.vkey_name_){},
+      decltype(_impl_.expected_vkey_sha256_){},
+      decltype(_impl_.vkey_id_){::uint64_t{0u}},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.proof_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.proof_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.public_inputs_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.public_inputs_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.vkey_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.vkey_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.expected_vkey_sha256_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.expected_vkey_sha256_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryVerifyUltraHonkRequest::~QueryVerifyUltraHonkRequest() {
+  // @@protoc_insertion_point(destructor:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryVerifyUltraHonkRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.proof_.Destroy();
+  _impl_.public_inputs_.Destroy();
+  _impl_.vkey_name_.Destroy();
+  _impl_.expected_vkey_sha256_.Destroy();
+}
+void QueryVerifyUltraHonkRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryVerifyUltraHonkRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.proof_.ClearToEmpty();
+  _impl_.public_inputs_.ClearToEmpty();
+  _impl_.vkey_name_.ClearToEmpty();
+  _impl_.expected_vkey_sha256_.ClearToEmpty();
+  _impl_.vkey_id_ = ::uint64_t{0u};
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryVerifyUltraHonkRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 56, 2> QueryVerifyUltraHonkRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryVerifyUltraHonkRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // bytes proof = 1 [json_name = "proof"];
+    {::_pbi::TcParser::FastBS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.proof_)}},
+    // bytes public_inputs = 2 [json_name = "publicInputs"];
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.public_inputs_)}},
+    // string vkey_name = 3 [json_name = "vkeyName"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.vkey_name_)}},
+    // uint64 vkey_id = 4 [json_name = "vkeyId"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryVerifyUltraHonkRequest, _impl_.vkey_id_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.vkey_id_)}},
+    // bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];
+    {::_pbi::TcParser::FastBS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.expected_vkey_sha256_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bytes proof = 1 [json_name = "proof"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.proof_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes public_inputs = 2 [json_name = "publicInputs"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.public_inputs_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // string vkey_name = 3 [json_name = "vkeyName"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.vkey_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint64 vkey_id = 4 [json_name = "vkeyId"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.vkey_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyUltraHonkRequest, _impl_.expected_vkey_sha256_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\46\0\0\11\0\0\0\0"
+    "xion.zk.v1.QueryVerifyUltraHonkRequest"
+    "vkey_name"
+  }},
+};
+
+::uint8_t* QueryVerifyUltraHonkRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // bytes proof = 1 [json_name = "proof"];
+  if (!this->_internal_proof().empty()) {
+    const std::string& _s = this->_internal_proof();
+    target = stream->WriteBytesMaybeAliased(1, _s, target);
+  }
+
+  // bytes public_inputs = 2 [json_name = "publicInputs"];
+  if (!this->_internal_public_inputs().empty()) {
+    const std::string& _s = this->_internal_public_inputs();
+    target = stream->WriteBytesMaybeAliased(2, _s, target);
+  }
+
+  // string vkey_name = 3 [json_name = "vkeyName"];
+  if (!this->_internal_vkey_name().empty()) {
+    const std::string& _s = this->_internal_vkey_name();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_name");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // uint64 vkey_id = 4 [json_name = "vkeyId"];
+  if (this->_internal_vkey_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        4, this->_internal_vkey_id(), target);
+  }
+
+  // bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];
+  if (!this->_internal_expected_vkey_sha256().empty()) {
+    const std::string& _s = this->_internal_expected_vkey_sha256();
+    target = stream->WriteBytesMaybeAliased(5, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  return target;
+}
+
+::size_t QueryVerifyUltraHonkRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes proof = 1 [json_name = "proof"];
+  if (!this->_internal_proof().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_proof());
+  }
+
+  // bytes public_inputs = 2 [json_name = "publicInputs"];
+  if (!this->_internal_public_inputs().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_public_inputs());
+  }
+
+  // string vkey_name = 3 [json_name = "vkeyName"];
+  if (!this->_internal_vkey_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_vkey_name());
+  }
+
+  // bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];
+  if (!this->_internal_expected_vkey_sha256().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_expected_vkey_sha256());
+  }
+
+  // uint64 vkey_id = 4 [json_name = "vkeyId"];
+  if (this->_internal_vkey_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_vkey_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryVerifyUltraHonkRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryVerifyUltraHonkRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryVerifyUltraHonkRequest::GetClassData() const { return &_class_data_; }
+
+
+void QueryVerifyUltraHonkRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryVerifyUltraHonkRequest*>(&to_msg);
+  auto& from = static_cast<const QueryVerifyUltraHonkRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_proof().empty()) {
+    _this->_internal_set_proof(from._internal_proof());
+  }
+  if (!from._internal_public_inputs().empty()) {
+    _this->_internal_set_public_inputs(from._internal_public_inputs());
+  }
+  if (!from._internal_vkey_name().empty()) {
+    _this->_internal_set_vkey_name(from._internal_vkey_name());
+  }
+  if (!from._internal_expected_vkey_sha256().empty()) {
+    _this->_internal_set_expected_vkey_sha256(from._internal_expected_vkey_sha256());
+  }
+  if (from._internal_vkey_id() != 0) {
+    _this->_internal_set_vkey_id(from._internal_vkey_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryVerifyUltraHonkRequest::CopyFrom(const QueryVerifyUltraHonkRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.zk.v1.QueryVerifyUltraHonkRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryVerifyUltraHonkRequest::IsInitialized() const {
+  return true;
+}
+
+void QueryVerifyUltraHonkRequest::InternalSwap(QueryVerifyUltraHonkRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.proof_, lhs_arena,
+                                       &other->_impl_.proof_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.public_inputs_, lhs_arena,
+                                       &other->_impl_.public_inputs_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vkey_name_, lhs_arena,
+                                       &other->_impl_.vkey_name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.expected_vkey_sha256_, lhs_arena,
+                                       &other->_impl_.expected_vkey_sha256_, rhs_arena);
+        swap(_impl_.vkey_id_, other->_impl_.vkey_id_);
+}
+
+::google::protobuf::Metadata QueryVerifyUltraHonkRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[5]);
+}
+// ===================================================================
+
+class QueryVerifyGnarkRequest::_Internal {
+ public:
+};
+
+QueryVerifyGnarkRequest::QueryVerifyGnarkRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:xion.zk.v1.QueryVerifyGnarkRequest)
+}
+QueryVerifyGnarkRequest::QueryVerifyGnarkRequest(const QueryVerifyGnarkRequest& from) : ::google::protobuf::Message() {
+  QueryVerifyGnarkRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.proof_){},
+      decltype(_impl_.public_inputs_){},
+      decltype(_impl_.vkey_name_){},
+      decltype(_impl_.vkey_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.proof_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.proof_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_proof().empty()) {
+    _this->_impl_.proof_.Set(from._internal_proof(), _this->GetArenaForAllocation());
+  }
+  _impl_.public_inputs_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.public_inputs_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_public_inputs().empty()) {
+    _this->_impl_.public_inputs_.Set(from._internal_public_inputs(), _this->GetArenaForAllocation());
+  }
+  _impl_.vkey_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.vkey_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_vkey_name().empty()) {
+    _this->_impl_.vkey_name_.Set(from._internal_vkey_name(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.vkey_id_ = from._impl_.vkey_id_;
+
+  // @@protoc_insertion_point(copy_constructor:xion.zk.v1.QueryVerifyGnarkRequest)
+}
+inline void QueryVerifyGnarkRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.proof_){},
+      decltype(_impl_.public_inputs_){},
+      decltype(_impl_.vkey_name_){},
+      decltype(_impl_.vkey_id_){::uint64_t{0u}},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.proof_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.proof_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.public_inputs_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.public_inputs_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.vkey_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.vkey_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryVerifyGnarkRequest::~QueryVerifyGnarkRequest() {
+  // @@protoc_insertion_point(destructor:xion.zk.v1.QueryVerifyGnarkRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryVerifyGnarkRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.proof_.Destroy();
+  _impl_.public_inputs_.Destroy();
+  _impl_.vkey_name_.Destroy();
+}
+void QueryVerifyGnarkRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryVerifyGnarkRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:xion.zk.v1.QueryVerifyGnarkRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.proof_.ClearToEmpty();
+  _impl_.public_inputs_.ClearToEmpty();
+  _impl_.vkey_name_.ClearToEmpty();
+  _impl_.vkey_id_ = ::uint64_t{0u};
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryVerifyGnarkRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 52, 2> QueryVerifyGnarkRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryVerifyGnarkRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // uint64 vkey_id = 4 [json_name = "vkeyId"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryVerifyGnarkRequest, _impl_.vkey_id_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.vkey_id_)}},
+    // bytes proof = 1 [json_name = "proof"];
+    {::_pbi::TcParser::FastBS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.proof_)}},
+    // bytes public_inputs = 2 [json_name = "publicInputs"];
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.public_inputs_)}},
+    // string vkey_name = 3 [json_name = "vkeyName"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.vkey_name_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bytes proof = 1 [json_name = "proof"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.proof_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes public_inputs = 2 [json_name = "publicInputs"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.public_inputs_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // string vkey_name = 3 [json_name = "vkeyName"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.vkey_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint64 vkey_id = 4 [json_name = "vkeyId"];
+    {PROTOBUF_FIELD_OFFSET(QueryVerifyGnarkRequest, _impl_.vkey_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\42\0\0\11\0\0\0\0"
+    "xion.zk.v1.QueryVerifyGnarkRequest"
+    "vkey_name"
+  }},
+};
+
+::uint8_t* QueryVerifyGnarkRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xion.zk.v1.QueryVerifyGnarkRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // bytes proof = 1 [json_name = "proof"];
+  if (!this->_internal_proof().empty()) {
+    const std::string& _s = this->_internal_proof();
+    target = stream->WriteBytesMaybeAliased(1, _s, target);
+  }
+
+  // bytes public_inputs = 2 [json_name = "publicInputs"];
+  if (!this->_internal_public_inputs().empty()) {
+    const std::string& _s = this->_internal_public_inputs();
+    target = stream->WriteBytesMaybeAliased(2, _s, target);
+  }
+
+  // string vkey_name = 3 [json_name = "vkeyName"];
+  if (!this->_internal_vkey_name().empty()) {
+    const std::string& _s = this->_internal_vkey_name();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "xion.zk.v1.QueryVerifyGnarkRequest.vkey_name");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // uint64 vkey_id = 4 [json_name = "vkeyId"];
+  if (this->_internal_vkey_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        4, this->_internal_vkey_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:xion.zk.v1.QueryVerifyGnarkRequest)
+  return target;
+}
+
+::size_t QueryVerifyGnarkRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xion.zk.v1.QueryVerifyGnarkRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes proof = 1 [json_name = "proof"];
+  if (!this->_internal_proof().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_proof());
+  }
+
+  // bytes public_inputs = 2 [json_name = "publicInputs"];
+  if (!this->_internal_public_inputs().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_public_inputs());
+  }
+
+  // string vkey_name = 3 [json_name = "vkeyName"];
+  if (!this->_internal_vkey_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_vkey_name());
+  }
+
+  // uint64 vkey_id = 4 [json_name = "vkeyId"];
+  if (this->_internal_vkey_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_vkey_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryVerifyGnarkRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryVerifyGnarkRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryVerifyGnarkRequest::GetClassData() const { return &_class_data_; }
+
+
+void QueryVerifyGnarkRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryVerifyGnarkRequest*>(&to_msg);
+  auto& from = static_cast<const QueryVerifyGnarkRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:xion.zk.v1.QueryVerifyGnarkRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_proof().empty()) {
+    _this->_internal_set_proof(from._internal_proof());
+  }
+  if (!from._internal_public_inputs().empty()) {
+    _this->_internal_set_public_inputs(from._internal_public_inputs());
+  }
+  if (!from._internal_vkey_name().empty()) {
+    _this->_internal_set_vkey_name(from._internal_vkey_name());
+  }
+  if (from._internal_vkey_id() != 0) {
+    _this->_internal_set_vkey_id(from._internal_vkey_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryVerifyGnarkRequest::CopyFrom(const QueryVerifyGnarkRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xion.zk.v1.QueryVerifyGnarkRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryVerifyGnarkRequest::IsInitialized() const {
+  return true;
+}
+
+void QueryVerifyGnarkRequest::InternalSwap(QueryVerifyGnarkRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.proof_, lhs_arena,
+                                       &other->_impl_.proof_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.public_inputs_, lhs_arena,
+                                       &other->_impl_.public_inputs_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vkey_name_, lhs_arena,
+                                       &other->_impl_.vkey_name_, rhs_arena);
+        swap(_impl_.vkey_id_, other->_impl_.vkey_id_);
+}
+
+::google::protobuf::Metadata QueryVerifyGnarkRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[6]);
+}
+// ===================================================================
+
 class VKey::_Internal {
  public:
 };
@@ -1350,6 +2527,7 @@ VKey::VKey(const VKey& from) : ::google::protobuf::Message() {
       decltype(_impl_.description_){},
       decltype(_impl_.circuit_hash_){},
       decltype(_impl_.authority_){},
+      decltype(_impl_.proof_system_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -1389,6 +2567,7 @@ VKey::VKey(const VKey& from) : ::google::protobuf::Message() {
   if (!from._internal_authority().empty()) {
     _this->_impl_.authority_.Set(from._internal_authority(), _this->GetArenaForAllocation());
   }
+  _this->_impl_.proof_system_ = from._impl_.proof_system_;
 
   // @@protoc_insertion_point(copy_constructor:xion.zk.v1.VKey)
 }
@@ -1400,6 +2579,7 @@ inline void VKey::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.description_){},
       decltype(_impl_.circuit_hash_){},
       decltype(_impl_.authority_){},
+      decltype(_impl_.proof_system_){0},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.key_bytes_.InitDefault();
@@ -1451,6 +2631,7 @@ PROTOBUF_NOINLINE void VKey::Clear() {
   _impl_.description_.ClearToEmpty();
   _impl_.circuit_hash_.ClearToEmpty();
   _impl_.authority_.ClearToEmpty();
+  _impl_.proof_system_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1462,15 +2643,15 @@ const char* VKey::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 60, 2> VKey::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 0, 60, 2> VKey::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    6,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_VKey_default_instance_._instance,
@@ -1492,7 +2673,9 @@ const ::_pbi::TcParseTable<3, 5, 0, 60, 2> VKey::_table_ = {
     // string authority = 5 [json_name = "authority"];
     {::_pbi::TcParser::FastUS1,
      {42, 63, 0, PROTOBUF_FIELD_OFFSET(VKey, _impl_.authority_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VKey, _impl_.proof_system_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(VKey, _impl_.proof_system_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -1512,6 +2695,9 @@ const ::_pbi::TcParseTable<3, 5, 0, 60, 2> VKey::_table_ = {
     // string authority = 5 [json_name = "authority"];
     {PROTOBUF_FIELD_OFFSET(VKey, _impl_.authority_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];
+    {PROTOBUF_FIELD_OFFSET(VKey, _impl_.proof_system_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }},
   // no aux_entries
   {{
@@ -1569,6 +2755,13 @@ const ::_pbi::TcParseTable<3, 5, 0, 60, 2> VKey::_table_ = {
     target = stream->WriteStringMaybeAliased(5, _s, target);
   }
 
+  // .xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];
+  if (this->_internal_proof_system() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        6, this->_internal_proof_system(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1616,6 +2809,12 @@ const ::_pbi::TcParseTable<3, 5, 0, 60, 2> VKey::_table_ = {
                                     this->_internal_authority());
   }
 
+  // .xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];
+  if (this->_internal_proof_system() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_proof_system());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1649,6 +2848,9 @@ void VKey::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protob
   if (!from._internal_authority().empty()) {
     _this->_internal_set_authority(from._internal_authority());
   }
+  if (from._internal_proof_system() != 0) {
+    _this->_internal_set_proof_system(from._internal_proof_system());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1678,12 +2880,13 @@ void VKey::InternalSwap(VKey* other) {
                                        &other->_impl_.circuit_hash_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.authority_, lhs_arena,
                                        &other->_impl_.authority_, rhs_arena);
+  swap(_impl_.proof_system_, other->_impl_.proof_system_);
 }
 
 ::google::protobuf::Metadata VKey::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[3]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[7]);
 }
 // ===================================================================
 
@@ -1849,7 +3052,7 @@ void QueryVKeyRequest::InternalSwap(QueryVKeyRequest* other) {
 ::google::protobuf::Metadata QueryVKeyRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[4]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[8]);
 }
 // ===================================================================
 
@@ -2047,7 +3250,7 @@ void QueryVKeyResponse::InternalSwap(QueryVKeyResponse* other) {
 ::google::protobuf::Metadata QueryVKeyResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[5]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[9]);
 }
 // ===================================================================
 
@@ -2238,7 +3441,7 @@ void QueryVKeyByNameRequest::InternalSwap(QueryVKeyByNameRequest* other) {
 ::google::protobuf::Metadata QueryVKeyByNameRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[6]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[10]);
 }
 // ===================================================================
 
@@ -2467,7 +3670,7 @@ void QueryVKeyByNameResponse::InternalSwap(QueryVKeyByNameResponse* other) {
 ::google::protobuf::Metadata QueryVKeyByNameResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[7]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[11]);
 }
 // ===================================================================
 
@@ -2669,7 +3872,7 @@ void QueryVKeysRequest::InternalSwap(QueryVKeysRequest* other) {
 ::google::protobuf::Metadata QueryVKeysRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[8]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[12]);
 }
 // ===================================================================
 
@@ -2898,7 +4101,7 @@ void QueryVKeysResponse::InternalSwap(QueryVKeysResponse* other) {
 ::google::protobuf::Metadata QueryVKeysResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[9]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[13]);
 }
 // ===================================================================
 
@@ -3127,7 +4330,7 @@ void VKeyWithID::InternalSwap(VKeyWithID* other) {
 ::google::protobuf::Metadata VKeyWithID::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[10]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[14]);
 }
 // ===================================================================
 
@@ -3318,7 +4521,7 @@ void QueryHasVKeyRequest::InternalSwap(QueryHasVKeyRequest* other) {
 ::google::protobuf::Metadata QueryHasVKeyRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[11]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[15]);
 }
 // ===================================================================
 
@@ -3513,7 +4716,7 @@ void QueryHasVKeyResponse::InternalSwap(QueryHasVKeyResponse* other) {
 ::google::protobuf::Metadata QueryHasVKeyResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[12]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[16]);
 }
 // ===================================================================
 
@@ -3552,7 +4755,7 @@ const ::google::protobuf::Message::ClassData*QueryNextVKeyIDRequest::GetClassDat
 ::google::protobuf::Metadata QueryNextVKeyIDRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[13]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[17]);
 }
 // ===================================================================
 
@@ -3718,7 +4921,7 @@ void QueryNextVKeyIDResponse::InternalSwap(QueryNextVKeyIDResponse* other) {
 ::google::protobuf::Metadata QueryNextVKeyIDResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[14]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[18]);
 }
 // ===================================================================
 
@@ -3757,7 +4960,7 @@ const ::google::protobuf::Message::ClassData*QueryParamsRequest::GetClassData() 
 ::google::protobuf::Metadata QueryParamsRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[15]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[19]);
 }
 // ===================================================================
 
@@ -3959,7 +5162,7 @@ void QueryParamsResponse::InternalSwap(QueryParamsResponse* other) {
 ::google::protobuf::Metadata QueryParamsResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_getter, &descriptor_table_xion_2fzk_2fv1_2fquery_2eproto_once,
-      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[16]);
+      file_level_metadata_xion_2fzk_2fv1_2fquery_2eproto[20]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

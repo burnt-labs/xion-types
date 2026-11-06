@@ -196,7 +196,7 @@ namespace Ibc.Core.Channel.V1 {
             "dFNlcXVlbmNlU2VuZFJlc3BvbnNlIlWC0+STAk8STS9pYmMvY29yZS9jaGFu",
             "bmVsL3YxL2NoYW5uZWxzL3tjaGFubmVsX2lkfS9wb3J0cy97cG9ydF9pZH0v",
             "bmV4dF9zZXF1ZW5jZV9zZW5kQjxaOmdpdGh1Yi5jb20vY29zbW9zL2liYy1n",
-            "by92MTAvbW9kdWxlcy9jb3JlLzA0LWNoYW5uZWwvdHlwZXNiBnByb3RvMw=="));
+            "by92MTEvbW9kdWxlcy9jb3JlLzA0LWNoYW5uZWwvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ibc.Core.Client.V1.ClientReflection.Descriptor, global::Cosmos.Base.Query.V1Beta1.PaginationReflection.Descriptor, global::Ibc.Core.Channel.V1.ChannelReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

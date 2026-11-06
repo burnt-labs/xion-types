@@ -25,7 +25,8 @@ object CommitInfoProto extends _root_.scalapb.GeneratedFileObject {
   GltZXN0YW1wQhbiPwsSCXRpbWVzdGFtcMjeHwCQ3x8BUgl0aW1lc3RhbXAiegoJU3RvcmVJbmZvEh0KBG5hbWUYASABKAlCCeI/B
   hIEbmFtZVIEbmFtZRJOCgljb21taXRfaWQYAiABKAsyHi5jb3Ntb3Muc3RvcmUudjFiZXRhMS5Db21taXRJREIR4j8KEghjb21ta
   XRJZMjeHwBSCGNvbW1pdElkIlcKCENvbW1pdElEEiYKB3ZlcnNpb24YASABKANCDOI/CRIHdmVyc2lvblIHdmVyc2lvbhIdCgRoY
-  XNoGAIgASgMQgniPwYSBGhhc2hSBGhhc2g6BJigHwBCGloYY29zbW9zc2RrLmlvL3N0b3JlL3R5cGVzYgZwcm90bzM="""
+  XNoGAIgASgMQgniPwYSBGhhc2hSBGhhc2g6BJigHwBCLVorZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay9zdG9yZS92Mi90e
+  XBlc2IGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

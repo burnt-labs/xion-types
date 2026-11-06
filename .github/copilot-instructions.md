@@ -11,7 +11,7 @@
 ### What This Repository Provides
 
 - TypeScript, Rust, Python, Go, and 10+ other language bindings for XION blockchain protocols
-- Generated from protobuf definitions via Buf Schema Registry (BSR)
+- Generated from protobuf definitions pinned to the XION chain build (Git refs plus BSR commits)
 - CosmWasm contract client types (TypeScript only)
 - Published to multiple package registries (npm, PyPI, crates.io, RubyGems, Maven Central, CocoaPods)
 
@@ -51,10 +51,10 @@ xion-types/
 │
 ├── scripts/
 │   ├── proto-gen-ext.sh        # Main generation script
-│   ├── proto-sources.conf      # BSR module sources list
+│   ├── proto-sources.conf      # Pinned proto sources and owned path roots
 │   ├── post/                   # Post-processing scripts per language
 │   │   ├── ts.sh              # TypeScript post-processor
-│   │   ├── rust.py            # Rust deduplication
+│   │   ├── rust.py            # Rust module layout and path fixes
 │   │   ├── contracts-codegen.sh # CosmWasm contract codegen
 │   │   └── [others]
 │   └── ci/                     # CI helper scripts
@@ -73,7 +73,7 @@ xion-types/
 
 ### Core Generation Stack
 - **Buf CLI**: Protocol buffer code generation orchestration
-- **Buf Schema Registry (BSR)**: Source of protobuf definitions
+- **Buf Schema Registry (BSR)**: Source of shared import protos (cosmos-proto, gogo-proto, googleapis, wellknowntypes, ics23)
 - **Docker**: Containerized build environment (Alpine-based, includes all protoc plugins)
 
 ### TypeScript Stack
@@ -93,15 +93,8 @@ xion-types/
 - **grpcio-tools**: For Python protobuf generation
 - **setuptools**: Build system
 
-### Protobuf Sources (Order Matters!)
-Sources are loaded from `scripts/proto-sources.conf` in order:
-1. github.com/cosmos/ibc-apps (packet-forward-middleware)
-2. buf.build/cosmos/ibc
-3. buf.build/cosmwasm/wasmd
-4. buf.build/cosmos/cosmos-sdk
-5. buf.build/burnt-labs/abstractaccount
-6. buf.build/burnt-labs/tokenfactory
-7. **buf.build/burnt-labs/xion (MUST BE LAST - overwrites shared imports)**
+### Protobuf Sources
+`scripts/proto-sources.conf` pins every source (Cosmos SDK v0.55.0, ibc-go v11, wasmd and tokenfactory forks, a xion commit, and BSR commits for shared imports). Each line declares the path roots it owns. Order does not matter: the generator exports each source without imports, unions the owned files, and fails if two sources provide different bytes for the same path.
 
 ## Development Workflows
 
@@ -126,19 +119,19 @@ pnpm run clean        # Remove dist/
 **Prerequisites:**
 - `buf` CLI installed
 - Docker (if using Make targets)
-- Internet access (to fetch from BSR)
-- No Go toolchain needed (protos come from BSR)
+- Internet access (Git and BSR exports)
+- No Go toolchain needed
 
 **Manual generation:**
 ```bash
-# Generate TypeScript types for a specific XION version
-XION_BSR_MODULE="buf.build/burnt-labs/xion:v28.1.0" ./scripts/proto-gen-ext.sh ts
+# Generate TypeScript types from the pinned sources
+./scripts/proto-gen-ext.sh ts
 
-# Generate all languages
-XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh all
+# Generate all languages against a specific xion commit
+XION_BSR_MODULE="https://github.com/burnt-labs/xion.git#subdir=proto,ref=<sha>" ./scripts/proto-gen-ext.sh all
 
 # Using Make targets (requires Docker)
-make proto-gen-ts XION_BSR_MODULE=buf.build/burnt-labs/xion:v26.0.0
+make proto-gen-ts XION_BSR_MODULE="https://github.com/burnt-labs/xion.git#subdir=proto,ref=<sha>"
 make proto-gen-python
 ```
 
@@ -217,12 +210,12 @@ xion repo release → workflow_call → release.yaml
 - **Module organization**: Build script (build.rs) organizes generated files into modules
 - **Prost conventions**: Each protobuf package becomes a Rust module
 - **Feature flags**: `default`, `cosmos`, `cosmwasm`, `ibc`, `tendermint`, `xion`
-- **Deduplication**: Post-processor merges duplicate types from different BSR sources
+- **Single schema**: All Rust files come from one descriptor image; duplicate definitions are a generation error, not merged
 
 ### General Generation Patterns
-- **Staged generation for git sources**: Git-based proto sources generate into temp dirs to avoid polluting with stale shared imports
+- **Staged output**: Each language generates into a temp dir and replaces codegen-owned files only after success
 - **Exclusion of test packages**: `test_proto`, `proto3_proto`, `com`, `capability` removed after generation
-- **Order matters**: XION BSR module MUST be last in proto-sources.conf to overwrite older shared imports
+- **Self-check**: `scripts/ci/helper/test-proto-generation.sh` exercises manifest parsing, conflicts, failed generators and stale-file removal
 
 ## Important Files to Reference
 
@@ -234,7 +227,7 @@ xion repo release → workflow_call → release.yaml
 
 ### Generation & CI/CD
 - `scripts/proto-gen-ext.sh` - Main generation orchestrator
-- `scripts/proto-sources.conf` - Proto source order (XION must be last!)
+- `scripts/proto-sources.conf` - Pinned proto sources and owned roots
 - `Makefile` - Make targets for Docker-based generation
 - `.github/workflows/README.md` - Pipeline architecture documentation
 - `.github/workflows/release.yaml` - Main release pipeline
@@ -265,13 +258,10 @@ npm install -g pnpm
 corepack enable
 ```
 
-### Issue: Buf generation warnings
-**Problem**: Buf/protoc emits non-actionable warnings during generation
+### Issue: Generation fails
+**Problem**: A failed export, missing import, conflicting file or plugin error stops `proto-gen-ext.sh`.
 
-**Solution**: The script `proto-gen-ext.sh` includes a `filter_buf_warnings()` function that suppresses known non-actionable warnings:
-- "file does not exist" - git sources can't resolve BSR-only imports
-- "proto3 .proto files" - PHP can't handle proto2 (gogoproto)
-- "raise an issue with the maintainer" - upstream plugin deprecation noise
+**Solution**: Read the printed diagnostic. Errors are not filtered or downgraded; existing outputs stay untouched until a language generates successfully.
 
 ### Issue: Contract codegen fails
 **Problem**: Contract code generation fails or is skipped
@@ -282,10 +272,10 @@ git clone --branch v1.0.1 --depth 1 https://github.com/burnt-labs/contracts.git 
 make contract-code-gen
 ```
 
-### Issue: Wrong proto source order
-**Problem**: Generated types reference wrong/older versions of shared imports
+### Issue: Conflicting proto definitions
+**Problem**: Two sources export different bytes for the same proto path
 
-**Solution**: Always ensure XION BSR module is LAST in `scripts/proto-sources.conf`. The XION module overwrites shared imports from cosmos-sdk, wasmd, etc. with the versions it expects.
+**Solution**: Fix the owned roots or pins in `scripts/proto-sources.conf`; the longest matching root decides which source supplies a path.
 
 ### Issue: Build artifacts in git
 **Problem**: Generated files or build artifacts accidentally committed
@@ -293,7 +283,7 @@ make contract-code-gen
 **Solution**: Check `.gitignore` and ensure these directories are excluded:
 - `ts/dist/`, `ts/node_modules/`
 - `rust/target/`
-- `.rust-staged/`, `.ts-codegen-tmp/`, `.buf-stderr`
+- `.ts-codegen-tmp/`
 - `proto_deps/`, `swift-types-temp/`
 
 ### Issue: TypeScript build fails after generation
@@ -313,7 +303,7 @@ make contract-code-gen
 - `ts/tsconfig.json` - TypeScript compiler options
 - `rust/Cargo.toml` - Rust package metadata and dependencies
 - `pyproject.toml` - Python package metadata
-- `scripts/proto-sources.conf` - Proto source list and order
+- `scripts/proto-sources.conf` - Pinned proto sources and owned roots
 - `.github/workflows/*.yaml` - CI/CD pipeline definitions
 - `Makefile` - Build targets and Docker configuration
 - `README.md`, `ts/USAGE.md` - Documentation
@@ -387,9 +377,9 @@ python -m pip install -e .
 2. **Test locally before pushing** - Run generation and build scripts to verify changes
 3. **Update documentation** - Keep README.md and USAGE.md in sync with changes
 4. **Use pnpm for TypeScript** - Don't use npm or yarn; package.json specifies pnpm
-5. **Preserve proto source order** - XION module must always be last in proto-sources.conf
+5. **Pin proto sources** - Update `scripts/proto-sources.conf` together with the chain's go.mod pins
 6. **Consider all languages** - Changes to generation process may affect all 13 languages
-7. **Check CI logs** - Buf warnings are filtered; check .buf-stderr for unexpected issues
+7. **Check CI logs** - Generation errors stop the run; read the diagnostic
 8. **Test dependent projects** - TypeScript publish workflow tests compatibility automatically
 
 ## Quick Start for Common Tasks
@@ -411,15 +401,15 @@ pnpm run typecheck
 
 ### Update Buf Configuration
 1. Edit relevant `buf/buf.gen.<lang>.yaml`
-2. Test locally: `XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh <lang>`
+2. Test locally: `./scripts/proto-gen-ext.sh <lang>`
 3. Verify generated output
 4. Commit config changes only (not generated types)
 
 ### Debug Generation Issues
-1. Check `.buf-stderr` file in root (if it exists)
-2. Run with specific version: `XION_BSR_MODULE="buf.build/burnt-labs/xion:v26.0.0" ./scripts/proto-gen-ext.sh ts`
+1. Read the error printed by `proto-gen-ext.sh` (export, conflict, build or plugin failure)
+2. Run against a specific xion commit: `XION_BSR_MODULE="https://github.com/burnt-labs/xion.git#subdir=proto,ref=<sha>" ./scripts/proto-gen-ext.sh ts`
 3. Inspect post-processor logs: `scripts/post/<lang>.{sh,py}`
-4. Verify proto-sources.conf order
+4. Run `bash scripts/ci/helper/test-proto-generation.sh` inside the proto-builder image
 5. Check Docker image: `make build-proto-builder-image`
 
 ## Links and Resources

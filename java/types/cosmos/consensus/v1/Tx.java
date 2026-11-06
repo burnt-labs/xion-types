@@ -121,6 +121,21 @@ public final class Tx {
      * <code>.tendermint.types.ABCIParams abci = 5 [json_name = "abci", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];</code>
      */
     tendermint.types.Params.ABCIParamsOrBuilder getAbciOrBuilder();
+
+    /**
+     * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     * @return Whether the auth field is set.
+     */
+    boolean hasAuth();
+    /**
+     * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     * @return The auth.
+     */
+    tendermint.types.Params.AuthorityParams getAuth();
+    /**
+     * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     */
+    tendermint.types.Params.AuthorityParamsOrBuilder getAuthOrBuilder();
   }
   /**
    * <pre>
@@ -338,6 +353,32 @@ public final class Tx {
       return abci_ == null ? tendermint.types.Params.ABCIParams.getDefaultInstance() : abci_;
     }
 
+    public static final int AUTH_FIELD_NUMBER = 6;
+    private tendermint.types.Params.AuthorityParams auth_;
+    /**
+     * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     * @return Whether the auth field is set.
+     */
+    @java.lang.Override
+    public boolean hasAuth() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     * @return The auth.
+     */
+    @java.lang.Override
+    public tendermint.types.Params.AuthorityParams getAuth() {
+      return auth_ == null ? tendermint.types.Params.AuthorityParams.getDefaultInstance() : auth_;
+    }
+    /**
+     * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     */
+    @java.lang.Override
+    public tendermint.types.Params.AuthorityParamsOrBuilder getAuthOrBuilder() {
+      return auth_ == null ? tendermint.types.Params.AuthorityParams.getDefaultInstance() : auth_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -367,6 +408,9 @@ public final class Tx {
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeMessage(5, getAbci());
       }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeMessage(6, getAuth());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -394,6 +438,10 @@ public final class Tx {
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getAbci());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getAuth());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -432,6 +480,11 @@ public final class Tx {
         if (!getAbci()
             .equals(other.getAbci())) return false;
       }
+      if (hasAuth() != other.hasAuth()) return false;
+      if (hasAuth()) {
+        if (!getAuth()
+            .equals(other.getAuth())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -460,6 +513,10 @@ public final class Tx {
       if (hasAbci()) {
         hash = (37 * hash) + ABCI_FIELD_NUMBER;
         hash = (53 * hash) + getAbci().hashCode();
+      }
+      if (hasAuth()) {
+        hash = (37 * hash) + AUTH_FIELD_NUMBER;
+        hash = (53 * hash) + getAuth().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -599,6 +656,7 @@ public final class Tx {
           getEvidenceFieldBuilder();
           getValidatorFieldBuilder();
           getAbciFieldBuilder();
+          getAuthFieldBuilder();
         }
       }
       @java.lang.Override
@@ -625,6 +683,11 @@ public final class Tx {
         if (abciBuilder_ != null) {
           abciBuilder_.dispose();
           abciBuilder_ = null;
+        }
+        auth_ = null;
+        if (authBuilder_ != null) {
+          authBuilder_.dispose();
+          authBuilder_ = null;
         }
         return this;
       }
@@ -686,6 +749,12 @@ public final class Tx {
               ? abci_
               : abciBuilder_.build();
           to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.auth_ = authBuilder_ == null
+              ? auth_
+              : authBuilder_.build();
+          to_bitField0_ |= 0x00000010;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -751,6 +820,9 @@ public final class Tx {
         if (other.hasAbci()) {
           mergeAbci(other.getAbci());
         }
+        if (other.hasAuth()) {
+          mergeAuth(other.getAuth());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -810,6 +882,13 @@ public final class Tx {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 42
+              case 50: {
+                input.readMessage(
+                    getAuthFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1474,6 +1553,127 @@ public final class Tx {
         }
         return abciBuilder_;
       }
+
+      private tendermint.types.Params.AuthorityParams auth_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          tendermint.types.Params.AuthorityParams, tendermint.types.Params.AuthorityParams.Builder, tendermint.types.Params.AuthorityParamsOrBuilder> authBuilder_;
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       * @return Whether the auth field is set.
+       */
+      public boolean hasAuth() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       * @return The auth.
+       */
+      public tendermint.types.Params.AuthorityParams getAuth() {
+        if (authBuilder_ == null) {
+          return auth_ == null ? tendermint.types.Params.AuthorityParams.getDefaultInstance() : auth_;
+        } else {
+          return authBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      public Builder setAuth(tendermint.types.Params.AuthorityParams value) {
+        if (authBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          auth_ = value;
+        } else {
+          authBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      public Builder setAuth(
+          tendermint.types.Params.AuthorityParams.Builder builderForValue) {
+        if (authBuilder_ == null) {
+          auth_ = builderForValue.build();
+        } else {
+          authBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      public Builder mergeAuth(tendermint.types.Params.AuthorityParams value) {
+        if (authBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0) &&
+            auth_ != null &&
+            auth_ != tendermint.types.Params.AuthorityParams.getDefaultInstance()) {
+            getAuthBuilder().mergeFrom(value);
+          } else {
+            auth_ = value;
+          }
+        } else {
+          authBuilder_.mergeFrom(value);
+        }
+        if (auth_ != null) {
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      public Builder clearAuth() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        auth_ = null;
+        if (authBuilder_ != null) {
+          authBuilder_.dispose();
+          authBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      public tendermint.types.Params.AuthorityParams.Builder getAuthBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getAuthFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      public tendermint.types.Params.AuthorityParamsOrBuilder getAuthOrBuilder() {
+        if (authBuilder_ != null) {
+          return authBuilder_.getMessageOrBuilder();
+        } else {
+          return auth_ == null ?
+              tendermint.types.Params.AuthorityParams.getDefaultInstance() : auth_;
+        }
+      }
+      /**
+       * <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          tendermint.types.Params.AuthorityParams, tendermint.types.Params.AuthorityParams.Builder, tendermint.types.Params.AuthorityParamsOrBuilder> 
+          getAuthFieldBuilder() {
+        if (authBuilder_ == null) {
+          authBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              tendermint.types.Params.AuthorityParams, tendermint.types.Params.AuthorityParams.Builder, tendermint.types.Params.AuthorityParamsOrBuilder>(
+                  getAuth(),
+                  getParentForChildren(),
+                  isClean());
+          auth_ = null;
+        }
+        return authBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1967,7 +2167,7 @@ public final class Tx {
       "\n\034cosmos/consensus/v1/tx.proto\022\023cosmos.c" +
       "onsensus.v1\032\021amino/amino.proto\032\031cosmos_p" +
       "roto/cosmos.proto\032\027cosmos/msg/v1/msg.pro" +
-      "to\032\035tendermint/types/params.proto\"\377\002\n\017Ms" +
+      "to\032\035tendermint/types/params.proto\"\313\003\n\017Ms" +
       "gUpdateParams\0226\n\tauthority\030\001 \001(\tB\030\322\264-\024co" +
       "smos.AddressStringR\tauthority\0223\n\005block\030\002" +
       " \001(\0132\035.tendermint.types.BlockParamsR\005blo" +
@@ -1976,13 +2176,15 @@ public final class Tx {
       "\001(\0132!.tendermint.types.ValidatorParamsR\t" +
       "validator\022E\n\004abci\030\005 \001(\0132\034.tendermint.typ" +
       "es.ABCIParamsB\023\332\264-\017cosmos-sdk 0.50R\004abci" +
-      ":9\202\347\260*\tauthority\212\347\260*&cosmos-sdk/x/consen" +
-      "sus/MsgUpdateParams\"\031\n\027MsgUpdateParamsRe" +
-      "sponse2\205\001\n\003Msg\022w\n\014UpdateParams\022$.cosmos." +
-      "consensus.v1.MsgUpdateParams\032,.cosmos.co" +
-      "nsensus.v1.MsgUpdateParamsResponse\"\023\312\264-\017" +
-      "cosmos-sdk 0.47\032\005\200\347\260*\001B0Z.github.com/cos" +
-      "mos/cosmos-sdk/x/consensus/typesb\006proto3"
+      "\022J\n\004auth\030\006 \001(\0132!.tendermint.types.Author" +
+      "ityParamsB\023\332\264-\017cosmos-sdk 0.54R\004auth:9\202\347" +
+      "\260*\tauthority\212\347\260*&cosmos-sdk/x/consensus/" +
+      "MsgUpdateParams\"\031\n\027MsgUpdateParamsRespon" +
+      "se2\205\001\n\003Msg\022w\n\014UpdateParams\022$.cosmos.cons" +
+      "ensus.v1.MsgUpdateParams\032,.cosmos.consen" +
+      "sus.v1.MsgUpdateParamsResponse\"\023\312\264-\017cosm" +
+      "os-sdk 0.47\032\005\200\347\260*\001B0Z.github.com/cosmos/" +
+      "cosmos-sdk/x/consensus/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1997,7 +2199,7 @@ public final class Tx {
     internal_static_cosmos_consensus_v1_MsgUpdateParams_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_consensus_v1_MsgUpdateParams_descriptor,
-        new java.lang.String[] { "Authority", "Block", "Evidence", "Validator", "Abci", });
+        new java.lang.String[] { "Authority", "Block", "Evidence", "Validator", "Abci", "Auth", });
     internal_static_cosmos_consensus_v1_MsgUpdateParamsResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_cosmos_consensus_v1_MsgUpdateParamsResponse_fieldAccessorTable = new

@@ -321,8 +321,8 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fosmosisibc_2eprot
     "abci.RequestQueryB\004\310\336\037\000R\010requests\"T\n\016Cos"
     "mosResponse\022B\n\tresponses\030\001 \003(\0132\036.tenderm"
     "int.abci.ResponseQueryB\004\310\336\037\000R\tresponsesB"
-    "+Z)github.com/burnt-labs/xion/x/feeabs/t"
-    "ypesb\006proto3"
+    ".Z,github.com/burnt-labs/xion/app/legacy"
+    "/feeabsb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2ffeeabs_2fv1beta1_2fosmosisibc_2eproto_deps[3] =
     {
@@ -334,7 +334,7 @@ static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2fosmosisibc_2
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2fosmosisibc_2eproto = {
     false,
     false,
-    1012,
+    1015,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fosmosisibc_2eproto,
     "xion/feeabs/v1beta1/osmosisibc.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2fosmosisibc_2eproto_once,

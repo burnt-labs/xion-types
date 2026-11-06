@@ -2779,6 +2779,12 @@ public final class Auth {
      * @return The sigVerifyCostSecp256k1.
      */
     long getSigVerifyCostSecp256K1();
+
+    /**
+     * <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+     * @return The sigVerifyCostMldsa65.
+     */
+    long getSigVerifyCostMldsa65();
   }
   /**
    * <pre>
@@ -2874,6 +2880,17 @@ public final class Auth {
       return sigVerifyCostSecp256K1_;
     }
 
+    public static final int SIG_VERIFY_COST_MLDSA65_FIELD_NUMBER = 6;
+    private long sigVerifyCostMldsa65_ = 0L;
+    /**
+     * <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+     * @return The sigVerifyCostMldsa65.
+     */
+    @java.lang.Override
+    public long getSigVerifyCostMldsa65() {
+      return sigVerifyCostMldsa65_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2902,6 +2919,9 @@ public final class Auth {
       }
       if (sigVerifyCostSecp256K1_ != 0L) {
         output.writeUInt64(5, sigVerifyCostSecp256K1_);
+      }
+      if (sigVerifyCostMldsa65_ != 0L) {
+        output.writeUInt64(6, sigVerifyCostMldsa65_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2932,6 +2952,10 @@ public final class Auth {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(5, sigVerifyCostSecp256K1_);
       }
+      if (sigVerifyCostMldsa65_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(6, sigVerifyCostMldsa65_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2957,6 +2981,8 @@ public final class Auth {
           != other.getSigVerifyCostEd25519()) return false;
       if (getSigVerifyCostSecp256K1()
           != other.getSigVerifyCostSecp256K1()) return false;
+      if (getSigVerifyCostMldsa65()
+          != other.getSigVerifyCostMldsa65()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2983,6 +3009,9 @@ public final class Auth {
       hash = (37 * hash) + SIG_VERIFY_COST_SECP256K1_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getSigVerifyCostSecp256K1());
+      hash = (37 * hash) + SIG_VERIFY_COST_MLDSA65_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getSigVerifyCostMldsa65());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3123,6 +3152,7 @@ public final class Auth {
         txSizeCostPerByte_ = 0L;
         sigVerifyCostEd25519_ = 0L;
         sigVerifyCostSecp256K1_ = 0L;
+        sigVerifyCostMldsa65_ = 0L;
         return this;
       }
 
@@ -3170,6 +3200,9 @@ public final class Auth {
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.sigVerifyCostSecp256K1_ = sigVerifyCostSecp256K1_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.sigVerifyCostMldsa65_ = sigVerifyCostMldsa65_;
         }
       }
 
@@ -3232,6 +3265,9 @@ public final class Auth {
         if (other.getSigVerifyCostSecp256K1() != 0L) {
           setSigVerifyCostSecp256K1(other.getSigVerifyCostSecp256K1());
         }
+        if (other.getSigVerifyCostMldsa65() != 0L) {
+          setSigVerifyCostMldsa65(other.getSigVerifyCostMldsa65());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -3283,6 +3319,11 @@ public final class Auth {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 40
+              case 48: {
+                sigVerifyCostMldsa65_ = input.readUInt64();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3459,6 +3500,38 @@ public final class Auth {
         onChanged();
         return this;
       }
+
+      private long sigVerifyCostMldsa65_ ;
+      /**
+       * <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+       * @return The sigVerifyCostMldsa65.
+       */
+      @java.lang.Override
+      public long getSigVerifyCostMldsa65() {
+        return sigVerifyCostMldsa65_;
+      }
+      /**
+       * <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+       * @param value The sigVerifyCostMldsa65 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSigVerifyCostMldsa65(long value) {
+
+        sigVerifyCostMldsa65_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSigVerifyCostMldsa65() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sigVerifyCostMldsa65_ = 0L;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3572,7 +3645,7 @@ public final class Auth {
       "\227\001\n\020ModuleCredential\022\037\n\013module_name\030\001 \001(" +
       "\tR\nmoduleName\022\'\n\017derivation_keys\030\002 \003(\014R\016" +
       "derivationKeys:9\322\264-\017cosmos-sdk 0.47\212\347\260*!" +
-      "cosmos-sdk/GroupAccountCredential\"\327\002\n\006Pa" +
+      "cosmos-sdk/GroupAccountCredential\"\250\003\n\006Pa" +
       "rams\022.\n\023max_memo_characters\030\001 \001(\004R\021maxMe" +
       "moCharacters\022 \n\014tx_sig_limit\030\002 \001(\004R\ntxSi" +
       "gLimit\0220\n\025tx_size_cost_per_byte\030\003 \001(\004R\021t" +
@@ -3580,9 +3653,11 @@ public final class Auth {
       "519\030\004 \001(\004B\030\342\336\037\024SigVerifyCostED25519R\024sig" +
       "VerifyCostEd25519\022U\n\031sig_verify_cost_sec" +
       "p256k1\030\005 \001(\004B\032\342\336\037\026SigVerifyCostSecp256k1" +
-      "R\026sigVerifyCostSecp256k1:!\350\240\037\001\212\347\260*\030cosmo" +
-      "s-sdk/x/auth/ParamsB+Z)github.com/cosmos" +
-      "/cosmos-sdk/x/auth/typesb\006proto3"
+      "R\026sigVerifyCostSecp256k1\022O\n\027sig_verify_c" +
+      "ost_mldsa65\030\006 \001(\004B\030\342\336\037\024SigVerifyCostMlDs" +
+      "a65R\024sigVerifyCostMldsa65:!\350\240\037\001\212\347\260*\030cosm" +
+      "os-sdk/x/auth/ParamsB+Z)github.com/cosmo" +
+      "s/cosmos-sdk/x/auth/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3615,7 +3690,7 @@ public final class Auth {
     internal_static_cosmos_auth_v1beta1_Params_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_auth_v1beta1_Params_descriptor,
-        new java.lang.String[] { "MaxMemoCharacters", "TxSigLimit", "TxSizeCostPerByte", "SigVerifyCostEd25519", "SigVerifyCostSecp256K1", });
+        new java.lang.String[] { "MaxMemoCharacters", "TxSigLimit", "TxSizeCostPerByte", "SigVerifyCostEd25519", "SigVerifyCostSecp256K1", "SigVerifyCostMldsa65", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(amino.Amino.fieldName);

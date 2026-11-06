@@ -61,6 +61,7 @@ typedef GPB_ENUM(MsgTransfer_FieldNumber) {
   MsgTransfer_FieldNumber_TimeoutTimestamp = 7,
   MsgTransfer_FieldNumber_Memo = 8,
   MsgTransfer_FieldNumber_Encoding = 9,
+  MsgTransfer_FieldNumber_UseAliasing = 10,
 };
 
 /**
@@ -108,6 +109,16 @@ GPB_FINAL @interface MsgTransfer : GPBMessage
 
 /** optional encoding */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *encoding;
+
+/**
+ * boolean flag to indicate if the transfer message
+ * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+ * In this case, the v1 channel identifiers function as aliases to the
+ * underlying client ids.
+ * This only needs to be set if the channel IDs
+ * are V1 channel identifiers.
+ **/
+@property(nonatomic, readwrite) BOOL useAliasing;
 
 @end
 

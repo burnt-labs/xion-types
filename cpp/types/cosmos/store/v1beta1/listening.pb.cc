@@ -132,8 +132,9 @@ const char descriptor_table_protodef_cosmos_2fstore_2fv1beta1_2flistening_2eprot
     "izeBlockR\024requestFinalizeBlock\022^\n\027respon"
     "se_finalize_block\030\010 \001(\0132&.tendermint.abc"
     "i.ResponseFinalizeBlockR\025responseFinaliz"
-    "eBlockJ\004\010\001\020\002J\004\010\002\020\003J\004\010\003\020\004J\004\010\004\020\005J\004\010\005\020\006B\032Z\030"
-    "cosmossdk.io/store/typesb\006proto3"
+    "eBlockJ\004\010\001\020\002J\004\010\002\020\003J\004\010\003\020\004J\004\010\004\020\005J\004\010\005\020\006B-Z+"
+    "github.com/cosmos/cosmos-sdk/store/v2/ty"
+    "pesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstore_2fv1beta1_2flistening_2eproto_deps[2] =
     {
@@ -144,7 +145,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fstore_2fv1beta1_2flistening_2
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fstore_2fv1beta1_2flistening_2eproto = {
     false,
     false,
-    592,
+    611,
     descriptor_table_protodef_cosmos_2fstore_2fv1beta1_2flistening_2eproto,
     "cosmos/store/v1beta1/listening.proto",
     &descriptor_table_cosmos_2fstore_2fv1beta1_2flistening_2eproto_once,

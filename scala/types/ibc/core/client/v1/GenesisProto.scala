@@ -31,7 +31,7 @@ object GenesisProto extends _root_.scalapb.GeneratedFileObject {
   2V5UgNrZXkSIAoFdmFsdWUYAiABKAxCCuI/BxIFdmFsdWVSBXZhbHVlOgSIoB8AIq4BChlJZGVudGlmaWVkR2VuZXNpc01ldGFkY
   XRhEioKCWNsaWVudF9pZBgBIAEoCUIN4j8KEghjbGllbnRJZFIIY2xpZW50SWQSZQoPY2xpZW50X21ldGFkYXRhGAIgAygLMiMua
   WJjLmNvcmUuY2xpZW50LnYxLkdlbmVzaXNNZXRhZGF0YUIX4j8QEg5jbGllbnRNZXRhZGF0YcjeHwBSDmNsaWVudE1ldGFkYXRhQ
-  jtaOWdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9jb3JlLzAyLWNsaWVudC90eXBlc2IGcHJvdG8z"""
+  jtaOWdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9jb3JlLzAyLWNsaWVudC90eXBlc2IGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

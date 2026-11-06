@@ -34,8 +34,8 @@ namespace Cosmos.Store.V1Beta1 {
             "bmFtZRgBIAEoCVIEbmFtZRJBCgljb21taXRfaWQYAiABKAsyHi5jb3Ntb3Mu",
             "c3RvcmUudjFiZXRhMS5Db21taXRJREIEyN4fAFIIY29tbWl0SWQiPgoIQ29t",
             "bWl0SUQSGAoHdmVyc2lvbhgBIAEoA1IHdmVyc2lvbhISCgRoYXNoGAIgASgM",
-            "UgRoYXNoOgSYoB8AQhpaGGNvc21vc3Nkay5pby9zdG9yZS90eXBlc2IGcHJv",
-            "dG8z"));
+            "UgRoYXNoOgSYoB8AQi1aK2dpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsv",
+            "c3RvcmUvdjIvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -72,6 +72,15 @@ struct Tendermint_Types_ConsensusParams: Sendable {
   /// Clears the value of `abci`. Subsequent reads from it will return its default value.
   mutating func clearAbci() {self._abci = nil}
 
+  var authority: Tendermint_Types_AuthorityParams {
+    get {return _authority ?? Tendermint_Types_AuthorityParams()}
+    set {_authority = newValue}
+  }
+  /// Returns true if `authority` has been explicitly set.
+  var hasAuthority: Bool {return self._authority != nil}
+  /// Clears the value of `authority`. Subsequent reads from it will return its default value.
+  mutating func clearAuthority() {self._authority = nil}
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -81,6 +90,7 @@ struct Tendermint_Types_ConsensusParams: Sendable {
   fileprivate var _validator: Tendermint_Types_ValidatorParams? = nil
   fileprivate var _version: Tendermint_Types_VersionParams? = nil
   fileprivate var _abci: Tendermint_Types_ABCIParams? = nil
+  fileprivate var _authority: Tendermint_Types_AuthorityParams? = nil
 }
 
 /// BlockParams contains limits on the block size.
@@ -206,6 +216,18 @@ struct Tendermint_Types_ABCIParams: Sendable {
   init() {}
 }
 
+struct Tendermint_Types_AuthorityParams: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var authority: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "tendermint.types"
@@ -218,6 +240,7 @@ extension Tendermint_Types_ConsensusParams: SwiftProtobuf.Message, SwiftProtobuf
     3: .same(proto: "validator"),
     4: .same(proto: "version"),
     5: .same(proto: "abci"),
+    6: .same(proto: "authority"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -231,6 +254,7 @@ extension Tendermint_Types_ConsensusParams: SwiftProtobuf.Message, SwiftProtobuf
       case 3: try { try decoder.decodeSingularMessageField(value: &self._validator) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._version) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._abci) }()
+      case 6: try { try decoder.decodeSingularMessageField(value: &self._authority) }()
       default: break
       }
     }
@@ -256,6 +280,9 @@ extension Tendermint_Types_ConsensusParams: SwiftProtobuf.Message, SwiftProtobuf
     try { if let v = self._abci {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
     } }()
+    try { if let v = self._authority {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -265,6 +292,7 @@ extension Tendermint_Types_ConsensusParams: SwiftProtobuf.Message, SwiftProtobuf
     if lhs._validator != rhs._validator {return false}
     if lhs._version != rhs._version {return false}
     if lhs._abci != rhs._abci {return false}
+    if lhs._authority != rhs._authority {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -485,6 +513,38 @@ extension Tendermint_Types_ABCIParams: SwiftProtobuf.Message, SwiftProtobuf._Mes
 
   static func ==(lhs: Tendermint_Types_ABCIParams, rhs: Tendermint_Types_ABCIParams) -> Bool {
     if lhs.voteExtensionsEnableHeight != rhs.voteExtensionsEnableHeight {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Tendermint_Types_AuthorityParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AuthorityParams"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "authority"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.authority) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.authority.isEmpty {
+      try visitor.visitSingularStringField(value: self.authority, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Tendermint_Types_AuthorityParams, rhs: Tendermint_Types_AuthorityParams) -> Bool {
+    if lhs.authority != rhs.authority {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

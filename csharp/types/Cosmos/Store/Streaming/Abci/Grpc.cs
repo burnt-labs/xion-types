@@ -41,8 +41,9 @@ namespace Cosmos.Store.Streaming.Abci {
             "b3JlLnN0cmVhbWluZy5hYmNpLkxpc3RlbkZpbmFsaXplQmxvY2tSZXNwb25z",
             "ZRJzCgxMaXN0ZW5Db21taXQSMC5jb3Ntb3Muc3RvcmUuc3RyZWFtaW5nLmFi",
             "Y2kuTGlzdGVuQ29tbWl0UmVxdWVzdBoxLmNvc21vcy5zdG9yZS5zdHJlYW1p",
-            "bmcuYWJjaS5MaXN0ZW5Db21taXRSZXNwb25zZUIjWiFjb3Ntb3NzZGsuaW8v",
-            "c3RvcmUvc3RyZWFtaW5nL2FiY2liBnByb3RvMw=="));
+            "bmcuYWJjaS5MaXN0ZW5Db21taXRSZXNwb25zZUI2WjRnaXRodWIuY29tL2Nv",
+            "c21vcy9jb3Ntb3Mtc2RrL3N0b3JlL3YyL3N0cmVhbWluZy9hYmNpYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Tendermint.Abci.TypesReflection.Descriptor, global::Cosmos.Store.V1Beta1.ListeningReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

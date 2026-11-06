@@ -34,6 +34,7 @@
 // Forward declarations of Objective-C classes that we can use as
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
+GPBObjCClassDeclaration(AccountAddress);
 GPBObjCClassDeclaration(GenesisState);
 GPBObjCClassDeclaration(Params);
 
@@ -68,10 +69,12 @@ static GPBFileDescription GenesisRoot_FileDescription = {
 
 @dynamic hasParams, params;
 @dynamic nextAccountId;
+@dynamic accountAddressesArray, accountAddressesArray_Count;
 
 typedef struct GenesisState__storage_ {
   uint32_t _has_storage_[1];
   Params *params;
+  NSMutableArray *accountAddressesArray;
   uint64_t nextAccountId;
 } GenesisState__storage_;
 
@@ -100,6 +103,15 @@ typedef struct GenesisState__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeUInt64,
       },
+      {
+        .name = "accountAddressesArray",
+        .dataTypeSpecific.clazz = GPBObjCClass(AccountAddress),
+        .number = GenesisState_FieldNumber_AccountAddressesArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GenesisState__storage_, accountAddressesArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:GPBObjCClass(GenesisState)
@@ -108,6 +120,74 @@ typedef struct GenesisState__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(GenesisState__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - AccountAddress
+
+@implementation AccountAddress
+
+@dynamic sender;
+@dynamic salt;
+@dynamic address;
+
+typedef struct AccountAddress__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *sender;
+  NSData *salt;
+  NSString *address;
+} AccountAddress__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "sender",
+        .dataTypeSpecific.clazz = Nil,
+        .number = AccountAddress_FieldNumber_Sender,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(AccountAddress__storage_, sender),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "salt",
+        .dataTypeSpecific.clazz = Nil,
+        .number = AccountAddress_FieldNumber_Salt,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(AccountAddress__storage_, salt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "address",
+        .dataTypeSpecific.clazz = Nil,
+        .number = AccountAddress_FieldNumber_Address,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(AccountAddress__storage_, address),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(AccountAddress)
+                                   messageName:@"AccountAddress"
+                               fileDescription:&GenesisRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(AccountAddress__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

@@ -108,7 +108,8 @@ public object MsgUpdateVKeyKt {
 
     /**
      * ```
-     * vkey_json is the new JSON representation of the verification key
+     * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+     * per proof_system).
      * ```
      *
      * `bytes vkey_bytes = 4 [json_name = "vkeyBytes"];`
@@ -122,13 +123,46 @@ public object MsgUpdateVKeyKt {
       }
     /**
      * ```
-     * vkey_json is the new JSON representation of the verification key
+     * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+     * per proof_system).
      * ```
      *
      * `bytes vkey_bytes = 4 [json_name = "vkeyBytes"];`
      */
     public fun clearVkeyBytes() {
       _builder.clearVkeyBytes()
+    }
+
+    /**
+     * ```
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * ```
+     *
+     * `.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];`
+     */
+    public var proofSystem: xion.zk.v1.ParamsOuterClass.ProofSystem
+      @JvmName("getProofSystem")
+      get() = _builder.getProofSystem()
+      @JvmName("setProofSystem")
+      set(value) {
+        _builder.setProofSystem(value)
+      }
+    public var proofSystemValue: kotlin.Int
+      @JvmName("getProofSystemValue")
+      get() = _builder.getProofSystemValue()
+      @JvmName("setProofSystemValue")
+      set(value) {
+        _builder.setProofSystemValue(value)
+      }
+    /**
+     * ```
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * ```
+     *
+     * `.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];`
+     */
+    public fun clearProofSystem() {
+      _builder.clearProofSystem()
     }
   }
 }

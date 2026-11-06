@@ -42,6 +42,7 @@ PROTOBUF_CONSTEXPR MsgAddVKey::MsgAddVKey(::_pbi::ConstantInitialized)
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.proof_system_)*/ 0,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct MsgAddVKeyDefaultTypeInternal {
@@ -89,6 +90,7 @@ PROTOBUF_CONSTEXPR MsgUpdateVKey::MsgUpdateVKey(::_pbi::ConstantInitialized)
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.proof_system_)*/ 0,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct MsgUpdateVKeyDefaultTypeInternal {
@@ -203,6 +205,7 @@ const ::uint32_t TableStruct_xion_2fzk_2fv1_2ftx_2eproto::offsets[] PROTOBUF_SEC
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgAddVKey, _impl_.name_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgAddVKey, _impl_.description_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgAddVKey, _impl_.vkey_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgAddVKey, _impl_.proof_system_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgAddVKeyResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -224,6 +227,7 @@ const ::uint32_t TableStruct_xion_2fzk_2fv1_2ftx_2eproto::offsets[] PROTOBUF_SEC
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgUpdateVKey, _impl_.name_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgUpdateVKey, _impl_.description_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgUpdateVKey, _impl_.vkey_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgUpdateVKey, _impl_.proof_system_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::MsgUpdateVKeyResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -275,13 +279,13 @@ const ::uint32_t TableStruct_xion_2fzk_2fv1_2ftx_2eproto::offsets[] PROTOBUF_SEC
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::xion::zk::v1::MsgAddVKey)},
-        {12, -1, -1, sizeof(::xion::zk::v1::MsgAddVKeyResponse)},
-        {21, -1, -1, sizeof(::xion::zk::v1::MsgUpdateVKey)},
-        {33, -1, -1, sizeof(::xion::zk::v1::MsgUpdateVKeyResponse)},
-        {41, -1, -1, sizeof(::xion::zk::v1::MsgRemoveVKey)},
-        {51, -1, -1, sizeof(::xion::zk::v1::MsgRemoveVKeyResponse)},
-        {59, 69, -1, sizeof(::xion::zk::v1::MsgUpdateParams)},
-        {71, -1, -1, sizeof(::xion::zk::v1::MsgUpdateParamsResponse)},
+        {13, -1, -1, sizeof(::xion::zk::v1::MsgAddVKeyResponse)},
+        {22, -1, -1, sizeof(::xion::zk::v1::MsgUpdateVKey)},
+        {35, -1, -1, sizeof(::xion::zk::v1::MsgUpdateVKeyResponse)},
+        {43, -1, -1, sizeof(::xion::zk::v1::MsgRemoveVKey)},
+        {53, -1, -1, sizeof(::xion::zk::v1::MsgRemoveVKeyResponse)},
+        {61, 71, -1, sizeof(::xion::zk::v1::MsgUpdateParams)},
+        {73, -1, -1, sizeof(::xion::zk::v1::MsgUpdateParamsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -298,17 +302,20 @@ const char descriptor_table_protodef_xion_2fzk_2fv1_2ftx_2eproto[] PROTOBUF_SECT
     "\n\023xion/zk/v1/tx.proto\022\nxion.zk.v1\032\027cosmo"
     "s/msg/v1/msg.proto\032\031cosmos_proto/cosmos."
     "proto\032\024gogoproto/gogo.proto\032\021amino/amino"
-    ".proto\032\027xion/zk/v1/params.proto\"\273\001\n\nMsgA"
+    ".proto\032\027xion/zk/v1/params.proto\"\367\001\n\nMsgA"
     "ddVKey\0226\n\tauthority\030\001 \001(\tB\030\322\264-\024cosmos.Ad"
     "dressStringR\tauthority\022\022\n\004name\030\002 \001(\tR\004na"
     "me\022 \n\013description\030\003 \001(\tR\013description\022\035\n\n"
-    "vkey_bytes\030\004 \001(\014R\tvkeyBytes: \202\347\260*\tauthor"
-    "ity\212\347\260*\rzk/MsgAddVKey\"$\n\022MsgAddVKeyRespo"
-    "nse\022\016\n\002id\030\001 \001(\004R\002id\"\301\001\n\rMsgUpdateVKey\0226\n"
-    "\tauthority\030\001 \001(\tB\030\322\264-\024cosmos.AddressStri"
-    "ngR\tauthority\022\022\n\004name\030\002 \001(\tR\004name\022 \n\013des"
-    "cription\030\003 \001(\tR\013description\022\035\n\nvkey_byte"
-    "s\030\004 \001(\014R\tvkeyBytes:#\202\347\260*\tauthority\212\347\260*\020z"
+    "vkey_bytes\030\004 \001(\014R\tvkeyBytes\022:\n\014proof_sys"
+    "tem\030\005 \001(\0162\027.xion.zk.v1.ProofSystemR\013proo"
+    "fSystem: \202\347\260*\tauthority\212\347\260*\rzk/MsgAddVKe"
+    "y\"$\n\022MsgAddVKeyResponse\022\016\n\002id\030\001 \001(\004R\002id\""
+    "\375\001\n\rMsgUpdateVKey\0226\n\tauthority\030\001 \001(\tB\030\322\264"
+    "-\024cosmos.AddressStringR\tauthority\022\022\n\004nam"
+    "e\030\002 \001(\tR\004name\022 \n\013description\030\003 \001(\tR\013desc"
+    "ription\022\035\n\nvkey_bytes\030\004 \001(\014R\tvkeyBytes\022:"
+    "\n\014proof_system\030\005 \001(\0162\027.xion.zk.v1.ProofS"
+    "ystemR\013proofSystem:#\202\347\260*\tauthority\212\347\260*\020z"
     "k/MsgUpdateVKey\"\027\n\025MsgUpdateVKeyResponse"
     "\"\200\001\n\rMsgRemoveVKey\0226\n\tauthority\030\001 \001(\tB\030\322"
     "\264-\024cosmos.AddressStringR\tauthority\022\022\n\004na"
@@ -341,7 +348,7 @@ static ::absl::once_flag descriptor_table_xion_2fzk_2fv1_2ftx_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_xion_2fzk_2fv1_2ftx_2eproto = {
     false,
     false,
-    1290,
+    1410,
     descriptor_table_protodef_xion_2fzk_2fv1_2ftx_2eproto,
     "xion/zk/v1/tx.proto",
     &descriptor_table_xion_2fzk_2fv1_2ftx_2eproto_once,
@@ -395,6 +402,7 @@ MsgAddVKey::MsgAddVKey(const MsgAddVKey& from) : ::google::protobuf::Message() {
       decltype(_impl_.name_){},
       decltype(_impl_.description_){},
       decltype(_impl_.vkey_bytes_){},
+      decltype(_impl_.proof_system_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -427,6 +435,7 @@ MsgAddVKey::MsgAddVKey(const MsgAddVKey& from) : ::google::protobuf::Message() {
   if (!from._internal_vkey_bytes().empty()) {
     _this->_impl_.vkey_bytes_.Set(from._internal_vkey_bytes(), _this->GetArenaForAllocation());
   }
+  _this->_impl_.proof_system_ = from._impl_.proof_system_;
 
   // @@protoc_insertion_point(copy_constructor:xion.zk.v1.MsgAddVKey)
 }
@@ -437,6 +446,7 @@ inline void MsgAddVKey::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.name_){},
       decltype(_impl_.description_){},
       decltype(_impl_.vkey_bytes_){},
+      decltype(_impl_.proof_system_){0},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.authority_.InitDefault();
@@ -482,6 +492,7 @@ PROTOBUF_NOINLINE void MsgAddVKey::Clear() {
   _impl_.name_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
   _impl_.vkey_bytes_.ClearToEmpty();
+  _impl_.proof_system_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -493,23 +504,21 @@ const char* MsgAddVKey::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 54, 2> MsgAddVKey::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 54, 2> MsgAddVKey::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_MsgAddVKey_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // bytes vkey_bytes = 4 [json_name = "vkeyBytes"];
-    {::_pbi::TcParser::FastBS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.vkey_bytes_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.authority_)}},
@@ -519,6 +528,14 @@ const ::_pbi::TcParseTable<2, 4, 0, 54, 2> MsgAddVKey::_table_ = {
     // string description = 3 [json_name = "description"];
     {::_pbi::TcParser::FastUS1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.description_)}},
+    // bytes vkey_bytes = 4 [json_name = "vkeyBytes"];
+    {::_pbi::TcParser::FastBS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.vkey_bytes_)}},
+    // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MsgAddVKey, _impl_.proof_system_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.proof_system_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -534,6 +551,9 @@ const ::_pbi::TcParseTable<2, 4, 0, 54, 2> MsgAddVKey::_table_ = {
     // bytes vkey_bytes = 4 [json_name = "vkeyBytes"];
     {PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.vkey_bytes_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+    {PROTOBUF_FIELD_OFFSET(MsgAddVKey, _impl_.proof_system_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }},
   // no aux_entries
   {{
@@ -582,6 +602,13 @@ const ::_pbi::TcParseTable<2, 4, 0, 54, 2> MsgAddVKey::_table_ = {
     target = stream->WriteBytesMaybeAliased(4, _s, target);
   }
 
+  // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+  if (this->_internal_proof_system() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        5, this->_internal_proof_system(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -623,6 +650,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 54, 2> MsgAddVKey::_table_ = {
                                     this->_internal_vkey_bytes());
   }
 
+  // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+  if (this->_internal_proof_system() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_proof_system());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -653,6 +686,9 @@ void MsgAddVKey::MergeImpl(::google::protobuf::Message& to_msg, const ::google::
   if (!from._internal_vkey_bytes().empty()) {
     _this->_internal_set_vkey_bytes(from._internal_vkey_bytes());
   }
+  if (from._internal_proof_system() != 0) {
+    _this->_internal_set_proof_system(from._internal_proof_system());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -680,6 +716,7 @@ void MsgAddVKey::InternalSwap(MsgAddVKey* other) {
                                        &other->_impl_.description_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vkey_bytes_, lhs_arena,
                                        &other->_impl_.vkey_bytes_, rhs_arena);
+  swap(_impl_.proof_system_, other->_impl_.proof_system_);
 }
 
 ::google::protobuf::Metadata MsgAddVKey::GetMetadata() const {
@@ -872,6 +909,7 @@ MsgUpdateVKey::MsgUpdateVKey(const MsgUpdateVKey& from) : ::google::protobuf::Me
       decltype(_impl_.name_){},
       decltype(_impl_.description_){},
       decltype(_impl_.vkey_bytes_){},
+      decltype(_impl_.proof_system_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -904,6 +942,7 @@ MsgUpdateVKey::MsgUpdateVKey(const MsgUpdateVKey& from) : ::google::protobuf::Me
   if (!from._internal_vkey_bytes().empty()) {
     _this->_impl_.vkey_bytes_.Set(from._internal_vkey_bytes(), _this->GetArenaForAllocation());
   }
+  _this->_impl_.proof_system_ = from._impl_.proof_system_;
 
   // @@protoc_insertion_point(copy_constructor:xion.zk.v1.MsgUpdateVKey)
 }
@@ -914,6 +953,7 @@ inline void MsgUpdateVKey::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.name_){},
       decltype(_impl_.description_){},
       decltype(_impl_.vkey_bytes_){},
+      decltype(_impl_.proof_system_){0},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.authority_.InitDefault();
@@ -959,6 +999,7 @@ PROTOBUF_NOINLINE void MsgUpdateVKey::Clear() {
   _impl_.name_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
   _impl_.vkey_bytes_.ClearToEmpty();
+  _impl_.proof_system_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -970,23 +1011,21 @@ const char* MsgUpdateVKey::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 57, 2> MsgUpdateVKey::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 57, 2> MsgUpdateVKey::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_MsgUpdateVKey_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // bytes vkey_bytes = 4 [json_name = "vkeyBytes"];
-    {::_pbi::TcParser::FastBS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.vkey_bytes_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.authority_)}},
@@ -996,6 +1035,14 @@ const ::_pbi::TcParseTable<2, 4, 0, 57, 2> MsgUpdateVKey::_table_ = {
     // string description = 3 [json_name = "description"];
     {::_pbi::TcParser::FastUS1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.description_)}},
+    // bytes vkey_bytes = 4 [json_name = "vkeyBytes"];
+    {::_pbi::TcParser::FastBS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.vkey_bytes_)}},
+    // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MsgUpdateVKey, _impl_.proof_system_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.proof_system_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1011,6 +1058,9 @@ const ::_pbi::TcParseTable<2, 4, 0, 57, 2> MsgUpdateVKey::_table_ = {
     // bytes vkey_bytes = 4 [json_name = "vkeyBytes"];
     {PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.vkey_bytes_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+    {PROTOBUF_FIELD_OFFSET(MsgUpdateVKey, _impl_.proof_system_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }},
   // no aux_entries
   {{
@@ -1059,6 +1109,13 @@ const ::_pbi::TcParseTable<2, 4, 0, 57, 2> MsgUpdateVKey::_table_ = {
     target = stream->WriteBytesMaybeAliased(4, _s, target);
   }
 
+  // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+  if (this->_internal_proof_system() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        5, this->_internal_proof_system(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1100,6 +1157,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 57, 2> MsgUpdateVKey::_table_ = {
                                     this->_internal_vkey_bytes());
   }
 
+  // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+  if (this->_internal_proof_system() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_proof_system());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1130,6 +1193,9 @@ void MsgUpdateVKey::MergeImpl(::google::protobuf::Message& to_msg, const ::googl
   if (!from._internal_vkey_bytes().empty()) {
     _this->_internal_set_vkey_bytes(from._internal_vkey_bytes());
   }
+  if (from._internal_proof_system() != 0) {
+    _this->_internal_set_proof_system(from._internal_proof_system());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1157,6 +1223,7 @@ void MsgUpdateVKey::InternalSwap(MsgUpdateVKey* other) {
                                        &other->_impl_.description_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vkey_bytes_, lhs_arena,
                                        &other->_impl_.vkey_bytes_, rhs_arena);
+  swap(_impl_.proof_system_, other->_impl_.proof_system_);
 }
 
 ::google::protobuf::Metadata MsgUpdateVKey::GetMetadata() const {

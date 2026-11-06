@@ -834,6 +834,7 @@ class Params final :
     kTxSizeCostPerByteFieldNumber = 3,
     kSigVerifyCostEd25519FieldNumber = 4,
     kSigVerifyCostSecp256K1FieldNumber = 5,
+    kSigVerifyCostMldsa65FieldNumber = 6,
   };
   // uint64 max_memo_characters = 1 [json_name = "maxMemoCharacters"];
   void clear_max_memo_characters() ;
@@ -885,12 +886,22 @@ class Params final :
   void _internal_set_sig_verify_cost_secp256k1(::uint64_t value);
 
   public:
+  // uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];
+  void clear_sig_verify_cost_mldsa65() ;
+  ::uint64_t sig_verify_cost_mldsa65() const;
+  void set_sig_verify_cost_mldsa65(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_sig_verify_cost_mldsa65() const;
+  void _internal_set_sig_verify_cost_mldsa65(::uint64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:cosmos.auth.v1beta1.Params)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 0, 0, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -900,6 +911,7 @@ class Params final :
     ::uint64_t tx_size_cost_per_byte_;
     ::uint64_t sig_verify_cost_ed25519_;
     ::uint64_t sig_verify_cost_secp256k1_;
+    ::uint64_t sig_verify_cost_mldsa65_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1620,6 +1632,28 @@ inline void Params::_internal_set_sig_verify_cost_secp256k1(::uint64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.sig_verify_cost_secp256k1_ = value;
+}
+
+// uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];
+inline void Params::clear_sig_verify_cost_mldsa65() {
+  _impl_.sig_verify_cost_mldsa65_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::sig_verify_cost_mldsa65() const {
+  // @@protoc_insertion_point(field_get:cosmos.auth.v1beta1.Params.sig_verify_cost_mldsa65)
+  return _internal_sig_verify_cost_mldsa65();
+}
+inline void Params::set_sig_verify_cost_mldsa65(::uint64_t value) {
+  _internal_set_sig_verify_cost_mldsa65(value);
+  // @@protoc_insertion_point(field_set:cosmos.auth.v1beta1.Params.sig_verify_cost_mldsa65)
+}
+inline ::uint64_t Params::_internal_sig_verify_cost_mldsa65() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.sig_verify_cost_mldsa65_;
+}
+inline void Params::_internal_set_sig_verify_cost_mldsa65(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sig_verify_cost_mldsa65_ = value;
 }
 
 #ifdef __GNUC__

@@ -32,6 +32,10 @@ public object QueryParamsResponseKt {
     internal fun _build(): abstractaccount.v1.QueryOuterClass.QueryParamsResponse = _builder.build()
 
     /**
+     * ```
+     * params holds the current module parameters.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      */
     public var params: abstractaccount.v1.ParamsOuterClass.Params
@@ -42,12 +46,20 @@ public object QueryParamsResponseKt {
         _builder.setParams(value)
       }
     /**
+     * ```
+     * params holds the current module parameters.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      */
     public fun clearParams() {
       _builder.clearParams()
     }
     /**
+     * ```
+     * params holds the current module parameters.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      * @return Whether the params field is set.
      */

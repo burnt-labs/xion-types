@@ -78,6 +78,116 @@ struct Xion_Zk_V1_ProofVerifyResponse: Sendable {
   init() {}
 }
 
+/// ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+/// proof verification.
+struct Xion_Zk_V1_ProofVerifyUltraHonkResponse: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// verified indicates whether the proof verification was successful.
+  var verified: Bool = false
+
+  /// vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+  /// were used for this verification.
+  ///
+  /// A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+  /// AddVKey is permissionless, and the key's owner may later UpdateVKey the
+  /// bytes under the same name and ID. A consumer that reviewed specific key
+  /// material therefore cannot establish, from `verified` alone, that this
+  /// verification used that material. Echoing the digest lets the consumer
+  /// compare against a pin it derived offline from the reviewed artifact, in the
+  /// same response that reports the verdict.
+  ///
+  /// Always populated on success, so a consumer may treat an absent value as a
+  /// server too old to enforce `expected_vkey_sha256` and fail closed.
+  var vkeySha256: Data = Data()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+/// proof verification.
+struct Xion_Zk_V1_ProofVerifyGnarkResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// verified indicates whether the proof verification was successful.
+  var verified: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+/// The verification key is resolved by vkey_name or vkey_id from the store (must
+/// be ultrahonk type). Proof and public_inputs are raw binary as produced by
+/// Barretenberg (e.g. bb prove).
+struct Xion_Zk_V1_QueryVerifyUltraHonkRequest: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+  var proof: Data = Data()
+
+  /// public_inputs is the raw public inputs binary: concatenated 32-byte
+  /// big-endian field elements, as produced by Barretenberg (e.g. bb
+  /// write_inputs or the same flow that generates the proof).
+  var publicInputs: Data = Data()
+
+  /// vkey_name is the unique name of the UltraHonk verification key
+  var vkeyName: String = String()
+
+  /// vkey_id is the numeric id of the UltraHonk verification key
+  var vkeyID: UInt64 = 0
+
+  /// expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+  /// verification key's stored bytes, or verification fails with
+  /// verified = false. Must be empty or exactly 32 bytes.
+  ///
+  /// This makes the key-identity check atomic with the verdict: the consumer
+  /// does not have to read the key back in a second query and hope nothing
+  /// changed in between. Empty preserves the prior behaviour exactly, so
+  /// existing callers are unaffected.
+  var expectedVkeySha256: Data = Data()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+/// The verification key is resolved by vkey_name or vkey_id from the store (must
+/// be groth16_gnark type). Proof and public_inputs are gnark native binary
+/// format.
+struct Xion_Zk_V1_QueryVerifyGnarkRequest: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+  var proof: Data = Data()
+
+  /// public_inputs is the raw public inputs binary: concatenated 32-byte
+  /// big-endian field elements (fr.Element serialization).
+  var publicInputs: Data = Data()
+
+  /// vkey_name is the unique name of the gnark verification key
+  var vkeyName: String = String()
+
+  /// vkey_id is the numeric id of the gnark verification key
+  var vkeyID: UInt64 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 /// VKey represents a verification key for ZK proof verification.
 struct Xion_Zk_V1_VKey: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -98,6 +208,9 @@ struct Xion_Zk_V1_VKey: @unchecked Sendable {
 
   /// authority is the uploader of the verification key.
   var authority: String = String()
+
+  /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+  var proofSystem: Xion_Zk_V1_ProofSystem = .unspecified
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -480,6 +593,182 @@ extension Xion_Zk_V1_ProofVerifyResponse: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
+extension Xion_Zk_V1_ProofVerifyUltraHonkResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ProofVerifyUltraHonkResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "verified"),
+    2: .standard(proto: "vkey_sha256"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.verified) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.vkeySha256) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.verified != false {
+      try visitor.visitSingularBoolField(value: self.verified, fieldNumber: 1)
+    }
+    if !self.vkeySha256.isEmpty {
+      try visitor.visitSingularBytesField(value: self.vkeySha256, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Xion_Zk_V1_ProofVerifyUltraHonkResponse, rhs: Xion_Zk_V1_ProofVerifyUltraHonkResponse) -> Bool {
+    if lhs.verified != rhs.verified {return false}
+    if lhs.vkeySha256 != rhs.vkeySha256 {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Xion_Zk_V1_ProofVerifyGnarkResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ProofVerifyGnarkResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "verified"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.verified) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.verified != false {
+      try visitor.visitSingularBoolField(value: self.verified, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Xion_Zk_V1_ProofVerifyGnarkResponse, rhs: Xion_Zk_V1_ProofVerifyGnarkResponse) -> Bool {
+    if lhs.verified != rhs.verified {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Xion_Zk_V1_QueryVerifyUltraHonkRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryVerifyUltraHonkRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "proof"),
+    2: .standard(proto: "public_inputs"),
+    3: .standard(proto: "vkey_name"),
+    4: .standard(proto: "vkey_id"),
+    5: .standard(proto: "expected_vkey_sha256"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.proof) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.publicInputs) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.vkeyName) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.vkeyID) }()
+      case 5: try { try decoder.decodeSingularBytesField(value: &self.expectedVkeySha256) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.proof.isEmpty {
+      try visitor.visitSingularBytesField(value: self.proof, fieldNumber: 1)
+    }
+    if !self.publicInputs.isEmpty {
+      try visitor.visitSingularBytesField(value: self.publicInputs, fieldNumber: 2)
+    }
+    if !self.vkeyName.isEmpty {
+      try visitor.visitSingularStringField(value: self.vkeyName, fieldNumber: 3)
+    }
+    if self.vkeyID != 0 {
+      try visitor.visitSingularUInt64Field(value: self.vkeyID, fieldNumber: 4)
+    }
+    if !self.expectedVkeySha256.isEmpty {
+      try visitor.visitSingularBytesField(value: self.expectedVkeySha256, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Xion_Zk_V1_QueryVerifyUltraHonkRequest, rhs: Xion_Zk_V1_QueryVerifyUltraHonkRequest) -> Bool {
+    if lhs.proof != rhs.proof {return false}
+    if lhs.publicInputs != rhs.publicInputs {return false}
+    if lhs.vkeyName != rhs.vkeyName {return false}
+    if lhs.vkeyID != rhs.vkeyID {return false}
+    if lhs.expectedVkeySha256 != rhs.expectedVkeySha256 {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Xion_Zk_V1_QueryVerifyGnarkRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryVerifyGnarkRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "proof"),
+    2: .standard(proto: "public_inputs"),
+    3: .standard(proto: "vkey_name"),
+    4: .standard(proto: "vkey_id"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.proof) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.publicInputs) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.vkeyName) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.vkeyID) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.proof.isEmpty {
+      try visitor.visitSingularBytesField(value: self.proof, fieldNumber: 1)
+    }
+    if !self.publicInputs.isEmpty {
+      try visitor.visitSingularBytesField(value: self.publicInputs, fieldNumber: 2)
+    }
+    if !self.vkeyName.isEmpty {
+      try visitor.visitSingularStringField(value: self.vkeyName, fieldNumber: 3)
+    }
+    if self.vkeyID != 0 {
+      try visitor.visitSingularUInt64Field(value: self.vkeyID, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Xion_Zk_V1_QueryVerifyGnarkRequest, rhs: Xion_Zk_V1_QueryVerifyGnarkRequest) -> Bool {
+    if lhs.proof != rhs.proof {return false}
+    if lhs.publicInputs != rhs.publicInputs {return false}
+    if lhs.vkeyName != rhs.vkeyName {return false}
+    if lhs.vkeyID != rhs.vkeyID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Xion_Zk_V1_VKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".VKey"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -488,6 +777,7 @@ extension Xion_Zk_V1_VKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     3: .same(proto: "description"),
     4: .standard(proto: "circuit_hash"),
     5: .same(proto: "authority"),
+    6: .standard(proto: "proof_system"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -501,6 +791,7 @@ extension Xion_Zk_V1_VKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
       case 3: try { try decoder.decodeSingularStringField(value: &self.description_p) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.circuitHash) }()
       case 5: try { try decoder.decodeSingularStringField(value: &self.authority) }()
+      case 6: try { try decoder.decodeSingularEnumField(value: &self.proofSystem) }()
       default: break
       }
     }
@@ -522,6 +813,9 @@ extension Xion_Zk_V1_VKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     if !self.authority.isEmpty {
       try visitor.visitSingularStringField(value: self.authority, fieldNumber: 5)
     }
+    if self.proofSystem != .unspecified {
+      try visitor.visitSingularEnumField(value: self.proofSystem, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -531,6 +825,7 @@ extension Xion_Zk_V1_VKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     if lhs.description_p != rhs.description_p {return false}
     if lhs.circuitHash != rhs.circuitHash {return false}
     if lhs.authority != rhs.authority {return false}
+    if lhs.proofSystem != rhs.proofSystem {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

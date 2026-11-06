@@ -277,96 +277,6 @@ void   ibc__core__client__v1__msg_upgrade_client_response__free_unpacked
   assert(message->base.descriptor == &ibc__core__client__v1__msg_upgrade_client_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   ibc__core__client__v1__msg_submit_misbehaviour__init
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviour         *message)
-{
-  static const Ibc__Core__Client__V1__MsgSubmitMisbehaviour init_value = IBC__CORE__CLIENT__V1__MSG_SUBMIT_MISBEHAVIOUR__INIT;
-  *message = init_value;
-}
-size_t ibc__core__client__v1__msg_submit_misbehaviour__get_packed_size
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *message)
-{
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t ibc__core__client__v1__msg_submit_misbehaviour__pack
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t ibc__core__client__v1__msg_submit_misbehaviour__pack_to_buffer
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Ibc__Core__Client__V1__MsgSubmitMisbehaviour *
-       ibc__core__client__v1__msg_submit_misbehaviour__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Ibc__Core__Client__V1__MsgSubmitMisbehaviour *)
-     protobuf_c_message_unpack (&ibc__core__client__v1__msg_submit_misbehaviour__descriptor,
-                                allocator, len, data);
-}
-void   ibc__core__client__v1__msg_submit_misbehaviour__free_unpacked
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviour *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
-void   ibc__core__client__v1__msg_submit_misbehaviour_response__init
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse         *message)
-{
-  static const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse init_value = IBC__CORE__CLIENT__V1__MSG_SUBMIT_MISBEHAVIOUR_RESPONSE__INIT;
-  *message = init_value;
-}
-size_t ibc__core__client__v1__msg_submit_misbehaviour_response__get_packed_size
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *message)
-{
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t ibc__core__client__v1__msg_submit_misbehaviour_response__pack
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t ibc__core__client__v1__msg_submit_misbehaviour_response__pack_to_buffer
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *
-       ibc__core__client__v1__msg_submit_misbehaviour_response__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *)
-     protobuf_c_message_unpack (&ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor,
-                                allocator, len, data);
-}
-void   ibc__core__client__v1__msg_submit_misbehaviour_response__free_unpacked
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
 void   ibc__core__client__v1__msg_recover_client__init
                      (Ibc__Core__Client__V1__MsgRecoverClient         *message)
 {
@@ -1032,88 +942,6 @@ const ProtobufCMessageDescriptor ibc__core__client__v1__msg_upgrade_client_respo
   (ProtobufCMessageInit) ibc__core__client__v1__msg_upgrade_client_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor ibc__core__client__v1__msg_submit_misbehaviour__field_descriptors[3] =
-{
-  {
-    "client_id",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Ibc__Core__Client__V1__MsgSubmitMisbehaviour, client_id),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "misbehaviour",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Ibc__Core__Client__V1__MsgSubmitMisbehaviour, misbehaviour),
-    &google__protobuf__any__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "signer",
-    3,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Ibc__Core__Client__V1__MsgSubmitMisbehaviour, signer),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned ibc__core__client__v1__msg_submit_misbehaviour__field_indices_by_name[] = {
-  0,   /* field[0] = client_id */
-  1,   /* field[1] = misbehaviour */
-  2,   /* field[2] = signer */
-};
-static const ProtobufCIntRange ibc__core__client__v1__msg_submit_misbehaviour__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor ibc__core__client__v1__msg_submit_misbehaviour__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "ibc.core.client.v1.MsgSubmitMisbehaviour",
-  "MsgSubmitMisbehaviour",
-  "Ibc__Core__Client__V1__MsgSubmitMisbehaviour",
-  "ibc.core.client.v1",
-  sizeof(Ibc__Core__Client__V1__MsgSubmitMisbehaviour),
-  3,
-  ibc__core__client__v1__msg_submit_misbehaviour__field_descriptors,
-  ibc__core__client__v1__msg_submit_misbehaviour__field_indices_by_name,
-  1,  ibc__core__client__v1__msg_submit_misbehaviour__number_ranges,
-  (ProtobufCMessageInit) ibc__core__client__v1__msg_submit_misbehaviour__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-#define ibc__core__client__v1__msg_submit_misbehaviour_response__field_descriptors NULL
-#define ibc__core__client__v1__msg_submit_misbehaviour_response__field_indices_by_name NULL
-#define ibc__core__client__v1__msg_submit_misbehaviour_response__number_ranges NULL
-const ProtobufCMessageDescriptor ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "ibc.core.client.v1.MsgSubmitMisbehaviourResponse",
-  "MsgSubmitMisbehaviourResponse",
-  "Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse",
-  "ibc.core.client.v1",
-  sizeof(Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse),
-  0,
-  ibc__core__client__v1__msg_submit_misbehaviour_response__field_descriptors,
-  ibc__core__client__v1__msg_submit_misbehaviour_response__field_indices_by_name,
-  0,  ibc__core__client__v1__msg_submit_misbehaviour_response__number_ranges,
-  (ProtobufCMessageInit) ibc__core__client__v1__msg_submit_misbehaviour_response__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
 static const ProtobufCFieldDescriptor ibc__core__client__v1__msg_recover_client__field_descriptors[3] =
 {
   {
@@ -1416,12 +1244,11 @@ const ProtobufCMessageDescriptor ibc__core__client__v1__msg_delete_client_creato
   (ProtobufCMessageInit) ibc__core__client__v1__msg_delete_client_creator_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor ibc__core__client__v1__msg__method_descriptors[8] =
+static const ProtobufCMethodDescriptor ibc__core__client__v1__msg__method_descriptors[7] =
 {
   { "CreateClient", &ibc__core__client__v1__msg_create_client__descriptor, &ibc__core__client__v1__msg_create_client_response__descriptor },
   { "UpdateClient", &ibc__core__client__v1__msg_update_client__descriptor, &ibc__core__client__v1__msg_update_client_response__descriptor },
   { "UpgradeClient", &ibc__core__client__v1__msg_upgrade_client__descriptor, &ibc__core__client__v1__msg_upgrade_client_response__descriptor },
-  { "SubmitMisbehaviour", &ibc__core__client__v1__msg_submit_misbehaviour__descriptor, &ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor },
   { "RecoverClient", &ibc__core__client__v1__msg_recover_client__descriptor, &ibc__core__client__v1__msg_recover_client_response__descriptor },
   { "IBCSoftwareUpgrade", &ibc__core__client__v1__msg_ibcsoftware_upgrade__descriptor, &ibc__core__client__v1__msg_ibcsoftware_upgrade_response__descriptor },
   { "UpdateClientParams", &ibc__core__client__v1__msg_update_params__descriptor, &ibc__core__client__v1__msg_update_params_response__descriptor },
@@ -1429,12 +1256,11 @@ static const ProtobufCMethodDescriptor ibc__core__client__v1__msg__method_descri
 };
 const unsigned ibc__core__client__v1__msg__method_indices_by_name[] = {
   0,        /* CreateClient */
-  7,        /* DeleteClientCreator */
-  5,        /* IBCSoftwareUpgrade */
-  4,        /* RecoverClient */
-  3,        /* SubmitMisbehaviour */
+  6,        /* DeleteClientCreator */
+  4,        /* IBCSoftwareUpgrade */
+  3,        /* RecoverClient */
   1,        /* UpdateClient */
-  6,        /* UpdateClientParams */
+  5,        /* UpdateClientParams */
   2         /* UpgradeClient */
 };
 const ProtobufCServiceDescriptor ibc__core__client__v1__msg__descriptor =
@@ -1444,7 +1270,7 @@ const ProtobufCServiceDescriptor ibc__core__client__v1__msg__descriptor =
   "Msg",
   "Ibc__Core__Client__V1__Msg",
   "ibc.core.client.v1",
-  8,
+  7,
   ibc__core__client__v1__msg__method_descriptors,
   ibc__core__client__v1__msg__method_indices_by_name
 };
@@ -1472,21 +1298,13 @@ void ibc__core__client__v1__msg__upgrade_client(ProtobufCService *service,
   assert(service->descriptor == &ibc__core__client__v1__msg__descriptor);
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
-void ibc__core__client__v1__msg__submit_misbehaviour(ProtobufCService *service,
-                                                     const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *input,
-                                                     Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse_Closure closure,
-                                                     void *closure_data)
-{
-  assert(service->descriptor == &ibc__core__client__v1__msg__descriptor);
-  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
-}
 void ibc__core__client__v1__msg__recover_client(ProtobufCService *service,
                                                 const Ibc__Core__Client__V1__MsgRecoverClient *input,
                                                 Ibc__Core__Client__V1__MsgRecoverClientResponse_Closure closure,
                                                 void *closure_data)
 {
   assert(service->descriptor == &ibc__core__client__v1__msg__descriptor);
-  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void ibc__core__client__v1__msg__ibcsoftware_upgrade(ProtobufCService *service,
                                                      const Ibc__Core__Client__V1__MsgIBCSoftwareUpgrade *input,
@@ -1494,7 +1312,7 @@ void ibc__core__client__v1__msg__ibcsoftware_upgrade(ProtobufCService *service,
                                                      void *closure_data)
 {
   assert(service->descriptor == &ibc__core__client__v1__msg__descriptor);
-  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void ibc__core__client__v1__msg__update_client_params(ProtobufCService *service,
                                                       const Ibc__Core__Client__V1__MsgUpdateParams *input,
@@ -1502,7 +1320,7 @@ void ibc__core__client__v1__msg__update_client_params(ProtobufCService *service,
                                                       void *closure_data)
 {
   assert(service->descriptor == &ibc__core__client__v1__msg__descriptor);
-  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void ibc__core__client__v1__msg__delete_client_creator(ProtobufCService *service,
                                                        const Ibc__Core__Client__V1__MsgDeleteClientCreator *input,
@@ -1510,7 +1328,7 @@ void ibc__core__client__v1__msg__delete_client_creator(ProtobufCService *service
                                                        void *closure_data)
 {
   assert(service->descriptor == &ibc__core__client__v1__msg__descriptor);
-  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void ibc__core__client__v1__msg__init (Ibc__Core__Client__V1__Msg_Service *service,
                                        Ibc__Core__Client__V1__Msg_ServiceDestroy destroy)

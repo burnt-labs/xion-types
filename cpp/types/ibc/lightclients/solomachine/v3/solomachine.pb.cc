@@ -383,7 +383,7 @@ const char descriptor_table_protodef_ibc_2flightclients_2fsolomachine_2fv3_2fsol
     "Data\0224\n\013new_pub_key\030\001 \001(\0132\024.google.proto"
     "buf.AnyR\tnewPubKey\022\'\n\017new_diversifier\030\002 "
     "\001(\tR\016newDiversifier:\004\210\240\037\000BOZMgithub.com/"
-    "cosmos/ibc-go/v10/modules/light-clients/"
+    "cosmos/ibc-go/v11/modules/light-clients/"
     "06-solomachine;solomachineb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2flightclients_2fsolomachine_2fv3_2fsolomachine_2eproto_deps[2] =

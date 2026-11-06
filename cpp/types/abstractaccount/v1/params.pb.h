@@ -203,9 +203,11 @@ class Params final :
 
   enum : int {
     kAllowedCodeIdsFieldNumber = 2,
+    kAddressDerivationHashFieldNumber = 8,
     kMaxGasBeforeFieldNumber = 3,
     kMaxGasAfterFieldNumber = 4,
     kAllowAllCodeIdsFieldNumber = 1,
+    kRegistrationEnabledFieldNumber = 7,
   };
   // repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];
   int allowed_code_ids_size() const;
@@ -223,6 +225,22 @@ class Params final :
   private:
   const ::google::protobuf::RepeatedField<::uint64_t>& _internal_allowed_code_ids() const;
   ::google::protobuf::RepeatedField<::uint64_t>* _internal_mutable_allowed_code_ids();
+
+  public:
+  // bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+  void clear_address_derivation_hash() ;
+  const std::string& address_derivation_hash() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address_derivation_hash(Arg_&& arg, Args_... args);
+  std::string* mutable_address_derivation_hash();
+  PROTOBUF_NODISCARD std::string* release_address_derivation_hash();
+  void set_allocated_address_derivation_hash(std::string* ptr);
+
+  private:
+  const std::string& _internal_address_derivation_hash() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address_derivation_hash(
+      const std::string& value);
+  std::string* _internal_mutable_address_derivation_hash();
 
   public:
   // uint64 max_gas_before = 3 [json_name = "maxGasBefore"];
@@ -255,21 +273,33 @@ class Params final :
   void _internal_set_allow_all_code_ids(bool value);
 
   public:
+  // bool registration_enabled = 7 [json_name = "registrationEnabled"];
+  void clear_registration_enabled() ;
+  bool registration_enabled() const;
+  void set_registration_enabled(bool value);
+
+  private:
+  bool _internal_registration_enabled() const;
+  void _internal_set_registration_enabled(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:abstractaccount.v1.Params)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 4, 0, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 0, 0, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::google::protobuf::RepeatedField<::uint64_t> allowed_code_ids_;
     mutable ::google::protobuf::internal::CachedSize _allowed_code_ids_cached_byte_size_;
+    ::google::protobuf::internal::ArenaStringPtr address_derivation_hash_;
     ::uint64_t max_gas_before_;
     ::uint64_t max_gas_after_;
     bool allow_all_code_ids_;
+    bool registration_enabled_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -399,6 +429,79 @@ inline void Params::_internal_set_max_gas_after(::uint64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.max_gas_after_ = value;
+}
+
+// bool registration_enabled = 7 [json_name = "registrationEnabled"];
+inline void Params::clear_registration_enabled() {
+  _impl_.registration_enabled_ = false;
+}
+inline bool Params::registration_enabled() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.Params.registration_enabled)
+  return _internal_registration_enabled();
+}
+inline void Params::set_registration_enabled(bool value) {
+  _internal_set_registration_enabled(value);
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.Params.registration_enabled)
+}
+inline bool Params::_internal_registration_enabled() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.registration_enabled_;
+}
+inline void Params::_internal_set_registration_enabled(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.registration_enabled_ = value;
+}
+
+// bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+inline void Params::clear_address_derivation_hash() {
+  _impl_.address_derivation_hash_.ClearToEmpty();
+}
+inline const std::string& Params::address_derivation_hash() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.Params.address_derivation_hash)
+  return _internal_address_derivation_hash();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Params::set_address_derivation_hash(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_derivation_hash_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.Params.address_derivation_hash)
+}
+inline std::string* Params::mutable_address_derivation_hash() {
+  std::string* _s = _internal_mutable_address_derivation_hash();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.Params.address_derivation_hash)
+  return _s;
+}
+inline const std::string& Params::_internal_address_derivation_hash() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.address_derivation_hash_.Get();
+}
+inline void Params::_internal_set_address_derivation_hash(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_derivation_hash_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Params::_internal_mutable_address_derivation_hash() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.address_derivation_hash_.Mutable( GetArenaForAllocation());
+}
+inline std::string* Params::release_address_derivation_hash() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.Params.address_derivation_hash)
+  return _impl_.address_derivation_hash_.Release();
+}
+inline void Params::set_allocated_address_derivation_hash(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.address_derivation_hash_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.address_derivation_hash_.IsDefault()) {
+          _impl_.address_derivation_hash_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.Params.address_derivation_hash)
 }
 
 #ifdef __GNUC__

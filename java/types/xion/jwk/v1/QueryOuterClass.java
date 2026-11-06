@@ -12383,6 +12383,3937 @@ public final class QueryOuterClass {
 
   }
 
+  public interface QueryVerifyJWSRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.jwk.v1.QueryVerifyJWSRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The aud.
+     */
+    java.lang.String getAud();
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The bytes for aud.
+     */
+    com.google.protobuf.ByteString
+        getAudBytes();
+
+    /**
+     * <pre>
+     * The JWS signature bytes in compact serialization format
+     * </pre>
+     *
+     * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+     * @return The sigBytes.
+     */
+    java.lang.String getSigBytes();
+    /**
+     * <pre>
+     * The JWS signature bytes in compact serialization format
+     * </pre>
+     *
+     * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+     * @return The bytes for sigBytes.
+     */
+    com.google.protobuf.ByteString
+        getSigBytesBytes();
+  }
+  /**
+   * <pre>
+   * QueryVerifyJWSRequest is the request type for verifying a JWS signature
+   * </pre>
+   *
+   * Protobuf type {@code xion.jwk.v1.QueryVerifyJWSRequest}
+   */
+  public static final class QueryVerifyJWSRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.jwk.v1.QueryVerifyJWSRequest)
+      QueryVerifyJWSRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueryVerifyJWSRequest.newBuilder() to construct.
+    private QueryVerifyJWSRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueryVerifyJWSRequest() {
+      aud_ = "";
+      sigBytes_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueryVerifyJWSRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.class, xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.Builder.class);
+    }
+
+    public static final int AUD_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object aud_ = "";
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The aud.
+     */
+    @java.lang.Override
+    public java.lang.String getAud() {
+      java.lang.Object ref = aud_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        aud_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The bytes for aud.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAudBytes() {
+      java.lang.Object ref = aud_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        aud_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SIG_BYTES_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sigBytes_ = "";
+    /**
+     * <pre>
+     * The JWS signature bytes in compact serialization format
+     * </pre>
+     *
+     * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+     * @return The sigBytes.
+     */
+    @java.lang.Override
+    public java.lang.String getSigBytes() {
+      java.lang.Object ref = sigBytes_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sigBytes_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The JWS signature bytes in compact serialization format
+     * </pre>
+     *
+     * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+     * @return The bytes for sigBytes.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSigBytesBytes() {
+      java.lang.Object ref = sigBytes_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sigBytes_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(aud_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, aud_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sigBytes_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sigBytes_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(aud_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, aud_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sigBytes_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sigBytes_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest)) {
+        return super.equals(obj);
+      }
+      xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest other = (xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest) obj;
+
+      if (!getAud()
+          .equals(other.getAud())) return false;
+      if (!getSigBytes()
+          .equals(other.getSigBytes())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + AUD_FIELD_NUMBER;
+      hash = (53 * hash) + getAud().hashCode();
+      hash = (37 * hash) + SIG_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + getSigBytes().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * QueryVerifyJWSRequest is the request type for verifying a JWS signature
+     * </pre>
+     *
+     * Protobuf type {@code xion.jwk.v1.QueryVerifyJWSRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.jwk.v1.QueryVerifyJWSRequest)
+        xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.class, xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.Builder.class);
+      }
+
+      // Construct using xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        aud_ = "";
+        sigBytes_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest getDefaultInstanceForType() {
+        return xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest build() {
+        xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest buildPartial() {
+        xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest result = new xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.aud_ = aud_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.sigBytes_ = sigBytes_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest) {
+          return mergeFrom((xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest other) {
+        if (other == xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest.getDefaultInstance()) return this;
+        if (!other.getAud().isEmpty()) {
+          aud_ = other.aud_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getSigBytes().isEmpty()) {
+          sigBytes_ = other.sigBytes_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                aud_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                sigBytes_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object aud_ = "";
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @return The aud.
+       */
+      public java.lang.String getAud() {
+        java.lang.Object ref = aud_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          aud_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @return The bytes for aud.
+       */
+      public com.google.protobuf.ByteString
+          getAudBytes() {
+        java.lang.Object ref = aud_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          aud_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @param value The aud to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAud(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        aud_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAud() {
+        aud_ = getDefaultInstance().getAud();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @param value The bytes for aud to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAudBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        aud_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sigBytes_ = "";
+      /**
+       * <pre>
+       * The JWS signature bytes in compact serialization format
+       * </pre>
+       *
+       * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+       * @return The sigBytes.
+       */
+      public java.lang.String getSigBytes() {
+        java.lang.Object ref = sigBytes_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sigBytes_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The JWS signature bytes in compact serialization format
+       * </pre>
+       *
+       * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+       * @return The bytes for sigBytes.
+       */
+      public com.google.protobuf.ByteString
+          getSigBytesBytes() {
+        java.lang.Object ref = sigBytes_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sigBytes_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The JWS signature bytes in compact serialization format
+       * </pre>
+       *
+       * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+       * @param value The sigBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSigBytes(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sigBytes_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The JWS signature bytes in compact serialization format
+       * </pre>
+       *
+       * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSigBytes() {
+        sigBytes_ = getDefaultInstance().getSigBytes();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The JWS signature bytes in compact serialization format
+       * </pre>
+       *
+       * <code>string sig_bytes = 2 [json_name = "sigBytes"];</code>
+       * @param value The bytes for sigBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSigBytesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sigBytes_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.jwk.v1.QueryVerifyJWSRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryVerifyJWSRequest)
+    private static final xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest();
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueryVerifyJWSRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QueryVerifyJWSRequest>() {
+      @java.lang.Override
+      public QueryVerifyJWSRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueryVerifyJWSRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryVerifyJWSRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueryVerifyJWSResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.jwk.v1.QueryVerifyJWSResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The verified payload bytes extracted from the JWS
+     * </pre>
+     *
+     * <code>bytes payload = 1 [json_name = "payload"];</code>
+     * @return The payload.
+     */
+    com.google.protobuf.ByteString getPayload();
+  }
+  /**
+   * <pre>
+   * QueryVerifyJWSResponse is the response type for verifying a JWS signature
+   * </pre>
+   *
+   * Protobuf type {@code xion.jwk.v1.QueryVerifyJWSResponse}
+   */
+  public static final class QueryVerifyJWSResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.jwk.v1.QueryVerifyJWSResponse)
+      QueryVerifyJWSResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueryVerifyJWSResponse.newBuilder() to construct.
+    private QueryVerifyJWSResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueryVerifyJWSResponse() {
+      payload_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueryVerifyJWSResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.class, xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.Builder.class);
+    }
+
+    public static final int PAYLOAD_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString payload_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * The verified payload bytes extracted from the JWS
+     * </pre>
+     *
+     * <code>bytes payload = 1 [json_name = "payload"];</code>
+     * @return The payload.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPayload() {
+      return payload_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!payload_.isEmpty()) {
+        output.writeBytes(1, payload_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!payload_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, payload_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse)) {
+        return super.equals(obj);
+      }
+      xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse other = (xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse) obj;
+
+      if (!getPayload()
+          .equals(other.getPayload())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PAYLOAD_FIELD_NUMBER;
+      hash = (53 * hash) + getPayload().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * QueryVerifyJWSResponse is the response type for verifying a JWS signature
+     * </pre>
+     *
+     * Protobuf type {@code xion.jwk.v1.QueryVerifyJWSResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.jwk.v1.QueryVerifyJWSResponse)
+        xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.class, xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.Builder.class);
+      }
+
+      // Construct using xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        payload_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryVerifyJWSResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse getDefaultInstanceForType() {
+        return xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse build() {
+        xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse buildPartial() {
+        xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse result = new xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.payload_ = payload_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse) {
+          return mergeFrom((xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse other) {
+        if (other == xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse.getDefaultInstance()) return this;
+        if (other.getPayload() != com.google.protobuf.ByteString.EMPTY) {
+          setPayload(other.getPayload());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                payload_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString payload_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * The verified payload bytes extracted from the JWS
+       * </pre>
+       *
+       * <code>bytes payload = 1 [json_name = "payload"];</code>
+       * @return The payload.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getPayload() {
+        return payload_;
+      }
+      /**
+       * <pre>
+       * The verified payload bytes extracted from the JWS
+       * </pre>
+       *
+       * <code>bytes payload = 1 [json_name = "payload"];</code>
+       * @param value The payload to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPayload(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        payload_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The verified payload bytes extracted from the JWS
+       * </pre>
+       *
+       * <code>bytes payload = 1 [json_name = "payload"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPayload() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        payload_ = getDefaultInstance().getPayload();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.jwk.v1.QueryVerifyJWSResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryVerifyJWSResponse)
+    private static final xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse();
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueryVerifyJWSResponse>
+        PARSER = new com.google.protobuf.AbstractParser<QueryVerifyJWSResponse>() {
+      @java.lang.Override
+      public QueryVerifyJWSResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueryVerifyJWSResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryVerifyJWSResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.QueryVerifyJWSResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueryDecodeJWTRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.jwk.v1.QueryDecodeJWTRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The aud.
+     */
+    java.lang.String getAud();
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The bytes for aud.
+     */
+    com.google.protobuf.ByteString
+        getAudBytes();
+
+    /**
+     * <pre>
+     * The subject
+     * </pre>
+     *
+     * <code>string sub = 2 [json_name = "sub"];</code>
+     * @return The sub.
+     */
+    java.lang.String getSub();
+    /**
+     * <pre>
+     * The subject
+     * </pre>
+     *
+     * <code>string sub = 2 [json_name = "sub"];</code>
+     * @return The bytes for sub.
+     */
+    com.google.protobuf.ByteString
+        getSubBytes();
+
+    /**
+     * <pre>
+     * The signature bytes (compact JWT)
+     * </pre>
+     *
+     * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+     * @return The sigBytes.
+     */
+    java.lang.String getSigBytes();
+    /**
+     * <pre>
+     * The signature bytes (compact JWT)
+     * </pre>
+     *
+     * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+     * @return The bytes for sigBytes.
+     */
+    com.google.protobuf.ByteString
+        getSigBytesBytes();
+  }
+  /**
+   * <pre>
+   * QueryDecodeJWTRequest is the request type for decoding a JWT
+   * </pre>
+   *
+   * Protobuf type {@code xion.jwk.v1.QueryDecodeJWTRequest}
+   */
+  public static final class QueryDecodeJWTRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.jwk.v1.QueryDecodeJWTRequest)
+      QueryDecodeJWTRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueryDecodeJWTRequest.newBuilder() to construct.
+    private QueryDecodeJWTRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueryDecodeJWTRequest() {
+      aud_ = "";
+      sub_ = "";
+      sigBytes_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueryDecodeJWTRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.class, xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.Builder.class);
+    }
+
+    public static final int AUD_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object aud_ = "";
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The aud.
+     */
+    @java.lang.Override
+    public java.lang.String getAud() {
+      java.lang.Object ref = aud_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        aud_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The audience identifier
+     * </pre>
+     *
+     * <code>string aud = 1 [json_name = "aud"];</code>
+     * @return The bytes for aud.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAudBytes() {
+      java.lang.Object ref = aud_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        aud_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUB_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sub_ = "";
+    /**
+     * <pre>
+     * The subject
+     * </pre>
+     *
+     * <code>string sub = 2 [json_name = "sub"];</code>
+     * @return The sub.
+     */
+    @java.lang.Override
+    public java.lang.String getSub() {
+      java.lang.Object ref = sub_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sub_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The subject
+     * </pre>
+     *
+     * <code>string sub = 2 [json_name = "sub"];</code>
+     * @return The bytes for sub.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSubBytes() {
+      java.lang.Object ref = sub_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sub_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SIG_BYTES_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sigBytes_ = "";
+    /**
+     * <pre>
+     * The signature bytes (compact JWT)
+     * </pre>
+     *
+     * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+     * @return The sigBytes.
+     */
+    @java.lang.Override
+    public java.lang.String getSigBytes() {
+      java.lang.Object ref = sigBytes_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sigBytes_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The signature bytes (compact JWT)
+     * </pre>
+     *
+     * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+     * @return The bytes for sigBytes.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSigBytesBytes() {
+      java.lang.Object ref = sigBytes_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sigBytes_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(aud_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, aud_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sub_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sub_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sigBytes_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sigBytes_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(aud_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, aud_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sub_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sub_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sigBytes_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sigBytes_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest)) {
+        return super.equals(obj);
+      }
+      xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest other = (xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest) obj;
+
+      if (!getAud()
+          .equals(other.getAud())) return false;
+      if (!getSub()
+          .equals(other.getSub())) return false;
+      if (!getSigBytes()
+          .equals(other.getSigBytes())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + AUD_FIELD_NUMBER;
+      hash = (53 * hash) + getAud().hashCode();
+      hash = (37 * hash) + SUB_FIELD_NUMBER;
+      hash = (53 * hash) + getSub().hashCode();
+      hash = (37 * hash) + SIG_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + getSigBytes().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * QueryDecodeJWTRequest is the request type for decoding a JWT
+     * </pre>
+     *
+     * Protobuf type {@code xion.jwk.v1.QueryDecodeJWTRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.jwk.v1.QueryDecodeJWTRequest)
+        xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.class, xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.Builder.class);
+      }
+
+      // Construct using xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        aud_ = "";
+        sub_ = "";
+        sigBytes_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest getDefaultInstanceForType() {
+        return xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest build() {
+        xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest buildPartial() {
+        xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest result = new xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.aud_ = aud_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.sub_ = sub_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.sigBytes_ = sigBytes_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest) {
+          return mergeFrom((xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest other) {
+        if (other == xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest.getDefaultInstance()) return this;
+        if (!other.getAud().isEmpty()) {
+          aud_ = other.aud_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getSub().isEmpty()) {
+          sub_ = other.sub_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getSigBytes().isEmpty()) {
+          sigBytes_ = other.sigBytes_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                aud_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                sub_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                sigBytes_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object aud_ = "";
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @return The aud.
+       */
+      public java.lang.String getAud() {
+        java.lang.Object ref = aud_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          aud_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @return The bytes for aud.
+       */
+      public com.google.protobuf.ByteString
+          getAudBytes() {
+        java.lang.Object ref = aud_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          aud_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @param value The aud to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAud(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        aud_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAud() {
+        aud_ = getDefaultInstance().getAud();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The audience identifier
+       * </pre>
+       *
+       * <code>string aud = 1 [json_name = "aud"];</code>
+       * @param value The bytes for aud to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAudBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        aud_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sub_ = "";
+      /**
+       * <pre>
+       * The subject
+       * </pre>
+       *
+       * <code>string sub = 2 [json_name = "sub"];</code>
+       * @return The sub.
+       */
+      public java.lang.String getSub() {
+        java.lang.Object ref = sub_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sub_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The subject
+       * </pre>
+       *
+       * <code>string sub = 2 [json_name = "sub"];</code>
+       * @return The bytes for sub.
+       */
+      public com.google.protobuf.ByteString
+          getSubBytes() {
+        java.lang.Object ref = sub_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sub_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The subject
+       * </pre>
+       *
+       * <code>string sub = 2 [json_name = "sub"];</code>
+       * @param value The sub to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSub(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sub_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The subject
+       * </pre>
+       *
+       * <code>string sub = 2 [json_name = "sub"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSub() {
+        sub_ = getDefaultInstance().getSub();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The subject
+       * </pre>
+       *
+       * <code>string sub = 2 [json_name = "sub"];</code>
+       * @param value The bytes for sub to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sub_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sigBytes_ = "";
+      /**
+       * <pre>
+       * The signature bytes (compact JWT)
+       * </pre>
+       *
+       * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+       * @return The sigBytes.
+       */
+      public java.lang.String getSigBytes() {
+        java.lang.Object ref = sigBytes_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sigBytes_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The signature bytes (compact JWT)
+       * </pre>
+       *
+       * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+       * @return The bytes for sigBytes.
+       */
+      public com.google.protobuf.ByteString
+          getSigBytesBytes() {
+        java.lang.Object ref = sigBytes_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sigBytes_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The signature bytes (compact JWT)
+       * </pre>
+       *
+       * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+       * @param value The sigBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSigBytes(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sigBytes_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The signature bytes (compact JWT)
+       * </pre>
+       *
+       * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSigBytes() {
+        sigBytes_ = getDefaultInstance().getSigBytes();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The signature bytes (compact JWT)
+       * </pre>
+       *
+       * <code>string sig_bytes = 3 [json_name = "sigBytes"];</code>
+       * @param value The bytes for sigBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSigBytesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sigBytes_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.jwk.v1.QueryDecodeJWTRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryDecodeJWTRequest)
+    private static final xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest();
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueryDecodeJWTRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QueryDecodeJWTRequest>() {
+      @java.lang.Override
+      public QueryDecodeJWTRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueryDecodeJWTRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryDecodeJWTRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JWTClaimOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.jwk.v1.JWTClaim)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The claim key
+     * </pre>
+     *
+     * <code>string key = 1 [json_name = "key"];</code>
+     * @return The key.
+     */
+    java.lang.String getKey();
+    /**
+     * <pre>
+     * The claim key
+     * </pre>
+     *
+     * <code>string key = 1 [json_name = "key"];</code>
+     * @return The bytes for key.
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
+    /**
+     * <pre>
+     * The claim value (stringified)
+     * </pre>
+     *
+     * <code>string value = 2 [json_name = "value"];</code>
+     * @return The value.
+     */
+    java.lang.String getValue();
+    /**
+     * <pre>
+     * The claim value (stringified)
+     * </pre>
+     *
+     * <code>string value = 2 [json_name = "value"];</code>
+     * @return The bytes for value.
+     */
+    com.google.protobuf.ByteString
+        getValueBytes();
+  }
+  /**
+   * <pre>
+   * JWTClaim represents a single JWT claim (standard or private)
+   * </pre>
+   *
+   * Protobuf type {@code xion.jwk.v1.JWTClaim}
+   */
+  public static final class JWTClaim extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.jwk.v1.JWTClaim)
+      JWTClaimOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JWTClaim.newBuilder() to construct.
+    private JWTClaim(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JWTClaim() {
+      key_ = "";
+      value_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JWTClaim();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_JWTClaim_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_JWTClaim_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.jwk.v1.QueryOuterClass.JWTClaim.class, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder.class);
+    }
+
+    public static final int KEY_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object key_ = "";
+    /**
+     * <pre>
+     * The claim key
+     * </pre>
+     *
+     * <code>string key = 1 [json_name = "key"];</code>
+     * @return The key.
+     */
+    @java.lang.Override
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The claim key
+     * </pre>
+     *
+     * <code>string key = 1 [json_name = "key"];</code>
+     * @return The bytes for key.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object value_ = "";
+    /**
+     * <pre>
+     * The claim value (stringified)
+     * </pre>
+     *
+     * <code>string value = 2 [json_name = "value"];</code>
+     * @return The value.
+     */
+    @java.lang.Override
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        value_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The claim value (stringified)
+     * </pre>
+     *
+     * <code>string value = 2 [json_name = "value"];</code>
+     * @return The bytes for value.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValueBytes() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        value_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.jwk.v1.QueryOuterClass.JWTClaim)) {
+        return super.equals(obj);
+      }
+      xion.jwk.v1.QueryOuterClass.JWTClaim other = (xion.jwk.v1.QueryOuterClass.JWTClaim) obj;
+
+      if (!getKey()
+          .equals(other.getKey())) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getValue().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.jwk.v1.QueryOuterClass.JWTClaim prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * JWTClaim represents a single JWT claim (standard or private)
+     * </pre>
+     *
+     * Protobuf type {@code xion.jwk.v1.JWTClaim}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.jwk.v1.JWTClaim)
+        xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_JWTClaim_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_JWTClaim_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.jwk.v1.QueryOuterClass.JWTClaim.class, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder.class);
+      }
+
+      // Construct using xion.jwk.v1.QueryOuterClass.JWTClaim.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        key_ = "";
+        value_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_JWTClaim_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.JWTClaim getDefaultInstanceForType() {
+        return xion.jwk.v1.QueryOuterClass.JWTClaim.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.JWTClaim build() {
+        xion.jwk.v1.QueryOuterClass.JWTClaim result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.JWTClaim buildPartial() {
+        xion.jwk.v1.QueryOuterClass.JWTClaim result = new xion.jwk.v1.QueryOuterClass.JWTClaim(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.jwk.v1.QueryOuterClass.JWTClaim result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.key_ = key_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.value_ = value_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.jwk.v1.QueryOuterClass.JWTClaim) {
+          return mergeFrom((xion.jwk.v1.QueryOuterClass.JWTClaim)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.jwk.v1.QueryOuterClass.JWTClaim other) {
+        if (other == xion.jwk.v1.QueryOuterClass.JWTClaim.getDefaultInstance()) return this;
+        if (!other.getKey().isEmpty()) {
+          key_ = other.key_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getValue().isEmpty()) {
+          value_ = other.value_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                key_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                value_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object key_ = "";
+      /**
+       * <pre>
+       * The claim key
+       * </pre>
+       *
+       * <code>string key = 1 [json_name = "key"];</code>
+       * @return The key.
+       */
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The claim key
+       * </pre>
+       *
+       * <code>string key = 1 [json_name = "key"];</code>
+       * @return The bytes for key.
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The claim key
+       * </pre>
+       *
+       * <code>string key = 1 [json_name = "key"];</code>
+       * @param value The key to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        key_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The claim key
+       * </pre>
+       *
+       * <code>string key = 1 [json_name = "key"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKey() {
+        key_ = getDefaultInstance().getKey();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The claim key
+       * </pre>
+       *
+       * <code>string key = 1 [json_name = "key"];</code>
+       * @param value The bytes for key to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        key_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object value_ = "";
+      /**
+       * <pre>
+       * The claim value (stringified)
+       * </pre>
+       *
+       * <code>string value = 2 [json_name = "value"];</code>
+       * @return The value.
+       */
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          value_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The claim value (stringified)
+       * </pre>
+       *
+       * <code>string value = 2 [json_name = "value"];</code>
+       * @return The bytes for value.
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The claim value (stringified)
+       * </pre>
+       *
+       * <code>string value = 2 [json_name = "value"];</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValue(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        value_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The claim value (stringified)
+       * </pre>
+       *
+       * <code>string value = 2 [json_name = "value"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValue() {
+        value_ = getDefaultInstance().getValue();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The claim value (stringified)
+       * </pre>
+       *
+       * <code>string value = 2 [json_name = "value"];</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        value_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.jwk.v1.JWTClaim)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.jwk.v1.JWTClaim)
+    private static final xion.jwk.v1.QueryOuterClass.JWTClaim DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.jwk.v1.QueryOuterClass.JWTClaim();
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.JWTClaim getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<JWTClaim>
+        PARSER = new com.google.protobuf.AbstractParser<JWTClaim>() {
+      @java.lang.Override
+      public JWTClaim parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<JWTClaim> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JWTClaim> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.JWTClaim getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueryDecodeJWTResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.jwk.v1.QueryDecodeJWTResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    java.util.List<xion.jwk.v1.QueryOuterClass.JWTClaim> 
+        getClaimsList();
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    xion.jwk.v1.QueryOuterClass.JWTClaim getClaims(int index);
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    int getClaimsCount();
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    java.util.List<? extends xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder> 
+        getClaimsOrBuilderList();
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder getClaimsOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * QueryDecodeJWTResponse is the response type for decoding a JWT
+   * </pre>
+   *
+   * Protobuf type {@code xion.jwk.v1.QueryDecodeJWTResponse}
+   */
+  public static final class QueryDecodeJWTResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.jwk.v1.QueryDecodeJWTResponse)
+      QueryDecodeJWTResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueryDecodeJWTResponse.newBuilder() to construct.
+    private QueryDecodeJWTResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueryDecodeJWTResponse() {
+      claims_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueryDecodeJWTResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.class, xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.Builder.class);
+    }
+
+    public static final int CLAIMS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<xion.jwk.v1.QueryOuterClass.JWTClaim> claims_;
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<xion.jwk.v1.QueryOuterClass.JWTClaim> getClaimsList() {
+      return claims_;
+    }
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder> 
+        getClaimsOrBuilderList() {
+      return claims_;
+    }
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    @java.lang.Override
+    public int getClaimsCount() {
+      return claims_.size();
+    }
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.JWTClaim getClaims(int index) {
+      return claims_.get(index);
+    }
+    /**
+     * <pre>
+     * All claims from the JWT (standard and private), sorted by key
+     * </pre>
+     *
+     * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+     */
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder getClaimsOrBuilder(
+        int index) {
+      return claims_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < claims_.size(); i++) {
+        output.writeMessage(1, claims_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < claims_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, claims_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse)) {
+        return super.equals(obj);
+      }
+      xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse other = (xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse) obj;
+
+      if (!getClaimsList()
+          .equals(other.getClaimsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getClaimsCount() > 0) {
+        hash = (37 * hash) + CLAIMS_FIELD_NUMBER;
+        hash = (53 * hash) + getClaimsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * QueryDecodeJWTResponse is the response type for decoding a JWT
+     * </pre>
+     *
+     * Protobuf type {@code xion.jwk.v1.QueryDecodeJWTResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.jwk.v1.QueryDecodeJWTResponse)
+        xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.class, xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.Builder.class);
+      }
+
+      // Construct using xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (claimsBuilder_ == null) {
+          claims_ = java.util.Collections.emptyList();
+        } else {
+          claims_ = null;
+          claimsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.jwk.v1.QueryOuterClass.internal_static_xion_jwk_v1_QueryDecodeJWTResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse getDefaultInstanceForType() {
+        return xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse build() {
+        xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse buildPartial() {
+        xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse result = new xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse result) {
+        if (claimsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            claims_ = java.util.Collections.unmodifiableList(claims_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.claims_ = claims_;
+        } else {
+          result.claims_ = claimsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse) {
+          return mergeFrom((xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse other) {
+        if (other == xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse.getDefaultInstance()) return this;
+        if (claimsBuilder_ == null) {
+          if (!other.claims_.isEmpty()) {
+            if (claims_.isEmpty()) {
+              claims_ = other.claims_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureClaimsIsMutable();
+              claims_.addAll(other.claims_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.claims_.isEmpty()) {
+            if (claimsBuilder_.isEmpty()) {
+              claimsBuilder_.dispose();
+              claimsBuilder_ = null;
+              claims_ = other.claims_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              claimsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getClaimsFieldBuilder() : null;
+            } else {
+              claimsBuilder_.addAllMessages(other.claims_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                xion.jwk.v1.QueryOuterClass.JWTClaim m =
+                    input.readMessage(
+                        xion.jwk.v1.QueryOuterClass.JWTClaim.parser(),
+                        extensionRegistry);
+                if (claimsBuilder_ == null) {
+                  ensureClaimsIsMutable();
+                  claims_.add(m);
+                } else {
+                  claimsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<xion.jwk.v1.QueryOuterClass.JWTClaim> claims_ =
+        java.util.Collections.emptyList();
+      private void ensureClaimsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          claims_ = new java.util.ArrayList<xion.jwk.v1.QueryOuterClass.JWTClaim>(claims_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          xion.jwk.v1.QueryOuterClass.JWTClaim, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder, xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder> claimsBuilder_;
+
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public java.util.List<xion.jwk.v1.QueryOuterClass.JWTClaim> getClaimsList() {
+        if (claimsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(claims_);
+        } else {
+          return claimsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public int getClaimsCount() {
+        if (claimsBuilder_ == null) {
+          return claims_.size();
+        } else {
+          return claimsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public xion.jwk.v1.QueryOuterClass.JWTClaim getClaims(int index) {
+        if (claimsBuilder_ == null) {
+          return claims_.get(index);
+        } else {
+          return claimsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder setClaims(
+          int index, xion.jwk.v1.QueryOuterClass.JWTClaim value) {
+        if (claimsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClaimsIsMutable();
+          claims_.set(index, value);
+          onChanged();
+        } else {
+          claimsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder setClaims(
+          int index, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder builderForValue) {
+        if (claimsBuilder_ == null) {
+          ensureClaimsIsMutable();
+          claims_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          claimsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder addClaims(xion.jwk.v1.QueryOuterClass.JWTClaim value) {
+        if (claimsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClaimsIsMutable();
+          claims_.add(value);
+          onChanged();
+        } else {
+          claimsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder addClaims(
+          int index, xion.jwk.v1.QueryOuterClass.JWTClaim value) {
+        if (claimsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClaimsIsMutable();
+          claims_.add(index, value);
+          onChanged();
+        } else {
+          claimsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder addClaims(
+          xion.jwk.v1.QueryOuterClass.JWTClaim.Builder builderForValue) {
+        if (claimsBuilder_ == null) {
+          ensureClaimsIsMutable();
+          claims_.add(builderForValue.build());
+          onChanged();
+        } else {
+          claimsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder addClaims(
+          int index, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder builderForValue) {
+        if (claimsBuilder_ == null) {
+          ensureClaimsIsMutable();
+          claims_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          claimsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder addAllClaims(
+          java.lang.Iterable<? extends xion.jwk.v1.QueryOuterClass.JWTClaim> values) {
+        if (claimsBuilder_ == null) {
+          ensureClaimsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, claims_);
+          onChanged();
+        } else {
+          claimsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder clearClaims() {
+        if (claimsBuilder_ == null) {
+          claims_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          claimsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public Builder removeClaims(int index) {
+        if (claimsBuilder_ == null) {
+          ensureClaimsIsMutable();
+          claims_.remove(index);
+          onChanged();
+        } else {
+          claimsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public xion.jwk.v1.QueryOuterClass.JWTClaim.Builder getClaimsBuilder(
+          int index) {
+        return getClaimsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder getClaimsOrBuilder(
+          int index) {
+        if (claimsBuilder_ == null) {
+          return claims_.get(index);  } else {
+          return claimsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public java.util.List<? extends xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder> 
+           getClaimsOrBuilderList() {
+        if (claimsBuilder_ != null) {
+          return claimsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(claims_);
+        }
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public xion.jwk.v1.QueryOuterClass.JWTClaim.Builder addClaimsBuilder() {
+        return getClaimsFieldBuilder().addBuilder(
+            xion.jwk.v1.QueryOuterClass.JWTClaim.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public xion.jwk.v1.QueryOuterClass.JWTClaim.Builder addClaimsBuilder(
+          int index) {
+        return getClaimsFieldBuilder().addBuilder(
+            index, xion.jwk.v1.QueryOuterClass.JWTClaim.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * All claims from the JWT (standard and private), sorted by key
+       * </pre>
+       *
+       * <code>repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];</code>
+       */
+      public java.util.List<xion.jwk.v1.QueryOuterClass.JWTClaim.Builder> 
+           getClaimsBuilderList() {
+        return getClaimsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          xion.jwk.v1.QueryOuterClass.JWTClaim, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder, xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder> 
+          getClaimsFieldBuilder() {
+        if (claimsBuilder_ == null) {
+          claimsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              xion.jwk.v1.QueryOuterClass.JWTClaim, xion.jwk.v1.QueryOuterClass.JWTClaim.Builder, xion.jwk.v1.QueryOuterClass.JWTClaimOrBuilder>(
+                  claims_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          claims_ = null;
+        }
+        return claimsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.jwk.v1.QueryDecodeJWTResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryDecodeJWTResponse)
+    private static final xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse();
+    }
+
+    public static xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueryDecodeJWTResponse>
+        PARSER = new com.google.protobuf.AbstractParser<QueryDecodeJWTResponse>() {
+      @java.lang.Override
+      public QueryDecodeJWTResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueryDecodeJWTResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryDecodeJWTResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.jwk.v1.QueryOuterClass.QueryDecodeJWTResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_xion_jwk_v1_QueryParamsRequest_descriptor;
   private static final 
@@ -12468,6 +16399,31 @@ public final class QueryOuterClass {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_xion_jwk_v1_QueryValidateJWTResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_jwk_v1_QueryVerifyJWSRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_jwk_v1_QueryVerifyJWSRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_jwk_v1_QueryVerifyJWSResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_jwk_v1_QueryVerifyJWSResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_jwk_v1_QueryDecodeJWTRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_jwk_v1_QueryDecodeJWTRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_jwk_v1_JWTClaim_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_jwk_v1_JWTClaim_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_jwk_v1_QueryDecodeJWTResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_jwk_v1_QueryDecodeJWTResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12516,24 +16472,39 @@ public final class QueryOuterClass {
       "\003key\022\024\n\005value\030\002 \001(\tR\005value\"\\\n\030QueryValid" +
       "ateJWTResponse\022@\n\016private_claims\030\001 \003(\0132\031" +
       ".xion.jwk.v1.PrivateClaimR\rprivateClaims" +
-      "2\374\004\n\005Query\022e\n\006Params\022\037.xion.jwk.v1.Query" +
-      "ParamsRequest\032 .xion.jwk.v1.QueryParamsR" +
-      "esponse\"\030\202\323\344\223\002\022\022\020/xion/jwk/params\022\211\001\n\rAu" +
-      "dienceClaim\022&.xion.jwk.v1.QueryAudienceC" +
-      "laimRequest\032\'.xion.jwk.v1.QueryAudienceC" +
-      "laimResponse\"\'\202\323\344\223\002!\022\037/xion/jwk/audience" +
-      "_claim/{hash}\022s\n\010Audience\022!.xion.jwk.v1." +
-      "QueryAudienceRequest\032\".xion.jwk.v1.Query" +
-      "AudienceResponse\" \202\323\344\223\002\032\022\030/xion/jwk/audi" +
-      "ence/{aud}\022v\n\013AudienceAll\022$.xion.jwk.v1." +
-      "QueryAudienceAllRequest\032%.xion.jwk.v1.Qu" +
-      "eryAudienceAllResponse\"\032\202\323\344\223\002\024\022\022/xion/jw" +
-      "k/audience\022\222\001\n\013ValidateJWT\022$.xion.jwk.v1" +
-      ".QueryValidateJWTRequest\032%.xion.jwk.v1.Q" +
-      "ueryValidateJWTResponse\"6\202\323\344\223\0020\022./xion/j" +
-      "wk/validate_jwt/{aud}/{sub}/{sig_bytes}B" +
-      "(Z&github.com/burnt-labs/xion/x/jwk/type" +
-      "sb\006proto3"
+      "\"F\n\025QueryVerifyJWSRequest\022\020\n\003aud\030\001 \001(\tR\003" +
+      "aud\022\033\n\tsig_bytes\030\002 \001(\tR\010sigBytes\"2\n\026Quer" +
+      "yVerifyJWSResponse\022\030\n\007payload\030\001 \001(\014R\007pay" +
+      "load\"X\n\025QueryDecodeJWTRequest\022\020\n\003aud\030\001 \001" +
+      "(\tR\003aud\022\020\n\003sub\030\002 \001(\tR\003sub\022\033\n\tsig_bytes\030\003" +
+      " \001(\tR\010sigBytes\"2\n\010JWTClaim\022\020\n\003key\030\001 \001(\tR" +
+      "\003key\022\024\n\005value\030\002 \001(\tR\005value\"G\n\026QueryDecod" +
+      "eJWTResponse\022-\n\006claims\030\001 \003(\0132\025.xion.jwk." +
+      "v1.JWTClaimR\006claims2\223\007\n\005Query\022e\n\006Params\022" +
+      "\037.xion.jwk.v1.QueryParamsRequest\032 .xion." +
+      "jwk.v1.QueryParamsResponse\"\030\202\323\344\223\002\022\022\020/xio" +
+      "n/jwk/params\022\211\001\n\rAudienceClaim\022&.xion.jw" +
+      "k.v1.QueryAudienceClaimRequest\032\'.xion.jw" +
+      "k.v1.QueryAudienceClaimResponse\"\'\202\323\344\223\002!\022" +
+      "\037/xion/jwk/audience_claim/{hash}\022s\n\010Audi" +
+      "ence\022!.xion.jwk.v1.QueryAudienceRequest\032" +
+      "\".xion.jwk.v1.QueryAudienceResponse\" \202\323\344" +
+      "\223\002\032\022\030/xion/jwk/audience/{aud}\022v\n\013Audienc" +
+      "eAll\022$.xion.jwk.v1.QueryAudienceAllReque" +
+      "st\032%.xion.jwk.v1.QueryAudienceAllRespons" +
+      "e\"\032\202\323\344\223\002\024\022\022/xion/jwk/audience\022\225\001\n\013Valida" +
+      "teJWT\022$.xion.jwk.v1.QueryValidateJWTRequ" +
+      "est\032%.xion.jwk.v1.QueryValidateJWTRespon" +
+      "se\"9\210\002\001\202\323\344\223\0020\022./xion/jwk/validate_jwt/{a" +
+      "ud}/{sub}/{sig_bytes}\022\204\001\n\tVerifyJWS\022\".xi" +
+      "on.jwk.v1.QueryVerifyJWSRequest\032#.xion.j" +
+      "wk.v1.QueryVerifyJWSResponse\".\202\323\344\223\002(\022&/x" +
+      "ion/jwk/verify_jws/{aud}/{sig_bytes}\022\212\001\n" +
+      "\tDecodeJWT\022\".xion.jwk.v1.QueryDecodeJWTR" +
+      "equest\032#.xion.jwk.v1.QueryDecodeJWTRespo" +
+      "nse\"4\202\323\344\223\002.\022,/xion/jwk/decode_jwt/{aud}/" +
+      "{sub}/{sig_bytes}B(Z&github.com/burnt-la" +
+      "bs/xion/x/jwk/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12646,6 +16617,36 @@ public final class QueryOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_jwk_v1_QueryValidateJWTResponse_descriptor,
         new java.lang.String[] { "PrivateClaims", });
+    internal_static_xion_jwk_v1_QueryVerifyJWSRequest_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_xion_jwk_v1_QueryVerifyJWSRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_jwk_v1_QueryVerifyJWSRequest_descriptor,
+        new java.lang.String[] { "Aud", "SigBytes", });
+    internal_static_xion_jwk_v1_QueryVerifyJWSResponse_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_xion_jwk_v1_QueryVerifyJWSResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_jwk_v1_QueryVerifyJWSResponse_descriptor,
+        new java.lang.String[] { "Payload", });
+    internal_static_xion_jwk_v1_QueryDecodeJWTRequest_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_xion_jwk_v1_QueryDecodeJWTRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_jwk_v1_QueryDecodeJWTRequest_descriptor,
+        new java.lang.String[] { "Aud", "Sub", "SigBytes", });
+    internal_static_xion_jwk_v1_JWTClaim_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_xion_jwk_v1_JWTClaim_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_jwk_v1_JWTClaim_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_xion_jwk_v1_QueryDecodeJWTResponse_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_xion_jwk_v1_QueryDecodeJWTResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_jwk_v1_QueryDecodeJWTResponse_descriptor,
+        new java.lang.String[] { "Claims", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.GoGoProtos.nullable);

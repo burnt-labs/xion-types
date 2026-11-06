@@ -209,6 +209,21 @@ public final class Tx {
      */
     com.google.protobuf.ByteString
         getEncodingBytes();
+
+    /**
+     * <pre>
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     * </pre>
+     *
+     * <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+     * @return The useAliasing.
+     */
+    boolean getUseAliasing();
   }
   /**
    * <pre>
@@ -639,6 +654,26 @@ public final class Tx {
       }
     }
 
+    public static final int USE_ALIASING_FIELD_NUMBER = 10;
+    private boolean useAliasing_ = false;
+    /**
+     * <pre>
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     * </pre>
+     *
+     * <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+     * @return The useAliasing.
+     */
+    @java.lang.Override
+    public boolean getUseAliasing() {
+      return useAliasing_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -680,6 +715,9 @@ public final class Tx {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(encoding_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, encoding_);
       }
+      if (useAliasing_ != false) {
+        output.writeBool(10, useAliasing_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -718,6 +756,10 @@ public final class Tx {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(encoding_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, encoding_);
+      }
+      if (useAliasing_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, useAliasing_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -758,6 +800,8 @@ public final class Tx {
           .equals(other.getMemo())) return false;
       if (!getEncoding()
           .equals(other.getEncoding())) return false;
+      if (getUseAliasing()
+          != other.getUseAliasing()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -792,6 +836,9 @@ public final class Tx {
       hash = (53 * hash) + getMemo().hashCode();
       hash = (37 * hash) + ENCODING_FIELD_NUMBER;
       hash = (53 * hash) + getEncoding().hashCode();
+      hash = (37 * hash) + USE_ALIASING_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getUseAliasing());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -953,6 +1000,7 @@ public final class Tx {
         timeoutTimestamp_ = 0L;
         memo_ = "";
         encoding_ = "";
+        useAliasing_ = false;
         return this;
       }
 
@@ -1019,6 +1067,9 @@ public final class Tx {
         }
         if (((from_bitField0_ & 0x00000100) != 0)) {
           result.encoding_ = encoding_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.useAliasing_ = useAliasing_;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -1106,6 +1157,9 @@ public final class Tx {
           bitField0_ |= 0x00000100;
           onChanged();
         }
+        if (other.getUseAliasing() != false) {
+          setUseAliasing(other.getUseAliasing());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -1181,6 +1235,11 @@ public final class Tx {
                 bitField0_ |= 0x00000100;
                 break;
               } // case 74
+              case 80: {
+                useAliasing_ = input.readBool();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 80
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2128,6 +2187,65 @@ public final class Tx {
         checkByteStringIsUtf8(value);
         encoding_ = value;
         bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+
+      private boolean useAliasing_ ;
+      /**
+       * <pre>
+       * boolean flag to indicate if the transfer message
+       * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+       * In this case, the v1 channel identifiers function as aliases to the
+       * underlying client ids.
+       * This only needs to be set if the channel IDs
+       * are V1 channel identifiers.
+       * </pre>
+       *
+       * <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+       * @return The useAliasing.
+       */
+      @java.lang.Override
+      public boolean getUseAliasing() {
+        return useAliasing_;
+      }
+      /**
+       * <pre>
+       * boolean flag to indicate if the transfer message
+       * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+       * In this case, the v1 channel identifiers function as aliases to the
+       * underlying client ids.
+       * This only needs to be set if the channel IDs
+       * are V1 channel identifiers.
+       * </pre>
+       *
+       * <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+       * @param value The useAliasing to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUseAliasing(boolean value) {
+
+        useAliasing_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * boolean flag to indicate if the transfer message
+       * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+       * In this case, the v1 channel identifiers function as aliases to the
+       * underlying client ids.
+       * This only needs to be set if the channel IDs
+       * are V1 channel identifiers.
+       * </pre>
+       *
+       * <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUseAliasing() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        useAliasing_ = false;
         onChanged();
         return this;
       }
@@ -4036,7 +4154,7 @@ public final class Tx {
       "sg/v1/msg.proto\032\036cosmos/base/v1beta1/coi" +
       "n.proto\032\037ibc/core/client/v1/client.proto" +
       "\032+ibc/applications/transfer/v1/transfer." +
-      "proto\"\234\003\n\013MsgTransfer\022\037\n\013source_port\030\001 \001" +
+      "proto\"\306\003\n\013MsgTransfer\022\037\n\013source_port\030\001 \001" +
       "(\tR\nsourcePort\022%\n\016source_channel\030\002 \001(\tR\r" +
       "sourceChannel\022:\n\005token\030\003 \001(\0132\031.cosmos.ba" +
       "se.v1beta1.CoinB\t\310\336\037\000\250\347\260*\001R\005token\022\026\n\006sen" +
@@ -4045,21 +4163,22 @@ public final class Tx {
       ".client.v1.HeightB\t\310\336\037\000\250\347\260*\001R\rtimeoutHei" +
       "ght\022+\n\021timeout_timestamp\030\007 \001(\004R\020timeoutT" +
       "imestamp\022\022\n\004memo\030\010 \001(\tR\004memo\022\032\n\010encoding" +
-      "\030\t \001(\tR\010encoding:*\210\240\037\000\202\347\260*\006sender\212\347\260*\026co" +
-      "smos-sdk/MsgTransfer\"7\n\023MsgTransferRespo" +
-      "nse\022\032\n\010sequence\030\001 \001(\004R\010sequence:\004\210\240\037\000\"~\n" +
-      "\017MsgUpdateParams\022\026\n\006signer\030\001 \001(\tR\006signer" +
-      "\022B\n\006params\030\002 \001(\0132$.ibc.applications.tran" +
-      "sfer.v1.ParamsB\004\310\336\037\000R\006params:\017\210\240\037\000\202\347\260*\006s" +
-      "igner\"\031\n\027MsgUpdateParamsResponse2\354\001\n\003Msg" +
-      "\022h\n\010Transfer\022).ibc.applications.transfer" +
-      ".v1.MsgTransfer\0321.ibc.applications.trans" +
-      "fer.v1.MsgTransferResponse\022t\n\014UpdatePara" +
-      "ms\022-.ibc.applications.transfer.v1.MsgUpd" +
-      "ateParams\0325.ibc.applications.transfer.v1" +
-      ".MsgUpdateParamsResponse\032\005\200\347\260*\001B:Z8githu" +
-      "b.com/cosmos/ibc-go/v10/modules/apps/tra" +
-      "nsfer/typesb\006proto3"
+      "\030\t \001(\tR\010encoding\022(\n\014use_aliasing\030\n \001(\010B\005" +
+      "\250\347\260*\001R\013useAliasing:*\210\240\037\000\202\347\260*\006sender\212\347\260*\026" +
+      "cosmos-sdk/MsgTransfer\"7\n\023MsgTransferRes" +
+      "ponse\022\032\n\010sequence\030\001 \001(\004R\010sequence:\004\210\240\037\000\"" +
+      "~\n\017MsgUpdateParams\022\026\n\006signer\030\001 \001(\tR\006sign" +
+      "er\022B\n\006params\030\002 \001(\0132$.ibc.applications.tr" +
+      "ansfer.v1.ParamsB\004\310\336\037\000R\006params:\017\210\240\037\000\202\347\260*" +
+      "\006signer\"\031\n\027MsgUpdateParamsResponse2\354\001\n\003M" +
+      "sg\022h\n\010Transfer\022).ibc.applications.transf" +
+      "er.v1.MsgTransfer\0321.ibc.applications.tra" +
+      "nsfer.v1.MsgTransferResponse\022t\n\014UpdatePa" +
+      "rams\022-.ibc.applications.transfer.v1.MsgU" +
+      "pdateParams\0325.ibc.applications.transfer." +
+      "v1.MsgUpdateParamsResponse\032\005\200\347\260*\001B:Z8git" +
+      "hub.com/cosmos/ibc-go/v11/modules/apps/t" +
+      "ransfer/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4076,7 +4195,7 @@ public final class Tx {
     internal_static_ibc_applications_transfer_v1_MsgTransfer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ibc_applications_transfer_v1_MsgTransfer_descriptor,
-        new java.lang.String[] { "SourcePort", "SourceChannel", "Token", "Sender", "Receiver", "TimeoutHeight", "TimeoutTimestamp", "Memo", "Encoding", });
+        new java.lang.String[] { "SourcePort", "SourceChannel", "Token", "Sender", "Receiver", "TimeoutHeight", "TimeoutTimestamp", "Memo", "Encoding", "UseAliasing", });
     internal_static_ibc_applications_transfer_v1_MsgTransferResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ibc_applications_transfer_v1_MsgTransferResponse_fieldAccessorTable = new

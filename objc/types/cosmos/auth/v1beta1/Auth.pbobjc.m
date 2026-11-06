@@ -281,6 +281,7 @@ typedef struct ModuleCredential__storage_ {
 @dynamic txSizeCostPerByte;
 @dynamic sigVerifyCostEd25519;
 @dynamic sigVerifyCostSecp256K1;
+@dynamic sigVerifyCostMldsa65;
 
 typedef struct Params__storage_ {
   uint32_t _has_storage_[1];
@@ -289,6 +290,7 @@ typedef struct Params__storage_ {
   uint64_t txSizeCostPerByte;
   uint64_t sigVerifyCostEd25519;
   uint64_t sigVerifyCostSecp256K1;
+  uint64_t sigVerifyCostMldsa65;
 } Params__storage_;
 
 // This method is threadsafe because it is initially called
@@ -341,6 +343,15 @@ typedef struct Params__storage_ {
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(Params__storage_, sigVerifyCostSecp256K1),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "sigVerifyCostMldsa65",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Params_FieldNumber_SigVerifyCostMldsa65,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(Params__storage_, sigVerifyCostMldsa65),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeUInt64,
       },
     };

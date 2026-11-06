@@ -1275,7 +1275,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fchannel_2fv1_2fquery_2eproto[]
     "ryNextSequenceSendResponse\"U\202\323\344\223\002O\022M/ibc"
     "/core/channel/v1/channels/{channel_id}/p"
     "orts/{port_id}/next_sequence_sendB<Z:git"
-    "hub.com/cosmos/ibc-go/v10/modules/core/0"
+    "hub.com/cosmos/ibc-go/v11/modules/core/0"
     "4-channel/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fchannel_2fv1_2fquery_2eproto_deps[6] =

@@ -142,6 +142,186 @@ void   xion__zk__v1__proof_verify_response__free_unpacked
   assert(message->base.descriptor == &xion__zk__v1__proof_verify_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   xion__zk__v1__proof_verify_ultra_honk_response__init
+                     (Xion__Zk__V1__ProofVerifyUltraHonkResponse         *message)
+{
+  static const Xion__Zk__V1__ProofVerifyUltraHonkResponse init_value = XION__ZK__V1__PROOF_VERIFY_ULTRA_HONK_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__zk__v1__proof_verify_ultra_honk_response__get_packed_size
+                     (const Xion__Zk__V1__ProofVerifyUltraHonkResponse *message)
+{
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_ultra_honk_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__zk__v1__proof_verify_ultra_honk_response__pack
+                     (const Xion__Zk__V1__ProofVerifyUltraHonkResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_ultra_honk_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__zk__v1__proof_verify_ultra_honk_response__pack_to_buffer
+                     (const Xion__Zk__V1__ProofVerifyUltraHonkResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_ultra_honk_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Zk__V1__ProofVerifyUltraHonkResponse *
+       xion__zk__v1__proof_verify_ultra_honk_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Zk__V1__ProofVerifyUltraHonkResponse *)
+     protobuf_c_message_unpack (&xion__zk__v1__proof_verify_ultra_honk_response__descriptor,
+                                allocator, len, data);
+}
+void   xion__zk__v1__proof_verify_ultra_honk_response__free_unpacked
+                     (Xion__Zk__V1__ProofVerifyUltraHonkResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_ultra_honk_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__zk__v1__proof_verify_gnark_response__init
+                     (Xion__Zk__V1__ProofVerifyGnarkResponse         *message)
+{
+  static const Xion__Zk__V1__ProofVerifyGnarkResponse init_value = XION__ZK__V1__PROOF_VERIFY_GNARK_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__zk__v1__proof_verify_gnark_response__get_packed_size
+                     (const Xion__Zk__V1__ProofVerifyGnarkResponse *message)
+{
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_gnark_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__zk__v1__proof_verify_gnark_response__pack
+                     (const Xion__Zk__V1__ProofVerifyGnarkResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_gnark_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__zk__v1__proof_verify_gnark_response__pack_to_buffer
+                     (const Xion__Zk__V1__ProofVerifyGnarkResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_gnark_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Zk__V1__ProofVerifyGnarkResponse *
+       xion__zk__v1__proof_verify_gnark_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Zk__V1__ProofVerifyGnarkResponse *)
+     protobuf_c_message_unpack (&xion__zk__v1__proof_verify_gnark_response__descriptor,
+                                allocator, len, data);
+}
+void   xion__zk__v1__proof_verify_gnark_response__free_unpacked
+                     (Xion__Zk__V1__ProofVerifyGnarkResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__zk__v1__proof_verify_gnark_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__zk__v1__query_verify_ultra_honk_request__init
+                     (Xion__Zk__V1__QueryVerifyUltraHonkRequest         *message)
+{
+  static const Xion__Zk__V1__QueryVerifyUltraHonkRequest init_value = XION__ZK__V1__QUERY_VERIFY_ULTRA_HONK_REQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__zk__v1__query_verify_ultra_honk_request__get_packed_size
+                     (const Xion__Zk__V1__QueryVerifyUltraHonkRequest *message)
+{
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_ultra_honk_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__zk__v1__query_verify_ultra_honk_request__pack
+                     (const Xion__Zk__V1__QueryVerifyUltraHonkRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_ultra_honk_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__zk__v1__query_verify_ultra_honk_request__pack_to_buffer
+                     (const Xion__Zk__V1__QueryVerifyUltraHonkRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_ultra_honk_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Zk__V1__QueryVerifyUltraHonkRequest *
+       xion__zk__v1__query_verify_ultra_honk_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Zk__V1__QueryVerifyUltraHonkRequest *)
+     protobuf_c_message_unpack (&xion__zk__v1__query_verify_ultra_honk_request__descriptor,
+                                allocator, len, data);
+}
+void   xion__zk__v1__query_verify_ultra_honk_request__free_unpacked
+                     (Xion__Zk__V1__QueryVerifyUltraHonkRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_ultra_honk_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__zk__v1__query_verify_gnark_request__init
+                     (Xion__Zk__V1__QueryVerifyGnarkRequest         *message)
+{
+  static const Xion__Zk__V1__QueryVerifyGnarkRequest init_value = XION__ZK__V1__QUERY_VERIFY_GNARK_REQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__zk__v1__query_verify_gnark_request__get_packed_size
+                     (const Xion__Zk__V1__QueryVerifyGnarkRequest *message)
+{
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_gnark_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__zk__v1__query_verify_gnark_request__pack
+                     (const Xion__Zk__V1__QueryVerifyGnarkRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_gnark_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__zk__v1__query_verify_gnark_request__pack_to_buffer
+                     (const Xion__Zk__V1__QueryVerifyGnarkRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_gnark_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Zk__V1__QueryVerifyGnarkRequest *
+       xion__zk__v1__query_verify_gnark_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Zk__V1__QueryVerifyGnarkRequest *)
+     protobuf_c_message_unpack (&xion__zk__v1__query_verify_gnark_request__descriptor,
+                                allocator, len, data);
+}
+void   xion__zk__v1__query_verify_gnark_request__free_unpacked
+                     (Xion__Zk__V1__QueryVerifyGnarkRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__zk__v1__query_verify_gnark_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   xion__zk__v1__vkey__init
                      (Xion__Zk__V1__VKey         *message)
 {
@@ -951,7 +1131,263 @@ const ProtobufCMessageDescriptor xion__zk__v1__proof_verify_response__descriptor
   (ProtobufCMessageInit) xion__zk__v1__proof_verify_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor xion__zk__v1__vkey__field_descriptors[5] =
+static const ProtobufCFieldDescriptor xion__zk__v1__proof_verify_ultra_honk_response__field_descriptors[2] =
+{
+  {
+    "verified",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__ProofVerifyUltraHonkResponse, verified),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vkey_sha256",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__ProofVerifyUltraHonkResponse, vkey_sha256),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__zk__v1__proof_verify_ultra_honk_response__field_indices_by_name[] = {
+  0,   /* field[0] = verified */
+  1,   /* field[1] = vkey_sha256 */
+};
+static const ProtobufCIntRange xion__zk__v1__proof_verify_ultra_honk_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor xion__zk__v1__proof_verify_ultra_honk_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.zk.v1.ProofVerifyUltraHonkResponse",
+  "ProofVerifyUltraHonkResponse",
+  "Xion__Zk__V1__ProofVerifyUltraHonkResponse",
+  "xion.zk.v1",
+  sizeof(Xion__Zk__V1__ProofVerifyUltraHonkResponse),
+  2,
+  xion__zk__v1__proof_verify_ultra_honk_response__field_descriptors,
+  xion__zk__v1__proof_verify_ultra_honk_response__field_indices_by_name,
+  1,  xion__zk__v1__proof_verify_ultra_honk_response__number_ranges,
+  (ProtobufCMessageInit) xion__zk__v1__proof_verify_ultra_honk_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__zk__v1__proof_verify_gnark_response__field_descriptors[1] =
+{
+  {
+    "verified",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__ProofVerifyGnarkResponse, verified),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__zk__v1__proof_verify_gnark_response__field_indices_by_name[] = {
+  0,   /* field[0] = verified */
+};
+static const ProtobufCIntRange xion__zk__v1__proof_verify_gnark_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__zk__v1__proof_verify_gnark_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.zk.v1.ProofVerifyGnarkResponse",
+  "ProofVerifyGnarkResponse",
+  "Xion__Zk__V1__ProofVerifyGnarkResponse",
+  "xion.zk.v1",
+  sizeof(Xion__Zk__V1__ProofVerifyGnarkResponse),
+  1,
+  xion__zk__v1__proof_verify_gnark_response__field_descriptors,
+  xion__zk__v1__proof_verify_gnark_response__field_indices_by_name,
+  1,  xion__zk__v1__proof_verify_gnark_response__number_ranges,
+  (ProtobufCMessageInit) xion__zk__v1__proof_verify_gnark_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__zk__v1__query_verify_ultra_honk_request__field_descriptors[5] =
+{
+  {
+    "proof",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyUltraHonkRequest, proof),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "public_inputs",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyUltraHonkRequest, public_inputs),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vkey_name",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyUltraHonkRequest, vkey_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vkey_id",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyUltraHonkRequest, vkey_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "expected_vkey_sha256",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyUltraHonkRequest, expected_vkey_sha256),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__zk__v1__query_verify_ultra_honk_request__field_indices_by_name[] = {
+  4,   /* field[4] = expected_vkey_sha256 */
+  0,   /* field[0] = proof */
+  1,   /* field[1] = public_inputs */
+  3,   /* field[3] = vkey_id */
+  2,   /* field[2] = vkey_name */
+};
+static const ProtobufCIntRange xion__zk__v1__query_verify_ultra_honk_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor xion__zk__v1__query_verify_ultra_honk_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.zk.v1.QueryVerifyUltraHonkRequest",
+  "QueryVerifyUltraHonkRequest",
+  "Xion__Zk__V1__QueryVerifyUltraHonkRequest",
+  "xion.zk.v1",
+  sizeof(Xion__Zk__V1__QueryVerifyUltraHonkRequest),
+  5,
+  xion__zk__v1__query_verify_ultra_honk_request__field_descriptors,
+  xion__zk__v1__query_verify_ultra_honk_request__field_indices_by_name,
+  1,  xion__zk__v1__query_verify_ultra_honk_request__number_ranges,
+  (ProtobufCMessageInit) xion__zk__v1__query_verify_ultra_honk_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__zk__v1__query_verify_gnark_request__field_descriptors[4] =
+{
+  {
+    "proof",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyGnarkRequest, proof),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "public_inputs",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyGnarkRequest, public_inputs),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vkey_name",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyGnarkRequest, vkey_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vkey_id",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__QueryVerifyGnarkRequest, vkey_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__zk__v1__query_verify_gnark_request__field_indices_by_name[] = {
+  0,   /* field[0] = proof */
+  1,   /* field[1] = public_inputs */
+  3,   /* field[3] = vkey_id */
+  2,   /* field[2] = vkey_name */
+};
+static const ProtobufCIntRange xion__zk__v1__query_verify_gnark_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor xion__zk__v1__query_verify_gnark_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.zk.v1.QueryVerifyGnarkRequest",
+  "QueryVerifyGnarkRequest",
+  "Xion__Zk__V1__QueryVerifyGnarkRequest",
+  "xion.zk.v1",
+  sizeof(Xion__Zk__V1__QueryVerifyGnarkRequest),
+  4,
+  xion__zk__v1__query_verify_gnark_request__field_descriptors,
+  xion__zk__v1__query_verify_gnark_request__field_indices_by_name,
+  1,  xion__zk__v1__query_verify_gnark_request__number_ranges,
+  (ProtobufCMessageInit) xion__zk__v1__query_verify_gnark_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__zk__v1__vkey__field_descriptors[6] =
 {
   {
     "key_bytes",
@@ -1013,6 +1449,18 @@ static const ProtobufCFieldDescriptor xion__zk__v1__vkey__field_descriptors[5] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "proof_system",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__VKey, proof_system),
+    &xion__zk__v1__proof_system__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned xion__zk__v1__vkey__field_indices_by_name[] = {
   4,   /* field[4] = authority */
@@ -1020,11 +1468,12 @@ static const unsigned xion__zk__v1__vkey__field_indices_by_name[] = {
   2,   /* field[2] = description */
   0,   /* field[0] = key_bytes */
   1,   /* field[1] = name */
+  5,   /* field[5] = proof_system */
 };
 static const ProtobufCIntRange xion__zk__v1__vkey__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor xion__zk__v1__vkey__descriptor =
 {
@@ -1034,7 +1483,7 @@ const ProtobufCMessageDescriptor xion__zk__v1__vkey__descriptor =
   "Xion__Zk__V1__VKey",
   "xion.zk.v1",
   sizeof(Xion__Zk__V1__VKey),
-  5,
+  6,
   xion__zk__v1__vkey__field_descriptors,
   xion__zk__v1__vkey__field_indices_by_name,
   1,  xion__zk__v1__vkey__number_ranges,
@@ -1547,9 +1996,11 @@ const ProtobufCMessageDescriptor xion__zk__v1__query_params_response__descriptor
   (ProtobufCMessageInit) xion__zk__v1__query_params_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor xion__zk__v1__query__method_descriptors[7] =
+static const ProtobufCMethodDescriptor xion__zk__v1__query__method_descriptors[9] =
 {
   { "ProofVerify", &xion__zk__v1__query_verify_request__descriptor, &xion__zk__v1__proof_verify_response__descriptor },
+  { "ProofVerifyUltraHonk", &xion__zk__v1__query_verify_ultra_honk_request__descriptor, &xion__zk__v1__proof_verify_ultra_honk_response__descriptor },
+  { "ProofVerifyGnark", &xion__zk__v1__query_verify_gnark_request__descriptor, &xion__zk__v1__proof_verify_gnark_response__descriptor },
   { "VKey", &xion__zk__v1__query_vkey_request__descriptor, &xion__zk__v1__query_vkey_response__descriptor },
   { "VKeyByName", &xion__zk__v1__query_vkey_by_name_request__descriptor, &xion__zk__v1__query_vkey_by_name_response__descriptor },
   { "VKeys", &xion__zk__v1__query_vkeys_request__descriptor, &xion__zk__v1__query_vkeys_response__descriptor },
@@ -1558,13 +2009,15 @@ static const ProtobufCMethodDescriptor xion__zk__v1__query__method_descriptors[7
   { "Params", &xion__zk__v1__query_params_request__descriptor, &xion__zk__v1__query_params_response__descriptor },
 };
 const unsigned xion__zk__v1__query__method_indices_by_name[] = {
-  4,        /* HasVKey */
-  5,        /* NextVKeyID */
-  6,        /* Params */
+  6,        /* HasVKey */
+  7,        /* NextVKeyID */
+  8,        /* Params */
   0,        /* ProofVerify */
-  1,        /* VKey */
-  2,        /* VKeyByName */
-  3         /* VKeys */
+  2,        /* ProofVerifyGnark */
+  1,        /* ProofVerifyUltraHonk */
+  3,        /* VKey */
+  4,        /* VKeyByName */
+  5         /* VKeys */
 };
 const ProtobufCServiceDescriptor xion__zk__v1__query__descriptor =
 {
@@ -1573,7 +2026,7 @@ const ProtobufCServiceDescriptor xion__zk__v1__query__descriptor =
   "Query",
   "Xion__Zk__V1__Query",
   "xion.zk.v1",
-  7,
+  9,
   xion__zk__v1__query__method_descriptors,
   xion__zk__v1__query__method_indices_by_name
 };
@@ -1585,13 +2038,29 @@ void xion__zk__v1__query__proof_verify(ProtobufCService *service,
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
   service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
+void xion__zk__v1__query__proof_verify_ultra_honk(ProtobufCService *service,
+                                                  const Xion__Zk__V1__QueryVerifyUltraHonkRequest *input,
+                                                  Xion__Zk__V1__ProofVerifyUltraHonkResponse_Closure closure,
+                                                  void *closure_data)
+{
+  assert(service->descriptor == &xion__zk__v1__query__descriptor);
+  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void xion__zk__v1__query__proof_verify_gnark(ProtobufCService *service,
+                                             const Xion__Zk__V1__QueryVerifyGnarkRequest *input,
+                                             Xion__Zk__V1__ProofVerifyGnarkResponse_Closure closure,
+                                             void *closure_data)
+{
+  assert(service->descriptor == &xion__zk__v1__query__descriptor);
+  service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
 void xion__zk__v1__query__vkey(ProtobufCService *service,
                                const Xion__Zk__V1__QueryVKeyRequest *input,
                                Xion__Zk__V1__QueryVKeyResponse_Closure closure,
                                void *closure_data)
 {
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
-  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__zk__v1__query__vkey_by_name(ProtobufCService *service,
                                        const Xion__Zk__V1__QueryVKeyByNameRequest *input,
@@ -1599,7 +2068,7 @@ void xion__zk__v1__query__vkey_by_name(ProtobufCService *service,
                                        void *closure_data)
 {
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
-  service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__zk__v1__query__vkeys(ProtobufCService *service,
                                 const Xion__Zk__V1__QueryVKeysRequest *input,
@@ -1607,7 +2076,7 @@ void xion__zk__v1__query__vkeys(ProtobufCService *service,
                                 void *closure_data)
 {
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
-  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__zk__v1__query__has_vkey(ProtobufCService *service,
                                    const Xion__Zk__V1__QueryHasVKeyRequest *input,
@@ -1615,7 +2084,7 @@ void xion__zk__v1__query__has_vkey(ProtobufCService *service,
                                    void *closure_data)
 {
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
-  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__zk__v1__query__next_vkey_id(ProtobufCService *service,
                                        const Xion__Zk__V1__QueryNextVKeyIDRequest *input,
@@ -1623,7 +2092,7 @@ void xion__zk__v1__query__next_vkey_id(ProtobufCService *service,
                                        void *closure_data)
 {
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
-  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__zk__v1__query__params(ProtobufCService *service,
                                  const Xion__Zk__V1__QueryParamsRequest *input,
@@ -1631,7 +2100,7 @@ void xion__zk__v1__query__params(ProtobufCService *service,
                                  void *closure_data)
 {
   assert(service->descriptor == &xion__zk__v1__query__descriptor);
-  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 8, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__zk__v1__query__init (Xion__Zk__V1__Query_Service *service,
                                 Xion__Zk__V1__Query_ServiceDestroy destroy)

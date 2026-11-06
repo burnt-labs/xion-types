@@ -165,7 +165,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fchannel_2fv2_2fgenesis_2eproto
     "\030\003 \001(\014R\004data:\004\210\240\037\000\"I\n\016PacketSequence\022\033\n\t"
     "client_id\030\001 \001(\tR\010clientId\022\032\n\010sequence\030\002 "
     "\001(\004R\010sequenceB\?Z=github.com/cosmos/ibc-g"
-    "o/v10/modules/core/04-channel/v2/typesb\006"
+    "o/v11/modules/core/04-channel/v2/typesb\006"
     "proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fchannel_2fv2_2fgenesis_2eproto_deps[1] =

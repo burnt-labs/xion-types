@@ -27,8 +27,6 @@ typedef struct Ibc__Core__Client__V1__MsgUpdateClient Ibc__Core__Client__V1__Msg
 typedef struct Ibc__Core__Client__V1__MsgUpdateClientResponse Ibc__Core__Client__V1__MsgUpdateClientResponse;
 typedef struct Ibc__Core__Client__V1__MsgUpgradeClient Ibc__Core__Client__V1__MsgUpgradeClient;
 typedef struct Ibc__Core__Client__V1__MsgUpgradeClientResponse Ibc__Core__Client__V1__MsgUpgradeClientResponse;
-typedef struct Ibc__Core__Client__V1__MsgSubmitMisbehaviour Ibc__Core__Client__V1__MsgSubmitMisbehaviour;
-typedef struct Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse;
 typedef struct Ibc__Core__Client__V1__MsgRecoverClient Ibc__Core__Client__V1__MsgRecoverClient;
 typedef struct Ibc__Core__Client__V1__MsgRecoverClientResponse Ibc__Core__Client__V1__MsgRecoverClientResponse;
 typedef struct Ibc__Core__Client__V1__MsgIBCSoftwareUpgrade Ibc__Core__Client__V1__MsgIBCSoftwareUpgrade;
@@ -166,45 +164,6 @@ struct  Ibc__Core__Client__V1__MsgUpgradeClientResponse
 };
 #define IBC__CORE__CLIENT__V1__MSG_UPGRADE_CLIENT_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&ibc__core__client__v1__msg_upgrade_client_response__descriptor) \
- }
-
-
-/*
- * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
- * light client misbehaviour.
- * This message has been deprecated. Use MsgUpdateClient instead.
- */
-struct  Ibc__Core__Client__V1__MsgSubmitMisbehaviour
-{
-  ProtobufCMessage base;
-  /*
-   * client unique identifier
-   */
-  char *client_id;
-  /*
-   * misbehaviour used for freezing the light client
-   */
-  Google__Protobuf__Any *misbehaviour;
-  /*
-   * signer address
-   */
-  char *signer;
-};
-#define IBC__CORE__CLIENT__V1__MSG_SUBMIT_MISBEHAVIOUR__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&ibc__core__client__v1__msg_submit_misbehaviour__descriptor) \
-, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string }
-
-
-/*
- * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
- * type.
- */
-struct  Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse
-{
-  ProtobufCMessage base;
-};
-#define IBC__CORE__CLIENT__V1__MSG_SUBMIT_MISBEHAVIOUR_RESPONSE__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor) \
  }
 
 
@@ -464,44 +423,6 @@ Ibc__Core__Client__V1__MsgUpgradeClientResponse *
 void   ibc__core__client__v1__msg_upgrade_client_response__free_unpacked
                      (Ibc__Core__Client__V1__MsgUpgradeClientResponse *message,
                       ProtobufCAllocator *allocator);
-/* Ibc__Core__Client__V1__MsgSubmitMisbehaviour methods */
-void   ibc__core__client__v1__msg_submit_misbehaviour__init
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviour         *message);
-size_t ibc__core__client__v1__msg_submit_misbehaviour__get_packed_size
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour   *message);
-size_t ibc__core__client__v1__msg_submit_misbehaviour__pack
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour   *message,
-                      uint8_t             *out);
-size_t ibc__core__client__v1__msg_submit_misbehaviour__pack_to_buffer
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour   *message,
-                      ProtobufCBuffer     *buffer);
-Ibc__Core__Client__V1__MsgSubmitMisbehaviour *
-       ibc__core__client__v1__msg_submit_misbehaviour__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   ibc__core__client__v1__msg_submit_misbehaviour__free_unpacked
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviour *message,
-                      ProtobufCAllocator *allocator);
-/* Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse methods */
-void   ibc__core__client__v1__msg_submit_misbehaviour_response__init
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse         *message);
-size_t ibc__core__client__v1__msg_submit_misbehaviour_response__get_packed_size
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse   *message);
-size_t ibc__core__client__v1__msg_submit_misbehaviour_response__pack
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse   *message,
-                      uint8_t             *out);
-size_t ibc__core__client__v1__msg_submit_misbehaviour_response__pack_to_buffer
-                     (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse   *message,
-                      ProtobufCBuffer     *buffer);
-Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *
-       ibc__core__client__v1__msg_submit_misbehaviour_response__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   ibc__core__client__v1__msg_submit_misbehaviour_response__free_unpacked
-                     (Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *message,
-                      ProtobufCAllocator *allocator);
 /* Ibc__Core__Client__V1__MsgRecoverClient methods */
 void   ibc__core__client__v1__msg_recover_client__init
                      (Ibc__Core__Client__V1__MsgRecoverClient         *message);
@@ -674,12 +595,6 @@ typedef void (*Ibc__Core__Client__V1__MsgUpgradeClient_Closure)
 typedef void (*Ibc__Core__Client__V1__MsgUpgradeClientResponse_Closure)
                  (const Ibc__Core__Client__V1__MsgUpgradeClientResponse *message,
                   void *closure_data);
-typedef void (*Ibc__Core__Client__V1__MsgSubmitMisbehaviour_Closure)
-                 (const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *message,
-                  void *closure_data);
-typedef void (*Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse_Closure)
-                 (const Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse *message,
-                  void *closure_data);
 typedef void (*Ibc__Core__Client__V1__MsgRecoverClient_Closure)
                  (const Ibc__Core__Client__V1__MsgRecoverClient *message,
                   void *closure_data);
@@ -723,10 +638,6 @@ struct Ibc__Core__Client__V1__Msg_Service
                          const Ibc__Core__Client__V1__MsgUpgradeClient *input,
                          Ibc__Core__Client__V1__MsgUpgradeClientResponse_Closure closure,
                          void *closure_data);
-  void (*submit_misbehaviour)(Ibc__Core__Client__V1__Msg_Service *service,
-                              const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *input,
-                              Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse_Closure closure,
-                              void *closure_data);
   void (*recover_client)(Ibc__Core__Client__V1__Msg_Service *service,
                          const Ibc__Core__Client__V1__MsgRecoverClient *input,
                          Ibc__Core__Client__V1__MsgRecoverClientResponse_Closure closure,
@@ -754,7 +665,6 @@ void ibc__core__client__v1__msg__init (Ibc__Core__Client__V1__Msg_Service *servi
       function_prefix__ ## create_client,\
       function_prefix__ ## update_client,\
       function_prefix__ ## upgrade_client,\
-      function_prefix__ ## submit_misbehaviour,\
       function_prefix__ ## recover_client,\
       function_prefix__ ## ibcsoftware_upgrade,\
       function_prefix__ ## update_client_params,\
@@ -771,10 +681,6 @@ void ibc__core__client__v1__msg__upgrade_client(ProtobufCService *service,
                                                 const Ibc__Core__Client__V1__MsgUpgradeClient *input,
                                                 Ibc__Core__Client__V1__MsgUpgradeClientResponse_Closure closure,
                                                 void *closure_data);
-void ibc__core__client__v1__msg__submit_misbehaviour(ProtobufCService *service,
-                                                     const Ibc__Core__Client__V1__MsgSubmitMisbehaviour *input,
-                                                     Ibc__Core__Client__V1__MsgSubmitMisbehaviourResponse_Closure closure,
-                                                     void *closure_data);
 void ibc__core__client__v1__msg__recover_client(ProtobufCService *service,
                                                 const Ibc__Core__Client__V1__MsgRecoverClient *input,
                                                 Ibc__Core__Client__V1__MsgRecoverClientResponse_Closure closure,
@@ -800,8 +706,6 @@ extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_update_client
 extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_update_client_response__descriptor;
 extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_upgrade_client__descriptor;
 extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_upgrade_client_response__descriptor;
-extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_submit_misbehaviour__descriptor;
-extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_submit_misbehaviour_response__descriptor;
 extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_recover_client__descriptor;
 extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_recover_client_response__descriptor;
 extern const ProtobufCMessageDescriptor ibc__core__client__v1__msg_ibcsoftware_upgrade__descriptor;

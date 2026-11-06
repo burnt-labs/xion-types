@@ -343,6 +343,36 @@ GPB_FINAL @interface MsgUpdateParamsResponse : GPBMessage
 
 @end
 
+#pragma mark - MsgRotateConsPubKey
+
+typedef GPB_ENUM(MsgRotateConsPubKey_FieldNumber) {
+  MsgRotateConsPubKey_FieldNumber_ValidatorAddress = 1,
+  MsgRotateConsPubKey_FieldNumber_NewPubkey = 2,
+};
+
+/**
+ * MsgRotateConsPubKey is the Msg/RotateConsPubKey request type.
+ **/
+GPB_FINAL @interface MsgRotateConsPubKey : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *validatorAddress;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBAny *newPubkey NS_RETURNS_NOT_RETAINED;
+/** Test to see if @c newPubkey has been set. */
+@property(nonatomic, readwrite) BOOL hasNewPubkey;
+
+@end
+
+#pragma mark - MsgRotateConsPubKeyResponse
+
+/**
+ * MsgRotateConsPubKeyResponse defines the response structure for executing a
+ * MsgRotateConsPubKey message.
+ **/
+GPB_FINAL @interface MsgRotateConsPubKeyResponse : GPBMessage
+
+@end
+
 NS_ASSUME_NONNULL_END
 
 CF_EXTERN_C_END

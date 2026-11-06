@@ -75,7 +75,7 @@ object TxProto extends _root_.scalapb.GeneratedFileObject {
   WNrUmVzcG9uc2USgwEKFUNvbm5lY3Rpb25PcGVuQ29uZmlybRIwLmliYy5jb3JlLmNvbm5lY3Rpb24udjEuTXNnQ29ubmVjdGlvb
   k9wZW5Db25maXJtGjguaWJjLmNvcmUuY29ubmVjdGlvbi52MS5Nc2dDb25uZWN0aW9uT3BlbkNvbmZpcm1SZXNwb25zZRJyChZVc
   GRhdGVDb25uZWN0aW9uUGFyYW1zEicuaWJjLmNvcmUuY29ubmVjdGlvbi52MS5Nc2dVcGRhdGVQYXJhbXMaLy5pYmMuY29yZS5jb
-  25uZWN0aW9uLnYxLk1zZ1VwZGF0ZVBhcmFtc1Jlc3BvbnNlGgWA57AqAUI/Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL
+  25uZWN0aW9uLnYxLk1zZ1VwZGF0ZVBhcmFtc1Jlc3BvbnNlGgWA57AqAUI/Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL
   21vZHVsZXMvY29yZS8wMy1jb25uZWN0aW9uL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

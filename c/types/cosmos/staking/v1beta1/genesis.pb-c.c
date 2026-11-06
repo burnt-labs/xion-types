@@ -97,7 +97,97 @@ void   cosmos__staking__v1beta1__last_validator_power__free_unpacked
   assert(message->base.descriptor == &cosmos__staking__v1beta1__last_validator_power__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__genesis_state__field_descriptors[8] =
+void   cosmos__staking__v1beta1__consensus_key_rotation_history__init
+                     (Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory         *message)
+{
+  static const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory init_value = COSMOS__STAKING__V1BETA1__CONSENSUS_KEY_ROTATION_HISTORY__INIT;
+  *message = init_value;
+}
+size_t cosmos__staking__v1beta1__consensus_key_rotation_history__get_packed_size
+                     (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *message)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__staking__v1beta1__consensus_key_rotation_history__pack
+                     (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__staking__v1beta1__consensus_key_rotation_history__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *
+       cosmos__staking__v1beta1__consensus_key_rotation_history__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *)
+     protobuf_c_message_unpack (&cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__staking__v1beta1__consensus_key_rotation_history__free_unpacked
+                     (Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__staking__v1beta1__pending_consensus_key_rotation__init
+                     (Cosmos__Staking__V1beta1__PendingConsensusKeyRotation         *message)
+{
+  static const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation init_value = COSMOS__STAKING__V1BETA1__PENDING_CONSENSUS_KEY_ROTATION__INIT;
+  *message = init_value;
+}
+size_t cosmos__staking__v1beta1__pending_consensus_key_rotation__get_packed_size
+                     (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *message)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__staking__v1beta1__pending_consensus_key_rotation__pack
+                     (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__staking__v1beta1__pending_consensus_key_rotation__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *
+       cosmos__staking__v1beta1__pending_consensus_key_rotation__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *)
+     protobuf_c_message_unpack (&cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__staking__v1beta1__pending_consensus_key_rotation__free_unpacked
+                     (Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__genesis_state__field_descriptors[10] =
 {
   {
     "params",
@@ -195,13 +285,39 @@ static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__genesis_state__f
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "consensus_key_rotation_history",
+    9,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Staking__V1beta1__GenesisState, n_consensus_key_rotation_history),
+    offsetof(Cosmos__Staking__V1beta1__GenesisState, consensus_key_rotation_history),
+    &cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "pending_consensus_key_rotations",
+    10,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Cosmos__Staking__V1beta1__GenesisState, n_pending_consensus_key_rotations),
+    offsetof(Cosmos__Staking__V1beta1__GenesisState, pending_consensus_key_rotations),
+    &cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmos__staking__v1beta1__genesis_state__field_indices_by_name[] = {
+  8,   /* field[8] = consensus_key_rotation_history */
   4,   /* field[4] = delegations */
   7,   /* field[7] = exported */
   1,   /* field[1] = last_total_power */
   2,   /* field[2] = last_validator_powers */
   0,   /* field[0] = params */
+  9,   /* field[9] = pending_consensus_key_rotations */
   6,   /* field[6] = redelegations */
   5,   /* field[5] = unbonding_delegations */
   3,   /* field[3] = validators */
@@ -209,7 +325,7 @@ static const unsigned cosmos__staking__v1beta1__genesis_state__field_indices_by_
 static const ProtobufCIntRange cosmos__staking__v1beta1__genesis_state__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 8 }
+  { 0, 10 }
 };
 const ProtobufCMessageDescriptor cosmos__staking__v1beta1__genesis_state__descriptor =
 {
@@ -219,7 +335,7 @@ const ProtobufCMessageDescriptor cosmos__staking__v1beta1__genesis_state__descri
   "Cosmos__Staking__V1beta1__GenesisState",
   "cosmos.staking.v1beta1",
   sizeof(Cosmos__Staking__V1beta1__GenesisState),
-  8,
+  10,
   cosmos__staking__v1beta1__genesis_state__field_descriptors,
   cosmos__staking__v1beta1__genesis_state__field_indices_by_name,
   1,  cosmos__staking__v1beta1__genesis_state__number_ranges,
@@ -275,5 +391,159 @@ const ProtobufCMessageDescriptor cosmos__staking__v1beta1__last_validator_power_
   cosmos__staking__v1beta1__last_validator_power__field_indices_by_name,
   1,  cosmos__staking__v1beta1__last_validator_power__number_ranges,
   (ProtobufCMessageInit) cosmos__staking__v1beta1__last_validator_power__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__consensus_key_rotation_history__field_descriptors[5] =
+{
+  {
+    "validator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory, validator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "old_consensus_address",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory, old_consensus_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "maturity_time",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory, maturity_time),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "evidence_expiry_time",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory, evidence_expiry_time),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "evidence_expiry_height",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory, evidence_expiry_height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__staking__v1beta1__consensus_key_rotation_history__field_indices_by_name[] = {
+  4,   /* field[4] = evidence_expiry_height */
+  3,   /* field[3] = evidence_expiry_time */
+  2,   /* field[2] = maturity_time */
+  1,   /* field[1] = old_consensus_address */
+  0,   /* field[0] = validator_address */
+};
+static const ProtobufCIntRange cosmos__staking__v1beta1__consensus_key_rotation_history__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.staking.v1beta1.ConsensusKeyRotationHistory",
+  "ConsensusKeyRotationHistory",
+  "Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory",
+  "cosmos.staking.v1beta1",
+  sizeof(Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory),
+  5,
+  cosmos__staking__v1beta1__consensus_key_rotation_history__field_descriptors,
+  cosmos__staking__v1beta1__consensus_key_rotation_history__field_indices_by_name,
+  1,  cosmos__staking__v1beta1__consensus_key_rotation_history__number_ranges,
+  (ProtobufCMessageInit) cosmos__staking__v1beta1__consensus_key_rotation_history__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__pending_consensus_key_rotation__field_descriptors[3] =
+{
+  {
+    "validator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__PendingConsensusKeyRotation, validator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "new_pubkey",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__PendingConsensusKeyRotation, new_pubkey),
+    &google__protobuf__any__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "apply_height",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__PendingConsensusKeyRotation, apply_height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__staking__v1beta1__pending_consensus_key_rotation__field_indices_by_name[] = {
+  2,   /* field[2] = apply_height */
+  1,   /* field[1] = new_pubkey */
+  0,   /* field[0] = validator_address */
+};
+static const ProtobufCIntRange cosmos__staking__v1beta1__pending_consensus_key_rotation__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.staking.v1beta1.PendingConsensusKeyRotation",
+  "PendingConsensusKeyRotation",
+  "Cosmos__Staking__V1beta1__PendingConsensusKeyRotation",
+  "cosmos.staking.v1beta1",
+  sizeof(Cosmos__Staking__V1beta1__PendingConsensusKeyRotation),
+  3,
+  cosmos__staking__v1beta1__pending_consensus_key_rotation__field_descriptors,
+  cosmos__staking__v1beta1__pending_consensus_key_rotation__field_indices_by_name,
+  1,  cosmos__staking__v1beta1__pending_consensus_key_rotation__number_ranges,
+  (ProtobufCMessageInit) cosmos__staking__v1beta1__pending_consensus_key_rotation__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

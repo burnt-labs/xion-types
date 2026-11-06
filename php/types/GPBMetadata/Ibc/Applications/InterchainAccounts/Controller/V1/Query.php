@@ -30,7 +30,7 @@ class Query
 params (2:.ibc.applications.interchain_accounts.controller.v1.ParamsRparams2¸
 Queryö
 InterchainAccountQ.ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountRequestR.ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountResponse"^Ç”‰ìXV/ibc/apps/interchain_accounts/controller/v1/owners/{owner}/connections/{connection_id}’
-ParamsF.ibc.applications.interchain_accounts.controller.v1.QueryParamsRequestG.ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse":Ç”‰ì42/ibc/apps/interchain_accounts/controller/v1/paramsBSZQgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/controller/typesbproto3'
+ParamsF.ibc.applications.interchain_accounts.controller.v1.QueryParamsRequestG.ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse":Ç”‰ì42/ibc/apps/interchain_accounts/controller/v1/paramsBSZQgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/typesbproto3'
         , true);
 
         static::$is_initialized = true;

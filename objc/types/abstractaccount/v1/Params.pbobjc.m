@@ -68,10 +68,13 @@ static GPBFileDescription ParamsRoot_FileDescription = {
 @dynamic allowedCodeIdsArray, allowedCodeIdsArray_Count;
 @dynamic maxGasBefore;
 @dynamic maxGasAfter;
+@dynamic registrationEnabled;
+@dynamic addressDerivationHash;
 
 typedef struct Params__storage_ {
   uint32_t _has_storage_[1];
   GPBUInt64Array *allowedCodeIdsArray;
+  NSData *addressDerivationHash;
   uint64_t maxGasBefore;
   uint64_t maxGasAfter;
 } Params__storage_;
@@ -118,6 +121,24 @@ typedef struct Params__storage_ {
         .offset = (uint32_t)offsetof(Params__storage_, maxGasAfter),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "registrationEnabled",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Params_FieldNumber_RegistrationEnabled,
+        .hasIndex = 4,
+        .offset = 5,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "addressDerivationHash",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Params_FieldNumber_AddressDerivationHash,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(Params__storage_, addressDerivationHash),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =

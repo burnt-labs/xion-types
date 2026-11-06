@@ -32,7 +32,6 @@ import * as _185 from "./api/source_info";
 import * as _186 from "./api/system_parameter";
 import * as _187 from "./api/usage";
 import * as _188 from "./api/visibility";
-import * as _189 from "./logging/type/log_severity";
 import * as _190 from "./longrunning/operations";
 import * as _191 from "./protobuf/any";
 import * as _192 from "./protobuf/api";
@@ -85,11 +84,6 @@ export namespace google {
     ..._187,
     ..._188
   };
-  export namespace logging {
-    export const type = {
-      ..._189
-    };
-  }
   export const longrunning = {
     ..._190
   };

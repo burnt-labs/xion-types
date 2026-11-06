@@ -523,7 +523,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fconnection_2fv1_2ftx_2eproto[]
     "tionParams\022\'.ibc.core.connection.v1.MsgU"
     "pdateParams\032/.ibc.core.connection.v1.Msg"
     "UpdateParamsResponse\032\005\200\347\260*\001B\?Z=github.co"
-    "m/cosmos/ibc-go/v10/modules/core/03-conn"
+    "m/cosmos/ibc-go/v11/modules/core/03-conn"
     "ection/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fconnection_2fv1_2ftx_2eproto_deps[5] =

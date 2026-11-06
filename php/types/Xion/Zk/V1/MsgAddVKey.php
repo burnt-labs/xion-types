@@ -34,11 +34,18 @@ class MsgAddVKey extends \Google\Protobuf\Internal\Message
      */
     protected $description = '';
     /**
-     * vkey_json is the JSON representation of the verification key
+     * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+     * proof_system).
      *
      * Generated from protobuf field <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
      */
     protected $vkey_bytes = '';
+    /**
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     *
+     * Generated from protobuf field <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     */
+    protected $proof_system = 0;
 
     /**
      * Constructor.
@@ -53,7 +60,10 @@ class MsgAddVKey extends \Google\Protobuf\Internal\Message
      *     @type string $description
      *           description provides context about this verification key
      *     @type string $vkey_bytes
-     *           vkey_json is the JSON representation of the verification key
+     *           vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+     *           proof_system).
+     *     @type int $proof_system
+     *           proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
      * }
      */
     public function __construct($data = NULL) {
@@ -140,7 +150,8 @@ class MsgAddVKey extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * vkey_json is the JSON representation of the verification key
+     * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+     * proof_system).
      *
      * Generated from protobuf field <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
      * @return string
@@ -151,7 +162,8 @@ class MsgAddVKey extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * vkey_json is the JSON representation of the verification key
+     * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+     * proof_system).
      *
      * Generated from protobuf field <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
      * @param string $var
@@ -161,6 +173,32 @@ class MsgAddVKey extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, False);
         $this->vkey_bytes = $var;
+
+        return $this;
+    }
+
+    /**
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     *
+     * Generated from protobuf field <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return int
+     */
+    public function getProofSystem()
+    {
+        return $this->proof_system;
+    }
+
+    /**
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     *
+     * Generated from protobuf field <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setProofSystem($var)
+    {
+        GPBUtil::checkEnum($var, \Xion\Zk\V1\ProofSystem::class);
+        $this->proof_system = $var;
 
         return $this;
     }

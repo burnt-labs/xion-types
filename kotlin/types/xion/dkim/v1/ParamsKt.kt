@@ -85,7 +85,8 @@ public object ParamsKt {
 
     /**
      * ```
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * ```
      *
      * `.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];`
@@ -99,7 +100,8 @@ public object ParamsKt {
       }
     /**
      * ```
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * ```
      *
      * `.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];`
@@ -109,7 +111,8 @@ public object ParamsKt {
     }
     /**
      * ```
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * ```
      *
      * `.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];`

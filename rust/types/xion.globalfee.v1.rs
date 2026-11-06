@@ -67,4 +67,35 @@ const PACKAGE: &'static str = "xion.globalfee.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.globalfee.v1.{}", Self::NAME)
             }}
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// authority is the address of the governance account.
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// params defines the parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+impl ::prost::Name for MsgUpdateParams {
+const NAME: &'static str = "MsgUpdateParams";
+const PACKAGE: &'static str = "xion.globalfee.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.globalfee.v1.{}", Self::NAME)
+            }}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
+}
+impl ::prost::Name for MsgUpdateParamsResponse {
+const NAME: &'static str = "MsgUpdateParamsResponse";
+const PACKAGE: &'static str = "xion.globalfee.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.globalfee.v1.{}", Self::NAME)
+            }}
 // @@protoc_insertion_point(module)

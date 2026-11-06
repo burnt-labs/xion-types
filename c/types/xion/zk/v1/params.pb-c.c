@@ -52,7 +52,7 @@ void   xion__zk__v1__params__free_unpacked
   assert(message->base.descriptor == &xion__zk__v1__params__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor xion__zk__v1__params__field_descriptors[3] =
+static const ProtobufCFieldDescriptor xion__zk__v1__params__field_descriptors[9] =
 {
   {
     "max_vkey_size_bytes",
@@ -90,8 +90,86 @@ static const ProtobufCFieldDescriptor xion__zk__v1__params__field_descriptors[3]
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "max_groth16_proof_size_bytes",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__Params, max_groth16_proof_size_bytes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_groth16_public_input_size_bytes",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__Params, max_groth16_public_input_size_bytes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_ultra_honk_proof_size_bytes",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__Params, max_ultra_honk_proof_size_bytes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_ultra_honk_public_input_size_bytes",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__Params, max_ultra_honk_public_input_size_bytes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_gnark_proof_size_bytes",
+    8,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__Params, max_gnark_proof_size_bytes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_gnark_public_input_size_bytes",
+    9,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__Params, max_gnark_public_input_size_bytes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned xion__zk__v1__params__field_indices_by_name[] = {
+  7,   /* field[7] = max_gnark_proof_size_bytes */
+  8,   /* field[8] = max_gnark_public_input_size_bytes */
+  3,   /* field[3] = max_groth16_proof_size_bytes */
+  4,   /* field[4] = max_groth16_public_input_size_bytes */
+  5,   /* field[5] = max_ultra_honk_proof_size_bytes */
+  6,   /* field[6] = max_ultra_honk_public_input_size_bytes */
   0,   /* field[0] = max_vkey_size_bytes */
   2,   /* field[2] = upload_chunk_gas */
   1,   /* field[1] = upload_chunk_size */
@@ -99,7 +177,7 @@ static const unsigned xion__zk__v1__params__field_indices_by_name[] = {
 static const ProtobufCIntRange xion__zk__v1__params__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 9 }
 };
 const ProtobufCMessageDescriptor xion__zk__v1__params__descriptor =
 {
@@ -109,10 +187,42 @@ const ProtobufCMessageDescriptor xion__zk__v1__params__descriptor =
   "Xion__Zk__V1__Params",
   "xion.zk.v1",
   sizeof(Xion__Zk__V1__Params),
-  3,
+  9,
   xion__zk__v1__params__field_descriptors,
   xion__zk__v1__params__field_indices_by_name,
   1,  xion__zk__v1__params__number_ranges,
   (ProtobufCMessageInit) xion__zk__v1__params__init,
   NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCEnumValue xion__zk__v1__proof_system__enum_values_by_number[4] =
+{
+  { "PROOF_SYSTEM_UNSPECIFIED", "XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_UNSPECIFIED", 0 },
+  { "PROOF_SYSTEM_GROTH16", "XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_GROTH16", 1 },
+  { "PROOF_SYSTEM_ULTRA_HONK_ZK", "XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_ULTRA_HONK_ZK", 2 },
+  { "PROOF_SYSTEM_GROTH16_GNARK", "XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_GROTH16_GNARK", 3 },
+};
+static const ProtobufCIntRange xion__zk__v1__proof_system__value_ranges[] = {
+{0, 0},{0, 4}
+};
+static const ProtobufCEnumValueIndex xion__zk__v1__proof_system__enum_values_by_name[4] =
+{
+  { "PROOF_SYSTEM_GROTH16", 1 },
+  { "PROOF_SYSTEM_GROTH16_GNARK", 3 },
+  { "PROOF_SYSTEM_ULTRA_HONK_ZK", 2 },
+  { "PROOF_SYSTEM_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor xion__zk__v1__proof_system__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "xion.zk.v1.ProofSystem",
+  "ProofSystem",
+  "Xion__Zk__V1__ProofSystem",
+  "xion.zk.v1",
+  4,
+  xion__zk__v1__proof_system__enum_values_by_number,
+  4,
+  xion__zk__v1__proof_system__enum_values_by_name,
+  1,
+  xion__zk__v1__proof_system__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
 };

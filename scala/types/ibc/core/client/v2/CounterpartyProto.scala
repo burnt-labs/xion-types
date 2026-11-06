@@ -15,7 +15,7 @@ object CounterpartyProto extends _root_.scalapb.GeneratedFileObject {
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """CiVpYmMvY29yZS9jbGllbnQvdjIvY291bnRlcnBhcnR5LnByb3RvEhJpYmMuY29yZS5jbGllbnQudjIidgoQQ291bnRlcnBhc
   nR5SW5mbxI2Cg1tZXJrbGVfcHJlZml4GAEgAygMQhHiPw4SDG1lcmtsZVByZWZpeFIMbWVya2xlUHJlZml4EioKCWNsaWVudF9pZ
-  BgCIAEoCUIN4j8KEghjbGllbnRJZFIIY2xpZW50SWRCPlo8Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1bGVzL2Nvc
+  BgCIAEoCUIN4j8KEghjbGllbnRJZFIIY2xpZW50SWRCPlo8Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9tb2R1bGVzL2Nvc
   mUvMDItY2xpZW50L3YyL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

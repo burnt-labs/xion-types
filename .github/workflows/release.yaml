@@ -143,11 +143,9 @@ jobs:
       matrix: ${{ fromJson(needs.discover-languages.outputs.matrix) }}
     env:
       RELEASE_TAG: ${{ inputs.release_tag }}
-      # Pass the user's literal input through to BSR. BSR accepts named
-      # labels, tags, and its own commit IDs. If a caller passes a git
-      # SHA that BSR hasn't indexed as a label, the `buf generate` call
-      # will fail loudly — that's the caller's responsibility.
-      XION_BSR_MODULE: "buf.build/burnt-labs/xion:${{ inputs.release_tag }}"
+      # Generate xion protos from the resolved commit; SDK and dependency pins
+      # stay in scripts/proto-sources.conf.
+      XION_BSR_MODULE: "https://github.com/burnt-labs/xion.git#subdir=proto,ref=${{ needs.resolve-sources.outputs.xion_sha }}"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6

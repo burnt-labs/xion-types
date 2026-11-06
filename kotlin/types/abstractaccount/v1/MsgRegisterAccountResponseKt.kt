@@ -32,6 +32,10 @@ public object MsgRegisterAccountResponseKt {
     internal fun _build(): abstractaccount.v1.Tx.MsgRegisterAccountResponse = _builder.build()
 
     /**
+     * ```
+     * address is the address of the newly registered account contract.
+     * ```
+     *
      * `string address = 1 [json_name = "address"];`
      */
     public var address: kotlin.String
@@ -42,6 +46,10 @@ public object MsgRegisterAccountResponseKt {
         _builder.setAddress(value)
       }
     /**
+     * ```
+     * address is the address of the newly registered account contract.
+     * ```
+     *
      * `string address = 1 [json_name = "address"];`
      */
     public fun clearAddress() {
@@ -49,6 +57,10 @@ public object MsgRegisterAccountResponseKt {
     }
 
     /**
+     * ```
+     * data is the raw response data from the contract instantiation.
+     * ```
+     *
      * `bytes data = 2 [json_name = "data"];`
      */
     public var data: com.google.protobuf.ByteString
@@ -59,6 +71,10 @@ public object MsgRegisterAccountResponseKt {
         _builder.setData(value)
       }
     /**
+     * ```
+     * data is the raw response data from the contract instantiation.
+     * ```
+     *
      * `bytes data = 2 [json_name = "data"];`
      */
     public fun clearData() {

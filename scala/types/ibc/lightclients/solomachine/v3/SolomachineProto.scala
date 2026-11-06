@@ -47,7 +47,7 @@ object SolomachineProto extends _root_.scalapb.GeneratedFileObject {
   GF0aFIEcGF0aBIdCgRkYXRhGAUgASgMQgniPwYSBGRhdGFSBGRhdGE6BIigHwAilgEKCkhlYWRlckRhdGESRAoLbmV3X3B1Yl9rZ
   XkYASABKAsyFC5nb29nbGUucHJvdG9idWYuQW55Qg7iPwsSCW5ld1B1YktleVIJbmV3UHViS2V5EjwKD25ld19kaXZlcnNpZmllc
   hgCIAEoCUIT4j8QEg5uZXdEaXZlcnNpZmllclIObmV3RGl2ZXJzaWZpZXI6BIigHwBCT1pNZ2l0aHViLmNvbS9jb3Ntb3MvaWJjL
-  WdvL3YxMC9tb2R1bGVzL2xpZ2h0LWNsaWVudHMvMDYtc29sb21hY2hpbmU7c29sb21hY2hpbmViBnByb3RvMw=="""
+  WdvL3YxMS9tb2R1bGVzL2xpZ2h0LWNsaWVudHMvMDYtc29sb21hY2hpbmU7c29sb21hY2hpbmViBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

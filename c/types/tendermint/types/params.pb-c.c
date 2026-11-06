@@ -322,7 +322,52 @@ void   tendermint__types__abciparams__free_unpacked
   assert(message->base.descriptor == &tendermint__types__abciparams__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor tendermint__types__consensus_params__field_descriptors[5] =
+void   tendermint__types__authority_params__init
+                     (Tendermint__Types__AuthorityParams         *message)
+{
+  static const Tendermint__Types__AuthorityParams init_value = TENDERMINT__TYPES__AUTHORITY_PARAMS__INIT;
+  *message = init_value;
+}
+size_t tendermint__types__authority_params__get_packed_size
+                     (const Tendermint__Types__AuthorityParams *message)
+{
+  assert(message->base.descriptor == &tendermint__types__authority_params__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t tendermint__types__authority_params__pack
+                     (const Tendermint__Types__AuthorityParams *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &tendermint__types__authority_params__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t tendermint__types__authority_params__pack_to_buffer
+                     (const Tendermint__Types__AuthorityParams *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &tendermint__types__authority_params__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Tendermint__Types__AuthorityParams *
+       tendermint__types__authority_params__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Tendermint__Types__AuthorityParams *)
+     protobuf_c_message_unpack (&tendermint__types__authority_params__descriptor,
+                                allocator, len, data);
+}
+void   tendermint__types__authority_params__free_unpacked
+                     (Tendermint__Types__AuthorityParams *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &tendermint__types__authority_params__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+static const ProtobufCFieldDescriptor tendermint__types__consensus_params__field_descriptors[6] =
 {
   {
     "block",
@@ -384,9 +429,22 @@ static const ProtobufCFieldDescriptor tendermint__types__consensus_params__field
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "authority",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Tendermint__Types__ConsensusParams, authority),
+    &tendermint__types__authority_params__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned tendermint__types__consensus_params__field_indices_by_name[] = {
   4,   /* field[4] = abci */
+  5,   /* field[5] = authority */
   0,   /* field[0] = block */
   1,   /* field[1] = evidence */
   2,   /* field[2] = validator */
@@ -395,7 +453,7 @@ static const unsigned tendermint__types__consensus_params__field_indices_by_name
 static const ProtobufCIntRange tendermint__types__consensus_params__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor tendermint__types__consensus_params__descriptor =
 {
@@ -405,7 +463,7 @@ const ProtobufCMessageDescriptor tendermint__types__consensus_params__descriptor
   "Tendermint__Types__ConsensusParams",
   "tendermint.types",
   sizeof(Tendermint__Types__ConsensusParams),
-  5,
+  6,
   tendermint__types__consensus_params__field_descriptors,
   tendermint__types__consensus_params__field_indices_by_name,
   1,  tendermint__types__consensus_params__number_ranges,
@@ -690,5 +748,43 @@ const ProtobufCMessageDescriptor tendermint__types__abciparams__descriptor =
   tendermint__types__abciparams__field_indices_by_name,
   1,  tendermint__types__abciparams__number_ranges,
   (ProtobufCMessageInit) tendermint__types__abciparams__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor tendermint__types__authority_params__field_descriptors[1] =
+{
+  {
+    "authority",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Tendermint__Types__AuthorityParams, authority),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned tendermint__types__authority_params__field_indices_by_name[] = {
+  0,   /* field[0] = authority */
+};
+static const ProtobufCIntRange tendermint__types__authority_params__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor tendermint__types__authority_params__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "tendermint.types.AuthorityParams",
+  "AuthorityParams",
+  "Tendermint__Types__AuthorityParams",
+  "tendermint.types",
+  sizeof(Tendermint__Types__AuthorityParams),
+  1,
+  tendermint__types__authority_params__field_descriptors,
+  tendermint__types__authority_params__field_indices_by_name,
+  1,  tendermint__types__authority_params__number_ranges,
+  (ProtobufCMessageInit) tendermint__types__authority_params__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

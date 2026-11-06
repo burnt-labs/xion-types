@@ -18,9 +18,13 @@ PROTOBUF_C__BEGIN_DECLS
 #include "cosmos/staking/v1beta1/staking.pb-c.h"
 #include "cosmos_proto/cosmos.pb-c.h"
 #include "amino/amino.pb-c.h"
+#include "google/protobuf/any.pb-c.h"
+#include "google/protobuf/timestamp.pb-c.h"
 
 typedef struct Cosmos__Staking__V1beta1__GenesisState Cosmos__Staking__V1beta1__GenesisState;
 typedef struct Cosmos__Staking__V1beta1__LastValidatorPower Cosmos__Staking__V1beta1__LastValidatorPower;
+typedef struct Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory;
+typedef struct Cosmos__Staking__V1beta1__PendingConsensusKeyRotation Cosmos__Staking__V1beta1__PendingConsensusKeyRotation;
 
 
 /* --- enums --- */
@@ -73,10 +77,22 @@ struct  Cosmos__Staking__V1beta1__GenesisState
    * exported defines a bool to identify whether the chain dealing with exported or initialized genesis.
    */
   protobuf_c_boolean exported;
+  /*
+   * consensus_key_rotation_history defines consensus key rotations that are
+   * still within the unbonding window.
+   */
+  size_t n_consensus_key_rotation_history;
+  Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory **consensus_key_rotation_history;
+  /*
+   * pending_consensus_key_rotations defines consensus key rotations whose
+   * SDK-side validator state has not reached its deferred apply height yet.
+   */
+  size_t n_pending_consensus_key_rotations;
+  Cosmos__Staking__V1beta1__PendingConsensusKeyRotation **pending_consensus_key_rotations;
 };
 #define COSMOS__STAKING__V1BETA1__GENESIS_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__genesis_state__descriptor) \
-, NULL, {0,NULL}, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0 }
+, NULL, {0,NULL}, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0, 0,NULL, 0,NULL }
 
 
 /*
@@ -97,6 +113,70 @@ struct  Cosmos__Staking__V1beta1__LastValidatorPower
 #define COSMOS__STAKING__V1BETA1__LAST_VALIDATOR_POWER__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__last_validator_power__descriptor) \
 , (char *)protobuf_c_empty_string, 0 }
+
+
+/*
+ * ConsensusKeyRotationHistory stores the old consensus address for a
+ * validator rotation until the unbonding window has elapsed.
+ */
+struct  Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory
+{
+  ProtobufCMessage base;
+  /*
+   * validator_address is the validator operator address.
+   */
+  char *validator_address;
+  /*
+   * old_consensus_address is the consensus address rotated away from.
+   */
+  char *old_consensus_address;
+  /*
+   * maturity_time is the unbonding-window maturity of this validator's
+   * re-rotation rate limit, present only while that gate is still active. A
+   * zero value means the gate has already been retired and only the evidence
+   * lock (below) remains.
+   */
+  Google__Protobuf__Timestamp *maturity_time;
+  /*
+   * evidence_expiry_time is the time after which equivocation evidence for the
+   * rotated-away key can no longer be admitted on the time dimension.
+   */
+  Google__Protobuf__Timestamp *evidence_expiry_time;
+  /*
+   * evidence_expiry_height is the block height after which equivocation evidence
+   * for the rotated-away key can no longer be admitted on the height dimension.
+   */
+  int64_t evidence_expiry_height;
+};
+#define COSMOS__STAKING__V1BETA1__CONSENSUS_KEY_ROTATION_HISTORY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor) \
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0 }
+
+
+/*
+ * PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+ * for its deferred SDK-side state update.
+ */
+struct  Cosmos__Staking__V1beta1__PendingConsensusKeyRotation
+{
+  ProtobufCMessage base;
+  /*
+   * validator_address is the validator operator address.
+   */
+  char *validator_address;
+  /*
+   * new_pubkey is the consensus public key being rotated to.
+   */
+  Google__Protobuf__Any *new_pubkey;
+  /*
+   * apply_height is the block height where the SDK-side state update should
+   * occur.
+   */
+  int64_t apply_height;
+};
+#define COSMOS__STAKING__V1BETA1__PENDING_CONSENSUS_KEY_ROTATION__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor) \
+, (char *)protobuf_c_empty_string, NULL, 0 }
 
 
 /* Cosmos__Staking__V1beta1__GenesisState methods */
@@ -137,6 +217,44 @@ Cosmos__Staking__V1beta1__LastValidatorPower *
 void   cosmos__staking__v1beta1__last_validator_power__free_unpacked
                      (Cosmos__Staking__V1beta1__LastValidatorPower *message,
                       ProtobufCAllocator *allocator);
+/* Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory methods */
+void   cosmos__staking__v1beta1__consensus_key_rotation_history__init
+                     (Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory         *message);
+size_t cosmos__staking__v1beta1__consensus_key_rotation_history__get_packed_size
+                     (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory   *message);
+size_t cosmos__staking__v1beta1__consensus_key_rotation_history__pack
+                     (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory   *message,
+                      uint8_t             *out);
+size_t cosmos__staking__v1beta1__consensus_key_rotation_history__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory   *message,
+                      ProtobufCBuffer     *buffer);
+Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *
+       cosmos__staking__v1beta1__consensus_key_rotation_history__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   cosmos__staking__v1beta1__consensus_key_rotation_history__free_unpacked
+                     (Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *message,
+                      ProtobufCAllocator *allocator);
+/* Cosmos__Staking__V1beta1__PendingConsensusKeyRotation methods */
+void   cosmos__staking__v1beta1__pending_consensus_key_rotation__init
+                     (Cosmos__Staking__V1beta1__PendingConsensusKeyRotation         *message);
+size_t cosmos__staking__v1beta1__pending_consensus_key_rotation__get_packed_size
+                     (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation   *message);
+size_t cosmos__staking__v1beta1__pending_consensus_key_rotation__pack
+                     (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation   *message,
+                      uint8_t             *out);
+size_t cosmos__staking__v1beta1__pending_consensus_key_rotation__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation   *message,
+                      ProtobufCBuffer     *buffer);
+Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *
+       cosmos__staking__v1beta1__pending_consensus_key_rotation__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   cosmos__staking__v1beta1__pending_consensus_key_rotation__free_unpacked
+                     (Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Cosmos__Staking__V1beta1__GenesisState_Closure)
@@ -144,6 +262,12 @@ typedef void (*Cosmos__Staking__V1beta1__GenesisState_Closure)
                   void *closure_data);
 typedef void (*Cosmos__Staking__V1beta1__LastValidatorPower_Closure)
                  (const Cosmos__Staking__V1beta1__LastValidatorPower *message,
+                  void *closure_data);
+typedef void (*Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory_Closure)
+                 (const Cosmos__Staking__V1beta1__ConsensusKeyRotationHistory *message,
+                  void *closure_data);
+typedef void (*Cosmos__Staking__V1beta1__PendingConsensusKeyRotation_Closure)
+                 (const Cosmos__Staking__V1beta1__PendingConsensusKeyRotation *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -153,6 +277,8 @@ typedef void (*Cosmos__Staking__V1beta1__LastValidatorPower_Closure)
 
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__genesis_state__descriptor;
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__last_validator_power__descriptor;
+extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__consensus_key_rotation_history__descriptor;
+extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__pending_consensus_key_rotation__descriptor;
 
 PROTOBUF_C__END_DECLS
 

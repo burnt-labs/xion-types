@@ -15,7 +15,7 @@ from xion_types.amino import amino_pb2 as amino_dot_amino__pb2
 from xion_types.gogoproto import gogo_pb2 as gogoproto_dot_gogo__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17xion/zk/v1/params.proto\x12\nxion.zk.v1\x1a\x11\x61mino/amino.proto\x1a\x14gogoproto/gogo.proto\"\xa5\x01\n\x06Params\x12-\n\x13max_vkey_size_bytes\x18\x01 \x01(\x04R\x10maxVkeySizeBytes\x12*\n\x11upload_chunk_size\x18\x02 \x01(\x04R\x0fuploadChunkSize\x12(\n\x10upload_chunk_gas\x18\x03 \x01(\x04R\x0euploadChunkGas:\x16\x98\xa0\x1f\x00\xe8\xa0\x1f\x01\x8a\xe7\xb0*\tzk/paramsB\'Z%github.com/burnt-labs/xion/x/zk/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17xion/zk/v1/params.proto\x12\nxion.zk.v1\x1a\x11\x61mino/amino.proto\x1a\x14gogoproto/gogo.proto\"\xce\x04\n\x06Params\x12-\n\x13max_vkey_size_bytes\x18\x01 \x01(\x04R\x10maxVkeySizeBytes\x12*\n\x11upload_chunk_size\x18\x02 \x01(\x04R\x0fuploadChunkSize\x12(\n\x10upload_chunk_gas\x18\x03 \x01(\x04R\x0euploadChunkGas\x12>\n\x1cmax_groth16_proof_size_bytes\x18\x04 \x01(\x04R\x18maxGroth16ProofSizeBytes\x12K\n#max_groth16_public_input_size_bytes\x18\x05 \x01(\x04R\x1emaxGroth16PublicInputSizeBytes\x12\x43\n\x1fmax_ultra_honk_proof_size_bytes\x18\x06 \x01(\x04R\x1amaxUltraHonkProofSizeBytes\x12P\n&max_ultra_honk_public_input_size_bytes\x18\x07 \x01(\x04R maxUltraHonkPublicInputSizeBytes\x12:\n\x1amax_gnark_proof_size_bytes\x18\x08 \x01(\x04R\x16maxGnarkProofSizeBytes\x12G\n!max_gnark_public_input_size_bytes\x18\t \x01(\x04R\x1cmaxGnarkPublicInputSizeBytes:\x16\x98\xa0\x1f\x00\xe8\xa0\x1f\x01\x8a\xe7\xb0*\tzk/params*\x85\x01\n\x0bProofSystem\x12\x1c\n\x18PROOF_SYSTEM_UNSPECIFIED\x10\x00\x12\x18\n\x14PROOF_SYSTEM_GROTH16\x10\x01\x12\x1e\n\x1aPROOF_SYSTEM_ULTRA_HONK_ZK\x10\x02\x12\x1e\n\x1aPROOF_SYSTEM_GROTH16_GNARK\x10\x03\x42\'Z%github.com/burnt-labs/xion/x/zk/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -25,6 +25,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._serialized_options = b'Z%github.com/burnt-labs/xion/x/zk/types'
   _globals['_PARAMS']._options = None
   _globals['_PARAMS']._serialized_options = b'\230\240\037\000\350\240\037\001\212\347\260*\tzk/params'
+  _globals['_PROOFSYSTEM']._serialized_start=674
+  _globals['_PROOFSYSTEM']._serialized_end=807
   _globals['_PARAMS']._serialized_start=81
-  _globals['_PARAMS']._serialized_end=246
+  _globals['_PARAMS']._serialized_end=671
 # @@protoc_insertion_point(module_scope)

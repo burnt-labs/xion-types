@@ -25,16 +25,18 @@ namespace Abstractaccount.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9hYnN0cmFjdGFjY291bnQvdjEvZXZlbnRzLnByb3RvEhJhYnN0cmFjdGFj",
-            "Y291bnQudjEaFGdvZ29wcm90by9nb2dvLnByb3RvIqMBChZFdmVudEFjY291",
+            "Y291bnQudjEaFGdvZ29wcm90by9nb2dvLnByb3RvIvwBChZFdmVudEFjY291",
             "bnRSZWdpc3RlcmVkEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISIwoHY29k",
             "ZV9pZBgCIAEoBEIK4t4fBkNvZGVJRFIGY29kZUlkEiMKDWNvbnRyYWN0X2Fk",
             "ZHIYAyABKAlSDGNvbnRyYWN0QWRkchIlCg5hY2NvdW50X251bWJlchgEIAEo",
-            "BFINYWNjb3VudE51bWJlckJAWj5naXRodWIuY29tL2J1cm50LWxhYnMvYWJz",
-            "dHJhY3QtYWNjb3VudC94L2Fic3RyYWN0YWNjb3VudC90eXBlc2IGcHJvdG8z"));
+            "BFINYWNjb3VudE51bWJlchJRChdhZGRyZXNzX2Rlcml2YXRpb25faGFzaBgG",
+            "IAEoDEIZ4t4fFUFkZHJlc3NEZXJpdmF0aW9uSGFzaFIVYWRkcmVzc0Rlcml2",
+            "YXRpb25IYXNoSgQIBRAGQjRaMmdpdGh1Yi5jb20vYnVybnQtbGFicy94aW9u",
+            "L3gvYWJzdHJhY3RhY2NvdW50L3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.EventAccountRegistered), global::Abstractaccount.V1.EventAccountRegistered.Parser, new[]{ "Creator", "CodeId", "ContractAddr", "AccountNumber" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.EventAccountRegistered), global::Abstractaccount.V1.EventAccountRegistered.Parser, new[]{ "Creator", "CodeId", "ContractAddr", "AccountNumber", "AddressDerivationHash" }, null, null, null, null)
           }));
     }
     #endregion
@@ -82,6 +84,7 @@ namespace Abstractaccount.V1 {
       codeId_ = other.codeId_;
       contractAddr_ = other.contractAddr_;
       accountNumber_ = other.accountNumber_;
+      addressDerivationHash_ = other.addressDerivationHash_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -94,6 +97,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "creator" field.</summary>
     public const int CreatorFieldNumber = 1;
     private string creator_ = "";
+    /// <summary>
+    /// creator is the address that requested the account registration.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Creator {
@@ -106,6 +112,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "code_id" field.</summary>
     public const int CodeIdFieldNumber = 2;
     private ulong codeId_;
+    /// <summary>
+    /// CodeID is the caller-selected implementation active after registration.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong CodeId {
@@ -118,6 +127,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "contract_addr" field.</summary>
     public const int ContractAddrFieldNumber = 3;
     private string contractAddr_ = "";
+    /// <summary>
+    /// contract_addr is the address of the newly instantiated account contract.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string ContractAddr {
@@ -130,12 +142,31 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 4;
     private ulong accountNumber_;
+    /// <summary>
+    /// account_number is the account number assigned to the new account.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong AccountNumber {
       get { return accountNumber_; }
       set {
         accountNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "address_derivation_hash" field.</summary>
+    public const int AddressDerivationHashFieldNumber = 6;
+    private pb::ByteString addressDerivationHash_ = pb::ByteString.Empty;
+    /// <summary>
+    /// address_derivation_hash is the fixed hash used to derive the account's
+    /// address.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString AddressDerivationHash {
+      get { return addressDerivationHash_; }
+      set {
+        addressDerivationHash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -158,6 +189,7 @@ namespace Abstractaccount.V1 {
       if (CodeId != other.CodeId) return false;
       if (ContractAddr != other.ContractAddr) return false;
       if (AccountNumber != other.AccountNumber) return false;
+      if (AddressDerivationHash != other.AddressDerivationHash) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -169,6 +201,7 @@ namespace Abstractaccount.V1 {
       if (CodeId != 0UL) hash ^= CodeId.GetHashCode();
       if (ContractAddr.Length != 0) hash ^= ContractAddr.GetHashCode();
       if (AccountNumber != 0UL) hash ^= AccountNumber.GetHashCode();
+      if (AddressDerivationHash.Length != 0) hash ^= AddressDerivationHash.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -203,6 +236,10 @@ namespace Abstractaccount.V1 {
         output.WriteRawTag(32);
         output.WriteUInt64(AccountNumber);
       }
+      if (AddressDerivationHash.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteBytes(AddressDerivationHash);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -229,6 +266,10 @@ namespace Abstractaccount.V1 {
         output.WriteRawTag(32);
         output.WriteUInt64(AccountNumber);
       }
+      if (AddressDerivationHash.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteBytes(AddressDerivationHash);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -250,6 +291,9 @@ namespace Abstractaccount.V1 {
       }
       if (AccountNumber != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(AccountNumber);
+      }
+      if (AddressDerivationHash.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(AddressDerivationHash);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -274,6 +318,9 @@ namespace Abstractaccount.V1 {
       }
       if (other.AccountNumber != 0UL) {
         AccountNumber = other.AccountNumber;
+      }
+      if (other.AddressDerivationHash.Length != 0) {
+        AddressDerivationHash = other.AddressDerivationHash;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -306,6 +353,10 @@ namespace Abstractaccount.V1 {
             AccountNumber = input.ReadUInt64();
             break;
           }
+          case 50: {
+            AddressDerivationHash = input.ReadBytes();
+            break;
+          }
         }
       }
     #endif
@@ -335,6 +386,10 @@ namespace Abstractaccount.V1 {
           }
           case 32: {
             AccountNumber = input.ReadUInt64();
+            break;
+          }
+          case 50: {
+            AddressDerivationHash = input.ReadBytes();
             break;
           }
         }

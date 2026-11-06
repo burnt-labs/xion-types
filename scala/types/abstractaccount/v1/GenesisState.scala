@@ -6,11 +6,19 @@
 package abstractaccount.v1
 
 /** GenesisState defines the genesis state of the abstractaccount module.
+  *
+  * @param params
+  *   params defines the module parameters.
+  * @param nextAccountId
+  *   next_account_id is the identifier assigned to the next registered account.
+  * @param accountAddresses
+  *   account_addresses is the exported sender/salt address registry.
   */
 @SerialVersionUID(0L)
 final case class GenesisState(
     params: _root_.scala.Option[abstractaccount.v1.Params] = _root_.scala.None,
     nextAccountId: _root_.scala.Long = 0L,
+    accountAddresses: _root_.scala.Seq[abstractaccount.v1.AccountAddress] = _root_.scala.Seq.empty,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[GenesisState] {
     @transient
@@ -28,6 +36,10 @@ final case class GenesisState(
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(2, __value)
         }
       };
+      accountAddresses.foreach { __item =>
+        val __value = __item
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
+      }
       __size += unknownFields.serializedSize
       __size
     }
@@ -53,12 +65,22 @@ final case class GenesisState(
           _output__.writeUInt64(2, __v)
         }
       };
+      accountAddresses.foreach { __v =>
+        val __m = __v
+        _output__.writeTag(3, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
       unknownFields.writeTo(_output__)
     }
     def getParams: abstractaccount.v1.Params = params.getOrElse(abstractaccount.v1.Params.defaultInstance)
     def clearParams: GenesisState = copy(params = _root_.scala.None)
     def withParams(__v: abstractaccount.v1.Params): GenesisState = copy(params = Option(__v))
     def withNextAccountId(__v: _root_.scala.Long): GenesisState = copy(nextAccountId = __v)
+    def clearAccountAddresses = copy(accountAddresses = _root_.scala.Seq.empty)
+    def addAccountAddresses(__vs: abstractaccount.v1.AccountAddress *): GenesisState = addAllAccountAddresses(__vs)
+    def addAllAccountAddresses(__vs: Iterable[abstractaccount.v1.AccountAddress]): GenesisState = copy(accountAddresses = accountAddresses ++ __vs)
+    def withAccountAddresses(__v: _root_.scala.Seq[abstractaccount.v1.AccountAddress]): GenesisState = copy(accountAddresses = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -68,6 +90,7 @@ final case class GenesisState(
           val __t = nextAccountId
           if (__t != 0L) __t else null
         }
+        case 3 => accountAddresses
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -75,6 +98,7 @@ final case class GenesisState(
       (__field.number: @_root_.scala.unchecked) match {
         case 1 => params.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
         case 2 => _root_.scalapb.descriptors.PLong(nextAccountId)
+        case 3 => _root_.scalapb.descriptors.PRepeated(accountAddresses.iterator.map(_.toPMessage).toVector)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -87,6 +111,7 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[abstractaccount.v1
   def parseFrom(`_input__`: _root_.com.google.protobuf.CodedInputStream): abstractaccount.v1.GenesisState = {
     var __params: _root_.scala.Option[abstractaccount.v1.Params] = _root_.scala.None
     var __nextAccountId: _root_.scala.Long = 0L
+    val __accountAddresses: _root_.scala.collection.immutable.VectorBuilder[abstractaccount.v1.AccountAddress] = new _root_.scala.collection.immutable.VectorBuilder[abstractaccount.v1.AccountAddress]
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -97,6 +122,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[abstractaccount.v1
           __params = _root_.scala.Option(__params.fold(_root_.scalapb.LiteParser.readMessage[abstractaccount.v1.Params](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _)))
         case 16 =>
           __nextAccountId = _input__.readUInt64()
+        case 26 =>
+          __accountAddresses += _root_.scalapb.LiteParser.readMessage[abstractaccount.v1.AccountAddress](_input__)
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -107,6 +134,7 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[abstractaccount.v1
     abstractaccount.v1.GenesisState(
         params = __params,
         nextAccountId = __nextAccountId,
+        accountAddresses = __accountAddresses.result(),
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -115,7 +143,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[abstractaccount.v1
       _root_.scala.Predef.require(__fieldsMap.keys.forall(_.containingMessage eq scalaDescriptor), "FieldDescriptor does not match message type.")
       abstractaccount.v1.GenesisState(
         params = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).flatMap(_.as[_root_.scala.Option[abstractaccount.v1.Params]]),
-        nextAccountId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
+        nextAccountId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        accountAddresses = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Seq[abstractaccount.v1.AccountAddress]]).getOrElse(_root_.scala.Seq.empty)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -125,6 +154,7 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[abstractaccount.v1
     var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = abstractaccount.v1.Params
+      case 3 => __out = abstractaccount.v1.AccountAddress
     }
     __out
   }
@@ -132,21 +162,26 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[abstractaccount.v1
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = abstractaccount.v1.GenesisState(
     params = _root_.scala.None,
-    nextAccountId = 0L
+    nextAccountId = 0L,
+    accountAddresses = _root_.scala.Seq.empty
   )
   implicit class GenesisStateLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, abstractaccount.v1.GenesisState]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, abstractaccount.v1.GenesisState](_l) {
     def params: _root_.scalapb.lenses.Lens[UpperPB, abstractaccount.v1.Params] = field(_.getParams)((c_, f_) => c_.copy(params = _root_.scala.Option(f_)))
     def optionalParams: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[abstractaccount.v1.Params]] = field(_.params)((c_, f_) => c_.copy(params = f_))
     def nextAccountId: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.nextAccountId)((c_, f_) => c_.copy(nextAccountId = f_))
+    def accountAddresses: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[abstractaccount.v1.AccountAddress]] = field(_.accountAddresses)((c_, f_) => c_.copy(accountAddresses = f_))
   }
   final val PARAMS_FIELD_NUMBER = 1
   final val NEXT_ACCOUNT_ID_FIELD_NUMBER = 2
+  final val ACCOUNT_ADDRESSES_FIELD_NUMBER = 3
   def of(
     params: _root_.scala.Option[abstractaccount.v1.Params],
-    nextAccountId: _root_.scala.Long
+    nextAccountId: _root_.scala.Long,
+    accountAddresses: _root_.scala.Seq[abstractaccount.v1.AccountAddress]
   ): _root_.abstractaccount.v1.GenesisState = _root_.abstractaccount.v1.GenesisState(
     params,
-    nextAccountId
+    nextAccountId,
+    accountAddresses
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[abstractaccount.v1.GenesisState])
 }

@@ -298,7 +298,7 @@ const char descriptor_table_protodef_ibc_2flightclients_2ftendermint_2fv1_2ftend
     "R\021trustedValidators\"J\n\010Fraction\022\034\n\tnumer"
     "ator\030\001 \001(\004R\tnumerator\022 \n\013denominator\030\002 \001"
     "(\004R\013denominatorBMZKgithub.com/cosmos/ibc"
-    "-go/v10/modules/light-clients/07-tenderm"
+    "-go/v11/modules/light-clients/07-tenderm"
     "int;tendermintb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2flightclients_2ftendermint_2fv1_2ftendermint_2eproto_deps[8] =

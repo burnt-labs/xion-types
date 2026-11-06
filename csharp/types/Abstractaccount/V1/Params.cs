@@ -25,18 +25,21 @@ namespace Abstractaccount.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9hYnN0cmFjdGFjY291bnQvdjEvcGFyYW1zLnByb3RvEhJhYnN0cmFjdGFj",
-            "Y291bnQudjEaFGdvZ29wcm90by9nb2dvLnByb3RvItIBCgZQYXJhbXMSQAoS",
+            "Y291bnQudjEaFGdvZ29wcm90by9nb2dvLnByb3RvIuQCCgZQYXJhbXMSQAoS",
             "YWxsb3dfYWxsX2NvZGVfaWRzGAEgASgIQhPi3h8PQWxsb3dBbGxDb2RlSURz",
             "Ug9hbGxvd0FsbENvZGVJZHMSPAoQYWxsb3dlZF9jb2RlX2lkcxgCIAMoBEIS",
             "4t4fDkFsbG93ZWRDb2RlSURzUg5hbGxvd2VkQ29kZUlkcxIkCg5tYXhfZ2Fz",
             "X2JlZm9yZRgDIAEoBFIMbWF4R2FzQmVmb3JlEiIKDW1heF9nYXNfYWZ0ZXIY",
-            "BCABKARSC21heEdhc0FmdGVyQkBaPmdpdGh1Yi5jb20vYnVybnQtbGFicy9h",
-            "YnN0cmFjdC1hY2NvdW50L3gvYWJzdHJhY3RhY2NvdW50L3R5cGVzYgZwcm90",
-            "bzM="));
+            "BCABKARSC21heEdhc0FmdGVyEjEKFHJlZ2lzdHJhdGlvbl9lbmFibGVkGAcg",
+            "ASgIUhNyZWdpc3RyYXRpb25FbmFibGVkElEKF2FkZHJlc3NfZGVyaXZhdGlv",
+            "bl9oYXNoGAggASgMQhni3h8VQWRkcmVzc0Rlcml2YXRpb25IYXNoUhVhZGRy",
+            "ZXNzRGVyaXZhdGlvbkhhc2hKBAgFEAZKBAgGEAdCNFoyZ2l0aHViLmNvbS9i",
+            "dXJudC1sYWJzL3hpb24veC9hYnN0cmFjdGFjY291bnQvdHlwZXNiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.Params), global::Abstractaccount.V1.Params.Parser, new[]{ "AllowAllCodeIds", "AllowedCodeIds", "MaxGasBefore", "MaxGasAfter" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.Params), global::Abstractaccount.V1.Params.Parser, new[]{ "AllowAllCodeIds", "AllowedCodeIds", "MaxGasBefore", "MaxGasAfter", "RegistrationEnabled", "AddressDerivationHash" }, null, null, null, null)
           }));
     }
     #endregion
@@ -84,6 +87,8 @@ namespace Abstractaccount.V1 {
       allowedCodeIds_ = other.allowedCodeIds_.Clone();
       maxGasBefore_ = other.maxGasBefore_;
       maxGasAfter_ = other.maxGasAfter_;
+      registrationEnabled_ = other.registrationEnabled_;
+      addressDerivationHash_ = other.addressDerivationHash_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -97,8 +102,9 @@ namespace Abstractaccount.V1 {
     public const int AllowAllCodeIdsFieldNumber = 1;
     private bool allowAllCodeIds_;
     /// <summary>
-    /// AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-    /// AbstractAccounts:
+    /// AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+    /// final implementation for a newly registered AbstractAccount or a
+    /// top-level raw Wasm migration:
     /// - if set to true, any code ID can be used;
     /// - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
     /// be used.
@@ -118,8 +124,8 @@ namespace Abstractaccount.V1 {
         = pb::FieldCodec.ForUInt64(18);
     private readonly pbc::RepeatedField<ulong> allowedCodeIds_ = new pbc::RepeatedField<ulong>();
     /// <summary>
-    /// AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-    /// regiseter AbstractAccounts.
+    /// AllowedCodeIDs is the whitelist for registration implementations and
+    /// top-level raw Wasm migrations. This is not a wasmd-level policy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -163,6 +169,41 @@ namespace Abstractaccount.V1 {
       }
     }
 
+    /// <summary>Field number for the "registration_enabled" field.</summary>
+    public const int RegistrationEnabledFieldNumber = 7;
+    private bool registrationEnabled_;
+    /// <summary>
+    /// RegistrationEnabled controls whether new abstract accounts may be
+    /// registered. Governance can pause registration without changing the
+    /// immutable address namespace or blocking address queries.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool RegistrationEnabled {
+      get { return registrationEnabled_; }
+      set {
+        registrationEnabled_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "address_derivation_hash" field.</summary>
+    public const int AddressDerivationHashFieldNumber = 8;
+    private pb::ByteString addressDerivationHash_ = pb::ByteString.Empty;
+    /// <summary>
+    /// AddressDerivationHash is the immutable 32-byte namespace used only to
+    /// derive predictable AbstractAccount addresses. The caller-selected code ID
+    /// is instantiated directly and does not participate in address derivation.
+    /// An empty value leaves registration unconfigured.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString AddressDerivationHash {
+      get { return addressDerivationHash_; }
+      set {
+        addressDerivationHash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -182,6 +223,8 @@ namespace Abstractaccount.V1 {
       if(!allowedCodeIds_.Equals(other.allowedCodeIds_)) return false;
       if (MaxGasBefore != other.MaxGasBefore) return false;
       if (MaxGasAfter != other.MaxGasAfter) return false;
+      if (RegistrationEnabled != other.RegistrationEnabled) return false;
+      if (AddressDerivationHash != other.AddressDerivationHash) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -193,6 +236,8 @@ namespace Abstractaccount.V1 {
       hash ^= allowedCodeIds_.GetHashCode();
       if (MaxGasBefore != 0UL) hash ^= MaxGasBefore.GetHashCode();
       if (MaxGasAfter != 0UL) hash ^= MaxGasAfter.GetHashCode();
+      if (RegistrationEnabled != false) hash ^= RegistrationEnabled.GetHashCode();
+      if (AddressDerivationHash.Length != 0) hash ^= AddressDerivationHash.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -224,6 +269,14 @@ namespace Abstractaccount.V1 {
         output.WriteRawTag(32);
         output.WriteUInt64(MaxGasAfter);
       }
+      if (RegistrationEnabled != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(RegistrationEnabled);
+      }
+      if (AddressDerivationHash.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteBytes(AddressDerivationHash);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -247,6 +300,14 @@ namespace Abstractaccount.V1 {
         output.WriteRawTag(32);
         output.WriteUInt64(MaxGasAfter);
       }
+      if (RegistrationEnabled != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(RegistrationEnabled);
+      }
+      if (AddressDerivationHash.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteBytes(AddressDerivationHash);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -266,6 +327,12 @@ namespace Abstractaccount.V1 {
       }
       if (MaxGasAfter != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxGasAfter);
+      }
+      if (RegistrationEnabled != false) {
+        size += 1 + 1;
+      }
+      if (AddressDerivationHash.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(AddressDerivationHash);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -288,6 +355,12 @@ namespace Abstractaccount.V1 {
       }
       if (other.MaxGasAfter != 0UL) {
         MaxGasAfter = other.MaxGasAfter;
+      }
+      if (other.RegistrationEnabled != false) {
+        RegistrationEnabled = other.RegistrationEnabled;
+      }
+      if (other.AddressDerivationHash.Length != 0) {
+        AddressDerivationHash = other.AddressDerivationHash;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -321,6 +394,14 @@ namespace Abstractaccount.V1 {
             MaxGasAfter = input.ReadUInt64();
             break;
           }
+          case 56: {
+            RegistrationEnabled = input.ReadBool();
+            break;
+          }
+          case 66: {
+            AddressDerivationHash = input.ReadBytes();
+            break;
+          }
         }
       }
     #endif
@@ -351,6 +432,14 @@ namespace Abstractaccount.V1 {
           }
           case 32: {
             MaxGasAfter = input.ReadUInt64();
+            break;
+          }
+          case 56: {
+            RegistrationEnabled = input.ReadBool();
+            break;
+          }
+          case 66: {
+            AddressDerivationHash = input.ReadBytes();
             break;
           }
         }

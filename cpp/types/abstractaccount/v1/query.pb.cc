@@ -51,9 +51,52 @@ struct QueryParamsResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryParamsResponseDefaultTypeInternal _QueryParamsResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryAccountAddressRequest::QueryAccountAddressRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.sender_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.salt_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryAccountAddressRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryAccountAddressRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryAccountAddressRequestDefaultTypeInternal() {}
+  union {
+    QueryAccountAddressRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryAccountAddressRequestDefaultTypeInternal _QueryAccountAddressRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR QueryAccountAddressResponse::QueryAccountAddressResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.address_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.registered_)*/ false,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct QueryAccountAddressResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryAccountAddressResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryAccountAddressResponseDefaultTypeInternal() {}
+  union {
+    QueryAccountAddressResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryAccountAddressResponseDefaultTypeInternal _QueryAccountAddressResponse_default_instance_;
 }  // namespace v1
 }  // namespace abstractaccount
-static ::_pb::Metadata file_level_metadata_abstractaccount_2fv1_2fquery_2eproto[2];
+static ::_pb::Metadata file_level_metadata_abstractaccount_2fv1_2fquery_2eproto[4];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_abstractaccount_2fv1_2fquery_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -78,17 +121,41 @@ const ::uint32_t TableStruct_abstractaccount_2fv1_2fquery_2eproto::offsets[] PRO
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryParamsResponse, _impl_.params_),
     0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryAccountAddressRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryAccountAddressRequest, _impl_.sender_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryAccountAddressRequest, _impl_.salt_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryAccountAddressResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryAccountAddressResponse, _impl_.address_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::QueryAccountAddressResponse, _impl_.registered_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::abstractaccount::v1::QueryParamsRequest)},
         {8, 17, -1, sizeof(::abstractaccount::v1::QueryParamsResponse)},
+        {18, -1, -1, sizeof(::abstractaccount::v1::QueryAccountAddressRequest)},
+        {28, -1, -1, sizeof(::abstractaccount::v1::QueryAccountAddressResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::abstractaccount::v1::_QueryParamsRequest_default_instance_._instance,
     &::abstractaccount::v1::_QueryParamsResponse_default_instance_._instance,
+    &::abstractaccount::v1::_QueryAccountAddressRequest_default_instance_._instance,
+    &::abstractaccount::v1::_QueryAccountAddressResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_abstractaccount_2fv1_2fquery_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\036abstractaccount/v1/query.proto\022\022abstra"
@@ -97,12 +164,20 @@ const char descriptor_table_protodef_abstractaccount_2fv1_2fquery_2eproto[] PROT
     "le/api/annotations.proto\"\024\n\022QueryParamsR"
     "equest\"I\n\023QueryParamsResponse\0222\n\006params\030"
     "\001 \001(\0132\032.abstractaccount.v1.ParamsR\006param"
-    "s2\214\001\n\005Query\022\202\001\n\006Params\022&.abstractaccount"
-    ".v1.QueryParamsRequest\032\'.abstractaccount"
-    ".v1.QueryParamsResponse\"\'\210\347\260*\001\202\323\344\223\002\034\022\032/a"
-    "bstractaccount/v1/paramsB@Z>github.com/b"
-    "urnt-labs/abstract-account/x/abstractacc"
-    "ount/typesb\006proto3"
+    "s\"H\n\032QueryAccountAddressRequest\022\026\n\006sende"
+    "r\030\001 \001(\tR\006sender\022\022\n\004salt\030\002 \001(\014R\004salt\"W\n\033Q"
+    "ueryAccountAddressResponse\022\030\n\007address\030\001 "
+    "\001(\tR\007address\022\036\n\nregistered\030\002 \001(\010R\nregist"
+    "ered2\273\002\n\005Query\022\202\001\n\006Params\022&.abstractacco"
+    "unt.v1.QueryParamsRequest\032\'.abstractacco"
+    "unt.v1.QueryParamsResponse\"\'\210\347\260*\001\202\323\344\223\002\034\022"
+    "\032/abstractaccount/v1/params\022\254\001\n\016AccountA"
+    "ddress\022..abstractaccount.v1.QueryAccount"
+    "AddressRequest\032/.abstractaccount.v1.Quer"
+    "yAccountAddressResponse\"9\210\347\260*\001\202\323\344\223\002.\022,/a"
+    "bstractaccount/v1/account_address/{sende"
+    "r}B4Z2github.com/burnt-labs/xion/x/abstr"
+    "actaccount/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_abstractaccount_2fv1_2fquery_2eproto_deps[3] =
     {
@@ -114,13 +189,13 @@ static ::absl::once_flag descriptor_table_abstractaccount_2fv1_2fquery_2eproto_o
 const ::_pbi::DescriptorTable descriptor_table_abstractaccount_2fv1_2fquery_2eproto = {
     false,
     false,
-    458,
+    784,
     descriptor_table_protodef_abstractaccount_2fv1_2fquery_2eproto,
     "abstractaccount/v1/query.proto",
     &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_once,
     descriptor_table_abstractaccount_2fv1_2fquery_2eproto_deps,
     3,
-    2,
+    4,
     schemas,
     file_default_instances,
     TableStruct_abstractaccount_2fv1_2fquery_2eproto::offsets,
@@ -388,6 +463,452 @@ void QueryParamsResponse::InternalSwap(QueryParamsResponse* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_getter, &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_once,
       file_level_metadata_abstractaccount_2fv1_2fquery_2eproto[1]);
+}
+// ===================================================================
+
+class QueryAccountAddressRequest::_Internal {
+ public:
+};
+
+QueryAccountAddressRequest::QueryAccountAddressRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:abstractaccount.v1.QueryAccountAddressRequest)
+}
+QueryAccountAddressRequest::QueryAccountAddressRequest(const QueryAccountAddressRequest& from) : ::google::protobuf::Message() {
+  QueryAccountAddressRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sender_){},
+      decltype(_impl_.salt_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.sender_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sender_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sender().empty()) {
+    _this->_impl_.sender_.Set(from._internal_sender(), _this->GetArenaForAllocation());
+  }
+  _impl_.salt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.salt_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_salt().empty()) {
+    _this->_impl_.salt_.Set(from._internal_salt(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:abstractaccount.v1.QueryAccountAddressRequest)
+}
+inline void QueryAccountAddressRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sender_){},
+      decltype(_impl_.salt_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.sender_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sender_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.salt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.salt_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryAccountAddressRequest::~QueryAccountAddressRequest() {
+  // @@protoc_insertion_point(destructor:abstractaccount.v1.QueryAccountAddressRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryAccountAddressRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.sender_.Destroy();
+  _impl_.salt_.Destroy();
+}
+void QueryAccountAddressRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryAccountAddressRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:abstractaccount.v1.QueryAccountAddressRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.sender_.ClearToEmpty();
+  _impl_.salt_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryAccountAddressRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 60, 2> QueryAccountAddressRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryAccountAddressRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bytes salt = 2 [json_name = "salt"];
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(QueryAccountAddressRequest, _impl_.salt_)}},
+    // string sender = 1 [json_name = "sender"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryAccountAddressRequest, _impl_.sender_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string sender = 1 [json_name = "sender"];
+    {PROTOBUF_FIELD_OFFSET(QueryAccountAddressRequest, _impl_.sender_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes salt = 2 [json_name = "salt"];
+    {PROTOBUF_FIELD_OFFSET(QueryAccountAddressRequest, _impl_.salt_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\55\6\0\0\0\0\0\0"
+    "abstractaccount.v1.QueryAccountAddressRequest"
+    "sender"
+  }},
+};
+
+::uint8_t* QueryAccountAddressRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:abstractaccount.v1.QueryAccountAddressRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string sender = 1 [json_name = "sender"];
+  if (!this->_internal_sender().empty()) {
+    const std::string& _s = this->_internal_sender();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "abstractaccount.v1.QueryAccountAddressRequest.sender");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // bytes salt = 2 [json_name = "salt"];
+  if (!this->_internal_salt().empty()) {
+    const std::string& _s = this->_internal_salt();
+    target = stream->WriteBytesMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:abstractaccount.v1.QueryAccountAddressRequest)
+  return target;
+}
+
+::size_t QueryAccountAddressRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:abstractaccount.v1.QueryAccountAddressRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string sender = 1 [json_name = "sender"];
+  if (!this->_internal_sender().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_sender());
+  }
+
+  // bytes salt = 2 [json_name = "salt"];
+  if (!this->_internal_salt().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_salt());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryAccountAddressRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryAccountAddressRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryAccountAddressRequest::GetClassData() const { return &_class_data_; }
+
+
+void QueryAccountAddressRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryAccountAddressRequest*>(&to_msg);
+  auto& from = static_cast<const QueryAccountAddressRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:abstractaccount.v1.QueryAccountAddressRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_sender().empty()) {
+    _this->_internal_set_sender(from._internal_sender());
+  }
+  if (!from._internal_salt().empty()) {
+    _this->_internal_set_salt(from._internal_salt());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryAccountAddressRequest::CopyFrom(const QueryAccountAddressRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:abstractaccount.v1.QueryAccountAddressRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryAccountAddressRequest::IsInitialized() const {
+  return true;
+}
+
+void QueryAccountAddressRequest::InternalSwap(QueryAccountAddressRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sender_, lhs_arena,
+                                       &other->_impl_.sender_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.salt_, lhs_arena,
+                                       &other->_impl_.salt_, rhs_arena);
+}
+
+::google::protobuf::Metadata QueryAccountAddressRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_getter, &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_once,
+      file_level_metadata_abstractaccount_2fv1_2fquery_2eproto[2]);
+}
+// ===================================================================
+
+class QueryAccountAddressResponse::_Internal {
+ public:
+};
+
+QueryAccountAddressResponse::QueryAccountAddressResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:abstractaccount.v1.QueryAccountAddressResponse)
+}
+QueryAccountAddressResponse::QueryAccountAddressResponse(const QueryAccountAddressResponse& from) : ::google::protobuf::Message() {
+  QueryAccountAddressResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.address_){},
+      decltype(_impl_.registered_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_address().empty()) {
+    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.registered_ = from._impl_.registered_;
+
+  // @@protoc_insertion_point(copy_constructor:abstractaccount.v1.QueryAccountAddressResponse)
+}
+inline void QueryAccountAddressResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.address_){},
+      decltype(_impl_.registered_){false},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+QueryAccountAddressResponse::~QueryAccountAddressResponse() {
+  // @@protoc_insertion_point(destructor:abstractaccount.v1.QueryAccountAddressResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void QueryAccountAddressResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.address_.Destroy();
+}
+void QueryAccountAddressResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void QueryAccountAddressResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:abstractaccount.v1.QueryAccountAddressResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.address_.ClearToEmpty();
+  _impl_.registered_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* QueryAccountAddressResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 62, 2> QueryAccountAddressResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_QueryAccountAddressResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bool registered = 2 [json_name = "registered"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(QueryAccountAddressResponse, _impl_.registered_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(QueryAccountAddressResponse, _impl_.registered_)}},
+    // string address = 1 [json_name = "address"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(QueryAccountAddressResponse, _impl_.address_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string address = 1 [json_name = "address"];
+    {PROTOBUF_FIELD_OFFSET(QueryAccountAddressResponse, _impl_.address_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool registered = 2 [json_name = "registered"];
+    {PROTOBUF_FIELD_OFFSET(QueryAccountAddressResponse, _impl_.registered_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+    "\56\7\0\0\0\0\0\0"
+    "abstractaccount.v1.QueryAccountAddressResponse"
+    "address"
+  }},
+};
+
+::uint8_t* QueryAccountAddressResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:abstractaccount.v1.QueryAccountAddressResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string address = 1 [json_name = "address"];
+  if (!this->_internal_address().empty()) {
+    const std::string& _s = this->_internal_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "abstractaccount.v1.QueryAccountAddressResponse.address");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // bool registered = 2 [json_name = "registered"];
+  if (this->_internal_registered() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        2, this->_internal_registered(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:abstractaccount.v1.QueryAccountAddressResponse)
+  return target;
+}
+
+::size_t QueryAccountAddressResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:abstractaccount.v1.QueryAccountAddressResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string address = 1 [json_name = "address"];
+  if (!this->_internal_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_address());
+  }
+
+  // bool registered = 2 [json_name = "registered"];
+  if (this->_internal_registered() != 0) {
+    total_size += 2;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData QueryAccountAddressResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    QueryAccountAddressResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*QueryAccountAddressResponse::GetClassData() const { return &_class_data_; }
+
+
+void QueryAccountAddressResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<QueryAccountAddressResponse*>(&to_msg);
+  auto& from = static_cast<const QueryAccountAddressResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:abstractaccount.v1.QueryAccountAddressResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_address().empty()) {
+    _this->_internal_set_address(from._internal_address());
+  }
+  if (from._internal_registered() != 0) {
+    _this->_internal_set_registered(from._internal_registered());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryAccountAddressResponse::CopyFrom(const QueryAccountAddressResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:abstractaccount.v1.QueryAccountAddressResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool QueryAccountAddressResponse::IsInitialized() const {
+  return true;
+}
+
+void QueryAccountAddressResponse::InternalSwap(QueryAccountAddressResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
+                                       &other->_impl_.address_, rhs_arena);
+        swap(_impl_.registered_, other->_impl_.registered_);
+}
+
+::google::protobuf::Metadata QueryAccountAddressResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_getter, &descriptor_table_abstractaccount_2fv1_2fquery_2eproto_once,
+      file_level_metadata_abstractaccount_2fv1_2fquery_2eproto[3]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

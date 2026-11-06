@@ -1,6 +1,7 @@
 version: v1
 plugins:
   - plugin: doc
-    out: .
+    out: docs
+    strategy: all
     opt:
-      - markdown,PROTO_DOCS.md:./docs.md.tpl
+      - markdown,PROTO_DOCS.md

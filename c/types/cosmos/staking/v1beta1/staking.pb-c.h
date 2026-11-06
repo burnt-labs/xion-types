@@ -45,6 +45,7 @@ typedef struct Cosmos__Staking__V1beta1__RedelegationEntryResponse Cosmos__Staki
 typedef struct Cosmos__Staking__V1beta1__RedelegationResponse Cosmos__Staking__V1beta1__RedelegationResponse;
 typedef struct Cosmos__Staking__V1beta1__Pool Cosmos__Staking__V1beta1__Pool;
 typedef struct Cosmos__Staking__V1beta1__ValidatorUpdates Cosmos__Staking__V1beta1__ValidatorUpdates;
+typedef struct Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry;
 
 
 /* --- enums --- */
@@ -525,10 +526,14 @@ struct  Cosmos__Staking__V1beta1__Params
    * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
    */
   char *min_commission_rate;
+  /*
+   * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+   */
+  Cosmos__Base__V1beta1__Coin *key_rotation_fee;
 };
 #define COSMOS__STAKING__V1BETA1__PARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__params__descriptor) \
-, NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+, NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL }
 
 
 /*
@@ -607,6 +612,26 @@ struct  Cosmos__Staking__V1beta1__ValidatorUpdates
 #define COSMOS__STAKING__V1BETA1__VALIDATOR_UPDATES__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__validator_updates__descriptor) \
 , 0,NULL }
+
+
+/*
+ * ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+ * queue: the validator that rotated and the time and height at which its
+ * RotatedFrom lock may be retired because equivocation evidence for the
+ * rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+ * for time-ordered iteration; expiry_time is duplicated here so the record is
+ * self-describing.
+ */
+struct  Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry
+{
+  ProtobufCMessage base;
+  ProtobufCBinaryData validator_address;
+  Google__Protobuf__Timestamp *expiry_time;
+  int64_t expiry_height;
+};
+#define COSMOS__STAKING__V1BETA1__CONS_KEY_EVIDENCE_EXPIRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor) \
+, {0,NULL}, NULL, 0 }
 
 
 /* Cosmos__Staking__V1beta1__HistoricalInfo methods */
@@ -1008,6 +1033,25 @@ Cosmos__Staking__V1beta1__ValidatorUpdates *
 void   cosmos__staking__v1beta1__validator_updates__free_unpacked
                      (Cosmos__Staking__V1beta1__ValidatorUpdates *message,
                       ProtobufCAllocator *allocator);
+/* Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry methods */
+void   cosmos__staking__v1beta1__cons_key_evidence_expiry__init
+                     (Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry         *message);
+size_t cosmos__staking__v1beta1__cons_key_evidence_expiry__get_packed_size
+                     (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry   *message);
+size_t cosmos__staking__v1beta1__cons_key_evidence_expiry__pack
+                     (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry   *message,
+                      uint8_t             *out);
+size_t cosmos__staking__v1beta1__cons_key_evidence_expiry__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry   *message,
+                      ProtobufCBuffer     *buffer);
+Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *
+       cosmos__staking__v1beta1__cons_key_evidence_expiry__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   cosmos__staking__v1beta1__cons_key_evidence_expiry__free_unpacked
+                     (Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Cosmos__Staking__V1beta1__HistoricalInfo_Closure)
@@ -1073,6 +1117,9 @@ typedef void (*Cosmos__Staking__V1beta1__Pool_Closure)
 typedef void (*Cosmos__Staking__V1beta1__ValidatorUpdates_Closure)
                  (const Cosmos__Staking__V1beta1__ValidatorUpdates *message,
                   void *closure_data);
+typedef void (*Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry_Closure)
+                 (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -1102,6 +1149,7 @@ extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__redelegation_e
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__redelegation_response__descriptor;
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__pool__descriptor;
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__validator_updates__descriptor;
+extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor;
 
 PROTOBUF_C__END_DECLS
 

@@ -256,7 +256,7 @@ const char descriptor_table_protodef_ibc_2flightclients_2fwasm_2fv1_2ftx_2eproto
     "4.ibc.lightclients.wasm.v1.MsgMigrateCon"
     "tractResponse\032\005\200\347\260*\001BBZ@github.com/cosmo"
     "s/ibc-go/modules/light-clients/08-wasm/v"
-    "10/typesb\006proto3"
+    "11/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2flightclients_2fwasm_2fv1_2ftx_2eproto_deps[1] =
     {

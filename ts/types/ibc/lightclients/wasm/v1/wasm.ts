@@ -37,18 +37,6 @@ export interface ClientMessage {
   data: Uint8Array;
 }
 
-/**
- * Checksums defines a list of all checksums that are stored
- *
- * Deprecated: This message is deprecated in favor of storing the checksums
- * using a Collections.KeySet.
- *
- * @deprecated
- */
-export interface Checksums {
-  checksums: Uint8Array[];
-}
-
 function createBaseClientState(): ClientState {
   return { data: new Uint8Array(0), checksum: new Uint8Array(0), latestHeight: undefined };
 }
@@ -286,77 +274,6 @@ export const ClientMessage: MessageFns<ClientMessage> = {
   fromPartial<I extends Exact<DeepPartial<ClientMessage>, I>>(object: I): ClientMessage {
     const message = createBaseClientMessage();
     message.data = object.data ?? new Uint8Array(0);
-    return message;
-  },
-};
-
-function createBaseChecksums(): Checksums {
-  return { checksums: [] };
-}
-
-export const Checksums: MessageFns<Checksums> = {
-  encode(message: Checksums, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    for (const v of message.checksums) {
-      writer.uint32(10).bytes(v!);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): Checksums {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
-    if (previousRecursionDepth >= 100) {
-      throw new globalThis.Error("protobuf decode recursion limit exceeded");
-    }
-    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
-    try {
-      const end = length === undefined ? reader.len : reader.pos + length;
-      const message = createBaseChecksums();
-      while (reader.pos < end) {
-        const tag = reader.uint32();
-        switch (tag >>> 3) {
-          case 1: {
-            if (tag !== 10) {
-              break;
-            }
-
-            message.checksums.push(reader.bytes());
-            continue;
-          }
-        }
-        if ((tag & 7) === 4 || tag === 0) {
-          break;
-        }
-        reader.skip(tag & 7);
-      }
-      return message;
-    } finally {
-      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
-    }
-  },
-
-  fromJSON(object: any): Checksums {
-    return {
-      checksums: globalThis.Array.isArray(object?.checksums)
-        ? object.checksums.map((e: any) => bytesFromBase64(e))
-        : [],
-    };
-  },
-
-  toJSON(message: Checksums): unknown {
-    const obj: any = {};
-    if (message.checksums?.length) {
-      obj.checksums = message.checksums.map((e) => base64FromBytes(e));
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<Checksums>, I>>(base?: I): Checksums {
-    return Checksums.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<Checksums>, I>>(object: I): Checksums {
-    const message = createBaseChecksums();
-    message.checksums = object.checksums?.map((e) => e) || [];
     return message;
   },
 };

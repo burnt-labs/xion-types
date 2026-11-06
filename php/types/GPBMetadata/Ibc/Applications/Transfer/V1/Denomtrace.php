@@ -22,7 +22,7 @@ class Denomtrace
 DenomTrace
 path (	Rpath
 
-base_denom (	R	baseDenom:B:Z8github.com/cosmos/ibc-go/v10/modules/apps/transfer/typesbproto3'
+base_denom (	R	baseDenom:B:Z8github.com/cosmos/ibc-go/v11/modules/apps/transfer/typesbproto3'
         , true);
 
         static::$is_initialized = true;

@@ -392,6 +392,14 @@ pub struct MsgTransfer {
     /// optional encoding
     #[prost(string, tag="9")]
     pub encoding: ::prost::alloc::string::String,
+    /// boolean flag to indicate if the transfer message
+    /// is sent with the IBC v2 protocol but uses v1 channel identifiers.
+    /// In this case, the v1 channel identifiers function as aliases to the
+    /// underlying client ids.
+    /// This only needs to be set if the channel IDs
+    /// are V1 channel identifiers.
+    #[prost(bool, tag="10")]
+    pub use_aliasing: bool,
 }
 impl ::prost::Name for MsgTransfer {
 const NAME: &'static str = "MsgTransfer";

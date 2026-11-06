@@ -25,15 +25,20 @@ namespace Abstractaccount.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBhYnN0cmFjdGFjY291bnQvdjEvZ2VuZXNpcy5wcm90bxISYWJzdHJhY3Rh",
-            "Y2NvdW50LnYxGh9hYnN0cmFjdGFjY291bnQvdjEvcGFyYW1zLnByb3RvImoK",
-            "DEdlbmVzaXNTdGF0ZRIyCgZwYXJhbXMYASABKAsyGi5hYnN0cmFjdGFjY291",
-            "bnQudjEuUGFyYW1zUgZwYXJhbXMSJgoPbmV4dF9hY2NvdW50X2lkGAIgASgE",
-            "Ug1uZXh0QWNjb3VudElkQkBaPmdpdGh1Yi5jb20vYnVybnQtbGFicy9hYnN0",
-            "cmFjdC1hY2NvdW50L3gvYWJzdHJhY3RhY2NvdW50L3R5cGVzYgZwcm90bzM="));
+            "Y2NvdW50LnYxGh9hYnN0cmFjdGFjY291bnQvdjEvcGFyYW1zLnByb3RvIrsB",
+            "CgxHZW5lc2lzU3RhdGUSMgoGcGFyYW1zGAEgASgLMhouYWJzdHJhY3RhY2Nv",
+            "dW50LnYxLlBhcmFtc1IGcGFyYW1zEiYKD25leHRfYWNjb3VudF9pZBgCIAEo",
+            "BFINbmV4dEFjY291bnRJZBJPChFhY2NvdW50X2FkZHJlc3NlcxgDIAMoCzIi",
+            "LmFic3RyYWN0YWNjb3VudC52MS5BY2NvdW50QWRkcmVzc1IQYWNjb3VudEFk",
+            "ZHJlc3NlcyJWCg5BY2NvdW50QWRkcmVzcxIWCgZzZW5kZXIYASABKAlSBnNl",
+            "bmRlchISCgRzYWx0GAIgASgMUgRzYWx0EhgKB2FkZHJlc3MYAyABKAlSB2Fk",
+            "ZHJlc3NCNFoyZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24veC9hYnN0cmFj",
+            "dGFjY291bnQvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Abstractaccount.V1.ParamsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.GenesisState), global::Abstractaccount.V1.GenesisState.Parser, new[]{ "Params", "NextAccountId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.GenesisState), global::Abstractaccount.V1.GenesisState.Parser, new[]{ "Params", "NextAccountId", "AccountAddresses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Abstractaccount.V1.AccountAddress), global::Abstractaccount.V1.AccountAddress.Parser, new[]{ "Sender", "Salt", "Address" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,6 +84,7 @@ namespace Abstractaccount.V1 {
     public GenesisState(GenesisState other) : this() {
       params_ = other.params_ != null ? other.params_.Clone() : null;
       nextAccountId_ = other.nextAccountId_;
+      accountAddresses_ = other.accountAddresses_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,6 +97,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "params" field.</summary>
     public const int ParamsFieldNumber = 1;
     private global::Abstractaccount.V1.Params params_;
+    /// <summary>
+    /// params defines the module parameters.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Abstractaccount.V1.Params Params {
@@ -103,6 +112,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "next_account_id" field.</summary>
     public const int NextAccountIdFieldNumber = 2;
     private ulong nextAccountId_;
+    /// <summary>
+    /// next_account_id is the identifier assigned to the next registered account.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong NextAccountId {
@@ -110,6 +122,20 @@ namespace Abstractaccount.V1 {
       set {
         nextAccountId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "account_addresses" field.</summary>
+    public const int AccountAddressesFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Abstractaccount.V1.AccountAddress> _repeated_accountAddresses_codec
+        = pb::FieldCodec.ForMessage(26, global::Abstractaccount.V1.AccountAddress.Parser);
+    private readonly pbc::RepeatedField<global::Abstractaccount.V1.AccountAddress> accountAddresses_ = new pbc::RepeatedField<global::Abstractaccount.V1.AccountAddress>();
+    /// <summary>
+    /// account_addresses is the exported sender/salt address registry.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Abstractaccount.V1.AccountAddress> AccountAddresses {
+      get { return accountAddresses_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -129,6 +155,7 @@ namespace Abstractaccount.V1 {
       }
       if (!object.Equals(Params, other.Params)) return false;
       if (NextAccountId != other.NextAccountId) return false;
+      if(!accountAddresses_.Equals(other.accountAddresses_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -138,6 +165,7 @@ namespace Abstractaccount.V1 {
       int hash = 1;
       if (params_ != null) hash ^= Params.GetHashCode();
       if (NextAccountId != 0UL) hash ^= NextAccountId.GetHashCode();
+      hash ^= accountAddresses_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -164,6 +192,7 @@ namespace Abstractaccount.V1 {
         output.WriteRawTag(16);
         output.WriteUInt64(NextAccountId);
       }
+      accountAddresses_.WriteTo(output, _repeated_accountAddresses_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -182,6 +211,7 @@ namespace Abstractaccount.V1 {
         output.WriteRawTag(16);
         output.WriteUInt64(NextAccountId);
       }
+      accountAddresses_.WriteTo(ref output, _repeated_accountAddresses_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -198,6 +228,7 @@ namespace Abstractaccount.V1 {
       if (NextAccountId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(NextAccountId);
       }
+      size += accountAddresses_.CalculateSize(_repeated_accountAddresses_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -219,6 +250,7 @@ namespace Abstractaccount.V1 {
       if (other.NextAccountId != 0UL) {
         NextAccountId = other.NextAccountId;
       }
+      accountAddresses_.Add(other.accountAddresses_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -245,6 +277,10 @@ namespace Abstractaccount.V1 {
             NextAccountId = input.ReadUInt64();
             break;
           }
+          case 26: {
+            accountAddresses_.AddEntriesFrom(input, _repeated_accountAddresses_codec);
+            break;
+          }
         }
       }
     #endif
@@ -269,6 +305,285 @@ namespace Abstractaccount.V1 {
           }
           case 16: {
             NextAccountId = input.ReadUInt64();
+            break;
+          }
+          case 26: {
+            accountAddresses_.AddEntriesFrom(ref input, _repeated_accountAddresses_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// AccountAddress is an exported sender/salt registry entry.
+  /// </summary>
+  public sealed partial class AccountAddress : pb::IMessage<AccountAddress>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<AccountAddress> _parser = new pb::MessageParser<AccountAddress>(() => new AccountAddress());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<AccountAddress> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Abstractaccount.V1.GenesisReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AccountAddress() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AccountAddress(AccountAddress other) : this() {
+      sender_ = other.sender_;
+      salt_ = other.salt_;
+      address_ = other.address_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AccountAddress Clone() {
+      return new AccountAddress(this);
+    }
+
+    /// <summary>Field number for the "sender" field.</summary>
+    public const int SenderFieldNumber = 1;
+    private string sender_ = "";
+    /// <summary>
+    /// sender is the address that registered the account.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Sender {
+      get { return sender_; }
+      set {
+        sender_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "salt" field.</summary>
+    public const int SaltFieldNumber = 2;
+    private pb::ByteString salt_ = pb::ByteString.Empty;
+    /// <summary>
+    /// salt is the caller-chosen salt the address was derived with.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Salt {
+      get { return salt_; }
+      set {
+        salt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "address" field.</summary>
+    public const int AddressFieldNumber = 3;
+    private string address_ = "";
+    /// <summary>
+    /// address is the derived account address.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Address {
+      get { return address_; }
+      set {
+        address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as AccountAddress);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(AccountAddress other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Sender != other.Sender) return false;
+      if (Salt != other.Salt) return false;
+      if (Address != other.Address) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Sender.Length != 0) hash ^= Sender.GetHashCode();
+      if (Salt.Length != 0) hash ^= Salt.GetHashCode();
+      if (Address.Length != 0) hash ^= Address.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Sender.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Sender);
+      }
+      if (Salt.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Salt);
+      }
+      if (Address.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Address);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Sender.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Sender);
+      }
+      if (Salt.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Salt);
+      }
+      if (Address.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Address);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Sender.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Sender);
+      }
+      if (Salt.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Salt);
+      }
+      if (Address.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(AccountAddress other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Sender.Length != 0) {
+        Sender = other.Sender;
+      }
+      if (other.Salt.Length != 0) {
+        Salt = other.Salt;
+      }
+      if (other.Address.Length != 0) {
+        Address = other.Address;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Sender = input.ReadString();
+            break;
+          }
+          case 18: {
+            Salt = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            Address = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Sender = input.ReadString();
+            break;
+          }
+          case 18: {
+            Salt = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            Address = input.ReadString();
             break;
           }
         }

@@ -192,7 +192,7 @@ const ProtobufCMessageDescriptor ibc__applications__packet_forward_middleware__v
   (ProtobufCMessageInit) ibc__applications__packet_forward_middleware__v1__genesis_state__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor ibc__applications__packet_forward_middleware__v1__in_flight_packet__field_descriptors[12] =
+static const ProtobufCFieldDescriptor ibc__applications__packet_forward_middleware__v1__in_flight_packet__field_descriptors[11] =
 {
   {
     "original_sender_address",
@@ -326,21 +326,8 @@ static const ProtobufCFieldDescriptor ibc__applications__packet_forward_middlewa
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
-  {
-    "nonrefundable",
-    12,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_BOOL,
-    0,   /* quantifier_offset */
-    offsetof(Ibc__Applications__PacketForwardMiddleware__V1__InFlightPacket, nonrefundable),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
 };
 static const unsigned ibc__applications__packet_forward_middleware__v1__in_flight_packet__field_indices_by_name[] = {
-  11,   /* field[11] = nonrefundable */
   0,   /* field[0] = original_sender_address */
   7,   /* field[7] = packet_data */
   3,   /* field[3] = packet_src_channel_id */
@@ -356,7 +343,7 @@ static const unsigned ibc__applications__packet_forward_middleware__v1__in_fligh
 static const ProtobufCIntRange ibc__applications__packet_forward_middleware__v1__in_flight_packet__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 12 }
+  { 0, 11 }
 };
 const ProtobufCMessageDescriptor ibc__applications__packet_forward_middleware__v1__in_flight_packet__descriptor =
 {
@@ -366,7 +353,7 @@ const ProtobufCMessageDescriptor ibc__applications__packet_forward_middleware__v
   "Ibc__Applications__PacketForwardMiddleware__V1__InFlightPacket",
   "ibc.applications.packet_forward_middleware.v1",
   sizeof(Ibc__Applications__PacketForwardMiddleware__V1__InFlightPacket),
-  12,
+  11,
   ibc__applications__packet_forward_middleware__v1__in_flight_packet__field_descriptors,
   ibc__applications__packet_forward_middleware__v1__in_flight_packet__field_indices_by_name,
   1,  ibc__applications__packet_forward_middleware__v1__in_flight_packet__number_ranges,

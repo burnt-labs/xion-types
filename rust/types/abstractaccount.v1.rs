@@ -6,10 +6,13 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbstractAccount {
+    /// address is the bech32-encoded address of the account's contract.
     #[prost(string, tag="1")]
     pub address: ::prost::alloc::string::String,
+    /// account_number is the account's number assigned by the auth module.
     #[prost(uint64, tag="2")]
     pub account_number: u64,
+    /// sequence is the account's current transaction sequence.
     #[prost(uint64, tag="3")]
     pub sequence: u64,
 }
@@ -28,6 +31,8 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NilPubKey {
+    /// address_bytes is the raw address bytes of the account the pubkey
+    /// stands in for.
     #[prost(bytes="vec", tag="1")]
     pub address_bytes: ::prost::alloc::vec::Vec<u8>,
 }
@@ -41,14 +46,22 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventAccountRegistered {
+    /// creator is the address that requested the account registration.
     #[prost(string, tag="1")]
     pub creator: ::prost::alloc::string::String,
+    /// CodeID is the caller-selected implementation active after registration.
     #[prost(uint64, tag="2")]
     pub code_id: u64,
+    /// contract_addr is the address of the newly instantiated account contract.
     #[prost(string, tag="3")]
     pub contract_addr: ::prost::alloc::string::String,
+    /// account_number is the account number assigned to the new account.
     #[prost(uint64, tag="4")]
     pub account_number: u64,
+    /// address_derivation_hash is the fixed hash used to derive the account's
+    /// address.
+    #[prost(bytes="vec", tag="6")]
+    pub address_derivation_hash: ::prost::alloc::vec::Vec<u8>,
 }
 impl ::prost::Name for EventAccountRegistered {
 const NAME: &'static str = "EventAccountRegistered";
@@ -60,15 +73,16 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
-    /// AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-    /// AbstractAccounts:
+    /// AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+    /// final implementation for a newly registered AbstractAccount or a
+    /// top-level raw Wasm migration:
     /// - if set to true, any code ID can be used;
     /// - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
     /// be used.
     #[prost(bool, tag="1")]
     pub allow_all_code_ids: bool,
-    /// AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-    /// regiseter AbstractAccounts.
+    /// AllowedCodeIDs is the whitelist for registration implementations and
+    /// top-level raw Wasm migrations. This is not a wasmd-level policy.
     #[prost(uint64, repeated, packed="false", tag="2")]
     pub allowed_code_ids: ::prost::alloc::vec::Vec<u64>,
     /// MaxGasBefore is the maximum amount of gas that can be consumed by the
@@ -83,6 +97,17 @@ pub struct Params {
     /// Must be greater than zero.
     #[prost(uint64, tag="4")]
     pub max_gas_after: u64,
+    /// RegistrationEnabled controls whether new abstract accounts may be
+    /// registered. Governance can pause registration without changing the
+    /// immutable address namespace or blocking address queries.
+    #[prost(bool, tag="7")]
+    pub registration_enabled: bool,
+    /// AddressDerivationHash is the immutable 32-byte namespace used only to
+    /// derive predictable AbstractAccount addresses. The caller-selected code ID
+    /// is instantiated directly and does not participate in address derivation.
+    /// An empty value leaves registration unconfigured.
+    #[prost(bytes="vec", tag="8")]
+    pub address_derivation_hash: ::prost::alloc::vec::Vec<u8>,
 }
 impl ::prost::Name for Params {
 const NAME: &'static str = "Params";
@@ -94,13 +119,38 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
+    /// params defines the module parameters.
     #[prost(message, optional, tag="1")]
     pub params: ::core::option::Option<Params>,
+    /// next_account_id is the identifier assigned to the next registered account.
     #[prost(uint64, tag="2")]
     pub next_account_id: u64,
+    /// account_addresses is the exported sender/salt address registry.
+    #[prost(message, repeated, tag="3")]
+    pub account_addresses: ::prost::alloc::vec::Vec<AccountAddress>,
 }
 impl ::prost::Name for GenesisState {
 const NAME: &'static str = "GenesisState";
+const PACKAGE: &'static str = "abstractaccount.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("abstractaccount.v1.{}", Self::NAME)
+            }}
+/// AccountAddress is an exported sender/salt registry entry.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AccountAddress {
+    /// sender is the address that registered the account.
+    #[prost(string, tag="1")]
+    pub sender: ::prost::alloc::string::String,
+    /// salt is the caller-chosen salt the address was derived with.
+    #[prost(bytes="vec", tag="2")]
+    pub salt: ::prost::alloc::vec::Vec<u8>,
+    /// address is the derived account address.
+    #[prost(string, tag="3")]
+    pub address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for AccountAddress {
+const NAME: &'static str = "AccountAddress";
 const PACKAGE: &'static str = "abstractaccount.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("abstractaccount.v1.{}", Self::NAME)
@@ -122,11 +172,49 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
+    /// params holds the current module parameters.
     #[prost(message, optional, tag="1")]
     pub params: ::core::option::Option<Params>,
 }
 impl ::prost::Name for QueryParamsResponse {
 const NAME: &'static str = "QueryParamsResponse";
+const PACKAGE: &'static str = "abstractaccount.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("abstractaccount.v1.{}", Self::NAME)
+            }}
+/// QueryAccountAddressRequest identifies an account namespace. Implementation
+/// code IDs do not participate in this address lookup.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAccountAddressRequest {
+    /// sender is the address registering the account.
+    #[prost(string, tag="1")]
+    pub sender: ::prost::alloc::string::String,
+    /// salt is the caller-chosen salt the address is derived with.
+    #[prost(bytes="vec", tag="2")]
+    pub salt: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for QueryAccountAddressRequest {
+const NAME: &'static str = "QueryAccountAddressRequest";
+const PACKAGE: &'static str = "abstractaccount.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("abstractaccount.v1.{}", Self::NAME)
+            }}
+/// QueryAccountAddressResponse contains the stable address and whether an
+/// AbstractAccount is already registered for the namespace.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAccountAddressResponse {
+    /// address is the stable address derived for the namespace.
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+    /// registered reports whether an AbstractAccount already exists for the
+    /// namespace.
+    #[prost(bool, tag="2")]
+    pub registered: bool,
+}
+impl ::prost::Name for QueryAccountAddressResponse {
+const NAME: &'static str = "QueryAccountAddressResponse";
 const PACKAGE: &'static str = "abstractaccount.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("abstractaccount.v1.{}", Self::NAME)
@@ -137,8 +225,10 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUpdateParams {
+    /// sender is the authority address requesting the update.
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
+    /// params is the new module parameters to apply.
     #[prost(message, optional, tag="2")]
     pub params: ::core::option::Option<Params>,
 }
@@ -168,16 +258,17 @@ pub struct MsgRegisterAccount {
     /// Sender is the actor who signs the message
     #[prost(string, tag="1")]
     pub sender: ::prost::alloc::string::String,
-    /// CodeID indicates which wasm binary code is to be used for this contract
+    /// CodeID selects the allowed implementation installed after deterministic
+    /// direct instantiation. It does not participate in address derivation.
     #[prost(uint64, tag="2")]
     pub code_id: u64,
     /// Msg is the JSON-encoded instantiate message for the contract
     #[prost(bytes="vec", tag="3")]
     pub msg: ::prost::alloc::vec::Vec<u8>,
-    /// Funds are coins to be deposited to the contract on instantiattion
+    /// Funds are coins to be deposited to the contract on instantiation
     #[prost(message, repeated, tag="4")]
     pub funds: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
-    /// Salt is an arbinary value to be used in deriving the account address.
+    /// Salt is an arbitrary value to be used in deriving the account address.
     /// Max 64 bytes.
     #[prost(bytes="vec", tag="5")]
     pub salt: ::prost::alloc::vec::Vec<u8>,
@@ -192,8 +283,10 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRegisterAccountResponse {
+    /// address is the address of the newly registered account contract.
     #[prost(string, tag="1")]
     pub address: ::prost::alloc::string::String,
+    /// data is the raw response data from the contract instantiation.
     #[prost(bytes="vec", tag="2")]
     pub data: ::prost::alloc::vec::Vec<u8>,
 }

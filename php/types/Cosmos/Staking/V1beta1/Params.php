@@ -51,6 +51,12 @@ class Params extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string min_commission_rate = 6 [json_name = "minCommissionRate", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.LegacyDec", (.gogoproto.moretags) = "yaml:\"min_commission_rate\"", (.cosmos_proto.scalar) = "cosmos.Dec", (.amino.dont_omitempty) = true];</code>
      */
     protected $min_commission_rate = '';
+    /**
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     *
+     * Generated from protobuf field <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    protected $key_rotation_fee = null;
 
     /**
      * Constructor.
@@ -70,6 +76,8 @@ class Params extends \Google\Protobuf\Internal\Message
      *           bond_denom defines the bondable coin denomination.
      *     @type string $min_commission_rate
      *           min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+     *     @type \Cosmos\Base\V1beta1\Coin $key_rotation_fee
+     *           key_rotation_fee is the fee charged when rotating a validator's consensus key.
      * }
      */
     public function __construct($data = NULL) {
@@ -239,6 +247,42 @@ class Params extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->min_commission_rate = $var;
+
+        return $this;
+    }
+
+    /**
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     *
+     * Generated from protobuf field <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return \Cosmos\Base\V1beta1\Coin|null
+     */
+    public function getKeyRotationFee()
+    {
+        return $this->key_rotation_fee;
+    }
+
+    public function hasKeyRotationFee()
+    {
+        return isset($this->key_rotation_fee);
+    }
+
+    public function clearKeyRotationFee()
+    {
+        unset($this->key_rotation_fee);
+    }
+
+    /**
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     *
+     * Generated from protobuf field <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @param \Cosmos\Base\V1beta1\Coin $var
+     * @return $this
+     */
+    public function setKeyRotationFee($var)
+    {
+        GPBUtil::checkMessage($var, \Cosmos\Base\V1beta1\Coin::class);
+        $this->key_rotation_fee = $var;
 
         return $this;
     }

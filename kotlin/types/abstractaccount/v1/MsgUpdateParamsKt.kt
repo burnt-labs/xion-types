@@ -32,6 +32,10 @@ public object MsgUpdateParamsKt {
     internal fun _build(): abstractaccount.v1.Tx.MsgUpdateParams = _builder.build()
 
     /**
+     * ```
+     * sender is the authority address requesting the update.
+     * ```
+     *
      * `string sender = 1 [json_name = "sender"];`
      */
     public var sender: kotlin.String
@@ -42,6 +46,10 @@ public object MsgUpdateParamsKt {
         _builder.setSender(value)
       }
     /**
+     * ```
+     * sender is the authority address requesting the update.
+     * ```
+     *
      * `string sender = 1 [json_name = "sender"];`
      */
     public fun clearSender() {
@@ -49,6 +57,10 @@ public object MsgUpdateParamsKt {
     }
 
     /**
+     * ```
+     * params is the new module parameters to apply.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 2 [json_name = "params"];`
      */
     public var params: abstractaccount.v1.ParamsOuterClass.Params
@@ -59,12 +71,20 @@ public object MsgUpdateParamsKt {
         _builder.setParams(value)
       }
     /**
+     * ```
+     * params is the new module parameters to apply.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 2 [json_name = "params"];`
      */
     public fun clearParams() {
       _builder.clearParams()
     }
     /**
+     * ```
+     * params is the new module parameters to apply.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 2 [json_name = "params"];`
      * @return Whether the params field is set.
      */

@@ -67,7 +67,7 @@ namespace Ibc.Lightclients.Tendermint.V1 {
             "cnMYBCABKAsyHi50ZW5kZXJtaW50LnR5cGVzLlZhbGlkYXRvclNldFIRdHJ1",
             "c3RlZFZhbGlkYXRvcnMiSgoIRnJhY3Rpb24SHAoJbnVtZXJhdG9yGAEgASgE",
             "UgludW1lcmF0b3ISIAoLZGVub21pbmF0b3IYAiABKARSC2Rlbm9taW5hdG9y",
-            "Qk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9saWdo",
+            "Qk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9saWdo",
             "dC1jbGllbnRzLzA3LXRlbmRlcm1pbnQ7dGVuZGVybWludGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Tendermint.Types.ValidatorReflection.Descriptor, global::Tendermint.Types.TypesReflection.Descriptor, global::Cosmos.Ics23.V1.ProofsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Ibc.Core.Client.V1.ClientReflection.Descriptor, global::Ibc.Core.Commitment.V1.CommitmentReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },

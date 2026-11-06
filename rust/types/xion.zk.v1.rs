@@ -12,6 +12,30 @@ pub struct Params {
     /// upload_chunk_gas defines the gas cost per upload chunk.
     #[prost(uint64, tag="3")]
     pub upload_chunk_gas: u64,
+    /// max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+    #[prost(uint64, tag="4")]
+    pub max_groth16_proof_size_bytes: u64,
+    /// max_groth16_public_input_size_bytes caps the size of the Groth16 public
+    /// inputs. The size is computed as the total UTF-8 byte length of all provided
+    /// public input strings.
+    #[prost(uint64, tag="5")]
+    pub max_groth16_public_input_size_bytes: u64,
+    /// max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+    #[prost(uint64, tag="6")]
+    pub max_ultra_honk_proof_size_bytes: u64,
+    /// max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+    /// public inputs. UltraHonk public inputs are provided as raw bytes.
+    #[prost(uint64, tag="7")]
+    pub max_ultra_honk_public_input_size_bytes: u64,
+    /// max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+    /// (binary).
+    #[prost(uint64, tag="8")]
+    pub max_gnark_proof_size_bytes: u64,
+    /// max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+    /// inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+    /// big-endian field elements).
+    #[prost(uint64, tag="9")]
+    pub max_gnark_public_input_size_bytes: u64,
 }
 impl ::prost::Name for Params {
 const NAME: &'static str = "Params";
@@ -19,6 +43,45 @@ const PACKAGE: &'static str = "xion.zk.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.zk.v1.{}", Self::NAME)
             }}
+/// ProofSystem identifies which ZK backend and wire format a vkey/proof uses.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum ProofSystem {
+    /// PROOF_SYSTEM_UNSPECIFIED is the default unset value.
+    Unspecified = 0,
+    /// PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format.
+    Groth16 = 1,
+    /// PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+    /// (bb >= 0.87).
+    UltraHonkZk = 2,
+    /// PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+    /// format (binary).
+    Groth16Gnark = 3,
+}
+impl ProofSystem {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            ProofSystem::Unspecified => "PROOF_SYSTEM_UNSPECIFIED",
+            ProofSystem::Groth16 => "PROOF_SYSTEM_GROTH16",
+            ProofSystem::UltraHonkZk => "PROOF_SYSTEM_ULTRA_HONK_ZK",
+            ProofSystem::Groth16Gnark => "PROOF_SYSTEM_GROTH16_GNARK",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "PROOF_SYSTEM_UNSPECIFIED" => Some(Self::Unspecified),
+            "PROOF_SYSTEM_GROTH16" => Some(Self::Groth16),
+            "PROOF_SYSTEM_ULTRA_HONK_ZK" => Some(Self::UltraHonkZk),
+            "PROOF_SYSTEM_GROTH16_GNARK" => Some(Self::Groth16Gnark),
+            _ => None,
+        }
+    }
+}
 /// SnarkJsProof represents a ZK-SNARK proof in SnarkJS format.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -76,6 +139,116 @@ const PACKAGE: &'static str = "xion.zk.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.zk.v1.{}", Self::NAME)
             }}
+/// ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+/// proof verification.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ProofVerifyUltraHonkResponse {
+    /// verified indicates whether the proof verification was successful.
+    #[prost(bool, tag="1")]
+    pub verified: bool,
+    /// vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+    /// were used for this verification.
+    ///
+    /// A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+    /// AddVKey is permissionless, and the key's owner may later UpdateVKey the
+    /// bytes under the same name and ID. A consumer that reviewed specific key
+    /// material therefore cannot establish, from `verified` alone, that this
+    /// verification used that material. Echoing the digest lets the consumer
+    /// compare against a pin it derived offline from the reviewed artifact, in the
+    /// same response that reports the verdict.
+    ///
+    /// Always populated on success, so a consumer may treat an absent value as a
+    /// server too old to enforce `expected_vkey_sha256` and fail closed.
+    #[prost(bytes="vec", tag="2")]
+    pub vkey_sha256: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for ProofVerifyUltraHonkResponse {
+const NAME: &'static str = "ProofVerifyUltraHonkResponse";
+const PACKAGE: &'static str = "xion.zk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.zk.v1.{}", Self::NAME)
+            }}
+/// ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+/// proof verification.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ProofVerifyGnarkResponse {
+    /// verified indicates whether the proof verification was successful.
+    #[prost(bool, tag="1")]
+    pub verified: bool,
+}
+impl ::prost::Name for ProofVerifyGnarkResponse {
+const NAME: &'static str = "ProofVerifyGnarkResponse";
+const PACKAGE: &'static str = "xion.zk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.zk.v1.{}", Self::NAME)
+            }}
+/// QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+/// The verification key is resolved by vkey_name or vkey_id from the store (must
+/// be ultrahonk type). Proof and public_inputs are raw binary as produced by
+/// Barretenberg (e.g. bb prove).
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVerifyUltraHonkRequest {
+    /// proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+    #[prost(bytes="vec", tag="1")]
+    pub proof: ::prost::alloc::vec::Vec<u8>,
+    /// public_inputs is the raw public inputs binary: concatenated 32-byte
+    /// big-endian field elements, as produced by Barretenberg (e.g. bb
+    /// write_inputs or the same flow that generates the proof).
+    #[prost(bytes="vec", tag="2")]
+    pub public_inputs: ::prost::alloc::vec::Vec<u8>,
+    /// vkey_name is the unique name of the UltraHonk verification key
+    #[prost(string, tag="3")]
+    pub vkey_name: ::prost::alloc::string::String,
+    /// vkey_id is the numeric id of the UltraHonk verification key
+    #[prost(uint64, tag="4")]
+    pub vkey_id: u64,
+    /// expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+    /// verification key's stored bytes, or verification fails with
+    /// verified = false. Must be empty or exactly 32 bytes.
+    ///
+    /// This makes the key-identity check atomic with the verdict: the consumer
+    /// does not have to read the key back in a second query and hope nothing
+    /// changed in between. Empty preserves the prior behaviour exactly, so
+    /// existing callers are unaffected.
+    #[prost(bytes="vec", tag="5")]
+    pub expected_vkey_sha256: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for QueryVerifyUltraHonkRequest {
+const NAME: &'static str = "QueryVerifyUltraHonkRequest";
+const PACKAGE: &'static str = "xion.zk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.zk.v1.{}", Self::NAME)
+            }}
+/// QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+/// The verification key is resolved by vkey_name or vkey_id from the store (must
+/// be groth16_gnark type). Proof and public_inputs are gnark native binary
+/// format.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVerifyGnarkRequest {
+    /// proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+    #[prost(bytes="vec", tag="1")]
+    pub proof: ::prost::alloc::vec::Vec<u8>,
+    /// public_inputs is the raw public inputs binary: concatenated 32-byte
+    /// big-endian field elements (fr.Element serialization).
+    #[prost(bytes="vec", tag="2")]
+    pub public_inputs: ::prost::alloc::vec::Vec<u8>,
+    /// vkey_name is the unique name of the gnark verification key
+    #[prost(string, tag="3")]
+    pub vkey_name: ::prost::alloc::string::String,
+    /// vkey_id is the numeric id of the gnark verification key
+    #[prost(uint64, tag="4")]
+    pub vkey_id: u64,
+}
+impl ::prost::Name for QueryVerifyGnarkRequest {
+const NAME: &'static str = "QueryVerifyGnarkRequest";
+const PACKAGE: &'static str = "xion.zk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.zk.v1.{}", Self::NAME)
+            }}
 /// VKey represents a verification key for ZK proof verification.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -95,6 +268,9 @@ pub struct VKey {
     /// authority is the uploader of the verification key.
     #[prost(string, tag="5")]
     pub authority: ::prost::alloc::string::String,
+    /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+    #[prost(enumeration="ProofSystem", tag="6")]
+    pub proof_system: i32,
 }
 impl ::prost::Name for VKey {
 const NAME: &'static str = "VKey";
@@ -324,9 +500,13 @@ pub struct MsgAddVKey {
     /// description provides context about this verification key
     #[prost(string, tag="3")]
     pub description: ::prost::alloc::string::String,
-    /// vkey_json is the JSON representation of the verification key
+    /// vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+    /// proof_system).
     #[prost(bytes="vec", tag="4")]
     pub vkey_bytes: ::prost::alloc::vec::Vec<u8>,
+    /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+    #[prost(enumeration="ProofSystem", tag="5")]
+    pub proof_system: i32,
 }
 impl ::prost::Name for MsgAddVKey {
 const NAME: &'static str = "MsgAddVKey";
@@ -361,9 +541,13 @@ pub struct MsgUpdateVKey {
     /// description provides updated context
     #[prost(string, tag="3")]
     pub description: ::prost::alloc::string::String,
-    /// vkey_json is the new JSON representation of the verification key
+    /// vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+    /// per proof_system).
     #[prost(bytes="vec", tag="4")]
     pub vkey_bytes: ::prost::alloc::vec::Vec<u8>,
+    /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+    #[prost(enumeration="ProofSystem", tag="5")]
+    pub proof_system: i32,
 }
 impl ::prost::Name for MsgUpdateVKey {
 const NAME: &'static str = "MsgUpdateVKey";

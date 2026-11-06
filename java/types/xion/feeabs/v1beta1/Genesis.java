@@ -1391,8 +1391,8 @@ public final class Genesis {
       ".ParamsB\025\310\336\037\000\362\336\037\ryaml:\"params\"R\006params\022<" +
       "\n\006epochs\030\002 \003(\0132\036.xion.feeabs.v1beta1.Epo" +
       "chInfoB\004\310\336\037\000R\006epochs\022\027\n\007port_id\030\003 \001(\tR\006p" +
-      "ortIdB+Z)github.com/burnt-labs/xion/x/fe" +
-      "eabs/typesb\006proto3"
+      "ortIdB.Z,github.com/burnt-labs/xion/app/" +
+      "legacy/feeabsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

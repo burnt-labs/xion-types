@@ -10,7 +10,8 @@ public inline fun publicInputIndices(block: xion.dkim.v1.PublicInputIndicesKt.Ds
   xion.dkim.v1.PublicInputIndicesKt.Dsl._create(xion.dkim.v1.Genesis.PublicInputIndices.newBuilder()).apply { block() }._build()
 /**
  * ```
- * PublicInputIndices defines the indices for extracting data from public inputs.
+ * PublicInputIndices defines the indices for extracting data from public
+ * inputs.
  * ```
  *
  * Protobuf type `xion.dkim.v1.PublicInputIndices`
@@ -32,6 +33,10 @@ public object PublicInputIndicesKt {
     internal fun _build(): xion.dkim.v1.Genesis.PublicInputIndices = _builder.build()
 
     /**
+     * ```
+     * min_length is the minimum required length of the public inputs array.
+     * ```
+     *
      * `uint64 min_length = 1 [json_name = "minLength"];`
      */
     public var minLength: kotlin.Long
@@ -42,6 +47,10 @@ public object PublicInputIndicesKt {
         _builder.setMinLength(value)
       }
     /**
+     * ```
+     * min_length is the minimum required length of the public inputs array.
+     * ```
+     *
      * `uint64 min_length = 1 [json_name = "minLength"];`
      */
     public fun clearMinLength() {
@@ -49,6 +58,10 @@ public object PublicInputIndicesKt {
     }
 
     /**
+     * ```
+     * email_hash_index is the index of the email hash in the public inputs.
+     * ```
+     *
      * `uint64 email_hash_index = 2 [json_name = "emailHashIndex"];`
      */
     public var emailHashIndex: kotlin.Long
@@ -59,6 +72,10 @@ public object PublicInputIndicesKt {
         _builder.setEmailHashIndex(value)
       }
     /**
+     * ```
+     * email_hash_index is the index of the email hash in the public inputs.
+     * ```
+     *
      * `uint64 email_hash_index = 2 [json_name = "emailHashIndex"];`
      */
     public fun clearEmailHashIndex() {
@@ -66,6 +83,10 @@ public object PublicInputIndicesKt {
     }
 
     /**
+     * ```
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];`
      */
     public var dkimDomainRange: xion.dkim.v1.Genesis.IndexRange
@@ -76,12 +97,20 @@ public object PublicInputIndicesKt {
         _builder.setDkimDomainRange(value)
       }
     /**
+     * ```
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];`
      */
     public fun clearDkimDomainRange() {
       _builder.clearDkimDomainRange()
     }
     /**
+     * ```
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];`
      * @return Whether the dkimDomainRange field is set.
      */
@@ -90,6 +119,10 @@ public object PublicInputIndicesKt {
     }
 
     /**
+     * ```
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     * ```
+     *
      * `uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];`
      */
     public var dkimHashIndex: kotlin.Long
@@ -100,6 +133,10 @@ public object PublicInputIndicesKt {
         _builder.setDkimHashIndex(value)
       }
     /**
+     * ```
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     * ```
+     *
      * `uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];`
      */
     public fun clearDkimHashIndex() {
@@ -107,6 +144,11 @@ public object PublicInputIndicesKt {
     }
 
     /**
+     * ```
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];`
      */
     public var txBytesRange: xion.dkim.v1.Genesis.IndexRange
@@ -117,12 +159,22 @@ public object PublicInputIndicesKt {
         _builder.setTxBytesRange(value)
       }
     /**
+     * ```
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];`
      */
     public fun clearTxBytesRange() {
       _builder.clearTxBytesRange()
     }
     /**
+     * ```
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];`
      * @return Whether the txBytesRange field is set.
      */
@@ -131,6 +183,10 @@ public object PublicInputIndicesKt {
     }
 
     /**
+     * ```
+     * email_host_range is the index range for the email host in public inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];`
      */
     public var emailHostRange: xion.dkim.v1.Genesis.IndexRange
@@ -141,12 +197,20 @@ public object PublicInputIndicesKt {
         _builder.setEmailHostRange(value)
       }
     /**
+     * ```
+     * email_host_range is the index range for the email host in public inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];`
      */
     public fun clearEmailHostRange() {
       _builder.clearEmailHostRange()
     }
     /**
+     * ```
+     * email_host_range is the index range for the email host in public inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];`
      * @return Whether the emailHostRange field is set.
      */
@@ -155,6 +219,11 @@ public object PublicInputIndicesKt {
     }
 
     /**
+     * ```
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];`
      */
     public var emailSubjectRange: xion.dkim.v1.Genesis.IndexRange
@@ -165,12 +234,22 @@ public object PublicInputIndicesKt {
         _builder.setEmailSubjectRange(value)
       }
     /**
+     * ```
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];`
      */
     public fun clearEmailSubjectRange() {
       _builder.clearEmailSubjectRange()
     }
     /**
+     * ```
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * ```
+     *
      * `.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];`
      * @return Whether the emailSubjectRange field is set.
      */

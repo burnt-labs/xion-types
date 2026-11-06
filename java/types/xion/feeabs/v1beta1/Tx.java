@@ -8852,8 +8852,8 @@ public final class Tx {
       "ateHostZoneResponse\"\000\022j\n\016RemoveHostZone\022" +
       "&.xion.feeabs.v1beta1.MsgRemoveHostZone\032" +
       "..xion.feeabs.v1beta1.MsgRemoveHostZoneR" +
-      "esponse\"\000\032\005\200\347\260*\001B+Z)github.com/burnt-lab" +
-      "s/xion/x/feeabs/typesb\006proto3"
+      "esponse\"\000\032\005\200\347\260*\001B.Z,github.com/burnt-lab" +
+      "s/xion/app/legacy/feeabsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

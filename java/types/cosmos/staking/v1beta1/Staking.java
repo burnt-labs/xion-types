@@ -17668,6 +17668,33 @@ public final class Staking {
      */
     com.google.protobuf.ByteString
         getMinCommissionRateBytes();
+
+    /**
+     * <pre>
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * </pre>
+     *
+     * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the keyRotationFee field is set.
+     */
+    boolean hasKeyRotationFee();
+    /**
+     * <pre>
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * </pre>
+     *
+     * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return The keyRotationFee.
+     */
+    cosmos.base.v1beta1.CoinOuterClass.Coin getKeyRotationFee();
+    /**
+     * <pre>
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * </pre>
+     *
+     * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    cosmos.base.v1beta1.CoinOuterClass.CoinOrBuilder getKeyRotationFeeOrBuilder();
   }
   /**
    * <pre>
@@ -17888,6 +17915,44 @@ public final class Staking {
       }
     }
 
+    public static final int KEY_ROTATION_FEE_FIELD_NUMBER = 7;
+    private cosmos.base.v1beta1.CoinOuterClass.Coin keyRotationFee_;
+    /**
+     * <pre>
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * </pre>
+     *
+     * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the keyRotationFee field is set.
+     */
+    @java.lang.Override
+    public boolean hasKeyRotationFee() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * </pre>
+     *
+     * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return The keyRotationFee.
+     */
+    @java.lang.Override
+    public cosmos.base.v1beta1.CoinOuterClass.Coin getKeyRotationFee() {
+      return keyRotationFee_ == null ? cosmos.base.v1beta1.CoinOuterClass.Coin.getDefaultInstance() : keyRotationFee_;
+    }
+    /**
+     * <pre>
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * </pre>
+     *
+     * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public cosmos.base.v1beta1.CoinOuterClass.CoinOrBuilder getKeyRotationFeeOrBuilder() {
+      return keyRotationFee_ == null ? cosmos.base.v1beta1.CoinOuterClass.Coin.getDefaultInstance() : keyRotationFee_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -17920,6 +17985,9 @@ public final class Staking {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(minCommissionRate_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, minCommissionRate_);
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(7, getKeyRotationFee());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -17951,6 +18019,10 @@ public final class Staking {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(minCommissionRate_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, minCommissionRate_);
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getKeyRotationFee());
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -17981,6 +18053,11 @@ public final class Staking {
           .equals(other.getBondDenom())) return false;
       if (!getMinCommissionRate()
           .equals(other.getMinCommissionRate())) return false;
+      if (hasKeyRotationFee() != other.hasKeyRotationFee()) return false;
+      if (hasKeyRotationFee()) {
+        if (!getKeyRotationFee()
+            .equals(other.getKeyRotationFee())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -18006,6 +18083,10 @@ public final class Staking {
       hash = (53 * hash) + getBondDenom().hashCode();
       hash = (37 * hash) + MIN_COMMISSION_RATE_FIELD_NUMBER;
       hash = (53 * hash) + getMinCommissionRate().hashCode();
+      if (hasKeyRotationFee()) {
+        hash = (37 * hash) + KEY_ROTATION_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getKeyRotationFee().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -18141,6 +18222,7 @@ public final class Staking {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getUnbondingTimeFieldBuilder();
+          getKeyRotationFeeFieldBuilder();
         }
       }
       @java.lang.Override
@@ -18157,6 +18239,11 @@ public final class Staking {
         historicalEntries_ = 0;
         bondDenom_ = "";
         minCommissionRate_ = "";
+        keyRotationFee_ = null;
+        if (keyRotationFeeBuilder_ != null) {
+          keyRotationFeeBuilder_.dispose();
+          keyRotationFeeBuilder_ = null;
+        }
         return this;
       }
 
@@ -18211,6 +18298,12 @@ public final class Staking {
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
           result.minCommissionRate_ = minCommissionRate_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.keyRotationFee_ = keyRotationFeeBuilder_ == null
+              ? keyRotationFee_
+              : keyRotationFeeBuilder_.build();
+          to_bitField0_ |= 0x00000002;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -18281,6 +18374,9 @@ public final class Staking {
           bitField0_ |= 0x00000020;
           onChanged();
         }
+        if (other.hasKeyRotationFee()) {
+          mergeKeyRotationFee(other.getKeyRotationFee());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -18339,6 +18435,13 @@ public final class Staking {
                 bitField0_ |= 0x00000020;
                 break;
               } // case 50
+              case 58: {
+                input.readMessage(
+                    getKeyRotationFeeFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -18827,6 +18930,163 @@ public final class Staking {
         bitField0_ |= 0x00000020;
         onChanged();
         return this;
+      }
+
+      private cosmos.base.v1beta1.CoinOuterClass.Coin keyRotationFee_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cosmos.base.v1beta1.CoinOuterClass.Coin, cosmos.base.v1beta1.CoinOuterClass.Coin.Builder, cosmos.base.v1beta1.CoinOuterClass.CoinOrBuilder> keyRotationFeeBuilder_;
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       * @return Whether the keyRotationFee field is set.
+       */
+      public boolean hasKeyRotationFee() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       * @return The keyRotationFee.
+       */
+      public cosmos.base.v1beta1.CoinOuterClass.Coin getKeyRotationFee() {
+        if (keyRotationFeeBuilder_ == null) {
+          return keyRotationFee_ == null ? cosmos.base.v1beta1.CoinOuterClass.Coin.getDefaultInstance() : keyRotationFee_;
+        } else {
+          return keyRotationFeeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setKeyRotationFee(cosmos.base.v1beta1.CoinOuterClass.Coin value) {
+        if (keyRotationFeeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          keyRotationFee_ = value;
+        } else {
+          keyRotationFeeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setKeyRotationFee(
+          cosmos.base.v1beta1.CoinOuterClass.Coin.Builder builderForValue) {
+        if (keyRotationFeeBuilder_ == null) {
+          keyRotationFee_ = builderForValue.build();
+        } else {
+          keyRotationFeeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder mergeKeyRotationFee(cosmos.base.v1beta1.CoinOuterClass.Coin value) {
+        if (keyRotationFeeBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) != 0) &&
+            keyRotationFee_ != null &&
+            keyRotationFee_ != cosmos.base.v1beta1.CoinOuterClass.Coin.getDefaultInstance()) {
+            getKeyRotationFeeBuilder().mergeFrom(value);
+          } else {
+            keyRotationFee_ = value;
+          }
+        } else {
+          keyRotationFeeBuilder_.mergeFrom(value);
+        }
+        if (keyRotationFee_ != null) {
+          bitField0_ |= 0x00000040;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder clearKeyRotationFee() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        keyRotationFee_ = null;
+        if (keyRotationFeeBuilder_ != null) {
+          keyRotationFeeBuilder_.dispose();
+          keyRotationFeeBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.base.v1beta1.CoinOuterClass.Coin.Builder getKeyRotationFeeBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getKeyRotationFeeFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.base.v1beta1.CoinOuterClass.CoinOrBuilder getKeyRotationFeeOrBuilder() {
+        if (keyRotationFeeBuilder_ != null) {
+          return keyRotationFeeBuilder_.getMessageOrBuilder();
+        } else {
+          return keyRotationFee_ == null ?
+              cosmos.base.v1beta1.CoinOuterClass.Coin.getDefaultInstance() : keyRotationFee_;
+        }
+      }
+      /**
+       * <pre>
+       * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+       * </pre>
+       *
+       * <code>.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cosmos.base.v1beta1.CoinOuterClass.Coin, cosmos.base.v1beta1.CoinOuterClass.Coin.Builder, cosmos.base.v1beta1.CoinOuterClass.CoinOrBuilder> 
+          getKeyRotationFeeFieldBuilder() {
+        if (keyRotationFeeBuilder_ == null) {
+          keyRotationFeeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cosmos.base.v1beta1.CoinOuterClass.Coin, cosmos.base.v1beta1.CoinOuterClass.Coin.Builder, cosmos.base.v1beta1.CoinOuterClass.CoinOrBuilder>(
+                  getKeyRotationFee(),
+                  getParentForChildren(),
+                  isClean());
+          keyRotationFee_ = null;
+        }
+        return keyRotationFeeBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -22991,6 +23251,782 @@ public final class Staking {
 
   }
 
+  public interface ConsKeyEvidenceExpiryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bytes validator_address = 1 [json_name = "validatorAddress"];</code>
+     * @return The validatorAddress.
+     */
+    com.google.protobuf.ByteString getValidatorAddress();
+
+    /**
+     * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the expiryTime field is set.
+     */
+    boolean hasExpiryTime();
+    /**
+     * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return The expiryTime.
+     */
+    com.google.protobuf.Timestamp getExpiryTime();
+    /**
+     * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getExpiryTimeOrBuilder();
+
+    /**
+     * <code>int64 expiry_height = 3 [json_name = "expiryHeight"];</code>
+     * @return The expiryHeight.
+     */
+    long getExpiryHeight();
+  }
+  /**
+   * <pre>
+   * ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+   * queue: the validator that rotated and the time and height at which its
+   * RotatedFrom lock may be retired because equivocation evidence for the
+   * rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+   * for time-ordered iteration; expiry_time is duplicated here so the record is
+   * self-describing.
+   * </pre>
+   *
+   * Protobuf type {@code cosmos.staking.v1beta1.ConsKeyEvidenceExpiry}
+   */
+  public static final class ConsKeyEvidenceExpiry extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry)
+      ConsKeyEvidenceExpiryOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ConsKeyEvidenceExpiry.newBuilder() to construct.
+    private ConsKeyEvidenceExpiry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ConsKeyEvidenceExpiry() {
+      validatorAddress_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ConsKeyEvidenceExpiry();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cosmos.staking.v1beta1.Staking.internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cosmos.staking.v1beta1.Staking.internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.class, cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int VALIDATOR_ADDRESS_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString validatorAddress_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes validator_address = 1 [json_name = "validatorAddress"];</code>
+     * @return The validatorAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getValidatorAddress() {
+      return validatorAddress_;
+    }
+
+    public static final int EXPIRY_TIME_FIELD_NUMBER = 2;
+    private com.google.protobuf.Timestamp expiryTime_;
+    /**
+     * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the expiryTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasExpiryTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return The expiryTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getExpiryTime() {
+      return expiryTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiryTime_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getExpiryTimeOrBuilder() {
+      return expiryTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiryTime_;
+    }
+
+    public static final int EXPIRY_HEIGHT_FIELD_NUMBER = 3;
+    private long expiryHeight_ = 0L;
+    /**
+     * <code>int64 expiry_height = 3 [json_name = "expiryHeight"];</code>
+     * @return The expiryHeight.
+     */
+    @java.lang.Override
+    public long getExpiryHeight() {
+      return expiryHeight_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!validatorAddress_.isEmpty()) {
+        output.writeBytes(1, validatorAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(2, getExpiryTime());
+      }
+      if (expiryHeight_ != 0L) {
+        output.writeInt64(3, expiryHeight_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!validatorAddress_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, validatorAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getExpiryTime());
+      }
+      if (expiryHeight_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, expiryHeight_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry)) {
+        return super.equals(obj);
+      }
+      cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry other = (cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry) obj;
+
+      if (!getValidatorAddress()
+          .equals(other.getValidatorAddress())) return false;
+      if (hasExpiryTime() != other.hasExpiryTime()) return false;
+      if (hasExpiryTime()) {
+        if (!getExpiryTime()
+            .equals(other.getExpiryTime())) return false;
+      }
+      if (getExpiryHeight()
+          != other.getExpiryHeight()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VALIDATOR_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getValidatorAddress().hashCode();
+      if (hasExpiryTime()) {
+        hash = (37 * hash) + EXPIRY_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getExpiryTime().hashCode();
+      }
+      hash = (37 * hash) + EXPIRY_HEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getExpiryHeight());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+     * queue: the validator that rotated and the time and height at which its
+     * RotatedFrom lock may be retired because equivocation evidence for the
+     * rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+     * for time-ordered iteration; expiry_time is duplicated here so the record is
+     * self-describing.
+     * </pre>
+     *
+     * Protobuf type {@code cosmos.staking.v1beta1.ConsKeyEvidenceExpiry}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry)
+        cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cosmos.staking.v1beta1.Staking.internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cosmos.staking.v1beta1.Staking.internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.class, cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.Builder.class);
+      }
+
+      // Construct using cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getExpiryTimeFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        validatorAddress_ = com.google.protobuf.ByteString.EMPTY;
+        expiryTime_ = null;
+        if (expiryTimeBuilder_ != null) {
+          expiryTimeBuilder_.dispose();
+          expiryTimeBuilder_ = null;
+        }
+        expiryHeight_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cosmos.staking.v1beta1.Staking.internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_descriptor;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry getDefaultInstanceForType() {
+        return cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry build() {
+        cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry buildPartial() {
+        cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry result = new cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.validatorAddress_ = validatorAddress_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.expiryTime_ = expiryTimeBuilder_ == null
+              ? expiryTime_
+              : expiryTimeBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.expiryHeight_ = expiryHeight_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry) {
+          return mergeFrom((cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry other) {
+        if (other == cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry.getDefaultInstance()) return this;
+        if (other.getValidatorAddress() != com.google.protobuf.ByteString.EMPTY) {
+          setValidatorAddress(other.getValidatorAddress());
+        }
+        if (other.hasExpiryTime()) {
+          mergeExpiryTime(other.getExpiryTime());
+        }
+        if (other.getExpiryHeight() != 0L) {
+          setExpiryHeight(other.getExpiryHeight());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                validatorAddress_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getExpiryTimeFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                expiryHeight_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString validatorAddress_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes validator_address = 1 [json_name = "validatorAddress"];</code>
+       * @return The validatorAddress.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getValidatorAddress() {
+        return validatorAddress_;
+      }
+      /**
+       * <code>bytes validator_address = 1 [json_name = "validatorAddress"];</code>
+       * @param value The validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddress(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes validator_address = 1 [json_name = "validatorAddress"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidatorAddress() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        validatorAddress_ = getDefaultInstance().getValidatorAddress();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp expiryTime_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expiryTimeBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       * @return Whether the expiryTime field is set.
+       */
+      public boolean hasExpiryTime() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       * @return The expiryTime.
+       */
+      public com.google.protobuf.Timestamp getExpiryTime() {
+        if (expiryTimeBuilder_ == null) {
+          return expiryTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiryTime_;
+        } else {
+          return expiryTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setExpiryTime(com.google.protobuf.Timestamp value) {
+        if (expiryTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          expiryTime_ = value;
+        } else {
+          expiryTimeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setExpiryTime(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (expiryTimeBuilder_ == null) {
+          expiryTime_ = builderForValue.build();
+        } else {
+          expiryTimeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder mergeExpiryTime(com.google.protobuf.Timestamp value) {
+        if (expiryTimeBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            expiryTime_ != null &&
+            expiryTime_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getExpiryTimeBuilder().mergeFrom(value);
+          } else {
+            expiryTime_ = value;
+          }
+        } else {
+          expiryTimeBuilder_.mergeFrom(value);
+        }
+        if (expiryTime_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder clearExpiryTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        expiryTime_ = null;
+        if (expiryTimeBuilder_ != null) {
+          expiryTimeBuilder_.dispose();
+          expiryTimeBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getExpiryTimeBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getExpiryTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getExpiryTimeOrBuilder() {
+        if (expiryTimeBuilder_ != null) {
+          return expiryTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return expiryTime_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : expiryTime_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getExpiryTimeFieldBuilder() {
+        if (expiryTimeBuilder_ == null) {
+          expiryTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getExpiryTime(),
+                  getParentForChildren(),
+                  isClean());
+          expiryTime_ = null;
+        }
+        return expiryTimeBuilder_;
+      }
+
+      private long expiryHeight_ ;
+      /**
+       * <code>int64 expiry_height = 3 [json_name = "expiryHeight"];</code>
+       * @return The expiryHeight.
+       */
+      @java.lang.Override
+      public long getExpiryHeight() {
+        return expiryHeight_;
+      }
+      /**
+       * <code>int64 expiry_height = 3 [json_name = "expiryHeight"];</code>
+       * @param value The expiryHeight to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExpiryHeight(long value) {
+
+        expiryHeight_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 expiry_height = 3 [json_name = "expiryHeight"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearExpiryHeight() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        expiryHeight_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry)
+    }
+
+    // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry)
+    private static final cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry();
+    }
+
+    public static cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ConsKeyEvidenceExpiry>
+        PARSER = new com.google.protobuf.AbstractParser<ConsKeyEvidenceExpiry>() {
+      @java.lang.Override
+      public ConsKeyEvidenceExpiry parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ConsKeyEvidenceExpiry> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ConsKeyEvidenceExpiry> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Staking.ConsKeyEvidenceExpiry getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cosmos_staking_v1beta1_HistoricalInfo_descriptor;
   private static final 
@@ -23096,6 +24132,11 @@ public final class Staking {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cosmos_staking_v1beta1_ValidatorUpdates_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -23215,7 +24256,7 @@ public final class Staking {
       "B!\322\264-\035cosmos.ValidatorAddressStringR\023val" +
       "idatorDstAddress\022N\n\007entries\030\004 \003(\0132).cosm" +
       "os.staking.v1beta1.RedelegationEntryB\t\310\336" +
-      "\037\000\250\347\260*\001R\007entries:\010\210\240\037\000\350\240\037\000\"\234\003\n\006Params\022O\n" +
+      "\037\000\250\347\260*\001R\007entries:\010\210\240\037\000\350\240\037\000\"\354\003\n\006Params\022O\n" +
       "\016unbonding_time\030\001 \001(\0132\031.google.protobuf." +
       "DurationB\r\310\336\037\000\230\337\037\001\250\347\260*\001R\runbondingTime\022%" +
       "\n\016max_validators\030\002 \001(\rR\rmaxValidators\022\037\n" +
@@ -23225,7 +24266,9 @@ public final class Staking {
       "mission_rate\030\006 \001(\tBT\310\336\037\000\332\336\037\033cosmossdk.io" +
       "/math.LegacyDec\362\336\037\032yaml:\"min_commission_" +
       "rate\"\322\264-\ncosmos.Dec\250\347\260*\001R\021minCommissionR" +
-      "ate:$\350\240\037\001\212\347\260*\033cosmos-sdk/x/staking/Param" +
+      "ate\022N\n\020key_rotation_fee\030\007 \001(\0132\031.cosmos.b" +
+      "ase.v1beta1.CoinB\t\310\336\037\000\250\347\260*\001R\016keyRotation" +
+      "Fee:$\350\240\037\001\212\347\260*\033cosmos-sdk/x/staking/Param" +
       "s\"\251\001\n\022DelegationResponse\022M\n\ndelegation\030\001" +
       " \001(\0132\".cosmos.staking.v1beta1.Delegation" +
       "B\t\310\336\037\000\250\347\260*\001R\ndelegation\022>\n\007balance\030\002 \001(\013" +
@@ -23248,16 +24291,20 @@ public final class Staking {
       "Int\352\336\037\rbonded_tokens\322\264-\ncosmos.Int\250\347\260*\001R" +
       "\014bondedTokens:\010\350\240\037\001\360\240\037\001\"Y\n\020ValidatorUpda" +
       "tes\022E\n\007updates\030\001 \003(\0132 .tendermint.abci.V" +
-      "alidatorUpdateB\t\310\336\037\000\250\347\260*\001R\007updates*\266\001\n\nB" +
-      "ondStatus\022,\n\027BOND_STATUS_UNSPECIFIED\020\000\032\017" +
-      "\212\235 \013Unspecified\022&\n\024BOND_STATUS_UNBONDED\020" +
-      "\001\032\014\212\235 \010Unbonded\022(\n\025BOND_STATUS_UNBONDING" +
-      "\020\002\032\r\212\235 \tUnbonding\022\"\n\022BOND_STATUS_BONDED\020" +
-      "\003\032\n\212\235 \006Bonded\032\004\210\243\036\000*]\n\nInfraction\022\032\n\026INF" +
-      "RACTION_UNSPECIFIED\020\000\022\032\n\026INFRACTION_DOUB" +
-      "LE_SIGN\020\001\022\027\n\023INFRACTION_DOWNTIME\020\002B.Z,gi" +
-      "thub.com/cosmos/cosmos-sdk/x/staking/typ" +
-      "esb\006proto3"
+      "alidatorUpdateB\t\310\336\037\000\250\347\260*\001R\007updates\"\265\001\n\025C" +
+      "onsKeyEvidenceExpiry\022+\n\021validator_addres" +
+      "s\030\001 \001(\014R\020validatorAddress\022J\n\013expiry_time" +
+      "\030\002 \001(\0132\032.google.protobuf.TimestampB\r\310\336\037\000" +
+      "\220\337\037\001\250\347\260*\001R\nexpiryTime\022#\n\rexpiry_height\030\003" +
+      " \001(\003R\014expiryHeight*\266\001\n\nBondStatus\022,\n\027BON" +
+      "D_STATUS_UNSPECIFIED\020\000\032\017\212\235 \013Unspecified\022" +
+      "&\n\024BOND_STATUS_UNBONDED\020\001\032\014\212\235 \010Unbonded\022" +
+      "(\n\025BOND_STATUS_UNBONDING\020\002\032\r\212\235 \tUnbondin" +
+      "g\022\"\n\022BOND_STATUS_BONDED\020\003\032\n\212\235 \006Bonded\032\004\210" +
+      "\243\036\000*]\n\nInfraction\022\032\n\026INFRACTION_UNSPECIF" +
+      "IED\020\000\022\032\n\026INFRACTION_DOUBLE_SIGN\020\001\022\027\n\023INF" +
+      "RACTION_DOWNTIME\020\002B.Z,github.com/cosmos/" +
+      "cosmos-sdk/x/staking/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -23367,7 +24414,7 @@ public final class Staking {
     internal_static_cosmos_staking_v1beta1_Params_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_staking_v1beta1_Params_descriptor,
-        new java.lang.String[] { "UnbondingTime", "MaxValidators", "MaxEntries", "HistoricalEntries", "BondDenom", "MinCommissionRate", });
+        new java.lang.String[] { "UnbondingTime", "MaxValidators", "MaxEntries", "HistoricalEntries", "BondDenom", "MinCommissionRate", "KeyRotationFee", });
     internal_static_cosmos_staking_v1beta1_DelegationResponse_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_cosmos_staking_v1beta1_DelegationResponse_fieldAccessorTable = new
@@ -23398,6 +24445,12 @@ public final class Staking {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_staking_v1beta1_ValidatorUpdates_descriptor,
         new java.lang.String[] { "Updates", });
+    internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cosmos_staking_v1beta1_ConsKeyEvidenceExpiry_descriptor,
+        new java.lang.String[] { "ValidatorAddress", "ExpiryTime", "ExpiryHeight", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(amino.Amino.dontOmitempty);

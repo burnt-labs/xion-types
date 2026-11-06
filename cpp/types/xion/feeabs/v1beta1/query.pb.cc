@@ -309,8 +309,8 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fquery_2eproto[] P
     "ChainConfigRequest\0324.xion.feeabs.v1beta1"
     ".QueryAllHostChainConfigResponse\"8\202\323\344\223\0022"
     "\0220/fee-abstraction/feeabs/v1/all-host-ch"
-    "ain-configB+Z)github.com/burnt-labs/xion"
-    "/x/feeabs/typesb\006proto3"
+    "ain-configB.Z,github.com/burnt-labs/xion"
+    "/app/legacy/feeabsb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2ffeeabs_2fv1beta1_2fquery_2eproto_deps[4] =
     {
@@ -323,7 +323,7 @@ static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2fquery_2eprot
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2fquery_2eproto = {
     false,
     false,
-    1863,
+    1866,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fquery_2eproto,
     "xion/feeabs/v1beta1/query.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2fquery_2eproto_once,

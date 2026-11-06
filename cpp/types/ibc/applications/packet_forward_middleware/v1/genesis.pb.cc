@@ -87,7 +87,6 @@ PROTOBUF_CONSTEXPR InFlightPacket::InFlightPacket(::_pbi::ConstantInitialized)
       /*decltype(_impl_.refund_sequence_)*/ ::uint64_t{0u},
       /*decltype(_impl_.timeout_)*/ ::uint64_t{0u},
       /*decltype(_impl_.retries_remaining_)*/ 0,
-      /*decltype(_impl_.nonrefundable_)*/ false,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct InFlightPacketDefaultTypeInternal {
@@ -151,7 +150,6 @@ const ::uint32_t TableStruct_ibc_2fapplications_2fpacket_5fforward_5fmiddleware_
     PROTOBUF_FIELD_OFFSET(::ibc::applications::packet_forward_middleware::v1::InFlightPacket, _impl_.refund_sequence_),
     PROTOBUF_FIELD_OFFSET(::ibc::applications::packet_forward_middleware::v1::InFlightPacket, _impl_.retries_remaining_),
     PROTOBUF_FIELD_OFFSET(::ibc::applications::packet_forward_middleware::v1::InFlightPacket, _impl_.timeout_),
-    PROTOBUF_FIELD_OFFSET(::ibc::applications::packet_forward_middleware::v1::InFlightPacket, _impl_.nonrefundable_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -178,7 +176,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2fpacket_5fforward_5fmid
     "tPacketsEntry\022\020\n\003key\030\001 \001(\tR\003key\022S\n\005value"
     "\030\002 \001(\0132=.ibc.applications.packet_forward"
     "_middleware.v1.InFlightPacketR\005value:\0028\001"
-    "\"\237\004\n\016InFlightPacket\0226\n\027original_sender_a"
+    "\"\377\003\n\016InFlightPacket\0226\n\027original_sender_a"
     "ddress\030\001 \001(\tR\025originalSenderAddress\022*\n\021r"
     "efund_channel_id\030\002 \001(\tR\017refundChannelId\022"
     "$\n\016refund_port_id\030\003 \001(\tR\014refundPortId\0221\n"
@@ -190,10 +188,9 @@ const char descriptor_table_protodef_ibc_2fapplications_2fpacket_5fforward_5fmid
     "ght\022\037\n\013packet_data\030\010 \001(\014R\npacketData\022\'\n\017"
     "refund_sequence\030\t \001(\004R\016refundSequence\022+\n"
     "\021retries_remaining\030\n \001(\005R\020retriesRemaini"
-    "ng\022\030\n\007timeout\030\013 \001(\004R\007timeout\022$\n\rnonrefun"
-    "dable\030\014 \001(\010R\rnonrefundableBKZIgithub.com"
-    "/cosmos/ibc-go/v10/modules/apps/packet-f"
-    "orward-middleware/typesb\006proto3"
+    "ng\022\030\n\007timeout\030\013 \001(\004R\007timeoutJ\004\010\014\020\rBKZIgi"
+    "thub.com/cosmos/ibc-go/v11/modules/apps/"
+    "packet-forward-middleware/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2fpacket_5fforward_5fmiddleware_2fv1_2fgenesis_2eproto_deps[1] =
     {
@@ -203,7 +200,7 @@ static ::absl::once_flag descriptor_table_ibc_2fapplications_2fpacket_5fforward_
 const ::_pbi::DescriptorTable descriptor_table_ibc_2fapplications_2fpacket_5fforward_5fmiddleware_2fv1_2fgenesis_2eproto = {
     false,
     false,
-    1071,
+    1039,
     descriptor_table_protodef_ibc_2fapplications_2fpacket_5fforward_5fmiddleware_2fv1_2fgenesis_2eproto,
     "ibc/applications/packet_forward_middleware/v1/genesis.proto",
     &descriptor_table_ibc_2fapplications_2fpacket_5fforward_5fmiddleware_2fv1_2fgenesis_2eproto_once,
@@ -469,7 +466,6 @@ InFlightPacket::InFlightPacket(const InFlightPacket& from) : ::google::protobuf:
       decltype(_impl_.refund_sequence_){},
       decltype(_impl_.timeout_){},
       decltype(_impl_.retries_remaining_){},
-      decltype(_impl_.nonrefundable_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -524,8 +520,8 @@ InFlightPacket::InFlightPacket(const InFlightPacket& from) : ::google::protobuf:
     _this->_impl_.packet_data_.Set(from._internal_packet_data(), _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.packet_timeout_timestamp_, &from._impl_.packet_timeout_timestamp_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.nonrefundable_) -
-    reinterpret_cast<char*>(&_impl_.packet_timeout_timestamp_)) + sizeof(_impl_.nonrefundable_));
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.retries_remaining_) -
+    reinterpret_cast<char*>(&_impl_.packet_timeout_timestamp_)) + sizeof(_impl_.retries_remaining_));
 
   // @@protoc_insertion_point(copy_constructor:ibc.applications.packet_forward_middleware.v1.InFlightPacket)
 }
@@ -543,7 +539,6 @@ inline void InFlightPacket::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.refund_sequence_){::uint64_t{0u}},
       decltype(_impl_.timeout_){::uint64_t{0u}},
       decltype(_impl_.retries_remaining_){0},
-      decltype(_impl_.nonrefundable_){false},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.original_sender_address_.InitDefault();
@@ -608,8 +603,8 @@ PROTOBUF_NOINLINE void InFlightPacket::Clear() {
   _impl_.packet_timeout_height_.ClearToEmpty();
   _impl_.packet_data_.ClearToEmpty();
   ::memset(&_impl_.packet_timeout_timestamp_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.nonrefundable_) -
-      reinterpret_cast<char*>(&_impl_.packet_timeout_timestamp_)) + sizeof(_impl_.nonrefundable_));
+      reinterpret_cast<char*>(&_impl_.retries_remaining_) -
+      reinterpret_cast<char*>(&_impl_.packet_timeout_timestamp_)) + sizeof(_impl_.retries_remaining_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -621,15 +616,15 @@ const char* InFlightPacket::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 12, 0, 191, 2> InFlightPacket::_table_ = {
+const ::_pbi::TcParseTable<4, 11, 0, 191, 2> InFlightPacket::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    12, 120,  // max_field_number, fast_idx_mask
+    11, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294963200,  // skipmap
+    4294965248,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    12,  // num_field_entries
+    11,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_InFlightPacket_default_instance_._instance,
@@ -669,9 +664,7 @@ const ::_pbi::TcParseTable<4, 12, 0, 191, 2> InFlightPacket::_table_ = {
     // uint64 timeout = 11 [json_name = "timeout"];
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(InFlightPacket, _impl_.timeout_), 63>(),
      {88, 63, 0, PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.timeout_)}},
-    // bool nonrefundable = 12 [json_name = "nonrefundable"];
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(InFlightPacket, _impl_.nonrefundable_), 63>(),
-     {96, 63, 0, PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.nonrefundable_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -711,9 +704,6 @@ const ::_pbi::TcParseTable<4, 12, 0, 191, 2> InFlightPacket::_table_ = {
     // uint64 timeout = 11 [json_name = "timeout"];
     {PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.timeout_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
-    // bool nonrefundable = 12 [json_name = "nonrefundable"];
-    {PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.nonrefundable_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
@@ -817,13 +807,6 @@ const ::_pbi::TcParseTable<4, 12, 0, 191, 2> InFlightPacket::_table_ = {
         11, this->_internal_timeout(), target);
   }
 
-  // bool nonrefundable = 12 [json_name = "nonrefundable"];
-  if (this->_internal_nonrefundable() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        12, this->_internal_nonrefundable(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -907,11 +890,6 @@ const ::_pbi::TcParseTable<4, 12, 0, 191, 2> InFlightPacket::_table_ = {
         this->_internal_retries_remaining());
   }
 
-  // bool nonrefundable = 12 [json_name = "nonrefundable"];
-  if (this->_internal_nonrefundable() != 0) {
-    total_size += 2;
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -963,9 +941,6 @@ void InFlightPacket::MergeImpl(::google::protobuf::Message& to_msg, const ::goog
   if (from._internal_retries_remaining() != 0) {
     _this->_internal_set_retries_remaining(from._internal_retries_remaining());
   }
-  if (from._internal_nonrefundable() != 0) {
-    _this->_internal_set_nonrefundable(from._internal_nonrefundable());
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1000,8 +975,8 @@ void InFlightPacket::InternalSwap(InFlightPacket* other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.packet_data_, lhs_arena,
                                        &other->_impl_.packet_data_, rhs_arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.nonrefundable_)
-      + sizeof(InFlightPacket::_impl_.nonrefundable_)
+      PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.retries_remaining_)
+      + sizeof(InFlightPacket::_impl_.retries_remaining_)
       - PROTOBUF_FIELD_OFFSET(InFlightPacket, _impl_.packet_timeout_timestamp_)>(
           reinterpret_cast<char*>(&_impl_.packet_timeout_timestamp_),
           reinterpret_cast<char*>(&other->_impl_.packet_timeout_timestamp_));

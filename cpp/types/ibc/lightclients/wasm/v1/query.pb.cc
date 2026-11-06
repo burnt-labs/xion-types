@@ -186,7 +186,7 @@ const char descriptor_table_protodef_ibc_2flightclients_2fwasm_2fv1_2fquery_2epr
     ";\202\323\344\223\0025\0223/ibc/lightclients/wasm/v1/check"
     "sums/{checksum}/codeBBZ@github.com/cosmo"
     "s/ibc-go/modules/light-clients/08-wasm/v"
-    "10/typesb\006proto3"
+    "11/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fquery_2eproto_deps[2] =
     {

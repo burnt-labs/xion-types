@@ -1553,8 +1553,8 @@ public final class ParamsOuterClass {
       "bcTransferChannel\0221\n\025ibc_query_icq_chann" +
       "el\030\005 \001(\tR\022ibcQueryIcqChannel\022E\n\037osmosis_" +
       "crosschain_swap_address\030\006 \001(\tR\034osmosisCr" +
-      "osschainSwapAddressB+Z)github.com/burnt-" +
-      "labs/xion/x/feeabs/typesb\006proto3"
+      "osschainSwapAddressB.Z,github.com/burnt-" +
+      "labs/xion/app/legacy/feeabsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

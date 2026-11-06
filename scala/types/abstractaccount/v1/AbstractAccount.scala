@@ -9,6 +9,13 @@ package abstractaccount.v1
   *
   * This account type is similar to BaseAccount except for it doesn't have a
   * pubkey. If a pubkey is needed, it creates and returns a new NilPubKey.
+  *
+  * @param address
+  *   address is the bech32-encoded address of the account's contract.
+  * @param accountNumber
+  *   account_number is the account's number assigned by the auth module.
+  * @param sequence
+  *   sequence is the account's current transaction sequence.
   */
 @SerialVersionUID(0L)
 final case class AbstractAccount(

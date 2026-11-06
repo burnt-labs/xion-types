@@ -12284,7 +12284,7 @@ public final class QueryOuterClass {
       "\017cosmos-sdk 0.47\"e\n\030QueryAccountInfoResp" +
       "onse\0224\n\004info\030\001 \001(\0132 .cosmos.auth.v1beta1" +
       ".BaseAccountR\004info:\023\322\264-\017cosmos-sdk 0.472" +
-      "\366\r\n\005Query\022\240\001\n\010Accounts\022).cosmos.auth.v1b" +
+      "\376\r\n\005Query\022\240\001\n\010Accounts\022).cosmos.auth.v1b" +
       "eta1.QueryAccountsRequest\032*.cosmos.auth." +
       "v1beta1.QueryAccountsResponse\"=\312\264-\017cosmo" +
       "s-sdk 0.43\210\347\260*\001\202\323\344\223\002\037\022\035/cosmos/auth/v1be" +
@@ -12292,44 +12292,45 @@ public final class QueryOuterClass {
       "1beta1.QueryAccountRequest\032).cosmos.auth" +
       ".v1beta1.QueryAccountResponse\"4\210\347\260*\001\202\323\344\223" +
       "\002)\022\'/cosmos/auth/v1beta1/accounts/{addre" +
-      "ss}\022\312\001\n\022AccountAddressByID\0223.cosmos.auth" +
+      "ss}\022\322\001\n\022AccountAddressByID\0223.cosmos.auth" +
       ".v1beta1.QueryAccountAddressByIDRequest\032" +
       "4.cosmos.auth.v1beta1.QueryAccountAddres" +
-      "sByIDResponse\"I\312\264-\021cosmos-sdk 0.46.2\210\347\260*" +
-      "\001\202\323\344\223\002)\022\'/cosmos/auth/v1beta1/address_by" +
-      "_id/{id}\022\205\001\n\006Params\022\'.cosmos.auth.v1beta" +
-      "1.QueryParamsRequest\032(.cosmos.auth.v1bet" +
-      "a1.QueryParamsResponse\"(\210\347\260*\001\202\323\344\223\002\035\022\033/co" +
-      "smos/auth/v1beta1/params\022\271\001\n\016ModuleAccou" +
-      "nts\022/.cosmos.auth.v1beta1.QueryModuleAcc" +
-      "ountsRequest\0320.cosmos.auth.v1beta1.Query" +
-      "ModuleAccountsResponse\"D\312\264-\017cosmos-sdk 0" +
-      ".46\210\347\260*\001\202\323\344\223\002&\022$/cosmos/auth/v1beta1/mod" +
-      "ule_accounts\022\274\001\n\023ModuleAccountByName\0224.c" +
-      "osmos.auth.v1beta1.QueryModuleAccountByN" +
-      "ameRequest\0325.cosmos.auth.v1beta1.QueryMo" +
-      "duleAccountByNameResponse\"8\210\347\260*\001\202\323\344\223\002-\022+" +
-      "/cosmos/auth/v1beta1/module_accounts/{na" +
-      "me}\022\233\001\n\014Bech32Prefix\022(.cosmos.auth.v1bet" +
-      "a1.Bech32PrefixRequest\032).cosmos.auth.v1b" +
-      "eta1.Bech32PrefixResponse\"6\312\264-\017cosmos-sd" +
-      "k 0.46\202\323\344\223\002\035\022\033/cosmos/auth/v1beta1/bech3" +
-      "2\022\303\001\n\024AddressBytesToString\0220.cosmos.auth" +
-      ".v1beta1.AddressBytesToStringRequest\0321.c" +
-      "osmos.auth.v1beta1.AddressBytesToStringR" +
-      "esponse\"F\312\264-\017cosmos-sdk 0.46\202\323\344\223\002-\022+/cos" +
-      "mos/auth/v1beta1/bech32/{address_bytes}\022" +
-      "\304\001\n\024AddressStringToBytes\0220.cosmos.auth.v" +
-      "1beta1.AddressStringToBytesRequest\0321.cos" +
-      "mos.auth.v1beta1.AddressStringToBytesRes" +
-      "ponse\"G\312\264-\017cosmos-sdk 0.46\202\323\344\223\002.\022,/cosmo" +
-      "s/auth/v1beta1/bech32/{address_string}\022\267" +
-      "\001\n\013AccountInfo\022,.cosmos.auth.v1beta1.Que" +
-      "ryAccountInfoRequest\032-.cosmos.auth.v1bet" +
-      "a1.QueryAccountInfoResponse\"K\312\264-\017cosmos-" +
-      "sdk 0.47\210\347\260*\001\202\323\344\223\002-\022+/cosmos/auth/v1beta" +
-      "1/account_info/{address}B+Z)github.com/c" +
-      "osmos/cosmos-sdk/x/auth/typesb\006proto3"
+      "sByIDResponse\"Q\312\264-\021cosmos-sdk 0.46.2\210\347\260*" +
+      "\001\202\323\344\223\0021\022//cosmos/auth/v1beta1/address_by" +
+      "_id/{account_id}\022\205\001\n\006Params\022\'.cosmos.aut" +
+      "h.v1beta1.QueryParamsRequest\032(.cosmos.au" +
+      "th.v1beta1.QueryParamsResponse\"(\210\347\260*\001\202\323\344" +
+      "\223\002\035\022\033/cosmos/auth/v1beta1/params\022\271\001\n\016Mod" +
+      "uleAccounts\022/.cosmos.auth.v1beta1.QueryM" +
+      "oduleAccountsRequest\0320.cosmos.auth.v1bet" +
+      "a1.QueryModuleAccountsResponse\"D\312\264-\017cosm" +
+      "os-sdk 0.46\210\347\260*\001\202\323\344\223\002&\022$/cosmos/auth/v1b" +
+      "eta1/module_accounts\022\274\001\n\023ModuleAccountBy" +
+      "Name\0224.cosmos.auth.v1beta1.QueryModuleAc" +
+      "countByNameRequest\0325.cosmos.auth.v1beta1" +
+      ".QueryModuleAccountByNameResponse\"8\210\347\260*\001" +
+      "\202\323\344\223\002-\022+/cosmos/auth/v1beta1/module_acco" +
+      "unts/{name}\022\233\001\n\014Bech32Prefix\022(.cosmos.au" +
+      "th.v1beta1.Bech32PrefixRequest\032).cosmos." +
+      "auth.v1beta1.Bech32PrefixResponse\"6\312\264-\017c" +
+      "osmos-sdk 0.46\202\323\344\223\002\035\022\033/cosmos/auth/v1bet" +
+      "a1/bech32\022\303\001\n\024AddressBytesToString\0220.cos" +
+      "mos.auth.v1beta1.AddressBytesToStringReq" +
+      "uest\0321.cosmos.auth.v1beta1.AddressBytesT" +
+      "oStringResponse\"F\312\264-\017cosmos-sdk 0.46\202\323\344\223" +
+      "\002-\022+/cosmos/auth/v1beta1/bech32/{address" +
+      "_bytes}\022\304\001\n\024AddressStringToBytes\0220.cosmo" +
+      "s.auth.v1beta1.AddressStringToBytesReque" +
+      "st\0321.cosmos.auth.v1beta1.AddressStringTo" +
+      "BytesResponse\"G\312\264-\017cosmos-sdk 0.46\202\323\344\223\002." +
+      "\022,/cosmos/auth/v1beta1/bech32/{address_s" +
+      "tring}\022\267\001\n\013AccountInfo\022,.cosmos.auth.v1b" +
+      "eta1.QueryAccountInfoRequest\032-.cosmos.au" +
+      "th.v1beta1.QueryAccountInfoResponse\"K\312\264-" +
+      "\017cosmos-sdk 0.47\210\347\260*\001\202\323\344\223\002-\022+/cosmos/aut" +
+      "h/v1beta1/account_info/{address}B+Z)gith" +
+      "ub.com/cosmos/cosmos-sdk/x/auth/typesb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

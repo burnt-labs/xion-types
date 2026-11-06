@@ -559,6 +559,8 @@ pub struct ConsensusParams {
     pub version: ::core::option::Option<VersionParams>,
     #[prost(message, optional, tag="5")]
     pub abci: ::core::option::Option<AbciParams>,
+    #[prost(message, optional, tag="6")]
+    pub authority: ::core::option::Option<AuthorityParams>,
 }
 impl ::prost::Name for ConsensusParams {
 const NAME: &'static str = "ConsensusParams";
@@ -676,6 +678,18 @@ pub struct AbciParams {
 }
 impl ::prost::Name for AbciParams {
 const NAME: &'static str = "ABCIParams";
+const PACKAGE: &'static str = "tendermint.types";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("tendermint.types.{}", Self::NAME)
+            }}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AuthorityParams {
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+}
+impl ::prost::Name for AuthorityParams {
+const NAME: &'static str = "AuthorityParams";
 const PACKAGE: &'static str = "tendermint.types";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("tendermint.types.{}", Self::NAME)

@@ -40,13 +40,6 @@ enum Cosmos_Tx_Signing_V1beta1_SignMode: SwiftProtobuf.Enum, Swift.CaseIterable 
   /// verified with raw bytes from Tx.
   case direct // = 1
 
-  /// SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-  /// human-readable textual representation on top of the binary representation
-  /// from SIGN_MODE_DIRECT.
-  ///
-  /// Since: cosmos-sdk 0.50
-  case textual // = 2
-
   /// SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
   /// SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
   /// require signers signing over other signers' `signer_info`.
@@ -79,7 +72,6 @@ enum Cosmos_Tx_Signing_V1beta1_SignMode: SwiftProtobuf.Enum, Swift.CaseIterable 
     switch rawValue {
     case 0: self = .unspecified
     case 1: self = .direct
-    case 2: self = .textual
     case 3: self = .directAux
     case 127: self = .legacyAminoJson
     case 191: self = .eip191
@@ -91,7 +83,6 @@ enum Cosmos_Tx_Signing_V1beta1_SignMode: SwiftProtobuf.Enum, Swift.CaseIterable 
     switch self {
     case .unspecified: return 0
     case .direct: return 1
-    case .textual: return 2
     case .directAux: return 3
     case .legacyAminoJson: return 127
     case .eip191: return 191
@@ -103,7 +94,6 @@ enum Cosmos_Tx_Signing_V1beta1_SignMode: SwiftProtobuf.Enum, Swift.CaseIterable 
   static let allCases: [Cosmos_Tx_Signing_V1beta1_SignMode] = [
     .unspecified,
     .direct,
-    .textual,
     .directAux,
     .legacyAminoJson,
     .eip191,
@@ -258,7 +248,6 @@ extension Cosmos_Tx_Signing_V1beta1_SignMode: SwiftProtobuf._ProtoNameProviding 
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SIGN_MODE_UNSPECIFIED"),
     1: .same(proto: "SIGN_MODE_DIRECT"),
-    2: .same(proto: "SIGN_MODE_TEXTUAL"),
     3: .same(proto: "SIGN_MODE_DIRECT_AUX"),
     127: .same(proto: "SIGN_MODE_LEGACY_AMINO_JSON"),
     191: .same(proto: "SIGN_MODE_EIP_191"),

@@ -29,6 +29,7 @@
 CF_EXTERN_C_BEGIN
 
 @class Audience;
+@class Params;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -225,6 +226,42 @@ GPB_FINAL @interface MsgDeleteAudience : GPBMessage
  * MsgDeleteAudienceResponse defines the response for deleting an audience
  **/
 GPB_FINAL @interface MsgDeleteAudienceResponse : GPBMessage
+
+@end
+
+#pragma mark - MsgUpdateParams
+
+typedef GPB_ENUM(MsgUpdateParams_FieldNumber) {
+  MsgUpdateParams_FieldNumber_Authority = 1,
+  MsgUpdateParams_FieldNumber_Params = 2,
+};
+
+/**
+ * MsgUpdateParams is the Msg/UpdateParams request type.
+ **/
+GPB_FINAL @interface MsgUpdateParams : GPBMessage
+
+/** authority is the address of the governance account. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *authority;
+
+/**
+ * params defines the parameters to update.
+ *
+ * NOTE: All parameters must be supplied.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) Params *params;
+/** Test to see if @c params has been set. */
+@property(nonatomic, readwrite) BOOL hasParams;
+
+@end
+
+#pragma mark - MsgUpdateParamsResponse
+
+/**
+ * MsgUpdateParamsResponse defines the response structure for executing a
+ * MsgUpdateParams message.
+ **/
+GPB_FINAL @interface MsgUpdateParamsResponse : GPBMessage
 
 @end
 

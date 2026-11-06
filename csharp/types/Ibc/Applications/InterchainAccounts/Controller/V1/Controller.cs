@@ -28,7 +28,7 @@ namespace Ibc.Applications.InterchainAccounts.Controller.V1 {
             "bGxlci92MS9jb250cm9sbGVyLnByb3RvEjJpYmMuYXBwbGljYXRpb25zLmlu",
             "dGVyY2hhaW5fYWNjb3VudHMuY29udHJvbGxlci52MSI3CgZQYXJhbXMSLQoS",
             "Y29udHJvbGxlcl9lbmFibGVkGAEgASgIUhFjb250cm9sbGVyRW5hYmxlZEJT",
-            "WlFnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy8y",
+            "WlFnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy8y",
             "Ny1pbnRlcmNoYWluLWFjY291bnRzL2NvbnRyb2xsZXIvdHlwZXNiBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,

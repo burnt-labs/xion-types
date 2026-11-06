@@ -5805,7 +5805,7 @@ public final class Genesis {
       "unt\022#\n\rconnection_id\030\001 \001(\tR\014connectionId" +
       "\022\027\n\007port_id\030\002 \001(\tR\006portId\022\'\n\017account_add" +
       "ress\030\003 \001(\tR\016accountAddressBPZNgithub.com" +
-      "/cosmos/ibc-go/v10/modules/apps/27-inter" +
+      "/cosmos/ibc-go/v11/modules/apps/27-inter" +
       "chain-accounts/genesis/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

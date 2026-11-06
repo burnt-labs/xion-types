@@ -30,7 +30,7 @@ namespace Ibc.Core.Commitment.V1 {
             "aGFzaBgBIAEoDFIEaGFzaDoEiKAfACItCgxNZXJrbGVQcmVmaXgSHQoKa2V5",
             "X3ByZWZpeBgBIAEoDFIJa2V5UHJlZml4IkcKC01lcmtsZVByb29mEjgKBnBy",
             "b29mcxgBIAMoCzIgLmNvc21vcy5pY3MyMy52MS5Db21taXRtZW50UHJvb2ZS",
-            "BnByb29mc0I/Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVs",
+            "BnByb29mc0I/Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVs",
             "ZXMvY29yZS8yMy1jb21taXRtZW50L3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Ics23.V1.ProofsReflection.Descriptor, },

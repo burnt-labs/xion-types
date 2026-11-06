@@ -27,8 +27,10 @@ struct Abstractaccount_V1_MsgUpdateParams: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// sender is the authority address requesting the update.
   var sender: String = String()
 
+  /// params is the new module parameters to apply.
   var params: Abstractaccount_V1_Params {
     get {return _params ?? Abstractaccount_V1_Params()}
     set {_params = newValue}
@@ -65,16 +67,17 @@ struct Abstractaccount_V1_MsgRegisterAccount: @unchecked Sendable {
   /// Sender is the actor who signs the message
   var sender: String = String()
 
-  /// CodeID indicates which wasm binary code is to be used for this contract
+  /// CodeID selects the allowed implementation installed after deterministic
+  /// direct instantiation. It does not participate in address derivation.
   var codeID: UInt64 = 0
 
   /// Msg is the JSON-encoded instantiate message for the contract
   var msg: Data = Data()
 
-  /// Funds are coins to be deposited to the contract on instantiattion
+  /// Funds are coins to be deposited to the contract on instantiation
   var funds: [Cosmos_Base_V1beta1_Coin] = []
 
-  /// Salt is an arbinary value to be used in deriving the account address.
+  /// Salt is an arbitrary value to be used in deriving the account address.
   /// Max 64 bytes.
   var salt: Data = Data()
 
@@ -89,8 +92,10 @@ struct Abstractaccount_V1_MsgRegisterAccountResponse: @unchecked Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// address is the address of the newly registered account contract.
   var address: String = String()
 
+  /// data is the raw response data from the contract instantiation.
   var data: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

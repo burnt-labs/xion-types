@@ -1701,7 +1701,7 @@ public final class Packet {
       "le.protobuf.AnyR\010messages*X\n\004Type\022%\n\020TYP" +
       "E_UNSPECIFIED\020\000\032\017\212\235 \013UNSPECIFIED\022#\n\017TYPE" +
       "_EXECUTE_TX\020\001\032\016\212\235 \nEXECUTE_TX\032\004\210\243\036\000BHZFg" +
-      "ithub.com/cosmos/ibc-go/v10/modules/apps" +
+      "ithub.com/cosmos/ibc-go/v11/modules/apps" +
       "/27-interchain-accounts/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

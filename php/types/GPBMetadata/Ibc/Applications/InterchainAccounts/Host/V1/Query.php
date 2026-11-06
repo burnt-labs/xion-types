@@ -24,7 +24,7 @@ class Query
 QueryParamsResponseL
 params (24.ibc.applications.interchain_accounts.host.v1.ParamsRparams2Õ
 Query√
-Params@.ibc.applications.interchain_accounts.host.v1.QueryParamsRequestA.ibc.applications.interchain_accounts.host.v1.QueryParamsResponse"4Ç”‰ì.,/ibc/apps/interchain_accounts/host/v1/paramsBMZKgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/host/typesbproto3'
+Params@.ibc.applications.interchain_accounts.host.v1.QueryParamsRequestA.ibc.applications.interchain_accounts.host.v1.QueryParamsResponse"4Ç”‰ì.,/ibc/apps/interchain_accounts/host/v1/paramsBMZKgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/typesbproto3'
         , true);
 
         static::$is_initialized = true;

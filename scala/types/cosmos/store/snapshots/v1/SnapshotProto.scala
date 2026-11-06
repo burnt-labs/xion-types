@@ -39,8 +39,8 @@ object SnapshotProto extends _root_.scalapb.GeneratedFileObject {
   XJzaW9uEiMKBmhlaWdodBgEIAEoBUIL4j8IEgZoZWlnaHRSBmhlaWdodDoT0rQtD2Nvc21vcy1zZGsgMC40NiJwChVTbmFwc2hvd
   EV4dGVuc2lvbk1ldGESHQoEbmFtZRgBIAEoCUIJ4j8GEgRuYW1lUgRuYW1lEiMKBmZvcm1hdBgCIAEoDUIL4j8IEgZmb3JtYXRSB
   mZvcm1hdDoT0rQtD2Nvc21vcy1zZGsgMC40NiJXChhTbmFwc2hvdEV4dGVuc2lvblBheWxvYWQSJgoHcGF5bG9hZBgBIAEoDEIM4
-  j8JEgdwYXlsb2FkUgdwYXlsb2FkOhPStC0PY29zbW9zLXNkayAwLjQ2QiRaImNvc21vc3Nkay5pby9zdG9yZS9zbmFwc2hvdHMvd
-  HlwZXNiBnByb3RvMw=="""
+  j8JEgdwYXlsb2FkUgdwYXlsb2FkOhPStC0PY29zbW9zLXNkayAwLjQ2QjdaNWdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvc
+  3RvcmUvdjIvc25hcHNob3RzL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

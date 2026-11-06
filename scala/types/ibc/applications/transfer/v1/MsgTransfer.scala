@@ -31,6 +31,13 @@ package ibc.applications.transfer.v1
   *   optional memo
   * @param encoding
   *   optional encoding
+  * @param useAliasing
+  *   boolean flag to indicate if the transfer message
+  *   is sent with the IBC v2 protocol but uses v1 channel identifiers.
+  *   In this case, the v1 channel identifiers function as aliases to the
+  *   underlying client ids.
+  *   This only needs to be set if the channel IDs
+  *   are V1 channel identifiers.
   */
 @SerialVersionUID(0L)
 final case class MsgTransfer(
@@ -43,6 +50,7 @@ final case class MsgTransfer(
     timeoutTimestamp: _root_.scala.Long = 0L,
     memo: _root_.scala.Predef.String = "",
     encoding: _root_.scala.Predef.String = "",
+    useAliasing: _root_.scala.Boolean = false,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[MsgTransfer] {
     @transient
@@ -104,6 +112,13 @@ final case class MsgTransfer(
         val __value = encoding
         if (!__value.isEmpty) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(9, __value)
+        }
+      };
+      
+      {
+        val __value = useAliasing
+        if (__value != false) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeBoolSize(10, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -173,6 +188,12 @@ final case class MsgTransfer(
           _output__.writeString(9, __v)
         }
       };
+      {
+        val __v = useAliasing
+        if (__v != false) {
+          _output__.writeBool(10, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withSourcePort(__v: _root_.scala.Predef.String): MsgTransfer = copy(sourcePort = __v)
@@ -188,6 +209,7 @@ final case class MsgTransfer(
     def withTimeoutTimestamp(__v: _root_.scala.Long): MsgTransfer = copy(timeoutTimestamp = __v)
     def withMemo(__v: _root_.scala.Predef.String): MsgTransfer = copy(memo = __v)
     def withEncoding(__v: _root_.scala.Predef.String): MsgTransfer = copy(encoding = __v)
+    def withUseAliasing(__v: _root_.scala.Boolean): MsgTransfer = copy(useAliasing = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -222,6 +244,10 @@ final case class MsgTransfer(
           val __t = encoding
           if (__t != "") __t else null
         }
+        case 10 => {
+          val __t = useAliasing
+          if (__t != false) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -236,6 +262,7 @@ final case class MsgTransfer(
         case 7 => _root_.scalapb.descriptors.PLong(timeoutTimestamp)
         case 8 => _root_.scalapb.descriptors.PString(memo)
         case 9 => _root_.scalapb.descriptors.PString(encoding)
+        case 10 => _root_.scalapb.descriptors.PBoolean(useAliasing)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -255,6 +282,7 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
     var __timeoutTimestamp: _root_.scala.Long = 0L
     var __memo: _root_.scala.Predef.String = ""
     var __encoding: _root_.scala.Predef.String = ""
+    var __useAliasing: _root_.scala.Boolean = false
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -279,6 +307,8 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
           __memo = _input__.readStringRequireUtf8()
         case 74 =>
           __encoding = _input__.readStringRequireUtf8()
+        case 80 =>
+          __useAliasing = _input__.readBool()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -296,6 +326,7 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
         timeoutTimestamp = __timeoutTimestamp,
         memo = __memo,
         encoding = __encoding,
+        useAliasing = __useAliasing,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -311,7 +342,8 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
         timeoutHeight = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).flatMap(_.as[_root_.scala.Option[ibc.core.client.v1.Height]]),
         timeoutTimestamp = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
         memo = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        encoding = __fieldsMap.get(scalaDescriptor.findFieldByNumber(9).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
+        encoding = __fieldsMap.get(scalaDescriptor.findFieldByNumber(9).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
+        useAliasing = __fieldsMap.get(scalaDescriptor.findFieldByNumber(10).get).map(_.as[_root_.scala.Boolean]).getOrElse(false)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -336,7 +368,8 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
     timeoutHeight = _root_.scala.None,
     timeoutTimestamp = 0L,
     memo = "",
-    encoding = ""
+    encoding = "",
+    useAliasing = false
   )
   implicit class MsgTransferLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, ibc.applications.transfer.v1.MsgTransfer]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, ibc.applications.transfer.v1.MsgTransfer](_l) {
     def sourcePort: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.sourcePort)((c_, f_) => c_.copy(sourcePort = f_))
@@ -350,6 +383,7 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
     def timeoutTimestamp: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.timeoutTimestamp)((c_, f_) => c_.copy(timeoutTimestamp = f_))
     def memo: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.memo)((c_, f_) => c_.copy(memo = f_))
     def encoding: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.encoding)((c_, f_) => c_.copy(encoding = f_))
+    def useAliasing: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.useAliasing)((c_, f_) => c_.copy(useAliasing = f_))
   }
   final val SOURCE_PORT_FIELD_NUMBER = 1
   final val SOURCE_CHANNEL_FIELD_NUMBER = 2
@@ -360,6 +394,7 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
   final val TIMEOUT_TIMESTAMP_FIELD_NUMBER = 7
   final val MEMO_FIELD_NUMBER = 8
   final val ENCODING_FIELD_NUMBER = 9
+  final val USE_ALIASING_FIELD_NUMBER = 10
   def of(
     sourcePort: _root_.scala.Predef.String,
     sourceChannel: _root_.scala.Predef.String,
@@ -369,7 +404,8 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
     timeoutHeight: _root_.scala.Option[ibc.core.client.v1.Height],
     timeoutTimestamp: _root_.scala.Long,
     memo: _root_.scala.Predef.String,
-    encoding: _root_.scala.Predef.String
+    encoding: _root_.scala.Predef.String,
+    useAliasing: _root_.scala.Boolean
   ): _root_.ibc.applications.transfer.v1.MsgTransfer = _root_.ibc.applications.transfer.v1.MsgTransfer(
     sourcePort,
     sourceChannel,
@@ -379,7 +415,8 @@ object MsgTransfer extends scalapb.GeneratedMessageCompanion[ibc.applications.tr
     timeoutHeight,
     timeoutTimestamp,
     memo,
-    encoding
+    encoding,
+    useAliasing
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[ibc.applications.transfer.v1.MsgTransfer])
 }

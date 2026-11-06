@@ -33,7 +33,7 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
             "bDoiaW5fZmxpZ2h0X3BhY2tldHMiUg9pbkZsaWdodFBhY2tldHMagQEKFElu",
             "RmxpZ2h0UGFja2V0c0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5ElMKBXZhbHVl",
             "GAIgASgLMj0uaWJjLmFwcGxpY2F0aW9ucy5wYWNrZXRfZm9yd2FyZF9taWRk",
-            "bGV3YXJlLnYxLkluRmxpZ2h0UGFja2V0UgV2YWx1ZToCOAEinwQKDkluRmxp",
+            "bGV3YXJlLnYxLkluRmxpZ2h0UGFja2V0UgV2YWx1ZToCOAEi/wMKDkluRmxp",
             "Z2h0UGFja2V0EjYKF29yaWdpbmFsX3NlbmRlcl9hZGRyZXNzGAEgASgJUhVv",
             "cmlnaW5hbFNlbmRlckFkZHJlc3MSKgoRcmVmdW5kX2NoYW5uZWxfaWQYAiAB",
             "KAlSD3JlZnVuZENoYW5uZWxJZBIkCg5yZWZ1bmRfcG9ydF9pZBgDIAEoCVIM",
@@ -45,14 +45,14 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
             "a2V0X2RhdGEYCCABKAxSCnBhY2tldERhdGESJwoPcmVmdW5kX3NlcXVlbmNl",
             "GAkgASgEUg5yZWZ1bmRTZXF1ZW5jZRIrChFyZXRyaWVzX3JlbWFpbmluZxgK",
             "IAEoBVIQcmV0cmllc1JlbWFpbmluZxIYCgd0aW1lb3V0GAsgASgEUgd0aW1l",
-            "b3V0EiQKDW5vbnJlZnVuZGFibGUYDCABKAhSDW5vbnJlZnVuZGFibGVCS1pJ",
-            "Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1bGVzL2FwcHMvcGFj",
-            "a2V0LWZvcndhcmQtbWlkZGxld2FyZS90eXBlc2IGcHJvdG8z"));
+            "b3V0SgQIDBANQktaSWdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9k",
+            "dWxlcy9hcHBzL3BhY2tldC1mb3J3YXJkLW1pZGRsZXdhcmUvdHlwZXNiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.PacketForwardMiddleware.V1.GenesisState), global::Ibc.Applications.PacketForwardMiddleware.V1.GenesisState.Parser, new[]{ "InFlightPackets" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.PacketForwardMiddleware.V1.InFlightPacket), global::Ibc.Applications.PacketForwardMiddleware.V1.InFlightPacket.Parser, new[]{ "OriginalSenderAddress", "RefundChannelId", "RefundPortId", "PacketSrcChannelId", "PacketSrcPortId", "PacketTimeoutTimestamp", "PacketTimeoutHeight", "PacketData", "RefundSequence", "RetriesRemaining", "Timeout", "Nonrefundable" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.PacketForwardMiddleware.V1.InFlightPacket), global::Ibc.Applications.PacketForwardMiddleware.V1.InFlightPacket.Parser, new[]{ "OriginalSenderAddress", "RefundChannelId", "RefundPortId", "PacketSrcChannelId", "PacketSrcPortId", "PacketTimeoutTimestamp", "PacketTimeoutHeight", "PacketData", "RefundSequence", "RetriesRemaining", "Timeout" }, null, null, null, null)
           }));
     }
     #endregion
@@ -295,7 +295,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
       refundSequence_ = other.refundSequence_;
       retriesRemaining_ = other.retriesRemaining_;
       timeout_ = other.timeout_;
-      nonrefundable_ = other.nonrefundable_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -437,18 +436,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
       }
     }
 
-    /// <summary>Field number for the "nonrefundable" field.</summary>
-    public const int NonrefundableFieldNumber = 12;
-    private bool nonrefundable_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Nonrefundable {
-      get { return nonrefundable_; }
-      set {
-        nonrefundable_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -475,7 +462,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
       if (RefundSequence != other.RefundSequence) return false;
       if (RetriesRemaining != other.RetriesRemaining) return false;
       if (Timeout != other.Timeout) return false;
-      if (Nonrefundable != other.Nonrefundable) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -494,7 +480,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
       if (RefundSequence != 0UL) hash ^= RefundSequence.GetHashCode();
       if (RetriesRemaining != 0) hash ^= RetriesRemaining.GetHashCode();
       if (Timeout != 0UL) hash ^= Timeout.GetHashCode();
-      if (Nonrefundable != false) hash ^= Nonrefundable.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -557,10 +542,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
         output.WriteRawTag(88);
         output.WriteUInt64(Timeout);
       }
-      if (Nonrefundable != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(Nonrefundable);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -615,10 +596,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
         output.WriteRawTag(88);
         output.WriteUInt64(Timeout);
       }
-      if (Nonrefundable != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(Nonrefundable);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -661,9 +638,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
       }
       if (Timeout != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timeout);
-      }
-      if (Nonrefundable != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -709,9 +683,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
       }
       if (other.Timeout != 0UL) {
         Timeout = other.Timeout;
-      }
-      if (other.Nonrefundable != false) {
-        Nonrefundable = other.Nonrefundable;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -772,10 +743,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
             Timeout = input.ReadUInt64();
             break;
           }
-          case 96: {
-            Nonrefundable = input.ReadBool();
-            break;
-          }
         }
       }
     #endif
@@ -833,10 +800,6 @@ namespace Ibc.Applications.PacketForwardMiddleware.V1 {
           }
           case 88: {
             Timeout = input.ReadUInt64();
-            break;
-          }
-          case 96: {
-            Nonrefundable = input.ReadBool();
             break;
           }
         }

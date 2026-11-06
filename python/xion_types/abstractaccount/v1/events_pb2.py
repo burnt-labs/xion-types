@@ -14,16 +14,18 @@ _sym_db = _symbol_database.Default()
 from xion_types.gogoproto import gogo_pb2 as gogoproto_dot_gogo__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1f\x61\x62stractaccount/v1/events.proto\x12\x12\x61\x62stractaccount.v1\x1a\x14gogoproto/gogo.proto\"\xa3\x01\n\x16\x45ventAccountRegistered\x12\x18\n\x07\x63reator\x18\x01 \x01(\tR\x07\x63reator\x12#\n\x07\x63ode_id\x18\x02 \x01(\x04\x42\n\xe2\xde\x1f\x06\x43odeIDR\x06\x63odeId\x12#\n\rcontract_addr\x18\x03 \x01(\tR\x0c\x63ontractAddr\x12%\n\x0e\x61\x63\x63ount_number\x18\x04 \x01(\x04R\raccountNumberB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1f\x61\x62stractaccount/v1/events.proto\x12\x12\x61\x62stractaccount.v1\x1a\x14gogoproto/gogo.proto\"\xfc\x01\n\x16\x45ventAccountRegistered\x12\x18\n\x07\x63reator\x18\x01 \x01(\tR\x07\x63reator\x12#\n\x07\x63ode_id\x18\x02 \x01(\x04\x42\n\xe2\xde\x1f\x06\x43odeIDR\x06\x63odeId\x12#\n\rcontract_addr\x18\x03 \x01(\tR\x0c\x63ontractAddr\x12%\n\x0e\x61\x63\x63ount_number\x18\x04 \x01(\x04R\raccountNumber\x12Q\n\x17\x61\x64\x64ress_derivation_hash\x18\x06 \x01(\x0c\x42\x19\xe2\xde\x1f\x15\x41\x64\x64ressDerivationHashR\x15\x61\x64\x64ressDerivationHashJ\x04\x08\x05\x10\x06\x42\x34Z2github.com/burnt-labs/xion/x/abstractaccount/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'abstractaccount.v1.events_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z>github.com/burnt-labs/abstract-account/x/abstractaccount/types'
+  _globals['DESCRIPTOR']._serialized_options = b'Z2github.com/burnt-labs/xion/x/abstractaccount/types'
   _globals['_EVENTACCOUNTREGISTERED'].fields_by_name['code_id']._options = None
   _globals['_EVENTACCOUNTREGISTERED'].fields_by_name['code_id']._serialized_options = b'\342\336\037\006CodeID'
+  _globals['_EVENTACCOUNTREGISTERED'].fields_by_name['address_derivation_hash']._options = None
+  _globals['_EVENTACCOUNTREGISTERED'].fields_by_name['address_derivation_hash']._serialized_options = b'\342\336\037\025AddressDerivationHash'
   _globals['_EVENTACCOUNTREGISTERED']._serialized_start=78
-  _globals['_EVENTACCOUNTREGISTERED']._serialized_end=241
+  _globals['_EVENTACCOUNTREGISTERED']._serialized_end=330
 # @@protoc_insertion_point(module_scope)

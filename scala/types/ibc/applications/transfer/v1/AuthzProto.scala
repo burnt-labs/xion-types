@@ -27,7 +27,7 @@ object AuthzProto extends _root_.scalapb.GeneratedFileObject {
   3QSRgoTYWxsb3dlZF9wYWNrZXRfZGF0YRgFIAMoCUIW4j8TEhFhbGxvd2VkUGFja2V0RGF0YVIRYWxsb3dlZFBhY2tldERhdGEio
   QEKFVRyYW5zZmVyQXV0aG9yaXphdGlvbhJgCgthbGxvY2F0aW9ucxgBIAMoCzIoLmliYy5hcHBsaWNhdGlvbnMudHJhbnNmZXIud
   jEuQWxsb2NhdGlvbkIU4j8NEgthbGxvY2F0aW9uc8jeHwBSC2FsbG9jYXRpb25zOibKtC0iY29zbW9zLmF1dGh6LnYxYmV0YTEuQ
-  XV0aG9yaXphdGlvbkI6WjhnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy90cmFuc2Zlci90eXBlc2IGc
+  XV0aG9yaXphdGlvbkI6WjhnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy90cmFuc2Zlci90eXBlc2IGc
   HJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

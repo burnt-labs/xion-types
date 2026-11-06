@@ -48,7 +48,7 @@ RUN apk add --no-cache \
 RUN pip3 install --break-system-packages grpcio-tools || \
     pip3 install grpcio-tools
 
-RUN npm install -g pnpm ts-proto
+RUN npm install -g pnpm ts-proto@2.18.2
 
 # buf CLI (from builder stage)
 COPY --from=buf-binary /usr/local/bin/buf /usr/local/bin/buf

@@ -19,6 +19,8 @@ package cosmos.staking.v1beta1
   *   bond_denom defines the bondable coin denomination.
   * @param minCommissionRate
   *   min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+  * @param keyRotationFee
+  *   key_rotation_fee is the fee charged when rotating a validator's consensus key.
   */
 @SerialVersionUID(0L)
 final case class Params(
@@ -28,6 +30,7 @@ final case class Params(
     historicalEntries: _root_.scala.Int = 0,
     bondDenom: _root_.scala.Predef.String = "",
     minCommissionRate: _root_.scala.Predef.String = "",
+    keyRotationFee: _root_.scala.Option[cosmos.base.v1beta1.Coin] = _root_.scala.None,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Params] {
     @transient
@@ -72,6 +75,10 @@ final case class Params(
         if (!__value.isEmpty) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(6, __value)
         }
+      };
+      if (keyRotationFee.isDefined) {
+        val __value = keyRotationFee.get
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
       };
       __size += unknownFields.serializedSize
       __size
@@ -122,6 +129,12 @@ final case class Params(
           _output__.writeString(6, __v)
         }
       };
+      keyRotationFee.foreach { __v =>
+        val __m = __v
+        _output__.writeTag(7, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
       unknownFields.writeTo(_output__)
     }
     def getUnbondingTime: com.google.protobuf.duration.Duration = unbondingTime.getOrElse(com.google.protobuf.duration.Duration.defaultInstance)
@@ -132,6 +145,9 @@ final case class Params(
     def withHistoricalEntries(__v: _root_.scala.Int): Params = copy(historicalEntries = __v)
     def withBondDenom(__v: _root_.scala.Predef.String): Params = copy(bondDenom = __v)
     def withMinCommissionRate(__v: _root_.scala.Predef.String): Params = copy(minCommissionRate = __v)
+    def getKeyRotationFee: cosmos.base.v1beta1.Coin = keyRotationFee.getOrElse(cosmos.base.v1beta1.Coin.defaultInstance)
+    def clearKeyRotationFee: Params = copy(keyRotationFee = _root_.scala.None)
+    def withKeyRotationFee(__v: cosmos.base.v1beta1.Coin): Params = copy(keyRotationFee = Option(__v))
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -157,6 +173,7 @@ final case class Params(
           val __t = minCommissionRate
           if (__t != "") __t else null
         }
+        case 7 => keyRotationFee.orNull
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -168,6 +185,7 @@ final case class Params(
         case 4 => _root_.scalapb.descriptors.PInt(historicalEntries)
         case 5 => _root_.scalapb.descriptors.PString(bondDenom)
         case 6 => _root_.scalapb.descriptors.PString(minCommissionRate)
+        case 7 => keyRotationFee.map(_.toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -184,6 +202,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
     var __historicalEntries: _root_.scala.Int = 0
     var __bondDenom: _root_.scala.Predef.String = ""
     var __minCommissionRate: _root_.scala.Predef.String = ""
+    var __keyRotationFee: _root_.scala.Option[cosmos.base.v1beta1.Coin] = _root_.scala.None
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -202,6 +221,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
           __bondDenom = _input__.readStringRequireUtf8()
         case 50 =>
           __minCommissionRate = _input__.readStringRequireUtf8()
+        case 58 =>
+          __keyRotationFee = _root_.scala.Option(__keyRotationFee.fold(_root_.scalapb.LiteParser.readMessage[cosmos.base.v1beta1.Coin](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _)))
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -216,6 +237,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
         historicalEntries = __historicalEntries,
         bondDenom = __bondDenom,
         minCommissionRate = __minCommissionRate,
+        keyRotationFee = __keyRotationFee,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -228,7 +250,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
         maxEntries = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Int]).getOrElse(0),
         historicalEntries = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Int]).getOrElse(0),
         bondDenom = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        minCommissionRate = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
+        minCommissionRate = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
+        keyRotationFee = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).flatMap(_.as[_root_.scala.Option[cosmos.base.v1beta1.Coin]])
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -238,6 +261,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
     var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = com.google.protobuf.duration.Duration
+      case 7 => __out = cosmos.base.v1beta1.Coin
     }
     __out
   }
@@ -249,7 +273,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
     maxEntries = 0,
     historicalEntries = 0,
     bondDenom = "",
-    minCommissionRate = ""
+    minCommissionRate = "",
+    keyRotationFee = _root_.scala.None
   )
   implicit class ParamsLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmos.staking.v1beta1.Params]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmos.staking.v1beta1.Params](_l) {
     def unbondingTime: _root_.scalapb.lenses.Lens[UpperPB, com.google.protobuf.duration.Duration] = field(_.getUnbondingTime)((c_, f_) => c_.copy(unbondingTime = _root_.scala.Option(f_)))
@@ -259,6 +284,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
     def historicalEntries: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Int] = field(_.historicalEntries)((c_, f_) => c_.copy(historicalEntries = f_))
     def bondDenom: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.bondDenom)((c_, f_) => c_.copy(bondDenom = f_))
     def minCommissionRate: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.minCommissionRate)((c_, f_) => c_.copy(minCommissionRate = f_))
+    def keyRotationFee: _root_.scalapb.lenses.Lens[UpperPB, cosmos.base.v1beta1.Coin] = field(_.getKeyRotationFee)((c_, f_) => c_.copy(keyRotationFee = _root_.scala.Option(f_)))
+    def optionalKeyRotationFee: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[cosmos.base.v1beta1.Coin]] = field(_.keyRotationFee)((c_, f_) => c_.copy(keyRotationFee = f_))
   }
   final val UNBONDING_TIME_FIELD_NUMBER = 1
   final val MAX_VALIDATORS_FIELD_NUMBER = 2
@@ -266,20 +293,23 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1beta1.P
   final val HISTORICAL_ENTRIES_FIELD_NUMBER = 4
   final val BOND_DENOM_FIELD_NUMBER = 5
   final val MIN_COMMISSION_RATE_FIELD_NUMBER = 6
+  final val KEY_ROTATION_FEE_FIELD_NUMBER = 7
   def of(
     unbondingTime: _root_.scala.Option[com.google.protobuf.duration.Duration],
     maxValidators: _root_.scala.Int,
     maxEntries: _root_.scala.Int,
     historicalEntries: _root_.scala.Int,
     bondDenom: _root_.scala.Predef.String,
-    minCommissionRate: _root_.scala.Predef.String
+    minCommissionRate: _root_.scala.Predef.String,
+    keyRotationFee: _root_.scala.Option[cosmos.base.v1beta1.Coin]
   ): _root_.cosmos.staking.v1beta1.Params = _root_.cosmos.staking.v1beta1.Params(
     unbondingTime,
     maxValidators,
     maxEntries,
     historicalEntries,
     bondDenom,
-    minCommissionRate
+    minCommissionRate,
+    keyRotationFee
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmos.staking.v1beta1.Params])
 }

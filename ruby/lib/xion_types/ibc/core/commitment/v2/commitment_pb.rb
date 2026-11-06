@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\'ibc/core/commitment/v2/commitment.proto\x12\x16ibc.core.commitment.v2\"\'\n\nMerklePath\x12\x19\n\x08key_path\x18\x01 \x03(\x0cR\x07keyPathBBZ@github.com/cosmos/ibc-go/v10/modules/core/23-commitment/types/v2b\x06proto3"
+descriptor_data = "\n\'ibc/core/commitment/v2/commitment.proto\x12\x16ibc.core.commitment.v2\"\'\n\nMerklePath\x12\x19\n\x08key_path\x18\x01 \x03(\x0cR\x07keyPathBBZ@github.com/cosmos/ibc-go/v11/modules/core/23-commitment/types/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

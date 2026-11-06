@@ -17365,7 +17365,7 @@ public final class QueryOuterClass {
       "ifyMembershipRequest\0321.ibc.core.client.v" +
       "1.QueryVerifyMembershipResponse\"5\210\347\260*\001\202\323" +
       "\344\223\002*\"%/ibc/core/client/v1/verify_members" +
-      "hip:\001*B;Z9github.com/cosmos/ibc-go/v10/m" +
+      "hip:\001*B;Z9github.com/cosmos/ibc-go/v11/m" +
       "odules/core/02-client/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

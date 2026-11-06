@@ -14,7 +14,7 @@ ts/, python/, rust/, ...  # Generated language output directories
 Makefile                  # proto-gen-ts, proto-gen-python, etc.
 ```
 
-Proto sources come from BSR (`buf.build/…`), not git — see [scripts/proto-sources.conf](scripts/proto-sources.conf). Only the xion entry is version-pinned (via `BSR_MODULE`); the rest resolve to each module's main.
+Proto sources are pinned Git refs and BSR commits in [scripts/proto-sources.conf](scripts/proto-sources.conf), matching the XION chain build (Cosmos SDK v0.55.0). Each line declares the path roots its source owns; the generator unions the exports and fails on conflicting files. The xion source can be replaced via `XION_BSR_MODULE` / `--module`.
 
 ## GitHub Workflows
 
@@ -89,7 +89,8 @@ None — publish workflows are called as part of the release flow but don't trig
 - Check action versions with `gh api repos/<org>/<repo>/releases/latest --jq .tag_name` rather than guessing — majors shift faster than training data.
 - `contracts/` and `xion/` at the repo root are ephemeral CI checkouts (gitignored). Don't add files there. `release.yaml` clones `burnt-labs/contracts` at the `contracts_ref` input (default `v1.0.1`); contract codegen runs inside the `proto-builder` docker image (cargo preinstalled).
 - macOS FS case-collision: `kotlin/types/ibc/applications/transfer/v1/DenomTraceKt.kt` and `DenomtraceKt.kt` are both tracked in git but fold to one file on case-insensitive filesystems, so `git status` will perpetually show one as modified after any checkout. Unrelated to any task — ignore or `git stash` it; do not try to "fix" by editing.
-- Local regen for a specific xion tag (requires Docker): `make proto-gen-<lang> BSR_MODULE=buf.build/burnt-labs/xion:vX.Y.Z`. The Makefile variable is `BSR_MODULE`; the script reads `XION_BSR_MODULE` and the recipe bridges the two — setting `XION_BSR_MODULE` in the shell alone does not propagate through Make.
+- Local regen for a specific xion commit (requires Docker): `make proto-gen-<lang> XION_BSR_MODULE="https://github.com/burnt-labs/xion.git#subdir=proto,ref=<sha>"`. Unset, the pinned manifest source is used.
+- Generator self-check: `bash scripts/ci/helper/test-proto-generation.sh` (needs buf, protoc, jq, git; run it inside the `proto-builder` image).
 
 ## Secrets Required
 

@@ -32,9 +32,9 @@ namespace Abstractaccount.V1 {
             "bnROdW1iZXISGgoIc2VxdWVuY2UYAyABKARSCHNlcXVlbmNlOiiIoB8A6KAf",
             "AMq0LRxjb3Ntb3MuYXV0aC52MWJldGExLkFjY291bnRJIlUKCU5pbFB1Yktl",
             "eRIjCg1hZGRyZXNzX2J5dGVzGAEgASgMUgxhZGRyZXNzQnl0ZXM6I5igHwCK",
-            "57AqGmFic3RyYWN0LWFjY291bnQvTmlsUHViS2V5QkBaPmdpdGh1Yi5jb20v",
-            "YnVybnQtbGFicy9hYnN0cmFjdC1hY2NvdW50L3gvYWJzdHJhY3RhY2NvdW50",
-            "L3R5cGVzYgZwcm90bzM="));
+            "57AqGmFic3RyYWN0LWFjY291bnQvTmlsUHViS2V5QjRaMmdpdGh1Yi5jb20v",
+            "YnVybnQtbGFicy94aW9uL3gvYWJzdHJhY3RhY2NvdW50L3R5cGVzYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::CosmosProto.CosmosReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Amino.AminoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -101,6 +101,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "address" field.</summary>
     public const int AddressFieldNumber = 1;
     private string address_ = "";
+    /// <summary>
+    /// address is the bech32-encoded address of the account's contract.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Address {
@@ -113,6 +116,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 2;
     private ulong accountNumber_;
+    /// <summary>
+    /// account_number is the account's number assigned by the auth module.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong AccountNumber {
@@ -125,6 +131,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "sequence" field.</summary>
     public const int SequenceFieldNumber = 3;
     private ulong sequence_;
+    /// <summary>
+    /// sequence is the account's current transaction sequence.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong Sequence {
@@ -370,6 +379,10 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "address_bytes" field.</summary>
     public const int AddressBytesFieldNumber = 1;
     private pb::ByteString addressBytes_ = pb::ByteString.Empty;
+    /// <summary>
+    /// address_bytes is the raw address bytes of the account the pubkey
+    /// stands in for.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pb::ByteString AddressBytes {

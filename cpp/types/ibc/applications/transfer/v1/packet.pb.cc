@@ -100,7 +100,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2fpacket
     "nom\022\026\n\006amount\030\002 \001(\tR\006amount\022\026\n\006sender\030\003 "
     "\001(\tR\006sender\022\032\n\010receiver\030\004 \001(\tR\010receiver\022"
     "\022\n\004memo\030\005 \001(\tR\004memoB:Z8github.com/cosmos"
-    "/ibc-go/v10/modules/apps/transfer/typesb"
+    "/ibc-go/v11/modules/apps/transfer/typesb"
     "\006proto3"
 };
 static ::absl::once_flag descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2fpacket_2eproto_once;

@@ -24,7 +24,7 @@ class Metadata
 host_connection_id (	RhostConnectionId
 address (	Raddress
 encoding (	Rencoding
-tx_type (	RtxTypeBHZFgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/typesbproto3'
+tx_type (	RtxTypeBHZFgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/typesbproto3'
         , true);
 
         static::$is_initialized = true;

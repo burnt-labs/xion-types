@@ -36,7 +36,13 @@ typedef struct Abstractaccount__V1__MsgRegisterAccountResponse Abstractaccount__
 struct  Abstractaccount__V1__MsgUpdateParams
 {
   ProtobufCMessage base;
+  /*
+   * sender is the authority address requesting the update.
+   */
   char *sender;
+  /*
+   * params is the new module parameters to apply.
+   */
   Abstractaccount__V1__Params *params;
 };
 #define ABSTRACTACCOUNT__V1__MSG_UPDATE_PARAMS__INIT \
@@ -67,7 +73,8 @@ struct  Abstractaccount__V1__MsgRegisterAccount
    */
   char *sender;
   /*
-   * CodeID indicates which wasm binary code is to be used for this contract
+   * CodeID selects the allowed implementation installed after deterministic
+   * direct instantiation. It does not participate in address derivation.
    */
   uint64_t code_id;
   /*
@@ -75,12 +82,12 @@ struct  Abstractaccount__V1__MsgRegisterAccount
    */
   ProtobufCBinaryData msg;
   /*
-   * Funds are coins to be deposited to the contract on instantiattion
+   * Funds are coins to be deposited to the contract on instantiation
    */
   size_t n_funds;
   Cosmos__Base__V1beta1__Coin **funds;
   /*
-   * Salt is an arbinary value to be used in deriving the account address.
+   * Salt is an arbitrary value to be used in deriving the account address.
    * Max 64 bytes.
    */
   ProtobufCBinaryData salt;
@@ -96,7 +103,13 @@ struct  Abstractaccount__V1__MsgRegisterAccount
 struct  Abstractaccount__V1__MsgRegisterAccountResponse
 {
   ProtobufCMessage base;
+  /*
+   * address is the address of the newly registered account contract.
+   */
   char *address;
+  /*
+   * data is the raw response data from the contract instantiation.
+   */
   ProtobufCBinaryData data;
 };
 #define ABSTRACTACCOUNT__V1__MSG_REGISTER_ACCOUNT_RESPONSE__INIT \

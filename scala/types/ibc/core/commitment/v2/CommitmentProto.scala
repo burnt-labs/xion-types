@@ -15,7 +15,7 @@ object CommitmentProto extends _root_.scalapb.GeneratedFileObject {
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """CidpYmMvY29yZS9jb21taXRtZW50L3YyL2NvbW1pdG1lbnQucHJvdG8SFmliYy5jb3JlLmNvbW1pdG1lbnQudjIiNQoKTWVya
   2xlUGF0aBInCghrZXlfcGF0aBgBIAMoDEIM4j8JEgdrZXlQYXRoUgdrZXlQYXRoQkJaQGdpdGh1Yi5jb20vY29zbW9zL2liYy1nb
-  y92MTAvbW9kdWxlcy9jb3JlLzIzLWNvbW1pdG1lbnQvdHlwZXMvdjJiBnByb3RvMw=="""
+  y92MTEvbW9kdWxlcy9jb3JlLzIzLWNvbW1pdG1lbnQvdHlwZXMvdjJiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

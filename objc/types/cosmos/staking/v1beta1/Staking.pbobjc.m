@@ -43,6 +43,7 @@
 GPBObjCClassDeclaration(Coin);
 GPBObjCClassDeclaration(Commission);
 GPBObjCClassDeclaration(CommissionRates);
+GPBObjCClassDeclaration(ConsKeyEvidenceExpiry);
 GPBObjCClassDeclaration(DVPair);
 GPBObjCClassDeclaration(DVPairs);
 GPBObjCClassDeclaration(DVVTriplet);
@@ -1328,6 +1329,7 @@ typedef struct Redelegation__storage_ {
 @dynamic historicalEntries;
 @dynamic bondDenom;
 @dynamic minCommissionRate;
+@dynamic hasKeyRotationFee, keyRotationFee;
 
 typedef struct Params__storage_ {
   uint32_t _has_storage_[1];
@@ -1337,6 +1339,7 @@ typedef struct Params__storage_ {
   GPBDuration *unbondingTime;
   NSString *bondDenom;
   NSString *minCommissionRate;
+  Coin *keyRotationFee;
 } Params__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1399,6 +1402,15 @@ typedef struct Params__storage_ {
         .offset = (uint32_t)offsetof(Params__storage_, minCommissionRate),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "keyRotationFee",
+        .dataTypeSpecific.clazz = GPBObjCClass(Coin),
+        .number = Params_FieldNumber_KeyRotationFee,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(Params__storage_, keyRotationFee),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1682,6 +1694,74 @@ typedef struct ValidatorUpdates__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(ValidatorUpdates__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ConsKeyEvidenceExpiry
+
+@implementation ConsKeyEvidenceExpiry
+
+@dynamic validatorAddress;
+@dynamic hasExpiryTime, expiryTime;
+@dynamic expiryHeight;
+
+typedef struct ConsKeyEvidenceExpiry__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *validatorAddress;
+  GPBTimestamp *expiryTime;
+  int64_t expiryHeight;
+} ConsKeyEvidenceExpiry__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "validatorAddress",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ConsKeyEvidenceExpiry_FieldNumber_ValidatorAddress,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ConsKeyEvidenceExpiry__storage_, validatorAddress),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "expiryTime",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBTimestamp),
+        .number = ConsKeyEvidenceExpiry_FieldNumber_ExpiryTime,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ConsKeyEvidenceExpiry__storage_, expiryTime),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "expiryHeight",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ConsKeyEvidenceExpiry_FieldNumber_ExpiryHeight,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ConsKeyEvidenceExpiry__storage_, expiryHeight),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(ConsKeyEvidenceExpiry)
+                                   messageName:@"ConsKeyEvidenceExpiry"
+                               fileDescription:&StakingRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ConsKeyEvidenceExpiry__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

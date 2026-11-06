@@ -14,6 +14,172 @@ public final class ParamsOuterClass {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * <pre>
+   * ProofSystem identifies which ZK backend and wire format a vkey/proof uses.
+   * </pre>
+   *
+   * Protobuf enum {@code xion.zk.v1.ProofSystem}
+   */
+  public enum ProofSystem
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * PROOF_SYSTEM_UNSPECIFIED is the default unset value.
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_UNSPECIFIED = 0;</code>
+     */
+    PROOF_SYSTEM_UNSPECIFIED(0),
+    /**
+     * <pre>
+     * PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format.
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_GROTH16 = 1;</code>
+     */
+    PROOF_SYSTEM_GROTH16(1),
+    /**
+     * <pre>
+     * PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+     * (bb &gt;= 0.87).
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_ULTRA_HONK_ZK = 2;</code>
+     */
+    PROOF_SYSTEM_ULTRA_HONK_ZK(2),
+    /**
+     * <pre>
+     * PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+     * format (binary).
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_GROTH16_GNARK = 3;</code>
+     */
+    PROOF_SYSTEM_GROTH16_GNARK(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * PROOF_SYSTEM_UNSPECIFIED is the default unset value.
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_UNSPECIFIED = 0;</code>
+     */
+    public static final int PROOF_SYSTEM_UNSPECIFIED_VALUE = 0;
+    /**
+     * <pre>
+     * PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format.
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_GROTH16 = 1;</code>
+     */
+    public static final int PROOF_SYSTEM_GROTH16_VALUE = 1;
+    /**
+     * <pre>
+     * PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+     * (bb &gt;= 0.87).
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_ULTRA_HONK_ZK = 2;</code>
+     */
+    public static final int PROOF_SYSTEM_ULTRA_HONK_ZK_VALUE = 2;
+    /**
+     * <pre>
+     * PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+     * format (binary).
+     * </pre>
+     *
+     * <code>PROOF_SYSTEM_GROTH16_GNARK = 3;</code>
+     */
+    public static final int PROOF_SYSTEM_GROTH16_GNARK_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ProofSystem valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ProofSystem forNumber(int value) {
+      switch (value) {
+        case 0: return PROOF_SYSTEM_UNSPECIFIED;
+        case 1: return PROOF_SYSTEM_GROTH16;
+        case 2: return PROOF_SYSTEM_ULTRA_HONK_ZK;
+        case 3: return PROOF_SYSTEM_GROTH16_GNARK;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ProofSystem>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ProofSystem> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ProofSystem>() {
+            public ProofSystem findValueByNumber(int number) {
+              return ProofSystem.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return xion.zk.v1.ParamsOuterClass.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ProofSystem[] VALUES = values();
+
+    public static ProofSystem valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ProofSystem(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:xion.zk.v1.ProofSystem)
+  }
+
   public interface ParamsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:xion.zk.v1.Params)
       com.google.protobuf.MessageOrBuilder {
@@ -47,6 +213,72 @@ public final class ParamsOuterClass {
      * @return The uploadChunkGas.
      */
     long getUploadChunkGas();
+
+    /**
+     * <pre>
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     * </pre>
+     *
+     * <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+     * @return The maxGroth16ProofSizeBytes.
+     */
+    long getMaxGroth16ProofSizeBytes();
+
+    /**
+     * <pre>
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     * </pre>
+     *
+     * <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+     * @return The maxGroth16PublicInputSizeBytes.
+     */
+    long getMaxGroth16PublicInputSizeBytes();
+
+    /**
+     * <pre>
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     * </pre>
+     *
+     * <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+     * @return The maxUltraHonkProofSizeBytes.
+     */
+    long getMaxUltraHonkProofSizeBytes();
+
+    /**
+     * <pre>
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     * </pre>
+     *
+     * <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+     * @return The maxUltraHonkPublicInputSizeBytes.
+     */
+    long getMaxUltraHonkPublicInputSizeBytes();
+
+    /**
+     * <pre>
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     * </pre>
+     *
+     * <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+     * @return The maxGnarkProofSizeBytes.
+     */
+    long getMaxGnarkProofSizeBytes();
+
+    /**
+     * <pre>
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     * </pre>
+     *
+     * <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+     * @return The maxGnarkPublicInputSizeBytes.
+     */
+    long getMaxGnarkPublicInputSizeBytes();
   }
   /**
    * <pre>
@@ -132,6 +364,102 @@ public final class ParamsOuterClass {
       return uploadChunkGas_;
     }
 
+    public static final int MAX_GROTH16_PROOF_SIZE_BYTES_FIELD_NUMBER = 4;
+    private long maxGroth16ProofSizeBytes_ = 0L;
+    /**
+     * <pre>
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     * </pre>
+     *
+     * <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+     * @return The maxGroth16ProofSizeBytes.
+     */
+    @java.lang.Override
+    public long getMaxGroth16ProofSizeBytes() {
+      return maxGroth16ProofSizeBytes_;
+    }
+
+    public static final int MAX_GROTH16_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER = 5;
+    private long maxGroth16PublicInputSizeBytes_ = 0L;
+    /**
+     * <pre>
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     * </pre>
+     *
+     * <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+     * @return The maxGroth16PublicInputSizeBytes.
+     */
+    @java.lang.Override
+    public long getMaxGroth16PublicInputSizeBytes() {
+      return maxGroth16PublicInputSizeBytes_;
+    }
+
+    public static final int MAX_ULTRA_HONK_PROOF_SIZE_BYTES_FIELD_NUMBER = 6;
+    private long maxUltraHonkProofSizeBytes_ = 0L;
+    /**
+     * <pre>
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     * </pre>
+     *
+     * <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+     * @return The maxUltraHonkProofSizeBytes.
+     */
+    @java.lang.Override
+    public long getMaxUltraHonkProofSizeBytes() {
+      return maxUltraHonkProofSizeBytes_;
+    }
+
+    public static final int MAX_ULTRA_HONK_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER = 7;
+    private long maxUltraHonkPublicInputSizeBytes_ = 0L;
+    /**
+     * <pre>
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     * </pre>
+     *
+     * <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+     * @return The maxUltraHonkPublicInputSizeBytes.
+     */
+    @java.lang.Override
+    public long getMaxUltraHonkPublicInputSizeBytes() {
+      return maxUltraHonkPublicInputSizeBytes_;
+    }
+
+    public static final int MAX_GNARK_PROOF_SIZE_BYTES_FIELD_NUMBER = 8;
+    private long maxGnarkProofSizeBytes_ = 0L;
+    /**
+     * <pre>
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     * </pre>
+     *
+     * <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+     * @return The maxGnarkProofSizeBytes.
+     */
+    @java.lang.Override
+    public long getMaxGnarkProofSizeBytes() {
+      return maxGnarkProofSizeBytes_;
+    }
+
+    public static final int MAX_GNARK_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER = 9;
+    private long maxGnarkPublicInputSizeBytes_ = 0L;
+    /**
+     * <pre>
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     * </pre>
+     *
+     * <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+     * @return The maxGnarkPublicInputSizeBytes.
+     */
+    @java.lang.Override
+    public long getMaxGnarkPublicInputSizeBytes() {
+      return maxGnarkPublicInputSizeBytes_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -155,6 +483,24 @@ public final class ParamsOuterClass {
       if (uploadChunkGas_ != 0L) {
         output.writeUInt64(3, uploadChunkGas_);
       }
+      if (maxGroth16ProofSizeBytes_ != 0L) {
+        output.writeUInt64(4, maxGroth16ProofSizeBytes_);
+      }
+      if (maxGroth16PublicInputSizeBytes_ != 0L) {
+        output.writeUInt64(5, maxGroth16PublicInputSizeBytes_);
+      }
+      if (maxUltraHonkProofSizeBytes_ != 0L) {
+        output.writeUInt64(6, maxUltraHonkProofSizeBytes_);
+      }
+      if (maxUltraHonkPublicInputSizeBytes_ != 0L) {
+        output.writeUInt64(7, maxUltraHonkPublicInputSizeBytes_);
+      }
+      if (maxGnarkProofSizeBytes_ != 0L) {
+        output.writeUInt64(8, maxGnarkProofSizeBytes_);
+      }
+      if (maxGnarkPublicInputSizeBytes_ != 0L) {
+        output.writeUInt64(9, maxGnarkPublicInputSizeBytes_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -175,6 +521,30 @@ public final class ParamsOuterClass {
       if (uploadChunkGas_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(3, uploadChunkGas_);
+      }
+      if (maxGroth16ProofSizeBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, maxGroth16ProofSizeBytes_);
+      }
+      if (maxGroth16PublicInputSizeBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(5, maxGroth16PublicInputSizeBytes_);
+      }
+      if (maxUltraHonkProofSizeBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(6, maxUltraHonkProofSizeBytes_);
+      }
+      if (maxUltraHonkPublicInputSizeBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(7, maxUltraHonkPublicInputSizeBytes_);
+      }
+      if (maxGnarkProofSizeBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(8, maxGnarkProofSizeBytes_);
+      }
+      if (maxGnarkPublicInputSizeBytes_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(9, maxGnarkPublicInputSizeBytes_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -197,6 +567,18 @@ public final class ParamsOuterClass {
           != other.getUploadChunkSize()) return false;
       if (getUploadChunkGas()
           != other.getUploadChunkGas()) return false;
+      if (getMaxGroth16ProofSizeBytes()
+          != other.getMaxGroth16ProofSizeBytes()) return false;
+      if (getMaxGroth16PublicInputSizeBytes()
+          != other.getMaxGroth16PublicInputSizeBytes()) return false;
+      if (getMaxUltraHonkProofSizeBytes()
+          != other.getMaxUltraHonkProofSizeBytes()) return false;
+      if (getMaxUltraHonkPublicInputSizeBytes()
+          != other.getMaxUltraHonkPublicInputSizeBytes()) return false;
+      if (getMaxGnarkProofSizeBytes()
+          != other.getMaxGnarkProofSizeBytes()) return false;
+      if (getMaxGnarkPublicInputSizeBytes()
+          != other.getMaxGnarkPublicInputSizeBytes()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -217,6 +599,24 @@ public final class ParamsOuterClass {
       hash = (37 * hash) + UPLOAD_CHUNK_GAS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getUploadChunkGas());
+      hash = (37 * hash) + MAX_GROTH16_PROOF_SIZE_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxGroth16ProofSizeBytes());
+      hash = (37 * hash) + MAX_GROTH16_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxGroth16PublicInputSizeBytes());
+      hash = (37 * hash) + MAX_ULTRA_HONK_PROOF_SIZE_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxUltraHonkProofSizeBytes());
+      hash = (37 * hash) + MAX_ULTRA_HONK_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxUltraHonkPublicInputSizeBytes());
+      hash = (37 * hash) + MAX_GNARK_PROOF_SIZE_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxGnarkProofSizeBytes());
+      hash = (37 * hash) + MAX_GNARK_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxGnarkPublicInputSizeBytes());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -355,6 +755,12 @@ public final class ParamsOuterClass {
         maxVkeySizeBytes_ = 0L;
         uploadChunkSize_ = 0L;
         uploadChunkGas_ = 0L;
+        maxGroth16ProofSizeBytes_ = 0L;
+        maxGroth16PublicInputSizeBytes_ = 0L;
+        maxUltraHonkProofSizeBytes_ = 0L;
+        maxUltraHonkPublicInputSizeBytes_ = 0L;
+        maxGnarkProofSizeBytes_ = 0L;
+        maxGnarkPublicInputSizeBytes_ = 0L;
         return this;
       }
 
@@ -396,6 +802,24 @@ public final class ParamsOuterClass {
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.uploadChunkGas_ = uploadChunkGas_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.maxGroth16ProofSizeBytes_ = maxGroth16ProofSizeBytes_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.maxGroth16PublicInputSizeBytes_ = maxGroth16PublicInputSizeBytes_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.maxUltraHonkProofSizeBytes_ = maxUltraHonkProofSizeBytes_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.maxUltraHonkPublicInputSizeBytes_ = maxUltraHonkPublicInputSizeBytes_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.maxGnarkProofSizeBytes_ = maxGnarkProofSizeBytes_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.maxGnarkPublicInputSizeBytes_ = maxGnarkPublicInputSizeBytes_;
         }
       }
 
@@ -452,6 +876,24 @@ public final class ParamsOuterClass {
         if (other.getUploadChunkGas() != 0L) {
           setUploadChunkGas(other.getUploadChunkGas());
         }
+        if (other.getMaxGroth16ProofSizeBytes() != 0L) {
+          setMaxGroth16ProofSizeBytes(other.getMaxGroth16ProofSizeBytes());
+        }
+        if (other.getMaxGroth16PublicInputSizeBytes() != 0L) {
+          setMaxGroth16PublicInputSizeBytes(other.getMaxGroth16PublicInputSizeBytes());
+        }
+        if (other.getMaxUltraHonkProofSizeBytes() != 0L) {
+          setMaxUltraHonkProofSizeBytes(other.getMaxUltraHonkProofSizeBytes());
+        }
+        if (other.getMaxUltraHonkPublicInputSizeBytes() != 0L) {
+          setMaxUltraHonkPublicInputSizeBytes(other.getMaxUltraHonkPublicInputSizeBytes());
+        }
+        if (other.getMaxGnarkProofSizeBytes() != 0L) {
+          setMaxGnarkProofSizeBytes(other.getMaxGnarkProofSizeBytes());
+        }
+        if (other.getMaxGnarkPublicInputSizeBytes() != 0L) {
+          setMaxGnarkPublicInputSizeBytes(other.getMaxGnarkPublicInputSizeBytes());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -493,6 +935,36 @@ public final class ParamsOuterClass {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
+              case 32: {
+                maxGroth16ProofSizeBytes_ = input.readUInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                maxGroth16PublicInputSizeBytes_ = input.readUInt64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              case 48: {
+                maxUltraHonkProofSizeBytes_ = input.readUInt64();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
+              case 56: {
+                maxUltraHonkPublicInputSizeBytes_ = input.readUInt64();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
+              case 64: {
+                maxGnarkProofSizeBytes_ = input.readUInt64();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 64
+              case 72: {
+                maxGnarkPublicInputSizeBytes_ = input.readUInt64();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 72
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -641,6 +1113,288 @@ public final class ParamsOuterClass {
         onChanged();
         return this;
       }
+
+      private long maxGroth16ProofSizeBytes_ ;
+      /**
+       * <pre>
+       * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+       * </pre>
+       *
+       * <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+       * @return The maxGroth16ProofSizeBytes.
+       */
+      @java.lang.Override
+      public long getMaxGroth16ProofSizeBytes() {
+        return maxGroth16ProofSizeBytes_;
+      }
+      /**
+       * <pre>
+       * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+       * </pre>
+       *
+       * <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+       * @param value The maxGroth16ProofSizeBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxGroth16ProofSizeBytes(long value) {
+
+        maxGroth16ProofSizeBytes_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+       * </pre>
+       *
+       * <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxGroth16ProofSizeBytes() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxGroth16ProofSizeBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maxGroth16PublicInputSizeBytes_ ;
+      /**
+       * <pre>
+       * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+       * inputs. The size is computed as the total UTF-8 byte length of all provided
+       * public input strings.
+       * </pre>
+       *
+       * <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+       * @return The maxGroth16PublicInputSizeBytes.
+       */
+      @java.lang.Override
+      public long getMaxGroth16PublicInputSizeBytes() {
+        return maxGroth16PublicInputSizeBytes_;
+      }
+      /**
+       * <pre>
+       * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+       * inputs. The size is computed as the total UTF-8 byte length of all provided
+       * public input strings.
+       * </pre>
+       *
+       * <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+       * @param value The maxGroth16PublicInputSizeBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxGroth16PublicInputSizeBytes(long value) {
+
+        maxGroth16PublicInputSizeBytes_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+       * inputs. The size is computed as the total UTF-8 byte length of all provided
+       * public input strings.
+       * </pre>
+       *
+       * <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxGroth16PublicInputSizeBytes() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        maxGroth16PublicInputSizeBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maxUltraHonkProofSizeBytes_ ;
+      /**
+       * <pre>
+       * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+       * </pre>
+       *
+       * <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+       * @return The maxUltraHonkProofSizeBytes.
+       */
+      @java.lang.Override
+      public long getMaxUltraHonkProofSizeBytes() {
+        return maxUltraHonkProofSizeBytes_;
+      }
+      /**
+       * <pre>
+       * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+       * </pre>
+       *
+       * <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+       * @param value The maxUltraHonkProofSizeBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxUltraHonkProofSizeBytes(long value) {
+
+        maxUltraHonkProofSizeBytes_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+       * </pre>
+       *
+       * <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxUltraHonkProofSizeBytes() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        maxUltraHonkProofSizeBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maxUltraHonkPublicInputSizeBytes_ ;
+      /**
+       * <pre>
+       * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+       * public inputs. UltraHonk public inputs are provided as raw bytes.
+       * </pre>
+       *
+       * <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+       * @return The maxUltraHonkPublicInputSizeBytes.
+       */
+      @java.lang.Override
+      public long getMaxUltraHonkPublicInputSizeBytes() {
+        return maxUltraHonkPublicInputSizeBytes_;
+      }
+      /**
+       * <pre>
+       * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+       * public inputs. UltraHonk public inputs are provided as raw bytes.
+       * </pre>
+       *
+       * <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+       * @param value The maxUltraHonkPublicInputSizeBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxUltraHonkPublicInputSizeBytes(long value) {
+
+        maxUltraHonkPublicInputSizeBytes_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+       * public inputs. UltraHonk public inputs are provided as raw bytes.
+       * </pre>
+       *
+       * <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxUltraHonkPublicInputSizeBytes() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        maxUltraHonkPublicInputSizeBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maxGnarkProofSizeBytes_ ;
+      /**
+       * <pre>
+       * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+       * (binary).
+       * </pre>
+       *
+       * <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+       * @return The maxGnarkProofSizeBytes.
+       */
+      @java.lang.Override
+      public long getMaxGnarkProofSizeBytes() {
+        return maxGnarkProofSizeBytes_;
+      }
+      /**
+       * <pre>
+       * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+       * (binary).
+       * </pre>
+       *
+       * <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+       * @param value The maxGnarkProofSizeBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxGnarkProofSizeBytes(long value) {
+
+        maxGnarkProofSizeBytes_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+       * (binary).
+       * </pre>
+       *
+       * <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxGnarkProofSizeBytes() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        maxGnarkProofSizeBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maxGnarkPublicInputSizeBytes_ ;
+      /**
+       * <pre>
+       * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+       * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+       * big-endian field elements).
+       * </pre>
+       *
+       * <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+       * @return The maxGnarkPublicInputSizeBytes.
+       */
+      @java.lang.Override
+      public long getMaxGnarkPublicInputSizeBytes() {
+        return maxGnarkPublicInputSizeBytes_;
+      }
+      /**
+       * <pre>
+       * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+       * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+       * big-endian field elements).
+       * </pre>
+       *
+       * <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+       * @param value The maxGnarkPublicInputSizeBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxGnarkPublicInputSizeBytes(long value) {
+
+        maxGnarkPublicInputSizeBytes_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+       * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+       * big-endian field elements).
+       * </pre>
+       *
+       * <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxGnarkPublicInputSizeBytes() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        maxGnarkPublicInputSizeBytes_ = 0L;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -720,13 +1474,27 @@ public final class ParamsOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\027xion/zk/v1/params.proto\022\nxion.zk.v1\032\021a" +
-      "mino/amino.proto\032\024gogoproto/gogo.proto\"\245" +
-      "\001\n\006Params\022-\n\023max_vkey_size_bytes\030\001 \001(\004R\020" +
+      "mino/amino.proto\032\024gogoproto/gogo.proto\"\316" +
+      "\004\n\006Params\022-\n\023max_vkey_size_bytes\030\001 \001(\004R\020" +
       "maxVkeySizeBytes\022*\n\021upload_chunk_size\030\002 " +
       "\001(\004R\017uploadChunkSize\022(\n\020upload_chunk_gas" +
-      "\030\003 \001(\004R\016uploadChunkGas:\026\230\240\037\000\350\240\037\001\212\347\260*\tzk/" +
-      "paramsB\'Z%github.com/burnt-labs/xion/x/z" +
-      "k/typesb\006proto3"
+      "\030\003 \001(\004R\016uploadChunkGas\022>\n\034max_groth16_pr" +
+      "oof_size_bytes\030\004 \001(\004R\030maxGroth16ProofSiz" +
+      "eBytes\022K\n#max_groth16_public_input_size_" +
+      "bytes\030\005 \001(\004R\036maxGroth16PublicInputSizeBy" +
+      "tes\022C\n\037max_ultra_honk_proof_size_bytes\030\006" +
+      " \001(\004R\032maxUltraHonkProofSizeBytes\022P\n&max_" +
+      "ultra_honk_public_input_size_bytes\030\007 \001(\004" +
+      "R maxUltraHonkPublicInputSizeBytes\022:\n\032ma" +
+      "x_gnark_proof_size_bytes\030\010 \001(\004R\026maxGnark" +
+      "ProofSizeBytes\022G\n!max_gnark_public_input" +
+      "_size_bytes\030\t \001(\004R\034maxGnarkPublicInputSi" +
+      "zeBytes:\026\230\240\037\000\350\240\037\001\212\347\260*\tzk/params*\205\001\n\013Proo" +
+      "fSystem\022\034\n\030PROOF_SYSTEM_UNSPECIFIED\020\000\022\030\n" +
+      "\024PROOF_SYSTEM_GROTH16\020\001\022\036\n\032PROOF_SYSTEM_" +
+      "ULTRA_HONK_ZK\020\002\022\036\n\032PROOF_SYSTEM_GROTH16_" +
+      "GNARK\020\003B\'Z%github.com/burnt-labs/xion/x/" +
+      "zk/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -739,7 +1507,7 @@ public final class ParamsOuterClass {
     internal_static_xion_zk_v1_Params_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_Params_descriptor,
-        new java.lang.String[] { "MaxVkeySizeBytes", "UploadChunkSize", "UploadChunkGas", });
+        new java.lang.String[] { "MaxVkeySizeBytes", "UploadChunkSize", "UploadChunkGas", "MaxGroth16ProofSizeBytes", "MaxGroth16PublicInputSizeBytes", "MaxUltraHonkProofSizeBytes", "MaxUltraHonkPublicInputSizeBytes", "MaxGnarkProofSizeBytes", "MaxGnarkPublicInputSizeBytes", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(amino.Amino.name);

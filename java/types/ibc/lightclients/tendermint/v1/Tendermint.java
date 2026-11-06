@@ -299,7 +299,7 @@ public final class Tendermint {
      *
      * <code>bool allow_update_after_expiry = 10 [json_name = "allowUpdateAfterExpiry", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_expiry is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=47
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
      * @return The allowUpdateAfterExpiry.
      */
     @java.lang.Deprecated boolean getAllowUpdateAfterExpiry();
@@ -311,7 +311,7 @@ public final class Tendermint {
      *
      * <code>bool allow_update_after_misbehaviour = 11 [json_name = "allowUpdateAfterMisbehaviour", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_misbehaviour is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=51
      * @return The allowUpdateAfterMisbehaviour.
      */
     @java.lang.Deprecated boolean getAllowUpdateAfterMisbehaviour();
@@ -766,7 +766,7 @@ public final class Tendermint {
      *
      * <code>bool allow_update_after_expiry = 10 [json_name = "allowUpdateAfterExpiry", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_expiry is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=47
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
      * @return The allowUpdateAfterExpiry.
      */
     @java.lang.Override
@@ -783,7 +783,7 @@ public final class Tendermint {
      *
      * <code>bool allow_update_after_misbehaviour = 11 [json_name = "allowUpdateAfterMisbehaviour", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_misbehaviour is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=51
      * @return The allowUpdateAfterMisbehaviour.
      */
     @java.lang.Override
@@ -3025,7 +3025,7 @@ public final class Tendermint {
        *
        * <code>bool allow_update_after_expiry = 10 [json_name = "allowUpdateAfterExpiry", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_expiry is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=47
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
        * @return The allowUpdateAfterExpiry.
        */
       @java.lang.Override
@@ -3039,7 +3039,7 @@ public final class Tendermint {
        *
        * <code>bool allow_update_after_expiry = 10 [json_name = "allowUpdateAfterExpiry", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_expiry is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=47
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
        * @param value The allowUpdateAfterExpiry to set.
        * @return This builder for chaining.
        */
@@ -3057,7 +3057,7 @@ public final class Tendermint {
        *
        * <code>bool allow_update_after_expiry = 10 [json_name = "allowUpdateAfterExpiry", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_expiry is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=47
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearAllowUpdateAfterExpiry() {
@@ -3075,7 +3075,7 @@ public final class Tendermint {
        *
        * <code>bool allow_update_after_misbehaviour = 11 [json_name = "allowUpdateAfterMisbehaviour", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_misbehaviour is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=51
        * @return The allowUpdateAfterMisbehaviour.
        */
       @java.lang.Override
@@ -3089,7 +3089,7 @@ public final class Tendermint {
        *
        * <code>bool allow_update_after_misbehaviour = 11 [json_name = "allowUpdateAfterMisbehaviour", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_misbehaviour is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=51
        * @param value The allowUpdateAfterMisbehaviour to set.
        * @return This builder for chaining.
        */
@@ -3107,7 +3107,7 @@ public final class Tendermint {
        *
        * <code>bool allow_update_after_misbehaviour = 11 [json_name = "allowUpdateAfterMisbehaviour", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.ClientState.allow_update_after_misbehaviour is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=49
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=51
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearAllowUpdateAfterMisbehaviour() {
@@ -4219,7 +4219,7 @@ public final class Tendermint {
      *
      * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
      * @return The clientId.
      */
     @java.lang.Deprecated java.lang.String getClientId();
@@ -4230,7 +4230,7 @@ public final class Tendermint {
      *
      * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
      * @return The bytes for clientId.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -4318,7 +4318,7 @@ public final class Tendermint {
      *
      * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
      * @return The clientId.
      */
     @java.lang.Override
@@ -4341,7 +4341,7 @@ public final class Tendermint {
      *
      * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
      * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+     *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
      * @return The bytes for clientId.
      */
     @java.lang.Override
@@ -4833,7 +4833,7 @@ public final class Tendermint {
        *
        * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
        * @return The clientId.
        */
       @java.lang.Deprecated public java.lang.String getClientId() {
@@ -4855,7 +4855,7 @@ public final class Tendermint {
        *
        * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
        * @return The bytes for clientId.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -4878,7 +4878,7 @@ public final class Tendermint {
        *
        * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
        * @param value The clientId to set.
        * @return This builder for chaining.
        */
@@ -4897,7 +4897,7 @@ public final class Tendermint {
        *
        * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearClientId() {
@@ -4913,7 +4913,7 @@ public final class Tendermint {
        *
        * <code>string client_id = 1 [json_name = "clientId", deprecated = true];</code>
        * @deprecated ibc.lightclients.tendermint.v1.Misbehaviour.client_id is deprecated.
-       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=70
+       *     See ibc/lightclients/tendermint/v1/tendermint.proto;l=72
        * @param value The bytes for clientId to set.
        * @return This builder for chaining.
        */
@@ -7117,7 +7117,7 @@ public final class Tendermint {
       "R\021trustedValidators\"J\n\010Fraction\022\034\n\tnumer" +
       "ator\030\001 \001(\004R\tnumerator\022 \n\013denominator\030\002 \001" +
       "(\004R\013denominatorBMZKgithub.com/cosmos/ibc" +
-      "-go/v10/modules/light-clients/07-tenderm" +
+      "-go/v11/modules/light-clients/07-tenderm" +
       "int;tendermintb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

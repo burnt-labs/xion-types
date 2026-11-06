@@ -16,7 +16,7 @@ class Params
         }
         $pool->internalAddGeneratedFile(
             '
-°
+³
  xion/feeabs/v1beta1/params.protoxion.feeabs.v1beta1"Á
 Params5
 native_ibced_in_osmosis (	RnativeIbcedInOsmosis5
@@ -25,7 +25,7 @@ class Params
 chain_name (	R	chainName0
 ibc_transfer_channel (	RibcTransferChannel1
 ibc_query_icq_channel (	RibcQueryIcqChannelE
-osmosis_crosschain_swap_address (	RosmosisCrosschainSwapAddressB+Z)github.com/burnt-labs/xion/x/feeabs/typesbproto3'
+osmosis_crosschain_swap_address (	RosmosisCrosschainSwapAddressB.Z,github.com/burnt-labs/xion/app/legacy/feeabsbproto3'
         , true);
 
         static::$is_initialized = true;

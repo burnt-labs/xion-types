@@ -25,6 +25,12 @@ package cosmos.staking.v1beta1
   *   redelegations defines the redelegations active at genesis.
   * @param exported
   *   exported defines a bool to identify whether the chain dealing with exported or initialized genesis.
+  * @param consensusKeyRotationHistory
+  *   consensus_key_rotation_history defines consensus key rotations that are
+  *   still within the unbonding window.
+  * @param pendingConsensusKeyRotations
+  *   pending_consensus_key_rotations defines consensus key rotations whose
+  *   SDK-side validator state has not reached its deferred apply height yet.
   */
 @SerialVersionUID(0L)
 final case class GenesisState(
@@ -36,6 +42,8 @@ final case class GenesisState(
     unbondingDelegations: _root_.scala.Seq[cosmos.staking.v1beta1.UnbondingDelegation] = _root_.scala.Seq.empty,
     redelegations: _root_.scala.Seq[cosmos.staking.v1beta1.Redelegation] = _root_.scala.Seq.empty,
     exported: _root_.scala.Boolean = false,
+    consensusKeyRotationHistory: _root_.scala.Seq[cosmos.staking.v1beta1.ConsensusKeyRotationHistory] = _root_.scala.Seq.empty,
+    pendingConsensusKeyRotations: _root_.scala.Seq[cosmos.staking.v1beta1.PendingConsensusKeyRotation] = _root_.scala.Seq.empty,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[GenesisState] {
     @transient
@@ -80,6 +88,14 @@ final case class GenesisState(
           __size += _root_.com.google.protobuf.CodedOutputStream.computeBoolSize(8, __value)
         }
       };
+      consensusKeyRotationHistory.foreach { __item =>
+        val __value = __item
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
+      }
+      pendingConsensusKeyRotations.foreach { __item =>
+        val __value = __item
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
+      }
       __size += unknownFields.serializedSize
       __size
     }
@@ -141,6 +157,18 @@ final case class GenesisState(
           _output__.writeBool(8, __v)
         }
       };
+      consensusKeyRotationHistory.foreach { __v =>
+        val __m = __v
+        _output__.writeTag(9, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
+      pendingConsensusKeyRotations.foreach { __v =>
+        val __m = __v
+        _output__.writeTag(10, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
       unknownFields.writeTo(_output__)
     }
     def getParams: cosmos.staking.v1beta1.Params = params.getOrElse(cosmos.staking.v1beta1.Params.defaultInstance)
@@ -168,6 +196,14 @@ final case class GenesisState(
     def addAllRedelegations(__vs: Iterable[cosmos.staking.v1beta1.Redelegation]): GenesisState = copy(redelegations = redelegations ++ __vs)
     def withRedelegations(__v: _root_.scala.Seq[cosmos.staking.v1beta1.Redelegation]): GenesisState = copy(redelegations = __v)
     def withExported(__v: _root_.scala.Boolean): GenesisState = copy(exported = __v)
+    def clearConsensusKeyRotationHistory = copy(consensusKeyRotationHistory = _root_.scala.Seq.empty)
+    def addConsensusKeyRotationHistory(__vs: cosmos.staking.v1beta1.ConsensusKeyRotationHistory *): GenesisState = addAllConsensusKeyRotationHistory(__vs)
+    def addAllConsensusKeyRotationHistory(__vs: Iterable[cosmos.staking.v1beta1.ConsensusKeyRotationHistory]): GenesisState = copy(consensusKeyRotationHistory = consensusKeyRotationHistory ++ __vs)
+    def withConsensusKeyRotationHistory(__v: _root_.scala.Seq[cosmos.staking.v1beta1.ConsensusKeyRotationHistory]): GenesisState = copy(consensusKeyRotationHistory = __v)
+    def clearPendingConsensusKeyRotations = copy(pendingConsensusKeyRotations = _root_.scala.Seq.empty)
+    def addPendingConsensusKeyRotations(__vs: cosmos.staking.v1beta1.PendingConsensusKeyRotation *): GenesisState = addAllPendingConsensusKeyRotations(__vs)
+    def addAllPendingConsensusKeyRotations(__vs: Iterable[cosmos.staking.v1beta1.PendingConsensusKeyRotation]): GenesisState = copy(pendingConsensusKeyRotations = pendingConsensusKeyRotations ++ __vs)
+    def withPendingConsensusKeyRotations(__v: _root_.scala.Seq[cosmos.staking.v1beta1.PendingConsensusKeyRotation]): GenesisState = copy(pendingConsensusKeyRotations = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -186,6 +222,8 @@ final case class GenesisState(
           val __t = exported
           if (__t != false) __t else null
         }
+        case 9 => consensusKeyRotationHistory
+        case 10 => pendingConsensusKeyRotations
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -199,6 +237,8 @@ final case class GenesisState(
         case 6 => _root_.scalapb.descriptors.PRepeated(unbondingDelegations.iterator.map(_.toPMessage).toVector)
         case 7 => _root_.scalapb.descriptors.PRepeated(redelegations.iterator.map(_.toPMessage).toVector)
         case 8 => _root_.scalapb.descriptors.PBoolean(exported)
+        case 9 => _root_.scalapb.descriptors.PRepeated(consensusKeyRotationHistory.iterator.map(_.toPMessage).toVector)
+        case 10 => _root_.scalapb.descriptors.PRepeated(pendingConsensusKeyRotations.iterator.map(_.toPMessage).toVector)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -217,6 +257,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
     val __unbondingDelegations: _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.UnbondingDelegation] = new _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.UnbondingDelegation]
     val __redelegations: _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.Redelegation] = new _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.Redelegation]
     var __exported: _root_.scala.Boolean = false
+    val __consensusKeyRotationHistory: _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.ConsensusKeyRotationHistory] = new _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.ConsensusKeyRotationHistory]
+    val __pendingConsensusKeyRotations: _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.PendingConsensusKeyRotation] = new _root_.scala.collection.immutable.VectorBuilder[cosmos.staking.v1beta1.PendingConsensusKeyRotation]
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -239,6 +281,10 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
           __redelegations += _root_.scalapb.LiteParser.readMessage[cosmos.staking.v1beta1.Redelegation](_input__)
         case 64 =>
           __exported = _input__.readBool()
+        case 74 =>
+          __consensusKeyRotationHistory += _root_.scalapb.LiteParser.readMessage[cosmos.staking.v1beta1.ConsensusKeyRotationHistory](_input__)
+        case 82 =>
+          __pendingConsensusKeyRotations += _root_.scalapb.LiteParser.readMessage[cosmos.staking.v1beta1.PendingConsensusKeyRotation](_input__)
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -255,6 +301,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
         unbondingDelegations = __unbondingDelegations.result(),
         redelegations = __redelegations.result(),
         exported = __exported,
+        consensusKeyRotationHistory = __consensusKeyRotationHistory.result(),
+        pendingConsensusKeyRotations = __pendingConsensusKeyRotations.result(),
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -269,7 +317,9 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
         delegations = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Seq[cosmos.staking.v1beta1.Delegation]]).getOrElse(_root_.scala.Seq.empty),
         unbondingDelegations = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Seq[cosmos.staking.v1beta1.UnbondingDelegation]]).getOrElse(_root_.scala.Seq.empty),
         redelegations = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).map(_.as[_root_.scala.Seq[cosmos.staking.v1beta1.Redelegation]]).getOrElse(_root_.scala.Seq.empty),
-        exported = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.scala.Boolean]).getOrElse(false)
+        exported = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.scala.Boolean]).getOrElse(false),
+        consensusKeyRotationHistory = __fieldsMap.get(scalaDescriptor.findFieldByNumber(9).get).map(_.as[_root_.scala.Seq[cosmos.staking.v1beta1.ConsensusKeyRotationHistory]]).getOrElse(_root_.scala.Seq.empty),
+        pendingConsensusKeyRotations = __fieldsMap.get(scalaDescriptor.findFieldByNumber(10).get).map(_.as[_root_.scala.Seq[cosmos.staking.v1beta1.PendingConsensusKeyRotation]]).getOrElse(_root_.scala.Seq.empty)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -284,6 +334,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
       case 5 => __out = cosmos.staking.v1beta1.Delegation
       case 6 => __out = cosmos.staking.v1beta1.UnbondingDelegation
       case 7 => __out = cosmos.staking.v1beta1.Redelegation
+      case 9 => __out = cosmos.staking.v1beta1.ConsensusKeyRotationHistory
+      case 10 => __out = cosmos.staking.v1beta1.PendingConsensusKeyRotation
     }
     __out
   }
@@ -297,7 +349,9 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
     delegations = _root_.scala.Seq.empty,
     unbondingDelegations = _root_.scala.Seq.empty,
     redelegations = _root_.scala.Seq.empty,
-    exported = false
+    exported = false,
+    consensusKeyRotationHistory = _root_.scala.Seq.empty,
+    pendingConsensusKeyRotations = _root_.scala.Seq.empty
   )
   implicit class GenesisStateLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmos.staking.v1beta1.GenesisState]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmos.staking.v1beta1.GenesisState](_l) {
     def params: _root_.scalapb.lenses.Lens[UpperPB, cosmos.staking.v1beta1.Params] = field(_.getParams)((c_, f_) => c_.copy(params = _root_.scala.Option(f_)))
@@ -309,6 +363,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
     def unbondingDelegations: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[cosmos.staking.v1beta1.UnbondingDelegation]] = field(_.unbondingDelegations)((c_, f_) => c_.copy(unbondingDelegations = f_))
     def redelegations: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[cosmos.staking.v1beta1.Redelegation]] = field(_.redelegations)((c_, f_) => c_.copy(redelegations = f_))
     def exported: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.exported)((c_, f_) => c_.copy(exported = f_))
+    def consensusKeyRotationHistory: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[cosmos.staking.v1beta1.ConsensusKeyRotationHistory]] = field(_.consensusKeyRotationHistory)((c_, f_) => c_.copy(consensusKeyRotationHistory = f_))
+    def pendingConsensusKeyRotations: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[cosmos.staking.v1beta1.PendingConsensusKeyRotation]] = field(_.pendingConsensusKeyRotations)((c_, f_) => c_.copy(pendingConsensusKeyRotations = f_))
   }
   final val PARAMS_FIELD_NUMBER = 1
   final val LAST_TOTAL_POWER_FIELD_NUMBER = 2
@@ -318,6 +374,8 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
   final val UNBONDING_DELEGATIONS_FIELD_NUMBER = 6
   final val REDELEGATIONS_FIELD_NUMBER = 7
   final val EXPORTED_FIELD_NUMBER = 8
+  final val CONSENSUS_KEY_ROTATION_HISTORY_FIELD_NUMBER = 9
+  final val PENDING_CONSENSUS_KEY_ROTATIONS_FIELD_NUMBER = 10
   def of(
     params: _root_.scala.Option[cosmos.staking.v1beta1.Params],
     lastTotalPower: _root_.com.google.protobuf.ByteString,
@@ -326,7 +384,9 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
     delegations: _root_.scala.Seq[cosmos.staking.v1beta1.Delegation],
     unbondingDelegations: _root_.scala.Seq[cosmos.staking.v1beta1.UnbondingDelegation],
     redelegations: _root_.scala.Seq[cosmos.staking.v1beta1.Redelegation],
-    exported: _root_.scala.Boolean
+    exported: _root_.scala.Boolean,
+    consensusKeyRotationHistory: _root_.scala.Seq[cosmos.staking.v1beta1.ConsensusKeyRotationHistory],
+    pendingConsensusKeyRotations: _root_.scala.Seq[cosmos.staking.v1beta1.PendingConsensusKeyRotation]
   ): _root_.cosmos.staking.v1beta1.GenesisState = _root_.cosmos.staking.v1beta1.GenesisState(
     params,
     lastTotalPower,
@@ -335,7 +395,9 @@ object GenesisState extends scalapb.GeneratedMessageCompanion[cosmos.staking.v1b
     delegations,
     unbondingDelegations,
     redelegations,
-    exported
+    exported,
+    consensusKeyRotationHistory,
+    pendingConsensusKeyRotations
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmos.staking.v1beta1.GenesisState])
 }

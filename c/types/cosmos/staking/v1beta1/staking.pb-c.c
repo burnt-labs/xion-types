@@ -952,6 +952,51 @@ void   cosmos__staking__v1beta1__validator_updates__free_unpacked
   assert(message->base.descriptor == &cosmos__staking__v1beta1__validator_updates__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   cosmos__staking__v1beta1__cons_key_evidence_expiry__init
+                     (Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry         *message)
+{
+  static const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry init_value = COSMOS__STAKING__V1BETA1__CONS_KEY_EVIDENCE_EXPIRY__INIT;
+  *message = init_value;
+}
+size_t cosmos__staking__v1beta1__cons_key_evidence_expiry__get_packed_size
+                     (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *message)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__staking__v1beta1__cons_key_evidence_expiry__pack
+                     (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__staking__v1beta1__cons_key_evidence_expiry__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *
+       cosmos__staking__v1beta1__cons_key_evidence_expiry__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *)
+     protobuf_c_message_unpack (&cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__staking__v1beta1__cons_key_evidence_expiry__free_unpacked
+                     (Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__historical_info__field_descriptors[2] =
 {
   {
@@ -2042,7 +2087,7 @@ const ProtobufCMessageDescriptor cosmos__staking__v1beta1__redelegation__descrip
   (ProtobufCMessageInit) cosmos__staking__v1beta1__redelegation__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__params__field_descriptors[6] =
+static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__params__field_descriptors[7] =
 {
   {
     "unbonding_time",
@@ -2116,10 +2161,23 @@ static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__params__field_de
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "key_rotation_fee",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__Params, key_rotation_fee),
+    &cosmos__base__v1beta1__coin__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmos__staking__v1beta1__params__field_indices_by_name[] = {
   4,   /* field[4] = bond_denom */
   3,   /* field[3] = historical_entries */
+  6,   /* field[6] = key_rotation_fee */
   2,   /* field[2] = max_entries */
   1,   /* field[1] = max_validators */
   5,   /* field[5] = min_commission_rate */
@@ -2128,7 +2186,7 @@ static const unsigned cosmos__staking__v1beta1__params__field_indices_by_name[] 
 static const ProtobufCIntRange cosmos__staking__v1beta1__params__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor cosmos__staking__v1beta1__params__descriptor =
 {
@@ -2138,7 +2196,7 @@ const ProtobufCMessageDescriptor cosmos__staking__v1beta1__params__descriptor =
   "Cosmos__Staking__V1beta1__Params",
   "cosmos.staking.v1beta1",
   sizeof(Cosmos__Staking__V1beta1__Params),
-  6,
+  7,
   cosmos__staking__v1beta1__params__field_descriptors,
   cosmos__staking__v1beta1__params__field_indices_by_name,
   1,  cosmos__staking__v1beta1__params__number_ranges,
@@ -2386,6 +2444,70 @@ const ProtobufCMessageDescriptor cosmos__staking__v1beta1__validator_updates__de
   cosmos__staking__v1beta1__validator_updates__field_indices_by_name,
   1,  cosmos__staking__v1beta1__validator_updates__number_ranges,
   (ProtobufCMessageInit) cosmos__staking__v1beta1__validator_updates__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__cons_key_evidence_expiry__field_descriptors[3] =
+{
+  {
+    "validator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry, validator_address),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "expiry_time",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry, expiry_time),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "expiry_height",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry, expiry_height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__staking__v1beta1__cons_key_evidence_expiry__field_indices_by_name[] = {
+  2,   /* field[2] = expiry_height */
+  1,   /* field[1] = expiry_time */
+  0,   /* field[0] = validator_address */
+};
+static const ProtobufCIntRange cosmos__staking__v1beta1__cons_key_evidence_expiry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor cosmos__staking__v1beta1__cons_key_evidence_expiry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.staking.v1beta1.ConsKeyEvidenceExpiry",
+  "ConsKeyEvidenceExpiry",
+  "Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry",
+  "cosmos.staking.v1beta1",
+  sizeof(Cosmos__Staking__V1beta1__ConsKeyEvidenceExpiry),
+  3,
+  cosmos__staking__v1beta1__cons_key_evidence_expiry__field_descriptors,
+  cosmos__staking__v1beta1__cons_key_evidence_expiry__field_indices_by_name,
+  1,  cosmos__staking__v1beta1__cons_key_evidence_expiry__number_ranges,
+  (ProtobufCMessageInit) cosmos__staking__v1beta1__cons_key_evidence_expiry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCEnumValue cosmos__staking__v1beta1__bond_status__enum_values_by_number[4] =

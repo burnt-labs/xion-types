@@ -772,6 +772,231 @@ void   xion__jwk__v1__query_validate_jwtresponse__free_unpacked
   assert(message->base.descriptor == &xion__jwk__v1__query_validate_jwtresponse__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   xion__jwk__v1__query_verify_jwsrequest__init
+                     (Xion__Jwk__V1__QueryVerifyJWSRequest         *message)
+{
+  static const Xion__Jwk__V1__QueryVerifyJWSRequest init_value = XION__JWK__V1__QUERY_VERIFY_JWSREQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_verify_jwsrequest__get_packed_size
+                     (const Xion__Jwk__V1__QueryVerifyJWSRequest *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsrequest__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_verify_jwsrequest__pack
+                     (const Xion__Jwk__V1__QueryVerifyJWSRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsrequest__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_verify_jwsrequest__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryVerifyJWSRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsrequest__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryVerifyJWSRequest *
+       xion__jwk__v1__query_verify_jwsrequest__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryVerifyJWSRequest *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_verify_jwsrequest__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_verify_jwsrequest__free_unpacked
+                     (Xion__Jwk__V1__QueryVerifyJWSRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsrequest__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_verify_jwsresponse__init
+                     (Xion__Jwk__V1__QueryVerifyJWSResponse         *message)
+{
+  static const Xion__Jwk__V1__QueryVerifyJWSResponse init_value = XION__JWK__V1__QUERY_VERIFY_JWSRESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_verify_jwsresponse__get_packed_size
+                     (const Xion__Jwk__V1__QueryVerifyJWSResponse *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsresponse__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_verify_jwsresponse__pack
+                     (const Xion__Jwk__V1__QueryVerifyJWSResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsresponse__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_verify_jwsresponse__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryVerifyJWSResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsresponse__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryVerifyJWSResponse *
+       xion__jwk__v1__query_verify_jwsresponse__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryVerifyJWSResponse *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_verify_jwsresponse__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_verify_jwsresponse__free_unpacked
+                     (Xion__Jwk__V1__QueryVerifyJWSResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_verify_jwsresponse__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_decode_jwtrequest__init
+                     (Xion__Jwk__V1__QueryDecodeJWTRequest         *message)
+{
+  static const Xion__Jwk__V1__QueryDecodeJWTRequest init_value = XION__JWK__V1__QUERY_DECODE_JWTREQUEST__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_decode_jwtrequest__get_packed_size
+                     (const Xion__Jwk__V1__QueryDecodeJWTRequest *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtrequest__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_decode_jwtrequest__pack
+                     (const Xion__Jwk__V1__QueryDecodeJWTRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtrequest__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_decode_jwtrequest__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryDecodeJWTRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtrequest__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryDecodeJWTRequest *
+       xion__jwk__v1__query_decode_jwtrequest__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryDecodeJWTRequest *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_decode_jwtrequest__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_decode_jwtrequest__free_unpacked
+                     (Xion__Jwk__V1__QueryDecodeJWTRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtrequest__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__jwtclaim__init
+                     (Xion__Jwk__V1__JWTClaim         *message)
+{
+  static const Xion__Jwk__V1__JWTClaim init_value = XION__JWK__V1__JWTCLAIM__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__jwtclaim__get_packed_size
+                     (const Xion__Jwk__V1__JWTClaim *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__jwtclaim__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__jwtclaim__pack
+                     (const Xion__Jwk__V1__JWTClaim *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__jwtclaim__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__jwtclaim__pack_to_buffer
+                     (const Xion__Jwk__V1__JWTClaim *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__jwtclaim__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__JWTClaim *
+       xion__jwk__v1__jwtclaim__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__JWTClaim *)
+     protobuf_c_message_unpack (&xion__jwk__v1__jwtclaim__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__jwtclaim__free_unpacked
+                     (Xion__Jwk__V1__JWTClaim *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__jwtclaim__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__query_decode_jwtresponse__init
+                     (Xion__Jwk__V1__QueryDecodeJWTResponse         *message)
+{
+  static const Xion__Jwk__V1__QueryDecodeJWTResponse init_value = XION__JWK__V1__QUERY_DECODE_JWTRESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__query_decode_jwtresponse__get_packed_size
+                     (const Xion__Jwk__V1__QueryDecodeJWTResponse *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtresponse__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__query_decode_jwtresponse__pack
+                     (const Xion__Jwk__V1__QueryDecodeJWTResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtresponse__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__query_decode_jwtresponse__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryDecodeJWTResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtresponse__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__QueryDecodeJWTResponse *
+       xion__jwk__v1__query_decode_jwtresponse__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__QueryDecodeJWTResponse *)
+     protobuf_c_message_unpack (&xion__jwk__v1__query_decode_jwtresponse__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__query_decode_jwtresponse__free_unpacked
+                     (Xion__Jwk__V1__QueryDecodeJWTResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__query_decode_jwtresponse__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 #define xion__jwk__v1__query_params_request__field_descriptors NULL
 #define xion__jwk__v1__query_params_request__field_indices_by_name NULL
 #define xion__jwk__v1__query_params_request__number_ranges NULL
@@ -1463,20 +1688,266 @@ const ProtobufCMessageDescriptor xion__jwk__v1__query_validate_jwtresponse__desc
   (ProtobufCMessageInit) xion__jwk__v1__query_validate_jwtresponse__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor xion__jwk__v1__query__method_descriptors[5] =
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_verify_jwsrequest__field_descriptors[2] =
+{
+  {
+    "aud",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryVerifyJWSRequest, aud),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "sig_bytes",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryVerifyJWSRequest, sig_bytes),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_verify_jwsrequest__field_indices_by_name[] = {
+  0,   /* field[0] = aud */
+  1,   /* field[1] = sig_bytes */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_verify_jwsrequest__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_verify_jwsrequest__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryVerifyJWSRequest",
+  "QueryVerifyJWSRequest",
+  "Xion__Jwk__V1__QueryVerifyJWSRequest",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryVerifyJWSRequest),
+  2,
+  xion__jwk__v1__query_verify_jwsrequest__field_descriptors,
+  xion__jwk__v1__query_verify_jwsrequest__field_indices_by_name,
+  1,  xion__jwk__v1__query_verify_jwsrequest__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_verify_jwsrequest__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_verify_jwsresponse__field_descriptors[1] =
+{
+  {
+    "payload",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryVerifyJWSResponse, payload),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_verify_jwsresponse__field_indices_by_name[] = {
+  0,   /* field[0] = payload */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_verify_jwsresponse__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_verify_jwsresponse__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryVerifyJWSResponse",
+  "QueryVerifyJWSResponse",
+  "Xion__Jwk__V1__QueryVerifyJWSResponse",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryVerifyJWSResponse),
+  1,
+  xion__jwk__v1__query_verify_jwsresponse__field_descriptors,
+  xion__jwk__v1__query_verify_jwsresponse__field_indices_by_name,
+  1,  xion__jwk__v1__query_verify_jwsresponse__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_verify_jwsresponse__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_decode_jwtrequest__field_descriptors[3] =
+{
+  {
+    "aud",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryDecodeJWTRequest, aud),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "sub",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryDecodeJWTRequest, sub),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "sig_bytes",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__QueryDecodeJWTRequest, sig_bytes),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_decode_jwtrequest__field_indices_by_name[] = {
+  0,   /* field[0] = aud */
+  2,   /* field[2] = sig_bytes */
+  1,   /* field[1] = sub */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_decode_jwtrequest__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_decode_jwtrequest__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryDecodeJWTRequest",
+  "QueryDecodeJWTRequest",
+  "Xion__Jwk__V1__QueryDecodeJWTRequest",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryDecodeJWTRequest),
+  3,
+  xion__jwk__v1__query_decode_jwtrequest__field_descriptors,
+  xion__jwk__v1__query_decode_jwtrequest__field_indices_by_name,
+  1,  xion__jwk__v1__query_decode_jwtrequest__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_decode_jwtrequest__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__jwtclaim__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__JWTClaim, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__JWTClaim, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__jwtclaim__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange xion__jwk__v1__jwtclaim__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__jwtclaim__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.JWTClaim",
+  "JWTClaim",
+  "Xion__Jwk__V1__JWTClaim",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__JWTClaim),
+  2,
+  xion__jwk__v1__jwtclaim__field_descriptors,
+  xion__jwk__v1__jwtclaim__field_indices_by_name,
+  1,  xion__jwk__v1__jwtclaim__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__jwtclaim__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor xion__jwk__v1__query_decode_jwtresponse__field_descriptors[1] =
+{
+  {
+    "claims",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Xion__Jwk__V1__QueryDecodeJWTResponse, n_claims),
+    offsetof(Xion__Jwk__V1__QueryDecodeJWTResponse, claims),
+    &xion__jwk__v1__jwtclaim__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__query_decode_jwtresponse__field_indices_by_name[] = {
+  0,   /* field[0] = claims */
+};
+static const ProtobufCIntRange xion__jwk__v1__query_decode_jwtresponse__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__query_decode_jwtresponse__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.QueryDecodeJWTResponse",
+  "QueryDecodeJWTResponse",
+  "Xion__Jwk__V1__QueryDecodeJWTResponse",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__QueryDecodeJWTResponse),
+  1,
+  xion__jwk__v1__query_decode_jwtresponse__field_descriptors,
+  xion__jwk__v1__query_decode_jwtresponse__field_indices_by_name,
+  1,  xion__jwk__v1__query_decode_jwtresponse__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__query_decode_jwtresponse__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor xion__jwk__v1__query__method_descriptors[7] =
 {
   { "Params", &xion__jwk__v1__query_params_request__descriptor, &xion__jwk__v1__query_params_response__descriptor },
   { "AudienceClaim", &xion__jwk__v1__query_audience_claim_request__descriptor, &xion__jwk__v1__query_audience_claim_response__descriptor },
   { "Audience", &xion__jwk__v1__query_audience_request__descriptor, &xion__jwk__v1__query_audience_response__descriptor },
   { "AudienceAll", &xion__jwk__v1__query_audience_all_request__descriptor, &xion__jwk__v1__query_audience_all_response__descriptor },
   { "ValidateJWT", &xion__jwk__v1__query_validate_jwtrequest__descriptor, &xion__jwk__v1__query_validate_jwtresponse__descriptor },
+  { "VerifyJWS", &xion__jwk__v1__query_verify_jwsrequest__descriptor, &xion__jwk__v1__query_verify_jwsresponse__descriptor },
+  { "DecodeJWT", &xion__jwk__v1__query_decode_jwtrequest__descriptor, &xion__jwk__v1__query_decode_jwtresponse__descriptor },
 };
 const unsigned xion__jwk__v1__query__method_indices_by_name[] = {
   2,        /* Audience */
   3,        /* AudienceAll */
   1,        /* AudienceClaim */
+  6,        /* DecodeJWT */
   0,        /* Params */
-  4         /* ValidateJWT */
+  4,        /* ValidateJWT */
+  5         /* VerifyJWS */
 };
 const ProtobufCServiceDescriptor xion__jwk__v1__query__descriptor =
 {
@@ -1485,7 +1956,7 @@ const ProtobufCServiceDescriptor xion__jwk__v1__query__descriptor =
   "Query",
   "Xion__Jwk__V1__Query",
   "xion.jwk.v1",
-  5,
+  7,
   xion__jwk__v1__query__method_descriptors,
   xion__jwk__v1__query__method_indices_by_name
 };
@@ -1528,6 +1999,22 @@ void xion__jwk__v1__query__validate_jwt(ProtobufCService *service,
 {
   assert(service->descriptor == &xion__jwk__v1__query__descriptor);
   service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void xion__jwk__v1__query__verify_jws(ProtobufCService *service,
+                                      const Xion__Jwk__V1__QueryVerifyJWSRequest *input,
+                                      Xion__Jwk__V1__QueryVerifyJWSResponse_Closure closure,
+                                      void *closure_data)
+{
+  assert(service->descriptor == &xion__jwk__v1__query__descriptor);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void xion__jwk__v1__query__decode_jwt(ProtobufCService *service,
+                                      const Xion__Jwk__V1__QueryDecodeJWTRequest *input,
+                                      Xion__Jwk__V1__QueryDecodeJWTResponse_Closure closure,
+                                      void *closure_data)
+{
+  assert(service->descriptor == &xion__jwk__v1__query__descriptor);
+  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__jwk__v1__query__init (Xion__Jwk__V1__Query_Service *service,
                                  Xion__Jwk__V1__Query_ServiceDestroy destroy)

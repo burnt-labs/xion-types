@@ -31,17 +31,15 @@ namespace Ibc.Lightclients.Wasm.V1 {
             "dW0SRQoNbGF0ZXN0X2hlaWdodBgDIAEoCzIaLmliYy5jb3JlLmNsaWVudC52",
             "MS5IZWlnaHRCBMjeHwBSDGxhdGVzdEhlaWdodDoEiKAfACIqCg5Db25zZW5z",
             "dXNTdGF0ZRISCgRkYXRhGAEgASgMUgRkYXRhOgSIoB8AIikKDUNsaWVudE1l",
-            "c3NhZ2USEgoEZGF0YRgBIAEoDFIEZGF0YToEiKAfACItCglDaGVja3N1bXMS",
-            "HAoJY2hlY2tzdW1zGAEgAygMUgljaGVja3N1bXM6AhgBQkJaQGdpdGh1Yi5j",
-            "b20vY29zbW9zL2liYy1nby9tb2R1bGVzL2xpZ2h0LWNsaWVudHMvMDgtd2Fz",
-            "bS92MTAvdHlwZXNiBnByb3RvMw=="));
+            "c3NhZ2USEgoEZGF0YRgBIAEoDFIEZGF0YToEiKAfAEJCWkBnaXRodWIuY29t",
+            "L2Nvc21vcy9pYmMtZ28vbW9kdWxlcy9saWdodC1jbGllbnRzLzA4LXdhc20v",
+            "djExL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Ibc.Core.Client.V1.ClientReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Lightclients.Wasm.V1.ClientState), global::Ibc.Lightclients.Wasm.V1.ClientState.Parser, new[]{ "Data", "Checksum", "LatestHeight" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Lightclients.Wasm.V1.ConsensusState), global::Ibc.Lightclients.Wasm.V1.ConsensusState.Parser, new[]{ "Data" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Lightclients.Wasm.V1.ClientMessage), global::Ibc.Lightclients.Wasm.V1.ClientMessage.Parser, new[]{ "Data" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Lightclients.Wasm.V1.Checksums), global::Ibc.Lightclients.Wasm.V1.Checksums.Parser, new[]{ "Checksums_" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Lightclients.Wasm.V1.ClientMessage), global::Ibc.Lightclients.Wasm.V1.ClientMessage.Parser, new[]{ "Data" }, null, null, null, null)
           }));
     }
     #endregion
@@ -706,191 +704,6 @@ namespace Ibc.Lightclients.Wasm.V1 {
             break;
           case 10: {
             Data = input.ReadBytes();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
-  /// Checksums defines a list of all checksums that are stored
-  ///
-  /// Deprecated: This message is deprecated in favor of storing the checksums
-  /// using a Collections.KeySet.
-  /// </summary>
-  [global::System.ObsoleteAttribute]
-  public sealed partial class Checksums : pb::IMessage<Checksums>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<Checksums> _parser = new pb::MessageParser<Checksums>(() => new Checksums());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Checksums> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ibc.Lightclients.Wasm.V1.WasmReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Checksums() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Checksums(Checksums other) : this() {
-      checksums_ = other.checksums_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Checksums Clone() {
-      return new Checksums(this);
-    }
-
-    /// <summary>Field number for the "checksums" field.</summary>
-    public const int Checksums_FieldNumber = 1;
-    private static readonly pb::FieldCodec<pb::ByteString> _repeated_checksums_codec
-        = pb::FieldCodec.ForBytes(10);
-    private readonly pbc::RepeatedField<pb::ByteString> checksums_ = new pbc::RepeatedField<pb::ByteString>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<pb::ByteString> Checksums_ {
-      get { return checksums_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as Checksums);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Checksums other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!checksums_.Equals(other.checksums_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= checksums_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      checksums_.WriteTo(output, _repeated_checksums_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      checksums_.WriteTo(ref output, _repeated_checksums_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      size += checksums_.CalculateSize(_repeated_checksums_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Checksums other) {
-      if (other == null) {
-        return;
-      }
-      checksums_.Add(other.checksums_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            checksums_.AddEntriesFrom(input, _repeated_checksums_codec);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            checksums_.AddEntriesFrom(ref input, _repeated_checksums_codec);
             break;
           }
         }

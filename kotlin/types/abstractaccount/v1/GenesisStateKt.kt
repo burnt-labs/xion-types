@@ -32,6 +32,10 @@ public object GenesisStateKt {
     internal fun _build(): abstractaccount.v1.Genesis.GenesisState = _builder.build()
 
     /**
+     * ```
+     * params defines the module parameters.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      */
     public var params: abstractaccount.v1.ParamsOuterClass.Params
@@ -42,12 +46,20 @@ public object GenesisStateKt {
         _builder.setParams(value)
       }
     /**
+     * ```
+     * params defines the module parameters.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      */
     public fun clearParams() {
       _builder.clearParams()
     }
     /**
+     * ```
+     * params defines the module parameters.
+     * ```
+     *
      * `.abstractaccount.v1.Params params = 1 [json_name = "params"];`
      * @return Whether the params field is set.
      */
@@ -56,6 +68,10 @@ public object GenesisStateKt {
     }
 
     /**
+     * ```
+     * next_account_id is the identifier assigned to the next registered account.
+     * ```
+     *
      * `uint64 next_account_id = 2 [json_name = "nextAccountId"];`
      */
     public var nextAccountId: kotlin.Long
@@ -66,11 +82,115 @@ public object GenesisStateKt {
         _builder.setNextAccountId(value)
       }
     /**
+     * ```
+     * next_account_id is the identifier assigned to the next registered account.
+     * ```
+     *
      * `uint64 next_account_id = 2 [json_name = "nextAccountId"];`
      */
     public fun clearNextAccountId() {
       _builder.clearNextAccountId()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class AccountAddressesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     */
+     public val accountAddresses: com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getAccountAddressesList()
+      )
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     * @param value The accountAddresses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAccountAddresses")
+    public fun com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>.add(value: abstractaccount.v1.Genesis.AccountAddress) {
+      _builder.addAccountAddresses(value)
+    }
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     * @param value The accountAddresses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAccountAddresses")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>.plusAssign(value: abstractaccount.v1.Genesis.AccountAddress) {
+      add(value)
+    }
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     * @param values The accountAddresses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllAccountAddresses")
+    public fun com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>.addAll(values: kotlin.collections.Iterable<abstractaccount.v1.Genesis.AccountAddress>) {
+      _builder.addAllAccountAddresses(values)
+    }
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     * @param values The accountAddresses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllAccountAddresses")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>.plusAssign(values: kotlin.collections.Iterable<abstractaccount.v1.Genesis.AccountAddress>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     * @param index The index to set the value at.
+     * @param value The accountAddresses to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setAccountAddresses")
+    public operator fun com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>.set(index: kotlin.Int, value: abstractaccount.v1.Genesis.AccountAddress) {
+      _builder.setAccountAddresses(index, value)
+    }
+    /**
+     * ```
+     * account_addresses is the exported sender/salt address registry.
+     * ```
+     *
+     * `repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearAccountAddresses")
+    public fun com.google.protobuf.kotlin.DslList<abstractaccount.v1.Genesis.AccountAddress, AccountAddressesProxy>.clear() {
+      _builder.clearAccountAddresses()
+    }
+
   }
 }
 @kotlin.jvm.JvmSynthetic

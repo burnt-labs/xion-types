@@ -21,7 +21,6 @@ final case class InFlightPacket(
     refundSequence: _root_.scala.Long = 0L,
     retriesRemaining: _root_.scala.Int = 0,
     timeout: _root_.scala.Long = 0L,
-    nonrefundable: _root_.scala.Boolean = false,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[InFlightPacket] {
     @transient
@@ -105,13 +104,6 @@ final case class InFlightPacket(
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(11, __value)
         }
       };
-      
-      {
-        val __value = nonrefundable
-        if (__value != false) {
-          __size += _root_.com.google.protobuf.CodedOutputStream.computeBoolSize(12, __value)
-        }
-      };
       __size += unknownFields.serializedSize
       __size
     }
@@ -191,12 +183,6 @@ final case class InFlightPacket(
           _output__.writeUInt64(11, __v)
         }
       };
-      {
-        val __v = nonrefundable
-        if (__v != false) {
-          _output__.writeBool(12, __v)
-        }
-      };
       unknownFields.writeTo(_output__)
     }
     def withOriginalSenderAddress(__v: _root_.scala.Predef.String): InFlightPacket = copy(originalSenderAddress = __v)
@@ -210,7 +196,6 @@ final case class InFlightPacket(
     def withRefundSequence(__v: _root_.scala.Long): InFlightPacket = copy(refundSequence = __v)
     def withRetriesRemaining(__v: _root_.scala.Int): InFlightPacket = copy(retriesRemaining = __v)
     def withTimeout(__v: _root_.scala.Long): InFlightPacket = copy(timeout = __v)
-    def withNonrefundable(__v: _root_.scala.Boolean): InFlightPacket = copy(nonrefundable = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -259,10 +244,6 @@ final case class InFlightPacket(
           val __t = timeout
           if (__t != 0L) __t else null
         }
-        case 12 => {
-          val __t = nonrefundable
-          if (__t != false) __t else null
-        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -279,7 +260,6 @@ final case class InFlightPacket(
         case 9 => _root_.scalapb.descriptors.PLong(refundSequence)
         case 10 => _root_.scalapb.descriptors.PInt(retriesRemaining)
         case 11 => _root_.scalapb.descriptors.PLong(timeout)
-        case 12 => _root_.scalapb.descriptors.PBoolean(nonrefundable)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -301,7 +281,6 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
     var __refundSequence: _root_.scala.Long = 0L
     var __retriesRemaining: _root_.scala.Int = 0
     var __timeout: _root_.scala.Long = 0L
-    var __nonrefundable: _root_.scala.Boolean = false
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -330,8 +309,6 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
           __retriesRemaining = _input__.readInt32()
         case 88 =>
           __timeout = _input__.readUInt64()
-        case 96 =>
-          __nonrefundable = _input__.readBool()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -351,7 +328,6 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
         refundSequence = __refundSequence,
         retriesRemaining = __retriesRemaining,
         timeout = __timeout,
-        nonrefundable = __nonrefundable,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -369,8 +345,7 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
         packetData = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.com.google.protobuf.ByteString]).getOrElse(_root_.com.google.protobuf.ByteString.EMPTY),
         refundSequence = __fieldsMap.get(scalaDescriptor.findFieldByNumber(9).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
         retriesRemaining = __fieldsMap.get(scalaDescriptor.findFieldByNumber(10).get).map(_.as[_root_.scala.Int]).getOrElse(0),
-        timeout = __fieldsMap.get(scalaDescriptor.findFieldByNumber(11).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
-        nonrefundable = __fieldsMap.get(scalaDescriptor.findFieldByNumber(12).get).map(_.as[_root_.scala.Boolean]).getOrElse(false)
+        timeout = __fieldsMap.get(scalaDescriptor.findFieldByNumber(11).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -390,8 +365,7 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
     packetData = _root_.com.google.protobuf.ByteString.EMPTY,
     refundSequence = 0L,
     retriesRemaining = 0,
-    timeout = 0L,
-    nonrefundable = false
+    timeout = 0L
   )
   implicit class InFlightPacketLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, ibc.applications.packet_forward_middleware.v1.InFlightPacket]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, ibc.applications.packet_forward_middleware.v1.InFlightPacket](_l) {
     def originalSenderAddress: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.originalSenderAddress)((c_, f_) => c_.copy(originalSenderAddress = f_))
@@ -405,7 +379,6 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
     def refundSequence: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.refundSequence)((c_, f_) => c_.copy(refundSequence = f_))
     def retriesRemaining: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Int] = field(_.retriesRemaining)((c_, f_) => c_.copy(retriesRemaining = f_))
     def timeout: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.timeout)((c_, f_) => c_.copy(timeout = f_))
-    def nonrefundable: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.nonrefundable)((c_, f_) => c_.copy(nonrefundable = f_))
   }
   final val ORIGINAL_SENDER_ADDRESS_FIELD_NUMBER = 1
   final val REFUND_CHANNEL_ID_FIELD_NUMBER = 2
@@ -418,7 +391,6 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
   final val REFUND_SEQUENCE_FIELD_NUMBER = 9
   final val RETRIES_REMAINING_FIELD_NUMBER = 10
   final val TIMEOUT_FIELD_NUMBER = 11
-  final val NONREFUNDABLE_FIELD_NUMBER = 12
   def of(
     originalSenderAddress: _root_.scala.Predef.String,
     refundChannelId: _root_.scala.Predef.String,
@@ -430,8 +402,7 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
     packetData: _root_.com.google.protobuf.ByteString,
     refundSequence: _root_.scala.Long,
     retriesRemaining: _root_.scala.Int,
-    timeout: _root_.scala.Long,
-    nonrefundable: _root_.scala.Boolean
+    timeout: _root_.scala.Long
   ): _root_.ibc.applications.packet_forward_middleware.v1.InFlightPacket = _root_.ibc.applications.packet_forward_middleware.v1.InFlightPacket(
     originalSenderAddress,
     refundChannelId,
@@ -443,8 +414,7 @@ object InFlightPacket extends scalapb.GeneratedMessageCompanion[ibc.applications
     packetData,
     refundSequence,
     retriesRemaining,
-    timeout,
-    nonrefundable
+    timeout
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[ibc.applications.packet_forward_middleware.v1.InFlightPacket])
 }

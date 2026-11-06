@@ -5378,8 +5378,8 @@ public final class QueryOuterClass {
       "ChainConfigRequest\0324.xion.feeabs.v1beta1" +
       ".QueryAllHostChainConfigResponse\"8\202\323\344\223\0022" +
       "\0220/fee-abstraction/feeabs/v1/all-host-ch" +
-      "ain-configB+Z)github.com/burnt-labs/xion" +
-      "/x/feeabs/typesb\006proto3"
+      "ain-configB.Z,github.com/burnt-labs/xion" +
+      "/app/legacy/feeabsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

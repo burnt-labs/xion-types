@@ -96,6 +96,7 @@ PROTOBUF_CONSTEXPR Params::Params(::_pbi::ConstantInitialized)
       /*decltype(_impl_.tx_size_cost_per_byte_)*/ ::uint64_t{0u},
       /*decltype(_impl_.sig_verify_cost_ed25519_)*/ ::uint64_t{0u},
       /*decltype(_impl_.sig_verify_cost_secp256k1_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.sig_verify_cost_mldsa65_)*/ ::uint64_t{0u},
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct ParamsDefaultTypeInternal {
@@ -171,6 +172,7 @@ const ::uint32_t TableStruct_cosmos_2fauth_2fv1beta1_2fauth_2eproto::offsets[] P
     PROTOBUF_FIELD_OFFSET(::cosmos::auth::v1beta1::Params, _impl_.tx_size_cost_per_byte_),
     PROTOBUF_FIELD_OFFSET(::cosmos::auth::v1beta1::Params, _impl_.sig_verify_cost_ed25519_),
     PROTOBUF_FIELD_OFFSET(::cosmos::auth::v1beta1::Params, _impl_.sig_verify_cost_secp256k1_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::auth::v1beta1::Params, _impl_.sig_verify_cost_mldsa65_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -208,7 +210,7 @@ const char descriptor_table_protodef_cosmos_2fauth_2fv1beta1_2fauth_2eproto[] PR
     "\227\001\n\020ModuleCredential\022\037\n\013module_name\030\001 \001("
     "\tR\nmoduleName\022\'\n\017derivation_keys\030\002 \003(\014R\016"
     "derivationKeys:9\322\264-\017cosmos-sdk 0.47\212\347\260*!"
-    "cosmos-sdk/GroupAccountCredential\"\327\002\n\006Pa"
+    "cosmos-sdk/GroupAccountCredential\"\250\003\n\006Pa"
     "rams\022.\n\023max_memo_characters\030\001 \001(\004R\021maxMe"
     "moCharacters\022 \n\014tx_sig_limit\030\002 \001(\004R\ntxSi"
     "gLimit\0220\n\025tx_size_cost_per_byte\030\003 \001(\004R\021t"
@@ -216,9 +218,11 @@ const char descriptor_table_protodef_cosmos_2fauth_2fv1beta1_2fauth_2eproto[] PR
     "519\030\004 \001(\004B\030\342\336\037\024SigVerifyCostED25519R\024sig"
     "VerifyCostEd25519\022U\n\031sig_verify_cost_sec"
     "p256k1\030\005 \001(\004B\032\342\336\037\026SigVerifyCostSecp256k1"
-    "R\026sigVerifyCostSecp256k1:!\350\240\037\001\212\347\260*\030cosmo"
-    "s-sdk/x/auth/ParamsB+Z)github.com/cosmos"
-    "/cosmos-sdk/x/auth/typesb\006proto3"
+    "R\026sigVerifyCostSecp256k1\022O\n\027sig_verify_c"
+    "ost_mldsa65\030\006 \001(\004B\030\342\336\037\024SigVerifyCostMlDs"
+    "a65R\024sigVerifyCostMldsa65:!\350\240\037\001\212\347\260*\030cosm"
+    "os-sdk/x/auth/ParamsB+Z)github.com/cosmo"
+    "s/cosmos-sdk/x/auth/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto_deps[4] =
     {
@@ -231,7 +235,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto = {
     false,
     false,
-    1232,
+    1313,
     descriptor_table_protodef_cosmos_2fauth_2fv1beta1_2fauth_2eproto,
     "cosmos/auth/v1beta1/auth.proto",
     &descriptor_table_cosmos_2fauth_2fv1beta1_2fauth_2eproto_once,
@@ -1083,6 +1087,7 @@ inline void Params::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.tx_size_cost_per_byte_){::uint64_t{0u}},
       decltype(_impl_.sig_verify_cost_ed25519_){::uint64_t{0u}},
       decltype(_impl_.sig_verify_cost_secp256k1_){::uint64_t{0u}},
+      decltype(_impl_.sig_verify_cost_mldsa65_){::uint64_t{0u}},
       /*decltype(_impl_._cached_size_)*/ {},
   };
 }
@@ -1105,8 +1110,8 @@ PROTOBUF_NOINLINE void Params::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.max_memo_characters_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.sig_verify_cost_secp256k1_) -
-      reinterpret_cast<char*>(&_impl_.max_memo_characters_)) + sizeof(_impl_.sig_verify_cost_secp256k1_));
+      reinterpret_cast<char*>(&_impl_.sig_verify_cost_mldsa65_) -
+      reinterpret_cast<char*>(&_impl_.max_memo_characters_)) + sizeof(_impl_.sig_verify_cost_mldsa65_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1118,15 +1123,15 @@ const char* Params::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 0, 2> Params::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 0, 0, 2> Params::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    6,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_Params_default_instance_._instance,
@@ -1148,7 +1153,9 @@ const ::_pbi::TcParseTable<3, 5, 0, 0, 2> Params::_table_ = {
     // uint64 sig_verify_cost_secp256k1 = 5 [json_name = "sigVerifyCostSecp256k1", (.gogoproto.customname) = "SigVerifyCostSecp256k1"];
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.sig_verify_cost_secp256k1_), 63>(),
      {40, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.sig_verify_cost_secp256k1_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.sig_verify_cost_mldsa65_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.sig_verify_cost_mldsa65_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -1167,6 +1174,9 @@ const ::_pbi::TcParseTable<3, 5, 0, 0, 2> Params::_table_ = {
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
     // uint64 sig_verify_cost_secp256k1 = 5 [json_name = "sigVerifyCostSecp256k1", (.gogoproto.customname) = "SigVerifyCostSecp256k1"];
     {PROTOBUF_FIELD_OFFSET(Params, _impl_.sig_verify_cost_secp256k1_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.sig_verify_cost_mldsa65_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
   }},
   // no aux_entries
@@ -1216,6 +1226,13 @@ const ::_pbi::TcParseTable<3, 5, 0, 0, 2> Params::_table_ = {
         5, this->_internal_sig_verify_cost_secp256k1(), target);
   }
 
+  // uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];
+  if (this->_internal_sig_verify_cost_mldsa65() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        6, this->_internal_sig_verify_cost_mldsa65(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1263,6 +1280,12 @@ const ::_pbi::TcParseTable<3, 5, 0, 0, 2> Params::_table_ = {
         this->_internal_sig_verify_cost_secp256k1());
   }
 
+  // uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];
+  if (this->_internal_sig_verify_cost_mldsa65() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_sig_verify_cost_mldsa65());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1296,6 +1319,9 @@ void Params::MergeImpl(::google::protobuf::Message& to_msg, const ::google::prot
   if (from._internal_sig_verify_cost_secp256k1() != 0) {
     _this->_internal_set_sig_verify_cost_secp256k1(from._internal_sig_verify_cost_secp256k1());
   }
+  if (from._internal_sig_verify_cost_mldsa65() != 0) {
+    _this->_internal_set_sig_verify_cost_mldsa65(from._internal_sig_verify_cost_mldsa65());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1314,8 +1340,8 @@ void Params::InternalSwap(Params* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Params, _impl_.sig_verify_cost_secp256k1_)
-      + sizeof(Params::_impl_.sig_verify_cost_secp256k1_)
+      PROTOBUF_FIELD_OFFSET(Params, _impl_.sig_verify_cost_mldsa65_)
+      + sizeof(Params::_impl_.sig_verify_cost_mldsa65_)
       - PROTOBUF_FIELD_OFFSET(Params, _impl_.max_memo_characters_)>(
           reinterpret_cast<char*>(&_impl_.max_memo_characters_),
           reinterpret_cast<char*>(&other->_impl_.max_memo_characters_));

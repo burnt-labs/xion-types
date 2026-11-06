@@ -1,4 +1,22 @@
 // @generated
+/// SendAuthorization allows the grantee to spend up to spend_limit coins from
+/// the granter's account.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SendAuthorization {
+    #[prost(message, repeated, tag="1")]
+    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
+    /// allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
+    /// granter. If omitted, any recipient is allowed.
+    #[prost(string, repeated, tag="2")]
+    pub allow_list: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for SendAuthorization {
+const NAME: &'static str = "SendAuthorization";
+const PACKAGE: &'static str = "cosmos.bank.v1beta1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("cosmos.bank.v1beta1.{}", Self::NAME)
+            }}
 /// Params defines the parameters for the bank module.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -140,24 +158,6 @@ pub struct Metadata {
 }
 impl ::prost::Name for Metadata {
 const NAME: &'static str = "Metadata";
-const PACKAGE: &'static str = "cosmos.bank.v1beta1";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("cosmos.bank.v1beta1.{}", Self::NAME)
-            }}
-/// SendAuthorization allows the grantee to spend up to spend_limit coins from
-/// the granter's account.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SendAuthorization {
-    #[prost(message, repeated, tag="1")]
-    pub spend_limit: ::prost::alloc::vec::Vec<crate::types::cosmos_base_v1beta1::Coin>,
-    /// allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
-    /// granter. If omitted, any recipient is allowed.
-    #[prost(string, repeated, tag="2")]
-    pub allow_list: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-impl ::prost::Name for SendAuthorization {
-const NAME: &'static str = "SendAuthorization";
 const PACKAGE: &'static str = "cosmos.bank.v1beta1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.bank.v1beta1.{}", Self::NAME)

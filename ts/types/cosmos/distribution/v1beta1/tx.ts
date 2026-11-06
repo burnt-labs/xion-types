@@ -1208,8 +1208,6 @@ export interface Msg {
   /**
    * FundCommunityPool defines a method to allow an account to directly
    * fund the community pool.
-   *
-   * WARNING: This method will fail if an external community pool is used.
    */
   FundCommunityPool(
     request: DeepPartial<MsgFundCommunityPool>,
@@ -1225,8 +1223,6 @@ export interface Msg {
    * the community pool in the x/distribution module to another account, which
    * could be the governance module itself. The authority is defined in the
    * keeper.
-   *
-   * WARNING: This method will fail if an external community pool is used.
    */
   CommunityPoolSpend(
     request: DeepPartial<MsgCommunityPoolSpend>,

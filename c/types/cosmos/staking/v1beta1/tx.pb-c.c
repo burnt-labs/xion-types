@@ -637,6 +637,96 @@ void   cosmos__staking__v1beta1__msg_update_params_response__free_unpacked
   assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_update_params_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key__init
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKey         *message)
+{
+  static const Cosmos__Staking__V1beta1__MsgRotateConsPubKey init_value = COSMOS__STAKING__V1BETA1__MSG_ROTATE_CONS_PUB_KEY__INIT;
+  *message = init_value;
+}
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key__get_packed_size
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *message)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key__pack
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Staking__V1beta1__MsgRotateConsPubKey *
+       cosmos__staking__v1beta1__msg_rotate_cons_pub_key__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Staking__V1beta1__MsgRotateConsPubKey *)
+     protobuf_c_message_unpack (&cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key__free_unpacked
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKey *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__init
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse         *message)
+{
+  static const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse init_value = COSMOS__STAKING__V1BETA1__MSG_ROTATE_CONS_PUB_KEY_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__get_packed_size
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *message)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__pack
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *
+       cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *)
+     protobuf_c_message_unpack (&cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor,
+                                allocator, len, data);
+}
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__free_unpacked
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__msg_create_validator__field_descriptors[7] =
 {
   {
@@ -1342,7 +1432,76 @@ const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_update_params_res
   (ProtobufCMessageInit) cosmos__staking__v1beta1__msg_update_params_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor cosmos__staking__v1beta1__msg__method_descriptors[7] =
+static const ProtobufCFieldDescriptor cosmos__staking__v1beta1__msg_rotate_cons_pub_key__field_descriptors[2] =
+{
+  {
+    "validator_address",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__MsgRotateConsPubKey, validator_address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "new_pubkey",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Staking__V1beta1__MsgRotateConsPubKey, new_pubkey),
+    &google__protobuf__any__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned cosmos__staking__v1beta1__msg_rotate_cons_pub_key__field_indices_by_name[] = {
+  1,   /* field[1] = new_pubkey */
+  0,   /* field[0] = validator_address */
+};
+static const ProtobufCIntRange cosmos__staking__v1beta1__msg_rotate_cons_pub_key__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.staking.v1beta1.MsgRotateConsPubKey",
+  "MsgRotateConsPubKey",
+  "Cosmos__Staking__V1beta1__MsgRotateConsPubKey",
+  "cosmos.staking.v1beta1",
+  sizeof(Cosmos__Staking__V1beta1__MsgRotateConsPubKey),
+  2,
+  cosmos__staking__v1beta1__msg_rotate_cons_pub_key__field_descriptors,
+  cosmos__staking__v1beta1__msg_rotate_cons_pub_key__field_indices_by_name,
+  1,  cosmos__staking__v1beta1__msg_rotate_cons_pub_key__number_ranges,
+  (ProtobufCMessageInit) cosmos__staking__v1beta1__msg_rotate_cons_pub_key__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__field_descriptors NULL
+#define cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__field_indices_by_name NULL
+#define cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__number_ranges NULL
+const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse",
+  "MsgRotateConsPubKeyResponse",
+  "Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse",
+  "cosmos.staking.v1beta1",
+  sizeof(Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse),
+  0,
+  cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__field_descriptors,
+  cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__field_indices_by_name,
+  0,  cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__number_ranges,
+  (ProtobufCMessageInit) cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor cosmos__staking__v1beta1__msg__method_descriptors[8] =
 {
   { "CreateValidator", &cosmos__staking__v1beta1__msg_create_validator__descriptor, &cosmos__staking__v1beta1__msg_create_validator_response__descriptor },
   { "EditValidator", &cosmos__staking__v1beta1__msg_edit_validator__descriptor, &cosmos__staking__v1beta1__msg_edit_validator_response__descriptor },
@@ -1351,6 +1510,7 @@ static const ProtobufCMethodDescriptor cosmos__staking__v1beta1__msg__method_des
   { "Undelegate", &cosmos__staking__v1beta1__msg_undelegate__descriptor, &cosmos__staking__v1beta1__msg_undelegate_response__descriptor },
   { "CancelUnbondingDelegation", &cosmos__staking__v1beta1__msg_cancel_unbonding_delegation__descriptor, &cosmos__staking__v1beta1__msg_cancel_unbonding_delegation_response__descriptor },
   { "UpdateParams", &cosmos__staking__v1beta1__msg_update_params__descriptor, &cosmos__staking__v1beta1__msg_update_params_response__descriptor },
+  { "RotateConsPubKey", &cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor, &cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor },
 };
 const unsigned cosmos__staking__v1beta1__msg__method_indices_by_name[] = {
   3,        /* BeginRedelegate */
@@ -1358,6 +1518,7 @@ const unsigned cosmos__staking__v1beta1__msg__method_indices_by_name[] = {
   0,        /* CreateValidator */
   2,        /* Delegate */
   1,        /* EditValidator */
+  7,        /* RotateConsPubKey */
   4,        /* Undelegate */
   6         /* UpdateParams */
 };
@@ -1368,7 +1529,7 @@ const ProtobufCServiceDescriptor cosmos__staking__v1beta1__msg__descriptor =
   "Msg",
   "Cosmos__Staking__V1beta1__Msg",
   "cosmos.staking.v1beta1",
-  7,
+  8,
   cosmos__staking__v1beta1__msg__method_descriptors,
   cosmos__staking__v1beta1__msg__method_indices_by_name
 };
@@ -1427,6 +1588,14 @@ void cosmos__staking__v1beta1__msg__update_params(ProtobufCService *service,
 {
   assert(service->descriptor == &cosmos__staking__v1beta1__msg__descriptor);
   service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void cosmos__staking__v1beta1__msg__rotate_cons_pub_key(ProtobufCService *service,
+                                                        const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *input,
+                                                        Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse_Closure closure,
+                                                        void *closure_data)
+{
+  assert(service->descriptor == &cosmos__staking__v1beta1__msg__descriptor);
+  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void cosmos__staking__v1beta1__msg__init (Cosmos__Staking__V1beta1__Msg_Service *service,
                                           Cosmos__Staking__V1beta1__Msg_ServiceDestroy destroy)

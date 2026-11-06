@@ -33,7 +33,7 @@ namespace Ibc.Applications.InterchainAccounts.V1 {
             "b3VudBIjCg1hY2NvdW50X293bmVyGAIgASgJUgxhY2NvdW50T3duZXI6Roig",
             "HwCYoB8AyrQtOmliYy5hcHBsaWNhdGlvbnMuaW50ZXJjaGFpbl9hY2NvdW50",
             "cy52MS5JbnRlcmNoYWluQWNjb3VudElCSFpGZ2l0aHViLmNvbS9jb3Ntb3Mv",
-            "aWJjLWdvL3YxMC9tb2R1bGVzL2FwcHMvMjctaW50ZXJjaGFpbi1hY2NvdW50",
+            "aWJjLWdvL3YxMS9tb2R1bGVzL2FwcHMvMjctaW50ZXJjaGFpbi1hY2NvdW50",
             "cy90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::CosmosProto.CosmosReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Auth.V1Beta1.AuthReflection.Descriptor, },

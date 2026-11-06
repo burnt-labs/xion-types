@@ -142,51 +142,6 @@ void   ibc__lightclients__wasm__v1__client_message__free_unpacked
   assert(message->base.descriptor == &ibc__lightclients__wasm__v1__client_message__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   ibc__lightclients__wasm__v1__checksums__init
-                     (Ibc__Lightclients__Wasm__V1__Checksums         *message)
-{
-  static const Ibc__Lightclients__Wasm__V1__Checksums init_value = IBC__LIGHTCLIENTS__WASM__V1__CHECKSUMS__INIT;
-  *message = init_value;
-}
-size_t ibc__lightclients__wasm__v1__checksums__get_packed_size
-                     (const Ibc__Lightclients__Wasm__V1__Checksums *message)
-{
-  assert(message->base.descriptor == &ibc__lightclients__wasm__v1__checksums__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t ibc__lightclients__wasm__v1__checksums__pack
-                     (const Ibc__Lightclients__Wasm__V1__Checksums *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &ibc__lightclients__wasm__v1__checksums__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t ibc__lightclients__wasm__v1__checksums__pack_to_buffer
-                     (const Ibc__Lightclients__Wasm__V1__Checksums *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &ibc__lightclients__wasm__v1__checksums__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Ibc__Lightclients__Wasm__V1__Checksums *
-       ibc__lightclients__wasm__v1__checksums__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Ibc__Lightclients__Wasm__V1__Checksums *)
-     protobuf_c_message_unpack (&ibc__lightclients__wasm__v1__checksums__descriptor,
-                                allocator, len, data);
-}
-void   ibc__lightclients__wasm__v1__checksums__free_unpacked
-                     (Ibc__Lightclients__Wasm__V1__Checksums *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &ibc__lightclients__wasm__v1__checksums__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
 static const ProtobufCFieldDescriptor ibc__lightclients__wasm__v1__client_state__field_descriptors[3] =
 {
   {
@@ -325,43 +280,5 @@ const ProtobufCMessageDescriptor ibc__lightclients__wasm__v1__client_message__de
   ibc__lightclients__wasm__v1__client_message__field_indices_by_name,
   1,  ibc__lightclients__wasm__v1__client_message__number_ranges,
   (ProtobufCMessageInit) ibc__lightclients__wasm__v1__client_message__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor ibc__lightclients__wasm__v1__checksums__field_descriptors[1] =
-{
-  {
-    "checksums",
-    1,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Ibc__Lightclients__Wasm__V1__Checksums, n_checksums),
-    offsetof(Ibc__Lightclients__Wasm__V1__Checksums, checksums),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned ibc__lightclients__wasm__v1__checksums__field_indices_by_name[] = {
-  0,   /* field[0] = checksums */
-};
-static const ProtobufCIntRange ibc__lightclients__wasm__v1__checksums__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 1 }
-};
-const ProtobufCMessageDescriptor ibc__lightclients__wasm__v1__checksums__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "ibc.lightclients.wasm.v1.Checksums",
-  "Checksums",
-  "Ibc__Lightclients__Wasm__V1__Checksums",
-  "ibc.lightclients.wasm.v1",
-  sizeof(Ibc__Lightclients__Wasm__V1__Checksums),
-  1,
-  ibc__lightclients__wasm__v1__checksums__field_descriptors,
-  ibc__lightclients__wasm__v1__checksums__field_indices_by_name,
-  1,  ibc__lightclients__wasm__v1__checksums__number_ranges,
-  (ProtobufCMessageInit) ibc__lightclients__wasm__v1__checksums__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

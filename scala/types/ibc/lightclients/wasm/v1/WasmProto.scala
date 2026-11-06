@@ -14,8 +14,7 @@ object WasmProto extends _root_.scalapb.GeneratedFileObject {
     Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
       ibc.lightclients.wasm.v1.ClientState,
       ibc.lightclients.wasm.v1.ConsensusState,
-      ibc.lightclients.wasm.v1.ClientMessage,
-      ibc.lightclients.wasm.v1.Checksums
+      ibc.lightclients.wasm.v1.ClientMessage
     )
   private lazy val ProtoBytes: _root_.scala.Array[Byte] =
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
@@ -24,9 +23,8 @@ object WasmProto extends _root_.scalapb.GeneratedFileObject {
   EIJ4j8GEgRkYXRhUgRkYXRhEikKCGNoZWNrc3VtGAIgASgMQg3iPwoSCGNoZWNrc3VtUghjaGVja3N1bRJWCg1sYXRlc3RfaGVpZ
   2h0GAMgASgLMhouaWJjLmNvcmUuY2xpZW50LnYxLkhlaWdodEIV4j8OEgxsYXRlc3RIZWlnaHTI3h8AUgxsYXRlc3RIZWlnaHQ6B
   IigHwAiNQoOQ29uc2Vuc3VzU3RhdGUSHQoEZGF0YRgBIAEoDEIJ4j8GEgRkYXRhUgRkYXRhOgSIoB8AIjQKDUNsaWVudE1lc3NhZ
-  2USHQoEZGF0YRgBIAEoDEIJ4j8GEgRkYXRhUgRkYXRhOgSIoB8AIj0KCUNoZWNrc3VtcxIsCgljaGVja3N1bXMYASADKAxCDuI/C
-  xIJY2hlY2tzdW1zUgljaGVja3N1bXM6AhgBQkJaQGdpdGh1Yi5jb20vY29zbW9zL2liYy1nby9tb2R1bGVzL2xpZ2h0LWNsaWVud
-  HMvMDgtd2FzbS92MTAvdHlwZXNiBnByb3RvMw=="""
+  2USHQoEZGF0YRgBIAEoDEIJ4j8GEgRkYXRhUgRkYXRhOgSIoB8AQkJaQGdpdGh1Yi5jb20vY29zbW9zL2liYy1nby9tb2R1bGVzL
+  2xpZ2h0LWNsaWVudHMvMDgtd2FzbS92MTEvdHlwZXNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

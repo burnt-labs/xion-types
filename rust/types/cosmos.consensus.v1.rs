@@ -46,6 +46,8 @@ pub struct MsgUpdateParams {
     pub validator: ::core::option::Option<crate::types::tendermint_types::ValidatorParams>,
     #[prost(message, optional, tag="5")]
     pub abci: ::core::option::Option<crate::types::tendermint_types::AbciParams>,
+    #[prost(message, optional, tag="6")]
+    pub auth: ::core::option::Option<crate::types::tendermint_types::AuthorityParams>,
 }
 impl ::prost::Name for MsgUpdateParams {
 const NAME: &'static str = "MsgUpdateParams";

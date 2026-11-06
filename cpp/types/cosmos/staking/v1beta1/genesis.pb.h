@@ -36,6 +36,8 @@
 #include "cosmos/staking/v1beta1/staking.pb.h"
 #include "cosmos_proto/cosmos.pb.h"
 #include "amino/amino.pb.h"
+#include "google/protobuf/any.pb.h"
+#include "google/protobuf/timestamp.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -60,12 +62,18 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace cosmos {
 namespace staking {
 namespace v1beta1 {
+class ConsensusKeyRotationHistory;
+struct ConsensusKeyRotationHistoryDefaultTypeInternal;
+extern ConsensusKeyRotationHistoryDefaultTypeInternal _ConsensusKeyRotationHistory_default_instance_;
 class GenesisState;
 struct GenesisStateDefaultTypeInternal;
 extern GenesisStateDefaultTypeInternal _GenesisState_default_instance_;
 class LastValidatorPower;
 struct LastValidatorPowerDefaultTypeInternal;
 extern LastValidatorPowerDefaultTypeInternal _LastValidatorPower_default_instance_;
+class PendingConsensusKeyRotation;
+struct PendingConsensusKeyRotationDefaultTypeInternal;
+extern PendingConsensusKeyRotationDefaultTypeInternal _PendingConsensusKeyRotation_default_instance_;
 }  // namespace v1beta1
 }  // namespace staking
 }  // namespace cosmos
@@ -216,6 +224,8 @@ class GenesisState final :
     kDelegationsFieldNumber = 5,
     kUnbondingDelegationsFieldNumber = 6,
     kRedelegationsFieldNumber = 7,
+    kConsensusKeyRotationHistoryFieldNumber = 9,
+    kPendingConsensusKeyRotationsFieldNumber = 10,
     kLastTotalPowerFieldNumber = 2,
     kParamsFieldNumber = 1,
     kExportedFieldNumber = 8,
@@ -310,6 +320,42 @@ class GenesisState final :
   ::cosmos::staking::v1beta1::Redelegation* add_redelegations();
   const ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::Redelegation >&
       redelegations() const;
+  // repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  int consensus_key_rotation_history_size() const;
+  private:
+  int _internal_consensus_key_rotation_history_size() const;
+
+  public:
+  void clear_consensus_key_rotation_history() ;
+  ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory* mutable_consensus_key_rotation_history(int index);
+  ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory >*
+      mutable_consensus_key_rotation_history();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::ConsensusKeyRotationHistory>& _internal_consensus_key_rotation_history() const;
+  ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::ConsensusKeyRotationHistory>* _internal_mutable_consensus_key_rotation_history();
+  public:
+  const ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory& consensus_key_rotation_history(int index) const;
+  ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory* add_consensus_key_rotation_history();
+  const ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory >&
+      consensus_key_rotation_history() const;
+  // repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  int pending_consensus_key_rotations_size() const;
+  private:
+  int _internal_pending_consensus_key_rotations_size() const;
+
+  public:
+  void clear_pending_consensus_key_rotations() ;
+  ::cosmos::staking::v1beta1::PendingConsensusKeyRotation* mutable_pending_consensus_key_rotations(int index);
+  ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::PendingConsensusKeyRotation >*
+      mutable_pending_consensus_key_rotations();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::PendingConsensusKeyRotation>& _internal_pending_consensus_key_rotations() const;
+  ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::PendingConsensusKeyRotation>* _internal_mutable_pending_consensus_key_rotations();
+  public:
+  const ::cosmos::staking::v1beta1::PendingConsensusKeyRotation& pending_consensus_key_rotations(int index) const;
+  ::cosmos::staking::v1beta1::PendingConsensusKeyRotation* add_pending_consensus_key_rotations();
+  const ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::PendingConsensusKeyRotation >&
+      pending_consensus_key_rotations() const;
   // bytes last_total_power = 2 [json_name = "lastTotalPower", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int", (.amino.dont_omitempty) = true];
   void clear_last_total_power() ;
   const std::string& last_total_power() const;
@@ -356,7 +402,7 @@ class GenesisState final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 8, 6, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<4, 10, 8, 0, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -368,6 +414,8 @@ class GenesisState final :
     ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::Delegation > delegations_;
     ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::UnbondingDelegation > unbonding_delegations_;
     ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::Redelegation > redelegations_;
+    ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory > consensus_key_rotation_history_;
+    ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::PendingConsensusKeyRotation > pending_consensus_key_rotations_;
     ::google::protobuf::internal::ArenaStringPtr last_total_power_;
     ::cosmos::staking::v1beta1::Params* params_;
     bool exported_;
@@ -547,6 +595,429 @@ class LastValidatorPower final :
     ::google::protobuf::internal::ArenaStringPtr address_;
     ::int64_t power_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto;
+};// -------------------------------------------------------------------
+
+class ConsensusKeyRotationHistory final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:cosmos.staking.v1beta1.ConsensusKeyRotationHistory) */ {
+ public:
+  inline ConsensusKeyRotationHistory() : ConsensusKeyRotationHistory(nullptr) {}
+  ~ConsensusKeyRotationHistory() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ConsensusKeyRotationHistory(::google::protobuf::internal::ConstantInitialized);
+
+  ConsensusKeyRotationHistory(const ConsensusKeyRotationHistory& from);
+  ConsensusKeyRotationHistory(ConsensusKeyRotationHistory&& from) noexcept
+    : ConsensusKeyRotationHistory() {
+    *this = ::std::move(from);
+  }
+
+  inline ConsensusKeyRotationHistory& operator=(const ConsensusKeyRotationHistory& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConsensusKeyRotationHistory& operator=(ConsensusKeyRotationHistory&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConsensusKeyRotationHistory& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConsensusKeyRotationHistory* internal_default_instance() {
+    return reinterpret_cast<const ConsensusKeyRotationHistory*>(
+               &_ConsensusKeyRotationHistory_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(ConsensusKeyRotationHistory& a, ConsensusKeyRotationHistory& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConsensusKeyRotationHistory* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConsensusKeyRotationHistory* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ConsensusKeyRotationHistory* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ConsensusKeyRotationHistory>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ConsensusKeyRotationHistory& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ConsensusKeyRotationHistory& from) {
+    ConsensusKeyRotationHistory::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConsensusKeyRotationHistory* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "cosmos.staking.v1beta1.ConsensusKeyRotationHistory";
+  }
+  protected:
+  explicit ConsensusKeyRotationHistory(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValidatorAddressFieldNumber = 1,
+    kOldConsensusAddressFieldNumber = 2,
+    kMaturityTimeFieldNumber = 3,
+    kEvidenceExpiryTimeFieldNumber = 4,
+    kEvidenceExpiryHeightFieldNumber = 5,
+  };
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  void clear_validator_address() ;
+  const std::string& validator_address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_validator_address(Arg_&& arg, Args_... args);
+  std::string* mutable_validator_address();
+  PROTOBUF_NODISCARD std::string* release_validator_address();
+  void set_allocated_validator_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_validator_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_validator_address(
+      const std::string& value);
+  std::string* _internal_mutable_validator_address();
+
+  public:
+  // string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];
+  void clear_old_consensus_address() ;
+  const std::string& old_consensus_address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_old_consensus_address(Arg_&& arg, Args_... args);
+  std::string* mutable_old_consensus_address();
+  PROTOBUF_NODISCARD std::string* release_old_consensus_address();
+  void set_allocated_old_consensus_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_old_consensus_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_old_consensus_address(
+      const std::string& value);
+  std::string* _internal_mutable_old_consensus_address();
+
+  public:
+  // .google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+  bool has_maturity_time() const;
+  void clear_maturity_time() ;
+  const ::google::protobuf::Timestamp& maturity_time() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_maturity_time();
+  ::google::protobuf::Timestamp* mutable_maturity_time();
+  void set_allocated_maturity_time(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_maturity_time(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_maturity_time();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_maturity_time() const;
+  ::google::protobuf::Timestamp* _internal_mutable_maturity_time();
+
+  public:
+  // .google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+  bool has_evidence_expiry_time() const;
+  void clear_evidence_expiry_time() ;
+  const ::google::protobuf::Timestamp& evidence_expiry_time() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_evidence_expiry_time();
+  ::google::protobuf::Timestamp* mutable_evidence_expiry_time();
+  void set_allocated_evidence_expiry_time(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_evidence_expiry_time(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_evidence_expiry_time();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_evidence_expiry_time() const;
+  ::google::protobuf::Timestamp* _internal_mutable_evidence_expiry_time();
+
+  public:
+  // int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];
+  void clear_evidence_expiry_height() ;
+  ::int64_t evidence_expiry_height() const;
+  void set_evidence_expiry_height(::int64_t value);
+
+  private:
+  ::int64_t _internal_evidence_expiry_height() const;
+  void _internal_set_evidence_expiry_height(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 2, 97, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr validator_address_;
+    ::google::protobuf::internal::ArenaStringPtr old_consensus_address_;
+    ::google::protobuf::Timestamp* maturity_time_;
+    ::google::protobuf::Timestamp* evidence_expiry_time_;
+    ::int64_t evidence_expiry_height_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto;
+};// -------------------------------------------------------------------
+
+class PendingConsensusKeyRotation final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:cosmos.staking.v1beta1.PendingConsensusKeyRotation) */ {
+ public:
+  inline PendingConsensusKeyRotation() : PendingConsensusKeyRotation(nullptr) {}
+  ~PendingConsensusKeyRotation() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR PendingConsensusKeyRotation(::google::protobuf::internal::ConstantInitialized);
+
+  PendingConsensusKeyRotation(const PendingConsensusKeyRotation& from);
+  PendingConsensusKeyRotation(PendingConsensusKeyRotation&& from) noexcept
+    : PendingConsensusKeyRotation() {
+    *this = ::std::move(from);
+  }
+
+  inline PendingConsensusKeyRotation& operator=(const PendingConsensusKeyRotation& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PendingConsensusKeyRotation& operator=(PendingConsensusKeyRotation&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PendingConsensusKeyRotation& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PendingConsensusKeyRotation* internal_default_instance() {
+    return reinterpret_cast<const PendingConsensusKeyRotation*>(
+               &_PendingConsensusKeyRotation_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(PendingConsensusKeyRotation& a, PendingConsensusKeyRotation& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PendingConsensusKeyRotation* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PendingConsensusKeyRotation* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PendingConsensusKeyRotation* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PendingConsensusKeyRotation>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const PendingConsensusKeyRotation& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const PendingConsensusKeyRotation& from) {
+    PendingConsensusKeyRotation::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PendingConsensusKeyRotation* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "cosmos.staking.v1beta1.PendingConsensusKeyRotation";
+  }
+  protected:
+  explicit PendingConsensusKeyRotation(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValidatorAddressFieldNumber = 1,
+    kNewPubkeyFieldNumber = 2,
+    kApplyHeightFieldNumber = 3,
+  };
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  void clear_validator_address() ;
+  const std::string& validator_address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_validator_address(Arg_&& arg, Args_... args);
+  std::string* mutable_validator_address();
+  PROTOBUF_NODISCARD std::string* release_validator_address();
+  void set_allocated_validator_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_validator_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_validator_address(
+      const std::string& value);
+  std::string* _internal_mutable_validator_address();
+
+  public:
+  // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+  bool has_new_pubkey() const;
+  void clear_new_pubkey() ;
+  const ::google::protobuf::Any& new_pubkey() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Any* release_new_pubkey();
+  ::google::protobuf::Any* mutable_new_pubkey();
+  void set_allocated_new_pubkey(::google::protobuf::Any* value);
+  void unsafe_arena_set_allocated_new_pubkey(::google::protobuf::Any* value);
+  ::google::protobuf::Any* unsafe_arena_release_new_pubkey();
+
+  private:
+  const ::google::protobuf::Any& _internal_new_pubkey() const;
+  ::google::protobuf::Any* _internal_mutable_new_pubkey();
+
+  public:
+  // int64 apply_height = 3 [json_name = "applyHeight"];
+  void clear_apply_height() ;
+  ::int64_t apply_height() const;
+  void set_apply_height(::int64_t value);
+
+  private:
+  ::int64_t _internal_apply_height() const;
+  void _internal_set_apply_height(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3, 1, 76, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr validator_address_;
+    ::google::protobuf::Any* new_pubkey_;
+    ::int64_t apply_height_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -952,6 +1423,98 @@ inline void GenesisState::_internal_set_exported(bool value) {
   _impl_.exported_ = value;
 }
 
+// repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+inline int GenesisState::_internal_consensus_key_rotation_history_size() const {
+  return _internal_consensus_key_rotation_history().size();
+}
+inline int GenesisState::consensus_key_rotation_history_size() const {
+  return _internal_consensus_key_rotation_history_size();
+}
+inline void GenesisState::clear_consensus_key_rotation_history() {
+  _internal_mutable_consensus_key_rotation_history()->Clear();
+}
+inline ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory* GenesisState::mutable_consensus_key_rotation_history(int index) {
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.GenesisState.consensus_key_rotation_history)
+  return _internal_mutable_consensus_key_rotation_history()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory >*
+GenesisState::mutable_consensus_key_rotation_history() {
+  // @@protoc_insertion_point(field_mutable_list:cosmos.staking.v1beta1.GenesisState.consensus_key_rotation_history)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_consensus_key_rotation_history();
+}
+inline const ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory& GenesisState::consensus_key_rotation_history(int index) const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.GenesisState.consensus_key_rotation_history)
+    return _internal_consensus_key_rotation_history().Get(index);
+}
+inline ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory* GenesisState::add_consensus_key_rotation_history() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory* _add = _internal_mutable_consensus_key_rotation_history()->Add();
+  // @@protoc_insertion_point(field_add:cosmos.staking.v1beta1.GenesisState.consensus_key_rotation_history)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::ConsensusKeyRotationHistory >&
+GenesisState::consensus_key_rotation_history() const {
+  // @@protoc_insertion_point(field_list:cosmos.staking.v1beta1.GenesisState.consensus_key_rotation_history)
+  return _internal_consensus_key_rotation_history();
+}
+inline const ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::ConsensusKeyRotationHistory>&
+GenesisState::_internal_consensus_key_rotation_history() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.consensus_key_rotation_history_;
+}
+inline ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::ConsensusKeyRotationHistory>*
+GenesisState::_internal_mutable_consensus_key_rotation_history() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.consensus_key_rotation_history_;
+}
+
+// repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+inline int GenesisState::_internal_pending_consensus_key_rotations_size() const {
+  return _internal_pending_consensus_key_rotations().size();
+}
+inline int GenesisState::pending_consensus_key_rotations_size() const {
+  return _internal_pending_consensus_key_rotations_size();
+}
+inline void GenesisState::clear_pending_consensus_key_rotations() {
+  _internal_mutable_pending_consensus_key_rotations()->Clear();
+}
+inline ::cosmos::staking::v1beta1::PendingConsensusKeyRotation* GenesisState::mutable_pending_consensus_key_rotations(int index) {
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.GenesisState.pending_consensus_key_rotations)
+  return _internal_mutable_pending_consensus_key_rotations()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::PendingConsensusKeyRotation >*
+GenesisState::mutable_pending_consensus_key_rotations() {
+  // @@protoc_insertion_point(field_mutable_list:cosmos.staking.v1beta1.GenesisState.pending_consensus_key_rotations)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_pending_consensus_key_rotations();
+}
+inline const ::cosmos::staking::v1beta1::PendingConsensusKeyRotation& GenesisState::pending_consensus_key_rotations(int index) const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.GenesisState.pending_consensus_key_rotations)
+    return _internal_pending_consensus_key_rotations().Get(index);
+}
+inline ::cosmos::staking::v1beta1::PendingConsensusKeyRotation* GenesisState::add_pending_consensus_key_rotations() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::cosmos::staking::v1beta1::PendingConsensusKeyRotation* _add = _internal_mutable_pending_consensus_key_rotations()->Add();
+  // @@protoc_insertion_point(field_add:cosmos.staking.v1beta1.GenesisState.pending_consensus_key_rotations)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::cosmos::staking::v1beta1::PendingConsensusKeyRotation >&
+GenesisState::pending_consensus_key_rotations() const {
+  // @@protoc_insertion_point(field_list:cosmos.staking.v1beta1.GenesisState.pending_consensus_key_rotations)
+  return _internal_pending_consensus_key_rotations();
+}
+inline const ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::PendingConsensusKeyRotation>&
+GenesisState::_internal_pending_consensus_key_rotations() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.pending_consensus_key_rotations_;
+}
+inline ::google::protobuf::RepeatedPtrField<::cosmos::staking::v1beta1::PendingConsensusKeyRotation>*
+GenesisState::_internal_mutable_pending_consensus_key_rotations() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.pending_consensus_key_rotations_;
+}
+
 // -------------------------------------------------------------------
 
 // LastValidatorPower
@@ -1027,6 +1590,487 @@ inline void LastValidatorPower::_internal_set_power(::int64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.power_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ConsensusKeyRotationHistory
+
+// string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+inline void ConsensusKeyRotationHistory::clear_validator_address() {
+  _impl_.validator_address_.ClearToEmpty();
+}
+inline const std::string& ConsensusKeyRotationHistory::validator_address() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.validator_address)
+  return _internal_validator_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ConsensusKeyRotationHistory::set_validator_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.validator_address)
+}
+inline std::string* ConsensusKeyRotationHistory::mutable_validator_address() {
+  std::string* _s = _internal_mutable_validator_address();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.validator_address)
+  return _s;
+}
+inline const std::string& ConsensusKeyRotationHistory::_internal_validator_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.validator_address_.Get();
+}
+inline void ConsensusKeyRotationHistory::_internal_set_validator_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ConsensusKeyRotationHistory::_internal_mutable_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.validator_address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ConsensusKeyRotationHistory::release_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.validator_address)
+  return _impl_.validator_address_.Release();
+}
+inline void ConsensusKeyRotationHistory::set_allocated_validator_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.validator_address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.validator_address_.IsDefault()) {
+          _impl_.validator_address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.validator_address)
+}
+
+// string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];
+inline void ConsensusKeyRotationHistory::clear_old_consensus_address() {
+  _impl_.old_consensus_address_.ClearToEmpty();
+}
+inline const std::string& ConsensusKeyRotationHistory::old_consensus_address() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.old_consensus_address)
+  return _internal_old_consensus_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ConsensusKeyRotationHistory::set_old_consensus_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.old_consensus_address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.old_consensus_address)
+}
+inline std::string* ConsensusKeyRotationHistory::mutable_old_consensus_address() {
+  std::string* _s = _internal_mutable_old_consensus_address();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.old_consensus_address)
+  return _s;
+}
+inline const std::string& ConsensusKeyRotationHistory::_internal_old_consensus_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.old_consensus_address_.Get();
+}
+inline void ConsensusKeyRotationHistory::_internal_set_old_consensus_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.old_consensus_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ConsensusKeyRotationHistory::_internal_mutable_old_consensus_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.old_consensus_address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ConsensusKeyRotationHistory::release_old_consensus_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.old_consensus_address)
+  return _impl_.old_consensus_address_.Release();
+}
+inline void ConsensusKeyRotationHistory::set_allocated_old_consensus_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.old_consensus_address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.old_consensus_address_.IsDefault()) {
+          _impl_.old_consensus_address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.old_consensus_address)
+}
+
+// .google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+inline bool ConsensusKeyRotationHistory::has_maturity_time() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.maturity_time_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& ConsensusKeyRotationHistory::_internal_maturity_time() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Timestamp* p = _impl_.maturity_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& ConsensusKeyRotationHistory::maturity_time() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.maturity_time)
+  return _internal_maturity_time();
+}
+inline void ConsensusKeyRotationHistory::unsafe_arena_set_allocated_maturity_time(::google::protobuf::Timestamp* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.maturity_time_);
+  }
+  _impl_.maturity_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.maturity_time)
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::release_maturity_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* released = _impl_.maturity_time_;
+  _impl_.maturity_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::unsafe_arena_release_maturity_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.maturity_time)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* temp = _impl_.maturity_time_;
+  _impl_.maturity_time_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::_internal_mutable_maturity_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.maturity_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Timestamp>(GetArenaForAllocation());
+    _impl_.maturity_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.maturity_time_;
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::mutable_maturity_time() {
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_maturity_time();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.maturity_time)
+  return _msg;
+}
+inline void ConsensusKeyRotationHistory::set_allocated_maturity_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.maturity_time_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.maturity_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.maturity_time)
+}
+
+// .google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+inline bool ConsensusKeyRotationHistory::has_evidence_expiry_time() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.evidence_expiry_time_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& ConsensusKeyRotationHistory::_internal_evidence_expiry_time() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Timestamp* p = _impl_.evidence_expiry_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& ConsensusKeyRotationHistory::evidence_expiry_time() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_time)
+  return _internal_evidence_expiry_time();
+}
+inline void ConsensusKeyRotationHistory::unsafe_arena_set_allocated_evidence_expiry_time(::google::protobuf::Timestamp* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.evidence_expiry_time_);
+  }
+  _impl_.evidence_expiry_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_time)
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::release_evidence_expiry_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* released = _impl_.evidence_expiry_time_;
+  _impl_.evidence_expiry_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::unsafe_arena_release_evidence_expiry_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_time)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* temp = _impl_.evidence_expiry_time_;
+  _impl_.evidence_expiry_time_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::_internal_mutable_evidence_expiry_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.evidence_expiry_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Timestamp>(GetArenaForAllocation());
+    _impl_.evidence_expiry_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.evidence_expiry_time_;
+}
+inline ::google::protobuf::Timestamp* ConsensusKeyRotationHistory::mutable_evidence_expiry_time() {
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_evidence_expiry_time();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_time)
+  return _msg;
+}
+inline void ConsensusKeyRotationHistory::set_allocated_evidence_expiry_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.evidence_expiry_time_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.evidence_expiry_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_time)
+}
+
+// int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];
+inline void ConsensusKeyRotationHistory::clear_evidence_expiry_height() {
+  _impl_.evidence_expiry_height_ = ::int64_t{0};
+}
+inline ::int64_t ConsensusKeyRotationHistory::evidence_expiry_height() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_height)
+  return _internal_evidence_expiry_height();
+}
+inline void ConsensusKeyRotationHistory::set_evidence_expiry_height(::int64_t value) {
+  _internal_set_evidence_expiry_height(value);
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.ConsensusKeyRotationHistory.evidence_expiry_height)
+}
+inline ::int64_t ConsensusKeyRotationHistory::_internal_evidence_expiry_height() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.evidence_expiry_height_;
+}
+inline void ConsensusKeyRotationHistory::_internal_set_evidence_expiry_height(::int64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.evidence_expiry_height_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// PendingConsensusKeyRotation
+
+// string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+inline void PendingConsensusKeyRotation::clear_validator_address() {
+  _impl_.validator_address_.ClearToEmpty();
+}
+inline const std::string& PendingConsensusKeyRotation::validator_address() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.PendingConsensusKeyRotation.validator_address)
+  return _internal_validator_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void PendingConsensusKeyRotation::set_validator_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.PendingConsensusKeyRotation.validator_address)
+}
+inline std::string* PendingConsensusKeyRotation::mutable_validator_address() {
+  std::string* _s = _internal_mutable_validator_address();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.PendingConsensusKeyRotation.validator_address)
+  return _s;
+}
+inline const std::string& PendingConsensusKeyRotation::_internal_validator_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.validator_address_.Get();
+}
+inline void PendingConsensusKeyRotation::_internal_set_validator_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PendingConsensusKeyRotation::_internal_mutable_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.validator_address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* PendingConsensusKeyRotation::release_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.PendingConsensusKeyRotation.validator_address)
+  return _impl_.validator_address_.Release();
+}
+inline void PendingConsensusKeyRotation::set_allocated_validator_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.validator_address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.validator_address_.IsDefault()) {
+          _impl_.validator_address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.PendingConsensusKeyRotation.validator_address)
+}
+
+// .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+inline bool PendingConsensusKeyRotation::has_new_pubkey() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.new_pubkey_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Any& PendingConsensusKeyRotation::_internal_new_pubkey() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Any* p = _impl_.new_pubkey_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Any&>(::google::protobuf::_Any_default_instance_);
+}
+inline const ::google::protobuf::Any& PendingConsensusKeyRotation::new_pubkey() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.PendingConsensusKeyRotation.new_pubkey)
+  return _internal_new_pubkey();
+}
+inline void PendingConsensusKeyRotation::unsafe_arena_set_allocated_new_pubkey(::google::protobuf::Any* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.new_pubkey_);
+  }
+  _impl_.new_pubkey_ = reinterpret_cast<::google::protobuf::Any*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.staking.v1beta1.PendingConsensusKeyRotation.new_pubkey)
+}
+inline ::google::protobuf::Any* PendingConsensusKeyRotation::release_new_pubkey() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Any* released = _impl_.new_pubkey_;
+  _impl_.new_pubkey_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Any* PendingConsensusKeyRotation::unsafe_arena_release_new_pubkey() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.PendingConsensusKeyRotation.new_pubkey)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Any* temp = _impl_.new_pubkey_;
+  _impl_.new_pubkey_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Any* PendingConsensusKeyRotation::_internal_mutable_new_pubkey() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.new_pubkey_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Any>(GetArenaForAllocation());
+    _impl_.new_pubkey_ = reinterpret_cast<::google::protobuf::Any*>(p);
+  }
+  return _impl_.new_pubkey_;
+}
+inline ::google::protobuf::Any* PendingConsensusKeyRotation::mutable_new_pubkey() {
+  ::google::protobuf::Any* _msg = _internal_mutable_new_pubkey();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.PendingConsensusKeyRotation.new_pubkey)
+  return _msg;
+}
+inline void PendingConsensusKeyRotation::set_allocated_new_pubkey(::google::protobuf::Any* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.new_pubkey_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.new_pubkey_ = reinterpret_cast<::google::protobuf::Any*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.PendingConsensusKeyRotation.new_pubkey)
+}
+
+// int64 apply_height = 3 [json_name = "applyHeight"];
+inline void PendingConsensusKeyRotation::clear_apply_height() {
+  _impl_.apply_height_ = ::int64_t{0};
+}
+inline ::int64_t PendingConsensusKeyRotation::apply_height() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.PendingConsensusKeyRotation.apply_height)
+  return _internal_apply_height();
+}
+inline void PendingConsensusKeyRotation::set_apply_height(::int64_t value) {
+  _internal_set_apply_height(value);
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.PendingConsensusKeyRotation.apply_height)
+}
+inline ::int64_t PendingConsensusKeyRotation::_internal_apply_height() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.apply_height_;
+}
+inline void PendingConsensusKeyRotation::_internal_set_apply_height(::int64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.apply_height_ = value;
 }
 
 #ifdef __GNUC__

@@ -34,7 +34,7 @@ namespace Ibc.Applications.InterchainAccounts.V1 {
             "Lmdvb2dsZS5wcm90b2J1Zi5BbnlSCG1lc3NhZ2VzKlgKBFR5cGUSJQoQVFlQ",
             "RV9VTlNQRUNJRklFRBAAGg+KnSALVU5TUEVDSUZJRUQSIwoPVFlQRV9FWEVD",
             "VVRFX1RYEAEaDoqdIApFWEVDVVRFX1RYGgSIox4AQkhaRmdpdGh1Yi5jb20v",
-            "Y29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4t",
+            "Y29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4t",
             "YWNjb3VudHMvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },

@@ -34,7 +34,6 @@
 // Forward declarations of Objective-C classes that we can use as
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
-GPBObjCClassDeclaration(Checksums);
 GPBObjCClassDeclaration(ClientMessage);
 GPBObjCClassDeclaration(ClientState);
 GPBObjCClassDeclaration(ConsensusState);
@@ -224,57 +223,6 @@ typedef struct ClientMessage__storage_ {
 }
 
 @end
-
-#pragma mark - Checksums
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-
-@implementation Checksums
-
-@dynamic checksumsArray, checksumsArray_Count;
-
-typedef struct Checksums__storage_ {
-  uint32_t _has_storage_[1];
-  NSMutableArray *checksumsArray;
-} Checksums__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "checksumsArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Checksums_FieldNumber_ChecksumsArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Checksums__storage_, checksumsArray),
-        .flags = GPBFieldRepeated,
-        .dataType = GPBDataTypeBytes,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(Checksums)
-                                   messageName:@"Checksums"
-                               fileDescription:&WasmRoot_FileDescription
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Checksums__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma clang diagnostic pop
 
 
 #pragma clang diagnostic pop

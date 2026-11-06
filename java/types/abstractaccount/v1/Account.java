@@ -19,11 +19,19 @@ public final class Account {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * address is the bech32-encoded address of the account's contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @return The address.
      */
     java.lang.String getAddress();
     /**
+     * <pre>
+     * address is the bech32-encoded address of the account's contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @return The bytes for address.
      */
@@ -31,12 +39,20 @@ public final class Account {
         getAddressBytes();
 
     /**
+     * <pre>
+     * account_number is the account's number assigned by the auth module.
+     * </pre>
+     *
      * <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
      * @return The accountNumber.
      */
     long getAccountNumber();
 
     /**
+     * <pre>
+     * sequence is the account's current transaction sequence.
+     * </pre>
+     *
      * <code>uint64 sequence = 3 [json_name = "sequence"];</code>
      * @return The sequence.
      */
@@ -89,6 +105,10 @@ public final class Account {
     @SuppressWarnings("serial")
     private volatile java.lang.Object address_ = "";
     /**
+     * <pre>
+     * address is the bech32-encoded address of the account's contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @return The address.
      */
@@ -106,6 +126,10 @@ public final class Account {
       }
     }
     /**
+     * <pre>
+     * address is the bech32-encoded address of the account's contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @return The bytes for address.
      */
@@ -127,6 +151,10 @@ public final class Account {
     public static final int ACCOUNT_NUMBER_FIELD_NUMBER = 2;
     private long accountNumber_ = 0L;
     /**
+     * <pre>
+     * account_number is the account's number assigned by the auth module.
+     * </pre>
+     *
      * <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
      * @return The accountNumber.
      */
@@ -138,6 +166,10 @@ public final class Account {
     public static final int SEQUENCE_FIELD_NUMBER = 3;
     private long sequence_ = 0L;
     /**
+     * <pre>
+     * sequence is the account's current transaction sequence.
+     * </pre>
+     *
      * <code>uint64 sequence = 3 [json_name = "sequence"];</code>
      * @return The sequence.
      */
@@ -529,6 +561,10 @@ public final class Account {
 
       private java.lang.Object address_ = "";
       /**
+       * <pre>
+       * address is the bech32-encoded address of the account's contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @return The address.
        */
@@ -545,6 +581,10 @@ public final class Account {
         }
       }
       /**
+       * <pre>
+       * address is the bech32-encoded address of the account's contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @return The bytes for address.
        */
@@ -562,6 +602,10 @@ public final class Account {
         }
       }
       /**
+       * <pre>
+       * address is the bech32-encoded address of the account's contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @param value The address to set.
        * @return This builder for chaining.
@@ -575,6 +619,10 @@ public final class Account {
         return this;
       }
       /**
+       * <pre>
+       * address is the bech32-encoded address of the account's contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @return This builder for chaining.
        */
@@ -585,6 +633,10 @@ public final class Account {
         return this;
       }
       /**
+       * <pre>
+       * address is the bech32-encoded address of the account's contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @param value The bytes for address to set.
        * @return This builder for chaining.
@@ -601,6 +653,10 @@ public final class Account {
 
       private long accountNumber_ ;
       /**
+       * <pre>
+       * account_number is the account's number assigned by the auth module.
+       * </pre>
+       *
        * <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
        * @return The accountNumber.
        */
@@ -609,6 +665,10 @@ public final class Account {
         return accountNumber_;
       }
       /**
+       * <pre>
+       * account_number is the account's number assigned by the auth module.
+       * </pre>
+       *
        * <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
        * @param value The accountNumber to set.
        * @return This builder for chaining.
@@ -621,6 +681,10 @@ public final class Account {
         return this;
       }
       /**
+       * <pre>
+       * account_number is the account's number assigned by the auth module.
+       * </pre>
+       *
        * <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
        * @return This builder for chaining.
        */
@@ -633,6 +697,10 @@ public final class Account {
 
       private long sequence_ ;
       /**
+       * <pre>
+       * sequence is the account's current transaction sequence.
+       * </pre>
+       *
        * <code>uint64 sequence = 3 [json_name = "sequence"];</code>
        * @return The sequence.
        */
@@ -641,6 +709,10 @@ public final class Account {
         return sequence_;
       }
       /**
+       * <pre>
+       * sequence is the account's current transaction sequence.
+       * </pre>
+       *
        * <code>uint64 sequence = 3 [json_name = "sequence"];</code>
        * @param value The sequence to set.
        * @return This builder for chaining.
@@ -653,6 +725,10 @@ public final class Account {
         return this;
       }
       /**
+       * <pre>
+       * sequence is the account's current transaction sequence.
+       * </pre>
+       *
        * <code>uint64 sequence = 3 [json_name = "sequence"];</code>
        * @return This builder for chaining.
        */
@@ -731,6 +807,11 @@ public final class Account {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     * </pre>
+     *
      * <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
      * @return The addressBytes.
      */
@@ -784,6 +865,11 @@ public final class Account {
     public static final int ADDRESS_BYTES_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString addressBytes_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <pre>
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     * </pre>
+     *
      * <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
      * @return The addressBytes.
      */
@@ -1128,6 +1214,11 @@ public final class Account {
 
       private com.google.protobuf.ByteString addressBytes_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       * address_bytes is the raw address bytes of the account the pubkey
+       * stands in for.
+       * </pre>
+       *
        * <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
        * @return The addressBytes.
        */
@@ -1136,6 +1227,11 @@ public final class Account {
         return addressBytes_;
       }
       /**
+       * <pre>
+       * address_bytes is the raw address bytes of the account the pubkey
+       * stands in for.
+       * </pre>
+       *
        * <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
        * @param value The addressBytes to set.
        * @return This builder for chaining.
@@ -1148,6 +1244,11 @@ public final class Account {
         return this;
       }
       /**
+       * <pre>
+       * address_bytes is the raw address bytes of the account the pubkey
+       * stands in for.
+       * </pre>
+       *
        * <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
        * @return This builder for chaining.
        */
@@ -1249,9 +1350,9 @@ public final class Account {
       "uence\030\003 \001(\004R\010sequence:(\210\240\037\000\350\240\037\000\312\264-\034cosmo" +
       "s.auth.v1beta1.AccountI\"U\n\tNilPubKey\022#\n\r" +
       "address_bytes\030\001 \001(\014R\014addressBytes:#\230\240\037\000\212" +
-      "\347\260*\032abstract-account/NilPubKeyB@Z>github" +
-      ".com/burnt-labs/abstract-account/x/abstr" +
-      "actaccount/typesb\006proto3"
+      "\347\260*\032abstract-account/NilPubKeyB4Z2github" +
+      ".com/burnt-labs/xion/x/abstractaccount/t" +
+      "ypesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

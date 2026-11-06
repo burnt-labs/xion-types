@@ -37,7 +37,7 @@ class Tx
 Msgc
 	StoreCode&.ibc.lightclients.wasm.v1.MsgStoreCode..ibc.lightclients.wasm.v1.MsgStoreCodeResponser
 RemoveChecksum+.ibc.lightclients.wasm.v1.MsgRemoveChecksum3.ibc.lightclients.wasm.v1.MsgRemoveChecksumResponseu
-MigrateContract,.ibc.lightclients.wasm.v1.MsgMigrateContract4.ibc.lightclients.wasm.v1.MsgMigrateContractResponse€ç°*BBZ@github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v10/typesbproto3'
+MigrateContract,.ibc.lightclients.wasm.v1.MsgMigrateContract4.ibc.lightclients.wasm.v1.MsgMigrateContractResponse€ç°*BBZ@github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v11/typesbproto3'
         , true);
 
         static::$is_initialized = true;

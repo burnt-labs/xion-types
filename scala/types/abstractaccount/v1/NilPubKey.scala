@@ -11,6 +11,10 @@ package abstractaccount.v1
   * The actual pubkey of an AbstractAccount (if it has one) is to be stored
   * inside the contract, not at the SDK level. Signature verification is also
   * done inside the contract, typically in the BeforeTx hook.
+  *
+  * @param addressBytes
+  *   address_bytes is the raw address bytes of the account the pubkey
+  *   stands in for.
   */
 @SerialVersionUID(0L)
 final case class NilPubKey(

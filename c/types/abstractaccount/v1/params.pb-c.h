@@ -31,16 +31,17 @@ struct  Abstractaccount__V1__Params
 {
   ProtobufCMessage base;
   /*
-   * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-   * AbstractAccounts:
+   * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+   * final implementation for a newly registered AbstractAccount or a
+   * top-level raw Wasm migration:
    * - if set to true, any code ID can be used;
    * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
    * be used.
    */
   protobuf_c_boolean allow_all_code_ids;
   /*
-   * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-   * regiseter AbstractAccounts.
+   * AllowedCodeIDs is the whitelist for registration implementations and
+   * top-level raw Wasm migrations. This is not a wasmd-level policy.
    */
   size_t n_allowed_code_ids;
   uint64_t *allowed_code_ids;
@@ -56,10 +57,23 @@ struct  Abstractaccount__V1__Params
    * Must be greater than zero.
    */
   uint64_t max_gas_after;
+  /*
+   * RegistrationEnabled controls whether new abstract accounts may be
+   * registered. Governance can pause registration without changing the
+   * immutable address namespace or blocking address queries.
+   */
+  protobuf_c_boolean registration_enabled;
+  /*
+   * AddressDerivationHash is the immutable 32-byte namespace used only to
+   * derive predictable AbstractAccount addresses. The caller-selected code ID
+   * is instantiated directly and does not participate in address derivation.
+   * An empty value leaves registration unconfigured.
+   */
+  ProtobufCBinaryData address_derivation_hash;
 };
 #define ABSTRACTACCOUNT__V1__PARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__params__descriptor) \
-, 0, 0,NULL, 0, 0 }
+, 0, 0,NULL, 0, 0, 0, {0,NULL} }
 
 
 /* Abstractaccount__V1__Params methods */

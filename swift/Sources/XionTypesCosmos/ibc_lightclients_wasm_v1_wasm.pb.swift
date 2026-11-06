@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+// SPDX-License-Identifier: Apache-2.0
+
 import Foundation
 import SwiftProtobuf
 
@@ -71,24 +73,6 @@ struct Ibc_Lightclients_Wasm_V1_ClientMessage: @unchecked Sendable {
   // methods supported on all messages.
 
   var data: Data = Data()
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-/// Checksums defines a list of all checksums that are stored
-///
-/// Deprecated: This message is deprecated in favor of storing the checksums
-/// using a Collections.KeySet.
-///
-/// NOTE: This message was marked as deprecated in the .proto file.
-struct Ibc_Lightclients_Wasm_V1_Checksums: @unchecked Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var checksums: [Data] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -206,38 +190,6 @@ extension Ibc_Lightclients_Wasm_V1_ClientMessage: SwiftProtobuf.Message, SwiftPr
 
   static func ==(lhs: Ibc_Lightclients_Wasm_V1_ClientMessage, rhs: Ibc_Lightclients_Wasm_V1_ClientMessage) -> Bool {
     if lhs.data != rhs.data {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Ibc_Lightclients_Wasm_V1_Checksums: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Checksums"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "checksums"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeRepeatedBytesField(value: &self.checksums) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.checksums.isEmpty {
-      try visitor.visitRepeatedBytesField(value: self.checksums, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Ibc_Lightclients_Wasm_V1_Checksums, rhs: Ibc_Lightclients_Wasm_V1_Checksums) -> Bool {
-    if lhs.checksums != rhs.checksums {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -103,7 +103,7 @@ const char descriptor_table_protodef_ibc_2fcore_2ftypes_2fv1_2fgenesis_2eproto[]
     "sis\022U\n\022channel_v2_genesis\030\005 \001(\0132!.ibc.co"
     "re.channel.v2.GenesisStateB\004\310\336\037\000R\020channe"
     "lV2GenesisB1Z/github.com/cosmos/ibc-go/v"
-    "10/modules/core/typesb\006proto3"
+    "11/modules/core/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2ftypes_2fv1_2fgenesis_2eproto_deps[6] =
     {

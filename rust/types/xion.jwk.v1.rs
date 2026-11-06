@@ -324,6 +324,88 @@ const PACKAGE: &'static str = "xion.jwk.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
             }}
+/// QueryVerifyJWSRequest is the request type for verifying a JWS signature
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVerifyJwsRequest {
+    /// The audience identifier
+    #[prost(string, tag="1")]
+    pub aud: ::prost::alloc::string::String,
+    /// The JWS signature bytes in compact serialization format
+    #[prost(string, tag="2")]
+    pub sig_bytes: ::prost::alloc::string::String,
+}
+impl ::prost::Name for QueryVerifyJwsRequest {
+const NAME: &'static str = "QueryVerifyJWSRequest";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
+/// QueryVerifyJWSResponse is the response type for verifying a JWS signature
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryVerifyJwsResponse {
+    /// The verified payload bytes extracted from the JWS
+    #[prost(bytes="vec", tag="1")]
+    pub payload: ::prost::alloc::vec::Vec<u8>,
+}
+impl ::prost::Name for QueryVerifyJwsResponse {
+const NAME: &'static str = "QueryVerifyJWSResponse";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
+/// QueryDecodeJWTRequest is the request type for decoding a JWT
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDecodeJwtRequest {
+    /// The audience identifier
+    #[prost(string, tag="1")]
+    pub aud: ::prost::alloc::string::String,
+    /// The subject
+    #[prost(string, tag="2")]
+    pub sub: ::prost::alloc::string::String,
+    /// The signature bytes (compact JWT)
+    #[prost(string, tag="3")]
+    pub sig_bytes: ::prost::alloc::string::String,
+}
+impl ::prost::Name for QueryDecodeJwtRequest {
+const NAME: &'static str = "QueryDecodeJWTRequest";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
+/// JWTClaim represents a single JWT claim (standard or private)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct JwtClaim {
+    /// The claim key
+    #[prost(string, tag="1")]
+    pub key: ::prost::alloc::string::String,
+    /// The claim value (stringified)
+    #[prost(string, tag="2")]
+    pub value: ::prost::alloc::string::String,
+}
+impl ::prost::Name for JwtClaim {
+const NAME: &'static str = "JWTClaim";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
+/// QueryDecodeJWTResponse is the response type for decoding a JWT
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryDecodeJwtResponse {
+    /// All claims from the JWT (standard and private), sorted by key
+    #[prost(message, repeated, tag="1")]
+    pub claims: ::prost::alloc::vec::Vec<JwtClaim>,
+}
+impl ::prost::Name for QueryDecodeJwtResponse {
+const NAME: &'static str = "QueryDecodeJWTResponse";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
 /// MsgCreateAudienceClaim defines the message for creating an audience claim
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -480,6 +562,37 @@ pub struct MsgDeleteAudienceResponse {
 }
 impl ::prost::Name for MsgDeleteAudienceResponse {
 const NAME: &'static str = "MsgDeleteAudienceResponse";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParams {
+    /// authority is the address of the governance account.
+    #[prost(string, tag="1")]
+    pub authority: ::prost::alloc::string::String,
+    /// params defines the parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<Params>,
+}
+impl ::prost::Name for MsgUpdateParams {
+const NAME: &'static str = "MsgUpdateParams";
+const PACKAGE: &'static str = "xion.jwk.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)
+            }}
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUpdateParamsResponse {
+}
+impl ::prost::Name for MsgUpdateParamsResponse {
+const NAME: &'static str = "MsgUpdateParamsResponse";
 const PACKAGE: &'static str = "xion.jwk.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.jwk.v1.{}", Self::NAME)

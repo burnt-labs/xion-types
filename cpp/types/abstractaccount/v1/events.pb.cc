@@ -33,6 +33,10 @@ PROTOBUF_CONSTEXPR EventAccountRegistered::EventAccountRegistered(::_pbi::Consta
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.address_derivation_hash_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
       /*decltype(_impl_.code_id_)*/ ::uint64_t{0u},
       /*decltype(_impl_.account_number_)*/ ::uint64_t{0u},
       /*decltype(_impl_._cached_size_)*/ {},
@@ -68,6 +72,7 @@ const ::uint32_t TableStruct_abstractaccount_2fv1_2fevents_2eproto::offsets[] PR
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::EventAccountRegistered, _impl_.code_id_),
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::EventAccountRegistered, _impl_.contract_addr_),
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::EventAccountRegistered, _impl_.account_number_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::EventAccountRegistered, _impl_.address_derivation_hash_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -80,13 +85,15 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_abstractaccount_2fv1_2fevents_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037abstractaccount/v1/events.proto\022\022abstr"
-    "actaccount.v1\032\024gogoproto/gogo.proto\"\243\001\n\026"
+    "actaccount.v1\032\024gogoproto/gogo.proto\"\374\001\n\026"
     "EventAccountRegistered\022\030\n\007creator\030\001 \001(\tR"
     "\007creator\022#\n\007code_id\030\002 \001(\004B\n\342\336\037\006CodeIDR\006c"
     "odeId\022#\n\rcontract_addr\030\003 \001(\tR\014contractAd"
     "dr\022%\n\016account_number\030\004 \001(\004R\raccountNumbe"
-    "rB@Z>github.com/burnt-labs/abstract-acco"
-    "unt/x/abstractaccount/typesb\006proto3"
+    "r\022Q\n\027address_derivation_hash\030\006 \001(\014B\031\342\336\037\025"
+    "AddressDerivationHashR\025addressDerivation"
+    "HashJ\004\010\005\020\006B4Z2github.com/burnt-labs/xion"
+    "/x/abstractaccount/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_abstractaccount_2fv1_2fevents_2eproto_deps[1] =
     {
@@ -96,7 +103,7 @@ static ::absl::once_flag descriptor_table_abstractaccount_2fv1_2fevents_2eproto_
 const ::_pbi::DescriptorTable descriptor_table_abstractaccount_2fv1_2fevents_2eproto = {
     false,
     false,
-    315,
+    392,
     descriptor_table_protodef_abstractaccount_2fv1_2fevents_2eproto,
     "abstractaccount/v1/events.proto",
     &descriptor_table_abstractaccount_2fv1_2fevents_2eproto_once,
@@ -147,6 +154,7 @@ EventAccountRegistered::EventAccountRegistered(const EventAccountRegistered& fro
   new (&_impl_) Impl_{
       decltype(_impl_.creator_){},
       decltype(_impl_.contract_addr_){},
+      decltype(_impl_.address_derivation_hash_){},
       decltype(_impl_.code_id_){},
       decltype(_impl_.account_number_){},
       /*decltype(_impl_._cached_size_)*/ {},
@@ -167,6 +175,13 @@ EventAccountRegistered::EventAccountRegistered(const EventAccountRegistered& fro
   if (!from._internal_contract_addr().empty()) {
     _this->_impl_.contract_addr_.Set(from._internal_contract_addr(), _this->GetArenaForAllocation());
   }
+  _impl_.address_derivation_hash_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_derivation_hash_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_address_derivation_hash().empty()) {
+    _this->_impl_.address_derivation_hash_.Set(from._internal_address_derivation_hash(), _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.code_id_, &from._impl_.code_id_,
     static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.account_number_) -
     reinterpret_cast<char*>(&_impl_.code_id_)) + sizeof(_impl_.account_number_));
@@ -178,6 +193,7 @@ inline void EventAccountRegistered::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_.creator_){},
       decltype(_impl_.contract_addr_){},
+      decltype(_impl_.address_derivation_hash_){},
       decltype(_impl_.code_id_){::uint64_t{0u}},
       decltype(_impl_.account_number_){::uint64_t{0u}},
       /*decltype(_impl_._cached_size_)*/ {},
@@ -190,6 +206,10 @@ inline void EventAccountRegistered::SharedCtor(::_pb::Arena* arena) {
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.contract_addr_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.address_derivation_hash_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_derivation_hash_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 EventAccountRegistered::~EventAccountRegistered() {
   // @@protoc_insertion_point(destructor:abstractaccount.v1.EventAccountRegistered)
@@ -200,6 +220,7 @@ inline void EventAccountRegistered::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.creator_.Destroy();
   _impl_.contract_addr_.Destroy();
+  _impl_.address_derivation_hash_.Destroy();
 }
 void EventAccountRegistered::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -213,6 +234,7 @@ PROTOBUF_NOINLINE void EventAccountRegistered::Clear() {
 
   _impl_.creator_.ClearToEmpty();
   _impl_.contract_addr_.ClearToEmpty();
+  _impl_.address_derivation_hash_.ClearToEmpty();
   ::memset(&_impl_.code_id_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.account_number_) -
       reinterpret_cast<char*>(&_impl_.code_id_)) + sizeof(_impl_.account_number_));
@@ -227,23 +249,21 @@ const char* EventAccountRegistered::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 70, 2> EventAccountRegistered::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 70, 2> EventAccountRegistered::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967248,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_EventAccountRegistered_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // uint64 account_number = 4 [json_name = "accountNumber"];
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(EventAccountRegistered, _impl_.account_number_), 63>(),
-     {32, 63, 0, PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.account_number_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string creator = 1 [json_name = "creator"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.creator_)}},
@@ -253,6 +273,14 @@ const ::_pbi::TcParseTable<2, 4, 0, 70, 2> EventAccountRegistered::_table_ = {
     // string contract_addr = 3 [json_name = "contractAddr"];
     {::_pbi::TcParser::FastUS1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.contract_addr_)}},
+    // uint64 account_number = 4 [json_name = "accountNumber"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(EventAccountRegistered, _impl_.account_number_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.account_number_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+    {::_pbi::TcParser::FastBS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.address_derivation_hash_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -268,6 +296,9 @@ const ::_pbi::TcParseTable<2, 4, 0, 70, 2> EventAccountRegistered::_table_ = {
     // uint64 account_number = 4 [json_name = "accountNumber"];
     {PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.account_number_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+    {PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.address_derivation_hash_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
@@ -315,6 +346,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 70, 2> EventAccountRegistered::_table_ = {
         4, this->_internal_account_number(), target);
   }
 
+  // bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+  if (!this->_internal_address_derivation_hash().empty()) {
+    const std::string& _s = this->_internal_address_derivation_hash();
+    target = stream->WriteBytesMaybeAliased(6, _s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -342,6 +379,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 70, 2> EventAccountRegistered::_table_ = {
   if (!this->_internal_contract_addr().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_contract_addr());
+  }
+
+  // bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+  if (!this->_internal_address_derivation_hash().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_address_derivation_hash());
   }
 
   // uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];
@@ -380,6 +423,9 @@ void EventAccountRegistered::MergeImpl(::google::protobuf::Message& to_msg, cons
   if (!from._internal_contract_addr().empty()) {
     _this->_internal_set_contract_addr(from._internal_contract_addr());
   }
+  if (!from._internal_address_derivation_hash().empty()) {
+    _this->_internal_set_address_derivation_hash(from._internal_address_derivation_hash());
+  }
   if (from._internal_code_id() != 0) {
     _this->_internal_set_code_id(from._internal_code_id());
   }
@@ -409,6 +455,8 @@ void EventAccountRegistered::InternalSwap(EventAccountRegistered* other) {
                                        &other->_impl_.creator_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.contract_addr_, lhs_arena,
                                        &other->_impl_.contract_addr_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_derivation_hash_, lhs_arena,
+                                       &other->_impl_.address_derivation_hash_, rhs_arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(EventAccountRegistered, _impl_.account_number_)
       + sizeof(EventAccountRegistered::_impl_.account_number_)

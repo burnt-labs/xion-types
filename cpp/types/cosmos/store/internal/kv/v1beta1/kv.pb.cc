@@ -113,8 +113,9 @@ const char descriptor_table_protodef_cosmos_2fstore_2finternal_2fkv_2fv1beta1_2f
     "ogoproto/gogo.proto\"K\n\005Pairs\022B\n\005pairs\030\001 "
     "\003(\0132&.cosmos.store.internal.kv.v1beta1.P"
     "airB\004\310\336\037\000R\005pairs\".\n\004Pair\022\020\n\003key\030\001 \001(\014R\003k"
-    "ey\022\024\n\005value\030\002 \001(\014R\005valueB Z\036cosmossdk.io"
-    "/store/internal/kvb\006proto3"
+    "ey\022\024\n\005value\030\002 \001(\014R\005valueB3Z1github.com/c"
+    "osmos/cosmos-sdk/store/v2/internal/kvb\006p"
+    "roto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstore_2finternal_2fkv_2fv1beta1_2fkv_2eproto_deps[1] =
     {
@@ -124,7 +125,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fstore_2finternal_2fkv_2fv1bet
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fstore_2finternal_2fkv_2fv1beta1_2fkv_2eproto = {
     false,
     false,
-    266,
+    285,
     descriptor_table_protodef_cosmos_2fstore_2finternal_2fkv_2fv1beta1_2fkv_2eproto,
     "cosmos/store/internal/kv/v1beta1/kv.proto",
     &descriptor_table_cosmos_2fstore_2finternal_2fkv_2fv1beta1_2fkv_2eproto_once,

@@ -36,10 +36,14 @@
 // Forward declarations of Objective-C classes that we can use as
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
+GPBObjCClassDeclaration(ConsensusKeyRotationHistory);
 GPBObjCClassDeclaration(Delegation);
+GPBObjCClassDeclaration(GPBAny);
+GPBObjCClassDeclaration(GPBTimestamp);
 GPBObjCClassDeclaration(GenesisState);
 GPBObjCClassDeclaration(LastValidatorPower);
 GPBObjCClassDeclaration(Params);
+GPBObjCClassDeclaration(PendingConsensusKeyRotation);
 GPBObjCClassDeclaration(Redelegation);
 GPBObjCClassDeclaration(UnbondingDelegation);
 GPBObjCClassDeclaration(Validator);
@@ -83,6 +87,8 @@ static GPBFileDescription GenesisRoot_FileDescription = {
 @dynamic unbondingDelegationsArray, unbondingDelegationsArray_Count;
 @dynamic redelegationsArray, redelegationsArray_Count;
 @dynamic exported;
+@dynamic consensusKeyRotationHistoryArray, consensusKeyRotationHistoryArray_Count;
+@dynamic pendingConsensusKeyRotationsArray, pendingConsensusKeyRotationsArray_Count;
 
 typedef struct GenesisState__storage_ {
   uint32_t _has_storage_[1];
@@ -93,6 +99,8 @@ typedef struct GenesisState__storage_ {
   NSMutableArray *delegationsArray;
   NSMutableArray *unbondingDelegationsArray;
   NSMutableArray *redelegationsArray;
+  NSMutableArray *consensusKeyRotationHistoryArray;
+  NSMutableArray *pendingConsensusKeyRotationsArray;
 } GenesisState__storage_;
 
 // This method is threadsafe because it is initially called
@@ -174,6 +182,24 @@ typedef struct GenesisState__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBool,
       },
+      {
+        .name = "consensusKeyRotationHistoryArray",
+        .dataTypeSpecific.clazz = GPBObjCClass(ConsensusKeyRotationHistory),
+        .number = GenesisState_FieldNumber_ConsensusKeyRotationHistoryArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GenesisState__storage_, consensusKeyRotationHistoryArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "pendingConsensusKeyRotationsArray",
+        .dataTypeSpecific.clazz = GPBObjCClass(PendingConsensusKeyRotation),
+        .number = GenesisState_FieldNumber_PendingConsensusKeyRotationsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GenesisState__storage_, pendingConsensusKeyRotationsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:GPBObjCClass(GenesisState)
@@ -239,6 +265,164 @@ typedef struct LastValidatorPower__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(LastValidatorPower__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ConsensusKeyRotationHistory
+
+@implementation ConsensusKeyRotationHistory
+
+@dynamic validatorAddress;
+@dynamic oldConsensusAddress;
+@dynamic hasMaturityTime, maturityTime;
+@dynamic hasEvidenceExpiryTime, evidenceExpiryTime;
+@dynamic evidenceExpiryHeight;
+
+typedef struct ConsensusKeyRotationHistory__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *validatorAddress;
+  NSString *oldConsensusAddress;
+  GPBTimestamp *maturityTime;
+  GPBTimestamp *evidenceExpiryTime;
+  int64_t evidenceExpiryHeight;
+} ConsensusKeyRotationHistory__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "validatorAddress",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ConsensusKeyRotationHistory_FieldNumber_ValidatorAddress,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ConsensusKeyRotationHistory__storage_, validatorAddress),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "oldConsensusAddress",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ConsensusKeyRotationHistory_FieldNumber_OldConsensusAddress,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ConsensusKeyRotationHistory__storage_, oldConsensusAddress),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "maturityTime",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBTimestamp),
+        .number = ConsensusKeyRotationHistory_FieldNumber_MaturityTime,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ConsensusKeyRotationHistory__storage_, maturityTime),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "evidenceExpiryTime",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBTimestamp),
+        .number = ConsensusKeyRotationHistory_FieldNumber_EvidenceExpiryTime,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ConsensusKeyRotationHistory__storage_, evidenceExpiryTime),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "evidenceExpiryHeight",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ConsensusKeyRotationHistory_FieldNumber_EvidenceExpiryHeight,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ConsensusKeyRotationHistory__storage_, evidenceExpiryHeight),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(ConsensusKeyRotationHistory)
+                                   messageName:@"ConsensusKeyRotationHistory"
+                               fileDescription:&GenesisRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ConsensusKeyRotationHistory__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PendingConsensusKeyRotation
+
+@implementation PendingConsensusKeyRotation
+
+@dynamic validatorAddress;
+@dynamic hasNewPubkey, newPubkey;
+@dynamic applyHeight;
+
+typedef struct PendingConsensusKeyRotation__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *validatorAddress;
+  GPBAny *newPubkey;
+  int64_t applyHeight;
+} PendingConsensusKeyRotation__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "validatorAddress",
+        .dataTypeSpecific.clazz = Nil,
+        .number = PendingConsensusKeyRotation_FieldNumber_ValidatorAddress,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PendingConsensusKeyRotation__storage_, validatorAddress),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "newPubkey",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBAny),
+        .number = PendingConsensusKeyRotation_FieldNumber_NewPubkey,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(PendingConsensusKeyRotation__storage_, newPubkey),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "applyHeight",
+        .dataTypeSpecific.clazz = Nil,
+        .number = PendingConsensusKeyRotation_FieldNumber_ApplyHeight,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(PendingConsensusKeyRotation__storage_, applyHeight),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(PendingConsensusKeyRotation)
+                                   messageName:@"PendingConsensusKeyRotation"
+                               fileDescription:&GenesisRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PendingConsensusKeyRotation__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

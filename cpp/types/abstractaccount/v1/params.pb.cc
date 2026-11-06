@@ -27,9 +27,14 @@ PROTOBUF_CONSTEXPR Params::Params(::_pbi::ConstantInitialized)
     : _impl_{
       /*decltype(_impl_.allowed_code_ids_)*/ {},
       /* _impl_._allowed_code_ids_cached_byte_size_ = */ {0},
+      /*decltype(_impl_.address_derivation_hash_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
       /*decltype(_impl_.max_gas_before_)*/ ::uint64_t{0u},
       /*decltype(_impl_.max_gas_after_)*/ ::uint64_t{0u},
       /*decltype(_impl_.allow_all_code_ids_)*/ false,
+      /*decltype(_impl_.registration_enabled_)*/ false,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct ParamsDefaultTypeInternal {
@@ -63,6 +68,8 @@ const ::uint32_t TableStruct_abstractaccount_2fv1_2fparams_2eproto::offsets[] PR
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::Params, _impl_.allowed_code_ids_),
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::Params, _impl_.max_gas_before_),
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::Params, _impl_.max_gas_after_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::Params, _impl_.registration_enabled_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::Params, _impl_.address_derivation_hash_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -75,15 +82,18 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_abstractaccount_2fv1_2fparams_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037abstractaccount/v1/params.proto\022\022abstr"
-    "actaccount.v1\032\024gogoproto/gogo.proto\"\322\001\n\006"
+    "actaccount.v1\032\024gogoproto/gogo.proto\"\344\002\n\006"
     "Params\022@\n\022allow_all_code_ids\030\001 \001(\010B\023\342\336\037\017"
     "AllowAllCodeIDsR\017allowAllCodeIds\022<\n\020allo"
     "wed_code_ids\030\002 \003(\004B\022\342\336\037\016AllowedCodeIDsR\016"
     "allowedCodeIds\022$\n\016max_gas_before\030\003 \001(\004R\014"
     "maxGasBefore\022\"\n\rmax_gas_after\030\004 \001(\004R\013max"
-    "GasAfterB@Z>github.com/burnt-labs/abstra"
-    "ct-account/x/abstractaccount/typesb\006prot"
-    "o3"
+    "GasAfter\0221\n\024registration_enabled\030\007 \001(\010R\023"
+    "registrationEnabled\022Q\n\027address_derivatio"
+    "n_hash\030\010 \001(\014B\031\342\336\037\025AddressDerivationHashR"
+    "\025addressDerivationHashJ\004\010\005\020\006J\004\010\006\020\007B4Z2gi"
+    "thub.com/burnt-labs/xion/x/abstractaccou"
+    "nt/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_abstractaccount_2fv1_2fparams_2eproto_deps[1] =
     {
@@ -93,7 +103,7 @@ static ::absl::once_flag descriptor_table_abstractaccount_2fv1_2fparams_2eproto_
 const ::_pbi::DescriptorTable descriptor_table_abstractaccount_2fv1_2fparams_2eproto = {
     false,
     false,
-    362,
+    496,
     descriptor_table_protodef_abstractaccount_2fv1_2fparams_2eproto,
     "abstractaccount/v1/params.proto",
     &descriptor_table_abstractaccount_2fv1_2fparams_2eproto_once,
@@ -144,16 +154,25 @@ Params::Params(const Params& from) : ::google::protobuf::Message() {
   new (&_impl_) Impl_{
       decltype(_impl_.allowed_code_ids_){from._impl_.allowed_code_ids_},
       /* _impl_._allowed_code_ids_cached_byte_size_ = */ {0},
+      decltype(_impl_.address_derivation_hash_){},
       decltype(_impl_.max_gas_before_){},
       decltype(_impl_.max_gas_after_){},
       decltype(_impl_.allow_all_code_ids_){},
+      decltype(_impl_.registration_enabled_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  _impl_.address_derivation_hash_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_derivation_hash_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_address_derivation_hash().empty()) {
+    _this->_impl_.address_derivation_hash_.Set(from._internal_address_derivation_hash(), _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.max_gas_before_, &from._impl_.max_gas_before_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.allow_all_code_ids_) -
-    reinterpret_cast<char*>(&_impl_.max_gas_before_)) + sizeof(_impl_.allow_all_code_ids_));
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.registration_enabled_) -
+    reinterpret_cast<char*>(&_impl_.max_gas_before_)) + sizeof(_impl_.registration_enabled_));
 
   // @@protoc_insertion_point(copy_constructor:abstractaccount.v1.Params)
 }
@@ -162,11 +181,17 @@ inline void Params::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_.allowed_code_ids_){arena},
       /* _impl_._allowed_code_ids_cached_byte_size_ = */ {0},
+      decltype(_impl_.address_derivation_hash_){},
       decltype(_impl_.max_gas_before_){::uint64_t{0u}},
       decltype(_impl_.max_gas_after_){::uint64_t{0u}},
       decltype(_impl_.allow_all_code_ids_){false},
+      decltype(_impl_.registration_enabled_){false},
       /*decltype(_impl_._cached_size_)*/ {},
   };
+  _impl_.address_derivation_hash_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_derivation_hash_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 Params::~Params() {
   // @@protoc_insertion_point(destructor:abstractaccount.v1.Params)
@@ -176,6 +201,7 @@ Params::~Params() {
 inline void Params::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.allowed_code_ids_.~RepeatedField();
+  _impl_.address_derivation_hash_.Destroy();
 }
 void Params::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -188,9 +214,10 @@ PROTOBUF_NOINLINE void Params::Clear() {
   (void) cached_has_bits;
 
   _internal_mutable_allowed_code_ids()->Clear();
+  _impl_.address_derivation_hash_.ClearToEmpty();
   ::memset(&_impl_.max_gas_before_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.allow_all_code_ids_) -
-      reinterpret_cast<char*>(&_impl_.max_gas_before_)) + sizeof(_impl_.allow_all_code_ids_));
+      reinterpret_cast<char*>(&_impl_.registration_enabled_) -
+      reinterpret_cast<char*>(&_impl_.max_gas_before_)) + sizeof(_impl_.registration_enabled_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -202,23 +229,23 @@ const char* Params::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Params::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 0, 0, 2> Params::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    8, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967088,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    6,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_Params_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // uint64 max_gas_after = 4 [json_name = "maxGasAfter"];
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_gas_after_), 63>(),
-     {32, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gas_after_)}},
+    // bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+    {::_pbi::TcParser::FastBS1,
+     {66, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.address_derivation_hash_)}},
     // bool allow_all_code_ids = 1 [json_name = "allowAllCodeIds", (.gogoproto.customname) = "AllowAllCodeIDs"];
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Params, _impl_.allow_all_code_ids_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.allow_all_code_ids_)}},
@@ -228,6 +255,14 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Params::_table_ = {
     // uint64 max_gas_before = 3 [json_name = "maxGasBefore"];
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_gas_before_), 63>(),
      {24, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gas_before_)}},
+    // uint64 max_gas_after = 4 [json_name = "maxGasAfter"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_gas_after_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gas_after_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // bool registration_enabled = 7 [json_name = "registrationEnabled"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Params, _impl_.registration_enabled_), 63>(),
+     {56, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.registration_enabled_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -243,6 +278,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Params::_table_ = {
     // uint64 max_gas_after = 4 [json_name = "maxGasAfter"];
     {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gas_after_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // bool registration_enabled = 7 [json_name = "registrationEnabled"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.registration_enabled_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.address_derivation_hash_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
@@ -286,6 +327,19 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Params::_table_ = {
         4, this->_internal_max_gas_after(), target);
   }
 
+  // bool registration_enabled = 7 [json_name = "registrationEnabled"];
+  if (this->_internal_registration_enabled() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        7, this->_internal_registration_enabled(), target);
+  }
+
+  // bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+  if (!this->_internal_address_derivation_hash().empty()) {
+    const std::string& _s = this->_internal_address_derivation_hash();
+    target = stream->WriteBytesMaybeAliased(8, _s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -316,6 +370,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Params::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+  // bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+  if (!this->_internal_address_derivation_hash().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_address_derivation_hash());
+  }
+
   // uint64 max_gas_before = 3 [json_name = "maxGasBefore"];
   if (this->_internal_max_gas_before() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
@@ -330,6 +390,11 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Params::_table_ = {
 
   // bool allow_all_code_ids = 1 [json_name = "allowAllCodeIds", (.gogoproto.customname) = "AllowAllCodeIDs"];
   if (this->_internal_allow_all_code_ids() != 0) {
+    total_size += 2;
+  }
+
+  // bool registration_enabled = 7 [json_name = "registrationEnabled"];
+  if (this->_internal_registration_enabled() != 0) {
     total_size += 2;
   }
 
@@ -352,6 +417,9 @@ void Params::MergeImpl(::google::protobuf::Message& to_msg, const ::google::prot
   (void) cached_has_bits;
 
   _this->_internal_mutable_allowed_code_ids()->MergeFrom(from._internal_allowed_code_ids());
+  if (!from._internal_address_derivation_hash().empty()) {
+    _this->_internal_set_address_derivation_hash(from._internal_address_derivation_hash());
+  }
   if (from._internal_max_gas_before() != 0) {
     _this->_internal_set_max_gas_before(from._internal_max_gas_before());
   }
@@ -360,6 +428,9 @@ void Params::MergeImpl(::google::protobuf::Message& to_msg, const ::google::prot
   }
   if (from._internal_allow_all_code_ids() != 0) {
     _this->_internal_set_allow_all_code_ids(from._internal_allow_all_code_ids());
+  }
+  if (from._internal_registration_enabled() != 0) {
+    _this->_internal_set_registration_enabled(from._internal_registration_enabled());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -377,11 +448,15 @@ PROTOBUF_NOINLINE bool Params::IsInitialized() const {
 
 void Params::InternalSwap(Params* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.allowed_code_ids_.InternalSwap(&other->_impl_.allowed_code_ids_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_derivation_hash_, lhs_arena,
+                                       &other->_impl_.address_derivation_hash_, rhs_arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Params, _impl_.allow_all_code_ids_)
-      + sizeof(Params::_impl_.allow_all_code_ids_)
+      PROTOBUF_FIELD_OFFSET(Params, _impl_.registration_enabled_)
+      + sizeof(Params::_impl_.registration_enabled_)
       - PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gas_before_)>(
           reinterpret_cast<char*>(&_impl_.max_gas_before_),
           reinterpret_cast<char*>(&other->_impl_.max_gas_before_));

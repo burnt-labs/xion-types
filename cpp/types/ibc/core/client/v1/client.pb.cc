@@ -217,7 +217,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fclient_2fv1_2fclient_2eproto[]
     "eight\030\002 \001(\004B\023\352\336\037\017revision_heightR\016revisi"
     "onHeight:\010\210\240\037\000\230\240\037\000\"1\n\006Params\022\'\n\017allowed_"
     "clients\030\001 \003(\tR\016allowedClientsB;Z9github."
-    "com/cosmos/ibc-go/v10/modules/core/02-cl"
+    "com/cosmos/ibc-go/v11/modules/core/02-cl"
     "ient/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fclient_2fv1_2fclient_2eproto_deps[2] =

@@ -367,7 +367,7 @@ void   xion__zk__v1__msg_update_params_response__free_unpacked
   assert(message->base.descriptor == &xion__zk__v1__msg_update_params_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor xion__zk__v1__msg_add_vkey__field_descriptors[4] =
+static const ProtobufCFieldDescriptor xion__zk__v1__msg_add_vkey__field_descriptors[5] =
 {
   {
     "authority",
@@ -417,17 +417,30 @@ static const ProtobufCFieldDescriptor xion__zk__v1__msg_add_vkey__field_descript
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "proof_system",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__MsgAddVKey, proof_system),
+    &xion__zk__v1__proof_system__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned xion__zk__v1__msg_add_vkey__field_indices_by_name[] = {
   0,   /* field[0] = authority */
   2,   /* field[2] = description */
   1,   /* field[1] = name */
+  4,   /* field[4] = proof_system */
   3,   /* field[3] = vkey_bytes */
 };
 static const ProtobufCIntRange xion__zk__v1__msg_add_vkey__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor xion__zk__v1__msg_add_vkey__descriptor =
 {
@@ -437,7 +450,7 @@ const ProtobufCMessageDescriptor xion__zk__v1__msg_add_vkey__descriptor =
   "Xion__Zk__V1__MsgAddVKey",
   "xion.zk.v1",
   sizeof(Xion__Zk__V1__MsgAddVKey),
-  4,
+  5,
   xion__zk__v1__msg_add_vkey__field_descriptors,
   xion__zk__v1__msg_add_vkey__field_indices_by_name,
   1,  xion__zk__v1__msg_add_vkey__number_ranges,
@@ -482,7 +495,7 @@ const ProtobufCMessageDescriptor xion__zk__v1__msg_add_vkey_response__descriptor
   (ProtobufCMessageInit) xion__zk__v1__msg_add_vkey_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor xion__zk__v1__msg_update_vkey__field_descriptors[4] =
+static const ProtobufCFieldDescriptor xion__zk__v1__msg_update_vkey__field_descriptors[5] =
 {
   {
     "authority",
@@ -532,17 +545,30 @@ static const ProtobufCFieldDescriptor xion__zk__v1__msg_update_vkey__field_descr
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "proof_system",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Zk__V1__MsgUpdateVKey, proof_system),
+    &xion__zk__v1__proof_system__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned xion__zk__v1__msg_update_vkey__field_indices_by_name[] = {
   0,   /* field[0] = authority */
   2,   /* field[2] = description */
   1,   /* field[1] = name */
+  4,   /* field[4] = proof_system */
   3,   /* field[3] = vkey_bytes */
 };
 static const ProtobufCIntRange xion__zk__v1__msg_update_vkey__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor xion__zk__v1__msg_update_vkey__descriptor =
 {
@@ -552,7 +578,7 @@ const ProtobufCMessageDescriptor xion__zk__v1__msg_update_vkey__descriptor =
   "Xion__Zk__V1__MsgUpdateVKey",
   "xion.zk.v1",
   sizeof(Xion__Zk__V1__MsgUpdateVKey),
-  4,
+  5,
   xion__zk__v1__msg_update_vkey__field_descriptors,
   xion__zk__v1__msg_update_vkey__field_indices_by_name,
   1,  xion__zk__v1__msg_update_vkey__number_ranges,

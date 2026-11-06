@@ -45,6 +45,12 @@ class VKey extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string authority = 5 [json_name = "authority"];</code>
      */
     protected $authority = '';
+    /**
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     *
+     * Generated from protobuf field <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     */
+    protected $proof_system = 0;
 
     /**
      * Constructor.
@@ -62,6 +68,8 @@ class VKey extends \Google\Protobuf\Internal\Message
      *           circuit_hash is the hash of the circuit this key is associated with.
      *     @type string $authority
      *           authority is the uploader of the verification key.
+     *     @type int $proof_system
+     *           proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
      * }
      */
     public function __construct($data = NULL) {
@@ -195,6 +203,32 @@ class VKey extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->authority = $var;
+
+        return $this;
+    }
+
+    /**
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     *
+     * Generated from protobuf field <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     * @return int
+     */
+    public function getProofSystem()
+    {
+        return $this->proof_system;
+    }
+
+    /**
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     *
+     * Generated from protobuf field <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setProofSystem($var)
+    {
+        GPBUtil::checkEnum($var, \Xion\Zk\V1\ProofSystem::class);
+        $this->proof_system = $var;
 
         return $this;
     }

@@ -88,12 +88,15 @@ typedef GPB_ENUM(IndexRange_FieldNumber) {
 };
 
 /**
- * IndexRange defines a range of indices [start, end) in the public inputs array.
+ * IndexRange defines a range of indices [start, end) in the public inputs
+ * array.
  **/
 GPB_FINAL @interface IndexRange : GPBMessage
 
+/** start is the inclusive lower bound of the index range. */
 @property(nonatomic, readwrite) uint64_t start;
 
+/** end is the exclusive upper bound of the index range. */
 @property(nonatomic, readwrite) uint64_t end;
 
 @end
@@ -111,28 +114,42 @@ typedef GPB_ENUM(PublicInputIndices_FieldNumber) {
 };
 
 /**
- * PublicInputIndices defines the indices for extracting data from public inputs.
+ * PublicInputIndices defines the indices for extracting data from public
+ * inputs.
  **/
 GPB_FINAL @interface PublicInputIndices : GPBMessage
 
+/** min_length is the minimum required length of the public inputs array. */
 @property(nonatomic, readwrite) uint64_t minLength;
 
+/** email_hash_index is the index of the email hash in the public inputs. */
 @property(nonatomic, readwrite) uint64_t emailHashIndex;
 
+/** dkim_domain_range is the index range for the DKIM domain in public inputs. */
 @property(nonatomic, readwrite, strong, null_resettable) IndexRange *dkimDomainRange;
 /** Test to see if @c dkimDomainRange has been set. */
 @property(nonatomic, readwrite) BOOL hasDkimDomainRange;
 
+/** dkim_hash_index is the index of the DKIM signature hash in public inputs. */
 @property(nonatomic, readwrite) uint64_t dkimHashIndex;
 
+/**
+ * tx_bytes_range is the index range for the transaction bytes in public
+ * inputs.
+ **/
 @property(nonatomic, readwrite, strong, null_resettable) IndexRange *txBytesRange;
 /** Test to see if @c txBytesRange has been set. */
 @property(nonatomic, readwrite) BOOL hasTxBytesRange;
 
+/** email_host_range is the index range for the email host in public inputs. */
 @property(nonatomic, readwrite, strong, null_resettable) IndexRange *emailHostRange;
 /** Test to see if @c emailHostRange has been set. */
 @property(nonatomic, readwrite) BOOL hasEmailHostRange;
 
+/**
+ * email_subject_range is the index range for the email subject in public
+ * inputs.
+ **/
 @property(nonatomic, readwrite, strong, null_resettable) IndexRange *emailSubjectRange;
 /** Test to see if @c emailSubjectRange has been set. */
 @property(nonatomic, readwrite) BOOL hasEmailSubjectRange;
@@ -161,7 +178,10 @@ GPB_FINAL @interface Params : GPBMessage
  **/
 @property(nonatomic, readwrite) uint64_t maxPubkeySizeBytes;
 
-/** public_input_indices defines the indices for extracting data from public inputs. */
+/**
+ * public_input_indices defines the indices for extracting data from public
+ * inputs.
+ **/
 @property(nonatomic, readwrite, strong, null_resettable) PublicInputIndices *publicInputIndices;
 /** Test to see if @c publicInputIndices has been set. */
 @property(nonatomic, readwrite) BOOL hasPublicInputIndices;

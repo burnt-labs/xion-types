@@ -645,40 +645,6 @@ const PACKAGE: &'static str = "ibc.core.client.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("ibc.core.client.v1.{}", Self::NAME)
             }}
-/// MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
-/// light client misbehaviour.
-/// This message has been deprecated. Use MsgUpdateClient instead.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgSubmitMisbehaviour {
-    /// client unique identifier
-    #[prost(string, tag="1")]
-    pub client_id: ::prost::alloc::string::String,
-    /// misbehaviour used for freezing the light client
-    #[prost(message, optional, tag="2")]
-    pub misbehaviour: ::core::option::Option<::prost_types::Any>,
-    /// signer address
-    #[prost(string, tag="3")]
-    pub signer: ::prost::alloc::string::String,
-}
-impl ::prost::Name for MsgSubmitMisbehaviour {
-const NAME: &'static str = "MsgSubmitMisbehaviour";
-const PACKAGE: &'static str = "ibc.core.client.v1";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("ibc.core.client.v1.{}", Self::NAME)
-            }}
-/// MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
-/// type.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgSubmitMisbehaviourResponse {
-}
-impl ::prost::Name for MsgSubmitMisbehaviourResponse {
-const NAME: &'static str = "MsgSubmitMisbehaviourResponse";
-const PACKAGE: &'static str = "ibc.core.client.v1";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("ibc.core.client.v1.{}", Self::NAME)
-            }}
 /// MsgRecoverClient defines the message used to recover a frozen or expired client.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

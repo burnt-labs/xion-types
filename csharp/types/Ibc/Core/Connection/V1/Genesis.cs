@@ -34,7 +34,7 @@ namespace Ibc.Core.Connection.V1 {
             "dENvbm5lY3Rpb25QYXRocxI4ChhuZXh0X2Nvbm5lY3Rpb25fc2VxdWVuY2UY",
             "AyABKARSFm5leHRDb25uZWN0aW9uU2VxdWVuY2USPAoGcGFyYW1zGAQgASgL",
             "Mh4uaWJjLmNvcmUuY29ubmVjdGlvbi52MS5QYXJhbXNCBMjeHwBSBnBhcmFt",
-            "c0I/Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvY29y",
+            "c0I/Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvY29y",
             "ZS8wMy1jb25uZWN0aW9uL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Ibc.Core.Connection.V1.ConnectionReflection.Descriptor, },

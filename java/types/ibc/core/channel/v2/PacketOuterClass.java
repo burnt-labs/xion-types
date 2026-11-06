@@ -4172,7 +4172,7 @@ public final class PacketOuterClass {
       "NE\022&\n\025PACKET_STATUS_SUCCESS\020\001\032\013\212\235 \007Succe" +
       "ss\022&\n\025PACKET_STATUS_FAILURE\020\002\032\013\212\235 \007Failu" +
       "re\022\"\n\023PACKET_STATUS_ASYNC\020\003\032\t\212\235 \005AsyncB?" +
-      "Z=github.com/cosmos/ibc-go/v10/modules/c" +
+      "Z=github.com/cosmos/ibc-go/v11/modules/c" +
       "ore/04-channel/v2/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

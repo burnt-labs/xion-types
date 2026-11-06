@@ -29,7 +29,8 @@ class Params extends \Google\Protobuf\Internal\Message
      */
     protected $max_pubkey_size_bytes = 0;
     /**
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      *
      * Generated from protobuf field <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
      */
@@ -47,7 +48,8 @@ class Params extends \Google\Protobuf\Internal\Message
      *           max_pubkey_size_bytes caps the allowed DKIM public key size (base64
      *           decoded).
      *     @type \Xion\Dkim\V1\PublicInputIndices $public_input_indices
-     *           public_input_indices defines the indices for extracting data from public inputs.
+     *           public_input_indices defines the indices for extracting data from public
+     *           inputs.
      * }
      */
     public function __construct($data = NULL) {
@@ -110,7 +112,8 @@ class Params extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      *
      * Generated from protobuf field <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
      * @return \Xion\Dkim\V1\PublicInputIndices|null
@@ -131,7 +134,8 @@ class Params extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      *
      * Generated from protobuf field <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
      * @param \Xion\Dkim\V1\PublicInputIndices $var

@@ -56,6 +56,7 @@ PROTOBUF_CONSTEXPR MsgTransfer::MsgTransfer(::_pbi::ConstantInitialized)
       /*decltype(_impl_.token_)*/ nullptr,
       /*decltype(_impl_.timeout_height_)*/ nullptr,
       /*decltype(_impl_.timeout_timestamp_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.use_aliasing_)*/ false,
     } {}
 struct MsgTransferDefaultTypeInternal {
   PROTOBUF_CONSTEXPR MsgTransferDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -144,12 +145,14 @@ const ::uint32_t TableStruct_ibc_2fapplications_2ftransfer_2fv1_2ftx_2eproto::of
     PROTOBUF_FIELD_OFFSET(::ibc::applications::transfer::v1::MsgTransfer, _impl_.timeout_timestamp_),
     PROTOBUF_FIELD_OFFSET(::ibc::applications::transfer::v1::MsgTransfer, _impl_.memo_),
     PROTOBUF_FIELD_OFFSET(::ibc::applications::transfer::v1::MsgTransfer, _impl_.encoding_),
+    PROTOBUF_FIELD_OFFSET(::ibc::applications::transfer::v1::MsgTransfer, _impl_.use_aliasing_),
     ~0u,
     ~0u,
     0,
     ~0u,
     ~0u,
     1,
+    ~0u,
     ~0u,
     ~0u,
     ~0u,
@@ -186,10 +189,10 @@ const ::uint32_t TableStruct_ibc_2fapplications_2ftransfer_2fv1_2ftx_2eproto::of
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 17, -1, sizeof(::ibc::applications::transfer::v1::MsgTransfer)},
-        {26, -1, -1, sizeof(::ibc::applications::transfer::v1::MsgTransferResponse)},
-        {35, 45, -1, sizeof(::ibc::applications::transfer::v1::MsgUpdateParams)},
-        {47, -1, -1, sizeof(::ibc::applications::transfer::v1::MsgUpdateParamsResponse)},
+        {0, 18, -1, sizeof(::ibc::applications::transfer::v1::MsgTransfer)},
+        {28, -1, -1, sizeof(::ibc::applications::transfer::v1::MsgTransferResponse)},
+        {37, 47, -1, sizeof(::ibc::applications::transfer::v1::MsgUpdateParams)},
+        {49, -1, -1, sizeof(::ibc::applications::transfer::v1::MsgUpdateParamsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -205,7 +208,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2ftx_2ep
     "sg/v1/msg.proto\032\036cosmos/base/v1beta1/coi"
     "n.proto\032\037ibc/core/client/v1/client.proto"
     "\032+ibc/applications/transfer/v1/transfer."
-    "proto\"\234\003\n\013MsgTransfer\022\037\n\013source_port\030\001 \001"
+    "proto\"\306\003\n\013MsgTransfer\022\037\n\013source_port\030\001 \001"
     "(\tR\nsourcePort\022%\n\016source_channel\030\002 \001(\tR\r"
     "sourceChannel\022:\n\005token\030\003 \001(\0132\031.cosmos.ba"
     "se.v1beta1.CoinB\t\310\336\037\000\250\347\260*\001R\005token\022\026\n\006sen"
@@ -214,21 +217,22 @@ const char descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2ftx_2ep
     ".client.v1.HeightB\t\310\336\037\000\250\347\260*\001R\rtimeoutHei"
     "ght\022+\n\021timeout_timestamp\030\007 \001(\004R\020timeoutT"
     "imestamp\022\022\n\004memo\030\010 \001(\tR\004memo\022\032\n\010encoding"
-    "\030\t \001(\tR\010encoding:*\210\240\037\000\202\347\260*\006sender\212\347\260*\026co"
-    "smos-sdk/MsgTransfer\"7\n\023MsgTransferRespo"
-    "nse\022\032\n\010sequence\030\001 \001(\004R\010sequence:\004\210\240\037\000\"~\n"
-    "\017MsgUpdateParams\022\026\n\006signer\030\001 \001(\tR\006signer"
-    "\022B\n\006params\030\002 \001(\0132$.ibc.applications.tran"
-    "sfer.v1.ParamsB\004\310\336\037\000R\006params:\017\210\240\037\000\202\347\260*\006s"
-    "igner\"\031\n\027MsgUpdateParamsResponse2\354\001\n\003Msg"
-    "\022h\n\010Transfer\022).ibc.applications.transfer"
-    ".v1.MsgTransfer\0321.ibc.applications.trans"
-    "fer.v1.MsgTransferResponse\022t\n\014UpdatePara"
-    "ms\022-.ibc.applications.transfer.v1.MsgUpd"
-    "ateParams\0325.ibc.applications.transfer.v1"
-    ".MsgUpdateParamsResponse\032\005\200\347\260*\001B:Z8githu"
-    "b.com/cosmos/ibc-go/v10/modules/apps/tra"
-    "nsfer/typesb\006proto3"
+    "\030\t \001(\tR\010encoding\022(\n\014use_aliasing\030\n \001(\010B\005"
+    "\250\347\260*\001R\013useAliasing:*\210\240\037\000\202\347\260*\006sender\212\347\260*\026"
+    "cosmos-sdk/MsgTransfer\"7\n\023MsgTransferRes"
+    "ponse\022\032\n\010sequence\030\001 \001(\004R\010sequence:\004\210\240\037\000\""
+    "~\n\017MsgUpdateParams\022\026\n\006signer\030\001 \001(\tR\006sign"
+    "er\022B\n\006params\030\002 \001(\0132$.ibc.applications.tr"
+    "ansfer.v1.ParamsB\004\310\336\037\000R\006params:\017\210\240\037\000\202\347\260*"
+    "\006signer\"\031\n\027MsgUpdateParamsResponse2\354\001\n\003M"
+    "sg\022h\n\010Transfer\022).ibc.applications.transf"
+    "er.v1.MsgTransfer\0321.ibc.applications.tra"
+    "nsfer.v1.MsgTransferResponse\022t\n\014UpdatePa"
+    "rams\022-.ibc.applications.transfer.v1.MsgU"
+    "pdateParams\0325.ibc.applications.transfer."
+    "v1.MsgUpdateParamsResponse\032\005\200\347\260*\001B:Z8git"
+    "hub.com/cosmos/ibc-go/v11/modules/apps/t"
+    "ransfer/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2ftx_2eproto_deps[6] =
     {
@@ -243,7 +247,7 @@ static ::absl::once_flag descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2ft
 const ::_pbi::DescriptorTable descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2ftx_2eproto = {
     false,
     false,
-    1179,
+    1221,
     descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2ftx_2eproto,
     "ibc/applications/transfer/v1/tx.proto",
     &descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2ftx_2eproto_once,
@@ -330,6 +334,7 @@ MsgTransfer::MsgTransfer(const MsgTransfer& from) : ::google::protobuf::Message(
       decltype(_impl_.token_){nullptr},
       decltype(_impl_.timeout_height_){nullptr},
       decltype(_impl_.timeout_timestamp_){},
+      decltype(_impl_.use_aliasing_){},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -381,7 +386,9 @@ MsgTransfer::MsgTransfer(const MsgTransfer& from) : ::google::protobuf::Message(
   if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
     _this->_impl_.timeout_height_ = new ::ibc::core::client::v1::Height(*from._impl_.timeout_height_);
   }
-  _this->_impl_.timeout_timestamp_ = from._impl_.timeout_timestamp_;
+  ::memcpy(&_impl_.timeout_timestamp_, &from._impl_.timeout_timestamp_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.use_aliasing_) -
+    reinterpret_cast<char*>(&_impl_.timeout_timestamp_)) + sizeof(_impl_.use_aliasing_));
 
   // @@protoc_insertion_point(copy_constructor:ibc.applications.transfer.v1.MsgTransfer)
 }
@@ -399,6 +406,7 @@ inline void MsgTransfer::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.token_){nullptr},
       decltype(_impl_.timeout_height_){nullptr},
       decltype(_impl_.timeout_timestamp_){::uint64_t{0u}},
+      decltype(_impl_.use_aliasing_){false},
   };
   _impl_.source_port_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -468,7 +476,9 @@ PROTOBUF_NOINLINE void MsgTransfer::Clear() {
       _impl_.timeout_height_->Clear();
     }
   }
-  _impl_.timeout_timestamp_ = ::uint64_t{0u};
+  ::memset(&_impl_.timeout_timestamp_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.use_aliasing_) -
+      reinterpret_cast<char*>(&_impl_.timeout_timestamp_)) + sizeof(_impl_.use_aliasing_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -481,15 +491,15 @@ const char* MsgTransfer::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 9, 2, 108, 2> MsgTransfer::_table_ = {
+const ::_pbi::TcParseTable<4, 10, 2, 108, 2> MsgTransfer::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_._has_bits_),
     0, // no _extensions_
-    9, 120,  // max_field_number, fast_idx_mask
+    10, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966784,  // skipmap
+    4294966272,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    9,  // num_field_entries
+    10,  // num_field_entries
     2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_MsgTransfer_default_instance_._instance,
@@ -523,7 +533,9 @@ const ::_pbi::TcParseTable<4, 9, 2, 108, 2> MsgTransfer::_table_ = {
     // string encoding = 9 [json_name = "encoding"];
     {::_pbi::TcParser::FastUS1,
      {74, 63, 0, PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.encoding_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(MsgTransfer, _impl_.use_aliasing_), 63>(),
+     {80, 63, 0, PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.use_aliasing_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -559,6 +571,9 @@ const ::_pbi::TcParseTable<4, 9, 2, 108, 2> MsgTransfer::_table_ = {
     // string encoding = 9 [json_name = "encoding"];
     {PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.encoding_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];
+    {PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.use_aliasing_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetTable<::cosmos::base::v1beta1::Coin>()},
     {::_pbi::TcParser::GetTable<::ibc::core::client::v1::Height>()},
@@ -651,6 +666,13 @@ const ::_pbi::TcParseTable<4, 9, 2, 108, 2> MsgTransfer::_table_ = {
     target = stream->WriteStringMaybeAliased(9, _s, target);
   }
 
+  // bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];
+  if (this->_internal_use_aliasing() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        10, this->_internal_use_aliasing(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -727,6 +749,11 @@ const ::_pbi::TcParseTable<4, 9, 2, 108, 2> MsgTransfer::_table_ = {
         this->_internal_timeout_timestamp());
   }
 
+  // bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];
+  if (this->_internal_use_aliasing() != 0) {
+    total_size += 2;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -777,6 +804,9 @@ void MsgTransfer::MergeImpl(::google::protobuf::Message& to_msg, const ::google:
   if (from._internal_timeout_timestamp() != 0) {
     _this->_internal_set_timeout_timestamp(from._internal_timeout_timestamp());
   }
+  if (from._internal_use_aliasing() != 0) {
+    _this->_internal_set_use_aliasing(from._internal_use_aliasing());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -810,8 +840,8 @@ void MsgTransfer::InternalSwap(MsgTransfer* other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.encoding_, lhs_arena,
                                        &other->_impl_.encoding_, rhs_arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.timeout_timestamp_)
-      + sizeof(MsgTransfer::_impl_.timeout_timestamp_)
+      PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.use_aliasing_)
+      + sizeof(MsgTransfer::_impl_.use_aliasing_)
       - PROTOBUF_FIELD_OFFSET(MsgTransfer, _impl_.token_)>(
           reinterpret_cast<char*>(&_impl_.token_),
           reinterpret_cast<char*>(&other->_impl_.token_));

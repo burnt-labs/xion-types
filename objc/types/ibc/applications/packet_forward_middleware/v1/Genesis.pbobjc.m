@@ -122,7 +122,6 @@ typedef struct GenesisState__storage_ {
 @dynamic refundSequence;
 @dynamic retriesRemaining;
 @dynamic timeout;
-@dynamic nonrefundable;
 
 typedef struct InFlightPacket__storage_ {
   uint32_t _has_storage_[1];
@@ -244,15 +243,6 @@ typedef struct InFlightPacket__storage_ {
         .offset = (uint32_t)offsetof(InFlightPacket__storage_, timeout),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeUInt64,
-      },
-      {
-        .name = "nonrefundable",
-        .dataTypeSpecific.clazz = Nil,
-        .number = InFlightPacket_FieldNumber_Nonrefundable,
-        .hasIndex = 11,
-        .offset = 12,  // Stored in _has_storage_ to save space.
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeBool,
       },
     };
     GPBDescriptor *localDescriptor =

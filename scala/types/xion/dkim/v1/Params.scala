@@ -13,7 +13,8 @@ package xion.dkim.v1
   *   max_pubkey_size_bytes caps the allowed DKIM public key size (base64
   *   decoded).
   * @param publicInputIndices
-  *   public_input_indices defines the indices for extracting data from public inputs.
+  *   public_input_indices defines the indices for extracting data from public
+  *   inputs.
   */
 @SerialVersionUID(0L)
 final case class Params(

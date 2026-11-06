@@ -19,7 +19,6 @@ sealed abstract class SignMode(val value: _root_.scala.Int) extends _root_.scala
   type RecognizedType = cosmos.tx.signing.v1beta1.SignMode.Recognized
   def isSignModeUnspecified: _root_.scala.Boolean = false
   def isSignModeDirect: _root_.scala.Boolean = false
-  def isSignModeTextual: _root_.scala.Boolean = false
   def isSignModeDirectAux: _root_.scala.Boolean = false
   def isSignModeLegacyAminoJson: _root_.scala.Boolean = false
   def isSignModeEip191: _root_.scala.Boolean = false
@@ -51,19 +50,6 @@ object SignMode extends _root_.scalapb.GeneratedEnumCompanion[SignMode] {
     override def isSignModeDirect: _root_.scala.Boolean = true
   }
   
-  /** SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-    * human-readable textual representation on top of the binary representation
-    * from SIGN_MODE_DIRECT.
-    *
-    * Since: cosmos-sdk 0.50
-    */
-  @SerialVersionUID(0L)
-  case object SIGN_MODE_TEXTUAL extends SignMode(2) with SignMode.Recognized {
-    val index = 2
-    val name = "SIGN_MODE_TEXTUAL"
-    override def isSignModeTextual: _root_.scala.Boolean = true
-  }
-  
   /** SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
     * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
     * require signers signing over other signers' `signer_info`.
@@ -72,7 +58,7 @@ object SignMode extends _root_.scalapb.GeneratedEnumCompanion[SignMode] {
     */
   @SerialVersionUID(0L)
   case object SIGN_MODE_DIRECT_AUX extends SignMode(3) with SignMode.Recognized {
-    val index = 3
+    val index = 2
     val name = "SIGN_MODE_DIRECT_AUX"
     override def isSignModeDirectAux: _root_.scala.Boolean = true
   }
@@ -82,7 +68,7 @@ object SignMode extends _root_.scalapb.GeneratedEnumCompanion[SignMode] {
     */
   @SerialVersionUID(0L)
   case object SIGN_MODE_LEGACY_AMINO_JSON extends SignMode(127) with SignMode.Recognized {
-    val index = 4
+    val index = 3
     val name = "SIGN_MODE_LEGACY_AMINO_JSON"
     override def isSignModeLegacyAminoJson: _root_.scala.Boolean = true
   }
@@ -100,18 +86,17 @@ object SignMode extends _root_.scalapb.GeneratedEnumCompanion[SignMode] {
     */
   @SerialVersionUID(0L)
   case object SIGN_MODE_EIP_191 extends SignMode(191) with SignMode.Recognized {
-    val index = 5
+    val index = 4
     val name = "SIGN_MODE_EIP_191"
     override def isSignModeEip191: _root_.scala.Boolean = true
   }
   
   @SerialVersionUID(0L)
   final case class Unrecognized(unrecognizedValue: _root_.scala.Int) extends SignMode(unrecognizedValue) with _root_.scalapb.UnrecognizedEnum
-  lazy val values: scala.collection.immutable.Seq[ValueType] = scala.collection.immutable.Seq(SIGN_MODE_UNSPECIFIED, SIGN_MODE_DIRECT, SIGN_MODE_TEXTUAL, SIGN_MODE_DIRECT_AUX, SIGN_MODE_LEGACY_AMINO_JSON, SIGN_MODE_EIP_191)
+  lazy val values: scala.collection.immutable.Seq[ValueType] = scala.collection.immutable.Seq(SIGN_MODE_UNSPECIFIED, SIGN_MODE_DIRECT, SIGN_MODE_DIRECT_AUX, SIGN_MODE_LEGACY_AMINO_JSON, SIGN_MODE_EIP_191)
   def fromValue(__value: _root_.scala.Int): SignMode = __value match {
     case 0 => SIGN_MODE_UNSPECIFIED
     case 1 => SIGN_MODE_DIRECT
-    case 2 => SIGN_MODE_TEXTUAL
     case 3 => SIGN_MODE_DIRECT_AUX
     case 127 => SIGN_MODE_LEGACY_AMINO_JSON
     case 191 => SIGN_MODE_EIP_191

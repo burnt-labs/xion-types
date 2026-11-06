@@ -24,6 +24,7 @@
 #import "ibc/lightclients/wasm/v1/Query.pbobjc.h"
 #import "google/api/Annotations.pbobjc.h"
 #import "cosmos/base/query/v1beta1/Pagination.pbobjc.h"
+#import "cosmos_proto/Cosmos.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -53,6 +54,7 @@ GPBObjCClassDeclaration(QueryCodeResponse);
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     registry = [[GPBExtensionRegistry alloc] init];
     // Merge in the imports (direct or indirect) that defined extensions.
+    [registry addExtensions:[CosmosRoot extensionRegistry]];
     [registry addExtensions:[GAPIAnnotationsRoot extensionRegistry]];
   }
   return registry;

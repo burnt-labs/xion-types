@@ -58,7 +58,8 @@ public object MsgRegisterAccountKt {
 
     /**
      * ```
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      * ```
      *
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
@@ -72,7 +73,8 @@ public object MsgRegisterAccountKt {
       }
     /**
      * ```
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      * ```
      *
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
@@ -114,7 +116,7 @@ public object MsgRegisterAccountKt {
     public class FundsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -126,7 +128,7 @@ public object MsgRegisterAccountKt {
       )
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -139,7 +141,7 @@ public object MsgRegisterAccountKt {
     }
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -153,7 +155,7 @@ public object MsgRegisterAccountKt {
     }
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -166,7 +168,7 @@ public object MsgRegisterAccountKt {
     }
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -180,7 +182,7 @@ public object MsgRegisterAccountKt {
     }
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -194,7 +196,7 @@ public object MsgRegisterAccountKt {
     }
     /**
      * ```
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * ```
      *
      * `repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];`
@@ -208,7 +210,7 @@ public object MsgRegisterAccountKt {
 
     /**
      * ```
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      * ```
      *
@@ -223,7 +225,7 @@ public object MsgRegisterAccountKt {
       }
     /**
      * ```
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      * ```
      *

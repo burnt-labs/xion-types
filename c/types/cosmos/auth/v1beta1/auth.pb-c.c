@@ -379,7 +379,7 @@ const ProtobufCMessageDescriptor cosmos__auth__v1beta1__module_credential__descr
   (ProtobufCMessageInit) cosmos__auth__v1beta1__module_credential__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor cosmos__auth__v1beta1__params__field_descriptors[5] =
+static const ProtobufCFieldDescriptor cosmos__auth__v1beta1__params__field_descriptors[6] =
 {
   {
     "max_memo_characters",
@@ -441,10 +441,23 @@ static const ProtobufCFieldDescriptor cosmos__auth__v1beta1__params__field_descr
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "sig_verify_cost_mldsa65",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Auth__V1beta1__Params, sig_verify_cost_mldsa65),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmos__auth__v1beta1__params__field_indices_by_name[] = {
   0,   /* field[0] = max_memo_characters */
   3,   /* field[3] = sig_verify_cost_ed25519 */
+  5,   /* field[5] = sig_verify_cost_mldsa65 */
   4,   /* field[4] = sig_verify_cost_secp256k1 */
   1,   /* field[1] = tx_sig_limit */
   2,   /* field[2] = tx_size_cost_per_byte */
@@ -452,7 +465,7 @@ static const unsigned cosmos__auth__v1beta1__params__field_indices_by_name[] = {
 static const ProtobufCIntRange cosmos__auth__v1beta1__params__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor cosmos__auth__v1beta1__params__descriptor =
 {
@@ -462,7 +475,7 @@ const ProtobufCMessageDescriptor cosmos__auth__v1beta1__params__descriptor =
   "Cosmos__Auth__V1beta1__Params",
   "cosmos.auth.v1beta1",
   sizeof(Cosmos__Auth__V1beta1__Params),
-  5,
+  6,
   cosmos__auth__v1beta1__params__field_descriptors,
   cosmos__auth__v1beta1__params__field_indices_by_name,
   1,  cosmos__auth__v1beta1__params__number_ranges,

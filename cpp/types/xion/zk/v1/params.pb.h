@@ -31,6 +31,7 @@
 #include "google/protobuf/message.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "amino/amino.pb.h"
 #include "gogoproto/gogo.pb.h"
@@ -72,6 +73,40 @@ namespace protobuf {
 namespace xion {
 namespace zk {
 namespace v1 {
+enum ProofSystem : int {
+  PROOF_SYSTEM_UNSPECIFIED = 0,
+  PROOF_SYSTEM_GROTH16 = 1,
+  PROOF_SYSTEM_ULTRA_HONK_ZK = 2,
+  PROOF_SYSTEM_GROTH16_GNARK = 3,
+  ProofSystem_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  ProofSystem_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool ProofSystem_IsValid(int value);
+constexpr ProofSystem ProofSystem_MIN = static_cast<ProofSystem>(0);
+constexpr ProofSystem ProofSystem_MAX = static_cast<ProofSystem>(3);
+constexpr int ProofSystem_ARRAYSIZE = 3 + 1;
+const ::google::protobuf::EnumDescriptor*
+ProofSystem_descriptor();
+template <typename T>
+const std::string& ProofSystem_Name(T value) {
+  static_assert(std::is_same<T, ProofSystem>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to ProofSystem_Name().");
+  return ProofSystem_Name(static_cast<ProofSystem>(value));
+}
+template <>
+inline const std::string& ProofSystem_Name(ProofSystem value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ProofSystem_descriptor,
+                                                 0, 3>(
+      static_cast<int>(value));
+}
+inline bool ProofSystem_Parse(absl::string_view name, ProofSystem* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ProofSystem>(
+      ProofSystem_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -209,6 +244,12 @@ class Params final :
     kMaxVkeySizeBytesFieldNumber = 1,
     kUploadChunkSizeFieldNumber = 2,
     kUploadChunkGasFieldNumber = 3,
+    kMaxGroth16ProofSizeBytesFieldNumber = 4,
+    kMaxGroth16PublicInputSizeBytesFieldNumber = 5,
+    kMaxUltraHonkProofSizeBytesFieldNumber = 6,
+    kMaxUltraHonkPublicInputSizeBytesFieldNumber = 7,
+    kMaxGnarkProofSizeBytesFieldNumber = 8,
+    kMaxGnarkPublicInputSizeBytesFieldNumber = 9,
   };
   // uint64 max_vkey_size_bytes = 1 [json_name = "maxVkeySizeBytes"];
   void clear_max_vkey_size_bytes() ;
@@ -240,12 +281,72 @@ class Params final :
   void _internal_set_upload_chunk_gas(::uint64_t value);
 
   public:
+  // uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];
+  void clear_max_groth16_proof_size_bytes() ;
+  ::uint64_t max_groth16_proof_size_bytes() const;
+  void set_max_groth16_proof_size_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_max_groth16_proof_size_bytes() const;
+  void _internal_set_max_groth16_proof_size_bytes(::uint64_t value);
+
+  public:
+  // uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];
+  void clear_max_groth16_public_input_size_bytes() ;
+  ::uint64_t max_groth16_public_input_size_bytes() const;
+  void set_max_groth16_public_input_size_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_max_groth16_public_input_size_bytes() const;
+  void _internal_set_max_groth16_public_input_size_bytes(::uint64_t value);
+
+  public:
+  // uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];
+  void clear_max_ultra_honk_proof_size_bytes() ;
+  ::uint64_t max_ultra_honk_proof_size_bytes() const;
+  void set_max_ultra_honk_proof_size_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_max_ultra_honk_proof_size_bytes() const;
+  void _internal_set_max_ultra_honk_proof_size_bytes(::uint64_t value);
+
+  public:
+  // uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];
+  void clear_max_ultra_honk_public_input_size_bytes() ;
+  ::uint64_t max_ultra_honk_public_input_size_bytes() const;
+  void set_max_ultra_honk_public_input_size_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_max_ultra_honk_public_input_size_bytes() const;
+  void _internal_set_max_ultra_honk_public_input_size_bytes(::uint64_t value);
+
+  public:
+  // uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];
+  void clear_max_gnark_proof_size_bytes() ;
+  ::uint64_t max_gnark_proof_size_bytes() const;
+  void set_max_gnark_proof_size_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_max_gnark_proof_size_bytes() const;
+  void _internal_set_max_gnark_proof_size_bytes(::uint64_t value);
+
+  public:
+  // uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];
+  void clear_max_gnark_public_input_size_bytes() ;
+  ::uint64_t max_gnark_public_input_size_bytes() const;
+  void set_max_gnark_public_input_size_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_max_gnark_public_input_size_bytes() const;
+  void _internal_set_max_gnark_public_input_size_bytes(::uint64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:xion.zk.v1.Params)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 3, 0, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<4, 9, 0, 0, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -253,6 +354,12 @@ class Params final :
     ::uint64_t max_vkey_size_bytes_;
     ::uint64_t upload_chunk_size_;
     ::uint64_t upload_chunk_gas_;
+    ::uint64_t max_groth16_proof_size_bytes_;
+    ::uint64_t max_groth16_public_input_size_bytes_;
+    ::uint64_t max_ultra_honk_proof_size_bytes_;
+    ::uint64_t max_ultra_honk_public_input_size_bytes_;
+    ::uint64_t max_gnark_proof_size_bytes_;
+    ::uint64_t max_gnark_public_input_size_bytes_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -342,6 +449,138 @@ inline void Params::_internal_set_upload_chunk_gas(::uint64_t value) {
   _impl_.upload_chunk_gas_ = value;
 }
 
+// uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];
+inline void Params::clear_max_groth16_proof_size_bytes() {
+  _impl_.max_groth16_proof_size_bytes_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::max_groth16_proof_size_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.Params.max_groth16_proof_size_bytes)
+  return _internal_max_groth16_proof_size_bytes();
+}
+inline void Params::set_max_groth16_proof_size_bytes(::uint64_t value) {
+  _internal_set_max_groth16_proof_size_bytes(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.Params.max_groth16_proof_size_bytes)
+}
+inline ::uint64_t Params::_internal_max_groth16_proof_size_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.max_groth16_proof_size_bytes_;
+}
+inline void Params::_internal_set_max_groth16_proof_size_bytes(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.max_groth16_proof_size_bytes_ = value;
+}
+
+// uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];
+inline void Params::clear_max_groth16_public_input_size_bytes() {
+  _impl_.max_groth16_public_input_size_bytes_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::max_groth16_public_input_size_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.Params.max_groth16_public_input_size_bytes)
+  return _internal_max_groth16_public_input_size_bytes();
+}
+inline void Params::set_max_groth16_public_input_size_bytes(::uint64_t value) {
+  _internal_set_max_groth16_public_input_size_bytes(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.Params.max_groth16_public_input_size_bytes)
+}
+inline ::uint64_t Params::_internal_max_groth16_public_input_size_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.max_groth16_public_input_size_bytes_;
+}
+inline void Params::_internal_set_max_groth16_public_input_size_bytes(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.max_groth16_public_input_size_bytes_ = value;
+}
+
+// uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];
+inline void Params::clear_max_ultra_honk_proof_size_bytes() {
+  _impl_.max_ultra_honk_proof_size_bytes_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::max_ultra_honk_proof_size_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.Params.max_ultra_honk_proof_size_bytes)
+  return _internal_max_ultra_honk_proof_size_bytes();
+}
+inline void Params::set_max_ultra_honk_proof_size_bytes(::uint64_t value) {
+  _internal_set_max_ultra_honk_proof_size_bytes(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.Params.max_ultra_honk_proof_size_bytes)
+}
+inline ::uint64_t Params::_internal_max_ultra_honk_proof_size_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.max_ultra_honk_proof_size_bytes_;
+}
+inline void Params::_internal_set_max_ultra_honk_proof_size_bytes(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.max_ultra_honk_proof_size_bytes_ = value;
+}
+
+// uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];
+inline void Params::clear_max_ultra_honk_public_input_size_bytes() {
+  _impl_.max_ultra_honk_public_input_size_bytes_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::max_ultra_honk_public_input_size_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.Params.max_ultra_honk_public_input_size_bytes)
+  return _internal_max_ultra_honk_public_input_size_bytes();
+}
+inline void Params::set_max_ultra_honk_public_input_size_bytes(::uint64_t value) {
+  _internal_set_max_ultra_honk_public_input_size_bytes(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.Params.max_ultra_honk_public_input_size_bytes)
+}
+inline ::uint64_t Params::_internal_max_ultra_honk_public_input_size_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.max_ultra_honk_public_input_size_bytes_;
+}
+inline void Params::_internal_set_max_ultra_honk_public_input_size_bytes(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.max_ultra_honk_public_input_size_bytes_ = value;
+}
+
+// uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];
+inline void Params::clear_max_gnark_proof_size_bytes() {
+  _impl_.max_gnark_proof_size_bytes_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::max_gnark_proof_size_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.Params.max_gnark_proof_size_bytes)
+  return _internal_max_gnark_proof_size_bytes();
+}
+inline void Params::set_max_gnark_proof_size_bytes(::uint64_t value) {
+  _internal_set_max_gnark_proof_size_bytes(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.Params.max_gnark_proof_size_bytes)
+}
+inline ::uint64_t Params::_internal_max_gnark_proof_size_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.max_gnark_proof_size_bytes_;
+}
+inline void Params::_internal_set_max_gnark_proof_size_bytes(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.max_gnark_proof_size_bytes_ = value;
+}
+
+// uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];
+inline void Params::clear_max_gnark_public_input_size_bytes() {
+  _impl_.max_gnark_public_input_size_bytes_ = ::uint64_t{0u};
+}
+inline ::uint64_t Params::max_gnark_public_input_size_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.Params.max_gnark_public_input_size_bytes)
+  return _internal_max_gnark_public_input_size_bytes();
+}
+inline void Params::set_max_gnark_public_input_size_bytes(::uint64_t value) {
+  _internal_set_max_gnark_public_input_size_bytes(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.Params.max_gnark_public_input_size_bytes)
+}
+inline ::uint64_t Params::_internal_max_gnark_public_input_size_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.max_gnark_public_input_size_bytes_;
+}
+inline void Params::_internal_set_max_gnark_public_input_size_bytes(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.max_gnark_public_input_size_bytes_ = value;
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -351,6 +590,19 @@ inline void Params::_internal_set_upload_chunk_gas(::uint64_t value) {
 }  // namespace zk
 }  // namespace xion
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::xion::zk::v1::ProofSystem> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::xion::zk::v1::ProofSystem>() {
+  return ::xion::zk::v1::ProofSystem_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

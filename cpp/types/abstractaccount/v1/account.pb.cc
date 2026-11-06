@@ -113,9 +113,9 @@ const char descriptor_table_protodef_abstractaccount_2fv1_2faccount_2eproto[] PR
     "uence\030\003 \001(\004R\010sequence:(\210\240\037\000\350\240\037\000\312\264-\034cosmo"
     "s.auth.v1beta1.AccountI\"U\n\tNilPubKey\022#\n\r"
     "address_bytes\030\001 \001(\014R\014addressBytes:#\230\240\037\000\212"
-    "\347\260*\032abstract-account/NilPubKeyB@Z>github"
-    ".com/burnt-labs/abstract-account/x/abstr"
-    "actaccount/typesb\006proto3"
+    "\347\260*\032abstract-account/NilPubKeyB4Z2github"
+    ".com/burnt-labs/xion/x/abstractaccount/t"
+    "ypesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_abstractaccount_2fv1_2faccount_2eproto_deps[3] =
     {
@@ -127,7 +127,7 @@ static ::absl::once_flag descriptor_table_abstractaccount_2fv1_2faccount_2eproto
 const ::_pbi::DescriptorTable descriptor_table_abstractaccount_2fv1_2faccount_2eproto = {
     false,
     false,
-    464,
+    452,
     descriptor_table_protodef_abstractaccount_2fv1_2faccount_2eproto,
     "abstractaccount/v1/account.proto",
     &descriptor_table_abstractaccount_2fv1_2faccount_2eproto_once,

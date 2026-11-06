@@ -76,7 +76,7 @@ typedef GPB_ENUM(DecCoin_FieldNumber) {
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
  *
- * NOTE: The amount field is an Dec which implements the custom method
+ * NOTE: The amount field is a Dec which implements the custom method
  * signatures required by gogoproto.
  **/
 GPB_FINAL @interface DecCoin : GPBMessage

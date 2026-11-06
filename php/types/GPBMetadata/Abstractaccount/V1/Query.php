@@ -19,13 +19,22 @@ class Query
         \GPBMetadata\Google\Api\Annotations::initOnce();
         $pool->internalAddGeneratedFile(
             '
-©
+ï
 abstractaccount/v1/query.protoabstractaccount.v1cosmos/query/v1/query.protogoogle/api/annotations.proto"
 QueryParamsRequest"I
 QueryParamsResponse2
-params (2.abstractaccount.v1.ParamsRparams2Œ
+params (2.abstractaccount.v1.ParamsRparams"H
+QueryAccountAddressRequest
+sender (	Rsender
+salt (Rsalt"W
+QueryAccountAddressResponse
+address (	Raddress
+
+registered (R
+registered2»
 Query‚
-Params&.abstractaccount.v1.QueryParamsRequest\'.abstractaccount.v1.QueryParamsResponse"\'ˆç°*‚Óä“/abstractaccount/v1/paramsB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesbproto3'
+Params&.abstractaccount.v1.QueryParamsRequest\'.abstractaccount.v1.QueryParamsResponse"\'ˆç°*‚Óä“/abstractaccount/v1/params¬
+AccountAddress..abstractaccount.v1.QueryAccountAddressRequest/.abstractaccount.v1.QueryAccountAddressResponse"9ˆç°*‚Óä“.,/abstractaccount/v1/account_address/{sender}B4Z2github.com/burnt-labs/xion/x/abstractaccount/typesbproto3'
         , true);
 
         static::$is_initialized = true;

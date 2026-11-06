@@ -39,7 +39,7 @@ object OsmosisibcProto extends _root_.scalapb.GeneratedFileObject {
   W5RdWVyeVJlcXVlc3RCEeI/ChIIcmVxdWVzdHPI3h8AUghyZXF1ZXN0cyJbCgtDb3Ntb3NRdWVyeRJMCghyZXF1ZXN0cxgBIAMoC
   zIdLnRlbmRlcm1pbnQuYWJjaS5SZXF1ZXN0UXVlcnlCEeI/ChIIcmVxdWVzdHPI3h8AUghyZXF1ZXN0cyJiCg5Db3Ntb3NSZXNwb
   25zZRJQCglyZXNwb25zZXMYASADKAsyHi50ZW5kZXJtaW50LmFiY2kuUmVzcG9uc2VRdWVyeUIS4j8LEglyZXNwb25zZXPI3h8AU
-  glyZXNwb25zZXNCK1opZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24veC9mZWVhYnMvdHlwZXNiBnByb3RvMw=="""
+  glyZXNwb25zZXNCLlosZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24vYXBwL2xlZ2FjeS9mZWVhYnNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

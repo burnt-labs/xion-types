@@ -46,6 +46,17 @@ import * as _473 from "./v1/tx.rpc.msg";
 import * as _486 from "./lcd";
 import * as _487 from "./rpc.query";
 import * as _488 from "./rpc.tx";
+import * as _489 from "./zk/v1/genesis";
+import * as _490 from "./zk/v1/tx";
+import * as _491 from "./zk/v1/query";
+import * as _492 from "./zk/v1/params";
+import * as _493 from "./globalfee/v1/tx";
+import * as _494 from "./indexer/feegrant/v1/query";
+import * as _495 from "./indexer/authz/v1/query";
+import * as _496 from "./dkim/v1/genesis";
+import * as _497 from "./dkim/v1/state";
+import * as _498 from "./dkim/v1/tx";
+import * as _499 from "./dkim/v1/query";
 export namespace xion {
   export namespace feeabs {
     export const v1beta1 = {
@@ -65,6 +76,7 @@ export namespace xion {
   }
   export namespace globalfee {
     export const v1 = {
+      ..._493,
       ..._272,
       ..._273,
       ..._462,
@@ -114,4 +126,32 @@ export namespace xion {
     ..._487,
     ..._488
   };
+  export namespace zk {
+    export const v1 = {
+      ..._489,
+      ..._490,
+      ..._491,
+      ..._492
+    };
+  }
+  export namespace indexer {
+    export namespace feegrant {
+      export const v1 = {
+        ..._494
+      };
+    }
+    export namespace authz {
+      export const v1 = {
+        ..._495
+      };
+    }
+  }
+  export namespace dkim {
+    export const v1 = {
+      ..._496,
+      ..._497,
+      ..._498,
+      ..._499
+    };
+  }
 }

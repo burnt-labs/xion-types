@@ -17,7 +17,9 @@ export const protobufFileName = "abstractaccount/v1/tx.proto";
 
 /** MsgUpdateParams is the message for updating the module parameters. */
 export interface MsgUpdateParams {
+  /** sender is the authority address requesting the update. */
   sender: string;
+  /** params is the new module parameters to apply. */
   params?: Params | undefined;
 }
 
@@ -29,14 +31,17 @@ export interface MsgUpdateParamsResponse {
 export interface MsgRegisterAccount {
   /** Sender is the actor who signs the message */
   sender: string;
-  /** CodeID indicates which wasm binary code is to be used for this contract */
+  /**
+   * CodeID selects the allowed implementation installed after deterministic
+   * direct instantiation. It does not participate in address derivation.
+   */
   codeId: bigint;
   /** Msg is the JSON-encoded instantiate message for the contract */
   msg: Uint8Array;
-  /** Funds are coins to be deposited to the contract on instantiattion */
+  /** Funds are coins to be deposited to the contract on instantiation */
   funds: Coin[];
   /**
-   * Salt is an arbinary value to be used in deriving the account address.
+   * Salt is an arbitrary value to be used in deriving the account address.
    * Max 64 bytes.
    */
   salt: Uint8Array;
@@ -44,7 +49,9 @@ export interface MsgRegisterAccount {
 
 /** MsgRegisterAccountResponse is the response message for MsgRegisterAccount. */
 export interface MsgRegisterAccountResponse {
+  /** address is the address of the newly registered account contract. */
   address: string;
+  /** data is the raw response data from the contract instantiation. */
   data: Uint8Array;
 }
 

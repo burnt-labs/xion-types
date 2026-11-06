@@ -95,7 +95,7 @@ major series.
 
 ## External Source Refs
 
-- **Xion protos** — Pulled from BSR (`buf.build/burnt-labs/xion:<release_tag>`). No git checkout of `burnt-labs/xion` is required.
+- **Xion protos** — Exported by buf from `https://github.com/burnt-labs/xion.git#subdir=proto,ref=<resolved release SHA>` (passed as `XION_BSR_MODULE`). Cosmos SDK, IBC, wasmd, tokenfactory and shared-import pins live in `scripts/proto-sources.conf`.
 - **CosmWasm contracts** — Checked out from `burnt-labs/contracts` into `contracts/` at the `contracts_ref` workflow input (default: `v1.0.1`). Used only by the TS post-processor to generate client types via `ts-codegen`.
 
 ## Required Secrets

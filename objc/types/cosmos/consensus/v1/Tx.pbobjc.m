@@ -38,6 +38,7 @@
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
 GPBObjCClassDeclaration(ABCIParams);
+GPBObjCClassDeclaration(AuthorityParams);
 GPBObjCClassDeclaration(BlockParams);
 GPBObjCClassDeclaration(EvidenceParams);
 GPBObjCClassDeclaration(MsgUpdateParams);
@@ -81,6 +82,7 @@ static GPBFileDescription TxRoot_FileDescription = {
 @dynamic hasEvidence, evidence;
 @dynamic hasValidator, validator;
 @dynamic hasAbci, abci;
+@dynamic hasAuth, auth;
 
 typedef struct MsgUpdateParams__storage_ {
   uint32_t _has_storage_[1];
@@ -89,6 +91,7 @@ typedef struct MsgUpdateParams__storage_ {
   EvidenceParams *evidence;
   ValidatorParams *validator;
   ABCIParams *abci;
+  AuthorityParams *auth;
 } MsgUpdateParams__storage_;
 
 // This method is threadsafe because it is initially called
@@ -140,6 +143,15 @@ typedef struct MsgUpdateParams__storage_ {
         .number = MsgUpdateParams_FieldNumber_Abci,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(MsgUpdateParams__storage_, abci),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "auth",
+        .dataTypeSpecific.clazz = GPBObjCClass(AuthorityParams),
+        .number = MsgUpdateParams_FieldNumber_Auth,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(MsgUpdateParams__storage_, auth),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },

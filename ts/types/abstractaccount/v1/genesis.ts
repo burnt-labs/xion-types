@@ -14,12 +14,28 @@ export const protobufFileName = "abstractaccount/v1/genesis.proto";
 
 /** GenesisState defines the genesis state of the abstractaccount module. */
 export interface GenesisState {
-  params?: Params | undefined;
+  /** params defines the module parameters. */
+  params?:
+    | Params
+    | undefined;
+  /** next_account_id is the identifier assigned to the next registered account. */
   nextAccountId: bigint;
+  /** account_addresses is the exported sender/salt address registry. */
+  accountAddresses: AccountAddress[];
+}
+
+/** AccountAddress is an exported sender/salt registry entry. */
+export interface AccountAddress {
+  /** sender is the address that registered the account. */
+  sender: string;
+  /** salt is the caller-chosen salt the address was derived with. */
+  salt: Uint8Array;
+  /** address is the derived account address. */
+  address: string;
 }
 
 function createBaseGenesisState(): GenesisState {
-  return { params: undefined, nextAccountId: 0n };
+  return { params: undefined, nextAccountId: 0n, accountAddresses: [] };
 }
 
 export const GenesisState: MessageFns<GenesisState> = {
@@ -32,6 +48,9 @@ export const GenesisState: MessageFns<GenesisState> = {
         throw new globalThis.Error("value provided for field message.nextAccountId of type uint64 too large");
       }
       writer.uint32(16).uint64(message.nextAccountId);
+    }
+    for (const v of message.accountAddresses) {
+      AccountAddress.encode(v!, writer.uint32(26).fork()).join();
     }
     return writer;
   },
@@ -65,6 +84,14 @@ export const GenesisState: MessageFns<GenesisState> = {
             message.nextAccountId = reader.uint64() as bigint;
             continue;
           }
+          case 3: {
+            if (tag !== 26) {
+              break;
+            }
+
+            message.accountAddresses.push(AccountAddress.decode(reader, reader.uint32()));
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -85,6 +112,11 @@ export const GenesisState: MessageFns<GenesisState> = {
         : isSet(object.next_account_id)
         ? BigInt(object.next_account_id)
         : 0n,
+      accountAddresses: globalThis.Array.isArray(object?.accountAddresses)
+        ? object.accountAddresses.map((e: any) => AccountAddress.fromJSON(e))
+        : globalThis.Array.isArray(object?.account_addresses)
+        ? object.account_addresses.map((e: any) => AccountAddress.fromJSON(e))
+        : [],
     };
   },
 
@@ -95,6 +127,9 @@ export const GenesisState: MessageFns<GenesisState> = {
     }
     if (message.nextAccountId !== 0n) {
       obj.nextAccountId = message.nextAccountId.toString();
+    }
+    if (message.accountAddresses?.length) {
+      obj.accountAddresses = message.accountAddresses.map((e) => AccountAddress.toJSON(e));
     }
     return obj;
   },
@@ -110,9 +145,136 @@ export const GenesisState: MessageFns<GenesisState> = {
     message.nextAccountId = (object.nextAccountId !== undefined && object.nextAccountId !== null)
       ? BigInt(object.nextAccountId)
       : 0n;
+    message.accountAddresses = object.accountAddresses?.map((e) => AccountAddress.fromPartial(e)) || [];
     return message;
   },
 };
+
+function createBaseAccountAddress(): AccountAddress {
+  return { sender: "", salt: new Uint8Array(0), address: "" };
+}
+
+export const AccountAddress: MessageFns<AccountAddress> = {
+  encode(message: AccountAddress, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+    if (message.salt.length !== 0) {
+      writer.uint32(18).bytes(message.salt);
+    }
+    if (message.address !== "") {
+      writer.uint32(26).string(message.address);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): AccountAddress {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseAccountAddress();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.sender = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.salt = reader.bytes();
+            continue;
+          }
+          case 3: {
+            if (tag !== 26) {
+              break;
+            }
+
+            message.address = reader.string();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): AccountAddress {
+    return {
+      sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
+      salt: isSet(object.salt) ? bytesFromBase64(object.salt) : new Uint8Array(0),
+      address: isSet(object.address) ? globalThis.String(object.address) : "",
+    };
+  },
+
+  toJSON(message: AccountAddress): unknown {
+    const obj: any = {};
+    if (message.sender !== "") {
+      obj.sender = message.sender;
+    }
+    if (message.salt.length !== 0) {
+      obj.salt = base64FromBytes(message.salt);
+    }
+    if (message.address !== "") {
+      obj.address = message.address;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<AccountAddress>, I>>(base?: I): AccountAddress {
+    return AccountAddress.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<AccountAddress>, I>>(object: I): AccountAddress {
+    const message = createBaseAccountAddress();
+    message.sender = object.sender ?? "";
+    message.salt = object.salt ?? new Uint8Array(0);
+    message.address = object.address ?? "";
+    return message;
+  },
+};
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if ((globalThis as any).Buffer) {
+    return Uint8Array.from((globalThis as any).Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if ((globalThis as any).Buffer) {
+    return (globalThis as any).Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(globalThis.String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
+}
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 

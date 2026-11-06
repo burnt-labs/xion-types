@@ -10,13 +10,14 @@ package abstractaccount.v1
   * @param sender
   *   Sender is the actor who signs the message
   * @param codeId
-  *   CodeID indicates which wasm binary code is to be used for this contract
+  *   CodeID selects the allowed implementation installed after deterministic
+  *   direct instantiation. It does not participate in address derivation.
   * @param msg
   *   Msg is the JSON-encoded instantiate message for the contract
   * @param funds
-  *   Funds are coins to be deposited to the contract on instantiattion
+  *   Funds are coins to be deposited to the contract on instantiation
   * @param salt
-  *   Salt is an arbinary value to be used in deriving the account address.
+  *   Salt is an arbitrary value to be used in deriving the account address.
   *   Max 64 bytes.
   */
 @SerialVersionUID(0L)

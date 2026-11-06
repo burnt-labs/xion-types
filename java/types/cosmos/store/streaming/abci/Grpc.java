@@ -2784,8 +2784,9 @@ public final class Grpc {
       "ing.abci.ListenFinalizeBlockResponse\022s\n\014" +
       "ListenCommit\0220.cosmos.store.streaming.ab" +
       "ci.ListenCommitRequest\0321.cosmos.store.st" +
-      "reaming.abci.ListenCommitResponseB#Z!cos" +
-      "mossdk.io/store/streaming/abcib\006proto3"
+      "reaming.abci.ListenCommitResponseB6Z4git" +
+      "hub.com/cosmos/cosmos-sdk/store/v2/strea" +
+      "ming/abcib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

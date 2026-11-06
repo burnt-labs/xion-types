@@ -174,8 +174,9 @@ const char descriptor_table_protodef_cosmos_2fstore_2fstreaming_2fabci_2fgrpc_2e
     "ing.abci.ListenFinalizeBlockResponse\022s\n\014"
     "ListenCommit\0220.cosmos.store.streaming.ab"
     "ci.ListenCommitRequest\0321.cosmos.store.st"
-    "reaming.abci.ListenCommitResponseB#Z!cos"
-    "mossdk.io/store/streaming/abcib\006proto3"
+    "reaming.abci.ListenCommitResponseB6Z4git"
+    "hub.com/cosmos/cosmos-sdk/store/v2/strea"
+    "ming/abcib\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstore_2fstreaming_2fabci_2fgrpc_2eproto_deps[2] =
     {
@@ -186,7 +187,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fstore_2fstreaming_2fabci_2fgr
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fstore_2fstreaming_2fabci_2fgrpc_2eproto = {
     false,
     false,
-    838,
+    857,
     descriptor_table_protodef_cosmos_2fstore_2fstreaming_2fabci_2fgrpc_2eproto,
     "cosmos/store/streaming/abci/grpc.proto",
     &descriptor_table_cosmos_2fstore_2fstreaming_2fabci_2fgrpc_2eproto_once,

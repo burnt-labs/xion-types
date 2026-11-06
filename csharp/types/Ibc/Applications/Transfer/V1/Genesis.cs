@@ -36,7 +36,7 @@ namespace Ibc.Applications.Transfer.V1 {
             "DnRvdGFsX2VzY3Jvd2VkGAQgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5D",
             "b2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlw",
             "ZXMuQ29pbnNSDXRvdGFsRXNjcm93ZWRCOlo4Z2l0aHViLmNvbS9jb3Ntb3Mv",
-            "aWJjLWdvL3YxMC9tb2R1bGVzL2FwcHMvdHJhbnNmZXIvdHlwZXNiBnByb3Rv",
+            "aWJjLWdvL3YxMS9tb2R1bGVzL2FwcHMvdHJhbnNmZXIvdHlwZXNiBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ibc.Applications.Transfer.V1.TransferReflection.Descriptor, global::Ibc.Applications.Transfer.V1.TokenReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },

@@ -13,14 +13,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fibc/core/client/v2/config.proto\x12\x12ibc.core.client.v2\"3\n\x06\x43onfig\x12)\n\x10\x61llowed_relayers\x18\x01 \x03(\tR\x0f\x61llowedRelayersB>Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fibc/core/client/v2/config.proto\x12\x12ibc.core.client.v2\"3\n\x06\x43onfig\x12)\n\x10\x61llowed_relayers\x18\x01 \x03(\tR\x0f\x61llowedRelayersB>Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'ibc.core.client.v2.config_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/types'
+  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/types'
   _globals['_CONFIG']._serialized_start=55
   _globals['_CONFIG']._serialized_end=106
 # @@protoc_insertion_point(module_scope)

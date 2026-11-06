@@ -1819,7 +1819,7 @@ public final class Commitment {
       "\014MerklePrefix\022\035\n\nkey_prefix\030\001 \001(\014R\tkeyPr" +
       "efix\"G\n\013MerkleProof\0228\n\006proofs\030\001 \003(\0132 .co" +
       "smos.ics23.v1.CommitmentProofR\006proofsB?Z" +
-      "=github.com/cosmos/ibc-go/v10/modules/co" +
+      "=github.com/cosmos/ibc-go/v11/modules/co" +
       "re/23-commitment/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -105,6 +105,168 @@ public object ParamsKt {
     public fun clearUploadChunkGas() {
       _builder.clearUploadChunkGas()
     }
+
+    /**
+     * ```
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     * ```
+     *
+     * `uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];`
+     */
+    public var maxGroth16ProofSizeBytes: kotlin.Long
+      @JvmName("getMaxGroth16ProofSizeBytes")
+      get() = _builder.getMaxGroth16ProofSizeBytes()
+      @JvmName("setMaxGroth16ProofSizeBytes")
+      set(value) {
+        _builder.setMaxGroth16ProofSizeBytes(value)
+      }
+    /**
+     * ```
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     * ```
+     *
+     * `uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];`
+     */
+    public fun clearMaxGroth16ProofSizeBytes() {
+      _builder.clearMaxGroth16ProofSizeBytes()
+    }
+
+    /**
+     * ```
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     * ```
+     *
+     * `uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];`
+     */
+    public var maxGroth16PublicInputSizeBytes: kotlin.Long
+      @JvmName("getMaxGroth16PublicInputSizeBytes")
+      get() = _builder.getMaxGroth16PublicInputSizeBytes()
+      @JvmName("setMaxGroth16PublicInputSizeBytes")
+      set(value) {
+        _builder.setMaxGroth16PublicInputSizeBytes(value)
+      }
+    /**
+     * ```
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     * ```
+     *
+     * `uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];`
+     */
+    public fun clearMaxGroth16PublicInputSizeBytes() {
+      _builder.clearMaxGroth16PublicInputSizeBytes()
+    }
+
+    /**
+     * ```
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     * ```
+     *
+     * `uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];`
+     */
+    public var maxUltraHonkProofSizeBytes: kotlin.Long
+      @JvmName("getMaxUltraHonkProofSizeBytes")
+      get() = _builder.getMaxUltraHonkProofSizeBytes()
+      @JvmName("setMaxUltraHonkProofSizeBytes")
+      set(value) {
+        _builder.setMaxUltraHonkProofSizeBytes(value)
+      }
+    /**
+     * ```
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     * ```
+     *
+     * `uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];`
+     */
+    public fun clearMaxUltraHonkProofSizeBytes() {
+      _builder.clearMaxUltraHonkProofSizeBytes()
+    }
+
+    /**
+     * ```
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     * ```
+     *
+     * `uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];`
+     */
+    public var maxUltraHonkPublicInputSizeBytes: kotlin.Long
+      @JvmName("getMaxUltraHonkPublicInputSizeBytes")
+      get() = _builder.getMaxUltraHonkPublicInputSizeBytes()
+      @JvmName("setMaxUltraHonkPublicInputSizeBytes")
+      set(value) {
+        _builder.setMaxUltraHonkPublicInputSizeBytes(value)
+      }
+    /**
+     * ```
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     * ```
+     *
+     * `uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];`
+     */
+    public fun clearMaxUltraHonkPublicInputSizeBytes() {
+      _builder.clearMaxUltraHonkPublicInputSizeBytes()
+    }
+
+    /**
+     * ```
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     * ```
+     *
+     * `uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];`
+     */
+    public var maxGnarkProofSizeBytes: kotlin.Long
+      @JvmName("getMaxGnarkProofSizeBytes")
+      get() = _builder.getMaxGnarkProofSizeBytes()
+      @JvmName("setMaxGnarkProofSizeBytes")
+      set(value) {
+        _builder.setMaxGnarkProofSizeBytes(value)
+      }
+    /**
+     * ```
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     * ```
+     *
+     * `uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];`
+     */
+    public fun clearMaxGnarkProofSizeBytes() {
+      _builder.clearMaxGnarkProofSizeBytes()
+    }
+
+    /**
+     * ```
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     * ```
+     *
+     * `uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];`
+     */
+    public var maxGnarkPublicInputSizeBytes: kotlin.Long
+      @JvmName("getMaxGnarkPublicInputSizeBytes")
+      get() = _builder.getMaxGnarkPublicInputSizeBytes()
+      @JvmName("setMaxGnarkPublicInputSizeBytes")
+      set(value) {
+        _builder.setMaxGnarkPublicInputSizeBytes(value)
+      }
+    /**
+     * ```
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     * ```
+     *
+     * `uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];`
+     */
+    public fun clearMaxGnarkPublicInputSizeBytes() {
+      _builder.clearMaxGnarkPublicInputSizeBytes()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

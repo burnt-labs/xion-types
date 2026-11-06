@@ -5,7 +5,25 @@
 
 package xion.dkim.v1
 
-/** PublicInputIndices defines the indices for extracting data from public inputs.
+/** PublicInputIndices defines the indices for extracting data from public
+  * inputs.
+  *
+  * @param minLength
+  *   min_length is the minimum required length of the public inputs array.
+  * @param emailHashIndex
+  *   email_hash_index is the index of the email hash in the public inputs.
+  * @param dkimDomainRange
+  *   dkim_domain_range is the index range for the DKIM domain in public inputs.
+  * @param dkimHashIndex
+  *   dkim_hash_index is the index of the DKIM signature hash in public inputs.
+  * @param txBytesRange
+  *   tx_bytes_range is the index range for the transaction bytes in public
+  *   inputs.
+  * @param emailHostRange
+  *   email_host_range is the index range for the email host in public inputs.
+  * @param emailSubjectRange
+  *   email_subject_range is the index range for the email subject in public
+  *   inputs.
   */
 @SerialVersionUID(0L)
 final case class PublicInputIndices(

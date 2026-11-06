@@ -9,6 +9,7 @@ import * as _261 from "./types/params";
 import * as _262 from "./types/types";
 import * as _263 from "./types/validator";
 import * as _264 from "./version/types";
+import * as _265 from "./libs/bits/types";
 export namespace tendermint {
   export const abci = {
     ..._255
@@ -30,4 +31,9 @@ export namespace tendermint {
   export const version = {
     ..._264
   };
+  export namespace libs {
+    export const bits = {
+      ..._265
+    };
+  }
 }

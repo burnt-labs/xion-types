@@ -8111,7 +8111,7 @@ public final class QueryOuterClass {
       "mRequest\032>.ibc.applications.transfer.v1." +
       "QueryTotalEscrowForDenomResponse\"5\202\323\344\223\002/" +
       "\022-/ibc/apps/transfer/v1/total_escrow/{de" +
-      "nom=**}B:Z8github.com/cosmos/ibc-go/v10/" +
+      "nom=**}B:Z8github.com/cosmos/ibc-go/v11/" +
       "modules/apps/transfer/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

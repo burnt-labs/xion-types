@@ -97,7 +97,7 @@ void   cosmos__consensus__v1__msg_update_params_response__free_unpacked
   assert(message->base.descriptor == &cosmos__consensus__v1__msg_update_params_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor cosmos__consensus__v1__msg_update_params__field_descriptors[5] =
+static const ProtobufCFieldDescriptor cosmos__consensus__v1__msg_update_params__field_descriptors[6] =
 {
   {
     "authority",
@@ -159,9 +159,22 @@ static const ProtobufCFieldDescriptor cosmos__consensus__v1__msg_update_params__
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "auth",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Cosmos__Consensus__V1__MsgUpdateParams, auth),
+    &tendermint__types__authority_params__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned cosmos__consensus__v1__msg_update_params__field_indices_by_name[] = {
   4,   /* field[4] = abci */
+  5,   /* field[5] = auth */
   0,   /* field[0] = authority */
   1,   /* field[1] = block */
   2,   /* field[2] = evidence */
@@ -170,7 +183,7 @@ static const unsigned cosmos__consensus__v1__msg_update_params__field_indices_by
 static const ProtobufCIntRange cosmos__consensus__v1__msg_update_params__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor cosmos__consensus__v1__msg_update_params__descriptor =
 {
@@ -180,7 +193,7 @@ const ProtobufCMessageDescriptor cosmos__consensus__v1__msg_update_params__descr
   "Cosmos__Consensus__V1__MsgUpdateParams",
   "cosmos.consensus.v1",
   sizeof(Cosmos__Consensus__V1__MsgUpdateParams),
-  5,
+  6,
   cosmos__consensus__v1__msg_update_params__field_descriptors,
   cosmos__consensus__v1__msg_update_params__field_indices_by_name,
   1,  cosmos__consensus__v1__msg_update_params__number_ranges,

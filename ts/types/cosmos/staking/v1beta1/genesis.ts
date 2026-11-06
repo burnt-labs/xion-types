@@ -6,6 +6,8 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { Any } from "../../../google/protobuf/any";
+import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Delegation, Params, Redelegation, UnbondingDelegation, Validator } from "./staking";
 
 export const protobufPackage = "cosmos.staking.v1beta1";
@@ -38,6 +40,16 @@ export interface GenesisState {
   redelegations: Redelegation[];
   /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported: boolean;
+  /**
+   * consensus_key_rotation_history defines consensus key rotations that are
+   * still within the unbonding window.
+   */
+  consensusKeyRotationHistory: ConsensusKeyRotationHistory[];
+  /**
+   * pending_consensus_key_rotations defines consensus key rotations whose
+   * SDK-side validator state has not reached its deferred apply height yet.
+   */
+  pendingConsensusKeyRotations: PendingConsensusKeyRotation[];
 }
 
 /** LastValidatorPower required for validator set update logic. */
@@ -46,6 +58,56 @@ export interface LastValidatorPower {
   address: string;
   /** power defines the power of the validator. */
   power: bigint;
+}
+
+/**
+ * ConsensusKeyRotationHistory stores the old consensus address for a
+ * validator rotation until the unbonding window has elapsed.
+ */
+export interface ConsensusKeyRotationHistory {
+  /** validator_address is the validator operator address. */
+  validatorAddress: string;
+  /** old_consensus_address is the consensus address rotated away from. */
+  oldConsensusAddress: string;
+  /**
+   * maturity_time is the unbonding-window maturity of this validator's
+   * re-rotation rate limit, present only while that gate is still active. A
+   * zero value means the gate has already been retired and only the evidence
+   * lock (below) remains.
+   */
+  maturityTime?:
+    | Date
+    | undefined;
+  /**
+   * evidence_expiry_time is the time after which equivocation evidence for the
+   * rotated-away key can no longer be admitted on the time dimension.
+   */
+  evidenceExpiryTime?:
+    | Date
+    | undefined;
+  /**
+   * evidence_expiry_height is the block height after which equivocation evidence
+   * for the rotated-away key can no longer be admitted on the height dimension.
+   */
+  evidenceExpiryHeight: bigint;
+}
+
+/**
+ * PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+ * for its deferred SDK-side state update.
+ */
+export interface PendingConsensusKeyRotation {
+  /** validator_address is the validator operator address. */
+  validatorAddress: string;
+  /** new_pubkey is the consensus public key being rotated to. */
+  newPubkey?:
+    | Any
+    | undefined;
+  /**
+   * apply_height is the block height where the SDK-side state update should
+   * occur.
+   */
+  applyHeight: bigint;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -58,6 +120,8 @@ function createBaseGenesisState(): GenesisState {
     unbondingDelegations: [],
     redelegations: [],
     exported: false,
+    consensusKeyRotationHistory: [],
+    pendingConsensusKeyRotations: [],
   };
 }
 
@@ -86,6 +150,12 @@ export const GenesisState: MessageFns<GenesisState> = {
     }
     if (message.exported !== false) {
       writer.uint32(64).bool(message.exported);
+    }
+    for (const v of message.consensusKeyRotationHistory) {
+      ConsensusKeyRotationHistory.encode(v!, writer.uint32(74).fork()).join();
+    }
+    for (const v of message.pendingConsensusKeyRotations) {
+      PendingConsensusKeyRotation.encode(v!, writer.uint32(82).fork()).join();
     }
     return writer;
   },
@@ -167,6 +237,22 @@ export const GenesisState: MessageFns<GenesisState> = {
             message.exported = reader.bool();
             continue;
           }
+          case 9: {
+            if (tag !== 74) {
+              break;
+            }
+
+            message.consensusKeyRotationHistory.push(ConsensusKeyRotationHistory.decode(reader, reader.uint32()));
+            continue;
+          }
+          case 10: {
+            if (tag !== 82) {
+              break;
+            }
+
+            message.pendingConsensusKeyRotations.push(PendingConsensusKeyRotation.decode(reader, reader.uint32()));
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -207,6 +293,16 @@ export const GenesisState: MessageFns<GenesisState> = {
         ? object.redelegations.map((e: any) => Redelegation.fromJSON(e))
         : [],
       exported: isSet(object.exported) ? globalThis.Boolean(object.exported) : false,
+      consensusKeyRotationHistory: globalThis.Array.isArray(object?.consensusKeyRotationHistory)
+        ? object.consensusKeyRotationHistory.map((e: any) => ConsensusKeyRotationHistory.fromJSON(e))
+        : globalThis.Array.isArray(object?.consensus_key_rotation_history)
+        ? object.consensus_key_rotation_history.map((e: any) => ConsensusKeyRotationHistory.fromJSON(e))
+        : [],
+      pendingConsensusKeyRotations: globalThis.Array.isArray(object?.pendingConsensusKeyRotations)
+        ? object.pendingConsensusKeyRotations.map((e: any) => PendingConsensusKeyRotation.fromJSON(e))
+        : globalThis.Array.isArray(object?.pending_consensus_key_rotations)
+        ? object.pending_consensus_key_rotations.map((e: any) => PendingConsensusKeyRotation.fromJSON(e))
+        : [],
     };
   },
 
@@ -236,6 +332,16 @@ export const GenesisState: MessageFns<GenesisState> = {
     if (message.exported !== false) {
       obj.exported = message.exported;
     }
+    if (message.consensusKeyRotationHistory?.length) {
+      obj.consensusKeyRotationHistory = message.consensusKeyRotationHistory.map((e) =>
+        ConsensusKeyRotationHistory.toJSON(e)
+      );
+    }
+    if (message.pendingConsensusKeyRotations?.length) {
+      obj.pendingConsensusKeyRotations = message.pendingConsensusKeyRotations.map((e) =>
+        PendingConsensusKeyRotation.toJSON(e)
+      );
+    }
     return obj;
   },
 
@@ -254,6 +360,10 @@ export const GenesisState: MessageFns<GenesisState> = {
     message.unbondingDelegations = object.unbondingDelegations?.map((e) => UnbondingDelegation.fromPartial(e)) || [];
     message.redelegations = object.redelegations?.map((e) => Redelegation.fromPartial(e)) || [];
     message.exported = object.exported ?? false;
+    message.consensusKeyRotationHistory =
+      object.consensusKeyRotationHistory?.map((e) => ConsensusKeyRotationHistory.fromPartial(e)) || [];
+    message.pendingConsensusKeyRotations =
+      object.pendingConsensusKeyRotations?.map((e) => PendingConsensusKeyRotation.fromPartial(e)) || [];
     return message;
   },
 };
@@ -346,6 +456,290 @@ export const LastValidatorPower: MessageFns<LastValidatorPower> = {
   },
 };
 
+function createBaseConsensusKeyRotationHistory(): ConsensusKeyRotationHistory {
+  return {
+    validatorAddress: "",
+    oldConsensusAddress: "",
+    maturityTime: undefined,
+    evidenceExpiryTime: undefined,
+    evidenceExpiryHeight: 0n,
+  };
+}
+
+export const ConsensusKeyRotationHistory: MessageFns<ConsensusKeyRotationHistory> = {
+  encode(message: ConsensusKeyRotationHistory, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
+    }
+    if (message.oldConsensusAddress !== "") {
+      writer.uint32(18).string(message.oldConsensusAddress);
+    }
+    if (message.maturityTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.maturityTime), writer.uint32(26).fork()).join();
+    }
+    if (message.evidenceExpiryTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.evidenceExpiryTime), writer.uint32(34).fork()).join();
+    }
+    if (message.evidenceExpiryHeight !== 0n) {
+      if (BigInt.asIntN(64, message.evidenceExpiryHeight) !== message.evidenceExpiryHeight) {
+        throw new globalThis.Error("value provided for field message.evidenceExpiryHeight of type int64 too large");
+      }
+      writer.uint32(40).int64(message.evidenceExpiryHeight);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): ConsensusKeyRotationHistory {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseConsensusKeyRotationHistory();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.validatorAddress = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.oldConsensusAddress = reader.string();
+            continue;
+          }
+          case 3: {
+            if (tag !== 26) {
+              break;
+            }
+
+            message.maturityTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+            continue;
+          }
+          case 4: {
+            if (tag !== 34) {
+              break;
+            }
+
+            message.evidenceExpiryTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+            continue;
+          }
+          case 5: {
+            if (tag !== 40) {
+              break;
+            }
+
+            message.evidenceExpiryHeight = reader.int64() as bigint;
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): ConsensusKeyRotationHistory {
+    return {
+      validatorAddress: isSet(object.validatorAddress)
+        ? globalThis.String(object.validatorAddress)
+        : isSet(object.validator_address)
+        ? globalThis.String(object.validator_address)
+        : "",
+      oldConsensusAddress: isSet(object.oldConsensusAddress)
+        ? globalThis.String(object.oldConsensusAddress)
+        : isSet(object.old_consensus_address)
+        ? globalThis.String(object.old_consensus_address)
+        : "",
+      maturityTime: isSet(object.maturityTime)
+        ? fromJsonTimestamp(object.maturityTime)
+        : isSet(object.maturity_time)
+        ? fromJsonTimestamp(object.maturity_time)
+        : undefined,
+      evidenceExpiryTime: isSet(object.evidenceExpiryTime)
+        ? fromJsonTimestamp(object.evidenceExpiryTime)
+        : isSet(object.evidence_expiry_time)
+        ? fromJsonTimestamp(object.evidence_expiry_time)
+        : undefined,
+      evidenceExpiryHeight: isSet(object.evidenceExpiryHeight)
+        ? BigInt(object.evidenceExpiryHeight)
+        : isSet(object.evidence_expiry_height)
+        ? BigInt(object.evidence_expiry_height)
+        : 0n,
+    };
+  },
+
+  toJSON(message: ConsensusKeyRotationHistory): unknown {
+    const obj: any = {};
+    if (message.validatorAddress !== "") {
+      obj.validatorAddress = message.validatorAddress;
+    }
+    if (message.oldConsensusAddress !== "") {
+      obj.oldConsensusAddress = message.oldConsensusAddress;
+    }
+    if (message.maturityTime !== undefined) {
+      obj.maturityTime = message.maturityTime.toISOString();
+    }
+    if (message.evidenceExpiryTime !== undefined) {
+      obj.evidenceExpiryTime = message.evidenceExpiryTime.toISOString();
+    }
+    if (message.evidenceExpiryHeight !== 0n) {
+      obj.evidenceExpiryHeight = message.evidenceExpiryHeight.toString();
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<ConsensusKeyRotationHistory>, I>>(base?: I): ConsensusKeyRotationHistory {
+    return ConsensusKeyRotationHistory.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<ConsensusKeyRotationHistory>, I>>(object: I): ConsensusKeyRotationHistory {
+    const message = createBaseConsensusKeyRotationHistory();
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.oldConsensusAddress = object.oldConsensusAddress ?? "";
+    message.maturityTime = object.maturityTime ?? undefined;
+    message.evidenceExpiryTime = object.evidenceExpiryTime ?? undefined;
+    message.evidenceExpiryHeight = (object.evidenceExpiryHeight !== undefined && object.evidenceExpiryHeight !== null)
+      ? BigInt(object.evidenceExpiryHeight)
+      : 0n;
+    return message;
+  },
+};
+
+function createBasePendingConsensusKeyRotation(): PendingConsensusKeyRotation {
+  return { validatorAddress: "", newPubkey: undefined, applyHeight: 0n };
+}
+
+export const PendingConsensusKeyRotation: MessageFns<PendingConsensusKeyRotation> = {
+  encode(message: PendingConsensusKeyRotation, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
+    }
+    if (message.newPubkey !== undefined) {
+      Any.encode(message.newPubkey, writer.uint32(18).fork()).join();
+    }
+    if (message.applyHeight !== 0n) {
+      if (BigInt.asIntN(64, message.applyHeight) !== message.applyHeight) {
+        throw new globalThis.Error("value provided for field message.applyHeight of type int64 too large");
+      }
+      writer.uint32(24).int64(message.applyHeight);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): PendingConsensusKeyRotation {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBasePendingConsensusKeyRotation();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.validatorAddress = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.newPubkey = Any.decode(reader, reader.uint32());
+            continue;
+          }
+          case 3: {
+            if (tag !== 24) {
+              break;
+            }
+
+            message.applyHeight = reader.int64() as bigint;
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): PendingConsensusKeyRotation {
+    return {
+      validatorAddress: isSet(object.validatorAddress)
+        ? globalThis.String(object.validatorAddress)
+        : isSet(object.validator_address)
+        ? globalThis.String(object.validator_address)
+        : "",
+      newPubkey: isSet(object.newPubkey)
+        ? Any.fromJSON(object.newPubkey)
+        : isSet(object.new_pubkey)
+        ? Any.fromJSON(object.new_pubkey)
+        : undefined,
+      applyHeight: isSet(object.applyHeight)
+        ? BigInt(object.applyHeight)
+        : isSet(object.apply_height)
+        ? BigInt(object.apply_height)
+        : 0n,
+    };
+  },
+
+  toJSON(message: PendingConsensusKeyRotation): unknown {
+    const obj: any = {};
+    if (message.validatorAddress !== "") {
+      obj.validatorAddress = message.validatorAddress;
+    }
+    if (message.newPubkey !== undefined) {
+      obj.newPubkey = Any.toJSON(message.newPubkey);
+    }
+    if (message.applyHeight !== 0n) {
+      obj.applyHeight = message.applyHeight.toString();
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<PendingConsensusKeyRotation>, I>>(base?: I): PendingConsensusKeyRotation {
+    return PendingConsensusKeyRotation.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<PendingConsensusKeyRotation>, I>>(object: I): PendingConsensusKeyRotation {
+    const message = createBasePendingConsensusKeyRotation();
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.newPubkey = (object.newPubkey !== undefined && object.newPubkey !== null)
+      ? Any.fromPartial(object.newPubkey)
+      : undefined;
+    message.applyHeight = (object.applyHeight !== undefined && object.applyHeight !== null)
+      ? BigInt(object.applyHeight)
+      : 0n;
+    return message;
+  },
+};
+
 function bytesFromBase64(b64: string): Uint8Array {
   if ((globalThis as any).Buffer) {
     return Uint8Array.from((globalThis as any).Buffer.from(b64, "base64"));
@@ -385,6 +779,28 @@ export type Exact<P, I> = P extends Builtin ? P
     & P
     & { [K in keyof P as Extract<K, keyof I>]: Exact<P[K], I[K & keyof I]> }
     & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+
+function toTimestamp(date: Date): Timestamp {
+  const seconds = BigInt(Math.trunc(date.getTime() / 1_000));
+  const nanos = (date.getTime() % 1_000) * 1_000_000;
+  return { seconds, nanos };
+}
+
+function fromTimestamp(t: Timestamp): Date {
+  let millis = (globalThis.Number(t.seconds.toString()) || 0) * 1_000;
+  millis += (t.nanos || 0) / 1_000_000;
+  return new globalThis.Date(millis);
+}
+
+function fromJsonTimestamp(o: any): Date {
+  if (o instanceof globalThis.Date) {
+    return o;
+  } else if (typeof o === "string") {
+    return new globalThis.Date(o);
+  } else {
+    return fromTimestamp(Timestamp.fromJSON(o));
+  }
+}
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

@@ -2652,9 +2652,9 @@ public final class Epoch {
       "arted\022;\n\032current_epoch_start_height\030\010 \001(" +
       "\003R\027currentEpochStartHeightJ\004\010\007\020\010\"K\n\022Expo" +
       "nentialBackoff\022\022\n\004jump\030\001 \001(\003R\004jump\022!\n\014fu" +
-      "ture_epoch\030\002 \001(\003R\013futureEpochB+Z)github." +
-      "com/burnt-labs/xion/x/feeabs/typesb\006prot" +
-      "o3"
+      "ture_epoch\030\002 \001(\003R\013futureEpochB.Z,github." +
+      "com/burnt-labs/xion/app/legacy/feeabsb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

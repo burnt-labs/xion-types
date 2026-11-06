@@ -1472,12 +1472,20 @@ public final class Genesis {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * start is the inclusive lower bound of the index range.
+     * </pre>
+     *
      * <code>uint64 start = 1 [json_name = "start"];</code>
      * @return The start.
      */
     long getStart();
 
     /**
+     * <pre>
+     * end is the exclusive upper bound of the index range.
+     * </pre>
+     *
      * <code>uint64 end = 2 [json_name = "end"];</code>
      * @return The end.
      */
@@ -1485,7 +1493,8 @@ public final class Genesis {
   }
   /**
    * <pre>
-   * IndexRange defines a range of indices [start, end) in the public inputs array.
+   * IndexRange defines a range of indices [start, end) in the public inputs
+   * array.
    * </pre>
    *
    * Protobuf type {@code xion.dkim.v1.IndexRange}
@@ -1525,6 +1534,10 @@ public final class Genesis {
     public static final int START_FIELD_NUMBER = 1;
     private long start_ = 0L;
     /**
+     * <pre>
+     * start is the inclusive lower bound of the index range.
+     * </pre>
+     *
      * <code>uint64 start = 1 [json_name = "start"];</code>
      * @return The start.
      */
@@ -1536,6 +1549,10 @@ public final class Genesis {
     public static final int END_FIELD_NUMBER = 2;
     private long end_ = 0L;
     /**
+     * <pre>
+     * end is the exclusive upper bound of the index range.
+     * </pre>
+     *
      * <code>uint64 end = 2 [json_name = "end"];</code>
      * @return The end.
      */
@@ -1716,7 +1733,8 @@ public final class Genesis {
     }
     /**
      * <pre>
-     * IndexRange defines a range of indices [start, end) in the public inputs array.
+     * IndexRange defines a range of indices [start, end) in the public inputs
+     * array.
      * </pre>
      *
      * Protobuf type {@code xion.dkim.v1.IndexRange}
@@ -1900,6 +1918,10 @@ public final class Genesis {
 
       private long start_ ;
       /**
+       * <pre>
+       * start is the inclusive lower bound of the index range.
+       * </pre>
+       *
        * <code>uint64 start = 1 [json_name = "start"];</code>
        * @return The start.
        */
@@ -1908,6 +1930,10 @@ public final class Genesis {
         return start_;
       }
       /**
+       * <pre>
+       * start is the inclusive lower bound of the index range.
+       * </pre>
+       *
        * <code>uint64 start = 1 [json_name = "start"];</code>
        * @param value The start to set.
        * @return This builder for chaining.
@@ -1920,6 +1946,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * start is the inclusive lower bound of the index range.
+       * </pre>
+       *
        * <code>uint64 start = 1 [json_name = "start"];</code>
        * @return This builder for chaining.
        */
@@ -1932,6 +1962,10 @@ public final class Genesis {
 
       private long end_ ;
       /**
+       * <pre>
+       * end is the exclusive upper bound of the index range.
+       * </pre>
+       *
        * <code>uint64 end = 2 [json_name = "end"];</code>
        * @return The end.
        */
@@ -1940,6 +1974,10 @@ public final class Genesis {
         return end_;
       }
       /**
+       * <pre>
+       * end is the exclusive upper bound of the index range.
+       * </pre>
+       *
        * <code>uint64 end = 2 [json_name = "end"];</code>
        * @param value The end to set.
        * @return This builder for chaining.
@@ -1952,6 +1990,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * end is the exclusive upper bound of the index range.
+       * </pre>
+       *
        * <code>uint64 end = 2 [json_name = "end"];</code>
        * @return This builder for chaining.
        */
@@ -2030,86 +2072,153 @@ public final class Genesis {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * min_length is the minimum required length of the public inputs array.
+     * </pre>
+     *
      * <code>uint64 min_length = 1 [json_name = "minLength"];</code>
      * @return The minLength.
      */
     long getMinLength();
 
     /**
+     * <pre>
+     * email_hash_index is the index of the email hash in the public inputs.
+     * </pre>
+     *
      * <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
      * @return The emailHashIndex.
      */
     long getEmailHashIndex();
 
     /**
+     * <pre>
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the dkimDomainRange field is set.
      */
     boolean hasDkimDomainRange();
     /**
+     * <pre>
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      * @return The dkimDomainRange.
      */
     xion.dkim.v1.Genesis.IndexRange getDkimDomainRange();
     /**
+     * <pre>
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      */
     xion.dkim.v1.Genesis.IndexRangeOrBuilder getDkimDomainRangeOrBuilder();
 
     /**
+     * <pre>
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     * </pre>
+     *
      * <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
      * @return The dkimHashIndex.
      */
     long getDkimHashIndex();
 
     /**
+     * <pre>
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the txBytesRange field is set.
      */
     boolean hasTxBytesRange();
     /**
+     * <pre>
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      * @return The txBytesRange.
      */
     xion.dkim.v1.Genesis.IndexRange getTxBytesRange();
     /**
+     * <pre>
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      */
     xion.dkim.v1.Genesis.IndexRangeOrBuilder getTxBytesRangeOrBuilder();
 
     /**
+     * <pre>
+     * email_host_range is the index range for the email host in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the emailHostRange field is set.
      */
     boolean hasEmailHostRange();
     /**
+     * <pre>
+     * email_host_range is the index range for the email host in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      * @return The emailHostRange.
      */
     xion.dkim.v1.Genesis.IndexRange getEmailHostRange();
     /**
+     * <pre>
+     * email_host_range is the index range for the email host in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      */
     xion.dkim.v1.Genesis.IndexRangeOrBuilder getEmailHostRangeOrBuilder();
 
     /**
+     * <pre>
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the emailSubjectRange field is set.
      */
     boolean hasEmailSubjectRange();
     /**
+     * <pre>
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      * @return The emailSubjectRange.
      */
     xion.dkim.v1.Genesis.IndexRange getEmailSubjectRange();
     /**
+     * <pre>
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      */
     xion.dkim.v1.Genesis.IndexRangeOrBuilder getEmailSubjectRangeOrBuilder();
   }
   /**
    * <pre>
-   * PublicInputIndices defines the indices for extracting data from public inputs.
+   * PublicInputIndices defines the indices for extracting data from public
+   * inputs.
    * </pre>
    *
    * Protobuf type {@code xion.dkim.v1.PublicInputIndices}
@@ -2150,6 +2259,10 @@ public final class Genesis {
     public static final int MIN_LENGTH_FIELD_NUMBER = 1;
     private long minLength_ = 0L;
     /**
+     * <pre>
+     * min_length is the minimum required length of the public inputs array.
+     * </pre>
+     *
      * <code>uint64 min_length = 1 [json_name = "minLength"];</code>
      * @return The minLength.
      */
@@ -2161,6 +2274,10 @@ public final class Genesis {
     public static final int EMAIL_HASH_INDEX_FIELD_NUMBER = 2;
     private long emailHashIndex_ = 0L;
     /**
+     * <pre>
+     * email_hash_index is the index of the email hash in the public inputs.
+     * </pre>
+     *
      * <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
      * @return The emailHashIndex.
      */
@@ -2172,6 +2289,10 @@ public final class Genesis {
     public static final int DKIM_DOMAIN_RANGE_FIELD_NUMBER = 3;
     private xion.dkim.v1.Genesis.IndexRange dkimDomainRange_;
     /**
+     * <pre>
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the dkimDomainRange field is set.
      */
@@ -2180,6 +2301,10 @@ public final class Genesis {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
+     * <pre>
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      * @return The dkimDomainRange.
      */
@@ -2188,6 +2313,10 @@ public final class Genesis {
       return dkimDomainRange_ == null ? xion.dkim.v1.Genesis.IndexRange.getDefaultInstance() : dkimDomainRange_;
     }
     /**
+     * <pre>
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      */
     @java.lang.Override
@@ -2198,6 +2327,10 @@ public final class Genesis {
     public static final int DKIM_HASH_INDEX_FIELD_NUMBER = 4;
     private long dkimHashIndex_ = 0L;
     /**
+     * <pre>
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     * </pre>
+     *
      * <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
      * @return The dkimHashIndex.
      */
@@ -2209,6 +2342,11 @@ public final class Genesis {
     public static final int TX_BYTES_RANGE_FIELD_NUMBER = 5;
     private xion.dkim.v1.Genesis.IndexRange txBytesRange_;
     /**
+     * <pre>
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the txBytesRange field is set.
      */
@@ -2217,6 +2355,11 @@ public final class Genesis {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
+     * <pre>
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      * @return The txBytesRange.
      */
@@ -2225,6 +2368,11 @@ public final class Genesis {
       return txBytesRange_ == null ? xion.dkim.v1.Genesis.IndexRange.getDefaultInstance() : txBytesRange_;
     }
     /**
+     * <pre>
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      */
     @java.lang.Override
@@ -2235,6 +2383,10 @@ public final class Genesis {
     public static final int EMAIL_HOST_RANGE_FIELD_NUMBER = 6;
     private xion.dkim.v1.Genesis.IndexRange emailHostRange_;
     /**
+     * <pre>
+     * email_host_range is the index range for the email host in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the emailHostRange field is set.
      */
@@ -2243,6 +2395,10 @@ public final class Genesis {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
+     * <pre>
+     * email_host_range is the index range for the email host in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      * @return The emailHostRange.
      */
@@ -2251,6 +2407,10 @@ public final class Genesis {
       return emailHostRange_ == null ? xion.dkim.v1.Genesis.IndexRange.getDefaultInstance() : emailHostRange_;
     }
     /**
+     * <pre>
+     * email_host_range is the index range for the email host in public inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      */
     @java.lang.Override
@@ -2261,6 +2421,11 @@ public final class Genesis {
     public static final int EMAIL_SUBJECT_RANGE_FIELD_NUMBER = 7;
     private xion.dkim.v1.Genesis.IndexRange emailSubjectRange_;
     /**
+     * <pre>
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      * @return Whether the emailSubjectRange field is set.
      */
@@ -2269,6 +2434,11 @@ public final class Genesis {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
+     * <pre>
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      * @return The emailSubjectRange.
      */
@@ -2277,6 +2447,11 @@ public final class Genesis {
       return emailSubjectRange_ == null ? xion.dkim.v1.Genesis.IndexRange.getDefaultInstance() : emailSubjectRange_;
     }
     /**
+     * <pre>
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     * </pre>
+     *
      * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      */
     @java.lang.Override
@@ -2532,7 +2707,8 @@ public final class Genesis {
     }
     /**
      * <pre>
-     * PublicInputIndices defines the indices for extracting data from public inputs.
+     * PublicInputIndices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * Protobuf type {@code xion.dkim.v1.PublicInputIndices}
@@ -2823,6 +2999,10 @@ public final class Genesis {
 
       private long minLength_ ;
       /**
+       * <pre>
+       * min_length is the minimum required length of the public inputs array.
+       * </pre>
+       *
        * <code>uint64 min_length = 1 [json_name = "minLength"];</code>
        * @return The minLength.
        */
@@ -2831,6 +3011,10 @@ public final class Genesis {
         return minLength_;
       }
       /**
+       * <pre>
+       * min_length is the minimum required length of the public inputs array.
+       * </pre>
+       *
        * <code>uint64 min_length = 1 [json_name = "minLength"];</code>
        * @param value The minLength to set.
        * @return This builder for chaining.
@@ -2843,6 +3027,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * min_length is the minimum required length of the public inputs array.
+       * </pre>
+       *
        * <code>uint64 min_length = 1 [json_name = "minLength"];</code>
        * @return This builder for chaining.
        */
@@ -2855,6 +3043,10 @@ public final class Genesis {
 
       private long emailHashIndex_ ;
       /**
+       * <pre>
+       * email_hash_index is the index of the email hash in the public inputs.
+       * </pre>
+       *
        * <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
        * @return The emailHashIndex.
        */
@@ -2863,6 +3055,10 @@ public final class Genesis {
         return emailHashIndex_;
       }
       /**
+       * <pre>
+       * email_hash_index is the index of the email hash in the public inputs.
+       * </pre>
+       *
        * <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
        * @param value The emailHashIndex to set.
        * @return This builder for chaining.
@@ -2875,6 +3071,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_hash_index is the index of the email hash in the public inputs.
+       * </pre>
+       *
        * <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
        * @return This builder for chaining.
        */
@@ -2889,6 +3089,10 @@ public final class Genesis {
       private com.google.protobuf.SingleFieldBuilderV3<
           xion.dkim.v1.Genesis.IndexRange, xion.dkim.v1.Genesis.IndexRange.Builder, xion.dkim.v1.Genesis.IndexRangeOrBuilder> dkimDomainRangeBuilder_;
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        * @return Whether the dkimDomainRange field is set.
        */
@@ -2896,6 +3100,10 @@ public final class Genesis {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        * @return The dkimDomainRange.
        */
@@ -2907,6 +3115,10 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setDkimDomainRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -2923,6 +3135,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setDkimDomainRange(
@@ -2937,6 +3153,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder mergeDkimDomainRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -2958,6 +3178,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder clearDkimDomainRange() {
@@ -2971,6 +3195,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRange.Builder getDkimDomainRangeBuilder() {
@@ -2979,6 +3207,10 @@ public final class Genesis {
         return getDkimDomainRangeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRangeOrBuilder getDkimDomainRangeOrBuilder() {
@@ -2990,6 +3222,10 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * dkim_domain_range is the index range for the DKIM domain in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3008,6 +3244,10 @@ public final class Genesis {
 
       private long dkimHashIndex_ ;
       /**
+       * <pre>
+       * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+       * </pre>
+       *
        * <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
        * @return The dkimHashIndex.
        */
@@ -3016,6 +3256,10 @@ public final class Genesis {
         return dkimHashIndex_;
       }
       /**
+       * <pre>
+       * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+       * </pre>
+       *
        * <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
        * @param value The dkimHashIndex to set.
        * @return This builder for chaining.
@@ -3028,6 +3272,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+       * </pre>
+       *
        * <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
        * @return This builder for chaining.
        */
@@ -3042,6 +3290,11 @@ public final class Genesis {
       private com.google.protobuf.SingleFieldBuilderV3<
           xion.dkim.v1.Genesis.IndexRange, xion.dkim.v1.Genesis.IndexRange.Builder, xion.dkim.v1.Genesis.IndexRangeOrBuilder> txBytesRangeBuilder_;
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        * @return Whether the txBytesRange field is set.
        */
@@ -3049,6 +3302,11 @@ public final class Genesis {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        * @return The txBytesRange.
        */
@@ -3060,6 +3318,11 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setTxBytesRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -3076,6 +3339,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setTxBytesRange(
@@ -3090,6 +3358,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder mergeTxBytesRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -3111,6 +3384,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder clearTxBytesRange() {
@@ -3124,6 +3402,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRange.Builder getTxBytesRangeBuilder() {
@@ -3132,6 +3415,11 @@ public final class Genesis {
         return getTxBytesRangeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRangeOrBuilder getTxBytesRangeOrBuilder() {
@@ -3143,6 +3431,11 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * tx_bytes_range is the index range for the transaction bytes in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3163,6 +3456,10 @@ public final class Genesis {
       private com.google.protobuf.SingleFieldBuilderV3<
           xion.dkim.v1.Genesis.IndexRange, xion.dkim.v1.Genesis.IndexRange.Builder, xion.dkim.v1.Genesis.IndexRangeOrBuilder> emailHostRangeBuilder_;
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        * @return Whether the emailHostRange field is set.
        */
@@ -3170,6 +3467,10 @@ public final class Genesis {
         return ((bitField0_ & 0x00000020) != 0);
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        * @return The emailHostRange.
        */
@@ -3181,6 +3482,10 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setEmailHostRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -3197,6 +3502,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setEmailHostRange(
@@ -3211,6 +3520,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder mergeEmailHostRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -3232,6 +3545,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder clearEmailHostRange() {
@@ -3245,6 +3562,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRange.Builder getEmailHostRangeBuilder() {
@@ -3253,6 +3574,10 @@ public final class Genesis {
         return getEmailHostRangeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRangeOrBuilder getEmailHostRangeOrBuilder() {
@@ -3264,6 +3589,10 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * email_host_range is the index range for the email host in public inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3284,6 +3613,11 @@ public final class Genesis {
       private com.google.protobuf.SingleFieldBuilderV3<
           xion.dkim.v1.Genesis.IndexRange, xion.dkim.v1.Genesis.IndexRange.Builder, xion.dkim.v1.Genesis.IndexRangeOrBuilder> emailSubjectRangeBuilder_;
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        * @return Whether the emailSubjectRange field is set.
        */
@@ -3291,6 +3625,11 @@ public final class Genesis {
         return ((bitField0_ & 0x00000040) != 0);
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        * @return The emailSubjectRange.
        */
@@ -3302,6 +3641,11 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setEmailSubjectRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -3318,6 +3662,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder setEmailSubjectRange(
@@ -3332,6 +3681,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder mergeEmailSubjectRange(xion.dkim.v1.Genesis.IndexRange value) {
@@ -3353,6 +3707,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       public Builder clearEmailSubjectRange() {
@@ -3366,6 +3725,11 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRange.Builder getEmailSubjectRangeBuilder() {
@@ -3374,6 +3738,11 @@ public final class Genesis {
         return getEmailSubjectRangeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       public xion.dkim.v1.Genesis.IndexRangeOrBuilder getEmailSubjectRangeOrBuilder() {
@@ -3385,6 +3754,11 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * email_subject_range is the index range for the email subject in public
+       * inputs.
+       * </pre>
+       *
        * <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3491,7 +3865,8 @@ public final class Genesis {
 
     /**
      * <pre>
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -3500,7 +3875,8 @@ public final class Genesis {
     boolean hasPublicInputIndices();
     /**
      * <pre>
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -3509,7 +3885,8 @@ public final class Genesis {
     xion.dkim.v1.Genesis.PublicInputIndices getPublicInputIndices();
     /**
      * <pre>
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -3591,7 +3968,8 @@ public final class Genesis {
     private xion.dkim.v1.Genesis.PublicInputIndices publicInputIndices_;
     /**
      * <pre>
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -3603,7 +3981,8 @@ public final class Genesis {
     }
     /**
      * <pre>
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -3615,7 +3994,8 @@ public final class Genesis {
     }
     /**
      * <pre>
-     * public_input_indices defines the indices for extracting data from public inputs.
+     * public_input_indices defines the indices for extracting data from public
+     * inputs.
      * </pre>
      *
      * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4120,7 +4500,8 @@ public final class Genesis {
           xion.dkim.v1.Genesis.PublicInputIndices, xion.dkim.v1.Genesis.PublicInputIndices.Builder, xion.dkim.v1.Genesis.PublicInputIndicesOrBuilder> publicInputIndicesBuilder_;
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4131,7 +4512,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4146,7 +4528,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4166,7 +4549,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4184,7 +4568,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4209,7 +4594,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4226,7 +4612,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4238,7 +4625,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>
@@ -4253,7 +4641,8 @@ public final class Genesis {
       }
       /**
        * <pre>
-       * public_input_indices defines the indices for extracting data from public inputs.
+       * public_input_indices defines the indices for extracting data from public
+       * inputs.
        * </pre>
        *
        * <code>.xion.dkim.v1.PublicInputIndices public_input_indices = 3 [json_name = "publicInputIndices", (.gogoproto.nullable) = false];</code>

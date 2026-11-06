@@ -933,7 +933,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fchannel_2fv1_2ftx_2eproto[] PR
     "Response\022k\n\017Acknowledgement\022\'.ibc.core.c"
     "hannel.v1.MsgAcknowledgement\032/.ibc.core."
     "channel.v1.MsgAcknowledgementResponse\032\005\200"
-    "\347\260*\001B<Z:github.com/cosmos/ibc-go/v10/mod"
+    "\347\260*\001B<Z:github.com/cosmos/ibc-go/v11/mod"
     "ules/core/04-channel/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fchannel_2fv1_2ftx_2eproto_deps[4] =

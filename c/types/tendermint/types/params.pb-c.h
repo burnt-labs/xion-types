@@ -24,6 +24,7 @@ typedef struct Tendermint__Types__ValidatorParams Tendermint__Types__ValidatorPa
 typedef struct Tendermint__Types__VersionParams Tendermint__Types__VersionParams;
 typedef struct Tendermint__Types__HashedParams Tendermint__Types__HashedParams;
 typedef struct Tendermint__Types__ABCIParams Tendermint__Types__ABCIParams;
+typedef struct Tendermint__Types__AuthorityParams Tendermint__Types__AuthorityParams;
 
 
 /* --- enums --- */
@@ -43,10 +44,11 @@ struct  Tendermint__Types__ConsensusParams
   Tendermint__Types__ValidatorParams *validator;
   Tendermint__Types__VersionParams *version;
   Tendermint__Types__ABCIParams *abci;
+  Tendermint__Types__AuthorityParams *authority;
 };
 #define TENDERMINT__TYPES__CONSENSUS_PARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&tendermint__types__consensus_params__descriptor) \
-, NULL, NULL, NULL, NULL, NULL }
+, NULL, NULL, NULL, NULL, NULL, NULL }
 
 
 /*
@@ -166,6 +168,16 @@ struct  Tendermint__Types__ABCIParams
 #define TENDERMINT__TYPES__ABCIPARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&tendermint__types__abciparams__descriptor) \
 , 0 }
+
+
+struct  Tendermint__Types__AuthorityParams
+{
+  ProtobufCMessage base;
+  char *authority;
+};
+#define TENDERMINT__TYPES__AUTHORITY_PARAMS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&tendermint__types__authority_params__descriptor) \
+, (char *)protobuf_c_empty_string }
 
 
 /* Tendermint__Types__ConsensusParams methods */
@@ -301,6 +313,25 @@ Tendermint__Types__ABCIParams *
 void   tendermint__types__abciparams__free_unpacked
                      (Tendermint__Types__ABCIParams *message,
                       ProtobufCAllocator *allocator);
+/* Tendermint__Types__AuthorityParams methods */
+void   tendermint__types__authority_params__init
+                     (Tendermint__Types__AuthorityParams         *message);
+size_t tendermint__types__authority_params__get_packed_size
+                     (const Tendermint__Types__AuthorityParams   *message);
+size_t tendermint__types__authority_params__pack
+                     (const Tendermint__Types__AuthorityParams   *message,
+                      uint8_t             *out);
+size_t tendermint__types__authority_params__pack_to_buffer
+                     (const Tendermint__Types__AuthorityParams   *message,
+                      ProtobufCBuffer     *buffer);
+Tendermint__Types__AuthorityParams *
+       tendermint__types__authority_params__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   tendermint__types__authority_params__free_unpacked
+                     (Tendermint__Types__AuthorityParams *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Tendermint__Types__ConsensusParams_Closure)
@@ -324,6 +355,9 @@ typedef void (*Tendermint__Types__HashedParams_Closure)
 typedef void (*Tendermint__Types__ABCIParams_Closure)
                  (const Tendermint__Types__ABCIParams *message,
                   void *closure_data);
+typedef void (*Tendermint__Types__AuthorityParams_Closure)
+                 (const Tendermint__Types__AuthorityParams *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -337,6 +371,7 @@ extern const ProtobufCMessageDescriptor tendermint__types__validator_params__des
 extern const ProtobufCMessageDescriptor tendermint__types__version_params__descriptor;
 extern const ProtobufCMessageDescriptor tendermint__types__hashed_params__descriptor;
 extern const ProtobufCMessageDescriptor tendermint__types__abciparams__descriptor;
+extern const ProtobufCMessageDescriptor tendermint__types__authority_params__descriptor;
 
 PROTOBUF_C__END_DECLS
 

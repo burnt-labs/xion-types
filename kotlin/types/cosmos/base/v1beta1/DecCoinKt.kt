@@ -12,7 +12,7 @@ public inline fun decCoin(block: cosmos.base.v1beta1.DecCoinKt.Dsl.() -> kotlin.
  * ```
  * DecCoin defines a token with a denomination and a decimal amount.
  *
- * NOTE: The amount field is an Dec which implements the custom method
+ * NOTE: The amount field is a Dec which implements the custom method
  * signatures required by gogoproto.
  * ```
  *

@@ -32,6 +32,7 @@ PROTOBUF_CONSTEXPR ConsensusParams::ConsensusParams(::_pbi::ConstantInitialized)
       /*decltype(_impl_.validator_)*/ nullptr,
       /*decltype(_impl_.version_)*/ nullptr,
       /*decltype(_impl_.abci_)*/ nullptr,
+      /*decltype(_impl_.authority_)*/ nullptr,
     } {}
 struct ConsensusParamsDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ConsensusParamsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -144,9 +145,28 @@ struct ABCIParamsDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ABCIParamsDefaultTypeInternal _ABCIParams_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR AuthorityParams::AuthorityParams(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.authority_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct AuthorityParamsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AuthorityParamsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AuthorityParamsDefaultTypeInternal() {}
+  union {
+    AuthorityParams _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AuthorityParamsDefaultTypeInternal _AuthorityParams_default_instance_;
 }  // namespace types
 }  // namespace tendermint
-static ::_pb::Metadata file_level_metadata_tendermint_2ftypes_2fparams_2eproto[7];
+static ::_pb::Metadata file_level_metadata_tendermint_2ftypes_2fparams_2eproto[8];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_tendermint_2ftypes_2fparams_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -166,11 +186,13 @@ const ::uint32_t TableStruct_tendermint_2ftypes_2fparams_2eproto::offsets[] PROT
     PROTOBUF_FIELD_OFFSET(::tendermint::types::ConsensusParams, _impl_.validator_),
     PROTOBUF_FIELD_OFFSET(::tendermint::types::ConsensusParams, _impl_.version_),
     PROTOBUF_FIELD_OFFSET(::tendermint::types::ConsensusParams, _impl_.abci_),
+    PROTOBUF_FIELD_OFFSET(::tendermint::types::ConsensusParams, _impl_.authority_),
     0,
     1,
     2,
     3,
     4,
+    5,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::tendermint::types::BlockParams, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -232,17 +254,27 @@ const ::uint32_t TableStruct_tendermint_2ftypes_2fparams_2eproto::offsets[] PROT
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::tendermint::types::ABCIParams, _impl_.vote_extensions_enable_height_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::tendermint::types::AuthorityParams, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::tendermint::types::AuthorityParams, _impl_.authority_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 13, -1, sizeof(::tendermint::types::ConsensusParams)},
-        {18, -1, -1, sizeof(::tendermint::types::BlockParams)},
-        {28, 39, -1, sizeof(::tendermint::types::EvidenceParams)},
-        {42, -1, -1, sizeof(::tendermint::types::ValidatorParams)},
-        {51, -1, -1, sizeof(::tendermint::types::VersionParams)},
-        {60, -1, -1, sizeof(::tendermint::types::HashedParams)},
-        {70, -1, -1, sizeof(::tendermint::types::ABCIParams)},
+        {0, 14, -1, sizeof(::tendermint::types::ConsensusParams)},
+        {20, -1, -1, sizeof(::tendermint::types::BlockParams)},
+        {30, 41, -1, sizeof(::tendermint::types::EvidenceParams)},
+        {44, -1, -1, sizeof(::tendermint::types::ValidatorParams)},
+        {53, -1, -1, sizeof(::tendermint::types::VersionParams)},
+        {62, -1, -1, sizeof(::tendermint::types::HashedParams)},
+        {72, -1, -1, sizeof(::tendermint::types::ABCIParams)},
+        {81, -1, -1, sizeof(::tendermint::types::AuthorityParams)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -253,11 +285,12 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::tendermint::types::_VersionParams_default_instance_._instance,
     &::tendermint::types::_HashedParams_default_instance_._instance,
     &::tendermint::types::_ABCIParams_default_instance_._instance,
+    &::tendermint::types::_AuthorityParams_default_instance_._instance,
 };
 const char descriptor_table_protodef_tendermint_2ftypes_2fparams_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\035tendermint/types/params.proto\022\020tenderm"
     "int.types\032\024gogoproto/gogo.proto\032\036google/"
-    "protobuf/duration.proto\"\262\002\n\017ConsensusPar"
+    "protobuf/duration.proto\"\363\002\n\017ConsensusPar"
     "ams\0223\n\005block\030\001 \001(\0132\035.tendermint.types.Bl"
     "ockParamsR\005block\022<\n\010evidence\030\002 \001(\0132 .ten"
     "dermint.types.EvidenceParamsR\010evidence\022\?"
@@ -265,22 +298,25 @@ const char descriptor_table_protodef_tendermint_2ftypes_2fparams_2eproto[] PROTO
     "idatorParamsR\tvalidator\0229\n\007version\030\004 \001(\013"
     "2\037.tendermint.types.VersionParamsR\007versi"
     "on\0220\n\004abci\030\005 \001(\0132\034.tendermint.types.ABCI"
-    "ParamsR\004abci\"I\n\013BlockParams\022\033\n\tmax_bytes"
-    "\030\001 \001(\003R\010maxBytes\022\027\n\007max_gas\030\002 \001(\003R\006maxGa"
-    "sJ\004\010\003\020\004\"\251\001\n\016EvidenceParams\022+\n\022max_age_nu"
-    "m_blocks\030\001 \001(\003R\017maxAgeNumBlocks\022M\n\020max_a"
-    "ge_duration\030\002 \001(\0132\031.google.protobuf.Dura"
-    "tionB\010\310\336\037\000\230\337\037\001R\016maxAgeDuration\022\033\n\tmax_by"
-    "tes\030\003 \001(\003R\010maxBytes\"\?\n\017ValidatorParams\022\""
-    "\n\rpub_key_types\030\001 \003(\tR\013pubKeyTypes:\010\270\240\037\001"
-    "\350\240\037\001\"+\n\rVersionParams\022\020\n\003app\030\001 \001(\004R\003app:"
-    "\010\270\240\037\001\350\240\037\001\"Z\n\014HashedParams\022&\n\017block_max_b"
-    "ytes\030\001 \001(\003R\rblockMaxBytes\022\"\n\rblock_max_g"
-    "as\030\002 \001(\003R\013blockMaxGas\"O\n\nABCIParams\022A\n\035v"
-    "ote_extensions_enable_height\030\001 \001(\003R\032vote"
-    "ExtensionsEnableHeightB9Z3github.com/com"
-    "etbft/cometbft/proto/tendermint/types\250\342\036"
-    "\001b\006proto3"
+    "ParamsR\004abci\022\?\n\tauthority\030\006 \001(\0132!.tender"
+    "mint.types.AuthorityParamsR\tauthority\"I\n"
+    "\013BlockParams\022\033\n\tmax_bytes\030\001 \001(\003R\010maxByte"
+    "s\022\027\n\007max_gas\030\002 \001(\003R\006maxGasJ\004\010\003\020\004\"\251\001\n\016Evi"
+    "denceParams\022+\n\022max_age_num_blocks\030\001 \001(\003R"
+    "\017maxAgeNumBlocks\022M\n\020max_age_duration\030\002 \001"
+    "(\0132\031.google.protobuf.DurationB\010\310\336\037\000\230\337\037\001R"
+    "\016maxAgeDuration\022\033\n\tmax_bytes\030\003 \001(\003R\010maxB"
+    "ytes\"\?\n\017ValidatorParams\022\"\n\rpub_key_types"
+    "\030\001 \003(\tR\013pubKeyTypes:\010\270\240\037\001\350\240\037\001\"+\n\rVersion"
+    "Params\022\020\n\003app\030\001 \001(\004R\003app:\010\270\240\037\001\350\240\037\001\"Z\n\014Ha"
+    "shedParams\022&\n\017block_max_bytes\030\001 \001(\003R\rblo"
+    "ckMaxBytes\022\"\n\rblock_max_gas\030\002 \001(\003R\013block"
+    "MaxGas\"O\n\nABCIParams\022A\n\035vote_extensions_"
+    "enable_height\030\001 \001(\003R\032voteExtensionsEnabl"
+    "eHeight\"/\n\017AuthorityParams\022\034\n\tauthority\030"
+    "\001 \001(\tR\tauthorityB9Z3github.com/cometbft/"
+    "cometbft/proto/tendermint/types\250\342\036\001b\006pro"
+    "to3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_tendermint_2ftypes_2fparams_2eproto_deps[2] =
     {
@@ -291,13 +327,13 @@ static ::absl::once_flag descriptor_table_tendermint_2ftypes_2fparams_2eproto_on
 const ::_pbi::DescriptorTable descriptor_table_tendermint_2ftypes_2fparams_2eproto = {
     false,
     false,
-    1009,
+    1123,
     descriptor_table_protodef_tendermint_2ftypes_2fparams_2eproto,
     "tendermint/types/params.proto",
     &descriptor_table_tendermint_2ftypes_2fparams_2eproto_once,
     descriptor_table_tendermint_2ftypes_2fparams_2eproto_deps,
     2,
-    7,
+    8,
     schemas,
     file_default_instances,
     TableStruct_tendermint_2ftypes_2fparams_2eproto::offsets,
@@ -352,6 +388,10 @@ class ConsensusParams::_Internal {
   static void set_has_abci(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
+  static const ::tendermint::types::AuthorityParams& authority(const ConsensusParams* msg);
+  static void set_has_authority(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
 };
 
 const ::tendermint::types::BlockParams& ConsensusParams::_Internal::block(const ConsensusParams* msg) {
@@ -369,6 +409,9 @@ const ::tendermint::types::VersionParams& ConsensusParams::_Internal::version(co
 const ::tendermint::types::ABCIParams& ConsensusParams::_Internal::abci(const ConsensusParams* msg) {
   return *msg->_impl_.abci_;
 }
+const ::tendermint::types::AuthorityParams& ConsensusParams::_Internal::authority(const ConsensusParams* msg) {
+  return *msg->_impl_.authority_;
+}
 ConsensusParams::ConsensusParams(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
@@ -385,6 +428,7 @@ ConsensusParams::ConsensusParams(const ConsensusParams& from) : ::google::protob
       decltype(_impl_.validator_){nullptr},
       decltype(_impl_.version_){nullptr},
       decltype(_impl_.abci_){nullptr},
+      decltype(_impl_.authority_){nullptr},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -403,6 +447,9 @@ ConsensusParams::ConsensusParams(const ConsensusParams& from) : ::google::protob
   if ((from._impl_._has_bits_[0] & 0x00000010u) != 0) {
     _this->_impl_.abci_ = new ::tendermint::types::ABCIParams(*from._impl_.abci_);
   }
+  if ((from._impl_._has_bits_[0] & 0x00000020u) != 0) {
+    _this->_impl_.authority_ = new ::tendermint::types::AuthorityParams(*from._impl_.authority_);
+  }
 
   // @@protoc_insertion_point(copy_constructor:tendermint.types.ConsensusParams)
 }
@@ -416,6 +463,7 @@ inline void ConsensusParams::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.validator_){nullptr},
       decltype(_impl_.version_){nullptr},
       decltype(_impl_.abci_){nullptr},
+      decltype(_impl_.authority_){nullptr},
   };
 }
 ConsensusParams::~ConsensusParams() {
@@ -430,6 +478,7 @@ inline void ConsensusParams::SharedDtor() {
   if (this != internal_default_instance()) delete _impl_.validator_;
   if (this != internal_default_instance()) delete _impl_.version_;
   if (this != internal_default_instance()) delete _impl_.abci_;
+  if (this != internal_default_instance()) delete _impl_.authority_;
 }
 void ConsensusParams::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -442,7 +491,7 @@ PROTOBUF_NOINLINE void ConsensusParams::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(_impl_.block_ != nullptr);
       _impl_.block_->Clear();
@@ -463,6 +512,10 @@ PROTOBUF_NOINLINE void ConsensusParams::Clear() {
       ABSL_DCHECK(_impl_.abci_ != nullptr);
       _impl_.abci_->Clear();
     }
+    if (cached_has_bits & 0x00000020u) {
+      ABSL_DCHECK(_impl_.authority_ != nullptr);
+      _impl_.authority_->Clear();
+    }
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -476,16 +529,16 @@ const char* ConsensusParams::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 5, 0, 2> ConsensusParams::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 6, 0, 2> ConsensusParams::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_._has_bits_),
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    5,  // num_aux_entries
+    6,  // num_field_entries
+    6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_ConsensusParams_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -506,7 +559,9 @@ const ::_pbi::TcParseTable<3, 5, 5, 0, 2> ConsensusParams::_table_ = {
     // .tendermint.types.ABCIParams abci = 5 [json_name = "abci"];
     {::_pbi::TcParser::FastMtS1,
      {42, 4, 4, PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.abci_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];
+    {::_pbi::TcParser::FastMtS1,
+     {50, 5, 5, PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.authority_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -526,12 +581,16 @@ const ::_pbi::TcParseTable<3, 5, 5, 0, 2> ConsensusParams::_table_ = {
     // .tendermint.types.ABCIParams abci = 5 [json_name = "abci"];
     {PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.abci_), _Internal::kHasBitsOffset + 4, 4,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];
+    {PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.authority_), _Internal::kHasBitsOffset + 5, 5,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::tendermint::types::BlockParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::EvidenceParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::ValidatorParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::VersionParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::ABCIParams>()},
+    {::_pbi::TcParser::GetTable<::tendermint::types::AuthorityParams>()},
   }}, {{
   }},
 };
@@ -579,6 +638,13 @@ const ::_pbi::TcParseTable<3, 5, 5, 0, 2> ConsensusParams::_table_ = {
         _Internal::abci(this).GetCachedSize(), target, stream);
   }
 
+  // .tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];
+  if (cached_has_bits & 0x00000020u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(6, _Internal::authority(this),
+        _Internal::authority(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -597,7 +663,7 @@ const ::_pbi::TcParseTable<3, 5, 5, 0, 2> ConsensusParams::_table_ = {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     // .tendermint.types.BlockParams block = 1 [json_name = "block"];
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -633,6 +699,13 @@ const ::_pbi::TcParseTable<3, 5, 5, 0, 2> ConsensusParams::_table_ = {
           *_impl_.abci_);
     }
 
+    // .tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.authority_);
+    }
+
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
@@ -653,7 +726,7 @@ void ConsensusParams::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_mutable_block()->::tendermint::types::BlockParams::MergeFrom(
           from._internal_block());
@@ -673,6 +746,10 @@ void ConsensusParams::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
     if (cached_has_bits & 0x00000010u) {
       _this->_internal_mutable_abci()->::tendermint::types::ABCIParams::MergeFrom(
           from._internal_abci());
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _this->_internal_mutable_authority()->::tendermint::types::AuthorityParams::MergeFrom(
+          from._internal_authority());
     }
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -694,8 +771,8 @@ void ConsensusParams::InternalSwap(ConsensusParams* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.abci_)
-      + sizeof(ConsensusParams::_impl_.abci_)
+      PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.authority_)
+      + sizeof(ConsensusParams::_impl_.authority_)
       - PROTOBUF_FIELD_OFFSET(ConsensusParams, _impl_.block_)>(
           reinterpret_cast<char*>(&_impl_.block_),
           reinterpret_cast<char*>(&other->_impl_.block_));
@@ -1866,6 +1943,197 @@ void ABCIParams::InternalSwap(ABCIParams* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_tendermint_2ftypes_2fparams_2eproto_getter, &descriptor_table_tendermint_2ftypes_2fparams_2eproto_once,
       file_level_metadata_tendermint_2ftypes_2fparams_2eproto[6]);
+}
+// ===================================================================
+
+class AuthorityParams::_Internal {
+ public:
+};
+
+AuthorityParams::AuthorityParams(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:tendermint.types.AuthorityParams)
+}
+AuthorityParams::AuthorityParams(const AuthorityParams& from) : ::google::protobuf::Message() {
+  AuthorityParams* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.authority_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.authority_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.authority_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_authority().empty()) {
+    _this->_impl_.authority_.Set(from._internal_authority(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:tendermint.types.AuthorityParams)
+}
+inline void AuthorityParams::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.authority_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.authority_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.authority_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+AuthorityParams::~AuthorityParams() {
+  // @@protoc_insertion_point(destructor:tendermint.types.AuthorityParams)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void AuthorityParams::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.authority_.Destroy();
+}
+void AuthorityParams::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void AuthorityParams::Clear() {
+// @@protoc_insertion_point(message_clear_start:tendermint.types.AuthorityParams)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.authority_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* AuthorityParams::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 50, 2> AuthorityParams::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_AuthorityParams_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string authority = 1 [json_name = "authority"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(AuthorityParams, _impl_.authority_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string authority = 1 [json_name = "authority"];
+    {PROTOBUF_FIELD_OFFSET(AuthorityParams, _impl_.authority_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\40\11\0\0\0\0\0\0"
+    "tendermint.types.AuthorityParams"
+    "authority"
+  }},
+};
+
+::uint8_t* AuthorityParams::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:tendermint.types.AuthorityParams)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string authority = 1 [json_name = "authority"];
+  if (!this->_internal_authority().empty()) {
+    const std::string& _s = this->_internal_authority();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "tendermint.types.AuthorityParams.authority");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:tendermint.types.AuthorityParams)
+  return target;
+}
+
+::size_t AuthorityParams::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:tendermint.types.AuthorityParams)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string authority = 1 [json_name = "authority"];
+  if (!this->_internal_authority().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_authority());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData AuthorityParams::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    AuthorityParams::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*AuthorityParams::GetClassData() const { return &_class_data_; }
+
+
+void AuthorityParams::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<AuthorityParams*>(&to_msg);
+  auto& from = static_cast<const AuthorityParams&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:tendermint.types.AuthorityParams)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_authority().empty()) {
+    _this->_internal_set_authority(from._internal_authority());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AuthorityParams::CopyFrom(const AuthorityParams& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:tendermint.types.AuthorityParams)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool AuthorityParams::IsInitialized() const {
+  return true;
+}
+
+void AuthorityParams::InternalSwap(AuthorityParams* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.authority_, lhs_arena,
+                                       &other->_impl_.authority_, rhs_arena);
+}
+
+::google::protobuf::Metadata AuthorityParams::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_tendermint_2ftypes_2fparams_2eproto_getter, &descriptor_table_tendermint_2ftypes_2fparams_2eproto_once,
+      file_level_metadata_tendermint_2ftypes_2fparams_2eproto[7]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace types

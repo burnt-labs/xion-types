@@ -18,7 +18,7 @@ from xion_types.amino import amino_pb2 as amino_dot_amino__pb2
 from xion_types.xion.zk.v1 import params_pb2 as xion_dot_zk_dot_v1_dot_params__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13xion/zk/v1/tx.proto\x12\nxion.zk.v1\x1a\x17\x63osmos/msg/v1/msg.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x14gogoproto/gogo.proto\x1a\x11\x61mino/amino.proto\x1a\x17xion/zk/v1/params.proto\"\xbb\x01\n\nMsgAddVKey\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x1d\n\nvkey_bytes\x18\x04 \x01(\x0cR\tvkeyBytes: \x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\rzk/MsgAddVKey\"$\n\x12MsgAddVKeyResponse\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\xc1\x01\n\rMsgUpdateVKey\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x1d\n\nvkey_bytes\x18\x04 \x01(\x0cR\tvkeyBytes:#\x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\x10zk/MsgUpdateVKey\"\x17\n\x15MsgUpdateVKeyResponse\"\x80\x01\n\rMsgRemoveVKey\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name:#\x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\x10zk/MsgRemoveVKey\"\x17\n\x15MsgRemoveVKeyResponse\"\x8b\x01\n\x0fMsgUpdateParams\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x30\n\x06params\x18\x02 \x01(\x0b\x32\x12.xion.zk.v1.ParamsB\x04\xc8\xde\x1f\x00R\x06params:\x0e\x82\xe7\xb0*\tauthority\"\x19\n\x17MsgUpdateParamsResponse2\xb9\x02\n\x03Msg\x12\x41\n\x07\x41\x64\x64VKey\x12\x16.xion.zk.v1.MsgAddVKey\x1a\x1e.xion.zk.v1.MsgAddVKeyResponse\x12J\n\nUpdateVKey\x12\x19.xion.zk.v1.MsgUpdateVKey\x1a!.xion.zk.v1.MsgUpdateVKeyResponse\x12J\n\nRemoveVKey\x12\x19.xion.zk.v1.MsgRemoveVKey\x1a!.xion.zk.v1.MsgRemoveVKeyResponse\x12P\n\x0cUpdateParams\x12\x1b.xion.zk.v1.MsgUpdateParams\x1a#.xion.zk.v1.MsgUpdateParamsResponse\x1a\x05\x80\xe7\xb0*\x01\x42\'Z%github.com/burnt-labs/xion/x/zk/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13xion/zk/v1/tx.proto\x12\nxion.zk.v1\x1a\x17\x63osmos/msg/v1/msg.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x14gogoproto/gogo.proto\x1a\x11\x61mino/amino.proto\x1a\x17xion/zk/v1/params.proto\"\xf7\x01\n\nMsgAddVKey\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x1d\n\nvkey_bytes\x18\x04 \x01(\x0cR\tvkeyBytes\x12:\n\x0cproof_system\x18\x05 \x01(\x0e\x32\x17.xion.zk.v1.ProofSystemR\x0bproofSystem: \x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\rzk/MsgAddVKey\"$\n\x12MsgAddVKeyResponse\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\xfd\x01\n\rMsgUpdateVKey\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x1d\n\nvkey_bytes\x18\x04 \x01(\x0cR\tvkeyBytes\x12:\n\x0cproof_system\x18\x05 \x01(\x0e\x32\x17.xion.zk.v1.ProofSystemR\x0bproofSystem:#\x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\x10zk/MsgUpdateVKey\"\x17\n\x15MsgUpdateVKeyResponse\"\x80\x01\n\rMsgRemoveVKey\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name:#\x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\x10zk/MsgRemoveVKey\"\x17\n\x15MsgRemoveVKeyResponse\"\x8b\x01\n\x0fMsgUpdateParams\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x30\n\x06params\x18\x02 \x01(\x0b\x32\x12.xion.zk.v1.ParamsB\x04\xc8\xde\x1f\x00R\x06params:\x0e\x82\xe7\xb0*\tauthority\"\x19\n\x17MsgUpdateParamsResponse2\xb9\x02\n\x03Msg\x12\x41\n\x07\x41\x64\x64VKey\x12\x16.xion.zk.v1.MsgAddVKey\x1a\x1e.xion.zk.v1.MsgAddVKeyResponse\x12J\n\nUpdateVKey\x12\x19.xion.zk.v1.MsgUpdateVKey\x1a!.xion.zk.v1.MsgUpdateVKeyResponse\x12J\n\nRemoveVKey\x12\x19.xion.zk.v1.MsgRemoveVKey\x1a!.xion.zk.v1.MsgRemoveVKeyResponse\x12P\n\x0cUpdateParams\x12\x1b.xion.zk.v1.MsgUpdateParams\x1a#.xion.zk.v1.MsgUpdateParamsResponse\x1a\x05\x80\xe7\xb0*\x01\x42\'Z%github.com/burnt-labs/xion/x/zk/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -47,21 +47,21 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_MSG']._options = None
   _globals['_MSG']._serialized_options = b'\200\347\260*\001'
   _globals['_MSGADDVKEY']._serialized_start=154
-  _globals['_MSGADDVKEY']._serialized_end=341
-  _globals['_MSGADDVKEYRESPONSE']._serialized_start=343
-  _globals['_MSGADDVKEYRESPONSE']._serialized_end=379
-  _globals['_MSGUPDATEVKEY']._serialized_start=382
-  _globals['_MSGUPDATEVKEY']._serialized_end=575
-  _globals['_MSGUPDATEVKEYRESPONSE']._serialized_start=577
-  _globals['_MSGUPDATEVKEYRESPONSE']._serialized_end=600
-  _globals['_MSGREMOVEVKEY']._serialized_start=603
-  _globals['_MSGREMOVEVKEY']._serialized_end=731
-  _globals['_MSGREMOVEVKEYRESPONSE']._serialized_start=733
-  _globals['_MSGREMOVEVKEYRESPONSE']._serialized_end=756
-  _globals['_MSGUPDATEPARAMS']._serialized_start=759
-  _globals['_MSGUPDATEPARAMS']._serialized_end=898
-  _globals['_MSGUPDATEPARAMSRESPONSE']._serialized_start=900
-  _globals['_MSGUPDATEPARAMSRESPONSE']._serialized_end=925
-  _globals['_MSG']._serialized_start=928
-  _globals['_MSG']._serialized_end=1241
+  _globals['_MSGADDVKEY']._serialized_end=401
+  _globals['_MSGADDVKEYRESPONSE']._serialized_start=403
+  _globals['_MSGADDVKEYRESPONSE']._serialized_end=439
+  _globals['_MSGUPDATEVKEY']._serialized_start=442
+  _globals['_MSGUPDATEVKEY']._serialized_end=695
+  _globals['_MSGUPDATEVKEYRESPONSE']._serialized_start=697
+  _globals['_MSGUPDATEVKEYRESPONSE']._serialized_end=720
+  _globals['_MSGREMOVEVKEY']._serialized_start=723
+  _globals['_MSGREMOVEVKEY']._serialized_end=851
+  _globals['_MSGREMOVEVKEYRESPONSE']._serialized_start=853
+  _globals['_MSGREMOVEVKEYRESPONSE']._serialized_end=876
+  _globals['_MSGUPDATEPARAMS']._serialized_start=879
+  _globals['_MSGUPDATEPARAMS']._serialized_end=1018
+  _globals['_MSGUPDATEPARAMSRESPONSE']._serialized_start=1020
+  _globals['_MSGUPDATEPARAMSRESPONSE']._serialized_end=1045
+  _globals['_MSG']._serialized_start=1048
+  _globals['_MSG']._serialized_end=1361
 # @@protoc_insertion_point(module_scope)

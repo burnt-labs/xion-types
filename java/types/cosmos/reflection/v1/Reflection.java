@@ -930,7 +930,7 @@ public final class Reflection {
               case 10: {
                 com.google.protobuf.DescriptorProtos.FileDescriptorProto m =
                     input.readMessage(
-                        com.google.protobuf.DescriptorProtos.FileDescriptorProto.PARSER,
+                        com.google.protobuf.DescriptorProtos.FileDescriptorProto.parser(),
                         extensionRegistry);
                 if (filesBuilder_ == null) {
                   ensureFilesIsMutable();

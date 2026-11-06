@@ -67,8 +67,8 @@ object TxProto extends _root_.scalapb.GeneratedFileObject {
   mUaKy54aW9uLmZlZWFicy52MWJldGExLk1zZ0FkZEhvc3Rab25lUmVzcG9uc2UiABJqCg5VcGRhdGVIb3N0Wm9uZRImLnhpb24uZ
   mVlYWJzLnYxYmV0YTEuTXNnVXBkYXRlSG9zdFpvbmUaLi54aW9uLmZlZWFicy52MWJldGExLk1zZ1VwZGF0ZUhvc3Rab25lUmVzc
   G9uc2UiABJqCg5SZW1vdmVIb3N0Wm9uZRImLnhpb24uZmVlYWJzLnYxYmV0YTEuTXNnUmVtb3ZlSG9zdFpvbmUaLi54aW9uLmZlZ
-  WFicy52MWJldGExLk1zZ1JlbW92ZUhvc3Rab25lUmVzcG9uc2UiABoFgOewKgFCK1opZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb
-  24veC9mZWVhYnMvdHlwZXNiBnByb3RvMw=="""
+  WFicy52MWJldGExLk1zZ1JlbW92ZUhvc3Rab25lUmVzcG9uc2UiABoFgOewKgFCLlosZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb
+  24vYXBwL2xlZ2FjeS9mZWVhYnNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

@@ -6,6 +6,11 @@
 package abstractaccount.v1
 
 /** MsgUpdateParams is the message for updating the module parameters.
+  *
+  * @param sender
+  *   sender is the authority address requesting the update.
+  * @param params
+  *   params is the new module parameters to apply.
   */
 @SerialVersionUID(0L)
 final case class MsgUpdateParams(

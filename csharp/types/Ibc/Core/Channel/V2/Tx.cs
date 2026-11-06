@@ -71,7 +71,7 @@ namespace Ibc.Core.Channel.V2 {
             "ZXNwb25zZRJrCg9BY2tub3dsZWRnZW1lbnQSJy5pYmMuY29yZS5jaGFubmVs",
             "LnYyLk1zZ0Fja25vd2xlZGdlbWVudBovLmliYy5jb3JlLmNoYW5uZWwudjIu",
             "TXNnQWNrbm93bGVkZ2VtZW50UmVzcG9uc2UaBYDnsCoBQj9aPWdpdGh1Yi5j",
-            "b20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9jb3JlLzA0LWNoYW5uZWwv",
+            "b20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9jb3JlLzA0LWNoYW5uZWwv",
             "djIvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Ibc.Core.Channel.V2.PacketReflection.Descriptor, global::Ibc.Core.Client.V1.ClientReflection.Descriptor, },

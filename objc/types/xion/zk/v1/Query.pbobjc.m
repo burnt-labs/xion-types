@@ -41,7 +41,9 @@
 GPBObjCClassDeclaration(PageRequest);
 GPBObjCClassDeclaration(PageResponse);
 GPBObjCClassDeclaration(Params);
+GPBObjCClassDeclaration(ProofVerifyGnarkResponse);
 GPBObjCClassDeclaration(ProofVerifyResponse);
+GPBObjCClassDeclaration(ProofVerifyUltraHonkResponse);
 GPBObjCClassDeclaration(QueryHasVKeyRequest);
 GPBObjCClassDeclaration(QueryHasVKeyResponse);
 GPBObjCClassDeclaration(QueryNextVKeyIDRequest);
@@ -54,7 +56,9 @@ GPBObjCClassDeclaration(QueryVKeyRequest);
 GPBObjCClassDeclaration(QueryVKeyResponse);
 GPBObjCClassDeclaration(QueryVKeysRequest);
 GPBObjCClassDeclaration(QueryVKeysResponse);
+GPBObjCClassDeclaration(QueryVerifyGnarkRequest);
 GPBObjCClassDeclaration(QueryVerifyRequest);
+GPBObjCClassDeclaration(QueryVerifyUltraHonkRequest);
 GPBObjCClassDeclaration(SnarkJsProof);
 GPBObjCClassDeclaration(VKey);
 GPBObjCClassDeclaration(VKeyWithID);
@@ -279,6 +283,276 @@ typedef struct ProofVerifyResponse__storage_ {
 
 @end
 
+#pragma mark - ProofVerifyUltraHonkResponse
+
+@implementation ProofVerifyUltraHonkResponse
+
+@dynamic verified;
+@dynamic vkeySha256;
+
+typedef struct ProofVerifyUltraHonkResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *vkeySha256;
+} ProofVerifyUltraHonkResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "verified",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ProofVerifyUltraHonkResponse_FieldNumber_Verified,
+        .hasIndex = 0,
+        .offset = 1,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "vkeySha256",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ProofVerifyUltraHonkResponse_FieldNumber_VkeySha256,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ProofVerifyUltraHonkResponse__storage_, vkeySha256),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(ProofVerifyUltraHonkResponse)
+                                   messageName:@"ProofVerifyUltraHonkResponse"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ProofVerifyUltraHonkResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ProofVerifyGnarkResponse
+
+@implementation ProofVerifyGnarkResponse
+
+@dynamic verified;
+
+typedef struct ProofVerifyGnarkResponse__storage_ {
+  uint32_t _has_storage_[1];
+} ProofVerifyGnarkResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "verified",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ProofVerifyGnarkResponse_FieldNumber_Verified,
+        .hasIndex = 0,
+        .offset = 1,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(ProofVerifyGnarkResponse)
+                                   messageName:@"ProofVerifyGnarkResponse"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ProofVerifyGnarkResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryVerifyUltraHonkRequest
+
+@implementation QueryVerifyUltraHonkRequest
+
+@dynamic proof;
+@dynamic publicInputs;
+@dynamic vkeyName;
+@dynamic vkeyId;
+@dynamic expectedVkeySha256;
+
+typedef struct QueryVerifyUltraHonkRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *proof;
+  NSData *publicInputs;
+  NSString *vkeyName;
+  NSData *expectedVkeySha256;
+  uint64_t vkeyId;
+} QueryVerifyUltraHonkRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "proof",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyUltraHonkRequest_FieldNumber_Proof,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryVerifyUltraHonkRequest__storage_, proof),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "publicInputs",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyUltraHonkRequest_FieldNumber_PublicInputs,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(QueryVerifyUltraHonkRequest__storage_, publicInputs),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "vkeyName",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyUltraHonkRequest_FieldNumber_VkeyName,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(QueryVerifyUltraHonkRequest__storage_, vkeyName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "vkeyId",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyUltraHonkRequest_FieldNumber_VkeyId,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(QueryVerifyUltraHonkRequest__storage_, vkeyId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "expectedVkeySha256",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyUltraHonkRequest_FieldNumber_ExpectedVkeySha256,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(QueryVerifyUltraHonkRequest__storage_, expectedVkeySha256),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryVerifyUltraHonkRequest)
+                                   messageName:@"QueryVerifyUltraHonkRequest"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryVerifyUltraHonkRequest__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryVerifyGnarkRequest
+
+@implementation QueryVerifyGnarkRequest
+
+@dynamic proof;
+@dynamic publicInputs;
+@dynamic vkeyName;
+@dynamic vkeyId;
+
+typedef struct QueryVerifyGnarkRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *proof;
+  NSData *publicInputs;
+  NSString *vkeyName;
+  uint64_t vkeyId;
+} QueryVerifyGnarkRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "proof",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyGnarkRequest_FieldNumber_Proof,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryVerifyGnarkRequest__storage_, proof),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "publicInputs",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyGnarkRequest_FieldNumber_PublicInputs,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(QueryVerifyGnarkRequest__storage_, publicInputs),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "vkeyName",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyGnarkRequest_FieldNumber_VkeyName,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(QueryVerifyGnarkRequest__storage_, vkeyName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "vkeyId",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyGnarkRequest_FieldNumber_VkeyId,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(QueryVerifyGnarkRequest__storage_, vkeyId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeUInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryVerifyGnarkRequest)
+                                   messageName:@"QueryVerifyGnarkRequest"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryVerifyGnarkRequest__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - VKey
 
 @implementation VKey
@@ -288,9 +562,11 @@ typedef struct ProofVerifyResponse__storage_ {
 @dynamic description_p;
 @dynamic circuitHash;
 @dynamic authority;
+@dynamic proofSystem;
 
 typedef struct VKey__storage_ {
   uint32_t _has_storage_[1];
+  ProofSystem proofSystem;
   NSData *keyBytes;
   NSString *name;
   NSString *description_p;
@@ -350,6 +626,15 @@ typedef struct VKey__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "proofSystem",
+        .dataTypeSpecific.enumDescFunc = ProofSystem_EnumDescriptor,
+        .number = VKey_FieldNumber_ProofSystem,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(VKey__storage_, proofSystem),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeEnum,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:GPBObjCClass(VKey)
@@ -368,6 +653,18 @@ typedef struct VKey__storage_ {
 }
 
 @end
+
+int32_t VKey_ProofSystem_RawValue(VKey *message) {
+  GPBDescriptor *descriptor = [VKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:VKey_FieldNumber_ProofSystem];
+  return GPBGetMessageRawEnumField(message, field);
+}
+
+void SetVKey_ProofSystem_RawValue(VKey *message, int32_t value) {
+  GPBDescriptor *descriptor = [VKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:VKey_FieldNumber_ProofSystem];
+  GPBSetMessageRawEnumField(message, field, value);
+}
 
 #pragma mark - QueryVKeyRequest
 

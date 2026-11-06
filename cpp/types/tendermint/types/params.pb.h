@@ -60,6 +60,9 @@ namespace types {
 class ABCIParams;
 struct ABCIParamsDefaultTypeInternal;
 extern ABCIParamsDefaultTypeInternal _ABCIParams_default_instance_;
+class AuthorityParams;
+struct AuthorityParamsDefaultTypeInternal;
+extern AuthorityParamsDefaultTypeInternal _AuthorityParams_default_instance_;
 class BlockParams;
 struct BlockParamsDefaultTypeInternal;
 extern BlockParamsDefaultTypeInternal _BlockParams_default_instance_;
@@ -226,6 +229,7 @@ class ConsensusParams final :
     kValidatorFieldNumber = 3,
     kVersionFieldNumber = 4,
     kAbciFieldNumber = 5,
+    kAuthorityFieldNumber = 6,
   };
   // .tendermint.types.BlockParams block = 1 [json_name = "block"];
   bool has_block() const;
@@ -302,12 +306,27 @@ class ConsensusParams final :
   ::tendermint::types::ABCIParams* _internal_mutable_abci();
 
   public:
+  // .tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];
+  bool has_authority() const;
+  void clear_authority() ;
+  const ::tendermint::types::AuthorityParams& authority() const;
+  PROTOBUF_NODISCARD ::tendermint::types::AuthorityParams* release_authority();
+  ::tendermint::types::AuthorityParams* mutable_authority();
+  void set_allocated_authority(::tendermint::types::AuthorityParams* value);
+  void unsafe_arena_set_allocated_authority(::tendermint::types::AuthorityParams* value);
+  ::tendermint::types::AuthorityParams* unsafe_arena_release_authority();
+
+  private:
+  const ::tendermint::types::AuthorityParams& _internal_authority() const;
+  ::tendermint::types::AuthorityParams* _internal_mutable_authority();
+
+  public:
   // @@protoc_insertion_point(class_scope:tendermint.types.ConsensusParams)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5, 5, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 6, 0, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -319,6 +338,7 @@ class ConsensusParams final :
     ::tendermint::types::ValidatorParams* validator_;
     ::tendermint::types::VersionParams* version_;
     ::tendermint::types::ABCIParams* abci_;
+    ::tendermint::types::AuthorityParams* authority_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1343,6 +1363,170 @@ class ABCIParams final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_tendermint_2ftypes_2fparams_2eproto;
+};// -------------------------------------------------------------------
+
+class AuthorityParams final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:tendermint.types.AuthorityParams) */ {
+ public:
+  inline AuthorityParams() : AuthorityParams(nullptr) {}
+  ~AuthorityParams() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR AuthorityParams(::google::protobuf::internal::ConstantInitialized);
+
+  AuthorityParams(const AuthorityParams& from);
+  AuthorityParams(AuthorityParams&& from) noexcept
+    : AuthorityParams() {
+    *this = ::std::move(from);
+  }
+
+  inline AuthorityParams& operator=(const AuthorityParams& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AuthorityParams& operator=(AuthorityParams&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AuthorityParams& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AuthorityParams* internal_default_instance() {
+    return reinterpret_cast<const AuthorityParams*>(
+               &_AuthorityParams_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(AuthorityParams& a, AuthorityParams& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AuthorityParams* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AuthorityParams* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AuthorityParams* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AuthorityParams>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AuthorityParams& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const AuthorityParams& from) {
+    AuthorityParams::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AuthorityParams* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "tendermint.types.AuthorityParams";
+  }
+  protected:
+  explicit AuthorityParams(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAuthorityFieldNumber = 1,
+  };
+  // string authority = 1 [json_name = "authority"];
+  void clear_authority() ;
+  const std::string& authority() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_authority(Arg_&& arg, Args_... args);
+  std::string* mutable_authority();
+  PROTOBUF_NODISCARD std::string* release_authority();
+  void set_allocated_authority(std::string* ptr);
+
+  private:
+  const std::string& _internal_authority() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_authority(
+      const std::string& value);
+  std::string* _internal_mutable_authority();
+
+  public:
+  // @@protoc_insertion_point(class_scope:tendermint.types.AuthorityParams)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 0, 50, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr authority_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_tendermint_2ftypes_2fparams_2eproto;
 };
 
 // ===================================================================
@@ -1841,6 +2025,102 @@ inline void ConsensusParams::set_allocated_abci(::tendermint::types::ABCIParams*
   // @@protoc_insertion_point(field_set_allocated:tendermint.types.ConsensusParams.abci)
 }
 
+// .tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];
+inline bool ConsensusParams::has_authority() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.authority_ != nullptr);
+  return value;
+}
+inline void ConsensusParams::clear_authority() {
+  if (_impl_.authority_ != nullptr) _impl_.authority_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline const ::tendermint::types::AuthorityParams& ConsensusParams::_internal_authority() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::tendermint::types::AuthorityParams* p = _impl_.authority_;
+  return p != nullptr ? *p : reinterpret_cast<const ::tendermint::types::AuthorityParams&>(::tendermint::types::_AuthorityParams_default_instance_);
+}
+inline const ::tendermint::types::AuthorityParams& ConsensusParams::authority() const {
+  // @@protoc_insertion_point(field_get:tendermint.types.ConsensusParams.authority)
+  return _internal_authority();
+}
+inline void ConsensusParams::unsafe_arena_set_allocated_authority(::tendermint::types::AuthorityParams* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.authority_);
+  }
+  _impl_.authority_ = reinterpret_cast<::tendermint::types::AuthorityParams*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:tendermint.types.ConsensusParams.authority)
+}
+inline ::tendermint::types::AuthorityParams* ConsensusParams::release_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  ::tendermint::types::AuthorityParams* released = _impl_.authority_;
+  _impl_.authority_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::tendermint::types::AuthorityParams* ConsensusParams::unsafe_arena_release_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:tendermint.types.ConsensusParams.authority)
+
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  ::tendermint::types::AuthorityParams* temp = _impl_.authority_;
+  _impl_.authority_ = nullptr;
+  return temp;
+}
+inline ::tendermint::types::AuthorityParams* ConsensusParams::_internal_mutable_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000020u;
+  if (_impl_.authority_ == nullptr) {
+    auto* p = CreateMaybeMessage<::tendermint::types::AuthorityParams>(GetArenaForAllocation());
+    _impl_.authority_ = reinterpret_cast<::tendermint::types::AuthorityParams*>(p);
+  }
+  return _impl_.authority_;
+}
+inline ::tendermint::types::AuthorityParams* ConsensusParams::mutable_authority() {
+  ::tendermint::types::AuthorityParams* _msg = _internal_mutable_authority();
+  // @@protoc_insertion_point(field_mutable:tendermint.types.ConsensusParams.authority)
+  return _msg;
+}
+inline void ConsensusParams::set_allocated_authority(::tendermint::types::AuthorityParams* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::tendermint::types::AuthorityParams*>(_impl_.authority_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::tendermint::types::AuthorityParams*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+
+  _impl_.authority_ = reinterpret_cast<::tendermint::types::AuthorityParams*>(value);
+  // @@protoc_insertion_point(field_set_allocated:tendermint.types.ConsensusParams.authority)
+}
+
 // -------------------------------------------------------------------
 
 // BlockParams
@@ -2227,6 +2507,61 @@ inline void ABCIParams::_internal_set_vote_extensions_enable_height(::int64_t va
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.vote_extensions_enable_height_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// AuthorityParams
+
+// string authority = 1 [json_name = "authority"];
+inline void AuthorityParams::clear_authority() {
+  _impl_.authority_.ClearToEmpty();
+}
+inline const std::string& AuthorityParams::authority() const {
+  // @@protoc_insertion_point(field_get:tendermint.types.AuthorityParams.authority)
+  return _internal_authority();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AuthorityParams::set_authority(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.authority_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:tendermint.types.AuthorityParams.authority)
+}
+inline std::string* AuthorityParams::mutable_authority() {
+  std::string* _s = _internal_mutable_authority();
+  // @@protoc_insertion_point(field_mutable:tendermint.types.AuthorityParams.authority)
+  return _s;
+}
+inline const std::string& AuthorityParams::_internal_authority() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.authority_.Get();
+}
+inline void AuthorityParams::_internal_set_authority(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.authority_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AuthorityParams::_internal_mutable_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.authority_.Mutable( GetArenaForAllocation());
+}
+inline std::string* AuthorityParams::release_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:tendermint.types.AuthorityParams.authority)
+  return _impl_.authority_.Release();
+}
+inline void AuthorityParams::set_allocated_authority(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.authority_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.authority_.IsDefault()) {
+          _impl_.authority_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:tendermint.types.AuthorityParams.authority)
 }
 
 #ifdef __GNUC__

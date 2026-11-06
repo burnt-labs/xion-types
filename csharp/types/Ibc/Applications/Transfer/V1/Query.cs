@@ -74,7 +74,7 @@ namespace Ibc.Applications.Transfer.V1 {
             "ckRlbm9tUmVxdWVzdBo+LmliYy5hcHBsaWNhdGlvbnMudHJhbnNmZXIudjEu",
             "UXVlcnlUb3RhbEVzY3Jvd0ZvckRlbm9tUmVzcG9uc2UiNYLT5JMCLxItL2li",
             "Yy9hcHBzL3RyYW5zZmVyL3YxL3RvdGFsX2VzY3Jvdy97ZGVub209Kip9Qjpa",
-            "OGdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9hcHBzL3Ry",
+            "OGdpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9hcHBzL3Ry",
             "YW5zZmVyL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, global::Ibc.Applications.Transfer.V1.TransferReflection.Descriptor, global::Ibc.Applications.Transfer.V1.TokenReflection.Descriptor, global::Cosmos.Base.Query.V1Beta1.PaginationReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },

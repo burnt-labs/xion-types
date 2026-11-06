@@ -98,12 +98,15 @@ const PACKAGE: &'static str = "xion.dkim.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.dkim.v1.{}", Self::NAME)
             }}
-/// IndexRange defines a range of indices [start, end) in the public inputs array.
+/// IndexRange defines a range of indices [start, end) in the public inputs
+/// array.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IndexRange {
+    /// start is the inclusive lower bound of the index range.
     #[prost(uint64, tag="1")]
     pub start: u64,
+    /// end is the exclusive upper bound of the index range.
     #[prost(uint64, tag="2")]
     pub end: u64,
 }
@@ -113,22 +116,32 @@ const PACKAGE: &'static str = "xion.dkim.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("xion.dkim.v1.{}", Self::NAME)
             }}
-/// PublicInputIndices defines the indices for extracting data from public inputs.
+/// PublicInputIndices defines the indices for extracting data from public
+/// inputs.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PublicInputIndices {
+    /// min_length is the minimum required length of the public inputs array.
     #[prost(uint64, tag="1")]
     pub min_length: u64,
+    /// email_hash_index is the index of the email hash in the public inputs.
     #[prost(uint64, tag="2")]
     pub email_hash_index: u64,
+    /// dkim_domain_range is the index range for the DKIM domain in public inputs.
     #[prost(message, optional, tag="3")]
     pub dkim_domain_range: ::core::option::Option<IndexRange>,
+    /// dkim_hash_index is the index of the DKIM signature hash in public inputs.
     #[prost(uint64, tag="4")]
     pub dkim_hash_index: u64,
+    /// tx_bytes_range is the index range for the transaction bytes in public
+    /// inputs.
     #[prost(message, optional, tag="5")]
     pub tx_bytes_range: ::core::option::Option<IndexRange>,
+    /// email_host_range is the index range for the email host in public inputs.
     #[prost(message, optional, tag="6")]
     pub email_host_range: ::core::option::Option<IndexRange>,
+    /// email_subject_range is the index range for the email subject in public
+    /// inputs.
     #[prost(message, optional, tag="7")]
     pub email_subject_range: ::core::option::Option<IndexRange>,
 }
@@ -149,7 +162,8 @@ pub struct Params {
     /// decoded).
     #[prost(uint64, tag="2")]
     pub max_pubkey_size_bytes: u64,
-    /// public_input_indices defines the indices for extracting data from public inputs.
+    /// public_input_indices defines the indices for extracting data from public
+    /// inputs.
     #[prost(message, optional, tag="3")]
     pub public_input_indices: ::core::option::Option<PublicInputIndices>,
 }

@@ -52,6 +52,7 @@ typedef GPB_ENUM(EventAccountRegistered_FieldNumber) {
   EventAccountRegistered_FieldNumber_CodeId = 2,
   EventAccountRegistered_FieldNumber_ContractAddr = 3,
   EventAccountRegistered_FieldNumber_AccountNumber = 4,
+  EventAccountRegistered_FieldNumber_AddressDerivationHash = 6,
 };
 
 /**
@@ -59,13 +60,23 @@ typedef GPB_ENUM(EventAccountRegistered_FieldNumber) {
  **/
 GPB_FINAL @interface EventAccountRegistered : GPBMessage
 
+/** creator is the address that requested the account registration. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *creator;
 
+/** CodeID is the caller-selected implementation active after registration. */
 @property(nonatomic, readwrite) uint64_t codeId;
 
+/** contract_addr is the address of the newly instantiated account contract. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *contractAddr;
 
+/** account_number is the account number assigned to the new account. */
 @property(nonatomic, readwrite) uint64_t accountNumber;
+
+/**
+ * address_derivation_hash is the fixed hash used to derive the account's
+ * address.
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSData *addressDerivationHash;
 
 @end
 

@@ -5430,9 +5430,9 @@ public final class SnapshotOuterClass {
       "otExtensionMeta\022\022\n\004name\030\001 \001(\tR\004name\022\026\n\006f" +
       "ormat\030\002 \001(\rR\006format:\023\322\264-\017cosmos-sdk 0.46" +
       "\"I\n\030SnapshotExtensionPayload\022\030\n\007payload\030" +
-      "\001 \001(\014R\007payload:\023\322\264-\017cosmos-sdk 0.46B$Z\"c" +
-      "osmossdk.io/store/snapshots/typesb\006proto" +
-      "3"
+      "\001 \001(\014R\007payload:\023\322\264-\017cosmos-sdk 0.46B7Z5g" +
+      "ithub.com/cosmos/cosmos-sdk/store/v2/sna" +
+      "pshots/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

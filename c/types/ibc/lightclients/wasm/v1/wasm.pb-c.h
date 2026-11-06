@@ -20,7 +20,6 @@ PROTOBUF_C__BEGIN_DECLS
 typedef struct Ibc__Lightclients__Wasm__V1__ClientState Ibc__Lightclients__Wasm__V1__ClientState;
 typedef struct Ibc__Lightclients__Wasm__V1__ConsensusState Ibc__Lightclients__Wasm__V1__ConsensusState;
 typedef struct Ibc__Lightclients__Wasm__V1__ClientMessage Ibc__Lightclients__Wasm__V1__ClientMessage;
-typedef struct Ibc__Lightclients__Wasm__V1__Checksums Ibc__Lightclients__Wasm__V1__Checksums;
 
 
 /* --- enums --- */
@@ -75,22 +74,6 @@ struct  Ibc__Lightclients__Wasm__V1__ClientMessage
 #define IBC__LIGHTCLIENTS__WASM__V1__CLIENT_MESSAGE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&ibc__lightclients__wasm__v1__client_message__descriptor) \
 , {0,NULL} }
-
-
-/*
- * Checksums defines a list of all checksums that are stored
- * Deprecated: This message is deprecated in favor of storing the checksums
- * using a Collections.KeySet.
- */
-struct  Ibc__Lightclients__Wasm__V1__Checksums
-{
-  ProtobufCMessage base;
-  size_t n_checksums;
-  ProtobufCBinaryData *checksums;
-};
-#define IBC__LIGHTCLIENTS__WASM__V1__CHECKSUMS__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&ibc__lightclients__wasm__v1__checksums__descriptor) \
-, 0,NULL }
 
 
 /* Ibc__Lightclients__Wasm__V1__ClientState methods */
@@ -150,25 +133,6 @@ Ibc__Lightclients__Wasm__V1__ClientMessage *
 void   ibc__lightclients__wasm__v1__client_message__free_unpacked
                      (Ibc__Lightclients__Wasm__V1__ClientMessage *message,
                       ProtobufCAllocator *allocator);
-/* Ibc__Lightclients__Wasm__V1__Checksums methods */
-void   ibc__lightclients__wasm__v1__checksums__init
-                     (Ibc__Lightclients__Wasm__V1__Checksums         *message);
-size_t ibc__lightclients__wasm__v1__checksums__get_packed_size
-                     (const Ibc__Lightclients__Wasm__V1__Checksums   *message);
-size_t ibc__lightclients__wasm__v1__checksums__pack
-                     (const Ibc__Lightclients__Wasm__V1__Checksums   *message,
-                      uint8_t             *out);
-size_t ibc__lightclients__wasm__v1__checksums__pack_to_buffer
-                     (const Ibc__Lightclients__Wasm__V1__Checksums   *message,
-                      ProtobufCBuffer     *buffer);
-Ibc__Lightclients__Wasm__V1__Checksums *
-       ibc__lightclients__wasm__v1__checksums__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   ibc__lightclients__wasm__v1__checksums__free_unpacked
-                     (Ibc__Lightclients__Wasm__V1__Checksums *message,
-                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Ibc__Lightclients__Wasm__V1__ClientState_Closure)
@@ -180,9 +144,6 @@ typedef void (*Ibc__Lightclients__Wasm__V1__ConsensusState_Closure)
 typedef void (*Ibc__Lightclients__Wasm__V1__ClientMessage_Closure)
                  (const Ibc__Lightclients__Wasm__V1__ClientMessage *message,
                   void *closure_data);
-typedef void (*Ibc__Lightclients__Wasm__V1__Checksums_Closure)
-                 (const Ibc__Lightclients__Wasm__V1__Checksums *message,
-                  void *closure_data);
 
 /* --- services --- */
 
@@ -192,7 +153,6 @@ typedef void (*Ibc__Lightclients__Wasm__V1__Checksums_Closure)
 extern const ProtobufCMessageDescriptor ibc__lightclients__wasm__v1__client_state__descriptor;
 extern const ProtobufCMessageDescriptor ibc__lightclients__wasm__v1__consensus_state__descriptor;
 extern const ProtobufCMessageDescriptor ibc__lightclients__wasm__v1__client_message__descriptor;
-extern const ProtobufCMessageDescriptor ibc__lightclients__wasm__v1__checksums__descriptor;
 
 PROTOBUF_C__END_DECLS
 

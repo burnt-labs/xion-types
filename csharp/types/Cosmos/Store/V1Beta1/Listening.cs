@@ -36,8 +36,8 @@ namespace Cosmos.Store.V1Beta1 {
             "b2NrUhRyZXF1ZXN0RmluYWxpemVCbG9jaxJeChdyZXNwb25zZV9maW5hbGl6",
             "ZV9ibG9jaxgIIAEoCzImLnRlbmRlcm1pbnQuYWJjaS5SZXNwb25zZUZpbmFs",
             "aXplQmxvY2tSFXJlc3BvbnNlRmluYWxpemVCbG9ja0oECAEQAkoECAIQA0oE",
-            "CAMQBEoECAQQBUoECAUQBkIaWhhjb3Ntb3NzZGsuaW8vc3RvcmUvdHlwZXNi",
-            "BnByb3RvMw=="));
+            "CAMQBEoECAQQBUoECAUQBkItWitnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mt",
+            "c2RrL3N0b3JlL3YyL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Tendermint.Abci.TypesReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

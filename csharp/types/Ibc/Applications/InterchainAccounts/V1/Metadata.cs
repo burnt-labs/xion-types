@@ -31,7 +31,7 @@ namespace Ibc.Applications.InterchainAccounts.V1 {
             "ZXJDb25uZWN0aW9uSWQSLAoSaG9zdF9jb25uZWN0aW9uX2lkGAMgASgJUhBo",
             "b3N0Q29ubmVjdGlvbklkEhgKB2FkZHJlc3MYBCABKAlSB2FkZHJlc3MSGgoI",
             "ZW5jb2RpbmcYBSABKAlSCGVuY29kaW5nEhcKB3R4X3R5cGUYBiABKAlSBnR4",
-            "VHlwZUJIWkZnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMv",
+            "VHlwZUJIWkZnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMv",
             "YXBwcy8yNy1pbnRlcmNoYWluLWFjY291bnRzL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },

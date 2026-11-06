@@ -8,9 +8,11 @@ require 'gogoproto/gogo_pb'
 require 'cosmos/staking/v1beta1/staking_pb'
 require 'cosmos_proto/cosmos_pb'
 require 'amino/amino_pb'
+require 'google/protobuf/any_pb'
+require 'google/protobuf/timestamp_pb'
 
 
-descriptor_data = "\n$cosmos/staking/v1beta1/genesis.proto\x12\x16\x63osmos.staking.v1beta1\x1a\x14gogoproto/gogo.proto\x1a$cosmos/staking/v1beta1/staking.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x11\x61mino/amino.proto\"\x97\x05\n\x0cGenesisState\x12\x41\n\x06params\x18\x01 \x01(\x0b\x32\x1e.cosmos.staking.v1beta1.ParamsB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x06params\x12Z\n\x10last_total_power\x18\x02 \x01(\x0c\x42\x30\xc8\xde\x1f\x00\xda\xde\x1f\x15\x63osmossdk.io/math.Int\xd2\xb4-\ncosmos.Int\xa8\xe7\xb0*\x01R\x0elastTotalPower\x12i\n\x15last_validator_powers\x18\x03 \x03(\x0b\x32*.cosmos.staking.v1beta1.LastValidatorPowerB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x13lastValidatorPowers\x12L\n\nvalidators\x18\x04 \x03(\x0b\x32!.cosmos.staking.v1beta1.ValidatorB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\nvalidators\x12O\n\x0b\x64\x65legations\x18\x05 \x03(\x0b\x32\".cosmos.staking.v1beta1.DelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x0b\x64\x65legations\x12k\n\x15unbonding_delegations\x18\x06 \x03(\x0b\x32+.cosmos.staking.v1beta1.UnbondingDelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x14unbondingDelegations\x12U\n\rredelegations\x18\x07 \x03(\x0b\x32$.cosmos.staking.v1beta1.RedelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\rredelegations\x12\x1a\n\x08\x65xported\x18\x08 \x01(\x08R\x08\x65xported\"h\n\x12LastValidatorPower\x12\x32\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\x07\x61\x64\x64ress\x12\x14\n\x05power\x18\x02 \x01(\x03R\x05power:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\x42.Z,github.com/cosmos/cosmos-sdk/x/staking/typesb\x06proto3"
+descriptor_data = "\n$cosmos/staking/v1beta1/genesis.proto\x12\x16\x63osmos.staking.v1beta1\x1a\x14gogoproto/gogo.proto\x1a$cosmos/staking/v1beta1/staking.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x11\x61mino/amino.proto\x1a\x19google/protobuf/any.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\x07\n\x0cGenesisState\x12\x41\n\x06params\x18\x01 \x01(\x0b\x32\x1e.cosmos.staking.v1beta1.ParamsB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x06params\x12Z\n\x10last_total_power\x18\x02 \x01(\x0c\x42\x30\xc8\xde\x1f\x00\xda\xde\x1f\x15\x63osmossdk.io/math.Int\xd2\xb4-\ncosmos.Int\xa8\xe7\xb0*\x01R\x0elastTotalPower\x12i\n\x15last_validator_powers\x18\x03 \x03(\x0b\x32*.cosmos.staking.v1beta1.LastValidatorPowerB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x13lastValidatorPowers\x12L\n\nvalidators\x18\x04 \x03(\x0b\x32!.cosmos.staking.v1beta1.ValidatorB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\nvalidators\x12O\n\x0b\x64\x65legations\x18\x05 \x03(\x0b\x32\".cosmos.staking.v1beta1.DelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x0b\x64\x65legations\x12k\n\x15unbonding_delegations\x18\x06 \x03(\x0b\x32+.cosmos.staking.v1beta1.UnbondingDelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x14unbondingDelegations\x12U\n\rredelegations\x18\x07 \x03(\x0b\x32$.cosmos.staking.v1beta1.RedelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\rredelegations\x12\x1a\n\x08\x65xported\x18\x08 \x01(\x08R\x08\x65xported\x12\x83\x01\n\x1e\x63onsensus_key_rotation_history\x18\t \x03(\x0b\x32\x33.cosmos.staking.v1beta1.ConsensusKeyRotationHistoryB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x1b\x63onsensusKeyRotationHistory\x12\x85\x01\n\x1fpending_consensus_key_rotations\x18\n \x03(\x0b\x32\x33.cosmos.staking.v1beta1.PendingConsensusKeyRotationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x1cpendingConsensusKeyRotations\"h\n\x12LastValidatorPower\x12\x32\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\x07\x61\x64\x64ress\x12\x14\n\x05power\x18\x02 \x01(\x03R\x05power:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\"\xb1\x03\n\x1b\x43onsensusKeyRotationHistory\x12N\n\x11validator_address\x18\x01 \x01(\tB!\xd2\xb4-\x1d\x63osmos.ValidatorAddressStringR\x10validatorAddress\x12U\n\x15old_consensus_address\x18\x02 \x01(\tB!\xd2\xb4-\x1d\x63osmos.ConsensusAddressStringR\x13oldConsensusAddress\x12N\n\rmaturity_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\r\xc8\xde\x1f\x00\x90\xdf\x1f\x01\xa8\xe7\xb0*\x01R\x0cmaturityTime\x12[\n\x14\x65vidence_expiry_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\r\xc8\xde\x1f\x00\x90\xdf\x1f\x01\xa8\xe7\xb0*\x01R\x12\x65videnceExpiryTime\x12\x34\n\x16\x65vidence_expiry_height\x18\x05 \x01(\x03R\x14\x65videnceExpiryHeight:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\"\xe9\x01\n\x1bPendingConsensusKeyRotation\x12N\n\x11validator_address\x18\x01 \x01(\tB!\xd2\xb4-\x1d\x63osmos.ValidatorAddressStringR\x10validatorAddress\x12M\n\nnew_pubkey\x18\x02 \x01(\x0b\x32\x14.google.protobuf.AnyB\x18\xca\xb4-\x14\x63osmos.crypto.PubKeyR\tnewPubkey\x12!\n\x0c\x61pply_height\x18\x03 \x01(\x03R\x0b\x61pplyHeight:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\x42.Z,github.com/cosmos/cosmos-sdk/x/staking/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 
@@ -26,6 +28,8 @@ rescue TypeError => e
   warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
   imports = [
     ["cosmos.staking.v1beta1.Params", "cosmos/staking/v1beta1/staking.proto"],
+    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
+    ["google.protobuf.Any", "google/protobuf/any.proto"],
   ]
   imports.each do |type_name, expected_filename|
     import_file = pool.lookup(type_name).file_descriptor
@@ -42,6 +46,8 @@ module Cosmos
     module V1beta1
       GenesisState = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("cosmos.staking.v1beta1.GenesisState").msgclass
       LastValidatorPower = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("cosmos.staking.v1beta1.LastValidatorPower").msgclass
+      ConsensusKeyRotationHistory = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("cosmos.staking.v1beta1.ConsensusKeyRotationHistory").msgclass
+      PendingConsensusKeyRotation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("cosmos.staking.v1beta1.PendingConsensusKeyRotation").msgclass
     end
   end
 end

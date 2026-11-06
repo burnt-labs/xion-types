@@ -22,8 +22,12 @@
 #endif
 
 #import "xion/jwk/v1/Tx.pbobjc.h"
-#import "xion/jwk/v1/Audience.pbobjc.h"
+#import "amino/Amino.pbobjc.h"
 #import "cosmos/msg/v1/Msg.pbobjc.h"
+#import "cosmos_proto/Cosmos.pbobjc.h"
+#import "gogoproto/Gogo.pbobjc.h"
+#import "xion/jwk/v1/Audience.pbobjc.h"
+#import "xion/jwk/v1/Params.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -45,6 +49,9 @@ GPBObjCClassDeclaration(MsgDeleteAudienceClaimResponse);
 GPBObjCClassDeclaration(MsgDeleteAudienceResponse);
 GPBObjCClassDeclaration(MsgUpdateAudience);
 GPBObjCClassDeclaration(MsgUpdateAudienceResponse);
+GPBObjCClassDeclaration(MsgUpdateParams);
+GPBObjCClassDeclaration(MsgUpdateParamsResponse);
+GPBObjCClassDeclaration(Params);
 
 #pragma mark - TxRoot
 
@@ -58,7 +65,10 @@ GPBObjCClassDeclaration(MsgUpdateAudienceResponse);
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     registry = [[GPBExtensionRegistry alloc] init];
     // Merge in the imports (direct or indirect) that defined extensions.
+    [registry addExtensions:[AminoRoot extensionRegistry]];
     [registry addExtensions:[MsgRoot extensionRegistry]];
+    [registry addExtensions:[CosmosRoot extensionRegistry]];
+    [registry addExtensions:[GogoRoot extensionRegistry]];
   }
   return registry;
 }
@@ -580,6 +590,96 @@ typedef struct MsgDeleteAudienceResponse__storage_ {
                                         fields:NULL
                                     fieldCount:0
                                    storageSize:sizeof(MsgDeleteAudienceResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - MsgUpdateParams
+
+@implementation MsgUpdateParams
+
+@dynamic authority;
+@dynamic hasParams, params;
+
+typedef struct MsgUpdateParams__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *authority;
+  Params *params;
+} MsgUpdateParams__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "authority",
+        .dataTypeSpecific.clazz = Nil,
+        .number = MsgUpdateParams_FieldNumber_Authority,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(MsgUpdateParams__storage_, authority),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "params",
+        .dataTypeSpecific.clazz = GPBObjCClass(Params),
+        .number = MsgUpdateParams_FieldNumber_Params,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(MsgUpdateParams__storage_, params),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgUpdateParams)
+                                   messageName:@"MsgUpdateParams"
+                               fileDescription:&TxRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(MsgUpdateParams__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - MsgUpdateParamsResponse
+
+@implementation MsgUpdateParamsResponse
+
+
+typedef struct MsgUpdateParamsResponse__storage_ {
+  uint32_t _has_storage_[1];
+} MsgUpdateParamsResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgUpdateParamsResponse)
+                                   messageName:@"MsgUpdateParamsResponse"
+                               fileDescription:&TxRoot_FileDescription
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(MsgUpdateParamsResponse__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

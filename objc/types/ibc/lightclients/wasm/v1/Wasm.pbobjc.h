@@ -108,27 +108,6 @@ GPB_FINAL @interface ClientMessage : GPBMessage
 
 @end
 
-#pragma mark - Checksums
-
-typedef GPB_ENUM(Checksums_FieldNumber) {
-  Checksums_FieldNumber_ChecksumsArray = 1,
-};
-
-/**
- * Checksums defines a list of all checksums that are stored
- *
- * Deprecated: This message is deprecated in favor of storing the checksums
- * using a Collections.KeySet.
- **/
-GPB_DEPRECATED_MSG("ibc.lightclients.wasm.v1.Checksums is deprecated (see ibc/lightclients/wasm/v1/wasm.proto).")
-GPB_FINAL @interface Checksums : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSData*> *checksumsArray;
-/** The number of items in @c checksumsArray without causing the container to be created. */
-@property(nonatomic, readonly) NSUInteger checksumsArray_Count;
-
-@end
-
 NS_ASSUME_NONNULL_END
 
 CF_EXTERN_C_END

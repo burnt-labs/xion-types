@@ -30,6 +30,43 @@ CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Enum ProofSystem
+
+/** ProofSystem identifies which ZK backend and wire format a vkey/proof uses. */
+typedef GPB_ENUM(ProofSystem) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  ProofSystem_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  /** PROOF_SYSTEM_UNSPECIFIED is the default unset value. */
+  ProofSystem_ProofSystemUnspecified = 0,
+
+  /** PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format. */
+  ProofSystem_ProofSystemGroth16 = 1,
+
+  /**
+   * PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+   * (bb >= 0.87).
+   **/
+  ProofSystem_ProofSystemUltraHonkZk = 2,
+
+  /**
+   * PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+   * format (binary).
+   **/
+  ProofSystem_ProofSystemGroth16Gnark = 3,
+};
+
+GPBEnumDescriptor *ProofSystem_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL ProofSystem_IsValidValue(int32_t value);
+
 #pragma mark - ParamsRoot
 
 /**
@@ -51,6 +88,12 @@ typedef GPB_ENUM(Params_FieldNumber) {
   Params_FieldNumber_MaxVkeySizeBytes = 1,
   Params_FieldNumber_UploadChunkSize = 2,
   Params_FieldNumber_UploadChunkGas = 3,
+  Params_FieldNumber_MaxGroth16ProofSizeBytes = 4,
+  Params_FieldNumber_MaxGroth16PublicInputSizeBytes = 5,
+  Params_FieldNumber_MaxUltraHonkProofSizeBytes = 6,
+  Params_FieldNumber_MaxUltraHonkPublicInputSizeBytes = 7,
+  Params_FieldNumber_MaxGnarkProofSizeBytes = 8,
+  Params_FieldNumber_MaxGnarkPublicInputSizeBytes = 9,
 };
 
 /**
@@ -66,6 +109,38 @@ GPB_FINAL @interface Params : GPBMessage
 
 /** upload_chunk_gas defines the gas cost per upload chunk. */
 @property(nonatomic, readwrite) uint64_t uploadChunkGas;
+
+/** max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload. */
+@property(nonatomic, readwrite) uint64_t maxGroth16ProofSizeBytes;
+
+/**
+ * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+ * inputs. The size is computed as the total UTF-8 byte length of all provided
+ * public input strings.
+ **/
+@property(nonatomic, readwrite) uint64_t maxGroth16PublicInputSizeBytes;
+
+/** max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof. */
+@property(nonatomic, readwrite) uint64_t maxUltraHonkProofSizeBytes;
+
+/**
+ * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+ * public inputs. UltraHonk public inputs are provided as raw bytes.
+ **/
+@property(nonatomic, readwrite) uint64_t maxUltraHonkPublicInputSizeBytes;
+
+/**
+ * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+ * (binary).
+ **/
+@property(nonatomic, readwrite) uint64_t maxGnarkProofSizeBytes;
+
+/**
+ * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+ * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+ * big-endian field elements).
+ **/
+@property(nonatomic, readwrite) uint64_t maxGnarkPublicInputSizeBytes;
 
 @end
 

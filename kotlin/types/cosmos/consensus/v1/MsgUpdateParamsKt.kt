@@ -175,6 +175,30 @@ public object MsgUpdateParamsKt {
     public fun hasAbci(): kotlin.Boolean {
       return _builder.hasAbci()
     }
+
+    /**
+     * `.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];`
+     */
+    public var auth: tendermint.types.Params.AuthorityParams
+      @JvmName("getAuth")
+      get() = _builder.getAuth()
+      @JvmName("setAuth")
+      set(value) {
+        _builder.setAuth(value)
+      }
+    /**
+     * `.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];`
+     */
+    public fun clearAuth() {
+      _builder.clearAuth()
+    }
+    /**
+     * `.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];`
+     * @return Whether the auth field is set.
+     */
+    public fun hasAuth(): kotlin.Boolean {
+      return _builder.hasAuth()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -192,4 +216,7 @@ public val cosmos.consensus.v1.Tx.MsgUpdateParamsOrBuilder.validatorOrNull: tend
 
 public val cosmos.consensus.v1.Tx.MsgUpdateParamsOrBuilder.abciOrNull: tendermint.types.Params.ABCIParams?
   get() = if (hasAbci()) getAbci() else null
+
+public val cosmos.consensus.v1.Tx.MsgUpdateParamsOrBuilder.authOrNull: tendermint.types.Params.AuthorityParams?
+  get() = if (hasAuth()) getAuth() else null
 

@@ -823,7 +823,7 @@ public final class Denomtrace {
       "e.proto\022\034ibc.applications.transfer.v1\"C\n" +
       "\nDenomTrace\022\022\n\004path\030\001 \001(\tR\004path\022\035\n\nbase_" +
       "denom\030\002 \001(\tR\tbaseDenom:\002\030\001B:Z8github.com" +
-      "/cosmos/ibc-go/v10/modules/apps/transfer" +
+      "/cosmos/ibc-go/v11/modules/apps/transfer" +
       "/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

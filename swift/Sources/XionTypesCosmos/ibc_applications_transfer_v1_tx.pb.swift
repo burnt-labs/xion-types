@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+// SPDX-License-Identifier: Apache-2.0
+
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -72,6 +74,14 @@ struct Ibc_Applications_Transfer_V1_MsgTransfer: Sendable {
 
   /// optional encoding
   var encoding: String = String()
+
+  /// boolean flag to indicate if the transfer message
+  /// is sent with the IBC v2 protocol but uses v1 channel identifiers.
+  /// In this case, the v1 channel identifiers function as aliases to the
+  /// underlying client ids.
+  /// This only needs to be set if the channel IDs
+  /// are V1 channel identifiers.
+  var useAliasing: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -151,6 +161,7 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
     7: .standard(proto: "timeout_timestamp"),
     8: .same(proto: "memo"),
     9: .same(proto: "encoding"),
+    10: .standard(proto: "use_aliasing"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -168,6 +179,7 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
       case 7: try { try decoder.decodeSingularUInt64Field(value: &self.timeoutTimestamp) }()
       case 8: try { try decoder.decodeSingularStringField(value: &self.memo) }()
       case 9: try { try decoder.decodeSingularStringField(value: &self.encoding) }()
+      case 10: try { try decoder.decodeSingularBoolField(value: &self.useAliasing) }()
       default: break
       }
     }
@@ -205,6 +217,9 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
     if !self.encoding.isEmpty {
       try visitor.visitSingularStringField(value: self.encoding, fieldNumber: 9)
     }
+    if self.useAliasing != false {
+      try visitor.visitSingularBoolField(value: self.useAliasing, fieldNumber: 10)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -218,6 +233,7 @@ extension Ibc_Applications_Transfer_V1_MsgTransfer: SwiftProtobuf.Message, Swift
     if lhs.timeoutTimestamp != rhs.timeoutTimestamp {return false}
     if lhs.memo != rhs.memo {return false}
     if lhs.encoding != rhs.encoding {return false}
+    if lhs.useAliasing != rhs.useAliasing {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

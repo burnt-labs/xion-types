@@ -35,6 +35,10 @@ class Params extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>uint64 sig_verify_cost_secp256k1 = 5 [json_name = "sigVerifyCostSecp256k1", (.gogoproto.customname) = "SigVerifyCostSecp256k1"];</code>
      */
     protected $sig_verify_cost_secp256k1 = 0;
+    /**
+     * Generated from protobuf field <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+     */
+    protected $sig_verify_cost_mldsa65 = 0;
 
     /**
      * Constructor.
@@ -47,6 +51,7 @@ class Params extends \Google\Protobuf\Internal\Message
      *     @type int|string $tx_size_cost_per_byte
      *     @type int|string $sig_verify_cost_ed25519
      *     @type int|string $sig_verify_cost_secp256k1
+     *     @type int|string $sig_verify_cost_mldsa65
      * }
      */
     public function __construct($data = NULL) {
@@ -160,6 +165,28 @@ class Params extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint64($var);
         $this->sig_verify_cost_secp256k1 = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+     * @return int|string
+     */
+    public function getSigVerifyCostMldsa65()
+    {
+        return $this->sig_verify_cost_mldsa65;
+    }
+
+    /**
+     * Generated from protobuf field <code>uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setSigVerifyCostMldsa65($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->sig_verify_cost_mldsa65 = $var;
 
         return $this;
     }

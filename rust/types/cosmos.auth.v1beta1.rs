@@ -38,8 +38,6 @@ fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.auth.v1beta1.{}", Self::NAME)
             }}
 /// ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
-///
-/// Since: cosmos-sdk 0.47
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleCredential {
@@ -71,6 +69,8 @@ pub struct Params {
     pub sig_verify_cost_ed25519: u64,
     #[prost(uint64, tag="5")]
     pub sig_verify_cost_secp256k1: u64,
+    #[prost(uint64, tag="6")]
+    pub sig_verify_cost_mldsa65: u64,
 }
 impl ::prost::Name for Params {
 const NAME: &'static str = "Params";

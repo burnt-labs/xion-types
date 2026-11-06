@@ -26,37 +26,40 @@ namespace Tendermint.Types {
           string.Concat(
             "Ch10ZW5kZXJtaW50L3R5cGVzL3BhcmFtcy5wcm90bxIQdGVuZGVybWludC50",
             "eXBlcxoUZ29nb3Byb3RvL2dvZ28ucHJvdG8aHmdvb2dsZS9wcm90b2J1Zi9k",
-            "dXJhdGlvbi5wcm90byKyAgoPQ29uc2Vuc3VzUGFyYW1zEjMKBWJsb2NrGAEg",
+            "dXJhdGlvbi5wcm90byLzAgoPQ29uc2Vuc3VzUGFyYW1zEjMKBWJsb2NrGAEg",
             "ASgLMh0udGVuZGVybWludC50eXBlcy5CbG9ja1BhcmFtc1IFYmxvY2sSPAoI",
             "ZXZpZGVuY2UYAiABKAsyIC50ZW5kZXJtaW50LnR5cGVzLkV2aWRlbmNlUGFy",
             "YW1zUghldmlkZW5jZRI/Cgl2YWxpZGF0b3IYAyABKAsyIS50ZW5kZXJtaW50",
             "LnR5cGVzLlZhbGlkYXRvclBhcmFtc1IJdmFsaWRhdG9yEjkKB3ZlcnNpb24Y",
             "BCABKAsyHy50ZW5kZXJtaW50LnR5cGVzLlZlcnNpb25QYXJhbXNSB3ZlcnNp",
             "b24SMAoEYWJjaRgFIAEoCzIcLnRlbmRlcm1pbnQudHlwZXMuQUJDSVBhcmFt",
-            "c1IEYWJjaSJJCgtCbG9ja1BhcmFtcxIbCgltYXhfYnl0ZXMYASABKANSCG1h",
-            "eEJ5dGVzEhcKB21heF9nYXMYAiABKANSBm1heEdhc0oECAMQBCKpAQoORXZp",
-            "ZGVuY2VQYXJhbXMSKwoSbWF4X2FnZV9udW1fYmxvY2tzGAEgASgDUg9tYXhB",
-            "Z2VOdW1CbG9ja3MSTQoQbWF4X2FnZV9kdXJhdGlvbhgCIAEoCzIZLmdvb2ds",
-            "ZS5wcm90b2J1Zi5EdXJhdGlvbkIIyN4fAJjfHwFSDm1heEFnZUR1cmF0aW9u",
-            "EhsKCW1heF9ieXRlcxgDIAEoA1IIbWF4Qnl0ZXMiPwoPVmFsaWRhdG9yUGFy",
-            "YW1zEiIKDXB1Yl9rZXlfdHlwZXMYASADKAlSC3B1YktleVR5cGVzOgi4oB8B",
-            "6KAfASIrCg1WZXJzaW9uUGFyYW1zEhAKA2FwcBgBIAEoBFIDYXBwOgi4oB8B",
-            "6KAfASJaCgxIYXNoZWRQYXJhbXMSJgoPYmxvY2tfbWF4X2J5dGVzGAEgASgD",
-            "Ug1ibG9ja01heEJ5dGVzEiIKDWJsb2NrX21heF9nYXMYAiABKANSC2Jsb2Nr",
-            "TWF4R2FzIk8KCkFCQ0lQYXJhbXMSQQoddm90ZV9leHRlbnNpb25zX2VuYWJs",
-            "ZV9oZWlnaHQYASABKANSGnZvdGVFeHRlbnNpb25zRW5hYmxlSGVpZ2h0Qjla",
-            "M2dpdGh1Yi5jb20vY29tZXRiZnQvY29tZXRiZnQvcHJvdG8vdGVuZGVybWlu",
-            "dC90eXBlc6jiHgFiBnByb3RvMw=="));
+            "c1IEYWJjaRI/CglhdXRob3JpdHkYBiABKAsyIS50ZW5kZXJtaW50LnR5cGVz",
+            "LkF1dGhvcml0eVBhcmFtc1IJYXV0aG9yaXR5IkkKC0Jsb2NrUGFyYW1zEhsK",
+            "CW1heF9ieXRlcxgBIAEoA1IIbWF4Qnl0ZXMSFwoHbWF4X2dhcxgCIAEoA1IG",
+            "bWF4R2FzSgQIAxAEIqkBCg5FdmlkZW5jZVBhcmFtcxIrChJtYXhfYWdlX251",
+            "bV9ibG9ja3MYASABKANSD21heEFnZU51bUJsb2NrcxJNChBtYXhfYWdlX2R1",
+            "cmF0aW9uGAIgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQgjI3h8A",
+            "mN8fAVIObWF4QWdlRHVyYXRpb24SGwoJbWF4X2J5dGVzGAMgASgDUghtYXhC",
+            "eXRlcyI/Cg9WYWxpZGF0b3JQYXJhbXMSIgoNcHViX2tleV90eXBlcxgBIAMo",
+            "CVILcHViS2V5VHlwZXM6CLigHwHooB8BIisKDVZlcnNpb25QYXJhbXMSEAoD",
+            "YXBwGAEgASgEUgNhcHA6CLigHwHooB8BIloKDEhhc2hlZFBhcmFtcxImCg9i",
+            "bG9ja19tYXhfYnl0ZXMYASABKANSDWJsb2NrTWF4Qnl0ZXMSIgoNYmxvY2tf",
+            "bWF4X2dhcxgCIAEoA1ILYmxvY2tNYXhHYXMiTwoKQUJDSVBhcmFtcxJBCh12",
+            "b3RlX2V4dGVuc2lvbnNfZW5hYmxlX2hlaWdodBgBIAEoA1Iadm90ZUV4dGVu",
+            "c2lvbnNFbmFibGVIZWlnaHQiLwoPQXV0aG9yaXR5UGFyYW1zEhwKCWF1dGhv",
+            "cml0eRgBIAEoCVIJYXV0aG9yaXR5QjlaM2dpdGh1Yi5jb20vY29tZXRiZnQv",
+            "Y29tZXRiZnQvcHJvdG8vdGVuZGVybWludC90eXBlc6jiHgFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.ConsensusParams), global::Tendermint.Types.ConsensusParams.Parser, new[]{ "Block", "Evidence", "Validator", "Version", "Abci" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.ConsensusParams), global::Tendermint.Types.ConsensusParams.Parser, new[]{ "Block", "Evidence", "Validator", "Version", "Abci", "Authority" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.BlockParams), global::Tendermint.Types.BlockParams.Parser, new[]{ "MaxBytes", "MaxGas" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.EvidenceParams), global::Tendermint.Types.EvidenceParams.Parser, new[]{ "MaxAgeNumBlocks", "MaxAgeDuration", "MaxBytes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.ValidatorParams), global::Tendermint.Types.ValidatorParams.Parser, new[]{ "PubKeyTypes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.VersionParams), global::Tendermint.Types.VersionParams.Parser, new[]{ "App" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.HashedParams), global::Tendermint.Types.HashedParams.Parser, new[]{ "BlockMaxBytes", "BlockMaxGas" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.ABCIParams), global::Tendermint.Types.ABCIParams.Parser, new[]{ "VoteExtensionsEnableHeight" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.ABCIParams), global::Tendermint.Types.ABCIParams.Parser, new[]{ "VoteExtensionsEnableHeight" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tendermint.Types.AuthorityParams), global::Tendermint.Types.AuthorityParams.Parser, new[]{ "Authority" }, null, null, null, null)
           }));
     }
     #endregion
@@ -106,6 +109,7 @@ namespace Tendermint.Types {
       validator_ = other.validator_ != null ? other.validator_.Clone() : null;
       version_ = other.version_ != null ? other.version_.Clone() : null;
       abci_ = other.abci_ != null ? other.abci_.Clone() : null;
+      authority_ = other.authority_ != null ? other.authority_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -175,6 +179,18 @@ namespace Tendermint.Types {
       }
     }
 
+    /// <summary>Field number for the "authority" field.</summary>
+    public const int AuthorityFieldNumber = 6;
+    private global::Tendermint.Types.AuthorityParams authority_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Tendermint.Types.AuthorityParams Authority {
+      get { return authority_; }
+      set {
+        authority_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -195,6 +211,7 @@ namespace Tendermint.Types {
       if (!object.Equals(Validator, other.Validator)) return false;
       if (!object.Equals(Version, other.Version)) return false;
       if (!object.Equals(Abci, other.Abci)) return false;
+      if (!object.Equals(Authority, other.Authority)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -207,6 +224,7 @@ namespace Tendermint.Types {
       if (validator_ != null) hash ^= Validator.GetHashCode();
       if (version_ != null) hash ^= Version.GetHashCode();
       if (abci_ != null) hash ^= Abci.GetHashCode();
+      if (authority_ != null) hash ^= Authority.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -245,6 +263,10 @@ namespace Tendermint.Types {
         output.WriteRawTag(42);
         output.WriteMessage(Abci);
       }
+      if (authority_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Authority);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -275,6 +297,10 @@ namespace Tendermint.Types {
         output.WriteRawTag(42);
         output.WriteMessage(Abci);
       }
+      if (authority_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Authority);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -299,6 +325,9 @@ namespace Tendermint.Types {
       }
       if (abci_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Abci);
+      }
+      if (authority_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Authority);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -341,6 +370,12 @@ namespace Tendermint.Types {
           Abci = new global::Tendermint.Types.ABCIParams();
         }
         Abci.MergeFrom(other.Abci);
+      }
+      if (other.authority_ != null) {
+        if (authority_ == null) {
+          Authority = new global::Tendermint.Types.AuthorityParams();
+        }
+        Authority.MergeFrom(other.Authority);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -392,6 +427,13 @@ namespace Tendermint.Types {
             input.ReadMessage(Abci);
             break;
           }
+          case 50: {
+            if (authority_ == null) {
+              Authority = new global::Tendermint.Types.AuthorityParams();
+            }
+            input.ReadMessage(Authority);
+            break;
+          }
         }
       }
     #endif
@@ -440,6 +482,13 @@ namespace Tendermint.Types {
               Abci = new global::Tendermint.Types.ABCIParams();
             }
             input.ReadMessage(Abci);
+            break;
+          }
+          case 50: {
+            if (authority_ == null) {
+              Authority = new global::Tendermint.Types.AuthorityParams();
+            }
+            input.ReadMessage(Authority);
             break;
           }
         }
@@ -1778,6 +1827,195 @@ namespace Tendermint.Types {
             break;
           case 8: {
             VoteExtensionsEnableHeight = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class AuthorityParams : pb::IMessage<AuthorityParams>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<AuthorityParams> _parser = new pb::MessageParser<AuthorityParams>(() => new AuthorityParams());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<AuthorityParams> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tendermint.Types.ParamsReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AuthorityParams() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AuthorityParams(AuthorityParams other) : this() {
+      authority_ = other.authority_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AuthorityParams Clone() {
+      return new AuthorityParams(this);
+    }
+
+    /// <summary>Field number for the "authority" field.</summary>
+    public const int AuthorityFieldNumber = 1;
+    private string authority_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Authority {
+      get { return authority_; }
+      set {
+        authority_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as AuthorityParams);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(AuthorityParams other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Authority != other.Authority) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Authority.Length != 0) hash ^= Authority.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Authority.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Authority);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Authority.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Authority);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Authority.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Authority);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(AuthorityParams other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Authority.Length != 0) {
+        Authority = other.Authority;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Authority = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Authority = input.ReadString();
             break;
           }
         }

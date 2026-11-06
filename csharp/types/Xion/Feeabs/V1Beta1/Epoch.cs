@@ -40,8 +40,8 @@ namespace Xion.Feeabs.V1Beta1 {
             "ZXBvY2hDb3VudGluZ1N0YXJ0ZWQSOwoaY3VycmVudF9lcG9jaF9zdGFydF9o",
             "ZWlnaHQYCCABKANSF2N1cnJlbnRFcG9jaFN0YXJ0SGVpZ2h0SgQIBxAIIksK",
             "EkV4cG9uZW50aWFsQmFja29mZhISCgRqdW1wGAEgASgDUgRqdW1wEiEKDGZ1",
-            "dHVyZV9lcG9jaBgCIAEoA1ILZnV0dXJlRXBvY2hCK1opZ2l0aHViLmNvbS9i",
-            "dXJudC1sYWJzL3hpb24veC9mZWVhYnMvdHlwZXNiBnByb3RvMw=="));
+            "dHVyZV9lcG9jaBgCIAEoA1ILZnV0dXJlRXBvY2hCLlosZ2l0aHViLmNvbS9i",
+            "dXJudC1sYWJzL3hpb24vYXBwL2xlZ2FjeS9mZWVhYnNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

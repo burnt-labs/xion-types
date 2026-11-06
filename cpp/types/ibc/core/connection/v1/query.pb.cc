@@ -519,7 +519,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fconnection_2fv1_2fquery_2eprot
     "equest\0325.ibc.core.connection.v1.QueryCon"
     "nectionParamsResponse\"&\202\323\344\223\002 \022\036/ibc/core"
     "/connection/v1/paramsB\?Z=github.com/cosm"
-    "os/ibc-go/v10/modules/core/03-connection"
+    "os/ibc-go/v11/modules/core/03-connection"
     "/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fconnection_2fv1_2fquery_2eproto_deps[6] =

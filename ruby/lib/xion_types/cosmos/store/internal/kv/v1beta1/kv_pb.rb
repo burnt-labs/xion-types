@@ -7,7 +7,7 @@ require 'google/protobuf'
 require 'gogoproto/gogo_pb'
 
 
-descriptor_data = "\n)cosmos/store/internal/kv/v1beta1/kv.proto\x12 cosmos.store.internal.kv.v1beta1\x1a\x14gogoproto/gogo.proto\"K\n\x05Pairs\x12\x42\n\x05pairs\x18\x01 \x03(\x0b\x32&.cosmos.store.internal.kv.v1beta1.PairB\x04\xc8\xde\x1f\x00R\x05pairs\".\n\x04Pair\x12\x10\n\x03key\x18\x01 \x01(\x0cR\x03key\x12\x14\n\x05value\x18\x02 \x01(\x0cR\x05valueB Z\x1e\x63osmossdk.io/store/internal/kvb\x06proto3"
+descriptor_data = "\n)cosmos/store/internal/kv/v1beta1/kv.proto\x12 cosmos.store.internal.kv.v1beta1\x1a\x14gogoproto/gogo.proto\"K\n\x05Pairs\x12\x42\n\x05pairs\x18\x01 \x03(\x0b\x32&.cosmos.store.internal.kv.v1beta1.PairB\x04\xc8\xde\x1f\x00R\x05pairs\".\n\x04Pair\x12\x10\n\x03key\x18\x01 \x01(\x0cR\x03key\x12\x14\n\x05value\x18\x02 \x01(\x0cR\x05valueB3Z1github.com/cosmos/cosmos-sdk/store/v2/internal/kvb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

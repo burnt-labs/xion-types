@@ -75,11 +75,10 @@ struct  Ibc__Applications__PacketForwardMiddleware__V1__InFlightPacket
   uint64_t refund_sequence;
   int32_t retries_remaining;
   uint64_t timeout;
-  protobuf_c_boolean nonrefundable;
 };
 #define IBC__APPLICATIONS__PACKET_FORWARD_MIDDLEWARE__V1__IN_FLIGHT_PACKET__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&ibc__applications__packet_forward_middleware__v1__in_flight_packet__descriptor) \
-, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, {0,NULL}, 0, 0, 0, 0 }
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, {0,NULL}, 0, 0, 0 }
 
 
 /* Ibc__Applications__PacketForwardMiddleware__V1__GenesisState__InFlightPacketsEntry methods */

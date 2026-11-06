@@ -22,6 +22,30 @@ typedef struct Xion__Zk__V1__Params Xion__Zk__V1__Params;
 
 /* --- enums --- */
 
+/*
+ * ProofSystem identifies which ZK backend and wire format a vkey/proof uses.
+ */
+typedef enum _Xion__Zk__V1__ProofSystem {
+  /*
+   * PROOF_SYSTEM_UNSPECIFIED is the default unset value.
+   */
+  XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_UNSPECIFIED = 0,
+  /*
+   * PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format.
+   */
+  XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_GROTH16 = 1,
+  /*
+   * PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+   * (bb >= 0.87).
+   */
+  XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_ULTRA_HONK_ZK = 2,
+  /*
+   * PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+   * format (binary).
+   */
+  XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_GROTH16_GNARK = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(XION__ZK__V1__PROOF_SYSTEM)
+} Xion__Zk__V1__ProofSystem;
 
 /* --- messages --- */
 
@@ -43,10 +67,40 @@ struct  Xion__Zk__V1__Params
    * upload_chunk_gas defines the gas cost per upload chunk.
    */
   uint64_t upload_chunk_gas;
+  /*
+   * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+   */
+  uint64_t max_groth16_proof_size_bytes;
+  /*
+   * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+   * inputs. The size is computed as the total UTF-8 byte length of all provided
+   * public input strings.
+   */
+  uint64_t max_groth16_public_input_size_bytes;
+  /*
+   * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+   */
+  uint64_t max_ultra_honk_proof_size_bytes;
+  /*
+   * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+   * public inputs. UltraHonk public inputs are provided as raw bytes.
+   */
+  uint64_t max_ultra_honk_public_input_size_bytes;
+  /*
+   * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+   * (binary).
+   */
+  uint64_t max_gnark_proof_size_bytes;
+  /*
+   * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+   * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+   * big-endian field elements).
+   */
+  uint64_t max_gnark_public_input_size_bytes;
 };
 #define XION__ZK__V1__PARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__params__descriptor) \
-, 0, 0, 0 }
+, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 
 
 /* Xion__Zk__V1__Params methods */
@@ -79,6 +133,7 @@ typedef void (*Xion__Zk__V1__Params_Closure)
 
 /* --- descriptors --- */
 
+extern const ProtobufCEnumDescriptor    xion__zk__v1__proof_system__descriptor;
 extern const ProtobufCMessageDescriptor xion__zk__v1__params__descriptor;
 
 PROTOBUF_C__END_DECLS

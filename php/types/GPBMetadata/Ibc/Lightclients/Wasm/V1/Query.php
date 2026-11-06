@@ -35,7 +35,7 @@ pagination".
 data (Rdata2ƒ
 Queryõ
 	Checksums/.ibc.lightclients.wasm.v1.QueryChecksumsRequest0.ibc.lightclients.wasm.v1.QueryChecksumsResponse"+Ç”‰ì%#/ibc/lightclients/wasm/v1/checksumsú
-Code*.ibc.lightclients.wasm.v1.QueryCodeRequest+.ibc.lightclients.wasm.v1.QueryCodeResponse";Ç”‰ì53/ibc/lightclients/wasm/v1/checksums/{checksum}/codeBBZ@github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v10/typesbproto3'
+Code*.ibc.lightclients.wasm.v1.QueryCodeRequest+.ibc.lightclients.wasm.v1.QueryCodeResponse";Ç”‰ì53/ibc/lightclients/wasm/v1/checksums/{checksum}/codeBBZ@github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v11/typesbproto3'
         , true);
 
         static::$is_initialized = true;

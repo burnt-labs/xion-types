@@ -17,6 +17,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "abstractaccount/v1/params.pb-c.h"
 
 typedef struct Abstractaccount__V1__GenesisState Abstractaccount__V1__GenesisState;
+typedef struct Abstractaccount__V1__AccountAddress Abstractaccount__V1__AccountAddress;
 
 
 /* --- enums --- */
@@ -30,12 +31,47 @@ typedef struct Abstractaccount__V1__GenesisState Abstractaccount__V1__GenesisSta
 struct  Abstractaccount__V1__GenesisState
 {
   ProtobufCMessage base;
+  /*
+   * params defines the module parameters.
+   */
   Abstractaccount__V1__Params *params;
+  /*
+   * next_account_id is the identifier assigned to the next registered account.
+   */
   uint64_t next_account_id;
+  /*
+   * account_addresses is the exported sender/salt address registry.
+   */
+  size_t n_account_addresses;
+  Abstractaccount__V1__AccountAddress **account_addresses;
 };
 #define ABSTRACTACCOUNT__V1__GENESIS_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__genesis_state__descriptor) \
-, NULL, 0 }
+, NULL, 0, 0,NULL }
+
+
+/*
+ * AccountAddress is an exported sender/salt registry entry.
+ */
+struct  Abstractaccount__V1__AccountAddress
+{
+  ProtobufCMessage base;
+  /*
+   * sender is the address that registered the account.
+   */
+  char *sender;
+  /*
+   * salt is the caller-chosen salt the address was derived with.
+   */
+  ProtobufCBinaryData salt;
+  /*
+   * address is the derived account address.
+   */
+  char *address;
+};
+#define ABSTRACTACCOUNT__V1__ACCOUNT_ADDRESS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__account_address__descriptor) \
+, (char *)protobuf_c_empty_string, {0,NULL}, (char *)protobuf_c_empty_string }
 
 
 /* Abstractaccount__V1__GenesisState methods */
@@ -57,10 +93,32 @@ Abstractaccount__V1__GenesisState *
 void   abstractaccount__v1__genesis_state__free_unpacked
                      (Abstractaccount__V1__GenesisState *message,
                       ProtobufCAllocator *allocator);
+/* Abstractaccount__V1__AccountAddress methods */
+void   abstractaccount__v1__account_address__init
+                     (Abstractaccount__V1__AccountAddress         *message);
+size_t abstractaccount__v1__account_address__get_packed_size
+                     (const Abstractaccount__V1__AccountAddress   *message);
+size_t abstractaccount__v1__account_address__pack
+                     (const Abstractaccount__V1__AccountAddress   *message,
+                      uint8_t             *out);
+size_t abstractaccount__v1__account_address__pack_to_buffer
+                     (const Abstractaccount__V1__AccountAddress   *message,
+                      ProtobufCBuffer     *buffer);
+Abstractaccount__V1__AccountAddress *
+       abstractaccount__v1__account_address__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   abstractaccount__v1__account_address__free_unpacked
+                     (Abstractaccount__V1__AccountAddress *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Abstractaccount__V1__GenesisState_Closure)
                  (const Abstractaccount__V1__GenesisState *message,
+                  void *closure_data);
+typedef void (*Abstractaccount__V1__AccountAddress_Closure)
+                 (const Abstractaccount__V1__AccountAddress *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -69,6 +127,7 @@ typedef void (*Abstractaccount__V1__GenesisState_Closure)
 /* --- descriptors --- */
 
 extern const ProtobufCMessageDescriptor abstractaccount__v1__genesis_state__descriptor;
+extern const ProtobufCMessageDescriptor abstractaccount__v1__account_address__descriptor;
 
 PROTOBUF_C__END_DECLS
 

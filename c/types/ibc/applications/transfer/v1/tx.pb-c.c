@@ -187,7 +187,7 @@ void   ibc__applications__transfer__v1__msg_update_params_response__free_unpacke
   assert(message->base.descriptor == &ibc__applications__transfer__v1__msg_update_params_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor ibc__applications__transfer__v1__msg_transfer__field_descriptors[9] =
+static const ProtobufCFieldDescriptor ibc__applications__transfer__v1__msg_transfer__field_descriptors[10] =
 {
   {
     "source_port",
@@ -297,6 +297,18 @@ static const ProtobufCFieldDescriptor ibc__applications__transfer__v1__msg_trans
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "use_aliasing",
+    10,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Ibc__Applications__Transfer__V1__MsgTransfer, use_aliasing),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned ibc__applications__transfer__v1__msg_transfer__field_indices_by_name[] = {
   8,   /* field[8] = encoding */
@@ -308,11 +320,12 @@ static const unsigned ibc__applications__transfer__v1__msg_transfer__field_indic
   5,   /* field[5] = timeout_height */
   6,   /* field[6] = timeout_timestamp */
   2,   /* field[2] = token */
+  9,   /* field[9] = use_aliasing */
 };
 static const ProtobufCIntRange ibc__applications__transfer__v1__msg_transfer__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 9 }
+  { 0, 10 }
 };
 const ProtobufCMessageDescriptor ibc__applications__transfer__v1__msg_transfer__descriptor =
 {
@@ -322,7 +335,7 @@ const ProtobufCMessageDescriptor ibc__applications__transfer__v1__msg_transfer__
   "Ibc__Applications__Transfer__V1__MsgTransfer",
   "ibc.applications.transfer.v1",
   sizeof(Ibc__Applications__Transfer__V1__MsgTransfer),
-  9,
+  10,
   ibc__applications__transfer__v1__msg_transfer__field_descriptors,
   ibc__applications__transfer__v1__msg_transfer__field_indices_by_name,
   1,  ibc__applications__transfer__v1__msg_transfer__number_ranges,

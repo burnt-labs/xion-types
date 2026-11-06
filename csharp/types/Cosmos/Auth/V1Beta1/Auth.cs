@@ -42,23 +42,25 @@ namespace Cosmos.Auth.V1Beta1 {
             "b3VudCKXAQoQTW9kdWxlQ3JlZGVudGlhbBIfCgttb2R1bGVfbmFtZRgBIAEo",
             "CVIKbW9kdWxlTmFtZRInCg9kZXJpdmF0aW9uX2tleXMYAiADKAxSDmRlcml2",
             "YXRpb25LZXlzOjnStC0PY29zbW9zLXNkayAwLjQ3iuewKiFjb3Ntb3Mtc2Rr",
-            "L0dyb3VwQWNjb3VudENyZWRlbnRpYWwi1wIKBlBhcmFtcxIuChNtYXhfbWVt",
+            "L0dyb3VwQWNjb3VudENyZWRlbnRpYWwiqAMKBlBhcmFtcxIuChNtYXhfbWVt",
             "b19jaGFyYWN0ZXJzGAEgASgEUhFtYXhNZW1vQ2hhcmFjdGVycxIgCgx0eF9z",
             "aWdfbGltaXQYAiABKARSCnR4U2lnTGltaXQSMAoVdHhfc2l6ZV9jb3N0X3Bl",
             "cl9ieXRlGAMgASgEUhF0eFNpemVDb3N0UGVyQnl0ZRJPChdzaWdfdmVyaWZ5",
             "X2Nvc3RfZWQyNTUxORgEIAEoBEIY4t4fFFNpZ1ZlcmlmeUNvc3RFRDI1NTE5",
             "UhRzaWdWZXJpZnlDb3N0RWQyNTUxORJVChlzaWdfdmVyaWZ5X2Nvc3Rfc2Vj",
             "cDI1NmsxGAUgASgEQhri3h8WU2lnVmVyaWZ5Q29zdFNlY3AyNTZrMVIWc2ln",
-            "VmVyaWZ5Q29zdFNlY3AyNTZrMToh6KAfAYrnsCoYY29zbW9zLXNkay94L2F1",
-            "dGgvUGFyYW1zQitaKWdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsveC9h",
-            "dXRoL3R5cGVzYgZwcm90bzM="));
+            "VmVyaWZ5Q29zdFNlY3AyNTZrMRJPChdzaWdfdmVyaWZ5X2Nvc3RfbWxkc2E2",
+            "NRgGIAEoBEIY4t4fFFNpZ1ZlcmlmeUNvc3RNbERzYTY1UhRzaWdWZXJpZnlD",
+            "b3N0TWxkc2E2NToh6KAfAYrnsCoYY29zbW9zLXNkay94L2F1dGgvUGFyYW1z",
+            "QitaKWdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsveC9hdXRoL3R5cGVz",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Amino.AminoReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Auth.V1Beta1.BaseAccount), global::Cosmos.Auth.V1Beta1.BaseAccount.Parser, new[]{ "Address", "PubKey", "AccountNumber", "Sequence" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Auth.V1Beta1.ModuleAccount), global::Cosmos.Auth.V1Beta1.ModuleAccount.Parser, new[]{ "BaseAccount", "Name", "Permissions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Auth.V1Beta1.ModuleCredential), global::Cosmos.Auth.V1Beta1.ModuleCredential.Parser, new[]{ "ModuleName", "DerivationKeys" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Auth.V1Beta1.Params), global::Cosmos.Auth.V1Beta1.Params.Parser, new[]{ "MaxMemoCharacters", "TxSigLimit", "TxSizeCostPerByte", "SigVerifyCostEd25519", "SigVerifyCostSecp256K1" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Auth.V1Beta1.Params), global::Cosmos.Auth.V1Beta1.Params.Parser, new[]{ "MaxMemoCharacters", "TxSigLimit", "TxSizeCostPerByte", "SigVerifyCostEd25519", "SigVerifyCostSecp256K1", "SigVerifyCostMldsa65" }, null, null, null, null)
           }));
     }
     #endregion
@@ -910,6 +912,7 @@ namespace Cosmos.Auth.V1Beta1 {
       txSizeCostPerByte_ = other.txSizeCostPerByte_;
       sigVerifyCostEd25519_ = other.sigVerifyCostEd25519_;
       sigVerifyCostSecp256K1_ = other.sigVerifyCostSecp256K1_;
+      sigVerifyCostMldsa65_ = other.sigVerifyCostMldsa65_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -979,6 +982,18 @@ namespace Cosmos.Auth.V1Beta1 {
       }
     }
 
+    /// <summary>Field number for the "sig_verify_cost_mldsa65" field.</summary>
+    public const int SigVerifyCostMldsa65FieldNumber = 6;
+    private ulong sigVerifyCostMldsa65_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong SigVerifyCostMldsa65 {
+      get { return sigVerifyCostMldsa65_; }
+      set {
+        sigVerifyCostMldsa65_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -999,6 +1014,7 @@ namespace Cosmos.Auth.V1Beta1 {
       if (TxSizeCostPerByte != other.TxSizeCostPerByte) return false;
       if (SigVerifyCostEd25519 != other.SigVerifyCostEd25519) return false;
       if (SigVerifyCostSecp256K1 != other.SigVerifyCostSecp256K1) return false;
+      if (SigVerifyCostMldsa65 != other.SigVerifyCostMldsa65) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1011,6 +1027,7 @@ namespace Cosmos.Auth.V1Beta1 {
       if (TxSizeCostPerByte != 0UL) hash ^= TxSizeCostPerByte.GetHashCode();
       if (SigVerifyCostEd25519 != 0UL) hash ^= SigVerifyCostEd25519.GetHashCode();
       if (SigVerifyCostSecp256K1 != 0UL) hash ^= SigVerifyCostSecp256K1.GetHashCode();
+      if (SigVerifyCostMldsa65 != 0UL) hash ^= SigVerifyCostMldsa65.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1049,6 +1066,10 @@ namespace Cosmos.Auth.V1Beta1 {
         output.WriteRawTag(40);
         output.WriteUInt64(SigVerifyCostSecp256K1);
       }
+      if (SigVerifyCostMldsa65 != 0UL) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(SigVerifyCostMldsa65);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1079,6 +1100,10 @@ namespace Cosmos.Auth.V1Beta1 {
         output.WriteRawTag(40);
         output.WriteUInt64(SigVerifyCostSecp256K1);
       }
+      if (SigVerifyCostMldsa65 != 0UL) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(SigVerifyCostMldsa65);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1103,6 +1128,9 @@ namespace Cosmos.Auth.V1Beta1 {
       }
       if (SigVerifyCostSecp256K1 != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(SigVerifyCostSecp256K1);
+      }
+      if (SigVerifyCostMldsa65 != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(SigVerifyCostMldsa65);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1130,6 +1158,9 @@ namespace Cosmos.Auth.V1Beta1 {
       }
       if (other.SigVerifyCostSecp256K1 != 0UL) {
         SigVerifyCostSecp256K1 = other.SigVerifyCostSecp256K1;
+      }
+      if (other.SigVerifyCostMldsa65 != 0UL) {
+        SigVerifyCostMldsa65 = other.SigVerifyCostMldsa65;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1166,6 +1197,10 @@ namespace Cosmos.Auth.V1Beta1 {
             SigVerifyCostSecp256K1 = input.ReadUInt64();
             break;
           }
+          case 48: {
+            SigVerifyCostMldsa65 = input.ReadUInt64();
+            break;
+          }
         }
       }
     #endif
@@ -1199,6 +1234,10 @@ namespace Cosmos.Auth.V1Beta1 {
           }
           case 40: {
             SigVerifyCostSecp256K1 = input.ReadUInt64();
+            break;
+          }
+          case 48: {
+            SigVerifyCostMldsa65 = input.ReadUInt64();
             break;
           }
         }

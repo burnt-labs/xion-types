@@ -61,10 +61,13 @@ typedef GPB_ENUM(AbstractAccount_FieldNumber) {
  **/
 GPB_FINAL @interface AbstractAccount : GPBMessage
 
+/** address is the bech32-encoded address of the account's contract. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *address;
 
+/** account_number is the account's number assigned by the auth module. */
 @property(nonatomic, readwrite) uint64_t accountNumber;
 
+/** sequence is the account's current transaction sequence. */
 @property(nonatomic, readwrite) uint64_t sequence;
 
 @end
@@ -85,6 +88,10 @@ typedef GPB_ENUM(NilPubKey_FieldNumber) {
  **/
 GPB_FINAL @interface NilPubKey : GPBMessage
 
+/**
+ * address_bytes is the raw address bytes of the account the pubkey
+ * stands in for.
+ **/
 @property(nonatomic, readwrite, copy, null_resettable) NSData *addressBytes;
 
 @end

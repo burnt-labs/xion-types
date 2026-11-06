@@ -89,7 +89,7 @@ namespace Ibc.Lightclients.Solomachine.V2 {
             "S0VUUkVDRUlQVEFCU0VOQ0USNgocREFUQV9UWVBFX05FWFRfU0VRVUVOQ0Vf",
             "UkVDVhAIGhSKnSAQTkVYVFNFUVVFTkNFUkVDVhIgChBEQVRBX1RZUEVfSEVB",
             "REVSEAkaCoqdIAZIRUFERVIaBIijHgBCQ1pBZ2l0aHViLmNvbS9jb3Ntb3Mv",
-            "aWJjLWdvL3YxMC9tb2R1bGVzL2NvcmUvMDItY2xpZW50L21pZ3JhdGlvbnMv",
+            "aWJjLWdvL3YxMS9tb2R1bGVzL2NvcmUvMDItY2xpZW50L21pZ3JhdGlvbnMv",
             "djdiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ibc.Core.Connection.V1.ConnectionReflection.Descriptor, global::Ibc.Core.Channel.V1.ChannelReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },

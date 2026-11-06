@@ -370,25 +370,23 @@ const ProtobufCMessageDescriptor cosmos__tx__signing__v1beta1__signature_descrip
   (ProtobufCMessageInit) cosmos__tx__signing__v1beta1__signature_descriptor__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue cosmos__tx__signing__v1beta1__sign_mode__enum_values_by_number[6] =
+static const ProtobufCEnumValue cosmos__tx__signing__v1beta1__sign_mode__enum_values_by_number[5] =
 {
   { "SIGN_MODE_UNSPECIFIED", "COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_UNSPECIFIED", 0 },
   { "SIGN_MODE_DIRECT", "COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_DIRECT", 1 },
-  { "SIGN_MODE_TEXTUAL", "COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_TEXTUAL", 2 },
   { "SIGN_MODE_DIRECT_AUX", "COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_DIRECT_AUX", 3 },
   { "SIGN_MODE_LEGACY_AMINO_JSON", "COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_LEGACY_AMINO_JSON", 127 },
   { "SIGN_MODE_EIP_191", "COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_EIP_191", 191 },
 };
 static const ProtobufCIntRange cosmos__tx__signing__v1beta1__sign_mode__value_ranges[] = {
-{0, 0},{127, 4},{191, 5},{0, 6}
+{0, 0},{3, 2},{127, 3},{191, 4},{0, 5}
 };
-static const ProtobufCEnumValueIndex cosmos__tx__signing__v1beta1__sign_mode__enum_values_by_name[6] =
+static const ProtobufCEnumValueIndex cosmos__tx__signing__v1beta1__sign_mode__enum_values_by_name[5] =
 {
   { "SIGN_MODE_DIRECT", 1 },
-  { "SIGN_MODE_DIRECT_AUX", 3 },
-  { "SIGN_MODE_EIP_191", 5 },
-  { "SIGN_MODE_LEGACY_AMINO_JSON", 4 },
-  { "SIGN_MODE_TEXTUAL", 2 },
+  { "SIGN_MODE_DIRECT_AUX", 2 },
+  { "SIGN_MODE_EIP_191", 4 },
+  { "SIGN_MODE_LEGACY_AMINO_JSON", 3 },
   { "SIGN_MODE_UNSPECIFIED", 0 },
 };
 const ProtobufCEnumDescriptor cosmos__tx__signing__v1beta1__sign_mode__descriptor =
@@ -398,11 +396,11 @@ const ProtobufCEnumDescriptor cosmos__tx__signing__v1beta1__sign_mode__descripto
   "SignMode",
   "Cosmos__Tx__Signing__V1beta1__SignMode",
   "cosmos.tx.signing.v1beta1",
-  6,
+  5,
   cosmos__tx__signing__v1beta1__sign_mode__enum_values_by_number,
-  6,
+  5,
   cosmos__tx__signing__v1beta1__sign_mode__enum_values_by_name,
-  3,
+  4,
   cosmos__tx__signing__v1beta1__sign_mode__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };

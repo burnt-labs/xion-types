@@ -8,6 +8,7 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+import Foundation
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -21,20 +22,21 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Params defines the parameters for the abstractaccount module.
-struct Abstractaccount_V1_Params: Sendable {
+struct Abstractaccount_V1_Params: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-  /// AbstractAccounts:
+  /// AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+  /// final implementation for a newly registered AbstractAccount or a
+  /// top-level raw Wasm migration:
   /// - if set to true, any code ID can be used;
   /// - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
   /// be used.
   var allowAllCodeIds: Bool = false
 
-  /// AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-  /// regiseter AbstractAccounts.
+  /// AllowedCodeIDs is the whitelist for registration implementations and
+  /// top-level raw Wasm migrations. This is not a wasmd-level policy.
   var allowedCodeIds: [UInt64] = []
 
   /// MaxGasBefore is the maximum amount of gas that can be consumed by the
@@ -48,6 +50,17 @@ struct Abstractaccount_V1_Params: Sendable {
   ///
   /// Must be greater than zero.
   var maxGasAfter: UInt64 = 0
+
+  /// RegistrationEnabled controls whether new abstract accounts may be
+  /// registered. Governance can pause registration without changing the
+  /// immutable address namespace or blocking address queries.
+  var registrationEnabled: Bool = false
+
+  /// AddressDerivationHash is the immutable 32-byte namespace used only to
+  /// derive predictable AbstractAccount addresses. The caller-selected code ID
+  /// is instantiated directly and does not participate in address derivation.
+  /// An empty value leaves registration unconfigured.
+  var addressDerivationHash: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -65,6 +78,8 @@ extension Abstractaccount_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._Messa
     2: .standard(proto: "allowed_code_ids"),
     3: .standard(proto: "max_gas_before"),
     4: .standard(proto: "max_gas_after"),
+    7: .standard(proto: "registration_enabled"),
+    8: .standard(proto: "address_derivation_hash"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -77,6 +92,8 @@ extension Abstractaccount_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 2: try { try decoder.decodeRepeatedUInt64Field(value: &self.allowedCodeIds) }()
       case 3: try { try decoder.decodeSingularUInt64Field(value: &self.maxGasBefore) }()
       case 4: try { try decoder.decodeSingularUInt64Field(value: &self.maxGasAfter) }()
+      case 7: try { try decoder.decodeSingularBoolField(value: &self.registrationEnabled) }()
+      case 8: try { try decoder.decodeSingularBytesField(value: &self.addressDerivationHash) }()
       default: break
       }
     }
@@ -95,6 +112,12 @@ extension Abstractaccount_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if self.maxGasAfter != 0 {
       try visitor.visitSingularUInt64Field(value: self.maxGasAfter, fieldNumber: 4)
     }
+    if self.registrationEnabled != false {
+      try visitor.visitSingularBoolField(value: self.registrationEnabled, fieldNumber: 7)
+    }
+    if !self.addressDerivationHash.isEmpty {
+      try visitor.visitSingularBytesField(value: self.addressDerivationHash, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -103,6 +126,8 @@ extension Abstractaccount_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if lhs.allowedCodeIds != rhs.allowedCodeIds {return false}
     if lhs.maxGasBefore != rhs.maxGasBefore {return false}
     if lhs.maxGasAfter != rhs.maxGasAfter {return false}
+    if lhs.registrationEnabled != rhs.registrationEnabled {return false}
+    if lhs.addressDerivationHash != rhs.addressDerivationHash {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

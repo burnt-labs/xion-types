@@ -183,45 +183,6 @@ GPB_FINAL @interface MsgUpgradeClientResponse : GPBMessage
 
 @end
 
-#pragma mark - MsgSubmitMisbehaviour
-
-typedef GPB_ENUM(MsgSubmitMisbehaviour_FieldNumber) {
-  MsgSubmitMisbehaviour_FieldNumber_ClientId = 1,
-  MsgSubmitMisbehaviour_FieldNumber_Misbehaviour = 2,
-  MsgSubmitMisbehaviour_FieldNumber_Signer = 3,
-};
-
-/**
- * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
- * light client misbehaviour.
- * This message has been deprecated. Use MsgUpdateClient instead.
- **/
-GPB_DEPRECATED_MSG("ibc.core.client.v1.MsgSubmitMisbehaviour is deprecated (see ibc/core/client/v1/tx.proto).")
-GPB_FINAL @interface MsgSubmitMisbehaviour : GPBMessage
-
-/** client unique identifier */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *clientId;
-
-/** misbehaviour used for freezing the light client */
-@property(nonatomic, readwrite, strong, null_resettable) GPBAny *misbehaviour;
-/** Test to see if @c misbehaviour has been set. */
-@property(nonatomic, readwrite) BOOL hasMisbehaviour;
-
-/** signer address */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *signer;
-
-@end
-
-#pragma mark - MsgSubmitMisbehaviourResponse
-
-/**
- * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
- * type.
- **/
-GPB_FINAL @interface MsgSubmitMisbehaviourResponse : GPBMessage
-
-@end
-
 #pragma mark - MsgRecoverClient
 
 typedef GPB_ENUM(MsgRecoverClient_FieldNumber) {

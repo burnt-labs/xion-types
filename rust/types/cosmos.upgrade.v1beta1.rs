@@ -82,8 +82,6 @@ fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("cosmos.upgrade.v1beta1.{}", Self::NAME)
             }}
 /// ModuleVersion specifies a module and its consensus version.
-///
-/// Since: cosmos-sdk 0.43
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleVersion {

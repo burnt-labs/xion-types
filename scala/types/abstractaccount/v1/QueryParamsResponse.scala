@@ -6,6 +6,9 @@
 package abstractaccount.v1
 
 /** QueryParamsResponse is the response type for the Query/Params RPC method.
+  *
+  * @param params
+  *   params holds the current module parameters.
   */
 @SerialVersionUID(0L)
 final case class QueryParamsResponse(

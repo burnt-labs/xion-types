@@ -1,0 +1,59 @@
+// @generated
+/// ClientState defines an attestor-based light client that tracks the current
+/// consensus state and if the client is frozen.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ClientState {
+    /// trusted attestor set (EOA addresses)
+    #[prost(string, repeated, tag="1")]
+    pub attestor_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// quorum threshold (minimum number of unique attestor signatures required)
+    #[prost(uint32, tag="2")]
+    pub min_required_sigs: u32,
+    /// highest height that has been trusted
+    #[prost(uint64, tag="3")]
+    pub latest_height: u64,
+    /// when true, all verification and updates MUST fail
+    #[prost(bool, tag="4")]
+    pub is_frozen: bool,
+}
+impl ::prost::Name for ClientState {
+const NAME: &'static str = "ClientState";
+const PACKAGE: &'static str = "ibc.lightclients.attestations.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("ibc.lightclients.attestations.v1.{}", Self::NAME)
+            }}
+/// ConsensusState defines an attestor consensus state. The timestamp of a
+/// consensus state is stored per height.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConsensusState {
+    /// trusted UNIX timestamp (nanoseconds) for the height
+    #[prost(uint64, tag="1")]
+    pub timestamp: u64,
+}
+impl ::prost::Name for ConsensusState {
+const NAME: &'static str = "ConsensusState";
+const PACKAGE: &'static str = "ibc.lightclients.attestations.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("ibc.lightclients.attestations.v1.{}", Self::NAME)
+            }}
+/// AttestationProof is used for client updates and membership verification.
+/// All attestor signatures cover sha256(attestationData).
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AttestationProof {
+    /// the attestation data that was signed (ABI-encoded StateAttestation or PacketAttestation)
+    #[prost(bytes="vec", tag="1")]
+    pub attestation_data: ::prost::alloc::vec::Vec<u8>,
+    /// array of 65-byte ECDSA signatures (r||s||v)
+    #[prost(bytes="vec", repeated, tag="2")]
+    pub signatures: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+}
+impl ::prost::Name for AttestationProof {
+const NAME: &'static str = "AttestationProof";
+const PACKAGE: &'static str = "ibc.lightclients.attestations.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("ibc.lightclients.attestations.v1.{}", Self::NAME)
+            }}
+// @@protoc_insertion_point(module)

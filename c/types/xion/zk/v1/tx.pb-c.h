@@ -54,13 +54,18 @@ struct  Xion__Zk__V1__MsgAddVKey
    */
   char *description;
   /*
-   * vkey_json is the JSON representation of the verification key
+   * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+   * proof_system).
    */
   ProtobufCBinaryData vkey_bytes;
+  /*
+   * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+   */
+  Xion__Zk__V1__ProofSystem proof_system;
 };
 #define XION__ZK__V1__MSG_ADD_VKEY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__msg_add_vkey__descriptor) \
-, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, {0,NULL} }
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, {0,NULL}, XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_UNSPECIFIED }
 
 
 /*
@@ -98,13 +103,18 @@ struct  Xion__Zk__V1__MsgUpdateVKey
    */
   char *description;
   /*
-   * vkey_json is the new JSON representation of the verification key
+   * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+   * per proof_system).
    */
   ProtobufCBinaryData vkey_bytes;
+  /*
+   * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+   */
+  Xion__Zk__V1__ProofSystem proof_system;
 };
 #define XION__ZK__V1__MSG_UPDATE_VKEY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__msg_update_vkey__descriptor) \
-, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, {0,NULL} }
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, {0,NULL}, XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_UNSPECIFIED }
 
 
 /*

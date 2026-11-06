@@ -149,43 +149,6 @@ struct MsgUpgradeClientResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgUpgradeClientResponseDefaultTypeInternal _MsgUpgradeClientResponse_default_instance_;
         template <typename>
-PROTOBUF_CONSTEXPR MsgSubmitMisbehaviour::MsgSubmitMisbehaviour(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.client_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.signer_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.misbehaviour_)*/ nullptr,
-    } {}
-struct MsgSubmitMisbehaviourDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MsgSubmitMisbehaviourDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MsgSubmitMisbehaviourDefaultTypeInternal() {}
-  union {
-    MsgSubmitMisbehaviour _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgSubmitMisbehaviourDefaultTypeInternal _MsgSubmitMisbehaviour_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR MsgSubmitMisbehaviourResponse::MsgSubmitMisbehaviourResponse(::_pbi::ConstantInitialized) {}
-struct MsgSubmitMisbehaviourResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MsgSubmitMisbehaviourResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MsgSubmitMisbehaviourResponseDefaultTypeInternal() {}
-  union {
-    MsgSubmitMisbehaviourResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgSubmitMisbehaviourResponseDefaultTypeInternal _MsgSubmitMisbehaviourResponse_default_instance_;
-        template <typename>
 PROTOBUF_CONSTEXPR MsgRecoverClient::MsgRecoverClient(::_pbi::ConstantInitialized)
     : _impl_{
       /*decltype(_impl_.subject_client_id_)*/ {
@@ -330,7 +293,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace client
 }  // namespace core
 }  // namespace ibc
-static ::_pb::Metadata file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[16];
+static ::_pb::Metadata file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[14];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_ibc_2fcore_2fclient_2fv1_2ftx_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -404,28 +367,6 @@ const ::uint32_t TableStruct_ibc_2fcore_2fclient_2fv1_2ftx_2eproto::offsets[] PR
     ~0u,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgUpgradeClientResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgSubmitMisbehaviour, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgSubmitMisbehaviour, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgSubmitMisbehaviour, _impl_.client_id_),
-    PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgSubmitMisbehaviour, _impl_.misbehaviour_),
-    PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgSubmitMisbehaviour, _impl_.signer_),
-    ~0u,
-    0,
-    ~0u,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::ibc::core::client::v1::MsgSubmitMisbehaviourResponse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
@@ -521,16 +462,14 @@ static const ::_pbi::MigrationSchema
         {37, -1, -1, sizeof(::ibc::core::client::v1::MsgUpdateClientResponse)},
         {45, 59, -1, sizeof(::ibc::core::client::v1::MsgUpgradeClient)},
         {65, -1, -1, sizeof(::ibc::core::client::v1::MsgUpgradeClientResponse)},
-        {73, 84, -1, sizeof(::ibc::core::client::v1::MsgSubmitMisbehaviour)},
-        {87, -1, -1, sizeof(::ibc::core::client::v1::MsgSubmitMisbehaviourResponse)},
-        {95, -1, -1, sizeof(::ibc::core::client::v1::MsgRecoverClient)},
-        {106, -1, -1, sizeof(::ibc::core::client::v1::MsgRecoverClientResponse)},
-        {114, 125, -1, sizeof(::ibc::core::client::v1::MsgIBCSoftwareUpgrade)},
-        {128, -1, -1, sizeof(::ibc::core::client::v1::MsgIBCSoftwareUpgradeResponse)},
-        {136, 146, -1, sizeof(::ibc::core::client::v1::MsgUpdateParams)},
-        {148, -1, -1, sizeof(::ibc::core::client::v1::MsgUpdateParamsResponse)},
-        {156, -1, -1, sizeof(::ibc::core::client::v1::MsgDeleteClientCreator)},
-        {166, -1, -1, sizeof(::ibc::core::client::v1::MsgDeleteClientCreatorResponse)},
+        {73, -1, -1, sizeof(::ibc::core::client::v1::MsgRecoverClient)},
+        {84, -1, -1, sizeof(::ibc::core::client::v1::MsgRecoverClientResponse)},
+        {92, 103, -1, sizeof(::ibc::core::client::v1::MsgIBCSoftwareUpgrade)},
+        {106, -1, -1, sizeof(::ibc::core::client::v1::MsgIBCSoftwareUpgradeResponse)},
+        {114, 124, -1, sizeof(::ibc::core::client::v1::MsgUpdateParams)},
+        {126, -1, -1, sizeof(::ibc::core::client::v1::MsgUpdateParamsResponse)},
+        {134, -1, -1, sizeof(::ibc::core::client::v1::MsgDeleteClientCreator)},
+        {144, -1, -1, sizeof(::ibc::core::client::v1::MsgDeleteClientCreatorResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -540,8 +479,6 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::ibc::core::client::v1::_MsgUpdateClientResponse_default_instance_._instance,
     &::ibc::core::client::v1::_MsgUpgradeClient_default_instance_._instance,
     &::ibc::core::client::v1::_MsgUpgradeClientResponse_default_instance_._instance,
-    &::ibc::core::client::v1::_MsgSubmitMisbehaviour_default_instance_._instance,
-    &::ibc::core::client::v1::_MsgSubmitMisbehaviourResponse_default_instance_._instance,
     &::ibc::core::client::v1::_MsgRecoverClient_default_instance_._instance,
     &::ibc::core::client::v1::_MsgRecoverClientResponse_default_instance_._instance,
     &::ibc::core::client::v1::_MsgIBCSoftwareUpgrade_default_instance_._instance,
@@ -576,53 +513,46 @@ const char descriptor_table_protodef_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[] PRO
     "fUpgradeClient\022A\n\035proof_upgrade_consensu"
     "s_state\030\005 \001(\014R\032proofUpgradeConsensusStat"
     "e\022\026\n\006signer\030\006 \001(\tR\006signer:\017\210\240\037\000\202\347\260*\006sign"
-    "er\"\032\n\030MsgUpgradeClientResponse\"\231\001\n\025MsgSu"
-    "bmitMisbehaviour\022\033\n\tclient_id\030\001 \001(\tR\010cli"
-    "entId\0228\n\014misbehaviour\030\002 \001(\0132\024.google.pro"
-    "tobuf.AnyR\014misbehaviour\022\026\n\006signer\030\003 \001(\tR"
-    "\006signer:\021\030\001\210\240\037\000\202\347\260*\006signer\"\037\n\035MsgSubmitM"
-    "isbehaviourResponse\"\271\001\n\020MsgRecoverClient"
-    "\022*\n\021subject_client_id\030\001 \001(\tR\017subjectClie"
-    "ntId\0220\n\024substitute_client_id\030\002 \001(\tR\022subs"
-    "tituteClientId\022\026\n\006signer\030\003 \001(\tR\006signer:/"
-    "\210\240\037\000\202\347\260*\006signer\212\347\260*\033cosmos-sdk/MsgRecove"
-    "rClient\"\032\n\030MsgRecoverClientResponse\"\276\001\n\025"
-    "MsgIBCSoftwareUpgrade\0226\n\004plan\030\001 \001(\0132\034.co"
-    "smos.upgrade.v1beta1.PlanB\004\310\336\037\000R\004plan\022H\n"
-    "\025upgraded_client_state\030\002 \001(\0132\024.google.pr"
-    "otobuf.AnyR\023upgradedClientState\022\026\n\006signe"
-    "r\030\003 \001(\tR\006signer:\013\202\347\260*\006signer\"\037\n\035MsgIBCSo"
-    "ftwareUpgradeResponse\"t\n\017MsgUpdateParams"
-    "\022\026\n\006signer\030\001 \001(\tR\006signer\0228\n\006params\030\002 \001(\013"
-    "2\032.ibc.core.client.v1.ParamsB\004\310\336\037\000R\006para"
-    "ms:\017\210\240\037\000\202\347\260*\006signer\"\031\n\027MsgUpdateParamsRe"
-    "sponse\"^\n\026MsgDeleteClientCreator\022\033\n\tclie"
-    "nt_id\030\001 \001(\tR\010clientId\022\026\n\006signer\030\002 \001(\tR\006s"
-    "igner:\017\210\240\037\000\202\347\260*\006signer\" \n\036MsgDeleteClien"
-    "tCreatorResponse2\341\006\n\003Msg\022`\n\014CreateClient"
-    "\022#.ibc.core.client.v1.MsgCreateClient\032+."
-    "ibc.core.client.v1.MsgCreateClientRespon"
-    "se\022`\n\014UpdateClient\022#.ibc.core.client.v1."
-    "MsgUpdateClient\032+.ibc.core.client.v1.Msg"
-    "UpdateClientResponse\022c\n\rUpgradeClient\022$."
-    "ibc.core.client.v1.MsgUpgradeClient\032,.ib"
-    "c.core.client.v1.MsgUpgradeClientRespons"
-    "e\022r\n\022SubmitMisbehaviour\022).ibc.core.clien"
-    "t.v1.MsgSubmitMisbehaviour\0321.ibc.core.cl"
-    "ient.v1.MsgSubmitMisbehaviourResponse\022c\n"
-    "\rRecoverClient\022$.ibc.core.client.v1.MsgR"
-    "ecoverClient\032,.ibc.core.client.v1.MsgRec"
-    "overClientResponse\022r\n\022IBCSoftwareUpgrade"
-    "\022).ibc.core.client.v1.MsgIBCSoftwareUpgr"
-    "ade\0321.ibc.core.client.v1.MsgIBCSoftwareU"
-    "pgradeResponse\022f\n\022UpdateClientParams\022#.i"
-    "bc.core.client.v1.MsgUpdateParams\032+.ibc."
-    "core.client.v1.MsgUpdateParamsResponse\022u"
-    "\n\023DeleteClientCreator\022*.ibc.core.client."
-    "v1.MsgDeleteClientCreator\0322.ibc.core.cli"
-    "ent.v1.MsgDeleteClientCreatorResponse\032\005\200"
-    "\347\260*\001B;Z9github.com/cosmos/ibc-go/v10/mod"
-    "ules/core/02-client/typesb\006proto3"
+    "er\"\032\n\030MsgUpgradeClientResponse\"\271\001\n\020MsgRe"
+    "coverClient\022*\n\021subject_client_id\030\001 \001(\tR\017"
+    "subjectClientId\0220\n\024substitute_client_id\030"
+    "\002 \001(\tR\022substituteClientId\022\026\n\006signer\030\003 \001("
+    "\tR\006signer:/\210\240\037\000\202\347\260*\006signer\212\347\260*\033cosmos-sd"
+    "k/MsgRecoverClient\"\032\n\030MsgRecoverClientRe"
+    "sponse\"\276\001\n\025MsgIBCSoftwareUpgrade\0226\n\004plan"
+    "\030\001 \001(\0132\034.cosmos.upgrade.v1beta1.PlanB\004\310\336"
+    "\037\000R\004plan\022H\n\025upgraded_client_state\030\002 \001(\0132"
+    "\024.google.protobuf.AnyR\023upgradedClientSta"
+    "te\022\026\n\006signer\030\003 \001(\tR\006signer:\013\202\347\260*\006signer\""
+    "\037\n\035MsgIBCSoftwareUpgradeResponse\"t\n\017MsgU"
+    "pdateParams\022\026\n\006signer\030\001 \001(\tR\006signer\0228\n\006p"
+    "arams\030\002 \001(\0132\032.ibc.core.client.v1.ParamsB"
+    "\004\310\336\037\000R\006params:\017\210\240\037\000\202\347\260*\006signer\"\031\n\027MsgUpd"
+    "ateParamsResponse\"^\n\026MsgDeleteClientCrea"
+    "tor\022\033\n\tclient_id\030\001 \001(\tR\010clientId\022\026\n\006sign"
+    "er\030\002 \001(\tR\006signer:\017\210\240\037\000\202\347\260*\006signer\" \n\036Msg"
+    "DeleteClientCreatorResponse2\355\005\n\003Msg\022`\n\014C"
+    "reateClient\022#.ibc.core.client.v1.MsgCrea"
+    "teClient\032+.ibc.core.client.v1.MsgCreateC"
+    "lientResponse\022`\n\014UpdateClient\022#.ibc.core"
+    ".client.v1.MsgUpdateClient\032+.ibc.core.cl"
+    "ient.v1.MsgUpdateClientResponse\022c\n\rUpgra"
+    "deClient\022$.ibc.core.client.v1.MsgUpgrade"
+    "Client\032,.ibc.core.client.v1.MsgUpgradeCl"
+    "ientResponse\022c\n\rRecoverClient\022$.ibc.core"
+    ".client.v1.MsgRecoverClient\032,.ibc.core.c"
+    "lient.v1.MsgRecoverClientResponse\022r\n\022IBC"
+    "SoftwareUpgrade\022).ibc.core.client.v1.Msg"
+    "IBCSoftwareUpgrade\0321.ibc.core.client.v1."
+    "MsgIBCSoftwareUpgradeResponse\022f\n\022UpdateC"
+    "lientParams\022#.ibc.core.client.v1.MsgUpda"
+    "teParams\032+.ibc.core.client.v1.MsgUpdateP"
+    "aramsResponse\022u\n\023DeleteClientCreator\022*.i"
+    "bc.core.client.v1.MsgDeleteClientCreator"
+    "\0322.ibc.core.client.v1.MsgDeleteClientCre"
+    "atorResponse\032\005\200\347\260*\001B;Z9github.com/cosmos"
+    "/ibc-go/v11/modules/core/02-client/types"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_deps[6] =
     {
@@ -637,13 +567,13 @@ static ::absl::once_flag descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_
 const ::_pbi::DescriptorTable descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto = {
     false,
     false,
-    2833,
+    2528,
     descriptor_table_protodef_ibc_2fcore_2fclient_2fv1_2ftx_2eproto,
     "ibc/core/client/v1/tx.proto",
     &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
     descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_deps,
     6,
-    16,
+    14,
     schemas,
     file_default_instances,
     TableStruct_ibc_2fcore_2fclient_2fv1_2ftx_2eproto::offsets,
@@ -1963,334 +1893,6 @@ const ::google::protobuf::Message::ClassData*MsgUpgradeClientResponse::GetClassD
 }
 // ===================================================================
 
-class MsgSubmitMisbehaviour::_Internal {
- public:
-  using HasBits = decltype(std::declval<MsgSubmitMisbehaviour>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_._has_bits_);
-  static const ::google::protobuf::Any& misbehaviour(const MsgSubmitMisbehaviour* msg);
-  static void set_has_misbehaviour(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-};
-
-const ::google::protobuf::Any& MsgSubmitMisbehaviour::_Internal::misbehaviour(const MsgSubmitMisbehaviour* msg) {
-  return *msg->_impl_.misbehaviour_;
-}
-void MsgSubmitMisbehaviour::clear_misbehaviour() {
-  if (_impl_.misbehaviour_ != nullptr) _impl_.misbehaviour_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-MsgSubmitMisbehaviour::MsgSubmitMisbehaviour(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:ibc.core.client.v1.MsgSubmitMisbehaviour)
-}
-MsgSubmitMisbehaviour::MsgSubmitMisbehaviour(const MsgSubmitMisbehaviour& from) : ::google::protobuf::Message() {
-  MsgSubmitMisbehaviour* const _this = this;
-  (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.client_id_){},
-      decltype(_impl_.signer_){},
-      decltype(_impl_.misbehaviour_){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  _impl_.client_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.client_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_client_id().empty()) {
-    _this->_impl_.client_id_.Set(from._internal_client_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.signer_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.signer_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_signer().empty()) {
-    _this->_impl_.signer_.Set(from._internal_signer(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.misbehaviour_ = new ::google::protobuf::Any(*from._impl_.misbehaviour_);
-  }
-
-  // @@protoc_insertion_point(copy_constructor:ibc.core.client.v1.MsgSubmitMisbehaviour)
-}
-inline void MsgSubmitMisbehaviour::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.client_id_){},
-      decltype(_impl_.signer_){},
-      decltype(_impl_.misbehaviour_){nullptr},
-  };
-  _impl_.client_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.client_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.signer_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.signer_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-MsgSubmitMisbehaviour::~MsgSubmitMisbehaviour() {
-  // @@protoc_insertion_point(destructor:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void MsgSubmitMisbehaviour::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.client_id_.Destroy();
-  _impl_.signer_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.misbehaviour_;
-}
-void MsgSubmitMisbehaviour::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-PROTOBUF_NOINLINE void MsgSubmitMisbehaviour::Clear() {
-// @@protoc_insertion_point(message_clear_start:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.client_id_.ClearToEmpty();
-  _impl_.signer_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.misbehaviour_ != nullptr);
-    _impl_.misbehaviour_->Clear();
-  }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-const char* MsgSubmitMisbehaviour::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
-  return ptr;
-}
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 64, 2> MsgSubmitMisbehaviour::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_MsgSubmitMisbehaviour_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string client_id = 1 [json_name = "clientId"];
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_.client_id_)}},
-    // .google.protobuf.Any misbehaviour = 2 [json_name = "misbehaviour"];
-    {::_pbi::TcParser::FastMtS1,
-     {18, 0, 0, PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_.misbehaviour_)}},
-    // string signer = 3 [json_name = "signer"];
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_.signer_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string client_id = 1 [json_name = "clientId"];
-    {PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_.client_id_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .google.protobuf.Any misbehaviour = 2 [json_name = "misbehaviour"];
-    {PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_.misbehaviour_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string signer = 3 [json_name = "signer"];
-    {PROTOBUF_FIELD_OFFSET(MsgSubmitMisbehaviour, _impl_.signer_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::google::protobuf::Any>()},
-  }}, {{
-    "\50\11\0\6\0\0\0\0"
-    "ibc.core.client.v1.MsgSubmitMisbehaviour"
-    "client_id"
-    "signer"
-  }},
-};
-
-::uint8_t* MsgSubmitMisbehaviour::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
-
-  // string client_id = 1 [json_name = "clientId"];
-  if (!this->_internal_client_id().empty()) {
-    const std::string& _s = this->_internal_client_id();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ibc.core.client.v1.MsgSubmitMisbehaviour.client_id");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
-
-  cached_has_bits = _impl_._has_bits_[0];
-  // .google.protobuf.Any misbehaviour = 2 [json_name = "misbehaviour"];
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::misbehaviour(this),
-        _Internal::misbehaviour(this).GetCachedSize(), target, stream);
-  }
-
-  // string signer = 3 [json_name = "signer"];
-  if (!this->_internal_signer().empty()) {
-    const std::string& _s = this->_internal_signer();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ibc.core.client.v1.MsgSubmitMisbehaviour.signer");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  return target;
-}
-
-::size_t MsgSubmitMisbehaviour::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  ::size_t total_size = 0;
-
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string client_id = 1 [json_name = "clientId"];
-  if (!this->_internal_client_id().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_client_id());
-  }
-
-  // string signer = 3 [json_name = "signer"];
-  if (!this->_internal_signer().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_signer());
-  }
-
-  // .google.protobuf.Any misbehaviour = 2 [json_name = "misbehaviour"];
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.misbehaviour_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::google::protobuf::Message::ClassData MsgSubmitMisbehaviour::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    MsgSubmitMisbehaviour::MergeImpl
-};
-const ::google::protobuf::Message::ClassData*MsgSubmitMisbehaviour::GetClassData() const { return &_class_data_; }
-
-
-void MsgSubmitMisbehaviour::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<MsgSubmitMisbehaviour*>(&to_msg);
-  auto& from = static_cast<const MsgSubmitMisbehaviour&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_client_id().empty()) {
-    _this->_internal_set_client_id(from._internal_client_id());
-  }
-  if (!from._internal_signer().empty()) {
-    _this->_internal_set_signer(from._internal_signer());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_misbehaviour()->::google::protobuf::Any::MergeFrom(
-        from._internal_misbehaviour());
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void MsgSubmitMisbehaviour::CopyFrom(const MsgSubmitMisbehaviour& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ibc.core.client.v1.MsgSubmitMisbehaviour)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-PROTOBUF_NOINLINE bool MsgSubmitMisbehaviour::IsInitialized() const {
-  return true;
-}
-
-void MsgSubmitMisbehaviour::InternalSwap(MsgSubmitMisbehaviour* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.client_id_, lhs_arena,
-                                       &other->_impl_.client_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.signer_, lhs_arena,
-                                       &other->_impl_.signer_, rhs_arena);
-  swap(_impl_.misbehaviour_, other->_impl_.misbehaviour_);
-}
-
-::google::protobuf::Metadata MsgSubmitMisbehaviour::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[6]);
-}
-// ===================================================================
-
-class MsgSubmitMisbehaviourResponse::_Internal {
- public:
-};
-
-MsgSubmitMisbehaviourResponse::MsgSubmitMisbehaviourResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
-  // @@protoc_insertion_point(arena_constructor:ibc.core.client.v1.MsgSubmitMisbehaviourResponse)
-}
-MsgSubmitMisbehaviourResponse::MsgSubmitMisbehaviourResponse(const MsgSubmitMisbehaviourResponse& from) : ::google::protobuf::internal::ZeroFieldsBase() {
-  MsgSubmitMisbehaviourResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-
-  // @@protoc_insertion_point(copy_constructor:ibc.core.client.v1.MsgSubmitMisbehaviourResponse)
-}
-
-
-
-
-const ::google::protobuf::Message::ClassData MsgSubmitMisbehaviourResponse::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*MsgSubmitMisbehaviourResponse::GetClassData() const { return &_class_data_; }
-
-
-
-
-
-
-
-::google::protobuf::Metadata MsgSubmitMisbehaviourResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[7]);
-}
-// ===================================================================
-
 class MsgRecoverClient::_Internal {
  public:
 };
@@ -2561,7 +2163,7 @@ void MsgRecoverClient::InternalSwap(MsgRecoverClient* other) {
 ::google::protobuf::Metadata MsgRecoverClient::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[8]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[6]);
 }
 // ===================================================================
 
@@ -2600,7 +2202,7 @@ const ::google::protobuf::Message::ClassData*MsgRecoverClientResponse::GetClassD
 ::google::protobuf::Metadata MsgRecoverClientResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[9]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[7]);
 }
 // ===================================================================
 
@@ -2906,7 +2508,7 @@ void MsgIBCSoftwareUpgrade::InternalSwap(MsgIBCSoftwareUpgrade* other) {
 ::google::protobuf::Metadata MsgIBCSoftwareUpgrade::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[10]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[8]);
 }
 // ===================================================================
 
@@ -2945,7 +2547,7 @@ const ::google::protobuf::Message::ClassData*MsgIBCSoftwareUpgradeResponse::GetC
 ::google::protobuf::Metadata MsgIBCSoftwareUpgradeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[11]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[9]);
 }
 // ===================================================================
 
@@ -3192,7 +2794,7 @@ void MsgUpdateParams::InternalSwap(MsgUpdateParams* other) {
 ::google::protobuf::Metadata MsgUpdateParams::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[12]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[10]);
 }
 // ===================================================================
 
@@ -3231,7 +2833,7 @@ const ::google::protobuf::Message::ClassData*MsgUpdateParamsResponse::GetClassDa
 ::google::protobuf::Metadata MsgUpdateParamsResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[13]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[11]);
 }
 // ===================================================================
 
@@ -3463,7 +3065,7 @@ void MsgDeleteClientCreator::InternalSwap(MsgDeleteClientCreator* other) {
 ::google::protobuf::Metadata MsgDeleteClientCreator::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[14]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[12]);
 }
 // ===================================================================
 
@@ -3502,7 +3104,7 @@ const ::google::protobuf::Message::ClassData*MsgDeleteClientCreatorResponse::Get
 ::google::protobuf::Metadata MsgDeleteClientCreatorResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_getter, &descriptor_table_ibc_2fcore_2fclient_2fv1_2ftx_2eproto_once,
-      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[15]);
+      file_level_metadata_ibc_2fcore_2fclient_2fv1_2ftx_2eproto[13]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

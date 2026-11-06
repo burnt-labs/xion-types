@@ -64,8 +64,8 @@ namespace Xion.Feeabs.V1Beta1 {
             "YTEuUXVlcnlBbGxIb3N0Q2hhaW5Db25maWdSZXF1ZXN0GjQueGlvbi5mZWVh",
             "YnMudjFiZXRhMS5RdWVyeUFsbEhvc3RDaGFpbkNvbmZpZ1Jlc3BvbnNlIjiC",
             "0+STAjISMC9mZWUtYWJzdHJhY3Rpb24vZmVlYWJzL3YxL2FsbC1ob3N0LWNo",
-            "YWluLWNvbmZpZ0IrWilnaXRodWIuY29tL2J1cm50LWxhYnMveGlvbi94L2Zl",
-            "ZWFicy90eXBlc2IGcHJvdG8z"));
+            "YWluLWNvbmZpZ0IuWixnaXRodWIuY29tL2J1cm50LWxhYnMveGlvbi9hcHAv",
+            "bGVnYWN5L2ZlZWFic2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Xion.Feeabs.V1Beta1.ProposalReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

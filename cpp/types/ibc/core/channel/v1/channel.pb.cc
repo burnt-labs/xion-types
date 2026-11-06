@@ -431,7 +431,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fchannel_2fv1_2fchannel_2eproto
     "CIFIED\020\000\032\010\212\235 \004NONE\022\"\n\017ORDER_UNORDERED\020\001\032"
     "\r\212\235 \tUNORDERED\022\036\n\rORDER_ORDERED\020\002\032\013\212\235 \007O"
     "RDERED\032\004\210\243\036\000B<Z:github.com/cosmos/ibc-go"
-    "/v10/modules/core/04-channel/typesb\006prot"
+    "/v11/modules/core/04-channel/typesb\006prot"
     "o3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fchannel_2fv1_2fchannel_2eproto_deps[2] =

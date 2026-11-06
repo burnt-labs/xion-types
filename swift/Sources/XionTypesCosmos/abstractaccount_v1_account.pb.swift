@@ -30,10 +30,13 @@ struct Abstractaccount_V1_AbstractAccount: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// address is the bech32-encoded address of the account's contract.
   var address: String = String()
 
+  /// account_number is the account's number assigned by the auth module.
   var accountNumber: UInt64 = 0
 
+  /// sequence is the account's current transaction sequence.
   var sequence: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -52,6 +55,8 @@ struct Abstractaccount_V1_NilPubKey: @unchecked Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// address_bytes is the raw address bytes of the account the pubkey
+  /// stands in for.
   var addressBytes: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()

@@ -29,6 +29,12 @@ PROTOBUF_CONSTEXPR Params::Params(::_pbi::ConstantInitialized)
       /*decltype(_impl_.max_vkey_size_bytes_)*/ ::uint64_t{0u},
       /*decltype(_impl_.upload_chunk_size_)*/ ::uint64_t{0u},
       /*decltype(_impl_.upload_chunk_gas_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.max_groth16_proof_size_bytes_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.max_groth16_public_input_size_bytes_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.max_ultra_honk_proof_size_bytes_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.max_ultra_honk_public_input_size_bytes_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.max_gnark_proof_size_bytes_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.max_gnark_public_input_size_bytes_)*/ ::uint64_t{0u},
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct ParamsDefaultTypeInternal {
@@ -45,8 +51,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace zk
 }  // namespace xion
 static ::_pb::Metadata file_level_metadata_xion_2fzk_2fv1_2fparams_2eproto[1];
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_xion_2fzk_2fv1_2fparams_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_xion_2fzk_2fv1_2fparams_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_xion_2fzk_2fv1_2fparams_2eproto = nullptr;
 const ::uint32_t TableStruct_xion_2fzk_2fv1_2fparams_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
@@ -62,6 +67,12 @@ const ::uint32_t TableStruct_xion_2fzk_2fv1_2fparams_2eproto::offsets[] PROTOBUF
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_vkey_size_bytes_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.upload_chunk_size_),
     PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.upload_chunk_gas_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_groth16_proof_size_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_groth16_public_input_size_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_ultra_honk_proof_size_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_ultra_honk_public_input_size_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_gnark_proof_size_bytes_),
+    PROTOBUF_FIELD_OFFSET(::xion::zk::v1::Params, _impl_.max_gnark_public_input_size_bytes_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -74,13 +85,27 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_xion_2fzk_2fv1_2fparams_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\027xion/zk/v1/params.proto\022\nxion.zk.v1\032\021a"
-    "mino/amino.proto\032\024gogoproto/gogo.proto\"\245"
-    "\001\n\006Params\022-\n\023max_vkey_size_bytes\030\001 \001(\004R\020"
+    "mino/amino.proto\032\024gogoproto/gogo.proto\"\316"
+    "\004\n\006Params\022-\n\023max_vkey_size_bytes\030\001 \001(\004R\020"
     "maxVkeySizeBytes\022*\n\021upload_chunk_size\030\002 "
     "\001(\004R\017uploadChunkSize\022(\n\020upload_chunk_gas"
-    "\030\003 \001(\004R\016uploadChunkGas:\026\230\240\037\000\350\240\037\001\212\347\260*\tzk/"
-    "paramsB\'Z%github.com/burnt-labs/xion/x/z"
-    "k/typesb\006proto3"
+    "\030\003 \001(\004R\016uploadChunkGas\022>\n\034max_groth16_pr"
+    "oof_size_bytes\030\004 \001(\004R\030maxGroth16ProofSiz"
+    "eBytes\022K\n#max_groth16_public_input_size_"
+    "bytes\030\005 \001(\004R\036maxGroth16PublicInputSizeBy"
+    "tes\022C\n\037max_ultra_honk_proof_size_bytes\030\006"
+    " \001(\004R\032maxUltraHonkProofSizeBytes\022P\n&max_"
+    "ultra_honk_public_input_size_bytes\030\007 \001(\004"
+    "R maxUltraHonkPublicInputSizeBytes\022:\n\032ma"
+    "x_gnark_proof_size_bytes\030\010 \001(\004R\026maxGnark"
+    "ProofSizeBytes\022G\n!max_gnark_public_input"
+    "_size_bytes\030\t \001(\004R\034maxGnarkPublicInputSi"
+    "zeBytes:\026\230\240\037\000\350\240\037\001\212\347\260*\tzk/params*\205\001\n\013Proo"
+    "fSystem\022\034\n\030PROOF_SYSTEM_UNSPECIFIED\020\000\022\030\n"
+    "\024PROOF_SYSTEM_GROTH16\020\001\022\036\n\032PROOF_SYSTEM_"
+    "ULTRA_HONK_ZK\020\002\022\036\n\032PROOF_SYSTEM_GROTH16_"
+    "GNARK\020\003B\'Z%github.com/burnt-labs/xion/x/"
+    "zk/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2fzk_2fv1_2fparams_2eproto_deps[2] =
     {
@@ -91,7 +116,7 @@ static ::absl::once_flag descriptor_table_xion_2fzk_2fv1_2fparams_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_xion_2fzk_2fv1_2fparams_2eproto = {
     false,
     false,
-    295,
+    856,
     descriptor_table_protodef_xion_2fzk_2fv1_2fparams_2eproto,
     "xion/zk/v1/params.proto",
     &descriptor_table_xion_2fzk_2fv1_2fparams_2eproto_once,
@@ -126,6 +151,21 @@ static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_xion_2fzk_2fv1_2fparams_2
 namespace xion {
 namespace zk {
 namespace v1 {
+const ::google::protobuf::EnumDescriptor* ProofSystem_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_xion_2fzk_2fv1_2fparams_2eproto);
+  return file_level_enum_descriptors_xion_2fzk_2fv1_2fparams_2eproto[0];
+}
+bool ProofSystem_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
 // ===================================================================
 
 class Params::_Internal {
@@ -149,6 +189,12 @@ inline void Params::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.max_vkey_size_bytes_){::uint64_t{0u}},
       decltype(_impl_.upload_chunk_size_){::uint64_t{0u}},
       decltype(_impl_.upload_chunk_gas_){::uint64_t{0u}},
+      decltype(_impl_.max_groth16_proof_size_bytes_){::uint64_t{0u}},
+      decltype(_impl_.max_groth16_public_input_size_bytes_){::uint64_t{0u}},
+      decltype(_impl_.max_ultra_honk_proof_size_bytes_){::uint64_t{0u}},
+      decltype(_impl_.max_ultra_honk_public_input_size_bytes_){::uint64_t{0u}},
+      decltype(_impl_.max_gnark_proof_size_bytes_){::uint64_t{0u}},
+      decltype(_impl_.max_gnark_public_input_size_bytes_){::uint64_t{0u}},
       /*decltype(_impl_._cached_size_)*/ {},
   };
 }
@@ -171,8 +217,8 @@ PROTOBUF_NOINLINE void Params::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.max_vkey_size_bytes_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.upload_chunk_gas_) -
-      reinterpret_cast<char*>(&_impl_.max_vkey_size_bytes_)) + sizeof(_impl_.upload_chunk_gas_));
+      reinterpret_cast<char*>(&_impl_.max_gnark_public_input_size_bytes_) -
+      reinterpret_cast<char*>(&_impl_.max_vkey_size_bytes_)) + sizeof(_impl_.max_gnark_public_input_size_bytes_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -184,15 +230,15 @@ const char* Params::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Params::_table_ = {
+const ::_pbi::TcParseTable<4, 9, 0, 0, 2> Params::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    9, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294966784,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    9,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_Params_default_instance_._instance,
@@ -208,6 +254,30 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Params::_table_ = {
     // uint64 upload_chunk_gas = 3 [json_name = "uploadChunkGas"];
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.upload_chunk_gas_), 63>(),
      {24, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.upload_chunk_gas_)}},
+    // uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_groth16_proof_size_bytes_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_groth16_proof_size_bytes_)}},
+    // uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_groth16_public_input_size_bytes_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_groth16_public_input_size_bytes_)}},
+    // uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_ultra_honk_proof_size_bytes_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_ultra_honk_proof_size_bytes_)}},
+    // uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_ultra_honk_public_input_size_bytes_), 63>(),
+     {56, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_ultra_honk_public_input_size_bytes_)}},
+    // uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_gnark_proof_size_bytes_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gnark_proof_size_bytes_)}},
+    // uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Params, _impl_.max_gnark_public_input_size_bytes_), 63>(),
+     {72, 63, 0, PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gnark_public_input_size_bytes_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -219,6 +289,24 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Params::_table_ = {
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
     // uint64 upload_chunk_gas = 3 [json_name = "uploadChunkGas"];
     {PROTOBUF_FIELD_OFFSET(Params, _impl_.upload_chunk_gas_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_groth16_proof_size_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_groth16_public_input_size_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_ultra_honk_proof_size_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_ultra_honk_public_input_size_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gnark_proof_size_bytes_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];
+    {PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gnark_public_input_size_bytes_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
   }},
   // no aux_entries
@@ -252,6 +340,48 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Params::_table_ = {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
         3, this->_internal_upload_chunk_gas(), target);
+  }
+
+  // uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];
+  if (this->_internal_max_groth16_proof_size_bytes() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        4, this->_internal_max_groth16_proof_size_bytes(), target);
+  }
+
+  // uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];
+  if (this->_internal_max_groth16_public_input_size_bytes() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        5, this->_internal_max_groth16_public_input_size_bytes(), target);
+  }
+
+  // uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];
+  if (this->_internal_max_ultra_honk_proof_size_bytes() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        6, this->_internal_max_ultra_honk_proof_size_bytes(), target);
+  }
+
+  // uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];
+  if (this->_internal_max_ultra_honk_public_input_size_bytes() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        7, this->_internal_max_ultra_honk_public_input_size_bytes(), target);
+  }
+
+  // uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];
+  if (this->_internal_max_gnark_proof_size_bytes() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        8, this->_internal_max_gnark_proof_size_bytes(), target);
+  }
+
+  // uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];
+  if (this->_internal_max_gnark_public_input_size_bytes() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+        9, this->_internal_max_gnark_public_input_size_bytes(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -289,6 +419,42 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Params::_table_ = {
         this->_internal_upload_chunk_gas());
   }
 
+  // uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];
+  if (this->_internal_max_groth16_proof_size_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_max_groth16_proof_size_bytes());
+  }
+
+  // uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];
+  if (this->_internal_max_groth16_public_input_size_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_max_groth16_public_input_size_bytes());
+  }
+
+  // uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];
+  if (this->_internal_max_ultra_honk_proof_size_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_max_ultra_honk_proof_size_bytes());
+  }
+
+  // uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];
+  if (this->_internal_max_ultra_honk_public_input_size_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_max_ultra_honk_public_input_size_bytes());
+  }
+
+  // uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];
+  if (this->_internal_max_gnark_proof_size_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_max_gnark_proof_size_bytes());
+  }
+
+  // uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];
+  if (this->_internal_max_gnark_public_input_size_bytes() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+        this->_internal_max_gnark_public_input_size_bytes());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -316,6 +482,24 @@ void Params::MergeImpl(::google::protobuf::Message& to_msg, const ::google::prot
   if (from._internal_upload_chunk_gas() != 0) {
     _this->_internal_set_upload_chunk_gas(from._internal_upload_chunk_gas());
   }
+  if (from._internal_max_groth16_proof_size_bytes() != 0) {
+    _this->_internal_set_max_groth16_proof_size_bytes(from._internal_max_groth16_proof_size_bytes());
+  }
+  if (from._internal_max_groth16_public_input_size_bytes() != 0) {
+    _this->_internal_set_max_groth16_public_input_size_bytes(from._internal_max_groth16_public_input_size_bytes());
+  }
+  if (from._internal_max_ultra_honk_proof_size_bytes() != 0) {
+    _this->_internal_set_max_ultra_honk_proof_size_bytes(from._internal_max_ultra_honk_proof_size_bytes());
+  }
+  if (from._internal_max_ultra_honk_public_input_size_bytes() != 0) {
+    _this->_internal_set_max_ultra_honk_public_input_size_bytes(from._internal_max_ultra_honk_public_input_size_bytes());
+  }
+  if (from._internal_max_gnark_proof_size_bytes() != 0) {
+    _this->_internal_set_max_gnark_proof_size_bytes(from._internal_max_gnark_proof_size_bytes());
+  }
+  if (from._internal_max_gnark_public_input_size_bytes() != 0) {
+    _this->_internal_set_max_gnark_public_input_size_bytes(from._internal_max_gnark_public_input_size_bytes());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -334,8 +518,8 @@ void Params::InternalSwap(Params* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Params, _impl_.upload_chunk_gas_)
-      + sizeof(Params::_impl_.upload_chunk_gas_)
+      PROTOBUF_FIELD_OFFSET(Params, _impl_.max_gnark_public_input_size_bytes_)
+      + sizeof(Params::_impl_.max_gnark_public_input_size_bytes_)
       - PROTOBUF_FIELD_OFFSET(Params, _impl_.max_vkey_size_bytes_)>(
           reinterpret_cast<char*>(&_impl_.max_vkey_size_bytes_),
           reinterpret_cast<char*>(&other->_impl_.max_vkey_size_bytes_));

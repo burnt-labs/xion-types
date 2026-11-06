@@ -1386,8 +1386,9 @@ public final class Kv {
       "ogoproto/gogo.proto\"K\n\005Pairs\022B\n\005pairs\030\001 " +
       "\003(\0132&.cosmos.store.internal.kv.v1beta1.P" +
       "airB\004\310\336\037\000R\005pairs\".\n\004Pair\022\020\n\003key\030\001 \001(\014R\003k" +
-      "ey\022\024\n\005value\030\002 \001(\014R\005valueB Z\036cosmossdk.io" +
-      "/store/internal/kvb\006proto3"
+      "ey\022\024\n\005value\030\002 \001(\014R\005valueB3Z1github.com/c" +
+      "osmos/cosmos-sdk/store/v2/internal/kvb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

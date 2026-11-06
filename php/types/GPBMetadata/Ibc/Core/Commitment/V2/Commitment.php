@@ -20,7 +20,7 @@ class Commitment
 \'ibc/core/commitment/v2/commitment.protoibc.core.commitment.v2"\'
 
 MerklePath
-key_path (RkeyPathBBZ@github.com/cosmos/ibc-go/v10/modules/core/23-commitment/types/v2bproto3'
+key_path (RkeyPathBBZ@github.com/cosmos/ibc-go/v11/modules/core/23-commitment/types/v2bproto3'
         , true);
 
         static::$is_initialized = true;

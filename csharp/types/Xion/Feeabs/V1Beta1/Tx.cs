@@ -75,9 +75,9 @@ namespace Xion.Feeabs.V1Beta1 {
             "YXRlSG9zdFpvbmUaLi54aW9uLmZlZWFicy52MWJldGExLk1zZ1VwZGF0ZUhv",
             "c3Rab25lUmVzcG9uc2UiABJqCg5SZW1vdmVIb3N0Wm9uZRImLnhpb24uZmVl",
             "YWJzLnYxYmV0YTEuTXNnUmVtb3ZlSG9zdFpvbmUaLi54aW9uLmZlZWFicy52",
-            "MWJldGExLk1zZ1JlbW92ZUhvc3Rab25lUmVzcG9uc2UiABoFgOewKgFCK1op",
-            "Z2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24veC9mZWVhYnMvdHlwZXNiBnBy",
-            "b3RvMw=="));
+            "MWJldGExLk1zZ1JlbW92ZUhvc3Rab25lUmVzcG9uc2UiABoFgOewKgFCLlos",
+            "Z2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24vYXBwL2xlZ2FjeS9mZWVhYnNi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Amino.AminoReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Xion.Feeabs.V1Beta1.ParamsReflection.Descriptor, global::Xion.Feeabs.V1Beta1.ProposalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

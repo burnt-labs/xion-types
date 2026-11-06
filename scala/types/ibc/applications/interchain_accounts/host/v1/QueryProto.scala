@@ -24,7 +24,7 @@ object QueryProto extends _root_.scalapb.GeneratedFileObject {
   jEuUGFyYW1zQgviPwgSBnBhcmFtc1IGcGFyYW1zMs0BCgVRdWVyeRLDAQoGUGFyYW1zEkAuaWJjLmFwcGxpY2F0aW9ucy5pbnRlc
   mNoYWluX2FjY291bnRzLmhvc3QudjEuUXVlcnlQYXJhbXNSZXF1ZXN0GkEuaWJjLmFwcGxpY2F0aW9ucy5pbnRlcmNoYWluX2FjY
   291bnRzLmhvc3QudjEuUXVlcnlQYXJhbXNSZXNwb25zZSI0gtPkkwIuEiwvaWJjL2FwcHMvaW50ZXJjaGFpbl9hY2NvdW50cy9ob
-  3N0L3YxL3BhcmFtc0JNWktnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNoYWluLWFjY
+  3N0L3YxL3BhcmFtc0JNWktnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNoYWluLWFjY
   291bnRzL2hvc3QvdHlwZXNiBnByb3RvMw=="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

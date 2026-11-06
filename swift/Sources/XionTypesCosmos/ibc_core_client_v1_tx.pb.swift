@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+// SPDX-License-Identifier: Apache-2.0
+
 import Foundation
 import SwiftProtobuf
 
@@ -163,51 +165,6 @@ struct Ibc_Core_Client_V1_MsgUpgradeClient: @unchecked Sendable {
 
 /// MsgUpgradeClientResponse defines the Msg/UpgradeClient response type.
 struct Ibc_Core_Client_V1_MsgUpgradeClientResponse: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-/// MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
-/// light client misbehaviour.
-/// This message has been deprecated. Use MsgUpdateClient instead.
-///
-/// NOTE: This message was marked as deprecated in the .proto file.
-struct Ibc_Core_Client_V1_MsgSubmitMisbehaviour: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  /// client unique identifier
-  var clientID: String = String()
-
-  /// misbehaviour used for freezing the light client
-  var misbehaviour: SwiftProtobuf.Google_Protobuf_Any {
-    get {return _misbehaviour ?? SwiftProtobuf.Google_Protobuf_Any()}
-    set {_misbehaviour = newValue}
-  }
-  /// Returns true if `misbehaviour` has been explicitly set.
-  var hasMisbehaviour: Bool {return self._misbehaviour != nil}
-  /// Clears the value of `misbehaviour`. Subsequent reads from it will return its default value.
-  mutating func clearMisbehaviour() {self._misbehaviour = nil}
-
-  /// signer address
-  var signer: String = String()
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _misbehaviour: SwiftProtobuf.Google_Protobuf_Any? = nil
-}
-
-/// MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
-/// type.
-struct Ibc_Core_Client_V1_MsgSubmitMisbehaviourResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -601,73 +558,6 @@ extension Ibc_Core_Client_V1_MsgUpgradeClientResponse: SwiftProtobuf.Message, Sw
   }
 
   static func ==(lhs: Ibc_Core_Client_V1_MsgUpgradeClientResponse, rhs: Ibc_Core_Client_V1_MsgUpgradeClientResponse) -> Bool {
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Ibc_Core_Client_V1_MsgSubmitMisbehaviour: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MsgSubmitMisbehaviour"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "client_id"),
-    2: .same(proto: "misbehaviour"),
-    3: .same(proto: "signer"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.clientID) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._misbehaviour) }()
-      case 3: try { try decoder.decodeSingularStringField(value: &self.signer) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    if !self.clientID.isEmpty {
-      try visitor.visitSingularStringField(value: self.clientID, fieldNumber: 1)
-    }
-    try { if let v = self._misbehaviour {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    } }()
-    if !self.signer.isEmpty {
-      try visitor.visitSingularStringField(value: self.signer, fieldNumber: 3)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Ibc_Core_Client_V1_MsgSubmitMisbehaviour, rhs: Ibc_Core_Client_V1_MsgSubmitMisbehaviour) -> Bool {
-    if lhs.clientID != rhs.clientID {return false}
-    if lhs._misbehaviour != rhs._misbehaviour {return false}
-    if lhs.signer != rhs.signer {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Ibc_Core_Client_V1_MsgSubmitMisbehaviourResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MsgSubmitMisbehaviourResponse"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Ibc_Core_Client_V1_MsgSubmitMisbehaviourResponse, rhs: Ibc_Core_Client_V1_MsgSubmitMisbehaviourResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

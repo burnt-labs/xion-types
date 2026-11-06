@@ -2803,7 +2803,7 @@ public final class Authz {
       "bc.applications.transfer.v1.AllocationB\004" +
       "\310\336\037\000R\013allocations:&\312\264-\"cosmos.authz.v1be" +
       "ta1.AuthorizationB:Z8github.com/cosmos/i" +
-      "bc-go/v10/modules/apps/transfer/typesb\006p" +
+      "bc-go/v11/modules/apps/transfer/typesb\006p" +
       "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

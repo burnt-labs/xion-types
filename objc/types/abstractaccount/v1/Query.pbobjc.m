@@ -37,6 +37,8 @@
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
 GPBObjCClassDeclaration(Params);
+GPBObjCClassDeclaration(QueryAccountAddressRequest);
+GPBObjCClassDeclaration(QueryAccountAddressResponse);
 GPBObjCClassDeclaration(QueryParamsRequest);
 GPBObjCClassDeclaration(QueryParamsResponse);
 
@@ -135,6 +137,119 @@ typedef struct QueryParamsResponse__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(QueryParamsResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryAccountAddressRequest
+
+@implementation QueryAccountAddressRequest
+
+@dynamic sender;
+@dynamic salt;
+
+typedef struct QueryAccountAddressRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *sender;
+  NSData *salt;
+} QueryAccountAddressRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "sender",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryAccountAddressRequest_FieldNumber_Sender,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryAccountAddressRequest__storage_, sender),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "salt",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryAccountAddressRequest_FieldNumber_Salt,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(QueryAccountAddressRequest__storage_, salt),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryAccountAddressRequest)
+                                   messageName:@"QueryAccountAddressRequest"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryAccountAddressRequest__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryAccountAddressResponse
+
+@implementation QueryAccountAddressResponse
+
+@dynamic address;
+@dynamic registered;
+
+typedef struct QueryAccountAddressResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *address;
+} QueryAccountAddressResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "address",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryAccountAddressResponse_FieldNumber_Address,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryAccountAddressResponse__storage_, address),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "registered",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryAccountAddressResponse_FieldNumber_Registered,
+        .hasIndex = 1,
+        .offset = 2,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryAccountAddressResponse)
+                                   messageName:@"QueryAccountAddressResponse"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryAccountAddressResponse__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

@@ -43,8 +43,6 @@ pub struct InFlightPacket {
     pub retries_remaining: i32,
     #[prost(uint64, tag="11")]
     pub timeout: u64,
-    #[prost(bool, tag="12")]
-    pub nonrefundable: bool,
 }
 impl ::prost::Name for InFlightPacket {
 const NAME: &'static str = "InFlightPacket";

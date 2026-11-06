@@ -35,6 +35,10 @@ public object AbstractAccountKt {
     internal fun _build(): abstractaccount.v1.Account.AbstractAccount = _builder.build()
 
     /**
+     * ```
+     * address is the bech32-encoded address of the account's contract.
+     * ```
+     *
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public var address: kotlin.String
@@ -45,6 +49,10 @@ public object AbstractAccountKt {
         _builder.setAddress(value)
       }
     /**
+     * ```
+     * address is the bech32-encoded address of the account's contract.
+     * ```
+     *
      * `string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];`
      */
     public fun clearAddress() {
@@ -52,6 +60,10 @@ public object AbstractAccountKt {
     }
 
     /**
+     * ```
+     * account_number is the account's number assigned by the auth module.
+     * ```
+     *
      * `uint64 account_number = 2 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
@@ -62,6 +74,10 @@ public object AbstractAccountKt {
         _builder.setAccountNumber(value)
       }
     /**
+     * ```
+     * account_number is the account's number assigned by the auth module.
+     * ```
+     *
      * `uint64 account_number = 2 [json_name = "accountNumber"];`
      */
     public fun clearAccountNumber() {
@@ -69,6 +85,10 @@ public object AbstractAccountKt {
     }
 
     /**
+     * ```
+     * sequence is the account's current transaction sequence.
+     * ```
+     *
      * `uint64 sequence = 3 [json_name = "sequence"];`
      */
     public var sequence: kotlin.Long
@@ -79,6 +99,10 @@ public object AbstractAccountKt {
         _builder.setSequence(value)
       }
     /**
+     * ```
+     * sequence is the account's current transaction sequence.
+     * ```
+     *
      * `uint64 sequence = 3 [json_name = "sequence"];`
      */
     public fun clearSequence() {

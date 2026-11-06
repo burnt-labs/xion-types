@@ -36,6 +36,10 @@ class ConsensusParams extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.tendermint.types.ABCIParams abci = 5 [json_name = "abci"];</code>
      */
     protected $abci = null;
+    /**
+     * Generated from protobuf field <code>.tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];</code>
+     */
+    protected $authority = null;
 
     /**
      * Constructor.
@@ -48,6 +52,7 @@ class ConsensusParams extends \Google\Protobuf\Internal\Message
      *     @type \Tendermint\Types\ValidatorParams $validator
      *     @type \Tendermint\Types\VersionParams $version
      *     @type \Tendermint\Types\ABCIParams $abci
+     *     @type \Tendermint\Types\AuthorityParams $authority
      * }
      */
     public function __construct($data = NULL) {
@@ -211,6 +216,38 @@ class ConsensusParams extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Tendermint\Types\ABCIParams::class);
         $this->abci = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];</code>
+     * @return \Tendermint\Types\AuthorityParams|null
+     */
+    public function getAuthority()
+    {
+        return $this->authority;
+    }
+
+    public function hasAuthority()
+    {
+        return isset($this->authority);
+    }
+
+    public function clearAuthority()
+    {
+        unset($this->authority);
+    }
+
+    /**
+     * Generated from protobuf field <code>.tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];</code>
+     * @param \Tendermint\Types\AuthorityParams $var
+     * @return $this
+     */
+    public function setAuthority($var)
+    {
+        GPBUtil::checkMessage($var, \Tendermint\Types\AuthorityParams::class);
+        $this->authority = $var;
 
         return $this;
     }

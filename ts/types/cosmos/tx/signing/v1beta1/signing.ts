@@ -35,14 +35,6 @@ export enum SignMode {
    */
   SIGN_MODE_DIRECT = 1,
   /**
-   * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-   * human-readable textual representation on top of the binary representation
-   * from SIGN_MODE_DIRECT.
-   *
-   * Since: cosmos-sdk 0.50
-   */
-  SIGN_MODE_TEXTUAL = 2,
-  /**
    * SIGN_MODE_DIRECT_AUX - SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
    * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
    * require signers signing over other signers' `signer_info`.
@@ -79,9 +71,6 @@ export function signModeFromJSON(object: any): SignMode {
     case 1:
     case "SIGN_MODE_DIRECT":
       return SignMode.SIGN_MODE_DIRECT;
-    case 2:
-    case "SIGN_MODE_TEXTUAL":
-      return SignMode.SIGN_MODE_TEXTUAL;
     case 3:
     case "SIGN_MODE_DIRECT_AUX":
       return SignMode.SIGN_MODE_DIRECT_AUX;
@@ -104,8 +93,6 @@ export function signModeToJSON(object: SignMode): string {
       return "SIGN_MODE_UNSPECIFIED";
     case SignMode.SIGN_MODE_DIRECT:
       return "SIGN_MODE_DIRECT";
-    case SignMode.SIGN_MODE_TEXTUAL:
-      return "SIGN_MODE_TEXTUAL";
     case SignMode.SIGN_MODE_DIRECT_AUX:
       return "SIGN_MODE_DIRECT_AUX";
     case SignMode.SIGN_MODE_LEGACY_AMINO_JSON:

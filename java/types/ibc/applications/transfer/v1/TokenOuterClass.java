@@ -2705,7 +2705,7 @@ public final class TokenOuterClass {
       "bc.applications.transfer.v1.HopB\004\310\336\037\000R\005t" +
       "race\"C\n\003Hop\022\027\n\007port_id\030\001 \001(\tR\006portId\022\035\n\n" +
       "channel_id\030\002 \001(\tR\tchannelId:\004\230\240\037\000B:Z8git" +
-      "hub.com/cosmos/ibc-go/v10/modules/apps/t" +
+      "hub.com/cosmos/ibc-go/v11/modules/apps/t" +
       "ransfer/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -52,7 +52,7 @@ void   abstractaccount__v1__event_account_registered__free_unpacked
   assert(message->base.descriptor == &abstractaccount__v1__event_account_registered__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor abstractaccount__v1__event_account_registered__field_descriptors[4] =
+static const ProtobufCFieldDescriptor abstractaccount__v1__event_account_registered__field_descriptors[5] =
 {
   {
     "creator",
@@ -102,17 +102,31 @@ static const ProtobufCFieldDescriptor abstractaccount__v1__event_account_registe
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "address_derivation_hash",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Abstractaccount__V1__EventAccountRegistered, address_derivation_hash),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned abstractaccount__v1__event_account_registered__field_indices_by_name[] = {
   3,   /* field[3] = account_number */
+  4,   /* field[4] = address_derivation_hash */
   1,   /* field[1] = code_id */
   2,   /* field[2] = contract_addr */
   0,   /* field[0] = creator */
 };
-static const ProtobufCIntRange abstractaccount__v1__event_account_registered__number_ranges[1 + 1] =
+static const ProtobufCIntRange abstractaccount__v1__event_account_registered__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 6, 4 },
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor abstractaccount__v1__event_account_registered__descriptor =
 {
@@ -122,10 +136,10 @@ const ProtobufCMessageDescriptor abstractaccount__v1__event_account_registered__
   "Abstractaccount__V1__EventAccountRegistered",
   "abstractaccount.v1",
   sizeof(Abstractaccount__V1__EventAccountRegistered),
-  4,
+  5,
   abstractaccount__v1__event_account_registered__field_descriptors,
   abstractaccount__v1__event_account_registered__field_indices_by_name,
-  1,  abstractaccount__v1__event_account_registered__number_ranges,
+  2,  abstractaccount__v1__event_account_registered__number_ranges,
   (ProtobufCMessageInit) abstractaccount__v1__event_account_registered__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

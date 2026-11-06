@@ -290,6 +290,104 @@ public final class Genesis {
      * @return The exported.
      */
     boolean getExported();
+
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    java.util.List<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory> 
+        getConsensusKeyRotationHistoryList();
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory getConsensusKeyRotationHistory(int index);
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    int getConsensusKeyRotationHistoryCount();
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    java.util.List<? extends cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder> 
+        getConsensusKeyRotationHistoryOrBuilderList();
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder getConsensusKeyRotationHistoryOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    java.util.List<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation> 
+        getPendingConsensusKeyRotationsList();
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation getPendingConsensusKeyRotations(int index);
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    int getPendingConsensusKeyRotationsCount();
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    java.util.List<? extends cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder> 
+        getPendingConsensusKeyRotationsOrBuilderList();
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder getPendingConsensusKeyRotationsOrBuilder(
+        int index);
   }
   /**
    * <pre>
@@ -314,6 +412,8 @@ public final class Genesis {
       delegations_ = java.util.Collections.emptyList();
       unbondingDelegations_ = java.util.Collections.emptyList();
       redelegations_ = java.util.Collections.emptyList();
+      consensusKeyRotationHistory_ = java.util.Collections.emptyList();
+      pendingConsensusKeyRotations_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -716,6 +816,138 @@ public final class Genesis {
       return exported_;
     }
 
+    public static final int CONSENSUS_KEY_ROTATION_HISTORY_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private java.util.List<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory> consensusKeyRotationHistory_;
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public java.util.List<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory> getConsensusKeyRotationHistoryList() {
+      return consensusKeyRotationHistory_;
+    }
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder> 
+        getConsensusKeyRotationHistoryOrBuilderList() {
+      return consensusKeyRotationHistory_;
+    }
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public int getConsensusKeyRotationHistoryCount() {
+      return consensusKeyRotationHistory_.size();
+    }
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory getConsensusKeyRotationHistory(int index) {
+      return consensusKeyRotationHistory_.get(index);
+    }
+    /**
+     * <pre>
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder getConsensusKeyRotationHistoryOrBuilder(
+        int index) {
+      return consensusKeyRotationHistory_.get(index);
+    }
+
+    public static final int PENDING_CONSENSUS_KEY_ROTATIONS_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
+    private java.util.List<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation> pendingConsensusKeyRotations_;
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public java.util.List<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation> getPendingConsensusKeyRotationsList() {
+      return pendingConsensusKeyRotations_;
+    }
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder> 
+        getPendingConsensusKeyRotationsOrBuilderList() {
+      return pendingConsensusKeyRotations_;
+    }
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public int getPendingConsensusKeyRotationsCount() {
+      return pendingConsensusKeyRotations_.size();
+    }
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation getPendingConsensusKeyRotations(int index) {
+      return pendingConsensusKeyRotations_.get(index);
+    }
+    /**
+     * <pre>
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * </pre>
+     *
+     * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder getPendingConsensusKeyRotationsOrBuilder(
+        int index) {
+      return pendingConsensusKeyRotations_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -753,6 +985,12 @@ public final class Genesis {
       }
       if (exported_ != false) {
         output.writeBool(8, exported_);
+      }
+      for (int i = 0; i < consensusKeyRotationHistory_.size(); i++) {
+        output.writeMessage(9, consensusKeyRotationHistory_.get(i));
+      }
+      for (int i = 0; i < pendingConsensusKeyRotations_.size(); i++) {
+        output.writeMessage(10, pendingConsensusKeyRotations_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -795,6 +1033,14 @@ public final class Genesis {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, exported_);
       }
+      for (int i = 0; i < consensusKeyRotationHistory_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, consensusKeyRotationHistory_.get(i));
+      }
+      for (int i = 0; i < pendingConsensusKeyRotations_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, pendingConsensusKeyRotations_.get(i));
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -829,6 +1075,10 @@ public final class Genesis {
           .equals(other.getRedelegationsList())) return false;
       if (getExported()
           != other.getExported()) return false;
+      if (!getConsensusKeyRotationHistoryList()
+          .equals(other.getConsensusKeyRotationHistoryList())) return false;
+      if (!getPendingConsensusKeyRotationsList()
+          .equals(other.getPendingConsensusKeyRotationsList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -869,6 +1119,14 @@ public final class Genesis {
       hash = (37 * hash) + EXPORTED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getExported());
+      if (getConsensusKeyRotationHistoryCount() > 0) {
+        hash = (37 * hash) + CONSENSUS_KEY_ROTATION_HISTORY_FIELD_NUMBER;
+        hash = (53 * hash) + getConsensusKeyRotationHistoryList().hashCode();
+      }
+      if (getPendingConsensusKeyRotationsCount() > 0) {
+        hash = (37 * hash) + PENDING_CONSENSUS_KEY_ROTATIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getPendingConsensusKeyRotationsList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1009,6 +1267,8 @@ public final class Genesis {
           getDelegationsFieldBuilder();
           getUnbondingDelegationsFieldBuilder();
           getRedelegationsFieldBuilder();
+          getConsensusKeyRotationHistoryFieldBuilder();
+          getPendingConsensusKeyRotationsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -1057,6 +1317,20 @@ public final class Genesis {
         }
         bitField0_ = (bitField0_ & ~0x00000040);
         exported_ = false;
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          consensusKeyRotationHistory_ = java.util.Collections.emptyList();
+        } else {
+          consensusKeyRotationHistory_ = null;
+          consensusKeyRotationHistoryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          pendingConsensusKeyRotations_ = java.util.Collections.emptyList();
+        } else {
+          pendingConsensusKeyRotations_ = null;
+          pendingConsensusKeyRotationsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -1134,6 +1408,24 @@ public final class Genesis {
           result.redelegations_ = redelegations_;
         } else {
           result.redelegations_ = redelegationsBuilder_.build();
+        }
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) != 0)) {
+            consensusKeyRotationHistory_ = java.util.Collections.unmodifiableList(consensusKeyRotationHistory_);
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
+          result.consensusKeyRotationHistory_ = consensusKeyRotationHistory_;
+        } else {
+          result.consensusKeyRotationHistory_ = consensusKeyRotationHistoryBuilder_.build();
+        }
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) != 0)) {
+            pendingConsensusKeyRotations_ = java.util.Collections.unmodifiableList(pendingConsensusKeyRotations_);
+            bitField0_ = (bitField0_ & ~0x00000200);
+          }
+          result.pendingConsensusKeyRotations_ = pendingConsensusKeyRotations_;
+        } else {
+          result.pendingConsensusKeyRotations_ = pendingConsensusKeyRotationsBuilder_.build();
         }
       }
 
@@ -1338,6 +1630,58 @@ public final class Genesis {
         if (other.getExported() != false) {
           setExported(other.getExported());
         }
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          if (!other.consensusKeyRotationHistory_.isEmpty()) {
+            if (consensusKeyRotationHistory_.isEmpty()) {
+              consensusKeyRotationHistory_ = other.consensusKeyRotationHistory_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensureConsensusKeyRotationHistoryIsMutable();
+              consensusKeyRotationHistory_.addAll(other.consensusKeyRotationHistory_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.consensusKeyRotationHistory_.isEmpty()) {
+            if (consensusKeyRotationHistoryBuilder_.isEmpty()) {
+              consensusKeyRotationHistoryBuilder_.dispose();
+              consensusKeyRotationHistoryBuilder_ = null;
+              consensusKeyRotationHistory_ = other.consensusKeyRotationHistory_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+              consensusKeyRotationHistoryBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getConsensusKeyRotationHistoryFieldBuilder() : null;
+            } else {
+              consensusKeyRotationHistoryBuilder_.addAllMessages(other.consensusKeyRotationHistory_);
+            }
+          }
+        }
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          if (!other.pendingConsensusKeyRotations_.isEmpty()) {
+            if (pendingConsensusKeyRotations_.isEmpty()) {
+              pendingConsensusKeyRotations_ = other.pendingConsensusKeyRotations_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+            } else {
+              ensurePendingConsensusKeyRotationsIsMutable();
+              pendingConsensusKeyRotations_.addAll(other.pendingConsensusKeyRotations_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.pendingConsensusKeyRotations_.isEmpty()) {
+            if (pendingConsensusKeyRotationsBuilder_.isEmpty()) {
+              pendingConsensusKeyRotationsBuilder_.dispose();
+              pendingConsensusKeyRotationsBuilder_ = null;
+              pendingConsensusKeyRotations_ = other.pendingConsensusKeyRotations_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+              pendingConsensusKeyRotationsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPendingConsensusKeyRotationsFieldBuilder() : null;
+            } else {
+              pendingConsensusKeyRotationsBuilder_.addAllMessages(other.pendingConsensusKeyRotations_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -1446,6 +1790,32 @@ public final class Genesis {
                 bitField0_ |= 0x00000080;
                 break;
               } // case 64
+              case 74: {
+                cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory m =
+                    input.readMessage(
+                        cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.parser(),
+                        extensionRegistry);
+                if (consensusKeyRotationHistoryBuilder_ == null) {
+                  ensureConsensusKeyRotationHistoryIsMutable();
+                  consensusKeyRotationHistory_.add(m);
+                } else {
+                  consensusKeyRotationHistoryBuilder_.addMessage(m);
+                }
+                break;
+              } // case 74
+              case 82: {
+                cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation m =
+                    input.readMessage(
+                        cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.parser(),
+                        extensionRegistry);
+                if (pendingConsensusKeyRotationsBuilder_ == null) {
+                  ensurePendingConsensusKeyRotationsIsMutable();
+                  pendingConsensusKeyRotations_.add(m);
+                } else {
+                  pendingConsensusKeyRotationsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 82
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3288,6 +3658,666 @@ public final class Genesis {
         onChanged();
         return this;
       }
+
+      private java.util.List<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory> consensusKeyRotationHistory_ =
+        java.util.Collections.emptyList();
+      private void ensureConsensusKeyRotationHistoryIsMutable() {
+        if (!((bitField0_ & 0x00000100) != 0)) {
+          consensusKeyRotationHistory_ = new java.util.ArrayList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory>(consensusKeyRotationHistory_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder> consensusKeyRotationHistoryBuilder_;
+
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public java.util.List<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory> getConsensusKeyRotationHistoryList() {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(consensusKeyRotationHistory_);
+        } else {
+          return consensusKeyRotationHistoryBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public int getConsensusKeyRotationHistoryCount() {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          return consensusKeyRotationHistory_.size();
+        } else {
+          return consensusKeyRotationHistoryBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory getConsensusKeyRotationHistory(int index) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          return consensusKeyRotationHistory_.get(index);
+        } else {
+          return consensusKeyRotationHistoryBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setConsensusKeyRotationHistory(
+          int index, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory value) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.set(index, value);
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setConsensusKeyRotationHistory(
+          int index, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder builderForValue) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addConsensusKeyRotationHistory(cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory value) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.add(value);
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addConsensusKeyRotationHistory(
+          int index, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory value) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.add(index, value);
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addConsensusKeyRotationHistory(
+          cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder builderForValue) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.add(builderForValue.build());
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addConsensusKeyRotationHistory(
+          int index, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder builderForValue) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addAllConsensusKeyRotationHistory(
+          java.lang.Iterable<? extends cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory> values) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          ensureConsensusKeyRotationHistoryIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, consensusKeyRotationHistory_);
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder clearConsensusKeyRotationHistory() {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          consensusKeyRotationHistory_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder removeConsensusKeyRotationHistory(int index) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          ensureConsensusKeyRotationHistoryIsMutable();
+          consensusKeyRotationHistory_.remove(index);
+          onChanged();
+        } else {
+          consensusKeyRotationHistoryBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder getConsensusKeyRotationHistoryBuilder(
+          int index) {
+        return getConsensusKeyRotationHistoryFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder getConsensusKeyRotationHistoryOrBuilder(
+          int index) {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          return consensusKeyRotationHistory_.get(index);  } else {
+          return consensusKeyRotationHistoryBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public java.util.List<? extends cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder> 
+           getConsensusKeyRotationHistoryOrBuilderList() {
+        if (consensusKeyRotationHistoryBuilder_ != null) {
+          return consensusKeyRotationHistoryBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(consensusKeyRotationHistory_);
+        }
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder addConsensusKeyRotationHistoryBuilder() {
+        return getConsensusKeyRotationHistoryFieldBuilder().addBuilder(
+            cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder addConsensusKeyRotationHistoryBuilder(
+          int index) {
+        return getConsensusKeyRotationHistoryFieldBuilder().addBuilder(
+            index, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * consensus_key_rotation_history defines consensus key rotations that are
+       * still within the unbonding window.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public java.util.List<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder> 
+           getConsensusKeyRotationHistoryBuilderList() {
+        return getConsensusKeyRotationHistoryFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder> 
+          getConsensusKeyRotationHistoryFieldBuilder() {
+        if (consensusKeyRotationHistoryBuilder_ == null) {
+          consensusKeyRotationHistoryBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder>(
+                  consensusKeyRotationHistory_,
+                  ((bitField0_ & 0x00000100) != 0),
+                  getParentForChildren(),
+                  isClean());
+          consensusKeyRotationHistory_ = null;
+        }
+        return consensusKeyRotationHistoryBuilder_;
+      }
+
+      private java.util.List<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation> pendingConsensusKeyRotations_ =
+        java.util.Collections.emptyList();
+      private void ensurePendingConsensusKeyRotationsIsMutable() {
+        if (!((bitField0_ & 0x00000200) != 0)) {
+          pendingConsensusKeyRotations_ = new java.util.ArrayList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation>(pendingConsensusKeyRotations_);
+          bitField0_ |= 0x00000200;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder> pendingConsensusKeyRotationsBuilder_;
+
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public java.util.List<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation> getPendingConsensusKeyRotationsList() {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(pendingConsensusKeyRotations_);
+        } else {
+          return pendingConsensusKeyRotationsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public int getPendingConsensusKeyRotationsCount() {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          return pendingConsensusKeyRotations_.size();
+        } else {
+          return pendingConsensusKeyRotationsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation getPendingConsensusKeyRotations(int index) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          return pendingConsensusKeyRotations_.get(index);
+        } else {
+          return pendingConsensusKeyRotationsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setPendingConsensusKeyRotations(
+          int index, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation value) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.set(index, value);
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setPendingConsensusKeyRotations(
+          int index, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder builderForValue) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addPendingConsensusKeyRotations(cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation value) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.add(value);
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addPendingConsensusKeyRotations(
+          int index, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation value) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.add(index, value);
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addPendingConsensusKeyRotations(
+          cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder builderForValue) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.add(builderForValue.build());
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addPendingConsensusKeyRotations(
+          int index, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder builderForValue) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder addAllPendingConsensusKeyRotations(
+          java.lang.Iterable<? extends cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation> values) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          ensurePendingConsensusKeyRotationsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, pendingConsensusKeyRotations_);
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder clearPendingConsensusKeyRotations() {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          pendingConsensusKeyRotations_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000200);
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder removePendingConsensusKeyRotations(int index) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          ensurePendingConsensusKeyRotationsIsMutable();
+          pendingConsensusKeyRotations_.remove(index);
+          onChanged();
+        } else {
+          pendingConsensusKeyRotationsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder getPendingConsensusKeyRotationsBuilder(
+          int index) {
+        return getPendingConsensusKeyRotationsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder getPendingConsensusKeyRotationsOrBuilder(
+          int index) {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          return pendingConsensusKeyRotations_.get(index);  } else {
+          return pendingConsensusKeyRotationsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public java.util.List<? extends cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder> 
+           getPendingConsensusKeyRotationsOrBuilderList() {
+        if (pendingConsensusKeyRotationsBuilder_ != null) {
+          return pendingConsensusKeyRotationsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(pendingConsensusKeyRotations_);
+        }
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder addPendingConsensusKeyRotationsBuilder() {
+        return getPendingConsensusKeyRotationsFieldBuilder().addBuilder(
+            cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder addPendingConsensusKeyRotationsBuilder(
+          int index) {
+        return getPendingConsensusKeyRotationsFieldBuilder().addBuilder(
+            index, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * pending_consensus_key_rotations defines consensus key rotations whose
+       * SDK-side validator state has not reached its deferred apply height yet.
+       * </pre>
+       *
+       * <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+       */
+      public java.util.List<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder> 
+           getPendingConsensusKeyRotationsBuilderList() {
+        return getPendingConsensusKeyRotationsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder> 
+          getPendingConsensusKeyRotationsFieldBuilder() {
+        if (pendingConsensusKeyRotationsBuilder_ == null) {
+          pendingConsensusKeyRotationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder>(
+                  pendingConsensusKeyRotations_,
+                  ((bitField0_ & 0x00000200) != 0),
+                  getParentForChildren(),
+                  isClean());
+          pendingConsensusKeyRotations_ = null;
+        }
+        return pendingConsensusKeyRotationsBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4041,6 +5071,2438 @@ public final class Genesis {
 
   }
 
+  public interface ConsensusKeyRotationHistoryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The validatorAddress.
+     */
+    java.lang.String getValidatorAddress();
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The bytes for validatorAddress.
+     */
+    com.google.protobuf.ByteString
+        getValidatorAddressBytes();
+
+    /**
+     * <pre>
+     * old_consensus_address is the consensus address rotated away from.
+     * </pre>
+     *
+     * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+     * @return The oldConsensusAddress.
+     */
+    java.lang.String getOldConsensusAddress();
+    /**
+     * <pre>
+     * old_consensus_address is the consensus address rotated away from.
+     * </pre>
+     *
+     * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+     * @return The bytes for oldConsensusAddress.
+     */
+    com.google.protobuf.ByteString
+        getOldConsensusAddressBytes();
+
+    /**
+     * <pre>
+     * maturity_time is the unbonding-window maturity of this validator's
+     * re-rotation rate limit, present only while that gate is still active. A
+     * zero value means the gate has already been retired and only the evidence
+     * lock (below) remains.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the maturityTime field is set.
+     */
+    boolean hasMaturityTime();
+    /**
+     * <pre>
+     * maturity_time is the unbonding-window maturity of this validator's
+     * re-rotation rate limit, present only while that gate is still active. A
+     * zero value means the gate has already been retired and only the evidence
+     * lock (below) remains.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return The maturityTime.
+     */
+    com.google.protobuf.Timestamp getMaturityTime();
+    /**
+     * <pre>
+     * maturity_time is the unbonding-window maturity of this validator's
+     * re-rotation rate limit, present only while that gate is still active. A
+     * zero value means the gate has already been retired and only the evidence
+     * lock (below) remains.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getMaturityTimeOrBuilder();
+
+    /**
+     * <pre>
+     * evidence_expiry_time is the time after which equivocation evidence for the
+     * rotated-away key can no longer be admitted on the time dimension.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the evidenceExpiryTime field is set.
+     */
+    boolean hasEvidenceExpiryTime();
+    /**
+     * <pre>
+     * evidence_expiry_time is the time after which equivocation evidence for the
+     * rotated-away key can no longer be admitted on the time dimension.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return The evidenceExpiryTime.
+     */
+    com.google.protobuf.Timestamp getEvidenceExpiryTime();
+    /**
+     * <pre>
+     * evidence_expiry_time is the time after which equivocation evidence for the
+     * rotated-away key can no longer be admitted on the time dimension.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getEvidenceExpiryTimeOrBuilder();
+
+    /**
+     * <pre>
+     * evidence_expiry_height is the block height after which equivocation evidence
+     * for the rotated-away key can no longer be admitted on the height dimension.
+     * </pre>
+     *
+     * <code>int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];</code>
+     * @return The evidenceExpiryHeight.
+     */
+    long getEvidenceExpiryHeight();
+  }
+  /**
+   * <pre>
+   * ConsensusKeyRotationHistory stores the old consensus address for a
+   * validator rotation until the unbonding window has elapsed.
+   * </pre>
+   *
+   * Protobuf type {@code cosmos.staking.v1beta1.ConsensusKeyRotationHistory}
+   */
+  public static final class ConsensusKeyRotationHistory extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+      ConsensusKeyRotationHistoryOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ConsensusKeyRotationHistory.newBuilder() to construct.
+    private ConsensusKeyRotationHistory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ConsensusKeyRotationHistory() {
+      validatorAddress_ = "";
+      oldConsensusAddress_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ConsensusKeyRotationHistory();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.class, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int VALIDATOR_ADDRESS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object validatorAddress_ = "";
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The validatorAddress.
+     */
+    @java.lang.Override
+    public java.lang.String getValidatorAddress() {
+      java.lang.Object ref = validatorAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        validatorAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The bytes for validatorAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValidatorAddressBytes() {
+      java.lang.Object ref = validatorAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        validatorAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OLD_CONSENSUS_ADDRESS_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object oldConsensusAddress_ = "";
+    /**
+     * <pre>
+     * old_consensus_address is the consensus address rotated away from.
+     * </pre>
+     *
+     * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+     * @return The oldConsensusAddress.
+     */
+    @java.lang.Override
+    public java.lang.String getOldConsensusAddress() {
+      java.lang.Object ref = oldConsensusAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        oldConsensusAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * old_consensus_address is the consensus address rotated away from.
+     * </pre>
+     *
+     * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+     * @return The bytes for oldConsensusAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOldConsensusAddressBytes() {
+      java.lang.Object ref = oldConsensusAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        oldConsensusAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MATURITY_TIME_FIELD_NUMBER = 3;
+    private com.google.protobuf.Timestamp maturityTime_;
+    /**
+     * <pre>
+     * maturity_time is the unbonding-window maturity of this validator's
+     * re-rotation rate limit, present only while that gate is still active. A
+     * zero value means the gate has already been retired and only the evidence
+     * lock (below) remains.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the maturityTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasMaturityTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * maturity_time is the unbonding-window maturity of this validator's
+     * re-rotation rate limit, present only while that gate is still active. A
+     * zero value means the gate has already been retired and only the evidence
+     * lock (below) remains.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return The maturityTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getMaturityTime() {
+      return maturityTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : maturityTime_;
+    }
+    /**
+     * <pre>
+     * maturity_time is the unbonding-window maturity of this validator's
+     * re-rotation rate limit, present only while that gate is still active. A
+     * zero value means the gate has already been retired and only the evidence
+     * lock (below) remains.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getMaturityTimeOrBuilder() {
+      return maturityTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : maturityTime_;
+    }
+
+    public static final int EVIDENCE_EXPIRY_TIME_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp evidenceExpiryTime_;
+    /**
+     * <pre>
+     * evidence_expiry_time is the time after which equivocation evidence for the
+     * rotated-away key can no longer be admitted on the time dimension.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return Whether the evidenceExpiryTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasEvidenceExpiryTime() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * evidence_expiry_time is the time after which equivocation evidence for the
+     * rotated-away key can no longer be admitted on the time dimension.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     * @return The evidenceExpiryTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getEvidenceExpiryTime() {
+      return evidenceExpiryTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : evidenceExpiryTime_;
+    }
+    /**
+     * <pre>
+     * evidence_expiry_time is the time after which equivocation evidence for the
+     * rotated-away key can no longer be admitted on the time dimension.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getEvidenceExpiryTimeOrBuilder() {
+      return evidenceExpiryTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : evidenceExpiryTime_;
+    }
+
+    public static final int EVIDENCE_EXPIRY_HEIGHT_FIELD_NUMBER = 5;
+    private long evidenceExpiryHeight_ = 0L;
+    /**
+     * <pre>
+     * evidence_expiry_height is the block height after which equivocation evidence
+     * for the rotated-away key can no longer be admitted on the height dimension.
+     * </pre>
+     *
+     * <code>int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];</code>
+     * @return The evidenceExpiryHeight.
+     */
+    @java.lang.Override
+    public long getEvidenceExpiryHeight() {
+      return evidenceExpiryHeight_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validatorAddress_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, validatorAddress_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(oldConsensusAddress_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, oldConsensusAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(3, getMaturityTime());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(4, getEvidenceExpiryTime());
+      }
+      if (evidenceExpiryHeight_ != 0L) {
+        output.writeInt64(5, evidenceExpiryHeight_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validatorAddress_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, validatorAddress_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(oldConsensusAddress_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, oldConsensusAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getMaturityTime());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getEvidenceExpiryTime());
+      }
+      if (evidenceExpiryHeight_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, evidenceExpiryHeight_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory)) {
+        return super.equals(obj);
+      }
+      cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory other = (cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory) obj;
+
+      if (!getValidatorAddress()
+          .equals(other.getValidatorAddress())) return false;
+      if (!getOldConsensusAddress()
+          .equals(other.getOldConsensusAddress())) return false;
+      if (hasMaturityTime() != other.hasMaturityTime()) return false;
+      if (hasMaturityTime()) {
+        if (!getMaturityTime()
+            .equals(other.getMaturityTime())) return false;
+      }
+      if (hasEvidenceExpiryTime() != other.hasEvidenceExpiryTime()) return false;
+      if (hasEvidenceExpiryTime()) {
+        if (!getEvidenceExpiryTime()
+            .equals(other.getEvidenceExpiryTime())) return false;
+      }
+      if (getEvidenceExpiryHeight()
+          != other.getEvidenceExpiryHeight()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VALIDATOR_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getValidatorAddress().hashCode();
+      hash = (37 * hash) + OLD_CONSENSUS_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getOldConsensusAddress().hashCode();
+      if (hasMaturityTime()) {
+        hash = (37 * hash) + MATURITY_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getMaturityTime().hashCode();
+      }
+      if (hasEvidenceExpiryTime()) {
+        hash = (37 * hash) + EVIDENCE_EXPIRY_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getEvidenceExpiryTime().hashCode();
+      }
+      hash = (37 * hash) + EVIDENCE_EXPIRY_HEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEvidenceExpiryHeight());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * ConsensusKeyRotationHistory stores the old consensus address for a
+     * validator rotation until the unbonding window has elapsed.
+     * </pre>
+     *
+     * Protobuf type {@code cosmos.staking.v1beta1.ConsensusKeyRotationHistory}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+        cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistoryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.class, cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.Builder.class);
+      }
+
+      // Construct using cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMaturityTimeFieldBuilder();
+          getEvidenceExpiryTimeFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        validatorAddress_ = "";
+        oldConsensusAddress_ = "";
+        maturityTime_ = null;
+        if (maturityTimeBuilder_ != null) {
+          maturityTimeBuilder_.dispose();
+          maturityTimeBuilder_ = null;
+        }
+        evidenceExpiryTime_ = null;
+        if (evidenceExpiryTimeBuilder_ != null) {
+          evidenceExpiryTimeBuilder_.dispose();
+          evidenceExpiryTimeBuilder_ = null;
+        }
+        evidenceExpiryHeight_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_descriptor;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory getDefaultInstanceForType() {
+        return cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory build() {
+        cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory buildPartial() {
+        cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory result = new cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.validatorAddress_ = validatorAddress_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.oldConsensusAddress_ = oldConsensusAddress_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.maturityTime_ = maturityTimeBuilder_ == null
+              ? maturityTime_
+              : maturityTimeBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.evidenceExpiryTime_ = evidenceExpiryTimeBuilder_ == null
+              ? evidenceExpiryTime_
+              : evidenceExpiryTimeBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.evidenceExpiryHeight_ = evidenceExpiryHeight_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory) {
+          return mergeFrom((cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory other) {
+        if (other == cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory.getDefaultInstance()) return this;
+        if (!other.getValidatorAddress().isEmpty()) {
+          validatorAddress_ = other.validatorAddress_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getOldConsensusAddress().isEmpty()) {
+          oldConsensusAddress_ = other.oldConsensusAddress_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasMaturityTime()) {
+          mergeMaturityTime(other.getMaturityTime());
+        }
+        if (other.hasEvidenceExpiryTime()) {
+          mergeEvidenceExpiryTime(other.getEvidenceExpiryTime());
+        }
+        if (other.getEvidenceExpiryHeight() != 0L) {
+          setEvidenceExpiryHeight(other.getEvidenceExpiryHeight());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                validatorAddress_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                oldConsensusAddress_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    getMaturityTimeFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                input.readMessage(
+                    getEvidenceExpiryTimeFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 40: {
+                evidenceExpiryHeight_ = input.readInt64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object validatorAddress_ = "";
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return The validatorAddress.
+       */
+      public java.lang.String getValidatorAddress() {
+        java.lang.Object ref = validatorAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          validatorAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return The bytes for validatorAddress.
+       */
+      public com.google.protobuf.ByteString
+          getValidatorAddressBytes() {
+        java.lang.Object ref = validatorAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          validatorAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @param value The validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddress(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidatorAddress() {
+        validatorAddress_ = getDefaultInstance().getValidatorAddress();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @param value The bytes for validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object oldConsensusAddress_ = "";
+      /**
+       * <pre>
+       * old_consensus_address is the consensus address rotated away from.
+       * </pre>
+       *
+       * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+       * @return The oldConsensusAddress.
+       */
+      public java.lang.String getOldConsensusAddress() {
+        java.lang.Object ref = oldConsensusAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          oldConsensusAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * old_consensus_address is the consensus address rotated away from.
+       * </pre>
+       *
+       * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+       * @return The bytes for oldConsensusAddress.
+       */
+      public com.google.protobuf.ByteString
+          getOldConsensusAddressBytes() {
+        java.lang.Object ref = oldConsensusAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          oldConsensusAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * old_consensus_address is the consensus address rotated away from.
+       * </pre>
+       *
+       * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+       * @param value The oldConsensusAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOldConsensusAddress(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        oldConsensusAddress_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * old_consensus_address is the consensus address rotated away from.
+       * </pre>
+       *
+       * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOldConsensusAddress() {
+        oldConsensusAddress_ = getDefaultInstance().getOldConsensusAddress();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * old_consensus_address is the consensus address rotated away from.
+       * </pre>
+       *
+       * <code>string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];</code>
+       * @param value The bytes for oldConsensusAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOldConsensusAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        oldConsensusAddress_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp maturityTime_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> maturityTimeBuilder_;
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       * @return Whether the maturityTime field is set.
+       */
+      public boolean hasMaturityTime() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       * @return The maturityTime.
+       */
+      public com.google.protobuf.Timestamp getMaturityTime() {
+        if (maturityTimeBuilder_ == null) {
+          return maturityTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : maturityTime_;
+        } else {
+          return maturityTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setMaturityTime(com.google.protobuf.Timestamp value) {
+        if (maturityTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          maturityTime_ = value;
+        } else {
+          maturityTimeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setMaturityTime(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (maturityTimeBuilder_ == null) {
+          maturityTime_ = builderForValue.build();
+        } else {
+          maturityTimeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder mergeMaturityTime(com.google.protobuf.Timestamp value) {
+        if (maturityTimeBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            maturityTime_ != null &&
+            maturityTime_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getMaturityTimeBuilder().mergeFrom(value);
+          } else {
+            maturityTime_ = value;
+          }
+        } else {
+          maturityTimeBuilder_.mergeFrom(value);
+        }
+        if (maturityTime_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder clearMaturityTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maturityTime_ = null;
+        if (maturityTimeBuilder_ != null) {
+          maturityTimeBuilder_.dispose();
+          maturityTimeBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getMaturityTimeBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getMaturityTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getMaturityTimeOrBuilder() {
+        if (maturityTimeBuilder_ != null) {
+          return maturityTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return maturityTime_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : maturityTime_;
+        }
+      }
+      /**
+       * <pre>
+       * maturity_time is the unbonding-window maturity of this validator's
+       * re-rotation rate limit, present only while that gate is still active. A
+       * zero value means the gate has already been retired and only the evidence
+       * lock (below) remains.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getMaturityTimeFieldBuilder() {
+        if (maturityTimeBuilder_ == null) {
+          maturityTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getMaturityTime(),
+                  getParentForChildren(),
+                  isClean());
+          maturityTime_ = null;
+        }
+        return maturityTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp evidenceExpiryTime_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> evidenceExpiryTimeBuilder_;
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       * @return Whether the evidenceExpiryTime field is set.
+       */
+      public boolean hasEvidenceExpiryTime() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       * @return The evidenceExpiryTime.
+       */
+      public com.google.protobuf.Timestamp getEvidenceExpiryTime() {
+        if (evidenceExpiryTimeBuilder_ == null) {
+          return evidenceExpiryTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : evidenceExpiryTime_;
+        } else {
+          return evidenceExpiryTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setEvidenceExpiryTime(com.google.protobuf.Timestamp value) {
+        if (evidenceExpiryTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          evidenceExpiryTime_ = value;
+        } else {
+          evidenceExpiryTimeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder setEvidenceExpiryTime(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (evidenceExpiryTimeBuilder_ == null) {
+          evidenceExpiryTime_ = builderForValue.build();
+        } else {
+          evidenceExpiryTimeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder mergeEvidenceExpiryTime(com.google.protobuf.Timestamp value) {
+        if (evidenceExpiryTimeBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+            evidenceExpiryTime_ != null &&
+            evidenceExpiryTime_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getEvidenceExpiryTimeBuilder().mergeFrom(value);
+          } else {
+            evidenceExpiryTime_ = value;
+          }
+        } else {
+          evidenceExpiryTimeBuilder_.mergeFrom(value);
+        }
+        if (evidenceExpiryTime_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public Builder clearEvidenceExpiryTime() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        evidenceExpiryTime_ = null;
+        if (evidenceExpiryTimeBuilder_ != null) {
+          evidenceExpiryTimeBuilder_.dispose();
+          evidenceExpiryTimeBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getEvidenceExpiryTimeBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getEvidenceExpiryTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getEvidenceExpiryTimeOrBuilder() {
+        if (evidenceExpiryTimeBuilder_ != null) {
+          return evidenceExpiryTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return evidenceExpiryTime_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : evidenceExpiryTime_;
+        }
+      }
+      /**
+       * <pre>
+       * evidence_expiry_time is the time after which equivocation evidence for the
+       * rotated-away key can no longer be admitted on the time dimension.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getEvidenceExpiryTimeFieldBuilder() {
+        if (evidenceExpiryTimeBuilder_ == null) {
+          evidenceExpiryTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getEvidenceExpiryTime(),
+                  getParentForChildren(),
+                  isClean());
+          evidenceExpiryTime_ = null;
+        }
+        return evidenceExpiryTimeBuilder_;
+      }
+
+      private long evidenceExpiryHeight_ ;
+      /**
+       * <pre>
+       * evidence_expiry_height is the block height after which equivocation evidence
+       * for the rotated-away key can no longer be admitted on the height dimension.
+       * </pre>
+       *
+       * <code>int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];</code>
+       * @return The evidenceExpiryHeight.
+       */
+      @java.lang.Override
+      public long getEvidenceExpiryHeight() {
+        return evidenceExpiryHeight_;
+      }
+      /**
+       * <pre>
+       * evidence_expiry_height is the block height after which equivocation evidence
+       * for the rotated-away key can no longer be admitted on the height dimension.
+       * </pre>
+       *
+       * <code>int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];</code>
+       * @param value The evidenceExpiryHeight to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEvidenceExpiryHeight(long value) {
+
+        evidenceExpiryHeight_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * evidence_expiry_height is the block height after which equivocation evidence
+       * for the rotated-away key can no longer be admitted on the height dimension.
+       * </pre>
+       *
+       * <code>int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEvidenceExpiryHeight() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        evidenceExpiryHeight_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+    }
+
+    // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+    private static final cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory();
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ConsensusKeyRotationHistory>
+        PARSER = new com.google.protobuf.AbstractParser<ConsensusKeyRotationHistory>() {
+      @java.lang.Override
+      public ConsensusKeyRotationHistory parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ConsensusKeyRotationHistory> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ConsensusKeyRotationHistory> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PendingConsensusKeyRotationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The validatorAddress.
+     */
+    java.lang.String getValidatorAddress();
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The bytes for validatorAddress.
+     */
+    com.google.protobuf.ByteString
+        getValidatorAddressBytes();
+
+    /**
+     * <pre>
+     * new_pubkey is the consensus public key being rotated to.
+     * </pre>
+     *
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return Whether the newPubkey field is set.
+     */
+    boolean hasNewPubkey();
+    /**
+     * <pre>
+     * new_pubkey is the consensus public key being rotated to.
+     * </pre>
+     *
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return The newPubkey.
+     */
+    com.google.protobuf.Any getNewPubkey();
+    /**
+     * <pre>
+     * new_pubkey is the consensus public key being rotated to.
+     * </pre>
+     *
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     */
+    com.google.protobuf.AnyOrBuilder getNewPubkeyOrBuilder();
+
+    /**
+     * <pre>
+     * apply_height is the block height where the SDK-side state update should
+     * occur.
+     * </pre>
+     *
+     * <code>int64 apply_height = 3 [json_name = "applyHeight"];</code>
+     * @return The applyHeight.
+     */
+    long getApplyHeight();
+  }
+  /**
+   * <pre>
+   * PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+   * for its deferred SDK-side state update.
+   * </pre>
+   *
+   * Protobuf type {@code cosmos.staking.v1beta1.PendingConsensusKeyRotation}
+   */
+  public static final class PendingConsensusKeyRotation extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+      PendingConsensusKeyRotationOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PendingConsensusKeyRotation.newBuilder() to construct.
+    private PendingConsensusKeyRotation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PendingConsensusKeyRotation() {
+      validatorAddress_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PendingConsensusKeyRotation();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.class, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int VALIDATOR_ADDRESS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object validatorAddress_ = "";
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The validatorAddress.
+     */
+    @java.lang.Override
+    public java.lang.String getValidatorAddress() {
+      java.lang.Object ref = validatorAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        validatorAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * validator_address is the validator operator address.
+     * </pre>
+     *
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The bytes for validatorAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValidatorAddressBytes() {
+      java.lang.Object ref = validatorAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        validatorAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NEW_PUBKEY_FIELD_NUMBER = 2;
+    private com.google.protobuf.Any newPubkey_;
+    /**
+     * <pre>
+     * new_pubkey is the consensus public key being rotated to.
+     * </pre>
+     *
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return Whether the newPubkey field is set.
+     */
+    @java.lang.Override
+    public boolean hasNewPubkey() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * new_pubkey is the consensus public key being rotated to.
+     * </pre>
+     *
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return The newPubkey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getNewPubkey() {
+      return newPubkey_ == null ? com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+    }
+    /**
+     * <pre>
+     * new_pubkey is the consensus public key being rotated to.
+     * </pre>
+     *
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getNewPubkeyOrBuilder() {
+      return newPubkey_ == null ? com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+    }
+
+    public static final int APPLY_HEIGHT_FIELD_NUMBER = 3;
+    private long applyHeight_ = 0L;
+    /**
+     * <pre>
+     * apply_height is the block height where the SDK-side state update should
+     * occur.
+     * </pre>
+     *
+     * <code>int64 apply_height = 3 [json_name = "applyHeight"];</code>
+     * @return The applyHeight.
+     */
+    @java.lang.Override
+    public long getApplyHeight() {
+      return applyHeight_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validatorAddress_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, validatorAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(2, getNewPubkey());
+      }
+      if (applyHeight_ != 0L) {
+        output.writeInt64(3, applyHeight_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validatorAddress_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, validatorAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getNewPubkey());
+      }
+      if (applyHeight_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, applyHeight_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation)) {
+        return super.equals(obj);
+      }
+      cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation other = (cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation) obj;
+
+      if (!getValidatorAddress()
+          .equals(other.getValidatorAddress())) return false;
+      if (hasNewPubkey() != other.hasNewPubkey()) return false;
+      if (hasNewPubkey()) {
+        if (!getNewPubkey()
+            .equals(other.getNewPubkey())) return false;
+      }
+      if (getApplyHeight()
+          != other.getApplyHeight()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VALIDATOR_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getValidatorAddress().hashCode();
+      if (hasNewPubkey()) {
+        hash = (37 * hash) + NEW_PUBKEY_FIELD_NUMBER;
+        hash = (53 * hash) + getNewPubkey().hashCode();
+      }
+      hash = (37 * hash) + APPLY_HEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getApplyHeight());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+     * for its deferred SDK-side state update.
+     * </pre>
+     *
+     * Protobuf type {@code cosmos.staking.v1beta1.PendingConsensusKeyRotation}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+        cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotationOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.class, cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.Builder.class);
+      }
+
+      // Construct using cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getNewPubkeyFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        validatorAddress_ = "";
+        newPubkey_ = null;
+        if (newPubkeyBuilder_ != null) {
+          newPubkeyBuilder_.dispose();
+          newPubkeyBuilder_ = null;
+        }
+        applyHeight_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cosmos.staking.v1beta1.Genesis.internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_descriptor;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation getDefaultInstanceForType() {
+        return cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation build() {
+        cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation buildPartial() {
+        cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation result = new cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.validatorAddress_ = validatorAddress_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.newPubkey_ = newPubkeyBuilder_ == null
+              ? newPubkey_
+              : newPubkeyBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.applyHeight_ = applyHeight_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation) {
+          return mergeFrom((cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation other) {
+        if (other == cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation.getDefaultInstance()) return this;
+        if (!other.getValidatorAddress().isEmpty()) {
+          validatorAddress_ = other.validatorAddress_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasNewPubkey()) {
+          mergeNewPubkey(other.getNewPubkey());
+        }
+        if (other.getApplyHeight() != 0L) {
+          setApplyHeight(other.getApplyHeight());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                validatorAddress_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getNewPubkeyFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                applyHeight_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object validatorAddress_ = "";
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return The validatorAddress.
+       */
+      public java.lang.String getValidatorAddress() {
+        java.lang.Object ref = validatorAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          validatorAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return The bytes for validatorAddress.
+       */
+      public com.google.protobuf.ByteString
+          getValidatorAddressBytes() {
+        java.lang.Object ref = validatorAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          validatorAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @param value The validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddress(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidatorAddress() {
+        validatorAddress_ = getDefaultInstance().getValidatorAddress();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * validator_address is the validator operator address.
+       * </pre>
+       *
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @param value The bytes for validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Any newPubkey_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> newPubkeyBuilder_;
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       * @return Whether the newPubkey field is set.
+       */
+      public boolean hasNewPubkey() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       * @return The newPubkey.
+       */
+      public com.google.protobuf.Any getNewPubkey() {
+        if (newPubkeyBuilder_ == null) {
+          return newPubkey_ == null ? com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+        } else {
+          return newPubkeyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder setNewPubkey(com.google.protobuf.Any value) {
+        if (newPubkeyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          newPubkey_ = value;
+        } else {
+          newPubkeyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder setNewPubkey(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (newPubkeyBuilder_ == null) {
+          newPubkey_ = builderForValue.build();
+        } else {
+          newPubkeyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder mergeNewPubkey(com.google.protobuf.Any value) {
+        if (newPubkeyBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            newPubkey_ != null &&
+            newPubkey_ != com.google.protobuf.Any.getDefaultInstance()) {
+            getNewPubkeyBuilder().mergeFrom(value);
+          } else {
+            newPubkey_ = value;
+          }
+        } else {
+          newPubkeyBuilder_.mergeFrom(value);
+        }
+        if (newPubkey_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder clearNewPubkey() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        newPubkey_ = null;
+        if (newPubkeyBuilder_ != null) {
+          newPubkeyBuilder_.dispose();
+          newPubkeyBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public com.google.protobuf.Any.Builder getNewPubkeyBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getNewPubkeyFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getNewPubkeyOrBuilder() {
+        if (newPubkeyBuilder_ != null) {
+          return newPubkeyBuilder_.getMessageOrBuilder();
+        } else {
+          return newPubkey_ == null ?
+              com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+        }
+      }
+      /**
+       * <pre>
+       * new_pubkey is the consensus public key being rotated to.
+       * </pre>
+       *
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          getNewPubkeyFieldBuilder() {
+        if (newPubkeyBuilder_ == null) {
+          newPubkeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  getNewPubkey(),
+                  getParentForChildren(),
+                  isClean());
+          newPubkey_ = null;
+        }
+        return newPubkeyBuilder_;
+      }
+
+      private long applyHeight_ ;
+      /**
+       * <pre>
+       * apply_height is the block height where the SDK-side state update should
+       * occur.
+       * </pre>
+       *
+       * <code>int64 apply_height = 3 [json_name = "applyHeight"];</code>
+       * @return The applyHeight.
+       */
+      @java.lang.Override
+      public long getApplyHeight() {
+        return applyHeight_;
+      }
+      /**
+       * <pre>
+       * apply_height is the block height where the SDK-side state update should
+       * occur.
+       * </pre>
+       *
+       * <code>int64 apply_height = 3 [json_name = "applyHeight"];</code>
+       * @param value The applyHeight to set.
+       * @return This builder for chaining.
+       */
+      public Builder setApplyHeight(long value) {
+
+        applyHeight_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * apply_height is the block height where the SDK-side state update should
+       * occur.
+       * </pre>
+       *
+       * <code>int64 apply_height = 3 [json_name = "applyHeight"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearApplyHeight() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        applyHeight_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+    }
+
+    // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+    private static final cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation();
+    }
+
+    public static cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PendingConsensusKeyRotation>
+        PARSER = new com.google.protobuf.AbstractParser<PendingConsensusKeyRotation>() {
+      @java.lang.Override
+      public PendingConsensusKeyRotation parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PendingConsensusKeyRotation> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PendingConsensusKeyRotation> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cosmos_staking_v1beta1_GenesisState_descriptor;
   private static final 
@@ -4051,6 +7513,16 @@ public final class Genesis {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cosmos_staking_v1beta1_LastValidatorPower_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4064,27 +7536,52 @@ public final class Genesis {
       "cosmos.staking.v1beta1\032\024gogoproto/gogo.p" +
       "roto\032$cosmos/staking/v1beta1/staking.pro" +
       "to\032\031cosmos_proto/cosmos.proto\032\021amino/ami" +
-      "no.proto\"\227\005\n\014GenesisState\022A\n\006params\030\001 \001(" +
-      "\0132\036.cosmos.staking.v1beta1.ParamsB\t\310\336\037\000\250" +
-      "\347\260*\001R\006params\022Z\n\020last_total_power\030\002 \001(\014B0" +
-      "\310\336\037\000\332\336\037\025cosmossdk.io/math.Int\322\264-\ncosmos." +
-      "Int\250\347\260*\001R\016lastTotalPower\022i\n\025last_validat" +
-      "or_powers\030\003 \003(\0132*.cosmos.staking.v1beta1" +
-      ".LastValidatorPowerB\t\310\336\037\000\250\347\260*\001R\023lastVali" +
-      "datorPowers\022L\n\nvalidators\030\004 \003(\0132!.cosmos" +
-      ".staking.v1beta1.ValidatorB\t\310\336\037\000\250\347\260*\001R\nv" +
-      "alidators\022O\n\013delegations\030\005 \003(\0132\".cosmos." +
-      "staking.v1beta1.DelegationB\t\310\336\037\000\250\347\260*\001R\013d" +
-      "elegations\022k\n\025unbonding_delegations\030\006 \003(" +
-      "\0132+.cosmos.staking.v1beta1.UnbondingDele" +
-      "gationB\t\310\336\037\000\250\347\260*\001R\024unbondingDelegations\022" +
-      "U\n\rredelegations\030\007 \003(\0132$.cosmos.staking." +
-      "v1beta1.RedelegationB\t\310\336\037\000\250\347\260*\001R\rredeleg" +
-      "ations\022\032\n\010exported\030\010 \001(\010R\010exported\"h\n\022La" +
-      "stValidatorPower\0222\n\007address\030\001 \001(\tB\030\322\264-\024c" +
-      "osmos.AddressStringR\007address\022\024\n\005power\030\002 " +
-      "\001(\003R\005power:\010\210\240\037\000\350\240\037\000B.Z,github.com/cosmo" +
-      "s/cosmos-sdk/x/staking/typesb\006proto3"
+      "no.proto\032\031google/protobuf/any.proto\032\037goo" +
+      "gle/protobuf/timestamp.proto\"\245\007\n\014Genesis" +
+      "State\022A\n\006params\030\001 \001(\0132\036.cosmos.staking.v" +
+      "1beta1.ParamsB\t\310\336\037\000\250\347\260*\001R\006params\022Z\n\020last" +
+      "_total_power\030\002 \001(\014B0\310\336\037\000\332\336\037\025cosmossdk.io" +
+      "/math.Int\322\264-\ncosmos.Int\250\347\260*\001R\016lastTotalP" +
+      "ower\022i\n\025last_validator_powers\030\003 \003(\0132*.co" +
+      "smos.staking.v1beta1.LastValidatorPowerB" +
+      "\t\310\336\037\000\250\347\260*\001R\023lastValidatorPowers\022L\n\nvalid" +
+      "ators\030\004 \003(\0132!.cosmos.staking.v1beta1.Val" +
+      "idatorB\t\310\336\037\000\250\347\260*\001R\nvalidators\022O\n\013delegat" +
+      "ions\030\005 \003(\0132\".cosmos.staking.v1beta1.Dele" +
+      "gationB\t\310\336\037\000\250\347\260*\001R\013delegations\022k\n\025unbond" +
+      "ing_delegations\030\006 \003(\0132+.cosmos.staking.v" +
+      "1beta1.UnbondingDelegationB\t\310\336\037\000\250\347\260*\001R\024u" +
+      "nbondingDelegations\022U\n\rredelegations\030\007 \003" +
+      "(\0132$.cosmos.staking.v1beta1.Redelegation" +
+      "B\t\310\336\037\000\250\347\260*\001R\rredelegations\022\032\n\010exported\030\010" +
+      " \001(\010R\010exported\022\203\001\n\036consensus_key_rotatio" +
+      "n_history\030\t \003(\01323.cosmos.staking.v1beta1" +
+      ".ConsensusKeyRotationHistoryB\t\310\336\037\000\250\347\260*\001R" +
+      "\033consensusKeyRotationHistory\022\205\001\n\037pending" +
+      "_consensus_key_rotations\030\n \003(\01323.cosmos." +
+      "staking.v1beta1.PendingConsensusKeyRotat" +
+      "ionB\t\310\336\037\000\250\347\260*\001R\034pendingConsensusKeyRotat" +
+      "ions\"h\n\022LastValidatorPower\0222\n\007address\030\001 " +
+      "\001(\tB\030\322\264-\024cosmos.AddressStringR\007address\022\024" +
+      "\n\005power\030\002 \001(\003R\005power:\010\210\240\037\000\350\240\037\000\"\261\003\n\033Conse" +
+      "nsusKeyRotationHistory\022N\n\021validator_addr" +
+      "ess\030\001 \001(\tB!\322\264-\035cosmos.ValidatorAddressSt" +
+      "ringR\020validatorAddress\022U\n\025old_consensus_" +
+      "address\030\002 \001(\tB!\322\264-\035cosmos.ConsensusAddre" +
+      "ssStringR\023oldConsensusAddress\022N\n\rmaturit" +
+      "y_time\030\003 \001(\0132\032.google.protobuf.Timestamp" +
+      "B\r\310\336\037\000\220\337\037\001\250\347\260*\001R\014maturityTime\022[\n\024evidenc" +
+      "e_expiry_time\030\004 \001(\0132\032.google.protobuf.Ti" +
+      "mestampB\r\310\336\037\000\220\337\037\001\250\347\260*\001R\022evidenceExpiryTi" +
+      "me\0224\n\026evidence_expiry_height\030\005 \001(\003R\024evid" +
+      "enceExpiryHeight:\010\210\240\037\000\350\240\037\000\"\351\001\n\033PendingCo" +
+      "nsensusKeyRotation\022N\n\021validator_address\030" +
+      "\001 \001(\tB!\322\264-\035cosmos.ValidatorAddressString" +
+      "R\020validatorAddress\022M\n\nnew_pubkey\030\002 \001(\0132\024" +
+      ".google.protobuf.AnyB\030\312\264-\024cosmos.crypto." +
+      "PubKeyR\tnewPubkey\022!\n\014apply_height\030\003 \001(\003R" +
+      "\013applyHeight:\010\210\240\037\000\350\240\037\000B.Z,github.com/cos" +
+      "mos/cosmos-sdk/x/staking/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4093,33 +7590,51 @@ public final class Genesis {
           cosmos.staking.v1beta1.Staking.getDescriptor(),
           cosmos_proto.Cosmos.getDescriptor(),
           amino.Amino.getDescriptor(),
+          com.google.protobuf.AnyProto.getDescriptor(),
+          com.google.protobuf.TimestampProto.getDescriptor(),
         });
     internal_static_cosmos_staking_v1beta1_GenesisState_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_cosmos_staking_v1beta1_GenesisState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_staking_v1beta1_GenesisState_descriptor,
-        new java.lang.String[] { "Params", "LastTotalPower", "LastValidatorPowers", "Validators", "Delegations", "UnbondingDelegations", "Redelegations", "Exported", });
+        new java.lang.String[] { "Params", "LastTotalPower", "LastValidatorPowers", "Validators", "Delegations", "UnbondingDelegations", "Redelegations", "Exported", "ConsensusKeyRotationHistory", "PendingConsensusKeyRotations", });
     internal_static_cosmos_staking_v1beta1_LastValidatorPower_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_cosmos_staking_v1beta1_LastValidatorPower_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_staking_v1beta1_LastValidatorPower_descriptor,
         new java.lang.String[] { "Address", "Power", });
+    internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cosmos_staking_v1beta1_ConsensusKeyRotationHistory_descriptor,
+        new java.lang.String[] { "ValidatorAddress", "OldConsensusAddress", "MaturityTime", "EvidenceExpiryTime", "EvidenceExpiryHeight", });
+    internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cosmos_staking_v1beta1_PendingConsensusKeyRotation_descriptor,
+        new java.lang.String[] { "ValidatorAddress", "NewPubkey", "ApplyHeight", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(amino.Amino.dontOmitempty);
+    registry.add(cosmos_proto.Cosmos.acceptsInterface);
     registry.add(cosmos_proto.Cosmos.scalar);
     registry.add(com.google.protobuf.GoGoProtos.customtype);
     registry.add(com.google.protobuf.GoGoProtos.equal);
     registry.add(com.google.protobuf.GoGoProtos.goprotoGetters);
     registry.add(com.google.protobuf.GoGoProtos.nullable);
+    registry.add(com.google.protobuf.GoGoProtos.stdtime);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
     com.google.protobuf.GoGoProtos.getDescriptor();
     cosmos.staking.v1beta1.Staking.getDescriptor();
     cosmos_proto.Cosmos.getDescriptor();
     amino.Amino.getDescriptor();
+    com.google.protobuf.AnyProto.getDescriptor();
+    com.google.protobuf.TimestampProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

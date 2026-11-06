@@ -13,14 +13,23 @@ export const protobufFileName = "abstractaccount/v1/events.proto";
 
 /** EventAccountRegistered is emitted when an AbstractAccount is registered. */
 export interface EventAccountRegistered {
+  /** creator is the address that requested the account registration. */
   creator: string;
+  /** CodeID is the caller-selected implementation active after registration. */
   codeId: bigint;
+  /** contract_addr is the address of the newly instantiated account contract. */
   contractAddr: string;
+  /** account_number is the account number assigned to the new account. */
   accountNumber: bigint;
+  /**
+   * address_derivation_hash is the fixed hash used to derive the account's
+   * address.
+   */
+  addressDerivationHash: Uint8Array;
 }
 
 function createBaseEventAccountRegistered(): EventAccountRegistered {
-  return { creator: "", codeId: 0n, contractAddr: "", accountNumber: 0n };
+  return { creator: "", codeId: 0n, contractAddr: "", accountNumber: 0n, addressDerivationHash: new Uint8Array(0) };
 }
 
 export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
@@ -42,6 +51,9 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
         throw new globalThis.Error("value provided for field message.accountNumber of type uint64 too large");
       }
       writer.uint32(32).uint64(message.accountNumber);
+    }
+    if (message.addressDerivationHash.length !== 0) {
+      writer.uint32(50).bytes(message.addressDerivationHash);
     }
     return writer;
   },
@@ -91,6 +103,14 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
             message.accountNumber = reader.uint64() as bigint;
             continue;
           }
+          case 6: {
+            if (tag !== 50) {
+              break;
+            }
+
+            message.addressDerivationHash = reader.bytes();
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -117,6 +137,11 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
         : isSet(object.account_number)
         ? BigInt(object.account_number)
         : 0n,
+      addressDerivationHash: isSet(object.addressDerivationHash)
+        ? bytesFromBase64(object.addressDerivationHash)
+        : isSet(object.address_derivation_hash)
+        ? bytesFromBase64(object.address_derivation_hash)
+        : new Uint8Array(0),
     };
   },
 
@@ -134,6 +159,9 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
     if (message.accountNumber !== 0n) {
       obj.accountNumber = message.accountNumber.toString();
     }
+    if (message.addressDerivationHash.length !== 0) {
+      obj.addressDerivationHash = base64FromBytes(message.addressDerivationHash);
+    }
     return obj;
   },
 
@@ -148,9 +176,35 @@ export const EventAccountRegistered: MessageFns<EventAccountRegistered> = {
     message.accountNumber = (object.accountNumber !== undefined && object.accountNumber !== null)
       ? BigInt(object.accountNumber)
       : 0n;
+    message.addressDerivationHash = object.addressDerivationHash ?? new Uint8Array(0);
     return message;
   },
 };
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if ((globalThis as any).Buffer) {
+    return Uint8Array.from((globalThis as any).Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if ((globalThis as any).Buffer) {
+    return (globalThis as any).Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(globalThis.String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
+}
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 

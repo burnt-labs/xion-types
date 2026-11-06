@@ -119,12 +119,6 @@ pub enum SignMode {
     /// SIGN_MODE_DIRECT specifies a signing mode which uses SignDoc and is
     /// verified with raw bytes from Tx.
     Direct = 1,
-    /// SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-    /// human-readable textual representation on top of the binary representation
-    /// from SIGN_MODE_DIRECT.
-    ///
-    /// Since: cosmos-sdk 0.50
-    Textual = 2,
     /// SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
     /// SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
     /// require signers signing over other signers' `signer_info`.
@@ -155,7 +149,6 @@ impl SignMode {
         match self {
             SignMode::Unspecified => "SIGN_MODE_UNSPECIFIED",
             SignMode::Direct => "SIGN_MODE_DIRECT",
-            SignMode::Textual => "SIGN_MODE_TEXTUAL",
             SignMode::DirectAux => "SIGN_MODE_DIRECT_AUX",
             SignMode::LegacyAminoJson => "SIGN_MODE_LEGACY_AMINO_JSON",
             SignMode::Eip191 => "SIGN_MODE_EIP_191",
@@ -166,7 +159,6 @@ impl SignMode {
         match value {
             "SIGN_MODE_UNSPECIFIED" => Some(Self::Unspecified),
             "SIGN_MODE_DIRECT" => Some(Self::Direct),
-            "SIGN_MODE_TEXTUAL" => Some(Self::Textual),
             "SIGN_MODE_DIRECT_AUX" => Some(Self::DirectAux),
             "SIGN_MODE_LEGACY_AMINO_JSON" => Some(Self::LegacyAminoJson),
             "SIGN_MODE_EIP_191" => Some(Self::Eip191),

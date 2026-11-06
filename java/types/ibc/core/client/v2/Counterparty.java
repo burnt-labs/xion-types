@@ -851,7 +851,7 @@ public final class Counterparty {
       "\022ibc.core.client.v2\"T\n\020CounterpartyInfo\022" +
       "#\n\rmerkle_prefix\030\001 \003(\014R\014merklePrefix\022\033\n\t" +
       "client_id\030\002 \001(\tR\010clientIdB>Z<github.com/" +
-      "cosmos/ibc-go/v10/modules/core/02-client" +
+      "cosmos/ibc-go/v11/modules/core/02-client" +
       "/v2/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

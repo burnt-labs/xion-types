@@ -53,6 +53,8 @@ GPBObjCClassDeclaration(MsgDelegate);
 GPBObjCClassDeclaration(MsgDelegateResponse);
 GPBObjCClassDeclaration(MsgEditValidator);
 GPBObjCClassDeclaration(MsgEditValidatorResponse);
+GPBObjCClassDeclaration(MsgRotateConsPubKey);
+GPBObjCClassDeclaration(MsgRotateConsPubKeyResponse);
 GPBObjCClassDeclaration(MsgUndelegate);
 GPBObjCClassDeclaration(MsgUndelegateResponse);
 GPBObjCClassDeclaration(MsgUpdateParams);
@@ -886,6 +888,96 @@ typedef struct MsgUpdateParamsResponse__storage_ {
                                         fields:NULL
                                     fieldCount:0
                                    storageSize:sizeof(MsgUpdateParamsResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - MsgRotateConsPubKey
+
+@implementation MsgRotateConsPubKey
+
+@dynamic validatorAddress;
+@dynamic hasNewPubkey, newPubkey;
+
+typedef struct MsgRotateConsPubKey__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *validatorAddress;
+  GPBAny *newPubkey;
+} MsgRotateConsPubKey__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "validatorAddress",
+        .dataTypeSpecific.clazz = Nil,
+        .number = MsgRotateConsPubKey_FieldNumber_ValidatorAddress,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(MsgRotateConsPubKey__storage_, validatorAddress),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "newPubkey",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBAny),
+        .number = MsgRotateConsPubKey_FieldNumber_NewPubkey,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(MsgRotateConsPubKey__storage_, newPubkey),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgRotateConsPubKey)
+                                   messageName:@"MsgRotateConsPubKey"
+                               fileDescription:&TxRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(MsgRotateConsPubKey__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - MsgRotateConsPubKeyResponse
+
+@implementation MsgRotateConsPubKeyResponse
+
+
+typedef struct MsgRotateConsPubKeyResponse__storage_ {
+  uint32_t _has_storage_[1];
+} MsgRotateConsPubKeyResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgRotateConsPubKeyResponse)
+                                   messageName:@"MsgRotateConsPubKeyResponse"
+                               fileDescription:&TxRoot_FileDescription
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(MsgRotateConsPubKeyResponse__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

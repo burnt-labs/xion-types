@@ -68,11 +68,13 @@ static GPBFileDescription EventsRoot_FileDescription = {
 @dynamic codeId;
 @dynamic contractAddr;
 @dynamic accountNumber;
+@dynamic addressDerivationHash;
 
 typedef struct EventAccountRegistered__storage_ {
   uint32_t _has_storage_[1];
   NSString *creator;
   NSString *contractAddr;
+  NSData *addressDerivationHash;
   uint64_t codeId;
   uint64_t accountNumber;
 } EventAccountRegistered__storage_;
@@ -119,6 +121,15 @@ typedef struct EventAccountRegistered__storage_ {
         .offset = (uint32_t)offsetof(EventAccountRegistered__storage_, accountNumber),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "addressDerivationHash",
+        .dataTypeSpecific.clazz = Nil,
+        .number = EventAccountRegistered_FieldNumber_AddressDerivationHash,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(EventAccountRegistered__storage_, addressDerivationHash),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =

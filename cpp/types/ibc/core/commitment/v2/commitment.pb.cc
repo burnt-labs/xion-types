@@ -74,7 +74,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fcommitment_2fv2_2fcommitment_2
     "\n\'ibc/core/commitment/v2/commitment.prot"
     "o\022\026ibc.core.commitment.v2\"\'\n\nMerklePath\022"
     "\031\n\010key_path\030\001 \003(\014R\007keyPathBBZ@github.com"
-    "/cosmos/ibc-go/v10/modules/core/23-commi"
+    "/cosmos/ibc-go/v11/modules/core/23-commi"
     "tment/types/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_ibc_2fcore_2fcommitment_2fv2_2fcommitment_2eproto_once;

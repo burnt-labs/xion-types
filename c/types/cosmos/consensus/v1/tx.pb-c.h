@@ -48,10 +48,11 @@ struct  Cosmos__Consensus__V1__MsgUpdateParams
   Tendermint__Types__EvidenceParams *evidence;
   Tendermint__Types__ValidatorParams *validator;
   Tendermint__Types__ABCIParams *abci;
+  Tendermint__Types__AuthorityParams *auth;
 };
 #define COSMOS__CONSENSUS__V1__MSG_UPDATE_PARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__consensus__v1__msg_update_params__descriptor) \
-, (char *)protobuf_c_empty_string, NULL, NULL, NULL, NULL }
+, (char *)protobuf_c_empty_string, NULL, NULL, NULL, NULL, NULL }
 
 
 /*

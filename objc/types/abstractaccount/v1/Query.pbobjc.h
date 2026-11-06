@@ -67,9 +67,55 @@ typedef GPB_ENUM(QueryParamsResponse_FieldNumber) {
  **/
 GPB_FINAL @interface QueryParamsResponse : GPBMessage
 
+/** params holds the current module parameters. */
 @property(nonatomic, readwrite, strong, null_resettable) Params *params;
 /** Test to see if @c params has been set. */
 @property(nonatomic, readwrite) BOOL hasParams;
+
+@end
+
+#pragma mark - QueryAccountAddressRequest
+
+typedef GPB_ENUM(QueryAccountAddressRequest_FieldNumber) {
+  QueryAccountAddressRequest_FieldNumber_Sender = 1,
+  QueryAccountAddressRequest_FieldNumber_Salt = 2,
+};
+
+/**
+ * QueryAccountAddressRequest identifies an account namespace. Implementation
+ * code IDs do not participate in this address lookup.
+ **/
+GPB_FINAL @interface QueryAccountAddressRequest : GPBMessage
+
+/** sender is the address registering the account. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sender;
+
+/** salt is the caller-chosen salt the address is derived with. */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *salt;
+
+@end
+
+#pragma mark - QueryAccountAddressResponse
+
+typedef GPB_ENUM(QueryAccountAddressResponse_FieldNumber) {
+  QueryAccountAddressResponse_FieldNumber_Address = 1,
+  QueryAccountAddressResponse_FieldNumber_Registered = 2,
+};
+
+/**
+ * QueryAccountAddressResponse contains the stable address and whether an
+ * AbstractAccount is already registered for the namespace.
+ **/
+GPB_FINAL @interface QueryAccountAddressResponse : GPBMessage
+
+/** address is the stable address derived for the namespace. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *address;
+
+/**
+ * registered reports whether an AbstractAccount already exists for the
+ * namespace.
+ **/
+@property(nonatomic, readwrite) BOOL registered;
 
 @end
 

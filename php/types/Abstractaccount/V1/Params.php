@@ -16,8 +16,9 @@ use Google\Protobuf\Internal\GPBUtil;
 class Params extends \Google\Protobuf\Internal\Message
 {
     /**
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -26,8 +27,8 @@ class Params extends \Google\Protobuf\Internal\Message
      */
     protected $allow_all_code_ids = false;
     /**
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      *
      * Generated from protobuf field <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
      */
@@ -48,6 +49,23 @@ class Params extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>uint64 max_gas_after = 4 [json_name = "maxGasAfter"];</code>
      */
     protected $max_gas_after = 0;
+    /**
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     *
+     * Generated from protobuf field <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+     */
+    protected $registration_enabled = false;
+    /**
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     *
+     * Generated from protobuf field <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     */
+    protected $address_derivation_hash = '';
 
     /**
      * Constructor.
@@ -56,14 +74,15 @@ class Params extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type bool $allow_all_code_ids
-     *           AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     *           AbstractAccounts:
+     *           AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     *           final implementation for a newly registered AbstractAccount or a
+     *           top-level raw Wasm migration:
      *           - if set to true, any code ID can be used;
      *           - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      *           be used.
      *     @type array<int>|array<string>|\Google\Protobuf\Internal\RepeatedField $allowed_code_ids
-     *           AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     *           regiseter AbstractAccounts.
+     *           AllowedCodeIDs is the whitelist for registration implementations and
+     *           top-level raw Wasm migrations. This is not a wasmd-level policy.
      *     @type int|string $max_gas_before
      *           MaxGasBefore is the maximum amount of gas that can be consumed by the
      *           contract call in the before_tx decorator.
@@ -72,6 +91,15 @@ class Params extends \Google\Protobuf\Internal\Message
      *           MaxGasAfter is the maximum amount of gas that can be consumed by the
      *           contract call in the after_tx decorator.
      *           Must be greater than zero.
+     *     @type bool $registration_enabled
+     *           RegistrationEnabled controls whether new abstract accounts may be
+     *           registered. Governance can pause registration without changing the
+     *           immutable address namespace or blocking address queries.
+     *     @type string $address_derivation_hash
+     *           AddressDerivationHash is the immutable 32-byte namespace used only to
+     *           derive predictable AbstractAccount addresses. The caller-selected code ID
+     *           is instantiated directly and does not participate in address derivation.
+     *           An empty value leaves registration unconfigured.
      * }
      */
     public function __construct($data = NULL) {
@@ -80,8 +108,9 @@ class Params extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -95,8 +124,9 @@ class Params extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -114,8 +144,8 @@ class Params extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      *
      * Generated from protobuf field <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -126,8 +156,8 @@ class Params extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      *
      * Generated from protobuf field <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
      * @param array<int>|array<string>|\Google\Protobuf\Internal\RepeatedField $var
@@ -197,6 +227,68 @@ class Params extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint64($var);
         $this->max_gas_after = $var;
+
+        return $this;
+    }
+
+    /**
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     *
+     * Generated from protobuf field <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+     * @return bool
+     */
+    public function getRegistrationEnabled()
+    {
+        return $this->registration_enabled;
+    }
+
+    /**
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     *
+     * Generated from protobuf field <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setRegistrationEnabled($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->registration_enabled = $var;
+
+        return $this;
+    }
+
+    /**
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     *
+     * Generated from protobuf field <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @return string
+     */
+    public function getAddressDerivationHash()
+    {
+        return $this->address_derivation_hash;
+    }
+
+    /**
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     *
+     * Generated from protobuf field <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAddressDerivationHash($var)
+    {
+        GPBUtil::checkString($var, False);
+        $this->address_derivation_hash = $var;
 
         return $this;
     }

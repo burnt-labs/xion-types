@@ -27,31 +27,55 @@ namespace Cosmos.Staking.V1Beta1 {
             "CiRjb3Ntb3Mvc3Rha2luZy92MWJldGExL2dlbmVzaXMucHJvdG8SFmNvc21v",
             "cy5zdGFraW5nLnYxYmV0YTEaFGdvZ29wcm90by9nb2dvLnByb3RvGiRjb3Nt",
             "b3Mvc3Rha2luZy92MWJldGExL3N0YWtpbmcucHJvdG8aGWNvc21vc19wcm90",
-            "by9jb3Ntb3MucHJvdG8aEWFtaW5vL2FtaW5vLnByb3RvIpcFCgxHZW5lc2lz",
-            "U3RhdGUSQQoGcGFyYW1zGAEgASgLMh4uY29zbW9zLnN0YWtpbmcudjFiZXRh",
-            "MS5QYXJhbXNCCcjeHwCo57AqAVIGcGFyYW1zEloKEGxhc3RfdG90YWxfcG93",
-            "ZXIYAiABKAxCMMjeHwDa3h8VY29zbW9zc2RrLmlvL21hdGguSW500rQtCmNv",
-            "c21vcy5JbnSo57AqAVIObGFzdFRvdGFsUG93ZXISaQoVbGFzdF92YWxpZGF0",
-            "b3JfcG93ZXJzGAMgAygLMiouY29zbW9zLnN0YWtpbmcudjFiZXRhMS5MYXN0",
-            "VmFsaWRhdG9yUG93ZXJCCcjeHwCo57AqAVITbGFzdFZhbGlkYXRvclBvd2Vy",
-            "cxJMCgp2YWxpZGF0b3JzGAQgAygLMiEuY29zbW9zLnN0YWtpbmcudjFiZXRh",
-            "MS5WYWxpZGF0b3JCCcjeHwCo57AqAVIKdmFsaWRhdG9ycxJPCgtkZWxlZ2F0",
-            "aW9ucxgFIAMoCzIiLmNvc21vcy5zdGFraW5nLnYxYmV0YTEuRGVsZWdhdGlv",
-            "bkIJyN4fAKjnsCoBUgtkZWxlZ2F0aW9ucxJrChV1bmJvbmRpbmdfZGVsZWdh",
-            "dGlvbnMYBiADKAsyKy5jb3Ntb3Muc3Rha2luZy52MWJldGExLlVuYm9uZGlu",
-            "Z0RlbGVnYXRpb25CCcjeHwCo57AqAVIUdW5ib25kaW5nRGVsZWdhdGlvbnMS",
-            "VQoNcmVkZWxlZ2F0aW9ucxgHIAMoCzIkLmNvc21vcy5zdGFraW5nLnYxYmV0",
-            "YTEuUmVkZWxlZ2F0aW9uQgnI3h8AqOewKgFSDXJlZGVsZWdhdGlvbnMSGgoI",
-            "ZXhwb3J0ZWQYCCABKAhSCGV4cG9ydGVkImgKEkxhc3RWYWxpZGF0b3JQb3dl",
-            "chIyCgdhZGRyZXNzGAEgASgJQhjStC0UY29zbW9zLkFkZHJlc3NTdHJpbmdS",
-            "B2FkZHJlc3MSFAoFcG93ZXIYAiABKANSBXBvd2VyOgiIoB8A6KAfAEIuWixn",
-            "aXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3gvc3Rha2luZy90eXBlc2IG",
-            "cHJvdG8z"));
+            "by9jb3Ntb3MucHJvdG8aEWFtaW5vL2FtaW5vLnByb3RvGhlnb29nbGUvcHJv",
+            "dG9idWYvYW55LnByb3RvGh9nb29nbGUvcHJvdG9idWYvdGltZXN0YW1wLnBy",
+            "b3RvIqUHCgxHZW5lc2lzU3RhdGUSQQoGcGFyYW1zGAEgASgLMh4uY29zbW9z",
+            "LnN0YWtpbmcudjFiZXRhMS5QYXJhbXNCCcjeHwCo57AqAVIGcGFyYW1zEloK",
+            "EGxhc3RfdG90YWxfcG93ZXIYAiABKAxCMMjeHwDa3h8VY29zbW9zc2RrLmlv",
+            "L21hdGguSW500rQtCmNvc21vcy5JbnSo57AqAVIObGFzdFRvdGFsUG93ZXIS",
+            "aQoVbGFzdF92YWxpZGF0b3JfcG93ZXJzGAMgAygLMiouY29zbW9zLnN0YWtp",
+            "bmcudjFiZXRhMS5MYXN0VmFsaWRhdG9yUG93ZXJCCcjeHwCo57AqAVITbGFz",
+            "dFZhbGlkYXRvclBvd2VycxJMCgp2YWxpZGF0b3JzGAQgAygLMiEuY29zbW9z",
+            "LnN0YWtpbmcudjFiZXRhMS5WYWxpZGF0b3JCCcjeHwCo57AqAVIKdmFsaWRh",
+            "dG9ycxJPCgtkZWxlZ2F0aW9ucxgFIAMoCzIiLmNvc21vcy5zdGFraW5nLnYx",
+            "YmV0YTEuRGVsZWdhdGlvbkIJyN4fAKjnsCoBUgtkZWxlZ2F0aW9ucxJrChV1",
+            "bmJvbmRpbmdfZGVsZWdhdGlvbnMYBiADKAsyKy5jb3Ntb3Muc3Rha2luZy52",
+            "MWJldGExLlVuYm9uZGluZ0RlbGVnYXRpb25CCcjeHwCo57AqAVIUdW5ib25k",
+            "aW5nRGVsZWdhdGlvbnMSVQoNcmVkZWxlZ2F0aW9ucxgHIAMoCzIkLmNvc21v",
+            "cy5zdGFraW5nLnYxYmV0YTEuUmVkZWxlZ2F0aW9uQgnI3h8AqOewKgFSDXJl",
+            "ZGVsZWdhdGlvbnMSGgoIZXhwb3J0ZWQYCCABKAhSCGV4cG9ydGVkEoMBCh5j",
+            "b25zZW5zdXNfa2V5X3JvdGF0aW9uX2hpc3RvcnkYCSADKAsyMy5jb3Ntb3Mu",
+            "c3Rha2luZy52MWJldGExLkNvbnNlbnN1c0tleVJvdGF0aW9uSGlzdG9yeUIJ",
+            "yN4fAKjnsCoBUhtjb25zZW5zdXNLZXlSb3RhdGlvbkhpc3RvcnkShQEKH3Bl",
+            "bmRpbmdfY29uc2Vuc3VzX2tleV9yb3RhdGlvbnMYCiADKAsyMy5jb3Ntb3Mu",
+            "c3Rha2luZy52MWJldGExLlBlbmRpbmdDb25zZW5zdXNLZXlSb3RhdGlvbkIJ",
+            "yN4fAKjnsCoBUhxwZW5kaW5nQ29uc2Vuc3VzS2V5Um90YXRpb25zImgKEkxh",
+            "c3RWYWxpZGF0b3JQb3dlchIyCgdhZGRyZXNzGAEgASgJQhjStC0UY29zbW9z",
+            "LkFkZHJlc3NTdHJpbmdSB2FkZHJlc3MSFAoFcG93ZXIYAiABKANSBXBvd2Vy",
+            "OgiIoB8A6KAfACKxAwobQ29uc2Vuc3VzS2V5Um90YXRpb25IaXN0b3J5Ek4K",
+            "EXZhbGlkYXRvcl9hZGRyZXNzGAEgASgJQiHStC0dY29zbW9zLlZhbGlkYXRv",
+            "ckFkZHJlc3NTdHJpbmdSEHZhbGlkYXRvckFkZHJlc3MSVQoVb2xkX2NvbnNl",
+            "bnN1c19hZGRyZXNzGAIgASgJQiHStC0dY29zbW9zLkNvbnNlbnN1c0FkZHJl",
+            "c3NTdHJpbmdSE29sZENvbnNlbnN1c0FkZHJlc3MSTgoNbWF0dXJpdHlfdGlt",
+            "ZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCDcjeHwCQ3x8B",
+            "qOewKgFSDG1hdHVyaXR5VGltZRJbChRldmlkZW5jZV9leHBpcnlfdGltZRgE",
+            "IAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCDcjeHwCQ3x8BqOew",
+            "KgFSEmV2aWRlbmNlRXhwaXJ5VGltZRI0ChZldmlkZW5jZV9leHBpcnlfaGVp",
+            "Z2h0GAUgASgDUhRldmlkZW5jZUV4cGlyeUhlaWdodDoIiKAfAOigHwAi6QEK",
+            "G1BlbmRpbmdDb25zZW5zdXNLZXlSb3RhdGlvbhJOChF2YWxpZGF0b3JfYWRk",
+            "cmVzcxgBIAEoCUIh0rQtHWNvc21vcy5WYWxpZGF0b3JBZGRyZXNzU3RyaW5n",
+            "UhB2YWxpZGF0b3JBZGRyZXNzEk0KCm5ld19wdWJrZXkYAiABKAsyFC5nb29n",
+            "bGUucHJvdG9idWYuQW55QhjKtC0UY29zbW9zLmNyeXB0by5QdWJLZXlSCW5l",
+            "d1B1YmtleRIhCgxhcHBseV9oZWlnaHQYAyABKANSC2FwcGx5SGVpZ2h0OgiI",
+            "oB8A6KAfAEIuWixnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3gvc3Rh",
+            "a2luZy90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Staking.V1Beta1.StakingReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Amino.AminoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Staking.V1Beta1.StakingReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Amino.AminoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.GenesisState), global::Cosmos.Staking.V1Beta1.GenesisState.Parser, new[]{ "Params", "LastTotalPower", "LastValidatorPowers", "Validators", "Delegations", "UnbondingDelegations", "Redelegations", "Exported" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.LastValidatorPower), global::Cosmos.Staking.V1Beta1.LastValidatorPower.Parser, new[]{ "Address", "Power" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.GenesisState), global::Cosmos.Staking.V1Beta1.GenesisState.Parser, new[]{ "Params", "LastTotalPower", "LastValidatorPowers", "Validators", "Delegations", "UnbondingDelegations", "Redelegations", "Exported", "ConsensusKeyRotationHistory", "PendingConsensusKeyRotations" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.LastValidatorPower), global::Cosmos.Staking.V1Beta1.LastValidatorPower.Parser, new[]{ "Address", "Power" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory), global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory.Parser, new[]{ "ValidatorAddress", "OldConsensusAddress", "MaturityTime", "EvidenceExpiryTime", "EvidenceExpiryHeight" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation), global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation.Parser, new[]{ "ValidatorAddress", "NewPubkey", "ApplyHeight" }, null, null, null, null)
           }));
     }
     #endregion
@@ -103,6 +127,8 @@ namespace Cosmos.Staking.V1Beta1 {
       unbondingDelegations_ = other.unbondingDelegations_.Clone();
       redelegations_ = other.redelegations_.Clone();
       exported_ = other.exported_;
+      consensusKeyRotationHistory_ = other.consensusKeyRotationHistory_.Clone();
+      pendingConsensusKeyRotations_ = other.pendingConsensusKeyRotations_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -229,6 +255,36 @@ namespace Cosmos.Staking.V1Beta1 {
       }
     }
 
+    /// <summary>Field number for the "consensus_key_rotation_history" field.</summary>
+    public const int ConsensusKeyRotationHistoryFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory> _repeated_consensusKeyRotationHistory_codec
+        = pb::FieldCodec.ForMessage(74, global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory.Parser);
+    private readonly pbc::RepeatedField<global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory> consensusKeyRotationHistory_ = new pbc::RepeatedField<global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory>();
+    /// <summary>
+    /// consensus_key_rotation_history defines consensus key rotations that are
+    /// still within the unbonding window.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Cosmos.Staking.V1Beta1.ConsensusKeyRotationHistory> ConsensusKeyRotationHistory {
+      get { return consensusKeyRotationHistory_; }
+    }
+
+    /// <summary>Field number for the "pending_consensus_key_rotations" field.</summary>
+    public const int PendingConsensusKeyRotationsFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation> _repeated_pendingConsensusKeyRotations_codec
+        = pb::FieldCodec.ForMessage(82, global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation.Parser);
+    private readonly pbc::RepeatedField<global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation> pendingConsensusKeyRotations_ = new pbc::RepeatedField<global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation>();
+    /// <summary>
+    /// pending_consensus_key_rotations defines consensus key rotations whose
+    /// SDK-side validator state has not reached its deferred apply height yet.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Cosmos.Staking.V1Beta1.PendingConsensusKeyRotation> PendingConsensusKeyRotations {
+      get { return pendingConsensusKeyRotations_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -252,6 +308,8 @@ namespace Cosmos.Staking.V1Beta1 {
       if(!unbondingDelegations_.Equals(other.unbondingDelegations_)) return false;
       if(!redelegations_.Equals(other.redelegations_)) return false;
       if (Exported != other.Exported) return false;
+      if(!consensusKeyRotationHistory_.Equals(other.consensusKeyRotationHistory_)) return false;
+      if(!pendingConsensusKeyRotations_.Equals(other.pendingConsensusKeyRotations_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -267,6 +325,8 @@ namespace Cosmos.Staking.V1Beta1 {
       hash ^= unbondingDelegations_.GetHashCode();
       hash ^= redelegations_.GetHashCode();
       if (Exported != false) hash ^= Exported.GetHashCode();
+      hash ^= consensusKeyRotationHistory_.GetHashCode();
+      hash ^= pendingConsensusKeyRotations_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -302,6 +362,8 @@ namespace Cosmos.Staking.V1Beta1 {
         output.WriteRawTag(64);
         output.WriteBool(Exported);
       }
+      consensusKeyRotationHistory_.WriteTo(output, _repeated_consensusKeyRotationHistory_codec);
+      pendingConsensusKeyRotations_.WriteTo(output, _repeated_pendingConsensusKeyRotations_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -329,6 +391,8 @@ namespace Cosmos.Staking.V1Beta1 {
         output.WriteRawTag(64);
         output.WriteBool(Exported);
       }
+      consensusKeyRotationHistory_.WriteTo(ref output, _repeated_consensusKeyRotationHistory_codec);
+      pendingConsensusKeyRotations_.WriteTo(ref output, _repeated_pendingConsensusKeyRotations_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -353,6 +417,8 @@ namespace Cosmos.Staking.V1Beta1 {
       if (Exported != false) {
         size += 1 + 1;
       }
+      size += consensusKeyRotationHistory_.CalculateSize(_repeated_consensusKeyRotationHistory_codec);
+      size += pendingConsensusKeyRotations_.CalculateSize(_repeated_pendingConsensusKeyRotations_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -382,6 +448,8 @@ namespace Cosmos.Staking.V1Beta1 {
       if (other.Exported != false) {
         Exported = other.Exported;
       }
+      consensusKeyRotationHistory_.Add(other.consensusKeyRotationHistory_);
+      pendingConsensusKeyRotations_.Add(other.pendingConsensusKeyRotations_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -432,6 +500,14 @@ namespace Cosmos.Staking.V1Beta1 {
             Exported = input.ReadBool();
             break;
           }
+          case 74: {
+            consensusKeyRotationHistory_.AddEntriesFrom(input, _repeated_consensusKeyRotationHistory_codec);
+            break;
+          }
+          case 82: {
+            pendingConsensusKeyRotations_.AddEntriesFrom(input, _repeated_pendingConsensusKeyRotations_codec);
+            break;
+          }
         }
       }
     #endif
@@ -480,6 +556,14 @@ namespace Cosmos.Staking.V1Beta1 {
           }
           case 64: {
             Exported = input.ReadBool();
+            break;
+          }
+          case 74: {
+            consensusKeyRotationHistory_.AddEntriesFrom(ref input, _repeated_consensusKeyRotationHistory_codec);
+            break;
+          }
+          case 82: {
+            pendingConsensusKeyRotations_.AddEntriesFrom(ref input, _repeated_pendingConsensusKeyRotations_codec);
             break;
           }
         }
@@ -715,6 +799,671 @@ namespace Cosmos.Staking.V1Beta1 {
           }
           case 16: {
             Power = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// ConsensusKeyRotationHistory stores the old consensus address for a
+  /// validator rotation until the unbonding window has elapsed.
+  /// </summary>
+  public sealed partial class ConsensusKeyRotationHistory : pb::IMessage<ConsensusKeyRotationHistory>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ConsensusKeyRotationHistory> _parser = new pb::MessageParser<ConsensusKeyRotationHistory>(() => new ConsensusKeyRotationHistory());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ConsensusKeyRotationHistory> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Cosmos.Staking.V1Beta1.GenesisReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ConsensusKeyRotationHistory() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ConsensusKeyRotationHistory(ConsensusKeyRotationHistory other) : this() {
+      validatorAddress_ = other.validatorAddress_;
+      oldConsensusAddress_ = other.oldConsensusAddress_;
+      maturityTime_ = other.maturityTime_ != null ? other.maturityTime_.Clone() : null;
+      evidenceExpiryTime_ = other.evidenceExpiryTime_ != null ? other.evidenceExpiryTime_.Clone() : null;
+      evidenceExpiryHeight_ = other.evidenceExpiryHeight_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ConsensusKeyRotationHistory Clone() {
+      return new ConsensusKeyRotationHistory(this);
+    }
+
+    /// <summary>Field number for the "validator_address" field.</summary>
+    public const int ValidatorAddressFieldNumber = 1;
+    private string validatorAddress_ = "";
+    /// <summary>
+    /// validator_address is the validator operator address.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ValidatorAddress {
+      get { return validatorAddress_; }
+      set {
+        validatorAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "old_consensus_address" field.</summary>
+    public const int OldConsensusAddressFieldNumber = 2;
+    private string oldConsensusAddress_ = "";
+    /// <summary>
+    /// old_consensus_address is the consensus address rotated away from.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OldConsensusAddress {
+      get { return oldConsensusAddress_; }
+      set {
+        oldConsensusAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "maturity_time" field.</summary>
+    public const int MaturityTimeFieldNumber = 3;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp maturityTime_;
+    /// <summary>
+    /// maturity_time is the unbonding-window maturity of this validator's
+    /// re-rotation rate limit, present only while that gate is still active. A
+    /// zero value means the gate has already been retired and only the evidence
+    /// lock (below) remains.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp MaturityTime {
+      get { return maturityTime_; }
+      set {
+        maturityTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evidence_expiry_time" field.</summary>
+    public const int EvidenceExpiryTimeFieldNumber = 4;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp evidenceExpiryTime_;
+    /// <summary>
+    /// evidence_expiry_time is the time after which equivocation evidence for the
+    /// rotated-away key can no longer be admitted on the time dimension.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp EvidenceExpiryTime {
+      get { return evidenceExpiryTime_; }
+      set {
+        evidenceExpiryTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evidence_expiry_height" field.</summary>
+    public const int EvidenceExpiryHeightFieldNumber = 5;
+    private long evidenceExpiryHeight_;
+    /// <summary>
+    /// evidence_expiry_height is the block height after which equivocation evidence
+    /// for the rotated-away key can no longer be admitted on the height dimension.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EvidenceExpiryHeight {
+      get { return evidenceExpiryHeight_; }
+      set {
+        evidenceExpiryHeight_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ConsensusKeyRotationHistory);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ConsensusKeyRotationHistory other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ValidatorAddress != other.ValidatorAddress) return false;
+      if (OldConsensusAddress != other.OldConsensusAddress) return false;
+      if (!object.Equals(MaturityTime, other.MaturityTime)) return false;
+      if (!object.Equals(EvidenceExpiryTime, other.EvidenceExpiryTime)) return false;
+      if (EvidenceExpiryHeight != other.EvidenceExpiryHeight) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ValidatorAddress.Length != 0) hash ^= ValidatorAddress.GetHashCode();
+      if (OldConsensusAddress.Length != 0) hash ^= OldConsensusAddress.GetHashCode();
+      if (maturityTime_ != null) hash ^= MaturityTime.GetHashCode();
+      if (evidenceExpiryTime_ != null) hash ^= EvidenceExpiryTime.GetHashCode();
+      if (EvidenceExpiryHeight != 0L) hash ^= EvidenceExpiryHeight.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ValidatorAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ValidatorAddress);
+      }
+      if (OldConsensusAddress.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(OldConsensusAddress);
+      }
+      if (maturityTime_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(MaturityTime);
+      }
+      if (evidenceExpiryTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EvidenceExpiryTime);
+      }
+      if (EvidenceExpiryHeight != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(EvidenceExpiryHeight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ValidatorAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ValidatorAddress);
+      }
+      if (OldConsensusAddress.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(OldConsensusAddress);
+      }
+      if (maturityTime_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(MaturityTime);
+      }
+      if (evidenceExpiryTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EvidenceExpiryTime);
+      }
+      if (EvidenceExpiryHeight != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(EvidenceExpiryHeight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ValidatorAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ValidatorAddress);
+      }
+      if (OldConsensusAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OldConsensusAddress);
+      }
+      if (maturityTime_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MaturityTime);
+      }
+      if (evidenceExpiryTime_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EvidenceExpiryTime);
+      }
+      if (EvidenceExpiryHeight != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EvidenceExpiryHeight);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ConsensusKeyRotationHistory other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ValidatorAddress.Length != 0) {
+        ValidatorAddress = other.ValidatorAddress;
+      }
+      if (other.OldConsensusAddress.Length != 0) {
+        OldConsensusAddress = other.OldConsensusAddress;
+      }
+      if (other.maturityTime_ != null) {
+        if (maturityTime_ == null) {
+          MaturityTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        MaturityTime.MergeFrom(other.MaturityTime);
+      }
+      if (other.evidenceExpiryTime_ != null) {
+        if (evidenceExpiryTime_ == null) {
+          EvidenceExpiryTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        EvidenceExpiryTime.MergeFrom(other.EvidenceExpiryTime);
+      }
+      if (other.EvidenceExpiryHeight != 0L) {
+        EvidenceExpiryHeight = other.EvidenceExpiryHeight;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ValidatorAddress = input.ReadString();
+            break;
+          }
+          case 18: {
+            OldConsensusAddress = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (maturityTime_ == null) {
+              MaturityTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(MaturityTime);
+            break;
+          }
+          case 34: {
+            if (evidenceExpiryTime_ == null) {
+              EvidenceExpiryTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EvidenceExpiryTime);
+            break;
+          }
+          case 40: {
+            EvidenceExpiryHeight = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ValidatorAddress = input.ReadString();
+            break;
+          }
+          case 18: {
+            OldConsensusAddress = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (maturityTime_ == null) {
+              MaturityTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(MaturityTime);
+            break;
+          }
+          case 34: {
+            if (evidenceExpiryTime_ == null) {
+              EvidenceExpiryTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EvidenceExpiryTime);
+            break;
+          }
+          case 40: {
+            EvidenceExpiryHeight = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+  /// for its deferred SDK-side state update.
+  /// </summary>
+  public sealed partial class PendingConsensusKeyRotation : pb::IMessage<PendingConsensusKeyRotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PendingConsensusKeyRotation> _parser = new pb::MessageParser<PendingConsensusKeyRotation>(() => new PendingConsensusKeyRotation());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PendingConsensusKeyRotation> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Cosmos.Staking.V1Beta1.GenesisReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PendingConsensusKeyRotation() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PendingConsensusKeyRotation(PendingConsensusKeyRotation other) : this() {
+      validatorAddress_ = other.validatorAddress_;
+      newPubkey_ = other.newPubkey_ != null ? other.newPubkey_.Clone() : null;
+      applyHeight_ = other.applyHeight_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PendingConsensusKeyRotation Clone() {
+      return new PendingConsensusKeyRotation(this);
+    }
+
+    /// <summary>Field number for the "validator_address" field.</summary>
+    public const int ValidatorAddressFieldNumber = 1;
+    private string validatorAddress_ = "";
+    /// <summary>
+    /// validator_address is the validator operator address.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ValidatorAddress {
+      get { return validatorAddress_; }
+      set {
+        validatorAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "new_pubkey" field.</summary>
+    public const int NewPubkeyFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Any newPubkey_;
+    /// <summary>
+    /// new_pubkey is the consensus public key being rotated to.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Any NewPubkey {
+      get { return newPubkey_; }
+      set {
+        newPubkey_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "apply_height" field.</summary>
+    public const int ApplyHeightFieldNumber = 3;
+    private long applyHeight_;
+    /// <summary>
+    /// apply_height is the block height where the SDK-side state update should
+    /// occur.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ApplyHeight {
+      get { return applyHeight_; }
+      set {
+        applyHeight_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PendingConsensusKeyRotation);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PendingConsensusKeyRotation other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ValidatorAddress != other.ValidatorAddress) return false;
+      if (!object.Equals(NewPubkey, other.NewPubkey)) return false;
+      if (ApplyHeight != other.ApplyHeight) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ValidatorAddress.Length != 0) hash ^= ValidatorAddress.GetHashCode();
+      if (newPubkey_ != null) hash ^= NewPubkey.GetHashCode();
+      if (ApplyHeight != 0L) hash ^= ApplyHeight.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ValidatorAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ValidatorAddress);
+      }
+      if (newPubkey_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(NewPubkey);
+      }
+      if (ApplyHeight != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(ApplyHeight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ValidatorAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ValidatorAddress);
+      }
+      if (newPubkey_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(NewPubkey);
+      }
+      if (ApplyHeight != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(ApplyHeight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ValidatorAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ValidatorAddress);
+      }
+      if (newPubkey_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NewPubkey);
+      }
+      if (ApplyHeight != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ApplyHeight);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PendingConsensusKeyRotation other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ValidatorAddress.Length != 0) {
+        ValidatorAddress = other.ValidatorAddress;
+      }
+      if (other.newPubkey_ != null) {
+        if (newPubkey_ == null) {
+          NewPubkey = new global::Google.Protobuf.WellKnownTypes.Any();
+        }
+        NewPubkey.MergeFrom(other.NewPubkey);
+      }
+      if (other.ApplyHeight != 0L) {
+        ApplyHeight = other.ApplyHeight;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ValidatorAddress = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (newPubkey_ == null) {
+              NewPubkey = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(NewPubkey);
+            break;
+          }
+          case 24: {
+            ApplyHeight = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ValidatorAddress = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (newPubkey_ == null) {
+              NewPubkey = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(NewPubkey);
+            break;
+          }
+          case 24: {
+            ApplyHeight = input.ReadInt64();
             break;
           }
         }

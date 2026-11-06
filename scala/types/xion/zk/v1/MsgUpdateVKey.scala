@@ -14,7 +14,10 @@ package xion.zk.v1
   * @param description
   *   description provides updated context
   * @param vkeyBytes
-  *   vkey_json is the new JSON representation of the verification key
+  *   vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+  *   per proof_system).
+  * @param proofSystem
+  *   proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
   */
 @SerialVersionUID(0L)
 final case class MsgUpdateVKey(
@@ -22,6 +25,7 @@ final case class MsgUpdateVKey(
     name: _root_.scala.Predef.String = "",
     description: _root_.scala.Predef.String = "",
     vkeyBytes: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY,
+    proofSystem: xion.zk.v1.ProofSystem = xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[MsgUpdateVKey] {
     @transient
@@ -54,6 +58,13 @@ final case class MsgUpdateVKey(
         val __value = vkeyBytes
         if (!__value.isEmpty) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeBytesSize(4, __value)
+        }
+      };
+      
+      {
+        val __value = proofSystem.value
+        if (__value != 0) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeEnumSize(5, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -93,12 +104,19 @@ final case class MsgUpdateVKey(
           _output__.writeBytes(4, __v)
         }
       };
+      {
+        val __v = proofSystem.value
+        if (__v != 0) {
+          _output__.writeEnum(5, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withAuthority(__v: _root_.scala.Predef.String): MsgUpdateVKey = copy(authority = __v)
     def withName(__v: _root_.scala.Predef.String): MsgUpdateVKey = copy(name = __v)
     def withDescription(__v: _root_.scala.Predef.String): MsgUpdateVKey = copy(description = __v)
     def withVkeyBytes(__v: _root_.com.google.protobuf.ByteString): MsgUpdateVKey = copy(vkeyBytes = __v)
+    def withProofSystem(__v: xion.zk.v1.ProofSystem): MsgUpdateVKey = copy(proofSystem = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -119,6 +137,10 @@ final case class MsgUpdateVKey(
           val __t = vkeyBytes
           if (__t != _root_.com.google.protobuf.ByteString.EMPTY) __t else null
         }
+        case 5 => {
+          val __t = proofSystem.javaValueDescriptor
+          if (__t.getNumber() != 0) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -128,6 +150,7 @@ final case class MsgUpdateVKey(
         case 2 => _root_.scalapb.descriptors.PString(name)
         case 3 => _root_.scalapb.descriptors.PString(description)
         case 4 => _root_.scalapb.descriptors.PByteString(vkeyBytes)
+        case 5 => _root_.scalapb.descriptors.PEnum(proofSystem.scalaValueDescriptor)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -142,6 +165,7 @@ object MsgUpdateVKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.MsgUpd
     var __name: _root_.scala.Predef.String = ""
     var __description: _root_.scala.Predef.String = ""
     var __vkeyBytes: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY
+    var __proofSystem: xion.zk.v1.ProofSystem = xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -156,6 +180,8 @@ object MsgUpdateVKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.MsgUpd
           __description = _input__.readStringRequireUtf8()
         case 34 =>
           __vkeyBytes = _input__.readBytes()
+        case 40 =>
+          __proofSystem = xion.zk.v1.ProofSystem.fromValue(_input__.readEnum())
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -168,6 +194,7 @@ object MsgUpdateVKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.MsgUpd
         name = __name,
         description = __description,
         vkeyBytes = __vkeyBytes,
+        proofSystem = __proofSystem,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -178,7 +205,8 @@ object MsgUpdateVKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.MsgUpd
         authority = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         name = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         description = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        vkeyBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.com.google.protobuf.ByteString]).getOrElse(_root_.com.google.protobuf.ByteString.EMPTY)
+        vkeyBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.com.google.protobuf.ByteString]).getOrElse(_root_.com.google.protobuf.ByteString.EMPTY),
+        proofSystem = xion.zk.v1.ProofSystem.fromValue(__fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scalapb.descriptors.EnumValueDescriptor]).getOrElse(xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.scalaValueDescriptor).number)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -186,33 +214,42 @@ object MsgUpdateVKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.MsgUpd
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.zk.v1.TxProto.scalaDescriptor.messages(2)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    (__fieldNumber: @_root_.scala.unchecked) match {
+      case 5 => xion.zk.v1.ProofSystem
+    }
+  }
   lazy val defaultInstance = xion.zk.v1.MsgUpdateVKey(
     authority = "",
     name = "",
     description = "",
-    vkeyBytes = _root_.com.google.protobuf.ByteString.EMPTY
+    vkeyBytes = _root_.com.google.protobuf.ByteString.EMPTY,
+    proofSystem = xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED
   )
   implicit class MsgUpdateVKeyLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, xion.zk.v1.MsgUpdateVKey]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, xion.zk.v1.MsgUpdateVKey](_l) {
     def authority: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.authority)((c_, f_) => c_.copy(authority = f_))
     def name: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.name)((c_, f_) => c_.copy(name = f_))
     def description: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.description)((c_, f_) => c_.copy(description = f_))
     def vkeyBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.com.google.protobuf.ByteString] = field(_.vkeyBytes)((c_, f_) => c_.copy(vkeyBytes = f_))
+    def proofSystem: _root_.scalapb.lenses.Lens[UpperPB, xion.zk.v1.ProofSystem] = field(_.proofSystem)((c_, f_) => c_.copy(proofSystem = f_))
   }
   final val AUTHORITY_FIELD_NUMBER = 1
   final val NAME_FIELD_NUMBER = 2
   final val DESCRIPTION_FIELD_NUMBER = 3
   final val VKEY_BYTES_FIELD_NUMBER = 4
+  final val PROOF_SYSTEM_FIELD_NUMBER = 5
   def of(
     authority: _root_.scala.Predef.String,
     name: _root_.scala.Predef.String,
     description: _root_.scala.Predef.String,
-    vkeyBytes: _root_.com.google.protobuf.ByteString
+    vkeyBytes: _root_.com.google.protobuf.ByteString,
+    proofSystem: xion.zk.v1.ProofSystem
   ): _root_.xion.zk.v1.MsgUpdateVKey = _root_.xion.zk.v1.MsgUpdateVKey(
     authority,
     name,
     description,
-    vkeyBytes
+    vkeyBytes,
+    proofSystem
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[xion.zk.v1.MsgUpdateVKey])
 }

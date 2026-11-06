@@ -3735,7 +3735,7 @@ public final class Tx {
       "4.ibc.lightclients.wasm.v1.MsgMigrateCon" +
       "tractResponse\032\005\200\347\260*\001BBZ@github.com/cosmo" +
       "s/ibc-go/modules/light-clients/08-wasm/v" +
-      "10/typesb\006proto3"
+      "11/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
