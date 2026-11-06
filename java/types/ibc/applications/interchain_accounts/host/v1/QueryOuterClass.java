@@ -1131,7 +1131,7 @@ public final class QueryOuterClass {
       "t\032A.ibc.applications.interchain_accounts" +
       ".host.v1.QueryParamsResponse\"4\202\323\344\223\002.\022,/i" +
       "bc/apps/interchain_accounts/host/v1/para" +
-      "msBMZKgithub.com/cosmos/ibc-go/v10/modul" +
+      "msBMZKgithub.com/cosmos/ibc-go/v11/modul" +
       "es/apps/27-interchain-accounts/host/type" +
       "sb\006proto3"
     };

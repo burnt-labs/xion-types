@@ -191,6 +191,42 @@ public object ParamsKt {
     public fun clearMinCommissionRate() {
       _builder.clearMinCommissionRate()
     }
+
+    /**
+     * ```
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * ```
+     *
+     * `.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     */
+    public var keyRotationFee: cosmos.base.v1beta1.CoinOuterClass.Coin
+      @JvmName("getKeyRotationFee")
+      get() = _builder.getKeyRotationFee()
+      @JvmName("setKeyRotationFee")
+      set(value) {
+        _builder.setKeyRotationFee(value)
+      }
+    /**
+     * ```
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * ```
+     *
+     * `.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     */
+    public fun clearKeyRotationFee() {
+      _builder.clearKeyRotationFee()
+    }
+    /**
+     * ```
+     * key_rotation_fee is the fee charged when rotating a validator's consensus key.
+     * ```
+     *
+     * `.cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @return Whether the keyRotationFee field is set.
+     */
+    public fun hasKeyRotationFee(): kotlin.Boolean {
+      return _builder.hasKeyRotationFee()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -199,4 +235,7 @@ public inline fun cosmos.staking.v1beta1.Staking.Params.copy(block: cosmos.staki
 
 public val cosmos.staking.v1beta1.Staking.ParamsOrBuilder.unbondingTimeOrNull: com.google.protobuf.Duration?
   get() = if (hasUnbondingTime()) getUnbondingTime() else null
+
+public val cosmos.staking.v1beta1.Staking.ParamsOrBuilder.keyRotationFeeOrNull: cosmos.base.v1beta1.CoinOuterClass.Coin?
+  get() = if (hasKeyRotationFee()) getKeyRotationFee() else null
 

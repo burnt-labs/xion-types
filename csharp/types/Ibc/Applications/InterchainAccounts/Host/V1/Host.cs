@@ -30,7 +30,7 @@ namespace Ibc.Applications.InterchainAccounts.Host.V1 {
             "Ugtob3N0RW5hYmxlZBIlCg5hbGxvd19tZXNzYWdlcxgCIAMoCVINYWxsb3dN",
             "ZXNzYWdlcyI2CgxRdWVyeVJlcXVlc3QSEgoEcGF0aBgBIAEoCVIEcGF0aBIS",
             "CgRkYXRhGAIgASgMUgRkYXRhQk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1n",
-            "by92MTAvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNjb3VudHMvaG9z",
+            "by92MTEvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNjb3VudHMvaG9z",
             "dC90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },

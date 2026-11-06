@@ -2421,7 +2421,7 @@ public final class QueryOuterClass {
       ".applications.interchain_accounts.contro" +
       "ller.v1.QueryParamsResponse\":\202\323\344\223\0024\0222/ib" +
       "c/apps/interchain_accounts/controller/v1" +
-      "/paramsBSZQgithub.com/cosmos/ibc-go/v10/" +
+      "/paramsBSZQgithub.com/cosmos/ibc-go/v11/" +
       "modules/apps/27-interchain-accounts/cont" +
       "roller/typesb\006proto3"
     };

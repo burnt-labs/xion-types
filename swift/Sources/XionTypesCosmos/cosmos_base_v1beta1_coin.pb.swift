@@ -40,7 +40,7 @@ struct Cosmos_Base_V1beta1_Coin: Sendable {
 
 /// DecCoin defines a token with a denomination and a decimal amount.
 ///
-/// NOTE: The amount field is an Dec which implements the custom method
+/// NOTE: The amount field is a Dec which implements the custom method
 /// signatures required by gogoproto.
 struct Cosmos_Base_V1beta1_DecCoin: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the

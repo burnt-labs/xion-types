@@ -32,6 +32,10 @@ public object EventAccountRegisteredKt {
     internal fun _build(): abstractaccount.v1.Events.EventAccountRegistered = _builder.build()
 
     /**
+     * ```
+     * creator is the address that requested the account registration.
+     * ```
+     *
      * `string creator = 1 [json_name = "creator"];`
      */
     public var creator: kotlin.String
@@ -42,6 +46,10 @@ public object EventAccountRegisteredKt {
         _builder.setCreator(value)
       }
     /**
+     * ```
+     * creator is the address that requested the account registration.
+     * ```
+     *
      * `string creator = 1 [json_name = "creator"];`
      */
     public fun clearCreator() {
@@ -49,6 +57,10 @@ public object EventAccountRegisteredKt {
     }
 
     /**
+     * ```
+     * CodeID is the caller-selected implementation active after registration.
+     * ```
+     *
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public var codeId: kotlin.Long
@@ -59,6 +71,10 @@ public object EventAccountRegisteredKt {
         _builder.setCodeId(value)
       }
     /**
+     * ```
+     * CodeID is the caller-selected implementation active after registration.
+     * ```
+     *
      * `uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];`
      */
     public fun clearCodeId() {
@@ -66,6 +82,10 @@ public object EventAccountRegisteredKt {
     }
 
     /**
+     * ```
+     * contract_addr is the address of the newly instantiated account contract.
+     * ```
+     *
      * `string contract_addr = 3 [json_name = "contractAddr"];`
      */
     public var contractAddr: kotlin.String
@@ -76,6 +96,10 @@ public object EventAccountRegisteredKt {
         _builder.setContractAddr(value)
       }
     /**
+     * ```
+     * contract_addr is the address of the newly instantiated account contract.
+     * ```
+     *
      * `string contract_addr = 3 [json_name = "contractAddr"];`
      */
     public fun clearContractAddr() {
@@ -83,6 +107,10 @@ public object EventAccountRegisteredKt {
     }
 
     /**
+     * ```
+     * account_number is the account number assigned to the new account.
+     * ```
+     *
      * `uint64 account_number = 4 [json_name = "accountNumber"];`
      */
     public var accountNumber: kotlin.Long
@@ -93,10 +121,41 @@ public object EventAccountRegisteredKt {
         _builder.setAccountNumber(value)
       }
     /**
+     * ```
+     * account_number is the account number assigned to the new account.
+     * ```
+     *
      * `uint64 account_number = 4 [json_name = "accountNumber"];`
      */
     public fun clearAccountNumber() {
       _builder.clearAccountNumber()
+    }
+
+    /**
+     * ```
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     * ```
+     *
+     * `bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];`
+     */
+    public var addressDerivationHash: com.google.protobuf.ByteString
+      @JvmName("getAddressDerivationHash")
+      get() = _builder.getAddressDerivationHash()
+      @JvmName("setAddressDerivationHash")
+      set(value) {
+        _builder.setAddressDerivationHash(value)
+      }
+    /**
+     * ```
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     * ```
+     *
+     * `bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];`
+     */
+    public fun clearAddressDerivationHash() {
+      _builder.clearAddressDerivationHash()
     }
   }
 }

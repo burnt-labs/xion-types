@@ -96,6 +96,17 @@ import * as _452 from "./lightclients/wasm/v1/tx.rpc.msg";
 import * as _483 from "./lcd";
 import * as _484 from "./rpc.query";
 import * as _485 from "./rpc.tx";
+import * as _486 from "./lightclients/attestations/v1/attestations";
+import * as _487 from "./applications/gmp/v1/account";
+import * as _488 from "./applications/gmp/v1/genesis";
+import * as _489 from "./applications/gmp/v1/tx";
+import * as _490 from "./applications/gmp/v1/packet";
+import * as _491 from "./applications/gmp/v1/query";
+import * as _492 from "./applications/packet_forward_middleware/v1/genesis";
+import * as _493 from "./applications/rate_limiting/v1/genesis";
+import * as _494 from "./applications/rate_limiting/v1/tx";
+import * as _495 from "./applications/rate_limiting/v1/query";
+import * as _496 from "./applications/rate_limiting/v1/rate_limiting";
 export namespace ibc {
   export namespace applications {
     export namespace interchain_accounts {
@@ -149,6 +160,28 @@ export namespace ibc {
         ..._428,
         ..._437,
         ..._446
+      };
+    }
+    export namespace gmp {
+      export const v1 = {
+        ..._487,
+        ..._488,
+        ..._489,
+        ..._490,
+        ..._491
+      };
+    }
+    export namespace packet_forward_middleware {
+      export const v1 = {
+        ..._492
+      };
+    }
+    export namespace rate_limiting {
+      export const v1 = {
+        ..._493,
+        ..._494,
+        ..._495,
+        ..._496
       };
     }
   }
@@ -254,6 +287,11 @@ export namespace ibc {
         ..._434,
         ..._443,
         ..._452
+      };
+    }
+    export namespace attestations {
+      export const v1 = {
+        ..._486
       };
     }
   }

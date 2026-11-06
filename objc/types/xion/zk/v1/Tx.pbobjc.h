@@ -29,6 +29,7 @@
 CF_EXTERN_C_BEGIN
 
 @class Params;
+GPB_ENUM_FWD_DECLARE(ProofSystem);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -54,6 +55,7 @@ typedef GPB_ENUM(MsgAddVKey_FieldNumber) {
   MsgAddVKey_FieldNumber_Name = 2,
   MsgAddVKey_FieldNumber_Description_p = 3,
   MsgAddVKey_FieldNumber_VkeyBytes = 4,
+  MsgAddVKey_FieldNumber_ProofSystem = 5,
 };
 
 /**
@@ -70,10 +72,28 @@ GPB_FINAL @interface MsgAddVKey : GPBMessage
 /** description provides context about this verification key */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *description_p;
 
-/** vkey_json is the JSON representation of the verification key */
+/**
+ * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+ * proof_system).
+ **/
 @property(nonatomic, readwrite, copy, null_resettable) NSData *vkeyBytes;
 
+/** proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK. */
+@property(nonatomic, readwrite) enum ProofSystem proofSystem;
+
 @end
+
+/**
+ * Fetches the raw value of a @c MsgAddVKey's @c proofSystem property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t MsgAddVKey_ProofSystem_RawValue(MsgAddVKey *message);
+/**
+ * Sets the raw value of an @c MsgAddVKey's @c proofSystem property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetMsgAddVKey_ProofSystem_RawValue(MsgAddVKey *message, int32_t value);
 
 #pragma mark - MsgAddVKeyResponse
 
@@ -98,6 +118,7 @@ typedef GPB_ENUM(MsgUpdateVKey_FieldNumber) {
   MsgUpdateVKey_FieldNumber_Name = 2,
   MsgUpdateVKey_FieldNumber_Description_p = 3,
   MsgUpdateVKey_FieldNumber_VkeyBytes = 4,
+  MsgUpdateVKey_FieldNumber_ProofSystem = 5,
 };
 
 /**
@@ -114,10 +135,28 @@ GPB_FINAL @interface MsgUpdateVKey : GPBMessage
 /** description provides updated context */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *description_p;
 
-/** vkey_json is the new JSON representation of the verification key */
+/**
+ * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+ * per proof_system).
+ **/
 @property(nonatomic, readwrite, copy, null_resettable) NSData *vkeyBytes;
 
+/** proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK. */
+@property(nonatomic, readwrite) enum ProofSystem proofSystem;
+
 @end
+
+/**
+ * Fetches the raw value of a @c MsgUpdateVKey's @c proofSystem property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t MsgUpdateVKey_ProofSystem_RawValue(MsgUpdateVKey *message);
+/**
+ * Sets the raw value of an @c MsgUpdateVKey's @c proofSystem property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetMsgUpdateVKey_ProofSystem_RawValue(MsgUpdateVKey *message, int32_t value);
 
 #pragma mark - MsgUpdateVKeyResponse
 

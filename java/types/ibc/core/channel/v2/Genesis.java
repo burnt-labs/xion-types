@@ -3818,7 +3818,7 @@ public final class Genesis {
       "\030\003 \001(\014R\004data:\004\210\240\037\000\"I\n\016PacketSequence\022\033\n\t" +
       "client_id\030\001 \001(\tR\010clientId\022\032\n\010sequence\030\002 " +
       "\001(\004R\010sequenceB?Z=github.com/cosmos/ibc-g" +
-      "o/v10/modules/core/04-channel/v2/typesb\006" +
+      "o/v11/modules/core/04-channel/v2/typesb\006" +
       "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

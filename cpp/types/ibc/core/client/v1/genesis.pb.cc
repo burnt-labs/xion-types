@@ -175,7 +175,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fclient_2fv1_2fgenesis_2eproto[
     "nesisMetadata\022\033\n\tclient_id\030\001 \001(\tR\010client"
     "Id\022R\n\017client_metadata\030\002 \003(\0132#.ibc.core.c"
     "lient.v1.GenesisMetadataB\004\310\336\037\000R\016clientMe"
-    "tadataB;Z9github.com/cosmos/ibc-go/v10/m"
+    "tadataB;Z9github.com/cosmos/ibc-go/v11/m"
     "odules/core/02-client/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fclient_2fv1_2fgenesis_2eproto_deps[2] =

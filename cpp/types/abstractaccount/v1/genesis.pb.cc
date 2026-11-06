@@ -27,6 +27,7 @@ PROTOBUF_CONSTEXPR GenesisState::GenesisState(::_pbi::ConstantInitialized)
     : _impl_{
       /*decltype(_impl_._has_bits_)*/ {},
       /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.account_addresses_)*/ {},
       /*decltype(_impl_.params_)*/ nullptr,
       /*decltype(_impl_.next_account_id_)*/ ::uint64_t{0u},
     } {}
@@ -40,9 +41,36 @@ struct GenesisStateDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GenesisStateDefaultTypeInternal _GenesisState_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR AccountAddress::AccountAddress(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.sender_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.salt_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.address_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct AccountAddressDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AccountAddressDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AccountAddressDefaultTypeInternal() {}
+  union {
+    AccountAddress _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AccountAddressDefaultTypeInternal _AccountAddress_default_instance_;
 }  // namespace v1
 }  // namespace abstractaccount
-static ::_pb::Metadata file_level_metadata_abstractaccount_2fv1_2fgenesis_2eproto[1];
+static ::_pb::Metadata file_level_metadata_abstractaccount_2fv1_2fgenesis_2eproto[2];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_abstractaccount_2fv1_2fgenesis_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -59,26 +87,45 @@ const ::uint32_t TableStruct_abstractaccount_2fv1_2fgenesis_2eproto::offsets[] P
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::GenesisState, _impl_.params_),
     PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::GenesisState, _impl_.next_account_id_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::GenesisState, _impl_.account_addresses_),
     0,
     ~0u,
+    ~0u,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::AccountAddress, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::AccountAddress, _impl_.sender_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::AccountAddress, _impl_.salt_),
+    PROTOBUF_FIELD_OFFSET(::abstractaccount::v1::AccountAddress, _impl_.address_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 10, -1, sizeof(::abstractaccount::v1::GenesisState)},
+        {0, 11, -1, sizeof(::abstractaccount::v1::GenesisState)},
+        {14, -1, -1, sizeof(::abstractaccount::v1::AccountAddress)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::abstractaccount::v1::_GenesisState_default_instance_._instance,
+    &::abstractaccount::v1::_AccountAddress_default_instance_._instance,
 };
 const char descriptor_table_protodef_abstractaccount_2fv1_2fgenesis_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n abstractaccount/v1/genesis.proto\022\022abst"
     "ractaccount.v1\032\037abstractaccount/v1/param"
-    "s.proto\"j\n\014GenesisState\0222\n\006params\030\001 \001(\0132"
-    "\032.abstractaccount.v1.ParamsR\006params\022&\n\017n"
-    "ext_account_id\030\002 \001(\004R\rnextAccountIdB@Z>g"
-    "ithub.com/burnt-labs/abstract-account/x/"
-    "abstractaccount/typesb\006proto3"
+    "s.proto\"\273\001\n\014GenesisState\0222\n\006params\030\001 \001(\013"
+    "2\032.abstractaccount.v1.ParamsR\006params\022&\n\017"
+    "next_account_id\030\002 \001(\004R\rnextAccountId\022O\n\021"
+    "account_addresses\030\003 \003(\0132\".abstractaccoun"
+    "t.v1.AccountAddressR\020accountAddresses\"V\n"
+    "\016AccountAddress\022\026\n\006sender\030\001 \001(\tR\006sender\022"
+    "\022\n\004salt\030\002 \001(\014R\004salt\022\030\n\007address\030\003 \001(\tR\007ad"
+    "dressB4Z2github.com/burnt-labs/xion/x/ab"
+    "stractaccount/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_deps[1] =
     {
@@ -88,13 +135,13 @@ static ::absl::once_flag descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto
 const ::_pbi::DescriptorTable descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto = {
     false,
     false,
-    269,
+    427,
     descriptor_table_protodef_abstractaccount_2fv1_2fgenesis_2eproto,
     "abstractaccount/v1/genesis.proto",
     &descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_once,
     descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_deps,
     1,
-    1,
+    2,
     schemas,
     file_default_instances,
     TableStruct_abstractaccount_2fv1_2fgenesis_2eproto::offsets,
@@ -153,6 +200,7 @@ GenesisState::GenesisState(const GenesisState& from) : ::google::protobuf::Messa
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_},
       /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.account_addresses_){from._impl_.account_addresses_},
       decltype(_impl_.params_){nullptr},
       decltype(_impl_.next_account_id_){},
   };
@@ -170,6 +218,7 @@ inline void GenesisState::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){},
       /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.account_addresses_){arena},
       decltype(_impl_.params_){nullptr},
       decltype(_impl_.next_account_id_){::uint64_t{0u}},
   };
@@ -181,6 +230,7 @@ GenesisState::~GenesisState() {
 }
 inline void GenesisState::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.account_addresses_.~RepeatedPtrField();
   if (this != internal_default_instance()) delete _impl_.params_;
 }
 void GenesisState::SetCachedSize(int size) const {
@@ -193,6 +243,7 @@ PROTOBUF_NOINLINE void GenesisState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _internal_mutable_account_addresses()->Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.params_ != nullptr);
@@ -211,26 +262,30 @@ const char* GenesisState::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> GenesisState::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 2, 0, 2> GenesisState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GenesisState, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
+    3,  // num_field_entries
+    2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_GenesisState_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // uint64 next_account_id = 2 [json_name = "nextAccountId"];
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GenesisState, _impl_.next_account_id_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.next_account_id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .abstractaccount.v1.Params params = 1 [json_name = "params"];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.params_)}},
+    // uint64 next_account_id = 2 [json_name = "nextAccountId"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GenesisState, _impl_.next_account_id_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.next_account_id_)}},
+    // repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];
+    {::_pbi::TcParser::FastMtR1,
+     {26, 63, 1, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.account_addresses_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -240,8 +295,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> GenesisState::_table_ = {
     // uint64 next_account_id = 2 [json_name = "nextAccountId"];
     {PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.next_account_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];
+    {PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.account_addresses_), -1, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::abstractaccount::v1::Params>()},
+    {::_pbi::TcParser::GetTable<::abstractaccount::v1::AccountAddress>()},
   }}, {{
   }},
 };
@@ -268,6 +327,14 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> GenesisState::_table_ = {
         2, this->_internal_next_account_id(), target);
   }
 
+  // repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_account_addresses_size()); i < n; i++) {
+    const auto& repfield = this->_internal_account_addresses().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -285,6 +352,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> GenesisState::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];
+  total_size += 1UL * this->_internal_account_addresses_size();
+  for (const auto& msg : this->_internal_account_addresses()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
   // .abstractaccount.v1.Params params = 1 [json_name = "params"];
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
@@ -317,6 +390,7 @@ void GenesisState::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_account_addresses()->MergeFrom(from._internal_account_addresses());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_params()->::abstractaccount::v1::Params::MergeFrom(
         from._internal_params());
@@ -342,6 +416,7 @@ void GenesisState::InternalSwap(GenesisState* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.account_addresses_.InternalSwap(&other->_impl_.account_addresses_);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.next_account_id_)
       + sizeof(GenesisState::_impl_.next_account_id_)
@@ -354,6 +429,277 @@ void GenesisState::InternalSwap(GenesisState* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_getter, &descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_once,
       file_level_metadata_abstractaccount_2fv1_2fgenesis_2eproto[0]);
+}
+// ===================================================================
+
+class AccountAddress::_Internal {
+ public:
+};
+
+AccountAddress::AccountAddress(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:abstractaccount.v1.AccountAddress)
+}
+AccountAddress::AccountAddress(const AccountAddress& from) : ::google::protobuf::Message() {
+  AccountAddress* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sender_){},
+      decltype(_impl_.salt_){},
+      decltype(_impl_.address_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.sender_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sender_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sender().empty()) {
+    _this->_impl_.sender_.Set(from._internal_sender(), _this->GetArenaForAllocation());
+  }
+  _impl_.salt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.salt_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_salt().empty()) {
+    _this->_impl_.salt_.Set(from._internal_salt(), _this->GetArenaForAllocation());
+  }
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_address().empty()) {
+    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:abstractaccount.v1.AccountAddress)
+}
+inline void AccountAddress::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sender_){},
+      decltype(_impl_.salt_){},
+      decltype(_impl_.address_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.sender_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.sender_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.salt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.salt_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+AccountAddress::~AccountAddress() {
+  // @@protoc_insertion_point(destructor:abstractaccount.v1.AccountAddress)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void AccountAddress::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.sender_.Destroy();
+  _impl_.salt_.Destroy();
+  _impl_.address_.Destroy();
+}
+void AccountAddress::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void AccountAddress::Clear() {
+// @@protoc_insertion_point(message_clear_start:abstractaccount.v1.AccountAddress)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.sender_.ClearToEmpty();
+  _impl_.salt_.ClearToEmpty();
+  _impl_.address_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* AccountAddress::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 55, 2> AccountAddress::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_AccountAddress_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string sender = 1 [json_name = "sender"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(AccountAddress, _impl_.sender_)}},
+    // bytes salt = 2 [json_name = "salt"];
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AccountAddress, _impl_.salt_)}},
+    // string address = 3 [json_name = "address"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(AccountAddress, _impl_.address_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string sender = 1 [json_name = "sender"];
+    {PROTOBUF_FIELD_OFFSET(AccountAddress, _impl_.sender_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes salt = 2 [json_name = "salt"];
+    {PROTOBUF_FIELD_OFFSET(AccountAddress, _impl_.salt_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // string address = 3 [json_name = "address"];
+    {PROTOBUF_FIELD_OFFSET(AccountAddress, _impl_.address_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\41\6\0\7\0\0\0\0"
+    "abstractaccount.v1.AccountAddress"
+    "sender"
+    "address"
+  }},
+};
+
+::uint8_t* AccountAddress::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:abstractaccount.v1.AccountAddress)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string sender = 1 [json_name = "sender"];
+  if (!this->_internal_sender().empty()) {
+    const std::string& _s = this->_internal_sender();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "abstractaccount.v1.AccountAddress.sender");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // bytes salt = 2 [json_name = "salt"];
+  if (!this->_internal_salt().empty()) {
+    const std::string& _s = this->_internal_salt();
+    target = stream->WriteBytesMaybeAliased(2, _s, target);
+  }
+
+  // string address = 3 [json_name = "address"];
+  if (!this->_internal_address().empty()) {
+    const std::string& _s = this->_internal_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "abstractaccount.v1.AccountAddress.address");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:abstractaccount.v1.AccountAddress)
+  return target;
+}
+
+::size_t AccountAddress::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:abstractaccount.v1.AccountAddress)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string sender = 1 [json_name = "sender"];
+  if (!this->_internal_sender().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_sender());
+  }
+
+  // bytes salt = 2 [json_name = "salt"];
+  if (!this->_internal_salt().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_salt());
+  }
+
+  // string address = 3 [json_name = "address"];
+  if (!this->_internal_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_address());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData AccountAddress::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    AccountAddress::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*AccountAddress::GetClassData() const { return &_class_data_; }
+
+
+void AccountAddress::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<AccountAddress*>(&to_msg);
+  auto& from = static_cast<const AccountAddress&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:abstractaccount.v1.AccountAddress)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_sender().empty()) {
+    _this->_internal_set_sender(from._internal_sender());
+  }
+  if (!from._internal_salt().empty()) {
+    _this->_internal_set_salt(from._internal_salt());
+  }
+  if (!from._internal_address().empty()) {
+    _this->_internal_set_address(from._internal_address());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AccountAddress::CopyFrom(const AccountAddress& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:abstractaccount.v1.AccountAddress)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool AccountAddress::IsInitialized() const {
+  return true;
+}
+
+void AccountAddress::InternalSwap(AccountAddress* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sender_, lhs_arena,
+                                       &other->_impl_.sender_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.salt_, lhs_arena,
+                                       &other->_impl_.salt_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
+                                       &other->_impl_.address_, rhs_arena);
+}
+
+::google::protobuf::Metadata AccountAddress::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_getter, &descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto_once,
+      file_level_metadata_abstractaccount_2fv1_2fgenesis_2eproto[1]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

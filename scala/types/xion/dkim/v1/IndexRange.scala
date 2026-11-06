@@ -5,7 +5,13 @@
 
 package xion.dkim.v1
 
-/** IndexRange defines a range of indices [start, end) in the public inputs array.
+/** IndexRange defines a range of indices [start, end) in the public inputs
+  * array.
+  *
+  * @param start
+  *   start is the inclusive lower bound of the index range.
+  * @param end
+  *   end is the exclusive upper bound of the index range.
   */
 @SerialVersionUID(0L)
 final case class IndexRange(

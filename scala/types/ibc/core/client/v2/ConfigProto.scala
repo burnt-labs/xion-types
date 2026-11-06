@@ -15,7 +15,7 @@ object ConfigProto extends _root_.scalapb.GeneratedFileObject {
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """Ch9pYmMvY29yZS9jbGllbnQvdjIvY29uZmlnLnByb3RvEhJpYmMuY29yZS5jbGllbnQudjIiSQoGQ29uZmlnEj8KEGFsbG93Z
   WRfcmVsYXllcnMYASADKAlCFOI/ERIPYWxsb3dlZFJlbGF5ZXJzUg9hbGxvd2VkUmVsYXllcnNCPlo8Z2l0aHViLmNvbS9jb3Ntb
-  3MvaWJjLWdvL3YxMC9tb2R1bGVzL2NvcmUvMDItY2xpZW50L3YyL3R5cGVzYgZwcm90bzM="""
+  3MvaWJjLWdvL3YxMS9tb2R1bGVzL2NvcmUvMDItY2xpZW50L3YyL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

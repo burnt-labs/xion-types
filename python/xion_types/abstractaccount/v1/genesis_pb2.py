@@ -14,14 +14,16 @@ _sym_db = _symbol_database.Default()
 from xion_types.abstractaccount.v1 import params_pb2 as abstractaccount_dot_v1_dot_params__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n abstractaccount/v1/genesis.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\"j\n\x0cGenesisState\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params\x12&\n\x0fnext_account_id\x18\x02 \x01(\x04R\rnextAccountIdB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n abstractaccount/v1/genesis.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\"\xbb\x01\n\x0cGenesisState\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params\x12&\n\x0fnext_account_id\x18\x02 \x01(\x04R\rnextAccountId\x12O\n\x11\x61\x63\x63ount_addresses\x18\x03 \x03(\x0b\x32\".abstractaccount.v1.AccountAddressR\x10\x61\x63\x63ountAddresses\"V\n\x0e\x41\x63\x63ountAddress\x12\x16\n\x06sender\x18\x01 \x01(\tR\x06sender\x12\x12\n\x04salt\x18\x02 \x01(\x0cR\x04salt\x12\x18\n\x07\x61\x64\x64ress\x18\x03 \x01(\tR\x07\x61\x64\x64ressB4Z2github.com/burnt-labs/xion/x/abstractaccount/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'abstractaccount.v1.genesis_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z>github.com/burnt-labs/abstract-account/x/abstractaccount/types'
-  _globals['_GENESISSTATE']._serialized_start=89
-  _globals['_GENESISSTATE']._serialized_end=195
+  _globals['DESCRIPTOR']._serialized_options = b'Z2github.com/burnt-labs/xion/x/abstractaccount/types'
+  _globals['_GENESISSTATE']._serialized_start=90
+  _globals['_GENESISSTATE']._serialized_end=277
+  _globals['_ACCOUNTADDRESS']._serialized_start=279
+  _globals['_ACCOUNTADDRESS']._serialized_end=365
 # @@protoc_insertion_point(module_scope)

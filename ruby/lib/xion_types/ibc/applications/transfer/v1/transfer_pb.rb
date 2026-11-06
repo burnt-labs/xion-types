@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n+ibc/applications/transfer/v1/transfer.proto\x12\x1cibc.applications.transfer.v1\"T\n\x06Params\x12!\n\x0csend_enabled\x18\x01 \x01(\x08R\x0bsendEnabled\x12\'\n\x0freceive_enabled\x18\x02 \x01(\x08R\x0ereceiveEnabledB:Z8github.com/cosmos/ibc-go/v10/modules/apps/transfer/typesb\x06proto3"
+descriptor_data = "\n+ibc/applications/transfer/v1/transfer.proto\x12\x1cibc.applications.transfer.v1\"T\n\x06Params\x12!\n\x0csend_enabled\x18\x01 \x01(\x08R\x0bsendEnabled\x12\'\n\x0freceive_enabled\x18\x02 \x01(\x08R\x0ereceiveEnabledB:Z8github.com/cosmos/ibc-go/v11/modules/apps/transfer/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

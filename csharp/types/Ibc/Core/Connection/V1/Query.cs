@@ -93,7 +93,7 @@ namespace Ibc.Core.Connection.V1 {
             "dGlvbi52MS5RdWVyeUNvbm5lY3Rpb25QYXJhbXNSZXF1ZXN0GjUuaWJjLmNv",
             "cmUuY29ubmVjdGlvbi52MS5RdWVyeUNvbm5lY3Rpb25QYXJhbXNSZXNwb25z",
             "ZSImgtPkkwIgEh4vaWJjL2NvcmUvY29ubmVjdGlvbi92MS9wYXJhbXNCP1o9",
-            "Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1bGVzL2NvcmUvMDMt",
+            "Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9tb2R1bGVzL2NvcmUvMDMt",
             "Y29ubmVjdGlvbi90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Base.Query.V1Beta1.PaginationReflection.Descriptor, global::Ibc.Core.Client.V1.ClientReflection.Descriptor, global::Ibc.Core.Connection.V1.ConnectionReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },

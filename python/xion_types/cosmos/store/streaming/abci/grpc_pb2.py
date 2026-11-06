@@ -15,14 +15,14 @@ from xion_types.tendermint.abci import types_pb2 as tendermint_dot_abci_dot_type
 from xion_types.cosmos.store.v1beta1 import listening_pb2 as cosmos_dot_store_dot_v1beta1_dot_listening__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&cosmos/store/streaming/abci/grpc.proto\x12\x1b\x63osmos.store.streaming.abci\x1a\x1btendermint/abci/types.proto\x1a$cosmos/store/v1beta1/listening.proto\"\x8f\x01\n\x1aListenFinalizeBlockRequest\x12\x37\n\x03req\x18\x01 \x01(\x0b\x32%.tendermint.abci.RequestFinalizeBlockR\x03req\x12\x38\n\x03res\x18\x02 \x01(\x0b\x32&.tendermint.abci.ResponseFinalizeBlockR\x03res\"\x1d\n\x1bListenFinalizeBlockResponse\"\xad\x01\n\x13ListenCommitRequest\x12!\n\x0c\x62lock_height\x18\x01 \x01(\x03R\x0b\x62lockHeight\x12\x31\n\x03res\x18\x02 \x01(\x0b\x32\x1f.tendermint.abci.ResponseCommitR\x03res\x12@\n\nchange_set\x18\x03 \x03(\x0b\x32!.cosmos.store.v1beta1.StoreKVPairR\tchangeSet\"\x16\n\x14ListenCommitResponse2\x95\x02\n\x13\x41\x42\x43IListenerService\x12\x88\x01\n\x13ListenFinalizeBlock\x12\x37.cosmos.store.streaming.abci.ListenFinalizeBlockRequest\x1a\x38.cosmos.store.streaming.abci.ListenFinalizeBlockResponse\x12s\n\x0cListenCommit\x12\x30.cosmos.store.streaming.abci.ListenCommitRequest\x1a\x31.cosmos.store.streaming.abci.ListenCommitResponseB#Z!cosmossdk.io/store/streaming/abcib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&cosmos/store/streaming/abci/grpc.proto\x12\x1b\x63osmos.store.streaming.abci\x1a\x1btendermint/abci/types.proto\x1a$cosmos/store/v1beta1/listening.proto\"\x8f\x01\n\x1aListenFinalizeBlockRequest\x12\x37\n\x03req\x18\x01 \x01(\x0b\x32%.tendermint.abci.RequestFinalizeBlockR\x03req\x12\x38\n\x03res\x18\x02 \x01(\x0b\x32&.tendermint.abci.ResponseFinalizeBlockR\x03res\"\x1d\n\x1bListenFinalizeBlockResponse\"\xad\x01\n\x13ListenCommitRequest\x12!\n\x0c\x62lock_height\x18\x01 \x01(\x03R\x0b\x62lockHeight\x12\x31\n\x03res\x18\x02 \x01(\x0b\x32\x1f.tendermint.abci.ResponseCommitR\x03res\x12@\n\nchange_set\x18\x03 \x03(\x0b\x32!.cosmos.store.v1beta1.StoreKVPairR\tchangeSet\"\x16\n\x14ListenCommitResponse2\x95\x02\n\x13\x41\x42\x43IListenerService\x12\x88\x01\n\x13ListenFinalizeBlock\x12\x37.cosmos.store.streaming.abci.ListenFinalizeBlockRequest\x1a\x38.cosmos.store.streaming.abci.ListenFinalizeBlockResponse\x12s\n\x0cListenCommit\x12\x30.cosmos.store.streaming.abci.ListenCommitRequest\x1a\x31.cosmos.store.streaming.abci.ListenCommitResponseB6Z4github.com/cosmos/cosmos-sdk/store/v2/streaming/abcib\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'cosmos.store.streaming.abci.grpc_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z!cosmossdk.io/store/streaming/abci'
+  _globals['DESCRIPTOR']._serialized_options = b'Z4github.com/cosmos/cosmos-sdk/store/v2/streaming/abci'
   _globals['_LISTENFINALIZEBLOCKREQUEST']._serialized_start=139
   _globals['_LISTENFINALIZEBLOCKREQUEST']._serialized_end=282
   _globals['_LISTENFINALIZEBLOCKRESPONSE']._serialized_start=284

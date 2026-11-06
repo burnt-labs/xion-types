@@ -47,13 +47,6 @@ typedef enum _Cosmos__Tx__Signing__V1beta1__SignMode {
    */
   COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_DIRECT = 1,
   /*
-   * SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-   * human-readable textual representation on top of the binary representation
-   * from SIGN_MODE_DIRECT.
-   * Since: cosmos-sdk 0.50
-   */
-  COSMOS__TX__SIGNING__V1BETA1__SIGN_MODE__SIGN_MODE_TEXTUAL = 2,
-  /*
    * SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
    * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
    * require signers signing over other signers' `signer_info`.

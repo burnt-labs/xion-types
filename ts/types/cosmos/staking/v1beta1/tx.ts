@@ -141,6 +141,19 @@ export interface MsgUpdateParams {
 export interface MsgUpdateParamsResponse {
 }
 
+/** MsgRotateConsPubKey is the Msg/RotateConsPubKey request type. */
+export interface MsgRotateConsPubKey {
+  validatorAddress: string;
+  newPubkey?: Any | undefined;
+}
+
+/**
+ * MsgRotateConsPubKeyResponse defines the response structure for executing a
+ * MsgRotateConsPubKey message.
+ */
+export interface MsgRotateConsPubKeyResponse {
+}
+
 function createBaseMsgCreateValidator(): MsgCreateValidator {
   return {
     description: undefined,
@@ -1467,6 +1480,153 @@ export const MsgUpdateParamsResponse: MessageFns<MsgUpdateParamsResponse> = {
   },
 };
 
+function createBaseMsgRotateConsPubKey(): MsgRotateConsPubKey {
+  return { validatorAddress: "", newPubkey: undefined };
+}
+
+export const MsgRotateConsPubKey: MessageFns<MsgRotateConsPubKey> = {
+  encode(message: MsgRotateConsPubKey, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
+    }
+    if (message.newPubkey !== undefined) {
+      Any.encode(message.newPubkey, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRotateConsPubKey {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseMsgRotateConsPubKey();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.validatorAddress = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.newPubkey = Any.decode(reader, reader.uint32());
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): MsgRotateConsPubKey {
+    return {
+      validatorAddress: isSet(object.validatorAddress)
+        ? globalThis.String(object.validatorAddress)
+        : isSet(object.validator_address)
+        ? globalThis.String(object.validator_address)
+        : "",
+      newPubkey: isSet(object.newPubkey)
+        ? Any.fromJSON(object.newPubkey)
+        : isSet(object.new_pubkey)
+        ? Any.fromJSON(object.new_pubkey)
+        : undefined,
+    };
+  },
+
+  toJSON(message: MsgRotateConsPubKey): unknown {
+    const obj: any = {};
+    if (message.validatorAddress !== "") {
+      obj.validatorAddress = message.validatorAddress;
+    }
+    if (message.newPubkey !== undefined) {
+      obj.newPubkey = Any.toJSON(message.newPubkey);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<MsgRotateConsPubKey>, I>>(base?: I): MsgRotateConsPubKey {
+    return MsgRotateConsPubKey.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<MsgRotateConsPubKey>, I>>(object: I): MsgRotateConsPubKey {
+    const message = createBaseMsgRotateConsPubKey();
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.newPubkey = (object.newPubkey !== undefined && object.newPubkey !== null)
+      ? Any.fromPartial(object.newPubkey)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseMsgRotateConsPubKeyResponse(): MsgRotateConsPubKeyResponse {
+  return {};
+}
+
+export const MsgRotateConsPubKeyResponse: MessageFns<MsgRotateConsPubKeyResponse> = {
+  encode(_: MsgRotateConsPubKeyResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRotateConsPubKeyResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseMsgRotateConsPubKeyResponse();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(_: any): MsgRotateConsPubKeyResponse {
+    return {};
+  },
+
+  toJSON(_: MsgRotateConsPubKeyResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<MsgRotateConsPubKeyResponse>, I>>(base?: I): MsgRotateConsPubKeyResponse {
+    return MsgRotateConsPubKeyResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<MsgRotateConsPubKeyResponse>, I>>(_: I): MsgRotateConsPubKeyResponse {
+    const message = createBaseMsgRotateConsPubKeyResponse();
+    return message;
+  },
+};
+
 /** Msg defines the staking Msg service. */
 export interface Msg {
   /** CreateValidator defines a method for creating a new validator. */
@@ -1507,6 +1667,14 @@ export interface Msg {
    * parameters.
    */
   UpdateParams(request: DeepPartial<MsgUpdateParams>, metadata?: grpc.Metadata): Promise<MsgUpdateParamsResponse>;
+  /**
+   * RotateConsPubKey defines an operation for rotating the consensus keys
+   * of a validator.
+   */
+  RotateConsPubKey(
+    request: DeepPartial<MsgRotateConsPubKey>,
+    metadata?: grpc.Metadata,
+  ): Promise<MsgRotateConsPubKeyResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -1521,6 +1689,7 @@ export class MsgClientImpl implements Msg {
     this.Undelegate = this.Undelegate.bind(this);
     this.CancelUnbondingDelegation = this.CancelUnbondingDelegation.bind(this);
     this.UpdateParams = this.UpdateParams.bind(this);
+    this.RotateConsPubKey = this.RotateConsPubKey.bind(this);
   }
 
   CreateValidator(
@@ -1562,6 +1731,13 @@ export class MsgClientImpl implements Msg {
 
   UpdateParams(request: DeepPartial<MsgUpdateParams>, metadata?: grpc.Metadata): Promise<MsgUpdateParamsResponse> {
     return this.rpc.unary(MsgUpdateParamsDesc, MsgUpdateParams.fromPartial(request), metadata);
+  }
+
+  RotateConsPubKey(
+    request: DeepPartial<MsgRotateConsPubKey>,
+    metadata?: grpc.Metadata,
+  ): Promise<MsgRotateConsPubKeyResponse> {
+    return this.rpc.unary(MsgRotateConsPubKeyDesc, MsgRotateConsPubKey.fromPartial(request), metadata);
   }
 }
 
@@ -1718,6 +1894,29 @@ export const MsgUpdateParamsDesc: UnaryMethodDefinitionish = {
   responseType: {
     deserializeBinary(data: Uint8Array) {
       const value = MsgUpdateParamsResponse.decode(data);
+      return {
+        ...value,
+        toObject() {
+          return value;
+        },
+      };
+    },
+  } as any,
+};
+
+export const MsgRotateConsPubKeyDesc: UnaryMethodDefinitionish = {
+  methodName: "RotateConsPubKey",
+  service: MsgDesc,
+  requestStream: false,
+  responseStream: false,
+  requestType: {
+    serializeBinary() {
+      return MsgRotateConsPubKey.encode(this).finish();
+    },
+  } as any,
+  responseType: {
+    deserializeBinary(data: Uint8Array) {
+      const value = MsgRotateConsPubKeyResponse.decode(data);
       return {
         ...value,
         toObject() {

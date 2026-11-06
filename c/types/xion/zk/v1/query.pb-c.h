@@ -22,6 +22,10 @@ PROTOBUF_C__BEGIN_DECLS
 typedef struct Xion__Zk__V1__SnarkJsProof Xion__Zk__V1__SnarkJsProof;
 typedef struct Xion__Zk__V1__QueryVerifyRequest Xion__Zk__V1__QueryVerifyRequest;
 typedef struct Xion__Zk__V1__ProofVerifyResponse Xion__Zk__V1__ProofVerifyResponse;
+typedef struct Xion__Zk__V1__ProofVerifyUltraHonkResponse Xion__Zk__V1__ProofVerifyUltraHonkResponse;
+typedef struct Xion__Zk__V1__ProofVerifyGnarkResponse Xion__Zk__V1__ProofVerifyGnarkResponse;
+typedef struct Xion__Zk__V1__QueryVerifyUltraHonkRequest Xion__Zk__V1__QueryVerifyUltraHonkRequest;
+typedef struct Xion__Zk__V1__QueryVerifyGnarkRequest Xion__Zk__V1__QueryVerifyGnarkRequest;
 typedef struct Xion__Zk__V1__VKey Xion__Zk__V1__VKey;
 typedef struct Xion__Zk__V1__QueryVKeyRequest Xion__Zk__V1__QueryVKeyRequest;
 typedef struct Xion__Zk__V1__QueryVKeyResponse Xion__Zk__V1__QueryVKeyResponse;
@@ -116,6 +120,129 @@ struct  Xion__Zk__V1__ProofVerifyResponse
 
 
 /*
+ * ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+ * proof verification.
+ */
+struct  Xion__Zk__V1__ProofVerifyUltraHonkResponse
+{
+  ProtobufCMessage base;
+  /*
+   * verified indicates whether the proof verification was successful.
+   */
+  protobuf_c_boolean verified;
+  /*
+   * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+   * were used for this verification.
+   * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+   * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+   * bytes under the same name and ID. A consumer that reviewed specific key
+   * material therefore cannot establish, from `verified` alone, that this
+   * verification used that material. Echoing the digest lets the consumer
+   * compare against a pin it derived offline from the reviewed artifact, in the
+   * same response that reports the verdict.
+   * Always populated on success, so a consumer may treat an absent value as a
+   * server too old to enforce `expected_vkey_sha256` and fail closed.
+   */
+  ProtobufCBinaryData vkey_sha256;
+};
+#define XION__ZK__V1__PROOF_VERIFY_ULTRA_HONK_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__proof_verify_ultra_honk_response__descriptor) \
+, 0, {0,NULL} }
+
+
+/*
+ * ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+ * proof verification.
+ */
+struct  Xion__Zk__V1__ProofVerifyGnarkResponse
+{
+  ProtobufCMessage base;
+  /*
+   * verified indicates whether the proof verification was successful.
+   */
+  protobuf_c_boolean verified;
+};
+#define XION__ZK__V1__PROOF_VERIFY_GNARK_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__proof_verify_gnark_response__descriptor) \
+, 0 }
+
+
+/*
+ * QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+ * The verification key is resolved by vkey_name or vkey_id from the store (must
+ * be ultrahonk type). Proof and public_inputs are raw binary as produced by
+ * Barretenberg (e.g. bb prove).
+ */
+struct  Xion__Zk__V1__QueryVerifyUltraHonkRequest
+{
+  ProtobufCMessage base;
+  /*
+   * proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+   */
+  ProtobufCBinaryData proof;
+  /*
+   * public_inputs is the raw public inputs binary: concatenated 32-byte
+   * big-endian field elements, as produced by Barretenberg (e.g. bb
+   * write_inputs or the same flow that generates the proof).
+   */
+  ProtobufCBinaryData public_inputs;
+  /*
+   * vkey_name is the unique name of the UltraHonk verification key
+   */
+  char *vkey_name;
+  /*
+   * vkey_id is the numeric id of the UltraHonk verification key
+   */
+  uint64_t vkey_id;
+  /*
+   * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+   * verification key's stored bytes, or verification fails with
+   * verified = false. Must be empty or exactly 32 bytes.
+   * This makes the key-identity check atomic with the verdict: the consumer
+   * does not have to read the key back in a second query and hope nothing
+   * changed in between. Empty preserves the prior behaviour exactly, so
+   * existing callers are unaffected.
+   */
+  ProtobufCBinaryData expected_vkey_sha256;
+};
+#define XION__ZK__V1__QUERY_VERIFY_ULTRA_HONK_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__query_verify_ultra_honk_request__descriptor) \
+, {0,NULL}, {0,NULL}, (char *)protobuf_c_empty_string, 0, {0,NULL} }
+
+
+/*
+ * QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+ * The verification key is resolved by vkey_name or vkey_id from the store (must
+ * be groth16_gnark type). Proof and public_inputs are gnark native binary
+ * format.
+ */
+struct  Xion__Zk__V1__QueryVerifyGnarkRequest
+{
+  ProtobufCMessage base;
+  /*
+   * proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+   */
+  ProtobufCBinaryData proof;
+  /*
+   * public_inputs is the raw public inputs binary: concatenated 32-byte
+   * big-endian field elements (fr.Element serialization).
+   */
+  ProtobufCBinaryData public_inputs;
+  /*
+   * vkey_name is the unique name of the gnark verification key
+   */
+  char *vkey_name;
+  /*
+   * vkey_id is the numeric id of the gnark verification key
+   */
+  uint64_t vkey_id;
+};
+#define XION__ZK__V1__QUERY_VERIFY_GNARK_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__query_verify_gnark_request__descriptor) \
+, {0,NULL}, {0,NULL}, (char *)protobuf_c_empty_string, 0 }
+
+
+/*
  * VKey represents a verification key for ZK proof verification.
  */
 struct  Xion__Zk__V1__VKey
@@ -141,10 +268,14 @@ struct  Xion__Zk__V1__VKey
    * authority is the uploader of the verification key.
    */
   char *authority;
+  /*
+   * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+   */
+  Xion__Zk__V1__ProofSystem proof_system;
 };
 #define XION__ZK__V1__VKEY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&xion__zk__v1__vkey__descriptor) \
-, {0,NULL}, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+, {0,NULL}, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, XION__ZK__V1__PROOF_SYSTEM__PROOF_SYSTEM_UNSPECIFIED }
 
 
 /*
@@ -425,6 +556,82 @@ Xion__Zk__V1__ProofVerifyResponse *
 void   xion__zk__v1__proof_verify_response__free_unpacked
                      (Xion__Zk__V1__ProofVerifyResponse *message,
                       ProtobufCAllocator *allocator);
+/* Xion__Zk__V1__ProofVerifyUltraHonkResponse methods */
+void   xion__zk__v1__proof_verify_ultra_honk_response__init
+                     (Xion__Zk__V1__ProofVerifyUltraHonkResponse         *message);
+size_t xion__zk__v1__proof_verify_ultra_honk_response__get_packed_size
+                     (const Xion__Zk__V1__ProofVerifyUltraHonkResponse   *message);
+size_t xion__zk__v1__proof_verify_ultra_honk_response__pack
+                     (const Xion__Zk__V1__ProofVerifyUltraHonkResponse   *message,
+                      uint8_t             *out);
+size_t xion__zk__v1__proof_verify_ultra_honk_response__pack_to_buffer
+                     (const Xion__Zk__V1__ProofVerifyUltraHonkResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Zk__V1__ProofVerifyUltraHonkResponse *
+       xion__zk__v1__proof_verify_ultra_honk_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__zk__v1__proof_verify_ultra_honk_response__free_unpacked
+                     (Xion__Zk__V1__ProofVerifyUltraHonkResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Zk__V1__ProofVerifyGnarkResponse methods */
+void   xion__zk__v1__proof_verify_gnark_response__init
+                     (Xion__Zk__V1__ProofVerifyGnarkResponse         *message);
+size_t xion__zk__v1__proof_verify_gnark_response__get_packed_size
+                     (const Xion__Zk__V1__ProofVerifyGnarkResponse   *message);
+size_t xion__zk__v1__proof_verify_gnark_response__pack
+                     (const Xion__Zk__V1__ProofVerifyGnarkResponse   *message,
+                      uint8_t             *out);
+size_t xion__zk__v1__proof_verify_gnark_response__pack_to_buffer
+                     (const Xion__Zk__V1__ProofVerifyGnarkResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Zk__V1__ProofVerifyGnarkResponse *
+       xion__zk__v1__proof_verify_gnark_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__zk__v1__proof_verify_gnark_response__free_unpacked
+                     (Xion__Zk__V1__ProofVerifyGnarkResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Zk__V1__QueryVerifyUltraHonkRequest methods */
+void   xion__zk__v1__query_verify_ultra_honk_request__init
+                     (Xion__Zk__V1__QueryVerifyUltraHonkRequest         *message);
+size_t xion__zk__v1__query_verify_ultra_honk_request__get_packed_size
+                     (const Xion__Zk__V1__QueryVerifyUltraHonkRequest   *message);
+size_t xion__zk__v1__query_verify_ultra_honk_request__pack
+                     (const Xion__Zk__V1__QueryVerifyUltraHonkRequest   *message,
+                      uint8_t             *out);
+size_t xion__zk__v1__query_verify_ultra_honk_request__pack_to_buffer
+                     (const Xion__Zk__V1__QueryVerifyUltraHonkRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Zk__V1__QueryVerifyUltraHonkRequest *
+       xion__zk__v1__query_verify_ultra_honk_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__zk__v1__query_verify_ultra_honk_request__free_unpacked
+                     (Xion__Zk__V1__QueryVerifyUltraHonkRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Zk__V1__QueryVerifyGnarkRequest methods */
+void   xion__zk__v1__query_verify_gnark_request__init
+                     (Xion__Zk__V1__QueryVerifyGnarkRequest         *message);
+size_t xion__zk__v1__query_verify_gnark_request__get_packed_size
+                     (const Xion__Zk__V1__QueryVerifyGnarkRequest   *message);
+size_t xion__zk__v1__query_verify_gnark_request__pack
+                     (const Xion__Zk__V1__QueryVerifyGnarkRequest   *message,
+                      uint8_t             *out);
+size_t xion__zk__v1__query_verify_gnark_request__pack_to_buffer
+                     (const Xion__Zk__V1__QueryVerifyGnarkRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Zk__V1__QueryVerifyGnarkRequest *
+       xion__zk__v1__query_verify_gnark_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__zk__v1__query_verify_gnark_request__free_unpacked
+                     (Xion__Zk__V1__QueryVerifyGnarkRequest *message,
+                      ProtobufCAllocator *allocator);
 /* Xion__Zk__V1__VKey methods */
 void   xion__zk__v1__vkey__init
                      (Xion__Zk__V1__VKey         *message);
@@ -702,6 +909,18 @@ typedef void (*Xion__Zk__V1__QueryVerifyRequest_Closure)
 typedef void (*Xion__Zk__V1__ProofVerifyResponse_Closure)
                  (const Xion__Zk__V1__ProofVerifyResponse *message,
                   void *closure_data);
+typedef void (*Xion__Zk__V1__ProofVerifyUltraHonkResponse_Closure)
+                 (const Xion__Zk__V1__ProofVerifyUltraHonkResponse *message,
+                  void *closure_data);
+typedef void (*Xion__Zk__V1__ProofVerifyGnarkResponse_Closure)
+                 (const Xion__Zk__V1__ProofVerifyGnarkResponse *message,
+                  void *closure_data);
+typedef void (*Xion__Zk__V1__QueryVerifyUltraHonkRequest_Closure)
+                 (const Xion__Zk__V1__QueryVerifyUltraHonkRequest *message,
+                  void *closure_data);
+typedef void (*Xion__Zk__V1__QueryVerifyGnarkRequest_Closure)
+                 (const Xion__Zk__V1__QueryVerifyGnarkRequest *message,
+                  void *closure_data);
 typedef void (*Xion__Zk__V1__VKey_Closure)
                  (const Xion__Zk__V1__VKey *message,
                   void *closure_data);
@@ -755,6 +974,14 @@ struct Xion__Zk__V1__Query_Service
                        const Xion__Zk__V1__QueryVerifyRequest *input,
                        Xion__Zk__V1__ProofVerifyResponse_Closure closure,
                        void *closure_data);
+  void (*proof_verify_ultra_honk)(Xion__Zk__V1__Query_Service *service,
+                                  const Xion__Zk__V1__QueryVerifyUltraHonkRequest *input,
+                                  Xion__Zk__V1__ProofVerifyUltraHonkResponse_Closure closure,
+                                  void *closure_data);
+  void (*proof_verify_gnark)(Xion__Zk__V1__Query_Service *service,
+                             const Xion__Zk__V1__QueryVerifyGnarkRequest *input,
+                             Xion__Zk__V1__ProofVerifyGnarkResponse_Closure closure,
+                             void *closure_data);
   void (*vkey)(Xion__Zk__V1__Query_Service *service,
                const Xion__Zk__V1__QueryVKeyRequest *input,
                Xion__Zk__V1__QueryVKeyResponse_Closure closure,
@@ -788,6 +1015,8 @@ void xion__zk__v1__query__init (Xion__Zk__V1__Query_Service *service,
 #define XION__ZK__V1__QUERY__INIT(function_prefix__) \
     { XION__ZK__V1__QUERY__BASE_INIT,\
       function_prefix__ ## proof_verify,\
+      function_prefix__ ## proof_verify_ultra_honk,\
+      function_prefix__ ## proof_verify_gnark,\
       function_prefix__ ## vkey,\
       function_prefix__ ## vkey_by_name,\
       function_prefix__ ## vkeys,\
@@ -798,6 +1027,14 @@ void xion__zk__v1__query__proof_verify(ProtobufCService *service,
                                        const Xion__Zk__V1__QueryVerifyRequest *input,
                                        Xion__Zk__V1__ProofVerifyResponse_Closure closure,
                                        void *closure_data);
+void xion__zk__v1__query__proof_verify_ultra_honk(ProtobufCService *service,
+                                                  const Xion__Zk__V1__QueryVerifyUltraHonkRequest *input,
+                                                  Xion__Zk__V1__ProofVerifyUltraHonkResponse_Closure closure,
+                                                  void *closure_data);
+void xion__zk__v1__query__proof_verify_gnark(ProtobufCService *service,
+                                             const Xion__Zk__V1__QueryVerifyGnarkRequest *input,
+                                             Xion__Zk__V1__ProofVerifyGnarkResponse_Closure closure,
+                                             void *closure_data);
 void xion__zk__v1__query__vkey(ProtobufCService *service,
                                const Xion__Zk__V1__QueryVKeyRequest *input,
                                Xion__Zk__V1__QueryVKeyResponse_Closure closure,
@@ -828,6 +1065,10 @@ void xion__zk__v1__query__params(ProtobufCService *service,
 extern const ProtobufCMessageDescriptor xion__zk__v1__snark_js_proof__descriptor;
 extern const ProtobufCMessageDescriptor xion__zk__v1__query_verify_request__descriptor;
 extern const ProtobufCMessageDescriptor xion__zk__v1__proof_verify_response__descriptor;
+extern const ProtobufCMessageDescriptor xion__zk__v1__proof_verify_ultra_honk_response__descriptor;
+extern const ProtobufCMessageDescriptor xion__zk__v1__proof_verify_gnark_response__descriptor;
+extern const ProtobufCMessageDescriptor xion__zk__v1__query_verify_ultra_honk_request__descriptor;
+extern const ProtobufCMessageDescriptor xion__zk__v1__query_verify_gnark_request__descriptor;
 extern const ProtobufCMessageDescriptor xion__zk__v1__vkey__descriptor;
 extern const ProtobufCMessageDescriptor xion__zk__v1__query_vkey_request__descriptor;
 extern const ProtobufCMessageDescriptor xion__zk__v1__query_vkey_response__descriptor;

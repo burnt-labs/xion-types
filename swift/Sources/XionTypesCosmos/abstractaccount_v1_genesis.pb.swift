@@ -8,6 +8,7 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+import Foundation
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -26,6 +27,7 @@ struct Abstractaccount_V1_GenesisState: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// params defines the module parameters.
   var params: Abstractaccount_V1_Params {
     get {return _params ?? Abstractaccount_V1_Params()}
     set {_params = newValue}
@@ -35,13 +37,37 @@ struct Abstractaccount_V1_GenesisState: Sendable {
   /// Clears the value of `params`. Subsequent reads from it will return its default value.
   mutating func clearParams() {self._params = nil}
 
+  /// next_account_id is the identifier assigned to the next registered account.
   var nextAccountID: UInt64 = 0
+
+  /// account_addresses is the exported sender/salt address registry.
+  var accountAddresses: [Abstractaccount_V1_AccountAddress] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
   fileprivate var _params: Abstractaccount_V1_Params? = nil
+}
+
+/// AccountAddress is an exported sender/salt registry entry.
+struct Abstractaccount_V1_AccountAddress: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// sender is the address that registered the account.
+  var sender: String = String()
+
+  /// salt is the caller-chosen salt the address was derived with.
+  var salt: Data = Data()
+
+  /// address is the derived account address.
+  var address: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -53,6 +79,7 @@ extension Abstractaccount_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf.
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "params"),
     2: .standard(proto: "next_account_id"),
+    3: .standard(proto: "account_addresses"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -63,6 +90,7 @@ extension Abstractaccount_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf.
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._params) }()
       case 2: try { try decoder.decodeSingularUInt64Field(value: &self.nextAccountID) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.accountAddresses) }()
       default: break
       }
     }
@@ -79,12 +107,60 @@ extension Abstractaccount_V1_GenesisState: SwiftProtobuf.Message, SwiftProtobuf.
     if self.nextAccountID != 0 {
       try visitor.visitSingularUInt64Field(value: self.nextAccountID, fieldNumber: 2)
     }
+    if !self.accountAddresses.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.accountAddresses, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Abstractaccount_V1_GenesisState, rhs: Abstractaccount_V1_GenesisState) -> Bool {
     if lhs._params != rhs._params {return false}
     if lhs.nextAccountID != rhs.nextAccountID {return false}
+    if lhs.accountAddresses != rhs.accountAddresses {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Abstractaccount_V1_AccountAddress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AccountAddress"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "sender"),
+    2: .same(proto: "salt"),
+    3: .same(proto: "address"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sender) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.salt) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.address) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sender.isEmpty {
+      try visitor.visitSingularStringField(value: self.sender, fieldNumber: 1)
+    }
+    if !self.salt.isEmpty {
+      try visitor.visitSingularBytesField(value: self.salt, fieldNumber: 2)
+    }
+    if !self.address.isEmpty {
+      try visitor.visitSingularStringField(value: self.address, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Abstractaccount_V1_AccountAddress, rhs: Abstractaccount_V1_AccountAddress) -> Bool {
+    if lhs.sender != rhs.sender {return false}
+    if lhs.salt != rhs.salt {return false}
+    if lhs.address != rhs.address {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

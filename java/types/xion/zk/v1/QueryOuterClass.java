@@ -2664,6 +2664,3078 @@ public final class QueryOuterClass {
 
   }
 
+  public interface ProofVerifyUltraHonkResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.zk.v1.ProofVerifyUltraHonkResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * verified indicates whether the proof verification was successful.
+     * </pre>
+     *
+     * <code>bool verified = 1 [json_name = "verified"];</code>
+     * @return The verified.
+     */
+    boolean getVerified();
+
+    /**
+     * <pre>
+     * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+     * were used for this verification.
+     *
+     * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+     * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+     * bytes under the same name and ID. A consumer that reviewed specific key
+     * material therefore cannot establish, from `verified` alone, that this
+     * verification used that material. Echoing the digest lets the consumer
+     * compare against a pin it derived offline from the reviewed artifact, in the
+     * same response that reports the verdict.
+     *
+     * Always populated on success, so a consumer may treat an absent value as a
+     * server too old to enforce `expected_vkey_sha256` and fail closed.
+     * </pre>
+     *
+     * <code>bytes vkey_sha256 = 2 [json_name = "vkeySha256"];</code>
+     * @return The vkeySha256.
+     */
+    com.google.protobuf.ByteString getVkeySha256();
+  }
+  /**
+   * <pre>
+   * ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+   * proof verification.
+   * </pre>
+   *
+   * Protobuf type {@code xion.zk.v1.ProofVerifyUltraHonkResponse}
+   */
+  public static final class ProofVerifyUltraHonkResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.zk.v1.ProofVerifyUltraHonkResponse)
+      ProofVerifyUltraHonkResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ProofVerifyUltraHonkResponse.newBuilder() to construct.
+    private ProofVerifyUltraHonkResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ProofVerifyUltraHonkResponse() {
+      vkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProofVerifyUltraHonkResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.class, xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.Builder.class);
+    }
+
+    public static final int VERIFIED_FIELD_NUMBER = 1;
+    private boolean verified_ = false;
+    /**
+     * <pre>
+     * verified indicates whether the proof verification was successful.
+     * </pre>
+     *
+     * <code>bool verified = 1 [json_name = "verified"];</code>
+     * @return The verified.
+     */
+    @java.lang.Override
+    public boolean getVerified() {
+      return verified_;
+    }
+
+    public static final int VKEY_SHA256_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString vkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+     * were used for this verification.
+     *
+     * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+     * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+     * bytes under the same name and ID. A consumer that reviewed specific key
+     * material therefore cannot establish, from `verified` alone, that this
+     * verification used that material. Echoing the digest lets the consumer
+     * compare against a pin it derived offline from the reviewed artifact, in the
+     * same response that reports the verdict.
+     *
+     * Always populated on success, so a consumer may treat an absent value as a
+     * server too old to enforce `expected_vkey_sha256` and fail closed.
+     * </pre>
+     *
+     * <code>bytes vkey_sha256 = 2 [json_name = "vkeySha256"];</code>
+     * @return The vkeySha256.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getVkeySha256() {
+      return vkeySha256_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (verified_ != false) {
+        output.writeBool(1, verified_);
+      }
+      if (!vkeySha256_.isEmpty()) {
+        output.writeBytes(2, vkeySha256_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (verified_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, verified_);
+      }
+      if (!vkeySha256_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, vkeySha256_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse)) {
+        return super.equals(obj);
+      }
+      xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse other = (xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse) obj;
+
+      if (getVerified()
+          != other.getVerified()) return false;
+      if (!getVkeySha256()
+          .equals(other.getVkeySha256())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VERIFIED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getVerified());
+      hash = (37 * hash) + VKEY_SHA256_FIELD_NUMBER;
+      hash = (53 * hash) + getVkeySha256().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+     * proof verification.
+     * </pre>
+     *
+     * Protobuf type {@code xion.zk.v1.ProofVerifyUltraHonkResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.zk.v1.ProofVerifyUltraHonkResponse)
+        xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.class, xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.Builder.class);
+      }
+
+      // Construct using xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        verified_ = false;
+        vkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse getDefaultInstanceForType() {
+        return xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse build() {
+        xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse buildPartial() {
+        xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse result = new xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.verified_ = verified_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.vkeySha256_ = vkeySha256_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse) {
+          return mergeFrom((xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse other) {
+        if (other == xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse.getDefaultInstance()) return this;
+        if (other.getVerified() != false) {
+          setVerified(other.getVerified());
+        }
+        if (other.getVkeySha256() != com.google.protobuf.ByteString.EMPTY) {
+          setVkeySha256(other.getVkeySha256());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                verified_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                vkeySha256_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean verified_ ;
+      /**
+       * <pre>
+       * verified indicates whether the proof verification was successful.
+       * </pre>
+       *
+       * <code>bool verified = 1 [json_name = "verified"];</code>
+       * @return The verified.
+       */
+      @java.lang.Override
+      public boolean getVerified() {
+        return verified_;
+      }
+      /**
+       * <pre>
+       * verified indicates whether the proof verification was successful.
+       * </pre>
+       *
+       * <code>bool verified = 1 [json_name = "verified"];</code>
+       * @param value The verified to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVerified(boolean value) {
+
+        verified_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * verified indicates whether the proof verification was successful.
+       * </pre>
+       *
+       * <code>bool verified = 1 [json_name = "verified"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVerified() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        verified_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString vkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+       * were used for this verification.
+       *
+       * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+       * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+       * bytes under the same name and ID. A consumer that reviewed specific key
+       * material therefore cannot establish, from `verified` alone, that this
+       * verification used that material. Echoing the digest lets the consumer
+       * compare against a pin it derived offline from the reviewed artifact, in the
+       * same response that reports the verdict.
+       *
+       * Always populated on success, so a consumer may treat an absent value as a
+       * server too old to enforce `expected_vkey_sha256` and fail closed.
+       * </pre>
+       *
+       * <code>bytes vkey_sha256 = 2 [json_name = "vkeySha256"];</code>
+       * @return The vkeySha256.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getVkeySha256() {
+        return vkeySha256_;
+      }
+      /**
+       * <pre>
+       * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+       * were used for this verification.
+       *
+       * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+       * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+       * bytes under the same name and ID. A consumer that reviewed specific key
+       * material therefore cannot establish, from `verified` alone, that this
+       * verification used that material. Echoing the digest lets the consumer
+       * compare against a pin it derived offline from the reviewed artifact, in the
+       * same response that reports the verdict.
+       *
+       * Always populated on success, so a consumer may treat an absent value as a
+       * server too old to enforce `expected_vkey_sha256` and fail closed.
+       * </pre>
+       *
+       * <code>bytes vkey_sha256 = 2 [json_name = "vkeySha256"];</code>
+       * @param value The vkeySha256 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeySha256(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        vkeySha256_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+       * were used for this verification.
+       *
+       * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+       * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+       * bytes under the same name and ID. A consumer that reviewed specific key
+       * material therefore cannot establish, from `verified` alone, that this
+       * verification used that material. Echoing the digest lets the consumer
+       * compare against a pin it derived offline from the reviewed artifact, in the
+       * same response that reports the verdict.
+       *
+       * Always populated on success, so a consumer may treat an absent value as a
+       * server too old to enforce `expected_vkey_sha256` and fail closed.
+       * </pre>
+       *
+       * <code>bytes vkey_sha256 = 2 [json_name = "vkeySha256"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVkeySha256() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        vkeySha256_ = getDefaultInstance().getVkeySha256();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.zk.v1.ProofVerifyUltraHonkResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.zk.v1.ProofVerifyUltraHonkResponse)
+    private static final xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse();
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ProofVerifyUltraHonkResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ProofVerifyUltraHonkResponse>() {
+      @java.lang.Override
+      public ProofVerifyUltraHonkResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ProofVerifyUltraHonkResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProofVerifyUltraHonkResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.zk.v1.QueryOuterClass.ProofVerifyUltraHonkResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ProofVerifyGnarkResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.zk.v1.ProofVerifyGnarkResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * verified indicates whether the proof verification was successful.
+     * </pre>
+     *
+     * <code>bool verified = 1 [json_name = "verified"];</code>
+     * @return The verified.
+     */
+    boolean getVerified();
+  }
+  /**
+   * <pre>
+   * ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+   * proof verification.
+   * </pre>
+   *
+   * Protobuf type {@code xion.zk.v1.ProofVerifyGnarkResponse}
+   */
+  public static final class ProofVerifyGnarkResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.zk.v1.ProofVerifyGnarkResponse)
+      ProofVerifyGnarkResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ProofVerifyGnarkResponse.newBuilder() to construct.
+    private ProofVerifyGnarkResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ProofVerifyGnarkResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProofVerifyGnarkResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyGnarkResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyGnarkResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.class, xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.Builder.class);
+    }
+
+    public static final int VERIFIED_FIELD_NUMBER = 1;
+    private boolean verified_ = false;
+    /**
+     * <pre>
+     * verified indicates whether the proof verification was successful.
+     * </pre>
+     *
+     * <code>bool verified = 1 [json_name = "verified"];</code>
+     * @return The verified.
+     */
+    @java.lang.Override
+    public boolean getVerified() {
+      return verified_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (verified_ != false) {
+        output.writeBool(1, verified_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (verified_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, verified_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse)) {
+        return super.equals(obj);
+      }
+      xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse other = (xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse) obj;
+
+      if (getVerified()
+          != other.getVerified()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VERIFIED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getVerified());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+     * proof verification.
+     * </pre>
+     *
+     * Protobuf type {@code xion.zk.v1.ProofVerifyGnarkResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.zk.v1.ProofVerifyGnarkResponse)
+        xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyGnarkResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyGnarkResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.class, xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.Builder.class);
+      }
+
+      // Construct using xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        verified_ = false;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_ProofVerifyGnarkResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse getDefaultInstanceForType() {
+        return xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse build() {
+        xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse buildPartial() {
+        xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse result = new xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.verified_ = verified_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse) {
+          return mergeFrom((xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse other) {
+        if (other == xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse.getDefaultInstance()) return this;
+        if (other.getVerified() != false) {
+          setVerified(other.getVerified());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                verified_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean verified_ ;
+      /**
+       * <pre>
+       * verified indicates whether the proof verification was successful.
+       * </pre>
+       *
+       * <code>bool verified = 1 [json_name = "verified"];</code>
+       * @return The verified.
+       */
+      @java.lang.Override
+      public boolean getVerified() {
+        return verified_;
+      }
+      /**
+       * <pre>
+       * verified indicates whether the proof verification was successful.
+       * </pre>
+       *
+       * <code>bool verified = 1 [json_name = "verified"];</code>
+       * @param value The verified to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVerified(boolean value) {
+
+        verified_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * verified indicates whether the proof verification was successful.
+       * </pre>
+       *
+       * <code>bool verified = 1 [json_name = "verified"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVerified() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        verified_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.zk.v1.ProofVerifyGnarkResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.zk.v1.ProofVerifyGnarkResponse)
+    private static final xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse();
+    }
+
+    public static xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ProofVerifyGnarkResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ProofVerifyGnarkResponse>() {
+      @java.lang.Override
+      public ProofVerifyGnarkResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ProofVerifyGnarkResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProofVerifyGnarkResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.zk.v1.QueryOuterClass.ProofVerifyGnarkResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueryVerifyUltraHonkRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.zk.v1.QueryVerifyUltraHonkRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+     * </pre>
+     *
+     * <code>bytes proof = 1 [json_name = "proof"];</code>
+     * @return The proof.
+     */
+    com.google.protobuf.ByteString getProof();
+
+    /**
+     * <pre>
+     * public_inputs is the raw public inputs binary: concatenated 32-byte
+     * big-endian field elements, as produced by Barretenberg (e.g. bb
+     * write_inputs or the same flow that generates the proof).
+     * </pre>
+     *
+     * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+     * @return The publicInputs.
+     */
+    com.google.protobuf.ByteString getPublicInputs();
+
+    /**
+     * <pre>
+     * vkey_name is the unique name of the UltraHonk verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The vkeyName.
+     */
+    java.lang.String getVkeyName();
+    /**
+     * <pre>
+     * vkey_name is the unique name of the UltraHonk verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The bytes for vkeyName.
+     */
+    com.google.protobuf.ByteString
+        getVkeyNameBytes();
+
+    /**
+     * <pre>
+     * vkey_id is the numeric id of the UltraHonk verification key
+     * </pre>
+     *
+     * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+     * @return The vkeyId.
+     */
+    long getVkeyId();
+
+    /**
+     * <pre>
+     * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+     * verification key's stored bytes, or verification fails with
+     * verified = false. Must be empty or exactly 32 bytes.
+     *
+     * This makes the key-identity check atomic with the verdict: the consumer
+     * does not have to read the key back in a second query and hope nothing
+     * changed in between. Empty preserves the prior behaviour exactly, so
+     * existing callers are unaffected.
+     * </pre>
+     *
+     * <code>bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];</code>
+     * @return The expectedVkeySha256.
+     */
+    com.google.protobuf.ByteString getExpectedVkeySha256();
+  }
+  /**
+   * <pre>
+   * QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+   * The verification key is resolved by vkey_name or vkey_id from the store (must
+   * be ultrahonk type). Proof and public_inputs are raw binary as produced by
+   * Barretenberg (e.g. bb prove).
+   * </pre>
+   *
+   * Protobuf type {@code xion.zk.v1.QueryVerifyUltraHonkRequest}
+   */
+  public static final class QueryVerifyUltraHonkRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.zk.v1.QueryVerifyUltraHonkRequest)
+      QueryVerifyUltraHonkRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueryVerifyUltraHonkRequest.newBuilder() to construct.
+    private QueryVerifyUltraHonkRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueryVerifyUltraHonkRequest() {
+      proof_ = com.google.protobuf.ByteString.EMPTY;
+      publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+      vkeyName_ = "";
+      expectedVkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueryVerifyUltraHonkRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.class, xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.Builder.class);
+    }
+
+    public static final int PROOF_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString proof_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+     * </pre>
+     *
+     * <code>bytes proof = 1 [json_name = "proof"];</code>
+     * @return The proof.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getProof() {
+      return proof_;
+    }
+
+    public static final int PUBLIC_INPUTS_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * public_inputs is the raw public inputs binary: concatenated 32-byte
+     * big-endian field elements, as produced by Barretenberg (e.g. bb
+     * write_inputs or the same flow that generates the proof).
+     * </pre>
+     *
+     * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+     * @return The publicInputs.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPublicInputs() {
+      return publicInputs_;
+    }
+
+    public static final int VKEY_NAME_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object vkeyName_ = "";
+    /**
+     * <pre>
+     * vkey_name is the unique name of the UltraHonk verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The vkeyName.
+     */
+    @java.lang.Override
+    public java.lang.String getVkeyName() {
+      java.lang.Object ref = vkeyName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        vkeyName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * vkey_name is the unique name of the UltraHonk verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The bytes for vkeyName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getVkeyNameBytes() {
+      java.lang.Object ref = vkeyName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        vkeyName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VKEY_ID_FIELD_NUMBER = 4;
+    private long vkeyId_ = 0L;
+    /**
+     * <pre>
+     * vkey_id is the numeric id of the UltraHonk verification key
+     * </pre>
+     *
+     * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+     * @return The vkeyId.
+     */
+    @java.lang.Override
+    public long getVkeyId() {
+      return vkeyId_;
+    }
+
+    public static final int EXPECTED_VKEY_SHA256_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString expectedVkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+     * verification key's stored bytes, or verification fails with
+     * verified = false. Must be empty or exactly 32 bytes.
+     *
+     * This makes the key-identity check atomic with the verdict: the consumer
+     * does not have to read the key back in a second query and hope nothing
+     * changed in between. Empty preserves the prior behaviour exactly, so
+     * existing callers are unaffected.
+     * </pre>
+     *
+     * <code>bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];</code>
+     * @return The expectedVkeySha256.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getExpectedVkeySha256() {
+      return expectedVkeySha256_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!proof_.isEmpty()) {
+        output.writeBytes(1, proof_);
+      }
+      if (!publicInputs_.isEmpty()) {
+        output.writeBytes(2, publicInputs_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vkeyName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, vkeyName_);
+      }
+      if (vkeyId_ != 0L) {
+        output.writeUInt64(4, vkeyId_);
+      }
+      if (!expectedVkeySha256_.isEmpty()) {
+        output.writeBytes(5, expectedVkeySha256_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!proof_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, proof_);
+      }
+      if (!publicInputs_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, publicInputs_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vkeyName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, vkeyName_);
+      }
+      if (vkeyId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, vkeyId_);
+      }
+      if (!expectedVkeySha256_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, expectedVkeySha256_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest)) {
+        return super.equals(obj);
+      }
+      xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest other = (xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest) obj;
+
+      if (!getProof()
+          .equals(other.getProof())) return false;
+      if (!getPublicInputs()
+          .equals(other.getPublicInputs())) return false;
+      if (!getVkeyName()
+          .equals(other.getVkeyName())) return false;
+      if (getVkeyId()
+          != other.getVkeyId()) return false;
+      if (!getExpectedVkeySha256()
+          .equals(other.getExpectedVkeySha256())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROOF_FIELD_NUMBER;
+      hash = (53 * hash) + getProof().hashCode();
+      hash = (37 * hash) + PUBLIC_INPUTS_FIELD_NUMBER;
+      hash = (53 * hash) + getPublicInputs().hashCode();
+      hash = (37 * hash) + VKEY_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getVkeyName().hashCode();
+      hash = (37 * hash) + VKEY_ID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVkeyId());
+      hash = (37 * hash) + EXPECTED_VKEY_SHA256_FIELD_NUMBER;
+      hash = (53 * hash) + getExpectedVkeySha256().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+     * The verification key is resolved by vkey_name or vkey_id from the store (must
+     * be ultrahonk type). Proof and public_inputs are raw binary as produced by
+     * Barretenberg (e.g. bb prove).
+     * </pre>
+     *
+     * Protobuf type {@code xion.zk.v1.QueryVerifyUltraHonkRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.zk.v1.QueryVerifyUltraHonkRequest)
+        xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.class, xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.Builder.class);
+      }
+
+      // Construct using xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        proof_ = com.google.protobuf.ByteString.EMPTY;
+        publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+        vkeyName_ = "";
+        vkeyId_ = 0L;
+        expectedVkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest getDefaultInstanceForType() {
+        return xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest build() {
+        xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest buildPartial() {
+        xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest result = new xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.proof_ = proof_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.publicInputs_ = publicInputs_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.vkeyName_ = vkeyName_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.vkeyId_ = vkeyId_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.expectedVkeySha256_ = expectedVkeySha256_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest) {
+          return mergeFrom((xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest other) {
+        if (other == xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest.getDefaultInstance()) return this;
+        if (other.getProof() != com.google.protobuf.ByteString.EMPTY) {
+          setProof(other.getProof());
+        }
+        if (other.getPublicInputs() != com.google.protobuf.ByteString.EMPTY) {
+          setPublicInputs(other.getPublicInputs());
+        }
+        if (!other.getVkeyName().isEmpty()) {
+          vkeyName_ = other.vkeyName_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getVkeyId() != 0L) {
+          setVkeyId(other.getVkeyId());
+        }
+        if (other.getExpectedVkeySha256() != com.google.protobuf.ByteString.EMPTY) {
+          setExpectedVkeySha256(other.getExpectedVkeySha256());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                proof_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                publicInputs_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                vkeyName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                vkeyId_ = input.readUInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                expectedVkeySha256_ = input.readBytes();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString proof_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+       * </pre>
+       *
+       * <code>bytes proof = 1 [json_name = "proof"];</code>
+       * @return The proof.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getProof() {
+        return proof_;
+      }
+      /**
+       * <pre>
+       * proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+       * </pre>
+       *
+       * <code>bytes proof = 1 [json_name = "proof"];</code>
+       * @param value The proof to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProof(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        proof_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+       * </pre>
+       *
+       * <code>bytes proof = 1 [json_name = "proof"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProof() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        proof_ = getDefaultInstance().getProof();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * public_inputs is the raw public inputs binary: concatenated 32-byte
+       * big-endian field elements, as produced by Barretenberg (e.g. bb
+       * write_inputs or the same flow that generates the proof).
+       * </pre>
+       *
+       * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+       * @return The publicInputs.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getPublicInputs() {
+        return publicInputs_;
+      }
+      /**
+       * <pre>
+       * public_inputs is the raw public inputs binary: concatenated 32-byte
+       * big-endian field elements, as produced by Barretenberg (e.g. bb
+       * write_inputs or the same flow that generates the proof).
+       * </pre>
+       *
+       * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+       * @param value The publicInputs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPublicInputs(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        publicInputs_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * public_inputs is the raw public inputs binary: concatenated 32-byte
+       * big-endian field elements, as produced by Barretenberg (e.g. bb
+       * write_inputs or the same flow that generates the proof).
+       * </pre>
+       *
+       * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPublicInputs() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        publicInputs_ = getDefaultInstance().getPublicInputs();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object vkeyName_ = "";
+      /**
+       * <pre>
+       * vkey_name is the unique name of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @return The vkeyName.
+       */
+      public java.lang.String getVkeyName() {
+        java.lang.Object ref = vkeyName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          vkeyName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @return The bytes for vkeyName.
+       */
+      public com.google.protobuf.ByteString
+          getVkeyNameBytes() {
+        java.lang.Object ref = vkeyName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          vkeyName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @param value The vkeyName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeyName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        vkeyName_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVkeyName() {
+        vkeyName_ = getDefaultInstance().getVkeyName();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @param value The bytes for vkeyName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeyNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        vkeyName_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private long vkeyId_ ;
+      /**
+       * <pre>
+       * vkey_id is the numeric id of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+       * @return The vkeyId.
+       */
+      @java.lang.Override
+      public long getVkeyId() {
+        return vkeyId_;
+      }
+      /**
+       * <pre>
+       * vkey_id is the numeric id of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+       * @param value The vkeyId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeyId(long value) {
+
+        vkeyId_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_id is the numeric id of the UltraHonk verification key
+       * </pre>
+       *
+       * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVkeyId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        vkeyId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString expectedVkeySha256_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+       * verification key's stored bytes, or verification fails with
+       * verified = false. Must be empty or exactly 32 bytes.
+       *
+       * This makes the key-identity check atomic with the verdict: the consumer
+       * does not have to read the key back in a second query and hope nothing
+       * changed in between. Empty preserves the prior behaviour exactly, so
+       * existing callers are unaffected.
+       * </pre>
+       *
+       * <code>bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];</code>
+       * @return The expectedVkeySha256.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getExpectedVkeySha256() {
+        return expectedVkeySha256_;
+      }
+      /**
+       * <pre>
+       * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+       * verification key's stored bytes, or verification fails with
+       * verified = false. Must be empty or exactly 32 bytes.
+       *
+       * This makes the key-identity check atomic with the verdict: the consumer
+       * does not have to read the key back in a second query and hope nothing
+       * changed in between. Empty preserves the prior behaviour exactly, so
+       * existing callers are unaffected.
+       * </pre>
+       *
+       * <code>bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];</code>
+       * @param value The expectedVkeySha256 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExpectedVkeySha256(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        expectedVkeySha256_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+       * verification key's stored bytes, or verification fails with
+       * verified = false. Must be empty or exactly 32 bytes.
+       *
+       * This makes the key-identity check atomic with the verdict: the consumer
+       * does not have to read the key back in a second query and hope nothing
+       * changed in between. Empty preserves the prior behaviour exactly, so
+       * existing callers are unaffected.
+       * </pre>
+       *
+       * <code>bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearExpectedVkeySha256() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        expectedVkeySha256_ = getDefaultInstance().getExpectedVkeySha256();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.zk.v1.QueryVerifyUltraHonkRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.zk.v1.QueryVerifyUltraHonkRequest)
+    private static final xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest();
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueryVerifyUltraHonkRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QueryVerifyUltraHonkRequest>() {
+      @java.lang.Override
+      public QueryVerifyUltraHonkRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueryVerifyUltraHonkRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryVerifyUltraHonkRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.zk.v1.QueryOuterClass.QueryVerifyUltraHonkRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueryVerifyGnarkRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:xion.zk.v1.QueryVerifyGnarkRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+     * </pre>
+     *
+     * <code>bytes proof = 1 [json_name = "proof"];</code>
+     * @return The proof.
+     */
+    com.google.protobuf.ByteString getProof();
+
+    /**
+     * <pre>
+     * public_inputs is the raw public inputs binary: concatenated 32-byte
+     * big-endian field elements (fr.Element serialization).
+     * </pre>
+     *
+     * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+     * @return The publicInputs.
+     */
+    com.google.protobuf.ByteString getPublicInputs();
+
+    /**
+     * <pre>
+     * vkey_name is the unique name of the gnark verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The vkeyName.
+     */
+    java.lang.String getVkeyName();
+    /**
+     * <pre>
+     * vkey_name is the unique name of the gnark verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The bytes for vkeyName.
+     */
+    com.google.protobuf.ByteString
+        getVkeyNameBytes();
+
+    /**
+     * <pre>
+     * vkey_id is the numeric id of the gnark verification key
+     * </pre>
+     *
+     * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+     * @return The vkeyId.
+     */
+    long getVkeyId();
+  }
+  /**
+   * <pre>
+   * QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+   * The verification key is resolved by vkey_name or vkey_id from the store (must
+   * be groth16_gnark type). Proof and public_inputs are gnark native binary
+   * format.
+   * </pre>
+   *
+   * Protobuf type {@code xion.zk.v1.QueryVerifyGnarkRequest}
+   */
+  public static final class QueryVerifyGnarkRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:xion.zk.v1.QueryVerifyGnarkRequest)
+      QueryVerifyGnarkRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueryVerifyGnarkRequest.newBuilder() to construct.
+    private QueryVerifyGnarkRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueryVerifyGnarkRequest() {
+      proof_ = com.google.protobuf.ByteString.EMPTY;
+      publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+      vkeyName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueryVerifyGnarkRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyGnarkRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyGnarkRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.class, xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.Builder.class);
+    }
+
+    public static final int PROOF_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString proof_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+     * </pre>
+     *
+     * <code>bytes proof = 1 [json_name = "proof"];</code>
+     * @return The proof.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getProof() {
+      return proof_;
+    }
+
+    public static final int PUBLIC_INPUTS_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * public_inputs is the raw public inputs binary: concatenated 32-byte
+     * big-endian field elements (fr.Element serialization).
+     * </pre>
+     *
+     * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+     * @return The publicInputs.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPublicInputs() {
+      return publicInputs_;
+    }
+
+    public static final int VKEY_NAME_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object vkeyName_ = "";
+    /**
+     * <pre>
+     * vkey_name is the unique name of the gnark verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The vkeyName.
+     */
+    @java.lang.Override
+    public java.lang.String getVkeyName() {
+      java.lang.Object ref = vkeyName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        vkeyName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * vkey_name is the unique name of the gnark verification key
+     * </pre>
+     *
+     * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+     * @return The bytes for vkeyName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getVkeyNameBytes() {
+      java.lang.Object ref = vkeyName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        vkeyName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VKEY_ID_FIELD_NUMBER = 4;
+    private long vkeyId_ = 0L;
+    /**
+     * <pre>
+     * vkey_id is the numeric id of the gnark verification key
+     * </pre>
+     *
+     * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+     * @return The vkeyId.
+     */
+    @java.lang.Override
+    public long getVkeyId() {
+      return vkeyId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!proof_.isEmpty()) {
+        output.writeBytes(1, proof_);
+      }
+      if (!publicInputs_.isEmpty()) {
+        output.writeBytes(2, publicInputs_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vkeyName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, vkeyName_);
+      }
+      if (vkeyId_ != 0L) {
+        output.writeUInt64(4, vkeyId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!proof_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, proof_);
+      }
+      if (!publicInputs_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, publicInputs_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vkeyName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, vkeyName_);
+      }
+      if (vkeyId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, vkeyId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest)) {
+        return super.equals(obj);
+      }
+      xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest other = (xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest) obj;
+
+      if (!getProof()
+          .equals(other.getProof())) return false;
+      if (!getPublicInputs()
+          .equals(other.getPublicInputs())) return false;
+      if (!getVkeyName()
+          .equals(other.getVkeyName())) return false;
+      if (getVkeyId()
+          != other.getVkeyId()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROOF_FIELD_NUMBER;
+      hash = (53 * hash) + getProof().hashCode();
+      hash = (37 * hash) + PUBLIC_INPUTS_FIELD_NUMBER;
+      hash = (53 * hash) + getPublicInputs().hashCode();
+      hash = (37 * hash) + VKEY_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getVkeyName().hashCode();
+      hash = (37 * hash) + VKEY_ID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVkeyId());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+     * The verification key is resolved by vkey_name or vkey_id from the store (must
+     * be groth16_gnark type). Proof and public_inputs are gnark native binary
+     * format.
+     * </pre>
+     *
+     * Protobuf type {@code xion.zk.v1.QueryVerifyGnarkRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:xion.zk.v1.QueryVerifyGnarkRequest)
+        xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyGnarkRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyGnarkRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.class, xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.Builder.class);
+      }
+
+      // Construct using xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        proof_ = com.google.protobuf.ByteString.EMPTY;
+        publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+        vkeyName_ = "";
+        vkeyId_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xion.zk.v1.QueryOuterClass.internal_static_xion_zk_v1_QueryVerifyGnarkRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest getDefaultInstanceForType() {
+        return xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest build() {
+        xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest buildPartial() {
+        xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest result = new xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.proof_ = proof_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.publicInputs_ = publicInputs_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.vkeyName_ = vkeyName_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.vkeyId_ = vkeyId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest) {
+          return mergeFrom((xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest other) {
+        if (other == xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest.getDefaultInstance()) return this;
+        if (other.getProof() != com.google.protobuf.ByteString.EMPTY) {
+          setProof(other.getProof());
+        }
+        if (other.getPublicInputs() != com.google.protobuf.ByteString.EMPTY) {
+          setPublicInputs(other.getPublicInputs());
+        }
+        if (!other.getVkeyName().isEmpty()) {
+          vkeyName_ = other.vkeyName_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getVkeyId() != 0L) {
+          setVkeyId(other.getVkeyId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                proof_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                publicInputs_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                vkeyName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                vkeyId_ = input.readUInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString proof_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+       * </pre>
+       *
+       * <code>bytes proof = 1 [json_name = "proof"];</code>
+       * @return The proof.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getProof() {
+        return proof_;
+      }
+      /**
+       * <pre>
+       * proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+       * </pre>
+       *
+       * <code>bytes proof = 1 [json_name = "proof"];</code>
+       * @param value The proof to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProof(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        proof_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+       * </pre>
+       *
+       * <code>bytes proof = 1 [json_name = "proof"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProof() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        proof_ = getDefaultInstance().getProof();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString publicInputs_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * public_inputs is the raw public inputs binary: concatenated 32-byte
+       * big-endian field elements (fr.Element serialization).
+       * </pre>
+       *
+       * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+       * @return The publicInputs.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getPublicInputs() {
+        return publicInputs_;
+      }
+      /**
+       * <pre>
+       * public_inputs is the raw public inputs binary: concatenated 32-byte
+       * big-endian field elements (fr.Element serialization).
+       * </pre>
+       *
+       * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+       * @param value The publicInputs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPublicInputs(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        publicInputs_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * public_inputs is the raw public inputs binary: concatenated 32-byte
+       * big-endian field elements (fr.Element serialization).
+       * </pre>
+       *
+       * <code>bytes public_inputs = 2 [json_name = "publicInputs"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPublicInputs() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        publicInputs_ = getDefaultInstance().getPublicInputs();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object vkeyName_ = "";
+      /**
+       * <pre>
+       * vkey_name is the unique name of the gnark verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @return The vkeyName.
+       */
+      public java.lang.String getVkeyName() {
+        java.lang.Object ref = vkeyName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          vkeyName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the gnark verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @return The bytes for vkeyName.
+       */
+      public com.google.protobuf.ByteString
+          getVkeyNameBytes() {
+        java.lang.Object ref = vkeyName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          vkeyName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the gnark verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @param value The vkeyName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeyName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        vkeyName_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the gnark verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVkeyName() {
+        vkeyName_ = getDefaultInstance().getVkeyName();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_name is the unique name of the gnark verification key
+       * </pre>
+       *
+       * <code>string vkey_name = 3 [json_name = "vkeyName"];</code>
+       * @param value The bytes for vkeyName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeyNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        vkeyName_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private long vkeyId_ ;
+      /**
+       * <pre>
+       * vkey_id is the numeric id of the gnark verification key
+       * </pre>
+       *
+       * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+       * @return The vkeyId.
+       */
+      @java.lang.Override
+      public long getVkeyId() {
+        return vkeyId_;
+      }
+      /**
+       * <pre>
+       * vkey_id is the numeric id of the gnark verification key
+       * </pre>
+       *
+       * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+       * @param value The vkeyId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVkeyId(long value) {
+
+        vkeyId_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * vkey_id is the numeric id of the gnark verification key
+       * </pre>
+       *
+       * <code>uint64 vkey_id = 4 [json_name = "vkeyId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVkeyId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        vkeyId_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:xion.zk.v1.QueryVerifyGnarkRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:xion.zk.v1.QueryVerifyGnarkRequest)
+    private static final xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest();
+    }
+
+    public static xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueryVerifyGnarkRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QueryVerifyGnarkRequest>() {
+      @java.lang.Override
+      public QueryVerifyGnarkRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueryVerifyGnarkRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryVerifyGnarkRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xion.zk.v1.QueryOuterClass.QueryVerifyGnarkRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface VKeyOrBuilder extends
       // @@protoc_insertion_point(interface_extends:xion.zk.v1.VKey)
       com.google.protobuf.MessageOrBuilder {
@@ -2757,6 +5829,25 @@ public final class QueryOuterClass {
      */
     com.google.protobuf.ByteString
         getAuthorityBytes();
+
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     * @return The enum numeric value on the wire for proofSystem.
+     */
+    int getProofSystemValue();
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     * @return The proofSystem.
+     */
+    xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem();
   }
   /**
    * <pre>
@@ -2780,6 +5871,7 @@ public final class QueryOuterClass {
       description_ = "";
       circuitHash_ = "";
       authority_ = "";
+      proofSystem_ = 0;
     }
 
     @java.lang.Override
@@ -3005,6 +6097,32 @@ public final class QueryOuterClass {
       }
     }
 
+    public static final int PROOF_SYSTEM_FIELD_NUMBER = 6;
+    private int proofSystem_ = 0;
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     * @return The enum numeric value on the wire for proofSystem.
+     */
+    @java.lang.Override public int getProofSystemValue() {
+      return proofSystem_;
+    }
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+     * @return The proofSystem.
+     */
+    @java.lang.Override public xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem() {
+      xion.zk.v1.ParamsOuterClass.ProofSystem result = xion.zk.v1.ParamsOuterClass.ProofSystem.forNumber(proofSystem_);
+      return result == null ? xion.zk.v1.ParamsOuterClass.ProofSystem.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3034,6 +6152,9 @@ public final class QueryOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authority_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, authority_);
       }
+      if (proofSystem_ != xion.zk.v1.ParamsOuterClass.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.getNumber()) {
+        output.writeEnum(6, proofSystem_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3058,6 +6179,10 @@ public final class QueryOuterClass {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authority_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, authority_);
+      }
+      if (proofSystem_ != xion.zk.v1.ParamsOuterClass.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, proofSystem_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3084,6 +6209,7 @@ public final class QueryOuterClass {
           .equals(other.getCircuitHash())) return false;
       if (!getAuthority()
           .equals(other.getAuthority())) return false;
+      if (proofSystem_ != other.proofSystem_) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3105,6 +6231,8 @@ public final class QueryOuterClass {
       hash = (53 * hash) + getCircuitHash().hashCode();
       hash = (37 * hash) + AUTHORITY_FIELD_NUMBER;
       hash = (53 * hash) + getAuthority().hashCode();
+      hash = (37 * hash) + PROOF_SYSTEM_FIELD_NUMBER;
+      hash = (53 * hash) + proofSystem_;
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3245,6 +6373,7 @@ public final class QueryOuterClass {
         description_ = "";
         circuitHash_ = "";
         authority_ = "";
+        proofSystem_ = 0;
         return this;
       }
 
@@ -3292,6 +6421,9 @@ public final class QueryOuterClass {
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.authority_ = authority_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.proofSystem_ = proofSystem_;
         }
       }
 
@@ -3362,6 +6494,9 @@ public final class QueryOuterClass {
           bitField0_ |= 0x00000010;
           onChanged();
         }
+        if (other.proofSystem_ != 0) {
+          setProofSystemValue(other.getProofSystemValue());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -3413,6 +6548,11 @@ public final class QueryOuterClass {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 42
+              case 48: {
+                proofSystem_ = input.readEnum();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3838,6 +6978,79 @@ public final class QueryOuterClass {
         checkByteStringIsUtf8(value);
         authority_ = value;
         bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private int proofSystem_ = 0;
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+       * @return The enum numeric value on the wire for proofSystem.
+       */
+      @java.lang.Override public int getProofSystemValue() {
+        return proofSystem_;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+       * @param value The enum numeric value on the wire for proofSystem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProofSystemValue(int value) {
+        proofSystem_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+       * @return The proofSystem.
+       */
+      @java.lang.Override
+      public xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem() {
+        xion.zk.v1.ParamsOuterClass.ProofSystem result = xion.zk.v1.ParamsOuterClass.ProofSystem.forNumber(proofSystem_);
+        return result == null ? xion.zk.v1.ParamsOuterClass.ProofSystem.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+       * @param value The proofSystem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProofSystem(xion.zk.v1.ParamsOuterClass.ProofSystem value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000020;
+        proofSystem_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProofSystem() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        proofSystem_ = 0;
         onChanged();
         return this;
       }
@@ -12296,6 +15509,26 @@ public final class QueryOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_xion_zk_v1_ProofVerifyResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_zk_v1_ProofVerifyGnarkResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_zk_v1_ProofVerifyGnarkResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_xion_zk_v1_QueryVerifyGnarkRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_xion_zk_v1_QueryVerifyGnarkRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_xion_zk_v1_VKey_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -12384,53 +15617,74 @@ public final class QueryOuterClass {
       "ublic_inputs\030\002 \003(\tR\014publicInputs\022\033\n\tvkey" +
       "_name\030\003 \001(\tR\010vkeyName\022\027\n\007vkey_id\030\004 \001(\004R\006" +
       "vkeyId\"1\n\023ProofVerifyResponse\022\032\n\010verifie" +
-      "d\030\001 \001(\010R\010verified\"\232\001\n\004VKey\022\033\n\tkey_bytes\030" +
-      "\001 \001(\014R\010keyBytes\022\022\n\004name\030\002 \001(\tR\004name\022 \n\013d" +
-      "escription\030\003 \001(\tR\013description\022!\n\014circuit" +
-      "_hash\030\004 \001(\tR\013circuitHash\022\034\n\tauthority\030\005 " +
-      "\001(\tR\tauthority\"\"\n\020QueryVKeyRequest\022\016\n\002id" +
-      "\030\001 \001(\004R\002id\"?\n\021QueryVKeyResponse\022*\n\004vkey\030" +
-      "\001 \001(\0132\020.xion.zk.v1.VKeyB\004\310\336\037\000R\004vkey\",\n\026Q" +
-      "ueryVKeyByNameRequest\022\022\n\004name\030\001 \001(\tR\004nam" +
-      "e\"U\n\027QueryVKeyByNameResponse\022*\n\004vkey\030\001 \001" +
-      "(\0132\020.xion.zk.v1.VKeyB\004\310\336\037\000R\004vkey\022\016\n\002id\030\002" +
-      " \001(\004R\002id\"[\n\021QueryVKeysRequest\022F\n\npaginat" +
-      "ion\030\001 \001(\0132&.cosmos.base.query.v1beta1.Pa" +
-      "geRequestR\npagination\"\221\001\n\022QueryVKeysResp" +
-      "onse\0222\n\005vkeys\030\001 \003(\0132\026.xion.zk.v1.VKeyWit" +
-      "hIDB\004\310\336\037\000R\005vkeys\022G\n\npagination\030\002 \001(\0132\'.c" +
-      "osmos.base.query.v1beta1.PageResponseR\np" +
-      "agination\"H\n\nVKeyWithID\022\016\n\002id\030\001 \001(\004R\002id\022" +
-      "*\n\004vkey\030\002 \001(\0132\020.xion.zk.v1.VKeyB\004\310\336\037\000R\004v" +
-      "key\")\n\023QueryHasVKeyRequest\022\022\n\004name\030\001 \001(\t" +
-      "R\004name\">\n\024QueryHasVKeyResponse\022\026\n\006exists" +
-      "\030\001 \001(\010R\006exists\022\016\n\002id\030\002 \001(\004R\002id\"\030\n\026QueryN" +
-      "extVKeyIDRequest\"2\n\027QueryNextVKeyIDRespo" +
-      "nse\022\027\n\007next_id\030\001 \001(\004R\006nextId\"\024\n\022QueryPar" +
-      "amsRequest\"G\n\023QueryParamsResponse\0220\n\006par" +
-      "ams\030\001 \001(\0132\022.xion.zk.v1.ParamsB\004\310\336\037\000R\006par" +
-      "ams2\261\006\n\005Query\022e\n\013ProofVerify\022\036.xion.zk.v" +
-      "1.QueryVerifyRequest\032\037.xion.zk.v1.ProofV" +
-      "erifyResponse\"\025\202\323\344\223\002\017\022\r/zk/v1/verify\022i\n\004" +
-      "VKey\022\034.xion.zk.v1.QueryVKeyRequest\032\035.xio" +
-      "n.zk.v1.QueryVKeyResponse\"$\202\323\344\223\002\036\022\034/burn" +
-      "t/xion/zk/v1/vkeys/{id}\022\202\001\n\nVKeyByName\022\"" +
-      ".xion.zk.v1.QueryVKeyByNameRequest\032#.xio" +
-      "n.zk.v1.QueryVKeyByNameResponse\"+\202\323\344\223\002%\022" +
-      "#/burnt/xion/zk/v1/vkeys/name/{name}\022g\n\005" +
-      "VKeys\022\035.xion.zk.v1.QueryVKeysRequest\032\036.x" +
-      "ion.zk.v1.QueryVKeysResponse\"\037\202\323\344\223\002\031\022\027/b" +
-      "urnt/xion/zk/v1/vkeys\022{\n\007HasVKey\022\037.xion." +
-      "zk.v1.QueryHasVKeyRequest\032 .xion.zk.v1.Q" +
-      "ueryHasVKeyResponse\"-\202\323\344\223\002\'\022%/burnt/xion" +
-      "/zk/v1/vkeys/exists/{name}\022~\n\nNextVKeyID" +
-      "\022\".xion.zk.v1.QueryNextVKeyIDRequest\032#.x" +
-      "ion.zk.v1.QueryNextVKeyIDResponse\"\'\202\323\344\223\002" +
-      "!\022\037/burnt/xion/zk/v1/vkeys/next-id\022k\n\006Pa" +
-      "rams\022\036.xion.zk.v1.QueryParamsRequest\032\037.x" +
-      "ion.zk.v1.QueryParamsResponse\" \202\323\344\223\002\032\022\030/" +
-      "burnt/xion/zk/v1/paramsB\'Z%github.com/bu" +
-      "rnt-labs/xion/x/zk/typesb\006proto3"
+      "d\030\001 \001(\010R\010verified\"[\n\034ProofVerifyUltraHon" +
+      "kResponse\022\032\n\010verified\030\001 \001(\010R\010verified\022\037\n" +
+      "\013vkey_sha256\030\002 \001(\014R\nvkeySha256\"6\n\030ProofV" +
+      "erifyGnarkResponse\022\032\n\010verified\030\001 \001(\010R\010ve" +
+      "rified\"\300\001\n\033QueryVerifyUltraHonkRequest\022\024" +
+      "\n\005proof\030\001 \001(\014R\005proof\022#\n\rpublic_inputs\030\002 " +
+      "\001(\014R\014publicInputs\022\033\n\tvkey_name\030\003 \001(\tR\010vk" +
+      "eyName\022\027\n\007vkey_id\030\004 \001(\004R\006vkeyId\0220\n\024expec" +
+      "ted_vkey_sha256\030\005 \001(\014R\022expectedVkeySha25" +
+      "6\"\212\001\n\027QueryVerifyGnarkRequest\022\024\n\005proof\030\001" +
+      " \001(\014R\005proof\022#\n\rpublic_inputs\030\002 \001(\014R\014publ" +
+      "icInputs\022\033\n\tvkey_name\030\003 \001(\tR\010vkeyName\022\027\n" +
+      "\007vkey_id\030\004 \001(\004R\006vkeyId\"\326\001\n\004VKey\022\033\n\tkey_b" +
+      "ytes\030\001 \001(\014R\010keyBytes\022\022\n\004name\030\002 \001(\tR\004name" +
+      "\022 \n\013description\030\003 \001(\tR\013description\022!\n\014ci" +
+      "rcuit_hash\030\004 \001(\tR\013circuitHash\022\034\n\tauthori" +
+      "ty\030\005 \001(\tR\tauthority\022:\n\014proof_system\030\006 \001(" +
+      "\0162\027.xion.zk.v1.ProofSystemR\013proofSystem\"" +
+      "\"\n\020QueryVKeyRequest\022\016\n\002id\030\001 \001(\004R\002id\"?\n\021Q" +
+      "ueryVKeyResponse\022*\n\004vkey\030\001 \001(\0132\020.xion.zk" +
+      ".v1.VKeyB\004\310\336\037\000R\004vkey\",\n\026QueryVKeyByNameR" +
+      "equest\022\022\n\004name\030\001 \001(\tR\004name\"U\n\027QueryVKeyB" +
+      "yNameResponse\022*\n\004vkey\030\001 \001(\0132\020.xion.zk.v1" +
+      ".VKeyB\004\310\336\037\000R\004vkey\022\016\n\002id\030\002 \001(\004R\002id\"[\n\021Que" +
+      "ryVKeysRequest\022F\n\npagination\030\001 \001(\0132&.cos" +
+      "mos.base.query.v1beta1.PageRequestR\npagi" +
+      "nation\"\221\001\n\022QueryVKeysResponse\0222\n\005vkeys\030\001" +
+      " \003(\0132\026.xion.zk.v1.VKeyWithIDB\004\310\336\037\000R\005vkey" +
+      "s\022G\n\npagination\030\002 \001(\0132\'.cosmos.base.quer" +
+      "y.v1beta1.PageResponseR\npagination\"H\n\nVK" +
+      "eyWithID\022\016\n\002id\030\001 \001(\004R\002id\022*\n\004vkey\030\002 \001(\0132\020" +
+      ".xion.zk.v1.VKeyB\004\310\336\037\000R\004vkey\")\n\023QueryHas" +
+      "VKeyRequest\022\022\n\004name\030\001 \001(\tR\004name\">\n\024Query" +
+      "HasVKeyResponse\022\026\n\006exists\030\001 \001(\010R\006exists\022" +
+      "\016\n\002id\030\002 \001(\004R\002id\"\030\n\026QueryNextVKeyIDReques" +
+      "t\"2\n\027QueryNextVKeyIDResponse\022\027\n\007next_id\030" +
+      "\001 \001(\004R\006nextId\"\024\n\022QueryParamsRequest\"G\n\023Q" +
+      "ueryParamsResponse\0220\n\006params\030\001 \001(\0132\022.xio" +
+      "n.zk.v1.ParamsB\004\310\336\037\000R\006params2\327\010\n\005Query\022e" +
+      "\n\013ProofVerify\022\036.xion.zk.v1.QueryVerifyRe" +
+      "quest\032\037.xion.zk.v1.ProofVerifyResponse\"\025" +
+      "\202\323\344\223\002\017\022\r/zk/v1/verify\022\230\001\n\024ProofVerifyUlt" +
+      "raHonk\022\'.xion.zk.v1.QueryVerifyUltraHonk" +
+      "Request\032(.xion.zk.v1.ProofVerifyUltraHon" +
+      "kResponse\"-\202\323\344\223\002\'\"\"/burnt/xion/zk/v1/ver" +
+      "ify-ultrahonk:\001*\022\210\001\n\020ProofVerifyGnark\022#." +
+      "xion.zk.v1.QueryVerifyGnarkRequest\032$.xio" +
+      "n.zk.v1.ProofVerifyGnarkResponse\")\202\323\344\223\002#" +
+      "\"\036/burnt/xion/zk/v1/verify-gnark:\001*\022i\n\004V" +
+      "Key\022\034.xion.zk.v1.QueryVKeyRequest\032\035.xion" +
+      ".zk.v1.QueryVKeyResponse\"$\202\323\344\223\002\036\022\034/burnt" +
+      "/xion/zk/v1/vkeys/{id}\022\202\001\n\nVKeyByName\022\"." +
+      "xion.zk.v1.QueryVKeyByNameRequest\032#.xion" +
+      ".zk.v1.QueryVKeyByNameResponse\"+\202\323\344\223\002%\022#" +
+      "/burnt/xion/zk/v1/vkeys/name/{name}\022g\n\005V" +
+      "Keys\022\035.xion.zk.v1.QueryVKeysRequest\032\036.xi" +
+      "on.zk.v1.QueryVKeysResponse\"\037\202\323\344\223\002\031\022\027/bu" +
+      "rnt/xion/zk/v1/vkeys\022{\n\007HasVKey\022\037.xion.z" +
+      "k.v1.QueryHasVKeyRequest\032 .xion.zk.v1.Qu" +
+      "eryHasVKeyResponse\"-\202\323\344\223\002\'\022%/burnt/xion/" +
+      "zk/v1/vkeys/exists/{name}\022~\n\nNextVKeyID\022" +
+      "\".xion.zk.v1.QueryNextVKeyIDRequest\032#.xi" +
+      "on.zk.v1.QueryNextVKeyIDResponse\"\'\202\323\344\223\002!" +
+      "\022\037/burnt/xion/zk/v1/vkeys/next-id\022k\n\006Par" +
+      "ams\022\036.xion.zk.v1.QueryParamsRequest\032\037.xi" +
+      "on.zk.v1.QueryParamsResponse\" \202\323\344\223\002\032\022\030/b" +
+      "urnt/xion/zk/v1/paramsB\'Z%github.com/bur" +
+      "nt-labs/xion/x/zk/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12458,86 +15712,110 @@ public final class QueryOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_ProofVerifyResponse_descriptor,
         new java.lang.String[] { "Verified", });
-    internal_static_xion_zk_v1_VKey_descriptor =
+    internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_zk_v1_ProofVerifyUltraHonkResponse_descriptor,
+        new java.lang.String[] { "Verified", "VkeySha256", });
+    internal_static_xion_zk_v1_ProofVerifyGnarkResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_xion_zk_v1_ProofVerifyGnarkResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_zk_v1_ProofVerifyGnarkResponse_descriptor,
+        new java.lang.String[] { "Verified", });
+    internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_zk_v1_QueryVerifyUltraHonkRequest_descriptor,
+        new java.lang.String[] { "Proof", "PublicInputs", "VkeyName", "VkeyId", "ExpectedVkeySha256", });
+    internal_static_xion_zk_v1_QueryVerifyGnarkRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_xion_zk_v1_QueryVerifyGnarkRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_xion_zk_v1_QueryVerifyGnarkRequest_descriptor,
+        new java.lang.String[] { "Proof", "PublicInputs", "VkeyName", "VkeyId", });
+    internal_static_xion_zk_v1_VKey_descriptor =
+      getDescriptor().getMessageTypes().get(7);
     internal_static_xion_zk_v1_VKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_VKey_descriptor,
-        new java.lang.String[] { "KeyBytes", "Name", "Description", "CircuitHash", "Authority", });
+        new java.lang.String[] { "KeyBytes", "Name", "Description", "CircuitHash", "Authority", "ProofSystem", });
     internal_static_xion_zk_v1_QueryVKeyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_xion_zk_v1_QueryVKeyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryVKeyRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_xion_zk_v1_QueryVKeyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_xion_zk_v1_QueryVKeyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryVKeyResponse_descriptor,
         new java.lang.String[] { "Vkey", });
     internal_static_xion_zk_v1_QueryVKeyByNameRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_xion_zk_v1_QueryVKeyByNameRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryVKeyByNameRequest_descriptor,
         new java.lang.String[] { "Name", });
     internal_static_xion_zk_v1_QueryVKeyByNameResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_xion_zk_v1_QueryVKeyByNameResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryVKeyByNameResponse_descriptor,
         new java.lang.String[] { "Vkey", "Id", });
     internal_static_xion_zk_v1_QueryVKeysRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_xion_zk_v1_QueryVKeysRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryVKeysRequest_descriptor,
         new java.lang.String[] { "Pagination", });
     internal_static_xion_zk_v1_QueryVKeysResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_xion_zk_v1_QueryVKeysResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryVKeysResponse_descriptor,
         new java.lang.String[] { "Vkeys", "Pagination", });
     internal_static_xion_zk_v1_VKeyWithID_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_xion_zk_v1_VKeyWithID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_VKeyWithID_descriptor,
         new java.lang.String[] { "Id", "Vkey", });
     internal_static_xion_zk_v1_QueryHasVKeyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_xion_zk_v1_QueryHasVKeyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryHasVKeyRequest_descriptor,
         new java.lang.String[] { "Name", });
     internal_static_xion_zk_v1_QueryHasVKeyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_xion_zk_v1_QueryHasVKeyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryHasVKeyResponse_descriptor,
         new java.lang.String[] { "Exists", "Id", });
     internal_static_xion_zk_v1_QueryNextVKeyIDRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_xion_zk_v1_QueryNextVKeyIDRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryNextVKeyIDRequest_descriptor,
         new java.lang.String[] { });
     internal_static_xion_zk_v1_QueryNextVKeyIDResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_xion_zk_v1_QueryNextVKeyIDResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryNextVKeyIDResponse_descriptor,
         new java.lang.String[] { "NextId", });
     internal_static_xion_zk_v1_QueryParamsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_xion_zk_v1_QueryParamsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryParamsRequest_descriptor,
         new java.lang.String[] { });
     internal_static_xion_zk_v1_QueryParamsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_xion_zk_v1_QueryParamsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_QueryParamsResponse_descriptor,

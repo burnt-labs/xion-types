@@ -25,21 +25,61 @@ namespace Xion.Zk.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Chd4aW9uL3prL3YxL3BhcmFtcy5wcm90bxIKeGlvbi56ay52MRoRYW1pbm8v",
-            "YW1pbm8ucHJvdG8aFGdvZ29wcm90by9nb2dvLnByb3RvIqUBCgZQYXJhbXMS",
+            "YW1pbm8ucHJvdG8aFGdvZ29wcm90by9nb2dvLnByb3RvIs4ECgZQYXJhbXMS",
             "LQoTbWF4X3ZrZXlfc2l6ZV9ieXRlcxgBIAEoBFIQbWF4VmtleVNpemVCeXRl",
             "cxIqChF1cGxvYWRfY2h1bmtfc2l6ZRgCIAEoBFIPdXBsb2FkQ2h1bmtTaXpl",
-            "EigKEHVwbG9hZF9jaHVua19nYXMYAyABKARSDnVwbG9hZENodW5rR2FzOhaY",
-            "oB8A6KAfAYrnsCoJemsvcGFyYW1zQidaJWdpdGh1Yi5jb20vYnVybnQtbGFi",
-            "cy94aW9uL3gvemsvdHlwZXNiBnByb3RvMw=="));
+            "EigKEHVwbG9hZF9jaHVua19nYXMYAyABKARSDnVwbG9hZENodW5rR2FzEj4K",
+            "HG1heF9ncm90aDE2X3Byb29mX3NpemVfYnl0ZXMYBCABKARSGG1heEdyb3Ro",
+            "MTZQcm9vZlNpemVCeXRlcxJLCiNtYXhfZ3JvdGgxNl9wdWJsaWNfaW5wdXRf",
+            "c2l6ZV9ieXRlcxgFIAEoBFIebWF4R3JvdGgxNlB1YmxpY0lucHV0U2l6ZUJ5",
+            "dGVzEkMKH21heF91bHRyYV9ob25rX3Byb29mX3NpemVfYnl0ZXMYBiABKARS",
+            "Gm1heFVsdHJhSG9ua1Byb29mU2l6ZUJ5dGVzElAKJm1heF91bHRyYV9ob25r",
+            "X3B1YmxpY19pbnB1dF9zaXplX2J5dGVzGAcgASgEUiBtYXhVbHRyYUhvbmtQ",
+            "dWJsaWNJbnB1dFNpemVCeXRlcxI6ChptYXhfZ25hcmtfcHJvb2Zfc2l6ZV9i",
+            "eXRlcxgIIAEoBFIWbWF4R25hcmtQcm9vZlNpemVCeXRlcxJHCiFtYXhfZ25h",
+            "cmtfcHVibGljX2lucHV0X3NpemVfYnl0ZXMYCSABKARSHG1heEduYXJrUHVi",
+            "bGljSW5wdXRTaXplQnl0ZXM6FpigHwDooB8BiuewKgl6ay9wYXJhbXMqhQEK",
+            "C1Byb29mU3lzdGVtEhwKGFBST09GX1NZU1RFTV9VTlNQRUNJRklFRBAAEhgK",
+            "FFBST09GX1NZU1RFTV9HUk9USDE2EAESHgoaUFJPT0ZfU1lTVEVNX1VMVFJB",
+            "X0hPTktfWksQAhIeChpQUk9PRl9TWVNURU1fR1JPVEgxNl9HTkFSSxADQida",
+            "JWdpdGh1Yi5jb20vYnVybnQtbGFicy94aW9uL3gvemsvdHlwZXNiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Amino.AminoReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.Params), global::Xion.Zk.V1.Params.Parser, new[]{ "MaxVkeySizeBytes", "UploadChunkSize", "UploadChunkGas" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Xion.Zk.V1.ProofSystem), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.Params), global::Xion.Zk.V1.Params.Parser, new[]{ "MaxVkeySizeBytes", "UploadChunkSize", "UploadChunkGas", "MaxGroth16ProofSizeBytes", "MaxGroth16PublicInputSizeBytes", "MaxUltraHonkProofSizeBytes", "MaxUltraHonkPublicInputSizeBytes", "MaxGnarkProofSizeBytes", "MaxGnarkPublicInputSizeBytes" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  /// <summary>
+  /// ProofSystem identifies which ZK backend and wire format a vkey/proof uses.
+  /// </summary>
+  public enum ProofSystem {
+    /// <summary>
+    /// PROOF_SYSTEM_UNSPECIFIED is the default unset value.
+    /// </summary>
+    [pbr::OriginalName("PROOF_SYSTEM_UNSPECIFIED")] Unspecified = 0,
+    /// <summary>
+    /// PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format.
+    /// </summary>
+    [pbr::OriginalName("PROOF_SYSTEM_GROTH16")] Groth16 = 1,
+    /// <summary>
+    /// PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+    /// (bb >= 0.87).
+    /// </summary>
+    [pbr::OriginalName("PROOF_SYSTEM_ULTRA_HONK_ZK")] UltraHonkZk = 2,
+    /// <summary>
+    /// PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+    /// format (binary).
+    /// </summary>
+    [pbr::OriginalName("PROOF_SYSTEM_GROTH16_GNARK")] Groth16Gnark = 3,
+  }
+
+  #endregion
+
   #region Messages
   /// <summary>
   /// Params defines the zk module parameters.
@@ -81,6 +121,12 @@ namespace Xion.Zk.V1 {
       maxVkeySizeBytes_ = other.maxVkeySizeBytes_;
       uploadChunkSize_ = other.uploadChunkSize_;
       uploadChunkGas_ = other.uploadChunkGas_;
+      maxGroth16ProofSizeBytes_ = other.maxGroth16ProofSizeBytes_;
+      maxGroth16PublicInputSizeBytes_ = other.maxGroth16PublicInputSizeBytes_;
+      maxUltraHonkProofSizeBytes_ = other.maxUltraHonkProofSizeBytes_;
+      maxUltraHonkPublicInputSizeBytes_ = other.maxUltraHonkPublicInputSizeBytes_;
+      maxGnarkProofSizeBytes_ = other.maxGnarkProofSizeBytes_;
+      maxGnarkPublicInputSizeBytes_ = other.maxGnarkPublicInputSizeBytes_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -135,6 +181,102 @@ namespace Xion.Zk.V1 {
       }
     }
 
+    /// <summary>Field number for the "max_groth16_proof_size_bytes" field.</summary>
+    public const int MaxGroth16ProofSizeBytesFieldNumber = 4;
+    private ulong maxGroth16ProofSizeBytes_;
+    /// <summary>
+    /// max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxGroth16ProofSizeBytes {
+      get { return maxGroth16ProofSizeBytes_; }
+      set {
+        maxGroth16ProofSizeBytes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_groth16_public_input_size_bytes" field.</summary>
+    public const int MaxGroth16PublicInputSizeBytesFieldNumber = 5;
+    private ulong maxGroth16PublicInputSizeBytes_;
+    /// <summary>
+    /// max_groth16_public_input_size_bytes caps the size of the Groth16 public
+    /// inputs. The size is computed as the total UTF-8 byte length of all provided
+    /// public input strings.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxGroth16PublicInputSizeBytes {
+      get { return maxGroth16PublicInputSizeBytes_; }
+      set {
+        maxGroth16PublicInputSizeBytes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_ultra_honk_proof_size_bytes" field.</summary>
+    public const int MaxUltraHonkProofSizeBytesFieldNumber = 6;
+    private ulong maxUltraHonkProofSizeBytes_;
+    /// <summary>
+    /// max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxUltraHonkProofSizeBytes {
+      get { return maxUltraHonkProofSizeBytes_; }
+      set {
+        maxUltraHonkProofSizeBytes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_ultra_honk_public_input_size_bytes" field.</summary>
+    public const int MaxUltraHonkPublicInputSizeBytesFieldNumber = 7;
+    private ulong maxUltraHonkPublicInputSizeBytes_;
+    /// <summary>
+    /// max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+    /// public inputs. UltraHonk public inputs are provided as raw bytes.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxUltraHonkPublicInputSizeBytes {
+      get { return maxUltraHonkPublicInputSizeBytes_; }
+      set {
+        maxUltraHonkPublicInputSizeBytes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_gnark_proof_size_bytes" field.</summary>
+    public const int MaxGnarkProofSizeBytesFieldNumber = 8;
+    private ulong maxGnarkProofSizeBytes_;
+    /// <summary>
+    /// max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+    /// (binary).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxGnarkProofSizeBytes {
+      get { return maxGnarkProofSizeBytes_; }
+      set {
+        maxGnarkProofSizeBytes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_gnark_public_input_size_bytes" field.</summary>
+    public const int MaxGnarkPublicInputSizeBytesFieldNumber = 9;
+    private ulong maxGnarkPublicInputSizeBytes_;
+    /// <summary>
+    /// max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+    /// inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+    /// big-endian field elements).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxGnarkPublicInputSizeBytes {
+      get { return maxGnarkPublicInputSizeBytes_; }
+      set {
+        maxGnarkPublicInputSizeBytes_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -153,6 +295,12 @@ namespace Xion.Zk.V1 {
       if (MaxVkeySizeBytes != other.MaxVkeySizeBytes) return false;
       if (UploadChunkSize != other.UploadChunkSize) return false;
       if (UploadChunkGas != other.UploadChunkGas) return false;
+      if (MaxGroth16ProofSizeBytes != other.MaxGroth16ProofSizeBytes) return false;
+      if (MaxGroth16PublicInputSizeBytes != other.MaxGroth16PublicInputSizeBytes) return false;
+      if (MaxUltraHonkProofSizeBytes != other.MaxUltraHonkProofSizeBytes) return false;
+      if (MaxUltraHonkPublicInputSizeBytes != other.MaxUltraHonkPublicInputSizeBytes) return false;
+      if (MaxGnarkProofSizeBytes != other.MaxGnarkProofSizeBytes) return false;
+      if (MaxGnarkPublicInputSizeBytes != other.MaxGnarkPublicInputSizeBytes) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -163,6 +311,12 @@ namespace Xion.Zk.V1 {
       if (MaxVkeySizeBytes != 0UL) hash ^= MaxVkeySizeBytes.GetHashCode();
       if (UploadChunkSize != 0UL) hash ^= UploadChunkSize.GetHashCode();
       if (UploadChunkGas != 0UL) hash ^= UploadChunkGas.GetHashCode();
+      if (MaxGroth16ProofSizeBytes != 0UL) hash ^= MaxGroth16ProofSizeBytes.GetHashCode();
+      if (MaxGroth16PublicInputSizeBytes != 0UL) hash ^= MaxGroth16PublicInputSizeBytes.GetHashCode();
+      if (MaxUltraHonkProofSizeBytes != 0UL) hash ^= MaxUltraHonkProofSizeBytes.GetHashCode();
+      if (MaxUltraHonkPublicInputSizeBytes != 0UL) hash ^= MaxUltraHonkPublicInputSizeBytes.GetHashCode();
+      if (MaxGnarkProofSizeBytes != 0UL) hash ^= MaxGnarkProofSizeBytes.GetHashCode();
+      if (MaxGnarkPublicInputSizeBytes != 0UL) hash ^= MaxGnarkPublicInputSizeBytes.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -193,6 +347,30 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(24);
         output.WriteUInt64(UploadChunkGas);
       }
+      if (MaxGroth16ProofSizeBytes != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(MaxGroth16ProofSizeBytes);
+      }
+      if (MaxGroth16PublicInputSizeBytes != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(MaxGroth16PublicInputSizeBytes);
+      }
+      if (MaxUltraHonkProofSizeBytes != 0UL) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(MaxUltraHonkProofSizeBytes);
+      }
+      if (MaxUltraHonkPublicInputSizeBytes != 0UL) {
+        output.WriteRawTag(56);
+        output.WriteUInt64(MaxUltraHonkPublicInputSizeBytes);
+      }
+      if (MaxGnarkProofSizeBytes != 0UL) {
+        output.WriteRawTag(64);
+        output.WriteUInt64(MaxGnarkProofSizeBytes);
+      }
+      if (MaxGnarkPublicInputSizeBytes != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(MaxGnarkPublicInputSizeBytes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -215,6 +393,30 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(24);
         output.WriteUInt64(UploadChunkGas);
       }
+      if (MaxGroth16ProofSizeBytes != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(MaxGroth16ProofSizeBytes);
+      }
+      if (MaxGroth16PublicInputSizeBytes != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(MaxGroth16PublicInputSizeBytes);
+      }
+      if (MaxUltraHonkProofSizeBytes != 0UL) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(MaxUltraHonkProofSizeBytes);
+      }
+      if (MaxUltraHonkPublicInputSizeBytes != 0UL) {
+        output.WriteRawTag(56);
+        output.WriteUInt64(MaxUltraHonkPublicInputSizeBytes);
+      }
+      if (MaxGnarkProofSizeBytes != 0UL) {
+        output.WriteRawTag(64);
+        output.WriteUInt64(MaxGnarkProofSizeBytes);
+      }
+      if (MaxGnarkPublicInputSizeBytes != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(MaxGnarkPublicInputSizeBytes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -233,6 +435,24 @@ namespace Xion.Zk.V1 {
       }
       if (UploadChunkGas != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UploadChunkGas);
+      }
+      if (MaxGroth16ProofSizeBytes != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxGroth16ProofSizeBytes);
+      }
+      if (MaxGroth16PublicInputSizeBytes != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxGroth16PublicInputSizeBytes);
+      }
+      if (MaxUltraHonkProofSizeBytes != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxUltraHonkProofSizeBytes);
+      }
+      if (MaxUltraHonkPublicInputSizeBytes != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxUltraHonkPublicInputSizeBytes);
+      }
+      if (MaxGnarkProofSizeBytes != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxGnarkProofSizeBytes);
+      }
+      if (MaxGnarkPublicInputSizeBytes != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxGnarkPublicInputSizeBytes);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -254,6 +474,24 @@ namespace Xion.Zk.V1 {
       }
       if (other.UploadChunkGas != 0UL) {
         UploadChunkGas = other.UploadChunkGas;
+      }
+      if (other.MaxGroth16ProofSizeBytes != 0UL) {
+        MaxGroth16ProofSizeBytes = other.MaxGroth16ProofSizeBytes;
+      }
+      if (other.MaxGroth16PublicInputSizeBytes != 0UL) {
+        MaxGroth16PublicInputSizeBytes = other.MaxGroth16PublicInputSizeBytes;
+      }
+      if (other.MaxUltraHonkProofSizeBytes != 0UL) {
+        MaxUltraHonkProofSizeBytes = other.MaxUltraHonkProofSizeBytes;
+      }
+      if (other.MaxUltraHonkPublicInputSizeBytes != 0UL) {
+        MaxUltraHonkPublicInputSizeBytes = other.MaxUltraHonkPublicInputSizeBytes;
+      }
+      if (other.MaxGnarkProofSizeBytes != 0UL) {
+        MaxGnarkProofSizeBytes = other.MaxGnarkProofSizeBytes;
+      }
+      if (other.MaxGnarkPublicInputSizeBytes != 0UL) {
+        MaxGnarkPublicInputSizeBytes = other.MaxGnarkPublicInputSizeBytes;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -282,6 +520,30 @@ namespace Xion.Zk.V1 {
             UploadChunkGas = input.ReadUInt64();
             break;
           }
+          case 32: {
+            MaxGroth16ProofSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 40: {
+            MaxGroth16PublicInputSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 48: {
+            MaxUltraHonkProofSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 56: {
+            MaxUltraHonkPublicInputSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 64: {
+            MaxGnarkProofSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 72: {
+            MaxGnarkPublicInputSizeBytes = input.ReadUInt64();
+            break;
+          }
         }
       }
     #endif
@@ -307,6 +569,30 @@ namespace Xion.Zk.V1 {
           }
           case 24: {
             UploadChunkGas = input.ReadUInt64();
+            break;
+          }
+          case 32: {
+            MaxGroth16ProofSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 40: {
+            MaxGroth16PublicInputSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 48: {
+            MaxUltraHonkProofSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 56: {
+            MaxUltraHonkPublicInputSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 64: {
+            MaxGnarkProofSizeBytes = input.ReadUInt64();
+            break;
+          }
+          case 72: {
+            MaxGnarkPublicInputSizeBytes = input.ReadUInt64();
             break;
           }
         }

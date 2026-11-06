@@ -42,7 +42,7 @@ namespace Ibc.Core.Client.V2 {
             "Q291bnRlcnBhcnR5UmVzcG9uc2UScgoSVXBkYXRlQ2xpZW50Q29uZmlnEiku",
             "aWJjLmNvcmUuY2xpZW50LnYyLk1zZ1VwZGF0ZUNsaWVudENvbmZpZxoxLmli",
             "Yy5jb3JlLmNsaWVudC52Mi5Nc2dVcGRhdGVDbGllbnRDb25maWdSZXNwb25z",
-            "ZRoFgOewKgFCPlo8Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1",
+            "ZRoFgOewKgFCPlo8Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9tb2R1",
             "bGVzL2NvcmUvMDItY2xpZW50L3YyL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Ibc.Core.Client.V2.ConfigReflection.Descriptor, },

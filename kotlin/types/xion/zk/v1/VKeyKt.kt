@@ -155,6 +155,38 @@ public object VKeyKt {
     public fun clearAuthority() {
       _builder.clearAuthority()
     }
+
+    /**
+     * ```
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * ```
+     *
+     * `.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];`
+     */
+    public var proofSystem: xion.zk.v1.ParamsOuterClass.ProofSystem
+      @JvmName("getProofSystem")
+      get() = _builder.getProofSystem()
+      @JvmName("setProofSystem")
+      set(value) {
+        _builder.setProofSystem(value)
+      }
+    public var proofSystemValue: kotlin.Int
+      @JvmName("getProofSystemValue")
+      get() = _builder.getProofSystemValue()
+      @JvmName("setProofSystemValue")
+      set(value) {
+        _builder.setProofSystemValue(value)
+      }
+    /**
+     * ```
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * ```
+     *
+     * `.xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];`
+     */
+    public fun clearProofSystem() {
+      _builder.clearProofSystem()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

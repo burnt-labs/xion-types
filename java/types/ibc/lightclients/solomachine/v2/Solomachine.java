@@ -12403,7 +12403,7 @@ public final class Solomachine {
       "ABSENCE\0226\n\034DATA_TYPE_NEXT_SEQUENCE_RECV\020" +
       "\010\032\024\212\235 \020NEXTSEQUENCERECV\022 \n\020DATA_TYPE_HEA" +
       "DER\020\t\032\n\212\235 \006HEADER\032\004\210\243\036\000BCZAgithub.com/co" +
-      "smos/ibc-go/v10/modules/core/02-client/m" +
+      "smos/ibc-go/v11/modules/core/02-client/m" +
       "igrations/v7b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -8,7 +8,7 @@ require 'ibc/core/client/v2/counterparty_pb'
 require 'gogoproto/gogo_pb'
 
 
-descriptor_data = "\n ibc/core/client/v2/genesis.proto\x12\x12ibc.core.client.v2\x1a%ibc/core/client/v2/counterparty.proto\x1a\x14gogoproto/gogo.proto\"\x8f\x01\n\x17GenesisCounterpartyInfo\x12\x1b\n\tclient_id\x18\x01 \x01(\tR\x08\x63lientId\x12W\n\x11\x63ounterparty_info\x18\x02 \x01(\x0b\x32$.ibc.core.client.v2.CounterpartyInfoB\x04\xc8\xde\x1f\x00R\x10\x63ounterpartyInfo\"p\n\x0cGenesisState\x12`\n\x12\x63ounterparty_infos\x18\x01 \x03(\x0b\x32+.ibc.core.client.v2.GenesisCounterpartyInfoB\x04\xc8\xde\x1f\x00R\x11\x63ounterpartyInfosB>Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/typesb\x06proto3"
+descriptor_data = "\n ibc/core/client/v2/genesis.proto\x12\x12ibc.core.client.v2\x1a%ibc/core/client/v2/counterparty.proto\x1a\x14gogoproto/gogo.proto\"\x8f\x01\n\x17GenesisCounterpartyInfo\x12\x1b\n\tclient_id\x18\x01 \x01(\tR\x08\x63lientId\x12W\n\x11\x63ounterparty_info\x18\x02 \x01(\x0b\x32$.ibc.core.client.v2.CounterpartyInfoB\x04\xc8\xde\x1f\x00R\x10\x63ounterpartyInfo\"p\n\x0cGenesisState\x12`\n\x12\x63ounterparty_infos\x18\x01 \x03(\x0b\x32+.ibc.core.client.v2.GenesisCounterpartyInfoB\x04\xc8\xde\x1f\x00R\x11\x63ounterpartyInfosB>Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

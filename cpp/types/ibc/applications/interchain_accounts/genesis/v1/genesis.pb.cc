@@ -279,7 +279,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "unt\022#\n\rconnection_id\030\001 \001(\tR\014connectionId"
     "\022\027\n\007port_id\030\002 \001(\tR\006portId\022\'\n\017account_add"
     "ress\030\003 \001(\tR\016accountAddressBPZNgithub.com"
-    "/cosmos/ibc-go/v10/modules/apps/27-inter"
+    "/cosmos/ibc-go/v11/modules/apps/27-inter"
     "chain-accounts/genesis/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2finterchain_5faccounts_2fgenesis_2fv1_2fgenesis_2eproto_deps[3] =

@@ -52,6 +52,15 @@ export interface MsgTransfer {
   memo: string;
   /** optional encoding */
   encoding: string;
+  /**
+   * boolean flag to indicate if the transfer message
+   * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+   * In this case, the v1 channel identifiers function as aliases to the
+   * underlying client ids.
+   * This only needs to be set if the channel IDs
+   * are V1 channel identifiers.
+   */
+  useAliasing: boolean;
 }
 
 /** MsgTransferResponse defines the Msg/Transfer response type. */
@@ -90,6 +99,7 @@ function createBaseMsgTransfer(): MsgTransfer {
     timeoutTimestamp: 0n,
     memo: "",
     encoding: "",
+    useAliasing: false,
   };
 }
 
@@ -124,6 +134,9 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
     }
     if (message.encoding !== "") {
       writer.uint32(74).string(message.encoding);
+    }
+    if (message.useAliasing !== false) {
+      writer.uint32(80).bool(message.useAliasing);
     }
     return writer;
   },
@@ -213,6 +226,14 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
             message.encoding = reader.string();
             continue;
           }
+          case 10: {
+            if (tag !== 80) {
+              break;
+            }
+
+            message.useAliasing = reader.bool();
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -252,6 +273,11 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
         : 0n,
       memo: isSet(object.memo) ? globalThis.String(object.memo) : "",
       encoding: isSet(object.encoding) ? globalThis.String(object.encoding) : "",
+      useAliasing: isSet(object.useAliasing)
+        ? globalThis.Boolean(object.useAliasing)
+        : isSet(object.use_aliasing)
+        ? globalThis.Boolean(object.use_aliasing)
+        : false,
     };
   },
 
@@ -284,6 +310,9 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
     if (message.encoding !== "") {
       obj.encoding = message.encoding;
     }
+    if (message.useAliasing !== false) {
+      obj.useAliasing = message.useAliasing;
+    }
     return obj;
   },
 
@@ -305,6 +334,7 @@ export const MsgTransfer: MessageFns<MsgTransfer> = {
       : 0n;
     message.memo = object.memo ?? "";
     message.encoding = object.encoding ?? "";
+    message.useAliasing = object.useAliasing ?? false;
     return message;
   },
 };

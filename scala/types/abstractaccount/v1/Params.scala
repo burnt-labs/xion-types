@@ -8,14 +8,15 @@ package abstractaccount.v1
 /** Params defines the parameters for the abstractaccount module.
   *
   * @param allowAllCodeIds
-  *   AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-  *   AbstractAccounts:
+  *   AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+  *   final implementation for a newly registered AbstractAccount or a
+  *   top-level raw Wasm migration:
   *   - if set to true, any code ID can be used;
   *   - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
   *   be used.
   * @param allowedCodeIds
-  *   AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-  *   regiseter AbstractAccounts.
+  *   AllowedCodeIDs is the whitelist for registration implementations and
+  *   top-level raw Wasm migrations. This is not a wasmd-level policy.
   * @param maxGasBefore
   *   MaxGasBefore is the maximum amount of gas that can be consumed by the
   *   contract call in the before_tx decorator.
@@ -26,6 +27,15 @@ package abstractaccount.v1
   *   contract call in the after_tx decorator.
   *  
   *   Must be greater than zero.
+  * @param registrationEnabled
+  *   RegistrationEnabled controls whether new abstract accounts may be
+  *   registered. Governance can pause registration without changing the
+  *   immutable address namespace or blocking address queries.
+  * @param addressDerivationHash
+  *   AddressDerivationHash is the immutable 32-byte namespace used only to
+  *   derive predictable AbstractAccount addresses. The caller-selected code ID
+  *   is instantiated directly and does not participate in address derivation.
+  *   An empty value leaves registration unconfigured.
   */
 @SerialVersionUID(0L)
 final case class Params(
@@ -33,6 +43,8 @@ final case class Params(
     allowedCodeIds: _root_.scala.Seq[_root_.scala.Long] = _root_.scala.Seq.empty,
     maxGasBefore: _root_.scala.Long = 0L,
     maxGasAfter: _root_.scala.Long = 0L,
+    registrationEnabled: _root_.scala.Boolean = false,
+    addressDerivationHash: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Params] {
     private[this] def allowedCodeIdsSerializedSize = {
@@ -73,6 +85,20 @@ final case class Params(
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(4, __value)
         }
       };
+      
+      {
+        val __value = registrationEnabled
+        if (__value != false) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeBoolSize(7, __value)
+        }
+      };
+      
+      {
+        val __value = addressDerivationHash
+        if (!__value.isEmpty) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeBytesSize(8, __value)
+        }
+      };
       __size += unknownFields.serializedSize
       __size
     }
@@ -109,6 +135,18 @@ final case class Params(
           _output__.writeUInt64(4, __v)
         }
       };
+      {
+        val __v = registrationEnabled
+        if (__v != false) {
+          _output__.writeBool(7, __v)
+        }
+      };
+      {
+        val __v = addressDerivationHash
+        if (!__v.isEmpty) {
+          _output__.writeBytes(8, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withAllowAllCodeIds(__v: _root_.scala.Boolean): Params = copy(allowAllCodeIds = __v)
@@ -118,6 +156,8 @@ final case class Params(
     def withAllowedCodeIds(__v: _root_.scala.Seq[_root_.scala.Long]): Params = copy(allowedCodeIds = __v)
     def withMaxGasBefore(__v: _root_.scala.Long): Params = copy(maxGasBefore = __v)
     def withMaxGasAfter(__v: _root_.scala.Long): Params = copy(maxGasAfter = __v)
+    def withRegistrationEnabled(__v: _root_.scala.Boolean): Params = copy(registrationEnabled = __v)
+    def withAddressDerivationHash(__v: _root_.com.google.protobuf.ByteString): Params = copy(addressDerivationHash = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -135,6 +175,14 @@ final case class Params(
           val __t = maxGasAfter
           if (__t != 0L) __t else null
         }
+        case 7 => {
+          val __t = registrationEnabled
+          if (__t != false) __t else null
+        }
+        case 8 => {
+          val __t = addressDerivationHash
+          if (__t != _root_.com.google.protobuf.ByteString.EMPTY) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -144,6 +192,8 @@ final case class Params(
         case 2 => _root_.scalapb.descriptors.PRepeated(allowedCodeIds.iterator.map(_root_.scalapb.descriptors.PLong(_)).toVector)
         case 3 => _root_.scalapb.descriptors.PLong(maxGasBefore)
         case 4 => _root_.scalapb.descriptors.PLong(maxGasAfter)
+        case 7 => _root_.scalapb.descriptors.PBoolean(registrationEnabled)
+        case 8 => _root_.scalapb.descriptors.PByteString(addressDerivationHash)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -158,6 +208,8 @@ object Params extends scalapb.GeneratedMessageCompanion[abstractaccount.v1.Param
     val __allowedCodeIds: _root_.scala.collection.immutable.VectorBuilder[_root_.scala.Long] = new _root_.scala.collection.immutable.VectorBuilder[_root_.scala.Long]
     var __maxGasBefore: _root_.scala.Long = 0L
     var __maxGasAfter: _root_.scala.Long = 0L
+    var __registrationEnabled: _root_.scala.Boolean = false
+    var __addressDerivationHash: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -180,6 +232,10 @@ object Params extends scalapb.GeneratedMessageCompanion[abstractaccount.v1.Param
           __maxGasBefore = _input__.readUInt64()
         case 32 =>
           __maxGasAfter = _input__.readUInt64()
+        case 56 =>
+          __registrationEnabled = _input__.readBool()
+        case 66 =>
+          __addressDerivationHash = _input__.readBytes()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -192,6 +248,8 @@ object Params extends scalapb.GeneratedMessageCompanion[abstractaccount.v1.Param
         allowedCodeIds = __allowedCodeIds.result(),
         maxGasBefore = __maxGasBefore,
         maxGasAfter = __maxGasAfter,
+        registrationEnabled = __registrationEnabled,
+        addressDerivationHash = __addressDerivationHash,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -202,7 +260,9 @@ object Params extends scalapb.GeneratedMessageCompanion[abstractaccount.v1.Param
         allowAllCodeIds = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Boolean]).getOrElse(false),
         allowedCodeIds = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Seq[_root_.scala.Long]]).getOrElse(_root_.scala.Seq.empty),
         maxGasBefore = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
-        maxGasAfter = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
+        maxGasAfter = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        registrationEnabled = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).map(_.as[_root_.scala.Boolean]).getOrElse(false),
+        addressDerivationHash = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.com.google.protobuf.ByteString]).getOrElse(_root_.com.google.protobuf.ByteString.EMPTY)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -215,28 +275,38 @@ object Params extends scalapb.GeneratedMessageCompanion[abstractaccount.v1.Param
     allowAllCodeIds = false,
     allowedCodeIds = _root_.scala.Seq.empty,
     maxGasBefore = 0L,
-    maxGasAfter = 0L
+    maxGasAfter = 0L,
+    registrationEnabled = false,
+    addressDerivationHash = _root_.com.google.protobuf.ByteString.EMPTY
   )
   implicit class ParamsLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, abstractaccount.v1.Params]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, abstractaccount.v1.Params](_l) {
     def allowAllCodeIds: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.allowAllCodeIds)((c_, f_) => c_.copy(allowAllCodeIds = f_))
     def allowedCodeIds: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Seq[_root_.scala.Long]] = field(_.allowedCodeIds)((c_, f_) => c_.copy(allowedCodeIds = f_))
     def maxGasBefore: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxGasBefore)((c_, f_) => c_.copy(maxGasBefore = f_))
     def maxGasAfter: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxGasAfter)((c_, f_) => c_.copy(maxGasAfter = f_))
+    def registrationEnabled: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.registrationEnabled)((c_, f_) => c_.copy(registrationEnabled = f_))
+    def addressDerivationHash: _root_.scalapb.lenses.Lens[UpperPB, _root_.com.google.protobuf.ByteString] = field(_.addressDerivationHash)((c_, f_) => c_.copy(addressDerivationHash = f_))
   }
   final val ALLOW_ALL_CODE_IDS_FIELD_NUMBER = 1
   final val ALLOWED_CODE_IDS_FIELD_NUMBER = 2
   final val MAX_GAS_BEFORE_FIELD_NUMBER = 3
   final val MAX_GAS_AFTER_FIELD_NUMBER = 4
+  final val REGISTRATION_ENABLED_FIELD_NUMBER = 7
+  final val ADDRESS_DERIVATION_HASH_FIELD_NUMBER = 8
   def of(
     allowAllCodeIds: _root_.scala.Boolean,
     allowedCodeIds: _root_.scala.Seq[_root_.scala.Long],
     maxGasBefore: _root_.scala.Long,
-    maxGasAfter: _root_.scala.Long
+    maxGasAfter: _root_.scala.Long,
+    registrationEnabled: _root_.scala.Boolean,
+    addressDerivationHash: _root_.com.google.protobuf.ByteString
   ): _root_.abstractaccount.v1.Params = _root_.abstractaccount.v1.Params(
     allowAllCodeIds,
     allowedCodeIds,
     maxGasBefore,
-    maxGasAfter
+    maxGasAfter,
+    registrationEnabled,
+    addressDerivationHash
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[abstractaccount.v1.Params])
 }

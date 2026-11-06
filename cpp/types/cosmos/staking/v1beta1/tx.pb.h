@@ -95,6 +95,12 @@ extern MsgEditValidatorDefaultTypeInternal _MsgEditValidator_default_instance_;
 class MsgEditValidatorResponse;
 struct MsgEditValidatorResponseDefaultTypeInternal;
 extern MsgEditValidatorResponseDefaultTypeInternal _MsgEditValidatorResponse_default_instance_;
+class MsgRotateConsPubKey;
+struct MsgRotateConsPubKeyDefaultTypeInternal;
+extern MsgRotateConsPubKeyDefaultTypeInternal _MsgRotateConsPubKey_default_instance_;
+class MsgRotateConsPubKeyResponse;
+struct MsgRotateConsPubKeyResponseDefaultTypeInternal;
+extern MsgRotateConsPubKeyResponseDefaultTypeInternal _MsgRotateConsPubKeyResponse_default_instance_;
 class MsgUndelegate;
 struct MsgUndelegateDefaultTypeInternal;
 extern MsgUndelegateDefaultTypeInternal _MsgUndelegate_default_instance_;
@@ -2591,6 +2597,313 @@ class MsgUpdateParamsResponse final :
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   friend struct ::TableStruct_cosmos_2fstaking_2fv1beta1_2ftx_2eproto;
+};// -------------------------------------------------------------------
+
+class MsgRotateConsPubKey final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:cosmos.staking.v1beta1.MsgRotateConsPubKey) */ {
+ public:
+  inline MsgRotateConsPubKey() : MsgRotateConsPubKey(nullptr) {}
+  ~MsgRotateConsPubKey() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR MsgRotateConsPubKey(::google::protobuf::internal::ConstantInitialized);
+
+  MsgRotateConsPubKey(const MsgRotateConsPubKey& from);
+  MsgRotateConsPubKey(MsgRotateConsPubKey&& from) noexcept
+    : MsgRotateConsPubKey() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgRotateConsPubKey& operator=(const MsgRotateConsPubKey& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MsgRotateConsPubKey& operator=(MsgRotateConsPubKey&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MsgRotateConsPubKey& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MsgRotateConsPubKey* internal_default_instance() {
+    return reinterpret_cast<const MsgRotateConsPubKey*>(
+               &_MsgRotateConsPubKey_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(MsgRotateConsPubKey& a, MsgRotateConsPubKey& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MsgRotateConsPubKey* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MsgRotateConsPubKey* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MsgRotateConsPubKey* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MsgRotateConsPubKey>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const MsgRotateConsPubKey& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const MsgRotateConsPubKey& from) {
+    MsgRotateConsPubKey::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MsgRotateConsPubKey* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "cosmos.staking.v1beta1.MsgRotateConsPubKey";
+  }
+  protected:
+  explicit MsgRotateConsPubKey(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValidatorAddressFieldNumber = 1,
+    kNewPubkeyFieldNumber = 2,
+  };
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  void clear_validator_address() ;
+  const std::string& validator_address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_validator_address(Arg_&& arg, Args_... args);
+  std::string* mutable_validator_address();
+  PROTOBUF_NODISCARD std::string* release_validator_address();
+  void set_allocated_validator_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_validator_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_validator_address(
+      const std::string& value);
+  std::string* _internal_mutable_validator_address();
+
+  public:
+  // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+  bool has_new_pubkey() const;
+  void clear_new_pubkey() ;
+  const ::google::protobuf::Any& new_pubkey() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Any* release_new_pubkey();
+  ::google::protobuf::Any* mutable_new_pubkey();
+  void set_allocated_new_pubkey(::google::protobuf::Any* value);
+  void unsafe_arena_set_allocated_new_pubkey(::google::protobuf::Any* value);
+  ::google::protobuf::Any* unsafe_arena_release_new_pubkey();
+
+  private:
+  const ::google::protobuf::Any& _internal_new_pubkey() const;
+  ::google::protobuf::Any* _internal_mutable_new_pubkey();
+
+  public:
+  // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 1, 68, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr validator_address_;
+    ::google::protobuf::Any* new_pubkey_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_cosmos_2fstaking_2fv1beta1_2ftx_2eproto;
+};// -------------------------------------------------------------------
+
+class MsgRotateConsPubKeyResponse final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse) */ {
+ public:
+  inline MsgRotateConsPubKeyResponse() : MsgRotateConsPubKeyResponse(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR MsgRotateConsPubKeyResponse(::google::protobuf::internal::ConstantInitialized);
+
+  MsgRotateConsPubKeyResponse(const MsgRotateConsPubKeyResponse& from);
+  MsgRotateConsPubKeyResponse(MsgRotateConsPubKeyResponse&& from) noexcept
+    : MsgRotateConsPubKeyResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgRotateConsPubKeyResponse& operator=(const MsgRotateConsPubKeyResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MsgRotateConsPubKeyResponse& operator=(MsgRotateConsPubKeyResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MsgRotateConsPubKeyResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MsgRotateConsPubKeyResponse* internal_default_instance() {
+    return reinterpret_cast<const MsgRotateConsPubKeyResponse*>(
+               &_MsgRotateConsPubKeyResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(MsgRotateConsPubKeyResponse& a, MsgRotateConsPubKeyResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MsgRotateConsPubKeyResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MsgRotateConsPubKeyResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MsgRotateConsPubKeyResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MsgRotateConsPubKeyResponse>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const MsgRotateConsPubKeyResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const MsgRotateConsPubKeyResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse";
+  }
+  protected:
+  explicit MsgRotateConsPubKeyResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_cosmos_2fstaking_2fv1beta1_2ftx_2eproto;
 };
 
 // ===================================================================
@@ -4694,6 +5007,157 @@ inline void MsgUpdateParams::set_allocated_params(::cosmos::staking::v1beta1::Pa
 // -------------------------------------------------------------------
 
 // MsgUpdateParamsResponse
+
+// -------------------------------------------------------------------
+
+// MsgRotateConsPubKey
+
+// string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+inline void MsgRotateConsPubKey::clear_validator_address() {
+  _impl_.validator_address_.ClearToEmpty();
+}
+inline const std::string& MsgRotateConsPubKey::validator_address() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.MsgRotateConsPubKey.validator_address)
+  return _internal_validator_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void MsgRotateConsPubKey::set_validator_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.MsgRotateConsPubKey.validator_address)
+}
+inline std::string* MsgRotateConsPubKey::mutable_validator_address() {
+  std::string* _s = _internal_mutable_validator_address();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.MsgRotateConsPubKey.validator_address)
+  return _s;
+}
+inline const std::string& MsgRotateConsPubKey::_internal_validator_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.validator_address_.Get();
+}
+inline void MsgRotateConsPubKey::_internal_set_validator_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MsgRotateConsPubKey::_internal_mutable_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.validator_address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* MsgRotateConsPubKey::release_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.MsgRotateConsPubKey.validator_address)
+  return _impl_.validator_address_.Release();
+}
+inline void MsgRotateConsPubKey::set_allocated_validator_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.validator_address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.validator_address_.IsDefault()) {
+          _impl_.validator_address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.MsgRotateConsPubKey.validator_address)
+}
+
+// .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+inline bool MsgRotateConsPubKey::has_new_pubkey() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.new_pubkey_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Any& MsgRotateConsPubKey::_internal_new_pubkey() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Any* p = _impl_.new_pubkey_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Any&>(::google::protobuf::_Any_default_instance_);
+}
+inline const ::google::protobuf::Any& MsgRotateConsPubKey::new_pubkey() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.MsgRotateConsPubKey.new_pubkey)
+  return _internal_new_pubkey();
+}
+inline void MsgRotateConsPubKey::unsafe_arena_set_allocated_new_pubkey(::google::protobuf::Any* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.new_pubkey_);
+  }
+  _impl_.new_pubkey_ = reinterpret_cast<::google::protobuf::Any*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.staking.v1beta1.MsgRotateConsPubKey.new_pubkey)
+}
+inline ::google::protobuf::Any* MsgRotateConsPubKey::release_new_pubkey() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Any* released = _impl_.new_pubkey_;
+  _impl_.new_pubkey_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Any* MsgRotateConsPubKey::unsafe_arena_release_new_pubkey() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.MsgRotateConsPubKey.new_pubkey)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Any* temp = _impl_.new_pubkey_;
+  _impl_.new_pubkey_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Any* MsgRotateConsPubKey::_internal_mutable_new_pubkey() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.new_pubkey_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Any>(GetArenaForAllocation());
+    _impl_.new_pubkey_ = reinterpret_cast<::google::protobuf::Any*>(p);
+  }
+  return _impl_.new_pubkey_;
+}
+inline ::google::protobuf::Any* MsgRotateConsPubKey::mutable_new_pubkey() {
+  ::google::protobuf::Any* _msg = _internal_mutable_new_pubkey();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.MsgRotateConsPubKey.new_pubkey)
+  return _msg;
+}
+inline void MsgRotateConsPubKey::set_allocated_new_pubkey(::google::protobuf::Any* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.new_pubkey_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.new_pubkey_ = reinterpret_cast<::google::protobuf::Any*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.MsgRotateConsPubKey.new_pubkey)
+}
+
+// -------------------------------------------------------------------
+
+// MsgRotateConsPubKeyResponse
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop

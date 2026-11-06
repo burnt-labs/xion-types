@@ -19,7 +19,7 @@ class Controller
 è
 Cibc/applications/interchain_accounts/controller/v1/controller.proto2ibc.applications.interchain_accounts.controller.v1"7
 Params-
-controller_enabled (RcontrollerEnabledBSZQgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/controller/typesbproto3'
+controller_enabled (RcontrollerEnabledBSZQgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/typesbproto3'
         , true);
 
         static::$is_initialized = true;

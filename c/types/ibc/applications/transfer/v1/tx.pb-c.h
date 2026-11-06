@@ -80,10 +80,19 @@ struct  Ibc__Applications__Transfer__V1__MsgTransfer
    * optional encoding
    */
   char *encoding;
+  /*
+   * boolean flag to indicate if the transfer message
+   * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+   * In this case, the v1 channel identifiers function as aliases to the
+   * underlying client ids.
+   * This only needs to be set if the channel IDs
+   * are V1 channel identifiers.
+   */
+  protobuf_c_boolean use_aliasing;
 };
 #define IBC__APPLICATIONS__TRANSFER__V1__MSG_TRANSFER__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&ibc__applications__transfer__v1__msg_transfer__descriptor) \
-, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0 }
 
 
 /*

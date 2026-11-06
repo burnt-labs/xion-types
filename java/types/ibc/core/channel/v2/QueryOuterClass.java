@@ -14592,7 +14592,7 @@ public final class QueryOuterClass {
       "/ibc/core/channel/v2/clients/{client_id}" +
       "/packet_commitments/{packet_ack_sequence" +
       "s}/unreceived_acksB?Z=github.com/cosmos/" +
-      "ibc-go/v10/modules/core/04-channel/v2/ty" +
+      "ibc-go/v11/modules/core/04-channel/v2/ty" +
       "pesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

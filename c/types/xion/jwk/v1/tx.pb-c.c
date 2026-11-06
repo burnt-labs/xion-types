@@ -457,6 +457,96 @@ void   xion__jwk__v1__msg_delete_audience_response__free_unpacked
   assert(message->base.descriptor == &xion__jwk__v1__msg_delete_audience_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   xion__jwk__v1__msg_update_params__init
+                     (Xion__Jwk__V1__MsgUpdateParams         *message)
+{
+  static const Xion__Jwk__V1__MsgUpdateParams init_value = XION__JWK__V1__MSG_UPDATE_PARAMS__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__msg_update_params__get_packed_size
+                     (const Xion__Jwk__V1__MsgUpdateParams *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__msg_update_params__pack
+                     (const Xion__Jwk__V1__MsgUpdateParams *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__msg_update_params__pack_to_buffer
+                     (const Xion__Jwk__V1__MsgUpdateParams *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__MsgUpdateParams *
+       xion__jwk__v1__msg_update_params__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__MsgUpdateParams *)
+     protobuf_c_message_unpack (&xion__jwk__v1__msg_update_params__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__msg_update_params__free_unpacked
+                     (Xion__Jwk__V1__MsgUpdateParams *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   xion__jwk__v1__msg_update_params_response__init
+                     (Xion__Jwk__V1__MsgUpdateParamsResponse         *message)
+{
+  static const Xion__Jwk__V1__MsgUpdateParamsResponse init_value = XION__JWK__V1__MSG_UPDATE_PARAMS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t xion__jwk__v1__msg_update_params_response__get_packed_size
+                     (const Xion__Jwk__V1__MsgUpdateParamsResponse *message)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t xion__jwk__v1__msg_update_params_response__pack
+                     (const Xion__Jwk__V1__MsgUpdateParamsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t xion__jwk__v1__msg_update_params_response__pack_to_buffer
+                     (const Xion__Jwk__V1__MsgUpdateParamsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Xion__Jwk__V1__MsgUpdateParamsResponse *
+       xion__jwk__v1__msg_update_params_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Xion__Jwk__V1__MsgUpdateParamsResponse *)
+     protobuf_c_message_unpack (&xion__jwk__v1__msg_update_params_response__descriptor,
+                                allocator, len, data);
+}
+void   xion__jwk__v1__msg_update_params_response__free_unpacked
+                     (Xion__Jwk__V1__MsgUpdateParamsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &xion__jwk__v1__msg_update_params_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor xion__jwk__v1__msg_create_audience_claim__field_descriptors[2] =
 {
   {
@@ -894,20 +984,91 @@ const ProtobufCMessageDescriptor xion__jwk__v1__msg_delete_audience_response__de
   (ProtobufCMessageInit) xion__jwk__v1__msg_delete_audience_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor xion__jwk__v1__msg__method_descriptors[5] =
+static const ProtobufCFieldDescriptor xion__jwk__v1__msg_update_params__field_descriptors[2] =
+{
+  {
+    "authority",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__MsgUpdateParams, authority),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "params",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Xion__Jwk__V1__MsgUpdateParams, params),
+    &xion__jwk__v1__params__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned xion__jwk__v1__msg_update_params__field_indices_by_name[] = {
+  0,   /* field[0] = authority */
+  1,   /* field[1] = params */
+};
+static const ProtobufCIntRange xion__jwk__v1__msg_update_params__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor xion__jwk__v1__msg_update_params__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.MsgUpdateParams",
+  "MsgUpdateParams",
+  "Xion__Jwk__V1__MsgUpdateParams",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__MsgUpdateParams),
+  2,
+  xion__jwk__v1__msg_update_params__field_descriptors,
+  xion__jwk__v1__msg_update_params__field_indices_by_name,
+  1,  xion__jwk__v1__msg_update_params__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__msg_update_params__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define xion__jwk__v1__msg_update_params_response__field_descriptors NULL
+#define xion__jwk__v1__msg_update_params_response__field_indices_by_name NULL
+#define xion__jwk__v1__msg_update_params_response__number_ranges NULL
+const ProtobufCMessageDescriptor xion__jwk__v1__msg_update_params_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "xion.jwk.v1.MsgUpdateParamsResponse",
+  "MsgUpdateParamsResponse",
+  "Xion__Jwk__V1__MsgUpdateParamsResponse",
+  "xion.jwk.v1",
+  sizeof(Xion__Jwk__V1__MsgUpdateParamsResponse),
+  0,
+  xion__jwk__v1__msg_update_params_response__field_descriptors,
+  xion__jwk__v1__msg_update_params_response__field_indices_by_name,
+  0,  xion__jwk__v1__msg_update_params_response__number_ranges,
+  (ProtobufCMessageInit) xion__jwk__v1__msg_update_params_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor xion__jwk__v1__msg__method_descriptors[6] =
 {
   { "CreateAudienceClaim", &xion__jwk__v1__msg_create_audience_claim__descriptor, &xion__jwk__v1__msg_create_audience_claim_response__descriptor },
   { "DeleteAudienceClaim", &xion__jwk__v1__msg_delete_audience_claim__descriptor, &xion__jwk__v1__msg_delete_audience_claim_response__descriptor },
   { "CreateAudience", &xion__jwk__v1__msg_create_audience__descriptor, &xion__jwk__v1__msg_create_audience_response__descriptor },
   { "UpdateAudience", &xion__jwk__v1__msg_update_audience__descriptor, &xion__jwk__v1__msg_update_audience_response__descriptor },
   { "DeleteAudience", &xion__jwk__v1__msg_delete_audience__descriptor, &xion__jwk__v1__msg_delete_audience_response__descriptor },
+  { "UpdateParams", &xion__jwk__v1__msg_update_params__descriptor, &xion__jwk__v1__msg_update_params_response__descriptor },
 };
 const unsigned xion__jwk__v1__msg__method_indices_by_name[] = {
   2,        /* CreateAudience */
   0,        /* CreateAudienceClaim */
   4,        /* DeleteAudience */
   1,        /* DeleteAudienceClaim */
-  3         /* UpdateAudience */
+  3,        /* UpdateAudience */
+  5         /* UpdateParams */
 };
 const ProtobufCServiceDescriptor xion__jwk__v1__msg__descriptor =
 {
@@ -916,7 +1077,7 @@ const ProtobufCServiceDescriptor xion__jwk__v1__msg__descriptor =
   "Msg",
   "Xion__Jwk__V1__Msg",
   "xion.jwk.v1",
-  5,
+  6,
   xion__jwk__v1__msg__method_descriptors,
   xion__jwk__v1__msg__method_indices_by_name
 };
@@ -959,6 +1120,14 @@ void xion__jwk__v1__msg__delete_audience(ProtobufCService *service,
 {
   assert(service->descriptor == &xion__jwk__v1__msg__descriptor);
   service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void xion__jwk__v1__msg__update_params(ProtobufCService *service,
+                                       const Xion__Jwk__V1__MsgUpdateParams *input,
+                                       Xion__Jwk__V1__MsgUpdateParamsResponse_Closure closure,
+                                       void *closure_data)
+{
+  assert(service->descriptor == &xion__jwk__v1__msg__descriptor);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void xion__jwk__v1__msg__init (Xion__Jwk__V1__Msg_Service *service,
                                Xion__Jwk__V1__Msg_ServiceDestroy destroy)

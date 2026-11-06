@@ -19,8 +19,8 @@ object KvProto extends _root_.scalapb.GeneratedFileObject {
   """Ciljb3Ntb3Mvc3RvcmUvaW50ZXJuYWwva3YvdjFiZXRhMS9rdi5wcm90bxIgY29zbW9zLnN0b3JlLmludGVybmFsLmt2LnYxY
   mV0YTEaFGdvZ29wcm90by9nb2dvLnByb3RvIlUKBVBhaXJzEkwKBXBhaXJzGAEgAygLMiYuY29zbW9zLnN0b3JlLmludGVybmFsL
   mt2LnYxYmV0YTEuUGFpckIO4j8HEgVwYWlyc8jeHwBSBXBhaXJzIkQKBFBhaXISGgoDa2V5GAEgASgMQgjiPwUSA2tleVIDa2V5E
-  iAKBXZhbHVlGAIgASgMQgriPwcSBXZhbHVlUgV2YWx1ZUIgWh5jb3Ntb3NzZGsuaW8vc3RvcmUvaW50ZXJuYWwva3ZiBnByb3RvM
-  w=="""
+  iAKBXZhbHVlGAIgASgMQgriPwcSBXZhbHVlUgV2YWx1ZUIzWjFnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3N0b3JlL3YyL
+  2ludGVybmFsL2t2YgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

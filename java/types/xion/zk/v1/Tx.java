@@ -80,13 +80,33 @@ public final class Tx {
 
     /**
      * <pre>
-     * vkey_json is the JSON representation of the verification key
+     * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+     * proof_system).
      * </pre>
      *
      * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
      * @return The vkeyBytes.
      */
     com.google.protobuf.ByteString getVkeyBytes();
+
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The enum numeric value on the wire for proofSystem.
+     */
+    int getProofSystemValue();
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The proofSystem.
+     */
+    xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem();
   }
   /**
    * <pre>
@@ -109,6 +129,7 @@ public final class Tx {
       name_ = "";
       description_ = "";
       vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
+      proofSystem_ = 0;
     }
 
     @java.lang.Override
@@ -276,7 +297,8 @@ public final class Tx {
     private com.google.protobuf.ByteString vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * vkey_json is the JSON representation of the verification key
+     * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+     * proof_system).
      * </pre>
      *
      * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -285,6 +307,32 @@ public final class Tx {
     @java.lang.Override
     public com.google.protobuf.ByteString getVkeyBytes() {
       return vkeyBytes_;
+    }
+
+    public static final int PROOF_SYSTEM_FIELD_NUMBER = 5;
+    private int proofSystem_ = 0;
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The enum numeric value on the wire for proofSystem.
+     */
+    @java.lang.Override public int getProofSystemValue() {
+      return proofSystem_;
+    }
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The proofSystem.
+     */
+    @java.lang.Override public xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem() {
+      xion.zk.v1.ParamsOuterClass.ProofSystem result = xion.zk.v1.ParamsOuterClass.ProofSystem.forNumber(proofSystem_);
+      return result == null ? xion.zk.v1.ParamsOuterClass.ProofSystem.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -313,6 +361,9 @@ public final class Tx {
       if (!vkeyBytes_.isEmpty()) {
         output.writeBytes(4, vkeyBytes_);
       }
+      if (proofSystem_ != xion.zk.v1.ParamsOuterClass.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.getNumber()) {
+        output.writeEnum(5, proofSystem_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -334,6 +385,10 @@ public final class Tx {
       if (!vkeyBytes_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, vkeyBytes_);
+      }
+      if (proofSystem_ != xion.zk.v1.ParamsOuterClass.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, proofSystem_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -358,6 +413,7 @@ public final class Tx {
           .equals(other.getDescription())) return false;
       if (!getVkeyBytes()
           .equals(other.getVkeyBytes())) return false;
+      if (proofSystem_ != other.proofSystem_) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -377,6 +433,8 @@ public final class Tx {
       hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + VKEY_BYTES_FIELD_NUMBER;
       hash = (53 * hash) + getVkeyBytes().hashCode();
+      hash = (37 * hash) + PROOF_SYSTEM_FIELD_NUMBER;
+      hash = (53 * hash) + proofSystem_;
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -516,6 +574,7 @@ public final class Tx {
         name_ = "";
         description_ = "";
         vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
+        proofSystem_ = 0;
         return this;
       }
 
@@ -560,6 +619,9 @@ public final class Tx {
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.vkeyBytes_ = vkeyBytes_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.proofSystem_ = proofSystem_;
         }
       }
 
@@ -625,6 +687,9 @@ public final class Tx {
         if (other.getVkeyBytes() != com.google.protobuf.ByteString.EMPTY) {
           setVkeyBytes(other.getVkeyBytes());
         }
+        if (other.proofSystem_ != 0) {
+          setProofSystemValue(other.getProofSystemValue());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -671,6 +736,11 @@ public final class Tx {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 40: {
+                proofSystem_ = input.readEnum();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -967,7 +1037,8 @@ public final class Tx {
       private com.google.protobuf.ByteString vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * vkey_json is the JSON representation of the verification key
+       * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+       * proof_system).
        * </pre>
        *
        * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -979,7 +1050,8 @@ public final class Tx {
       }
       /**
        * <pre>
-       * vkey_json is the JSON representation of the verification key
+       * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+       * proof_system).
        * </pre>
        *
        * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -995,7 +1067,8 @@ public final class Tx {
       }
       /**
        * <pre>
-       * vkey_json is the JSON representation of the verification key
+       * vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+       * proof_system).
        * </pre>
        *
        * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -1004,6 +1077,79 @@ public final class Tx {
       public Builder clearVkeyBytes() {
         bitField0_ = (bitField0_ & ~0x00000008);
         vkeyBytes_ = getDefaultInstance().getVkeyBytes();
+        onChanged();
+        return this;
+      }
+
+      private int proofSystem_ = 0;
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @return The enum numeric value on the wire for proofSystem.
+       */
+      @java.lang.Override public int getProofSystemValue() {
+        return proofSystem_;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @param value The enum numeric value on the wire for proofSystem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProofSystemValue(int value) {
+        proofSystem_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @return The proofSystem.
+       */
+      @java.lang.Override
+      public xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem() {
+        xion.zk.v1.ParamsOuterClass.ProofSystem result = xion.zk.v1.ParamsOuterClass.ProofSystem.forNumber(proofSystem_);
+        return result == null ? xion.zk.v1.ParamsOuterClass.ProofSystem.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @param value The proofSystem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProofSystem(xion.zk.v1.ParamsOuterClass.ProofSystem value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        proofSystem_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProofSystem() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        proofSystem_ = 0;
         onChanged();
         return this;
       }
@@ -1642,13 +1788,33 @@ public final class Tx {
 
     /**
      * <pre>
-     * vkey_json is the new JSON representation of the verification key
+     * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+     * per proof_system).
      * </pre>
      *
      * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
      * @return The vkeyBytes.
      */
     com.google.protobuf.ByteString getVkeyBytes();
+
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The enum numeric value on the wire for proofSystem.
+     */
+    int getProofSystemValue();
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The proofSystem.
+     */
+    xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem();
   }
   /**
    * <pre>
@@ -1671,6 +1837,7 @@ public final class Tx {
       name_ = "";
       description_ = "";
       vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
+      proofSystem_ = 0;
     }
 
     @java.lang.Override
@@ -1838,7 +2005,8 @@ public final class Tx {
     private com.google.protobuf.ByteString vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * vkey_json is the new JSON representation of the verification key
+     * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+     * per proof_system).
      * </pre>
      *
      * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -1847,6 +2015,32 @@ public final class Tx {
     @java.lang.Override
     public com.google.protobuf.ByteString getVkeyBytes() {
       return vkeyBytes_;
+    }
+
+    public static final int PROOF_SYSTEM_FIELD_NUMBER = 5;
+    private int proofSystem_ = 0;
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The enum numeric value on the wire for proofSystem.
+     */
+    @java.lang.Override public int getProofSystemValue() {
+      return proofSystem_;
+    }
+    /**
+     * <pre>
+     * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+     * </pre>
+     *
+     * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+     * @return The proofSystem.
+     */
+    @java.lang.Override public xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem() {
+      xion.zk.v1.ParamsOuterClass.ProofSystem result = xion.zk.v1.ParamsOuterClass.ProofSystem.forNumber(proofSystem_);
+      return result == null ? xion.zk.v1.ParamsOuterClass.ProofSystem.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1875,6 +2069,9 @@ public final class Tx {
       if (!vkeyBytes_.isEmpty()) {
         output.writeBytes(4, vkeyBytes_);
       }
+      if (proofSystem_ != xion.zk.v1.ParamsOuterClass.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.getNumber()) {
+        output.writeEnum(5, proofSystem_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1896,6 +2093,10 @@ public final class Tx {
       if (!vkeyBytes_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, vkeyBytes_);
+      }
+      if (proofSystem_ != xion.zk.v1.ParamsOuterClass.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, proofSystem_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1920,6 +2121,7 @@ public final class Tx {
           .equals(other.getDescription())) return false;
       if (!getVkeyBytes()
           .equals(other.getVkeyBytes())) return false;
+      if (proofSystem_ != other.proofSystem_) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1939,6 +2141,8 @@ public final class Tx {
       hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + VKEY_BYTES_FIELD_NUMBER;
       hash = (53 * hash) + getVkeyBytes().hashCode();
+      hash = (37 * hash) + PROOF_SYSTEM_FIELD_NUMBER;
+      hash = (53 * hash) + proofSystem_;
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2078,6 +2282,7 @@ public final class Tx {
         name_ = "";
         description_ = "";
         vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
+        proofSystem_ = 0;
         return this;
       }
 
@@ -2122,6 +2327,9 @@ public final class Tx {
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.vkeyBytes_ = vkeyBytes_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.proofSystem_ = proofSystem_;
         }
       }
 
@@ -2187,6 +2395,9 @@ public final class Tx {
         if (other.getVkeyBytes() != com.google.protobuf.ByteString.EMPTY) {
           setVkeyBytes(other.getVkeyBytes());
         }
+        if (other.proofSystem_ != 0) {
+          setProofSystemValue(other.getProofSystemValue());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2233,6 +2444,11 @@ public final class Tx {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 40: {
+                proofSystem_ = input.readEnum();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2529,7 +2745,8 @@ public final class Tx {
       private com.google.protobuf.ByteString vkeyBytes_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * vkey_json is the new JSON representation of the verification key
+       * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+       * per proof_system).
        * </pre>
        *
        * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -2541,7 +2758,8 @@ public final class Tx {
       }
       /**
        * <pre>
-       * vkey_json is the new JSON representation of the verification key
+       * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+       * per proof_system).
        * </pre>
        *
        * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -2557,7 +2775,8 @@ public final class Tx {
       }
       /**
        * <pre>
-       * vkey_json is the new JSON representation of the verification key
+       * vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+       * per proof_system).
        * </pre>
        *
        * <code>bytes vkey_bytes = 4 [json_name = "vkeyBytes"];</code>
@@ -2566,6 +2785,79 @@ public final class Tx {
       public Builder clearVkeyBytes() {
         bitField0_ = (bitField0_ & ~0x00000008);
         vkeyBytes_ = getDefaultInstance().getVkeyBytes();
+        onChanged();
+        return this;
+      }
+
+      private int proofSystem_ = 0;
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @return The enum numeric value on the wire for proofSystem.
+       */
+      @java.lang.Override public int getProofSystemValue() {
+        return proofSystem_;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @param value The enum numeric value on the wire for proofSystem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProofSystemValue(int value) {
+        proofSystem_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @return The proofSystem.
+       */
+      @java.lang.Override
+      public xion.zk.v1.ParamsOuterClass.ProofSystem getProofSystem() {
+        xion.zk.v1.ParamsOuterClass.ProofSystem result = xion.zk.v1.ParamsOuterClass.ProofSystem.forNumber(proofSystem_);
+        return result == null ? xion.zk.v1.ParamsOuterClass.ProofSystem.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @param value The proofSystem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProofSystem(xion.zk.v1.ParamsOuterClass.ProofSystem value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        proofSystem_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+       * </pre>
+       *
+       * <code>.xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProofSystem() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        proofSystem_ = 0;
         onChanged();
         return this;
       }
@@ -5576,17 +5868,20 @@ public final class Tx {
       "\n\023xion/zk/v1/tx.proto\022\nxion.zk.v1\032\027cosmo" +
       "s/msg/v1/msg.proto\032\031cosmos_proto/cosmos." +
       "proto\032\024gogoproto/gogo.proto\032\021amino/amino" +
-      ".proto\032\027xion/zk/v1/params.proto\"\273\001\n\nMsgA" +
+      ".proto\032\027xion/zk/v1/params.proto\"\367\001\n\nMsgA" +
       "ddVKey\0226\n\tauthority\030\001 \001(\tB\030\322\264-\024cosmos.Ad" +
       "dressStringR\tauthority\022\022\n\004name\030\002 \001(\tR\004na" +
       "me\022 \n\013description\030\003 \001(\tR\013description\022\035\n\n" +
-      "vkey_bytes\030\004 \001(\014R\tvkeyBytes: \202\347\260*\tauthor" +
-      "ity\212\347\260*\rzk/MsgAddVKey\"$\n\022MsgAddVKeyRespo" +
-      "nse\022\016\n\002id\030\001 \001(\004R\002id\"\301\001\n\rMsgUpdateVKey\0226\n" +
-      "\tauthority\030\001 \001(\tB\030\322\264-\024cosmos.AddressStri" +
-      "ngR\tauthority\022\022\n\004name\030\002 \001(\tR\004name\022 \n\013des" +
-      "cription\030\003 \001(\tR\013description\022\035\n\nvkey_byte" +
-      "s\030\004 \001(\014R\tvkeyBytes:#\202\347\260*\tauthority\212\347\260*\020z" +
+      "vkey_bytes\030\004 \001(\014R\tvkeyBytes\022:\n\014proof_sys" +
+      "tem\030\005 \001(\0162\027.xion.zk.v1.ProofSystemR\013proo" +
+      "fSystem: \202\347\260*\tauthority\212\347\260*\rzk/MsgAddVKe" +
+      "y\"$\n\022MsgAddVKeyResponse\022\016\n\002id\030\001 \001(\004R\002id\"" +
+      "\375\001\n\rMsgUpdateVKey\0226\n\tauthority\030\001 \001(\tB\030\322\264" +
+      "-\024cosmos.AddressStringR\tauthority\022\022\n\004nam" +
+      "e\030\002 \001(\tR\004name\022 \n\013description\030\003 \001(\tR\013desc" +
+      "ription\022\035\n\nvkey_bytes\030\004 \001(\014R\tvkeyBytes\022:" +
+      "\n\014proof_system\030\005 \001(\0162\027.xion.zk.v1.ProofS" +
+      "ystemR\013proofSystem:#\202\347\260*\tauthority\212\347\260*\020z" +
       "k/MsgUpdateVKey\"\027\n\025MsgUpdateVKeyResponse" +
       "\"\200\001\n\rMsgRemoveVKey\0226\n\tauthority\030\001 \001(\tB\030\322" +
       "\264-\024cosmos.AddressStringR\tauthority\022\022\n\004na" +
@@ -5621,7 +5916,7 @@ public final class Tx {
     internal_static_xion_zk_v1_MsgAddVKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_MsgAddVKey_descriptor,
-        new java.lang.String[] { "Authority", "Name", "Description", "VkeyBytes", });
+        new java.lang.String[] { "Authority", "Name", "Description", "VkeyBytes", "ProofSystem", });
     internal_static_xion_zk_v1_MsgAddVKeyResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_xion_zk_v1_MsgAddVKeyResponse_fieldAccessorTable = new
@@ -5633,7 +5928,7 @@ public final class Tx {
     internal_static_xion_zk_v1_MsgUpdateVKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xion_zk_v1_MsgUpdateVKey_descriptor,
-        new java.lang.String[] { "Authority", "Name", "Description", "VkeyBytes", });
+        new java.lang.String[] { "Authority", "Name", "Description", "VkeyBytes", "ProofSystem", });
     internal_static_xion_zk_v1_MsgUpdateVKeyResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_xion_zk_v1_MsgUpdateVKeyResponse_fieldAccessorTable = new

@@ -111,6 +111,8 @@ struct Cosmos_Auth_V1beta1_Params: Sendable {
 
   var sigVerifyCostSecp256K1: UInt64 = 0
 
+  var sigVerifyCostMldsa65: UInt64 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -268,6 +270,7 @@ extension Cosmos_Auth_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._Mess
     3: .standard(proto: "tx_size_cost_per_byte"),
     4: .standard(proto: "sig_verify_cost_ed25519"),
     5: .standard(proto: "sig_verify_cost_secp256k1"),
+    6: .standard(proto: "sig_verify_cost_mldsa65"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -281,6 +284,7 @@ extension Cosmos_Auth_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._Mess
       case 3: try { try decoder.decodeSingularUInt64Field(value: &self.txSizeCostPerByte) }()
       case 4: try { try decoder.decodeSingularUInt64Field(value: &self.sigVerifyCostEd25519) }()
       case 5: try { try decoder.decodeSingularUInt64Field(value: &self.sigVerifyCostSecp256K1) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.sigVerifyCostMldsa65) }()
       default: break
       }
     }
@@ -302,6 +306,9 @@ extension Cosmos_Auth_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if self.sigVerifyCostSecp256K1 != 0 {
       try visitor.visitSingularUInt64Field(value: self.sigVerifyCostSecp256K1, fieldNumber: 5)
     }
+    if self.sigVerifyCostMldsa65 != 0 {
+      try visitor.visitSingularUInt64Field(value: self.sigVerifyCostMldsa65, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -311,6 +318,7 @@ extension Cosmos_Auth_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if lhs.txSizeCostPerByte != rhs.txSizeCostPerByte {return false}
     if lhs.sigVerifyCostEd25519 != rhs.sigVerifyCostEd25519 {return false}
     if lhs.sigVerifyCostSecp256K1 != rhs.sigVerifyCostSecp256K1 {return false}
+    if lhs.sigVerifyCostMldsa65 != rhs.sigVerifyCostMldsa65 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

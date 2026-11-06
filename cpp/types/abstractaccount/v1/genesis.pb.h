@@ -56,6 +56,9 @@ extern const ::google::protobuf::internal::DescriptorTable
     descriptor_table_abstractaccount_2fv1_2fgenesis_2eproto;
 namespace abstractaccount {
 namespace v1 {
+class AccountAddress;
+struct AccountAddressDefaultTypeInternal;
+extern AccountAddressDefaultTypeInternal _AccountAddress_default_instance_;
 class GenesisState;
 struct GenesisStateDefaultTypeInternal;
 extern GenesisStateDefaultTypeInternal _GenesisState_default_instance_;
@@ -202,9 +205,28 @@ class GenesisState final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kAccountAddressesFieldNumber = 3,
     kParamsFieldNumber = 1,
     kNextAccountIdFieldNumber = 2,
   };
+  // repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];
+  int account_addresses_size() const;
+  private:
+  int _internal_account_addresses_size() const;
+
+  public:
+  void clear_account_addresses() ;
+  ::abstractaccount::v1::AccountAddress* mutable_account_addresses(int index);
+  ::google::protobuf::RepeatedPtrField< ::abstractaccount::v1::AccountAddress >*
+      mutable_account_addresses();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::abstractaccount::v1::AccountAddress>& _internal_account_addresses() const;
+  ::google::protobuf::RepeatedPtrField<::abstractaccount::v1::AccountAddress>* _internal_mutable_account_addresses();
+  public:
+  const ::abstractaccount::v1::AccountAddress& account_addresses(int index) const;
+  ::abstractaccount::v1::AccountAddress* add_account_addresses();
+  const ::google::protobuf::RepeatedPtrField< ::abstractaccount::v1::AccountAddress >&
+      account_addresses() const;
   // .abstractaccount.v1.Params params = 1 [json_name = "params"];
   bool has_params() const;
   void clear_params() ;
@@ -235,15 +257,216 @@ class GenesisState final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 2, 1, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<2, 3, 2, 0, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::abstractaccount::v1::AccountAddress > account_addresses_;
     ::abstractaccount::v1::Params* params_;
     ::uint64_t next_account_id_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_abstractaccount_2fv1_2fgenesis_2eproto;
+};// -------------------------------------------------------------------
+
+class AccountAddress final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:abstractaccount.v1.AccountAddress) */ {
+ public:
+  inline AccountAddress() : AccountAddress(nullptr) {}
+  ~AccountAddress() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR AccountAddress(::google::protobuf::internal::ConstantInitialized);
+
+  AccountAddress(const AccountAddress& from);
+  AccountAddress(AccountAddress&& from) noexcept
+    : AccountAddress() {
+    *this = ::std::move(from);
+  }
+
+  inline AccountAddress& operator=(const AccountAddress& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AccountAddress& operator=(AccountAddress&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AccountAddress& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AccountAddress* internal_default_instance() {
+    return reinterpret_cast<const AccountAddress*>(
+               &_AccountAddress_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(AccountAddress& a, AccountAddress& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AccountAddress* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AccountAddress* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AccountAddress* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AccountAddress>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AccountAddress& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const AccountAddress& from) {
+    AccountAddress::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AccountAddress* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "abstractaccount.v1.AccountAddress";
+  }
+  protected:
+  explicit AccountAddress(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSenderFieldNumber = 1,
+    kSaltFieldNumber = 2,
+    kAddressFieldNumber = 3,
+  };
+  // string sender = 1 [json_name = "sender"];
+  void clear_sender() ;
+  const std::string& sender() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_sender(Arg_&& arg, Args_... args);
+  std::string* mutable_sender();
+  PROTOBUF_NODISCARD std::string* release_sender();
+  void set_allocated_sender(std::string* ptr);
+
+  private:
+  const std::string& _internal_sender() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sender(
+      const std::string& value);
+  std::string* _internal_mutable_sender();
+
+  public:
+  // bytes salt = 2 [json_name = "salt"];
+  void clear_salt() ;
+  const std::string& salt() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_salt(Arg_&& arg, Args_... args);
+  std::string* mutable_salt();
+  PROTOBUF_NODISCARD std::string* release_salt();
+  void set_allocated_salt(std::string* ptr);
+
+  private:
+  const std::string& _internal_salt() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_salt(
+      const std::string& value);
+  std::string* _internal_mutable_salt();
+
+  public:
+  // string address = 3 [json_name = "address"];
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // @@protoc_insertion_point(class_scope:abstractaccount.v1.AccountAddress)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3, 0, 55, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr sender_;
+    ::google::protobuf::internal::ArenaStringPtr salt_;
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -378,6 +601,209 @@ inline void GenesisState::_internal_set_next_account_id(::uint64_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.next_account_id_ = value;
+}
+
+// repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];
+inline int GenesisState::_internal_account_addresses_size() const {
+  return _internal_account_addresses().size();
+}
+inline int GenesisState::account_addresses_size() const {
+  return _internal_account_addresses_size();
+}
+inline void GenesisState::clear_account_addresses() {
+  _internal_mutable_account_addresses()->Clear();
+}
+inline ::abstractaccount::v1::AccountAddress* GenesisState::mutable_account_addresses(int index) {
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.GenesisState.account_addresses)
+  return _internal_mutable_account_addresses()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::abstractaccount::v1::AccountAddress >*
+GenesisState::mutable_account_addresses() {
+  // @@protoc_insertion_point(field_mutable_list:abstractaccount.v1.GenesisState.account_addresses)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_account_addresses();
+}
+inline const ::abstractaccount::v1::AccountAddress& GenesisState::account_addresses(int index) const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.GenesisState.account_addresses)
+    return _internal_account_addresses().Get(index);
+}
+inline ::abstractaccount::v1::AccountAddress* GenesisState::add_account_addresses() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::abstractaccount::v1::AccountAddress* _add = _internal_mutable_account_addresses()->Add();
+  // @@protoc_insertion_point(field_add:abstractaccount.v1.GenesisState.account_addresses)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::abstractaccount::v1::AccountAddress >&
+GenesisState::account_addresses() const {
+  // @@protoc_insertion_point(field_list:abstractaccount.v1.GenesisState.account_addresses)
+  return _internal_account_addresses();
+}
+inline const ::google::protobuf::RepeatedPtrField<::abstractaccount::v1::AccountAddress>&
+GenesisState::_internal_account_addresses() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.account_addresses_;
+}
+inline ::google::protobuf::RepeatedPtrField<::abstractaccount::v1::AccountAddress>*
+GenesisState::_internal_mutable_account_addresses() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.account_addresses_;
+}
+
+// -------------------------------------------------------------------
+
+// AccountAddress
+
+// string sender = 1 [json_name = "sender"];
+inline void AccountAddress::clear_sender() {
+  _impl_.sender_.ClearToEmpty();
+}
+inline const std::string& AccountAddress::sender() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.AccountAddress.sender)
+  return _internal_sender();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AccountAddress::set_sender(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sender_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.AccountAddress.sender)
+}
+inline std::string* AccountAddress::mutable_sender() {
+  std::string* _s = _internal_mutable_sender();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.AccountAddress.sender)
+  return _s;
+}
+inline const std::string& AccountAddress::_internal_sender() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.sender_.Get();
+}
+inline void AccountAddress::_internal_set_sender(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sender_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AccountAddress::_internal_mutable_sender() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.sender_.Mutable( GetArenaForAllocation());
+}
+inline std::string* AccountAddress::release_sender() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.AccountAddress.sender)
+  return _impl_.sender_.Release();
+}
+inline void AccountAddress::set_allocated_sender(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.sender_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.sender_.IsDefault()) {
+          _impl_.sender_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.AccountAddress.sender)
+}
+
+// bytes salt = 2 [json_name = "salt"];
+inline void AccountAddress::clear_salt() {
+  _impl_.salt_.ClearToEmpty();
+}
+inline const std::string& AccountAddress::salt() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.AccountAddress.salt)
+  return _internal_salt();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AccountAddress::set_salt(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.salt_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.AccountAddress.salt)
+}
+inline std::string* AccountAddress::mutable_salt() {
+  std::string* _s = _internal_mutable_salt();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.AccountAddress.salt)
+  return _s;
+}
+inline const std::string& AccountAddress::_internal_salt() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.salt_.Get();
+}
+inline void AccountAddress::_internal_set_salt(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.salt_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AccountAddress::_internal_mutable_salt() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.salt_.Mutable( GetArenaForAllocation());
+}
+inline std::string* AccountAddress::release_salt() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.AccountAddress.salt)
+  return _impl_.salt_.Release();
+}
+inline void AccountAddress::set_allocated_salt(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.salt_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.salt_.IsDefault()) {
+          _impl_.salt_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.AccountAddress.salt)
+}
+
+// string address = 3 [json_name = "address"];
+inline void AccountAddress::clear_address() {
+  _impl_.address_.ClearToEmpty();
+}
+inline const std::string& AccountAddress::address() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.AccountAddress.address)
+  return _internal_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AccountAddress::set_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.AccountAddress.address)
+}
+inline std::string* AccountAddress::mutable_address() {
+  std::string* _s = _internal_mutable_address();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.AccountAddress.address)
+  return _s;
+}
+inline const std::string& AccountAddress::_internal_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.address_.Get();
+}
+inline void AccountAddress::_internal_set_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AccountAddress::_internal_mutable_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* AccountAddress::release_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.AccountAddress.address)
+  return _impl_.address_.Release();
+}
+inline void AccountAddress::set_allocated_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.address_.IsDefault()) {
+          _impl_.address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.AccountAddress.address)
 }
 
 #ifdef __GNUC__

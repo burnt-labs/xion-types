@@ -28,6 +28,7 @@
 
 CF_EXTERN_C_BEGIN
 
+@class AccountAddress;
 @class Params;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -52,6 +53,7 @@ GPB_FINAL @interface GenesisRoot : GPBRootObject
 typedef GPB_ENUM(GenesisState_FieldNumber) {
   GenesisState_FieldNumber_Params = 1,
   GenesisState_FieldNumber_NextAccountId = 2,
+  GenesisState_FieldNumber_AccountAddressesArray = 3,
 };
 
 /**
@@ -59,11 +61,42 @@ typedef GPB_ENUM(GenesisState_FieldNumber) {
  **/
 GPB_FINAL @interface GenesisState : GPBMessage
 
+/** params defines the module parameters. */
 @property(nonatomic, readwrite, strong, null_resettable) Params *params;
 /** Test to see if @c params has been set. */
 @property(nonatomic, readwrite) BOOL hasParams;
 
+/** next_account_id is the identifier assigned to the next registered account. */
 @property(nonatomic, readwrite) uint64_t nextAccountId;
+
+/** account_addresses is the exported sender/salt address registry. */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<AccountAddress*> *accountAddressesArray;
+/** The number of items in @c accountAddressesArray without causing the container to be created. */
+@property(nonatomic, readonly) NSUInteger accountAddressesArray_Count;
+
+@end
+
+#pragma mark - AccountAddress
+
+typedef GPB_ENUM(AccountAddress_FieldNumber) {
+  AccountAddress_FieldNumber_Sender = 1,
+  AccountAddress_FieldNumber_Salt = 2,
+  AccountAddress_FieldNumber_Address = 3,
+};
+
+/**
+ * AccountAddress is an exported sender/salt registry entry.
+ **/
+GPB_FINAL @interface AccountAddress : GPBMessage
+
+/** sender is the address that registered the account. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sender;
+
+/** salt is the caller-chosen salt the address was derived with. */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *salt;
+
+/** address is the derived account address. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *address;
 
 @end
 

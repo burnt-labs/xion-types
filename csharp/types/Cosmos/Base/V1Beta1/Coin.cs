@@ -285,7 +285,7 @@ namespace Cosmos.Base.V1Beta1 {
   /// <summary>
   /// DecCoin defines a token with a denomination and a decimal amount.
   ///
-  /// NOTE: The amount field is an Dec which implements the custom method
+  /// NOTE: The amount field is a Dec which implements the custom method
   /// signatures required by gogoproto.
   /// </summary>
   public sealed partial class DecCoin : pb::IMessage<DecCoin>

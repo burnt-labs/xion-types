@@ -16,10 +16,14 @@ use Google\Protobuf\Internal\GPBUtil;
 class MsgRegisterAccountResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * address is the address of the newly registered account contract.
+     *
      * Generated from protobuf field <code>string address = 1 [json_name = "address"];</code>
      */
     protected $address = '';
     /**
+     * data is the raw response data from the contract instantiation.
+     *
      * Generated from protobuf field <code>bytes data = 2 [json_name = "data"];</code>
      */
     protected $data = '';
@@ -31,7 +35,9 @@ class MsgRegisterAccountResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $address
+     *           address is the address of the newly registered account contract.
      *     @type string $data
+     *           data is the raw response data from the contract instantiation.
      * }
      */
     public function __construct($data = NULL) {
@@ -40,6 +46,8 @@ class MsgRegisterAccountResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * address is the address of the newly registered account contract.
+     *
      * Generated from protobuf field <code>string address = 1 [json_name = "address"];</code>
      * @return string
      */
@@ -49,6 +57,8 @@ class MsgRegisterAccountResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * address is the address of the newly registered account contract.
+     *
      * Generated from protobuf field <code>string address = 1 [json_name = "address"];</code>
      * @param string $var
      * @return $this
@@ -62,6 +72,8 @@ class MsgRegisterAccountResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * data is the raw response data from the contract instantiation.
+     *
      * Generated from protobuf field <code>bytes data = 2 [json_name = "data"];</code>
      * @return string
      */
@@ -71,6 +83,8 @@ class MsgRegisterAccountResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * data is the raw response data from the contract instantiation.
+     *
      * Generated from protobuf field <code>bytes data = 2 [json_name = "data"];</code>
      * @param string $var
      * @return $this

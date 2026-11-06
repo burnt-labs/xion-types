@@ -22,7 +22,8 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
      */
     protected $sender = '';
     /**
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      *
      * Generated from protobuf field <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      */
@@ -34,13 +35,13 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
      */
     protected $msg = '';
     /**
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      *
      * Generated from protobuf field <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
      */
     private $funds;
     /**
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      *
      * Generated from protobuf field <code>bytes salt = 5 [json_name = "salt"];</code>
@@ -56,13 +57,14 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
      *     @type string $sender
      *           Sender is the actor who signs the message
      *     @type int|string $code_id
-     *           CodeID indicates which wasm binary code is to be used for this contract
+     *           CodeID selects the allowed implementation installed after deterministic
+     *           direct instantiation. It does not participate in address derivation.
      *     @type string $msg
      *           Msg is the JSON-encoded instantiate message for the contract
      *     @type array<\Cosmos\Base\V1beta1\Coin>|\Google\Protobuf\Internal\RepeatedField $funds
-     *           Funds are coins to be deposited to the contract on instantiattion
+     *           Funds are coins to be deposited to the contract on instantiation
      *     @type string $salt
-     *           Salt is an arbinary value to be used in deriving the account address.
+     *           Salt is an arbitrary value to be used in deriving the account address.
      *           Max 64 bytes.
      * }
      */
@@ -98,7 +100,8 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      *
      * Generated from protobuf field <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      * @return int|string
@@ -109,7 +112,8 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      *
      * Generated from protobuf field <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      * @param int|string $var
@@ -150,7 +154,7 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      *
      * Generated from protobuf field <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
@@ -161,7 +165,7 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      *
      * Generated from protobuf field <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
      * @param array<\Cosmos\Base\V1beta1\Coin>|\Google\Protobuf\Internal\RepeatedField $var
@@ -176,7 +180,7 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      *
      * Generated from protobuf field <code>bytes salt = 5 [json_name = "salt"];</code>
@@ -188,7 +192,7 @@ class MsgRegisterAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      *
      * Generated from protobuf field <code>bytes salt = 5 [json_name = "salt"];</code>

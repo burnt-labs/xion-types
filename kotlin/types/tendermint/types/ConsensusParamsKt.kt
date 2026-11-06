@@ -151,6 +151,30 @@ public object ConsensusParamsKt {
     public fun hasAbci(): kotlin.Boolean {
       return _builder.hasAbci()
     }
+
+    /**
+     * `.tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];`
+     */
+    public var authority: tendermint.types.Params.AuthorityParams
+      @JvmName("getAuthority")
+      get() = _builder.getAuthority()
+      @JvmName("setAuthority")
+      set(value) {
+        _builder.setAuthority(value)
+      }
+    /**
+     * `.tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];`
+     */
+    public fun clearAuthority() {
+      _builder.clearAuthority()
+    }
+    /**
+     * `.tendermint.types.AuthorityParams authority = 6 [json_name = "authority"];`
+     * @return Whether the authority field is set.
+     */
+    public fun hasAuthority(): kotlin.Boolean {
+      return _builder.hasAuthority()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -171,4 +195,7 @@ public val tendermint.types.Params.ConsensusParamsOrBuilder.versionOrNull: tende
 
 public val tendermint.types.Params.ConsensusParamsOrBuilder.abciOrNull: tendermint.types.Params.ABCIParams?
   get() = if (hasAbci()) getAbci() else null
+
+public val tendermint.types.Params.ConsensusParamsOrBuilder.authorityOrNull: tendermint.types.Params.AuthorityParams?
+  get() = if (hasAuthority()) getAuthority() else null
 

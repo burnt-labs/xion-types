@@ -7,7 +7,7 @@ require 'google/protobuf'
 require 'abstractaccount/v1/params_pb'
 
 
-descriptor_data = "\n abstractaccount/v1/genesis.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\"j\n\x0cGenesisState\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params\x12&\n\x0fnext_account_id\x18\x02 \x01(\x04R\rnextAccountIdB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesb\x06proto3"
+descriptor_data = "\n abstractaccount/v1/genesis.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\"\xbb\x01\n\x0cGenesisState\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params\x12&\n\x0fnext_account_id\x18\x02 \x01(\x04R\rnextAccountId\x12O\n\x11\x61\x63\x63ount_addresses\x18\x03 \x03(\x0b\x32\".abstractaccount.v1.AccountAddressR\x10\x61\x63\x63ountAddresses\"V\n\x0e\x41\x63\x63ountAddress\x12\x16\n\x06sender\x18\x01 \x01(\tR\x06sender\x12\x12\n\x04salt\x18\x02 \x01(\x0cR\x04salt\x12\x18\n\x07\x61\x64\x64ress\x18\x03 \x01(\tR\x07\x61\x64\x64ressB4Z2github.com/burnt-labs/xion/x/abstractaccount/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 
@@ -37,5 +37,6 @@ end
 module Abstractaccount
   module V1
     GenesisState = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("abstractaccount.v1.GenesisState").msgclass
+    AccountAddress = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("abstractaccount.v1.AccountAddress").msgclass
   end
 end

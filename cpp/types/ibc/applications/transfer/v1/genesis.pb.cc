@@ -98,7 +98,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2fgenesi
     "ms\022r\n\016total_escrowed\030\004 \003(\0132\031.cosmos.base"
     ".v1beta1.CoinB0\310\336\037\000\252\337\037(github.com/cosmos"
     "/cosmos-sdk/types.CoinsR\rtotalEscrowedB:"
-    "Z8github.com/cosmos/ibc-go/v10/modules/a"
+    "Z8github.com/cosmos/ibc-go/v11/modules/a"
     "pps/transfer/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2fgenesis_2eproto_deps[4] =

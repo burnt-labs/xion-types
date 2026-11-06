@@ -218,23 +218,6 @@ public object InFlightPacketKt {
     public fun clearTimeout() {
       _builder.clearTimeout()
     }
-
-    /**
-     * `bool nonrefundable = 12 [json_name = "nonrefundable"];`
-     */
-    public var nonrefundable: kotlin.Boolean
-      @JvmName("getNonrefundable")
-      get() = _builder.getNonrefundable()
-      @JvmName("setNonrefundable")
-      set(value) {
-        _builder.setNonrefundable(value)
-      }
-    /**
-     * `bool nonrefundable = 12 [json_name = "nonrefundable"];`
-     */
-    public fun clearNonrefundable() {
-      _builder.clearNonrefundable()
-    }
   }
 }
 @kotlin.jvm.JvmSynthetic

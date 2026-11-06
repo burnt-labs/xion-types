@@ -16,10 +16,14 @@ use Google\Protobuf\Internal\GPBUtil;
 class MsgUpdateParams extends \Google\Protobuf\Internal\Message
 {
     /**
+     * sender is the authority address requesting the update.
+     *
      * Generated from protobuf field <code>string sender = 1 [json_name = "sender"];</code>
      */
     protected $sender = '';
     /**
+     * params is the new module parameters to apply.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      */
     protected $params = null;
@@ -31,7 +35,9 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $sender
+     *           sender is the authority address requesting the update.
      *     @type \Abstractaccount\V1\Params $params
+     *           params is the new module parameters to apply.
      * }
      */
     public function __construct($data = NULL) {
@@ -40,6 +46,8 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * sender is the authority address requesting the update.
+     *
      * Generated from protobuf field <code>string sender = 1 [json_name = "sender"];</code>
      * @return string
      */
@@ -49,6 +57,8 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * sender is the authority address requesting the update.
+     *
      * Generated from protobuf field <code>string sender = 1 [json_name = "sender"];</code>
      * @param string $var
      * @return $this
@@ -62,6 +72,8 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * params is the new module parameters to apply.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      * @return \Abstractaccount\V1\Params|null
      */
@@ -81,6 +93,8 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * params is the new module parameters to apply.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      * @param \Abstractaccount\V1\Params $var
      * @return $this

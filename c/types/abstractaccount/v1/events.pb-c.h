@@ -30,14 +30,31 @@ typedef struct Abstractaccount__V1__EventAccountRegistered Abstractaccount__V1__
 struct  Abstractaccount__V1__EventAccountRegistered
 {
   ProtobufCMessage base;
+  /*
+   * creator is the address that requested the account registration.
+   */
   char *creator;
+  /*
+   * CodeID is the caller-selected implementation active after registration.
+   */
   uint64_t code_id;
+  /*
+   * contract_addr is the address of the newly instantiated account contract.
+   */
   char *contract_addr;
+  /*
+   * account_number is the account number assigned to the new account.
+   */
   uint64_t account_number;
+  /*
+   * address_derivation_hash is the fixed hash used to derive the account's
+   * address.
+   */
+  ProtobufCBinaryData address_derivation_hash;
 };
 #define ABSTRACTACCOUNT__V1__EVENT_ACCOUNT_REGISTERED__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__event_account_registered__descriptor) \
-, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0 }
+, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, {0,NULL} }
 
 
 /* Abstractaccount__V1__EventAccountRegistered methods */

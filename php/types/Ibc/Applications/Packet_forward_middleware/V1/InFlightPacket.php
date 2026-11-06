@@ -60,10 +60,6 @@ class InFlightPacket extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>uint64 timeout = 11 [json_name = "timeout"];</code>
      */
     protected $timeout = 0;
-    /**
-     * Generated from protobuf field <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-     */
-    protected $nonrefundable = false;
 
     /**
      * Constructor.
@@ -82,7 +78,6 @@ class InFlightPacket extends \Google\Protobuf\Internal\Message
      *     @type int|string $refund_sequence
      *     @type int $retries_remaining
      *     @type int|string $timeout
-     *     @type bool $nonrefundable
      * }
      */
     public function __construct($data = NULL) {
@@ -328,28 +323,6 @@ class InFlightPacket extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint64($var);
         $this->timeout = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-     * @return bool
-     */
-    public function getNonrefundable()
-    {
-        return $this->nonrefundable;
-    }
-
-    /**
-     * Generated from protobuf field <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-     * @param bool $var
-     * @return $this
-     */
-    public function setNonrefundable($var)
-    {
-        GPBUtil::checkBool($var);
-        $this->nonrefundable = $var;
 
         return $this;
     }

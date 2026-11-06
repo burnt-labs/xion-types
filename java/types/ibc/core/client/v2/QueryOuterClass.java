@@ -2499,7 +2499,7 @@ public final class QueryOuterClass {
       ".QueryConfigRequest\032\'.ibc.core.client.v2" +
       ".QueryConfigResponse\".\202\323\344\223\002(\022&/ibc/core/" +
       "client/v2/config/{client_id}B>Z<github.c" +
-      "om/cosmos/ibc-go/v10/modules/core/02-cli" +
+      "om/cosmos/ibc-go/v11/modules/core/02-cli" +
       "ent/v2/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

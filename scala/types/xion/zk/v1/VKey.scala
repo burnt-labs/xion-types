@@ -17,6 +17,8 @@ package xion.zk.v1
   *   circuit_hash is the hash of the circuit this key is associated with.
   * @param authority
   *   authority is the uploader of the verification key.
+  * @param proofSystem
+  *   proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
   */
 @SerialVersionUID(0L)
 final case class VKey(
@@ -25,6 +27,7 @@ final case class VKey(
     description: _root_.scala.Predef.String = "",
     circuitHash: _root_.scala.Predef.String = "",
     authority: _root_.scala.Predef.String = "",
+    proofSystem: xion.zk.v1.ProofSystem = xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[VKey] {
     @transient
@@ -64,6 +67,13 @@ final case class VKey(
         val __value = authority
         if (!__value.isEmpty) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(5, __value)
+        }
+      };
+      
+      {
+        val __value = proofSystem.value
+        if (__value != 0) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeEnumSize(6, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -109,6 +119,12 @@ final case class VKey(
           _output__.writeString(5, __v)
         }
       };
+      {
+        val __v = proofSystem.value
+        if (__v != 0) {
+          _output__.writeEnum(6, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withKeyBytes(__v: _root_.com.google.protobuf.ByteString): VKey = copy(keyBytes = __v)
@@ -116,6 +132,7 @@ final case class VKey(
     def withDescription(__v: _root_.scala.Predef.String): VKey = copy(description = __v)
     def withCircuitHash(__v: _root_.scala.Predef.String): VKey = copy(circuitHash = __v)
     def withAuthority(__v: _root_.scala.Predef.String): VKey = copy(authority = __v)
+    def withProofSystem(__v: xion.zk.v1.ProofSystem): VKey = copy(proofSystem = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -140,6 +157,10 @@ final case class VKey(
           val __t = authority
           if (__t != "") __t else null
         }
+        case 6 => {
+          val __t = proofSystem.javaValueDescriptor
+          if (__t.getNumber() != 0) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -150,6 +171,7 @@ final case class VKey(
         case 3 => _root_.scalapb.descriptors.PString(description)
         case 4 => _root_.scalapb.descriptors.PString(circuitHash)
         case 5 => _root_.scalapb.descriptors.PString(authority)
+        case 6 => _root_.scalapb.descriptors.PEnum(proofSystem.scalaValueDescriptor)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -165,6 +187,7 @@ object VKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.VKey] {
     var __description: _root_.scala.Predef.String = ""
     var __circuitHash: _root_.scala.Predef.String = ""
     var __authority: _root_.scala.Predef.String = ""
+    var __proofSystem: xion.zk.v1.ProofSystem = xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -181,6 +204,8 @@ object VKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.VKey] {
           __circuitHash = _input__.readStringRequireUtf8()
         case 42 =>
           __authority = _input__.readStringRequireUtf8()
+        case 48 =>
+          __proofSystem = xion.zk.v1.ProofSystem.fromValue(_input__.readEnum())
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -194,6 +219,7 @@ object VKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.VKey] {
         description = __description,
         circuitHash = __circuitHash,
         authority = __authority,
+        proofSystem = __proofSystem,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -205,21 +231,27 @@ object VKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.VKey] {
         name = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         description = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         circuitHash = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        authority = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
+        authority = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
+        proofSystem = xion.zk.v1.ProofSystem.fromValue(__fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scalapb.descriptors.EnumValueDescriptor]).getOrElse(xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED.scalaValueDescriptor).number)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.zk.v1.QueryProto.javaDescriptor.getMessageTypes().get(3)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.zk.v1.QueryProto.scalaDescriptor.messages(3)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = xion.zk.v1.QueryProto.javaDescriptor.getMessageTypes().get(7)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = xion.zk.v1.QueryProto.scalaDescriptor.messages(7)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    (__fieldNumber: @_root_.scala.unchecked) match {
+      case 6 => xion.zk.v1.ProofSystem
+    }
+  }
   lazy val defaultInstance = xion.zk.v1.VKey(
     keyBytes = _root_.com.google.protobuf.ByteString.EMPTY,
     name = "",
     description = "",
     circuitHash = "",
-    authority = ""
+    authority = "",
+    proofSystem = xion.zk.v1.ProofSystem.PROOF_SYSTEM_UNSPECIFIED
   )
   implicit class VKeyLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, xion.zk.v1.VKey]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, xion.zk.v1.VKey](_l) {
     def keyBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.com.google.protobuf.ByteString] = field(_.keyBytes)((c_, f_) => c_.copy(keyBytes = f_))
@@ -227,24 +259,28 @@ object VKey extends scalapb.GeneratedMessageCompanion[xion.zk.v1.VKey] {
     def description: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.description)((c_, f_) => c_.copy(description = f_))
     def circuitHash: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.circuitHash)((c_, f_) => c_.copy(circuitHash = f_))
     def authority: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.authority)((c_, f_) => c_.copy(authority = f_))
+    def proofSystem: _root_.scalapb.lenses.Lens[UpperPB, xion.zk.v1.ProofSystem] = field(_.proofSystem)((c_, f_) => c_.copy(proofSystem = f_))
   }
   final val KEY_BYTES_FIELD_NUMBER = 1
   final val NAME_FIELD_NUMBER = 2
   final val DESCRIPTION_FIELD_NUMBER = 3
   final val CIRCUIT_HASH_FIELD_NUMBER = 4
   final val AUTHORITY_FIELD_NUMBER = 5
+  final val PROOF_SYSTEM_FIELD_NUMBER = 6
   def of(
     keyBytes: _root_.com.google.protobuf.ByteString,
     name: _root_.scala.Predef.String,
     description: _root_.scala.Predef.String,
     circuitHash: _root_.scala.Predef.String,
-    authority: _root_.scala.Predef.String
+    authority: _root_.scala.Predef.String,
+    proofSystem: xion.zk.v1.ProofSystem
   ): _root_.xion.zk.v1.VKey = _root_.xion.zk.v1.VKey(
     keyBytes,
     name,
     description,
     circuitHash,
-    authority
+    authority,
+    proofSystem
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[xion.zk.v1.VKey])
 }

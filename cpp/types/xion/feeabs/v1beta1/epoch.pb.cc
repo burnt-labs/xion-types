@@ -139,9 +139,9 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fepoch_2eproto[] P
     "arted\022;\n\032current_epoch_start_height\030\010 \001("
     "\003R\027currentEpochStartHeightJ\004\010\007\020\010\"K\n\022Expo"
     "nentialBackoff\022\022\n\004jump\030\001 \001(\003R\004jump\022!\n\014fu"
-    "ture_epoch\030\002 \001(\003R\013futureEpochB+Z)github."
-    "com/burnt-labs/xion/x/feeabs/typesb\006prot"
-    "o3"
+    "ture_epoch\030\002 \001(\003R\013futureEpochB.Z,github."
+    "com/burnt-labs/xion/app/legacy/feeabsb\006p"
+    "roto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2ffeeabs_2fv1beta1_2fepoch_2eproto_deps[3] =
     {
@@ -153,7 +153,7 @@ static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2fepoch_2eprot
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2fepoch_2eproto = {
     false,
     false,
-    802,
+    805,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fepoch_2eproto,
     "xion/feeabs/v1beta1/epoch.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2fepoch_2eproto_once,

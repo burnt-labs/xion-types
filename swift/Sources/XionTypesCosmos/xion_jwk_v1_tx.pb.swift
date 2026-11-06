@@ -199,6 +199,46 @@ struct Xion_Jwk_V1_MsgDeleteAudienceResponse: Sendable {
   init() {}
 }
 
+/// MsgUpdateParams is the Msg/UpdateParams request type.
+struct Xion_Jwk_V1_MsgUpdateParams: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// authority is the address of the governance account.
+  var authority: String = String()
+
+  /// params defines the parameters to update.
+  ///
+  /// NOTE: All parameters must be supplied.
+  var params: Xion_Jwk_V1_Params {
+    get {return _params ?? Xion_Jwk_V1_Params()}
+    set {_params = newValue}
+  }
+  /// Returns true if `params` has been explicitly set.
+  var hasParams: Bool {return self._params != nil}
+  /// Clears the value of `params`. Subsequent reads from it will return its default value.
+  mutating func clearParams() {self._params = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _params: Xion_Jwk_V1_Params? = nil
+}
+
+/// MsgUpdateParamsResponse defines the response structure for executing a
+/// MsgUpdateParams message.
+struct Xion_Jwk_V1_MsgUpdateParamsResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "xion.jwk.v1"
@@ -541,6 +581,67 @@ extension Xion_Jwk_V1_MsgDeleteAudienceResponse: SwiftProtobuf.Message, SwiftPro
   }
 
   static func ==(lhs: Xion_Jwk_V1_MsgDeleteAudienceResponse, rhs: Xion_Jwk_V1_MsgDeleteAudienceResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Xion_Jwk_V1_MsgUpdateParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".MsgUpdateParams"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "authority"),
+    2: .same(proto: "params"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.authority) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._params) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.authority.isEmpty {
+      try visitor.visitSingularStringField(value: self.authority, fieldNumber: 1)
+    }
+    try { if let v = self._params {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Xion_Jwk_V1_MsgUpdateParams, rhs: Xion_Jwk_V1_MsgUpdateParams) -> Bool {
+    if lhs.authority != rhs.authority {return false}
+    if lhs._params != rhs._params {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Xion_Jwk_V1_MsgUpdateParamsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".MsgUpdateParamsResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Xion_Jwk_V1_MsgUpdateParamsResponse, rhs: Xion_Jwk_V1_MsgUpdateParamsResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -52,7 +52,52 @@ void   abstractaccount__v1__genesis_state__free_unpacked
   assert(message->base.descriptor == &abstractaccount__v1__genesis_state__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor abstractaccount__v1__genesis_state__field_descriptors[2] =
+void   abstractaccount__v1__account_address__init
+                     (Abstractaccount__V1__AccountAddress         *message)
+{
+  static const Abstractaccount__V1__AccountAddress init_value = ABSTRACTACCOUNT__V1__ACCOUNT_ADDRESS__INIT;
+  *message = init_value;
+}
+size_t abstractaccount__v1__account_address__get_packed_size
+                     (const Abstractaccount__V1__AccountAddress *message)
+{
+  assert(message->base.descriptor == &abstractaccount__v1__account_address__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t abstractaccount__v1__account_address__pack
+                     (const Abstractaccount__V1__AccountAddress *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &abstractaccount__v1__account_address__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t abstractaccount__v1__account_address__pack_to_buffer
+                     (const Abstractaccount__V1__AccountAddress *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &abstractaccount__v1__account_address__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Abstractaccount__V1__AccountAddress *
+       abstractaccount__v1__account_address__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Abstractaccount__V1__AccountAddress *)
+     protobuf_c_message_unpack (&abstractaccount__v1__account_address__descriptor,
+                                allocator, len, data);
+}
+void   abstractaccount__v1__account_address__free_unpacked
+                     (Abstractaccount__V1__AccountAddress *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &abstractaccount__v1__account_address__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+static const ProtobufCFieldDescriptor abstractaccount__v1__genesis_state__field_descriptors[3] =
 {
   {
     "params",
@@ -78,15 +123,28 @@ static const ProtobufCFieldDescriptor abstractaccount__v1__genesis_state__field_
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "account_addresses",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Abstractaccount__V1__GenesisState, n_account_addresses),
+    offsetof(Abstractaccount__V1__GenesisState, account_addresses),
+    &abstractaccount__v1__account_address__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned abstractaccount__v1__genesis_state__field_indices_by_name[] = {
+  2,   /* field[2] = account_addresses */
   1,   /* field[1] = next_account_id */
   0,   /* field[0] = params */
 };
 static const ProtobufCIntRange abstractaccount__v1__genesis_state__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor abstractaccount__v1__genesis_state__descriptor =
 {
@@ -96,10 +154,74 @@ const ProtobufCMessageDescriptor abstractaccount__v1__genesis_state__descriptor 
   "Abstractaccount__V1__GenesisState",
   "abstractaccount.v1",
   sizeof(Abstractaccount__V1__GenesisState),
-  2,
+  3,
   abstractaccount__v1__genesis_state__field_descriptors,
   abstractaccount__v1__genesis_state__field_indices_by_name,
   1,  abstractaccount__v1__genesis_state__number_ranges,
   (ProtobufCMessageInit) abstractaccount__v1__genesis_state__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor abstractaccount__v1__account_address__field_descriptors[3] =
+{
+  {
+    "sender",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Abstractaccount__V1__AccountAddress, sender),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "salt",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Abstractaccount__V1__AccountAddress, salt),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "address",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Abstractaccount__V1__AccountAddress, address),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned abstractaccount__v1__account_address__field_indices_by_name[] = {
+  2,   /* field[2] = address */
+  1,   /* field[1] = salt */
+  0,   /* field[0] = sender */
+};
+static const ProtobufCIntRange abstractaccount__v1__account_address__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor abstractaccount__v1__account_address__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "abstractaccount.v1.AccountAddress",
+  "AccountAddress",
+  "Abstractaccount__V1__AccountAddress",
+  "abstractaccount.v1",
+  sizeof(Abstractaccount__V1__AccountAddress),
+  3,
+  abstractaccount__v1__account_address__field_descriptors,
+  abstractaccount__v1__account_address__field_indices_by_name,
+  1,  abstractaccount__v1__account_address__number_ranges,
+  (ProtobufCMessageInit) abstractaccount__v1__account_address__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

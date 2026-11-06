@@ -115,6 +115,23 @@ public object ParamsKt {
     public fun clearSigVerifyCostSecp256K1() {
       _builder.clearSigVerifyCostSecp256K1()
     }
+
+    /**
+     * `uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];`
+     */
+    public var sigVerifyCostMldsa65: kotlin.Long
+      @JvmName("getSigVerifyCostMldsa65")
+      get() = _builder.getSigVerifyCostMldsa65()
+      @JvmName("setSigVerifyCostMldsa65")
+      set(value) {
+        _builder.setSigVerifyCostMldsa65(value)
+      }
+    /**
+     * `uint64 sig_verify_cost_mldsa65 = 6 [json_name = "sigVerifyCostMldsa65", (.gogoproto.customname) = "SigVerifyCostMlDsa65"];`
+     */
+    public fun clearSigVerifyCostMldsa65() {
+      _builder.clearSigVerifyCostMldsa65()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

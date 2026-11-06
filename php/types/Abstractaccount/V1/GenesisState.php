@@ -16,13 +16,23 @@ use Google\Protobuf\Internal\GPBUtil;
 class GenesisState extends \Google\Protobuf\Internal\Message
 {
     /**
+     * params defines the module parameters.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      */
     protected $params = null;
     /**
+     * next_account_id is the identifier assigned to the next registered account.
+     *
      * Generated from protobuf field <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
      */
     protected $next_account_id = 0;
+    /**
+     * account_addresses is the exported sender/salt address registry.
+     *
+     * Generated from protobuf field <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    private $account_addresses;
 
     /**
      * Constructor.
@@ -31,7 +41,11 @@ class GenesisState extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Abstractaccount\V1\Params $params
+     *           params defines the module parameters.
      *     @type int|string $next_account_id
+     *           next_account_id is the identifier assigned to the next registered account.
+     *     @type array<\Abstractaccount\V1\AccountAddress>|\Google\Protobuf\Internal\RepeatedField $account_addresses
+     *           account_addresses is the exported sender/salt address registry.
      * }
      */
     public function __construct($data = NULL) {
@@ -40,6 +54,8 @@ class GenesisState extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * params defines the module parameters.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @return \Abstractaccount\V1\Params|null
      */
@@ -59,6 +75,8 @@ class GenesisState extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * params defines the module parameters.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @param \Abstractaccount\V1\Params $var
      * @return $this
@@ -72,6 +90,8 @@ class GenesisState extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * next_account_id is the identifier assigned to the next registered account.
+     *
      * Generated from protobuf field <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
      * @return int|string
      */
@@ -81,6 +101,8 @@ class GenesisState extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * next_account_id is the identifier assigned to the next registered account.
+     *
      * Generated from protobuf field <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
      * @param int|string $var
      * @return $this
@@ -89,6 +111,32 @@ class GenesisState extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint64($var);
         $this->next_account_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * account_addresses is the exported sender/salt address registry.
+     *
+     * Generated from protobuf field <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getAccountAddresses()
+    {
+        return $this->account_addresses;
+    }
+
+    /**
+     * account_addresses is the exported sender/salt address registry.
+     *
+     * Generated from protobuf field <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     * @param array<\Abstractaccount\V1\AccountAddress>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setAccountAddresses($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Abstractaccount\V1\AccountAddress::class);
+        $this->account_addresses = $arr;
 
         return $this;
     }

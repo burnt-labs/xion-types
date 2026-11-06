@@ -20,7 +20,33 @@ export interface QueryParamsRequest {
 
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
+  /** params holds the current module parameters. */
   params?: Params | undefined;
+}
+
+/**
+ * QueryAccountAddressRequest identifies an account namespace. Implementation
+ * code IDs do not participate in this address lookup.
+ */
+export interface QueryAccountAddressRequest {
+  /** sender is the address registering the account. */
+  sender: string;
+  /** salt is the caller-chosen salt the address is derived with. */
+  salt: Uint8Array;
+}
+
+/**
+ * QueryAccountAddressResponse contains the stable address and whether an
+ * AbstractAccount is already registered for the namespace.
+ */
+export interface QueryAccountAddressResponse {
+  /** address is the stable address derived for the namespace. */
+  address: string;
+  /**
+   * registered reports whether an AbstractAccount already exists for the
+   * namespace.
+   */
+  registered: boolean;
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -144,10 +170,188 @@ export const QueryParamsResponse: MessageFns<QueryParamsResponse> = {
   },
 };
 
+function createBaseQueryAccountAddressRequest(): QueryAccountAddressRequest {
+  return { sender: "", salt: new Uint8Array(0) };
+}
+
+export const QueryAccountAddressRequest: MessageFns<QueryAccountAddressRequest> = {
+  encode(message: QueryAccountAddressRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+    if (message.salt.length !== 0) {
+      writer.uint32(18).bytes(message.salt);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountAddressRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseQueryAccountAddressRequest();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.sender = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.salt = reader.bytes();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): QueryAccountAddressRequest {
+    return {
+      sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
+      salt: isSet(object.salt) ? bytesFromBase64(object.salt) : new Uint8Array(0),
+    };
+  },
+
+  toJSON(message: QueryAccountAddressRequest): unknown {
+    const obj: any = {};
+    if (message.sender !== "") {
+      obj.sender = message.sender;
+    }
+    if (message.salt.length !== 0) {
+      obj.salt = base64FromBytes(message.salt);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryAccountAddressRequest>, I>>(base?: I): QueryAccountAddressRequest {
+    return QueryAccountAddressRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryAccountAddressRequest>, I>>(object: I): QueryAccountAddressRequest {
+    const message = createBaseQueryAccountAddressRequest();
+    message.sender = object.sender ?? "";
+    message.salt = object.salt ?? new Uint8Array(0);
+    return message;
+  },
+};
+
+function createBaseQueryAccountAddressResponse(): QueryAccountAddressResponse {
+  return { address: "", registered: false };
+}
+
+export const QueryAccountAddressResponse: MessageFns<QueryAccountAddressResponse> = {
+  encode(message: QueryAccountAddressResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.registered !== false) {
+      writer.uint32(16).bool(message.registered);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountAddressResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseQueryAccountAddressResponse();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.address = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 16) {
+              break;
+            }
+
+            message.registered = reader.bool();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): QueryAccountAddressResponse {
+    return {
+      address: isSet(object.address) ? globalThis.String(object.address) : "",
+      registered: isSet(object.registered) ? globalThis.Boolean(object.registered) : false,
+    };
+  },
+
+  toJSON(message: QueryAccountAddressResponse): unknown {
+    const obj: any = {};
+    if (message.address !== "") {
+      obj.address = message.address;
+    }
+    if (message.registered !== false) {
+      obj.registered = message.registered;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryAccountAddressResponse>, I>>(base?: I): QueryAccountAddressResponse {
+    return QueryAccountAddressResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryAccountAddressResponse>, I>>(object: I): QueryAccountAddressResponse {
+    const message = createBaseQueryAccountAddressResponse();
+    message.address = object.address ?? "";
+    message.registered = object.registered ?? false;
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Params queries the module's parameters. */
   Params(request: DeepPartial<QueryParamsRequest>, metadata?: grpc.Metadata): Promise<QueryParamsResponse>;
+  /**
+   * AccountAddress returns the registered address or predicts the stable
+   * address using the module-managed address derivation hash.
+   */
+  AccountAddress(
+    request: DeepPartial<QueryAccountAddressRequest>,
+    metadata?: grpc.Metadata,
+  ): Promise<QueryAccountAddressResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -156,10 +360,18 @@ export class QueryClientImpl implements Query {
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.Params = this.Params.bind(this);
+    this.AccountAddress = this.AccountAddress.bind(this);
   }
 
   Params(request: DeepPartial<QueryParamsRequest>, metadata?: grpc.Metadata): Promise<QueryParamsResponse> {
     return this.rpc.unary(QueryParamsDesc, QueryParamsRequest.fromPartial(request), metadata);
+  }
+
+  AccountAddress(
+    request: DeepPartial<QueryAccountAddressRequest>,
+    metadata?: grpc.Metadata,
+  ): Promise<QueryAccountAddressResponse> {
+    return this.rpc.unary(QueryAccountAddressDesc, QueryAccountAddressRequest.fromPartial(request), metadata);
   }
 }
 
@@ -178,6 +390,29 @@ export const QueryParamsDesc: UnaryMethodDefinitionish = {
   responseType: {
     deserializeBinary(data: Uint8Array) {
       const value = QueryParamsResponse.decode(data);
+      return {
+        ...value,
+        toObject() {
+          return value;
+        },
+      };
+    },
+  } as any,
+};
+
+export const QueryAccountAddressDesc: UnaryMethodDefinitionish = {
+  methodName: "AccountAddress",
+  service: QueryDesc,
+  requestStream: false,
+  responseStream: false,
+  requestType: {
+    serializeBinary() {
+      return QueryAccountAddressRequest.encode(this).finish();
+    },
+  } as any,
+  responseType: {
+    deserializeBinary(data: Uint8Array) {
+      const value = QueryAccountAddressResponse.decode(data);
       return {
         ...value,
         toObject() {
@@ -253,6 +488,31 @@ export class GrpcWebImpl {
         },
       });
     });
+  }
+}
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if ((globalThis as any).Buffer) {
+    return Uint8Array.from((globalThis as any).Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if ((globalThis as any).Buffer) {
+    return (globalThis as any).Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(globalThis.String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
   }
 }
 

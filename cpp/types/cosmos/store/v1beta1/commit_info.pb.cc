@@ -155,8 +155,8 @@ const char descriptor_table_protodef_cosmos_2fstore_2fv1beta1_2fcommit_5finfo_2e
     "\001 \001(\tR\004name\022A\n\tcommit_id\030\002 \001(\0132\036.cosmos."
     "store.v1beta1.CommitIDB\004\310\336\037\000R\010commitId\">"
     "\n\010CommitID\022\030\n\007version\030\001 \001(\003R\007version\022\022\n\004"
-    "hash\030\002 \001(\014R\004hash:\004\230\240\037\000B\032Z\030cosmossdk.io/s"
-    "tore/typesb\006proto3"
+    "hash\030\002 \001(\014R\004hash:\004\230\240\037\000B-Z+github.com/cos"
+    "mos/cosmos-sdk/store/v2/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstore_2fv1beta1_2fcommit_5finfo_2eproto_deps[2] =
     {
@@ -167,7 +167,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fstore_2fv1beta1_2fcommit_5fin
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fstore_2fv1beta1_2fcommit_5finfo_2eproto = {
     false,
     false,
-    498,
+    517,
     descriptor_table_protodef_cosmos_2fstore_2fv1beta1_2fcommit_5finfo_2eproto,
     "cosmos/store/v1beta1/commit_info.proto",
     &descriptor_table_cosmos_2fstore_2fv1beta1_2fcommit_5finfo_2eproto_once,

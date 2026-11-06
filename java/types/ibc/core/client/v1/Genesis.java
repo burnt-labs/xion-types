@@ -173,7 +173,7 @@ public final class Genesis {
      *
      * <code>bool create_localhost = 5 [json_name = "createLocalhost", deprecated = true];</code>
      * @deprecated ibc.core.client.v1.GenesisState.create_localhost is deprecated.
-     *     See ibc/core/client/v1/genesis.proto;l=22
+     *     See ibc/core/client/v1/genesis.proto;l=24
      * @return The createLocalhost.
      */
     @java.lang.Deprecated boolean getCreateLocalhost();
@@ -450,7 +450,7 @@ public final class Genesis {
      *
      * <code>bool create_localhost = 5 [json_name = "createLocalhost", deprecated = true];</code>
      * @deprecated ibc.core.client.v1.GenesisState.create_localhost is deprecated.
-     *     See ibc/core/client/v1/genesis.proto;l=22
+     *     See ibc/core/client/v1/genesis.proto;l=24
      * @return The createLocalhost.
      */
     @java.lang.Override
@@ -2149,7 +2149,7 @@ public final class Genesis {
        *
        * <code>bool create_localhost = 5 [json_name = "createLocalhost", deprecated = true];</code>
        * @deprecated ibc.core.client.v1.GenesisState.create_localhost is deprecated.
-       *     See ibc/core/client/v1/genesis.proto;l=22
+       *     See ibc/core/client/v1/genesis.proto;l=24
        * @return The createLocalhost.
        */
       @java.lang.Override
@@ -2164,7 +2164,7 @@ public final class Genesis {
        *
        * <code>bool create_localhost = 5 [json_name = "createLocalhost", deprecated = true];</code>
        * @deprecated ibc.core.client.v1.GenesisState.create_localhost is deprecated.
-       *     See ibc/core/client/v1/genesis.proto;l=22
+       *     See ibc/core/client/v1/genesis.proto;l=24
        * @param value The createLocalhost to set.
        * @return This builder for chaining.
        */
@@ -2183,7 +2183,7 @@ public final class Genesis {
        *
        * <code>bool create_localhost = 5 [json_name = "createLocalhost", deprecated = true];</code>
        * @deprecated ibc.core.client.v1.GenesisState.create_localhost is deprecated.
-       *     See ibc/core/client/v1/genesis.proto;l=22
+       *     See ibc/core/client/v1/genesis.proto;l=24
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearCreateLocalhost() {
@@ -3884,7 +3884,7 @@ public final class Genesis {
       "nesisMetadata\022\033\n\tclient_id\030\001 \001(\tR\010client" +
       "Id\022R\n\017client_metadata\030\002 \003(\0132#.ibc.core.c" +
       "lient.v1.GenesisMetadataB\004\310\336\037\000R\016clientMe" +
-      "tadataB;Z9github.com/cosmos/ibc-go/v10/m" +
+      "tadataB;Z9github.com/cosmos/ibc-go/v11/m" +
       "odules/core/02-client/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

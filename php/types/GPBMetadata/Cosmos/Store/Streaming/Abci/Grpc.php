@@ -18,7 +18,7 @@ class Grpc
         \GPBMetadata\Cosmos\Store\V1Beta1\Listening::initOnce();
         $pool->internalAddGeneratedFile(
             '
-©
+º
 &cosmos/store/streaming/abci/grpc.protocosmos.store.streaming.abci$cosmos/store/v1beta1/listening.proto"è
 ListenFinalizeBlockRequest7
 req (2%.tendermint.abci.RequestFinalizeBlockRreq8
@@ -32,7 +32,7 @@ change_set (2!.cosmos.store.v1beta1.StoreKVPairR	changeSet"
 ListenCommitResponse2ï
 ABCIListenerServiceà
 ListenFinalizeBlock7.cosmos.store.streaming.abci.ListenFinalizeBlockRequest8.cosmos.store.streaming.abci.ListenFinalizeBlockResponses
-ListenCommit0.cosmos.store.streaming.abci.ListenCommitRequest1.cosmos.store.streaming.abci.ListenCommitResponseB#Z!cosmossdk.io/store/streaming/abcibproto3'
+ListenCommit0.cosmos.store.streaming.abci.ListenCommitRequest1.cosmos.store.streaming.abci.ListenCommitResponseB6Z4github.com/cosmos/cosmos-sdk/store/v2/streaming/abcibproto3'
         , true);
 
         static::$is_initialized = true;

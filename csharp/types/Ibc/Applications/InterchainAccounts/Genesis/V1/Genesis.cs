@@ -59,7 +59,7 @@ namespace Ibc.Applications.InterchainAccounts.Genesis.V1 {
             "d2FyZUVuYWJsZWQihAEKG1JlZ2lzdGVyZWRJbnRlcmNoYWluQWNjb3VudBIj",
             "Cg1jb25uZWN0aW9uX2lkGAEgASgJUgxjb25uZWN0aW9uSWQSFwoHcG9ydF9p",
             "ZBgCIAEoCVIGcG9ydElkEicKD2FjY291bnRfYWRkcmVzcxgDIAEoCVIOYWNj",
-            "b3VudEFkZHJlc3NCUFpOZ2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9t",
+            "b3VudEFkZHJlc3NCUFpOZ2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9t",
             "b2R1bGVzL2FwcHMvMjctaW50ZXJjaGFpbi1hY2NvdW50cy9nZW5lc2lzL3R5",
             "cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,

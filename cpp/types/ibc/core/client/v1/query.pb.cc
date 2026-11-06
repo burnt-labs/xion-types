@@ -858,7 +858,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fclient_2fv1_2fquery_2eproto[] 
     "ifyMembershipRequest\0321.ibc.core.client.v"
     "1.QueryVerifyMembershipResponse\"5\210\347\260*\001\202\323"
     "\344\223\002*\"%/ibc/core/client/v1/verify_members"
-    "hip:\001*B;Z9github.com/cosmos/ibc-go/v10/m"
+    "hip:\001*B;Z9github.com/cosmos/ibc-go/v11/m"
     "odules/core/02-client/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fclient_2fv1_2fquery_2eproto_deps[7] =

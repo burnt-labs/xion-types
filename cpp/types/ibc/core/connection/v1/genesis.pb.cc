@@ -94,7 +94,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fconnection_2fv1_2fgenesis_2epr
     "\003 \001(\004R\026nextConnectionSequence\022<\n\006params\030"
     "\004 \001(\0132\036.ibc.core.connection.v1.ParamsB\004\310"
     "\336\037\000R\006paramsB\?Z=github.com/cosmos/ibc-go/"
-    "v10/modules/core/03-connection/typesb\006pr"
+    "v11/modules/core/03-connection/typesb\006pr"
     "oto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fconnection_2fv1_2fgenesis_2eproto_deps[2] =

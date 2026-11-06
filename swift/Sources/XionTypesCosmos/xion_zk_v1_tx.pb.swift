@@ -36,8 +36,12 @@ struct Xion_Zk_V1_MsgAddVKey: @unchecked Sendable {
   /// description provides context about this verification key
   var description_p: String = String()
 
-  /// vkey_json is the JSON representation of the verification key
+  /// vkey_bytes is the verification key (Groth16 JSON or Barretenberg binary per
+  /// proof_system).
   var vkeyBytes: Data = Data()
+
+  /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+  var proofSystem: Xion_Zk_V1_ProofSystem = .unspecified
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -73,8 +77,12 @@ struct Xion_Zk_V1_MsgUpdateVKey: @unchecked Sendable {
   /// description provides updated context
   var description_p: String = String()
 
-  /// vkey_json is the new JSON representation of the verification key
+  /// vkey_bytes is the new verification key (Groth16 JSON or Barretenberg binary
+  /// per proof_system).
   var vkeyBytes: Data = Data()
+
+  /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+  var proofSystem: Xion_Zk_V1_ProofSystem = .unspecified
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -171,6 +179,7 @@ extension Xion_Zk_V1_MsgAddVKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     2: .same(proto: "name"),
     3: .same(proto: "description"),
     4: .standard(proto: "vkey_bytes"),
+    5: .standard(proto: "proof_system"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -183,6 +192,7 @@ extension Xion_Zk_V1_MsgAddVKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.description_p) }()
       case 4: try { try decoder.decodeSingularBytesField(value: &self.vkeyBytes) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.proofSystem) }()
       default: break
       }
     }
@@ -201,6 +211,9 @@ extension Xion_Zk_V1_MsgAddVKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if !self.vkeyBytes.isEmpty {
       try visitor.visitSingularBytesField(value: self.vkeyBytes, fieldNumber: 4)
     }
+    if self.proofSystem != .unspecified {
+      try visitor.visitSingularEnumField(value: self.proofSystem, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -209,6 +222,7 @@ extension Xion_Zk_V1_MsgAddVKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if lhs.name != rhs.name {return false}
     if lhs.description_p != rhs.description_p {return false}
     if lhs.vkeyBytes != rhs.vkeyBytes {return false}
+    if lhs.proofSystem != rhs.proofSystem {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -253,6 +267,7 @@ extension Xion_Zk_V1_MsgUpdateVKey: SwiftProtobuf.Message, SwiftProtobuf._Messag
     2: .same(proto: "name"),
     3: .same(proto: "description"),
     4: .standard(proto: "vkey_bytes"),
+    5: .standard(proto: "proof_system"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -265,6 +280,7 @@ extension Xion_Zk_V1_MsgUpdateVKey: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.description_p) }()
       case 4: try { try decoder.decodeSingularBytesField(value: &self.vkeyBytes) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.proofSystem) }()
       default: break
       }
     }
@@ -283,6 +299,9 @@ extension Xion_Zk_V1_MsgUpdateVKey: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if !self.vkeyBytes.isEmpty {
       try visitor.visitSingularBytesField(value: self.vkeyBytes, fieldNumber: 4)
     }
+    if self.proofSystem != .unspecified {
+      try visitor.visitSingularEnumField(value: self.proofSystem, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -291,6 +310,7 @@ extension Xion_Zk_V1_MsgUpdateVKey: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if lhs.name != rhs.name {return false}
     if lhs.description_p != rhs.description_p {return false}
     if lhs.vkeyBytes != rhs.vkeyBytes {return false}
+    if lhs.proofSystem != rhs.proofSystem {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -59,6 +59,12 @@ extern const ::google::protobuf::internal::DescriptorTable
     descriptor_table_abstractaccount_2fv1_2fquery_2eproto;
 namespace abstractaccount {
 namespace v1 {
+class QueryAccountAddressRequest;
+struct QueryAccountAddressRequestDefaultTypeInternal;
+extern QueryAccountAddressRequestDefaultTypeInternal _QueryAccountAddressRequest_default_instance_;
+class QueryAccountAddressResponse;
+struct QueryAccountAddressResponseDefaultTypeInternal;
+extern QueryAccountAddressResponseDefaultTypeInternal _QueryAccountAddressResponse_default_instance_;
 class QueryParamsRequest;
 struct QueryParamsRequestDefaultTypeInternal;
 extern QueryParamsRequestDefaultTypeInternal _QueryParamsRequest_default_instance_;
@@ -367,6 +373,364 @@ class QueryParamsResponse final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_abstractaccount_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryAccountAddressRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:abstractaccount.v1.QueryAccountAddressRequest) */ {
+ public:
+  inline QueryAccountAddressRequest() : QueryAccountAddressRequest(nullptr) {}
+  ~QueryAccountAddressRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryAccountAddressRequest(::google::protobuf::internal::ConstantInitialized);
+
+  QueryAccountAddressRequest(const QueryAccountAddressRequest& from);
+  QueryAccountAddressRequest(QueryAccountAddressRequest&& from) noexcept
+    : QueryAccountAddressRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryAccountAddressRequest& operator=(const QueryAccountAddressRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryAccountAddressRequest& operator=(QueryAccountAddressRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryAccountAddressRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryAccountAddressRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryAccountAddressRequest*>(
+               &_QueryAccountAddressRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(QueryAccountAddressRequest& a, QueryAccountAddressRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryAccountAddressRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryAccountAddressRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryAccountAddressRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryAccountAddressRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryAccountAddressRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryAccountAddressRequest& from) {
+    QueryAccountAddressRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryAccountAddressRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "abstractaccount.v1.QueryAccountAddressRequest";
+  }
+  protected:
+  explicit QueryAccountAddressRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSenderFieldNumber = 1,
+    kSaltFieldNumber = 2,
+  };
+  // string sender = 1 [json_name = "sender"];
+  void clear_sender() ;
+  const std::string& sender() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_sender(Arg_&& arg, Args_... args);
+  std::string* mutable_sender();
+  PROTOBUF_NODISCARD std::string* release_sender();
+  void set_allocated_sender(std::string* ptr);
+
+  private:
+  const std::string& _internal_sender() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sender(
+      const std::string& value);
+  std::string* _internal_mutable_sender();
+
+  public:
+  // bytes salt = 2 [json_name = "salt"];
+  void clear_salt() ;
+  const std::string& salt() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_salt(Arg_&& arg, Args_... args);
+  std::string* mutable_salt();
+  PROTOBUF_NODISCARD std::string* release_salt();
+  void set_allocated_salt(std::string* ptr);
+
+  private:
+  const std::string& _internal_salt() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_salt(
+      const std::string& value);
+  std::string* _internal_mutable_salt();
+
+  public:
+  // @@protoc_insertion_point(class_scope:abstractaccount.v1.QueryAccountAddressRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 60, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr sender_;
+    ::google::protobuf::internal::ArenaStringPtr salt_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_abstractaccount_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryAccountAddressResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:abstractaccount.v1.QueryAccountAddressResponse) */ {
+ public:
+  inline QueryAccountAddressResponse() : QueryAccountAddressResponse(nullptr) {}
+  ~QueryAccountAddressResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryAccountAddressResponse(::google::protobuf::internal::ConstantInitialized);
+
+  QueryAccountAddressResponse(const QueryAccountAddressResponse& from);
+  QueryAccountAddressResponse(QueryAccountAddressResponse&& from) noexcept
+    : QueryAccountAddressResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryAccountAddressResponse& operator=(const QueryAccountAddressResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryAccountAddressResponse& operator=(QueryAccountAddressResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryAccountAddressResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryAccountAddressResponse* internal_default_instance() {
+    return reinterpret_cast<const QueryAccountAddressResponse*>(
+               &_QueryAccountAddressResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(QueryAccountAddressResponse& a, QueryAccountAddressResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryAccountAddressResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryAccountAddressResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryAccountAddressResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryAccountAddressResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryAccountAddressResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryAccountAddressResponse& from) {
+    QueryAccountAddressResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryAccountAddressResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "abstractaccount.v1.QueryAccountAddressResponse";
+  }
+  protected:
+  explicit QueryAccountAddressResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAddressFieldNumber = 1,
+    kRegisteredFieldNumber = 2,
+  };
+  // string address = 1 [json_name = "address"];
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // bool registered = 2 [json_name = "registered"];
+  void clear_registered() ;
+  bool registered() const;
+  void set_registered(bool value);
+
+  private:
+  bool _internal_registered() const;
+  void _internal_set_registered(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:abstractaccount.v1.QueryAccountAddressResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 62, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    bool registered_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_abstractaccount_2fv1_2fquery_2eproto;
 };
 
 // ===================================================================
@@ -479,6 +843,189 @@ inline void QueryParamsResponse::set_allocated_params(::abstractaccount::v1::Par
 
   _impl_.params_ = reinterpret_cast<::abstractaccount::v1::Params*>(value);
   // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.QueryParamsResponse.params)
+}
+
+// -------------------------------------------------------------------
+
+// QueryAccountAddressRequest
+
+// string sender = 1 [json_name = "sender"];
+inline void QueryAccountAddressRequest::clear_sender() {
+  _impl_.sender_.ClearToEmpty();
+}
+inline const std::string& QueryAccountAddressRequest::sender() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.QueryAccountAddressRequest.sender)
+  return _internal_sender();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryAccountAddressRequest::set_sender(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sender_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.QueryAccountAddressRequest.sender)
+}
+inline std::string* QueryAccountAddressRequest::mutable_sender() {
+  std::string* _s = _internal_mutable_sender();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.QueryAccountAddressRequest.sender)
+  return _s;
+}
+inline const std::string& QueryAccountAddressRequest::_internal_sender() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.sender_.Get();
+}
+inline void QueryAccountAddressRequest::_internal_set_sender(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sender_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryAccountAddressRequest::_internal_mutable_sender() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.sender_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryAccountAddressRequest::release_sender() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.QueryAccountAddressRequest.sender)
+  return _impl_.sender_.Release();
+}
+inline void QueryAccountAddressRequest::set_allocated_sender(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.sender_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.sender_.IsDefault()) {
+          _impl_.sender_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.QueryAccountAddressRequest.sender)
+}
+
+// bytes salt = 2 [json_name = "salt"];
+inline void QueryAccountAddressRequest::clear_salt() {
+  _impl_.salt_.ClearToEmpty();
+}
+inline const std::string& QueryAccountAddressRequest::salt() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.QueryAccountAddressRequest.salt)
+  return _internal_salt();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryAccountAddressRequest::set_salt(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.salt_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.QueryAccountAddressRequest.salt)
+}
+inline std::string* QueryAccountAddressRequest::mutable_salt() {
+  std::string* _s = _internal_mutable_salt();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.QueryAccountAddressRequest.salt)
+  return _s;
+}
+inline const std::string& QueryAccountAddressRequest::_internal_salt() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.salt_.Get();
+}
+inline void QueryAccountAddressRequest::_internal_set_salt(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.salt_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryAccountAddressRequest::_internal_mutable_salt() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.salt_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryAccountAddressRequest::release_salt() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.QueryAccountAddressRequest.salt)
+  return _impl_.salt_.Release();
+}
+inline void QueryAccountAddressRequest::set_allocated_salt(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.salt_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.salt_.IsDefault()) {
+          _impl_.salt_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.QueryAccountAddressRequest.salt)
+}
+
+// -------------------------------------------------------------------
+
+// QueryAccountAddressResponse
+
+// string address = 1 [json_name = "address"];
+inline void QueryAccountAddressResponse::clear_address() {
+  _impl_.address_.ClearToEmpty();
+}
+inline const std::string& QueryAccountAddressResponse::address() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.QueryAccountAddressResponse.address)
+  return _internal_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryAccountAddressResponse::set_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.QueryAccountAddressResponse.address)
+}
+inline std::string* QueryAccountAddressResponse::mutable_address() {
+  std::string* _s = _internal_mutable_address();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.QueryAccountAddressResponse.address)
+  return _s;
+}
+inline const std::string& QueryAccountAddressResponse::_internal_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.address_.Get();
+}
+inline void QueryAccountAddressResponse::_internal_set_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryAccountAddressResponse::_internal_mutable_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryAccountAddressResponse::release_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.QueryAccountAddressResponse.address)
+  return _impl_.address_.Release();
+}
+inline void QueryAccountAddressResponse::set_allocated_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.address_.IsDefault()) {
+          _impl_.address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.QueryAccountAddressResponse.address)
+}
+
+// bool registered = 2 [json_name = "registered"];
+inline void QueryAccountAddressResponse::clear_registered() {
+  _impl_.registered_ = false;
+}
+inline bool QueryAccountAddressResponse::registered() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.QueryAccountAddressResponse.registered)
+  return _internal_registered();
+}
+inline void QueryAccountAddressResponse::set_registered(bool value) {
+  _internal_set_registered(value);
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.QueryAccountAddressResponse.registered)
+}
+inline bool QueryAccountAddressResponse::_internal_registered() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.registered_;
+}
+inline void QueryAccountAddressResponse::_internal_set_registered(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.registered_ = value;
 }
 
 #ifdef __GNUC__

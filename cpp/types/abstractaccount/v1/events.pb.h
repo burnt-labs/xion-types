@@ -204,6 +204,7 @@ class EventAccountRegistered final :
   enum : int {
     kCreatorFieldNumber = 1,
     kContractAddrFieldNumber = 3,
+    kAddressDerivationHashFieldNumber = 6,
     kCodeIdFieldNumber = 2,
     kAccountNumberFieldNumber = 4,
   };
@@ -239,6 +240,22 @@ class EventAccountRegistered final :
   std::string* _internal_mutable_contract_addr();
 
   public:
+  // bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+  void clear_address_derivation_hash() ;
+  const std::string& address_derivation_hash() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address_derivation_hash(Arg_&& arg, Args_... args);
+  std::string* mutable_address_derivation_hash();
+  PROTOBUF_NODISCARD std::string* release_address_derivation_hash();
+  void set_allocated_address_derivation_hash(std::string* ptr);
+
+  private:
+  const std::string& _internal_address_derivation_hash() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address_derivation_hash(
+      const std::string& value);
+  std::string* _internal_mutable_address_derivation_hash();
+
+  public:
   // uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];
   void clear_code_id() ;
   ::uint64_t code_id() const;
@@ -264,13 +281,14 @@ class EventAccountRegistered final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 4, 0, 70, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 70, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::google::protobuf::internal::ArenaStringPtr creator_;
     ::google::protobuf::internal::ArenaStringPtr contract_addr_;
+    ::google::protobuf::internal::ArenaStringPtr address_derivation_hash_;
     ::uint64_t code_id_;
     ::uint64_t account_number_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -440,6 +458,57 @@ inline void EventAccountRegistered::_internal_set_account_number(::uint64_t valu
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.account_number_ = value;
+}
+
+// bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];
+inline void EventAccountRegistered::clear_address_derivation_hash() {
+  _impl_.address_derivation_hash_.ClearToEmpty();
+}
+inline const std::string& EventAccountRegistered::address_derivation_hash() const {
+  // @@protoc_insertion_point(field_get:abstractaccount.v1.EventAccountRegistered.address_derivation_hash)
+  return _internal_address_derivation_hash();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void EventAccountRegistered::set_address_derivation_hash(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_derivation_hash_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:abstractaccount.v1.EventAccountRegistered.address_derivation_hash)
+}
+inline std::string* EventAccountRegistered::mutable_address_derivation_hash() {
+  std::string* _s = _internal_mutable_address_derivation_hash();
+  // @@protoc_insertion_point(field_mutable:abstractaccount.v1.EventAccountRegistered.address_derivation_hash)
+  return _s;
+}
+inline const std::string& EventAccountRegistered::_internal_address_derivation_hash() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.address_derivation_hash_.Get();
+}
+inline void EventAccountRegistered::_internal_set_address_derivation_hash(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_derivation_hash_.Set(value, GetArenaForAllocation());
+}
+inline std::string* EventAccountRegistered::_internal_mutable_address_derivation_hash() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.address_derivation_hash_.Mutable( GetArenaForAllocation());
+}
+inline std::string* EventAccountRegistered::release_address_derivation_hash() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:abstractaccount.v1.EventAccountRegistered.address_derivation_hash)
+  return _impl_.address_derivation_hash_.Release();
+}
+inline void EventAccountRegistered::set_allocated_address_derivation_hash(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.address_derivation_hash_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.address_derivation_hash_.IsDefault()) {
+          _impl_.address_derivation_hash_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:abstractaccount.v1.EventAccountRegistered.address_derivation_hash)
 }
 
 #ifdef __GNUC__

@@ -116,7 +116,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fclient_2fv2_2fgenesis_2eproto[
     "\022counterparty_infos\030\001 \003(\0132+.ibc.core.cli"
     "ent.v2.GenesisCounterpartyInfoB\004\310\336\037\000R\021co"
     "unterpartyInfosB>Z<github.com/cosmos/ibc"
-    "-go/v10/modules/core/02-client/v2/typesb"
+    "-go/v11/modules/core/02-client/v2/typesb"
     "\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fclient_2fv2_2fgenesis_2eproto_deps[2] =

@@ -324,7 +324,8 @@ namespace Xion.Dkim.V1 {
   }
 
   /// <summary>
-  /// IndexRange defines a range of indices [start, end) in the public inputs array.
+  /// IndexRange defines a range of indices [start, end) in the public inputs
+  /// array.
   /// </summary>
   public sealed partial class IndexRange : pb::IMessage<IndexRange>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -374,6 +375,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "start" field.</summary>
     public const int StartFieldNumber = 1;
     private ulong start_;
+    /// <summary>
+    /// start is the inclusive lower bound of the index range.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong Start {
@@ -386,6 +390,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "end" field.</summary>
     public const int EndFieldNumber = 2;
     private ulong end_;
+    /// <summary>
+    /// end is the exclusive upper bound of the index range.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong End {
@@ -553,7 +560,8 @@ namespace Xion.Dkim.V1 {
   }
 
   /// <summary>
-  /// PublicInputIndices defines the indices for extracting data from public inputs.
+  /// PublicInputIndices defines the indices for extracting data from public
+  /// inputs.
   /// </summary>
   public sealed partial class PublicInputIndices : pb::IMessage<PublicInputIndices>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -608,6 +616,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "min_length" field.</summary>
     public const int MinLengthFieldNumber = 1;
     private ulong minLength_;
+    /// <summary>
+    /// min_length is the minimum required length of the public inputs array.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong MinLength {
@@ -620,6 +631,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "email_hash_index" field.</summary>
     public const int EmailHashIndexFieldNumber = 2;
     private ulong emailHashIndex_;
+    /// <summary>
+    /// email_hash_index is the index of the email hash in the public inputs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong EmailHashIndex {
@@ -632,6 +646,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "dkim_domain_range" field.</summary>
     public const int DkimDomainRangeFieldNumber = 3;
     private global::Xion.Dkim.V1.IndexRange dkimDomainRange_;
+    /// <summary>
+    /// dkim_domain_range is the index range for the DKIM domain in public inputs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Xion.Dkim.V1.IndexRange DkimDomainRange {
@@ -644,6 +661,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "dkim_hash_index" field.</summary>
     public const int DkimHashIndexFieldNumber = 4;
     private ulong dkimHashIndex_;
+    /// <summary>
+    /// dkim_hash_index is the index of the DKIM signature hash in public inputs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong DkimHashIndex {
@@ -656,6 +676,10 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "tx_bytes_range" field.</summary>
     public const int TxBytesRangeFieldNumber = 5;
     private global::Xion.Dkim.V1.IndexRange txBytesRange_;
+    /// <summary>
+    /// tx_bytes_range is the index range for the transaction bytes in public
+    /// inputs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Xion.Dkim.V1.IndexRange TxBytesRange {
@@ -668,6 +692,9 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "email_host_range" field.</summary>
     public const int EmailHostRangeFieldNumber = 6;
     private global::Xion.Dkim.V1.IndexRange emailHostRange_;
+    /// <summary>
+    /// email_host_range is the index range for the email host in public inputs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Xion.Dkim.V1.IndexRange EmailHostRange {
@@ -680,6 +707,10 @@ namespace Xion.Dkim.V1 {
     /// <summary>Field number for the "email_subject_range" field.</summary>
     public const int EmailSubjectRangeFieldNumber = 7;
     private global::Xion.Dkim.V1.IndexRange emailSubjectRange_;
+    /// <summary>
+    /// email_subject_range is the index range for the email subject in public
+    /// inputs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Xion.Dkim.V1.IndexRange EmailSubjectRange {
@@ -1086,7 +1117,8 @@ namespace Xion.Dkim.V1 {
     public const int PublicInputIndicesFieldNumber = 3;
     private global::Xion.Dkim.V1.PublicInputIndices publicInputIndices_;
     /// <summary>
-    /// public_input_indices defines the indices for extracting data from public inputs.
+    /// public_input_indices defines the indices for extracting data from public
+    /// inputs.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]

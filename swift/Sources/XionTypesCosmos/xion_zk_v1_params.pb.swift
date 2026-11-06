@@ -20,6 +20,59 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
+/// ProofSystem identifies which ZK backend and wire format a vkey/proof uses.
+enum Xion_Zk_V1_ProofSystem: SwiftProtobuf.Enum, Swift.CaseIterable {
+  typealias RawValue = Int
+
+  /// PROOF_SYSTEM_UNSPECIFIED is the default unset value.
+  case unspecified // = 0
+
+  /// PROOF_SYSTEM_GROTH16 uses BN254 Groth16 proofs in snarkjs/circom format.
+  case groth16 // = 1
+
+  /// PROOF_SYSTEM_ULTRA_HONK_ZK uses Barretenberg UltraHonk ZK variant
+  /// (bb >= 0.87).
+  case ultraHonkZk // = 2
+
+  /// PROOF_SYSTEM_GROTH16_GNARK uses BN254 Groth16 proofs in gnark native
+  /// format (binary).
+  case groth16Gnark // = 3
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .unspecified
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .unspecified
+    case 1: self = .groth16
+    case 2: self = .ultraHonkZk
+    case 3: self = .groth16Gnark
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .unspecified: return 0
+    case .groth16: return 1
+    case .ultraHonkZk: return 2
+    case .groth16Gnark: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static let allCases: [Xion_Zk_V1_ProofSystem] = [
+    .unspecified,
+    .groth16,
+    .ultraHonkZk,
+    .groth16Gnark,
+  ]
+
+}
+
 /// Params defines the zk module parameters.
 struct Xion_Zk_V1_Params: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -35,6 +88,30 @@ struct Xion_Zk_V1_Params: Sendable {
   /// upload_chunk_gas defines the gas cost per upload chunk.
   var uploadChunkGas: UInt64 = 0
 
+  /// max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+  var maxGroth16ProofSizeBytes: UInt64 = 0
+
+  /// max_groth16_public_input_size_bytes caps the size of the Groth16 public
+  /// inputs. The size is computed as the total UTF-8 byte length of all provided
+  /// public input strings.
+  var maxGroth16PublicInputSizeBytes: UInt64 = 0
+
+  /// max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+  var maxUltraHonkProofSizeBytes: UInt64 = 0
+
+  /// max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+  /// public inputs. UltraHonk public inputs are provided as raw bytes.
+  var maxUltraHonkPublicInputSizeBytes: UInt64 = 0
+
+  /// max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+  /// (binary).
+  var maxGnarkProofSizeBytes: UInt64 = 0
+
+  /// max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+  /// inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+  /// big-endian field elements).
+  var maxGnarkPublicInputSizeBytes: UInt64 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -44,12 +121,27 @@ struct Xion_Zk_V1_Params: Sendable {
 
 fileprivate let _protobuf_package = "xion.zk.v1"
 
+extension Xion_Zk_V1_ProofSystem: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PROOF_SYSTEM_UNSPECIFIED"),
+    1: .same(proto: "PROOF_SYSTEM_GROTH16"),
+    2: .same(proto: "PROOF_SYSTEM_ULTRA_HONK_ZK"),
+    3: .same(proto: "PROOF_SYSTEM_GROTH16_GNARK"),
+  ]
+}
+
 extension Xion_Zk_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Params"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "max_vkey_size_bytes"),
     2: .standard(proto: "upload_chunk_size"),
     3: .standard(proto: "upload_chunk_gas"),
+    4: .standard(proto: "max_groth16_proof_size_bytes"),
+    5: .standard(proto: "max_groth16_public_input_size_bytes"),
+    6: .standard(proto: "max_ultra_honk_proof_size_bytes"),
+    7: .standard(proto: "max_ultra_honk_public_input_size_bytes"),
+    8: .standard(proto: "max_gnark_proof_size_bytes"),
+    9: .standard(proto: "max_gnark_public_input_size_bytes"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -61,6 +153,12 @@ extension Xion_Zk_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       case 1: try { try decoder.decodeSingularUInt64Field(value: &self.maxVkeySizeBytes) }()
       case 2: try { try decoder.decodeSingularUInt64Field(value: &self.uploadChunkSize) }()
       case 3: try { try decoder.decodeSingularUInt64Field(value: &self.uploadChunkGas) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.maxGroth16ProofSizeBytes) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.maxGroth16PublicInputSizeBytes) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.maxUltraHonkProofSizeBytes) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.maxUltraHonkPublicInputSizeBytes) }()
+      case 8: try { try decoder.decodeSingularUInt64Field(value: &self.maxGnarkProofSizeBytes) }()
+      case 9: try { try decoder.decodeSingularUInt64Field(value: &self.maxGnarkPublicInputSizeBytes) }()
       default: break
       }
     }
@@ -76,6 +174,24 @@ extension Xion_Zk_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if self.uploadChunkGas != 0 {
       try visitor.visitSingularUInt64Field(value: self.uploadChunkGas, fieldNumber: 3)
     }
+    if self.maxGroth16ProofSizeBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.maxGroth16ProofSizeBytes, fieldNumber: 4)
+    }
+    if self.maxGroth16PublicInputSizeBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.maxGroth16PublicInputSizeBytes, fieldNumber: 5)
+    }
+    if self.maxUltraHonkProofSizeBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.maxUltraHonkProofSizeBytes, fieldNumber: 6)
+    }
+    if self.maxUltraHonkPublicInputSizeBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.maxUltraHonkPublicInputSizeBytes, fieldNumber: 7)
+    }
+    if self.maxGnarkProofSizeBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.maxGnarkProofSizeBytes, fieldNumber: 8)
+    }
+    if self.maxGnarkPublicInputSizeBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.maxGnarkPublicInputSizeBytes, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -83,6 +199,12 @@ extension Xion_Zk_V1_Params: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if lhs.maxVkeySizeBytes != rhs.maxVkeySizeBytes {return false}
     if lhs.uploadChunkSize != rhs.uploadChunkSize {return false}
     if lhs.uploadChunkGas != rhs.uploadChunkGas {return false}
+    if lhs.maxGroth16ProofSizeBytes != rhs.maxGroth16ProofSizeBytes {return false}
+    if lhs.maxGroth16PublicInputSizeBytes != rhs.maxGroth16PublicInputSizeBytes {return false}
+    if lhs.maxUltraHonkProofSizeBytes != rhs.maxUltraHonkProofSizeBytes {return false}
+    if lhs.maxUltraHonkPublicInputSizeBytes != rhs.maxUltraHonkPublicInputSizeBytes {return false}
+    if lhs.maxGnarkProofSizeBytes != rhs.maxGnarkProofSizeBytes {return false}
+    if lhs.maxGnarkPublicInputSizeBytes != rhs.maxGnarkPublicInputSizeBytes {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

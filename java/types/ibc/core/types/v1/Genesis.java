@@ -1766,7 +1766,7 @@ public final class Genesis {
       "sis\022U\n\022channel_v2_genesis\030\005 \001(\0132!.ibc.co" +
       "re.channel.v2.GenesisStateB\004\310\336\037\000R\020channe" +
       "lV2GenesisB1Z/github.com/cosmos/ibc-go/v" +
-      "10/modules/core/typesb\006proto3"
+      "11/modules/core/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

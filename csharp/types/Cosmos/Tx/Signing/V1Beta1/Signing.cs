@@ -43,12 +43,12 @@ namespace Cosmos.Tx.Signing.V1Beta1 {
             "eRgBIAEoCzIvLmNvc21vcy5jcnlwdG8ubXVsdGlzaWcudjFiZXRhMS5Db21w",
             "YWN0Qml0QXJyYXlSCGJpdGFycmF5ElMKCnNpZ25hdHVyZXMYAiADKAsyMy5j",
             "b3Ntb3MudHguc2lnbmluZy52MWJldGExLlNpZ25hdHVyZURlc2NyaXB0b3Iu",
-            "RGF0YVIKc2lnbmF0dXJlc0IFCgNzdW0qpQEKCFNpZ25Nb2RlEhkKFVNJR05f",
-            "TU9ERV9VTlNQRUNJRklFRBAAEhQKEFNJR05fTU9ERV9ESVJFQ1QQARIVChFT",
-            "SUdOX01PREVfVEVYVFVBTBACEhgKFFNJR05fTU9ERV9ESVJFQ1RfQVVYEAMS",
-            "HwobU0lHTl9NT0RFX0xFR0FDWV9BTUlOT19KU09OEH8SFgoRU0lHTl9NT0RF",
-            "X0VJUF8xOTEQvwFCL1otZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90",
-            "eXBlcy90eC9zaWduaW5nYgZwcm90bzM="));
+            "RGF0YVIKc2lnbmF0dXJlc0IFCgNzdW0qpwEKCFNpZ25Nb2RlEhkKFVNJR05f",
+            "TU9ERV9VTlNQRUNJRklFRBAAEhQKEFNJR05fTU9ERV9ESVJFQ1QQARIYChRT",
+            "SUdOX01PREVfRElSRUNUX0FVWBADEh8KG1NJR05fTU9ERV9MRUdBQ1lfQU1J",
+            "Tk9fSlNPThB/EhYKEVNJR05fTU9ERV9FSVBfMTkxEL8BIgQIAhACKhFTSUdO",
+            "X01PREVfVEVYVFVBTEIvWi1naXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2Rr",
+            "L3R5cGVzL3R4L3NpZ25pbmdiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Cosmos.Crypto.Multisig.V1Beta1.MultisigReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Cosmos.Tx.Signing.V1Beta1.SignMode), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -82,14 +82,6 @@ namespace Cosmos.Tx.Signing.V1Beta1 {
     /// verified with raw bytes from Tx.
     /// </summary>
     [pbr::OriginalName("SIGN_MODE_DIRECT")] Direct = 1,
-    /// <summary>
-    /// SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-    /// human-readable textual representation on top of the binary representation
-    /// from SIGN_MODE_DIRECT.
-    ///
-    /// Since: cosmos-sdk 0.50
-    /// </summary>
-    [pbr::OriginalName("SIGN_MODE_TEXTUAL")] Textual = 2,
     /// <summary>
     /// SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
     /// SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not

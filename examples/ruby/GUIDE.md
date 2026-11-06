@@ -43,7 +43,7 @@ gem install google-protobuf
 gem 'google-protobuf', '~> 3.25'
 ```
 
-You also need to add the `ruby/types` directory to your Ruby load path. See the examples for how this is done.
+You also need to add the `ruby/lib/xion_types` directory to your Ruby load path (for example `ruby -I ruby/lib/xion_types`). See the examples for how this is done.
 
 ---
 
@@ -67,8 +67,8 @@ for f in *.rb; do ruby "$f"; done
 ### MsgSend (Transfer tokens)
 
 ```ruby
-require_relative '../../ruby/types/xion/v1/tx_pb'
-require_relative '../../ruby/types/cosmos/base/v1beta1/coin_pb'
+require_relative '../../ruby/lib/xion_types/xion/v1/tx_pb'
+require_relative '../../ruby/lib/xion_types/cosmos/base/v1beta1/coin_pb'
 
 # 1. Construct
 msg = Xion::V1::MsgSend.new(
@@ -96,7 +96,7 @@ json_str = Xion::V1::MsgSend.encode_json(msg)
 ### MsgExecuteContract (Call a smart contract)
 
 ```ruby
-require_relative '../../ruby/types/cosmwasm/wasm/v1/tx_pb'
+require_relative '../../ruby/lib/xion_types/cosmwasm/wasm/v1/tx_pb'
 require 'json'
 
 # Contract message as JSON -> bytes
@@ -122,7 +122,7 @@ encoded_bytes = Cosmwasm::Wasm::V1::MsgExecuteContract.encode(msg)
 ### QuerySmartContractState (Query a contract)
 
 ```ruby
-require_relative '../../ruby/types/cosmwasm/wasm/v1/query_pb'
+require_relative '../../ruby/lib/xion_types/cosmwasm/wasm/v1/query_pb'
 require 'json'
 
 query_msg = {
@@ -145,9 +145,9 @@ Ruby types mirror the proto package structure:
 
 | Proto Package | Ruby Require |
 |---------------|--------------|
-| `xion.v1.MsgSend` | `require_relative '../../ruby/types/xion/v1/tx_pb'` |
-| `cosmwasm.wasm.v1.MsgExecuteContract` | `require_relative '../../ruby/types/cosmwasm/wasm/v1/tx_pb'` |
-| `cosmos.base.v1beta1.Coin` | `require_relative '../../ruby/types/cosmos/base/v1beta1/coin_pb'` |
+| `xion.v1.MsgSend` | `require_relative '../../ruby/lib/xion_types/xion/v1/tx_pb'` |
+| `cosmwasm.wasm.v1.MsgExecuteContract` | `require_relative '../../ruby/lib/xion_types/cosmwasm/wasm/v1/tx_pb'` |
+| `cosmos.base.v1beta1.Coin` | `require_relative '../../ruby/lib/xion_types/cosmos/base/v1beta1/coin_pb'` |
 
 ---
 

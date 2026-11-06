@@ -62,6 +62,9 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace xion {
 namespace jwk {
 namespace v1 {
+class JWTClaim;
+struct JWTClaimDefaultTypeInternal;
+extern JWTClaimDefaultTypeInternal _JWTClaim_default_instance_;
 class PrivateClaim;
 struct PrivateClaimDefaultTypeInternal;
 extern PrivateClaimDefaultTypeInternal _PrivateClaim_default_instance_;
@@ -89,6 +92,12 @@ extern QueryAudienceRequestDefaultTypeInternal _QueryAudienceRequest_default_ins
 class QueryAudienceResponse;
 struct QueryAudienceResponseDefaultTypeInternal;
 extern QueryAudienceResponseDefaultTypeInternal _QueryAudienceResponse_default_instance_;
+class QueryDecodeJWTRequest;
+struct QueryDecodeJWTRequestDefaultTypeInternal;
+extern QueryDecodeJWTRequestDefaultTypeInternal _QueryDecodeJWTRequest_default_instance_;
+class QueryDecodeJWTResponse;
+struct QueryDecodeJWTResponseDefaultTypeInternal;
+extern QueryDecodeJWTResponseDefaultTypeInternal _QueryDecodeJWTResponse_default_instance_;
 class QueryGetAudienceClaimRequest;
 struct QueryGetAudienceClaimRequestDefaultTypeInternal;
 extern QueryGetAudienceClaimRequestDefaultTypeInternal _QueryGetAudienceClaimRequest_default_instance_;
@@ -113,6 +122,12 @@ extern QueryValidateJWTRequestDefaultTypeInternal _QueryValidateJWTRequest_defau
 class QueryValidateJWTResponse;
 struct QueryValidateJWTResponseDefaultTypeInternal;
 extern QueryValidateJWTResponseDefaultTypeInternal _QueryValidateJWTResponse_default_instance_;
+class QueryVerifyJWSRequest;
+struct QueryVerifyJWSRequestDefaultTypeInternal;
+extern QueryVerifyJWSRequestDefaultTypeInternal _QueryVerifyJWSRequest_default_instance_;
+class QueryVerifyJWSResponse;
+struct QueryVerifyJWSResponseDefaultTypeInternal;
+extern QueryVerifyJWSResponseDefaultTypeInternal _QueryVerifyJWSResponse_default_instance_;
 }  // namespace v1
 }  // namespace jwk
 }  // namespace xion
@@ -2973,6 +2988,900 @@ class QueryValidateJWTResponse final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_xion_2fjwk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryVerifyJWSRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.jwk.v1.QueryVerifyJWSRequest) */ {
+ public:
+  inline QueryVerifyJWSRequest() : QueryVerifyJWSRequest(nullptr) {}
+  ~QueryVerifyJWSRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryVerifyJWSRequest(::google::protobuf::internal::ConstantInitialized);
+
+  QueryVerifyJWSRequest(const QueryVerifyJWSRequest& from);
+  QueryVerifyJWSRequest(QueryVerifyJWSRequest&& from) noexcept
+    : QueryVerifyJWSRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryVerifyJWSRequest& operator=(const QueryVerifyJWSRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryVerifyJWSRequest& operator=(QueryVerifyJWSRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryVerifyJWSRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryVerifyJWSRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryVerifyJWSRequest*>(
+               &_QueryVerifyJWSRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(QueryVerifyJWSRequest& a, QueryVerifyJWSRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryVerifyJWSRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryVerifyJWSRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryVerifyJWSRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryVerifyJWSRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryVerifyJWSRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryVerifyJWSRequest& from) {
+    QueryVerifyJWSRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryVerifyJWSRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.QueryVerifyJWSRequest";
+  }
+  protected:
+  explicit QueryVerifyJWSRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAudFieldNumber = 1,
+    kSigBytesFieldNumber = 2,
+  };
+  // string aud = 1 [json_name = "aud"];
+  void clear_aud() ;
+  const std::string& aud() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_aud(Arg_&& arg, Args_... args);
+  std::string* mutable_aud();
+  PROTOBUF_NODISCARD std::string* release_aud();
+  void set_allocated_aud(std::string* ptr);
+
+  private:
+  const std::string& _internal_aud() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_aud(
+      const std::string& value);
+  std::string* _internal_mutable_aud();
+
+  public:
+  // string sig_bytes = 2 [json_name = "sigBytes"];
+  void clear_sig_bytes() ;
+  const std::string& sig_bytes() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_sig_bytes(Arg_&& arg, Args_... args);
+  std::string* mutable_sig_bytes();
+  PROTOBUF_NODISCARD std::string* release_sig_bytes();
+  void set_allocated_sig_bytes(std::string* ptr);
+
+  private:
+  const std::string& _internal_sig_bytes() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sig_bytes(
+      const std::string& value);
+  std::string* _internal_mutable_sig_bytes();
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryVerifyJWSRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 54, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr aud_;
+    ::google::protobuf::internal::ArenaStringPtr sig_bytes_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryVerifyJWSResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.jwk.v1.QueryVerifyJWSResponse) */ {
+ public:
+  inline QueryVerifyJWSResponse() : QueryVerifyJWSResponse(nullptr) {}
+  ~QueryVerifyJWSResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryVerifyJWSResponse(::google::protobuf::internal::ConstantInitialized);
+
+  QueryVerifyJWSResponse(const QueryVerifyJWSResponse& from);
+  QueryVerifyJWSResponse(QueryVerifyJWSResponse&& from) noexcept
+    : QueryVerifyJWSResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryVerifyJWSResponse& operator=(const QueryVerifyJWSResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryVerifyJWSResponse& operator=(QueryVerifyJWSResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryVerifyJWSResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryVerifyJWSResponse* internal_default_instance() {
+    return reinterpret_cast<const QueryVerifyJWSResponse*>(
+               &_QueryVerifyJWSResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(QueryVerifyJWSResponse& a, QueryVerifyJWSResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryVerifyJWSResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryVerifyJWSResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryVerifyJWSResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryVerifyJWSResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryVerifyJWSResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryVerifyJWSResponse& from) {
+    QueryVerifyJWSResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryVerifyJWSResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.QueryVerifyJWSResponse";
+  }
+  protected:
+  explicit QueryVerifyJWSResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPayloadFieldNumber = 1,
+  };
+  // bytes payload = 1 [json_name = "payload"];
+  void clear_payload() ;
+  const std::string& payload() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_payload(Arg_&& arg, Args_... args);
+  std::string* mutable_payload();
+  PROTOBUF_NODISCARD std::string* release_payload();
+  void set_allocated_payload(std::string* ptr);
+
+  private:
+  const std::string& _internal_payload() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_payload(
+      const std::string& value);
+  std::string* _internal_mutable_payload();
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryVerifyJWSResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 0, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr payload_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryDecodeJWTRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.jwk.v1.QueryDecodeJWTRequest) */ {
+ public:
+  inline QueryDecodeJWTRequest() : QueryDecodeJWTRequest(nullptr) {}
+  ~QueryDecodeJWTRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryDecodeJWTRequest(::google::protobuf::internal::ConstantInitialized);
+
+  QueryDecodeJWTRequest(const QueryDecodeJWTRequest& from);
+  QueryDecodeJWTRequest(QueryDecodeJWTRequest&& from) noexcept
+    : QueryDecodeJWTRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryDecodeJWTRequest& operator=(const QueryDecodeJWTRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryDecodeJWTRequest& operator=(QueryDecodeJWTRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryDecodeJWTRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryDecodeJWTRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryDecodeJWTRequest*>(
+               &_QueryDecodeJWTRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(QueryDecodeJWTRequest& a, QueryDecodeJWTRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryDecodeJWTRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryDecodeJWTRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryDecodeJWTRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryDecodeJWTRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryDecodeJWTRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryDecodeJWTRequest& from) {
+    QueryDecodeJWTRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryDecodeJWTRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.QueryDecodeJWTRequest";
+  }
+  protected:
+  explicit QueryDecodeJWTRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAudFieldNumber = 1,
+    kSubFieldNumber = 2,
+    kSigBytesFieldNumber = 3,
+  };
+  // string aud = 1 [json_name = "aud"];
+  void clear_aud() ;
+  const std::string& aud() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_aud(Arg_&& arg, Args_... args);
+  std::string* mutable_aud();
+  PROTOBUF_NODISCARD std::string* release_aud();
+  void set_allocated_aud(std::string* ptr);
+
+  private:
+  const std::string& _internal_aud() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_aud(
+      const std::string& value);
+  std::string* _internal_mutable_aud();
+
+  public:
+  // string sub = 2 [json_name = "sub"];
+  void clear_sub() ;
+  const std::string& sub() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_sub(Arg_&& arg, Args_... args);
+  std::string* mutable_sub();
+  PROTOBUF_NODISCARD std::string* release_sub();
+  void set_allocated_sub(std::string* ptr);
+
+  private:
+  const std::string& _internal_sub() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sub(
+      const std::string& value);
+  std::string* _internal_mutable_sub();
+
+  public:
+  // string sig_bytes = 3 [json_name = "sigBytes"];
+  void clear_sig_bytes() ;
+  const std::string& sig_bytes() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_sig_bytes(Arg_&& arg, Args_... args);
+  std::string* mutable_sig_bytes();
+  PROTOBUF_NODISCARD std::string* release_sig_bytes();
+  void set_allocated_sig_bytes(std::string* ptr);
+
+  private:
+  const std::string& _internal_sig_bytes() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sig_bytes(
+      const std::string& value);
+  std::string* _internal_mutable_sig_bytes();
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryDecodeJWTRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3, 0, 57, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr aud_;
+    ::google::protobuf::internal::ArenaStringPtr sub_;
+    ::google::protobuf::internal::ArenaStringPtr sig_bytes_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class JWTClaim final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.jwk.v1.JWTClaim) */ {
+ public:
+  inline JWTClaim() : JWTClaim(nullptr) {}
+  ~JWTClaim() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR JWTClaim(::google::protobuf::internal::ConstantInitialized);
+
+  JWTClaim(const JWTClaim& from);
+  JWTClaim(JWTClaim&& from) noexcept
+    : JWTClaim() {
+    *this = ::std::move(from);
+  }
+
+  inline JWTClaim& operator=(const JWTClaim& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline JWTClaim& operator=(JWTClaim&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const JWTClaim& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const JWTClaim* internal_default_instance() {
+    return reinterpret_cast<const JWTClaim*>(
+               &_JWTClaim_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(JWTClaim& a, JWTClaim& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(JWTClaim* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(JWTClaim* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  JWTClaim* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<JWTClaim>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const JWTClaim& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const JWTClaim& from) {
+    JWTClaim::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(JWTClaim* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.JWTClaim";
+  }
+  protected:
+  explicit JWTClaim(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKeyFieldNumber = 1,
+    kValueFieldNumber = 2,
+  };
+  // string key = 1 [json_name = "key"];
+  void clear_key() ;
+  const std::string& key() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_key(Arg_&& arg, Args_... args);
+  std::string* mutable_key();
+  PROTOBUF_NODISCARD std::string* release_key();
+  void set_allocated_key(std::string* ptr);
+
+  private:
+  const std::string& _internal_key() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_key(
+      const std::string& value);
+  std::string* _internal_mutable_key();
+
+  public:
+  // string value = 2 [json_name = "value"];
+  void clear_value() ;
+  const std::string& value() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_value(Arg_&& arg, Args_... args);
+  std::string* mutable_value();
+  PROTOBUF_NODISCARD std::string* release_value();
+  void set_allocated_value(std::string* ptr);
+
+  private:
+  const std::string& _internal_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_value(
+      const std::string& value);
+  std::string* _internal_mutable_value();
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.JWTClaim)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 37, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr key_;
+    ::google::protobuf::internal::ArenaStringPtr value_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryDecodeJWTResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.jwk.v1.QueryDecodeJWTResponse) */ {
+ public:
+  inline QueryDecodeJWTResponse() : QueryDecodeJWTResponse(nullptr) {}
+  ~QueryDecodeJWTResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryDecodeJWTResponse(::google::protobuf::internal::ConstantInitialized);
+
+  QueryDecodeJWTResponse(const QueryDecodeJWTResponse& from);
+  QueryDecodeJWTResponse(QueryDecodeJWTResponse&& from) noexcept
+    : QueryDecodeJWTResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryDecodeJWTResponse& operator=(const QueryDecodeJWTResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryDecodeJWTResponse& operator=(QueryDecodeJWTResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryDecodeJWTResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryDecodeJWTResponse* internal_default_instance() {
+    return reinterpret_cast<const QueryDecodeJWTResponse*>(
+               &_QueryDecodeJWTResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(QueryDecodeJWTResponse& a, QueryDecodeJWTResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryDecodeJWTResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryDecodeJWTResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryDecodeJWTResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryDecodeJWTResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryDecodeJWTResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryDecodeJWTResponse& from) {
+    QueryDecodeJWTResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryDecodeJWTResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.QueryDecodeJWTResponse";
+  }
+  protected:
+  explicit QueryDecodeJWTResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kClaimsFieldNumber = 1,
+  };
+  // repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];
+  int claims_size() const;
+  private:
+  int _internal_claims_size() const;
+
+  public:
+  void clear_claims() ;
+  ::xion::jwk::v1::JWTClaim* mutable_claims(int index);
+  ::google::protobuf::RepeatedPtrField< ::xion::jwk::v1::JWTClaim >*
+      mutable_claims();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::xion::jwk::v1::JWTClaim>& _internal_claims() const;
+  ::google::protobuf::RepeatedPtrField<::xion::jwk::v1::JWTClaim>* _internal_mutable_claims();
+  public:
+  const ::xion::jwk::v1::JWTClaim& claims(int index) const;
+  ::xion::jwk::v1::JWTClaim* add_claims();
+  const ::google::protobuf::RepeatedPtrField< ::xion::jwk::v1::JWTClaim >&
+      claims() const;
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.QueryDecodeJWTResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 1, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::RepeatedPtrField< ::xion::jwk::v1::JWTClaim > claims_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2fquery_2eproto;
 };
 
 // ===================================================================
@@ -4472,6 +5381,480 @@ inline ::google::protobuf::RepeatedPtrField<::xion::jwk::v1::PrivateClaim>*
 QueryValidateJWTResponse::_internal_mutable_private_claims() {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return &_impl_.private_claims_;
+}
+
+// -------------------------------------------------------------------
+
+// QueryVerifyJWSRequest
+
+// string aud = 1 [json_name = "aud"];
+inline void QueryVerifyJWSRequest::clear_aud() {
+  _impl_.aud_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyJWSRequest::aud() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryVerifyJWSRequest.aud)
+  return _internal_aud();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyJWSRequest::set_aud(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.aud_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.QueryVerifyJWSRequest.aud)
+}
+inline std::string* QueryVerifyJWSRequest::mutable_aud() {
+  std::string* _s = _internal_mutable_aud();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryVerifyJWSRequest.aud)
+  return _s;
+}
+inline const std::string& QueryVerifyJWSRequest::_internal_aud() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.aud_.Get();
+}
+inline void QueryVerifyJWSRequest::_internal_set_aud(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.aud_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyJWSRequest::_internal_mutable_aud() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.aud_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyJWSRequest::release_aud() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.QueryVerifyJWSRequest.aud)
+  return _impl_.aud_.Release();
+}
+inline void QueryVerifyJWSRequest::set_allocated_aud(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.aud_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.aud_.IsDefault()) {
+          _impl_.aud_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.QueryVerifyJWSRequest.aud)
+}
+
+// string sig_bytes = 2 [json_name = "sigBytes"];
+inline void QueryVerifyJWSRequest::clear_sig_bytes() {
+  _impl_.sig_bytes_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyJWSRequest::sig_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryVerifyJWSRequest.sig_bytes)
+  return _internal_sig_bytes();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyJWSRequest::set_sig_bytes(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sig_bytes_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.QueryVerifyJWSRequest.sig_bytes)
+}
+inline std::string* QueryVerifyJWSRequest::mutable_sig_bytes() {
+  std::string* _s = _internal_mutable_sig_bytes();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryVerifyJWSRequest.sig_bytes)
+  return _s;
+}
+inline const std::string& QueryVerifyJWSRequest::_internal_sig_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.sig_bytes_.Get();
+}
+inline void QueryVerifyJWSRequest::_internal_set_sig_bytes(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sig_bytes_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyJWSRequest::_internal_mutable_sig_bytes() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.sig_bytes_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyJWSRequest::release_sig_bytes() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.QueryVerifyJWSRequest.sig_bytes)
+  return _impl_.sig_bytes_.Release();
+}
+inline void QueryVerifyJWSRequest::set_allocated_sig_bytes(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.sig_bytes_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.sig_bytes_.IsDefault()) {
+          _impl_.sig_bytes_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.QueryVerifyJWSRequest.sig_bytes)
+}
+
+// -------------------------------------------------------------------
+
+// QueryVerifyJWSResponse
+
+// bytes payload = 1 [json_name = "payload"];
+inline void QueryVerifyJWSResponse::clear_payload() {
+  _impl_.payload_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyJWSResponse::payload() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryVerifyJWSResponse.payload)
+  return _internal_payload();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyJWSResponse::set_payload(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.payload_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.QueryVerifyJWSResponse.payload)
+}
+inline std::string* QueryVerifyJWSResponse::mutable_payload() {
+  std::string* _s = _internal_mutable_payload();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryVerifyJWSResponse.payload)
+  return _s;
+}
+inline const std::string& QueryVerifyJWSResponse::_internal_payload() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.payload_.Get();
+}
+inline void QueryVerifyJWSResponse::_internal_set_payload(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.payload_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyJWSResponse::_internal_mutable_payload() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.payload_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyJWSResponse::release_payload() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.QueryVerifyJWSResponse.payload)
+  return _impl_.payload_.Release();
+}
+inline void QueryVerifyJWSResponse::set_allocated_payload(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.payload_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.payload_.IsDefault()) {
+          _impl_.payload_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.QueryVerifyJWSResponse.payload)
+}
+
+// -------------------------------------------------------------------
+
+// QueryDecodeJWTRequest
+
+// string aud = 1 [json_name = "aud"];
+inline void QueryDecodeJWTRequest::clear_aud() {
+  _impl_.aud_.ClearToEmpty();
+}
+inline const std::string& QueryDecodeJWTRequest::aud() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryDecodeJWTRequest.aud)
+  return _internal_aud();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryDecodeJWTRequest::set_aud(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.aud_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.QueryDecodeJWTRequest.aud)
+}
+inline std::string* QueryDecodeJWTRequest::mutable_aud() {
+  std::string* _s = _internal_mutable_aud();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryDecodeJWTRequest.aud)
+  return _s;
+}
+inline const std::string& QueryDecodeJWTRequest::_internal_aud() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.aud_.Get();
+}
+inline void QueryDecodeJWTRequest::_internal_set_aud(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.aud_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryDecodeJWTRequest::_internal_mutable_aud() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.aud_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryDecodeJWTRequest::release_aud() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.QueryDecodeJWTRequest.aud)
+  return _impl_.aud_.Release();
+}
+inline void QueryDecodeJWTRequest::set_allocated_aud(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.aud_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.aud_.IsDefault()) {
+          _impl_.aud_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.QueryDecodeJWTRequest.aud)
+}
+
+// string sub = 2 [json_name = "sub"];
+inline void QueryDecodeJWTRequest::clear_sub() {
+  _impl_.sub_.ClearToEmpty();
+}
+inline const std::string& QueryDecodeJWTRequest::sub() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryDecodeJWTRequest.sub)
+  return _internal_sub();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryDecodeJWTRequest::set_sub(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sub_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.QueryDecodeJWTRequest.sub)
+}
+inline std::string* QueryDecodeJWTRequest::mutable_sub() {
+  std::string* _s = _internal_mutable_sub();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryDecodeJWTRequest.sub)
+  return _s;
+}
+inline const std::string& QueryDecodeJWTRequest::_internal_sub() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.sub_.Get();
+}
+inline void QueryDecodeJWTRequest::_internal_set_sub(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sub_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryDecodeJWTRequest::_internal_mutable_sub() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.sub_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryDecodeJWTRequest::release_sub() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.QueryDecodeJWTRequest.sub)
+  return _impl_.sub_.Release();
+}
+inline void QueryDecodeJWTRequest::set_allocated_sub(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.sub_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.sub_.IsDefault()) {
+          _impl_.sub_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.QueryDecodeJWTRequest.sub)
+}
+
+// string sig_bytes = 3 [json_name = "sigBytes"];
+inline void QueryDecodeJWTRequest::clear_sig_bytes() {
+  _impl_.sig_bytes_.ClearToEmpty();
+}
+inline const std::string& QueryDecodeJWTRequest::sig_bytes() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryDecodeJWTRequest.sig_bytes)
+  return _internal_sig_bytes();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryDecodeJWTRequest::set_sig_bytes(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sig_bytes_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.QueryDecodeJWTRequest.sig_bytes)
+}
+inline std::string* QueryDecodeJWTRequest::mutable_sig_bytes() {
+  std::string* _s = _internal_mutable_sig_bytes();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryDecodeJWTRequest.sig_bytes)
+  return _s;
+}
+inline const std::string& QueryDecodeJWTRequest::_internal_sig_bytes() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.sig_bytes_.Get();
+}
+inline void QueryDecodeJWTRequest::_internal_set_sig_bytes(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.sig_bytes_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryDecodeJWTRequest::_internal_mutable_sig_bytes() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.sig_bytes_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryDecodeJWTRequest::release_sig_bytes() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.QueryDecodeJWTRequest.sig_bytes)
+  return _impl_.sig_bytes_.Release();
+}
+inline void QueryDecodeJWTRequest::set_allocated_sig_bytes(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.sig_bytes_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.sig_bytes_.IsDefault()) {
+          _impl_.sig_bytes_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.QueryDecodeJWTRequest.sig_bytes)
+}
+
+// -------------------------------------------------------------------
+
+// JWTClaim
+
+// string key = 1 [json_name = "key"];
+inline void JWTClaim::clear_key() {
+  _impl_.key_.ClearToEmpty();
+}
+inline const std::string& JWTClaim::key() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.JWTClaim.key)
+  return _internal_key();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void JWTClaim::set_key(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.key_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.JWTClaim.key)
+}
+inline std::string* JWTClaim::mutable_key() {
+  std::string* _s = _internal_mutable_key();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.JWTClaim.key)
+  return _s;
+}
+inline const std::string& JWTClaim::_internal_key() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.key_.Get();
+}
+inline void JWTClaim::_internal_set_key(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.key_.Set(value, GetArenaForAllocation());
+}
+inline std::string* JWTClaim::_internal_mutable_key() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.key_.Mutable( GetArenaForAllocation());
+}
+inline std::string* JWTClaim::release_key() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.JWTClaim.key)
+  return _impl_.key_.Release();
+}
+inline void JWTClaim::set_allocated_key(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.key_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.key_.IsDefault()) {
+          _impl_.key_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.JWTClaim.key)
+}
+
+// string value = 2 [json_name = "value"];
+inline void JWTClaim::clear_value() {
+  _impl_.value_.ClearToEmpty();
+}
+inline const std::string& JWTClaim::value() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.JWTClaim.value)
+  return _internal_value();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void JWTClaim::set_value(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.value_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.JWTClaim.value)
+}
+inline std::string* JWTClaim::mutable_value() {
+  std::string* _s = _internal_mutable_value();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.JWTClaim.value)
+  return _s;
+}
+inline const std::string& JWTClaim::_internal_value() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.value_.Get();
+}
+inline void JWTClaim::_internal_set_value(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.value_.Set(value, GetArenaForAllocation());
+}
+inline std::string* JWTClaim::_internal_mutable_value() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.value_.Mutable( GetArenaForAllocation());
+}
+inline std::string* JWTClaim::release_value() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.JWTClaim.value)
+  return _impl_.value_.Release();
+}
+inline void JWTClaim::set_allocated_value(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.value_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.value_.IsDefault()) {
+          _impl_.value_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.JWTClaim.value)
+}
+
+// -------------------------------------------------------------------
+
+// QueryDecodeJWTResponse
+
+// repeated .xion.jwk.v1.JWTClaim claims = 1 [json_name = "claims"];
+inline int QueryDecodeJWTResponse::_internal_claims_size() const {
+  return _internal_claims().size();
+}
+inline int QueryDecodeJWTResponse::claims_size() const {
+  return _internal_claims_size();
+}
+inline void QueryDecodeJWTResponse::clear_claims() {
+  _internal_mutable_claims()->Clear();
+}
+inline ::xion::jwk::v1::JWTClaim* QueryDecodeJWTResponse::mutable_claims(int index) {
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.QueryDecodeJWTResponse.claims)
+  return _internal_mutable_claims()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::xion::jwk::v1::JWTClaim >*
+QueryDecodeJWTResponse::mutable_claims() {
+  // @@protoc_insertion_point(field_mutable_list:xion.jwk.v1.QueryDecodeJWTResponse.claims)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_claims();
+}
+inline const ::xion::jwk::v1::JWTClaim& QueryDecodeJWTResponse::claims(int index) const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.QueryDecodeJWTResponse.claims)
+    return _internal_claims().Get(index);
+}
+inline ::xion::jwk::v1::JWTClaim* QueryDecodeJWTResponse::add_claims() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::xion::jwk::v1::JWTClaim* _add = _internal_mutable_claims()->Add();
+  // @@protoc_insertion_point(field_add:xion.jwk.v1.QueryDecodeJWTResponse.claims)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::xion::jwk::v1::JWTClaim >&
+QueryDecodeJWTResponse::claims() const {
+  // @@protoc_insertion_point(field_list:xion.jwk.v1.QueryDecodeJWTResponse.claims)
+  return _internal_claims();
+}
+inline const ::google::protobuf::RepeatedPtrField<::xion::jwk::v1::JWTClaim>&
+QueryDecodeJWTResponse::_internal_claims() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.claims_;
+}
+inline ::google::protobuf::RepeatedPtrField<::xion::jwk::v1::JWTClaim>*
+QueryDecodeJWTResponse::_internal_mutable_claims() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.claims_;
 }
 
 #ifdef __GNUC__

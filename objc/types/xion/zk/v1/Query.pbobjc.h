@@ -33,6 +33,7 @@ CF_EXTERN_C_BEGIN
 @class Params;
 @class VKey;
 @class VKeyWithID;
+GPB_ENUM_FWD_DECLARE(ProofSystem);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -127,6 +128,140 @@ GPB_FINAL @interface ProofVerifyResponse : GPBMessage
 
 @end
 
+#pragma mark - ProofVerifyUltraHonkResponse
+
+typedef GPB_ENUM(ProofVerifyUltraHonkResponse_FieldNumber) {
+  ProofVerifyUltraHonkResponse_FieldNumber_Verified = 1,
+  ProofVerifyUltraHonkResponse_FieldNumber_VkeySha256 = 2,
+};
+
+/**
+ * ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+ * proof verification.
+ **/
+GPB_FINAL @interface ProofVerifyUltraHonkResponse : GPBMessage
+
+/** verified indicates whether the proof verification was successful. */
+@property(nonatomic, readwrite) BOOL verified;
+
+/**
+ * vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+ * were used for this verification.
+ *
+ * A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+ * AddVKey is permissionless, and the key's owner may later UpdateVKey the
+ * bytes under the same name and ID. A consumer that reviewed specific key
+ * material therefore cannot establish, from `verified` alone, that this
+ * verification used that material. Echoing the digest lets the consumer
+ * compare against a pin it derived offline from the reviewed artifact, in the
+ * same response that reports the verdict.
+ *
+ * Always populated on success, so a consumer may treat an absent value as a
+ * server too old to enforce `expected_vkey_sha256` and fail closed.
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSData *vkeySha256;
+
+@end
+
+#pragma mark - ProofVerifyGnarkResponse
+
+typedef GPB_ENUM(ProofVerifyGnarkResponse_FieldNumber) {
+  ProofVerifyGnarkResponse_FieldNumber_Verified = 1,
+};
+
+/**
+ * ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+ * proof verification.
+ **/
+GPB_FINAL @interface ProofVerifyGnarkResponse : GPBMessage
+
+/** verified indicates whether the proof verification was successful. */
+@property(nonatomic, readwrite) BOOL verified;
+
+@end
+
+#pragma mark - QueryVerifyUltraHonkRequest
+
+typedef GPB_ENUM(QueryVerifyUltraHonkRequest_FieldNumber) {
+  QueryVerifyUltraHonkRequest_FieldNumber_Proof = 1,
+  QueryVerifyUltraHonkRequest_FieldNumber_PublicInputs = 2,
+  QueryVerifyUltraHonkRequest_FieldNumber_VkeyName = 3,
+  QueryVerifyUltraHonkRequest_FieldNumber_VkeyId = 4,
+  QueryVerifyUltraHonkRequest_FieldNumber_ExpectedVkeySha256 = 5,
+};
+
+/**
+ * QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+ * The verification key is resolved by vkey_name or vkey_id from the store (must
+ * be ultrahonk type). Proof and public_inputs are raw binary as produced by
+ * Barretenberg (e.g. bb prove).
+ **/
+GPB_FINAL @interface QueryVerifyUltraHonkRequest : GPBMessage
+
+/** proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin). */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *proof;
+
+/**
+ * public_inputs is the raw public inputs binary: concatenated 32-byte
+ * big-endian field elements, as produced by Barretenberg (e.g. bb
+ * write_inputs or the same flow that generates the proof).
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSData *publicInputs;
+
+/** vkey_name is the unique name of the UltraHonk verification key */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *vkeyName;
+
+/** vkey_id is the numeric id of the UltraHonk verification key */
+@property(nonatomic, readwrite) uint64_t vkeyId;
+
+/**
+ * expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+ * verification key's stored bytes, or verification fails with
+ * verified = false. Must be empty or exactly 32 bytes.
+ *
+ * This makes the key-identity check atomic with the verdict: the consumer
+ * does not have to read the key back in a second query and hope nothing
+ * changed in between. Empty preserves the prior behaviour exactly, so
+ * existing callers are unaffected.
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSData *expectedVkeySha256;
+
+@end
+
+#pragma mark - QueryVerifyGnarkRequest
+
+typedef GPB_ENUM(QueryVerifyGnarkRequest_FieldNumber) {
+  QueryVerifyGnarkRequest_FieldNumber_Proof = 1,
+  QueryVerifyGnarkRequest_FieldNumber_PublicInputs = 2,
+  QueryVerifyGnarkRequest_FieldNumber_VkeyName = 3,
+  QueryVerifyGnarkRequest_FieldNumber_VkeyId = 4,
+};
+
+/**
+ * QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+ * The verification key is resolved by vkey_name or vkey_id from the store (must
+ * be groth16_gnark type). Proof and public_inputs are gnark native binary
+ * format.
+ **/
+GPB_FINAL @interface QueryVerifyGnarkRequest : GPBMessage
+
+/** proof is the gnark native Groth16 proof bytes (serialized groth16.Proof). */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *proof;
+
+/**
+ * public_inputs is the raw public inputs binary: concatenated 32-byte
+ * big-endian field elements (fr.Element serialization).
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSData *publicInputs;
+
+/** vkey_name is the unique name of the gnark verification key */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *vkeyName;
+
+/** vkey_id is the numeric id of the gnark verification key */
+@property(nonatomic, readwrite) uint64_t vkeyId;
+
+@end
+
 #pragma mark - VKey
 
 typedef GPB_ENUM(VKey_FieldNumber) {
@@ -135,6 +270,7 @@ typedef GPB_ENUM(VKey_FieldNumber) {
   VKey_FieldNumber_Description_p = 3,
   VKey_FieldNumber_CircuitHash = 4,
   VKey_FieldNumber_Authority = 5,
+  VKey_FieldNumber_ProofSystem = 6,
 };
 
 /**
@@ -157,7 +293,22 @@ GPB_FINAL @interface VKey : GPBMessage
 /** authority is the uploader of the verification key. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *authority;
 
+/** proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK. */
+@property(nonatomic, readwrite) enum ProofSystem proofSystem;
+
 @end
+
+/**
+ * Fetches the raw value of a @c VKey's @c proofSystem property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t VKey_ProofSystem_RawValue(VKey *message);
+/**
+ * Sets the raw value of an @c VKey's @c proofSystem property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetVKey_ProofSystem_RawValue(VKey *message, int32_t value);
 
 #pragma mark - QueryVKeyRequest
 

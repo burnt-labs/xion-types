@@ -17,11 +17,16 @@ class Genesis
         \GPBMetadata\Abstractaccount\V1\Params::initOnce();
         $pool->internalAddGeneratedFile(
             '
-ì
- abstractaccount/v1/genesis.protoabstractaccount.v1"j
+Š
+ abstractaccount/v1/genesis.protoabstractaccount.v1"»
 GenesisState2
 params (2.abstractaccount.v1.ParamsRparams&
-next_account_id (RnextAccountIdB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesbproto3'
+next_account_id (RnextAccountIdO
+account_addresses (2".abstractaccount.v1.AccountAddressRaccountAddresses"V
+AccountAddress
+sender (	Rsender
+salt (Rsalt
+address (	RaddressB4Z2github.com/burnt-labs/xion/x/abstractaccount/typesbproto3'
         , true);
 
         static::$is_initialized = true;

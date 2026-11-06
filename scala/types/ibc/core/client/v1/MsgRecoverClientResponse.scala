@@ -66,8 +66,8 @@ object MsgRecoverClientResponse extends scalapb.GeneratedMessageCompanion[ibc.co
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
-  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = ibc.core.client.v1.TxProto.javaDescriptor.getMessageTypes().get(9)
-  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = ibc.core.client.v1.TxProto.scalaDescriptor.messages(9)
+  def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = ibc.core.client.v1.TxProto.javaDescriptor.getMessageTypes().get(7)
+  def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = ibc.core.client.v1.TxProto.scalaDescriptor.messages(7)
   def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)

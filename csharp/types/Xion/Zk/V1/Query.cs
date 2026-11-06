@@ -33,55 +33,78 @@ namespace Xion.Zk.V1 {
             "cHJvb2YSIwoNcHVibGljX2lucHV0cxgCIAMoCVIMcHVibGljSW5wdXRzEhsK",
             "CXZrZXlfbmFtZRgDIAEoCVIIdmtleU5hbWUSFwoHdmtleV9pZBgEIAEoBFIG",
             "dmtleUlkIjEKE1Byb29mVmVyaWZ5UmVzcG9uc2USGgoIdmVyaWZpZWQYASAB",
-            "KAhSCHZlcmlmaWVkIpoBCgRWS2V5EhsKCWtleV9ieXRlcxgBIAEoDFIIa2V5",
-            "Qnl0ZXMSEgoEbmFtZRgCIAEoCVIEbmFtZRIgCgtkZXNjcmlwdGlvbhgDIAEo",
-            "CVILZGVzY3JpcHRpb24SIQoMY2lyY3VpdF9oYXNoGAQgASgJUgtjaXJjdWl0",
-            "SGFzaBIcCglhdXRob3JpdHkYBSABKAlSCWF1dGhvcml0eSIiChBRdWVyeVZL",
-            "ZXlSZXF1ZXN0Eg4KAmlkGAEgASgEUgJpZCI/ChFRdWVyeVZLZXlSZXNwb25z",
-            "ZRIqCgR2a2V5GAEgASgLMhAueGlvbi56ay52MS5WS2V5QgTI3h8AUgR2a2V5",
-            "IiwKFlF1ZXJ5VktleUJ5TmFtZVJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFt",
-            "ZSJVChdRdWVyeVZLZXlCeU5hbWVSZXNwb25zZRIqCgR2a2V5GAEgASgLMhAu",
-            "eGlvbi56ay52MS5WS2V5QgTI3h8AUgR2a2V5Eg4KAmlkGAIgASgEUgJpZCJb",
-            "ChFRdWVyeVZLZXlzUmVxdWVzdBJGCgpwYWdpbmF0aW9uGAEgASgLMiYuY29z",
-            "bW9zLmJhc2UucXVlcnkudjFiZXRhMS5QYWdlUmVxdWVzdFIKcGFnaW5hdGlv",
-            "biKRAQoSUXVlcnlWS2V5c1Jlc3BvbnNlEjIKBXZrZXlzGAEgAygLMhYueGlv",
-            "bi56ay52MS5WS2V5V2l0aElEQgTI3h8AUgV2a2V5cxJHCgpwYWdpbmF0aW9u",
-            "GAIgASgLMicuY29zbW9zLmJhc2UucXVlcnkudjFiZXRhMS5QYWdlUmVzcG9u",
-            "c2VSCnBhZ2luYXRpb24iSAoKVktleVdpdGhJRBIOCgJpZBgBIAEoBFICaWQS",
-            "KgoEdmtleRgCIAEoCzIQLnhpb24uemsudjEuVktleUIEyN4fAFIEdmtleSIp",
-            "ChNRdWVyeUhhc1ZLZXlSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUiPgoU",
-            "UXVlcnlIYXNWS2V5UmVzcG9uc2USFgoGZXhpc3RzGAEgASgIUgZleGlzdHMS",
-            "DgoCaWQYAiABKARSAmlkIhgKFlF1ZXJ5TmV4dFZLZXlJRFJlcXVlc3QiMgoX",
-            "UXVlcnlOZXh0VktleUlEUmVzcG9uc2USFwoHbmV4dF9pZBgBIAEoBFIGbmV4",
-            "dElkIhQKElF1ZXJ5UGFyYW1zUmVxdWVzdCJHChNRdWVyeVBhcmFtc1Jlc3Bv",
-            "bnNlEjAKBnBhcmFtcxgBIAEoCzISLnhpb24uemsudjEuUGFyYW1zQgTI3h8A",
-            "UgZwYXJhbXMysQYKBVF1ZXJ5EmUKC1Byb29mVmVyaWZ5Eh4ueGlvbi56ay52",
-            "MS5RdWVyeVZlcmlmeVJlcXVlc3QaHy54aW9uLnprLnYxLlByb29mVmVyaWZ5",
-            "UmVzcG9uc2UiFYLT5JMCDxINL3prL3YxL3ZlcmlmeRJpCgRWS2V5EhwueGlv",
-            "bi56ay52MS5RdWVyeVZLZXlSZXF1ZXN0Gh0ueGlvbi56ay52MS5RdWVyeVZL",
-            "ZXlSZXNwb25zZSIkgtPkkwIeEhwvYnVybnQveGlvbi96ay92MS92a2V5cy97",
-            "aWR9EoIBCgpWS2V5QnlOYW1lEiIueGlvbi56ay52MS5RdWVyeVZLZXlCeU5h",
-            "bWVSZXF1ZXN0GiMueGlvbi56ay52MS5RdWVyeVZLZXlCeU5hbWVSZXNwb25z",
-            "ZSIrgtPkkwIlEiMvYnVybnQveGlvbi96ay92MS92a2V5cy9uYW1lL3tuYW1l",
-            "fRJnCgVWS2V5cxIdLnhpb24uemsudjEuUXVlcnlWS2V5c1JlcXVlc3QaHi54",
-            "aW9uLnprLnYxLlF1ZXJ5VktleXNSZXNwb25zZSIfgtPkkwIZEhcvYnVybnQv",
-            "eGlvbi96ay92MS92a2V5cxJ7CgdIYXNWS2V5Eh8ueGlvbi56ay52MS5RdWVy",
-            "eUhhc1ZLZXlSZXF1ZXN0GiAueGlvbi56ay52MS5RdWVyeUhhc1ZLZXlSZXNw",
-            "b25zZSItgtPkkwInEiUvYnVybnQveGlvbi96ay92MS92a2V5cy9leGlzdHMv",
-            "e25hbWV9En4KCk5leHRWS2V5SUQSIi54aW9uLnprLnYxLlF1ZXJ5TmV4dFZL",
-            "ZXlJRFJlcXVlc3QaIy54aW9uLnprLnYxLlF1ZXJ5TmV4dFZLZXlJRFJlc3Bv",
-            "bnNlIieC0+STAiESHy9idXJudC94aW9uL3prL3YxL3ZrZXlzL25leHQtaWQS",
-            "awoGUGFyYW1zEh4ueGlvbi56ay52MS5RdWVyeVBhcmFtc1JlcXVlc3QaHy54",
-            "aW9uLnprLnYxLlF1ZXJ5UGFyYW1zUmVzcG9uc2UiIILT5JMCGhIYL2J1cm50",
-            "L3hpb24vemsvdjEvcGFyYW1zQidaJWdpdGh1Yi5jb20vYnVybnQtbGFicy94",
-            "aW9uL3gvemsvdHlwZXNiBnByb3RvMw=="));
+            "KAhSCHZlcmlmaWVkIlsKHFByb29mVmVyaWZ5VWx0cmFIb25rUmVzcG9uc2US",
+            "GgoIdmVyaWZpZWQYASABKAhSCHZlcmlmaWVkEh8KC3ZrZXlfc2hhMjU2GAIg",
+            "ASgMUgp2a2V5U2hhMjU2IjYKGFByb29mVmVyaWZ5R25hcmtSZXNwb25zZRIa",
+            "Cgh2ZXJpZmllZBgBIAEoCFIIdmVyaWZpZWQiwAEKG1F1ZXJ5VmVyaWZ5VWx0",
+            "cmFIb25rUmVxdWVzdBIUCgVwcm9vZhgBIAEoDFIFcHJvb2YSIwoNcHVibGlj",
+            "X2lucHV0cxgCIAEoDFIMcHVibGljSW5wdXRzEhsKCXZrZXlfbmFtZRgDIAEo",
+            "CVIIdmtleU5hbWUSFwoHdmtleV9pZBgEIAEoBFIGdmtleUlkEjAKFGV4cGVj",
+            "dGVkX3ZrZXlfc2hhMjU2GAUgASgMUhJleHBlY3RlZFZrZXlTaGEyNTYiigEK",
+            "F1F1ZXJ5VmVyaWZ5R25hcmtSZXF1ZXN0EhQKBXByb29mGAEgASgMUgVwcm9v",
+            "ZhIjCg1wdWJsaWNfaW5wdXRzGAIgASgMUgxwdWJsaWNJbnB1dHMSGwoJdmtl",
+            "eV9uYW1lGAMgASgJUgh2a2V5TmFtZRIXCgd2a2V5X2lkGAQgASgEUgZ2a2V5",
+            "SWQi1gEKBFZLZXkSGwoJa2V5X2J5dGVzGAEgASgMUghrZXlCeXRlcxISCgRu",
+            "YW1lGAIgASgJUgRuYW1lEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlw",
+            "dGlvbhIhCgxjaXJjdWl0X2hhc2gYBCABKAlSC2NpcmN1aXRIYXNoEhwKCWF1",
+            "dGhvcml0eRgFIAEoCVIJYXV0aG9yaXR5EjoKDHByb29mX3N5c3RlbRgGIAEo",
+            "DjIXLnhpb24uemsudjEuUHJvb2ZTeXN0ZW1SC3Byb29mU3lzdGVtIiIKEFF1",
+            "ZXJ5VktleVJlcXVlc3QSDgoCaWQYASABKARSAmlkIj8KEVF1ZXJ5VktleVJl",
+            "c3BvbnNlEioKBHZrZXkYASABKAsyEC54aW9uLnprLnYxLlZLZXlCBMjeHwBS",
+            "BHZrZXkiLAoWUXVlcnlWS2V5QnlOYW1lUmVxdWVzdBISCgRuYW1lGAEgASgJ",
+            "UgRuYW1lIlUKF1F1ZXJ5VktleUJ5TmFtZVJlc3BvbnNlEioKBHZrZXkYASAB",
+            "KAsyEC54aW9uLnprLnYxLlZLZXlCBMjeHwBSBHZrZXkSDgoCaWQYAiABKARS",
+            "AmlkIlsKEVF1ZXJ5VktleXNSZXF1ZXN0EkYKCnBhZ2luYXRpb24YASABKAsy",
+            "Ji5jb3Ntb3MuYmFzZS5xdWVyeS52MWJldGExLlBhZ2VSZXF1ZXN0UgpwYWdp",
+            "bmF0aW9uIpEBChJRdWVyeVZLZXlzUmVzcG9uc2USMgoFdmtleXMYASADKAsy",
+            "Fi54aW9uLnprLnYxLlZLZXlXaXRoSURCBMjeHwBSBXZrZXlzEkcKCnBhZ2lu",
+            "YXRpb24YAiABKAsyJy5jb3Ntb3MuYmFzZS5xdWVyeS52MWJldGExLlBhZ2VS",
+            "ZXNwb25zZVIKcGFnaW5hdGlvbiJICgpWS2V5V2l0aElEEg4KAmlkGAEgASgE",
+            "UgJpZBIqCgR2a2V5GAIgASgLMhAueGlvbi56ay52MS5WS2V5QgTI3h8AUgR2",
+            "a2V5IikKE1F1ZXJ5SGFzVktleVJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFt",
+            "ZSI+ChRRdWVyeUhhc1ZLZXlSZXNwb25zZRIWCgZleGlzdHMYASABKAhSBmV4",
+            "aXN0cxIOCgJpZBgCIAEoBFICaWQiGAoWUXVlcnlOZXh0VktleUlEUmVxdWVz",
+            "dCIyChdRdWVyeU5leHRWS2V5SURSZXNwb25zZRIXCgduZXh0X2lkGAEgASgE",
+            "UgZuZXh0SWQiFAoSUXVlcnlQYXJhbXNSZXF1ZXN0IkcKE1F1ZXJ5UGFyYW1z",
+            "UmVzcG9uc2USMAoGcGFyYW1zGAEgASgLMhIueGlvbi56ay52MS5QYXJhbXNC",
+            "BMjeHwBSBnBhcmFtczLXCAoFUXVlcnkSZQoLUHJvb2ZWZXJpZnkSHi54aW9u",
+            "LnprLnYxLlF1ZXJ5VmVyaWZ5UmVxdWVzdBofLnhpb24uemsudjEuUHJvb2ZW",
+            "ZXJpZnlSZXNwb25zZSIVgtPkkwIPEg0vemsvdjEvdmVyaWZ5EpgBChRQcm9v",
+            "ZlZlcmlmeVVsdHJhSG9uaxInLnhpb24uemsudjEuUXVlcnlWZXJpZnlVbHRy",
+            "YUhvbmtSZXF1ZXN0GigueGlvbi56ay52MS5Qcm9vZlZlcmlmeVVsdHJhSG9u",
+            "a1Jlc3BvbnNlIi2C0+STAiciIi9idXJudC94aW9uL3prL3YxL3ZlcmlmeS11",
+            "bHRyYWhvbms6ASoSiAEKEFByb29mVmVyaWZ5R25hcmsSIy54aW9uLnprLnYx",
+            "LlF1ZXJ5VmVyaWZ5R25hcmtSZXF1ZXN0GiQueGlvbi56ay52MS5Qcm9vZlZl",
+            "cmlmeUduYXJrUmVzcG9uc2UiKYLT5JMCIyIeL2J1cm50L3hpb24vemsvdjEv",
+            "dmVyaWZ5LWduYXJrOgEqEmkKBFZLZXkSHC54aW9uLnprLnYxLlF1ZXJ5Vktl",
+            "eVJlcXVlc3QaHS54aW9uLnprLnYxLlF1ZXJ5VktleVJlc3BvbnNlIiSC0+ST",
+            "Ah4SHC9idXJudC94aW9uL3prL3YxL3ZrZXlzL3tpZH0SggEKClZLZXlCeU5h",
+            "bWUSIi54aW9uLnprLnYxLlF1ZXJ5VktleUJ5TmFtZVJlcXVlc3QaIy54aW9u",
+            "LnprLnYxLlF1ZXJ5VktleUJ5TmFtZVJlc3BvbnNlIiuC0+STAiUSIy9idXJu",
+            "dC94aW9uL3prL3YxL3ZrZXlzL25hbWUve25hbWV9EmcKBVZLZXlzEh0ueGlv",
+            "bi56ay52MS5RdWVyeVZLZXlzUmVxdWVzdBoeLnhpb24uemsudjEuUXVlcnlW",
+            "S2V5c1Jlc3BvbnNlIh+C0+STAhkSFy9idXJudC94aW9uL3prL3YxL3ZrZXlz",
+            "EnsKB0hhc1ZLZXkSHy54aW9uLnprLnYxLlF1ZXJ5SGFzVktleVJlcXVlc3Qa",
+            "IC54aW9uLnprLnYxLlF1ZXJ5SGFzVktleVJlc3BvbnNlIi2C0+STAicSJS9i",
+            "dXJudC94aW9uL3prL3YxL3ZrZXlzL2V4aXN0cy97bmFtZX0SfgoKTmV4dFZL",
+            "ZXlJRBIiLnhpb24uemsudjEuUXVlcnlOZXh0VktleUlEUmVxdWVzdBojLnhp",
+            "b24uemsudjEuUXVlcnlOZXh0VktleUlEUmVzcG9uc2UiJ4LT5JMCIRIfL2J1",
+            "cm50L3hpb24vemsvdjEvdmtleXMvbmV4dC1pZBJrCgZQYXJhbXMSHi54aW9u",
+            "LnprLnYxLlF1ZXJ5UGFyYW1zUmVxdWVzdBofLnhpb24uemsudjEuUXVlcnlQ",
+            "YXJhbXNSZXNwb25zZSIggtPkkwIaEhgvYnVybnQveGlvbi96ay92MS9wYXJh",
+            "bXNCJ1olZ2l0aHViLmNvbS9idXJudC1sYWJzL3hpb24veC96ay90eXBlc2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Cosmos.Base.Query.V1Beta1.PaginationReflection.Descriptor, global::Xion.Zk.V1.ParamsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.SnarkJsProof), global::Xion.Zk.V1.SnarkJsProof.Parser, new[]{ "PiA", "PiB", "PiC" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.QueryVerifyRequest), global::Xion.Zk.V1.QueryVerifyRequest.Parser, new[]{ "Proof", "PublicInputs", "VkeyName", "VkeyId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.ProofVerifyResponse), global::Xion.Zk.V1.ProofVerifyResponse.Parser, new[]{ "Verified" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.VKey), global::Xion.Zk.V1.VKey.Parser, new[]{ "KeyBytes", "Name", "Description", "CircuitHash", "Authority" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.ProofVerifyUltraHonkResponse), global::Xion.Zk.V1.ProofVerifyUltraHonkResponse.Parser, new[]{ "Verified", "VkeySha256" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.ProofVerifyGnarkResponse), global::Xion.Zk.V1.ProofVerifyGnarkResponse.Parser, new[]{ "Verified" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.QueryVerifyUltraHonkRequest), global::Xion.Zk.V1.QueryVerifyUltraHonkRequest.Parser, new[]{ "Proof", "PublicInputs", "VkeyName", "VkeyId", "ExpectedVkeySha256" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.QueryVerifyGnarkRequest), global::Xion.Zk.V1.QueryVerifyGnarkRequest.Parser, new[]{ "Proof", "PublicInputs", "VkeyName", "VkeyId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.VKey), global::Xion.Zk.V1.VKey.Parser, new[]{ "KeyBytes", "Name", "Description", "CircuitHash", "Authority", "ProofSystem" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.QueryVKeyRequest), global::Xion.Zk.V1.QueryVKeyRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.QueryVKeyResponse), global::Xion.Zk.V1.QueryVKeyResponse.Parser, new[]{ "Vkey" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Zk.V1.QueryVKeyByNameRequest), global::Xion.Zk.V1.QueryVKeyByNameRequest.Parser, new[]{ "Name" }, null, null, null, null),
@@ -843,6 +866,1136 @@ namespace Xion.Zk.V1 {
   }
 
   /// <summary>
+  /// ProofVerifyUltraHonkResponse defines the response structure for UltraHonk
+  /// proof verification.
+  /// </summary>
+  public sealed partial class ProofVerifyUltraHonkResponse : pb::IMessage<ProofVerifyUltraHonkResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ProofVerifyUltraHonkResponse> _parser = new pb::MessageParser<ProofVerifyUltraHonkResponse>(() => new ProofVerifyUltraHonkResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ProofVerifyUltraHonkResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ProofVerifyUltraHonkResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ProofVerifyUltraHonkResponse(ProofVerifyUltraHonkResponse other) : this() {
+      verified_ = other.verified_;
+      vkeySha256_ = other.vkeySha256_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ProofVerifyUltraHonkResponse Clone() {
+      return new ProofVerifyUltraHonkResponse(this);
+    }
+
+    /// <summary>Field number for the "verified" field.</summary>
+    public const int VerifiedFieldNumber = 1;
+    private bool verified_;
+    /// <summary>
+    /// verified indicates whether the proof verification was successful.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Verified {
+      get { return verified_; }
+      set {
+        verified_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "vkey_sha256" field.</summary>
+    public const int VkeySha256FieldNumber = 2;
+    private pb::ByteString vkeySha256_ = pb::ByteString.Empty;
+    /// <summary>
+    /// vkey_sha256 is SHA-256 over the exact stored verification-key bytes that
+    /// were used for this verification.
+    ///
+    /// A vkey NAME is a mutable binding and an ID's contents are mutable in place:
+    /// AddVKey is permissionless, and the key's owner may later UpdateVKey the
+    /// bytes under the same name and ID. A consumer that reviewed specific key
+    /// material therefore cannot establish, from `verified` alone, that this
+    /// verification used that material. Echoing the digest lets the consumer
+    /// compare against a pin it derived offline from the reviewed artifact, in the
+    /// same response that reports the verdict.
+    ///
+    /// Always populated on success, so a consumer may treat an absent value as a
+    /// server too old to enforce `expected_vkey_sha256` and fail closed.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString VkeySha256 {
+      get { return vkeySha256_; }
+      set {
+        vkeySha256_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ProofVerifyUltraHonkResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ProofVerifyUltraHonkResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Verified != other.Verified) return false;
+      if (VkeySha256 != other.VkeySha256) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Verified != false) hash ^= Verified.GetHashCode();
+      if (VkeySha256.Length != 0) hash ^= VkeySha256.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Verified != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Verified);
+      }
+      if (VkeySha256.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(VkeySha256);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Verified != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Verified);
+      }
+      if (VkeySha256.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(VkeySha256);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Verified != false) {
+        size += 1 + 1;
+      }
+      if (VkeySha256.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(VkeySha256);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ProofVerifyUltraHonkResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Verified != false) {
+        Verified = other.Verified;
+      }
+      if (other.VkeySha256.Length != 0) {
+        VkeySha256 = other.VkeySha256;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Verified = input.ReadBool();
+            break;
+          }
+          case 18: {
+            VkeySha256 = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Verified = input.ReadBool();
+            break;
+          }
+          case 18: {
+            VkeySha256 = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// ProofVerifyGnarkResponse defines the response structure for gnark Groth16
+  /// proof verification.
+  /// </summary>
+  public sealed partial class ProofVerifyGnarkResponse : pb::IMessage<ProofVerifyGnarkResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ProofVerifyGnarkResponse> _parser = new pb::MessageParser<ProofVerifyGnarkResponse>(() => new ProofVerifyGnarkResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ProofVerifyGnarkResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ProofVerifyGnarkResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ProofVerifyGnarkResponse(ProofVerifyGnarkResponse other) : this() {
+      verified_ = other.verified_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ProofVerifyGnarkResponse Clone() {
+      return new ProofVerifyGnarkResponse(this);
+    }
+
+    /// <summary>Field number for the "verified" field.</summary>
+    public const int VerifiedFieldNumber = 1;
+    private bool verified_;
+    /// <summary>
+    /// verified indicates whether the proof verification was successful.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Verified {
+      get { return verified_; }
+      set {
+        verified_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ProofVerifyGnarkResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ProofVerifyGnarkResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Verified != other.Verified) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Verified != false) hash ^= Verified.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Verified != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Verified);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Verified != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Verified);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Verified != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ProofVerifyGnarkResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Verified != false) {
+        Verified = other.Verified;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Verified = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Verified = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// QueryVerifyUltraHonkRequest is the request for ProofVerifyUltraHonk.
+  /// The verification key is resolved by vkey_name or vkey_id from the store (must
+  /// be ultrahonk type). Proof and public_inputs are raw binary as produced by
+  /// Barretenberg (e.g. bb prove).
+  /// </summary>
+  public sealed partial class QueryVerifyUltraHonkRequest : pb::IMessage<QueryVerifyUltraHonkRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<QueryVerifyUltraHonkRequest> _parser = new pb::MessageParser<QueryVerifyUltraHonkRequest>(() => new QueryVerifyUltraHonkRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<QueryVerifyUltraHonkRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public QueryVerifyUltraHonkRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public QueryVerifyUltraHonkRequest(QueryVerifyUltraHonkRequest other) : this() {
+      proof_ = other.proof_;
+      publicInputs_ = other.publicInputs_;
+      vkeyName_ = other.vkeyName_;
+      vkeyId_ = other.vkeyId_;
+      expectedVkeySha256_ = other.expectedVkeySha256_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public QueryVerifyUltraHonkRequest Clone() {
+      return new QueryVerifyUltraHonkRequest(this);
+    }
+
+    /// <summary>Field number for the "proof" field.</summary>
+    public const int ProofFieldNumber = 1;
+    private pb::ByteString proof_ = pb::ByteString.Empty;
+    /// <summary>
+    /// proof is the raw UltraHonk proof bytes (e.g. from bb prove -o proof.bin).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Proof {
+      get { return proof_; }
+      set {
+        proof_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "public_inputs" field.</summary>
+    public const int PublicInputsFieldNumber = 2;
+    private pb::ByteString publicInputs_ = pb::ByteString.Empty;
+    /// <summary>
+    /// public_inputs is the raw public inputs binary: concatenated 32-byte
+    /// big-endian field elements, as produced by Barretenberg (e.g. bb
+    /// write_inputs or the same flow that generates the proof).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString PublicInputs {
+      get { return publicInputs_; }
+      set {
+        publicInputs_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "vkey_name" field.</summary>
+    public const int VkeyNameFieldNumber = 3;
+    private string vkeyName_ = "";
+    /// <summary>
+    /// vkey_name is the unique name of the UltraHonk verification key
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string VkeyName {
+      get { return vkeyName_; }
+      set {
+        vkeyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "vkey_id" field.</summary>
+    public const int VkeyIdFieldNumber = 4;
+    private ulong vkeyId_;
+    /// <summary>
+    /// vkey_id is the numeric id of the UltraHonk verification key
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong VkeyId {
+      get { return vkeyId_; }
+      set {
+        vkeyId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "expected_vkey_sha256" field.</summary>
+    public const int ExpectedVkeySha256FieldNumber = 5;
+    private pb::ByteString expectedVkeySha256_ = pb::ByteString.Empty;
+    /// <summary>
+    /// expected_vkey_sha256, when set, must equal SHA-256 over the resolved
+    /// verification key's stored bytes, or verification fails with
+    /// verified = false. Must be empty or exactly 32 bytes.
+    ///
+    /// This makes the key-identity check atomic with the verdict: the consumer
+    /// does not have to read the key back in a second query and hope nothing
+    /// changed in between. Empty preserves the prior behaviour exactly, so
+    /// existing callers are unaffected.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString ExpectedVkeySha256 {
+      get { return expectedVkeySha256_; }
+      set {
+        expectedVkeySha256_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as QueryVerifyUltraHonkRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(QueryVerifyUltraHonkRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Proof != other.Proof) return false;
+      if (PublicInputs != other.PublicInputs) return false;
+      if (VkeyName != other.VkeyName) return false;
+      if (VkeyId != other.VkeyId) return false;
+      if (ExpectedVkeySha256 != other.ExpectedVkeySha256) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Proof.Length != 0) hash ^= Proof.GetHashCode();
+      if (PublicInputs.Length != 0) hash ^= PublicInputs.GetHashCode();
+      if (VkeyName.Length != 0) hash ^= VkeyName.GetHashCode();
+      if (VkeyId != 0UL) hash ^= VkeyId.GetHashCode();
+      if (ExpectedVkeySha256.Length != 0) hash ^= ExpectedVkeySha256.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Proof.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Proof);
+      }
+      if (PublicInputs.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(PublicInputs);
+      }
+      if (VkeyName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VkeyName);
+      }
+      if (VkeyId != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(VkeyId);
+      }
+      if (ExpectedVkeySha256.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(ExpectedVkeySha256);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Proof.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Proof);
+      }
+      if (PublicInputs.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(PublicInputs);
+      }
+      if (VkeyName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VkeyName);
+      }
+      if (VkeyId != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(VkeyId);
+      }
+      if (ExpectedVkeySha256.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(ExpectedVkeySha256);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Proof.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Proof);
+      }
+      if (PublicInputs.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(PublicInputs);
+      }
+      if (VkeyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(VkeyName);
+      }
+      if (VkeyId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(VkeyId);
+      }
+      if (ExpectedVkeySha256.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ExpectedVkeySha256);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(QueryVerifyUltraHonkRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Proof.Length != 0) {
+        Proof = other.Proof;
+      }
+      if (other.PublicInputs.Length != 0) {
+        PublicInputs = other.PublicInputs;
+      }
+      if (other.VkeyName.Length != 0) {
+        VkeyName = other.VkeyName;
+      }
+      if (other.VkeyId != 0UL) {
+        VkeyId = other.VkeyId;
+      }
+      if (other.ExpectedVkeySha256.Length != 0) {
+        ExpectedVkeySha256 = other.ExpectedVkeySha256;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Proof = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            PublicInputs = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            VkeyName = input.ReadString();
+            break;
+          }
+          case 32: {
+            VkeyId = input.ReadUInt64();
+            break;
+          }
+          case 42: {
+            ExpectedVkeySha256 = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Proof = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            PublicInputs = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            VkeyName = input.ReadString();
+            break;
+          }
+          case 32: {
+            VkeyId = input.ReadUInt64();
+            break;
+          }
+          case 42: {
+            ExpectedVkeySha256 = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// QueryVerifyGnarkRequest is the request for ProofVerifyGnark.
+  /// The verification key is resolved by vkey_name or vkey_id from the store (must
+  /// be groth16_gnark type). Proof and public_inputs are gnark native binary
+  /// format.
+  /// </summary>
+  public sealed partial class QueryVerifyGnarkRequest : pb::IMessage<QueryVerifyGnarkRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<QueryVerifyGnarkRequest> _parser = new pb::MessageParser<QueryVerifyGnarkRequest>(() => new QueryVerifyGnarkRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<QueryVerifyGnarkRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public QueryVerifyGnarkRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public QueryVerifyGnarkRequest(QueryVerifyGnarkRequest other) : this() {
+      proof_ = other.proof_;
+      publicInputs_ = other.publicInputs_;
+      vkeyName_ = other.vkeyName_;
+      vkeyId_ = other.vkeyId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public QueryVerifyGnarkRequest Clone() {
+      return new QueryVerifyGnarkRequest(this);
+    }
+
+    /// <summary>Field number for the "proof" field.</summary>
+    public const int ProofFieldNumber = 1;
+    private pb::ByteString proof_ = pb::ByteString.Empty;
+    /// <summary>
+    /// proof is the gnark native Groth16 proof bytes (serialized groth16.Proof).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Proof {
+      get { return proof_; }
+      set {
+        proof_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "public_inputs" field.</summary>
+    public const int PublicInputsFieldNumber = 2;
+    private pb::ByteString publicInputs_ = pb::ByteString.Empty;
+    /// <summary>
+    /// public_inputs is the raw public inputs binary: concatenated 32-byte
+    /// big-endian field elements (fr.Element serialization).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString PublicInputs {
+      get { return publicInputs_; }
+      set {
+        publicInputs_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "vkey_name" field.</summary>
+    public const int VkeyNameFieldNumber = 3;
+    private string vkeyName_ = "";
+    /// <summary>
+    /// vkey_name is the unique name of the gnark verification key
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string VkeyName {
+      get { return vkeyName_; }
+      set {
+        vkeyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "vkey_id" field.</summary>
+    public const int VkeyIdFieldNumber = 4;
+    private ulong vkeyId_;
+    /// <summary>
+    /// vkey_id is the numeric id of the gnark verification key
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong VkeyId {
+      get { return vkeyId_; }
+      set {
+        vkeyId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as QueryVerifyGnarkRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(QueryVerifyGnarkRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Proof != other.Proof) return false;
+      if (PublicInputs != other.PublicInputs) return false;
+      if (VkeyName != other.VkeyName) return false;
+      if (VkeyId != other.VkeyId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Proof.Length != 0) hash ^= Proof.GetHashCode();
+      if (PublicInputs.Length != 0) hash ^= PublicInputs.GetHashCode();
+      if (VkeyName.Length != 0) hash ^= VkeyName.GetHashCode();
+      if (VkeyId != 0UL) hash ^= VkeyId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Proof.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Proof);
+      }
+      if (PublicInputs.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(PublicInputs);
+      }
+      if (VkeyName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VkeyName);
+      }
+      if (VkeyId != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(VkeyId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Proof.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Proof);
+      }
+      if (PublicInputs.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(PublicInputs);
+      }
+      if (VkeyName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VkeyName);
+      }
+      if (VkeyId != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(VkeyId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Proof.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Proof);
+      }
+      if (PublicInputs.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(PublicInputs);
+      }
+      if (VkeyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(VkeyName);
+      }
+      if (VkeyId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(VkeyId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(QueryVerifyGnarkRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Proof.Length != 0) {
+        Proof = other.Proof;
+      }
+      if (other.PublicInputs.Length != 0) {
+        PublicInputs = other.PublicInputs;
+      }
+      if (other.VkeyName.Length != 0) {
+        VkeyName = other.VkeyName;
+      }
+      if (other.VkeyId != 0UL) {
+        VkeyId = other.VkeyId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Proof = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            PublicInputs = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            VkeyName = input.ReadString();
+            break;
+          }
+          case 32: {
+            VkeyId = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Proof = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            PublicInputs = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            VkeyName = input.ReadString();
+            break;
+          }
+          case 32: {
+            VkeyId = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
   /// VKey represents a verification key for ZK proof verification.
   /// </summary>
   public sealed partial class VKey : pb::IMessage<VKey>
@@ -859,7 +2012,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -884,6 +2037,7 @@ namespace Xion.Zk.V1 {
       description_ = other.description_;
       circuitHash_ = other.circuitHash_;
       authority_ = other.authority_;
+      proofSystem_ = other.proofSystem_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -968,6 +2122,21 @@ namespace Xion.Zk.V1 {
       }
     }
 
+    /// <summary>Field number for the "proof_system" field.</summary>
+    public const int ProofSystemFieldNumber = 6;
+    private global::Xion.Zk.V1.ProofSystem proofSystem_ = global::Xion.Zk.V1.ProofSystem.Unspecified;
+    /// <summary>
+    /// proof_system identifies the ZK backend: GROTH16 (default) or ULTRA_HONK_ZK.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Xion.Zk.V1.ProofSystem ProofSystem {
+      get { return proofSystem_; }
+      set {
+        proofSystem_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -988,6 +2157,7 @@ namespace Xion.Zk.V1 {
       if (Description != other.Description) return false;
       if (CircuitHash != other.CircuitHash) return false;
       if (Authority != other.Authority) return false;
+      if (ProofSystem != other.ProofSystem) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1000,6 +2170,7 @@ namespace Xion.Zk.V1 {
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (CircuitHash.Length != 0) hash ^= CircuitHash.GetHashCode();
       if (Authority.Length != 0) hash ^= Authority.GetHashCode();
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) hash ^= ProofSystem.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1038,6 +2209,10 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(42);
         output.WriteString(Authority);
       }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) ProofSystem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1068,6 +2243,10 @@ namespace Xion.Zk.V1 {
         output.WriteRawTag(42);
         output.WriteString(Authority);
       }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) ProofSystem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1092,6 +2271,9 @@ namespace Xion.Zk.V1 {
       }
       if (Authority.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Authority);
+      }
+      if (ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProofSystem);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1119,6 +2301,9 @@ namespace Xion.Zk.V1 {
       }
       if (other.Authority.Length != 0) {
         Authority = other.Authority;
+      }
+      if (other.ProofSystem != global::Xion.Zk.V1.ProofSystem.Unspecified) {
+        ProofSystem = other.ProofSystem;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1153,6 +2338,10 @@ namespace Xion.Zk.V1 {
           }
           case 42: {
             Authority = input.ReadString();
+            break;
+          }
+          case 48: {
+            ProofSystem = (global::Xion.Zk.V1.ProofSystem) input.ReadEnum();
             break;
           }
         }
@@ -1190,6 +2379,10 @@ namespace Xion.Zk.V1 {
             Authority = input.ReadString();
             break;
           }
+          case 48: {
+            ProofSystem = (global::Xion.Zk.V1.ProofSystem) input.ReadEnum();
+            break;
+          }
         }
       }
     }
@@ -1214,7 +2407,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1409,7 +2602,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1614,7 +2807,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1810,7 +3003,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2054,7 +3247,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2258,7 +3451,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2491,7 +3684,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2735,7 +3928,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2930,7 +4123,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3166,7 +4359,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3322,7 +4515,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3517,7 +4710,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3672,7 +4865,7 @@ namespace Xion.Zk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Xion.Zk.V1.QueryReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

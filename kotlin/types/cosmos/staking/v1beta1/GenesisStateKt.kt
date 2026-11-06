@@ -625,6 +625,220 @@ public object GenesisStateKt {
     public fun clearExported() {
       _builder.clearExported()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class ConsensusKeyRotationHistoryProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     */
+     public val consensusKeyRotationHistory: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getConsensusKeyRotationHistoryList()
+      )
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param value The consensusKeyRotationHistory to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addConsensusKeyRotationHistory")
+    public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>.add(value: cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory) {
+      _builder.addConsensusKeyRotationHistory(value)
+    }
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param value The consensusKeyRotationHistory to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignConsensusKeyRotationHistory")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>.plusAssign(value: cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory) {
+      add(value)
+    }
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param values The consensusKeyRotationHistory to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllConsensusKeyRotationHistory")
+    public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory>) {
+      _builder.addAllConsensusKeyRotationHistory(values)
+    }
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param values The consensusKeyRotationHistory to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllConsensusKeyRotationHistory")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param index The index to set the value at.
+     * @param value The consensusKeyRotationHistory to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setConsensusKeyRotationHistory")
+    public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory) {
+      _builder.setConsensusKeyRotationHistory(index, value)
+    }
+    /**
+     * ```
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearConsensusKeyRotationHistory")
+    public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.ConsensusKeyRotationHistory, ConsensusKeyRotationHistoryProxy>.clear() {
+      _builder.clearConsensusKeyRotationHistory()
+    }
+
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class PendingConsensusKeyRotationsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     */
+     public val pendingConsensusKeyRotations: com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getPendingConsensusKeyRotationsList()
+      )
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param value The pendingConsensusKeyRotations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addPendingConsensusKeyRotations")
+    public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>.add(value: cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation) {
+      _builder.addPendingConsensusKeyRotations(value)
+    }
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param value The pendingConsensusKeyRotations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignPendingConsensusKeyRotations")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>.plusAssign(value: cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation) {
+      add(value)
+    }
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param values The pendingConsensusKeyRotations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllPendingConsensusKeyRotations")
+    public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>.addAll(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation>) {
+      _builder.addAllPendingConsensusKeyRotations(values)
+    }
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param values The pendingConsensusKeyRotations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllPendingConsensusKeyRotations")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>.plusAssign(values: kotlin.collections.Iterable<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     * @param index The index to set the value at.
+     * @param value The pendingConsensusKeyRotations to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setPendingConsensusKeyRotations")
+    public operator fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>.set(index: kotlin.Int, value: cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation) {
+      _builder.setPendingConsensusKeyRotations(index, value)
+    }
+    /**
+     * ```
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     * ```
+     *
+     * `repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearPendingConsensusKeyRotations")
+    public fun com.google.protobuf.kotlin.DslList<cosmos.staking.v1beta1.Genesis.PendingConsensusKeyRotation, PendingConsensusKeyRotationsProxy>.clear() {
+      _builder.clearPendingConsensusKeyRotations()
+    }
+
   }
 }
 @kotlin.jvm.JvmSynthetic

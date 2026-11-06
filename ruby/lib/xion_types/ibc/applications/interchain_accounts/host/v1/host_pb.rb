@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n7ibc/applications/interchain_accounts/host/v1/host.proto\x12,ibc.applications.interchain_accounts.host.v1\"R\n\x06Params\x12!\n\x0chost_enabled\x18\x01 \x01(\x08R\x0bhostEnabled\x12%\n\x0e\x61llow_messages\x18\x02 \x03(\tR\rallowMessages\"6\n\x0cQueryRequest\x12\x12\n\x04path\x18\x01 \x01(\tR\x04path\x12\x12\n\x04\x64\x61ta\x18\x02 \x01(\x0cR\x04\x64\x61taBMZKgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/host/typesb\x06proto3"
+descriptor_data = "\n7ibc/applications/interchain_accounts/host/v1/host.proto\x12,ibc.applications.interchain_accounts.host.v1\"R\n\x06Params\x12!\n\x0chost_enabled\x18\x01 \x01(\x08R\x0bhostEnabled\x12%\n\x0e\x61llow_messages\x18\x02 \x03(\tR\rallowMessages\"6\n\x0cQueryRequest\x12\x12\n\x04path\x18\x01 \x01(\tR\x04path\x12\x12\n\x04\x64\x61ta\x18\x02 \x01(\x0cR\x04\x64\x61taBMZKgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

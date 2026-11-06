@@ -22,6 +22,7 @@ export interface ConsensusParams {
   validator?: ValidatorParams | undefined;
   version?: VersionParams | undefined;
   abci?: ABCIParams | undefined;
+  authority?: AuthorityParams | undefined;
 }
 
 /** BlockParams contains limits on the block size. */
@@ -104,8 +105,19 @@ export interface ABCIParams {
   voteExtensionsEnableHeight: bigint;
 }
 
+export interface AuthorityParams {
+  authority: string;
+}
+
 function createBaseConsensusParams(): ConsensusParams {
-  return { block: undefined, evidence: undefined, validator: undefined, version: undefined, abci: undefined };
+  return {
+    block: undefined,
+    evidence: undefined,
+    validator: undefined,
+    version: undefined,
+    abci: undefined,
+    authority: undefined,
+  };
 }
 
 export const ConsensusParams: MessageFns<ConsensusParams> = {
@@ -124,6 +136,9 @@ export const ConsensusParams: MessageFns<ConsensusParams> = {
     }
     if (message.abci !== undefined) {
       ABCIParams.encode(message.abci, writer.uint32(42).fork()).join();
+    }
+    if (message.authority !== undefined) {
+      AuthorityParams.encode(message.authority, writer.uint32(50).fork()).join();
     }
     return writer;
   },
@@ -181,6 +196,14 @@ export const ConsensusParams: MessageFns<ConsensusParams> = {
             message.abci = ABCIParams.decode(reader, reader.uint32());
             continue;
           }
+          case 6: {
+            if (tag !== 50) {
+              break;
+            }
+
+            message.authority = AuthorityParams.decode(reader, reader.uint32());
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -200,6 +223,7 @@ export const ConsensusParams: MessageFns<ConsensusParams> = {
       validator: isSet(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined,
       version: isSet(object.version) ? VersionParams.fromJSON(object.version) : undefined,
       abci: isSet(object.abci) ? ABCIParams.fromJSON(object.abci) : undefined,
+      authority: isSet(object.authority) ? AuthorityParams.fromJSON(object.authority) : undefined,
     };
   },
 
@@ -219,6 +243,9 @@ export const ConsensusParams: MessageFns<ConsensusParams> = {
     }
     if (message.abci !== undefined) {
       obj.abci = ABCIParams.toJSON(message.abci);
+    }
+    if (message.authority !== undefined) {
+      obj.authority = AuthorityParams.toJSON(message.authority);
     }
     return obj;
   },
@@ -242,6 +269,9 @@ export const ConsensusParams: MessageFns<ConsensusParams> = {
       : undefined;
     message.abci = (object.abci !== undefined && object.abci !== null)
       ? ABCIParams.fromPartial(object.abci)
+      : undefined;
+    message.authority = (object.authority !== undefined && object.authority !== null)
+      ? AuthorityParams.fromPartial(object.authority)
       : undefined;
     return message;
   },
@@ -788,6 +818,73 @@ export const ABCIParams: MessageFns<ABCIParams> = {
       (object.voteExtensionsEnableHeight !== undefined && object.voteExtensionsEnableHeight !== null)
         ? BigInt(object.voteExtensionsEnableHeight)
         : 0n;
+    return message;
+  },
+};
+
+function createBaseAuthorityParams(): AuthorityParams {
+  return { authority: "" };
+}
+
+export const AuthorityParams: MessageFns<AuthorityParams> = {
+  encode(message: AuthorityParams, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.authority !== "") {
+      writer.uint32(10).string(message.authority);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): AuthorityParams {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseAuthorityParams();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.authority = reader.string();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): AuthorityParams {
+    return { authority: isSet(object.authority) ? globalThis.String(object.authority) : "" };
+  },
+
+  toJSON(message: AuthorityParams): unknown {
+    const obj: any = {};
+    if (message.authority !== "") {
+      obj.authority = message.authority;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<AuthorityParams>, I>>(base?: I): AuthorityParams {
+    return AuthorityParams.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<AuthorityParams>, I>>(object: I): AuthorityParams {
+    const message = createBaseAuthorityParams();
+    message.authority = object.authority ?? "";
     return message;
   },
 };

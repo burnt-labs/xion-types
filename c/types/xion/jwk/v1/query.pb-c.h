@@ -37,6 +37,11 @@ typedef struct Xion__Jwk__V1__QueryAllAudienceResponse Xion__Jwk__V1__QueryAllAu
 typedef struct Xion__Jwk__V1__QueryValidateJWTRequest Xion__Jwk__V1__QueryValidateJWTRequest;
 typedef struct Xion__Jwk__V1__PrivateClaim Xion__Jwk__V1__PrivateClaim;
 typedef struct Xion__Jwk__V1__QueryValidateJWTResponse Xion__Jwk__V1__QueryValidateJWTResponse;
+typedef struct Xion__Jwk__V1__QueryVerifyJWSRequest Xion__Jwk__V1__QueryVerifyJWSRequest;
+typedef struct Xion__Jwk__V1__QueryVerifyJWSResponse Xion__Jwk__V1__QueryVerifyJWSResponse;
+typedef struct Xion__Jwk__V1__QueryDecodeJWTRequest Xion__Jwk__V1__QueryDecodeJWTRequest;
+typedef struct Xion__Jwk__V1__JWTClaim Xion__Jwk__V1__JWTClaim;
+typedef struct Xion__Jwk__V1__QueryDecodeJWTResponse Xion__Jwk__V1__QueryDecodeJWTResponse;
 
 
 /* --- enums --- */
@@ -339,6 +344,103 @@ struct  Xion__Jwk__V1__QueryValidateJWTResponse
 };
 #define XION__JWK__V1__QUERY_VALIDATE_JWTRESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&xion__jwk__v1__query_validate_jwtresponse__descriptor) \
+, 0,NULL }
+
+
+/*
+ * QueryVerifyJWSRequest is the request type for verifying a JWS signature
+ */
+struct  Xion__Jwk__V1__QueryVerifyJWSRequest
+{
+  ProtobufCMessage base;
+  /*
+   * The audience identifier
+   */
+  char *aud;
+  /*
+   * The JWS signature bytes in compact serialization format
+   */
+  char *sig_bytes;
+};
+#define XION__JWK__V1__QUERY_VERIFY_JWSREQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__jwk__v1__query_verify_jwsrequest__descriptor) \
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+/*
+ * QueryVerifyJWSResponse is the response type for verifying a JWS signature
+ */
+struct  Xion__Jwk__V1__QueryVerifyJWSResponse
+{
+  ProtobufCMessage base;
+  /*
+   * The verified payload bytes extracted from the JWS
+   */
+  ProtobufCBinaryData payload;
+};
+#define XION__JWK__V1__QUERY_VERIFY_JWSRESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__jwk__v1__query_verify_jwsresponse__descriptor) \
+, {0,NULL} }
+
+
+/*
+ * QueryDecodeJWTRequest is the request type for decoding a JWT
+ */
+struct  Xion__Jwk__V1__QueryDecodeJWTRequest
+{
+  ProtobufCMessage base;
+  /*
+   * The audience identifier
+   */
+  char *aud;
+  /*
+   * The subject
+   */
+  char *sub;
+  /*
+   * The signature bytes (compact JWT)
+   */
+  char *sig_bytes;
+};
+#define XION__JWK__V1__QUERY_DECODE_JWTREQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__jwk__v1__query_decode_jwtrequest__descriptor) \
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+/*
+ * JWTClaim represents a single JWT claim (standard or private)
+ */
+struct  Xion__Jwk__V1__JWTClaim
+{
+  ProtobufCMessage base;
+  /*
+   * The claim key
+   */
+  char *key;
+  /*
+   * The claim value (stringified)
+   */
+  char *value;
+};
+#define XION__JWK__V1__JWTCLAIM__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__jwk__v1__jwtclaim__descriptor) \
+, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+/*
+ * QueryDecodeJWTResponse is the response type for decoding a JWT
+ */
+struct  Xion__Jwk__V1__QueryDecodeJWTResponse
+{
+  ProtobufCMessage base;
+  /*
+   * All claims from the JWT (standard and private), sorted by key
+   */
+  size_t n_claims;
+  Xion__Jwk__V1__JWTClaim **claims;
+};
+#define XION__JWK__V1__QUERY_DECODE_JWTRESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&xion__jwk__v1__query_decode_jwtresponse__descriptor) \
 , 0,NULL }
 
 
@@ -665,6 +767,101 @@ Xion__Jwk__V1__QueryValidateJWTResponse *
 void   xion__jwk__v1__query_validate_jwtresponse__free_unpacked
                      (Xion__Jwk__V1__QueryValidateJWTResponse *message,
                       ProtobufCAllocator *allocator);
+/* Xion__Jwk__V1__QueryVerifyJWSRequest methods */
+void   xion__jwk__v1__query_verify_jwsrequest__init
+                     (Xion__Jwk__V1__QueryVerifyJWSRequest         *message);
+size_t xion__jwk__v1__query_verify_jwsrequest__get_packed_size
+                     (const Xion__Jwk__V1__QueryVerifyJWSRequest   *message);
+size_t xion__jwk__v1__query_verify_jwsrequest__pack
+                     (const Xion__Jwk__V1__QueryVerifyJWSRequest   *message,
+                      uint8_t             *out);
+size_t xion__jwk__v1__query_verify_jwsrequest__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryVerifyJWSRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Jwk__V1__QueryVerifyJWSRequest *
+       xion__jwk__v1__query_verify_jwsrequest__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__jwk__v1__query_verify_jwsrequest__free_unpacked
+                     (Xion__Jwk__V1__QueryVerifyJWSRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Jwk__V1__QueryVerifyJWSResponse methods */
+void   xion__jwk__v1__query_verify_jwsresponse__init
+                     (Xion__Jwk__V1__QueryVerifyJWSResponse         *message);
+size_t xion__jwk__v1__query_verify_jwsresponse__get_packed_size
+                     (const Xion__Jwk__V1__QueryVerifyJWSResponse   *message);
+size_t xion__jwk__v1__query_verify_jwsresponse__pack
+                     (const Xion__Jwk__V1__QueryVerifyJWSResponse   *message,
+                      uint8_t             *out);
+size_t xion__jwk__v1__query_verify_jwsresponse__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryVerifyJWSResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Jwk__V1__QueryVerifyJWSResponse *
+       xion__jwk__v1__query_verify_jwsresponse__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__jwk__v1__query_verify_jwsresponse__free_unpacked
+                     (Xion__Jwk__V1__QueryVerifyJWSResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Jwk__V1__QueryDecodeJWTRequest methods */
+void   xion__jwk__v1__query_decode_jwtrequest__init
+                     (Xion__Jwk__V1__QueryDecodeJWTRequest         *message);
+size_t xion__jwk__v1__query_decode_jwtrequest__get_packed_size
+                     (const Xion__Jwk__V1__QueryDecodeJWTRequest   *message);
+size_t xion__jwk__v1__query_decode_jwtrequest__pack
+                     (const Xion__Jwk__V1__QueryDecodeJWTRequest   *message,
+                      uint8_t             *out);
+size_t xion__jwk__v1__query_decode_jwtrequest__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryDecodeJWTRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Jwk__V1__QueryDecodeJWTRequest *
+       xion__jwk__v1__query_decode_jwtrequest__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__jwk__v1__query_decode_jwtrequest__free_unpacked
+                     (Xion__Jwk__V1__QueryDecodeJWTRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Jwk__V1__JWTClaim methods */
+void   xion__jwk__v1__jwtclaim__init
+                     (Xion__Jwk__V1__JWTClaim         *message);
+size_t xion__jwk__v1__jwtclaim__get_packed_size
+                     (const Xion__Jwk__V1__JWTClaim   *message);
+size_t xion__jwk__v1__jwtclaim__pack
+                     (const Xion__Jwk__V1__JWTClaim   *message,
+                      uint8_t             *out);
+size_t xion__jwk__v1__jwtclaim__pack_to_buffer
+                     (const Xion__Jwk__V1__JWTClaim   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Jwk__V1__JWTClaim *
+       xion__jwk__v1__jwtclaim__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__jwk__v1__jwtclaim__free_unpacked
+                     (Xion__Jwk__V1__JWTClaim *message,
+                      ProtobufCAllocator *allocator);
+/* Xion__Jwk__V1__QueryDecodeJWTResponse methods */
+void   xion__jwk__v1__query_decode_jwtresponse__init
+                     (Xion__Jwk__V1__QueryDecodeJWTResponse         *message);
+size_t xion__jwk__v1__query_decode_jwtresponse__get_packed_size
+                     (const Xion__Jwk__V1__QueryDecodeJWTResponse   *message);
+size_t xion__jwk__v1__query_decode_jwtresponse__pack
+                     (const Xion__Jwk__V1__QueryDecodeJWTResponse   *message,
+                      uint8_t             *out);
+size_t xion__jwk__v1__query_decode_jwtresponse__pack_to_buffer
+                     (const Xion__Jwk__V1__QueryDecodeJWTResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Xion__Jwk__V1__QueryDecodeJWTResponse *
+       xion__jwk__v1__query_decode_jwtresponse__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   xion__jwk__v1__query_decode_jwtresponse__free_unpacked
+                     (Xion__Jwk__V1__QueryDecodeJWTResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Xion__Jwk__V1__QueryParamsRequest_Closure)
@@ -718,6 +915,21 @@ typedef void (*Xion__Jwk__V1__PrivateClaim_Closure)
 typedef void (*Xion__Jwk__V1__QueryValidateJWTResponse_Closure)
                  (const Xion__Jwk__V1__QueryValidateJWTResponse *message,
                   void *closure_data);
+typedef void (*Xion__Jwk__V1__QueryVerifyJWSRequest_Closure)
+                 (const Xion__Jwk__V1__QueryVerifyJWSRequest *message,
+                  void *closure_data);
+typedef void (*Xion__Jwk__V1__QueryVerifyJWSResponse_Closure)
+                 (const Xion__Jwk__V1__QueryVerifyJWSResponse *message,
+                  void *closure_data);
+typedef void (*Xion__Jwk__V1__QueryDecodeJWTRequest_Closure)
+                 (const Xion__Jwk__V1__QueryDecodeJWTRequest *message,
+                  void *closure_data);
+typedef void (*Xion__Jwk__V1__JWTClaim_Closure)
+                 (const Xion__Jwk__V1__JWTClaim *message,
+                  void *closure_data);
+typedef void (*Xion__Jwk__V1__QueryDecodeJWTResponse_Closure)
+                 (const Xion__Jwk__V1__QueryDecodeJWTResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -745,6 +957,14 @@ struct Xion__Jwk__V1__Query_Service
                        const Xion__Jwk__V1__QueryValidateJWTRequest *input,
                        Xion__Jwk__V1__QueryValidateJWTResponse_Closure closure,
                        void *closure_data);
+  void (*verify_jws)(Xion__Jwk__V1__Query_Service *service,
+                     const Xion__Jwk__V1__QueryVerifyJWSRequest *input,
+                     Xion__Jwk__V1__QueryVerifyJWSResponse_Closure closure,
+                     void *closure_data);
+  void (*decode_jwt)(Xion__Jwk__V1__Query_Service *service,
+                     const Xion__Jwk__V1__QueryDecodeJWTRequest *input,
+                     Xion__Jwk__V1__QueryDecodeJWTResponse_Closure closure,
+                     void *closure_data);
 };
 typedef void (*Xion__Jwk__V1__Query_ServiceDestroy)(Xion__Jwk__V1__Query_Service *);
 void xion__jwk__v1__query__init (Xion__Jwk__V1__Query_Service *service,
@@ -757,7 +977,9 @@ void xion__jwk__v1__query__init (Xion__Jwk__V1__Query_Service *service,
       function_prefix__ ## audience_claim,\
       function_prefix__ ## audience,\
       function_prefix__ ## audience_all,\
-      function_prefix__ ## validate_jwt  }
+      function_prefix__ ## validate_jwt,\
+      function_prefix__ ## verify_jws,\
+      function_prefix__ ## decode_jwt  }
 void xion__jwk__v1__query__params(ProtobufCService *service,
                                   const Xion__Jwk__V1__QueryParamsRequest *input,
                                   Xion__Jwk__V1__QueryParamsResponse_Closure closure,
@@ -778,6 +1000,14 @@ void xion__jwk__v1__query__validate_jwt(ProtobufCService *service,
                                         const Xion__Jwk__V1__QueryValidateJWTRequest *input,
                                         Xion__Jwk__V1__QueryValidateJWTResponse_Closure closure,
                                         void *closure_data);
+void xion__jwk__v1__query__verify_jws(ProtobufCService *service,
+                                      const Xion__Jwk__V1__QueryVerifyJWSRequest *input,
+                                      Xion__Jwk__V1__QueryVerifyJWSResponse_Closure closure,
+                                      void *closure_data);
+void xion__jwk__v1__query__decode_jwt(ProtobufCService *service,
+                                      const Xion__Jwk__V1__QueryDecodeJWTRequest *input,
+                                      Xion__Jwk__V1__QueryDecodeJWTResponse_Closure closure,
+                                      void *closure_data);
 
 /* --- descriptors --- */
 
@@ -798,6 +1028,11 @@ extern const ProtobufCMessageDescriptor xion__jwk__v1__query_all_audience_respon
 extern const ProtobufCMessageDescriptor xion__jwk__v1__query_validate_jwtrequest__descriptor;
 extern const ProtobufCMessageDescriptor xion__jwk__v1__private_claim__descriptor;
 extern const ProtobufCMessageDescriptor xion__jwk__v1__query_validate_jwtresponse__descriptor;
+extern const ProtobufCMessageDescriptor xion__jwk__v1__query_verify_jwsrequest__descriptor;
+extern const ProtobufCMessageDescriptor xion__jwk__v1__query_verify_jwsresponse__descriptor;
+extern const ProtobufCMessageDescriptor xion__jwk__v1__query_decode_jwtrequest__descriptor;
+extern const ProtobufCMessageDescriptor xion__jwk__v1__jwtclaim__descriptor;
+extern const ProtobufCMessageDescriptor xion__jwk__v1__query_decode_jwtresponse__descriptor;
 extern const ProtobufCServiceDescriptor xion__jwk__v1__query__descriptor;
 
 PROTOBUF_C__END_DECLS

@@ -107,7 +107,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "st_connection_id\030\003 \001(\tR\020hostConnectionId"
     "\022\030\n\007address\030\004 \001(\tR\007address\022\032\n\010encoding\030\005"
     " \001(\tR\010encoding\022\027\n\007tx_type\030\006 \001(\tR\006txTypeB"
-    "HZFgithub.com/cosmos/ibc-go/v10/modules/"
+    "HZFgithub.com/cosmos/ibc-go/v11/modules/"
     "apps/27-interchain-accounts/typesb\006proto"
     "3"
 };

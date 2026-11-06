@@ -708,7 +708,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fchannel_2fv2_2fquery_2eproto[]
     "/ibc/core/channel/v2/clients/{client_id}"
     "/packet_commitments/{packet_ack_sequence"
     "s}/unreceived_acksB\?Z=github.com/cosmos/"
-    "ibc-go/v10/modules/core/04-channel/v2/ty"
+    "ibc-go/v11/modules/core/04-channel/v2/ty"
     "pesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fchannel_2fv2_2fquery_2eproto_deps[5] =

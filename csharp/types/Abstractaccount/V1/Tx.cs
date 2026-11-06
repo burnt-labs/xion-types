@@ -43,9 +43,9 @@ namespace Abstractaccount.V1 {
             "ZGF0ZVBhcmFtcxorLmFic3RyYWN0YWNjb3VudC52MS5Nc2dVcGRhdGVQYXJh",
             "bXNSZXNwb25zZRJpCg9SZWdpc3RlckFjY291bnQSJi5hYnN0cmFjdGFjY291",
             "bnQudjEuTXNnUmVnaXN0ZXJBY2NvdW50Gi4uYWJzdHJhY3RhY2NvdW50LnYx",
-            "Lk1zZ1JlZ2lzdGVyQWNjb3VudFJlc3BvbnNlGgWA57AqAUJAWj5naXRodWIu",
-            "Y29tL2J1cm50LWxhYnMvYWJzdHJhY3QtYWNjb3VudC94L2Fic3RyYWN0YWNj",
-            "b3VudC90eXBlc2IGcHJvdG8z"));
+            "Lk1zZ1JlZ2lzdGVyQWNjb3VudFJlc3BvbnNlGgWA57AqAUI0WjJnaXRodWIu",
+            "Y29tL2J1cm50LWxhYnMveGlvbi94L2Fic3RyYWN0YWNjb3VudC90eXBlc2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Abstractaccount.V1.ParamsReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -110,6 +110,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "sender" field.</summary>
     public const int SenderFieldNumber = 1;
     private string sender_ = "";
+    /// <summary>
+    /// sender is the authority address requesting the update.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Sender {
@@ -122,6 +125,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "params" field.</summary>
     public const int ParamsFieldNumber = 2;
     private global::Abstractaccount.V1.Params params_;
+    /// <summary>
+    /// params is the new module parameters to apply.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Abstractaccount.V1.Params Params {
@@ -522,7 +528,8 @@ namespace Abstractaccount.V1 {
     public const int CodeIdFieldNumber = 2;
     private ulong codeId_;
     /// <summary>
-    /// CodeID indicates which wasm binary code is to be used for this contract
+    /// CodeID selects the allowed implementation installed after deterministic
+    /// direct instantiation. It does not participate in address derivation.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -554,7 +561,7 @@ namespace Abstractaccount.V1 {
         = pb::FieldCodec.ForMessage(34, global::Cosmos.Base.V1Beta1.Coin.Parser);
     private readonly pbc::RepeatedField<global::Cosmos.Base.V1Beta1.Coin> funds_ = new pbc::RepeatedField<global::Cosmos.Base.V1Beta1.Coin>();
     /// <summary>
-    /// Funds are coins to be deposited to the contract on instantiattion
+    /// Funds are coins to be deposited to the contract on instantiation
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -566,7 +573,7 @@ namespace Abstractaccount.V1 {
     public const int SaltFieldNumber = 5;
     private pb::ByteString salt_ = pb::ByteString.Empty;
     /// <summary>
-    /// Salt is an arbinary value to be used in deriving the account address.
+    /// Salt is an arbitrary value to be used in deriving the account address.
     /// Max 64 bytes.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -848,6 +855,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "address" field.</summary>
     public const int AddressFieldNumber = 1;
     private string address_ = "";
+    /// <summary>
+    /// address is the address of the newly registered account contract.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Address {
@@ -860,6 +870,9 @@ namespace Abstractaccount.V1 {
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 2;
     private pb::ByteString data_ = pb::ByteString.Empty;
+    /// <summary>
+    /// data is the raw response data from the contract instantiation.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pb::ByteString Data {

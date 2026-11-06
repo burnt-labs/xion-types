@@ -20,7 +20,7 @@ class Transfer
 +ibc/applications/transfer/v1/transfer.protoibc.applications.transfer.v1"T
 Params!
 send_enabled (RsendEnabled\'
-receive_enabled (RreceiveEnabledB:Z8github.com/cosmos/ibc-go/v10/modules/apps/transfer/typesbproto3'
+receive_enabled (RreceiveEnabledB:Z8github.com/cosmos/ibc-go/v11/modules/apps/transfer/typesbproto3'
         , true);
 
         static::$is_initialized = true;

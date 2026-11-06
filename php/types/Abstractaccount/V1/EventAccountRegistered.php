@@ -16,21 +16,36 @@ use Google\Protobuf\Internal\GPBUtil;
 class EventAccountRegistered extends \Google\Protobuf\Internal\Message
 {
     /**
+     * creator is the address that requested the account registration.
+     *
      * Generated from protobuf field <code>string creator = 1 [json_name = "creator"];</code>
      */
     protected $creator = '';
     /**
+     * CodeID is the caller-selected implementation active after registration.
+     *
      * Generated from protobuf field <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      */
     protected $code_id = 0;
     /**
+     * contract_addr is the address of the newly instantiated account contract.
+     *
      * Generated from protobuf field <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      */
     protected $contract_addr = '';
     /**
+     * account_number is the account number assigned to the new account.
+     *
      * Generated from protobuf field <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
      */
     protected $account_number = 0;
+    /**
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     *
+     * Generated from protobuf field <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     */
+    protected $address_derivation_hash = '';
 
     /**
      * Constructor.
@@ -39,9 +54,16 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $creator
+     *           creator is the address that requested the account registration.
      *     @type int|string $code_id
+     *           CodeID is the caller-selected implementation active after registration.
      *     @type string $contract_addr
+     *           contract_addr is the address of the newly instantiated account contract.
      *     @type int|string $account_number
+     *           account_number is the account number assigned to the new account.
+     *     @type string $address_derivation_hash
+     *           address_derivation_hash is the fixed hash used to derive the account's
+     *           address.
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +72,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * creator is the address that requested the account registration.
+     *
      * Generated from protobuf field <code>string creator = 1 [json_name = "creator"];</code>
      * @return string
      */
@@ -59,6 +83,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * creator is the address that requested the account registration.
+     *
      * Generated from protobuf field <code>string creator = 1 [json_name = "creator"];</code>
      * @param string $var
      * @return $this
@@ -72,6 +98,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * CodeID is the caller-selected implementation active after registration.
+     *
      * Generated from protobuf field <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      * @return int|string
      */
@@ -81,6 +109,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * CodeID is the caller-selected implementation active after registration.
+     *
      * Generated from protobuf field <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      * @param int|string $var
      * @return $this
@@ -94,6 +124,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * contract_addr is the address of the newly instantiated account contract.
+     *
      * Generated from protobuf field <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      * @return string
      */
@@ -103,6 +135,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * contract_addr is the address of the newly instantiated account contract.
+     *
      * Generated from protobuf field <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      * @param string $var
      * @return $this
@@ -116,6 +150,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * account_number is the account number assigned to the new account.
+     *
      * Generated from protobuf field <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
      * @return int|string
      */
@@ -125,6 +161,8 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * account_number is the account number assigned to the new account.
+     *
      * Generated from protobuf field <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
      * @param int|string $var
      * @return $this
@@ -133,6 +171,34 @@ class EventAccountRegistered extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint64($var);
         $this->account_number = $var;
+
+        return $this;
+    }
+
+    /**
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     *
+     * Generated from protobuf field <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @return string
+     */
+    public function getAddressDerivationHash()
+    {
+        return $this->address_derivation_hash;
+    }
+
+    /**
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     *
+     * Generated from protobuf field <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAddressDerivationHash($var)
+    {
+        GPBUtil::checkString($var, False);
+        $this->address_derivation_hash = $var;
 
         return $this;
     }

@@ -28,6 +28,12 @@ def main():
         print("❌ swift/types directory not found")
         exit(1)
 
+    # Generated sub-targets are rebuilt from swift/types; drop stale ones first.
+    if sources_base.exists():
+        for stale in sources_base.glob("XionTypes?*"):
+            if stale.is_dir():
+                shutil.rmtree(stale)
+
     # Create base directories
     Path("swift/Sources/XionTypes").mkdir(parents=True, exist_ok=True)
     Path("swift/Tests/XionTypesTests").mkdir(parents=True, exist_ok=True)

@@ -89,7 +89,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "count_owner\030\002 \001(\tR\014accountOwner:F\210\240\037\000\230\240\037"
     "\000\312\264-:ibc.applications.interchain_account"
     "s.v1.InterchainAccountIBHZFgithub.com/co"
-    "smos/ibc-go/v10/modules/apps/27-intercha"
+    "smos/ibc-go/v11/modules/apps/27-intercha"
     "in-accounts/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2finterchain_5faccounts_2fv1_2faccount_2eproto_deps[3] =

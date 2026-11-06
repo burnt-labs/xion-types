@@ -78,7 +78,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "cations.interchain_accounts.controller.v"
     "1\"7\n\006Params\022-\n\022controller_enabled\030\001 \001(\010R"
     "\021controllerEnabledBSZQgithub.com/cosmos/"
-    "ibc-go/v10/modules/apps/27-interchain-ac"
+    "ibc-go/v11/modules/apps/27-interchain-ac"
     "counts/controller/typesb\006proto3"
 };
 static ::absl::once_flag descriptor_table_ibc_2fapplications_2finterchain_5faccounts_2fcontroller_2fv1_2fcontroller_2eproto_once;

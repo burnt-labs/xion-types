@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x1fibc/core/client/v2/config.proto\x12\x12ibc.core.client.v2\"3\n\x06\x43onfig\x12)\n\x10\x61llowed_relayers\x18\x01 \x03(\tR\x0f\x61llowedRelayersB>Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/typesb\x06proto3"
+descriptor_data = "\n\x1fibc/core/client/v2/config.proto\x12\x12ibc.core.client.v2\"3\n\x06\x43onfig\x12)\n\x10\x61llowed_relayers\x18\x01 \x03(\tR\x0f\x61llowedRelayersB>Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

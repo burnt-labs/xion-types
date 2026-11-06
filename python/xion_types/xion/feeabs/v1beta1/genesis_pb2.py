@@ -16,14 +16,14 @@ from xion_types.xion.feeabs.v1beta1 import params_pb2 as xion_dot_feeabs_dot_v1b
 from xion_types.xion.feeabs.v1beta1 import epoch_pb2 as xion_dot_feeabs_dot_v1beta1_dot_epoch__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!xion/feeabs/v1beta1/genesis.proto\x12\x13xion.feeabs.v1beta1\x1a\x14gogoproto/gogo.proto\x1a xion/feeabs/v1beta1/params.proto\x1a\x1fxion/feeabs/v1beta1/epoch.proto\"\xb1\x01\n\x0cGenesisState\x12J\n\x06params\x18\x01 \x01(\x0b\x32\x1b.xion.feeabs.v1beta1.ParamsB\x15\xc8\xde\x1f\x00\xf2\xde\x1f\ryaml:\"params\"R\x06params\x12<\n\x06\x65pochs\x18\x02 \x03(\x0b\x32\x1e.xion.feeabs.v1beta1.EpochInfoB\x04\xc8\xde\x1f\x00R\x06\x65pochs\x12\x17\n\x07port_id\x18\x03 \x01(\tR\x06portIdB+Z)github.com/burnt-labs/xion/x/feeabs/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!xion/feeabs/v1beta1/genesis.proto\x12\x13xion.feeabs.v1beta1\x1a\x14gogoproto/gogo.proto\x1a xion/feeabs/v1beta1/params.proto\x1a\x1fxion/feeabs/v1beta1/epoch.proto\"\xb1\x01\n\x0cGenesisState\x12J\n\x06params\x18\x01 \x01(\x0b\x32\x1b.xion.feeabs.v1beta1.ParamsB\x15\xc8\xde\x1f\x00\xf2\xde\x1f\ryaml:\"params\"R\x06params\x12<\n\x06\x65pochs\x18\x02 \x03(\x0b\x32\x1e.xion.feeabs.v1beta1.EpochInfoB\x04\xc8\xde\x1f\x00R\x06\x65pochs\x12\x17\n\x07port_id\x18\x03 \x01(\tR\x06portIdB.Z,github.com/burnt-labs/xion/app/legacy/feeabsb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'xion.feeabs.v1beta1.genesis_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z)github.com/burnt-labs/xion/x/feeabs/types'
+  _globals['DESCRIPTOR']._serialized_options = b'Z,github.com/burnt-labs/xion/app/legacy/feeabs'
   _globals['_GENESISSTATE'].fields_by_name['params']._options = None
   _globals['_GENESISSTATE'].fields_by_name['params']._serialized_options = b'\310\336\037\000\362\336\037\ryaml:\"params\"'
   _globals['_GENESISSTATE'].fields_by_name['epochs']._options = None

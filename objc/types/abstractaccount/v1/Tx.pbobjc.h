@@ -60,8 +60,10 @@ typedef GPB_ENUM(MsgUpdateParams_FieldNumber) {
  **/
 GPB_FINAL @interface MsgUpdateParams : GPBMessage
 
+/** sender is the authority address requesting the update. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *sender;
 
+/** params is the new module parameters to apply. */
 @property(nonatomic, readwrite, strong, null_resettable) Params *params;
 /** Test to see if @c params has been set. */
 @property(nonatomic, readwrite) BOOL hasParams;
@@ -95,19 +97,22 @@ GPB_FINAL @interface MsgRegisterAccount : GPBMessage
 /** Sender is the actor who signs the message */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *sender;
 
-/** CodeID indicates which wasm binary code is to be used for this contract */
+/**
+ * CodeID selects the allowed implementation installed after deterministic
+ * direct instantiation. It does not participate in address derivation.
+ **/
 @property(nonatomic, readwrite) uint64_t codeId;
 
 /** Msg is the JSON-encoded instantiate message for the contract */
 @property(nonatomic, readwrite, copy, null_resettable) NSData *msg;
 
-/** Funds are coins to be deposited to the contract on instantiattion */
+/** Funds are coins to be deposited to the contract on instantiation */
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Coin*> *fundsArray;
 /** The number of items in @c fundsArray without causing the container to be created. */
 @property(nonatomic, readonly) NSUInteger fundsArray_Count;
 
 /**
- * Salt is an arbinary value to be used in deriving the account address.
+ * Salt is an arbitrary value to be used in deriving the account address.
  * Max 64 bytes.
  **/
 @property(nonatomic, readwrite, copy, null_resettable) NSData *salt;
@@ -126,8 +131,10 @@ typedef GPB_ENUM(MsgRegisterAccountResponse_FieldNumber) {
  **/
 GPB_FINAL @interface MsgRegisterAccountResponse : GPBMessage
 
+/** address is the address of the newly registered account contract. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *address;
 
+/** data is the raw response data from the contract instantiation. */
 @property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
 
 @end

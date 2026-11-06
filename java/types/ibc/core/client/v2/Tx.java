@@ -3139,7 +3139,7 @@ public final class Tx {
       "ibc.core.client.v2.MsgUpdateClientConfig" +
       "\0321.ibc.core.client.v2.MsgUpdateClientCon" +
       "figResponse\032\005\200\347\260*\001B>Z<github.com/cosmos/" +
-      "ibc-go/v10/modules/core/02-client/v2/typ" +
+      "ibc-go/v11/modules/core/02-client/v2/typ" +
       "esb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -4561,7 +4561,7 @@ public final class Tx {
       "arams\032K.ibc.applications.interchain_acco" +
       "unts.controller.v1.MsgUpdateParamsRespon" +
       "se\032\005\200\347\260*\001BSZQgithub.com/cosmos/ibc-go/v1" +
-      "0/modules/apps/27-interchain-accounts/co" +
+      "1/modules/apps/27-interchain-accounts/co" +
       "ntroller/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -27,7 +27,7 @@ namespace Ibc.Applications.Transfer.V1 {
             "Ci1pYmMvYXBwbGljYXRpb25zL3RyYW5zZmVyL3YxL2Rlbm9tdHJhY2UucHJv",
             "dG8SHGliYy5hcHBsaWNhdGlvbnMudHJhbnNmZXIudjEiQwoKRGVub21UcmFj",
             "ZRISCgRwYXRoGAEgASgJUgRwYXRoEh0KCmJhc2VfZGVub20YAiABKAlSCWJh",
-            "c2VEZW5vbToCGAFCOlo4Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9t",
+            "c2VEZW5vbToCGAFCOlo4Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9t",
             "b2R1bGVzL2FwcHMvdHJhbnNmZXIvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },

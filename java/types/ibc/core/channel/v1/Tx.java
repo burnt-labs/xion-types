@@ -1825,7 +1825,7 @@ public final class Tx {
      *
      * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
      * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-     *     See ibc/core/channel/v1/tx.proto;l=91
+     *     See ibc/core/channel/v1/tx.proto;l=93
      * @return The previousChannelId.
      */
     @java.lang.Deprecated java.lang.String getPreviousChannelId();
@@ -1836,7 +1836,7 @@ public final class Tx {
      *
      * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
      * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-     *     See ibc/core/channel/v1/tx.proto;l=91
+     *     See ibc/core/channel/v1/tx.proto;l=93
      * @return The bytes for previousChannelId.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -2010,7 +2010,7 @@ public final class Tx {
      *
      * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
      * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-     *     See ibc/core/channel/v1/tx.proto;l=91
+     *     See ibc/core/channel/v1/tx.proto;l=93
      * @return The previousChannelId.
      */
     @java.lang.Override
@@ -2033,7 +2033,7 @@ public final class Tx {
      *
      * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
      * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-     *     See ibc/core/channel/v1/tx.proto;l=91
+     *     See ibc/core/channel/v1/tx.proto;l=93
      * @return The bytes for previousChannelId.
      */
     @java.lang.Override
@@ -2794,7 +2794,7 @@ public final class Tx {
        *
        * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
        * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-       *     See ibc/core/channel/v1/tx.proto;l=91
+       *     See ibc/core/channel/v1/tx.proto;l=93
        * @return The previousChannelId.
        */
       @java.lang.Deprecated public java.lang.String getPreviousChannelId() {
@@ -2816,7 +2816,7 @@ public final class Tx {
        *
        * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
        * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-       *     See ibc/core/channel/v1/tx.proto;l=91
+       *     See ibc/core/channel/v1/tx.proto;l=93
        * @return The bytes for previousChannelId.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -2839,7 +2839,7 @@ public final class Tx {
        *
        * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
        * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-       *     See ibc/core/channel/v1/tx.proto;l=91
+       *     See ibc/core/channel/v1/tx.proto;l=93
        * @param value The previousChannelId to set.
        * @return This builder for chaining.
        */
@@ -2858,7 +2858,7 @@ public final class Tx {
        *
        * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
        * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-       *     See ibc/core/channel/v1/tx.proto;l=91
+       *     See ibc/core/channel/v1/tx.proto;l=93
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearPreviousChannelId() {
@@ -2874,7 +2874,7 @@ public final class Tx {
        *
        * <code>string previous_channel_id = 2 [json_name = "previousChannelId", deprecated = true];</code>
        * @deprecated ibc.core.channel.v1.MsgChannelOpenTry.previous_channel_id is deprecated.
-       *     See ibc/core/channel/v1/tx.proto;l=91
+       *     See ibc/core/channel/v1/tx.proto;l=93
        * @param value The bytes for previousChannelId to set.
        * @return This builder for chaining.
        */
@@ -17057,7 +17057,7 @@ public final class Tx {
       "Response\022k\n\017Acknowledgement\022\'.ibc.core.c" +
       "hannel.v1.MsgAcknowledgement\032/.ibc.core." +
       "channel.v1.MsgAcknowledgementResponse\032\005\200" +
-      "\347\260*\001B<Z:github.com/cosmos/ibc-go/v10/mod" +
+      "\347\260*\001B<Z:github.com/cosmos/ibc-go/v11/mod" +
       "ules/core/04-channel/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

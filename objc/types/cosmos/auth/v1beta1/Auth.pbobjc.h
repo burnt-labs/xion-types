@@ -133,6 +133,7 @@ typedef GPB_ENUM(Params_FieldNumber) {
   Params_FieldNumber_TxSizeCostPerByte = 3,
   Params_FieldNumber_SigVerifyCostEd25519 = 4,
   Params_FieldNumber_SigVerifyCostSecp256K1 = 5,
+  Params_FieldNumber_SigVerifyCostMldsa65 = 6,
 };
 
 /**
@@ -149,6 +150,8 @@ GPB_FINAL @interface Params : GPBMessage
 @property(nonatomic, readwrite) uint64_t sigVerifyCostEd25519;
 
 @property(nonatomic, readwrite) uint64_t sigVerifyCostSecp256K1;
+
+@property(nonatomic, readwrite) uint64_t sigVerifyCostMldsa65;
 
 @end
 

@@ -10,7 +10,8 @@ public inline fun indexRange(block: xion.dkim.v1.IndexRangeKt.Dsl.() -> kotlin.U
   xion.dkim.v1.IndexRangeKt.Dsl._create(xion.dkim.v1.Genesis.IndexRange.newBuilder()).apply { block() }._build()
 /**
  * ```
- * IndexRange defines a range of indices [start, end) in the public inputs array.
+ * IndexRange defines a range of indices [start, end) in the public inputs
+ * array.
  * ```
  *
  * Protobuf type `xion.dkim.v1.IndexRange`
@@ -32,6 +33,10 @@ public object IndexRangeKt {
     internal fun _build(): xion.dkim.v1.Genesis.IndexRange = _builder.build()
 
     /**
+     * ```
+     * start is the inclusive lower bound of the index range.
+     * ```
+     *
      * `uint64 start = 1 [json_name = "start"];`
      */
     public var start: kotlin.Long
@@ -42,6 +47,10 @@ public object IndexRangeKt {
         _builder.setStart(value)
       }
     /**
+     * ```
+     * start is the inclusive lower bound of the index range.
+     * ```
+     *
      * `uint64 start = 1 [json_name = "start"];`
      */
     public fun clearStart() {
@@ -49,6 +58,10 @@ public object IndexRangeKt {
     }
 
     /**
+     * ```
+     * end is the exclusive upper bound of the index range.
+     * ```
+     *
      * `uint64 end = 2 [json_name = "end"];`
      */
     public var end: kotlin.Long
@@ -59,6 +72,10 @@ public object IndexRangeKt {
         _builder.setEnd(value)
       }
     /**
+     * ```
+     * end is the exclusive upper bound of the index range.
+     * ```
+     *
      * `uint64 end = 2 [json_name = "end"];`
      */
     public fun clearEnd() {

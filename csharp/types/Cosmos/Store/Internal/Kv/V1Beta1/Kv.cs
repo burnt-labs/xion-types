@@ -29,7 +29,8 @@ namespace Cosmos.Store.Internal.Kv.V1Beta1 {
             "b2dvLnByb3RvIksKBVBhaXJzEkIKBXBhaXJzGAEgAygLMiYuY29zbW9zLnN0",
             "b3JlLmludGVybmFsLmt2LnYxYmV0YTEuUGFpckIEyN4fAFIFcGFpcnMiLgoE",
             "UGFpchIQCgNrZXkYASABKAxSA2tleRIUCgV2YWx1ZRgCIAEoDFIFdmFsdWVC",
-            "IFoeY29zbW9zc2RrLmlvL3N0b3JlL2ludGVybmFsL2t2YgZwcm90bzM="));
+            "M1oxZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay9zdG9yZS92Mi9pbnRl",
+            "cm5hbC9rdmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

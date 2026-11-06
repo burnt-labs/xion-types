@@ -27,7 +27,7 @@ namespace Ibc.Core.Commitment.V2 {
             "CidpYmMvY29yZS9jb21taXRtZW50L3YyL2NvbW1pdG1lbnQucHJvdG8SFmli",
             "Yy5jb3JlLmNvbW1pdG1lbnQudjIiJwoKTWVya2xlUGF0aBIZCghrZXlfcGF0",
             "aBgBIAMoDFIHa2V5UGF0aEJCWkBnaXRodWIuY29tL2Nvc21vcy9pYmMtZ28v",
-            "djEwL21vZHVsZXMvY29yZS8yMy1jb21taXRtZW50L3R5cGVzL3YyYgZwcm90",
+            "djExL21vZHVsZXMvY29yZS8yMy1jb21taXRtZW50L3R5cGVzL3YyYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },

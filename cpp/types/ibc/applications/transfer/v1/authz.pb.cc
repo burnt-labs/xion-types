@@ -127,7 +127,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2fauthz_
     "bc.applications.transfer.v1.AllocationB\004"
     "\310\336\037\000R\013allocations:&\312\264-\"cosmos.authz.v1be"
     "ta1.AuthorizationB:Z8github.com/cosmos/i"
-    "bc-go/v10/modules/apps/transfer/typesb\006p"
+    "bc-go/v11/modules/apps/transfer/typesb\006p"
     "roto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2fauthz_2eproto_deps[3] =

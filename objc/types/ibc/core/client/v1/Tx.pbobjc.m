@@ -47,8 +47,6 @@ GPBObjCClassDeclaration(MsgIBCSoftwareUpgrade);
 GPBObjCClassDeclaration(MsgIBCSoftwareUpgradeResponse);
 GPBObjCClassDeclaration(MsgRecoverClient);
 GPBObjCClassDeclaration(MsgRecoverClientResponse);
-GPBObjCClassDeclaration(MsgSubmitMisbehaviour);
-GPBObjCClassDeclaration(MsgSubmitMisbehaviourResponse);
 GPBObjCClassDeclaration(MsgUpdateClient);
 GPBObjCClassDeclaration(MsgUpdateClientResponse);
 GPBObjCClassDeclaration(MsgUpdateParams);
@@ -424,112 +422,6 @@ typedef struct MsgUpgradeClientResponse__storage_ {
                                         fields:NULL
                                     fieldCount:0
                                    storageSize:sizeof(MsgUpgradeClientResponse__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - MsgSubmitMisbehaviour
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-
-@implementation MsgSubmitMisbehaviour
-
-@dynamic clientId;
-@dynamic hasMisbehaviour, misbehaviour;
-@dynamic signer;
-
-typedef struct MsgSubmitMisbehaviour__storage_ {
-  uint32_t _has_storage_[1];
-  NSString *clientId;
-  GPBAny *misbehaviour;
-  NSString *signer;
-} MsgSubmitMisbehaviour__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "clientId",
-        .dataTypeSpecific.clazz = Nil,
-        .number = MsgSubmitMisbehaviour_FieldNumber_ClientId,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(MsgSubmitMisbehaviour__storage_, clientId),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "misbehaviour",
-        .dataTypeSpecific.clazz = GPBObjCClass(GPBAny),
-        .number = MsgSubmitMisbehaviour_FieldNumber_Misbehaviour,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(MsgSubmitMisbehaviour__storage_, misbehaviour),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "signer",
-        .dataTypeSpecific.clazz = Nil,
-        .number = MsgSubmitMisbehaviour_FieldNumber_Signer,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(MsgSubmitMisbehaviour__storage_, signer),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeString,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgSubmitMisbehaviour)
-                                   messageName:@"MsgSubmitMisbehaviour"
-                               fileDescription:&TxRoot_FileDescription
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(MsgSubmitMisbehaviour__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma clang diagnostic pop
-
-#pragma mark - MsgSubmitMisbehaviourResponse
-
-@implementation MsgSubmitMisbehaviourResponse
-
-
-typedef struct MsgSubmitMisbehaviourResponse__storage_ {
-  uint32_t _has_storage_[1];
-} MsgSubmitMisbehaviourResponse__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgSubmitMisbehaviourResponse)
-                                   messageName:@"MsgSubmitMisbehaviourResponse"
-                               fileDescription:&TxRoot_FileDescription
-                                        fields:NULL
-                                    fieldCount:0
-                                   storageSize:sizeof(MsgSubmitMisbehaviourResponse__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

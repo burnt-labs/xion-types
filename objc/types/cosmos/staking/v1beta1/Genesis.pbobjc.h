@@ -28,9 +28,11 @@
 
 CF_EXTERN_C_BEGIN
 
+@class ConsensusKeyRotationHistory;
 @class Delegation;
 @class LastValidatorPower;
 @class Params;
+@class PendingConsensusKeyRotation;
 @class Redelegation;
 @class UnbondingDelegation;
 @class Validator;
@@ -63,6 +65,8 @@ typedef GPB_ENUM(GenesisState_FieldNumber) {
   GenesisState_FieldNumber_UnbondingDelegationsArray = 6,
   GenesisState_FieldNumber_RedelegationsArray = 7,
   GenesisState_FieldNumber_Exported = 8,
+  GenesisState_FieldNumber_ConsensusKeyRotationHistoryArray = 9,
+  GenesisState_FieldNumber_PendingConsensusKeyRotationsArray = 10,
 };
 
 /**
@@ -112,6 +116,22 @@ GPB_FINAL @interface GenesisState : GPBMessage
 /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
 @property(nonatomic, readwrite) BOOL exported;
 
+/**
+ * consensus_key_rotation_history defines consensus key rotations that are
+ * still within the unbonding window.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ConsensusKeyRotationHistory*> *consensusKeyRotationHistoryArray;
+/** The number of items in @c consensusKeyRotationHistoryArray without causing the container to be created. */
+@property(nonatomic, readonly) NSUInteger consensusKeyRotationHistoryArray_Count;
+
+/**
+ * pending_consensus_key_rotations defines consensus key rotations whose
+ * SDK-side validator state has not reached its deferred apply height yet.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<PendingConsensusKeyRotation*> *pendingConsensusKeyRotationsArray;
+/** The number of items in @c pendingConsensusKeyRotationsArray without causing the container to be created. */
+@property(nonatomic, readonly) NSUInteger pendingConsensusKeyRotationsArray_Count;
+
 @end
 
 #pragma mark - LastValidatorPower
@@ -131,6 +151,84 @@ GPB_FINAL @interface LastValidatorPower : GPBMessage
 
 /** power defines the power of the validator. */
 @property(nonatomic, readwrite) int64_t power;
+
+@end
+
+#pragma mark - ConsensusKeyRotationHistory
+
+typedef GPB_ENUM(ConsensusKeyRotationHistory_FieldNumber) {
+  ConsensusKeyRotationHistory_FieldNumber_ValidatorAddress = 1,
+  ConsensusKeyRotationHistory_FieldNumber_OldConsensusAddress = 2,
+  ConsensusKeyRotationHistory_FieldNumber_MaturityTime = 3,
+  ConsensusKeyRotationHistory_FieldNumber_EvidenceExpiryTime = 4,
+  ConsensusKeyRotationHistory_FieldNumber_EvidenceExpiryHeight = 5,
+};
+
+/**
+ * ConsensusKeyRotationHistory stores the old consensus address for a
+ * validator rotation until the unbonding window has elapsed.
+ **/
+GPB_FINAL @interface ConsensusKeyRotationHistory : GPBMessage
+
+/** validator_address is the validator operator address. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *validatorAddress;
+
+/** old_consensus_address is the consensus address rotated away from. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *oldConsensusAddress;
+
+/**
+ * maturity_time is the unbonding-window maturity of this validator's
+ * re-rotation rate limit, present only while that gate is still active. A
+ * zero value means the gate has already been retired and only the evidence
+ * lock (below) remains.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) GPBTimestamp *maturityTime;
+/** Test to see if @c maturityTime has been set. */
+@property(nonatomic, readwrite) BOOL hasMaturityTime;
+
+/**
+ * evidence_expiry_time is the time after which equivocation evidence for the
+ * rotated-away key can no longer be admitted on the time dimension.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) GPBTimestamp *evidenceExpiryTime;
+/** Test to see if @c evidenceExpiryTime has been set. */
+@property(nonatomic, readwrite) BOOL hasEvidenceExpiryTime;
+
+/**
+ * evidence_expiry_height is the block height after which equivocation evidence
+ * for the rotated-away key can no longer be admitted on the height dimension.
+ **/
+@property(nonatomic, readwrite) int64_t evidenceExpiryHeight;
+
+@end
+
+#pragma mark - PendingConsensusKeyRotation
+
+typedef GPB_ENUM(PendingConsensusKeyRotation_FieldNumber) {
+  PendingConsensusKeyRotation_FieldNumber_ValidatorAddress = 1,
+  PendingConsensusKeyRotation_FieldNumber_NewPubkey = 2,
+  PendingConsensusKeyRotation_FieldNumber_ApplyHeight = 3,
+};
+
+/**
+ * PendingConsensusKeyRotation stores a consensus key rotation that is waiting
+ * for its deferred SDK-side state update.
+ **/
+GPB_FINAL @interface PendingConsensusKeyRotation : GPBMessage
+
+/** validator_address is the validator operator address. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *validatorAddress;
+
+/** new_pubkey is the consensus public key being rotated to. */
+@property(nonatomic, readwrite, strong, null_resettable) GPBAny *newPubkey NS_RETURNS_NOT_RETAINED;
+/** Test to see if @c newPubkey has been set. */
+@property(nonatomic, readwrite) BOOL hasNewPubkey;
+
+/**
+ * apply_height is the block height where the SDK-side state update should
+ * occur.
+ **/
+@property(nonatomic, readwrite) int64_t applyHeight;
 
 @end
 

@@ -52,7 +52,7 @@ void   abstractaccount__v1__params__free_unpacked
   assert(message->base.descriptor == &abstractaccount__v1__params__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor abstractaccount__v1__params__field_descriptors[4] =
+static const ProtobufCFieldDescriptor abstractaccount__v1__params__field_descriptors[6] =
 {
   {
     "allow_all_code_ids",
@@ -102,17 +102,44 @@ static const ProtobufCFieldDescriptor abstractaccount__v1__params__field_descrip
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "registration_enabled",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Abstractaccount__V1__Params, registration_enabled),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "address_derivation_hash",
+    8,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Abstractaccount__V1__Params, address_derivation_hash),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned abstractaccount__v1__params__field_indices_by_name[] = {
+  5,   /* field[5] = address_derivation_hash */
   0,   /* field[0] = allow_all_code_ids */
   1,   /* field[1] = allowed_code_ids */
   3,   /* field[3] = max_gas_after */
   2,   /* field[2] = max_gas_before */
+  4,   /* field[4] = registration_enabled */
 };
-static const ProtobufCIntRange abstractaccount__v1__params__number_ranges[1 + 1] =
+static const ProtobufCIntRange abstractaccount__v1__params__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 7, 4 },
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor abstractaccount__v1__params__descriptor =
 {
@@ -122,10 +149,10 @@ const ProtobufCMessageDescriptor abstractaccount__v1__params__descriptor =
   "Abstractaccount__V1__Params",
   "abstractaccount.v1",
   sizeof(Abstractaccount__V1__Params),
-  4,
+  6,
   abstractaccount__v1__params__field_descriptors,
   abstractaccount__v1__params__field_indices_by_name,
-  1,  abstractaccount__v1__params__number_ranges,
+  2,  abstractaccount__v1__params__number_ranges,
   (ProtobufCMessageInit) abstractaccount__v1__params__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

@@ -78,17 +78,16 @@ GPBEnumDescriptor *SignMode_EnumDescriptor(void) {
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     static const char *valueNames =
         "SignModeUnspecified\000SignModeDirect\000SignM"
-        "odeTextual\000SignModeDirectAux\000SignModeLeg"
-        "acyAminoJson\000SignModeEip191\000";
+        "odeDirectAux\000SignModeLegacyAminoJson\000Sig"
+        "nModeEip191\000";
     static const int32_t values[] = {
         SignMode_SignModeUnspecified,
         SignMode_SignModeDirect,
-        SignMode_SignModeTextual,
         SignMode_SignModeDirectAux,
         SignMode_SignModeLegacyAminoJson,
         SignMode_SignModeEip191,
     };
-    static const char *extraTextFormatInfo = "\001\005d\344\343\203\000";
+    static const char *extraTextFormatInfo = "\001\004d\344\343\203\000";
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(SignMode)
                                        valueNames:valueNames
@@ -109,7 +108,6 @@ BOOL SignMode_IsValidValue(int32_t value__) {
   switch (value__) {
     case SignMode_SignModeUnspecified:
     case SignMode_SignModeDirect:
-    case SignMode_SignModeTextual:
     case SignMode_SignModeDirectAux:
     case SignMode_SignModeLegacyAminoJson:
     case SignMode_SignModeEip191:

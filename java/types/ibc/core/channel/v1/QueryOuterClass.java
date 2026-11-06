@@ -28012,7 +28012,7 @@ public final class QueryOuterClass {
       "ryNextSequenceSendResponse\"U\202\323\344\223\002O\022M/ibc" +
       "/core/channel/v1/channels/{channel_id}/p" +
       "orts/{port_id}/next_sequence_sendB<Z:git" +
-      "hub.com/cosmos/ibc-go/v10/modules/core/0" +
+      "hub.com/cosmos/ibc-go/v11/modules/core/0" +
       "4-channel/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

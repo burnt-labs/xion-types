@@ -42,7 +42,7 @@ namespace Ibc.Core.Client.V2 {
             "bnQudjIuUXVlcnlDb25maWdSZXF1ZXN0GicuaWJjLmNvcmUuY2xpZW50LnYy",
             "LlF1ZXJ5Q29uZmlnUmVzcG9uc2UiLoLT5JMCKBImL2liYy9jb3JlL2NsaWVu",
             "dC92Mi9jb25maWcve2NsaWVudF9pZH1CPlo8Z2l0aHViLmNvbS9jb3Ntb3Mv",
-            "aWJjLWdvL3YxMC9tb2R1bGVzL2NvcmUvMDItY2xpZW50L3YyL3R5cGVzYgZw",
+            "aWJjLWdvL3YxMS9tb2R1bGVzL2NvcmUvMDItY2xpZW50L3YyL3R5cGVzYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ibc.Core.Client.V2.CounterpartyReflection.Descriptor, global::Ibc.Core.Client.V2.ConfigReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },

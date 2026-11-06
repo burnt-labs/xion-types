@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+// SPDX-License-Identifier: Apache-2.0
+
 import Foundation
 import SwiftProtobuf
 

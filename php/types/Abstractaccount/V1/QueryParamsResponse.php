@@ -16,6 +16,8 @@ use Google\Protobuf\Internal\GPBUtil;
 class QueryParamsResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * params holds the current module parameters.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      */
     protected $params = null;
@@ -27,6 +29,7 @@ class QueryParamsResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Abstractaccount\V1\Params $params
+     *           params holds the current module parameters.
      * }
      */
     public function __construct($data = NULL) {
@@ -35,6 +38,8 @@ class QueryParamsResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * params holds the current module parameters.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @return \Abstractaccount\V1\Params|null
      */
@@ -54,6 +59,8 @@ class QueryParamsResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * params holds the current module parameters.
+     *
      * Generated from protobuf field <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @param \Abstractaccount\V1\Params $var
      * @return $this

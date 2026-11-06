@@ -88,6 +88,7 @@ static GPBFileDescription TxRoot_FileDescription = {
 @dynamic timeoutTimestamp;
 @dynamic memo;
 @dynamic encoding;
+@dynamic useAliasing;
 
 typedef struct MsgTransfer__storage_ {
   uint32_t _has_storage_[1];
@@ -189,6 +190,15 @@ typedef struct MsgTransfer__storage_ {
         .offset = (uint32_t)offsetof(MsgTransfer__storage_, encoding),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "useAliasing",
+        .dataTypeSpecific.clazz = Nil,
+        .number = MsgTransfer_FieldNumber_UseAliasing,
+        .hasIndex = 9,
+        .offset = 10,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
       },
     };
     GPBDescriptor *localDescriptor =

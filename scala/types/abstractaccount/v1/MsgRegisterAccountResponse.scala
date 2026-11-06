@@ -6,6 +6,11 @@
 package abstractaccount.v1
 
 /** MsgRegisterAccountResponse is the response message for MsgRegisterAccount.
+  *
+  * @param address
+  *   address is the address of the newly registered account contract.
+  * @param data
+  *   data is the raw response data from the contract instantiation.
   */
 @SerialVersionUID(0L)
 final case class MsgRegisterAccountResponse(

@@ -23,7 +23,7 @@ object TokenProto extends _root_.scalapb.GeneratedFileObject {
   20SHQoEYmFzZRgBIAEoCUIJ4j8GEgRiYXNlUgRiYXNlEkcKBXRyYWNlGAMgAygLMiEuaWJjLmFwcGxpY2F0aW9ucy50cmFuc2Zlc
   i52MS5Ib3BCDuI/BxIFdHJhY2XI3h8AUgV0cmFjZSJgCgNIb3ASJAoHcG9ydF9pZBgBIAEoCUIL4j8IEgZwb3J0SWRSBnBvcnRJZ
   BItCgpjaGFubmVsX2lkGAIgASgJQg7iPwsSCWNoYW5uZWxJZFIJY2hhbm5lbElkOgSYoB8AQjpaOGdpdGh1Yi5jb20vY29zbW9zL
-  2liYy1nby92MTAvbW9kdWxlcy9hcHBzL3RyYW5zZmVyL3R5cGVzYgZwcm90bzM="""
+  2liYy1nby92MTEvbW9kdWxlcy9hcHBzL3RyYW5zZmVyL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

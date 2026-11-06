@@ -17,13 +17,15 @@ class Params
         \GPBMetadata\Gogoproto\Gogo::initOnce();
         $pool->internalAddGeneratedFile(
             '
-д
-abstractaccount/v1/params.protoabstractaccount.v1"в
+к
+abstractaccount/v1/params.protoabstractaccount.v1"ф
 Params@
 allow_all_code_ids (BтоAllowAllCodeIDsRallowAllCodeIds<
 allowed_code_ids (BтоAllowedCodeIDsRallowedCodeIds$
 max_gas_before (RmaxGasBefore"
-max_gas_after (RmaxGasAfterB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesbproto3'
+max_gas_after (RmaxGasAfter1
+registration_enabled (RregistrationEnabledQ
+address_derivation_hash (BтоAddressDerivationHashRaddressDerivationHashJJB4Z2github.com/burnt-labs/xion/x/abstractaccount/typesbproto3'
         , true);
 
         static::$is_initialized = true;

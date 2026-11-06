@@ -19,7 +19,7 @@ object MetadataProto extends _root_.scalapb.GeneratedFileObject {
   GVyQ29ubmVjdGlvbklkEkMKEmhvc3RfY29ubmVjdGlvbl9pZBgDIAEoCUIV4j8SEhBob3N0Q29ubmVjdGlvbklkUhBob3N0Q29ub
   mVjdGlvbklkEiYKB2FkZHJlc3MYBCABKAlCDOI/CRIHYWRkcmVzc1IHYWRkcmVzcxIpCghlbmNvZGluZxgFIAEoCUIN4j8KEghlb
   mNvZGluZ1IIZW5jb2RpbmcSJAoHdHhfdHlwZRgGIAEoCUIL4j8IEgZ0eFR5cGVSBnR4VHlwZUJIWkZnaXRodWIuY29tL2Nvc21vc
-  y9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNoYWluLWFjY291bnRzL3R5cGVzYgZwcm90bzM="""
+  y9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNoYWluLWFjY291bnRzL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

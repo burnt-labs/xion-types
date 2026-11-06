@@ -42,7 +42,7 @@ namespace Ibc.Lightclients.Wasm.V1 {
             "Ky5pYmMubGlnaHRjbGllbnRzLndhc20udjEuUXVlcnlDb2RlUmVzcG9uc2Ui",
             "O4LT5JMCNRIzL2liYy9saWdodGNsaWVudHMvd2FzbS92MS9jaGVja3N1bXMv",
             "e2NoZWNrc3VtfS9jb2RlQkJaQGdpdGh1Yi5jb20vY29zbW9zL2liYy1nby9t",
-            "b2R1bGVzL2xpZ2h0LWNsaWVudHMvMDgtd2FzbS92MTAvdHlwZXNiBnByb3Rv",
+            "b2R1bGVzL2xpZ2h0LWNsaWVudHMvMDgtd2FzbS92MTEvdHlwZXNiBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Cosmos.Base.Query.V1Beta1.PaginationReflection.Descriptor, },

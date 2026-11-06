@@ -232,6 +232,7 @@ class MsgTransfer final :
     kTokenFieldNumber = 3,
     kTimeoutHeightFieldNumber = 6,
     kTimeoutTimestampFieldNumber = 7,
+    kUseAliasingFieldNumber = 10,
   };
   // string source_port = 1 [json_name = "sourcePort"];
   void clear_source_port() ;
@@ -369,12 +370,22 @@ class MsgTransfer final :
   void _internal_set_timeout_timestamp(::uint64_t value);
 
   public:
+  // bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];
+  void clear_use_aliasing() ;
+  bool use_aliasing() const;
+  void set_use_aliasing(bool value);
+
+  private:
+  bool _internal_use_aliasing() const;
+  void _internal_set_use_aliasing(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:ibc.applications.transfer.v1.MsgTransfer)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<4, 9, 2, 108, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<4, 10, 2, 108, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -390,6 +401,7 @@ class MsgTransfer final :
     ::cosmos::base::v1beta1::Coin* token_;
     ::ibc::core::client::v1::Height* timeout_height_;
     ::uint64_t timeout_timestamp_;
+    bool use_aliasing_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1387,6 +1399,28 @@ inline void MsgTransfer::set_allocated_encoding(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:ibc.applications.transfer.v1.MsgTransfer.encoding)
+}
+
+// bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];
+inline void MsgTransfer::clear_use_aliasing() {
+  _impl_.use_aliasing_ = false;
+}
+inline bool MsgTransfer::use_aliasing() const {
+  // @@protoc_insertion_point(field_get:ibc.applications.transfer.v1.MsgTransfer.use_aliasing)
+  return _internal_use_aliasing();
+}
+inline void MsgTransfer::set_use_aliasing(bool value) {
+  _internal_set_use_aliasing(value);
+  // @@protoc_insertion_point(field_set:ibc.applications.transfer.v1.MsgTransfer.use_aliasing)
+}
+inline bool MsgTransfer::_internal_use_aliasing() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.use_aliasing_;
+}
+inline void MsgTransfer::_internal_set_use_aliasing(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.use_aliasing_ = value;
 }
 
 // -------------------------------------------------------------------

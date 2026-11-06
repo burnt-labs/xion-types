@@ -29,7 +29,7 @@ namespace Ibc.Applications.Transfer.V1 {
             "Z29nb3Byb3RvL2dvZ28ucHJvdG8aF2Nvc21vcy9tc2cvdjEvbXNnLnByb3Rv",
             "Gh5jb3Ntb3MvYmFzZS92MWJldGExL2NvaW4ucHJvdG8aH2liYy9jb3JlL2Ns",
             "aWVudC92MS9jbGllbnQucHJvdG8aK2liYy9hcHBsaWNhdGlvbnMvdHJhbnNm",
-            "ZXIvdjEvdHJhbnNmZXIucHJvdG8inAMKC01zZ1RyYW5zZmVyEh8KC3NvdXJj",
+            "ZXIvdjEvdHJhbnNmZXIucHJvdG8ixgMKC01zZ1RyYW5zZmVyEh8KC3NvdXJj",
             "ZV9wb3J0GAEgASgJUgpzb3VyY2VQb3J0EiUKDnNvdXJjZV9jaGFubmVsGAIg",
             "ASgJUg1zb3VyY2VDaGFubmVsEjoKBXRva2VuGAMgASgLMhkuY29zbW9zLmJh",
             "c2UudjFiZXRhMS5Db2luQgnI3h8AqOewKgFSBXRva2VuEhYKBnNlbmRlchgE",
@@ -37,24 +37,25 @@ namespace Ibc.Applications.Transfer.V1 {
             "aW1lb3V0X2hlaWdodBgGIAEoCzIaLmliYy5jb3JlLmNsaWVudC52MS5IZWln",
             "aHRCCcjeHwCo57AqAVINdGltZW91dEhlaWdodBIrChF0aW1lb3V0X3RpbWVz",
             "dGFtcBgHIAEoBFIQdGltZW91dFRpbWVzdGFtcBISCgRtZW1vGAggASgJUgRt",
-            "ZW1vEhoKCGVuY29kaW5nGAkgASgJUghlbmNvZGluZzoqiKAfAILnsCoGc2Vu",
-            "ZGVyiuewKhZjb3Ntb3Mtc2RrL01zZ1RyYW5zZmVyIjcKE01zZ1RyYW5zZmVy",
-            "UmVzcG9uc2USGgoIc2VxdWVuY2UYASABKARSCHNlcXVlbmNlOgSIoB8AIn4K",
-            "D01zZ1VwZGF0ZVBhcmFtcxIWCgZzaWduZXIYASABKAlSBnNpZ25lchJCCgZw",
-            "YXJhbXMYAiABKAsyJC5pYmMuYXBwbGljYXRpb25zLnRyYW5zZmVyLnYxLlBh",
-            "cmFtc0IEyN4fAFIGcGFyYW1zOg+IoB8AguewKgZzaWduZXIiGQoXTXNnVXBk",
-            "YXRlUGFyYW1zUmVzcG9uc2Uy7AEKA01zZxJoCghUcmFuc2ZlchIpLmliYy5h",
-            "cHBsaWNhdGlvbnMudHJhbnNmZXIudjEuTXNnVHJhbnNmZXIaMS5pYmMuYXBw",
-            "bGljYXRpb25zLnRyYW5zZmVyLnYxLk1zZ1RyYW5zZmVyUmVzcG9uc2USdAoM",
-            "VXBkYXRlUGFyYW1zEi0uaWJjLmFwcGxpY2F0aW9ucy50cmFuc2Zlci52MS5N",
-            "c2dVcGRhdGVQYXJhbXMaNS5pYmMuYXBwbGljYXRpb25zLnRyYW5zZmVyLnYx",
-            "Lk1zZ1VwZGF0ZVBhcmFtc1Jlc3BvbnNlGgWA57AqAUI6WjhnaXRodWIuY29t",
-            "L2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy90cmFuc2Zlci90eXBl",
-            "c2IGcHJvdG8z"));
+            "ZW1vEhoKCGVuY29kaW5nGAkgASgJUghlbmNvZGluZxIoCgx1c2VfYWxpYXNp",
+            "bmcYCiABKAhCBajnsCoBUgt1c2VBbGlhc2luZzoqiKAfAILnsCoGc2VuZGVy",
+            "iuewKhZjb3Ntb3Mtc2RrL01zZ1RyYW5zZmVyIjcKE01zZ1RyYW5zZmVyUmVz",
+            "cG9uc2USGgoIc2VxdWVuY2UYASABKARSCHNlcXVlbmNlOgSIoB8AIn4KD01z",
+            "Z1VwZGF0ZVBhcmFtcxIWCgZzaWduZXIYASABKAlSBnNpZ25lchJCCgZwYXJh",
+            "bXMYAiABKAsyJC5pYmMuYXBwbGljYXRpb25zLnRyYW5zZmVyLnYxLlBhcmFt",
+            "c0IEyN4fAFIGcGFyYW1zOg+IoB8AguewKgZzaWduZXIiGQoXTXNnVXBkYXRl",
+            "UGFyYW1zUmVzcG9uc2Uy7AEKA01zZxJoCghUcmFuc2ZlchIpLmliYy5hcHBs",
+            "aWNhdGlvbnMudHJhbnNmZXIudjEuTXNnVHJhbnNmZXIaMS5pYmMuYXBwbGlj",
+            "YXRpb25zLnRyYW5zZmVyLnYxLk1zZ1RyYW5zZmVyUmVzcG9uc2USdAoMVXBk",
+            "YXRlUGFyYW1zEi0uaWJjLmFwcGxpY2F0aW9ucy50cmFuc2Zlci52MS5Nc2dV",
+            "cGRhdGVQYXJhbXMaNS5pYmMuYXBwbGljYXRpb25zLnRyYW5zZmVyLnYxLk1z",
+            "Z1VwZGF0ZVBhcmFtc1Jlc3BvbnNlGgWA57AqAUI6WjhnaXRodWIuY29tL2Nv",
+            "c21vcy9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy90cmFuc2Zlci90eXBlc2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Amino.AminoReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, global::Ibc.Core.Client.V1.ClientReflection.Descriptor, global::Ibc.Applications.Transfer.V1.TransferReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.Transfer.V1.MsgTransfer), global::Ibc.Applications.Transfer.V1.MsgTransfer.Parser, new[]{ "SourcePort", "SourceChannel", "Token", "Sender", "Receiver", "TimeoutHeight", "TimeoutTimestamp", "Memo", "Encoding" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.Transfer.V1.MsgTransfer), global::Ibc.Applications.Transfer.V1.MsgTransfer.Parser, new[]{ "SourcePort", "SourceChannel", "Token", "Sender", "Receiver", "TimeoutHeight", "TimeoutTimestamp", "Memo", "Encoding", "UseAliasing" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.Transfer.V1.MsgTransferResponse), global::Ibc.Applications.Transfer.V1.MsgTransferResponse.Parser, new[]{ "Sequence" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.Transfer.V1.MsgUpdateParams), global::Ibc.Applications.Transfer.V1.MsgUpdateParams.Parser, new[]{ "Signer", "Params" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ibc.Applications.Transfer.V1.MsgUpdateParamsResponse), global::Ibc.Applications.Transfer.V1.MsgUpdateParamsResponse.Parser, null, null, null, null, null)
@@ -112,6 +113,7 @@ namespace Ibc.Applications.Transfer.V1 {
       timeoutTimestamp_ = other.timeoutTimestamp_;
       memo_ = other.memo_;
       encoding_ = other.encoding_;
+      useAliasing_ = other.useAliasing_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -260,6 +262,26 @@ namespace Ibc.Applications.Transfer.V1 {
       }
     }
 
+    /// <summary>Field number for the "use_aliasing" field.</summary>
+    public const int UseAliasingFieldNumber = 10;
+    private bool useAliasing_;
+    /// <summary>
+    /// boolean flag to indicate if the transfer message
+    /// is sent with the IBC v2 protocol but uses v1 channel identifiers.
+    /// In this case, the v1 channel identifiers function as aliases to the
+    /// underlying client ids.
+    /// This only needs to be set if the channel IDs
+    /// are V1 channel identifiers.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool UseAliasing {
+      get { return useAliasing_; }
+      set {
+        useAliasing_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -284,6 +306,7 @@ namespace Ibc.Applications.Transfer.V1 {
       if (TimeoutTimestamp != other.TimeoutTimestamp) return false;
       if (Memo != other.Memo) return false;
       if (Encoding != other.Encoding) return false;
+      if (UseAliasing != other.UseAliasing) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -300,6 +323,7 @@ namespace Ibc.Applications.Transfer.V1 {
       if (TimeoutTimestamp != 0UL) hash ^= TimeoutTimestamp.GetHashCode();
       if (Memo.Length != 0) hash ^= Memo.GetHashCode();
       if (Encoding.Length != 0) hash ^= Encoding.GetHashCode();
+      if (UseAliasing != false) hash ^= UseAliasing.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -354,6 +378,10 @@ namespace Ibc.Applications.Transfer.V1 {
         output.WriteRawTag(74);
         output.WriteString(Encoding);
       }
+      if (UseAliasing != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(UseAliasing);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -400,6 +428,10 @@ namespace Ibc.Applications.Transfer.V1 {
         output.WriteRawTag(74);
         output.WriteString(Encoding);
       }
+      if (UseAliasing != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(UseAliasing);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -436,6 +468,9 @@ namespace Ibc.Applications.Transfer.V1 {
       }
       if (Encoding.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Encoding);
+      }
+      if (UseAliasing != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -481,6 +516,9 @@ namespace Ibc.Applications.Transfer.V1 {
       }
       if (other.Encoding.Length != 0) {
         Encoding = other.Encoding;
+      }
+      if (other.UseAliasing != false) {
+        UseAliasing = other.UseAliasing;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -539,6 +577,10 @@ namespace Ibc.Applications.Transfer.V1 {
             Encoding = input.ReadString();
             break;
           }
+          case 80: {
+            UseAliasing = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -594,6 +636,10 @@ namespace Ibc.Applications.Transfer.V1 {
           }
           case 74: {
             Encoding = input.ReadString();
+            break;
+          }
+          case 80: {
+            UseAliasing = input.ReadBool();
             break;
           }
         }

@@ -14,18 +14,20 @@ _sym_db = _symbol_database.Default()
 from xion_types.gogoproto import gogo_pb2 as gogoproto_dot_gogo__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1f\x61\x62stractaccount/v1/params.proto\x12\x12\x61\x62stractaccount.v1\x1a\x14gogoproto/gogo.proto\"\xd2\x01\n\x06Params\x12@\n\x12\x61llow_all_code_ids\x18\x01 \x01(\x08\x42\x13\xe2\xde\x1f\x0f\x41llowAllCodeIDsR\x0f\x61llowAllCodeIds\x12<\n\x10\x61llowed_code_ids\x18\x02 \x03(\x04\x42\x12\xe2\xde\x1f\x0e\x41llowedCodeIDsR\x0e\x61llowedCodeIds\x12$\n\x0emax_gas_before\x18\x03 \x01(\x04R\x0cmaxGasBefore\x12\"\n\rmax_gas_after\x18\x04 \x01(\x04R\x0bmaxGasAfterB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1f\x61\x62stractaccount/v1/params.proto\x12\x12\x61\x62stractaccount.v1\x1a\x14gogoproto/gogo.proto\"\xe4\x02\n\x06Params\x12@\n\x12\x61llow_all_code_ids\x18\x01 \x01(\x08\x42\x13\xe2\xde\x1f\x0f\x41llowAllCodeIDsR\x0f\x61llowAllCodeIds\x12<\n\x10\x61llowed_code_ids\x18\x02 \x03(\x04\x42\x12\xe2\xde\x1f\x0e\x41llowedCodeIDsR\x0e\x61llowedCodeIds\x12$\n\x0emax_gas_before\x18\x03 \x01(\x04R\x0cmaxGasBefore\x12\"\n\rmax_gas_after\x18\x04 \x01(\x04R\x0bmaxGasAfter\x12\x31\n\x14registration_enabled\x18\x07 \x01(\x08R\x13registrationEnabled\x12Q\n\x17\x61\x64\x64ress_derivation_hash\x18\x08 \x01(\x0c\x42\x19\xe2\xde\x1f\x15\x41\x64\x64ressDerivationHashR\x15\x61\x64\x64ressDerivationHashJ\x04\x08\x05\x10\x06J\x04\x08\x06\x10\x07\x42\x34Z2github.com/burnt-labs/xion/x/abstractaccount/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'abstractaccount.v1.params_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z>github.com/burnt-labs/abstract-account/x/abstractaccount/types'
+  _globals['DESCRIPTOR']._serialized_options = b'Z2github.com/burnt-labs/xion/x/abstractaccount/types'
   _globals['_PARAMS'].fields_by_name['allow_all_code_ids']._options = None
   _globals['_PARAMS'].fields_by_name['allow_all_code_ids']._serialized_options = b'\342\336\037\017AllowAllCodeIDs'
   _globals['_PARAMS'].fields_by_name['allowed_code_ids']._options = None
   _globals['_PARAMS'].fields_by_name['allowed_code_ids']._serialized_options = b'\342\336\037\016AllowedCodeIDs'
+  _globals['_PARAMS'].fields_by_name['address_derivation_hash']._options = None
+  _globals['_PARAMS'].fields_by_name['address_derivation_hash']._serialized_options = b'\342\336\037\025AddressDerivationHash'
   _globals['_PARAMS']._serialized_start=78
-  _globals['_PARAMS']._serialized_end=288
+  _globals['_PARAMS']._serialized_end=434
 # @@protoc_insertion_point(module_scope)

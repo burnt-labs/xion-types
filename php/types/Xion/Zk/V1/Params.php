@@ -33,6 +33,48 @@ class Params extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>uint64 upload_chunk_gas = 3 [json_name = "uploadChunkGas"];</code>
      */
     protected $upload_chunk_gas = 0;
+    /**
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     *
+     * Generated from protobuf field <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+     */
+    protected $max_groth16_proof_size_bytes = 0;
+    /**
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     *
+     * Generated from protobuf field <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+     */
+    protected $max_groth16_public_input_size_bytes = 0;
+    /**
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     *
+     * Generated from protobuf field <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+     */
+    protected $max_ultra_honk_proof_size_bytes = 0;
+    /**
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     *
+     * Generated from protobuf field <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+     */
+    protected $max_ultra_honk_public_input_size_bytes = 0;
+    /**
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     *
+     * Generated from protobuf field <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+     */
+    protected $max_gnark_proof_size_bytes = 0;
+    /**
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     *
+     * Generated from protobuf field <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+     */
+    protected $max_gnark_public_input_size_bytes = 0;
 
     /**
      * Constructor.
@@ -46,6 +88,24 @@ class Params extends \Google\Protobuf\Internal\Message
      *           upload_chunk_size defines the byte-size of each gas tier.
      *     @type int|string $upload_chunk_gas
      *           upload_chunk_gas defines the gas cost per upload chunk.
+     *     @type int|string $max_groth16_proof_size_bytes
+     *           max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     *     @type int|string $max_groth16_public_input_size_bytes
+     *           max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     *           inputs. The size is computed as the total UTF-8 byte length of all provided
+     *           public input strings.
+     *     @type int|string $max_ultra_honk_proof_size_bytes
+     *           max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     *     @type int|string $max_ultra_honk_public_input_size_bytes
+     *           max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     *           public inputs. UltraHonk public inputs are provided as raw bytes.
+     *     @type int|string $max_gnark_proof_size_bytes
+     *           max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     *           (binary).
+     *     @type int|string $max_gnark_public_input_size_bytes
+     *           max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     *           inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     *           big-endian field elements).
      * }
      */
     public function __construct($data = NULL) {
@@ -127,6 +187,174 @@ class Params extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkUint64($var);
         $this->upload_chunk_gas = $var;
+
+        return $this;
+    }
+
+    /**
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     *
+     * Generated from protobuf field <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+     * @return int|string
+     */
+    public function getMaxGroth16ProofSizeBytes()
+    {
+        return $this->max_groth16_proof_size_bytes;
+    }
+
+    /**
+     * max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+     *
+     * Generated from protobuf field <code>uint64 max_groth16_proof_size_bytes = 4 [json_name = "maxGroth16ProofSizeBytes"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setMaxGroth16ProofSizeBytes($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->max_groth16_proof_size_bytes = $var;
+
+        return $this;
+    }
+
+    /**
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     *
+     * Generated from protobuf field <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+     * @return int|string
+     */
+    public function getMaxGroth16PublicInputSizeBytes()
+    {
+        return $this->max_groth16_public_input_size_bytes;
+    }
+
+    /**
+     * max_groth16_public_input_size_bytes caps the size of the Groth16 public
+     * inputs. The size is computed as the total UTF-8 byte length of all provided
+     * public input strings.
+     *
+     * Generated from protobuf field <code>uint64 max_groth16_public_input_size_bytes = 5 [json_name = "maxGroth16PublicInputSizeBytes"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setMaxGroth16PublicInputSizeBytes($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->max_groth16_public_input_size_bytes = $var;
+
+        return $this;
+    }
+
+    /**
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     *
+     * Generated from protobuf field <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+     * @return int|string
+     */
+    public function getMaxUltraHonkProofSizeBytes()
+    {
+        return $this->max_ultra_honk_proof_size_bytes;
+    }
+
+    /**
+     * max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+     *
+     * Generated from protobuf field <code>uint64 max_ultra_honk_proof_size_bytes = 6 [json_name = "maxUltraHonkProofSizeBytes"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setMaxUltraHonkProofSizeBytes($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->max_ultra_honk_proof_size_bytes = $var;
+
+        return $this;
+    }
+
+    /**
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     *
+     * Generated from protobuf field <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+     * @return int|string
+     */
+    public function getMaxUltraHonkPublicInputSizeBytes()
+    {
+        return $this->max_ultra_honk_public_input_size_bytes;
+    }
+
+    /**
+     * max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+     * public inputs. UltraHonk public inputs are provided as raw bytes.
+     *
+     * Generated from protobuf field <code>uint64 max_ultra_honk_public_input_size_bytes = 7 [json_name = "maxUltraHonkPublicInputSizeBytes"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setMaxUltraHonkPublicInputSizeBytes($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->max_ultra_honk_public_input_size_bytes = $var;
+
+        return $this;
+    }
+
+    /**
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     *
+     * Generated from protobuf field <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+     * @return int|string
+     */
+    public function getMaxGnarkProofSizeBytes()
+    {
+        return $this->max_gnark_proof_size_bytes;
+    }
+
+    /**
+     * max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+     * (binary).
+     *
+     * Generated from protobuf field <code>uint64 max_gnark_proof_size_bytes = 8 [json_name = "maxGnarkProofSizeBytes"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setMaxGnarkProofSizeBytes($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->max_gnark_proof_size_bytes = $var;
+
+        return $this;
+    }
+
+    /**
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     *
+     * Generated from protobuf field <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+     * @return int|string
+     */
+    public function getMaxGnarkPublicInputSizeBytes()
+    {
+        return $this->max_gnark_public_input_size_bytes;
+    }
+
+    /**
+     * max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+     * inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+     * big-endian field elements).
+     *
+     * Generated from protobuf field <code>uint64 max_gnark_public_input_size_bytes = 9 [json_name = "maxGnarkPublicInputSizeBytes"];</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setMaxGnarkPublicInputSizeBytes($var)
+    {
+        GPBUtil::checkUint64($var);
+        $this->max_gnark_public_input_size_bytes = $var;
 
         return $this;
     }

@@ -17,14 +17,15 @@ class Events
         \GPBMetadata\Gogoproto\Gogo::initOnce();
         $pool->internalAddGeneratedFile(
             '
-₯
-abstractaccount/v1/events.protoabstractaccount.v1"£
+ς
+abstractaccount/v1/events.protoabstractaccount.v1"ό
 EventAccountRegistered
 creator (	Rcreator#
 code_id (B
 βήCodeIDRcodeId#
 contract_addr (	RcontractAddr%
-account_number (RaccountNumberB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesbproto3'
+account_number (RaccountNumberQ
+address_derivation_hash (BβήAddressDerivationHashRaddressDerivationHashJB4Z2github.com/burnt-labs/xion/x/abstractaccount/typesbproto3'
         , true);
 
         static::$is_initialized = true;

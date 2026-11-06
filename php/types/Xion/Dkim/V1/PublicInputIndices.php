@@ -9,37 +9,54 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * PublicInputIndices defines the indices for extracting data from public inputs.
+ * PublicInputIndices defines the indices for extracting data from public
+ * inputs.
  *
  * Generated from protobuf message <code>xion.dkim.v1.PublicInputIndices</code>
  */
 class PublicInputIndices extends \Google\Protobuf\Internal\Message
 {
     /**
+     * min_length is the minimum required length of the public inputs array.
+     *
      * Generated from protobuf field <code>uint64 min_length = 1 [json_name = "minLength"];</code>
      */
     protected $min_length = 0;
     /**
+     * email_hash_index is the index of the email hash in the public inputs.
+     *
      * Generated from protobuf field <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
      */
     protected $email_hash_index = 0;
     /**
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      */
     protected $dkim_domain_range = null;
     /**
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     *
      * Generated from protobuf field <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
      */
     protected $dkim_hash_index = 0;
     /**
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      */
     protected $tx_bytes_range = null;
     /**
+     * email_host_range is the index range for the email host in public inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      */
     protected $email_host_range = null;
     /**
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      */
     protected $email_subject_range = null;
@@ -51,12 +68,21 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $min_length
+     *           min_length is the minimum required length of the public inputs array.
      *     @type int|string $email_hash_index
+     *           email_hash_index is the index of the email hash in the public inputs.
      *     @type \Xion\Dkim\V1\IndexRange $dkim_domain_range
+     *           dkim_domain_range is the index range for the DKIM domain in public inputs.
      *     @type int|string $dkim_hash_index
+     *           dkim_hash_index is the index of the DKIM signature hash in public inputs.
      *     @type \Xion\Dkim\V1\IndexRange $tx_bytes_range
+     *           tx_bytes_range is the index range for the transaction bytes in public
+     *           inputs.
      *     @type \Xion\Dkim\V1\IndexRange $email_host_range
+     *           email_host_range is the index range for the email host in public inputs.
      *     @type \Xion\Dkim\V1\IndexRange $email_subject_range
+     *           email_subject_range is the index range for the email subject in public
+     *           inputs.
      * }
      */
     public function __construct($data = NULL) {
@@ -65,6 +91,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * min_length is the minimum required length of the public inputs array.
+     *
      * Generated from protobuf field <code>uint64 min_length = 1 [json_name = "minLength"];</code>
      * @return int|string
      */
@@ -74,6 +102,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * min_length is the minimum required length of the public inputs array.
+     *
      * Generated from protobuf field <code>uint64 min_length = 1 [json_name = "minLength"];</code>
      * @param int|string $var
      * @return $this
@@ -87,6 +117,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * email_hash_index is the index of the email hash in the public inputs.
+     *
      * Generated from protobuf field <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
      * @return int|string
      */
@@ -96,6 +128,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * email_hash_index is the index of the email hash in the public inputs.
+     *
      * Generated from protobuf field <code>uint64 email_hash_index = 2 [json_name = "emailHashIndex"];</code>
      * @param int|string $var
      * @return $this
@@ -109,6 +143,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      * @return \Xion\Dkim\V1\IndexRange|null
      */
@@ -128,6 +164,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * dkim_domain_range is the index range for the DKIM domain in public inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange dkim_domain_range = 3 [json_name = "dkimDomainRange", (.gogoproto.nullable) = false];</code>
      * @param \Xion\Dkim\V1\IndexRange $var
      * @return $this
@@ -141,6 +179,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     *
      * Generated from protobuf field <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
      * @return int|string
      */
@@ -150,6 +190,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+     *
      * Generated from protobuf field <code>uint64 dkim_hash_index = 4 [json_name = "dkimHashIndex"];</code>
      * @param int|string $var
      * @return $this
@@ -163,6 +205,9 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      * @return \Xion\Dkim\V1\IndexRange|null
      */
@@ -182,6 +227,9 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * tx_bytes_range is the index range for the transaction bytes in public
+     * inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange tx_bytes_range = 5 [json_name = "txBytesRange", (.gogoproto.nullable) = false];</code>
      * @param \Xion\Dkim\V1\IndexRange $var
      * @return $this
@@ -195,6 +243,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * email_host_range is the index range for the email host in public inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      * @return \Xion\Dkim\V1\IndexRange|null
      */
@@ -214,6 +264,8 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * email_host_range is the index range for the email host in public inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange email_host_range = 6 [json_name = "emailHostRange", (.gogoproto.nullable) = false];</code>
      * @param \Xion\Dkim\V1\IndexRange $var
      * @return $this
@@ -227,6 +279,9 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      * @return \Xion\Dkim\V1\IndexRange|null
      */
@@ -246,6 +301,9 @@ class PublicInputIndices extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * email_subject_range is the index range for the email subject in public
+     * inputs.
+     *
      * Generated from protobuf field <code>.xion.dkim.v1.IndexRange email_subject_range = 7 [json_name = "emailSubjectRange", (.gogoproto.nullable) = false];</code>
      * @param \Xion\Dkim\V1\IndexRange $var
      * @return $this

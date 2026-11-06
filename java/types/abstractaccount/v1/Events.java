@@ -19,11 +19,19 @@ public final class Events {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * creator is the address that requested the account registration.
+     * </pre>
+     *
      * <code>string creator = 1 [json_name = "creator"];</code>
      * @return The creator.
      */
     java.lang.String getCreator();
     /**
+     * <pre>
+     * creator is the address that requested the account registration.
+     * </pre>
+     *
      * <code>string creator = 1 [json_name = "creator"];</code>
      * @return The bytes for creator.
      */
@@ -31,17 +39,29 @@ public final class Events {
         getCreatorBytes();
 
     /**
+     * <pre>
+     * CodeID is the caller-selected implementation active after registration.
+     * </pre>
+     *
      * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      * @return The codeId.
      */
     long getCodeId();
 
     /**
+     * <pre>
+     * contract_addr is the address of the newly instantiated account contract.
+     * </pre>
+     *
      * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      * @return The contractAddr.
      */
     java.lang.String getContractAddr();
     /**
+     * <pre>
+     * contract_addr is the address of the newly instantiated account contract.
+     * </pre>
+     *
      * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      * @return The bytes for contractAddr.
      */
@@ -49,10 +69,25 @@ public final class Events {
         getContractAddrBytes();
 
     /**
+     * <pre>
+     * account_number is the account number assigned to the new account.
+     * </pre>
+     *
      * <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
      * @return The accountNumber.
      */
     long getAccountNumber();
+
+    /**
+     * <pre>
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     * </pre>
+     *
+     * <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @return The addressDerivationHash.
+     */
+    com.google.protobuf.ByteString getAddressDerivationHash();
   }
   /**
    * <pre>
@@ -73,6 +108,7 @@ public final class Events {
     private EventAccountRegistered() {
       creator_ = "";
       contractAddr_ = "";
+      addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -99,6 +135,10 @@ public final class Events {
     @SuppressWarnings("serial")
     private volatile java.lang.Object creator_ = "";
     /**
+     * <pre>
+     * creator is the address that requested the account registration.
+     * </pre>
+     *
      * <code>string creator = 1 [json_name = "creator"];</code>
      * @return The creator.
      */
@@ -116,6 +156,10 @@ public final class Events {
       }
     }
     /**
+     * <pre>
+     * creator is the address that requested the account registration.
+     * </pre>
+     *
      * <code>string creator = 1 [json_name = "creator"];</code>
      * @return The bytes for creator.
      */
@@ -137,6 +181,10 @@ public final class Events {
     public static final int CODE_ID_FIELD_NUMBER = 2;
     private long codeId_ = 0L;
     /**
+     * <pre>
+     * CodeID is the caller-selected implementation active after registration.
+     * </pre>
+     *
      * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
      * @return The codeId.
      */
@@ -149,6 +197,10 @@ public final class Events {
     @SuppressWarnings("serial")
     private volatile java.lang.Object contractAddr_ = "";
     /**
+     * <pre>
+     * contract_addr is the address of the newly instantiated account contract.
+     * </pre>
+     *
      * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      * @return The contractAddr.
      */
@@ -166,6 +218,10 @@ public final class Events {
       }
     }
     /**
+     * <pre>
+     * contract_addr is the address of the newly instantiated account contract.
+     * </pre>
+     *
      * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
      * @return The bytes for contractAddr.
      */
@@ -187,12 +243,32 @@ public final class Events {
     public static final int ACCOUNT_NUMBER_FIELD_NUMBER = 4;
     private long accountNumber_ = 0L;
     /**
+     * <pre>
+     * account_number is the account number assigned to the new account.
+     * </pre>
+     *
      * <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
      * @return The accountNumber.
      */
     @java.lang.Override
     public long getAccountNumber() {
       return accountNumber_;
+    }
+
+    public static final int ADDRESS_DERIVATION_HASH_FIELD_NUMBER = 6;
+    private com.google.protobuf.ByteString addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * address_derivation_hash is the fixed hash used to derive the account's
+     * address.
+     * </pre>
+     *
+     * <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @return The addressDerivationHash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getAddressDerivationHash() {
+      return addressDerivationHash_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -221,6 +297,9 @@ public final class Events {
       if (accountNumber_ != 0L) {
         output.writeUInt64(4, accountNumber_);
       }
+      if (!addressDerivationHash_.isEmpty()) {
+        output.writeBytes(6, addressDerivationHash_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -243,6 +322,10 @@ public final class Events {
       if (accountNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(4, accountNumber_);
+      }
+      if (!addressDerivationHash_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, addressDerivationHash_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -267,6 +350,8 @@ public final class Events {
           .equals(other.getContractAddr())) return false;
       if (getAccountNumber()
           != other.getAccountNumber()) return false;
+      if (!getAddressDerivationHash()
+          .equals(other.getAddressDerivationHash())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -288,6 +373,8 @@ public final class Events {
       hash = (37 * hash) + ACCOUNT_NUMBER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAccountNumber());
+      hash = (37 * hash) + ADDRESS_DERIVATION_HASH_FIELD_NUMBER;
+      hash = (53 * hash) + getAddressDerivationHash().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -427,6 +514,7 @@ public final class Events {
         codeId_ = 0L;
         contractAddr_ = "";
         accountNumber_ = 0L;
+        addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
         return this;
       }
 
@@ -471,6 +559,9 @@ public final class Events {
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.accountNumber_ = accountNumber_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.addressDerivationHash_ = addressDerivationHash_;
         }
       }
 
@@ -534,6 +625,9 @@ public final class Events {
         if (other.getAccountNumber() != 0L) {
           setAccountNumber(other.getAccountNumber());
         }
+        if (other.getAddressDerivationHash() != com.google.protobuf.ByteString.EMPTY) {
+          setAddressDerivationHash(other.getAddressDerivationHash());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -580,6 +674,11 @@ public final class Events {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
+              case 50: {
+                addressDerivationHash_ = input.readBytes();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -599,6 +698,10 @@ public final class Events {
 
       private java.lang.Object creator_ = "";
       /**
+       * <pre>
+       * creator is the address that requested the account registration.
+       * </pre>
+       *
        * <code>string creator = 1 [json_name = "creator"];</code>
        * @return The creator.
        */
@@ -615,6 +718,10 @@ public final class Events {
         }
       }
       /**
+       * <pre>
+       * creator is the address that requested the account registration.
+       * </pre>
+       *
        * <code>string creator = 1 [json_name = "creator"];</code>
        * @return The bytes for creator.
        */
@@ -632,6 +739,10 @@ public final class Events {
         }
       }
       /**
+       * <pre>
+       * creator is the address that requested the account registration.
+       * </pre>
+       *
        * <code>string creator = 1 [json_name = "creator"];</code>
        * @param value The creator to set.
        * @return This builder for chaining.
@@ -645,6 +756,10 @@ public final class Events {
         return this;
       }
       /**
+       * <pre>
+       * creator is the address that requested the account registration.
+       * </pre>
+       *
        * <code>string creator = 1 [json_name = "creator"];</code>
        * @return This builder for chaining.
        */
@@ -655,6 +770,10 @@ public final class Events {
         return this;
       }
       /**
+       * <pre>
+       * creator is the address that requested the account registration.
+       * </pre>
+       *
        * <code>string creator = 1 [json_name = "creator"];</code>
        * @param value The bytes for creator to set.
        * @return This builder for chaining.
@@ -671,6 +790,10 @@ public final class Events {
 
       private long codeId_ ;
       /**
+       * <pre>
+       * CodeID is the caller-selected implementation active after registration.
+       * </pre>
+       *
        * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
        * @return The codeId.
        */
@@ -679,6 +802,10 @@ public final class Events {
         return codeId_;
       }
       /**
+       * <pre>
+       * CodeID is the caller-selected implementation active after registration.
+       * </pre>
+       *
        * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
        * @param value The codeId to set.
        * @return This builder for chaining.
@@ -691,6 +818,10 @@ public final class Events {
         return this;
       }
       /**
+       * <pre>
+       * CodeID is the caller-selected implementation active after registration.
+       * </pre>
+       *
        * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
        * @return This builder for chaining.
        */
@@ -703,6 +834,10 @@ public final class Events {
 
       private java.lang.Object contractAddr_ = "";
       /**
+       * <pre>
+       * contract_addr is the address of the newly instantiated account contract.
+       * </pre>
+       *
        * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
        * @return The contractAddr.
        */
@@ -719,6 +854,10 @@ public final class Events {
         }
       }
       /**
+       * <pre>
+       * contract_addr is the address of the newly instantiated account contract.
+       * </pre>
+       *
        * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
        * @return The bytes for contractAddr.
        */
@@ -736,6 +875,10 @@ public final class Events {
         }
       }
       /**
+       * <pre>
+       * contract_addr is the address of the newly instantiated account contract.
+       * </pre>
+       *
        * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
        * @param value The contractAddr to set.
        * @return This builder for chaining.
@@ -749,6 +892,10 @@ public final class Events {
         return this;
       }
       /**
+       * <pre>
+       * contract_addr is the address of the newly instantiated account contract.
+       * </pre>
+       *
        * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
        * @return This builder for chaining.
        */
@@ -759,6 +906,10 @@ public final class Events {
         return this;
       }
       /**
+       * <pre>
+       * contract_addr is the address of the newly instantiated account contract.
+       * </pre>
+       *
        * <code>string contract_addr = 3 [json_name = "contractAddr"];</code>
        * @param value The bytes for contractAddr to set.
        * @return This builder for chaining.
@@ -775,6 +926,10 @@ public final class Events {
 
       private long accountNumber_ ;
       /**
+       * <pre>
+       * account_number is the account number assigned to the new account.
+       * </pre>
+       *
        * <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
        * @return The accountNumber.
        */
@@ -783,6 +938,10 @@ public final class Events {
         return accountNumber_;
       }
       /**
+       * <pre>
+       * account_number is the account number assigned to the new account.
+       * </pre>
+       *
        * <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
        * @param value The accountNumber to set.
        * @return This builder for chaining.
@@ -795,12 +954,63 @@ public final class Events {
         return this;
       }
       /**
+       * <pre>
+       * account_number is the account number assigned to the new account.
+       * </pre>
+       *
        * <code>uint64 account_number = 4 [json_name = "accountNumber"];</code>
        * @return This builder for chaining.
        */
       public Builder clearAccountNumber() {
         bitField0_ = (bitField0_ & ~0x00000008);
         accountNumber_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * address_derivation_hash is the fixed hash used to derive the account's
+       * address.
+       * </pre>
+       *
+       * <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+       * @return The addressDerivationHash.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAddressDerivationHash() {
+        return addressDerivationHash_;
+      }
+      /**
+       * <pre>
+       * address_derivation_hash is the fixed hash used to derive the account's
+       * address.
+       * </pre>
+       *
+       * <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+       * @param value The addressDerivationHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAddressDerivationHash(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        addressDerivationHash_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * address_derivation_hash is the fixed hash used to derive the account's
+       * address.
+       * </pre>
+       *
+       * <code>bytes address_derivation_hash = 6 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAddressDerivationHash() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        addressDerivationHash_ = getDefaultInstance().getAddressDerivationHash();
         onChanged();
         return this;
       }
@@ -883,13 +1093,15 @@ public final class Events {
   static {
     java.lang.String[] descriptorData = {
       "\n\037abstractaccount/v1/events.proto\022\022abstr" +
-      "actaccount.v1\032\024gogoproto/gogo.proto\"\243\001\n\026" +
+      "actaccount.v1\032\024gogoproto/gogo.proto\"\374\001\n\026" +
       "EventAccountRegistered\022\030\n\007creator\030\001 \001(\tR" +
       "\007creator\022#\n\007code_id\030\002 \001(\004B\n\342\336\037\006CodeIDR\006c" +
       "odeId\022#\n\rcontract_addr\030\003 \001(\tR\014contractAd" +
       "dr\022%\n\016account_number\030\004 \001(\004R\raccountNumbe" +
-      "rB@Z>github.com/burnt-labs/abstract-acco" +
-      "unt/x/abstractaccount/typesb\006proto3"
+      "r\022Q\n\027address_derivation_hash\030\006 \001(\014B\031\342\336\037\025" +
+      "AddressDerivationHashR\025addressDerivation" +
+      "HashJ\004\010\005\020\006B4Z2github.com/burnt-labs/xion" +
+      "/x/abstractaccount/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -901,7 +1113,7 @@ public final class Events {
     internal_static_abstractaccount_v1_EventAccountRegistered_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_abstractaccount_v1_EventAccountRegistered_descriptor,
-        new java.lang.String[] { "Creator", "CodeId", "ContractAddr", "AccountNumber", });
+        new java.lang.String[] { "Creator", "CodeId", "ContractAddr", "AccountNumber", "AddressDerivationHash", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.GoGoProtos.customname);

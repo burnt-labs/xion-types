@@ -8,6 +8,7 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+import Foundation
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -37,6 +38,7 @@ struct Abstractaccount_V1_QueryParamsResponse: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// params holds the current module parameters.
   var params: Abstractaccount_V1_Params {
     get {return _params ?? Abstractaccount_V1_Params()}
     set {_params = newValue}
@@ -51,6 +53,43 @@ struct Abstractaccount_V1_QueryParamsResponse: Sendable {
   init() {}
 
   fileprivate var _params: Abstractaccount_V1_Params? = nil
+}
+
+/// QueryAccountAddressRequest identifies an account namespace. Implementation
+/// code IDs do not participate in this address lookup.
+struct Abstractaccount_V1_QueryAccountAddressRequest: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// sender is the address registering the account.
+  var sender: String = String()
+
+  /// salt is the caller-chosen salt the address is derived with.
+  var salt: Data = Data()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+/// QueryAccountAddressResponse contains the stable address and whether an
+/// AbstractAccount is already registered for the namespace.
+struct Abstractaccount_V1_QueryAccountAddressResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// address is the stable address derived for the namespace.
+  var address: String = String()
+
+  /// registered reports whether an AbstractAccount already exists for the
+  /// namespace.
+  var registered: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -107,6 +146,82 @@ extension Abstractaccount_V1_QueryParamsResponse: SwiftProtobuf.Message, SwiftPr
 
   static func ==(lhs: Abstractaccount_V1_QueryParamsResponse, rhs: Abstractaccount_V1_QueryParamsResponse) -> Bool {
     if lhs._params != rhs._params {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Abstractaccount_V1_QueryAccountAddressRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryAccountAddressRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "sender"),
+    2: .same(proto: "salt"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sender) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.salt) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sender.isEmpty {
+      try visitor.visitSingularStringField(value: self.sender, fieldNumber: 1)
+    }
+    if !self.salt.isEmpty {
+      try visitor.visitSingularBytesField(value: self.salt, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Abstractaccount_V1_QueryAccountAddressRequest, rhs: Abstractaccount_V1_QueryAccountAddressRequest) -> Bool {
+    if lhs.sender != rhs.sender {return false}
+    if lhs.salt != rhs.salt {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Abstractaccount_V1_QueryAccountAddressResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".QueryAccountAddressResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "address"),
+    2: .same(proto: "registered"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.address) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.registered) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.address.isEmpty {
+      try visitor.visitSingularStringField(value: self.address, fieldNumber: 1)
+    }
+    if self.registered != false {
+      try visitor.visitSingularBoolField(value: self.registered, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Abstractaccount_V1_QueryAccountAddressResponse, rhs: Abstractaccount_V1_QueryAccountAddressResponse) -> Bool {
+    if lhs.address != rhs.address {return false}
+    if lhs.registered != rhs.registered {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

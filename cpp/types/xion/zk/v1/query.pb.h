@@ -61,9 +61,15 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace xion {
 namespace zk {
 namespace v1 {
+class ProofVerifyGnarkResponse;
+struct ProofVerifyGnarkResponseDefaultTypeInternal;
+extern ProofVerifyGnarkResponseDefaultTypeInternal _ProofVerifyGnarkResponse_default_instance_;
 class ProofVerifyResponse;
 struct ProofVerifyResponseDefaultTypeInternal;
 extern ProofVerifyResponseDefaultTypeInternal _ProofVerifyResponse_default_instance_;
+class ProofVerifyUltraHonkResponse;
+struct ProofVerifyUltraHonkResponseDefaultTypeInternal;
+extern ProofVerifyUltraHonkResponseDefaultTypeInternal _ProofVerifyUltraHonkResponse_default_instance_;
 class QueryHasVKeyRequest;
 struct QueryHasVKeyRequestDefaultTypeInternal;
 extern QueryHasVKeyRequestDefaultTypeInternal _QueryHasVKeyRequest_default_instance_;
@@ -100,9 +106,15 @@ extern QueryVKeysRequestDefaultTypeInternal _QueryVKeysRequest_default_instance_
 class QueryVKeysResponse;
 struct QueryVKeysResponseDefaultTypeInternal;
 extern QueryVKeysResponseDefaultTypeInternal _QueryVKeysResponse_default_instance_;
+class QueryVerifyGnarkRequest;
+struct QueryVerifyGnarkRequestDefaultTypeInternal;
+extern QueryVerifyGnarkRequestDefaultTypeInternal _QueryVerifyGnarkRequest_default_instance_;
 class QueryVerifyRequest;
 struct QueryVerifyRequestDefaultTypeInternal;
 extern QueryVerifyRequestDefaultTypeInternal _QueryVerifyRequest_default_instance_;
+class QueryVerifyUltraHonkRequest;
+struct QueryVerifyUltraHonkRequestDefaultTypeInternal;
+extern QueryVerifyUltraHonkRequestDefaultTypeInternal _QueryVerifyUltraHonkRequest_default_instance_;
 class SnarkJsProof;
 struct SnarkJsProofDefaultTypeInternal;
 extern SnarkJsProofDefaultTypeInternal _SnarkJsProof_default_instance_;
@@ -747,6 +759,782 @@ class ProofVerifyResponse final :
   friend struct ::TableStruct_xion_2fzk_2fv1_2fquery_2eproto;
 };// -------------------------------------------------------------------
 
+class ProofVerifyUltraHonkResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.zk.v1.ProofVerifyUltraHonkResponse) */ {
+ public:
+  inline ProofVerifyUltraHonkResponse() : ProofVerifyUltraHonkResponse(nullptr) {}
+  ~ProofVerifyUltraHonkResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ProofVerifyUltraHonkResponse(::google::protobuf::internal::ConstantInitialized);
+
+  ProofVerifyUltraHonkResponse(const ProofVerifyUltraHonkResponse& from);
+  ProofVerifyUltraHonkResponse(ProofVerifyUltraHonkResponse&& from) noexcept
+    : ProofVerifyUltraHonkResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ProofVerifyUltraHonkResponse& operator=(const ProofVerifyUltraHonkResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProofVerifyUltraHonkResponse& operator=(ProofVerifyUltraHonkResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ProofVerifyUltraHonkResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProofVerifyUltraHonkResponse* internal_default_instance() {
+    return reinterpret_cast<const ProofVerifyUltraHonkResponse*>(
+               &_ProofVerifyUltraHonkResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ProofVerifyUltraHonkResponse& a, ProofVerifyUltraHonkResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProofVerifyUltraHonkResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProofVerifyUltraHonkResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ProofVerifyUltraHonkResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ProofVerifyUltraHonkResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ProofVerifyUltraHonkResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ProofVerifyUltraHonkResponse& from) {
+    ProofVerifyUltraHonkResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ProofVerifyUltraHonkResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.zk.v1.ProofVerifyUltraHonkResponse";
+  }
+  protected:
+  explicit ProofVerifyUltraHonkResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kVkeySha256FieldNumber = 2,
+    kVerifiedFieldNumber = 1,
+  };
+  // bytes vkey_sha256 = 2 [json_name = "vkeySha256"];
+  void clear_vkey_sha256() ;
+  const std::string& vkey_sha256() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_vkey_sha256(Arg_&& arg, Args_... args);
+  std::string* mutable_vkey_sha256();
+  PROTOBUF_NODISCARD std::string* release_vkey_sha256();
+  void set_allocated_vkey_sha256(std::string* ptr);
+
+  private:
+  const std::string& _internal_vkey_sha256() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_vkey_sha256(
+      const std::string& value);
+  std::string* _internal_mutable_vkey_sha256();
+
+  public:
+  // bool verified = 1 [json_name = "verified"];
+  void clear_verified() ;
+  bool verified() const;
+  void set_verified(bool value);
+
+  private:
+  bool _internal_verified() const;
+  void _internal_set_verified(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.zk.v1.ProofVerifyUltraHonkResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr vkey_sha256_;
+    bool verified_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fzk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class ProofVerifyGnarkResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.zk.v1.ProofVerifyGnarkResponse) */ {
+ public:
+  inline ProofVerifyGnarkResponse() : ProofVerifyGnarkResponse(nullptr) {}
+  ~ProofVerifyGnarkResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ProofVerifyGnarkResponse(::google::protobuf::internal::ConstantInitialized);
+
+  ProofVerifyGnarkResponse(const ProofVerifyGnarkResponse& from);
+  ProofVerifyGnarkResponse(ProofVerifyGnarkResponse&& from) noexcept
+    : ProofVerifyGnarkResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ProofVerifyGnarkResponse& operator=(const ProofVerifyGnarkResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProofVerifyGnarkResponse& operator=(ProofVerifyGnarkResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ProofVerifyGnarkResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProofVerifyGnarkResponse* internal_default_instance() {
+    return reinterpret_cast<const ProofVerifyGnarkResponse*>(
+               &_ProofVerifyGnarkResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(ProofVerifyGnarkResponse& a, ProofVerifyGnarkResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProofVerifyGnarkResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProofVerifyGnarkResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ProofVerifyGnarkResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ProofVerifyGnarkResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ProofVerifyGnarkResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ProofVerifyGnarkResponse& from) {
+    ProofVerifyGnarkResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ProofVerifyGnarkResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.zk.v1.ProofVerifyGnarkResponse";
+  }
+  protected:
+  explicit ProofVerifyGnarkResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kVerifiedFieldNumber = 1,
+  };
+  // bool verified = 1 [json_name = "verified"];
+  void clear_verified() ;
+  bool verified() const;
+  void set_verified(bool value);
+
+  private:
+  bool _internal_verified() const;
+  void _internal_set_verified(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.zk.v1.ProofVerifyGnarkResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 0, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool verified_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fzk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryVerifyUltraHonkRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.zk.v1.QueryVerifyUltraHonkRequest) */ {
+ public:
+  inline QueryVerifyUltraHonkRequest() : QueryVerifyUltraHonkRequest(nullptr) {}
+  ~QueryVerifyUltraHonkRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryVerifyUltraHonkRequest(::google::protobuf::internal::ConstantInitialized);
+
+  QueryVerifyUltraHonkRequest(const QueryVerifyUltraHonkRequest& from);
+  QueryVerifyUltraHonkRequest(QueryVerifyUltraHonkRequest&& from) noexcept
+    : QueryVerifyUltraHonkRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryVerifyUltraHonkRequest& operator=(const QueryVerifyUltraHonkRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryVerifyUltraHonkRequest& operator=(QueryVerifyUltraHonkRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryVerifyUltraHonkRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryVerifyUltraHonkRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryVerifyUltraHonkRequest*>(
+               &_QueryVerifyUltraHonkRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(QueryVerifyUltraHonkRequest& a, QueryVerifyUltraHonkRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryVerifyUltraHonkRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryVerifyUltraHonkRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryVerifyUltraHonkRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryVerifyUltraHonkRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryVerifyUltraHonkRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryVerifyUltraHonkRequest& from) {
+    QueryVerifyUltraHonkRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryVerifyUltraHonkRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.zk.v1.QueryVerifyUltraHonkRequest";
+  }
+  protected:
+  explicit QueryVerifyUltraHonkRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProofFieldNumber = 1,
+    kPublicInputsFieldNumber = 2,
+    kVkeyNameFieldNumber = 3,
+    kExpectedVkeySha256FieldNumber = 5,
+    kVkeyIdFieldNumber = 4,
+  };
+  // bytes proof = 1 [json_name = "proof"];
+  void clear_proof() ;
+  const std::string& proof() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_proof(Arg_&& arg, Args_... args);
+  std::string* mutable_proof();
+  PROTOBUF_NODISCARD std::string* release_proof();
+  void set_allocated_proof(std::string* ptr);
+
+  private:
+  const std::string& _internal_proof() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_proof(
+      const std::string& value);
+  std::string* _internal_mutable_proof();
+
+  public:
+  // bytes public_inputs = 2 [json_name = "publicInputs"];
+  void clear_public_inputs() ;
+  const std::string& public_inputs() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_public_inputs(Arg_&& arg, Args_... args);
+  std::string* mutable_public_inputs();
+  PROTOBUF_NODISCARD std::string* release_public_inputs();
+  void set_allocated_public_inputs(std::string* ptr);
+
+  private:
+  const std::string& _internal_public_inputs() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_public_inputs(
+      const std::string& value);
+  std::string* _internal_mutable_public_inputs();
+
+  public:
+  // string vkey_name = 3 [json_name = "vkeyName"];
+  void clear_vkey_name() ;
+  const std::string& vkey_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_vkey_name(Arg_&& arg, Args_... args);
+  std::string* mutable_vkey_name();
+  PROTOBUF_NODISCARD std::string* release_vkey_name();
+  void set_allocated_vkey_name(std::string* ptr);
+
+  private:
+  const std::string& _internal_vkey_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_vkey_name(
+      const std::string& value);
+  std::string* _internal_mutable_vkey_name();
+
+  public:
+  // bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];
+  void clear_expected_vkey_sha256() ;
+  const std::string& expected_vkey_sha256() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_expected_vkey_sha256(Arg_&& arg, Args_... args);
+  std::string* mutable_expected_vkey_sha256();
+  PROTOBUF_NODISCARD std::string* release_expected_vkey_sha256();
+  void set_allocated_expected_vkey_sha256(std::string* ptr);
+
+  private:
+  const std::string& _internal_expected_vkey_sha256() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_expected_vkey_sha256(
+      const std::string& value);
+  std::string* _internal_mutable_expected_vkey_sha256();
+
+  public:
+  // uint64 vkey_id = 4 [json_name = "vkeyId"];
+  void clear_vkey_id() ;
+  ::uint64_t vkey_id() const;
+  void set_vkey_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_vkey_id() const;
+  void _internal_set_vkey_id(::uint64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.zk.v1.QueryVerifyUltraHonkRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 56, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr proof_;
+    ::google::protobuf::internal::ArenaStringPtr public_inputs_;
+    ::google::protobuf::internal::ArenaStringPtr vkey_name_;
+    ::google::protobuf::internal::ArenaStringPtr expected_vkey_sha256_;
+    ::uint64_t vkey_id_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fzk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
+class QueryVerifyGnarkRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.zk.v1.QueryVerifyGnarkRequest) */ {
+ public:
+  inline QueryVerifyGnarkRequest() : QueryVerifyGnarkRequest(nullptr) {}
+  ~QueryVerifyGnarkRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR QueryVerifyGnarkRequest(::google::protobuf::internal::ConstantInitialized);
+
+  QueryVerifyGnarkRequest(const QueryVerifyGnarkRequest& from);
+  QueryVerifyGnarkRequest(QueryVerifyGnarkRequest&& from) noexcept
+    : QueryVerifyGnarkRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryVerifyGnarkRequest& operator=(const QueryVerifyGnarkRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryVerifyGnarkRequest& operator=(QueryVerifyGnarkRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryVerifyGnarkRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryVerifyGnarkRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryVerifyGnarkRequest*>(
+               &_QueryVerifyGnarkRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(QueryVerifyGnarkRequest& a, QueryVerifyGnarkRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryVerifyGnarkRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryVerifyGnarkRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryVerifyGnarkRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryVerifyGnarkRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const QueryVerifyGnarkRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const QueryVerifyGnarkRequest& from) {
+    QueryVerifyGnarkRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryVerifyGnarkRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.zk.v1.QueryVerifyGnarkRequest";
+  }
+  protected:
+  explicit QueryVerifyGnarkRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProofFieldNumber = 1,
+    kPublicInputsFieldNumber = 2,
+    kVkeyNameFieldNumber = 3,
+    kVkeyIdFieldNumber = 4,
+  };
+  // bytes proof = 1 [json_name = "proof"];
+  void clear_proof() ;
+  const std::string& proof() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_proof(Arg_&& arg, Args_... args);
+  std::string* mutable_proof();
+  PROTOBUF_NODISCARD std::string* release_proof();
+  void set_allocated_proof(std::string* ptr);
+
+  private:
+  const std::string& _internal_proof() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_proof(
+      const std::string& value);
+  std::string* _internal_mutable_proof();
+
+  public:
+  // bytes public_inputs = 2 [json_name = "publicInputs"];
+  void clear_public_inputs() ;
+  const std::string& public_inputs() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_public_inputs(Arg_&& arg, Args_... args);
+  std::string* mutable_public_inputs();
+  PROTOBUF_NODISCARD std::string* release_public_inputs();
+  void set_allocated_public_inputs(std::string* ptr);
+
+  private:
+  const std::string& _internal_public_inputs() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_public_inputs(
+      const std::string& value);
+  std::string* _internal_mutable_public_inputs();
+
+  public:
+  // string vkey_name = 3 [json_name = "vkeyName"];
+  void clear_vkey_name() ;
+  const std::string& vkey_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_vkey_name(Arg_&& arg, Args_... args);
+  std::string* mutable_vkey_name();
+  PROTOBUF_NODISCARD std::string* release_vkey_name();
+  void set_allocated_vkey_name(std::string* ptr);
+
+  private:
+  const std::string& _internal_vkey_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_vkey_name(
+      const std::string& value);
+  std::string* _internal_mutable_vkey_name();
+
+  public:
+  // uint64 vkey_id = 4 [json_name = "vkeyId"];
+  void clear_vkey_id() ;
+  ::uint64_t vkey_id() const;
+  void set_vkey_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_vkey_id() const;
+  void _internal_set_vkey_id(::uint64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.zk.v1.QueryVerifyGnarkRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 4, 0, 52, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr proof_;
+    ::google::protobuf::internal::ArenaStringPtr public_inputs_;
+    ::google::protobuf::internal::ArenaStringPtr vkey_name_;
+    ::uint64_t vkey_id_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fzk_2fv1_2fquery_2eproto;
+};// -------------------------------------------------------------------
+
 class VKey final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.zk.v1.VKey) */ {
  public:
@@ -803,7 +1591,7 @@ class VKey final :
                &_VKey_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    7;
 
   friend void swap(VKey& a, VKey& b) {
     a.Swap(&b);
@@ -880,6 +1668,7 @@ class VKey final :
     kDescriptionFieldNumber = 3,
     kCircuitHashFieldNumber = 4,
     kAuthorityFieldNumber = 5,
+    kProofSystemFieldNumber = 6,
   };
   // bytes key_bytes = 1 [json_name = "keyBytes"];
   void clear_key_bytes() ;
@@ -961,12 +1750,22 @@ class VKey final :
   std::string* _internal_mutable_authority();
 
   public:
+  // .xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];
+  void clear_proof_system() ;
+  ::xion::zk::v1::ProofSystem proof_system() const;
+  void set_proof_system(::xion::zk::v1::ProofSystem value);
+
+  private:
+  ::xion::zk::v1::ProofSystem _internal_proof_system() const;
+  void _internal_set_proof_system(::xion::zk::v1::ProofSystem value);
+
+  public:
   // @@protoc_insertion_point(class_scope:xion.zk.v1.VKey)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 60, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 0, 60, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -976,6 +1775,7 @@ class VKey final :
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::google::protobuf::internal::ArenaStringPtr circuit_hash_;
     ::google::protobuf::internal::ArenaStringPtr authority_;
+    int proof_system_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1039,7 +1839,7 @@ class QueryVKeyRequest final :
                &_QueryVKeyRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    8;
 
   friend void swap(QueryVKeyRequest& a, QueryVKeyRequest& b) {
     a.Swap(&b);
@@ -1197,7 +1997,7 @@ class QueryVKeyResponse final :
                &_QueryVKeyResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    9;
 
   friend void swap(QueryVKeyResponse& a, QueryVKeyResponse& b) {
     a.Swap(&b);
@@ -1361,7 +2161,7 @@ class QueryVKeyByNameRequest final :
                &_QueryVKeyByNameRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    10;
 
   friend void swap(QueryVKeyByNameRequest& a, QueryVKeyByNameRequest& b) {
     a.Swap(&b);
@@ -1525,7 +2325,7 @@ class QueryVKeyByNameResponse final :
                &_QueryVKeyByNameResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    11;
 
   friend void swap(QueryVKeyByNameResponse& a, QueryVKeyByNameResponse& b) {
     a.Swap(&b);
@@ -1701,7 +2501,7 @@ class QueryVKeysRequest final :
                &_QueryVKeysRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    12;
 
   friend void swap(QueryVKeysRequest& a, QueryVKeysRequest& b) {
     a.Swap(&b);
@@ -1865,7 +2665,7 @@ class QueryVKeysResponse final :
                &_QueryVKeysResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    13;
 
   friend void swap(QueryVKeysResponse& a, QueryVKeysResponse& b) {
     a.Swap(&b);
@@ -2049,7 +2849,7 @@ class VKeyWithID final :
                &_VKeyWithID_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    14;
 
   friend void swap(VKeyWithID& a, VKeyWithID& b) {
     a.Swap(&b);
@@ -2225,7 +3025,7 @@ class QueryHasVKeyRequest final :
                &_QueryHasVKeyRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    15;
 
   friend void swap(QueryHasVKeyRequest& a, QueryHasVKeyRequest& b) {
     a.Swap(&b);
@@ -2389,7 +3189,7 @@ class QueryHasVKeyResponse final :
                &_QueryHasVKeyResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    16;
 
   friend void swap(QueryHasVKeyResponse& a, QueryHasVKeyResponse& b) {
     a.Swap(&b);
@@ -2558,7 +3358,7 @@ class QueryNextVKeyIDRequest final :
                &_QueryNextVKeyIDRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    17;
 
   friend void swap(QueryNextVKeyIDRequest& a, QueryNextVKeyIDRequest& b) {
     a.Swap(&b);
@@ -2684,7 +3484,7 @@ class QueryNextVKeyIDResponse final :
                &_QueryNextVKeyIDResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    18;
 
   friend void swap(QueryNextVKeyIDResponse& a, QueryNextVKeyIDResponse& b) {
     a.Swap(&b);
@@ -2841,7 +3641,7 @@ class QueryParamsRequest final :
                &_QueryParamsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    19;
 
   friend void swap(QueryParamsRequest& a, QueryParamsRequest& b) {
     a.Swap(&b);
@@ -2967,7 +3767,7 @@ class QueryParamsResponse final :
                &_QueryParamsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    20;
 
   friend void swap(QueryParamsResponse& a, QueryParamsResponse& b) {
     a.Swap(&b);
@@ -3631,6 +4431,518 @@ inline void ProofVerifyResponse::_internal_set_verified(bool value) {
 
 // -------------------------------------------------------------------
 
+// ProofVerifyUltraHonkResponse
+
+// bool verified = 1 [json_name = "verified"];
+inline void ProofVerifyUltraHonkResponse::clear_verified() {
+  _impl_.verified_ = false;
+}
+inline bool ProofVerifyUltraHonkResponse::verified() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.ProofVerifyUltraHonkResponse.verified)
+  return _internal_verified();
+}
+inline void ProofVerifyUltraHonkResponse::set_verified(bool value) {
+  _internal_set_verified(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.ProofVerifyUltraHonkResponse.verified)
+}
+inline bool ProofVerifyUltraHonkResponse::_internal_verified() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.verified_;
+}
+inline void ProofVerifyUltraHonkResponse::_internal_set_verified(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.verified_ = value;
+}
+
+// bytes vkey_sha256 = 2 [json_name = "vkeySha256"];
+inline void ProofVerifyUltraHonkResponse::clear_vkey_sha256() {
+  _impl_.vkey_sha256_.ClearToEmpty();
+}
+inline const std::string& ProofVerifyUltraHonkResponse::vkey_sha256() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.ProofVerifyUltraHonkResponse.vkey_sha256)
+  return _internal_vkey_sha256();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ProofVerifyUltraHonkResponse::set_vkey_sha256(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_sha256_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.ProofVerifyUltraHonkResponse.vkey_sha256)
+}
+inline std::string* ProofVerifyUltraHonkResponse::mutable_vkey_sha256() {
+  std::string* _s = _internal_mutable_vkey_sha256();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.ProofVerifyUltraHonkResponse.vkey_sha256)
+  return _s;
+}
+inline const std::string& ProofVerifyUltraHonkResponse::_internal_vkey_sha256() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.vkey_sha256_.Get();
+}
+inline void ProofVerifyUltraHonkResponse::_internal_set_vkey_sha256(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_sha256_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProofVerifyUltraHonkResponse::_internal_mutable_vkey_sha256() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.vkey_sha256_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ProofVerifyUltraHonkResponse::release_vkey_sha256() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.ProofVerifyUltraHonkResponse.vkey_sha256)
+  return _impl_.vkey_sha256_.Release();
+}
+inline void ProofVerifyUltraHonkResponse::set_allocated_vkey_sha256(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.vkey_sha256_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.vkey_sha256_.IsDefault()) {
+          _impl_.vkey_sha256_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.ProofVerifyUltraHonkResponse.vkey_sha256)
+}
+
+// -------------------------------------------------------------------
+
+// ProofVerifyGnarkResponse
+
+// bool verified = 1 [json_name = "verified"];
+inline void ProofVerifyGnarkResponse::clear_verified() {
+  _impl_.verified_ = false;
+}
+inline bool ProofVerifyGnarkResponse::verified() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.ProofVerifyGnarkResponse.verified)
+  return _internal_verified();
+}
+inline void ProofVerifyGnarkResponse::set_verified(bool value) {
+  _internal_set_verified(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.ProofVerifyGnarkResponse.verified)
+}
+inline bool ProofVerifyGnarkResponse::_internal_verified() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.verified_;
+}
+inline void ProofVerifyGnarkResponse::_internal_set_verified(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.verified_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// QueryVerifyUltraHonkRequest
+
+// bytes proof = 1 [json_name = "proof"];
+inline void QueryVerifyUltraHonkRequest::clear_proof() {
+  _impl_.proof_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyUltraHonkRequest::proof() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyUltraHonkRequest.proof)
+  return _internal_proof();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyUltraHonkRequest::set_proof(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyUltraHonkRequest.proof)
+}
+inline std::string* QueryVerifyUltraHonkRequest::mutable_proof() {
+  std::string* _s = _internal_mutable_proof();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyUltraHonkRequest.proof)
+  return _s;
+}
+inline const std::string& QueryVerifyUltraHonkRequest::_internal_proof() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.proof_.Get();
+}
+inline void QueryVerifyUltraHonkRequest::_internal_set_proof(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::_internal_mutable_proof() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.proof_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::release_proof() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyUltraHonkRequest.proof)
+  return _impl_.proof_.Release();
+}
+inline void QueryVerifyUltraHonkRequest::set_allocated_proof(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.proof_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.proof_.IsDefault()) {
+          _impl_.proof_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyUltraHonkRequest.proof)
+}
+
+// bytes public_inputs = 2 [json_name = "publicInputs"];
+inline void QueryVerifyUltraHonkRequest::clear_public_inputs() {
+  _impl_.public_inputs_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyUltraHonkRequest::public_inputs() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyUltraHonkRequest.public_inputs)
+  return _internal_public_inputs();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyUltraHonkRequest::set_public_inputs(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.public_inputs_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyUltraHonkRequest.public_inputs)
+}
+inline std::string* QueryVerifyUltraHonkRequest::mutable_public_inputs() {
+  std::string* _s = _internal_mutable_public_inputs();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyUltraHonkRequest.public_inputs)
+  return _s;
+}
+inline const std::string& QueryVerifyUltraHonkRequest::_internal_public_inputs() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.public_inputs_.Get();
+}
+inline void QueryVerifyUltraHonkRequest::_internal_set_public_inputs(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.public_inputs_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::_internal_mutable_public_inputs() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.public_inputs_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::release_public_inputs() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyUltraHonkRequest.public_inputs)
+  return _impl_.public_inputs_.Release();
+}
+inline void QueryVerifyUltraHonkRequest::set_allocated_public_inputs(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.public_inputs_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.public_inputs_.IsDefault()) {
+          _impl_.public_inputs_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyUltraHonkRequest.public_inputs)
+}
+
+// string vkey_name = 3 [json_name = "vkeyName"];
+inline void QueryVerifyUltraHonkRequest::clear_vkey_name() {
+  _impl_.vkey_name_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyUltraHonkRequest::vkey_name() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_name)
+  return _internal_vkey_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyUltraHonkRequest::set_vkey_name(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_name)
+}
+inline std::string* QueryVerifyUltraHonkRequest::mutable_vkey_name() {
+  std::string* _s = _internal_mutable_vkey_name();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_name)
+  return _s;
+}
+inline const std::string& QueryVerifyUltraHonkRequest::_internal_vkey_name() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.vkey_name_.Get();
+}
+inline void QueryVerifyUltraHonkRequest::_internal_set_vkey_name(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::_internal_mutable_vkey_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.vkey_name_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::release_vkey_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_name)
+  return _impl_.vkey_name_.Release();
+}
+inline void QueryVerifyUltraHonkRequest::set_allocated_vkey_name(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.vkey_name_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.vkey_name_.IsDefault()) {
+          _impl_.vkey_name_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_name)
+}
+
+// uint64 vkey_id = 4 [json_name = "vkeyId"];
+inline void QueryVerifyUltraHonkRequest::clear_vkey_id() {
+  _impl_.vkey_id_ = ::uint64_t{0u};
+}
+inline ::uint64_t QueryVerifyUltraHonkRequest::vkey_id() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_id)
+  return _internal_vkey_id();
+}
+inline void QueryVerifyUltraHonkRequest::set_vkey_id(::uint64_t value) {
+  _internal_set_vkey_id(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyUltraHonkRequest.vkey_id)
+}
+inline ::uint64_t QueryVerifyUltraHonkRequest::_internal_vkey_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.vkey_id_;
+}
+inline void QueryVerifyUltraHonkRequest::_internal_set_vkey_id(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_id_ = value;
+}
+
+// bytes expected_vkey_sha256 = 5 [json_name = "expectedVkeySha256"];
+inline void QueryVerifyUltraHonkRequest::clear_expected_vkey_sha256() {
+  _impl_.expected_vkey_sha256_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyUltraHonkRequest::expected_vkey_sha256() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyUltraHonkRequest.expected_vkey_sha256)
+  return _internal_expected_vkey_sha256();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyUltraHonkRequest::set_expected_vkey_sha256(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.expected_vkey_sha256_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyUltraHonkRequest.expected_vkey_sha256)
+}
+inline std::string* QueryVerifyUltraHonkRequest::mutable_expected_vkey_sha256() {
+  std::string* _s = _internal_mutable_expected_vkey_sha256();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyUltraHonkRequest.expected_vkey_sha256)
+  return _s;
+}
+inline const std::string& QueryVerifyUltraHonkRequest::_internal_expected_vkey_sha256() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.expected_vkey_sha256_.Get();
+}
+inline void QueryVerifyUltraHonkRequest::_internal_set_expected_vkey_sha256(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.expected_vkey_sha256_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::_internal_mutable_expected_vkey_sha256() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.expected_vkey_sha256_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyUltraHonkRequest::release_expected_vkey_sha256() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyUltraHonkRequest.expected_vkey_sha256)
+  return _impl_.expected_vkey_sha256_.Release();
+}
+inline void QueryVerifyUltraHonkRequest::set_allocated_expected_vkey_sha256(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.expected_vkey_sha256_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.expected_vkey_sha256_.IsDefault()) {
+          _impl_.expected_vkey_sha256_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyUltraHonkRequest.expected_vkey_sha256)
+}
+
+// -------------------------------------------------------------------
+
+// QueryVerifyGnarkRequest
+
+// bytes proof = 1 [json_name = "proof"];
+inline void QueryVerifyGnarkRequest::clear_proof() {
+  _impl_.proof_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyGnarkRequest::proof() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyGnarkRequest.proof)
+  return _internal_proof();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyGnarkRequest::set_proof(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyGnarkRequest.proof)
+}
+inline std::string* QueryVerifyGnarkRequest::mutable_proof() {
+  std::string* _s = _internal_mutable_proof();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyGnarkRequest.proof)
+  return _s;
+}
+inline const std::string& QueryVerifyGnarkRequest::_internal_proof() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.proof_.Get();
+}
+inline void QueryVerifyGnarkRequest::_internal_set_proof(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyGnarkRequest::_internal_mutable_proof() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.proof_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyGnarkRequest::release_proof() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyGnarkRequest.proof)
+  return _impl_.proof_.Release();
+}
+inline void QueryVerifyGnarkRequest::set_allocated_proof(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.proof_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.proof_.IsDefault()) {
+          _impl_.proof_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyGnarkRequest.proof)
+}
+
+// bytes public_inputs = 2 [json_name = "publicInputs"];
+inline void QueryVerifyGnarkRequest::clear_public_inputs() {
+  _impl_.public_inputs_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyGnarkRequest::public_inputs() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyGnarkRequest.public_inputs)
+  return _internal_public_inputs();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyGnarkRequest::set_public_inputs(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.public_inputs_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyGnarkRequest.public_inputs)
+}
+inline std::string* QueryVerifyGnarkRequest::mutable_public_inputs() {
+  std::string* _s = _internal_mutable_public_inputs();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyGnarkRequest.public_inputs)
+  return _s;
+}
+inline const std::string& QueryVerifyGnarkRequest::_internal_public_inputs() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.public_inputs_.Get();
+}
+inline void QueryVerifyGnarkRequest::_internal_set_public_inputs(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.public_inputs_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyGnarkRequest::_internal_mutable_public_inputs() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.public_inputs_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyGnarkRequest::release_public_inputs() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyGnarkRequest.public_inputs)
+  return _impl_.public_inputs_.Release();
+}
+inline void QueryVerifyGnarkRequest::set_allocated_public_inputs(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.public_inputs_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.public_inputs_.IsDefault()) {
+          _impl_.public_inputs_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyGnarkRequest.public_inputs)
+}
+
+// string vkey_name = 3 [json_name = "vkeyName"];
+inline void QueryVerifyGnarkRequest::clear_vkey_name() {
+  _impl_.vkey_name_.ClearToEmpty();
+}
+inline const std::string& QueryVerifyGnarkRequest::vkey_name() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyGnarkRequest.vkey_name)
+  return _internal_vkey_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void QueryVerifyGnarkRequest::set_vkey_name(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyGnarkRequest.vkey_name)
+}
+inline std::string* QueryVerifyGnarkRequest::mutable_vkey_name() {
+  std::string* _s = _internal_mutable_vkey_name();
+  // @@protoc_insertion_point(field_mutable:xion.zk.v1.QueryVerifyGnarkRequest.vkey_name)
+  return _s;
+}
+inline const std::string& QueryVerifyGnarkRequest::_internal_vkey_name() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.vkey_name_.Get();
+}
+inline void QueryVerifyGnarkRequest::_internal_set_vkey_name(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryVerifyGnarkRequest::_internal_mutable_vkey_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.vkey_name_.Mutable( GetArenaForAllocation());
+}
+inline std::string* QueryVerifyGnarkRequest::release_vkey_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.zk.v1.QueryVerifyGnarkRequest.vkey_name)
+  return _impl_.vkey_name_.Release();
+}
+inline void QueryVerifyGnarkRequest::set_allocated_vkey_name(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.vkey_name_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.vkey_name_.IsDefault()) {
+          _impl_.vkey_name_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.QueryVerifyGnarkRequest.vkey_name)
+}
+
+// uint64 vkey_id = 4 [json_name = "vkeyId"];
+inline void QueryVerifyGnarkRequest::clear_vkey_id() {
+  _impl_.vkey_id_ = ::uint64_t{0u};
+}
+inline ::uint64_t QueryVerifyGnarkRequest::vkey_id() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.QueryVerifyGnarkRequest.vkey_id)
+  return _internal_vkey_id();
+}
+inline void QueryVerifyGnarkRequest::set_vkey_id(::uint64_t value) {
+  _internal_set_vkey_id(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.QueryVerifyGnarkRequest.vkey_id)
+}
+inline ::uint64_t QueryVerifyGnarkRequest::_internal_vkey_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.vkey_id_;
+}
+inline void QueryVerifyGnarkRequest::_internal_set_vkey_id(::uint64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.vkey_id_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // VKey
 
 // bytes key_bytes = 1 [json_name = "keyBytes"];
@@ -3886,6 +5198,28 @@ inline void VKey::set_allocated_authority(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.VKey.authority)
+}
+
+// .xion.zk.v1.ProofSystem proof_system = 6 [json_name = "proofSystem"];
+inline void VKey::clear_proof_system() {
+  _impl_.proof_system_ = 0;
+}
+inline ::xion::zk::v1::ProofSystem VKey::proof_system() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.VKey.proof_system)
+  return _internal_proof_system();
+}
+inline void VKey::set_proof_system(::xion::zk::v1::ProofSystem value) {
+  _internal_set_proof_system(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.VKey.proof_system)
+}
+inline ::xion::zk::v1::ProofSystem VKey::_internal_proof_system() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::xion::zk::v1::ProofSystem>(_impl_.proof_system_);
+}
+inline void VKey::_internal_set_proof_system(::xion::zk::v1::ProofSystem value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_system_ = value;
 }
 
 // -------------------------------------------------------------------

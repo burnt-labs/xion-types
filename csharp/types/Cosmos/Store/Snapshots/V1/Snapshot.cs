@@ -47,8 +47,9 @@ namespace Cosmos.Store.Snapshots.V1 {
             "cy1zZGsgMC40NiJYChVTbmFwc2hvdEV4dGVuc2lvbk1ldGESEgoEbmFtZRgB",
             "IAEoCVIEbmFtZRIWCgZmb3JtYXQYAiABKA1SBmZvcm1hdDoT0rQtD2Nvc21v",
             "cy1zZGsgMC40NiJJChhTbmFwc2hvdEV4dGVuc2lvblBheWxvYWQSGAoHcGF5",
-            "bG9hZBgBIAEoDFIHcGF5bG9hZDoT0rQtD2Nvc21vcy1zZGsgMC40NkIkWiJj",
-            "b3Ntb3NzZGsuaW8vc3RvcmUvc25hcHNob3RzL3R5cGVzYgZwcm90bzM="));
+            "bG9hZBgBIAEoDFIHcGF5bG9hZDoT0rQtD2Nvc21vcy1zZGsgMC40NkI3WjVn",
+            "aXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3N0b3JlL3YyL3NuYXBzaG90",
+            "cy90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -28,6 +28,7 @@
 #import "ibc/core/commitment/v2/Commitment.pbobjc.h"
 #import "google/api/Annotations.pbobjc.h"
 #import "gogoproto/Gogo.pbobjc.h"
+#import "cosmos_proto/Cosmos.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -82,6 +83,7 @@ GPBObjCClassDeclaration(QueryVerifyMembershipResponse);
     registry = [[GPBExtensionRegistry alloc] init];
     // Merge in the imports (direct or indirect) that defined extensions.
     [registry addExtensions:[QueryRoot extensionRegistry]];
+    [registry addExtensions:[CosmosRoot extensionRegistry]];
     [registry addExtensions:[GogoRoot extensionRegistry]];
     [registry addExtensions:[GAPIAnnotationsRoot extensionRegistry]];
   }

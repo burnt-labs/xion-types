@@ -29,6 +29,7 @@
 CF_EXTERN_C_BEGIN
 
 @class ABCIParams;
+@class AuthorityParams;
 @class BlockParams;
 @class EvidenceParams;
 @class ValidatorParams;
@@ -58,6 +59,7 @@ typedef GPB_ENUM(MsgUpdateParams_FieldNumber) {
   MsgUpdateParams_FieldNumber_Evidence = 3,
   MsgUpdateParams_FieldNumber_Validator = 4,
   MsgUpdateParams_FieldNumber_Abci = 5,
+  MsgUpdateParams_FieldNumber_Auth = 6,
 };
 
 /**
@@ -90,6 +92,10 @@ GPB_FINAL @interface MsgUpdateParams : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) ABCIParams *abci;
 /** Test to see if @c abci has been set. */
 @property(nonatomic, readwrite) BOOL hasAbci;
+
+@property(nonatomic, readwrite, strong, null_resettable) AuthorityParams *auth;
+/** Test to see if @c auth has been set. */
+@property(nonatomic, readwrite) BOOL hasAuth;
 
 @end
 

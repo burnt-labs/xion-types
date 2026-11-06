@@ -956,12 +956,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
      * @return The timeout.
      */
     long getTimeout();
-
-    /**
-     * <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-     * @return The nonrefundable.
-     */
-    boolean getNonrefundable();
   }
   /**
    * <pre>
@@ -1299,17 +1293,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
       return timeout_;
     }
 
-    public static final int NONREFUNDABLE_FIELD_NUMBER = 12;
-    private boolean nonrefundable_ = false;
-    /**
-     * <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-     * @return The nonrefundable.
-     */
-    @java.lang.Override
-    public boolean getNonrefundable() {
-      return nonrefundable_;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1356,9 +1339,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
       }
       if (timeout_ != 0L) {
         output.writeUInt64(11, timeout_);
-      }
-      if (nonrefundable_ != false) {
-        output.writeBool(12, nonrefundable_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1407,10 +1387,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(11, timeout_);
       }
-      if (nonrefundable_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(12, nonrefundable_);
-      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1448,8 +1424,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
           != other.getRetriesRemaining()) return false;
       if (getTimeout()
           != other.getTimeout()) return false;
-      if (getNonrefundable()
-          != other.getNonrefundable()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1486,9 +1460,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
       hash = (37 * hash) + TIMEOUT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimeout());
-      hash = (37 * hash) + NONREFUNDABLE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getNonrefundable());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1636,7 +1607,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
         refundSequence_ = 0L;
         retriesRemaining_ = 0;
         timeout_ = 0L;
-        nonrefundable_ = false;
         return this;
       }
 
@@ -1702,9 +1672,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
         }
         if (((from_bitField0_ & 0x00000400) != 0)) {
           result.timeout_ = timeout_;
-        }
-        if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.nonrefundable_ = nonrefundable_;
         }
       }
 
@@ -1797,9 +1764,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
         if (other.getTimeout() != 0L) {
           setTimeout(other.getTimeout());
         }
-        if (other.getNonrefundable() != false) {
-          setNonrefundable(other.getNonrefundable());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -1881,11 +1845,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
                 bitField0_ |= 0x00000400;
                 break;
               } // case 88
-              case 96: {
-                nonrefundable_ = input.readBool();
-                bitField0_ |= 0x00000800;
-                break;
-              } // case 96
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2494,38 +2453,6 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
         onChanged();
         return this;
       }
-
-      private boolean nonrefundable_ ;
-      /**
-       * <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-       * @return The nonrefundable.
-       */
-      @java.lang.Override
-      public boolean getNonrefundable() {
-        return nonrefundable_;
-      }
-      /**
-       * <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-       * @param value The nonrefundable to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNonrefundable(boolean value) {
-
-        nonrefundable_ = value;
-        bitField0_ |= 0x00000800;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool nonrefundable = 12 [json_name = "nonrefundable"];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNonrefundable() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        nonrefundable_ = false;
-        onChanged();
-        return this;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2625,7 +2552,7 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
       "tPacketsEntry\022\020\n\003key\030\001 \001(\tR\003key\022S\n\005value" +
       "\030\002 \001(\0132=.ibc.applications.packet_forward" +
       "_middleware.v1.InFlightPacketR\005value:\0028\001" +
-      "\"\237\004\n\016InFlightPacket\0226\n\027original_sender_a" +
+      "\"\377\003\n\016InFlightPacket\0226\n\027original_sender_a" +
       "ddress\030\001 \001(\tR\025originalSenderAddress\022*\n\021r" +
       "efund_channel_id\030\002 \001(\tR\017refundChannelId\022" +
       "$\n\016refund_port_id\030\003 \001(\tR\014refundPortId\0221\n" +
@@ -2637,10 +2564,9 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
       "ght\022\037\n\013packet_data\030\010 \001(\014R\npacketData\022\'\n\017" +
       "refund_sequence\030\t \001(\004R\016refundSequence\022+\n" +
       "\021retries_remaining\030\n \001(\005R\020retriesRemaini" +
-      "ng\022\030\n\007timeout\030\013 \001(\004R\007timeout\022$\n\rnonrefun" +
-      "dable\030\014 \001(\010R\rnonrefundableBKZIgithub.com" +
-      "/cosmos/ibc-go/v10/modules/apps/packet-f" +
-      "orward-middleware/typesb\006proto3"
+      "ng\022\030\n\007timeout\030\013 \001(\004R\007timeoutJ\004\010\014\020\rBKZIgi" +
+      "thub.com/cosmos/ibc-go/v11/modules/apps/" +
+      "packet-forward-middleware/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2664,7 +2590,7 @@ ibc.applications.packet_forward_middleware.v1.Genesis.InFlightPacket defaultValu
     internal_static_ibc_applications_packet_forward_middleware_v1_InFlightPacket_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ibc_applications_packet_forward_middleware_v1_InFlightPacket_descriptor,
-        new java.lang.String[] { "OriginalSenderAddress", "RefundChannelId", "RefundPortId", "PacketSrcChannelId", "PacketSrcPortId", "PacketTimeoutTimestamp", "PacketTimeoutHeight", "PacketData", "RefundSequence", "RetriesRemaining", "Timeout", "Nonrefundable", });
+        new java.lang.String[] { "OriginalSenderAddress", "RefundChannelId", "RefundPortId", "PacketSrcChannelId", "PacketSrcPortId", "PacketTimeoutTimestamp", "PacketTimeoutHeight", "PacketData", "RefundSequence", "RetriesRemaining", "Timeout", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.GoGoProtos.moretags);

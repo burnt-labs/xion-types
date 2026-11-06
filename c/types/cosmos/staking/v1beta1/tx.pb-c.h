@@ -37,6 +37,8 @@ typedef struct Cosmos__Staking__V1beta1__MsgCancelUnbondingDelegation Cosmos__St
 typedef struct Cosmos__Staking__V1beta1__MsgCancelUnbondingDelegationResponse Cosmos__Staking__V1beta1__MsgCancelUnbondingDelegationResponse;
 typedef struct Cosmos__Staking__V1beta1__MsgUpdateParams Cosmos__Staking__V1beta1__MsgUpdateParams;
 typedef struct Cosmos__Staking__V1beta1__MsgUpdateParamsResponse Cosmos__Staking__V1beta1__MsgUpdateParamsResponse;
+typedef struct Cosmos__Staking__V1beta1__MsgRotateConsPubKey Cosmos__Staking__V1beta1__MsgRotateConsPubKey;
+typedef struct Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse;
 
 
 /* --- enums --- */
@@ -270,6 +272,33 @@ struct  Cosmos__Staking__V1beta1__MsgUpdateParamsResponse
 };
 #define COSMOS__STAKING__V1BETA1__MSG_UPDATE_PARAMS_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__msg_update_params_response__descriptor) \
+ }
+
+
+/*
+ * MsgRotateConsPubKey is the Msg/RotateConsPubKey request type.
+ */
+struct  Cosmos__Staking__V1beta1__MsgRotateConsPubKey
+{
+  ProtobufCMessage base;
+  char *validator_address;
+  Google__Protobuf__Any *new_pubkey;
+};
+#define COSMOS__STAKING__V1BETA1__MSG_ROTATE_CONS_PUB_KEY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor) \
+, (char *)protobuf_c_empty_string, NULL }
+
+
+/*
+ * MsgRotateConsPubKeyResponse defines the response structure for executing a
+ * MsgRotateConsPubKey message.
+ */
+struct  Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse
+{
+  ProtobufCMessage base;
+};
+#define COSMOS__STAKING__V1BETA1__MSG_ROTATE_CONS_PUB_KEY_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor) \
  }
 
 
@@ -539,6 +568,44 @@ Cosmos__Staking__V1beta1__MsgUpdateParamsResponse *
 void   cosmos__staking__v1beta1__msg_update_params_response__free_unpacked
                      (Cosmos__Staking__V1beta1__MsgUpdateParamsResponse *message,
                       ProtobufCAllocator *allocator);
+/* Cosmos__Staking__V1beta1__MsgRotateConsPubKey methods */
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key__init
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKey         *message);
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key__get_packed_size
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey   *message);
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key__pack
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey   *message,
+                      uint8_t             *out);
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey   *message,
+                      ProtobufCBuffer     *buffer);
+Cosmos__Staking__V1beta1__MsgRotateConsPubKey *
+       cosmos__staking__v1beta1__msg_rotate_cons_pub_key__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key__free_unpacked
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKey *message,
+                      ProtobufCAllocator *allocator);
+/* Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse methods */
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__init
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse         *message);
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__get_packed_size
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse   *message);
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__pack
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse   *message,
+                      uint8_t             *out);
+size_t cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__pack_to_buffer
+                     (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *
+       cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__free_unpacked
+                     (Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Cosmos__Staking__V1beta1__MsgCreateValidator_Closure)
@@ -583,6 +650,12 @@ typedef void (*Cosmos__Staking__V1beta1__MsgUpdateParams_Closure)
 typedef void (*Cosmos__Staking__V1beta1__MsgUpdateParamsResponse_Closure)
                  (const Cosmos__Staking__V1beta1__MsgUpdateParamsResponse *message,
                   void *closure_data);
+typedef void (*Cosmos__Staking__V1beta1__MsgRotateConsPubKey_Closure)
+                 (const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *message,
+                  void *closure_data);
+typedef void (*Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse_Closure)
+                 (const Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -618,6 +691,10 @@ struct Cosmos__Staking__V1beta1__Msg_Service
                         const Cosmos__Staking__V1beta1__MsgUpdateParams *input,
                         Cosmos__Staking__V1beta1__MsgUpdateParamsResponse_Closure closure,
                         void *closure_data);
+  void (*rotate_cons_pub_key)(Cosmos__Staking__V1beta1__Msg_Service *service,
+                              const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *input,
+                              Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse_Closure closure,
+                              void *closure_data);
 };
 typedef void (*Cosmos__Staking__V1beta1__Msg_ServiceDestroy)(Cosmos__Staking__V1beta1__Msg_Service *);
 void cosmos__staking__v1beta1__msg__init (Cosmos__Staking__V1beta1__Msg_Service *service,
@@ -632,7 +709,8 @@ void cosmos__staking__v1beta1__msg__init (Cosmos__Staking__V1beta1__Msg_Service 
       function_prefix__ ## begin_redelegate,\
       function_prefix__ ## undelegate,\
       function_prefix__ ## cancel_unbonding_delegation,\
-      function_prefix__ ## update_params  }
+      function_prefix__ ## update_params,\
+      function_prefix__ ## rotate_cons_pub_key  }
 void cosmos__staking__v1beta1__msg__create_validator(ProtobufCService *service,
                                                      const Cosmos__Staking__V1beta1__MsgCreateValidator *input,
                                                      Cosmos__Staking__V1beta1__MsgCreateValidatorResponse_Closure closure,
@@ -661,6 +739,10 @@ void cosmos__staking__v1beta1__msg__update_params(ProtobufCService *service,
                                                   const Cosmos__Staking__V1beta1__MsgUpdateParams *input,
                                                   Cosmos__Staking__V1beta1__MsgUpdateParamsResponse_Closure closure,
                                                   void *closure_data);
+void cosmos__staking__v1beta1__msg__rotate_cons_pub_key(ProtobufCService *service,
+                                                        const Cosmos__Staking__V1beta1__MsgRotateConsPubKey *input,
+                                                        Cosmos__Staking__V1beta1__MsgRotateConsPubKeyResponse_Closure closure,
+                                                        void *closure_data);
 
 /* --- descriptors --- */
 
@@ -678,6 +760,8 @@ extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_cancel_unb
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_cancel_unbonding_delegation_response__descriptor;
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_update_params__descriptor;
 extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_update_params_response__descriptor;
+extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_rotate_cons_pub_key__descriptor;
+extern const ProtobufCMessageDescriptor cosmos__staking__v1beta1__msg_rotate_cons_pub_key_response__descriptor;
 extern const ProtobufCServiceDescriptor cosmos__staking__v1beta1__msg__descriptor;
 
 PROTOBUF_C__END_DECLS

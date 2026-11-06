@@ -188,7 +188,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "st.v1.MsgModuleQuerySafe\032H.ibc.applicati"
     "ons.interchain_accounts.host.v1.MsgModul"
     "eQuerySafeResponse\032\005\200\347\260*\001BMZKgithub.com/"
-    "cosmos/ibc-go/v10/modules/apps/27-interc"
+    "cosmos/ibc-go/v11/modules/apps/27-interc"
     "hain-accounts/host/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2finterchain_5faccounts_2fhost_2fv1_2ftx_2eproto_deps[3] =

@@ -23,7 +23,7 @@ class Packet
 amount (	Ramount
 sender (	Rsender
 receiver (	Rreceiver
-memo (	RmemoB:Z8github.com/cosmos/ibc-go/v10/modules/apps/transfer/typesbproto3'
+memo (	RmemoB:Z8github.com/cosmos/ibc-go/v11/modules/apps/transfer/typesbproto3'
         , true);
 
         static::$is_initialized = true;

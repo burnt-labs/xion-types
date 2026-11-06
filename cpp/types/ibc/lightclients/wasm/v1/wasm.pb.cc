@@ -87,27 +87,11 @@ struct ClientMessageDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ClientMessageDefaultTypeInternal _ClientMessage_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Checksums::Checksums(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.checksums_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct ChecksumsDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ChecksumsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ChecksumsDefaultTypeInternal() {}
-  union {
-    Checksums _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ChecksumsDefaultTypeInternal _Checksums_default_instance_;
 }  // namespace v1
 }  // namespace wasm
 }  // namespace lightclients
 }  // namespace ibc
-static ::_pb::Metadata file_level_metadata_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto[4];
+static ::_pb::Metadata file_level_metadata_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto[3];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -146,15 +130,6 @@ const ::uint32_t TableStruct_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto::offs
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::ibc::lightclients::wasm::v1::ClientMessage, _impl_.data_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::ibc::lightclients::wasm::v1::Checksums, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::ibc::lightclients::wasm::v1::Checksums, _impl_.checksums_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -162,14 +137,12 @@ static const ::_pbi::MigrationSchema
         {0, 11, -1, sizeof(::ibc::lightclients::wasm::v1::ClientState)},
         {14, -1, -1, sizeof(::ibc::lightclients::wasm::v1::ConsensusState)},
         {23, -1, -1, sizeof(::ibc::lightclients::wasm::v1::ClientMessage)},
-        {32, -1, -1, sizeof(::ibc::lightclients::wasm::v1::Checksums)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::ibc::lightclients::wasm::v1::_ClientState_default_instance_._instance,
     &::ibc::lightclients::wasm::v1::_ConsensusState_default_instance_._instance,
     &::ibc::lightclients::wasm::v1::_ClientMessage_default_instance_._instance,
-    &::ibc::lightclients::wasm::v1::_Checksums_default_instance_._instance,
 };
 const char descriptor_table_protodef_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n#ibc/lightclients/wasm/v1/wasm.proto\022\030i"
@@ -180,10 +153,9 @@ const char descriptor_table_protodef_ibc_2flightclients_2fwasm_2fv1_2fwasm_2epro
     "\003 \001(\0132\032.ibc.core.client.v1.HeightB\004\310\336\037\000R"
     "\014latestHeight:\004\210\240\037\000\"*\n\016ConsensusState\022\022\n"
     "\004data\030\001 \001(\014R\004data:\004\210\240\037\000\")\n\rClientMessage"
-    "\022\022\n\004data\030\001 \001(\014R\004data:\004\210\240\037\000\"-\n\tChecksums\022"
-    "\034\n\tchecksums\030\001 \003(\014R\tchecksums:\002\030\001BBZ@git"
-    "hub.com/cosmos/ibc-go/modules/light-clie"
-    "nts/08-wasm/v10/typesb\006proto3"
+    "\022\022\n\004data\030\001 \001(\014R\004data:\004\210\240\037\000BBZ@github.com"
+    "/cosmos/ibc-go/modules/light-clients/08-"
+    "wasm/v11/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_deps[2] =
     {
@@ -194,13 +166,13 @@ static ::absl::once_flag descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_
 const ::_pbi::DescriptorTable descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto = {
     false,
     false,
-    469,
+    422,
     descriptor_table_protodef_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto,
     "ibc/lightclients/wasm/v1/wasm.proto",
     &descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_once,
     descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_deps,
     2,
-    4,
+    3,
     schemas,
     file_default_instances,
     TableStruct_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto::offsets,
@@ -882,176 +854,6 @@ void ClientMessage::InternalSwap(ClientMessage* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_getter, &descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_once,
       file_level_metadata_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto[2]);
-}
-// ===================================================================
-
-class Checksums::_Internal {
- public:
-};
-
-Checksums::Checksums(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:ibc.lightclients.wasm.v1.Checksums)
-}
-Checksums::Checksums(const Checksums& from) : ::google::protobuf::Message() {
-  Checksums* const _this = this;
-  (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.checksums_){from._impl_.checksums_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-
-  // @@protoc_insertion_point(copy_constructor:ibc.lightclients.wasm.v1.Checksums)
-}
-inline void Checksums::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.checksums_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-}
-Checksums::~Checksums() {
-  // @@protoc_insertion_point(destructor:ibc.lightclients.wasm.v1.Checksums)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void Checksums::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_checksums()->~RepeatedPtrField();
-}
-void Checksums::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-PROTOBUF_NOINLINE void Checksums::Clear() {
-// @@protoc_insertion_point(message_clear_start:ibc.lightclients.wasm.v1.Checksums)
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _internal_mutable_checksums()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-const char* Checksums::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
-  return ptr;
-}
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> Checksums::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Checksums_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated bytes checksums = 1 [json_name = "checksums"];
-    {::_pbi::TcParser::FastBR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Checksums, _impl_.checksums_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated bytes checksums = 1 [json_name = "checksums"];
-    {PROTOBUF_FIELD_OFFSET(Checksums, _impl_.checksums_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kBytes | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-::uint8_t* Checksums::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ibc.lightclients.wasm.v1.Checksums)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
-
-  // repeated bytes checksums = 1 [json_name = "checksums"];
-  for (int i = 0, n = this->_internal_checksums_size(); i < n; ++i) {
-    const auto& s = this->_internal_checksums().Get(i);
-    target = stream->WriteBytes(1, s, target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:ibc.lightclients.wasm.v1.Checksums)
-  return target;
-}
-
-::size_t Checksums::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ibc.lightclients.wasm.v1.Checksums)
-  ::size_t total_size = 0;
-
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // repeated bytes checksums = 1 [json_name = "checksums"];
-  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_checksums().size());
-  for (int i = 0, n = _internal_checksums().size(); i < n; ++i) {
-    total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
-        _internal_checksums().Get(i));
-  }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::google::protobuf::Message::ClassData Checksums::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Checksums::MergeImpl
-};
-const ::google::protobuf::Message::ClassData*Checksums::GetClassData() const { return &_class_data_; }
-
-
-void Checksums::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<Checksums*>(&to_msg);
-  auto& from = static_cast<const Checksums&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:ibc.lightclients.wasm.v1.Checksums)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  _this->_internal_mutable_checksums()->MergeFrom(from._internal_checksums());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void Checksums::CopyFrom(const Checksums& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ibc.lightclients.wasm.v1.Checksums)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-PROTOBUF_NOINLINE bool Checksums::IsInitialized() const {
-  return true;
-}
-
-void Checksums::InternalSwap(Checksums* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.checksums_.InternalSwap(&other->_impl_.checksums_);
-}
-
-::google::protobuf::Metadata Checksums::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_getter, &descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto_once,
-      file_level_metadata_ibc_2flightclients_2fwasm_2fv1_2fwasm_2eproto[3]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

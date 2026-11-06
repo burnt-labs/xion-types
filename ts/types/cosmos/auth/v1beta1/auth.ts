@@ -49,6 +49,7 @@ export interface Params {
   txSizeCostPerByte: bigint;
   sigVerifyCostEd25519: bigint;
   sigVerifyCostSecp256k1: bigint;
+  sigVerifyCostMldsa65: bigint;
 }
 
 function createBaseBaseAccount(): BaseAccount {
@@ -395,6 +396,7 @@ function createBaseParams(): Params {
     txSizeCostPerByte: 0n,
     sigVerifyCostEd25519: 0n,
     sigVerifyCostSecp256k1: 0n,
+    sigVerifyCostMldsa65: 0n,
   };
 }
 
@@ -429,6 +431,12 @@ export const Params: MessageFns<Params> = {
         throw new globalThis.Error("value provided for field message.sigVerifyCostSecp256k1 of type uint64 too large");
       }
       writer.uint32(40).uint64(message.sigVerifyCostSecp256k1);
+    }
+    if (message.sigVerifyCostMldsa65 !== 0n) {
+      if (BigInt.asUintN(64, message.sigVerifyCostMldsa65) !== message.sigVerifyCostMldsa65) {
+        throw new globalThis.Error("value provided for field message.sigVerifyCostMldsa65 of type uint64 too large");
+      }
+      writer.uint32(48).uint64(message.sigVerifyCostMldsa65);
     }
     return writer;
   },
@@ -486,6 +494,14 @@ export const Params: MessageFns<Params> = {
             message.sigVerifyCostSecp256k1 = reader.uint64() as bigint;
             continue;
           }
+          case 6: {
+            if (tag !== 48) {
+              break;
+            }
+
+            message.sigVerifyCostMldsa65 = reader.uint64() as bigint;
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -525,6 +541,11 @@ export const Params: MessageFns<Params> = {
         : isSet(object.sig_verify_cost_secp256k1)
         ? BigInt(object.sig_verify_cost_secp256k1)
         : 0n,
+      sigVerifyCostMldsa65: isSet(object.sigVerifyCostMldsa65)
+        ? BigInt(object.sigVerifyCostMldsa65)
+        : isSet(object.sig_verify_cost_mldsa65)
+        ? BigInt(object.sig_verify_cost_mldsa65)
+        : 0n,
     };
   },
 
@@ -544,6 +565,9 @@ export const Params: MessageFns<Params> = {
     }
     if (message.sigVerifyCostSecp256k1 !== 0n) {
       obj.sigVerifyCostSecp256k1 = message.sigVerifyCostSecp256k1.toString();
+    }
+    if (message.sigVerifyCostMldsa65 !== 0n) {
+      obj.sigVerifyCostMldsa65 = message.sigVerifyCostMldsa65.toString();
     }
     return obj;
   },
@@ -569,6 +593,9 @@ export const Params: MessageFns<Params> = {
       (object.sigVerifyCostSecp256k1 !== undefined && object.sigVerifyCostSecp256k1 !== null)
         ? BigInt(object.sigVerifyCostSecp256k1)
         : 0n;
+    message.sigVerifyCostMldsa65 = (object.sigVerifyCostMldsa65 !== undefined && object.sigVerifyCostMldsa65 !== null)
+      ? BigInt(object.sigVerifyCostMldsa65)
+      : 0n;
     return message;
   },
 };

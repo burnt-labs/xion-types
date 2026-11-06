@@ -87,31 +87,6 @@ export interface MsgUpgradeClient {
 export interface MsgUpgradeClientResponse {
 }
 
-/**
- * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
- * light client misbehaviour.
- * This message has been deprecated. Use MsgUpdateClient instead.
- *
- * @deprecated
- */
-export interface MsgSubmitMisbehaviour {
-  /** client unique identifier */
-  clientId: string;
-  /** misbehaviour used for freezing the light client */
-  misbehaviour?:
-    | Any
-    | undefined;
-  /** signer address */
-  signer: string;
-}
-
-/**
- * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
- * type.
- */
-export interface MsgSubmitMisbehaviourResponse {
-}
-
 /** MsgRecoverClient defines the message used to recover a frozen or expired client. */
 export interface MsgRecoverClient {
   /** the client identifier for the client to be updated if the proposal passes */
@@ -764,165 +739,6 @@ export const MsgUpgradeClientResponse: MessageFns<MsgUpgradeClientResponse> = {
   },
 };
 
-function createBaseMsgSubmitMisbehaviour(): MsgSubmitMisbehaviour {
-  return { clientId: "", misbehaviour: undefined, signer: "" };
-}
-
-export const MsgSubmitMisbehaviour: MessageFns<MsgSubmitMisbehaviour> = {
-  encode(message: MsgSubmitMisbehaviour, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.clientId !== "") {
-      writer.uint32(10).string(message.clientId);
-    }
-    if (message.misbehaviour !== undefined) {
-      Any.encode(message.misbehaviour, writer.uint32(18).fork()).join();
-    }
-    if (message.signer !== "") {
-      writer.uint32(26).string(message.signer);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviour {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
-    if (previousRecursionDepth >= 100) {
-      throw new globalThis.Error("protobuf decode recursion limit exceeded");
-    }
-    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
-    try {
-      const end = length === undefined ? reader.len : reader.pos + length;
-      const message = createBaseMsgSubmitMisbehaviour();
-      while (reader.pos < end) {
-        const tag = reader.uint32();
-        switch (tag >>> 3) {
-          case 1: {
-            if (tag !== 10) {
-              break;
-            }
-
-            message.clientId = reader.string();
-            continue;
-          }
-          case 2: {
-            if (tag !== 18) {
-              break;
-            }
-
-            message.misbehaviour = Any.decode(reader, reader.uint32());
-            continue;
-          }
-          case 3: {
-            if (tag !== 26) {
-              break;
-            }
-
-            message.signer = reader.string();
-            continue;
-          }
-        }
-        if ((tag & 7) === 4 || tag === 0) {
-          break;
-        }
-        reader.skip(tag & 7);
-      }
-      return message;
-    } finally {
-      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
-    }
-  },
-
-  fromJSON(object: any): MsgSubmitMisbehaviour {
-    return {
-      clientId: isSet(object.clientId)
-        ? globalThis.String(object.clientId)
-        : isSet(object.client_id)
-        ? globalThis.String(object.client_id)
-        : "",
-      misbehaviour: isSet(object.misbehaviour) ? Any.fromJSON(object.misbehaviour) : undefined,
-      signer: isSet(object.signer) ? globalThis.String(object.signer) : "",
-    };
-  },
-
-  toJSON(message: MsgSubmitMisbehaviour): unknown {
-    const obj: any = {};
-    if (message.clientId !== "") {
-      obj.clientId = message.clientId;
-    }
-    if (message.misbehaviour !== undefined) {
-      obj.misbehaviour = Any.toJSON(message.misbehaviour);
-    }
-    if (message.signer !== "") {
-      obj.signer = message.signer;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<MsgSubmitMisbehaviour>, I>>(base?: I): MsgSubmitMisbehaviour {
-    return MsgSubmitMisbehaviour.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<MsgSubmitMisbehaviour>, I>>(object: I): MsgSubmitMisbehaviour {
-    const message = createBaseMsgSubmitMisbehaviour();
-    message.clientId = object.clientId ?? "";
-    message.misbehaviour = (object.misbehaviour !== undefined && object.misbehaviour !== null)
-      ? Any.fromPartial(object.misbehaviour)
-      : undefined;
-    message.signer = object.signer ?? "";
-    return message;
-  },
-};
-
-function createBaseMsgSubmitMisbehaviourResponse(): MsgSubmitMisbehaviourResponse {
-  return {};
-}
-
-export const MsgSubmitMisbehaviourResponse: MessageFns<MsgSubmitMisbehaviourResponse> = {
-  encode(_: MsgSubmitMisbehaviourResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
-    if (previousRecursionDepth >= 100) {
-      throw new globalThis.Error("protobuf decode recursion limit exceeded");
-    }
-    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
-    try {
-      const end = length === undefined ? reader.len : reader.pos + length;
-      const message = createBaseMsgSubmitMisbehaviourResponse();
-      while (reader.pos < end) {
-        const tag = reader.uint32();
-        switch (tag >>> 3) {
-        }
-        if ((tag & 7) === 4 || tag === 0) {
-          break;
-        }
-        reader.skip(tag & 7);
-      }
-      return message;
-    } finally {
-      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
-    }
-  },
-
-  fromJSON(_: any): MsgSubmitMisbehaviourResponse {
-    return {};
-  },
-
-  toJSON(_: MsgSubmitMisbehaviourResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<MsgSubmitMisbehaviourResponse>, I>>(base?: I): MsgSubmitMisbehaviourResponse {
-    return MsgSubmitMisbehaviourResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<MsgSubmitMisbehaviourResponse>, I>>(_: I): MsgSubmitMisbehaviourResponse {
-    const message = createBaseMsgSubmitMisbehaviourResponse();
-    return message;
-  },
-};
-
 function createBaseMsgRecoverClient(): MsgRecoverClient {
   return { subjectClientId: "", substituteClientId: "", signer: "" };
 }
@@ -1531,11 +1347,6 @@ export interface Msg {
   UpdateClient(request: DeepPartial<MsgUpdateClient>, metadata?: grpc.Metadata): Promise<MsgUpdateClientResponse>;
   /** UpgradeClient defines a rpc handler method for MsgUpgradeClient. */
   UpgradeClient(request: DeepPartial<MsgUpgradeClient>, metadata?: grpc.Metadata): Promise<MsgUpgradeClientResponse>;
-  /** SubmitMisbehaviour defines a rpc handler method for MsgSubmitMisbehaviour. */
-  SubmitMisbehaviour(
-    request: DeepPartial<MsgSubmitMisbehaviour>,
-    metadata?: grpc.Metadata,
-  ): Promise<MsgSubmitMisbehaviourResponse>;
   /** RecoverClient defines a rpc handler method for MsgRecoverClient. */
   RecoverClient(request: DeepPartial<MsgRecoverClient>, metadata?: grpc.Metadata): Promise<MsgRecoverClientResponse>;
   /** IBCSoftwareUpgrade defines a rpc handler method for MsgIBCSoftwareUpgrade. */
@@ -1560,7 +1371,6 @@ export class MsgClientImpl implements Msg {
     this.CreateClient = this.CreateClient.bind(this);
     this.UpdateClient = this.UpdateClient.bind(this);
     this.UpgradeClient = this.UpgradeClient.bind(this);
-    this.SubmitMisbehaviour = this.SubmitMisbehaviour.bind(this);
     this.RecoverClient = this.RecoverClient.bind(this);
     this.IBCSoftwareUpgrade = this.IBCSoftwareUpgrade.bind(this);
     this.UpdateClientParams = this.UpdateClientParams.bind(this);
@@ -1577,13 +1387,6 @@ export class MsgClientImpl implements Msg {
 
   UpgradeClient(request: DeepPartial<MsgUpgradeClient>, metadata?: grpc.Metadata): Promise<MsgUpgradeClientResponse> {
     return this.rpc.unary(MsgUpgradeClientDesc, MsgUpgradeClient.fromPartial(request), metadata);
-  }
-
-  SubmitMisbehaviour(
-    request: DeepPartial<MsgSubmitMisbehaviour>,
-    metadata?: grpc.Metadata,
-  ): Promise<MsgSubmitMisbehaviourResponse> {
-    return this.rpc.unary(MsgSubmitMisbehaviourDesc, MsgSubmitMisbehaviour.fromPartial(request), metadata);
   }
 
   RecoverClient(request: DeepPartial<MsgRecoverClient>, metadata?: grpc.Metadata): Promise<MsgRecoverClientResponse> {
@@ -1673,29 +1476,6 @@ export const MsgUpgradeClientDesc: UnaryMethodDefinitionish = {
   responseType: {
     deserializeBinary(data: Uint8Array) {
       const value = MsgUpgradeClientResponse.decode(data);
-      return {
-        ...value,
-        toObject() {
-          return value;
-        },
-      };
-    },
-  } as any,
-};
-
-export const MsgSubmitMisbehaviourDesc: UnaryMethodDefinitionish = {
-  methodName: "SubmitMisbehaviour",
-  service: MsgDesc,
-  requestStream: false,
-  responseStream: false,
-  requestType: {
-    serializeBinary() {
-      return MsgSubmitMisbehaviour.encode(this).finish();
-    },
-  } as any,
-  responseType: {
-    deserializeBinary(data: Uint8Array) {
-      const value = MsgSubmitMisbehaviourResponse.decode(data);
       return {
         ...value,
         toObject() {

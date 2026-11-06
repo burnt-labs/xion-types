@@ -7724,7 +7724,7 @@ public final class Connection {
       "D_UNSPECIFIED\020\000\032\021\212\235 \rUNINITIALIZED\022\030\n\nST" +
       "ATE_INIT\020\001\032\010\212\235 \004INIT\022\036\n\rSTATE_TRYOPEN\020\002\032" +
       "\013\212\235 \007TRYOPEN\022\030\n\nSTATE_OPEN\020\003\032\010\212\235 \004OPEN\032\004" +
-      "\210\243\036\000B?Z=github.com/cosmos/ibc-go/v10/mod" +
+      "\210\243\036\000B?Z=github.com/cosmos/ibc-go/v11/mod" +
       "ules/core/03-connection/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

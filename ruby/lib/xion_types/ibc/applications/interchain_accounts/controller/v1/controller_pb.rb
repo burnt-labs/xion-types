@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\nCibc/applications/interchain_accounts/controller/v1/controller.proto\x12\x32ibc.applications.interchain_accounts.controller.v1\"7\n\x06Params\x12-\n\x12\x63ontroller_enabled\x18\x01 \x01(\x08R\x11\x63ontrollerEnabledBSZQgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/controller/typesb\x06proto3"
+descriptor_data = "\nCibc/applications/interchain_accounts/controller/v1/controller.proto\x12\x32ibc.applications.interchain_accounts.controller.v1\"7\n\x06Params\x12-\n\x12\x63ontroller_enabled\x18\x01 \x01(\x08R\x11\x63ontrollerEnabledBSZQgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

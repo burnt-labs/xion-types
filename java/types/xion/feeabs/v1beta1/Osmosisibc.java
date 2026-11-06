@@ -6428,8 +6428,8 @@ public final class Osmosisibc {
       "abci.RequestQueryB\004\310\336\037\000R\010requests\"T\n\016Cos" +
       "mosResponse\022B\n\tresponses\030\001 \003(\0132\036.tenderm" +
       "int.abci.ResponseQueryB\004\310\336\037\000R\tresponsesB" +
-      "+Z)github.com/burnt-labs/xion/x/feeabs/t" +
-      "ypesb\006proto3"
+      ".Z,github.com/burnt-labs/xion/app/legacy" +
+      "/feeabsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

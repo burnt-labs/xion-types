@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateClient, MsgUpdateClient, MsgUpgradeClient, MsgSubmitMisbehaviour, MsgRecoverClient, MsgIBCSoftwareUpgrade, MsgUpdateParams, MsgDeleteClientCreator } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/ibc.core.client.v1.MsgCreateClient", MsgCreateClient], ["/ibc.core.client.v1.MsgUpdateClient", MsgUpdateClient], ["/ibc.core.client.v1.MsgUpgradeClient", MsgUpgradeClient], ["/ibc.core.client.v1.MsgSubmitMisbehaviour", MsgSubmitMisbehaviour], ["/ibc.core.client.v1.MsgRecoverClient", MsgRecoverClient], ["/ibc.core.client.v1.MsgIBCSoftwareUpgrade", MsgIBCSoftwareUpgrade], ["/ibc.core.client.v1.MsgUpdateParams", MsgUpdateParams], ["/ibc.core.client.v1.MsgDeleteClientCreator", MsgDeleteClientCreator]];
+import { MsgCreateClient, MsgUpdateClient, MsgUpgradeClient, MsgRecoverClient, MsgIBCSoftwareUpgrade, MsgUpdateParams, MsgDeleteClientCreator } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/ibc.core.client.v1.MsgCreateClient", MsgCreateClient], ["/ibc.core.client.v1.MsgUpdateClient", MsgUpdateClient], ["/ibc.core.client.v1.MsgUpgradeClient", MsgUpgradeClient], ["/ibc.core.client.v1.MsgRecoverClient", MsgRecoverClient], ["/ibc.core.client.v1.MsgIBCSoftwareUpgrade", MsgIBCSoftwareUpgrade], ["/ibc.core.client.v1.MsgUpdateParams", MsgUpdateParams], ["/ibc.core.client.v1.MsgDeleteClientCreator", MsgDeleteClientCreator]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -25,12 +25,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
         value: MsgUpgradeClient.encode(value).finish()
-      };
-    },
-    submitMisbehaviour(value: MsgSubmitMisbehaviour) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
-        value: MsgSubmitMisbehaviour.encode(value).finish()
       };
     },
     recoverClient(value: MsgRecoverClient) {
@@ -77,12 +71,6 @@ export const MessageComposer = {
         value
       };
     },
-    submitMisbehaviour(value: MsgSubmitMisbehaviour) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
-        value
-      };
-    },
     recoverClient(value: MsgRecoverClient) {
       return {
         typeUrl: "/ibc.core.client.v1.MsgRecoverClient",
@@ -125,12 +113,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
         value: MsgUpgradeClient.fromPartial(value)
-      };
-    },
-    submitMisbehaviour(value: MsgSubmitMisbehaviour) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
-        value: MsgSubmitMisbehaviour.fromPartial(value)
       };
     },
     recoverClient(value: MsgRecoverClient) {

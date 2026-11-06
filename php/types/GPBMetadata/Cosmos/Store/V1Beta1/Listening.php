@@ -18,7 +18,7 @@ class Listening
         \GPBMetadata\CosmosProto\Cosmos::initOnce();
         $pool->internalAddGeneratedFile(
             '
-³
+Æ
 $cosmos/store/v1beta1/listening.protocosmos.store.v1beta1cosmos_proto/cosmos.proto"
 StoreKVPair
 	store_key (	RstoreKey
@@ -28,7 +28,7 @@ $cosmos/store/v1beta1/listening.protocosmos.store.v1beta1cosmos_proto/cosmos
 BlockMetadataH
 response_commit (2.tendermint.abci.ResponseCommitRresponseCommit[
 request_finalize_block (2%.tendermint.abci.RequestFinalizeBlockRrequestFinalizeBlock^
-response_finalize_block (2&.tendermint.abci.ResponseFinalizeBlockRresponseFinalizeBlockJJJJJBZcosmossdk.io/store/typesbproto3'
+response_finalize_block (2&.tendermint.abci.ResponseFinalizeBlockRresponseFinalizeBlockJJJJJB-Z+github.com/cosmos/cosmos-sdk/store/v2/typesbproto3'
         , true);
 
         static::$is_initialized = true;

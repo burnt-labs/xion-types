@@ -45,8 +45,8 @@ namespace Xion.Feeabs.V1Beta1 {
             "SE9TVF9DSEFJTl9GRUVfQUJTX1NUQVRVU19VTlNQRUNJRklFRBAAEiUKIUhP",
             "U1RfQ0hBSU5fRkVFX0FCU19TVEFUVVNfVVBEQVRFRBABEiYKIkhPU1RfQ0hB",
             "SU5fRkVFX0FCU19TVEFUVVNfT1VUREFURUQQAhIkCiBIT1NUX0NIQUlOX0ZF",
-            "RV9BQlNfU1RBVFVTX0ZST1pFThADQitaKWdpdGh1Yi5jb20vYnVybnQtbGFi",
-            "cy94aW9uL3gvZmVlYWJzL3R5cGVzYgZwcm90bzM="));
+            "RV9BQlNfU1RBVFVTX0ZST1pFThADQi5aLGdpdGh1Yi5jb20vYnVybnQtbGFi",
+            "cy94aW9uL2FwcC9sZWdhY3kvZmVlYWJzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Xion.Feeabs.V1Beta1.HostChainFeeAbsStatus), }, null, new pbr::GeneratedClrTypeInfo[] {

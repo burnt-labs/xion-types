@@ -6796,7 +6796,7 @@ public final class Tx {
       "gement\022\'.ibc.core.channel.v2.MsgAcknowle" +
       "dgement\032/.ibc.core.channel.v2.MsgAcknowl" +
       "edgementResponse\032\005\200\347\260*\001B?Z=github.com/co" +
-      "smos/ibc-go/v10/modules/core/04-channel/" +
+      "smos/ibc-go/v11/modules/core/04-channel/" +
       "v2/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

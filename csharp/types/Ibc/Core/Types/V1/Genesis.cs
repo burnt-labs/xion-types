@@ -40,7 +40,7 @@ namespace Ibc.Core.Types.V1 {
             "AFIPY2xpZW50VjJHZW5lc2lzElUKEmNoYW5uZWxfdjJfZ2VuZXNpcxgFIAEo",
             "CzIhLmliYy5jb3JlLmNoYW5uZWwudjIuR2VuZXNpc1N0YXRlQgTI3h8AUhBj",
             "aGFubmVsVjJHZW5lc2lzQjFaL2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92",
-            "MTAvbW9kdWxlcy9jb3JlL3R5cGVzYgZwcm90bzM="));
+            "MTEvbW9kdWxlcy9jb3JlL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Ibc.Core.Client.V1.GenesisReflection.Descriptor, global::Ibc.Core.Client.V2.GenesisReflection.Descriptor, global::Ibc.Core.Connection.V1.GenesisReflection.Descriptor, global::Ibc.Core.Channel.V1.GenesisReflection.Descriptor, global::Ibc.Core.Channel.V2.GenesisReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -43,7 +43,6 @@ export interface InFlightPacket {
   refundSequence: bigint;
   retriesRemaining: number;
   timeout: bigint;
-  nonrefundable: boolean;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -260,7 +259,6 @@ function createBaseInFlightPacket(): InFlightPacket {
     refundSequence: 0n,
     retriesRemaining: 0,
     timeout: 0n,
-    nonrefundable: false,
   };
 }
 
@@ -307,9 +305,6 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
         throw new globalThis.Error("value provided for field message.timeout of type uint64 too large");
       }
       writer.uint32(88).uint64(message.timeout);
-    }
-    if (message.nonrefundable !== false) {
-      writer.uint32(96).bool(message.nonrefundable);
     }
     return writer;
   },
@@ -415,14 +410,6 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
             message.timeout = reader.uint64() as bigint;
             continue;
           }
-          case 12: {
-            if (tag !== 96) {
-              break;
-            }
-
-            message.nonrefundable = reader.bool();
-            continue;
-          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -488,7 +475,6 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
         ? globalThis.Number(object.retries_remaining)
         : 0,
       timeout: isSet(object.timeout) ? BigInt(object.timeout) : 0n,
-      nonrefundable: isSet(object.nonrefundable) ? globalThis.Boolean(object.nonrefundable) : false,
     };
   },
 
@@ -527,9 +513,6 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
     if (message.timeout !== 0n) {
       obj.timeout = message.timeout.toString();
     }
-    if (message.nonrefundable !== false) {
-      obj.nonrefundable = message.nonrefundable;
-    }
     return obj;
   },
 
@@ -554,7 +537,6 @@ export const InFlightPacket: MessageFns<InFlightPacket> = {
       : 0n;
     message.retriesRemaining = object.retriesRemaining ?? 0;
     message.timeout = (object.timeout !== undefined && object.timeout !== null) ? BigInt(object.timeout) : 0n;
-    message.nonrefundable = object.nonrefundable ?? false;
     return message;
   },
 };

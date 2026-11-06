@@ -72,6 +72,9 @@ extern CommissionDefaultTypeInternal _Commission_default_instance_;
 class CommissionRates;
 struct CommissionRatesDefaultTypeInternal;
 extern CommissionRatesDefaultTypeInternal _CommissionRates_default_instance_;
+class ConsKeyEvidenceExpiry;
+struct ConsKeyEvidenceExpiryDefaultTypeInternal;
+extern ConsKeyEvidenceExpiryDefaultTypeInternal _ConsKeyEvidenceExpiry_default_instance_;
 class DVPair;
 struct DVPairDefaultTypeInternal;
 extern DVPairDefaultTypeInternal _DVPair_default_instance_;
@@ -3485,6 +3488,7 @@ class Params final :
     kBondDenomFieldNumber = 5,
     kMinCommissionRateFieldNumber = 6,
     kUnbondingTimeFieldNumber = 1,
+    kKeyRotationFeeFieldNumber = 7,
     kMaxValidatorsFieldNumber = 2,
     kMaxEntriesFieldNumber = 3,
     kHistoricalEntriesFieldNumber = 4,
@@ -3536,6 +3540,21 @@ class Params final :
   ::google::protobuf::Duration* _internal_mutable_unbonding_time();
 
   public:
+  // .cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  bool has_key_rotation_fee() const;
+  void clear_key_rotation_fee() ;
+  const ::cosmos::base::v1beta1::Coin& key_rotation_fee() const;
+  PROTOBUF_NODISCARD ::cosmos::base::v1beta1::Coin* release_key_rotation_fee();
+  ::cosmos::base::v1beta1::Coin* mutable_key_rotation_fee();
+  void set_allocated_key_rotation_fee(::cosmos::base::v1beta1::Coin* value);
+  void unsafe_arena_set_allocated_key_rotation_fee(::cosmos::base::v1beta1::Coin* value);
+  ::cosmos::base::v1beta1::Coin* unsafe_arena_release_key_rotation_fee();
+
+  private:
+  const ::cosmos::base::v1beta1::Coin& _internal_key_rotation_fee() const;
+  ::cosmos::base::v1beta1::Coin* _internal_mutable_key_rotation_fee();
+
+  public:
   // uint32 max_validators = 2 [json_name = "maxValidators"];
   void clear_max_validators() ;
   ::uint32_t max_validators() const;
@@ -3571,7 +3590,7 @@ class Params final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 6, 1, 67, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 7, 2, 67, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -3581,6 +3600,7 @@ class Params final :
     ::google::protobuf::internal::ArenaStringPtr bond_denom_;
     ::google::protobuf::internal::ArenaStringPtr min_commission_rate_;
     ::google::protobuf::Duration* unbonding_time_;
+    ::cosmos::base::v1beta1::Coin* key_rotation_fee_;
     ::uint32_t max_validators_;
     ::uint32_t max_entries_;
     ::uint32_t historical_entries_;
@@ -4479,6 +4499,200 @@ class ValidatorUpdates final :
   struct Impl_ {
     ::google::protobuf::RepeatedPtrField< ::tendermint::abci::ValidatorUpdate > updates_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_cosmos_2fstaking_2fv1beta1_2fstaking_2eproto;
+};// -------------------------------------------------------------------
+
+class ConsKeyEvidenceExpiry final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry) */ {
+ public:
+  inline ConsKeyEvidenceExpiry() : ConsKeyEvidenceExpiry(nullptr) {}
+  ~ConsKeyEvidenceExpiry() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ConsKeyEvidenceExpiry(::google::protobuf::internal::ConstantInitialized);
+
+  ConsKeyEvidenceExpiry(const ConsKeyEvidenceExpiry& from);
+  ConsKeyEvidenceExpiry(ConsKeyEvidenceExpiry&& from) noexcept
+    : ConsKeyEvidenceExpiry() {
+    *this = ::std::move(from);
+  }
+
+  inline ConsKeyEvidenceExpiry& operator=(const ConsKeyEvidenceExpiry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConsKeyEvidenceExpiry& operator=(ConsKeyEvidenceExpiry&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConsKeyEvidenceExpiry& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConsKeyEvidenceExpiry* internal_default_instance() {
+    return reinterpret_cast<const ConsKeyEvidenceExpiry*>(
+               &_ConsKeyEvidenceExpiry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(ConsKeyEvidenceExpiry& a, ConsKeyEvidenceExpiry& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConsKeyEvidenceExpiry* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConsKeyEvidenceExpiry* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ConsKeyEvidenceExpiry* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ConsKeyEvidenceExpiry>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ConsKeyEvidenceExpiry& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ConsKeyEvidenceExpiry& from) {
+    ConsKeyEvidenceExpiry::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConsKeyEvidenceExpiry* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "cosmos.staking.v1beta1.ConsKeyEvidenceExpiry";
+  }
+  protected:
+  explicit ConsKeyEvidenceExpiry(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValidatorAddressFieldNumber = 1,
+    kExpiryTimeFieldNumber = 2,
+    kExpiryHeightFieldNumber = 3,
+  };
+  // bytes validator_address = 1 [json_name = "validatorAddress"];
+  void clear_validator_address() ;
+  const std::string& validator_address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_validator_address(Arg_&& arg, Args_... args);
+  std::string* mutable_validator_address();
+  PROTOBUF_NODISCARD std::string* release_validator_address();
+  void set_allocated_validator_address(std::string* ptr);
+
+  private:
+  const std::string& _internal_validator_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_validator_address(
+      const std::string& value);
+  std::string* _internal_mutable_validator_address();
+
+  public:
+  // .google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+  bool has_expiry_time() const;
+  void clear_expiry_time() ;
+  const ::google::protobuf::Timestamp& expiry_time() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_expiry_time();
+  ::google::protobuf::Timestamp* mutable_expiry_time();
+  void set_allocated_expiry_time(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_expiry_time(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_expiry_time();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_expiry_time() const;
+  ::google::protobuf::Timestamp* _internal_mutable_expiry_time();
+
+  public:
+  // int64 expiry_height = 3 [json_name = "expiryHeight"];
+  void clear_expiry_height() ;
+  ::int64_t expiry_height() const;
+  void set_expiry_height(::int64_t value);
+
+  private:
+  ::int64_t _internal_expiry_height() const;
+  void _internal_set_expiry_height(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3, 1, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr validator_address_;
+    ::google::protobuf::Timestamp* expiry_time_;
+    ::int64_t expiry_height_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -7728,6 +7942,98 @@ inline void Params::set_allocated_min_commission_rate(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.Params.min_commission_rate)
 }
 
+// .cosmos.base.v1beta1.Coin key_rotation_fee = 7 [json_name = "keyRotationFee", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+inline bool Params::has_key_rotation_fee() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.key_rotation_fee_ != nullptr);
+  return value;
+}
+inline const ::cosmos::base::v1beta1::Coin& Params::_internal_key_rotation_fee() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::cosmos::base::v1beta1::Coin* p = _impl_.key_rotation_fee_;
+  return p != nullptr ? *p : reinterpret_cast<const ::cosmos::base::v1beta1::Coin&>(::cosmos::base::v1beta1::_Coin_default_instance_);
+}
+inline const ::cosmos::base::v1beta1::Coin& Params::key_rotation_fee() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.Params.key_rotation_fee)
+  return _internal_key_rotation_fee();
+}
+inline void Params::unsafe_arena_set_allocated_key_rotation_fee(::cosmos::base::v1beta1::Coin* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.key_rotation_fee_);
+  }
+  _impl_.key_rotation_fee_ = reinterpret_cast<::cosmos::base::v1beta1::Coin*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.staking.v1beta1.Params.key_rotation_fee)
+}
+inline ::cosmos::base::v1beta1::Coin* Params::release_key_rotation_fee() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::cosmos::base::v1beta1::Coin* released = _impl_.key_rotation_fee_;
+  _impl_.key_rotation_fee_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::cosmos::base::v1beta1::Coin* Params::unsafe_arena_release_key_rotation_fee() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.Params.key_rotation_fee)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::cosmos::base::v1beta1::Coin* temp = _impl_.key_rotation_fee_;
+  _impl_.key_rotation_fee_ = nullptr;
+  return temp;
+}
+inline ::cosmos::base::v1beta1::Coin* Params::_internal_mutable_key_rotation_fee() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.key_rotation_fee_ == nullptr) {
+    auto* p = CreateMaybeMessage<::cosmos::base::v1beta1::Coin>(GetArenaForAllocation());
+    _impl_.key_rotation_fee_ = reinterpret_cast<::cosmos::base::v1beta1::Coin*>(p);
+  }
+  return _impl_.key_rotation_fee_;
+}
+inline ::cosmos::base::v1beta1::Coin* Params::mutable_key_rotation_fee() {
+  ::cosmos::base::v1beta1::Coin* _msg = _internal_mutable_key_rotation_fee();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.Params.key_rotation_fee)
+  return _msg;
+}
+inline void Params::set_allocated_key_rotation_fee(::cosmos::base::v1beta1::Coin* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.key_rotation_fee_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.key_rotation_fee_ = reinterpret_cast<::cosmos::base::v1beta1::Coin*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.Params.key_rotation_fee)
+}
+
 // -------------------------------------------------------------------
 
 // DelegationResponse
@@ -8368,6 +8674,175 @@ inline ::google::protobuf::RepeatedPtrField<::tendermint::abci::ValidatorUpdate>
 ValidatorUpdates::_internal_mutable_updates() {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return &_impl_.updates_;
+}
+
+// -------------------------------------------------------------------
+
+// ConsKeyEvidenceExpiry
+
+// bytes validator_address = 1 [json_name = "validatorAddress"];
+inline void ConsKeyEvidenceExpiry::clear_validator_address() {
+  _impl_.validator_address_.ClearToEmpty();
+}
+inline const std::string& ConsKeyEvidenceExpiry::validator_address() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.validator_address)
+  return _internal_validator_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ConsKeyEvidenceExpiry::set_validator_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.validator_address)
+}
+inline std::string* ConsKeyEvidenceExpiry::mutable_validator_address() {
+  std::string* _s = _internal_mutable_validator_address();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.validator_address)
+  return _s;
+}
+inline const std::string& ConsKeyEvidenceExpiry::_internal_validator_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.validator_address_.Get();
+}
+inline void ConsKeyEvidenceExpiry::_internal_set_validator_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.validator_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ConsKeyEvidenceExpiry::_internal_mutable_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.validator_address_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ConsKeyEvidenceExpiry::release_validator_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.validator_address)
+  return _impl_.validator_address_.Release();
+}
+inline void ConsKeyEvidenceExpiry::set_allocated_validator_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.validator_address_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.validator_address_.IsDefault()) {
+          _impl_.validator_address_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.validator_address)
+}
+
+// .google.protobuf.Timestamp expiry_time = 2 [json_name = "expiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+inline bool ConsKeyEvidenceExpiry::has_expiry_time() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.expiry_time_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& ConsKeyEvidenceExpiry::_internal_expiry_time() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Timestamp* p = _impl_.expiry_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& ConsKeyEvidenceExpiry::expiry_time() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_time)
+  return _internal_expiry_time();
+}
+inline void ConsKeyEvidenceExpiry::unsafe_arena_set_allocated_expiry_time(::google::protobuf::Timestamp* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.expiry_time_);
+  }
+  _impl_.expiry_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_time)
+}
+inline ::google::protobuf::Timestamp* ConsKeyEvidenceExpiry::release_expiry_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* released = _impl_.expiry_time_;
+  _impl_.expiry_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Timestamp* ConsKeyEvidenceExpiry::unsafe_arena_release_expiry_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_time)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* temp = _impl_.expiry_time_;
+  _impl_.expiry_time_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* ConsKeyEvidenceExpiry::_internal_mutable_expiry_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.expiry_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Timestamp>(GetArenaForAllocation());
+    _impl_.expiry_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.expiry_time_;
+}
+inline ::google::protobuf::Timestamp* ConsKeyEvidenceExpiry::mutable_expiry_time() {
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_expiry_time();
+  // @@protoc_insertion_point(field_mutable:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_time)
+  return _msg;
+}
+inline void ConsKeyEvidenceExpiry::set_allocated_expiry_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.expiry_time_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.expiry_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_time)
+}
+
+// int64 expiry_height = 3 [json_name = "expiryHeight"];
+inline void ConsKeyEvidenceExpiry::clear_expiry_height() {
+  _impl_.expiry_height_ = ::int64_t{0};
+}
+inline ::int64_t ConsKeyEvidenceExpiry::expiry_height() const {
+  // @@protoc_insertion_point(field_get:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_height)
+  return _internal_expiry_height();
+}
+inline void ConsKeyEvidenceExpiry::set_expiry_height(::int64_t value) {
+  _internal_set_expiry_height(value);
+  // @@protoc_insertion_point(field_set:cosmos.staking.v1beta1.ConsKeyEvidenceExpiry.expiry_height)
+}
+inline ::int64_t ConsKeyEvidenceExpiry::_internal_expiry_height() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.expiry_height_;
+}
+inline void ConsKeyEvidenceExpiry::_internal_set_expiry_height(::int64_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.expiry_height_ = value;
 }
 
 #ifdef __GNUC__

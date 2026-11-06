@@ -2,8 +2,7 @@
 """
 Fix Python Protobuf Imports
 
-Rewrites absolute imports to xion_types.* imports in-place,
-creates stub files for gogoproto and cosmos_proto,
+Rewrites absolute imports to xion_types.* imports in-place
 and generates __init__.py files recursively.
 
 Operates directly on python/xion_types/ (where buf generates output).
@@ -52,48 +51,6 @@ def fix_imports():
     print(f"✅ Fixed imports in {count} files")
 
 
-def create_stubs():
-    """Create gogoproto and cosmos_proto stubs (buf doesn't generate these for Python)."""
-    for pkg, proto_name in [("gogoproto", "gogo"), ("cosmos_proto", "cosmos")]:
-        pkg_dir = TYPES_DIR / pkg
-        pkg_dir.mkdir(parents=True, exist_ok=True)
-
-        # Write stub .proto
-        proto_file = pkg_dir / f"{proto_name}.proto"
-        proto_file.write_text(f'syntax = "proto3";\npackage {pkg};\n')
-
-        # Generate pb2 from proto
-        try:
-            subprocess.run(
-                [
-                    "python3", "-m", "grpc_tools.protoc",
-                    f"--python_out={TYPES_DIR}",
-                    f"--proto_path={TYPES_DIR}",
-                    str(proto_file),
-                ],
-                check=False,
-                capture_output=True,
-            )
-        except Exception:
-            pass
-
-        # Fix imports in generated stub
-        pb2 = pkg_dir / f"{proto_name}_pb2.py"
-        if pb2.exists():
-            content = pb2.read_text()
-            content = re.sub(
-                rf'^from {pkg}', f'from xion_types.{pkg}',
-                content, flags=re.MULTILINE,
-            )
-            pb2.write_text(content)
-
-        # __init__.py
-        (pkg_dir / "__init__.py").write_text(
-            f'"""Stub for {pkg} — not used in Python protobuf"""\n'
-        )
-        print(f"  Created {pkg} stub")
-
-
 def create_init_files():
     """Ensure every subdirectory has an __init__.py."""
     count = 0
@@ -117,15 +74,7 @@ def main():
         for f in files:
             os.chmod(os.path.join(root, f), 0o644)
 
-    # Install grpcio-tools if available (needed for stubs)
-    try:
-        subprocess.run(["pip", "install", "--quiet", "grpcio-tools"],
-                       check=True, capture_output=True)
-    except Exception:
-        pass
-
     fix_imports()
-    create_stubs()
     create_init_files()
 
     # Build verification — ensure the package imports cleanly

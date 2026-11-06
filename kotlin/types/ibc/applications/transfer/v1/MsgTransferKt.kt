@@ -289,6 +289,41 @@ public object MsgTransferKt {
     public fun clearEncoding() {
       _builder.clearEncoding()
     }
+
+    /**
+     * ```
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     * ```
+     *
+     * `bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];`
+     */
+    public var useAliasing: kotlin.Boolean
+      @JvmName("getUseAliasing")
+      get() = _builder.getUseAliasing()
+      @JvmName("setUseAliasing")
+      set(value) {
+        _builder.setUseAliasing(value)
+      }
+    /**
+     * ```
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     * ```
+     *
+     * `bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];`
+     */
+    public fun clearUseAliasing() {
+      _builder.clearUseAliasing()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

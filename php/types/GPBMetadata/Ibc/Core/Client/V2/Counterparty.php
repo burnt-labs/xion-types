@@ -20,7 +20,7 @@ class Counterparty
 %ibc/core/client/v2/counterparty.protoibc.core.client.v2"T
 CounterpartyInfo#
 merkle_prefix (RmerklePrefix
-	client_id (	RclientIdB>Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/typesbproto3'
+	client_id (	RclientIdB>Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/typesbproto3'
         , true);
 
         static::$is_initialized = true;

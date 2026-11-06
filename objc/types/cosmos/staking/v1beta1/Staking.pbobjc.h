@@ -582,6 +582,7 @@ typedef GPB_ENUM(Params_FieldNumber) {
   Params_FieldNumber_HistoricalEntries = 4,
   Params_FieldNumber_BondDenom = 5,
   Params_FieldNumber_MinCommissionRate = 6,
+  Params_FieldNumber_KeyRotationFee = 7,
 };
 
 /**
@@ -608,6 +609,11 @@ GPB_FINAL @interface Params : GPBMessage
 
 /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *minCommissionRate;
+
+/** key_rotation_fee is the fee charged when rotating a validator's consensus key. */
+@property(nonatomic, readwrite, strong, null_resettable) Coin *keyRotationFee;
+/** Test to see if @c keyRotationFee has been set. */
+@property(nonatomic, readwrite) BOOL hasKeyRotationFee;
 
 @end
 
@@ -714,6 +720,34 @@ GPB_FINAL @interface ValidatorUpdates : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ValidatorUpdate*> *updatesArray;
 /** The number of items in @c updatesArray without causing the container to be created. */
 @property(nonatomic, readonly) NSUInteger updatesArray_Count;
+
+@end
+
+#pragma mark - ConsKeyEvidenceExpiry
+
+typedef GPB_ENUM(ConsKeyEvidenceExpiry_FieldNumber) {
+  ConsKeyEvidenceExpiry_FieldNumber_ValidatorAddress = 1,
+  ConsKeyEvidenceExpiry_FieldNumber_ExpiryTime = 2,
+  ConsKeyEvidenceExpiry_FieldNumber_ExpiryHeight = 3,
+};
+
+/**
+ * ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+ * queue: the validator that rotated and the time and height at which its
+ * RotatedFrom lock may be retired because equivocation evidence for the
+ * rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+ * for time-ordered iteration; expiry_time is duplicated here so the record is
+ * self-describing.
+ **/
+GPB_FINAL @interface ConsKeyEvidenceExpiry : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *validatorAddress;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBTimestamp *expiryTime;
+/** Test to see if @c expiryTime has been set. */
+@property(nonatomic, readwrite) BOOL hasExpiryTime;
+
+@property(nonatomic, readwrite) int64_t expiryHeight;
 
 @end
 

@@ -30,6 +30,7 @@ CF_EXTERN_C_BEGIN
 
 @class Audience;
 @class AudienceClaim;
+@class JWTClaim;
 @class PageRequest;
 @class PageResponse;
 @class Params;
@@ -365,6 +366,104 @@ GPB_FINAL @interface QueryValidateJWTResponse : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<PrivateClaim*> *privateClaimsArray;
 /** The number of items in @c privateClaimsArray without causing the container to be created. */
 @property(nonatomic, readonly) NSUInteger privateClaimsArray_Count;
+
+@end
+
+#pragma mark - QueryVerifyJWSRequest
+
+typedef GPB_ENUM(QueryVerifyJWSRequest_FieldNumber) {
+  QueryVerifyJWSRequest_FieldNumber_Aud = 1,
+  QueryVerifyJWSRequest_FieldNumber_SigBytes = 2,
+};
+
+/**
+ * QueryVerifyJWSRequest is the request type for verifying a JWS signature
+ **/
+GPB_FINAL @interface QueryVerifyJWSRequest : GPBMessage
+
+/** The audience identifier */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *aud;
+
+/** The JWS signature bytes in compact serialization format */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sigBytes;
+
+@end
+
+#pragma mark - QueryVerifyJWSResponse
+
+typedef GPB_ENUM(QueryVerifyJWSResponse_FieldNumber) {
+  QueryVerifyJWSResponse_FieldNumber_Payload = 1,
+};
+
+/**
+ * QueryVerifyJWSResponse is the response type for verifying a JWS signature
+ **/
+GPB_FINAL @interface QueryVerifyJWSResponse : GPBMessage
+
+/** The verified payload bytes extracted from the JWS */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *payload;
+
+@end
+
+#pragma mark - QueryDecodeJWTRequest
+
+typedef GPB_ENUM(QueryDecodeJWTRequest_FieldNumber) {
+  QueryDecodeJWTRequest_FieldNumber_Aud = 1,
+  QueryDecodeJWTRequest_FieldNumber_Sub = 2,
+  QueryDecodeJWTRequest_FieldNumber_SigBytes = 3,
+};
+
+/**
+ * QueryDecodeJWTRequest is the request type for decoding a JWT
+ **/
+GPB_FINAL @interface QueryDecodeJWTRequest : GPBMessage
+
+/** The audience identifier */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *aud;
+
+/** The subject */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sub;
+
+/** The signature bytes (compact JWT) */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sigBytes;
+
+@end
+
+#pragma mark - JWTClaim
+
+typedef GPB_ENUM(JWTClaim_FieldNumber) {
+  JWTClaim_FieldNumber_Key = 1,
+  JWTClaim_FieldNumber_Value = 2,
+};
+
+/**
+ * JWTClaim represents a single JWT claim (standard or private)
+ **/
+GPB_FINAL @interface JWTClaim : GPBMessage
+
+/** The claim key */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *key;
+
+/** The claim value (stringified) */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *value;
+
+@end
+
+#pragma mark - QueryDecodeJWTResponse
+
+typedef GPB_ENUM(QueryDecodeJWTResponse_FieldNumber) {
+  QueryDecodeJWTResponse_FieldNumber_ClaimsArray = 1,
+};
+
+/**
+ * QueryDecodeJWTResponse is the response type for decoding a JWT
+ **/
+GPB_FINAL @interface QueryDecodeJWTResponse : GPBMessage
+
+/** All claims from the JWT (standard and private), sorted by key */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<JWTClaim*> *claimsArray;
+/** The number of items in @c claimsArray without causing the container to be created. */
+@property(nonatomic, readonly) NSUInteger claimsArray_Count;
 
 @end
 

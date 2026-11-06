@@ -32,8 +32,8 @@ namespace Xion.Feeabs.V1Beta1 {
             "aGFubmVsGAQgASgJUhJpYmNUcmFuc2ZlckNoYW5uZWwSMQoVaWJjX3F1ZXJ5",
             "X2ljcV9jaGFubmVsGAUgASgJUhJpYmNRdWVyeUljcUNoYW5uZWwSRQofb3Nt",
             "b3Npc19jcm9zc2NoYWluX3N3YXBfYWRkcmVzcxgGIAEoCVIcb3Ntb3Npc0Ny",
-            "b3NzY2hhaW5Td2FwQWRkcmVzc0IrWilnaXRodWIuY29tL2J1cm50LWxhYnMv",
-            "eGlvbi94L2ZlZWFicy90eXBlc2IGcHJvdG8z"));
+            "b3NzY2hhaW5Td2FwQWRkcmVzc0IuWixnaXRodWIuY29tL2J1cm50LWxhYnMv",
+            "eGlvbi9hcHAvbGVnYWN5L2ZlZWFic2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -9,17 +9,22 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * IndexRange defines a range of indices [start, end) in the public inputs array.
+ * IndexRange defines a range of indices [start, end) in the public inputs
+ * array.
  *
  * Generated from protobuf message <code>xion.dkim.v1.IndexRange</code>
  */
 class IndexRange extends \Google\Protobuf\Internal\Message
 {
     /**
+     * start is the inclusive lower bound of the index range.
+     *
      * Generated from protobuf field <code>uint64 start = 1 [json_name = "start"];</code>
      */
     protected $start = 0;
     /**
+     * end is the exclusive upper bound of the index range.
+     *
      * Generated from protobuf field <code>uint64 end = 2 [json_name = "end"];</code>
      */
     protected $end = 0;
@@ -31,7 +36,9 @@ class IndexRange extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $start
+     *           start is the inclusive lower bound of the index range.
      *     @type int|string $end
+     *           end is the exclusive upper bound of the index range.
      * }
      */
     public function __construct($data = NULL) {
@@ -40,6 +47,8 @@ class IndexRange extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * start is the inclusive lower bound of the index range.
+     *
      * Generated from protobuf field <code>uint64 start = 1 [json_name = "start"];</code>
      * @return int|string
      */
@@ -49,6 +58,8 @@ class IndexRange extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * start is the inclusive lower bound of the index range.
+     *
      * Generated from protobuf field <code>uint64 start = 1 [json_name = "start"];</code>
      * @param int|string $var
      * @return $this
@@ -62,6 +73,8 @@ class IndexRange extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * end is the exclusive upper bound of the index range.
+     *
      * Generated from protobuf field <code>uint64 end = 2 [json_name = "end"];</code>
      * @return int|string
      */
@@ -71,6 +84,8 @@ class IndexRange extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * end is the exclusive upper bound of the index range.
+     *
      * Generated from protobuf field <code>uint64 end = 2 [json_name = "end"];</code>
      * @param int|string $var
      * @return $this

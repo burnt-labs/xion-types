@@ -23,7 +23,7 @@ class Host
 allow_messages (	RallowMessages"6
 QueryRequest
 path (	Rpath
-data (RdataBMZKgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/host/typesbproto3'
+data (RdataBMZKgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/typesbproto3'
         , true);
 
         static::$is_initialized = true;

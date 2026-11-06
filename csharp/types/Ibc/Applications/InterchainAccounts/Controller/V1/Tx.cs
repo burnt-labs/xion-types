@@ -60,7 +60,7 @@ namespace Ibc.Applications.InterchainAccounts.Controller.V1 {
             "bl9hY2NvdW50cy5jb250cm9sbGVyLnYxLk1zZ1VwZGF0ZVBhcmFtcxpLLmli",
             "Yy5hcHBsaWNhdGlvbnMuaW50ZXJjaGFpbl9hY2NvdW50cy5jb250cm9sbGVy",
             "LnYxLk1zZ1VwZGF0ZVBhcmFtc1Jlc3BvbnNlGgWA57AqAUJTWlFnaXRodWIu",
-            "Y29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNo",
+            "Y29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvYXBwcy8yNy1pbnRlcmNo",
             "YWluLWFjY291bnRzL2NvbnRyb2xsZXIvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Ibc.Applications.InterchainAccounts.V1.PacketReflection.Descriptor, global::Ibc.Applications.InterchainAccounts.Controller.V1.ControllerReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Ibc.Core.Channel.V1.ChannelReflection.Descriptor, },

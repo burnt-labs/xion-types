@@ -45,7 +45,7 @@ namespace Ibc.Applications.InterchainAccounts.Host.V1 {
             "Y2F0aW9ucy5pbnRlcmNoYWluX2FjY291bnRzLmhvc3QudjEuTXNnTW9kdWxl",
             "UXVlcnlTYWZlGkguaWJjLmFwcGxpY2F0aW9ucy5pbnRlcmNoYWluX2FjY291",
             "bnRzLmhvc3QudjEuTXNnTW9kdWxlUXVlcnlTYWZlUmVzcG9uc2UaBYDnsCoB",
-            "Qk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9hcHBz",
+            "Qk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9hcHBz",
             "LzI3LWludGVyY2hhaW4tYWNjb3VudHMvaG9zdC90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::Ibc.Applications.InterchainAccounts.Host.V1.HostReflection.Descriptor, },

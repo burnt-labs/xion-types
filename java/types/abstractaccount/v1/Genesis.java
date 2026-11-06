@@ -19,25 +19,85 @@ public final class Genesis {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * params defines the module parameters.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @return Whether the params field is set.
      */
     boolean hasParams();
     /**
+     * <pre>
+     * params defines the module parameters.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @return The params.
      */
     abstractaccount.v1.ParamsOuterClass.Params getParams();
     /**
+     * <pre>
+     * params defines the module parameters.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      */
     abstractaccount.v1.ParamsOuterClass.ParamsOrBuilder getParamsOrBuilder();
 
     /**
+     * <pre>
+     * next_account_id is the identifier assigned to the next registered account.
+     * </pre>
+     *
      * <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
      * @return The nextAccountId.
      */
     long getNextAccountId();
+
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    java.util.List<abstractaccount.v1.Genesis.AccountAddress> 
+        getAccountAddressesList();
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    abstractaccount.v1.Genesis.AccountAddress getAccountAddresses(int index);
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    int getAccountAddressesCount();
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    java.util.List<? extends abstractaccount.v1.Genesis.AccountAddressOrBuilder> 
+        getAccountAddressesOrBuilderList();
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    abstractaccount.v1.Genesis.AccountAddressOrBuilder getAccountAddressesOrBuilder(
+        int index);
   }
   /**
    * <pre>
@@ -56,6 +116,7 @@ public final class Genesis {
       super(builder);
     }
     private GenesisState() {
+      accountAddresses_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -82,6 +143,10 @@ public final class Genesis {
     public static final int PARAMS_FIELD_NUMBER = 1;
     private abstractaccount.v1.ParamsOuterClass.Params params_;
     /**
+     * <pre>
+     * params defines the module parameters.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @return Whether the params field is set.
      */
@@ -90,6 +155,10 @@ public final class Genesis {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
+     * <pre>
+     * params defines the module parameters.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      * @return The params.
      */
@@ -98,6 +167,10 @@ public final class Genesis {
       return params_ == null ? abstractaccount.v1.ParamsOuterClass.Params.getDefaultInstance() : params_;
     }
     /**
+     * <pre>
+     * params defines the module parameters.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
      */
     @java.lang.Override
@@ -108,12 +181,77 @@ public final class Genesis {
     public static final int NEXT_ACCOUNT_ID_FIELD_NUMBER = 2;
     private long nextAccountId_ = 0L;
     /**
+     * <pre>
+     * next_account_id is the identifier assigned to the next registered account.
+     * </pre>
+     *
      * <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
      * @return The nextAccountId.
      */
     @java.lang.Override
     public long getNextAccountId() {
       return nextAccountId_;
+    }
+
+    public static final int ACCOUNT_ADDRESSES_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private java.util.List<abstractaccount.v1.Genesis.AccountAddress> accountAddresses_;
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<abstractaccount.v1.Genesis.AccountAddress> getAccountAddressesList() {
+      return accountAddresses_;
+    }
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends abstractaccount.v1.Genesis.AccountAddressOrBuilder> 
+        getAccountAddressesOrBuilderList() {
+      return accountAddresses_;
+    }
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    @java.lang.Override
+    public int getAccountAddressesCount() {
+      return accountAddresses_.size();
+    }
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    @java.lang.Override
+    public abstractaccount.v1.Genesis.AccountAddress getAccountAddresses(int index) {
+      return accountAddresses_.get(index);
+    }
+    /**
+     * <pre>
+     * account_addresses is the exported sender/salt address registry.
+     * </pre>
+     *
+     * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+     */
+    @java.lang.Override
+    public abstractaccount.v1.Genesis.AccountAddressOrBuilder getAccountAddressesOrBuilder(
+        int index) {
+      return accountAddresses_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -136,6 +274,9 @@ public final class Genesis {
       if (nextAccountId_ != 0L) {
         output.writeUInt64(2, nextAccountId_);
       }
+      for (int i = 0; i < accountAddresses_.size(); i++) {
+        output.writeMessage(3, accountAddresses_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -152,6 +293,10 @@ public final class Genesis {
       if (nextAccountId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(2, nextAccountId_);
+      }
+      for (int i = 0; i < accountAddresses_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, accountAddresses_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -175,6 +320,8 @@ public final class Genesis {
       }
       if (getNextAccountId()
           != other.getNextAccountId()) return false;
+      if (!getAccountAddressesList()
+          .equals(other.getAccountAddressesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -193,6 +340,10 @@ public final class Genesis {
       hash = (37 * hash) + NEXT_ACCOUNT_ID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getNextAccountId());
+      if (getAccountAddressesCount() > 0) {
+        hash = (37 * hash) + ACCOUNT_ADDRESSES_FIELD_NUMBER;
+        hash = (53 * hash) + getAccountAddressesList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -328,6 +479,7 @@ public final class Genesis {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getParamsFieldBuilder();
+          getAccountAddressesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -340,6 +492,13 @@ public final class Genesis {
           paramsBuilder_ = null;
         }
         nextAccountId_ = 0L;
+        if (accountAddressesBuilder_ == null) {
+          accountAddresses_ = java.util.Collections.emptyList();
+        } else {
+          accountAddresses_ = null;
+          accountAddressesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -366,9 +525,22 @@ public final class Genesis {
       @java.lang.Override
       public abstractaccount.v1.Genesis.GenesisState buildPartial() {
         abstractaccount.v1.Genesis.GenesisState result = new abstractaccount.v1.Genesis.GenesisState(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartialRepeatedFields(abstractaccount.v1.Genesis.GenesisState result) {
+        if (accountAddressesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            accountAddresses_ = java.util.Collections.unmodifiableList(accountAddresses_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.accountAddresses_ = accountAddresses_;
+        } else {
+          result.accountAddresses_ = accountAddressesBuilder_.build();
+        }
       }
 
       private void buildPartial0(abstractaccount.v1.Genesis.GenesisState result) {
@@ -436,6 +608,32 @@ public final class Genesis {
         if (other.getNextAccountId() != 0L) {
           setNextAccountId(other.getNextAccountId());
         }
+        if (accountAddressesBuilder_ == null) {
+          if (!other.accountAddresses_.isEmpty()) {
+            if (accountAddresses_.isEmpty()) {
+              accountAddresses_ = other.accountAddresses_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureAccountAddressesIsMutable();
+              accountAddresses_.addAll(other.accountAddresses_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.accountAddresses_.isEmpty()) {
+            if (accountAddressesBuilder_.isEmpty()) {
+              accountAddressesBuilder_.dispose();
+              accountAddressesBuilder_ = null;
+              accountAddresses_ = other.accountAddresses_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              accountAddressesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getAccountAddressesFieldBuilder() : null;
+            } else {
+              accountAddressesBuilder_.addAllMessages(other.accountAddresses_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -474,6 +672,19 @@ public final class Genesis {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 26: {
+                abstractaccount.v1.Genesis.AccountAddress m =
+                    input.readMessage(
+                        abstractaccount.v1.Genesis.AccountAddress.parser(),
+                        extensionRegistry);
+                if (accountAddressesBuilder_ == null) {
+                  ensureAccountAddressesIsMutable();
+                  accountAddresses_.add(m);
+                } else {
+                  accountAddressesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -495,6 +706,10 @@ public final class Genesis {
       private com.google.protobuf.SingleFieldBuilderV3<
           abstractaccount.v1.ParamsOuterClass.Params, abstractaccount.v1.ParamsOuterClass.Params.Builder, abstractaccount.v1.ParamsOuterClass.ParamsOrBuilder> paramsBuilder_;
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        * @return Whether the params field is set.
        */
@@ -502,6 +717,10 @@ public final class Genesis {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        * @return The params.
        */
@@ -513,6 +732,10 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       public Builder setParams(abstractaccount.v1.ParamsOuterClass.Params value) {
@@ -529,6 +752,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       public Builder setParams(
@@ -543,6 +770,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       public Builder mergeParams(abstractaccount.v1.ParamsOuterClass.Params value) {
@@ -564,6 +795,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       public Builder clearParams() {
@@ -577,6 +812,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       public abstractaccount.v1.ParamsOuterClass.Params.Builder getParamsBuilder() {
@@ -585,6 +824,10 @@ public final class Genesis {
         return getParamsFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       public abstractaccount.v1.ParamsOuterClass.ParamsOrBuilder getParamsOrBuilder() {
@@ -596,6 +839,10 @@ public final class Genesis {
         }
       }
       /**
+       * <pre>
+       * params defines the module parameters.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 1 [json_name = "params"];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -614,6 +861,10 @@ public final class Genesis {
 
       private long nextAccountId_ ;
       /**
+       * <pre>
+       * next_account_id is the identifier assigned to the next registered account.
+       * </pre>
+       *
        * <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
        * @return The nextAccountId.
        */
@@ -622,6 +873,10 @@ public final class Genesis {
         return nextAccountId_;
       }
       /**
+       * <pre>
+       * next_account_id is the identifier assigned to the next registered account.
+       * </pre>
+       *
        * <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
        * @param value The nextAccountId to set.
        * @return This builder for chaining.
@@ -634,6 +889,10 @@ public final class Genesis {
         return this;
       }
       /**
+       * <pre>
+       * next_account_id is the identifier assigned to the next registered account.
+       * </pre>
+       *
        * <code>uint64 next_account_id = 2 [json_name = "nextAccountId"];</code>
        * @return This builder for chaining.
        */
@@ -642,6 +901,318 @@ public final class Genesis {
         nextAccountId_ = 0L;
         onChanged();
         return this;
+      }
+
+      private java.util.List<abstractaccount.v1.Genesis.AccountAddress> accountAddresses_ =
+        java.util.Collections.emptyList();
+      private void ensureAccountAddressesIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          accountAddresses_ = new java.util.ArrayList<abstractaccount.v1.Genesis.AccountAddress>(accountAddresses_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          abstractaccount.v1.Genesis.AccountAddress, abstractaccount.v1.Genesis.AccountAddress.Builder, abstractaccount.v1.Genesis.AccountAddressOrBuilder> accountAddressesBuilder_;
+
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public java.util.List<abstractaccount.v1.Genesis.AccountAddress> getAccountAddressesList() {
+        if (accountAddressesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(accountAddresses_);
+        } else {
+          return accountAddressesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public int getAccountAddressesCount() {
+        if (accountAddressesBuilder_ == null) {
+          return accountAddresses_.size();
+        } else {
+          return accountAddressesBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public abstractaccount.v1.Genesis.AccountAddress getAccountAddresses(int index) {
+        if (accountAddressesBuilder_ == null) {
+          return accountAddresses_.get(index);
+        } else {
+          return accountAddressesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder setAccountAddresses(
+          int index, abstractaccount.v1.Genesis.AccountAddress value) {
+        if (accountAddressesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.set(index, value);
+          onChanged();
+        } else {
+          accountAddressesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder setAccountAddresses(
+          int index, abstractaccount.v1.Genesis.AccountAddress.Builder builderForValue) {
+        if (accountAddressesBuilder_ == null) {
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          accountAddressesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder addAccountAddresses(abstractaccount.v1.Genesis.AccountAddress value) {
+        if (accountAddressesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.add(value);
+          onChanged();
+        } else {
+          accountAddressesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder addAccountAddresses(
+          int index, abstractaccount.v1.Genesis.AccountAddress value) {
+        if (accountAddressesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.add(index, value);
+          onChanged();
+        } else {
+          accountAddressesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder addAccountAddresses(
+          abstractaccount.v1.Genesis.AccountAddress.Builder builderForValue) {
+        if (accountAddressesBuilder_ == null) {
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.add(builderForValue.build());
+          onChanged();
+        } else {
+          accountAddressesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder addAccountAddresses(
+          int index, abstractaccount.v1.Genesis.AccountAddress.Builder builderForValue) {
+        if (accountAddressesBuilder_ == null) {
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          accountAddressesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder addAllAccountAddresses(
+          java.lang.Iterable<? extends abstractaccount.v1.Genesis.AccountAddress> values) {
+        if (accountAddressesBuilder_ == null) {
+          ensureAccountAddressesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, accountAddresses_);
+          onChanged();
+        } else {
+          accountAddressesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder clearAccountAddresses() {
+        if (accountAddressesBuilder_ == null) {
+          accountAddresses_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          accountAddressesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public Builder removeAccountAddresses(int index) {
+        if (accountAddressesBuilder_ == null) {
+          ensureAccountAddressesIsMutable();
+          accountAddresses_.remove(index);
+          onChanged();
+        } else {
+          accountAddressesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public abstractaccount.v1.Genesis.AccountAddress.Builder getAccountAddressesBuilder(
+          int index) {
+        return getAccountAddressesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public abstractaccount.v1.Genesis.AccountAddressOrBuilder getAccountAddressesOrBuilder(
+          int index) {
+        if (accountAddressesBuilder_ == null) {
+          return accountAddresses_.get(index);  } else {
+          return accountAddressesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public java.util.List<? extends abstractaccount.v1.Genesis.AccountAddressOrBuilder> 
+           getAccountAddressesOrBuilderList() {
+        if (accountAddressesBuilder_ != null) {
+          return accountAddressesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(accountAddresses_);
+        }
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public abstractaccount.v1.Genesis.AccountAddress.Builder addAccountAddressesBuilder() {
+        return getAccountAddressesFieldBuilder().addBuilder(
+            abstractaccount.v1.Genesis.AccountAddress.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public abstractaccount.v1.Genesis.AccountAddress.Builder addAccountAddressesBuilder(
+          int index) {
+        return getAccountAddressesFieldBuilder().addBuilder(
+            index, abstractaccount.v1.Genesis.AccountAddress.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * account_addresses is the exported sender/salt address registry.
+       * </pre>
+       *
+       * <code>repeated .abstractaccount.v1.AccountAddress account_addresses = 3 [json_name = "accountAddresses"];</code>
+       */
+      public java.util.List<abstractaccount.v1.Genesis.AccountAddress.Builder> 
+           getAccountAddressesBuilderList() {
+        return getAccountAddressesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          abstractaccount.v1.Genesis.AccountAddress, abstractaccount.v1.Genesis.AccountAddress.Builder, abstractaccount.v1.Genesis.AccountAddressOrBuilder> 
+          getAccountAddressesFieldBuilder() {
+        if (accountAddressesBuilder_ == null) {
+          accountAddressesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              abstractaccount.v1.Genesis.AccountAddress, abstractaccount.v1.Genesis.AccountAddress.Builder, abstractaccount.v1.Genesis.AccountAddressOrBuilder>(
+                  accountAddresses_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          accountAddresses_ = null;
+        }
+        return accountAddressesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -707,11 +1278,889 @@ public final class Genesis {
 
   }
 
+  public interface AccountAddressOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:abstractaccount.v1.AccountAddress)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * sender is the address that registered the account.
+     * </pre>
+     *
+     * <code>string sender = 1 [json_name = "sender"];</code>
+     * @return The sender.
+     */
+    java.lang.String getSender();
+    /**
+     * <pre>
+     * sender is the address that registered the account.
+     * </pre>
+     *
+     * <code>string sender = 1 [json_name = "sender"];</code>
+     * @return The bytes for sender.
+     */
+    com.google.protobuf.ByteString
+        getSenderBytes();
+
+    /**
+     * <pre>
+     * salt is the caller-chosen salt the address was derived with.
+     * </pre>
+     *
+     * <code>bytes salt = 2 [json_name = "salt"];</code>
+     * @return The salt.
+     */
+    com.google.protobuf.ByteString getSalt();
+
+    /**
+     * <pre>
+     * address is the derived account address.
+     * </pre>
+     *
+     * <code>string address = 3 [json_name = "address"];</code>
+     * @return The address.
+     */
+    java.lang.String getAddress();
+    /**
+     * <pre>
+     * address is the derived account address.
+     * </pre>
+     *
+     * <code>string address = 3 [json_name = "address"];</code>
+     * @return The bytes for address.
+     */
+    com.google.protobuf.ByteString
+        getAddressBytes();
+  }
+  /**
+   * <pre>
+   * AccountAddress is an exported sender/salt registry entry.
+   * </pre>
+   *
+   * Protobuf type {@code abstractaccount.v1.AccountAddress}
+   */
+  public static final class AccountAddress extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:abstractaccount.v1.AccountAddress)
+      AccountAddressOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AccountAddress.newBuilder() to construct.
+    private AccountAddress(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AccountAddress() {
+      sender_ = "";
+      salt_ = com.google.protobuf.ByteString.EMPTY;
+      address_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AccountAddress();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return abstractaccount.v1.Genesis.internal_static_abstractaccount_v1_AccountAddress_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return abstractaccount.v1.Genesis.internal_static_abstractaccount_v1_AccountAddress_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              abstractaccount.v1.Genesis.AccountAddress.class, abstractaccount.v1.Genesis.AccountAddress.Builder.class);
+    }
+
+    public static final int SENDER_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sender_ = "";
+    /**
+     * <pre>
+     * sender is the address that registered the account.
+     * </pre>
+     *
+     * <code>string sender = 1 [json_name = "sender"];</code>
+     * @return The sender.
+     */
+    @java.lang.Override
+    public java.lang.String getSender() {
+      java.lang.Object ref = sender_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sender_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * sender is the address that registered the account.
+     * </pre>
+     *
+     * <code>string sender = 1 [json_name = "sender"];</code>
+     * @return The bytes for sender.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSenderBytes() {
+      java.lang.Object ref = sender_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sender_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SALT_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * salt is the caller-chosen salt the address was derived with.
+     * </pre>
+     *
+     * <code>bytes salt = 2 [json_name = "salt"];</code>
+     * @return The salt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getSalt() {
+      return salt_;
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object address_ = "";
+    /**
+     * <pre>
+     * address is the derived account address.
+     * </pre>
+     *
+     * <code>string address = 3 [json_name = "address"];</code>
+     * @return The address.
+     */
+    @java.lang.Override
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        address_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * address is the derived account address.
+     * </pre>
+     *
+     * <code>string address = 3 [json_name = "address"];</code>
+     * @return The bytes for address.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAddressBytes() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        address_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sender_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sender_);
+      }
+      if (!salt_.isEmpty()) {
+        output.writeBytes(2, salt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(address_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, address_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sender_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, sender_);
+      }
+      if (!salt_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, salt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(address_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, address_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof abstractaccount.v1.Genesis.AccountAddress)) {
+        return super.equals(obj);
+      }
+      abstractaccount.v1.Genesis.AccountAddress other = (abstractaccount.v1.Genesis.AccountAddress) obj;
+
+      if (!getSender()
+          .equals(other.getSender())) return false;
+      if (!getSalt()
+          .equals(other.getSalt())) return false;
+      if (!getAddress()
+          .equals(other.getAddress())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SENDER_FIELD_NUMBER;
+      hash = (53 * hash) + getSender().hashCode();
+      hash = (37 * hash) + SALT_FIELD_NUMBER;
+      hash = (53 * hash) + getSalt().hashCode();
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static abstractaccount.v1.Genesis.AccountAddress parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static abstractaccount.v1.Genesis.AccountAddress parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static abstractaccount.v1.Genesis.AccountAddress parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(abstractaccount.v1.Genesis.AccountAddress prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * AccountAddress is an exported sender/salt registry entry.
+     * </pre>
+     *
+     * Protobuf type {@code abstractaccount.v1.AccountAddress}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:abstractaccount.v1.AccountAddress)
+        abstractaccount.v1.Genesis.AccountAddressOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return abstractaccount.v1.Genesis.internal_static_abstractaccount_v1_AccountAddress_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return abstractaccount.v1.Genesis.internal_static_abstractaccount_v1_AccountAddress_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                abstractaccount.v1.Genesis.AccountAddress.class, abstractaccount.v1.Genesis.AccountAddress.Builder.class);
+      }
+
+      // Construct using abstractaccount.v1.Genesis.AccountAddress.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        sender_ = "";
+        salt_ = com.google.protobuf.ByteString.EMPTY;
+        address_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return abstractaccount.v1.Genesis.internal_static_abstractaccount_v1_AccountAddress_descriptor;
+      }
+
+      @java.lang.Override
+      public abstractaccount.v1.Genesis.AccountAddress getDefaultInstanceForType() {
+        return abstractaccount.v1.Genesis.AccountAddress.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public abstractaccount.v1.Genesis.AccountAddress build() {
+        abstractaccount.v1.Genesis.AccountAddress result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public abstractaccount.v1.Genesis.AccountAddress buildPartial() {
+        abstractaccount.v1.Genesis.AccountAddress result = new abstractaccount.v1.Genesis.AccountAddress(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(abstractaccount.v1.Genesis.AccountAddress result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.sender_ = sender_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.salt_ = salt_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.address_ = address_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof abstractaccount.v1.Genesis.AccountAddress) {
+          return mergeFrom((abstractaccount.v1.Genesis.AccountAddress)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(abstractaccount.v1.Genesis.AccountAddress other) {
+        if (other == abstractaccount.v1.Genesis.AccountAddress.getDefaultInstance()) return this;
+        if (!other.getSender().isEmpty()) {
+          sender_ = other.sender_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getSalt() != com.google.protobuf.ByteString.EMPTY) {
+          setSalt(other.getSalt());
+        }
+        if (!other.getAddress().isEmpty()) {
+          address_ = other.address_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                sender_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                salt_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                address_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object sender_ = "";
+      /**
+       * <pre>
+       * sender is the address that registered the account.
+       * </pre>
+       *
+       * <code>string sender = 1 [json_name = "sender"];</code>
+       * @return The sender.
+       */
+      public java.lang.String getSender() {
+        java.lang.Object ref = sender_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sender_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * sender is the address that registered the account.
+       * </pre>
+       *
+       * <code>string sender = 1 [json_name = "sender"];</code>
+       * @return The bytes for sender.
+       */
+      public com.google.protobuf.ByteString
+          getSenderBytes() {
+        java.lang.Object ref = sender_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sender_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * sender is the address that registered the account.
+       * </pre>
+       *
+       * <code>string sender = 1 [json_name = "sender"];</code>
+       * @param value The sender to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSender(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sender_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * sender is the address that registered the account.
+       * </pre>
+       *
+       * <code>string sender = 1 [json_name = "sender"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSender() {
+        sender_ = getDefaultInstance().getSender();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * sender is the address that registered the account.
+       * </pre>
+       *
+       * <code>string sender = 1 [json_name = "sender"];</code>
+       * @param value The bytes for sender to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sender_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * salt is the caller-chosen salt the address was derived with.
+       * </pre>
+       *
+       * <code>bytes salt = 2 [json_name = "salt"];</code>
+       * @return The salt.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getSalt() {
+        return salt_;
+      }
+      /**
+       * <pre>
+       * salt is the caller-chosen salt the address was derived with.
+       * </pre>
+       *
+       * <code>bytes salt = 2 [json_name = "salt"];</code>
+       * @param value The salt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSalt(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        salt_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * salt is the caller-chosen salt the address was derived with.
+       * </pre>
+       *
+       * <code>bytes salt = 2 [json_name = "salt"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSalt() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        salt_ = getDefaultInstance().getSalt();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object address_ = "";
+      /**
+       * <pre>
+       * address is the derived account address.
+       * </pre>
+       *
+       * <code>string address = 3 [json_name = "address"];</code>
+       * @return The address.
+       */
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          address_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * address is the derived account address.
+       * </pre>
+       *
+       * <code>string address = 3 [json_name = "address"];</code>
+       * @return The bytes for address.
+       */
+      public com.google.protobuf.ByteString
+          getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          address_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * address is the derived account address.
+       * </pre>
+       *
+       * <code>string address = 3 [json_name = "address"];</code>
+       * @param value The address to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAddress(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        address_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * address is the derived account address.
+       * </pre>
+       *
+       * <code>string address = 3 [json_name = "address"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAddress() {
+        address_ = getDefaultInstance().getAddress();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * address is the derived account address.
+       * </pre>
+       *
+       * <code>string address = 3 [json_name = "address"];</code>
+       * @param value The bytes for address to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        address_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:abstractaccount.v1.AccountAddress)
+    }
+
+    // @@protoc_insertion_point(class_scope:abstractaccount.v1.AccountAddress)
+    private static final abstractaccount.v1.Genesis.AccountAddress DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new abstractaccount.v1.Genesis.AccountAddress();
+    }
+
+    public static abstractaccount.v1.Genesis.AccountAddress getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AccountAddress>
+        PARSER = new com.google.protobuf.AbstractParser<AccountAddress>() {
+      @java.lang.Override
+      public AccountAddress parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AccountAddress> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AccountAddress> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public abstractaccount.v1.Genesis.AccountAddress getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_abstractaccount_v1_GenesisState_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_abstractaccount_v1_GenesisState_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_abstractaccount_v1_AccountAddress_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_abstractaccount_v1_AccountAddress_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -723,11 +2172,15 @@ public final class Genesis {
     java.lang.String[] descriptorData = {
       "\n abstractaccount/v1/genesis.proto\022\022abst" +
       "ractaccount.v1\032\037abstractaccount/v1/param" +
-      "s.proto\"j\n\014GenesisState\0222\n\006params\030\001 \001(\0132" +
-      "\032.abstractaccount.v1.ParamsR\006params\022&\n\017n" +
-      "ext_account_id\030\002 \001(\004R\rnextAccountIdB@Z>g" +
-      "ithub.com/burnt-labs/abstract-account/x/" +
-      "abstractaccount/typesb\006proto3"
+      "s.proto\"\273\001\n\014GenesisState\0222\n\006params\030\001 \001(\013" +
+      "2\032.abstractaccount.v1.ParamsR\006params\022&\n\017" +
+      "next_account_id\030\002 \001(\004R\rnextAccountId\022O\n\021" +
+      "account_addresses\030\003 \003(\0132\".abstractaccoun" +
+      "t.v1.AccountAddressR\020accountAddresses\"V\n" +
+      "\016AccountAddress\022\026\n\006sender\030\001 \001(\tR\006sender\022" +
+      "\022\n\004salt\030\002 \001(\014R\004salt\022\030\n\007address\030\003 \001(\tR\007ad" +
+      "dressB4Z2github.com/burnt-labs/xion/x/ab" +
+      "stractaccount/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -739,7 +2192,13 @@ public final class Genesis {
     internal_static_abstractaccount_v1_GenesisState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_abstractaccount_v1_GenesisState_descriptor,
-        new java.lang.String[] { "Params", "NextAccountId", });
+        new java.lang.String[] { "Params", "NextAccountId", "AccountAddresses", });
+    internal_static_abstractaccount_v1_AccountAddress_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_abstractaccount_v1_AccountAddress_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_abstractaccount_v1_AccountAddress_descriptor,
+        new java.lang.String[] { "Sender", "Salt", "Address", });
     abstractaccount.v1.ParamsOuterClass.getDescriptor();
   }
 

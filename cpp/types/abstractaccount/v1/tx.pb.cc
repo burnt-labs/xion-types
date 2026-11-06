@@ -198,9 +198,8 @@ const char descriptor_table_protodef_abstractaccount_2fv1_2ftx_2eproto[] PROTOBU
     "eParamsResponse\022i\n\017RegisterAccount\022&.abs"
     "tractaccount.v1.MsgRegisterAccount\032..abs"
     "tractaccount.v1.MsgRegisterAccountRespon"
-    "se\032\005\200\347\260*\001B@Z>github.com/burnt-labs/abstr"
-    "act-account/x/abstractaccount/typesb\006pro"
-    "to3"
+    "se\032\005\200\347\260*\001B4Z2github.com/burnt-labs/xion/"
+    "x/abstractaccount/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_abstractaccount_2fv1_2ftx_2eproto_deps[4] =
     {
@@ -213,7 +212,7 @@ static ::absl::once_flag descriptor_table_abstractaccount_2fv1_2ftx_2eproto_once
 const ::_pbi::DescriptorTable descriptor_table_abstractaccount_2fv1_2ftx_2eproto = {
     false,
     false,
-    963,
+    951,
     descriptor_table_protodef_abstractaccount_2fv1_2ftx_2eproto,
     "abstractaccount/v1/tx.proto",
     &descriptor_table_abstractaccount_2fv1_2ftx_2eproto_once,

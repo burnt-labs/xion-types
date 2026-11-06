@@ -14,16 +14,17 @@ export const protobufFileName = "abstractaccount/v1/params.proto";
 /** Params defines the parameters for the abstractaccount module. */
 export interface Params {
   /**
-   * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-   * AbstractAccounts:
+   * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+   * final implementation for a newly registered AbstractAccount or a
+   * top-level raw Wasm migration:
    * - if set to true, any code ID can be used;
    * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
    * be used.
    */
   allowAllCodeIds: boolean;
   /**
-   * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-   * regiseter AbstractAccounts.
+   * AllowedCodeIDs is the whitelist for registration implementations and
+   * top-level raw Wasm migrations. This is not a wasmd-level policy.
    */
   allowedCodeIds: bigint[];
   /**
@@ -40,10 +41,30 @@ export interface Params {
    * Must be greater than zero.
    */
   maxGasAfter: bigint;
+  /**
+   * RegistrationEnabled controls whether new abstract accounts may be
+   * registered. Governance can pause registration without changing the
+   * immutable address namespace or blocking address queries.
+   */
+  registrationEnabled: boolean;
+  /**
+   * AddressDerivationHash is the immutable 32-byte namespace used only to
+   * derive predictable AbstractAccount addresses. The caller-selected code ID
+   * is instantiated directly and does not participate in address derivation.
+   * An empty value leaves registration unconfigured.
+   */
+  addressDerivationHash: Uint8Array;
 }
 
 function createBaseParams(): Params {
-  return { allowAllCodeIds: false, allowedCodeIds: [], maxGasBefore: 0n, maxGasAfter: 0n };
+  return {
+    allowAllCodeIds: false,
+    allowedCodeIds: [],
+    maxGasBefore: 0n,
+    maxGasAfter: 0n,
+    registrationEnabled: false,
+    addressDerivationHash: new Uint8Array(0),
+  };
 }
 
 export const Params: MessageFns<Params> = {
@@ -68,6 +89,12 @@ export const Params: MessageFns<Params> = {
         throw new globalThis.Error("value provided for field message.maxGasAfter of type uint64 too large");
       }
       writer.uint32(32).uint64(message.maxGasAfter);
+    }
+    if (message.registrationEnabled !== false) {
+      writer.uint32(56).bool(message.registrationEnabled);
+    }
+    if (message.addressDerivationHash.length !== 0) {
+      writer.uint32(66).bytes(message.addressDerivationHash);
     }
     return writer;
   },
@@ -127,6 +154,22 @@ export const Params: MessageFns<Params> = {
             message.maxGasAfter = reader.uint64() as bigint;
             continue;
           }
+          case 7: {
+            if (tag !== 56) {
+              break;
+            }
+
+            message.registrationEnabled = reader.bool();
+            continue;
+          }
+          case 8: {
+            if (tag !== 66) {
+              break;
+            }
+
+            message.addressDerivationHash = reader.bytes();
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -161,6 +204,16 @@ export const Params: MessageFns<Params> = {
         : isSet(object.max_gas_after)
         ? BigInt(object.max_gas_after)
         : 0n,
+      registrationEnabled: isSet(object.registrationEnabled)
+        ? globalThis.Boolean(object.registrationEnabled)
+        : isSet(object.registration_enabled)
+        ? globalThis.Boolean(object.registration_enabled)
+        : false,
+      addressDerivationHash: isSet(object.addressDerivationHash)
+        ? bytesFromBase64(object.addressDerivationHash)
+        : isSet(object.address_derivation_hash)
+        ? bytesFromBase64(object.address_derivation_hash)
+        : new Uint8Array(0),
     };
   },
 
@@ -178,6 +231,12 @@ export const Params: MessageFns<Params> = {
     if (message.maxGasAfter !== 0n) {
       obj.maxGasAfter = message.maxGasAfter.toString();
     }
+    if (message.registrationEnabled !== false) {
+      obj.registrationEnabled = message.registrationEnabled;
+    }
+    if (message.addressDerivationHash.length !== 0) {
+      obj.addressDerivationHash = base64FromBytes(message.addressDerivationHash);
+    }
     return obj;
   },
 
@@ -194,9 +253,36 @@ export const Params: MessageFns<Params> = {
     message.maxGasAfter = (object.maxGasAfter !== undefined && object.maxGasAfter !== null)
       ? BigInt(object.maxGasAfter)
       : 0n;
+    message.registrationEnabled = object.registrationEnabled ?? false;
+    message.addressDerivationHash = object.addressDerivationHash ?? new Uint8Array(0);
     return message;
   },
 };
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if ((globalThis as any).Buffer) {
+    return Uint8Array.from((globalThis as any).Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if ((globalThis as any).Buffer) {
+    return (globalThis as any).Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(globalThis.String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
+}
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 

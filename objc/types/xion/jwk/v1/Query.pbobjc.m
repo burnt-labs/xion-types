@@ -40,6 +40,7 @@
 // We don't use [Foo class] because it is not a static value.
 GPBObjCClassDeclaration(Audience);
 GPBObjCClassDeclaration(AudienceClaim);
+GPBObjCClassDeclaration(JWTClaim);
 GPBObjCClassDeclaration(PageRequest);
 GPBObjCClassDeclaration(PageResponse);
 GPBObjCClassDeclaration(Params);
@@ -52,6 +53,8 @@ GPBObjCClassDeclaration(QueryAudienceClaimRequest);
 GPBObjCClassDeclaration(QueryAudienceClaimResponse);
 GPBObjCClassDeclaration(QueryAudienceRequest);
 GPBObjCClassDeclaration(QueryAudienceResponse);
+GPBObjCClassDeclaration(QueryDecodeJWTRequest);
+GPBObjCClassDeclaration(QueryDecodeJWTResponse);
 GPBObjCClassDeclaration(QueryGetAudienceClaimRequest);
 GPBObjCClassDeclaration(QueryGetAudienceClaimResponse);
 GPBObjCClassDeclaration(QueryGetAudienceRequest);
@@ -60,6 +63,8 @@ GPBObjCClassDeclaration(QueryParamsRequest);
 GPBObjCClassDeclaration(QueryParamsResponse);
 GPBObjCClassDeclaration(QueryValidateJWTRequest);
 GPBObjCClassDeclaration(QueryValidateJWTResponse);
+GPBObjCClassDeclaration(QueryVerifyJWSRequest);
+GPBObjCClassDeclaration(QueryVerifyJWSResponse);
 
 #pragma mark - QueryRoot
 
@@ -901,6 +906,280 @@ typedef struct QueryValidateJWTResponse__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(QueryValidateJWTResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryVerifyJWSRequest
+
+@implementation QueryVerifyJWSRequest
+
+@dynamic aud;
+@dynamic sigBytes;
+
+typedef struct QueryVerifyJWSRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *aud;
+  NSString *sigBytes;
+} QueryVerifyJWSRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "aud",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyJWSRequest_FieldNumber_Aud,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryVerifyJWSRequest__storage_, aud),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "sigBytes",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyJWSRequest_FieldNumber_SigBytes,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(QueryVerifyJWSRequest__storage_, sigBytes),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryVerifyJWSRequest)
+                                   messageName:@"QueryVerifyJWSRequest"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryVerifyJWSRequest__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryVerifyJWSResponse
+
+@implementation QueryVerifyJWSResponse
+
+@dynamic payload;
+
+typedef struct QueryVerifyJWSResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *payload;
+} QueryVerifyJWSResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "payload",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryVerifyJWSResponse_FieldNumber_Payload,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryVerifyJWSResponse__storage_, payload),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryVerifyJWSResponse)
+                                   messageName:@"QueryVerifyJWSResponse"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryVerifyJWSResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryDecodeJWTRequest
+
+@implementation QueryDecodeJWTRequest
+
+@dynamic aud;
+@dynamic sub;
+@dynamic sigBytes;
+
+typedef struct QueryDecodeJWTRequest__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *aud;
+  NSString *sub;
+  NSString *sigBytes;
+} QueryDecodeJWTRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "aud",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryDecodeJWTRequest_FieldNumber_Aud,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(QueryDecodeJWTRequest__storage_, aud),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "sub",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryDecodeJWTRequest_FieldNumber_Sub,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(QueryDecodeJWTRequest__storage_, sub),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "sigBytes",
+        .dataTypeSpecific.clazz = Nil,
+        .number = QueryDecodeJWTRequest_FieldNumber_SigBytes,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(QueryDecodeJWTRequest__storage_, sigBytes),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryDecodeJWTRequest)
+                                   messageName:@"QueryDecodeJWTRequest"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryDecodeJWTRequest__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - JWTClaim
+
+@implementation JWTClaim
+
+@dynamic key;
+@dynamic value;
+
+typedef struct JWTClaim__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *key;
+  NSString *value;
+} JWTClaim__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "key",
+        .dataTypeSpecific.clazz = Nil,
+        .number = JWTClaim_FieldNumber_Key,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(JWTClaim__storage_, key),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "value",
+        .dataTypeSpecific.clazz = Nil,
+        .number = JWTClaim_FieldNumber_Value,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(JWTClaim__storage_, value),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(JWTClaim)
+                                   messageName:@"JWTClaim"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(JWTClaim__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - QueryDecodeJWTResponse
+
+@implementation QueryDecodeJWTResponse
+
+@dynamic claimsArray, claimsArray_Count;
+
+typedef struct QueryDecodeJWTResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *claimsArray;
+} QueryDecodeJWTResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "claimsArray",
+        .dataTypeSpecific.clazz = GPBObjCClass(JWTClaim),
+        .number = QueryDecodeJWTResponse_FieldNumber_ClaimsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(QueryDecodeJWTResponse__storage_, claimsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:GPBObjCClass(QueryDecodeJWTResponse)
+                                   messageName:@"QueryDecodeJWTResponse"
+                               fileDescription:&QueryRoot_FileDescription
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(QueryDecodeJWTResponse__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

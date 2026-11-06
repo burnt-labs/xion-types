@@ -34,15 +34,6 @@ class SignMode
      */
     const SIGN_MODE_DIRECT = 1;
     /**
-     * SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-     * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT.
-     * Since: cosmos-sdk 0.50
-     *
-     * Generated from protobuf enum <code>SIGN_MODE_TEXTUAL = 2;</code>
-     */
-    const SIGN_MODE_TEXTUAL = 2;
-    /**
      * SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
      * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
      * require signers signing over other signers' `signer_info`.
@@ -75,7 +66,6 @@ class SignMode
     private static $valueToName = [
         self::SIGN_MODE_UNSPECIFIED => 'SIGN_MODE_UNSPECIFIED',
         self::SIGN_MODE_DIRECT => 'SIGN_MODE_DIRECT',
-        self::SIGN_MODE_TEXTUAL => 'SIGN_MODE_TEXTUAL',
         self::SIGN_MODE_DIRECT_AUX => 'SIGN_MODE_DIRECT_AUX',
         self::SIGN_MODE_LEGACY_AMINO_JSON => 'SIGN_MODE_LEGACY_AMINO_JSON',
         self::SIGN_MODE_EIP_191 => 'SIGN_MODE_EIP_191',

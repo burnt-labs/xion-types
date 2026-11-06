@@ -56,12 +56,19 @@ struct  Xion__Dkim__V1__GenesisState
 
 
 /*
- * IndexRange defines a range of indices [start, end) in the public inputs array.
+ * IndexRange defines a range of indices [start, end) in the public inputs
+ * array.
  */
 struct  Xion__Dkim__V1__IndexRange
 {
   ProtobufCMessage base;
+  /*
+   * start is the inclusive lower bound of the index range.
+   */
   uint64_t start;
+  /*
+   * end is the exclusive upper bound of the index range.
+   */
   uint64_t end;
 };
 #define XION__DKIM__V1__INDEX_RANGE__INIT \
@@ -70,17 +77,41 @@ struct  Xion__Dkim__V1__IndexRange
 
 
 /*
- * PublicInputIndices defines the indices for extracting data from public inputs.
+ * PublicInputIndices defines the indices for extracting data from public
+ * inputs.
  */
 struct  Xion__Dkim__V1__PublicInputIndices
 {
   ProtobufCMessage base;
+  /*
+   * min_length is the minimum required length of the public inputs array.
+   */
   uint64_t min_length;
+  /*
+   * email_hash_index is the index of the email hash in the public inputs.
+   */
   uint64_t email_hash_index;
+  /*
+   * dkim_domain_range is the index range for the DKIM domain in public inputs.
+   */
   Xion__Dkim__V1__IndexRange *dkim_domain_range;
+  /*
+   * dkim_hash_index is the index of the DKIM signature hash in public inputs.
+   */
   uint64_t dkim_hash_index;
+  /*
+   * tx_bytes_range is the index range for the transaction bytes in public
+   * inputs.
+   */
   Xion__Dkim__V1__IndexRange *tx_bytes_range;
+  /*
+   * email_host_range is the index range for the email host in public inputs.
+   */
   Xion__Dkim__V1__IndexRange *email_host_range;
+  /*
+   * email_subject_range is the index range for the email subject in public
+   * inputs.
+   */
   Xion__Dkim__V1__IndexRange *email_subject_range;
 };
 #define XION__DKIM__V1__PUBLIC_INPUT_INDICES__INIT \
@@ -104,7 +135,8 @@ struct  Xion__Dkim__V1__Params
    */
   uint64_t max_pubkey_size_bytes;
   /*
-   * public_input_indices defines the indices for extracting data from public inputs.
+   * public_input_indices defines the indices for extracting data from public
+   * inputs.
    */
   Xion__Dkim__V1__PublicInputIndices *public_input_indices;
 };

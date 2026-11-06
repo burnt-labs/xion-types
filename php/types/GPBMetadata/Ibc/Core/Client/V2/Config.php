@@ -19,7 +19,7 @@ class Config
 ²
 ibc/core/client/v2/config.protoibc.core.client.v2"3
 Config)
-allowed_relayers (	RallowedRelayersB>Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/typesbproto3'
+allowed_relayers (	RallowedRelayersB>Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/typesbproto3'
         , true);
 
         static::$is_initialized = true;

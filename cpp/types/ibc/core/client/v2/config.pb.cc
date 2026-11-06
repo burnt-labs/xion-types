@@ -74,7 +74,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fclient_2fv2_2fconfig_2eproto[]
     "\n\037ibc/core/client/v2/config.proto\022\022ibc.c"
     "ore.client.v2\"3\n\006Config\022)\n\020allowed_relay"
     "ers\030\001 \003(\tR\017allowedRelayersB>Z<github.com"
-    "/cosmos/ibc-go/v10/modules/core/02-clien"
+    "/cosmos/ibc-go/v11/modules/core/02-clien"
     "t/v2/typesb\006proto3"
 };
 static ::absl::once_flag descriptor_table_ibc_2fcore_2fclient_2fv2_2fconfig_2eproto_once;

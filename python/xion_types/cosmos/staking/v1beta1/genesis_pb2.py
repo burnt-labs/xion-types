@@ -15,9 +15,11 @@ from xion_types.gogoproto import gogo_pb2 as gogoproto_dot_gogo__pb2
 from xion_types.cosmos.staking.v1beta1 import staking_pb2 as cosmos_dot_staking_dot_v1beta1_dot_staking__pb2
 from xion_types.cosmos_proto import cosmos_pb2 as cosmos__proto_dot_cosmos__pb2
 from xion_types.amino import amino_pb2 as amino_dot_amino__pb2
+from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$cosmos/staking/v1beta1/genesis.proto\x12\x16\x63osmos.staking.v1beta1\x1a\x14gogoproto/gogo.proto\x1a$cosmos/staking/v1beta1/staking.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x11\x61mino/amino.proto\"\x97\x05\n\x0cGenesisState\x12\x41\n\x06params\x18\x01 \x01(\x0b\x32\x1e.cosmos.staking.v1beta1.ParamsB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x06params\x12Z\n\x10last_total_power\x18\x02 \x01(\x0c\x42\x30\xc8\xde\x1f\x00\xda\xde\x1f\x15\x63osmossdk.io/math.Int\xd2\xb4-\ncosmos.Int\xa8\xe7\xb0*\x01R\x0elastTotalPower\x12i\n\x15last_validator_powers\x18\x03 \x03(\x0b\x32*.cosmos.staking.v1beta1.LastValidatorPowerB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x13lastValidatorPowers\x12L\n\nvalidators\x18\x04 \x03(\x0b\x32!.cosmos.staking.v1beta1.ValidatorB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\nvalidators\x12O\n\x0b\x64\x65legations\x18\x05 \x03(\x0b\x32\".cosmos.staking.v1beta1.DelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x0b\x64\x65legations\x12k\n\x15unbonding_delegations\x18\x06 \x03(\x0b\x32+.cosmos.staking.v1beta1.UnbondingDelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x14unbondingDelegations\x12U\n\rredelegations\x18\x07 \x03(\x0b\x32$.cosmos.staking.v1beta1.RedelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\rredelegations\x12\x1a\n\x08\x65xported\x18\x08 \x01(\x08R\x08\x65xported\"h\n\x12LastValidatorPower\x12\x32\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\x07\x61\x64\x64ress\x12\x14\n\x05power\x18\x02 \x01(\x03R\x05power:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\x42.Z,github.com/cosmos/cosmos-sdk/x/staking/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$cosmos/staking/v1beta1/genesis.proto\x12\x16\x63osmos.staking.v1beta1\x1a\x14gogoproto/gogo.proto\x1a$cosmos/staking/v1beta1/staking.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x11\x61mino/amino.proto\x1a\x19google/protobuf/any.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\x07\n\x0cGenesisState\x12\x41\n\x06params\x18\x01 \x01(\x0b\x32\x1e.cosmos.staking.v1beta1.ParamsB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x06params\x12Z\n\x10last_total_power\x18\x02 \x01(\x0c\x42\x30\xc8\xde\x1f\x00\xda\xde\x1f\x15\x63osmossdk.io/math.Int\xd2\xb4-\ncosmos.Int\xa8\xe7\xb0*\x01R\x0elastTotalPower\x12i\n\x15last_validator_powers\x18\x03 \x03(\x0b\x32*.cosmos.staking.v1beta1.LastValidatorPowerB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x13lastValidatorPowers\x12L\n\nvalidators\x18\x04 \x03(\x0b\x32!.cosmos.staking.v1beta1.ValidatorB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\nvalidators\x12O\n\x0b\x64\x65legations\x18\x05 \x03(\x0b\x32\".cosmos.staking.v1beta1.DelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x0b\x64\x65legations\x12k\n\x15unbonding_delegations\x18\x06 \x03(\x0b\x32+.cosmos.staking.v1beta1.UnbondingDelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x14unbondingDelegations\x12U\n\rredelegations\x18\x07 \x03(\x0b\x32$.cosmos.staking.v1beta1.RedelegationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\rredelegations\x12\x1a\n\x08\x65xported\x18\x08 \x01(\x08R\x08\x65xported\x12\x83\x01\n\x1e\x63onsensus_key_rotation_history\x18\t \x03(\x0b\x32\x33.cosmos.staking.v1beta1.ConsensusKeyRotationHistoryB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x1b\x63onsensusKeyRotationHistory\x12\x85\x01\n\x1fpending_consensus_key_rotations\x18\n \x03(\x0b\x32\x33.cosmos.staking.v1beta1.PendingConsensusKeyRotationB\t\xc8\xde\x1f\x00\xa8\xe7\xb0*\x01R\x1cpendingConsensusKeyRotations\"h\n\x12LastValidatorPower\x12\x32\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\x07\x61\x64\x64ress\x12\x14\n\x05power\x18\x02 \x01(\x03R\x05power:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\"\xb1\x03\n\x1b\x43onsensusKeyRotationHistory\x12N\n\x11validator_address\x18\x01 \x01(\tB!\xd2\xb4-\x1d\x63osmos.ValidatorAddressStringR\x10validatorAddress\x12U\n\x15old_consensus_address\x18\x02 \x01(\tB!\xd2\xb4-\x1d\x63osmos.ConsensusAddressStringR\x13oldConsensusAddress\x12N\n\rmaturity_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\r\xc8\xde\x1f\x00\x90\xdf\x1f\x01\xa8\xe7\xb0*\x01R\x0cmaturityTime\x12[\n\x14\x65vidence_expiry_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\r\xc8\xde\x1f\x00\x90\xdf\x1f\x01\xa8\xe7\xb0*\x01R\x12\x65videnceExpiryTime\x12\x34\n\x16\x65vidence_expiry_height\x18\x05 \x01(\x03R\x14\x65videnceExpiryHeight:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\"\xe9\x01\n\x1bPendingConsensusKeyRotation\x12N\n\x11validator_address\x18\x01 \x01(\tB!\xd2\xb4-\x1d\x63osmos.ValidatorAddressStringR\x10validatorAddress\x12M\n\nnew_pubkey\x18\x02 \x01(\x0b\x32\x14.google.protobuf.AnyB\x18\xca\xb4-\x14\x63osmos.crypto.PubKeyR\tnewPubkey\x12!\n\x0c\x61pply_height\x18\x03 \x01(\x03R\x0b\x61pplyHeight:\x08\x88\xa0\x1f\x00\xe8\xa0\x1f\x00\x42.Z,github.com/cosmos/cosmos-sdk/x/staking/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,12 +41,36 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_GENESISSTATE'].fields_by_name['unbonding_delegations']._serialized_options = b'\310\336\037\000\250\347\260*\001'
   _globals['_GENESISSTATE'].fields_by_name['redelegations']._options = None
   _globals['_GENESISSTATE'].fields_by_name['redelegations']._serialized_options = b'\310\336\037\000\250\347\260*\001'
+  _globals['_GENESISSTATE'].fields_by_name['consensus_key_rotation_history']._options = None
+  _globals['_GENESISSTATE'].fields_by_name['consensus_key_rotation_history']._serialized_options = b'\310\336\037\000\250\347\260*\001'
+  _globals['_GENESISSTATE'].fields_by_name['pending_consensus_key_rotations']._options = None
+  _globals['_GENESISSTATE'].fields_by_name['pending_consensus_key_rotations']._serialized_options = b'\310\336\037\000\250\347\260*\001'
   _globals['_LASTVALIDATORPOWER'].fields_by_name['address']._options = None
   _globals['_LASTVALIDATORPOWER'].fields_by_name['address']._serialized_options = b'\322\264-\024cosmos.AddressString'
   _globals['_LASTVALIDATORPOWER']._options = None
   _globals['_LASTVALIDATORPOWER']._serialized_options = b'\210\240\037\000\350\240\037\000'
-  _globals['_GENESISSTATE']._serialized_start=171
-  _globals['_GENESISSTATE']._serialized_end=834
-  _globals['_LASTVALIDATORPOWER']._serialized_start=836
-  _globals['_LASTVALIDATORPOWER']._serialized_end=940
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['validator_address']._options = None
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['validator_address']._serialized_options = b'\322\264-\035cosmos.ValidatorAddressString'
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['old_consensus_address']._options = None
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['old_consensus_address']._serialized_options = b'\322\264-\035cosmos.ConsensusAddressString'
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['maturity_time']._options = None
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['maturity_time']._serialized_options = b'\310\336\037\000\220\337\037\001\250\347\260*\001'
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['evidence_expiry_time']._options = None
+  _globals['_CONSENSUSKEYROTATIONHISTORY'].fields_by_name['evidence_expiry_time']._serialized_options = b'\310\336\037\000\220\337\037\001\250\347\260*\001'
+  _globals['_CONSENSUSKEYROTATIONHISTORY']._options = None
+  _globals['_CONSENSUSKEYROTATIONHISTORY']._serialized_options = b'\210\240\037\000\350\240\037\000'
+  _globals['_PENDINGCONSENSUSKEYROTATION'].fields_by_name['validator_address']._options = None
+  _globals['_PENDINGCONSENSUSKEYROTATION'].fields_by_name['validator_address']._serialized_options = b'\322\264-\035cosmos.ValidatorAddressString'
+  _globals['_PENDINGCONSENSUSKEYROTATION'].fields_by_name['new_pubkey']._options = None
+  _globals['_PENDINGCONSENSUSKEYROTATION'].fields_by_name['new_pubkey']._serialized_options = b'\312\264-\024cosmos.crypto.PubKey'
+  _globals['_PENDINGCONSENSUSKEYROTATION']._options = None
+  _globals['_PENDINGCONSENSUSKEYROTATION']._serialized_options = b'\210\240\037\000\350\240\037\000'
+  _globals['_GENESISSTATE']._serialized_start=231
+  _globals['_GENESISSTATE']._serialized_end=1164
+  _globals['_LASTVALIDATORPOWER']._serialized_start=1166
+  _globals['_LASTVALIDATORPOWER']._serialized_end=1270
+  _globals['_CONSENSUSKEYROTATIONHISTORY']._serialized_start=1273
+  _globals['_CONSENSUSKEYROTATIONHISTORY']._serialized_end=1706
+  _globals['_PENDINGCONSENSUSKEYROTATION']._serialized_start=1709
+  _globals['_PENDINGCONSENSUSKEYROTATION']._serialized_end=1942
 # @@protoc_insertion_point(module_scope)

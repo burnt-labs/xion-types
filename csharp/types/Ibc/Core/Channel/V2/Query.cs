@@ -116,7 +116,7 @@ namespace Ibc.Core.Channel.V2 {
             "ZXJ5VW5yZWNlaXZlZEFja3NSZXNwb25zZSJqgtPkkwJkEmIvaWJjL2NvcmUv",
             "Y2hhbm5lbC92Mi9jbGllbnRzL3tjbGllbnRfaWR9L3BhY2tldF9jb21taXRt",
             "ZW50cy97cGFja2V0X2Fja19zZXF1ZW5jZXN9L3VucmVjZWl2ZWRfYWNrc0I/",
-            "Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvY29yZS8w",
+            "Wj1naXRodWIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvY29yZS8w",
             "NC1jaGFubmVsL3YyL3R5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Cosmos.Base.Query.V1Beta1.PaginationReflection.Descriptor, global::Ibc.Core.Channel.V2.GenesisReflection.Descriptor, global::Ibc.Core.Client.V1.ClientReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },

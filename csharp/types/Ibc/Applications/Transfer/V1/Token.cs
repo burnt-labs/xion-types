@@ -32,7 +32,7 @@ namespace Ibc.Applications.Transfer.V1 {
             "dHJhY2UYAyADKAsyIS5pYmMuYXBwbGljYXRpb25zLnRyYW5zZmVyLnYxLkhv",
             "cEIEyN4fAFIFdHJhY2UiQwoDSG9wEhcKB3BvcnRfaWQYASABKAlSBnBvcnRJ",
             "ZBIdCgpjaGFubmVsX2lkGAIgASgJUgljaGFubmVsSWQ6BJigHwBCOlo4Z2l0",
-            "aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1bGVzL2FwcHMvdHJhbnNm",
+            "aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9tb2R1bGVzL2FwcHMvdHJhbnNm",
             "ZXIvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },

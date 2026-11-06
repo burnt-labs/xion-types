@@ -674,7 +674,7 @@ public final class Commitment {
       "\n\'ibc/core/commitment/v2/commitment.prot" +
       "o\022\026ibc.core.commitment.v2\"\'\n\nMerklePath\022" +
       "\031\n\010key_path\030\001 \003(\014R\007keyPathBBZ@github.com" +
-      "/cosmos/ibc-go/v10/modules/core/23-commi" +
+      "/cosmos/ibc-go/v11/modules/core/23-commi" +
       "tment/types/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

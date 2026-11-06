@@ -27,6 +27,7 @@
 #import "ibc/core/client/v1/Client.pbobjc.h"
 #import "ibc/core/connection/v1/Connection.pbobjc.h"
 #import "google/api/Annotations.pbobjc.h"
+#import "cosmos_proto/Cosmos.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -70,6 +71,7 @@ GPBObjCClassDeclaration(QueryConnectionsResponse);
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     registry = [[GPBExtensionRegistry alloc] init];
     // Merge in the imports (direct or indirect) that defined extensions.
+    [registry addExtensions:[CosmosRoot extensionRegistry]];
     [registry addExtensions:[GogoRoot extensionRegistry]];
     [registry addExtensions:[GAPIAnnotationsRoot extensionRegistry]];
   }

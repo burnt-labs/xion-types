@@ -20,6 +20,8 @@ PROTOBUF_C__BEGIN_DECLS
 
 typedef struct Abstractaccount__V1__QueryParamsRequest Abstractaccount__V1__QueryParamsRequest;
 typedef struct Abstractaccount__V1__QueryParamsResponse Abstractaccount__V1__QueryParamsResponse;
+typedef struct Abstractaccount__V1__QueryAccountAddressRequest Abstractaccount__V1__QueryAccountAddressRequest;
+typedef struct Abstractaccount__V1__QueryAccountAddressResponse Abstractaccount__V1__QueryAccountAddressResponse;
 
 
 /* --- enums --- */
@@ -45,11 +47,57 @@ struct  Abstractaccount__V1__QueryParamsRequest
 struct  Abstractaccount__V1__QueryParamsResponse
 {
   ProtobufCMessage base;
+  /*
+   * params holds the current module parameters.
+   */
   Abstractaccount__V1__Params *params;
 };
 #define ABSTRACTACCOUNT__V1__QUERY_PARAMS_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__query_params_response__descriptor) \
 , NULL }
+
+
+/*
+ * QueryAccountAddressRequest identifies an account namespace. Implementation
+ * code IDs do not participate in this address lookup.
+ */
+struct  Abstractaccount__V1__QueryAccountAddressRequest
+{
+  ProtobufCMessage base;
+  /*
+   * sender is the address registering the account.
+   */
+  char *sender;
+  /*
+   * salt is the caller-chosen salt the address is derived with.
+   */
+  ProtobufCBinaryData salt;
+};
+#define ABSTRACTACCOUNT__V1__QUERY_ACCOUNT_ADDRESS_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__query_account_address_request__descriptor) \
+, (char *)protobuf_c_empty_string, {0,NULL} }
+
+
+/*
+ * QueryAccountAddressResponse contains the stable address and whether an
+ * AbstractAccount is already registered for the namespace.
+ */
+struct  Abstractaccount__V1__QueryAccountAddressResponse
+{
+  ProtobufCMessage base;
+  /*
+   * address is the stable address derived for the namespace.
+   */
+  char *address;
+  /*
+   * registered reports whether an AbstractAccount already exists for the
+   * namespace.
+   */
+  protobuf_c_boolean registered;
+};
+#define ABSTRACTACCOUNT__V1__QUERY_ACCOUNT_ADDRESS_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&abstractaccount__v1__query_account_address_response__descriptor) \
+, (char *)protobuf_c_empty_string, 0 }
 
 
 /* Abstractaccount__V1__QueryParamsRequest methods */
@@ -90,6 +138,44 @@ Abstractaccount__V1__QueryParamsResponse *
 void   abstractaccount__v1__query_params_response__free_unpacked
                      (Abstractaccount__V1__QueryParamsResponse *message,
                       ProtobufCAllocator *allocator);
+/* Abstractaccount__V1__QueryAccountAddressRequest methods */
+void   abstractaccount__v1__query_account_address_request__init
+                     (Abstractaccount__V1__QueryAccountAddressRequest         *message);
+size_t abstractaccount__v1__query_account_address_request__get_packed_size
+                     (const Abstractaccount__V1__QueryAccountAddressRequest   *message);
+size_t abstractaccount__v1__query_account_address_request__pack
+                     (const Abstractaccount__V1__QueryAccountAddressRequest   *message,
+                      uint8_t             *out);
+size_t abstractaccount__v1__query_account_address_request__pack_to_buffer
+                     (const Abstractaccount__V1__QueryAccountAddressRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Abstractaccount__V1__QueryAccountAddressRequest *
+       abstractaccount__v1__query_account_address_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   abstractaccount__v1__query_account_address_request__free_unpacked
+                     (Abstractaccount__V1__QueryAccountAddressRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Abstractaccount__V1__QueryAccountAddressResponse methods */
+void   abstractaccount__v1__query_account_address_response__init
+                     (Abstractaccount__V1__QueryAccountAddressResponse         *message);
+size_t abstractaccount__v1__query_account_address_response__get_packed_size
+                     (const Abstractaccount__V1__QueryAccountAddressResponse   *message);
+size_t abstractaccount__v1__query_account_address_response__pack
+                     (const Abstractaccount__V1__QueryAccountAddressResponse   *message,
+                      uint8_t             *out);
+size_t abstractaccount__v1__query_account_address_response__pack_to_buffer
+                     (const Abstractaccount__V1__QueryAccountAddressResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Abstractaccount__V1__QueryAccountAddressResponse *
+       abstractaccount__v1__query_account_address_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   abstractaccount__v1__query_account_address_response__free_unpacked
+                     (Abstractaccount__V1__QueryAccountAddressResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Abstractaccount__V1__QueryParamsRequest_Closure)
@@ -97,6 +183,12 @@ typedef void (*Abstractaccount__V1__QueryParamsRequest_Closure)
                   void *closure_data);
 typedef void (*Abstractaccount__V1__QueryParamsResponse_Closure)
                  (const Abstractaccount__V1__QueryParamsResponse *message,
+                  void *closure_data);
+typedef void (*Abstractaccount__V1__QueryAccountAddressRequest_Closure)
+                 (const Abstractaccount__V1__QueryAccountAddressRequest *message,
+                  void *closure_data);
+typedef void (*Abstractaccount__V1__QueryAccountAddressResponse_Closure)
+                 (const Abstractaccount__V1__QueryAccountAddressResponse *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -109,6 +201,10 @@ struct Abstractaccount__V1__Query_Service
                  const Abstractaccount__V1__QueryParamsRequest *input,
                  Abstractaccount__V1__QueryParamsResponse_Closure closure,
                  void *closure_data);
+  void (*account_address)(Abstractaccount__V1__Query_Service *service,
+                          const Abstractaccount__V1__QueryAccountAddressRequest *input,
+                          Abstractaccount__V1__QueryAccountAddressResponse_Closure closure,
+                          void *closure_data);
 };
 typedef void (*Abstractaccount__V1__Query_ServiceDestroy)(Abstractaccount__V1__Query_Service *);
 void abstractaccount__v1__query__init (Abstractaccount__V1__Query_Service *service,
@@ -117,16 +213,23 @@ void abstractaccount__v1__query__init (Abstractaccount__V1__Query_Service *servi
     { &abstractaccount__v1__query__descriptor, protobuf_c_service_invoke_internal, NULL }
 #define ABSTRACTACCOUNT__V1__QUERY__INIT(function_prefix__) \
     { ABSTRACTACCOUNT__V1__QUERY__BASE_INIT,\
-      function_prefix__ ## params  }
+      function_prefix__ ## params,\
+      function_prefix__ ## account_address  }
 void abstractaccount__v1__query__params(ProtobufCService *service,
                                         const Abstractaccount__V1__QueryParamsRequest *input,
                                         Abstractaccount__V1__QueryParamsResponse_Closure closure,
                                         void *closure_data);
+void abstractaccount__v1__query__account_address(ProtobufCService *service,
+                                                 const Abstractaccount__V1__QueryAccountAddressRequest *input,
+                                                 Abstractaccount__V1__QueryAccountAddressResponse_Closure closure,
+                                                 void *closure_data);
 
 /* --- descriptors --- */
 
 extern const ProtobufCMessageDescriptor abstractaccount__v1__query_params_request__descriptor;
 extern const ProtobufCMessageDescriptor abstractaccount__v1__query_params_response__descriptor;
+extern const ProtobufCMessageDescriptor abstractaccount__v1__query_account_address_request__descriptor;
+extern const ProtobufCMessageDescriptor abstractaccount__v1__query_account_address_response__descriptor;
 extern const ProtobufCServiceDescriptor abstractaccount__v1__query__descriptor;
 
 PROTOBUF_C__END_DECLS

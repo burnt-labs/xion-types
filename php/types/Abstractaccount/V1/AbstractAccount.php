@@ -18,14 +18,20 @@ use Google\Protobuf\Internal\GPBUtil;
 class AbstractAccount extends \Google\Protobuf\Internal\Message
 {
     /**
+     * address is the bech32-encoded address of the account's contract.
+     *
      * Generated from protobuf field <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      */
     protected $address = '';
     /**
+     * account_number is the account's number assigned by the auth module.
+     *
      * Generated from protobuf field <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
      */
     protected $account_number = 0;
     /**
+     * sequence is the account's current transaction sequence.
+     *
      * Generated from protobuf field <code>uint64 sequence = 3 [json_name = "sequence"];</code>
      */
     protected $sequence = 0;
@@ -37,8 +43,11 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $address
+     *           address is the bech32-encoded address of the account's contract.
      *     @type int|string $account_number
+     *           account_number is the account's number assigned by the auth module.
      *     @type int|string $sequence
+     *           sequence is the account's current transaction sequence.
      * }
      */
     public function __construct($data = NULL) {
@@ -47,6 +56,8 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * address is the bech32-encoded address of the account's contract.
+     *
      * Generated from protobuf field <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @return string
      */
@@ -56,6 +67,8 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * address is the bech32-encoded address of the account's contract.
+     *
      * Generated from protobuf field <code>string address = 1 [json_name = "address", (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @param string $var
      * @return $this
@@ -69,6 +82,8 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * account_number is the account's number assigned by the auth module.
+     *
      * Generated from protobuf field <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
      * @return int|string
      */
@@ -78,6 +93,8 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * account_number is the account's number assigned by the auth module.
+     *
      * Generated from protobuf field <code>uint64 account_number = 2 [json_name = "accountNumber"];</code>
      * @param int|string $var
      * @return $this
@@ -91,6 +108,8 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * sequence is the account's current transaction sequence.
+     *
      * Generated from protobuf field <code>uint64 sequence = 3 [json_name = "sequence"];</code>
      * @return int|string
      */
@@ -100,6 +119,8 @@ class AbstractAccount extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * sequence is the account's current transaction sequence.
+     *
      * Generated from protobuf field <code>uint64 sequence = 3 [json_name = "sequence"];</code>
      * @param int|string $var
      * @return $this

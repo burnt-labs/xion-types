@@ -30,7 +30,7 @@ namespace Ibc.Lightclients.Wasm.V1 {
             "Y2xpZW50cy53YXNtLnYxLkNvbnRyYWN0QgTI3h8AUgljb250cmFjdHMiLwoI",
             "Q29udHJhY3QSHQoKY29kZV9ieXRlcxgBIAEoDFIJY29kZUJ5dGVzOgSIoB8A",
             "QkJaQGdpdGh1Yi5jb20vY29zbW9zL2liYy1nby9tb2R1bGVzL2xpZ2h0LWNs",
-            "aWVudHMvMDgtd2FzbS92MTAvdHlwZXNiBnByb3RvMw=="));
+            "aWVudHMvMDgtd2FzbS92MTEvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

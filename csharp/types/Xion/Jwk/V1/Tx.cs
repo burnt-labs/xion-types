@@ -24,39 +24,47 @@ namespace Xion.Jwk.V1 {
     static TxReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChR4aW9uL2p3ay92MS90eC5wcm90bxILeGlvbi5qd2sudjEaGnhpb24vandr",
-            "L3YxL2F1ZGllbmNlLnByb3RvGhdjb3Ntb3MvbXNnL3YxL21zZy5wcm90byJV",
-            "ChZNc2dDcmVhdGVBdWRpZW5jZUNsYWltEhQKBWFkbWluGAEgASgJUgVhZG1p",
-            "bhIZCghhdWRfaGFzaBgCIAEoDFIHYXVkSGFzaDoKguewKgVhZG1pbiIgCh5N",
-            "c2dDcmVhdGVBdWRpZW5jZUNsYWltUmVzcG9uc2UiVQoWTXNnRGVsZXRlQXVk",
-            "aWVuY2VDbGFpbRIUCgVhZG1pbhgBIAEoCVIFYWRtaW4SGQoIYXVkX2hhc2gY",
-            "AiABKAxSB2F1ZEhhc2g6CoLnsCoFYWRtaW4iIAoeTXNnRGVsZXRlQXVkaWVu",
-            "Y2VDbGFpbVJlc3BvbnNlIlkKEU1zZ0NyZWF0ZUF1ZGllbmNlEhQKBWFkbWlu",
-            "GAEgASgJUgVhZG1pbhIQCgNhdWQYAiABKAlSA2F1ZBIQCgNrZXkYAyABKAlS",
-            "A2tleToKguewKgVhZG1pbiJOChlNc2dDcmVhdGVBdWRpZW5jZVJlc3BvbnNl",
-            "EjEKCGF1ZGllbmNlGAEgASgLMhUueGlvbi5qd2sudjEuQXVkaWVuY2VSCGF1",
-            "ZGllbmNlIo8BChFNc2dVcGRhdGVBdWRpZW5jZRIUCgVhZG1pbhgBIAEoCVIF",
-            "YWRtaW4SGwoJbmV3X2FkbWluGAIgASgJUghuZXdBZG1pbhIQCgNhdWQYAyAB",
-            "KAlSA2F1ZBIQCgNrZXkYBCABKAlSA2tleRIXCgduZXdfYXVkGAUgASgJUgZu",
-            "ZXdBdWQ6CoLnsCoFYWRtaW4iTgoZTXNnVXBkYXRlQXVkaWVuY2VSZXNwb25z",
-            "ZRIxCghhdWRpZW5jZRgBIAEoCzIVLnhpb24uandrLnYxLkF1ZGllbmNlUghh",
-            "dWRpZW5jZSJHChFNc2dEZWxldGVBdWRpZW5jZRIUCgVhZG1pbhgBIAEoCVIF",
-            "YWRtaW4SEAoDYXVkGAIgASgJUgNhdWQ6CoLnsCoFYWRtaW4iGwoZTXNnRGVs",
-            "ZXRlQXVkaWVuY2VSZXNwb25zZTLlAwoDTXNnEmcKE0NyZWF0ZUF1ZGllbmNl",
-            "Q2xhaW0SIy54aW9uLmp3ay52MS5Nc2dDcmVhdGVBdWRpZW5jZUNsYWltGisu",
-            "eGlvbi5qd2sudjEuTXNnQ3JlYXRlQXVkaWVuY2VDbGFpbVJlc3BvbnNlEmcK",
-            "E0RlbGV0ZUF1ZGllbmNlQ2xhaW0SIy54aW9uLmp3ay52MS5Nc2dEZWxldGVB",
-            "dWRpZW5jZUNsYWltGisueGlvbi5qd2sudjEuTXNnRGVsZXRlQXVkaWVuY2VD",
-            "bGFpbVJlc3BvbnNlElgKDkNyZWF0ZUF1ZGllbmNlEh4ueGlvbi5qd2sudjEu",
-            "TXNnQ3JlYXRlQXVkaWVuY2UaJi54aW9uLmp3ay52MS5Nc2dDcmVhdGVBdWRp",
-            "ZW5jZVJlc3BvbnNlElgKDlVwZGF0ZUF1ZGllbmNlEh4ueGlvbi5qd2sudjEu",
-            "TXNnVXBkYXRlQXVkaWVuY2UaJi54aW9uLmp3ay52MS5Nc2dVcGRhdGVBdWRp",
-            "ZW5jZVJlc3BvbnNlElgKDkRlbGV0ZUF1ZGllbmNlEh4ueGlvbi5qd2sudjEu",
-            "TXNnRGVsZXRlQXVkaWVuY2UaJi54aW9uLmp3ay52MS5Nc2dEZWxldGVBdWRp",
-            "ZW5jZVJlc3BvbnNlQihaJmdpdGh1Yi5jb20vYnVybnQtbGFicy94aW9uL3gv",
-            "andrL3R5cGVzYgZwcm90bzM="));
+            "ChR4aW9uL2p3ay92MS90eC5wcm90bxILeGlvbi5qd2sudjEaEWFtaW5vL2Ft",
+            "aW5vLnByb3RvGhdjb3Ntb3MvbXNnL3YxL21zZy5wcm90bxoZY29zbW9zX3By",
+            "b3RvL2Nvc21vcy5wcm90bxoUZ29nb3Byb3RvL2dvZ28ucHJvdG8aGnhpb24v",
+            "andrL3YxL2F1ZGllbmNlLnByb3RvGhh4aW9uL2p3ay92MS9wYXJhbXMucHJv",
+            "dG8iVQoWTXNnQ3JlYXRlQXVkaWVuY2VDbGFpbRIUCgVhZG1pbhgBIAEoCVIF",
+            "YWRtaW4SGQoIYXVkX2hhc2gYAiABKAxSB2F1ZEhhc2g6CoLnsCoFYWRtaW4i",
+            "IAoeTXNnQ3JlYXRlQXVkaWVuY2VDbGFpbVJlc3BvbnNlIlUKFk1zZ0RlbGV0",
+            "ZUF1ZGllbmNlQ2xhaW0SFAoFYWRtaW4YASABKAlSBWFkbWluEhkKCGF1ZF9o",
+            "YXNoGAIgASgMUgdhdWRIYXNoOgqC57AqBWFkbWluIiAKHk1zZ0RlbGV0ZUF1",
+            "ZGllbmNlQ2xhaW1SZXNwb25zZSJZChFNc2dDcmVhdGVBdWRpZW5jZRIUCgVh",
+            "ZG1pbhgBIAEoCVIFYWRtaW4SEAoDYXVkGAIgASgJUgNhdWQSEAoDa2V5GAMg",
+            "ASgJUgNrZXk6CoLnsCoFYWRtaW4iTgoZTXNnQ3JlYXRlQXVkaWVuY2VSZXNw",
+            "b25zZRIxCghhdWRpZW5jZRgBIAEoCzIVLnhpb24uandrLnYxLkF1ZGllbmNl",
+            "UghhdWRpZW5jZSKPAQoRTXNnVXBkYXRlQXVkaWVuY2USFAoFYWRtaW4YASAB",
+            "KAlSBWFkbWluEhsKCW5ld19hZG1pbhgCIAEoCVIIbmV3QWRtaW4SEAoDYXVk",
+            "GAMgASgJUgNhdWQSEAoDa2V5GAQgASgJUgNrZXkSFwoHbmV3X2F1ZBgFIAEo",
+            "CVIGbmV3QXVkOgqC57AqBWFkbWluIk4KGU1zZ1VwZGF0ZUF1ZGllbmNlUmVz",
+            "cG9uc2USMQoIYXVkaWVuY2UYASABKAsyFS54aW9uLmp3ay52MS5BdWRpZW5j",
+            "ZVIIYXVkaWVuY2UiRwoRTXNnRGVsZXRlQXVkaWVuY2USFAoFYWRtaW4YASAB",
+            "KAlSBWFkbWluEhAKA2F1ZBgCIAEoCVIDYXVkOgqC57AqBWFkbWluIhsKGU1z",
+            "Z0RlbGV0ZUF1ZGllbmNlUmVzcG9uc2UipAEKD01zZ1VwZGF0ZVBhcmFtcxI2",
+            "CglhdXRob3JpdHkYASABKAlCGNK0LRRjb3Ntb3MuQWRkcmVzc1N0cmluZ1IJ",
+            "YXV0aG9yaXR5EjEKBnBhcmFtcxgCIAEoCzITLnhpb24uandrLnYxLlBhcmFt",
+            "c0IEyN4fAFIGcGFyYW1zOiaC57AqCWF1dGhvcml0eYrnsCoTandrL01zZ1Vw",
+            "ZGF0ZVBhcmFtcyIZChdNc2dVcGRhdGVQYXJhbXNSZXNwb25zZTLABAoDTXNn",
+            "EmcKE0NyZWF0ZUF1ZGllbmNlQ2xhaW0SIy54aW9uLmp3ay52MS5Nc2dDcmVh",
+            "dGVBdWRpZW5jZUNsYWltGisueGlvbi5qd2sudjEuTXNnQ3JlYXRlQXVkaWVu",
+            "Y2VDbGFpbVJlc3BvbnNlEmcKE0RlbGV0ZUF1ZGllbmNlQ2xhaW0SIy54aW9u",
+            "Lmp3ay52MS5Nc2dEZWxldGVBdWRpZW5jZUNsYWltGisueGlvbi5qd2sudjEu",
+            "TXNnRGVsZXRlQXVkaWVuY2VDbGFpbVJlc3BvbnNlElgKDkNyZWF0ZUF1ZGll",
+            "bmNlEh4ueGlvbi5qd2sudjEuTXNnQ3JlYXRlQXVkaWVuY2UaJi54aW9uLmp3",
+            "ay52MS5Nc2dDcmVhdGVBdWRpZW5jZVJlc3BvbnNlElgKDlVwZGF0ZUF1ZGll",
+            "bmNlEh4ueGlvbi5qd2sudjEuTXNnVXBkYXRlQXVkaWVuY2UaJi54aW9uLmp3",
+            "ay52MS5Nc2dVcGRhdGVBdWRpZW5jZVJlc3BvbnNlElgKDkRlbGV0ZUF1ZGll",
+            "bmNlEh4ueGlvbi5qd2sudjEuTXNnRGVsZXRlQXVkaWVuY2UaJi54aW9uLmp3",
+            "ay52MS5Nc2dEZWxldGVBdWRpZW5jZVJlc3BvbnNlElIKDFVwZGF0ZVBhcmFt",
+            "cxIcLnhpb24uandrLnYxLk1zZ1VwZGF0ZVBhcmFtcxokLnhpb24uandrLnYx",
+            "Lk1zZ1VwZGF0ZVBhcmFtc1Jlc3BvbnNlGgWA57AqAUIoWiZnaXRodWIuY29t",
+            "L2J1cm50LWxhYnMveGlvbi94L2p3ay90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Xion.Jwk.V1.AudienceReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Amino.AminoReflection.Descriptor, global::Cosmos.Msg.V1.MsgReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, global::Xion.Jwk.V1.AudienceReflection.Descriptor, global::Xion.Jwk.V1.ParamsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgCreateAudienceClaim), global::Xion.Jwk.V1.MsgCreateAudienceClaim.Parser, new[]{ "Admin", "AudHash" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgCreateAudienceClaimResponse), global::Xion.Jwk.V1.MsgCreateAudienceClaimResponse.Parser, null, null, null, null, null),
@@ -67,7 +75,9 @@ namespace Xion.Jwk.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgUpdateAudience), global::Xion.Jwk.V1.MsgUpdateAudience.Parser, new[]{ "Admin", "NewAdmin", "Aud", "Key", "NewAud" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgUpdateAudienceResponse), global::Xion.Jwk.V1.MsgUpdateAudienceResponse.Parser, new[]{ "Audience" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgDeleteAudience), global::Xion.Jwk.V1.MsgDeleteAudience.Parser, new[]{ "Admin", "Aud" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgDeleteAudienceResponse), global::Xion.Jwk.V1.MsgDeleteAudienceResponse.Parser, null, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgDeleteAudienceResponse), global::Xion.Jwk.V1.MsgDeleteAudienceResponse.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgUpdateParams), global::Xion.Jwk.V1.MsgUpdateParams.Parser, new[]{ "Authority", "Params" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Xion.Jwk.V1.MsgUpdateParamsResponse), global::Xion.Jwk.V1.MsgUpdateParamsResponse.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -2244,6 +2254,408 @@ namespace Xion.Jwk.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(MsgDeleteAudienceResponse other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// MsgUpdateParams is the Msg/UpdateParams request type.
+  /// </summary>
+  public sealed partial class MsgUpdateParams : pb::IMessage<MsgUpdateParams>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MsgUpdateParams> _parser = new pb::MessageParser<MsgUpdateParams>(() => new MsgUpdateParams());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MsgUpdateParams> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Xion.Jwk.V1.TxReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MsgUpdateParams() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MsgUpdateParams(MsgUpdateParams other) : this() {
+      authority_ = other.authority_;
+      params_ = other.params_ != null ? other.params_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MsgUpdateParams Clone() {
+      return new MsgUpdateParams(this);
+    }
+
+    /// <summary>Field number for the "authority" field.</summary>
+    public const int AuthorityFieldNumber = 1;
+    private string authority_ = "";
+    /// <summary>
+    /// authority is the address of the governance account.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Authority {
+      get { return authority_; }
+      set {
+        authority_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "params" field.</summary>
+    public const int ParamsFieldNumber = 2;
+    private global::Xion.Jwk.V1.Params params_;
+    /// <summary>
+    /// params defines the parameters to update.
+    ///
+    /// NOTE: All parameters must be supplied.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Xion.Jwk.V1.Params Params {
+      get { return params_; }
+      set {
+        params_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MsgUpdateParams);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MsgUpdateParams other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Authority != other.Authority) return false;
+      if (!object.Equals(Params, other.Params)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Authority.Length != 0) hash ^= Authority.GetHashCode();
+      if (params_ != null) hash ^= Params.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Authority.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Authority);
+      }
+      if (params_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Params);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Authority.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Authority);
+      }
+      if (params_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Params);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Authority.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Authority);
+      }
+      if (params_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Params);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MsgUpdateParams other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Authority.Length != 0) {
+        Authority = other.Authority;
+      }
+      if (other.params_ != null) {
+        if (params_ == null) {
+          Params = new global::Xion.Jwk.V1.Params();
+        }
+        Params.MergeFrom(other.Params);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Authority = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (params_ == null) {
+              Params = new global::Xion.Jwk.V1.Params();
+            }
+            input.ReadMessage(Params);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Authority = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (params_ == null) {
+              Params = new global::Xion.Jwk.V1.Params();
+            }
+            input.ReadMessage(Params);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// MsgUpdateParamsResponse defines the response structure for executing a
+  /// MsgUpdateParams message.
+  /// </summary>
+  public sealed partial class MsgUpdateParamsResponse : pb::IMessage<MsgUpdateParamsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MsgUpdateParamsResponse> _parser = new pb::MessageParser<MsgUpdateParamsResponse>(() => new MsgUpdateParamsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MsgUpdateParamsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Xion.Jwk.V1.TxReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MsgUpdateParamsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MsgUpdateParamsResponse(MsgUpdateParamsResponse other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MsgUpdateParamsResponse Clone() {
+      return new MsgUpdateParamsResponse(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MsgUpdateParamsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MsgUpdateParamsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MsgUpdateParamsResponse other) {
       if (other == null) {
         return;
       }

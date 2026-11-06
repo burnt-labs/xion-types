@@ -88,8 +88,8 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fgenesis_2eproto[]
     ".ParamsB\025\310\336\037\000\362\336\037\ryaml:\"params\"R\006params\022<"
     "\n\006epochs\030\002 \003(\0132\036.xion.feeabs.v1beta1.Epo"
     "chInfoB\004\310\336\037\000R\006epochs\022\027\n\007port_id\030\003 \001(\tR\006p"
-    "ortIdB+Z)github.com/burnt-labs/xion/x/fe"
-    "eabs/typesb\006proto3"
+    "ortIdB.Z,github.com/burnt-labs/xion/app/"
+    "legacy/feeabsb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2ffeeabs_2fv1beta1_2fgenesis_2eproto_deps[3] =
     {
@@ -101,7 +101,7 @@ static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2fgenesis_2epr
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2fgenesis_2eproto = {
     false,
     false,
-    378,
+    381,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fgenesis_2eproto,
     "xion/feeabs/v1beta1/genesis.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2fgenesis_2eproto_once,

@@ -22,7 +22,7 @@ object CommitmentProto extends _root_.scalapb.GeneratedFileObject {
   m90by9nb2dvLnByb3RvGhxjb3Ntb3MvaWNzMjMvdjEvcHJvb2ZzLnByb3RvIjEKCk1lcmtsZVJvb3QSHQoEaGFzaBgBIAEoDEIJ4
   j8GEgRoYXNoUgRoYXNoOgSIoB8AIj0KDE1lcmtsZVByZWZpeBItCgprZXlfcHJlZml4GAEgASgMQg7iPwsSCWtleVByZWZpeFIJa
   2V5UHJlZml4IlQKC01lcmtsZVByb29mEkUKBnByb29mcxgBIAMoCzIgLmNvc21vcy5pY3MyMy52MS5Db21taXRtZW50UHJvb2ZCC
-  +I/CBIGcHJvb2ZzUgZwcm9vZnNCP1o9Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMC9tb2R1bGVzL2NvcmUvMjMtY29tbWl0b
+  +I/CBIGcHJvb2ZzUgZwcm9vZnNCP1o9Z2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL3YxMS9tb2R1bGVzL2NvcmUvMjMtY29tbWl0b
   WVudC90eXBlc2IGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

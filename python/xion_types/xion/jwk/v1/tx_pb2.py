@@ -11,11 +11,15 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from xion_types.xion.jwk.v1 import audience_pb2 as xion_dot_jwk_dot_v1_dot_audience__pb2
+from xion_types.amino import amino_pb2 as amino_dot_amino__pb2
 from xion_types.cosmos.msg.v1 import msg_pb2 as cosmos_dot_msg_dot_v1_dot_msg__pb2
+from xion_types.cosmos_proto import cosmos_pb2 as cosmos__proto_dot_cosmos__pb2
+from xion_types.gogoproto import gogo_pb2 as gogoproto_dot_gogo__pb2
+from xion_types.xion.jwk.v1 import audience_pb2 as xion_dot_jwk_dot_v1_dot_audience__pb2
+from xion_types.xion.jwk.v1 import params_pb2 as xion_dot_jwk_dot_v1_dot_params__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14xion/jwk/v1/tx.proto\x12\x0bxion.jwk.v1\x1a\x1axion/jwk/v1/audience.proto\x1a\x17\x63osmos/msg/v1/msg.proto\"U\n\x16MsgCreateAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgCreateAudienceClaimResponse\"U\n\x16MsgDeleteAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgDeleteAudienceClaimResponse\"Y\n\x11MsgCreateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x03 \x01(\tR\x03key:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgCreateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"\x8f\x01\n\x11MsgUpdateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x1b\n\tnew_admin\x18\x02 \x01(\tR\x08newAdmin\x12\x10\n\x03\x61ud\x18\x03 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x04 \x01(\tR\x03key\x12\x17\n\x07new_aud\x18\x05 \x01(\tR\x06newAud:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgUpdateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"G\n\x11MsgDeleteAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud:\n\x82\xe7\xb0*\x05\x61\x64min\"\x1b\n\x19MsgDeleteAudienceResponse2\xe5\x03\n\x03Msg\x12g\n\x13\x43reateAudienceClaim\x12#.xion.jwk.v1.MsgCreateAudienceClaim\x1a+.xion.jwk.v1.MsgCreateAudienceClaimResponse\x12g\n\x13\x44\x65leteAudienceClaim\x12#.xion.jwk.v1.MsgDeleteAudienceClaim\x1a+.xion.jwk.v1.MsgDeleteAudienceClaimResponse\x12X\n\x0e\x43reateAudience\x12\x1e.xion.jwk.v1.MsgCreateAudience\x1a&.xion.jwk.v1.MsgCreateAudienceResponse\x12X\n\x0eUpdateAudience\x12\x1e.xion.jwk.v1.MsgUpdateAudience\x1a&.xion.jwk.v1.MsgUpdateAudienceResponse\x12X\n\x0e\x44\x65leteAudience\x12\x1e.xion.jwk.v1.MsgDeleteAudience\x1a&.xion.jwk.v1.MsgDeleteAudienceResponseB(Z&github.com/burnt-labs/xion/x/jwk/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14xion/jwk/v1/tx.proto\x12\x0bxion.jwk.v1\x1a\x11\x61mino/amino.proto\x1a\x17\x63osmos/msg/v1/msg.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x14gogoproto/gogo.proto\x1a\x1axion/jwk/v1/audience.proto\x1a\x18xion/jwk/v1/params.proto\"U\n\x16MsgCreateAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgCreateAudienceClaimResponse\"U\n\x16MsgDeleteAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgDeleteAudienceClaimResponse\"Y\n\x11MsgCreateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x03 \x01(\tR\x03key:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgCreateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"\x8f\x01\n\x11MsgUpdateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x1b\n\tnew_admin\x18\x02 \x01(\tR\x08newAdmin\x12\x10\n\x03\x61ud\x18\x03 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x04 \x01(\tR\x03key\x12\x17\n\x07new_aud\x18\x05 \x01(\tR\x06newAud:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgUpdateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"G\n\x11MsgDeleteAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud:\n\x82\xe7\xb0*\x05\x61\x64min\"\x1b\n\x19MsgDeleteAudienceResponse\"\xa4\x01\n\x0fMsgUpdateParams\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x31\n\x06params\x18\x02 \x01(\x0b\x32\x13.xion.jwk.v1.ParamsB\x04\xc8\xde\x1f\x00R\x06params:&\x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\x13jwk/MsgUpdateParams\"\x19\n\x17MsgUpdateParamsResponse2\xc0\x04\n\x03Msg\x12g\n\x13\x43reateAudienceClaim\x12#.xion.jwk.v1.MsgCreateAudienceClaim\x1a+.xion.jwk.v1.MsgCreateAudienceClaimResponse\x12g\n\x13\x44\x65leteAudienceClaim\x12#.xion.jwk.v1.MsgDeleteAudienceClaim\x1a+.xion.jwk.v1.MsgDeleteAudienceClaimResponse\x12X\n\x0e\x43reateAudience\x12\x1e.xion.jwk.v1.MsgCreateAudience\x1a&.xion.jwk.v1.MsgCreateAudienceResponse\x12X\n\x0eUpdateAudience\x12\x1e.xion.jwk.v1.MsgUpdateAudience\x1a&.xion.jwk.v1.MsgUpdateAudienceResponse\x12X\n\x0e\x44\x65leteAudience\x12\x1e.xion.jwk.v1.MsgDeleteAudience\x1a&.xion.jwk.v1.MsgDeleteAudienceResponse\x12R\n\x0cUpdateParams\x12\x1c.xion.jwk.v1.MsgUpdateParams\x1a$.xion.jwk.v1.MsgUpdateParamsResponse\x1a\x05\x80\xe7\xb0*\x01\x42(Z&github.com/burnt-labs/xion/x/jwk/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,26 +37,38 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_MSGUPDATEAUDIENCE']._serialized_options = b'\202\347\260*\005admin'
   _globals['_MSGDELETEAUDIENCE']._options = None
   _globals['_MSGDELETEAUDIENCE']._serialized_options = b'\202\347\260*\005admin'
-  _globals['_MSGCREATEAUDIENCECLAIM']._serialized_start=90
-  _globals['_MSGCREATEAUDIENCECLAIM']._serialized_end=175
-  _globals['_MSGCREATEAUDIENCECLAIMRESPONSE']._serialized_start=177
-  _globals['_MSGCREATEAUDIENCECLAIMRESPONSE']._serialized_end=209
-  _globals['_MSGDELETEAUDIENCECLAIM']._serialized_start=211
-  _globals['_MSGDELETEAUDIENCECLAIM']._serialized_end=296
-  _globals['_MSGDELETEAUDIENCECLAIMRESPONSE']._serialized_start=298
-  _globals['_MSGDELETEAUDIENCECLAIMRESPONSE']._serialized_end=330
-  _globals['_MSGCREATEAUDIENCE']._serialized_start=332
-  _globals['_MSGCREATEAUDIENCE']._serialized_end=421
-  _globals['_MSGCREATEAUDIENCERESPONSE']._serialized_start=423
-  _globals['_MSGCREATEAUDIENCERESPONSE']._serialized_end=501
-  _globals['_MSGUPDATEAUDIENCE']._serialized_start=504
-  _globals['_MSGUPDATEAUDIENCE']._serialized_end=647
-  _globals['_MSGUPDATEAUDIENCERESPONSE']._serialized_start=649
-  _globals['_MSGUPDATEAUDIENCERESPONSE']._serialized_end=727
-  _globals['_MSGDELETEAUDIENCE']._serialized_start=729
-  _globals['_MSGDELETEAUDIENCE']._serialized_end=800
-  _globals['_MSGDELETEAUDIENCERESPONSE']._serialized_start=802
-  _globals['_MSGDELETEAUDIENCERESPONSE']._serialized_end=829
-  _globals['_MSG']._serialized_start=832
-  _globals['_MSG']._serialized_end=1317
+  _globals['_MSGUPDATEPARAMS'].fields_by_name['authority']._options = None
+  _globals['_MSGUPDATEPARAMS'].fields_by_name['authority']._serialized_options = b'\322\264-\024cosmos.AddressString'
+  _globals['_MSGUPDATEPARAMS'].fields_by_name['params']._options = None
+  _globals['_MSGUPDATEPARAMS'].fields_by_name['params']._serialized_options = b'\310\336\037\000'
+  _globals['_MSGUPDATEPARAMS']._options = None
+  _globals['_MSGUPDATEPARAMS']._serialized_options = b'\202\347\260*\tauthority\212\347\260*\023jwk/MsgUpdateParams'
+  _globals['_MSG']._options = None
+  _globals['_MSG']._serialized_options = b'\200\347\260*\001'
+  _globals['_MSGCREATEAUDIENCECLAIM']._serialized_start=184
+  _globals['_MSGCREATEAUDIENCECLAIM']._serialized_end=269
+  _globals['_MSGCREATEAUDIENCECLAIMRESPONSE']._serialized_start=271
+  _globals['_MSGCREATEAUDIENCECLAIMRESPONSE']._serialized_end=303
+  _globals['_MSGDELETEAUDIENCECLAIM']._serialized_start=305
+  _globals['_MSGDELETEAUDIENCECLAIM']._serialized_end=390
+  _globals['_MSGDELETEAUDIENCECLAIMRESPONSE']._serialized_start=392
+  _globals['_MSGDELETEAUDIENCECLAIMRESPONSE']._serialized_end=424
+  _globals['_MSGCREATEAUDIENCE']._serialized_start=426
+  _globals['_MSGCREATEAUDIENCE']._serialized_end=515
+  _globals['_MSGCREATEAUDIENCERESPONSE']._serialized_start=517
+  _globals['_MSGCREATEAUDIENCERESPONSE']._serialized_end=595
+  _globals['_MSGUPDATEAUDIENCE']._serialized_start=598
+  _globals['_MSGUPDATEAUDIENCE']._serialized_end=741
+  _globals['_MSGUPDATEAUDIENCERESPONSE']._serialized_start=743
+  _globals['_MSGUPDATEAUDIENCERESPONSE']._serialized_end=821
+  _globals['_MSGDELETEAUDIENCE']._serialized_start=823
+  _globals['_MSGDELETEAUDIENCE']._serialized_end=894
+  _globals['_MSGDELETEAUDIENCERESPONSE']._serialized_start=896
+  _globals['_MSGDELETEAUDIENCERESPONSE']._serialized_end=923
+  _globals['_MSGUPDATEPARAMS']._serialized_start=926
+  _globals['_MSGUPDATEPARAMS']._serialized_end=1090
+  _globals['_MSGUPDATEPARAMSRESPONSE']._serialized_start=1092
+  _globals['_MSGUPDATEPARAMSRESPONSE']._serialized_end=1117
+  _globals['_MSG']._serialized_start=1120
+  _globals['_MSG']._serialized_end=1696
 # @@protoc_insertion_point(module_scope)

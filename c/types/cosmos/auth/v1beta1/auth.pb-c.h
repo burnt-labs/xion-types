@@ -97,10 +97,11 @@ struct  Cosmos__Auth__V1beta1__Params
   uint64_t tx_size_cost_per_byte;
   uint64_t sig_verify_cost_ed25519;
   uint64_t sig_verify_cost_secp256k1;
+  uint64_t sig_verify_cost_mldsa65;
 };
 #define COSMOS__AUTH__V1BETA1__PARAMS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&cosmos__auth__v1beta1__params__descriptor) \
-, 0, 0, 0, 0, 0 }
+, 0, 0, 0, 0, 0, 0 }
 
 
 /* Cosmos__Auth__V1beta1__BaseAccount methods */

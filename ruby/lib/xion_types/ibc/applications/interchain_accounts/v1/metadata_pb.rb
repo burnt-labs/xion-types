@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n6ibc/applications/interchain_accounts/v1/metadata.proto\x12\'ibc.applications.interchain_accounts.v1\"\xdb\x01\n\x08Metadata\x12\x18\n\x07version\x18\x01 \x01(\tR\x07version\x12\x38\n\x18\x63ontroller_connection_id\x18\x02 \x01(\tR\x16\x63ontrollerConnectionId\x12,\n\x12host_connection_id\x18\x03 \x01(\tR\x10hostConnectionId\x12\x18\n\x07\x61\x64\x64ress\x18\x04 \x01(\tR\x07\x61\x64\x64ress\x12\x1a\n\x08\x65ncoding\x18\x05 \x01(\tR\x08\x65ncoding\x12\x17\n\x07tx_type\x18\x06 \x01(\tR\x06txTypeBHZFgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/typesb\x06proto3"
+descriptor_data = "\n6ibc/applications/interchain_accounts/v1/metadata.proto\x12\'ibc.applications.interchain_accounts.v1\"\xdb\x01\n\x08Metadata\x12\x18\n\x07version\x18\x01 \x01(\tR\x07version\x12\x38\n\x18\x63ontroller_connection_id\x18\x02 \x01(\tR\x16\x63ontrollerConnectionId\x12,\n\x12host_connection_id\x18\x03 \x01(\tR\x10hostConnectionId\x12\x18\n\x07\x61\x64\x64ress\x18\x04 \x01(\tR\x07\x61\x64\x64ress\x12\x1a\n\x08\x65ncoding\x18\x05 \x01(\tR\x08\x65ncoding\x12\x17\n\x07tx_type\x18\x06 \x01(\tR\x06txTypeBHZFgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

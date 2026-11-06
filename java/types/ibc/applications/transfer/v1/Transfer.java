@@ -646,7 +646,7 @@ public final class Transfer {
       "proto\022\034ibc.applications.transfer.v1\"T\n\006P" +
       "arams\022!\n\014send_enabled\030\001 \001(\010R\013sendEnabled" +
       "\022\'\n\017receive_enabled\030\002 \001(\010R\016receiveEnable" +
-      "dB:Z8github.com/cosmos/ibc-go/v10/module" +
+      "dB:Z8github.com/cosmos/ibc-go/v11/module" +
       "s/apps/transfer/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

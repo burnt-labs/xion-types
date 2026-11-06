@@ -18,7 +18,7 @@ object HostProto extends _root_.scalapb.GeneratedFileObject {
   25zLmludGVyY2hhaW5fYWNjb3VudHMuaG9zdC52MSJ4CgZQYXJhbXMSMwoMaG9zdF9lbmFibGVkGAEgASgIQhDiPw0SC2hvc3RFb
   mFibGVkUgtob3N0RW5hYmxlZBI5Cg5hbGxvd19tZXNzYWdlcxgCIAMoCUIS4j8PEg1hbGxvd01lc3NhZ2VzUg1hbGxvd01lc3NhZ
   2VzIkwKDFF1ZXJ5UmVxdWVzdBIdCgRwYXRoGAEgASgJQgniPwYSBHBhdGhSBHBhdGgSHQoEZGF0YRgCIAEoDEIJ4j8GEgRkYXRhU
-  gRkYXRhQk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNjb3VudHMva
+  gRkYXRhQk1aS2dpdGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9hcHBzLzI3LWludGVyY2hhaW4tYWNjb3VudHMva
   G9zdC90eXBlc2IGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

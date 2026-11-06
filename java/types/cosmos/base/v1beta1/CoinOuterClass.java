@@ -760,7 +760,7 @@ public final class CoinOuterClass {
    * <pre>
    * DecCoin defines a token with a denomination and a decimal amount.
    *
-   * NOTE: The amount field is an Dec which implements the custom method
+   * NOTE: The amount field is a Dec which implements the custom method
    * signatures required by gogoproto.
    * </pre>
    *
@@ -1048,7 +1048,7 @@ public final class CoinOuterClass {
      * <pre>
      * DecCoin defines a token with a denomination and a decimal amount.
      *
-     * NOTE: The amount field is an Dec which implements the custom method
+     * NOTE: The amount field is a Dec which implements the custom method
      * signatures required by gogoproto.
      * </pre>
      *

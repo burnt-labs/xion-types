@@ -18,8 +18,11 @@ export const protobufFileName = "abstractaccount/v1/account.proto";
  * pubkey. If a pubkey is needed, it creates and returns a new NilPubKey.
  */
 export interface AbstractAccount {
+  /** address is the bech32-encoded address of the account's contract. */
   address: string;
+  /** account_number is the account's number assigned by the auth module. */
   accountNumber: bigint;
+  /** sequence is the account's current transaction sequence. */
   sequence: bigint;
 }
 
@@ -32,6 +35,10 @@ export interface AbstractAccount {
  * done inside the contract, typically in the BeforeTx hook.
  */
 export interface NilPubKey {
+  /**
+   * address_bytes is the raw address bytes of the account the pubkey
+   * stands in for.
+   */
   addressBytes: Uint8Array;
 }
 

@@ -33,8 +33,12 @@
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
 #include "google/protobuf/unknown_field_set.h"
-#include "xion/jwk/v1/audience.pb.h"
+#include "amino/amino.pb.h"
 #include "cosmos/msg/v1/msg.pb.h"
+#include "cosmos_proto/cosmos.pb.h"
+#include "gogoproto/gogo.pb.h"
+#include "xion/jwk/v1/audience.pb.h"
+#include "xion/jwk/v1/params.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -89,6 +93,12 @@ extern MsgUpdateAudienceDefaultTypeInternal _MsgUpdateAudience_default_instance_
 class MsgUpdateAudienceResponse;
 struct MsgUpdateAudienceResponseDefaultTypeInternal;
 extern MsgUpdateAudienceResponseDefaultTypeInternal _MsgUpdateAudienceResponse_default_instance_;
+class MsgUpdateParams;
+struct MsgUpdateParamsDefaultTypeInternal;
+extern MsgUpdateParamsDefaultTypeInternal _MsgUpdateParams_default_instance_;
+class MsgUpdateParamsResponse;
+struct MsgUpdateParamsResponseDefaultTypeInternal;
+extern MsgUpdateParamsResponseDefaultTypeInternal _MsgUpdateParamsResponse_default_instance_;
 }  // namespace v1
 }  // namespace jwk
 }  // namespace xion
@@ -1789,6 +1799,313 @@ class MsgDeleteAudienceResponse final :
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   friend struct ::TableStruct_xion_2fjwk_2fv1_2ftx_2eproto;
+};// -------------------------------------------------------------------
+
+class MsgUpdateParams final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:xion.jwk.v1.MsgUpdateParams) */ {
+ public:
+  inline MsgUpdateParams() : MsgUpdateParams(nullptr) {}
+  ~MsgUpdateParams() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR MsgUpdateParams(::google::protobuf::internal::ConstantInitialized);
+
+  MsgUpdateParams(const MsgUpdateParams& from);
+  MsgUpdateParams(MsgUpdateParams&& from) noexcept
+    : MsgUpdateParams() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgUpdateParams& operator=(const MsgUpdateParams& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MsgUpdateParams& operator=(MsgUpdateParams&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MsgUpdateParams& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MsgUpdateParams* internal_default_instance() {
+    return reinterpret_cast<const MsgUpdateParams*>(
+               &_MsgUpdateParams_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(MsgUpdateParams& a, MsgUpdateParams& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MsgUpdateParams* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MsgUpdateParams* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MsgUpdateParams* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MsgUpdateParams>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const MsgUpdateParams& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const MsgUpdateParams& from) {
+    MsgUpdateParams::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MsgUpdateParams* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.MsgUpdateParams";
+  }
+  protected:
+  explicit MsgUpdateParams(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAuthorityFieldNumber = 1,
+    kParamsFieldNumber = 2,
+  };
+  // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
+  void clear_authority() ;
+  const std::string& authority() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_authority(Arg_&& arg, Args_... args);
+  std::string* mutable_authority();
+  PROTOBUF_NODISCARD std::string* release_authority();
+  void set_allocated_authority(std::string* ptr);
+
+  private:
+  const std::string& _internal_authority() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_authority(
+      const std::string& value);
+  std::string* _internal_mutable_authority();
+
+  public:
+  // .xion.jwk.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];
+  bool has_params() const;
+  void clear_params() ;
+  const ::xion::jwk::v1::Params& params() const;
+  PROTOBUF_NODISCARD ::xion::jwk::v1::Params* release_params();
+  ::xion::jwk::v1::Params* mutable_params();
+  void set_allocated_params(::xion::jwk::v1::Params* value);
+  void unsafe_arena_set_allocated_params(::xion::jwk::v1::Params* value);
+  ::xion::jwk::v1::Params* unsafe_arena_release_params();
+
+  private:
+  const ::xion::jwk::v1::Params& _internal_params() const;
+  ::xion::jwk::v1::Params* _internal_mutable_params();
+
+  public:
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.MsgUpdateParams)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 1, 45, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr authority_;
+    ::xion::jwk::v1::Params* params_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2ftx_2eproto;
+};// -------------------------------------------------------------------
+
+class MsgUpdateParamsResponse final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:xion.jwk.v1.MsgUpdateParamsResponse) */ {
+ public:
+  inline MsgUpdateParamsResponse() : MsgUpdateParamsResponse(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR MsgUpdateParamsResponse(::google::protobuf::internal::ConstantInitialized);
+
+  MsgUpdateParamsResponse(const MsgUpdateParamsResponse& from);
+  MsgUpdateParamsResponse(MsgUpdateParamsResponse&& from) noexcept
+    : MsgUpdateParamsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgUpdateParamsResponse& operator=(const MsgUpdateParamsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MsgUpdateParamsResponse& operator=(MsgUpdateParamsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MsgUpdateParamsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MsgUpdateParamsResponse* internal_default_instance() {
+    return reinterpret_cast<const MsgUpdateParamsResponse*>(
+               &_MsgUpdateParamsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(MsgUpdateParamsResponse& a, MsgUpdateParamsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MsgUpdateParamsResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MsgUpdateParamsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MsgUpdateParamsResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MsgUpdateParamsResponse>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const MsgUpdateParamsResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const MsgUpdateParamsResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "xion.jwk.v1.MsgUpdateParamsResponse";
+  }
+  protected:
+  explicit MsgUpdateParamsResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:xion.jwk.v1.MsgUpdateParamsResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_xion_2fjwk_2fv1_2ftx_2eproto;
 };
 
 // ===================================================================
@@ -2740,6 +3057,157 @@ inline void MsgDeleteAudience::set_allocated_aud(std::string* value) {
 // -------------------------------------------------------------------
 
 // MsgDeleteAudienceResponse
+
+// -------------------------------------------------------------------
+
+// MsgUpdateParams
+
+// string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
+inline void MsgUpdateParams::clear_authority() {
+  _impl_.authority_.ClearToEmpty();
+}
+inline const std::string& MsgUpdateParams::authority() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.MsgUpdateParams.authority)
+  return _internal_authority();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void MsgUpdateParams::set_authority(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.authority_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:xion.jwk.v1.MsgUpdateParams.authority)
+}
+inline std::string* MsgUpdateParams::mutable_authority() {
+  std::string* _s = _internal_mutable_authority();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.MsgUpdateParams.authority)
+  return _s;
+}
+inline const std::string& MsgUpdateParams::_internal_authority() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.authority_.Get();
+}
+inline void MsgUpdateParams::_internal_set_authority(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.authority_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MsgUpdateParams::_internal_mutable_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.authority_.Mutable( GetArenaForAllocation());
+}
+inline std::string* MsgUpdateParams::release_authority() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.MsgUpdateParams.authority)
+  return _impl_.authority_.Release();
+}
+inline void MsgUpdateParams::set_allocated_authority(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.authority_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.authority_.IsDefault()) {
+          _impl_.authority_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.MsgUpdateParams.authority)
+}
+
+// .xion.jwk.v1.Params params = 2 [json_name = "params", (.gogoproto.nullable) = false];
+inline bool MsgUpdateParams::has_params() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.params_ != nullptr);
+  return value;
+}
+inline const ::xion::jwk::v1::Params& MsgUpdateParams::_internal_params() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::xion::jwk::v1::Params* p = _impl_.params_;
+  return p != nullptr ? *p : reinterpret_cast<const ::xion::jwk::v1::Params&>(::xion::jwk::v1::_Params_default_instance_);
+}
+inline const ::xion::jwk::v1::Params& MsgUpdateParams::params() const {
+  // @@protoc_insertion_point(field_get:xion.jwk.v1.MsgUpdateParams.params)
+  return _internal_params();
+}
+inline void MsgUpdateParams::unsafe_arena_set_allocated_params(::xion::jwk::v1::Params* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.params_);
+  }
+  _impl_.params_ = reinterpret_cast<::xion::jwk::v1::Params*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:xion.jwk.v1.MsgUpdateParams.params)
+}
+inline ::xion::jwk::v1::Params* MsgUpdateParams::release_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::xion::jwk::v1::Params* released = _impl_.params_;
+  _impl_.params_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::xion::jwk::v1::Params* MsgUpdateParams::unsafe_arena_release_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:xion.jwk.v1.MsgUpdateParams.params)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::xion::jwk::v1::Params* temp = _impl_.params_;
+  _impl_.params_ = nullptr;
+  return temp;
+}
+inline ::xion::jwk::v1::Params* MsgUpdateParams::_internal_mutable_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.params_ == nullptr) {
+    auto* p = CreateMaybeMessage<::xion::jwk::v1::Params>(GetArenaForAllocation());
+    _impl_.params_ = reinterpret_cast<::xion::jwk::v1::Params*>(p);
+  }
+  return _impl_.params_;
+}
+inline ::xion::jwk::v1::Params* MsgUpdateParams::mutable_params() {
+  ::xion::jwk::v1::Params* _msg = _internal_mutable_params();
+  // @@protoc_insertion_point(field_mutable:xion.jwk.v1.MsgUpdateParams.params)
+  return _msg;
+}
+inline void MsgUpdateParams::set_allocated_params(::xion::jwk::v1::Params* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.params_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.params_ = reinterpret_cast<::xion::jwk::v1::Params*>(value);
+  // @@protoc_insertion_point(field_set_allocated:xion.jwk.v1.MsgUpdateParams.params)
+}
+
+// -------------------------------------------------------------------
+
+// MsgUpdateParamsResponse
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop

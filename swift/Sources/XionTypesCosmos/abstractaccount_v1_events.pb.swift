@@ -8,6 +8,7 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+import Foundation
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -21,18 +22,26 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// EventAccountRegistered is emitted when an AbstractAccount is registered.
-struct Abstractaccount_V1_EventAccountRegistered: Sendable {
+struct Abstractaccount_V1_EventAccountRegistered: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// creator is the address that requested the account registration.
   var creator: String = String()
 
+  /// CodeID is the caller-selected implementation active after registration.
   var codeID: UInt64 = 0
 
+  /// contract_addr is the address of the newly instantiated account contract.
   var contractAddr: String = String()
 
+  /// account_number is the account number assigned to the new account.
   var accountNumber: UInt64 = 0
+
+  /// address_derivation_hash is the fixed hash used to derive the account's
+  /// address.
+  var addressDerivationHash: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -50,6 +59,7 @@ extension Abstractaccount_V1_EventAccountRegistered: SwiftProtobuf.Message, Swif
     2: .standard(proto: "code_id"),
     3: .standard(proto: "contract_addr"),
     4: .standard(proto: "account_number"),
+    6: .standard(proto: "address_derivation_hash"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -62,6 +72,7 @@ extension Abstractaccount_V1_EventAccountRegistered: SwiftProtobuf.Message, Swif
       case 2: try { try decoder.decodeSingularUInt64Field(value: &self.codeID) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.contractAddr) }()
       case 4: try { try decoder.decodeSingularUInt64Field(value: &self.accountNumber) }()
+      case 6: try { try decoder.decodeSingularBytesField(value: &self.addressDerivationHash) }()
       default: break
       }
     }
@@ -80,6 +91,9 @@ extension Abstractaccount_V1_EventAccountRegistered: SwiftProtobuf.Message, Swif
     if self.accountNumber != 0 {
       try visitor.visitSingularUInt64Field(value: self.accountNumber, fieldNumber: 4)
     }
+    if !self.addressDerivationHash.isEmpty {
+      try visitor.visitSingularBytesField(value: self.addressDerivationHash, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -88,6 +102,7 @@ extension Abstractaccount_V1_EventAccountRegistered: SwiftProtobuf.Message, Swif
     if lhs.codeID != rhs.codeID {return false}
     if lhs.contractAddr != rhs.contractAddr {return false}
     if lhs.accountNumber != rhs.accountNumber {return false}
+    if lhs.addressDerivationHash != rhs.addressDerivationHash {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -37,6 +37,11 @@ public object NilPubKeyKt {
     internal fun _build(): abstractaccount.v1.Account.NilPubKey = _builder.build()
 
     /**
+     * ```
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     * ```
+     *
      * `bytes address_bytes = 1 [json_name = "addressBytes"];`
      */
     public var addressBytes: com.google.protobuf.ByteString
@@ -47,6 +52,11 @@ public object NilPubKeyKt {
         _builder.setAddressBytes(value)
       }
     /**
+     * ```
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     * ```
+     *
      * `bytes address_bytes = 1 [json_name = "addressBytes"];`
      */
     public fun clearAddressBytes() {

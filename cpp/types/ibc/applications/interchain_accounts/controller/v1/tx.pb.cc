@@ -292,7 +292,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "arams\032K.ibc.applications.interchain_acco"
     "unts.controller.v1.MsgUpdateParamsRespon"
     "se\032\005\200\347\260*\001BSZQgithub.com/cosmos/ibc-go/v1"
-    "0/modules/apps/27-interchain-accounts/co"
+    "1/modules/apps/27-interchain-accounts/co"
     "ntroller/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2finterchain_5faccounts_2fcontroller_2fv1_2ftx_2eproto_deps[5] =

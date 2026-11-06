@@ -43,7 +43,7 @@ namespace Ibc.Core.Channel.V1 {
             "GAggASgEUhNuZXh0Q2hhbm5lbFNlcXVlbmNlImQKDlBhY2tldFNlcXVlbmNl",
             "EhcKB3BvcnRfaWQYASABKAlSBnBvcnRJZBIdCgpjaGFubmVsX2lkGAIgASgJ",
             "UgljaGFubmVsSWQSGgoIc2VxdWVuY2UYAyABKARSCHNlcXVlbmNlQjxaOmdp",
-            "dGh1Yi5jb20vY29zbW9zL2liYy1nby92MTAvbW9kdWxlcy9jb3JlLzA0LWNo",
+            "dGh1Yi5jb20vY29zbW9zL2liYy1nby92MTEvbW9kdWxlcy9jb3JlLzA0LWNo",
             "YW5uZWwvdHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Ibc.Core.Channel.V1.ChannelReflection.Descriptor, },

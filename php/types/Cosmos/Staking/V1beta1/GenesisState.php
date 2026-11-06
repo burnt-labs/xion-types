@@ -65,6 +65,20 @@ class GenesisState extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>bool exported = 8 [json_name = "exported"];</code>
      */
     protected $exported = false;
+    /**
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     *
+     * Generated from protobuf field <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    private $consensus_key_rotation_history;
+    /**
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     *
+     * Generated from protobuf field <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     */
+    private $pending_consensus_key_rotations;
 
     /**
      * Constructor.
@@ -90,6 +104,12 @@ class GenesisState extends \Google\Protobuf\Internal\Message
      *           redelegations defines the redelegations active at genesis.
      *     @type bool $exported
      *           exported defines a bool to identify whether the chain dealing with exported or initialized genesis.
+     *     @type array<\Cosmos\Staking\V1beta1\ConsensusKeyRotationHistory>|\Google\Protobuf\Internal\RepeatedField $consensus_key_rotation_history
+     *           consensus_key_rotation_history defines consensus key rotations that are
+     *           still within the unbonding window.
+     *     @type array<\Cosmos\Staking\V1beta1\PendingConsensusKeyRotation>|\Google\Protobuf\Internal\RepeatedField $pending_consensus_key_rotations
+     *           pending_consensus_key_rotations defines consensus key rotations whose
+     *           SDK-side validator state has not reached its deferred apply height yet.
      * }
      */
     public function __construct($data = NULL) {
@@ -315,6 +335,62 @@ class GenesisState extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->exported = $var;
+
+        return $this;
+    }
+
+    /**
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     *
+     * Generated from protobuf field <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getConsensusKeyRotationHistory()
+    {
+        return $this->consensus_key_rotation_history;
+    }
+
+    /**
+     * consensus_key_rotation_history defines consensus key rotations that are
+     * still within the unbonding window.
+     *
+     * Generated from protobuf field <code>repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @param array<\Cosmos\Staking\V1beta1\ConsensusKeyRotationHistory>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setConsensusKeyRotationHistory($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cosmos\Staking\V1beta1\ConsensusKeyRotationHistory::class);
+        $this->consensus_key_rotation_history = $arr;
+
+        return $this;
+    }
+
+    /**
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     *
+     * Generated from protobuf field <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getPendingConsensusKeyRotations()
+    {
+        return $this->pending_consensus_key_rotations;
+    }
+
+    /**
+     * pending_consensus_key_rotations defines consensus key rotations whose
+     * SDK-side validator state has not reached its deferred apply height yet.
+     *
+     * Generated from protobuf field <code>repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];</code>
+     * @param array<\Cosmos\Staking\V1beta1\PendingConsensusKeyRotation>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setPendingConsensusKeyRotations($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Cosmos\Staking\V1beta1\PendingConsensusKeyRotation::class);
+        $this->pending_consensus_key_rotations = $arr;
 
         return $this;
     }

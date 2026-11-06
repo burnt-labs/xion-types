@@ -8,6 +8,7 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+import Foundation
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -588,11 +589,22 @@ struct Cosmos_Staking_V1beta1_Params: Sendable {
   /// min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
   var minCommissionRate: String = String()
 
+  /// key_rotation_fee is the fee charged when rotating a validator's consensus key.
+  var keyRotationFee: Cosmos_Base_V1beta1_Coin {
+    get {return _keyRotationFee ?? Cosmos_Base_V1beta1_Coin()}
+    set {_keyRotationFee = newValue}
+  }
+  /// Returns true if `keyRotationFee` has been explicitly set.
+  var hasKeyRotationFee: Bool {return self._keyRotationFee != nil}
+  /// Clears the value of `keyRotationFee`. Subsequent reads from it will return its default value.
+  mutating func clearKeyRotationFee() {self._keyRotationFee = nil}
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
   fileprivate var _unbondingTime: SwiftProtobuf.Google_Protobuf_Duration? = nil
+  fileprivate var _keyRotationFee: Cosmos_Base_V1beta1_Coin? = nil
 }
 
 /// DelegationResponse is equivalent to Delegation except that it contains a
@@ -708,6 +720,37 @@ struct Cosmos_Staking_V1beta1_ValidatorUpdates: Sendable {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+}
+
+/// ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+/// queue: the validator that rotated and the time and height at which its
+/// RotatedFrom lock may be retired because equivocation evidence for the
+/// rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+/// for time-ordered iteration; expiry_time is duplicated here so the record is
+/// self-describing.
+struct Cosmos_Staking_V1beta1_ConsKeyEvidenceExpiry: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var validatorAddress: Data = Data()
+
+  var expiryTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _expiryTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_expiryTime = newValue}
+  }
+  /// Returns true if `expiryTime` has been explicitly set.
+  var hasExpiryTime: Bool {return self._expiryTime != nil}
+  /// Clears the value of `expiryTime`. Subsequent reads from it will return its default value.
+  mutating func clearExpiryTime() {self._expiryTime = nil}
+
+  var expiryHeight: Int64 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _expiryTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -1544,6 +1587,7 @@ extension Cosmos_Staking_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._M
     4: .standard(proto: "historical_entries"),
     5: .standard(proto: "bond_denom"),
     6: .standard(proto: "min_commission_rate"),
+    7: .standard(proto: "key_rotation_fee"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1558,6 +1602,7 @@ extension Cosmos_Staking_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._M
       case 4: try { try decoder.decodeSingularUInt32Field(value: &self.historicalEntries) }()
       case 5: try { try decoder.decodeSingularStringField(value: &self.bondDenom) }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.minCommissionRate) }()
+      case 7: try { try decoder.decodeSingularMessageField(value: &self._keyRotationFee) }()
       default: break
       }
     }
@@ -1586,6 +1631,9 @@ extension Cosmos_Staking_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.minCommissionRate.isEmpty {
       try visitor.visitSingularStringField(value: self.minCommissionRate, fieldNumber: 6)
     }
+    try { if let v = self._keyRotationFee {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1596,6 +1644,7 @@ extension Cosmos_Staking_V1beta1_Params: SwiftProtobuf.Message, SwiftProtobuf._M
     if lhs.historicalEntries != rhs.historicalEntries {return false}
     if lhs.bondDenom != rhs.bondDenom {return false}
     if lhs.minCommissionRate != rhs.minCommissionRate {return false}
+    if lhs._keyRotationFee != rhs._keyRotationFee {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1792,6 +1841,54 @@ extension Cosmos_Staking_V1beta1_ValidatorUpdates: SwiftProtobuf.Message, SwiftP
 
   static func ==(lhs: Cosmos_Staking_V1beta1_ValidatorUpdates, rhs: Cosmos_Staking_V1beta1_ValidatorUpdates) -> Bool {
     if lhs.updates != rhs.updates {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Cosmos_Staking_V1beta1_ConsKeyEvidenceExpiry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ConsKeyEvidenceExpiry"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "validator_address"),
+    2: .standard(proto: "expiry_time"),
+    3: .standard(proto: "expiry_height"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.validatorAddress) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._expiryTime) }()
+      case 3: try { try decoder.decodeSingularInt64Field(value: &self.expiryHeight) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.validatorAddress.isEmpty {
+      try visitor.visitSingularBytesField(value: self.validatorAddress, fieldNumber: 1)
+    }
+    try { if let v = self._expiryTime {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    if self.expiryHeight != 0 {
+      try visitor.visitSingularInt64Field(value: self.expiryHeight, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Cosmos_Staking_V1beta1_ConsKeyEvidenceExpiry, rhs: Cosmos_Staking_V1beta1_ConsKeyEvidenceExpiry) -> Bool {
+    if lhs.validatorAddress != rhs.validatorAddress {return false}
+    if lhs._expiryTime != rhs._expiryTime {return false}
+    if lhs.expiryHeight != rhs.expiryHeight {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -33,8 +33,9 @@ public object ParamsKt {
 
     /**
      * ```
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -51,8 +52,9 @@ public object ParamsKt {
       }
     /**
      * ```
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -72,8 +74,8 @@ public object ParamsKt {
     public class AllowedCodeIdsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -85,8 +87,8 @@ public object ParamsKt {
       )
     /**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -98,8 +100,8 @@ public object ParamsKt {
       _builder.addAllowedCodeIds(value)
     }/**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -112,8 +114,8 @@ public object ParamsKt {
       add(value)
     }/**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -125,8 +127,8 @@ public object ParamsKt {
       _builder.addAllAllowedCodeIds(values)
     }/**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -139,8 +141,8 @@ public object ParamsKt {
       addAll(values)
     }/**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -153,8 +155,8 @@ public object ParamsKt {
       _builder.setAllowedCodeIds(index, value)
     }/**
      * ```
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * ```
      *
      * `repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];`
@@ -224,6 +226,66 @@ public object ParamsKt {
      */
     public fun clearMaxGasAfter() {
       _builder.clearMaxGasAfter()
+    }
+
+    /**
+     * ```
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     * ```
+     *
+     * `bool registration_enabled = 7 [json_name = "registrationEnabled"];`
+     */
+    public var registrationEnabled: kotlin.Boolean
+      @JvmName("getRegistrationEnabled")
+      get() = _builder.getRegistrationEnabled()
+      @JvmName("setRegistrationEnabled")
+      set(value) {
+        _builder.setRegistrationEnabled(value)
+      }
+    /**
+     * ```
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     * ```
+     *
+     * `bool registration_enabled = 7 [json_name = "registrationEnabled"];`
+     */
+    public fun clearRegistrationEnabled() {
+      _builder.clearRegistrationEnabled()
+    }
+
+    /**
+     * ```
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     * ```
+     *
+     * `bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];`
+     */
+    public var addressDerivationHash: com.google.protobuf.ByteString
+      @JvmName("getAddressDerivationHash")
+      get() = _builder.getAddressDerivationHash()
+      @JvmName("setAddressDerivationHash")
+      set(value) {
+        _builder.setAddressDerivationHash(value)
+      }
+    /**
+     * ```
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     * ```
+     *
+     * `bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];`
+     */
+    public fun clearAddressDerivationHash() {
+      _builder.clearAddressDerivationHash()
     }
   }
 }

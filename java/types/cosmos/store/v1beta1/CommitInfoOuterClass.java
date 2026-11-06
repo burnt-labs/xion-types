@@ -2453,8 +2453,8 @@ public final class CommitInfoOuterClass {
       "\001 \001(\tR\004name\022A\n\tcommit_id\030\002 \001(\0132\036.cosmos." +
       "store.v1beta1.CommitIDB\004\310\336\037\000R\010commitId\">" +
       "\n\010CommitID\022\030\n\007version\030\001 \001(\003R\007version\022\022\n\004" +
-      "hash\030\002 \001(\014R\004hash:\004\230\240\037\000B\032Z\030cosmossdk.io/s" +
-      "tore/typesb\006proto3"
+      "hash\030\002 \001(\014R\004hash:\004\230\240\037\000B-Z+github.com/cos" +
+      "mos/cosmos-sdk/store/v2/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

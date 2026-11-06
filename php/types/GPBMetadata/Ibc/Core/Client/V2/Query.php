@@ -31,7 +31,7 @@ class Query
 config (2.ibc.core.client.v2.ConfigRconfig2È
 Query²
 CounterpartyInfo0.ibc.core.client.v2.QueryCounterpartyInfoRequest1.ibc.core.client.v2.QueryCounterpartyInfoResponse"9‚Óä“31/ibc/core/client/v2/counterparty_info/{client_id}‰
-Config&.ibc.core.client.v2.QueryConfigRequest\'.ibc.core.client.v2.QueryConfigResponse".‚Óä“(&/ibc/core/client/v2/config/{client_id}B>Z<github.com/cosmos/ibc-go/v10/modules/core/02-client/v2/typesbproto3'
+Config&.ibc.core.client.v2.QueryConfigRequest\'.ibc.core.client.v2.QueryConfigResponse".‚Óä“(&/ibc/core/client/v2/config/{client_id}B>Z<github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/typesbproto3'
         , true);
 
         static::$is_initialized = true;

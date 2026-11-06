@@ -20,8 +20,9 @@ public final class ParamsOuterClass {
 
     /**
      * <pre>
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -34,8 +35,8 @@ public final class ParamsOuterClass {
 
     /**
      * <pre>
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * </pre>
      *
      * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -44,8 +45,8 @@ public final class ParamsOuterClass {
     java.util.List<java.lang.Long> getAllowedCodeIdsList();
     /**
      * <pre>
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * </pre>
      *
      * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -54,8 +55,8 @@ public final class ParamsOuterClass {
     int getAllowedCodeIdsCount();
     /**
      * <pre>
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * </pre>
      *
      * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -89,6 +90,31 @@ public final class ParamsOuterClass {
      * @return The maxGasAfter.
      */
     long getMaxGasAfter();
+
+    /**
+     * <pre>
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     * </pre>
+     *
+     * <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+     * @return The registrationEnabled.
+     */
+    boolean getRegistrationEnabled();
+
+    /**
+     * <pre>
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     * </pre>
+     *
+     * <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @return The addressDerivationHash.
+     */
+    com.google.protobuf.ByteString getAddressDerivationHash();
   }
   /**
    * <pre>
@@ -108,6 +134,7 @@ public final class ParamsOuterClass {
     }
     private Params() {
       allowedCodeIds_ = emptyLongList();
+      addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -134,8 +161,9 @@ public final class ParamsOuterClass {
     private boolean allowAllCodeIds_ = false;
     /**
      * <pre>
-     * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-     * AbstractAccounts:
+     * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+     * final implementation for a newly registered AbstractAccount or a
+     * top-level raw Wasm migration:
      * - if set to true, any code ID can be used;
      * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
      * be used.
@@ -155,8 +183,8 @@ public final class ParamsOuterClass {
         emptyLongList();
     /**
      * <pre>
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * </pre>
      *
      * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -169,8 +197,8 @@ public final class ParamsOuterClass {
     }
     /**
      * <pre>
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * </pre>
      *
      * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -181,8 +209,8 @@ public final class ParamsOuterClass {
     }
     /**
      * <pre>
-     * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-     * regiseter AbstractAccounts.
+     * AllowedCodeIDs is the whitelist for registration implementations and
+     * top-level raw Wasm migrations. This is not a wasmd-level policy.
      * </pre>
      *
      * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -230,6 +258,41 @@ public final class ParamsOuterClass {
       return maxGasAfter_;
     }
 
+    public static final int REGISTRATION_ENABLED_FIELD_NUMBER = 7;
+    private boolean registrationEnabled_ = false;
+    /**
+     * <pre>
+     * RegistrationEnabled controls whether new abstract accounts may be
+     * registered. Governance can pause registration without changing the
+     * immutable address namespace or blocking address queries.
+     * </pre>
+     *
+     * <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+     * @return The registrationEnabled.
+     */
+    @java.lang.Override
+    public boolean getRegistrationEnabled() {
+      return registrationEnabled_;
+    }
+
+    public static final int ADDRESS_DERIVATION_HASH_FIELD_NUMBER = 8;
+    private com.google.protobuf.ByteString addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * AddressDerivationHash is the immutable 32-byte namespace used only to
+     * derive predictable AbstractAccount addresses. The caller-selected code ID
+     * is instantiated directly and does not participate in address derivation.
+     * An empty value leaves registration unconfigured.
+     * </pre>
+     *
+     * <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+     * @return The addressDerivationHash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getAddressDerivationHash() {
+      return addressDerivationHash_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -260,6 +323,12 @@ public final class ParamsOuterClass {
       }
       if (maxGasAfter_ != 0L) {
         output.writeUInt64(4, maxGasAfter_);
+      }
+      if (registrationEnabled_ != false) {
+        output.writeBool(7, registrationEnabled_);
+      }
+      if (!addressDerivationHash_.isEmpty()) {
+        output.writeBytes(8, addressDerivationHash_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -296,6 +365,14 @@ public final class ParamsOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(4, maxGasAfter_);
       }
+      if (registrationEnabled_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, registrationEnabled_);
+      }
+      if (!addressDerivationHash_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(8, addressDerivationHash_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -319,6 +396,10 @@ public final class ParamsOuterClass {
           != other.getMaxGasBefore()) return false;
       if (getMaxGasAfter()
           != other.getMaxGasAfter()) return false;
+      if (getRegistrationEnabled()
+          != other.getRegistrationEnabled()) return false;
+      if (!getAddressDerivationHash()
+          .equals(other.getAddressDerivationHash())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -343,6 +424,11 @@ public final class ParamsOuterClass {
       hash = (37 * hash) + MAX_GAS_AFTER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getMaxGasAfter());
+      hash = (37 * hash) + REGISTRATION_ENABLED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getRegistrationEnabled());
+      hash = (37 * hash) + ADDRESS_DERIVATION_HASH_FIELD_NUMBER;
+      hash = (53 * hash) + getAddressDerivationHash().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -482,6 +568,8 @@ public final class ParamsOuterClass {
         allowedCodeIds_ = emptyLongList();
         maxGasBefore_ = 0L;
         maxGasAfter_ = 0L;
+        registrationEnabled_ = false;
+        addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
         return this;
       }
 
@@ -527,6 +615,12 @@ public final class ParamsOuterClass {
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.maxGasAfter_ = maxGasAfter_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.registrationEnabled_ = registrationEnabled_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.addressDerivationHash_ = addressDerivationHash_;
         }
       }
 
@@ -594,6 +688,12 @@ public final class ParamsOuterClass {
         if (other.getMaxGasAfter() != 0L) {
           setMaxGasAfter(other.getMaxGasAfter());
         }
+        if (other.getRegistrationEnabled() != false) {
+          setRegistrationEnabled(other.getRegistrationEnabled());
+        }
+        if (other.getAddressDerivationHash() != com.google.protobuf.ByteString.EMPTY) {
+          setAddressDerivationHash(other.getAddressDerivationHash());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -651,6 +751,16 @@ public final class ParamsOuterClass {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
+              case 56: {
+                registrationEnabled_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 56
+              case 66: {
+                addressDerivationHash_ = input.readBytes();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 66
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -671,8 +781,9 @@ public final class ParamsOuterClass {
       private boolean allowAllCodeIds_ ;
       /**
        * <pre>
-       * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-       * AbstractAccounts:
+       * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+       * final implementation for a newly registered AbstractAccount or a
+       * top-level raw Wasm migration:
        * - if set to true, any code ID can be used;
        * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
        * be used.
@@ -687,8 +798,9 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-       * AbstractAccounts:
+       * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+       * final implementation for a newly registered AbstractAccount or a
+       * top-level raw Wasm migration:
        * - if set to true, any code ID can be used;
        * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
        * be used.
@@ -707,8 +819,9 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowAllCodeIDs determines whether a Wasm code ID can be used to register
-       * AbstractAccounts:
+       * AllowAllCodeIDs determines whether a Wasm code ID may be selected as the
+       * final implementation for a newly registered AbstractAccount or a
+       * top-level raw Wasm migration:
        * - if set to true, any code ID can be used;
        * - if set to false, only code IDs whitelisted in the AllowedCodeIDs list can
        * be used.
@@ -733,8 +846,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -747,8 +860,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -759,8 +872,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -772,8 +885,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -792,8 +905,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -810,8 +923,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -829,8 +942,8 @@ public final class ParamsOuterClass {
       }
       /**
        * <pre>
-       * AllowedCodeIDs is the whitelist of Wasm code IDs that can be used to
-       * regiseter AbstractAccounts.
+       * AllowedCodeIDs is the whitelist for registration implementations and
+       * top-level raw Wasm migrations. This is not a wasmd-level policy.
        * </pre>
        *
        * <code>repeated uint64 allowed_code_ids = 2 [json_name = "allowedCodeIds", (.gogoproto.customname) = "AllowedCodeIDs"];</code>
@@ -948,6 +1061,109 @@ public final class ParamsOuterClass {
         onChanged();
         return this;
       }
+
+      private boolean registrationEnabled_ ;
+      /**
+       * <pre>
+       * RegistrationEnabled controls whether new abstract accounts may be
+       * registered. Governance can pause registration without changing the
+       * immutable address namespace or blocking address queries.
+       * </pre>
+       *
+       * <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+       * @return The registrationEnabled.
+       */
+      @java.lang.Override
+      public boolean getRegistrationEnabled() {
+        return registrationEnabled_;
+      }
+      /**
+       * <pre>
+       * RegistrationEnabled controls whether new abstract accounts may be
+       * registered. Governance can pause registration without changing the
+       * immutable address namespace or blocking address queries.
+       * </pre>
+       *
+       * <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+       * @param value The registrationEnabled to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegistrationEnabled(boolean value) {
+
+        registrationEnabled_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * RegistrationEnabled controls whether new abstract accounts may be
+       * registered. Governance can pause registration without changing the
+       * immutable address namespace or blocking address queries.
+       * </pre>
+       *
+       * <code>bool registration_enabled = 7 [json_name = "registrationEnabled"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegistrationEnabled() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        registrationEnabled_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString addressDerivationHash_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * AddressDerivationHash is the immutable 32-byte namespace used only to
+       * derive predictable AbstractAccount addresses. The caller-selected code ID
+       * is instantiated directly and does not participate in address derivation.
+       * An empty value leaves registration unconfigured.
+       * </pre>
+       *
+       * <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+       * @return The addressDerivationHash.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAddressDerivationHash() {
+        return addressDerivationHash_;
+      }
+      /**
+       * <pre>
+       * AddressDerivationHash is the immutable 32-byte namespace used only to
+       * derive predictable AbstractAccount addresses. The caller-selected code ID
+       * is instantiated directly and does not participate in address derivation.
+       * An empty value leaves registration unconfigured.
+       * </pre>
+       *
+       * <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+       * @param value The addressDerivationHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAddressDerivationHash(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        addressDerivationHash_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * AddressDerivationHash is the immutable 32-byte namespace used only to
+       * derive predictable AbstractAccount addresses. The caller-selected code ID
+       * is instantiated directly and does not participate in address derivation.
+       * An empty value leaves registration unconfigured.
+       * </pre>
+       *
+       * <code>bytes address_derivation_hash = 8 [json_name = "addressDerivationHash", (.gogoproto.customname) = "AddressDerivationHash"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAddressDerivationHash() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        addressDerivationHash_ = getDefaultInstance().getAddressDerivationHash();
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1027,15 +1243,18 @@ public final class ParamsOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\037abstractaccount/v1/params.proto\022\022abstr" +
-      "actaccount.v1\032\024gogoproto/gogo.proto\"\322\001\n\006" +
+      "actaccount.v1\032\024gogoproto/gogo.proto\"\344\002\n\006" +
       "Params\022@\n\022allow_all_code_ids\030\001 \001(\010B\023\342\336\037\017" +
       "AllowAllCodeIDsR\017allowAllCodeIds\022<\n\020allo" +
       "wed_code_ids\030\002 \003(\004B\022\342\336\037\016AllowedCodeIDsR\016" +
       "allowedCodeIds\022$\n\016max_gas_before\030\003 \001(\004R\014" +
       "maxGasBefore\022\"\n\rmax_gas_after\030\004 \001(\004R\013max" +
-      "GasAfterB@Z>github.com/burnt-labs/abstra" +
-      "ct-account/x/abstractaccount/typesb\006prot" +
-      "o3"
+      "GasAfter\0221\n\024registration_enabled\030\007 \001(\010R\023" +
+      "registrationEnabled\022Q\n\027address_derivatio" +
+      "n_hash\030\010 \001(\014B\031\342\336\037\025AddressDerivationHashR" +
+      "\025addressDerivationHashJ\004\010\005\020\006J\004\010\006\020\007B4Z2gi" +
+      "thub.com/burnt-labs/xion/x/abstractaccou" +
+      "nt/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1047,7 +1266,7 @@ public final class ParamsOuterClass {
     internal_static_abstractaccount_v1_Params_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_abstractaccount_v1_Params_descriptor,
-        new java.lang.String[] { "AllowAllCodeIds", "AllowedCodeIds", "MaxGasBefore", "MaxGasAfter", });
+        new java.lang.String[] { "AllowAllCodeIds", "AllowedCodeIds", "MaxGasBefore", "MaxGasAfter", "RegistrationEnabled", "AddressDerivationHash", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.GoGoProtos.customname);

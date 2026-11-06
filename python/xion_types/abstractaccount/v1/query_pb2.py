@@ -16,20 +16,26 @@ from xion_types.cosmos.query.v1 import query_pb2 as cosmos_dot_query_dot_v1_dot_
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1e\x61\x62stractaccount/v1/query.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\x1a\x1b\x63osmos/query/v1/query.proto\x1a\x1cgoogle/api/annotations.proto\"\x14\n\x12QueryParamsRequest\"I\n\x13QueryParamsResponse\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params2\x8c\x01\n\x05Query\x12\x82\x01\n\x06Params\x12&.abstractaccount.v1.QueryParamsRequest\x1a\'.abstractaccount.v1.QueryParamsResponse\"\'\x88\xe7\xb0*\x01\x82\xd3\xe4\x93\x02\x1c\x12\x1a/abstractaccount/v1/paramsB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1e\x61\x62stractaccount/v1/query.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\x1a\x1b\x63osmos/query/v1/query.proto\x1a\x1cgoogle/api/annotations.proto\"\x14\n\x12QueryParamsRequest\"I\n\x13QueryParamsResponse\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params\"H\n\x1aQueryAccountAddressRequest\x12\x16\n\x06sender\x18\x01 \x01(\tR\x06sender\x12\x12\n\x04salt\x18\x02 \x01(\x0cR\x04salt\"W\n\x1bQueryAccountAddressResponse\x12\x18\n\x07\x61\x64\x64ress\x18\x01 \x01(\tR\x07\x61\x64\x64ress\x12\x1e\n\nregistered\x18\x02 \x01(\x08R\nregistered2\xbb\x02\n\x05Query\x12\x82\x01\n\x06Params\x12&.abstractaccount.v1.QueryParamsRequest\x1a\'.abstractaccount.v1.QueryParamsResponse\"\'\x88\xe7\xb0*\x01\x82\xd3\xe4\x93\x02\x1c\x12\x1a/abstractaccount/v1/params\x12\xac\x01\n\x0e\x41\x63\x63ountAddress\x12..abstractaccount.v1.QueryAccountAddressRequest\x1a/.abstractaccount.v1.QueryAccountAddressResponse\"9\x88\xe7\xb0*\x01\x82\xd3\xe4\x93\x02.\x12,/abstractaccount/v1/account_address/{sender}B4Z2github.com/burnt-labs/xion/x/abstractaccount/typesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'abstractaccount.v1.query_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z>github.com/burnt-labs/abstract-account/x/abstractaccount/types'
+  _globals['DESCRIPTOR']._serialized_options = b'Z2github.com/burnt-labs/xion/x/abstractaccount/types'
   _globals['_QUERY'].methods_by_name['Params']._options = None
   _globals['_QUERY'].methods_by_name['Params']._serialized_options = b'\210\347\260*\001\202\323\344\223\002\034\022\032/abstractaccount/v1/params'
+  _globals['_QUERY'].methods_by_name['AccountAddress']._options = None
+  _globals['_QUERY'].methods_by_name['AccountAddress']._serialized_options = b'\210\347\260*\001\202\323\344\223\002.\022,/abstractaccount/v1/account_address/{sender}'
   _globals['_QUERYPARAMSREQUEST']._serialized_start=146
   _globals['_QUERYPARAMSREQUEST']._serialized_end=166
   _globals['_QUERYPARAMSRESPONSE']._serialized_start=168
   _globals['_QUERYPARAMSRESPONSE']._serialized_end=241
-  _globals['_QUERY']._serialized_start=244
-  _globals['_QUERY']._serialized_end=384
+  _globals['_QUERYACCOUNTADDRESSREQUEST']._serialized_start=243
+  _globals['_QUERYACCOUNTADDRESSREQUEST']._serialized_end=315
+  _globals['_QUERYACCOUNTADDRESSRESPONSE']._serialized_start=317
+  _globals['_QUERYACCOUNTADDRESSRESPONSE']._serialized_end=404
+  _globals['_QUERY']._serialized_start=407
+  _globals['_QUERY']._serialized_end=722
 # @@protoc_insertion_point(module_scope)

@@ -50,18 +50,6 @@ public final class Signing {
     SIGN_MODE_DIRECT(1),
     /**
      * <pre>
-     * SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-     * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT.
-     *
-     * Since: cosmos-sdk 0.50
-     * </pre>
-     *
-     * <code>SIGN_MODE_TEXTUAL = 2;</code>
-     */
-    SIGN_MODE_TEXTUAL(2),
-    /**
-     * <pre>
      * SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
      * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
      * require signers signing over other signers' `signer_info`.
@@ -119,18 +107,6 @@ public final class Signing {
      * <code>SIGN_MODE_DIRECT = 1;</code>
      */
     public static final int SIGN_MODE_DIRECT_VALUE = 1;
-    /**
-     * <pre>
-     * SIGN_MODE_TEXTUAL is a future signing mode that will verify some
-     * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT.
-     *
-     * Since: cosmos-sdk 0.50
-     * </pre>
-     *
-     * <code>SIGN_MODE_TEXTUAL = 2;</code>
-     */
-    public static final int SIGN_MODE_TEXTUAL_VALUE = 2;
     /**
      * <pre>
      * SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
@@ -197,7 +173,6 @@ public final class Signing {
       switch (value) {
         case 0: return SIGN_MODE_UNSPECIFIED;
         case 1: return SIGN_MODE_DIRECT;
-        case 2: return SIGN_MODE_TEXTUAL;
         case 3: return SIGN_MODE_DIRECT_AUX;
         case 127: return SIGN_MODE_LEGACY_AMINO_JSON;
         case 191: return SIGN_MODE_EIP_191;
@@ -5075,13 +5050,13 @@ public final class Signing {
       "y\030\001 \001(\0132/.cosmos.crypto.multisig.v1beta1" +
       ".CompactBitArrayR\010bitarray\022S\n\nsignatures" +
       "\030\002 \003(\01323.cosmos.tx.signing.v1beta1.Signa" +
-      "tureDescriptor.DataR\nsignaturesB\005\n\003sum*\245" +
+      "tureDescriptor.DataR\nsignaturesB\005\n\003sum*\247" +
       "\001\n\010SignMode\022\031\n\025SIGN_MODE_UNSPECIFIED\020\000\022\024" +
-      "\n\020SIGN_MODE_DIRECT\020\001\022\025\n\021SIGN_MODE_TEXTUA" +
-      "L\020\002\022\030\n\024SIGN_MODE_DIRECT_AUX\020\003\022\037\n\033SIGN_MO" +
-      "DE_LEGACY_AMINO_JSON\020\177\022\026\n\021SIGN_MODE_EIP_" +
-      "191\020\277\001B/Z-github.com/cosmos/cosmos-sdk/t" +
-      "ypes/tx/signingb\006proto3"
+      "\n\020SIGN_MODE_DIRECT\020\001\022\030\n\024SIGN_MODE_DIRECT" +
+      "_AUX\020\003\022\037\n\033SIGN_MODE_LEGACY_AMINO_JSON\020\177\022" +
+      "\026\n\021SIGN_MODE_EIP_191\020\277\001\"\004\010\002\020\002*\021SIGN_MODE" +
+      "_TEXTUALB/Z-github.com/cosmos/cosmos-sdk" +
+      "/types/tx/signingb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

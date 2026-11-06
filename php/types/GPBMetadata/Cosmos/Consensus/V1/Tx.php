@@ -20,14 +20,15 @@ class Tx
         \GPBMetadata\Tendermint\Types\Params::initOnce();
         $pool->internalAddGeneratedFile(
             '
-å
-cosmos/consensus/v1/tx.protocosmos.consensus.v1cosmos_proto/cosmos.protocosmos/msg/v1/msg.prototendermint/types/params.proto"ÿ
+±
+cosmos/consensus/v1/tx.protocosmos.consensus.v1cosmos_proto/cosmos.protocosmos/msg/v1/msg.prototendermint/types/params.proto"Ë
 MsgUpdateParams6
 	authority (	BÒ´-cosmos.AddressStringR	authority3
 block (2.tendermint.types.BlockParamsRblock<
 evidence (2 .tendermint.types.EvidenceParamsRevidence?
 	validator (2!.tendermint.types.ValidatorParamsR	validatorE
-abci (2.tendermint.types.ABCIParamsBÚ´-cosmos-sdk 0.50Rabci:9‚ç°*	authorityŠç°*&cosmos-sdk/x/consensus/MsgUpdateParams"
+abci (2.tendermint.types.ABCIParamsBÚ´-cosmos-sdk 0.50RabciJ
+auth (2!.tendermint.types.AuthorityParamsBÚ´-cosmos-sdk 0.54Rauth:9‚ç°*	authorityŠç°*&cosmos-sdk/x/consensus/MsgUpdateParams"
 MsgUpdateParamsResponse2…
 Msgw
 UpdateParams$.cosmos.consensus.v1.MsgUpdateParams,.cosmos.consensus.v1.MsgUpdateParamsResponse"Ê´-cosmos-sdk 0.47€ç°*B0Z.github.com/cosmos/cosmos-sdk/x/consensus/typesbproto3'

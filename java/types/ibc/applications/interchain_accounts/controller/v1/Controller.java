@@ -540,7 +540,7 @@ public final class Controller {
       "cations.interchain_accounts.controller.v" +
       "1\"7\n\006Params\022-\n\022controller_enabled\030\001 \001(\010R" +
       "\021controllerEnabledBSZQgithub.com/cosmos/" +
-      "ibc-go/v10/modules/apps/27-interchain-ac" +
+      "ibc-go/v11/modules/apps/27-interchain-ac" +
       "counts/controller/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

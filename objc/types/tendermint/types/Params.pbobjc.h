@@ -29,6 +29,7 @@
 CF_EXTERN_C_BEGIN
 
 @class ABCIParams;
+@class AuthorityParams;
 @class BlockParams;
 @class EvidenceParams;
 @class ValidatorParams;
@@ -59,6 +60,7 @@ typedef GPB_ENUM(ConsensusParams_FieldNumber) {
   ConsensusParams_FieldNumber_Validator = 3,
   ConsensusParams_FieldNumber_Version = 4,
   ConsensusParams_FieldNumber_Abci = 5,
+  ConsensusParams_FieldNumber_Authority = 6,
 };
 
 /**
@@ -86,6 +88,10 @@ GPB_FINAL @interface ConsensusParams : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) ABCIParams *abci;
 /** Test to see if @c abci has been set. */
 @property(nonatomic, readwrite) BOOL hasAbci;
+
+@property(nonatomic, readwrite, strong, null_resettable) AuthorityParams *authority;
+/** Test to see if @c authority has been set. */
+@property(nonatomic, readwrite) BOOL hasAuthority;
 
 @end
 
@@ -232,6 +238,18 @@ GPB_FINAL @interface ABCIParams : GPBMessage
  * to the application to use when proposing a block during PrepareProposal.
  **/
 @property(nonatomic, readwrite) int64_t voteExtensionsEnableHeight;
+
+@end
+
+#pragma mark - AuthorityParams
+
+typedef GPB_ENUM(AuthorityParams_FieldNumber) {
+  AuthorityParams_FieldNumber_Authority = 1,
+};
+
+GPB_FINAL @interface AuthorityParams : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *authority;
 
 @end
 

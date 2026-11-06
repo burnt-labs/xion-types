@@ -20,6 +20,9 @@ use Google\Protobuf\Internal\GPBUtil;
 class NilPubKey extends \Google\Protobuf\Internal\Message
 {
     /**
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     *
      * Generated from protobuf field <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
      */
     protected $address_bytes = '';
@@ -31,6 +34,8 @@ class NilPubKey extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $address_bytes
+     *           address_bytes is the raw address bytes of the account the pubkey
+     *           stands in for.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +44,9 @@ class NilPubKey extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     *
      * Generated from protobuf field <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
      * @return string
      */
@@ -48,6 +56,9 @@ class NilPubKey extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * address_bytes is the raw address bytes of the account the pubkey
+     * stands in for.
+     *
      * Generated from protobuf field <code>bytes address_bytes = 1 [json_name = "addressBytes"];</code>
      * @param string $var
      * @return $this

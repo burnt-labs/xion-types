@@ -106,14 +106,14 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fparams_2eproto[] 
     "bcTransferChannel\0221\n\025ibc_query_icq_chann"
     "el\030\005 \001(\tR\022ibcQueryIcqChannel\022E\n\037osmosis_"
     "crosschain_swap_address\030\006 \001(\tR\034osmosisCr"
-    "osschainSwapAddressB+Z)github.com/burnt-"
-    "labs/xion/x/feeabs/typesb\006proto3"
+    "osschainSwapAddressB.Z,github.com/burnt-"
+    "labs/xion/app/legacy/feeabsb\006proto3"
 };
 static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2fparams_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2fparams_2eproto = {
     false,
     false,
-    432,
+    435,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2fparams_2eproto,
     "xion/feeabs/v1beta1/params.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2fparams_2eproto_once,

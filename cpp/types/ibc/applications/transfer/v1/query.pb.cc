@@ -455,7 +455,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2ftransfer_2fv1_2fquery_
     "mRequest\032>.ibc.applications.transfer.v1."
     "QueryTotalEscrowForDenomResponse\"5\202\323\344\223\002/"
     "\022-/ibc/apps/transfer/v1/total_escrow/{de"
-    "nom=**}B:Z8github.com/cosmos/ibc-go/v10/"
+    "nom=**}B:Z8github.com/cosmos/ibc-go/v11/"
     "modules/apps/transfer/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fapplications_2ftransfer_2fv1_2fquery_2eproto_deps[6] =

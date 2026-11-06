@@ -4312,7 +4312,7 @@ public final class Client {
       "eight\030\002 \001(\004B\023\352\336\037\017revision_heightR\016revisi" +
       "onHeight:\010\210\240\037\000\230\240\037\000\"1\n\006Params\022\'\n\017allowed_" +
       "clients\030\001 \003(\tR\016allowedClientsB;Z9github." +
-      "com/cosmos/ibc-go/v10/modules/core/02-cl" +
+      "com/cosmos/ibc-go/v11/modules/core/02-cl" +
       "ient/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

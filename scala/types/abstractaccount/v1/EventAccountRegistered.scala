@@ -6,6 +6,18 @@
 package abstractaccount.v1
 
 /** EventAccountRegistered is emitted when an AbstractAccount is registered.
+  *
+  * @param creator
+  *   creator is the address that requested the account registration.
+  * @param codeId
+  *   CodeID is the caller-selected implementation active after registration.
+  * @param contractAddr
+  *   contract_addr is the address of the newly instantiated account contract.
+  * @param accountNumber
+  *   account_number is the account number assigned to the new account.
+  * @param addressDerivationHash
+  *   address_derivation_hash is the fixed hash used to derive the account's
+  *   address.
   */
 @SerialVersionUID(0L)
 final case class EventAccountRegistered(
@@ -13,6 +25,7 @@ final case class EventAccountRegistered(
     codeId: _root_.scala.Long = 0L,
     contractAddr: _root_.scala.Predef.String = "",
     accountNumber: _root_.scala.Long = 0L,
+    addressDerivationHash: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[EventAccountRegistered] {
     @transient
@@ -45,6 +58,13 @@ final case class EventAccountRegistered(
         val __value = accountNumber
         if (__value != 0L) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(4, __value)
+        }
+      };
+      
+      {
+        val __value = addressDerivationHash
+        if (!__value.isEmpty) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeBytesSize(6, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -84,12 +104,19 @@ final case class EventAccountRegistered(
           _output__.writeUInt64(4, __v)
         }
       };
+      {
+        val __v = addressDerivationHash
+        if (!__v.isEmpty) {
+          _output__.writeBytes(6, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withCreator(__v: _root_.scala.Predef.String): EventAccountRegistered = copy(creator = __v)
     def withCodeId(__v: _root_.scala.Long): EventAccountRegistered = copy(codeId = __v)
     def withContractAddr(__v: _root_.scala.Predef.String): EventAccountRegistered = copy(contractAddr = __v)
     def withAccountNumber(__v: _root_.scala.Long): EventAccountRegistered = copy(accountNumber = __v)
+    def withAddressDerivationHash(__v: _root_.com.google.protobuf.ByteString): EventAccountRegistered = copy(addressDerivationHash = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -110,6 +137,10 @@ final case class EventAccountRegistered(
           val __t = accountNumber
           if (__t != 0L) __t else null
         }
+        case 6 => {
+          val __t = addressDerivationHash
+          if (__t != _root_.com.google.protobuf.ByteString.EMPTY) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -119,6 +150,7 @@ final case class EventAccountRegistered(
         case 2 => _root_.scalapb.descriptors.PLong(codeId)
         case 3 => _root_.scalapb.descriptors.PString(contractAddr)
         case 4 => _root_.scalapb.descriptors.PLong(accountNumber)
+        case 6 => _root_.scalapb.descriptors.PByteString(addressDerivationHash)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -133,6 +165,7 @@ object EventAccountRegistered extends scalapb.GeneratedMessageCompanion[abstract
     var __codeId: _root_.scala.Long = 0L
     var __contractAddr: _root_.scala.Predef.String = ""
     var __accountNumber: _root_.scala.Long = 0L
+    var __addressDerivationHash: _root_.com.google.protobuf.ByteString = _root_.com.google.protobuf.ByteString.EMPTY
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -147,6 +180,8 @@ object EventAccountRegistered extends scalapb.GeneratedMessageCompanion[abstract
           __contractAddr = _input__.readStringRequireUtf8()
         case 32 =>
           __accountNumber = _input__.readUInt64()
+        case 50 =>
+          __addressDerivationHash = _input__.readBytes()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -159,6 +194,7 @@ object EventAccountRegistered extends scalapb.GeneratedMessageCompanion[abstract
         codeId = __codeId,
         contractAddr = __contractAddr,
         accountNumber = __accountNumber,
+        addressDerivationHash = __addressDerivationHash,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -169,7 +205,8 @@ object EventAccountRegistered extends scalapb.GeneratedMessageCompanion[abstract
         creator = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         codeId = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
         contractAddr = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        accountNumber = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
+        accountNumber = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        addressDerivationHash = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.com.google.protobuf.ByteString]).getOrElse(_root_.com.google.protobuf.ByteString.EMPTY)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -182,28 +219,33 @@ object EventAccountRegistered extends scalapb.GeneratedMessageCompanion[abstract
     creator = "",
     codeId = 0L,
     contractAddr = "",
-    accountNumber = 0L
+    accountNumber = 0L,
+    addressDerivationHash = _root_.com.google.protobuf.ByteString.EMPTY
   )
   implicit class EventAccountRegisteredLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, abstractaccount.v1.EventAccountRegistered]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, abstractaccount.v1.EventAccountRegistered](_l) {
     def creator: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.creator)((c_, f_) => c_.copy(creator = f_))
     def codeId: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.codeId)((c_, f_) => c_.copy(codeId = f_))
     def contractAddr: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.contractAddr)((c_, f_) => c_.copy(contractAddr = f_))
     def accountNumber: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.accountNumber)((c_, f_) => c_.copy(accountNumber = f_))
+    def addressDerivationHash: _root_.scalapb.lenses.Lens[UpperPB, _root_.com.google.protobuf.ByteString] = field(_.addressDerivationHash)((c_, f_) => c_.copy(addressDerivationHash = f_))
   }
   final val CREATOR_FIELD_NUMBER = 1
   final val CODE_ID_FIELD_NUMBER = 2
   final val CONTRACT_ADDR_FIELD_NUMBER = 3
   final val ACCOUNT_NUMBER_FIELD_NUMBER = 4
+  final val ADDRESS_DERIVATION_HASH_FIELD_NUMBER = 6
   def of(
     creator: _root_.scala.Predef.String,
     codeId: _root_.scala.Long,
     contractAddr: _root_.scala.Predef.String,
-    accountNumber: _root_.scala.Long
+    accountNumber: _root_.scala.Long,
+    addressDerivationHash: _root_.com.google.protobuf.ByteString
   ): _root_.abstractaccount.v1.EventAccountRegistered = _root_.abstractaccount.v1.EventAccountRegistered(
     creator,
     codeId,
     contractAddr,
-    accountNumber
+    accountNumber,
+    addressDerivationHash
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[abstractaccount.v1.EventAccountRegistered])
 }

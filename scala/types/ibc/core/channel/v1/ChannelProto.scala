@@ -57,7 +57,7 @@ object ChannelProto extends _root_.scalapb.GeneratedFileObject {
   gxTVEFURV9DTE9TRUSKnSAGQ0xPU0VEGgSIox4AKrgBCgVPcmRlchI/ChZPUkRFUl9OT05FX1VOU1BFQ0lGSUVEEAAaI+I/GBIWT
   1JERVJfTk9ORV9VTlNQRUNJRklFRIqdIAROT05FEjYKD09SREVSX1VOT1JERVJFRBABGiHiPxESD09SREVSX1VOT1JERVJFRIqdI
   AlVTk9SREVSRUQSMAoNT1JERVJfT1JERVJFRBACGh3iPw8SDU9SREVSX09SREVSRUSKnSAHT1JERVJFRBoEiKMeAEI8WjpnaXRod
-  WIuY29tL2Nvc21vcy9pYmMtZ28vdjEwL21vZHVsZXMvY29yZS8wNC1jaGFubmVsL3R5cGVzYgZwcm90bzM="""
+  WIuY29tL2Nvc21vcy9pYmMtZ28vdjExL21vZHVsZXMvY29yZS8wNC1jaGFubmVsL3R5cGVzYgZwcm90bzM="""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {
     val scalaProto = com.google.protobuf.descriptor.FileDescriptorProto.parseFrom(ProtoBytes)

@@ -13,12 +13,36 @@ package xion.zk.v1
   *   upload_chunk_size defines the byte-size of each gas tier.
   * @param uploadChunkGas
   *   upload_chunk_gas defines the gas cost per upload chunk.
+  * @param maxGroth16ProofSizeBytes
+  *   max_groth16_proof_size_bytes caps the size of a Groth16 proof JSON payload.
+  * @param maxGroth16PublicInputSizeBytes
+  *   max_groth16_public_input_size_bytes caps the size of the Groth16 public
+  *   inputs. The size is computed as the total UTF-8 byte length of all provided
+  *   public input strings.
+  * @param maxUltraHonkProofSizeBytes
+  *   max_ultra_honk_proof_size_bytes caps the size of an UltraHonk proof.
+  * @param maxUltraHonkPublicInputSizeBytes
+  *   max_ultra_honk_public_input_size_bytes caps the size of the UltraHonk
+  *   public inputs. UltraHonk public inputs are provided as raw bytes.
+  * @param maxGnarkProofSizeBytes
+  *   max_gnark_proof_size_bytes caps the size of a gnark native Groth16 proof
+  *   (binary).
+  * @param maxGnarkPublicInputSizeBytes
+  *   max_gnark_public_input_size_bytes caps the size of the gnark Groth16 public
+  *   inputs. Public inputs are provided as raw bytes (concatenated 32-byte
+  *   big-endian field elements).
   */
 @SerialVersionUID(0L)
 final case class Params(
     maxVkeySizeBytes: _root_.scala.Long = 0L,
     uploadChunkSize: _root_.scala.Long = 0L,
     uploadChunkGas: _root_.scala.Long = 0L,
+    maxGroth16ProofSizeBytes: _root_.scala.Long = 0L,
+    maxGroth16PublicInputSizeBytes: _root_.scala.Long = 0L,
+    maxUltraHonkProofSizeBytes: _root_.scala.Long = 0L,
+    maxUltraHonkPublicInputSizeBytes: _root_.scala.Long = 0L,
+    maxGnarkProofSizeBytes: _root_.scala.Long = 0L,
+    maxGnarkPublicInputSizeBytes: _root_.scala.Long = 0L,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Params] {
     @transient
@@ -44,6 +68,48 @@ final case class Params(
         val __value = uploadChunkGas
         if (__value != 0L) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(3, __value)
+        }
+      };
+      
+      {
+        val __value = maxGroth16ProofSizeBytes
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(4, __value)
+        }
+      };
+      
+      {
+        val __value = maxGroth16PublicInputSizeBytes
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(5, __value)
+        }
+      };
+      
+      {
+        val __value = maxUltraHonkProofSizeBytes
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(6, __value)
+        }
+      };
+      
+      {
+        val __value = maxUltraHonkPublicInputSizeBytes
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(7, __value)
+        }
+      };
+      
+      {
+        val __value = maxGnarkProofSizeBytes
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(8, __value)
+        }
+      };
+      
+      {
+        val __value = maxGnarkPublicInputSizeBytes
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(9, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -77,11 +143,53 @@ final case class Params(
           _output__.writeUInt64(3, __v)
         }
       };
+      {
+        val __v = maxGroth16ProofSizeBytes
+        if (__v != 0L) {
+          _output__.writeUInt64(4, __v)
+        }
+      };
+      {
+        val __v = maxGroth16PublicInputSizeBytes
+        if (__v != 0L) {
+          _output__.writeUInt64(5, __v)
+        }
+      };
+      {
+        val __v = maxUltraHonkProofSizeBytes
+        if (__v != 0L) {
+          _output__.writeUInt64(6, __v)
+        }
+      };
+      {
+        val __v = maxUltraHonkPublicInputSizeBytes
+        if (__v != 0L) {
+          _output__.writeUInt64(7, __v)
+        }
+      };
+      {
+        val __v = maxGnarkProofSizeBytes
+        if (__v != 0L) {
+          _output__.writeUInt64(8, __v)
+        }
+      };
+      {
+        val __v = maxGnarkPublicInputSizeBytes
+        if (__v != 0L) {
+          _output__.writeUInt64(9, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withMaxVkeySizeBytes(__v: _root_.scala.Long): Params = copy(maxVkeySizeBytes = __v)
     def withUploadChunkSize(__v: _root_.scala.Long): Params = copy(uploadChunkSize = __v)
     def withUploadChunkGas(__v: _root_.scala.Long): Params = copy(uploadChunkGas = __v)
+    def withMaxGroth16ProofSizeBytes(__v: _root_.scala.Long): Params = copy(maxGroth16ProofSizeBytes = __v)
+    def withMaxGroth16PublicInputSizeBytes(__v: _root_.scala.Long): Params = copy(maxGroth16PublicInputSizeBytes = __v)
+    def withMaxUltraHonkProofSizeBytes(__v: _root_.scala.Long): Params = copy(maxUltraHonkProofSizeBytes = __v)
+    def withMaxUltraHonkPublicInputSizeBytes(__v: _root_.scala.Long): Params = copy(maxUltraHonkPublicInputSizeBytes = __v)
+    def withMaxGnarkProofSizeBytes(__v: _root_.scala.Long): Params = copy(maxGnarkProofSizeBytes = __v)
+    def withMaxGnarkPublicInputSizeBytes(__v: _root_.scala.Long): Params = copy(maxGnarkPublicInputSizeBytes = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -98,6 +206,30 @@ final case class Params(
           val __t = uploadChunkGas
           if (__t != 0L) __t else null
         }
+        case 4 => {
+          val __t = maxGroth16ProofSizeBytes
+          if (__t != 0L) __t else null
+        }
+        case 5 => {
+          val __t = maxGroth16PublicInputSizeBytes
+          if (__t != 0L) __t else null
+        }
+        case 6 => {
+          val __t = maxUltraHonkProofSizeBytes
+          if (__t != 0L) __t else null
+        }
+        case 7 => {
+          val __t = maxUltraHonkPublicInputSizeBytes
+          if (__t != 0L) __t else null
+        }
+        case 8 => {
+          val __t = maxGnarkProofSizeBytes
+          if (__t != 0L) __t else null
+        }
+        case 9 => {
+          val __t = maxGnarkPublicInputSizeBytes
+          if (__t != 0L) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -106,6 +238,12 @@ final case class Params(
         case 1 => _root_.scalapb.descriptors.PLong(maxVkeySizeBytes)
         case 2 => _root_.scalapb.descriptors.PLong(uploadChunkSize)
         case 3 => _root_.scalapb.descriptors.PLong(uploadChunkGas)
+        case 4 => _root_.scalapb.descriptors.PLong(maxGroth16ProofSizeBytes)
+        case 5 => _root_.scalapb.descriptors.PLong(maxGroth16PublicInputSizeBytes)
+        case 6 => _root_.scalapb.descriptors.PLong(maxUltraHonkProofSizeBytes)
+        case 7 => _root_.scalapb.descriptors.PLong(maxUltraHonkPublicInputSizeBytes)
+        case 8 => _root_.scalapb.descriptors.PLong(maxGnarkProofSizeBytes)
+        case 9 => _root_.scalapb.descriptors.PLong(maxGnarkPublicInputSizeBytes)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -119,6 +257,12 @@ object Params extends scalapb.GeneratedMessageCompanion[xion.zk.v1.Params] {
     var __maxVkeySizeBytes: _root_.scala.Long = 0L
     var __uploadChunkSize: _root_.scala.Long = 0L
     var __uploadChunkGas: _root_.scala.Long = 0L
+    var __maxGroth16ProofSizeBytes: _root_.scala.Long = 0L
+    var __maxGroth16PublicInputSizeBytes: _root_.scala.Long = 0L
+    var __maxUltraHonkProofSizeBytes: _root_.scala.Long = 0L
+    var __maxUltraHonkPublicInputSizeBytes: _root_.scala.Long = 0L
+    var __maxGnarkProofSizeBytes: _root_.scala.Long = 0L
+    var __maxGnarkPublicInputSizeBytes: _root_.scala.Long = 0L
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -131,6 +275,18 @@ object Params extends scalapb.GeneratedMessageCompanion[xion.zk.v1.Params] {
           __uploadChunkSize = _input__.readUInt64()
         case 24 =>
           __uploadChunkGas = _input__.readUInt64()
+        case 32 =>
+          __maxGroth16ProofSizeBytes = _input__.readUInt64()
+        case 40 =>
+          __maxGroth16PublicInputSizeBytes = _input__.readUInt64()
+        case 48 =>
+          __maxUltraHonkProofSizeBytes = _input__.readUInt64()
+        case 56 =>
+          __maxUltraHonkPublicInputSizeBytes = _input__.readUInt64()
+        case 64 =>
+          __maxGnarkProofSizeBytes = _input__.readUInt64()
+        case 72 =>
+          __maxGnarkPublicInputSizeBytes = _input__.readUInt64()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -142,6 +298,12 @@ object Params extends scalapb.GeneratedMessageCompanion[xion.zk.v1.Params] {
         maxVkeySizeBytes = __maxVkeySizeBytes,
         uploadChunkSize = __uploadChunkSize,
         uploadChunkGas = __uploadChunkGas,
+        maxGroth16ProofSizeBytes = __maxGroth16ProofSizeBytes,
+        maxGroth16PublicInputSizeBytes = __maxGroth16PublicInputSizeBytes,
+        maxUltraHonkProofSizeBytes = __maxUltraHonkProofSizeBytes,
+        maxUltraHonkPublicInputSizeBytes = __maxUltraHonkPublicInputSizeBytes,
+        maxGnarkProofSizeBytes = __maxGnarkProofSizeBytes,
+        maxGnarkPublicInputSizeBytes = __maxGnarkPublicInputSizeBytes,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -151,7 +313,13 @@ object Params extends scalapb.GeneratedMessageCompanion[xion.zk.v1.Params] {
       xion.zk.v1.Params(
         maxVkeySizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
         uploadChunkSize = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
-        uploadChunkGas = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
+        uploadChunkGas = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxGroth16ProofSizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxGroth16PublicInputSizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxUltraHonkProofSizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxUltraHonkPublicInputSizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxGnarkProofSizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        maxGnarkPublicInputSizeBytes = __fieldsMap.get(scalaDescriptor.findFieldByNumber(9).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -163,24 +331,54 @@ object Params extends scalapb.GeneratedMessageCompanion[xion.zk.v1.Params] {
   lazy val defaultInstance = xion.zk.v1.Params(
     maxVkeySizeBytes = 0L,
     uploadChunkSize = 0L,
-    uploadChunkGas = 0L
+    uploadChunkGas = 0L,
+    maxGroth16ProofSizeBytes = 0L,
+    maxGroth16PublicInputSizeBytes = 0L,
+    maxUltraHonkProofSizeBytes = 0L,
+    maxUltraHonkPublicInputSizeBytes = 0L,
+    maxGnarkProofSizeBytes = 0L,
+    maxGnarkPublicInputSizeBytes = 0L
   )
   implicit class ParamsLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, xion.zk.v1.Params]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, xion.zk.v1.Params](_l) {
     def maxVkeySizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxVkeySizeBytes)((c_, f_) => c_.copy(maxVkeySizeBytes = f_))
     def uploadChunkSize: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.uploadChunkSize)((c_, f_) => c_.copy(uploadChunkSize = f_))
     def uploadChunkGas: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.uploadChunkGas)((c_, f_) => c_.copy(uploadChunkGas = f_))
+    def maxGroth16ProofSizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxGroth16ProofSizeBytes)((c_, f_) => c_.copy(maxGroth16ProofSizeBytes = f_))
+    def maxGroth16PublicInputSizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxGroth16PublicInputSizeBytes)((c_, f_) => c_.copy(maxGroth16PublicInputSizeBytes = f_))
+    def maxUltraHonkProofSizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxUltraHonkProofSizeBytes)((c_, f_) => c_.copy(maxUltraHonkProofSizeBytes = f_))
+    def maxUltraHonkPublicInputSizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxUltraHonkPublicInputSizeBytes)((c_, f_) => c_.copy(maxUltraHonkPublicInputSizeBytes = f_))
+    def maxGnarkProofSizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxGnarkProofSizeBytes)((c_, f_) => c_.copy(maxGnarkProofSizeBytes = f_))
+    def maxGnarkPublicInputSizeBytes: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxGnarkPublicInputSizeBytes)((c_, f_) => c_.copy(maxGnarkPublicInputSizeBytes = f_))
   }
   final val MAX_VKEY_SIZE_BYTES_FIELD_NUMBER = 1
   final val UPLOAD_CHUNK_SIZE_FIELD_NUMBER = 2
   final val UPLOAD_CHUNK_GAS_FIELD_NUMBER = 3
+  final val MAX_GROTH16_PROOF_SIZE_BYTES_FIELD_NUMBER = 4
+  final val MAX_GROTH16_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER = 5
+  final val MAX_ULTRA_HONK_PROOF_SIZE_BYTES_FIELD_NUMBER = 6
+  final val MAX_ULTRA_HONK_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER = 7
+  final val MAX_GNARK_PROOF_SIZE_BYTES_FIELD_NUMBER = 8
+  final val MAX_GNARK_PUBLIC_INPUT_SIZE_BYTES_FIELD_NUMBER = 9
   def of(
     maxVkeySizeBytes: _root_.scala.Long,
     uploadChunkSize: _root_.scala.Long,
-    uploadChunkGas: _root_.scala.Long
+    uploadChunkGas: _root_.scala.Long,
+    maxGroth16ProofSizeBytes: _root_.scala.Long,
+    maxGroth16PublicInputSizeBytes: _root_.scala.Long,
+    maxUltraHonkProofSizeBytes: _root_.scala.Long,
+    maxUltraHonkPublicInputSizeBytes: _root_.scala.Long,
+    maxGnarkProofSizeBytes: _root_.scala.Long,
+    maxGnarkPublicInputSizeBytes: _root_.scala.Long
   ): _root_.xion.zk.v1.Params = _root_.xion.zk.v1.Params(
     maxVkeySizeBytes,
     uploadChunkSize,
-    uploadChunkGas
+    uploadChunkGas,
+    maxGroth16ProofSizeBytes,
+    maxGroth16PublicInputSizeBytes,
+    maxUltraHonkProofSizeBytes,
+    maxUltraHonkPublicInputSizeBytes,
+    maxGnarkProofSizeBytes,
+    maxGnarkPublicInputSizeBytes
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[xion.zk.v1.Params])
 }

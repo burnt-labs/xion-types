@@ -8,6 +8,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+// SPDX-License-Identifier: Apache-2.0
+
 import Foundation
 import SwiftProtobuf
 
@@ -67,8 +69,6 @@ struct Ibc_Applications_PacketForwardMiddleware_V1_InFlightPacket: @unchecked Se
 
   var timeout: UInt64 = 0
 
-  var nonrefundable: Bool = false
-
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -124,7 +124,6 @@ extension Ibc_Applications_PacketForwardMiddleware_V1_InFlightPacket: SwiftProto
     9: .standard(proto: "refund_sequence"),
     10: .standard(proto: "retries_remaining"),
     11: .same(proto: "timeout"),
-    12: .same(proto: "nonrefundable"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -144,7 +143,6 @@ extension Ibc_Applications_PacketForwardMiddleware_V1_InFlightPacket: SwiftProto
       case 9: try { try decoder.decodeSingularUInt64Field(value: &self.refundSequence) }()
       case 10: try { try decoder.decodeSingularInt32Field(value: &self.retriesRemaining) }()
       case 11: try { try decoder.decodeSingularUInt64Field(value: &self.timeout) }()
-      case 12: try { try decoder.decodeSingularBoolField(value: &self.nonrefundable) }()
       default: break
       }
     }
@@ -184,9 +182,6 @@ extension Ibc_Applications_PacketForwardMiddleware_V1_InFlightPacket: SwiftProto
     if self.timeout != 0 {
       try visitor.visitSingularUInt64Field(value: self.timeout, fieldNumber: 11)
     }
-    if self.nonrefundable != false {
-      try visitor.visitSingularBoolField(value: self.nonrefundable, fieldNumber: 12)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -202,7 +197,6 @@ extension Ibc_Applications_PacketForwardMiddleware_V1_InFlightPacket: SwiftProto
     if lhs.refundSequence != rhs.refundSequence {return false}
     if lhs.retriesRemaining != rhs.retriesRemaining {return false}
     if lhs.timeout != rhs.timeout {return false}
-    if lhs.nonrefundable != rhs.nonrefundable {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

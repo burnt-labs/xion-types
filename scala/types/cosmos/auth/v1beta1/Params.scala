@@ -14,6 +14,7 @@ final case class Params(
     txSizeCostPerByte: _root_.scala.Long = 0L,
     sigVerifyCostEd25519: _root_.scala.Long = 0L,
     sigVerifyCostSecp256K1: _root_.scala.Long = 0L,
+    sigVerifyCostMldsa65: _root_.scala.Long = 0L,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Params] {
     @transient
@@ -53,6 +54,13 @@ final case class Params(
         val __value = sigVerifyCostSecp256K1
         if (__value != 0L) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(5, __value)
+        }
+      };
+      
+      {
+        val __value = sigVerifyCostMldsa65
+        if (__value != 0L) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeUInt64Size(6, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -98,6 +106,12 @@ final case class Params(
           _output__.writeUInt64(5, __v)
         }
       };
+      {
+        val __v = sigVerifyCostMldsa65
+        if (__v != 0L) {
+          _output__.writeUInt64(6, __v)
+        }
+      };
       unknownFields.writeTo(_output__)
     }
     def withMaxMemoCharacters(__v: _root_.scala.Long): Params = copy(maxMemoCharacters = __v)
@@ -105,6 +119,7 @@ final case class Params(
     def withTxSizeCostPerByte(__v: _root_.scala.Long): Params = copy(txSizeCostPerByte = __v)
     def withSigVerifyCostEd25519(__v: _root_.scala.Long): Params = copy(sigVerifyCostEd25519 = __v)
     def withSigVerifyCostSecp256K1(__v: _root_.scala.Long): Params = copy(sigVerifyCostSecp256K1 = __v)
+    def withSigVerifyCostMldsa65(__v: _root_.scala.Long): Params = copy(sigVerifyCostMldsa65 = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -129,6 +144,10 @@ final case class Params(
           val __t = sigVerifyCostSecp256K1
           if (__t != 0L) __t else null
         }
+        case 6 => {
+          val __t = sigVerifyCostMldsa65
+          if (__t != 0L) __t else null
+        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -139,6 +158,7 @@ final case class Params(
         case 3 => _root_.scalapb.descriptors.PLong(txSizeCostPerByte)
         case 4 => _root_.scalapb.descriptors.PLong(sigVerifyCostEd25519)
         case 5 => _root_.scalapb.descriptors.PLong(sigVerifyCostSecp256K1)
+        case 6 => _root_.scalapb.descriptors.PLong(sigVerifyCostMldsa65)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -154,6 +174,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.auth.v1beta1.Para
     var __txSizeCostPerByte: _root_.scala.Long = 0L
     var __sigVerifyCostEd25519: _root_.scala.Long = 0L
     var __sigVerifyCostSecp256K1: _root_.scala.Long = 0L
+    var __sigVerifyCostMldsa65: _root_.scala.Long = 0L
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -170,6 +191,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.auth.v1beta1.Para
           __sigVerifyCostEd25519 = _input__.readUInt64()
         case 40 =>
           __sigVerifyCostSecp256K1 = _input__.readUInt64()
+        case 48 =>
+          __sigVerifyCostMldsa65 = _input__.readUInt64()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -183,6 +206,7 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.auth.v1beta1.Para
         txSizeCostPerByte = __txSizeCostPerByte,
         sigVerifyCostEd25519 = __sigVerifyCostEd25519,
         sigVerifyCostSecp256K1 = __sigVerifyCostSecp256K1,
+        sigVerifyCostMldsa65 = __sigVerifyCostMldsa65,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -194,7 +218,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.auth.v1beta1.Para
         txSigLimit = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
         txSizeCostPerByte = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
         sigVerifyCostEd25519 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
-        sigVerifyCostSecp256K1 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
+        sigVerifyCostSecp256K1 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Long]).getOrElse(0L),
+        sigVerifyCostMldsa65 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).map(_.as[_root_.scala.Long]).getOrElse(0L)
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -208,7 +233,8 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.auth.v1beta1.Para
     txSigLimit = 0L,
     txSizeCostPerByte = 0L,
     sigVerifyCostEd25519 = 0L,
-    sigVerifyCostSecp256K1 = 0L
+    sigVerifyCostSecp256K1 = 0L,
+    sigVerifyCostMldsa65 = 0L
   )
   implicit class ParamsLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, cosmos.auth.v1beta1.Params]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, cosmos.auth.v1beta1.Params](_l) {
     def maxMemoCharacters: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.maxMemoCharacters)((c_, f_) => c_.copy(maxMemoCharacters = f_))
@@ -216,24 +242,28 @@ object Params extends scalapb.GeneratedMessageCompanion[cosmos.auth.v1beta1.Para
     def txSizeCostPerByte: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.txSizeCostPerByte)((c_, f_) => c_.copy(txSizeCostPerByte = f_))
     def sigVerifyCostEd25519: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.sigVerifyCostEd25519)((c_, f_) => c_.copy(sigVerifyCostEd25519 = f_))
     def sigVerifyCostSecp256K1: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.sigVerifyCostSecp256K1)((c_, f_) => c_.copy(sigVerifyCostSecp256K1 = f_))
+    def sigVerifyCostMldsa65: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Long] = field(_.sigVerifyCostMldsa65)((c_, f_) => c_.copy(sigVerifyCostMldsa65 = f_))
   }
   final val MAX_MEMO_CHARACTERS_FIELD_NUMBER = 1
   final val TX_SIG_LIMIT_FIELD_NUMBER = 2
   final val TX_SIZE_COST_PER_BYTE_FIELD_NUMBER = 3
   final val SIG_VERIFY_COST_ED25519_FIELD_NUMBER = 4
   final val SIG_VERIFY_COST_SECP256K1_FIELD_NUMBER = 5
+  final val SIG_VERIFY_COST_MLDSA65_FIELD_NUMBER = 6
   def of(
     maxMemoCharacters: _root_.scala.Long,
     txSigLimit: _root_.scala.Long,
     txSizeCostPerByte: _root_.scala.Long,
     sigVerifyCostEd25519: _root_.scala.Long,
-    sigVerifyCostSecp256K1: _root_.scala.Long
+    sigVerifyCostSecp256K1: _root_.scala.Long,
+    sigVerifyCostMldsa65: _root_.scala.Long
   ): _root_.cosmos.auth.v1beta1.Params = _root_.cosmos.auth.v1beta1.Params(
     maxMemoCharacters,
     txSigLimit,
     txSizeCostPerByte,
     sigVerifyCostEd25519,
-    sigVerifyCostSecp256K1
+    sigVerifyCostSecp256K1,
+    sigVerifyCostMldsa65
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[cosmos.auth.v1beta1.Params])
 }

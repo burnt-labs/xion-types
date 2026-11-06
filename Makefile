@@ -6,10 +6,11 @@ DOCKER := $(shell which docker)
 protoVer=0.17.1
 protoImage=$(DOCKER) run --rm -u root -v $(CURDIR):/workspace --workdir /workspace localhost/proto-builder:$(protoVer)
 
-# Xion BSR module ref — override to pin a specific version:
-#   make proto-gen-python XION_BSR_MODULE=buf.build/burnt-labs/xion:v26.0.0
+# Optional xion proto source override; the pinned source in
+# scripts/proto-sources.conf is used when unset:
+#   make proto-gen-python XION_BSR_MODULE="https://github.com/burnt-labs/xion.git#subdir=proto,ref=<sha>"
 # Also honored: XION_BSR_MODULE env var (used by CI).
-XION_BSR_MODULE ?= buf.build/burnt-labs/xion
+XION_BSR_MODULE ?=
 
 LANGUAGES := c cpp csharp docs java kotlin objc php python ruby rust scala swift ts
 

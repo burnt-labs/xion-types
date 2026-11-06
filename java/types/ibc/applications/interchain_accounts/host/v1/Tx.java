@@ -3180,7 +3180,7 @@ public final class Tx {
       "st.v1.MsgModuleQuerySafe\032H.ibc.applicati" +
       "ons.interchain_accounts.host.v1.MsgModul" +
       "eQuerySafeResponse\032\005\200\347\260*\001BMZKgithub.com/" +
-      "cosmos/ibc-go/v10/modules/apps/27-interc" +
+      "cosmos/ibc-go/v11/modules/apps/27-interc" +
       "hain-accounts/host/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

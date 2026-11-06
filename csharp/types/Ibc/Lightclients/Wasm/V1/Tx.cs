@@ -44,7 +44,7 @@ namespace Ibc.Lightclients.Wasm.V1 {
             "Y2xpZW50cy53YXNtLnYxLk1zZ01pZ3JhdGVDb250cmFjdBo0LmliYy5saWdo",
             "dGNsaWVudHMud2FzbS52MS5Nc2dNaWdyYXRlQ29udHJhY3RSZXNwb25zZRoF",
             "gOewKgFCQlpAZ2l0aHViLmNvbS9jb3Ntb3MvaWJjLWdvL21vZHVsZXMvbGln",
-            "aHQtY2xpZW50cy8wOC13YXNtL3YxMC90eXBlc2IGcHJvdG8z"));
+            "aHQtY2xpZW50cy8wOC13YXNtL3YxMS90eXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Cosmos.Msg.V1.MsgReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

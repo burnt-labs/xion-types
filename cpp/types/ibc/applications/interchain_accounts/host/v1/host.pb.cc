@@ -116,7 +116,7 @@ const char descriptor_table_protodef_ibc_2fapplications_2finterchain_5faccounts_
     "t_enabled\030\001 \001(\010R\013hostEnabled\022%\n\016allow_me"
     "ssages\030\002 \003(\tR\rallowMessages\"6\n\014QueryRequ"
     "est\022\022\n\004path\030\001 \001(\tR\004path\022\022\n\004data\030\002 \001(\014R\004d"
-    "ataBMZKgithub.com/cosmos/ibc-go/v10/modu"
+    "ataBMZKgithub.com/cosmos/ibc-go/v11/modu"
     "les/apps/27-interchain-accounts/host/typ"
     "esb\006proto3"
 };

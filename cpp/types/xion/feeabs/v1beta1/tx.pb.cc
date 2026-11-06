@@ -491,8 +491,8 @@ const char descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2ftx_2eproto[] PROT
     "ateHostZoneResponse\"\000\022j\n\016RemoveHostZone\022"
     "&.xion.feeabs.v1beta1.MsgRemoveHostZone\032"
     "..xion.feeabs.v1beta1.MsgRemoveHostZoneR"
-    "esponse\"\000\032\005\200\347\260*\001B+Z)github.com/burnt-lab"
-    "s/xion/x/feeabs/typesb\006proto3"
+    "esponse\"\000\032\005\200\347\260*\001B.Z,github.com/burnt-lab"
+    "s/xion/app/legacy/feeabsb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_xion_2ffeeabs_2fv1beta1_2ftx_2eproto_deps[7] =
     {
@@ -508,7 +508,7 @@ static ::absl::once_flag descriptor_table_xion_2ffeeabs_2fv1beta1_2ftx_2eproto_o
 const ::_pbi::DescriptorTable descriptor_table_xion_2ffeeabs_2fv1beta1_2ftx_2eproto = {
     false,
     false,
-    2389,
+    2392,
     descriptor_table_protodef_xion_2ffeeabs_2fv1beta1_2ftx_2eproto,
     "xion/feeabs/v1beta1/tx.proto",
     &descriptor_table_xion_2ffeeabs_2fv1beta1_2ftx_2eproto_once,

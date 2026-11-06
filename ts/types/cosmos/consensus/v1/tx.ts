@@ -8,7 +8,13 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { grpc } from "@improbable-eng/grpc-web";
 import { BrowserHeaders } from "browser-headers";
-import { ABCIParams, BlockParams, EvidenceParams, ValidatorParams } from "../../../tendermint/types/params";
+import {
+  ABCIParams,
+  AuthorityParams,
+  BlockParams,
+  EvidenceParams,
+  ValidatorParams,
+} from "../../../tendermint/types/params";
 
 export const protobufPackage = "cosmos.consensus.v1";
 
@@ -29,6 +35,7 @@ export interface MsgUpdateParams {
   evidence?: EvidenceParams | undefined;
   validator?: ValidatorParams | undefined;
   abci?: ABCIParams | undefined;
+  auth?: AuthorityParams | undefined;
 }
 
 /**
@@ -39,7 +46,14 @@ export interface MsgUpdateParamsResponse {
 }
 
 function createBaseMsgUpdateParams(): MsgUpdateParams {
-  return { authority: "", block: undefined, evidence: undefined, validator: undefined, abci: undefined };
+  return {
+    authority: "",
+    block: undefined,
+    evidence: undefined,
+    validator: undefined,
+    abci: undefined,
+    auth: undefined,
+  };
 }
 
 export const MsgUpdateParams: MessageFns<MsgUpdateParams> = {
@@ -58,6 +72,9 @@ export const MsgUpdateParams: MessageFns<MsgUpdateParams> = {
     }
     if (message.abci !== undefined) {
       ABCIParams.encode(message.abci, writer.uint32(42).fork()).join();
+    }
+    if (message.auth !== undefined) {
+      AuthorityParams.encode(message.auth, writer.uint32(50).fork()).join();
     }
     return writer;
   },
@@ -115,6 +132,14 @@ export const MsgUpdateParams: MessageFns<MsgUpdateParams> = {
             message.abci = ABCIParams.decode(reader, reader.uint32());
             continue;
           }
+          case 6: {
+            if (tag !== 50) {
+              break;
+            }
+
+            message.auth = AuthorityParams.decode(reader, reader.uint32());
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -134,6 +159,7 @@ export const MsgUpdateParams: MessageFns<MsgUpdateParams> = {
       evidence: isSet(object.evidence) ? EvidenceParams.fromJSON(object.evidence) : undefined,
       validator: isSet(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined,
       abci: isSet(object.abci) ? ABCIParams.fromJSON(object.abci) : undefined,
+      auth: isSet(object.auth) ? AuthorityParams.fromJSON(object.auth) : undefined,
     };
   },
 
@@ -153,6 +179,9 @@ export const MsgUpdateParams: MessageFns<MsgUpdateParams> = {
     }
     if (message.abci !== undefined) {
       obj.abci = ABCIParams.toJSON(message.abci);
+    }
+    if (message.auth !== undefined) {
+      obj.auth = AuthorityParams.toJSON(message.auth);
     }
     return obj;
   },
@@ -174,6 +203,9 @@ export const MsgUpdateParams: MessageFns<MsgUpdateParams> = {
       : undefined;
     message.abci = (object.abci !== undefined && object.abci !== null)
       ? ABCIParams.fromPartial(object.abci)
+      : undefined;
+    message.auth = (object.auth !== undefined && object.auth !== null)
+      ? AuthorityParams.fromPartial(object.auth)
       : undefined;
     return message;
   },

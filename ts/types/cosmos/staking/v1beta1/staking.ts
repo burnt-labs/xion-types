@@ -336,6 +336,8 @@ export interface Params {
   bondDenom: string;
   /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
   minCommissionRate: string;
+  /** key_rotation_fee is the fee charged when rotating a validator's consensus key. */
+  keyRotationFee?: Coin | undefined;
 }
 
 /**
@@ -382,6 +384,20 @@ export interface Pool {
  */
 export interface ValidatorUpdates {
   updates: ValidatorUpdate[];
+}
+
+/**
+ * ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+ * queue: the validator that rotated and the time and height at which its
+ * RotatedFrom lock may be retired because equivocation evidence for the
+ * rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+ * for time-ordered iteration; expiry_time is duplicated here so the record is
+ * self-describing.
+ */
+export interface ConsKeyEvidenceExpiry {
+  validatorAddress: Uint8Array;
+  expiryTime?: Date | undefined;
+  expiryHeight: bigint;
 }
 
 function createBaseHistoricalInfo(): HistoricalInfo {
@@ -2315,6 +2331,7 @@ function createBaseParams(): Params {
     historicalEntries: 0,
     bondDenom: "",
     minCommissionRate: "",
+    keyRotationFee: undefined,
   };
 }
 
@@ -2337,6 +2354,9 @@ export const Params: MessageFns<Params> = {
     }
     if (message.minCommissionRate !== "") {
       writer.uint32(50).string(message.minCommissionRate);
+    }
+    if (message.keyRotationFee !== undefined) {
+      Coin.encode(message.keyRotationFee, writer.uint32(58).fork()).join();
     }
     return writer;
   },
@@ -2402,6 +2422,14 @@ export const Params: MessageFns<Params> = {
             message.minCommissionRate = reader.string();
             continue;
           }
+          case 7: {
+            if (tag !== 58) {
+              break;
+            }
+
+            message.keyRotationFee = Coin.decode(reader, reader.uint32());
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -2446,6 +2474,11 @@ export const Params: MessageFns<Params> = {
         : isSet(object.min_commission_rate)
         ? globalThis.String(object.min_commission_rate)
         : "",
+      keyRotationFee: isSet(object.keyRotationFee)
+        ? Coin.fromJSON(object.keyRotationFee)
+        : isSet(object.key_rotation_fee)
+        ? Coin.fromJSON(object.key_rotation_fee)
+        : undefined,
     };
   },
 
@@ -2469,6 +2502,9 @@ export const Params: MessageFns<Params> = {
     if (message.minCommissionRate !== "") {
       obj.minCommissionRate = message.minCommissionRate;
     }
+    if (message.keyRotationFee !== undefined) {
+      obj.keyRotationFee = Coin.toJSON(message.keyRotationFee);
+    }
     return obj;
   },
 
@@ -2485,6 +2521,9 @@ export const Params: MessageFns<Params> = {
     message.historicalEntries = object.historicalEntries ?? 0;
     message.bondDenom = object.bondDenom ?? "";
     message.minCommissionRate = object.minCommissionRate ?? "";
+    message.keyRotationFee = (object.keyRotationFee !== undefined && object.keyRotationFee !== null)
+      ? Coin.fromPartial(object.keyRotationFee)
+      : undefined;
     return message;
   },
 };
@@ -2921,6 +2960,149 @@ export const ValidatorUpdates: MessageFns<ValidatorUpdates> = {
     return message;
   },
 };
+
+function createBaseConsKeyEvidenceExpiry(): ConsKeyEvidenceExpiry {
+  return { validatorAddress: new Uint8Array(0), expiryTime: undefined, expiryHeight: 0n };
+}
+
+export const ConsKeyEvidenceExpiry: MessageFns<ConsKeyEvidenceExpiry> = {
+  encode(message: ConsKeyEvidenceExpiry, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.validatorAddress.length !== 0) {
+      writer.uint32(10).bytes(message.validatorAddress);
+    }
+    if (message.expiryTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.expiryTime), writer.uint32(18).fork()).join();
+    }
+    if (message.expiryHeight !== 0n) {
+      if (BigInt.asIntN(64, message.expiryHeight) !== message.expiryHeight) {
+        throw new globalThis.Error("value provided for field message.expiryHeight of type int64 too large");
+      }
+      writer.uint32(24).int64(message.expiryHeight);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): ConsKeyEvidenceExpiry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseConsKeyEvidenceExpiry();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
+
+            message.validatorAddress = reader.bytes();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.expiryTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+            continue;
+          }
+          case 3: {
+            if (tag !== 24) {
+              break;
+            }
+
+            message.expiryHeight = reader.int64() as bigint;
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): ConsKeyEvidenceExpiry {
+    return {
+      validatorAddress: isSet(object.validatorAddress)
+        ? bytesFromBase64(object.validatorAddress)
+        : isSet(object.validator_address)
+        ? bytesFromBase64(object.validator_address)
+        : new Uint8Array(0),
+      expiryTime: isSet(object.expiryTime)
+        ? fromJsonTimestamp(object.expiryTime)
+        : isSet(object.expiry_time)
+        ? fromJsonTimestamp(object.expiry_time)
+        : undefined,
+      expiryHeight: isSet(object.expiryHeight)
+        ? BigInt(object.expiryHeight)
+        : isSet(object.expiry_height)
+        ? BigInt(object.expiry_height)
+        : 0n,
+    };
+  },
+
+  toJSON(message: ConsKeyEvidenceExpiry): unknown {
+    const obj: any = {};
+    if (message.validatorAddress.length !== 0) {
+      obj.validatorAddress = base64FromBytes(message.validatorAddress);
+    }
+    if (message.expiryTime !== undefined) {
+      obj.expiryTime = message.expiryTime.toISOString();
+    }
+    if (message.expiryHeight !== 0n) {
+      obj.expiryHeight = message.expiryHeight.toString();
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<ConsKeyEvidenceExpiry>, I>>(base?: I): ConsKeyEvidenceExpiry {
+    return ConsKeyEvidenceExpiry.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<ConsKeyEvidenceExpiry>, I>>(object: I): ConsKeyEvidenceExpiry {
+    const message = createBaseConsKeyEvidenceExpiry();
+    message.validatorAddress = object.validatorAddress ?? new Uint8Array(0);
+    message.expiryTime = object.expiryTime ?? undefined;
+    message.expiryHeight = (object.expiryHeight !== undefined && object.expiryHeight !== null)
+      ? BigInt(object.expiryHeight)
+      : 0n;
+    return message;
+  },
+};
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if ((globalThis as any).Buffer) {
+    return Uint8Array.from((globalThis as any).Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if ((globalThis as any).Buffer) {
+    return (globalThis as any).Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(globalThis.String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
+}
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | bigint | undefined;
 

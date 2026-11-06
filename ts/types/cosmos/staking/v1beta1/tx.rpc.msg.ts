@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Rpc } from "../../../helpers";
-import { BinaryReader } from "../../../binary";
-import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { BinaryReader } from "@bufbuild/protobuf/wire";
+import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgRotateConsPubKey, MsgRotateConsPubKeyResponse } from "./tx";
 /** Msg defines the staking Msg service. */
 export interface Msg {
   /** CreateValidator defines a method for creating a new validator. */
@@ -33,6 +33,7 @@ export interface Msg {
    * parameters.
    */
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse>;
+  rotateConsPubKey(request: MsgRotateConsPubKey): Promise<MsgRotateConsPubKeyResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -45,6 +46,7 @@ export class MsgClientImpl implements Msg {
     this.undelegate = this.undelegate.bind(this);
     this.cancelUnbondingDelegation = this.cancelUnbondingDelegation.bind(this);
     this.updateParams = this.updateParams.bind(this);
+    this.rotateConsPubKey = this.rotateConsPubKey.bind(this);
   }
   createValidator(request: MsgCreateValidator): Promise<MsgCreateValidatorResponse> {
     const data = MsgCreateValidator.encode(request).finish();
@@ -80,5 +82,10 @@ export class MsgClientImpl implements Msg {
     const data = MsgUpdateParams.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "UpdateParams", data);
     return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
+  }
+  rotateConsPubKey(request: MsgRotateConsPubKey): Promise<MsgRotateConsPubKeyResponse> {
+    const data = MsgRotateConsPubKey.encode(request).finish();
+    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "RotateConsPubKey", data);
+    return promise.then(data => MsgRotateConsPubKeyResponse.decode(new BinaryReader(data)));
   }
 }

@@ -122,7 +122,7 @@ namespace Cosmos.Staking.V1Beta1 {
             "AyABKAlCIdK0LR1jb3Ntb3MuVmFsaWRhdG9yQWRkcmVzc1N0cmluZ1ITdmFs",
             "aWRhdG9yRHN0QWRkcmVzcxJOCgdlbnRyaWVzGAQgAygLMikuY29zbW9zLnN0",
             "YWtpbmcudjFiZXRhMS5SZWRlbGVnYXRpb25FbnRyeUIJyN4fAKjnsCoBUgdl",
-            "bnRyaWVzOgiIoB8A6KAfACKcAwoGUGFyYW1zEk8KDnVuYm9uZGluZ190aW1l",
+            "bnRyaWVzOgiIoB8A6KAfACLsAwoGUGFyYW1zEk8KDnVuYm9uZGluZ190aW1l",
             "GAEgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQg3I3h8AmN8fAajn",
             "sCoBUg11bmJvbmRpbmdUaW1lEiUKDm1heF92YWxpZGF0b3JzGAIgASgNUg1t",
             "YXhWYWxpZGF0b3JzEh8KC21heF9lbnRyaWVzGAMgASgNUgptYXhFbnRyaWVz",
@@ -130,36 +130,42 @@ namespace Cosmos.Staking.V1Beta1 {
             "ZXMSHQoKYm9uZF9kZW5vbRgFIAEoCVIJYm9uZERlbm9tEoQBChNtaW5fY29t",
             "bWlzc2lvbl9yYXRlGAYgASgJQlTI3h8A2t4fG2Nvc21vc3Nkay5pby9tYXRo",
             "LkxlZ2FjeURlY/LeHxp5YW1sOiJtaW5fY29tbWlzc2lvbl9yYXRlItK0LQpj",
-            "b3Ntb3MuRGVjqOewKgFSEW1pbkNvbW1pc3Npb25SYXRlOiTooB8BiuewKhtj",
-            "b3Ntb3Mtc2RrL3gvc3Rha2luZy9QYXJhbXMiqQEKEkRlbGVnYXRpb25SZXNw",
-            "b25zZRJNCgpkZWxlZ2F0aW9uGAEgASgLMiIuY29zbW9zLnN0YWtpbmcudjFi",
-            "ZXRhMS5EZWxlZ2F0aW9uQgnI3h8AqOewKgFSCmRlbGVnYXRpb24SPgoHYmFs",
-            "YW5jZRgCIAEoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIJyN4fAKjn",
-            "sCoBUgdiYWxhbmNlOgTooB8AIs0BChlSZWRlbGVnYXRpb25FbnRyeVJlc3Bv",
-            "bnNlEmMKEnJlZGVsZWdhdGlvbl9lbnRyeRgBIAEoCzIpLmNvc21vcy5zdGFr",
-            "aW5nLnYxYmV0YTEuUmVkZWxlZ2F0aW9uRW50cnlCCcjeHwCo57AqAVIRcmVk",
-            "ZWxlZ2F0aW9uRW50cnkSRQoHYmFsYW5jZRgEIAEoCUIryN4fANreHxVjb3Nt",
-            "b3NzZGsuaW8vbWF0aC5JbnTStC0KY29zbW9zLkludFIHYmFsYW5jZToE6KAf",
-            "ASLJAQoUUmVkZWxlZ2F0aW9uUmVzcG9uc2USUwoMcmVkZWxlZ2F0aW9uGAEg",
-            "ASgLMiQuY29zbW9zLnN0YWtpbmcudjFiZXRhMS5SZWRlbGVnYXRpb25CCcje",
-            "HwCo57AqAVIMcmVkZWxlZ2F0aW9uElYKB2VudHJpZXMYAiADKAsyMS5jb3Nt",
-            "b3Muc3Rha2luZy52MWJldGExLlJlZGVsZWdhdGlvbkVudHJ5UmVzcG9uc2VC",
-            "CcjeHwCo57AqAVIHZW50cmllczoE6KAfACLrAQoEUG9vbBJxChFub3RfYm9u",
-            "ZGVkX3Rva2VucxgBIAEoCUJFyN4fANreHxVjb3Ntb3NzZGsuaW8vbWF0aC5J",
-            "bnTq3h8Rbm90X2JvbmRlZF90b2tlbnPStC0KY29zbW9zLkludKjnsCoBUg9u",
-            "b3RCb25kZWRUb2tlbnMSZgoNYm9uZGVkX3Rva2VucxgCIAEoCUJByN4fANre",
-            "HxVjb3Ntb3NzZGsuaW8vbWF0aC5JbnTq3h8NYm9uZGVkX3Rva2Vuc9K0LQpj",
-            "b3Ntb3MuSW50qOewKgFSDGJvbmRlZFRva2VuczoI6KAfAfCgHwEiWQoQVmFs",
-            "aWRhdG9yVXBkYXRlcxJFCgd1cGRhdGVzGAEgAygLMiAudGVuZGVybWludC5h",
-            "YmNpLlZhbGlkYXRvclVwZGF0ZUIJyN4fAKjnsCoBUgd1cGRhdGVzKrYBCgpC",
-            "b25kU3RhdHVzEiwKF0JPTkRfU1RBVFVTX1VOU1BFQ0lGSUVEEAAaD4qdIAtV",
-            "bnNwZWNpZmllZBImChRCT05EX1NUQVRVU19VTkJPTkRFRBABGgyKnSAIVW5i",
-            "b25kZWQSKAoVQk9ORF9TVEFUVVNfVU5CT05ESU5HEAIaDYqdIAlVbmJvbmRp",
-            "bmcSIgoSQk9ORF9TVEFUVVNfQk9OREVEEAMaCoqdIAZCb25kZWQaBIijHgAq",
-            "XQoKSW5mcmFjdGlvbhIaChZJTkZSQUNUSU9OX1VOU1BFQ0lGSUVEEAASGgoW",
-            "SU5GUkFDVElPTl9ET1VCTEVfU0lHThABEhcKE0lORlJBQ1RJT05fRE9XTlRJ",
-            "TUUQAkIuWixnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3gvc3Rha2lu",
-            "Zy90eXBlc2IGcHJvdG8z"));
+            "b3Ntb3MuRGVjqOewKgFSEW1pbkNvbW1pc3Npb25SYXRlEk4KEGtleV9yb3Rh",
+            "dGlvbl9mZWUYByABKAsyGS5jb3Ntb3MuYmFzZS52MWJldGExLkNvaW5CCcje",
+            "HwCo57AqAVIOa2V5Um90YXRpb25GZWU6JOigHwGK57AqG2Nvc21vcy1zZGsv",
+            "eC9zdGFraW5nL1BhcmFtcyKpAQoSRGVsZWdhdGlvblJlc3BvbnNlEk0KCmRl",
+            "bGVnYXRpb24YASABKAsyIi5jb3Ntb3Muc3Rha2luZy52MWJldGExLkRlbGVn",
+            "YXRpb25CCcjeHwCo57AqAVIKZGVsZWdhdGlvbhI+CgdiYWxhbmNlGAIgASgL",
+            "MhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQgnI3h8AqOewKgFSB2JhbGFu",
+            "Y2U6BOigHwAizQEKGVJlZGVsZWdhdGlvbkVudHJ5UmVzcG9uc2USYwoScmVk",
+            "ZWxlZ2F0aW9uX2VudHJ5GAEgASgLMikuY29zbW9zLnN0YWtpbmcudjFiZXRh",
+            "MS5SZWRlbGVnYXRpb25FbnRyeUIJyN4fAKjnsCoBUhFyZWRlbGVnYXRpb25F",
+            "bnRyeRJFCgdiYWxhbmNlGAQgASgJQivI3h8A2t4fFWNvc21vc3Nkay5pby9t",
+            "YXRoLkludNK0LQpjb3Ntb3MuSW50UgdiYWxhbmNlOgTooB8BIskBChRSZWRl",
+            "bGVnYXRpb25SZXNwb25zZRJTCgxyZWRlbGVnYXRpb24YASABKAsyJC5jb3Nt",
+            "b3Muc3Rha2luZy52MWJldGExLlJlZGVsZWdhdGlvbkIJyN4fAKjnsCoBUgxy",
+            "ZWRlbGVnYXRpb24SVgoHZW50cmllcxgCIAMoCzIxLmNvc21vcy5zdGFraW5n",
+            "LnYxYmV0YTEuUmVkZWxlZ2F0aW9uRW50cnlSZXNwb25zZUIJyN4fAKjnsCoB",
+            "UgdlbnRyaWVzOgTooB8AIusBCgRQb29sEnEKEW5vdF9ib25kZWRfdG9rZW5z",
+            "GAEgASgJQkXI3h8A2t4fFWNvc21vc3Nkay5pby9tYXRoLkludOreHxFub3Rf",
+            "Ym9uZGVkX3Rva2Vuc9K0LQpjb3Ntb3MuSW50qOewKgFSD25vdEJvbmRlZFRv",
+            "a2VucxJmCg1ib25kZWRfdG9rZW5zGAIgASgJQkHI3h8A2t4fFWNvc21vc3Nk",
+            "ay5pby9tYXRoLkludOreHw1ib25kZWRfdG9rZW5z0rQtCmNvc21vcy5JbnSo",
+            "57AqAVIMYm9uZGVkVG9rZW5zOgjooB8B8KAfASJZChBWYWxpZGF0b3JVcGRh",
+            "dGVzEkUKB3VwZGF0ZXMYASADKAsyIC50ZW5kZXJtaW50LmFiY2kuVmFsaWRh",
+            "dG9yVXBkYXRlQgnI3h8AqOewKgFSB3VwZGF0ZXMitQEKFUNvbnNLZXlFdmlk",
+            "ZW5jZUV4cGlyeRIrChF2YWxpZGF0b3JfYWRkcmVzcxgBIAEoDFIQdmFsaWRh",
+            "dG9yQWRkcmVzcxJKCgtleHBpcnlfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90",
+            "b2J1Zi5UaW1lc3RhbXBCDcjeHwCQ3x8BqOewKgFSCmV4cGlyeVRpbWUSIwoN",
+            "ZXhwaXJ5X2hlaWdodBgDIAEoA1IMZXhwaXJ5SGVpZ2h0KrYBCgpCb25kU3Rh",
+            "dHVzEiwKF0JPTkRfU1RBVFVTX1VOU1BFQ0lGSUVEEAAaD4qdIAtVbnNwZWNp",
+            "ZmllZBImChRCT05EX1NUQVRVU19VTkJPTkRFRBABGgyKnSAIVW5ib25kZWQS",
+            "KAoVQk9ORF9TVEFUVVNfVU5CT05ESU5HEAIaDYqdIAlVbmJvbmRpbmcSIgoS",
+            "Qk9ORF9TVEFUVVNfQk9OREVEEAMaCoqdIAZCb25kZWQaBIijHgAqXQoKSW5m",
+            "cmFjdGlvbhIaChZJTkZSQUNUSU9OX1VOU1BFQ0lGSUVEEAASGgoWSU5GUkFD",
+            "VElPTl9ET1VCTEVfU0lHThABEhcKE0lORlJBQ1RJT05fRE9XTlRJTUUQAkIu",
+            "WixnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3gvc3Rha2luZy90eXBl",
+            "c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::CosmosProto.CosmosReflection.Descriptor, global::Cosmos.Base.V1Beta1.CoinReflection.Descriptor, global::Amino.AminoReflection.Descriptor, global::Tendermint.Types.TypesReflection.Descriptor, global::Tendermint.Abci.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Cosmos.Staking.V1Beta1.BondStatus), typeof(global::Cosmos.Staking.V1Beta1.Infraction), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -178,12 +184,13 @@ namespace Cosmos.Staking.V1Beta1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.UnbondingDelegationEntry), global::Cosmos.Staking.V1Beta1.UnbondingDelegationEntry.Parser, new[]{ "CreationHeight", "CompletionTime", "InitialBalance", "Balance", "UnbondingId", "UnbondingOnHoldRefCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.RedelegationEntry), global::Cosmos.Staking.V1Beta1.RedelegationEntry.Parser, new[]{ "CreationHeight", "CompletionTime", "InitialBalance", "SharesDst", "UnbondingId", "UnbondingOnHoldRefCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.Redelegation), global::Cosmos.Staking.V1Beta1.Redelegation.Parser, new[]{ "DelegatorAddress", "ValidatorSrcAddress", "ValidatorDstAddress", "Entries" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.Params), global::Cosmos.Staking.V1Beta1.Params.Parser, new[]{ "UnbondingTime", "MaxValidators", "MaxEntries", "HistoricalEntries", "BondDenom", "MinCommissionRate" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.Params), global::Cosmos.Staking.V1Beta1.Params.Parser, new[]{ "UnbondingTime", "MaxValidators", "MaxEntries", "HistoricalEntries", "BondDenom", "MinCommissionRate", "KeyRotationFee" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.DelegationResponse), global::Cosmos.Staking.V1Beta1.DelegationResponse.Parser, new[]{ "Delegation", "Balance" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.RedelegationEntryResponse), global::Cosmos.Staking.V1Beta1.RedelegationEntryResponse.Parser, new[]{ "RedelegationEntry", "Balance" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.RedelegationResponse), global::Cosmos.Staking.V1Beta1.RedelegationResponse.Parser, new[]{ "Redelegation", "Entries" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.Pool), global::Cosmos.Staking.V1Beta1.Pool.Parser, new[]{ "NotBondedTokens", "BondedTokens" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.ValidatorUpdates), global::Cosmos.Staking.V1Beta1.ValidatorUpdates.Parser, new[]{ "Updates" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.ValidatorUpdates), global::Cosmos.Staking.V1Beta1.ValidatorUpdates.Parser, new[]{ "Updates" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cosmos.Staking.V1Beta1.ConsKeyEvidenceExpiry), global::Cosmos.Staking.V1Beta1.ConsKeyEvidenceExpiry.Parser, new[]{ "ValidatorAddress", "ExpiryTime", "ExpiryHeight" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4797,6 +4804,7 @@ namespace Cosmos.Staking.V1Beta1 {
       historicalEntries_ = other.historicalEntries_;
       bondDenom_ = other.bondDenom_;
       minCommissionRate_ = other.minCommissionRate_;
+      keyRotationFee_ = other.keyRotationFee_ != null ? other.keyRotationFee_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4896,6 +4904,21 @@ namespace Cosmos.Staking.V1Beta1 {
       }
     }
 
+    /// <summary>Field number for the "key_rotation_fee" field.</summary>
+    public const int KeyRotationFeeFieldNumber = 7;
+    private global::Cosmos.Base.V1Beta1.Coin keyRotationFee_;
+    /// <summary>
+    /// key_rotation_fee is the fee charged when rotating a validator's consensus key.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Cosmos.Base.V1Beta1.Coin KeyRotationFee {
+      get { return keyRotationFee_; }
+      set {
+        keyRotationFee_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -4917,6 +4940,7 @@ namespace Cosmos.Staking.V1Beta1 {
       if (HistoricalEntries != other.HistoricalEntries) return false;
       if (BondDenom != other.BondDenom) return false;
       if (MinCommissionRate != other.MinCommissionRate) return false;
+      if (!object.Equals(KeyRotationFee, other.KeyRotationFee)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4930,6 +4954,7 @@ namespace Cosmos.Staking.V1Beta1 {
       if (HistoricalEntries != 0) hash ^= HistoricalEntries.GetHashCode();
       if (BondDenom.Length != 0) hash ^= BondDenom.GetHashCode();
       if (MinCommissionRate.Length != 0) hash ^= MinCommissionRate.GetHashCode();
+      if (keyRotationFee_ != null) hash ^= KeyRotationFee.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4972,6 +4997,10 @@ namespace Cosmos.Staking.V1Beta1 {
         output.WriteRawTag(50);
         output.WriteString(MinCommissionRate);
       }
+      if (keyRotationFee_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(KeyRotationFee);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5006,6 +5035,10 @@ namespace Cosmos.Staking.V1Beta1 {
         output.WriteRawTag(50);
         output.WriteString(MinCommissionRate);
       }
+      if (keyRotationFee_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(KeyRotationFee);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5033,6 +5066,9 @@ namespace Cosmos.Staking.V1Beta1 {
       }
       if (MinCommissionRate.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(MinCommissionRate);
+      }
+      if (keyRotationFee_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(KeyRotationFee);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5066,6 +5102,12 @@ namespace Cosmos.Staking.V1Beta1 {
       }
       if (other.MinCommissionRate.Length != 0) {
         MinCommissionRate = other.MinCommissionRate;
+      }
+      if (other.keyRotationFee_ != null) {
+        if (keyRotationFee_ == null) {
+          KeyRotationFee = new global::Cosmos.Base.V1Beta1.Coin();
+        }
+        KeyRotationFee.MergeFrom(other.KeyRotationFee);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5109,6 +5151,13 @@ namespace Cosmos.Staking.V1Beta1 {
             MinCommissionRate = input.ReadString();
             break;
           }
+          case 58: {
+            if (keyRotationFee_ == null) {
+              KeyRotationFee = new global::Cosmos.Base.V1Beta1.Coin();
+            }
+            input.ReadMessage(KeyRotationFee);
+            break;
+          }
         }
       }
     #endif
@@ -5149,6 +5198,13 @@ namespace Cosmos.Staking.V1Beta1 {
           }
           case 50: {
             MinCommissionRate = input.ReadString();
+            break;
+          }
+          case 58: {
+            if (keyRotationFee_ == null) {
+              KeyRotationFee = new global::Cosmos.Base.V1Beta1.Coin();
+            }
+            input.ReadMessage(KeyRotationFee);
             break;
           }
         }
@@ -6278,6 +6334,286 @@ namespace Cosmos.Staking.V1Beta1 {
             break;
           case 10: {
             updates_.AddEntriesFrom(ref input, _repeated_updates_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// ConsKeyEvidenceExpiry is the value stored in the evidence-lock retirement
+  /// queue: the validator that rotated and the time and height at which its
+  /// RotatedFrom lock may be retired because equivocation evidence for the
+  /// rotated-away key can no longer be admitted. The queue is keyed by expiry_time
+  /// for time-ordered iteration; expiry_time is duplicated here so the record is
+  /// self-describing.
+  /// </summary>
+  public sealed partial class ConsKeyEvidenceExpiry : pb::IMessage<ConsKeyEvidenceExpiry>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ConsKeyEvidenceExpiry> _parser = new pb::MessageParser<ConsKeyEvidenceExpiry>(() => new ConsKeyEvidenceExpiry());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ConsKeyEvidenceExpiry> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Cosmos.Staking.V1Beta1.StakingReflection.Descriptor.MessageTypes[21]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ConsKeyEvidenceExpiry() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ConsKeyEvidenceExpiry(ConsKeyEvidenceExpiry other) : this() {
+      validatorAddress_ = other.validatorAddress_;
+      expiryTime_ = other.expiryTime_ != null ? other.expiryTime_.Clone() : null;
+      expiryHeight_ = other.expiryHeight_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ConsKeyEvidenceExpiry Clone() {
+      return new ConsKeyEvidenceExpiry(this);
+    }
+
+    /// <summary>Field number for the "validator_address" field.</summary>
+    public const int ValidatorAddressFieldNumber = 1;
+    private pb::ByteString validatorAddress_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString ValidatorAddress {
+      get { return validatorAddress_; }
+      set {
+        validatorAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "expiry_time" field.</summary>
+    public const int ExpiryTimeFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp expiryTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp ExpiryTime {
+      get { return expiryTime_; }
+      set {
+        expiryTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "expiry_height" field.</summary>
+    public const int ExpiryHeightFieldNumber = 3;
+    private long expiryHeight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ExpiryHeight {
+      get { return expiryHeight_; }
+      set {
+        expiryHeight_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ConsKeyEvidenceExpiry);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ConsKeyEvidenceExpiry other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ValidatorAddress != other.ValidatorAddress) return false;
+      if (!object.Equals(ExpiryTime, other.ExpiryTime)) return false;
+      if (ExpiryHeight != other.ExpiryHeight) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ValidatorAddress.Length != 0) hash ^= ValidatorAddress.GetHashCode();
+      if (expiryTime_ != null) hash ^= ExpiryTime.GetHashCode();
+      if (ExpiryHeight != 0L) hash ^= ExpiryHeight.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ValidatorAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(ValidatorAddress);
+      }
+      if (expiryTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ExpiryTime);
+      }
+      if (ExpiryHeight != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(ExpiryHeight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ValidatorAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(ValidatorAddress);
+      }
+      if (expiryTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ExpiryTime);
+      }
+      if (ExpiryHeight != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(ExpiryHeight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ValidatorAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ValidatorAddress);
+      }
+      if (expiryTime_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExpiryTime);
+      }
+      if (ExpiryHeight != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpiryHeight);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ConsKeyEvidenceExpiry other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ValidatorAddress.Length != 0) {
+        ValidatorAddress = other.ValidatorAddress;
+      }
+      if (other.expiryTime_ != null) {
+        if (expiryTime_ == null) {
+          ExpiryTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        ExpiryTime.MergeFrom(other.ExpiryTime);
+      }
+      if (other.ExpiryHeight != 0L) {
+        ExpiryHeight = other.ExpiryHeight;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ValidatorAddress = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            if (expiryTime_ == null) {
+              ExpiryTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ExpiryTime);
+            break;
+          }
+          case 24: {
+            ExpiryHeight = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ValidatorAddress = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            if (expiryTime_ == null) {
+              ExpiryTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ExpiryTime);
+            break;
+          }
+          case 24: {
+            ExpiryHeight = input.ReadInt64();
             break;
           }
         }

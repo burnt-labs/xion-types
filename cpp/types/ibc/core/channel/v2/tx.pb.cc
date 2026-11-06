@@ -378,7 +378,7 @@ const char descriptor_table_protodef_ibc_2fcore_2fchannel_2fv2_2ftx_2eproto[] PR
     "gement\022\'.ibc.core.channel.v2.MsgAcknowle"
     "dgement\032/.ibc.core.channel.v2.MsgAcknowl"
     "edgementResponse\032\005\200\347\260*\001B\?Z=github.com/co"
-    "smos/ibc-go/v10/modules/core/04-channel/"
+    "smos/ibc-go/v11/modules/core/04-channel/"
     "v2/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2fcore_2fchannel_2fv2_2ftx_2eproto_deps[4] =

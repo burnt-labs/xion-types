@@ -49,14 +49,17 @@ struct Xion_Dkim_V1_GenesisState: Sendable {
   fileprivate var _params: Xion_Dkim_V1_Params? = nil
 }
 
-/// IndexRange defines a range of indices [start, end) in the public inputs array.
+/// IndexRange defines a range of indices [start, end) in the public inputs
+/// array.
 struct Xion_Dkim_V1_IndexRange: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// start is the inclusive lower bound of the index range.
   var start: UInt64 = 0
 
+  /// end is the exclusive upper bound of the index range.
   var end: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -64,16 +67,20 @@ struct Xion_Dkim_V1_IndexRange: Sendable {
   init() {}
 }
 
-/// PublicInputIndices defines the indices for extracting data from public inputs.
+/// PublicInputIndices defines the indices for extracting data from public
+/// inputs.
 struct Xion_Dkim_V1_PublicInputIndices: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// min_length is the minimum required length of the public inputs array.
   var minLength: UInt64 = 0
 
+  /// email_hash_index is the index of the email hash in the public inputs.
   var emailHashIndex: UInt64 = 0
 
+  /// dkim_domain_range is the index range for the DKIM domain in public inputs.
   var dkimDomainRange: Xion_Dkim_V1_IndexRange {
     get {return _dkimDomainRange ?? Xion_Dkim_V1_IndexRange()}
     set {_dkimDomainRange = newValue}
@@ -83,8 +90,11 @@ struct Xion_Dkim_V1_PublicInputIndices: Sendable {
   /// Clears the value of `dkimDomainRange`. Subsequent reads from it will return its default value.
   mutating func clearDkimDomainRange() {self._dkimDomainRange = nil}
 
+  /// dkim_hash_index is the index of the DKIM signature hash in public inputs.
   var dkimHashIndex: UInt64 = 0
 
+  /// tx_bytes_range is the index range for the transaction bytes in public
+  /// inputs.
   var txBytesRange: Xion_Dkim_V1_IndexRange {
     get {return _txBytesRange ?? Xion_Dkim_V1_IndexRange()}
     set {_txBytesRange = newValue}
@@ -94,6 +104,7 @@ struct Xion_Dkim_V1_PublicInputIndices: Sendable {
   /// Clears the value of `txBytesRange`. Subsequent reads from it will return its default value.
   mutating func clearTxBytesRange() {self._txBytesRange = nil}
 
+  /// email_host_range is the index range for the email host in public inputs.
   var emailHostRange: Xion_Dkim_V1_IndexRange {
     get {return _emailHostRange ?? Xion_Dkim_V1_IndexRange()}
     set {_emailHostRange = newValue}
@@ -103,6 +114,8 @@ struct Xion_Dkim_V1_PublicInputIndices: Sendable {
   /// Clears the value of `emailHostRange`. Subsequent reads from it will return its default value.
   mutating func clearEmailHostRange() {self._emailHostRange = nil}
 
+  /// email_subject_range is the index range for the email subject in public
+  /// inputs.
   var emailSubjectRange: Xion_Dkim_V1_IndexRange {
     get {return _emailSubjectRange ?? Xion_Dkim_V1_IndexRange()}
     set {_emailSubjectRange = newValue}
@@ -135,7 +148,8 @@ struct Xion_Dkim_V1_Params: Sendable {
   /// decoded).
   var maxPubkeySizeBytes: UInt64 = 0
 
-  /// public_input_indices defines the indices for extracting data from public inputs.
+  /// public_input_indices defines the indices for extracting data from public
+  /// inputs.
   var publicInputIndices: Xion_Dkim_V1_PublicInputIndices {
     get {return _publicInputIndices ?? Xion_Dkim_V1_PublicInputIndices()}
     set {_publicInputIndices = newValue}

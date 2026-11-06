@@ -3965,7 +3965,7 @@ public final class Genesis {
       "uence\022\027\n\007port_id\030\001 \001(\tR\006portId\022\035\n\nchanne" +
       "l_id\030\002 \001(\tR\tchannelId\022\032\n\010sequence\030\003 \001(\004R" +
       "\010sequenceB<Z:github.com/cosmos/ibc-go/v1" +
-      "0/modules/core/04-channel/typesb\006proto3"
+      "1/modules/core/04-channel/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

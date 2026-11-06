@@ -19,11 +19,19 @@ public final class Tx {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * sender is the authority address requesting the update.
+     * </pre>
+     *
      * <code>string sender = 1 [json_name = "sender"];</code>
      * @return The sender.
      */
     java.lang.String getSender();
     /**
+     * <pre>
+     * sender is the authority address requesting the update.
+     * </pre>
+     *
      * <code>string sender = 1 [json_name = "sender"];</code>
      * @return The bytes for sender.
      */
@@ -31,16 +39,28 @@ public final class Tx {
         getSenderBytes();
 
     /**
+     * <pre>
+     * params is the new module parameters to apply.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      * @return Whether the params field is set.
      */
     boolean hasParams();
     /**
+     * <pre>
+     * params is the new module parameters to apply.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      * @return The params.
      */
     abstractaccount.v1.ParamsOuterClass.Params getParams();
     /**
+     * <pre>
+     * params is the new module parameters to apply.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      */
     abstractaccount.v1.ParamsOuterClass.ParamsOrBuilder getParamsOrBuilder();
@@ -90,6 +110,10 @@ public final class Tx {
     @SuppressWarnings("serial")
     private volatile java.lang.Object sender_ = "";
     /**
+     * <pre>
+     * sender is the authority address requesting the update.
+     * </pre>
+     *
      * <code>string sender = 1 [json_name = "sender"];</code>
      * @return The sender.
      */
@@ -107,6 +131,10 @@ public final class Tx {
       }
     }
     /**
+     * <pre>
+     * sender is the authority address requesting the update.
+     * </pre>
+     *
      * <code>string sender = 1 [json_name = "sender"];</code>
      * @return The bytes for sender.
      */
@@ -128,6 +156,10 @@ public final class Tx {
     public static final int PARAMS_FIELD_NUMBER = 2;
     private abstractaccount.v1.ParamsOuterClass.Params params_;
     /**
+     * <pre>
+     * params is the new module parameters to apply.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      * @return Whether the params field is set.
      */
@@ -136,6 +168,10 @@ public final class Tx {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
+     * <pre>
+     * params is the new module parameters to apply.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      * @return The params.
      */
@@ -144,6 +180,10 @@ public final class Tx {
       return params_ == null ? abstractaccount.v1.ParamsOuterClass.Params.getDefaultInstance() : params_;
     }
     /**
+     * <pre>
+     * params is the new module parameters to apply.
+     * </pre>
+     *
      * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
      */
     @java.lang.Override
@@ -528,6 +568,10 @@ public final class Tx {
 
       private java.lang.Object sender_ = "";
       /**
+       * <pre>
+       * sender is the authority address requesting the update.
+       * </pre>
+       *
        * <code>string sender = 1 [json_name = "sender"];</code>
        * @return The sender.
        */
@@ -544,6 +588,10 @@ public final class Tx {
         }
       }
       /**
+       * <pre>
+       * sender is the authority address requesting the update.
+       * </pre>
+       *
        * <code>string sender = 1 [json_name = "sender"];</code>
        * @return The bytes for sender.
        */
@@ -561,6 +609,10 @@ public final class Tx {
         }
       }
       /**
+       * <pre>
+       * sender is the authority address requesting the update.
+       * </pre>
+       *
        * <code>string sender = 1 [json_name = "sender"];</code>
        * @param value The sender to set.
        * @return This builder for chaining.
@@ -574,6 +626,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * sender is the authority address requesting the update.
+       * </pre>
+       *
        * <code>string sender = 1 [json_name = "sender"];</code>
        * @return This builder for chaining.
        */
@@ -584,6 +640,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * sender is the authority address requesting the update.
+       * </pre>
+       *
        * <code>string sender = 1 [json_name = "sender"];</code>
        * @param value The bytes for sender to set.
        * @return This builder for chaining.
@@ -602,6 +662,10 @@ public final class Tx {
       private com.google.protobuf.SingleFieldBuilderV3<
           abstractaccount.v1.ParamsOuterClass.Params, abstractaccount.v1.ParamsOuterClass.Params.Builder, abstractaccount.v1.ParamsOuterClass.ParamsOrBuilder> paramsBuilder_;
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        * @return Whether the params field is set.
        */
@@ -609,6 +673,10 @@ public final class Tx {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        * @return The params.
        */
@@ -620,6 +688,10 @@ public final class Tx {
         }
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       public Builder setParams(abstractaccount.v1.ParamsOuterClass.Params value) {
@@ -636,6 +708,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       public Builder setParams(
@@ -650,6 +726,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       public Builder mergeParams(abstractaccount.v1.ParamsOuterClass.Params value) {
@@ -671,6 +751,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       public Builder clearParams() {
@@ -684,6 +768,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       public abstractaccount.v1.ParamsOuterClass.Params.Builder getParamsBuilder() {
@@ -692,6 +780,10 @@ public final class Tx {
         return getParamsFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       public abstractaccount.v1.ParamsOuterClass.ParamsOrBuilder getParamsOrBuilder() {
@@ -703,6 +795,10 @@ public final class Tx {
         }
       }
       /**
+       * <pre>
+       * params is the new module parameters to apply.
+       * </pre>
+       *
        * <code>.abstractaccount.v1.Params params = 2 [json_name = "params"];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1213,7 +1309,8 @@ public final class Tx {
 
     /**
      * <pre>
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      * </pre>
      *
      * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
@@ -1233,7 +1330,7 @@ public final class Tx {
 
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1242,7 +1339,7 @@ public final class Tx {
         getFundsList();
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1250,7 +1347,7 @@ public final class Tx {
     cosmos.base.v1beta1.CoinOuterClass.Coin getFunds(int index);
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1258,7 +1355,7 @@ public final class Tx {
     int getFundsCount();
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1267,7 +1364,7 @@ public final class Tx {
         getFundsOrBuilderList();
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1277,7 +1374,7 @@ public final class Tx {
 
     /**
      * <pre>
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      * </pre>
      *
@@ -1380,7 +1477,8 @@ public final class Tx {
     private long codeId_ = 0L;
     /**
      * <pre>
-     * CodeID indicates which wasm binary code is to be used for this contract
+     * CodeID selects the allowed implementation installed after deterministic
+     * direct instantiation. It does not participate in address derivation.
      * </pre>
      *
      * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
@@ -1411,7 +1509,7 @@ public final class Tx {
     private java.util.List<cosmos.base.v1beta1.CoinOuterClass.Coin> funds_;
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1422,7 +1520,7 @@ public final class Tx {
     }
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1434,7 +1532,7 @@ public final class Tx {
     }
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1445,7 +1543,7 @@ public final class Tx {
     }
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1456,7 +1554,7 @@ public final class Tx {
     }
     /**
      * <pre>
-     * Funds are coins to be deposited to the contract on instantiattion
+     * Funds are coins to be deposited to the contract on instantiation
      * </pre>
      *
      * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -1471,7 +1569,7 @@ public final class Tx {
     private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * Salt is an arbinary value to be used in deriving the account address.
+     * Salt is an arbitrary value to be used in deriving the account address.
      * Max 64 bytes.
      * </pre>
      *
@@ -2050,7 +2148,8 @@ public final class Tx {
       private long codeId_ ;
       /**
        * <pre>
-       * CodeID indicates which wasm binary code is to be used for this contract
+       * CodeID selects the allowed implementation installed after deterministic
+       * direct instantiation. It does not participate in address derivation.
        * </pre>
        *
        * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
@@ -2062,7 +2161,8 @@ public final class Tx {
       }
       /**
        * <pre>
-       * CodeID indicates which wasm binary code is to be used for this contract
+       * CodeID selects the allowed implementation installed after deterministic
+       * direct instantiation. It does not participate in address derivation.
        * </pre>
        *
        * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
@@ -2078,7 +2178,8 @@ public final class Tx {
       }
       /**
        * <pre>
-       * CodeID indicates which wasm binary code is to be used for this contract
+       * CodeID selects the allowed implementation installed after deterministic
+       * direct instantiation. It does not participate in address derivation.
        * </pre>
        *
        * <code>uint64 code_id = 2 [json_name = "codeId", (.gogoproto.customname) = "CodeID"];</code>
@@ -2149,7 +2250,7 @@ public final class Tx {
 
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2163,7 +2264,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2177,7 +2278,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2191,7 +2292,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2212,7 +2313,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2230,7 +2331,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2250,7 +2351,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2271,7 +2372,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2289,7 +2390,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2307,7 +2408,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2326,7 +2427,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2343,7 +2444,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2360,7 +2461,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2371,7 +2472,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2385,7 +2486,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2400,7 +2501,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2411,7 +2512,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2423,7 +2524,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Funds are coins to be deposited to the contract on instantiattion
+       * Funds are coins to be deposited to the contract on instantiation
        * </pre>
        *
        * <code>repeated .cosmos.base.v1beta1.Coin funds = 4 [json_name = "funds", (.gogoproto.nullable) = false, (.gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];</code>
@@ -2450,7 +2551,7 @@ public final class Tx {
       private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * Salt is an arbinary value to be used in deriving the account address.
+       * Salt is an arbitrary value to be used in deriving the account address.
        * Max 64 bytes.
        * </pre>
        *
@@ -2463,7 +2564,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Salt is an arbinary value to be used in deriving the account address.
+       * Salt is an arbitrary value to be used in deriving the account address.
        * Max 64 bytes.
        * </pre>
        *
@@ -2480,7 +2581,7 @@ public final class Tx {
       }
       /**
        * <pre>
-       * Salt is an arbinary value to be used in deriving the account address.
+       * Salt is an arbitrary value to be used in deriving the account address.
        * Max 64 bytes.
        * </pre>
        *
@@ -2562,11 +2663,19 @@ public final class Tx {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * address is the address of the newly registered account contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address"];</code>
      * @return The address.
      */
     java.lang.String getAddress();
     /**
+     * <pre>
+     * address is the address of the newly registered account contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address"];</code>
      * @return The bytes for address.
      */
@@ -2574,6 +2683,10 @@ public final class Tx {
         getAddressBytes();
 
     /**
+     * <pre>
+     * data is the raw response data from the contract instantiation.
+     * </pre>
+     *
      * <code>bytes data = 2 [json_name = "data"];</code>
      * @return The data.
      */
@@ -2624,6 +2737,10 @@ public final class Tx {
     @SuppressWarnings("serial")
     private volatile java.lang.Object address_ = "";
     /**
+     * <pre>
+     * address is the address of the newly registered account contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address"];</code>
      * @return The address.
      */
@@ -2641,6 +2758,10 @@ public final class Tx {
       }
     }
     /**
+     * <pre>
+     * address is the address of the newly registered account contract.
+     * </pre>
+     *
      * <code>string address = 1 [json_name = "address"];</code>
      * @return The bytes for address.
      */
@@ -2662,6 +2783,10 @@ public final class Tx {
     public static final int DATA_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <pre>
+     * data is the raw response data from the contract instantiation.
+     * </pre>
+     *
      * <code>bytes data = 2 [json_name = "data"];</code>
      * @return The data.
      */
@@ -3025,6 +3150,10 @@ public final class Tx {
 
       private java.lang.Object address_ = "";
       /**
+       * <pre>
+       * address is the address of the newly registered account contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address"];</code>
        * @return The address.
        */
@@ -3041,6 +3170,10 @@ public final class Tx {
         }
       }
       /**
+       * <pre>
+       * address is the address of the newly registered account contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address"];</code>
        * @return The bytes for address.
        */
@@ -3058,6 +3191,10 @@ public final class Tx {
         }
       }
       /**
+       * <pre>
+       * address is the address of the newly registered account contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address"];</code>
        * @param value The address to set.
        * @return This builder for chaining.
@@ -3071,6 +3208,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * address is the address of the newly registered account contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address"];</code>
        * @return This builder for chaining.
        */
@@ -3081,6 +3222,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * address is the address of the newly registered account contract.
+       * </pre>
+       *
        * <code>string address = 1 [json_name = "address"];</code>
        * @param value The bytes for address to set.
        * @return This builder for chaining.
@@ -3097,6 +3242,10 @@ public final class Tx {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       * data is the raw response data from the contract instantiation.
+       * </pre>
+       *
        * <code>bytes data = 2 [json_name = "data"];</code>
        * @return The data.
        */
@@ -3105,6 +3254,10 @@ public final class Tx {
         return data_;
       }
       /**
+       * <pre>
+       * data is the raw response data from the contract instantiation.
+       * </pre>
+       *
        * <code>bytes data = 2 [json_name = "data"];</code>
        * @param value The data to set.
        * @return This builder for chaining.
@@ -3117,6 +3270,10 @@ public final class Tx {
         return this;
       }
       /**
+       * <pre>
+       * data is the raw response data from the contract instantiation.
+       * </pre>
+       *
        * <code>bytes data = 2 [json_name = "data"];</code>
        * @return This builder for chaining.
        */
@@ -3241,9 +3398,8 @@ public final class Tx {
       "eParamsResponse\022i\n\017RegisterAccount\022&.abs" +
       "tractaccount.v1.MsgRegisterAccount\032..abs" +
       "tractaccount.v1.MsgRegisterAccountRespon" +
-      "se\032\005\200\347\260*\001B@Z>github.com/burnt-labs/abstr" +
-      "act-account/x/abstractaccount/typesb\006pro" +
-      "to3"
+      "se\032\005\200\347\260*\001B4Z2github.com/burnt-labs/xion/" +
+      "x/abstractaccount/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

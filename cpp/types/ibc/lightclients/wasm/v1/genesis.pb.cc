@@ -108,7 +108,7 @@ const char descriptor_table_protodef_ibc_2flightclients_2fwasm_2fv1_2fgenesis_2e
     "\004\310\336\037\000R\tcontracts\"/\n\010Contract\022\035\n\ncode_byt"
     "es\030\001 \001(\014R\tcodeBytes:\004\210\240\037\000BBZ@github.com/"
     "cosmos/ibc-go/modules/light-clients/08-w"
-    "asm/v10/typesb\006proto3"
+    "asm/v11/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ibc_2flightclients_2fwasm_2fv1_2fgenesis_2eproto_deps[1] =
     {

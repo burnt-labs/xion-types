@@ -4,11 +4,15 @@
 
 require 'google/protobuf'
 
-require 'xion/jwk/v1/audience_pb'
+require 'amino/amino_pb'
 require 'cosmos/msg/v1/msg_pb'
+require 'cosmos_proto/cosmos_pb'
+require 'gogoproto/gogo_pb'
+require 'xion/jwk/v1/audience_pb'
+require 'xion/jwk/v1/params_pb'
 
 
-descriptor_data = "\n\x14xion/jwk/v1/tx.proto\x12\x0bxion.jwk.v1\x1a\x1axion/jwk/v1/audience.proto\x1a\x17\x63osmos/msg/v1/msg.proto\"U\n\x16MsgCreateAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgCreateAudienceClaimResponse\"U\n\x16MsgDeleteAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgDeleteAudienceClaimResponse\"Y\n\x11MsgCreateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x03 \x01(\tR\x03key:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgCreateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"\x8f\x01\n\x11MsgUpdateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x1b\n\tnew_admin\x18\x02 \x01(\tR\x08newAdmin\x12\x10\n\x03\x61ud\x18\x03 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x04 \x01(\tR\x03key\x12\x17\n\x07new_aud\x18\x05 \x01(\tR\x06newAud:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgUpdateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"G\n\x11MsgDeleteAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud:\n\x82\xe7\xb0*\x05\x61\x64min\"\x1b\n\x19MsgDeleteAudienceResponse2\xe5\x03\n\x03Msg\x12g\n\x13\x43reateAudienceClaim\x12#.xion.jwk.v1.MsgCreateAudienceClaim\x1a+.xion.jwk.v1.MsgCreateAudienceClaimResponse\x12g\n\x13\x44\x65leteAudienceClaim\x12#.xion.jwk.v1.MsgDeleteAudienceClaim\x1a+.xion.jwk.v1.MsgDeleteAudienceClaimResponse\x12X\n\x0e\x43reateAudience\x12\x1e.xion.jwk.v1.MsgCreateAudience\x1a&.xion.jwk.v1.MsgCreateAudienceResponse\x12X\n\x0eUpdateAudience\x12\x1e.xion.jwk.v1.MsgUpdateAudience\x1a&.xion.jwk.v1.MsgUpdateAudienceResponse\x12X\n\x0e\x44\x65leteAudience\x12\x1e.xion.jwk.v1.MsgDeleteAudience\x1a&.xion.jwk.v1.MsgDeleteAudienceResponseB(Z&github.com/burnt-labs/xion/x/jwk/typesb\x06proto3"
+descriptor_data = "\n\x14xion/jwk/v1/tx.proto\x12\x0bxion.jwk.v1\x1a\x11\x61mino/amino.proto\x1a\x17\x63osmos/msg/v1/msg.proto\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x14gogoproto/gogo.proto\x1a\x1axion/jwk/v1/audience.proto\x1a\x18xion/jwk/v1/params.proto\"U\n\x16MsgCreateAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgCreateAudienceClaimResponse\"U\n\x16MsgDeleteAudienceClaim\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x19\n\x08\x61ud_hash\x18\x02 \x01(\x0cR\x07\x61udHash:\n\x82\xe7\xb0*\x05\x61\x64min\" \n\x1eMsgDeleteAudienceClaimResponse\"Y\n\x11MsgCreateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x03 \x01(\tR\x03key:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgCreateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"\x8f\x01\n\x11MsgUpdateAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x1b\n\tnew_admin\x18\x02 \x01(\tR\x08newAdmin\x12\x10\n\x03\x61ud\x18\x03 \x01(\tR\x03\x61ud\x12\x10\n\x03key\x18\x04 \x01(\tR\x03key\x12\x17\n\x07new_aud\x18\x05 \x01(\tR\x06newAud:\n\x82\xe7\xb0*\x05\x61\x64min\"N\n\x19MsgUpdateAudienceResponse\x12\x31\n\x08\x61udience\x18\x01 \x01(\x0b\x32\x15.xion.jwk.v1.AudienceR\x08\x61udience\"G\n\x11MsgDeleteAudience\x12\x14\n\x05\x61\x64min\x18\x01 \x01(\tR\x05\x61\x64min\x12\x10\n\x03\x61ud\x18\x02 \x01(\tR\x03\x61ud:\n\x82\xe7\xb0*\x05\x61\x64min\"\x1b\n\x19MsgDeleteAudienceResponse\"\xa4\x01\n\x0fMsgUpdateParams\x12\x36\n\tauthority\x18\x01 \x01(\tB\x18\xd2\xb4-\x14\x63osmos.AddressStringR\tauthority\x12\x31\n\x06params\x18\x02 \x01(\x0b\x32\x13.xion.jwk.v1.ParamsB\x04\xc8\xde\x1f\x00R\x06params:&\x82\xe7\xb0*\tauthority\x8a\xe7\xb0*\x13jwk/MsgUpdateParams\"\x19\n\x17MsgUpdateParamsResponse2\xc0\x04\n\x03Msg\x12g\n\x13\x43reateAudienceClaim\x12#.xion.jwk.v1.MsgCreateAudienceClaim\x1a+.xion.jwk.v1.MsgCreateAudienceClaimResponse\x12g\n\x13\x44\x65leteAudienceClaim\x12#.xion.jwk.v1.MsgDeleteAudienceClaim\x1a+.xion.jwk.v1.MsgDeleteAudienceClaimResponse\x12X\n\x0e\x43reateAudience\x12\x1e.xion.jwk.v1.MsgCreateAudience\x1a&.xion.jwk.v1.MsgCreateAudienceResponse\x12X\n\x0eUpdateAudience\x12\x1e.xion.jwk.v1.MsgUpdateAudience\x1a&.xion.jwk.v1.MsgUpdateAudienceResponse\x12X\n\x0e\x44\x65leteAudience\x12\x1e.xion.jwk.v1.MsgDeleteAudience\x1a&.xion.jwk.v1.MsgDeleteAudienceResponse\x12R\n\x0cUpdateParams\x12\x1c.xion.jwk.v1.MsgUpdateParams\x1a$.xion.jwk.v1.MsgUpdateParamsResponse\x1a\x05\x80\xe7\xb0*\x01\x42(Z&github.com/burnt-labs/xion/x/jwk/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 
@@ -24,6 +28,7 @@ rescue TypeError => e
   warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
   imports = [
     ["xion.jwk.v1.Audience", "xion/jwk/v1/audience.proto"],
+    ["xion.jwk.v1.Params", "xion/jwk/v1/params.proto"],
   ]
   imports.each do |type_name, expected_filename|
     import_file = pool.lookup(type_name).file_descriptor
@@ -48,6 +53,8 @@ module Xion
       MsgUpdateAudienceResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("xion.jwk.v1.MsgUpdateAudienceResponse").msgclass
       MsgDeleteAudience = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("xion.jwk.v1.MsgDeleteAudience").msgclass
       MsgDeleteAudienceResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("xion.jwk.v1.MsgDeleteAudienceResponse").msgclass
+      MsgUpdateParams = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("xion.jwk.v1.MsgUpdateParams").msgclass
+      MsgUpdateParamsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("xion.jwk.v1.MsgUpdateParamsResponse").msgclass
     end
   end
 end

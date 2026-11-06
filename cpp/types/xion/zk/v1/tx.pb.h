@@ -235,6 +235,7 @@ class MsgAddVKey final :
     kNameFieldNumber = 2,
     kDescriptionFieldNumber = 3,
     kVkeyBytesFieldNumber = 4,
+    kProofSystemFieldNumber = 5,
   };
   // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
   void clear_authority() ;
@@ -300,12 +301,22 @@ class MsgAddVKey final :
   std::string* _internal_mutable_vkey_bytes();
 
   public:
+  // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+  void clear_proof_system() ;
+  ::xion::zk::v1::ProofSystem proof_system() const;
+  void set_proof_system(::xion::zk::v1::ProofSystem value);
+
+  private:
+  ::xion::zk::v1::ProofSystem _internal_proof_system() const;
+  void _internal_set_proof_system(::xion::zk::v1::ProofSystem value);
+
+  public:
   // @@protoc_insertion_point(class_scope:xion.zk.v1.MsgAddVKey)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 4, 0, 54, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 54, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -314,6 +325,7 @@ class MsgAddVKey final :
     ::google::protobuf::internal::ArenaStringPtr name_;
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::google::protobuf::internal::ArenaStringPtr vkey_bytes_;
+    int proof_system_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -611,6 +623,7 @@ class MsgUpdateVKey final :
     kNameFieldNumber = 2,
     kDescriptionFieldNumber = 3,
     kVkeyBytesFieldNumber = 4,
+    kProofSystemFieldNumber = 5,
   };
   // string authority = 1 [json_name = "authority", (.cosmos_proto.scalar) = "cosmos.AddressString"];
   void clear_authority() ;
@@ -676,12 +689,22 @@ class MsgUpdateVKey final :
   std::string* _internal_mutable_vkey_bytes();
 
   public:
+  // .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+  void clear_proof_system() ;
+  ::xion::zk::v1::ProofSystem proof_system() const;
+  void set_proof_system(::xion::zk::v1::ProofSystem value);
+
+  private:
+  ::xion::zk::v1::ProofSystem _internal_proof_system() const;
+  void _internal_set_proof_system(::xion::zk::v1::ProofSystem value);
+
+  public:
   // @@protoc_insertion_point(class_scope:xion.zk.v1.MsgUpdateVKey)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 4, 0, 57, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 57, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -690,6 +713,7 @@ class MsgUpdateVKey final :
     ::google::protobuf::internal::ArenaStringPtr name_;
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::google::protobuf::internal::ArenaStringPtr vkey_bytes_;
+    int proof_system_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1656,6 +1680,28 @@ inline void MsgAddVKey::set_allocated_vkey_bytes(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.MsgAddVKey.vkey_bytes)
 }
 
+// .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+inline void MsgAddVKey::clear_proof_system() {
+  _impl_.proof_system_ = 0;
+}
+inline ::xion::zk::v1::ProofSystem MsgAddVKey::proof_system() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.MsgAddVKey.proof_system)
+  return _internal_proof_system();
+}
+inline void MsgAddVKey::set_proof_system(::xion::zk::v1::ProofSystem value) {
+  _internal_set_proof_system(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.MsgAddVKey.proof_system)
+}
+inline ::xion::zk::v1::ProofSystem MsgAddVKey::_internal_proof_system() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::xion::zk::v1::ProofSystem>(_impl_.proof_system_);
+}
+inline void MsgAddVKey::_internal_set_proof_system(::xion::zk::v1::ProofSystem value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_system_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // MsgAddVKeyResponse
@@ -1888,6 +1934,28 @@ inline void MsgUpdateVKey::set_allocated_vkey_bytes(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:xion.zk.v1.MsgUpdateVKey.vkey_bytes)
+}
+
+// .xion.zk.v1.ProofSystem proof_system = 5 [json_name = "proofSystem"];
+inline void MsgUpdateVKey::clear_proof_system() {
+  _impl_.proof_system_ = 0;
+}
+inline ::xion::zk::v1::ProofSystem MsgUpdateVKey::proof_system() const {
+  // @@protoc_insertion_point(field_get:xion.zk.v1.MsgUpdateVKey.proof_system)
+  return _internal_proof_system();
+}
+inline void MsgUpdateVKey::set_proof_system(::xion::zk::v1::ProofSystem value) {
+  _internal_set_proof_system(value);
+  // @@protoc_insertion_point(field_set:xion.zk.v1.MsgUpdateVKey.proof_system)
+}
+inline ::xion::zk::v1::ProofSystem MsgUpdateVKey::_internal_proof_system() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::xion::zk::v1::ProofSystem>(_impl_.proof_system_);
+}
+inline void MsgUpdateVKey::_internal_set_proof_system(::xion::zk::v1::ProofSystem value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.proof_system_ = value;
 }
 
 // -------------------------------------------------------------------

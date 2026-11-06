@@ -4304,8 +4304,8 @@ public final class Proposal {
       "ECIFIED\020\000\022%\n!HOST_CHAIN_FEE_ABS_STATUS_U" +
       "PDATED\020\001\022&\n\"HOST_CHAIN_FEE_ABS_STATUS_OU" +
       "TDATED\020\002\022$\n HOST_CHAIN_FEE_ABS_STATUS_FR" +
-      "OZEN\020\003B+Z)github.com/burnt-labs/xion/x/f" +
-      "eeabs/typesb\006proto3"
+      "OZEN\020\003B.Z,github.com/burnt-labs/xion/app" +
+      "/legacy/feeabsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

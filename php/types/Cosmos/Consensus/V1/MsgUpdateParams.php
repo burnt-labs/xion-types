@@ -42,6 +42,10 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.tendermint.types.ABCIParams abci = 5 [json_name = "abci", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];</code>
      */
     protected $abci = null;
+    /**
+     * Generated from protobuf field <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     */
+    protected $auth = null;
 
     /**
      * Constructor.
@@ -59,6 +63,7 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
      *     @type \Tendermint\Types\EvidenceParams $evidence
      *     @type \Tendermint\Types\ValidatorParams $validator
      *     @type \Tendermint\Types\ABCIParams $abci
+     *     @type \Tendermint\Types\AuthorityParams $auth
      * }
      */
     public function __construct($data = NULL) {
@@ -226,6 +231,38 @@ class MsgUpdateParams extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Tendermint\Types\ABCIParams::class);
         $this->abci = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     * @return \Tendermint\Types\AuthorityParams|null
+     */
+    public function getAuth()
+    {
+        return $this->auth;
+    }
+
+    public function hasAuth()
+    {
+        return isset($this->auth);
+    }
+
+    public function clearAuth()
+    {
+        unset($this->auth);
+    }
+
+    /**
+     * Generated from protobuf field <code>.tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];</code>
+     * @param \Tendermint\Types\AuthorityParams $var
+     * @return $this
+     */
+    public function setAuth($var)
+    {
+        GPBUtil::checkMessage($var, \Tendermint\Types\AuthorityParams::class);
+        $this->auth = $var;
 
         return $this;
     }

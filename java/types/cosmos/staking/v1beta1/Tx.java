@@ -69,7 +69,7 @@ public final class Tx {
      *
      * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-     *     See cosmos/staking/v1beta1/tx.proto;l=69
+     *     See cosmos/staking/v1beta1/tx.proto;l=73
      * @return The delegatorAddress.
      */
     @java.lang.Deprecated java.lang.String getDelegatorAddress();
@@ -82,7 +82,7 @@ public final class Tx {
      *
      * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-     *     See cosmos/staking/v1beta1/tx.proto;l=69
+     *     See cosmos/staking/v1beta1/tx.proto;l=73
      * @return The bytes for delegatorAddress.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -276,7 +276,7 @@ public final class Tx {
      *
      * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-     *     See cosmos/staking/v1beta1/tx.proto;l=69
+     *     See cosmos/staking/v1beta1/tx.proto;l=73
      * @return The delegatorAddress.
      */
     @java.lang.Override
@@ -301,7 +301,7 @@ public final class Tx {
      *
      * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
      * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-     *     See cosmos/staking/v1beta1/tx.proto;l=69
+     *     See cosmos/staking/v1beta1/tx.proto;l=73
      * @return The bytes for delegatorAddress.
      */
     @java.lang.Override
@@ -1271,7 +1271,7 @@ public final class Tx {
        *
        * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-       *     See cosmos/staking/v1beta1/tx.proto;l=69
+       *     See cosmos/staking/v1beta1/tx.proto;l=73
        * @return The delegatorAddress.
        */
       @java.lang.Deprecated public java.lang.String getDelegatorAddress() {
@@ -1295,7 +1295,7 @@ public final class Tx {
        *
        * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-       *     See cosmos/staking/v1beta1/tx.proto;l=69
+       *     See cosmos/staking/v1beta1/tx.proto;l=73
        * @return The bytes for delegatorAddress.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -1320,7 +1320,7 @@ public final class Tx {
        *
        * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-       *     See cosmos/staking/v1beta1/tx.proto;l=69
+       *     See cosmos/staking/v1beta1/tx.proto;l=73
        * @param value The delegatorAddress to set.
        * @return This builder for chaining.
        */
@@ -1341,7 +1341,7 @@ public final class Tx {
        *
        * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-       *     See cosmos/staking/v1beta1/tx.proto;l=69
+       *     See cosmos/staking/v1beta1/tx.proto;l=73
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearDelegatorAddress() {
@@ -1359,7 +1359,7 @@ public final class Tx {
        *
        * <code>string delegator_address = 4 [json_name = "delegatorAddress", deprecated = true, (.cosmos_proto.scalar) = "cosmos.AddressString"];</code>
        * @deprecated cosmos.staking.v1beta1.MsgCreateValidator.delegator_address is deprecated.
-       *     See cosmos/staking/v1beta1/tx.proto;l=69
+       *     See cosmos/staking/v1beta1/tx.proto;l=73
        * @param value The bytes for delegatorAddress to set.
        * @return This builder for chaining.
        */
@@ -11269,6 +11269,1181 @@ public final class Tx {
 
   }
 
+  public interface MsgRotateConsPubKeyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The validatorAddress.
+     */
+    java.lang.String getValidatorAddress();
+    /**
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The bytes for validatorAddress.
+     */
+    com.google.protobuf.ByteString
+        getValidatorAddressBytes();
+
+    /**
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return Whether the newPubkey field is set.
+     */
+    boolean hasNewPubkey();
+    /**
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return The newPubkey.
+     */
+    com.google.protobuf.Any getNewPubkey();
+    /**
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     */
+    com.google.protobuf.AnyOrBuilder getNewPubkeyOrBuilder();
+  }
+  /**
+   * <pre>
+   * MsgRotateConsPubKey is the Msg/RotateConsPubKey request type.
+   * </pre>
+   *
+   * Protobuf type {@code cosmos.staking.v1beta1.MsgRotateConsPubKey}
+   */
+  public static final class MsgRotateConsPubKey extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+      MsgRotateConsPubKeyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MsgRotateConsPubKey.newBuilder() to construct.
+    private MsgRotateConsPubKey(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgRotateConsPubKey() {
+      validatorAddress_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MsgRotateConsPubKey();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.class, cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int VALIDATOR_ADDRESS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object validatorAddress_ = "";
+    /**
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The validatorAddress.
+     */
+    @java.lang.Override
+    public java.lang.String getValidatorAddress() {
+      java.lang.Object ref = validatorAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        validatorAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+     * @return The bytes for validatorAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValidatorAddressBytes() {
+      java.lang.Object ref = validatorAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        validatorAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NEW_PUBKEY_FIELD_NUMBER = 2;
+    private com.google.protobuf.Any newPubkey_;
+    /**
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return Whether the newPubkey field is set.
+     */
+    @java.lang.Override
+    public boolean hasNewPubkey() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     * @return The newPubkey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getNewPubkey() {
+      return newPubkey_ == null ? com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+    }
+    /**
+     * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getNewPubkeyOrBuilder() {
+      return newPubkey_ == null ? com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validatorAddress_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, validatorAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(2, getNewPubkey());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validatorAddress_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, validatorAddress_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getNewPubkey());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey)) {
+        return super.equals(obj);
+      }
+      cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey other = (cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey) obj;
+
+      if (!getValidatorAddress()
+          .equals(other.getValidatorAddress())) return false;
+      if (hasNewPubkey() != other.hasNewPubkey()) return false;
+      if (hasNewPubkey()) {
+        if (!getNewPubkey()
+            .equals(other.getNewPubkey())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VALIDATOR_ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getValidatorAddress().hashCode();
+      if (hasNewPubkey()) {
+        hash = (37 * hash) + NEW_PUBKEY_FIELD_NUMBER;
+        hash = (53 * hash) + getNewPubkey().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * MsgRotateConsPubKey is the Msg/RotateConsPubKey request type.
+     * </pre>
+     *
+     * Protobuf type {@code cosmos.staking.v1beta1.MsgRotateConsPubKey}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+        cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.class, cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.Builder.class);
+      }
+
+      // Construct using cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getNewPubkeyFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        validatorAddress_ = "";
+        newPubkey_ = null;
+        if (newPubkeyBuilder_ != null) {
+          newPubkeyBuilder_.dispose();
+          newPubkeyBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_descriptor;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey getDefaultInstanceForType() {
+        return cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey build() {
+        cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey buildPartial() {
+        cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey result = new cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.validatorAddress_ = validatorAddress_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.newPubkey_ = newPubkeyBuilder_ == null
+              ? newPubkey_
+              : newPubkeyBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey) {
+          return mergeFrom((cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey other) {
+        if (other == cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey.getDefaultInstance()) return this;
+        if (!other.getValidatorAddress().isEmpty()) {
+          validatorAddress_ = other.validatorAddress_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasNewPubkey()) {
+          mergeNewPubkey(other.getNewPubkey());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                validatorAddress_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getNewPubkeyFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object validatorAddress_ = "";
+      /**
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return The validatorAddress.
+       */
+      public java.lang.String getValidatorAddress() {
+        java.lang.Object ref = validatorAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          validatorAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return The bytes for validatorAddress.
+       */
+      public com.google.protobuf.ByteString
+          getValidatorAddressBytes() {
+        java.lang.Object ref = validatorAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          validatorAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @param value The validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddress(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidatorAddress() {
+        validatorAddress_ = getDefaultInstance().getValidatorAddress();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];</code>
+       * @param value The bytes for validatorAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidatorAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        validatorAddress_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Any newPubkey_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> newPubkeyBuilder_;
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       * @return Whether the newPubkey field is set.
+       */
+      public boolean hasNewPubkey() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       * @return The newPubkey.
+       */
+      public com.google.protobuf.Any getNewPubkey() {
+        if (newPubkeyBuilder_ == null) {
+          return newPubkey_ == null ? com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+        } else {
+          return newPubkeyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder setNewPubkey(com.google.protobuf.Any value) {
+        if (newPubkeyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          newPubkey_ = value;
+        } else {
+          newPubkeyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder setNewPubkey(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (newPubkeyBuilder_ == null) {
+          newPubkey_ = builderForValue.build();
+        } else {
+          newPubkeyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder mergeNewPubkey(com.google.protobuf.Any value) {
+        if (newPubkeyBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            newPubkey_ != null &&
+            newPubkey_ != com.google.protobuf.Any.getDefaultInstance()) {
+            getNewPubkeyBuilder().mergeFrom(value);
+          } else {
+            newPubkey_ = value;
+          }
+        } else {
+          newPubkeyBuilder_.mergeFrom(value);
+        }
+        if (newPubkey_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public Builder clearNewPubkey() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        newPubkey_ = null;
+        if (newPubkeyBuilder_ != null) {
+          newPubkeyBuilder_.dispose();
+          newPubkeyBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public com.google.protobuf.Any.Builder getNewPubkeyBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getNewPubkeyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getNewPubkeyOrBuilder() {
+        if (newPubkeyBuilder_ != null) {
+          return newPubkeyBuilder_.getMessageOrBuilder();
+        } else {
+          return newPubkey_ == null ?
+              com.google.protobuf.Any.getDefaultInstance() : newPubkey_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          getNewPubkeyFieldBuilder() {
+        if (newPubkeyBuilder_ == null) {
+          newPubkeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  getNewPubkey(),
+                  getParentForChildren(),
+                  isClean());
+          newPubkey_ = null;
+        }
+        return newPubkeyBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+    }
+
+    // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+    private static final cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey();
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MsgRotateConsPubKey>
+        PARSER = new com.google.protobuf.AbstractParser<MsgRotateConsPubKey>() {
+      @java.lang.Override
+      public MsgRotateConsPubKey parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgRotateConsPubKey> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgRotateConsPubKey> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKey getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MsgRotateConsPubKeyResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * MsgRotateConsPubKeyResponse defines the response structure for executing a
+   * MsgRotateConsPubKey message.
+   * </pre>
+   *
+   * Protobuf type {@code cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse}
+   */
+  public static final class MsgRotateConsPubKeyResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+      MsgRotateConsPubKeyResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MsgRotateConsPubKeyResponse.newBuilder() to construct.
+    private MsgRotateConsPubKeyResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgRotateConsPubKeyResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MsgRotateConsPubKeyResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.class, cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse)) {
+        return super.equals(obj);
+      }
+      cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse other = (cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * MsgRotateConsPubKeyResponse defines the response structure for executing a
+     * MsgRotateConsPubKey message.
+     * </pre>
+     *
+     * Protobuf type {@code cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+        cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.class, cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.Builder.class);
+      }
+
+      // Construct using cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cosmos.staking.v1beta1.Tx.internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse getDefaultInstanceForType() {
+        return cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse build() {
+        cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse buildPartial() {
+        cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse result = new cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse) {
+          return mergeFrom((cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse other) {
+        if (other == cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+    private static final cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse();
+    }
+
+    public static cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MsgRotateConsPubKeyResponse>
+        PARSER = new com.google.protobuf.AbstractParser<MsgRotateConsPubKeyResponse>() {
+      @java.lang.Override
+      public MsgRotateConsPubKeyResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgRotateConsPubKeyResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgRotateConsPubKeyResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cosmos.staking.v1beta1.Tx.MsgRotateConsPubKeyResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cosmos_staking_v1beta1_MsgCreateValidator_descriptor;
   private static final 
@@ -11339,6 +12514,16 @@ public final class Tx {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cosmos_staking_v1beta1_MsgUpdateParamsResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11433,29 +12618,39 @@ public final class Tx {
       "*\001R\006params:J\322\264-\017cosmos-sdk 0.47\202\347\260*\tauth" +
       "ority\212\347\260*$cosmos-sdk/x/staking/MsgUpdate" +
       "Params\".\n\027MsgUpdateParamsResponse:\023\322\264-\017c" +
-      "osmos-sdk 0.472\307\006\n\003Msg\022q\n\017CreateValidato" +
-      "r\022*.cosmos.staking.v1beta1.MsgCreateVali" +
-      "dator\0322.cosmos.staking.v1beta1.MsgCreate" +
-      "ValidatorResponse\022k\n\rEditValidator\022(.cos" +
-      "mos.staking.v1beta1.MsgEditValidator\0320.c" +
-      "osmos.staking.v1beta1.MsgEditValidatorRe" +
-      "sponse\022\\\n\010Delegate\022#.cosmos.staking.v1be" +
-      "ta1.MsgDelegate\032+.cosmos.staking.v1beta1" +
-      ".MsgDelegateResponse\022q\n\017BeginRedelegate\022" +
-      "*.cosmos.staking.v1beta1.MsgBeginRedeleg" +
-      "ate\0322.cosmos.staking.v1beta1.MsgBeginRed" +
-      "elegateResponse\022b\n\nUndelegate\022%.cosmos.s" +
-      "taking.v1beta1.MsgUndelegate\032-.cosmos.st" +
-      "aking.v1beta1.MsgUndelegateResponse\022\244\001\n\031" +
-      "CancelUnbondingDelegation\0224.cosmos.staki" +
-      "ng.v1beta1.MsgCancelUnbondingDelegation\032" +
-      "<.cosmos.staking.v1beta1.MsgCancelUnbond" +
-      "ingDelegationResponse\"\023\312\264-\017cosmos-sdk 0." +
-      "46\022}\n\014UpdateParams\022\'.cosmos.staking.v1be" +
-      "ta1.MsgUpdateParams\032/.cosmos.staking.v1b" +
-      "eta1.MsgUpdateParamsResponse\"\023\312\264-\017cosmos" +
-      "-sdk 0.47\032\005\200\347\260*\001B.Z,github.com/cosmos/co" +
-      "smos-sdk/x/staking/typesb\006proto3"
+      "osmos-sdk 0.47\"\367\001\n\023MsgRotateConsPubKey\022N" +
+      "\n\021validator_address\030\001 \001(\tB!\322\264-\035cosmos.Va" +
+      "lidatorAddressStringR\020validatorAddress\022M" +
+      "\n\nnew_pubkey\030\002 \001(\0132\024.google.protobuf.Any" +
+      "B\030\312\264-\024cosmos.crypto.PubKeyR\tnewPubkey:A\210" +
+      "\240\037\000\350\240\037\000\202\347\260*\021validator_address\212\347\260*\036cosmos" +
+      "-sdk/MsgRotateConsPubKey\"\035\n\033MsgRotateCon" +
+      "sPubKeyResponse2\275\007\n\003Msg\022q\n\017CreateValidat" +
+      "or\022*.cosmos.staking.v1beta1.MsgCreateVal" +
+      "idator\0322.cosmos.staking.v1beta1.MsgCreat" +
+      "eValidatorResponse\022k\n\rEditValidator\022(.co" +
+      "smos.staking.v1beta1.MsgEditValidator\0320." +
+      "cosmos.staking.v1beta1.MsgEditValidatorR" +
+      "esponse\022\\\n\010Delegate\022#.cosmos.staking.v1b" +
+      "eta1.MsgDelegate\032+.cosmos.staking.v1beta" +
+      "1.MsgDelegateResponse\022q\n\017BeginRedelegate" +
+      "\022*.cosmos.staking.v1beta1.MsgBeginRedele" +
+      "gate\0322.cosmos.staking.v1beta1.MsgBeginRe" +
+      "delegateResponse\022b\n\nUndelegate\022%.cosmos." +
+      "staking.v1beta1.MsgUndelegate\032-.cosmos.s" +
+      "taking.v1beta1.MsgUndelegateResponse\022\244\001\n" +
+      "\031CancelUnbondingDelegation\0224.cosmos.stak" +
+      "ing.v1beta1.MsgCancelUnbondingDelegation" +
+      "\032<.cosmos.staking.v1beta1.MsgCancelUnbon" +
+      "dingDelegationResponse\"\023\312\264-\017cosmos-sdk 0" +
+      ".46\022}\n\014UpdateParams\022\'.cosmos.staking.v1b" +
+      "eta1.MsgUpdateParams\032/.cosmos.staking.v1" +
+      "beta1.MsgUpdateParamsResponse\"\023\312\264-\017cosmo" +
+      "s-sdk 0.47\022t\n\020RotateConsPubKey\022+.cosmos." +
+      "staking.v1beta1.MsgRotateConsPubKey\0323.co" +
+      "smos.staking.v1beta1.MsgRotateConsPubKey" +
+      "Response\032\005\200\347\260*\001B.Z,github.com/cosmos/cos" +
+      "mos-sdk/x/staking/typesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11552,6 +12747,18 @@ public final class Tx {
     internal_static_cosmos_staking_v1beta1_MsgUpdateParamsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_staking_v1beta1_MsgUpdateParamsResponse_descriptor,
+        new java.lang.String[] { });
+    internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKey_descriptor,
+        new java.lang.String[] { "ValidatorAddress", "NewPubkey", });
+    internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cosmos_staking_v1beta1_MsgRotateConsPubKeyResponse_descriptor,
         new java.lang.String[] { });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();

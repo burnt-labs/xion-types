@@ -8,7 +8,7 @@ require 'gogoproto/gogo_pb'
 require 'cosmos/ics23/v1/proofs_pb'
 
 
-descriptor_data = "\n\'ibc/core/commitment/v1/commitment.proto\x12\x16ibc.core.commitment.v1\x1a\x14gogoproto/gogo.proto\x1a\x1c\x63osmos/ics23/v1/proofs.proto\"&\n\nMerkleRoot\x12\x12\n\x04hash\x18\x01 \x01(\x0cR\x04hash:\x04\x88\xa0\x1f\x00\"-\n\x0cMerklePrefix\x12\x1d\n\nkey_prefix\x18\x01 \x01(\x0cR\tkeyPrefix\"G\n\x0bMerkleProof\x12\x38\n\x06proofs\x18\x01 \x03(\x0b\x32 .cosmos.ics23.v1.CommitmentProofR\x06proofsB?Z=github.com/cosmos/ibc-go/v10/modules/core/23-commitment/typesb\x06proto3"
+descriptor_data = "\n\'ibc/core/commitment/v1/commitment.proto\x12\x16ibc.core.commitment.v1\x1a\x14gogoproto/gogo.proto\x1a\x1c\x63osmos/ics23/v1/proofs.proto\"&\n\nMerkleRoot\x12\x12\n\x04hash\x18\x01 \x01(\x0cR\x04hash:\x04\x88\xa0\x1f\x00\"-\n\x0cMerklePrefix\x12\x1d\n\nkey_prefix\x18\x01 \x01(\x0cR\tkeyPrefix\"G\n\x0bMerkleProof\x12\x38\n\x06proofs\x18\x01 \x03(\x0b\x32 .cosmos.ics23.v1.CommitmentProofR\x06proofsB?Z=github.com/cosmos/ibc-go/v11/modules/core/23-commitment/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

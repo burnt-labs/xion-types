@@ -75,6 +75,17 @@ class MsgTransfer extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string encoding = 9 [json_name = "encoding"];</code>
      */
     protected $encoding = '';
+    /**
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     *
+     * Generated from protobuf field <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+     */
+    protected $use_aliasing = false;
 
     /**
      * Constructor.
@@ -104,6 +115,13 @@ class MsgTransfer extends \Google\Protobuf\Internal\Message
      *           optional memo
      *     @type string $encoding
      *           optional encoding
+     *     @type bool $use_aliasing
+     *           boolean flag to indicate if the transfer message
+     *           is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     *           In this case, the v1 channel identifiers function as aliases to the
+     *           underlying client ids.
+     *           This only needs to be set if the channel IDs
+     *           are V1 channel identifiers.
      * }
      */
     public function __construct($data = NULL) {
@@ -369,6 +387,42 @@ class MsgTransfer extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->encoding = $var;
+
+        return $this;
+    }
+
+    /**
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     *
+     * Generated from protobuf field <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+     * @return bool
+     */
+    public function getUseAliasing()
+    {
+        return $this->use_aliasing;
+    }
+
+    /**
+     * boolean flag to indicate if the transfer message
+     * is sent with the IBC v2 protocol but uses v1 channel identifiers.
+     * In this case, the v1 channel identifiers function as aliases to the
+     * underlying client ids.
+     * This only needs to be set if the channel IDs
+     * are V1 channel identifiers.
+     *
+     * Generated from protobuf field <code>bool use_aliasing = 10 [json_name = "useAliasing", (.amino.dont_omitempty) = true];</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setUseAliasing($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->use_aliasing = $var;
 
         return $this;
     }

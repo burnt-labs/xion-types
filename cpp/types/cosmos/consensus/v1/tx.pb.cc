@@ -36,6 +36,7 @@ PROTOBUF_CONSTEXPR MsgUpdateParams::MsgUpdateParams(::_pbi::ConstantInitialized)
       /*decltype(_impl_.evidence_)*/ nullptr,
       /*decltype(_impl_.validator_)*/ nullptr,
       /*decltype(_impl_.abci_)*/ nullptr,
+      /*decltype(_impl_.auth_)*/ nullptr,
     } {}
 struct MsgUpdateParamsDefaultTypeInternal {
   PROTOBUF_CONSTEXPR MsgUpdateParamsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -82,11 +83,13 @@ const ::uint32_t TableStruct_cosmos_2fconsensus_2fv1_2ftx_2eproto::offsets[] PRO
     PROTOBUF_FIELD_OFFSET(::cosmos::consensus::v1::MsgUpdateParams, _impl_.evidence_),
     PROTOBUF_FIELD_OFFSET(::cosmos::consensus::v1::MsgUpdateParams, _impl_.validator_),
     PROTOBUF_FIELD_OFFSET(::cosmos::consensus::v1::MsgUpdateParams, _impl_.abci_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::consensus::v1::MsgUpdateParams, _impl_.auth_),
     ~0u,
     0,
     1,
     2,
     3,
+    4,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::cosmos::consensus::v1::MsgUpdateParamsResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -99,8 +102,8 @@ const ::uint32_t TableStruct_cosmos_2fconsensus_2fv1_2ftx_2eproto::offsets[] PRO
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 13, -1, sizeof(::cosmos::consensus::v1::MsgUpdateParams)},
-        {18, -1, -1, sizeof(::cosmos::consensus::v1::MsgUpdateParamsResponse)},
+        {0, 14, -1, sizeof(::cosmos::consensus::v1::MsgUpdateParams)},
+        {20, -1, -1, sizeof(::cosmos::consensus::v1::MsgUpdateParamsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -111,7 +114,7 @@ const char descriptor_table_protodef_cosmos_2fconsensus_2fv1_2ftx_2eproto[] PROT
     "\n\034cosmos/consensus/v1/tx.proto\022\023cosmos.c"
     "onsensus.v1\032\021amino/amino.proto\032\031cosmos_p"
     "roto/cosmos.proto\032\027cosmos/msg/v1/msg.pro"
-    "to\032\035tendermint/types/params.proto\"\377\002\n\017Ms"
+    "to\032\035tendermint/types/params.proto\"\313\003\n\017Ms"
     "gUpdateParams\0226\n\tauthority\030\001 \001(\tB\030\322\264-\024co"
     "smos.AddressStringR\tauthority\0223\n\005block\030\002"
     " \001(\0132\035.tendermint.types.BlockParamsR\005blo"
@@ -120,13 +123,15 @@ const char descriptor_table_protodef_cosmos_2fconsensus_2fv1_2ftx_2eproto[] PROT
     "\001(\0132!.tendermint.types.ValidatorParamsR\t"
     "validator\022E\n\004abci\030\005 \001(\0132\034.tendermint.typ"
     "es.ABCIParamsB\023\332\264-\017cosmos-sdk 0.50R\004abci"
-    ":9\202\347\260*\tauthority\212\347\260*&cosmos-sdk/x/consen"
-    "sus/MsgUpdateParams\"\031\n\027MsgUpdateParamsRe"
-    "sponse2\205\001\n\003Msg\022w\n\014UpdateParams\022$.cosmos."
-    "consensus.v1.MsgUpdateParams\032,.cosmos.co"
-    "nsensus.v1.MsgUpdateParamsResponse\"\023\312\264-\017"
-    "cosmos-sdk 0.47\032\005\200\347\260*\001B0Z.github.com/cos"
-    "mos/cosmos-sdk/x/consensus/typesb\006proto3"
+    "\022J\n\004auth\030\006 \001(\0132!.tendermint.types.Author"
+    "ityParamsB\023\332\264-\017cosmos-sdk 0.54R\004auth:9\202\347"
+    "\260*\tauthority\212\347\260*&cosmos-sdk/x/consensus/"
+    "MsgUpdateParams\"\031\n\027MsgUpdateParamsRespon"
+    "se2\205\001\n\003Msg\022w\n\014UpdateParams\022$.cosmos.cons"
+    "ensus.v1.MsgUpdateParams\032,.cosmos.consen"
+    "sus.v1.MsgUpdateParamsResponse\"\023\312\264-\017cosm"
+    "os-sdk 0.47\032\005\200\347\260*\001B0Z.github.com/cosmos/"
+    "cosmos-sdk/x/consensus/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fconsensus_2fv1_2ftx_2eproto_deps[4] =
     {
@@ -139,7 +144,7 @@ static ::absl::once_flag descriptor_table_cosmos_2fconsensus_2fv1_2ftx_2eproto_o
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fconsensus_2fv1_2ftx_2eproto = {
     false,
     false,
-    760,
+    836,
     descriptor_table_protodef_cosmos_2fconsensus_2fv1_2ftx_2eproto,
     "cosmos/consensus/v1/tx.proto",
     &descriptor_table_cosmos_2fconsensus_2fv1_2ftx_2eproto_once,
@@ -197,6 +202,10 @@ class MsgUpdateParams::_Internal {
   static void set_has_abci(HasBits* has_bits) {
     (*has_bits)[0] |= 8u;
   }
+  static const ::tendermint::types::AuthorityParams& auth(const MsgUpdateParams* msg);
+  static void set_has_auth(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
 };
 
 const ::tendermint::types::BlockParams& MsgUpdateParams::_Internal::block(const MsgUpdateParams* msg) {
@@ -210,6 +219,9 @@ const ::tendermint::types::ValidatorParams& MsgUpdateParams::_Internal::validato
 }
 const ::tendermint::types::ABCIParams& MsgUpdateParams::_Internal::abci(const MsgUpdateParams* msg) {
   return *msg->_impl_.abci_;
+}
+const ::tendermint::types::AuthorityParams& MsgUpdateParams::_Internal::auth(const MsgUpdateParams* msg) {
+  return *msg->_impl_.auth_;
 }
 void MsgUpdateParams::clear_block() {
   if (_impl_.block_ != nullptr) _impl_.block_->Clear();
@@ -227,6 +239,10 @@ void MsgUpdateParams::clear_abci() {
   if (_impl_.abci_ != nullptr) _impl_.abci_->Clear();
   _impl_._has_bits_[0] &= ~0x00000008u;
 }
+void MsgUpdateParams::clear_auth() {
+  if (_impl_.auth_ != nullptr) _impl_.auth_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
 MsgUpdateParams::MsgUpdateParams(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
@@ -243,6 +259,7 @@ MsgUpdateParams::MsgUpdateParams(const MsgUpdateParams& from) : ::google::protob
       decltype(_impl_.evidence_){nullptr},
       decltype(_impl_.validator_){nullptr},
       decltype(_impl_.abci_){nullptr},
+      decltype(_impl_.auth_){nullptr},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -265,6 +282,9 @@ MsgUpdateParams::MsgUpdateParams(const MsgUpdateParams& from) : ::google::protob
   if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
     _this->_impl_.abci_ = new ::tendermint::types::ABCIParams(*from._impl_.abci_);
   }
+  if ((from._impl_._has_bits_[0] & 0x00000010u) != 0) {
+    _this->_impl_.auth_ = new ::tendermint::types::AuthorityParams(*from._impl_.auth_);
+  }
 
   // @@protoc_insertion_point(copy_constructor:cosmos.consensus.v1.MsgUpdateParams)
 }
@@ -278,6 +298,7 @@ inline void MsgUpdateParams::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.evidence_){nullptr},
       decltype(_impl_.validator_){nullptr},
       decltype(_impl_.abci_){nullptr},
+      decltype(_impl_.auth_){nullptr},
   };
   _impl_.authority_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -296,6 +317,7 @@ inline void MsgUpdateParams::SharedDtor() {
   if (this != internal_default_instance()) delete _impl_.evidence_;
   if (this != internal_default_instance()) delete _impl_.validator_;
   if (this != internal_default_instance()) delete _impl_.abci_;
+  if (this != internal_default_instance()) delete _impl_.auth_;
 }
 void MsgUpdateParams::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -309,7 +331,7 @@ PROTOBUF_NOINLINE void MsgUpdateParams::Clear() {
 
   _impl_.authority_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(_impl_.block_ != nullptr);
       _impl_.block_->Clear();
@@ -326,6 +348,10 @@ PROTOBUF_NOINLINE void MsgUpdateParams::Clear() {
       ABSL_DCHECK(_impl_.abci_ != nullptr);
       _impl_.abci_->Clear();
     }
+    if (cached_has_bits & 0x00000010u) {
+      ABSL_DCHECK(_impl_.auth_ != nullptr);
+      _impl_.auth_->Clear();
+    }
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -339,16 +365,16 @@ const char* MsgUpdateParams::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 4, 53, 2> MsgUpdateParams::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 5, 53, 2> MsgUpdateParams::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_._has_bits_),
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    4,  // num_aux_entries
+    6,  // num_field_entries
+    5,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_MsgUpdateParams_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -369,7 +395,9 @@ const ::_pbi::TcParseTable<3, 5, 4, 53, 2> MsgUpdateParams::_table_ = {
     // .tendermint.types.ABCIParams abci = 5 [json_name = "abci", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];
     {::_pbi::TcParser::FastMtS1,
      {42, 3, 3, PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.abci_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];
+    {::_pbi::TcParser::FastMtS1,
+     {50, 4, 4, PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.auth_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -389,11 +417,15 @@ const ::_pbi::TcParseTable<3, 5, 4, 53, 2> MsgUpdateParams::_table_ = {
     // .tendermint.types.ABCIParams abci = 5 [json_name = "abci", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.50"];
     {PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.abci_), _Internal::kHasBitsOffset + 3, 3,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];
+    {PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.auth_), _Internal::kHasBitsOffset + 4, 4,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::tendermint::types::BlockParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::EvidenceParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::ValidatorParams>()},
     {::_pbi::TcParser::GetTable<::tendermint::types::ABCIParams>()},
+    {::_pbi::TcParser::GetTable<::tendermint::types::AuthorityParams>()},
   }}, {{
     "\43\11\0\0\0\0\0\0"
     "cosmos.consensus.v1.MsgUpdateParams"
@@ -445,6 +477,13 @@ const ::_pbi::TcParseTable<3, 5, 4, 53, 2> MsgUpdateParams::_table_ = {
         _Internal::abci(this).GetCachedSize(), target, stream);
   }
 
+  // .tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];
+  if (cached_has_bits & 0x00000010u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(6, _Internal::auth(this),
+        _Internal::auth(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -469,7 +508,7 @@ const ::_pbi::TcParseTable<3, 5, 4, 53, 2> MsgUpdateParams::_table_ = {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x0000001fu) {
     // .tendermint.types.BlockParams block = 2 [json_name = "block"];
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -498,6 +537,13 @@ const ::_pbi::TcParseTable<3, 5, 4, 53, 2> MsgUpdateParams::_table_ = {
           *_impl_.abci_);
     }
 
+    // .tendermint.types.AuthorityParams auth = 6 [json_name = "auth", (.cosmos_proto.field_added_in) = "cosmos-sdk 0.54"];
+    if (cached_has_bits & 0x00000010u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.auth_);
+    }
+
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
@@ -521,7 +567,7 @@ void MsgUpdateParams::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
     _this->_internal_set_authority(from._internal_authority());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_mutable_block()->::tendermint::types::BlockParams::MergeFrom(
           from._internal_block());
@@ -537,6 +583,10 @@ void MsgUpdateParams::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
     if (cached_has_bits & 0x00000008u) {
       _this->_internal_mutable_abci()->::tendermint::types::ABCIParams::MergeFrom(
           from._internal_abci());
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _this->_internal_mutable_auth()->::tendermint::types::AuthorityParams::MergeFrom(
+          from._internal_auth());
     }
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -562,8 +612,8 @@ void MsgUpdateParams::InternalSwap(MsgUpdateParams* other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.authority_, lhs_arena,
                                        &other->_impl_.authority_, rhs_arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.abci_)
-      + sizeof(MsgUpdateParams::_impl_.abci_)
+      PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.auth_)
+      + sizeof(MsgUpdateParams::_impl_.auth_)
       - PROTOBUF_FIELD_OFFSET(MsgUpdateParams, _impl_.block_)>(
           reinterpret_cast<char*>(&_impl_.block_),
           reinterpret_cast<char*>(&other->_impl_.block_));

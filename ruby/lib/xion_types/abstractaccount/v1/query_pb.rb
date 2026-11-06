@@ -9,7 +9,7 @@ require 'cosmos/query/v1/query_pb'
 require 'google/api/annotations_pb'
 
 
-descriptor_data = "\n\x1e\x61\x62stractaccount/v1/query.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\x1a\x1b\x63osmos/query/v1/query.proto\x1a\x1cgoogle/api/annotations.proto\"\x14\n\x12QueryParamsRequest\"I\n\x13QueryParamsResponse\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params2\x8c\x01\n\x05Query\x12\x82\x01\n\x06Params\x12&.abstractaccount.v1.QueryParamsRequest\x1a\'.abstractaccount.v1.QueryParamsResponse\"\'\x88\xe7\xb0*\x01\x82\xd3\xe4\x93\x02\x1c\x12\x1a/abstractaccount/v1/paramsB@Z>github.com/burnt-labs/abstract-account/x/abstractaccount/typesb\x06proto3"
+descriptor_data = "\n\x1e\x61\x62stractaccount/v1/query.proto\x12\x12\x61\x62stractaccount.v1\x1a\x1f\x61\x62stractaccount/v1/params.proto\x1a\x1b\x63osmos/query/v1/query.proto\x1a\x1cgoogle/api/annotations.proto\"\x14\n\x12QueryParamsRequest\"I\n\x13QueryParamsResponse\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\x1a.abstractaccount.v1.ParamsR\x06params\"H\n\x1aQueryAccountAddressRequest\x12\x16\n\x06sender\x18\x01 \x01(\tR\x06sender\x12\x12\n\x04salt\x18\x02 \x01(\x0cR\x04salt\"W\n\x1bQueryAccountAddressResponse\x12\x18\n\x07\x61\x64\x64ress\x18\x01 \x01(\tR\x07\x61\x64\x64ress\x12\x1e\n\nregistered\x18\x02 \x01(\x08R\nregistered2\xbb\x02\n\x05Query\x12\x82\x01\n\x06Params\x12&.abstractaccount.v1.QueryParamsRequest\x1a\'.abstractaccount.v1.QueryParamsResponse\"\'\x88\xe7\xb0*\x01\x82\xd3\xe4\x93\x02\x1c\x12\x1a/abstractaccount/v1/params\x12\xac\x01\n\x0e\x41\x63\x63ountAddress\x12..abstractaccount.v1.QueryAccountAddressRequest\x1a/.abstractaccount.v1.QueryAccountAddressResponse\"9\x88\xe7\xb0*\x01\x82\xd3\xe4\x93\x02.\x12,/abstractaccount/v1/account_address/{sender}B4Z2github.com/burnt-labs/xion/x/abstractaccount/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 
@@ -40,5 +40,7 @@ module Abstractaccount
   module V1
     QueryParamsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("abstractaccount.v1.QueryParamsRequest").msgclass
     QueryParamsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("abstractaccount.v1.QueryParamsResponse").msgclass
+    QueryAccountAddressRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("abstractaccount.v1.QueryAccountAddressRequest").msgclass
+    QueryAccountAddressResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("abstractaccount.v1.QueryAccountAddressResponse").msgclass
   end
 end

@@ -33,6 +33,8 @@ PROTOBUF_CONSTEXPR GenesisState::GenesisState(::_pbi::ConstantInitialized)
       /*decltype(_impl_.delegations_)*/ {},
       /*decltype(_impl_.unbonding_delegations_)*/ {},
       /*decltype(_impl_.redelegations_)*/ {},
+      /*decltype(_impl_.consensus_key_rotation_history_)*/ {},
+      /*decltype(_impl_.pending_consensus_key_rotations_)*/ {},
       /*decltype(_impl_.last_total_power_)*/ {
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
@@ -70,10 +72,59 @@ struct LastValidatorPowerDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LastValidatorPowerDefaultTypeInternal _LastValidatorPower_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ConsensusKeyRotationHistory::ConsensusKeyRotationHistory(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.validator_address_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.old_consensus_address_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.maturity_time_)*/ nullptr,
+      /*decltype(_impl_.evidence_expiry_time_)*/ nullptr,
+      /*decltype(_impl_.evidence_expiry_height_)*/ ::int64_t{0},
+    } {}
+struct ConsensusKeyRotationHistoryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ConsensusKeyRotationHistoryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ConsensusKeyRotationHistoryDefaultTypeInternal() {}
+  union {
+    ConsensusKeyRotationHistory _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConsensusKeyRotationHistoryDefaultTypeInternal _ConsensusKeyRotationHistory_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR PendingConsensusKeyRotation::PendingConsensusKeyRotation(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.validator_address_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.new_pubkey_)*/ nullptr,
+      /*decltype(_impl_.apply_height_)*/ ::int64_t{0},
+    } {}
+struct PendingConsensusKeyRotationDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PendingConsensusKeyRotationDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PendingConsensusKeyRotationDefaultTypeInternal() {}
+  union {
+    PendingConsensusKeyRotation _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PendingConsensusKeyRotationDefaultTypeInternal _PendingConsensusKeyRotation_default_instance_;
 }  // namespace v1beta1
 }  // namespace staking
 }  // namespace cosmos
-static ::_pb::Metadata file_level_metadata_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto[2];
+static ::_pb::Metadata file_level_metadata_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto[4];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -96,7 +147,11 @@ const ::uint32_t TableStruct_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto::offse
     PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::GenesisState, _impl_.unbonding_delegations_),
     PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::GenesisState, _impl_.redelegations_),
     PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::GenesisState, _impl_.exported_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::GenesisState, _impl_.consensus_key_rotation_history_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::GenesisState, _impl_.pending_consensus_key_rotations_),
     0,
+    ~0u,
+    ~0u,
     ~0u,
     ~0u,
     ~0u,
@@ -114,63 +169,126 @@ const ::uint32_t TableStruct_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto::offse
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::LastValidatorPower, _impl_.address_),
     PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::LastValidatorPower, _impl_.power_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _impl_.validator_address_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _impl_.old_consensus_address_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _impl_.maturity_time_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _impl_.evidence_expiry_time_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory, _impl_.evidence_expiry_height_),
+    ~0u,
+    ~0u,
+    0,
+    1,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::PendingConsensusKeyRotation, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::PendingConsensusKeyRotation, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::PendingConsensusKeyRotation, _impl_.validator_address_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::PendingConsensusKeyRotation, _impl_.new_pubkey_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::PendingConsensusKeyRotation, _impl_.apply_height_),
+    ~0u,
+    0,
+    ~0u,
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 16, -1, sizeof(::cosmos::staking::v1beta1::GenesisState)},
-        {24, -1, -1, sizeof(::cosmos::staking::v1beta1::LastValidatorPower)},
+        {0, 18, -1, sizeof(::cosmos::staking::v1beta1::GenesisState)},
+        {28, -1, -1, sizeof(::cosmos::staking::v1beta1::LastValidatorPower)},
+        {38, 51, -1, sizeof(::cosmos::staking::v1beta1::ConsensusKeyRotationHistory)},
+        {56, 67, -1, sizeof(::cosmos::staking::v1beta1::PendingConsensusKeyRotation)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::cosmos::staking::v1beta1::_GenesisState_default_instance_._instance,
     &::cosmos::staking::v1beta1::_LastValidatorPower_default_instance_._instance,
+    &::cosmos::staking::v1beta1::_ConsensusKeyRotationHistory_default_instance_._instance,
+    &::cosmos::staking::v1beta1::_PendingConsensusKeyRotation_default_instance_._instance,
 };
 const char descriptor_table_protodef_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n$cosmos/staking/v1beta1/genesis.proto\022\026"
     "cosmos.staking.v1beta1\032\024gogoproto/gogo.p"
     "roto\032$cosmos/staking/v1beta1/staking.pro"
     "to\032\031cosmos_proto/cosmos.proto\032\021amino/ami"
-    "no.proto\"\227\005\n\014GenesisState\022A\n\006params\030\001 \001("
-    "\0132\036.cosmos.staking.v1beta1.ParamsB\t\310\336\037\000\250"
-    "\347\260*\001R\006params\022Z\n\020last_total_power\030\002 \001(\014B0"
-    "\310\336\037\000\332\336\037\025cosmossdk.io/math.Int\322\264-\ncosmos."
-    "Int\250\347\260*\001R\016lastTotalPower\022i\n\025last_validat"
-    "or_powers\030\003 \003(\0132*.cosmos.staking.v1beta1"
-    ".LastValidatorPowerB\t\310\336\037\000\250\347\260*\001R\023lastVali"
-    "datorPowers\022L\n\nvalidators\030\004 \003(\0132!.cosmos"
-    ".staking.v1beta1.ValidatorB\t\310\336\037\000\250\347\260*\001R\nv"
-    "alidators\022O\n\013delegations\030\005 \003(\0132\".cosmos."
-    "staking.v1beta1.DelegationB\t\310\336\037\000\250\347\260*\001R\013d"
-    "elegations\022k\n\025unbonding_delegations\030\006 \003("
-    "\0132+.cosmos.staking.v1beta1.UnbondingDele"
-    "gationB\t\310\336\037\000\250\347\260*\001R\024unbondingDelegations\022"
-    "U\n\rredelegations\030\007 \003(\0132$.cosmos.staking."
-    "v1beta1.RedelegationB\t\310\336\037\000\250\347\260*\001R\rredeleg"
-    "ations\022\032\n\010exported\030\010 \001(\010R\010exported\"h\n\022La"
-    "stValidatorPower\0222\n\007address\030\001 \001(\tB\030\322\264-\024c"
-    "osmos.AddressStringR\007address\022\024\n\005power\030\002 "
-    "\001(\003R\005power:\010\210\240\037\000\350\240\037\000B.Z,github.com/cosmo"
-    "s/cosmos-sdk/x/staking/typesb\006proto3"
+    "no.proto\032\031google/protobuf/any.proto\032\037goo"
+    "gle/protobuf/timestamp.proto\"\245\007\n\014Genesis"
+    "State\022A\n\006params\030\001 \001(\0132\036.cosmos.staking.v"
+    "1beta1.ParamsB\t\310\336\037\000\250\347\260*\001R\006params\022Z\n\020last"
+    "_total_power\030\002 \001(\014B0\310\336\037\000\332\336\037\025cosmossdk.io"
+    "/math.Int\322\264-\ncosmos.Int\250\347\260*\001R\016lastTotalP"
+    "ower\022i\n\025last_validator_powers\030\003 \003(\0132*.co"
+    "smos.staking.v1beta1.LastValidatorPowerB"
+    "\t\310\336\037\000\250\347\260*\001R\023lastValidatorPowers\022L\n\nvalid"
+    "ators\030\004 \003(\0132!.cosmos.staking.v1beta1.Val"
+    "idatorB\t\310\336\037\000\250\347\260*\001R\nvalidators\022O\n\013delegat"
+    "ions\030\005 \003(\0132\".cosmos.staking.v1beta1.Dele"
+    "gationB\t\310\336\037\000\250\347\260*\001R\013delegations\022k\n\025unbond"
+    "ing_delegations\030\006 \003(\0132+.cosmos.staking.v"
+    "1beta1.UnbondingDelegationB\t\310\336\037\000\250\347\260*\001R\024u"
+    "nbondingDelegations\022U\n\rredelegations\030\007 \003"
+    "(\0132$.cosmos.staking.v1beta1.Redelegation"
+    "B\t\310\336\037\000\250\347\260*\001R\rredelegations\022\032\n\010exported\030\010"
+    " \001(\010R\010exported\022\203\001\n\036consensus_key_rotatio"
+    "n_history\030\t \003(\01323.cosmos.staking.v1beta1"
+    ".ConsensusKeyRotationHistoryB\t\310\336\037\000\250\347\260*\001R"
+    "\033consensusKeyRotationHistory\022\205\001\n\037pending"
+    "_consensus_key_rotations\030\n \003(\01323.cosmos."
+    "staking.v1beta1.PendingConsensusKeyRotat"
+    "ionB\t\310\336\037\000\250\347\260*\001R\034pendingConsensusKeyRotat"
+    "ions\"h\n\022LastValidatorPower\0222\n\007address\030\001 "
+    "\001(\tB\030\322\264-\024cosmos.AddressStringR\007address\022\024"
+    "\n\005power\030\002 \001(\003R\005power:\010\210\240\037\000\350\240\037\000\"\261\003\n\033Conse"
+    "nsusKeyRotationHistory\022N\n\021validator_addr"
+    "ess\030\001 \001(\tB!\322\264-\035cosmos.ValidatorAddressSt"
+    "ringR\020validatorAddress\022U\n\025old_consensus_"
+    "address\030\002 \001(\tB!\322\264-\035cosmos.ConsensusAddre"
+    "ssStringR\023oldConsensusAddress\022N\n\rmaturit"
+    "y_time\030\003 \001(\0132\032.google.protobuf.Timestamp"
+    "B\r\310\336\037\000\220\337\037\001\250\347\260*\001R\014maturityTime\022[\n\024evidenc"
+    "e_expiry_time\030\004 \001(\0132\032.google.protobuf.Ti"
+    "mestampB\r\310\336\037\000\220\337\037\001\250\347\260*\001R\022evidenceExpiryTi"
+    "me\0224\n\026evidence_expiry_height\030\005 \001(\003R\024evid"
+    "enceExpiryHeight:\010\210\240\037\000\350\240\037\000\"\351\001\n\033PendingCo"
+    "nsensusKeyRotation\022N\n\021validator_address\030"
+    "\001 \001(\tB!\322\264-\035cosmos.ValidatorAddressString"
+    "R\020validatorAddress\022M\n\nnew_pubkey\030\002 \001(\0132\024"
+    ".google.protobuf.AnyB\030\312\264-\024cosmos.crypto."
+    "PubKeyR\tnewPubkey\022!\n\014apply_height\030\003 \001(\003R"
+    "\013applyHeight:\010\210\240\037\000\350\240\037\000B.Z,github.com/cos"
+    "mos/cosmos-sdk/x/staking/typesb\006proto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_deps[4] =
+static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_deps[6] =
     {
         &::descriptor_table_amino_2famino_2eproto,
         &::descriptor_table_cosmos_2fstaking_2fv1beta1_2fstaking_2eproto,
         &::descriptor_table_cosmos_5fproto_2fcosmos_2eproto,
         &::descriptor_table_gogoproto_2fgogo_2eproto,
+        &::descriptor_table_google_2fprotobuf_2fany_2eproto,
+        &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
 };
 static ::absl::once_flag descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto = {
     false,
     false,
-    996,
+    1998,
     descriptor_table_protodef_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto,
     "cosmos/staking/v1beta1/genesis.proto",
     &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_once,
     descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_deps,
+    6,
     4,
-    2,
     schemas,
     file_default_instances,
     TableStruct_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto::offsets,
@@ -247,6 +365,8 @@ GenesisState::GenesisState(const GenesisState& from) : ::google::protobuf::Messa
       decltype(_impl_.delegations_){from._impl_.delegations_},
       decltype(_impl_.unbonding_delegations_){from._impl_.unbonding_delegations_},
       decltype(_impl_.redelegations_){from._impl_.redelegations_},
+      decltype(_impl_.consensus_key_rotation_history_){from._impl_.consensus_key_rotation_history_},
+      decltype(_impl_.pending_consensus_key_rotations_){from._impl_.pending_consensus_key_rotations_},
       decltype(_impl_.last_total_power_){},
       decltype(_impl_.params_){nullptr},
       decltype(_impl_.exported_){},
@@ -277,6 +397,8 @@ inline void GenesisState::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.delegations_){arena},
       decltype(_impl_.unbonding_delegations_){arena},
       decltype(_impl_.redelegations_){arena},
+      decltype(_impl_.consensus_key_rotation_history_){arena},
+      decltype(_impl_.pending_consensus_key_rotations_){arena},
       decltype(_impl_.last_total_power_){},
       decltype(_impl_.params_){nullptr},
       decltype(_impl_.exported_){false},
@@ -298,6 +420,8 @@ inline void GenesisState::SharedDtor() {
   _impl_.delegations_.~RepeatedPtrField();
   _impl_.unbonding_delegations_.~RepeatedPtrField();
   _impl_.redelegations_.~RepeatedPtrField();
+  _impl_.consensus_key_rotation_history_.~RepeatedPtrField();
+  _impl_.pending_consensus_key_rotations_.~RepeatedPtrField();
   _impl_.last_total_power_.Destroy();
   if (this != internal_default_instance()) delete _impl_.params_;
 }
@@ -316,6 +440,8 @@ PROTOBUF_NOINLINE void GenesisState::Clear() {
   _internal_mutable_delegations()->Clear();
   _internal_mutable_unbonding_delegations()->Clear();
   _internal_mutable_redelegations()->Clear();
+  _internal_mutable_consensus_key_rotation_history()->Clear();
+  _internal_mutable_pending_consensus_key_rotations()->Clear();
   _impl_.last_total_power_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
@@ -335,23 +461,21 @@ const char* GenesisState::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 8, 6, 0, 2> GenesisState::_table_ = {
+const ::_pbi::TcParseTable<4, 10, 8, 0, 2> GenesisState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GenesisState, _impl_._has_bits_),
     0, // no _extensions_
-    8, 56,  // max_field_number, fast_idx_mask
+    10, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967040,  // skipmap
+    4294966272,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
-    6,  // num_aux_entries
+    10,  // num_field_entries
+    8,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_GenesisState_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // bool exported = 8 [json_name = "exported"];
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(GenesisState, _impl_.exported_), 63>(),
-     {64, 63, 0, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.exported_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .cosmos.staking.v1beta1.Params params = 1 [json_name = "params", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.params_)}},
@@ -373,6 +497,20 @@ const ::_pbi::TcParseTable<3, 8, 6, 0, 2> GenesisState::_table_ = {
     // repeated .cosmos.staking.v1beta1.Redelegation redelegations = 7 [json_name = "redelegations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
     {::_pbi::TcParser::FastMtR1,
      {58, 63, 5, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.redelegations_)}},
+    // bool exported = 8 [json_name = "exported"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(GenesisState, _impl_.exported_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.exported_)}},
+    // repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+    {::_pbi::TcParser::FastMtR1,
+     {74, 63, 6, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.consensus_key_rotation_history_)}},
+    // repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+    {::_pbi::TcParser::FastMtR1,
+     {82, 63, 7, PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.pending_consensus_key_rotations_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -400,6 +538,12 @@ const ::_pbi::TcParseTable<3, 8, 6, 0, 2> GenesisState::_table_ = {
     // bool exported = 8 [json_name = "exported"];
     {PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.exported_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+    {PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.consensus_key_rotation_history_), -1, 6,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+    {PROTOBUF_FIELD_OFFSET(GenesisState, _impl_.pending_consensus_key_rotations_), -1, 7,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::Params>()},
     {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::LastValidatorPower>()},
@@ -407,6 +551,8 @@ const ::_pbi::TcParseTable<3, 8, 6, 0, 2> GenesisState::_table_ = {
     {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::Delegation>()},
     {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::UnbondingDelegation>()},
     {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::Redelegation>()},
+    {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::ConsensusKeyRotationHistory>()},
+    {::_pbi::TcParser::GetTable<::cosmos::staking::v1beta1::PendingConsensusKeyRotation>()},
   }}, {{
   }},
 };
@@ -479,6 +625,22 @@ const ::_pbi::TcParseTable<3, 8, 6, 0, 2> GenesisState::_table_ = {
         8, this->_internal_exported(), target);
   }
 
+  // repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_consensus_key_rotation_history_size()); i < n; i++) {
+    const auto& repfield = this->_internal_consensus_key_rotation_history().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(9, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_pending_consensus_key_rotations_size()); i < n; i++) {
+    const auto& repfield = this->_internal_pending_consensus_key_rotations().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(10, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -526,6 +688,18 @@ const ::_pbi::TcParseTable<3, 8, 6, 0, 2> GenesisState::_table_ = {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
+  // repeated .cosmos.staking.v1beta1.ConsensusKeyRotationHistory consensus_key_rotation_history = 9 [json_name = "consensusKeyRotationHistory", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  total_size += 1UL * this->_internal_consensus_key_rotation_history_size();
+  for (const auto& msg : this->_internal_consensus_key_rotation_history()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
+  // repeated .cosmos.staking.v1beta1.PendingConsensusKeyRotation pending_consensus_key_rotations = 10 [json_name = "pendingConsensusKeyRotations", (.gogoproto.nullable) = false, (.amino.dont_omitempty) = true];
+  total_size += 1UL * this->_internal_pending_consensus_key_rotations_size();
+  for (const auto& msg : this->_internal_pending_consensus_key_rotations()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
   // bytes last_total_power = 2 [json_name = "lastTotalPower", (.gogoproto.nullable) = false, (.gogoproto.customtype) = "cosmossdk.io/math.Int", (.cosmos_proto.scalar) = "cosmos.Int", (.amino.dont_omitempty) = true];
   if (!this->_internal_last_total_power().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -568,6 +742,8 @@ void GenesisState::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   _this->_internal_mutable_delegations()->MergeFrom(from._internal_delegations());
   _this->_internal_mutable_unbonding_delegations()->MergeFrom(from._internal_unbonding_delegations());
   _this->_internal_mutable_redelegations()->MergeFrom(from._internal_redelegations());
+  _this->_internal_mutable_consensus_key_rotation_history()->MergeFrom(from._internal_consensus_key_rotation_history());
+  _this->_internal_mutable_pending_consensus_key_rotations()->MergeFrom(from._internal_pending_consensus_key_rotations());
   if (!from._internal_last_total_power().empty()) {
     _this->_internal_set_last_total_power(from._internal_last_total_power());
   }
@@ -603,6 +779,8 @@ void GenesisState::InternalSwap(GenesisState* other) {
   _impl_.delegations_.InternalSwap(&other->_impl_.delegations_);
   _impl_.unbonding_delegations_.InternalSwap(&other->_impl_.unbonding_delegations_);
   _impl_.redelegations_.InternalSwap(&other->_impl_.redelegations_);
+  _impl_.consensus_key_rotation_history_.InternalSwap(&other->_impl_.consensus_key_rotation_history_);
+  _impl_.pending_consensus_key_rotations_.InternalSwap(&other->_impl_.pending_consensus_key_rotations_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.last_total_power_, lhs_arena,
                                        &other->_impl_.last_total_power_, rhs_arena);
   ::google::protobuf::internal::memswap<
@@ -835,6 +1013,660 @@ void LastValidatorPower::InternalSwap(LastValidatorPower* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_getter, &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_once,
       file_level_metadata_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto[1]);
+}
+// ===================================================================
+
+class ConsensusKeyRotationHistory::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ConsensusKeyRotationHistory>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_._has_bits_);
+  static const ::google::protobuf::Timestamp& maturity_time(const ConsensusKeyRotationHistory* msg);
+  static void set_has_maturity_time(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::google::protobuf::Timestamp& evidence_expiry_time(const ConsensusKeyRotationHistory* msg);
+  static void set_has_evidence_expiry_time(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
+
+const ::google::protobuf::Timestamp& ConsensusKeyRotationHistory::_Internal::maturity_time(const ConsensusKeyRotationHistory* msg) {
+  return *msg->_impl_.maturity_time_;
+}
+const ::google::protobuf::Timestamp& ConsensusKeyRotationHistory::_Internal::evidence_expiry_time(const ConsensusKeyRotationHistory* msg) {
+  return *msg->_impl_.evidence_expiry_time_;
+}
+void ConsensusKeyRotationHistory::clear_maturity_time() {
+  if (_impl_.maturity_time_ != nullptr) _impl_.maturity_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+void ConsensusKeyRotationHistory::clear_evidence_expiry_time() {
+  if (_impl_.evidence_expiry_time_ != nullptr) _impl_.evidence_expiry_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+ConsensusKeyRotationHistory::ConsensusKeyRotationHistory(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+}
+ConsensusKeyRotationHistory::ConsensusKeyRotationHistory(const ConsensusKeyRotationHistory& from) : ::google::protobuf::Message() {
+  ConsensusKeyRotationHistory* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.validator_address_){},
+      decltype(_impl_.old_consensus_address_){},
+      decltype(_impl_.maturity_time_){nullptr},
+      decltype(_impl_.evidence_expiry_time_){nullptr},
+      decltype(_impl_.evidence_expiry_height_){},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.validator_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.validator_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_validator_address().empty()) {
+    _this->_impl_.validator_address_.Set(from._internal_validator_address(), _this->GetArenaForAllocation());
+  }
+  _impl_.old_consensus_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.old_consensus_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_old_consensus_address().empty()) {
+    _this->_impl_.old_consensus_address_.Set(from._internal_old_consensus_address(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.maturity_time_ = new ::google::protobuf::Timestamp(*from._impl_.maturity_time_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.evidence_expiry_time_ = new ::google::protobuf::Timestamp(*from._impl_.evidence_expiry_time_);
+  }
+  _this->_impl_.evidence_expiry_height_ = from._impl_.evidence_expiry_height_;
+
+  // @@protoc_insertion_point(copy_constructor:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+}
+inline void ConsensusKeyRotationHistory::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.validator_address_){},
+      decltype(_impl_.old_consensus_address_){},
+      decltype(_impl_.maturity_time_){nullptr},
+      decltype(_impl_.evidence_expiry_time_){nullptr},
+      decltype(_impl_.evidence_expiry_height_){::int64_t{0}},
+  };
+  _impl_.validator_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.validator_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.old_consensus_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.old_consensus_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+ConsensusKeyRotationHistory::~ConsensusKeyRotationHistory() {
+  // @@protoc_insertion_point(destructor:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ConsensusKeyRotationHistory::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.validator_address_.Destroy();
+  _impl_.old_consensus_address_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.maturity_time_;
+  if (this != internal_default_instance()) delete _impl_.evidence_expiry_time_;
+}
+void ConsensusKeyRotationHistory::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void ConsensusKeyRotationHistory::Clear() {
+// @@protoc_insertion_point(message_clear_start:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.validator_address_.ClearToEmpty();
+  _impl_.old_consensus_address_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.maturity_time_ != nullptr);
+      _impl_.maturity_time_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.evidence_expiry_time_ != nullptr);
+      _impl_.evidence_expiry_time_->Clear();
+    }
+  }
+  _impl_.evidence_expiry_height_ = ::int64_t{0};
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ConsensusKeyRotationHistory::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 2, 97, 2> ConsensusKeyRotationHistory::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ConsensusKeyRotationHistory_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.validator_address_)}},
+    // string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.old_consensus_address_)}},
+    // .google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+    {::_pbi::TcParser::FastMtS1,
+     {26, 0, 0, PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.maturity_time_)}},
+    // .google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+    {::_pbi::TcParser::FastMtS1,
+     {34, 1, 1, PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.evidence_expiry_time_)}},
+    // int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ConsensusKeyRotationHistory, _impl_.evidence_expiry_height_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.evidence_expiry_height_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+    {PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.validator_address_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];
+    {PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.old_consensus_address_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+    {PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.maturity_time_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+    {PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.evidence_expiry_time_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];
+    {PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.evidence_expiry_height_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+    "\62\21\25\0\0\0\0\0"
+    "cosmos.staking.v1beta1.ConsensusKeyRotationHistory"
+    "validator_address"
+    "old_consensus_address"
+  }},
+};
+
+::uint8_t* ConsensusKeyRotationHistory::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  if (!this->_internal_validator_address().empty()) {
+    const std::string& _s = this->_internal_validator_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cosmos.staking.v1beta1.ConsensusKeyRotationHistory.validator_address");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];
+  if (!this->_internal_old_consensus_address().empty()) {
+    const std::string& _s = this->_internal_old_consensus_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cosmos.staking.v1beta1.ConsensusKeyRotationHistory.old_consensus_address");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::maturity_time(this),
+        _Internal::maturity_time(this).GetCachedSize(), target, stream);
+  }
+
+  // .google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::evidence_expiry_time(this),
+        _Internal::evidence_expiry_time(this).GetCachedSize(), target, stream);
+  }
+
+  // int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];
+  if (this->_internal_evidence_expiry_height() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt64ToArrayWithField<5>(
+            stream, this->_internal_evidence_expiry_height(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  return target;
+}
+
+::size_t ConsensusKeyRotationHistory::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  if (!this->_internal_validator_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_validator_address());
+  }
+
+  // string old_consensus_address = 2 [json_name = "oldConsensusAddress", (.cosmos_proto.scalar) = "cosmos.ConsensusAddressString"];
+  if (!this->_internal_old_consensus_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_old_consensus_address());
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .google.protobuf.Timestamp maturity_time = 3 [json_name = "maturityTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.maturity_time_);
+    }
+
+    // .google.protobuf.Timestamp evidence_expiry_time = 4 [json_name = "evidenceExpiryTime", (.gogoproto.nullable) = false, (.gogoproto.stdtime) = true, (.amino.dont_omitempty) = true];
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.evidence_expiry_time_);
+    }
+
+  }
+  // int64 evidence_expiry_height = 5 [json_name = "evidenceExpiryHeight"];
+  if (this->_internal_evidence_expiry_height() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+        this->_internal_evidence_expiry_height());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ConsensusKeyRotationHistory::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ConsensusKeyRotationHistory::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ConsensusKeyRotationHistory::GetClassData() const { return &_class_data_; }
+
+
+void ConsensusKeyRotationHistory::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ConsensusKeyRotationHistory*>(&to_msg);
+  auto& from = static_cast<const ConsensusKeyRotationHistory&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_validator_address().empty()) {
+    _this->_internal_set_validator_address(from._internal_validator_address());
+  }
+  if (!from._internal_old_consensus_address().empty()) {
+    _this->_internal_set_old_consensus_address(from._internal_old_consensus_address());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_maturity_time()->::google::protobuf::Timestamp::MergeFrom(
+          from._internal_maturity_time());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_evidence_expiry_time()->::google::protobuf::Timestamp::MergeFrom(
+          from._internal_evidence_expiry_time());
+    }
+  }
+  if (from._internal_evidence_expiry_height() != 0) {
+    _this->_internal_set_evidence_expiry_height(from._internal_evidence_expiry_height());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConsensusKeyRotationHistory::CopyFrom(const ConsensusKeyRotationHistory& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cosmos.staking.v1beta1.ConsensusKeyRotationHistory)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ConsensusKeyRotationHistory::IsInitialized() const {
+  return true;
+}
+
+void ConsensusKeyRotationHistory::InternalSwap(ConsensusKeyRotationHistory* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.validator_address_, lhs_arena,
+                                       &other->_impl_.validator_address_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.old_consensus_address_, lhs_arena,
+                                       &other->_impl_.old_consensus_address_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.evidence_expiry_height_)
+      + sizeof(ConsensusKeyRotationHistory::_impl_.evidence_expiry_height_)
+      - PROTOBUF_FIELD_OFFSET(ConsensusKeyRotationHistory, _impl_.maturity_time_)>(
+          reinterpret_cast<char*>(&_impl_.maturity_time_),
+          reinterpret_cast<char*>(&other->_impl_.maturity_time_));
+}
+
+::google::protobuf::Metadata ConsensusKeyRotationHistory::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_getter, &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_once,
+      file_level_metadata_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto[2]);
+}
+// ===================================================================
+
+class PendingConsensusKeyRotation::_Internal {
+ public:
+  using HasBits = decltype(std::declval<PendingConsensusKeyRotation>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_._has_bits_);
+  static const ::google::protobuf::Any& new_pubkey(const PendingConsensusKeyRotation* msg);
+  static void set_has_new_pubkey(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::google::protobuf::Any& PendingConsensusKeyRotation::_Internal::new_pubkey(const PendingConsensusKeyRotation* msg) {
+  return *msg->_impl_.new_pubkey_;
+}
+void PendingConsensusKeyRotation::clear_new_pubkey() {
+  if (_impl_.new_pubkey_ != nullptr) _impl_.new_pubkey_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+PendingConsensusKeyRotation::PendingConsensusKeyRotation(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+}
+PendingConsensusKeyRotation::PendingConsensusKeyRotation(const PendingConsensusKeyRotation& from) : ::google::protobuf::Message() {
+  PendingConsensusKeyRotation* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.validator_address_){},
+      decltype(_impl_.new_pubkey_){nullptr},
+      decltype(_impl_.apply_height_){},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.validator_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.validator_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_validator_address().empty()) {
+    _this->_impl_.validator_address_.Set(from._internal_validator_address(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.new_pubkey_ = new ::google::protobuf::Any(*from._impl_.new_pubkey_);
+  }
+  _this->_impl_.apply_height_ = from._impl_.apply_height_;
+
+  // @@protoc_insertion_point(copy_constructor:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+}
+inline void PendingConsensusKeyRotation::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.validator_address_){},
+      decltype(_impl_.new_pubkey_){nullptr},
+      decltype(_impl_.apply_height_){::int64_t{0}},
+  };
+  _impl_.validator_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.validator_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+PendingConsensusKeyRotation::~PendingConsensusKeyRotation() {
+  // @@protoc_insertion_point(destructor:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void PendingConsensusKeyRotation::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.validator_address_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.new_pubkey_;
+}
+void PendingConsensusKeyRotation::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void PendingConsensusKeyRotation::Clear() {
+// @@protoc_insertion_point(message_clear_start:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.validator_address_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.new_pubkey_ != nullptr);
+    _impl_.new_pubkey_->Clear();
+  }
+  _impl_.apply_height_ = ::int64_t{0};
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* PendingConsensusKeyRotation::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 1, 76, 2> PendingConsensusKeyRotation::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_PendingConsensusKeyRotation_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.validator_address_)}},
+    // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.new_pubkey_)}},
+    // int64 apply_height = 3 [json_name = "applyHeight"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(PendingConsensusKeyRotation, _impl_.apply_height_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.apply_height_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+    {PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.validator_address_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+    {PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.new_pubkey_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // int64 apply_height = 3 [json_name = "applyHeight"];
+    {PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.apply_height_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Any>()},
+  }}, {{
+    "\62\21\0\0\0\0\0\0"
+    "cosmos.staking.v1beta1.PendingConsensusKeyRotation"
+    "validator_address"
+  }},
+};
+
+::uint8_t* PendingConsensusKeyRotation::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  if (!this->_internal_validator_address().empty()) {
+    const std::string& _s = this->_internal_validator_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cosmos.staking.v1beta1.PendingConsensusKeyRotation.validator_address");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::new_pubkey(this),
+        _Internal::new_pubkey(this).GetCachedSize(), target, stream);
+  }
+
+  // int64 apply_height = 3 [json_name = "applyHeight"];
+  if (this->_internal_apply_height() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt64ToArrayWithField<3>(
+            stream, this->_internal_apply_height(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  return target;
+}
+
+::size_t PendingConsensusKeyRotation::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  if (!this->_internal_validator_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_validator_address());
+  }
+
+  // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.new_pubkey_);
+  }
+
+  // int64 apply_height = 3 [json_name = "applyHeight"];
+  if (this->_internal_apply_height() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+        this->_internal_apply_height());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData PendingConsensusKeyRotation::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    PendingConsensusKeyRotation::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*PendingConsensusKeyRotation::GetClassData() const { return &_class_data_; }
+
+
+void PendingConsensusKeyRotation::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<PendingConsensusKeyRotation*>(&to_msg);
+  auto& from = static_cast<const PendingConsensusKeyRotation&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_validator_address().empty()) {
+    _this->_internal_set_validator_address(from._internal_validator_address());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_new_pubkey()->::google::protobuf::Any::MergeFrom(
+        from._internal_new_pubkey());
+  }
+  if (from._internal_apply_height() != 0) {
+    _this->_internal_set_apply_height(from._internal_apply_height());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PendingConsensusKeyRotation::CopyFrom(const PendingConsensusKeyRotation& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cosmos.staking.v1beta1.PendingConsensusKeyRotation)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool PendingConsensusKeyRotation::IsInitialized() const {
+  return true;
+}
+
+void PendingConsensusKeyRotation::InternalSwap(PendingConsensusKeyRotation* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.validator_address_, lhs_arena,
+                                       &other->_impl_.validator_address_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.apply_height_)
+      + sizeof(PendingConsensusKeyRotation::_impl_.apply_height_)
+      - PROTOBUF_FIELD_OFFSET(PendingConsensusKeyRotation, _impl_.new_pubkey_)>(
+          reinterpret_cast<char*>(&_impl_.new_pubkey_),
+          reinterpret_cast<char*>(&other->_impl_.new_pubkey_));
+}
+
+::google::protobuf::Metadata PendingConsensusKeyRotation::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_getter, &descriptor_table_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto_once,
+      file_level_metadata_cosmos_2fstaking_2fv1beta1_2fgenesis_2eproto[3]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1beta1

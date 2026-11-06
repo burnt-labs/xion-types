@@ -9,7 +9,7 @@ require 'gogoproto/gogo_pb'
 require 'cosmos/auth/v1beta1/auth_pb'
 
 
-descriptor_data = "\n5ibc/applications/interchain_accounts/v1/account.proto\x12\'ibc.applications.interchain_accounts.v1\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x14gogoproto/gogo.proto\x1a\x1e\x63osmos/auth/v1beta1/auth.proto\"\xcb\x01\n\x11InterchainAccount\x12I\n\x0c\x62\x61se_account\x18\x01 \x01(\x0b\x32 .cosmos.auth.v1beta1.BaseAccountB\x04\xd0\xde\x1f\x01R\x0b\x62\x61seAccount\x12#\n\raccount_owner\x18\x02 \x01(\tR\x0c\x61\x63\x63ountOwner:F\x88\xa0\x1f\x00\x98\xa0\x1f\x00\xca\xb4-:ibc.applications.interchain_accounts.v1.InterchainAccountIBHZFgithub.com/cosmos/ibc-go/v10/modules/apps/27-interchain-accounts/typesb\x06proto3"
+descriptor_data = "\n5ibc/applications/interchain_accounts/v1/account.proto\x12\'ibc.applications.interchain_accounts.v1\x1a\x19\x63osmos_proto/cosmos.proto\x1a\x14gogoproto/gogo.proto\x1a\x1e\x63osmos/auth/v1beta1/auth.proto\"\xcb\x01\n\x11InterchainAccount\x12I\n\x0c\x62\x61se_account\x18\x01 \x01(\x0b\x32 .cosmos.auth.v1beta1.BaseAccountB\x04\xd0\xde\x1f\x01R\x0b\x62\x61seAccount\x12#\n\raccount_owner\x18\x02 \x01(\tR\x0c\x61\x63\x63ountOwner:F\x88\xa0\x1f\x00\x98\xa0\x1f\x00\xca\xb4-:ibc.applications.interchain_accounts.v1.InterchainAccountIBHZFgithub.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/typesb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

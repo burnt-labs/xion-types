@@ -83,9 +83,11 @@ static GPBFileDescription TxRoot_FileDescription = {
 @dynamic name;
 @dynamic description_p;
 @dynamic vkeyBytes;
+@dynamic proofSystem;
 
 typedef struct MsgAddVKey__storage_ {
   uint32_t _has_storage_[1];
+  ProofSystem proofSystem;
   NSString *authority;
   NSString *name;
   NSString *description_p;
@@ -135,6 +137,15 @@ typedef struct MsgAddVKey__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBytes,
       },
+      {
+        .name = "proofSystem",
+        .dataTypeSpecific.enumDescFunc = ProofSystem_EnumDescriptor,
+        .number = MsgAddVKey_FieldNumber_ProofSystem,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(MsgAddVKey__storage_, proofSystem),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeEnum,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgAddVKey)
@@ -153,6 +164,18 @@ typedef struct MsgAddVKey__storage_ {
 }
 
 @end
+
+int32_t MsgAddVKey_ProofSystem_RawValue(MsgAddVKey *message) {
+  GPBDescriptor *descriptor = [MsgAddVKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:MsgAddVKey_FieldNumber_ProofSystem];
+  return GPBGetMessageRawEnumField(message, field);
+}
+
+void SetMsgAddVKey_ProofSystem_RawValue(MsgAddVKey *message, int32_t value) {
+  GPBDescriptor *descriptor = [MsgAddVKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:MsgAddVKey_FieldNumber_ProofSystem];
+  GPBSetMessageRawEnumField(message, field, value);
+}
 
 #pragma mark - MsgAddVKeyResponse
 
@@ -208,9 +231,11 @@ typedef struct MsgAddVKeyResponse__storage_ {
 @dynamic name;
 @dynamic description_p;
 @dynamic vkeyBytes;
+@dynamic proofSystem;
 
 typedef struct MsgUpdateVKey__storage_ {
   uint32_t _has_storage_[1];
+  ProofSystem proofSystem;
   NSString *authority;
   NSString *name;
   NSString *description_p;
@@ -260,6 +285,15 @@ typedef struct MsgUpdateVKey__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBytes,
       },
+      {
+        .name = "proofSystem",
+        .dataTypeSpecific.enumDescFunc = ProofSystem_EnumDescriptor,
+        .number = MsgUpdateVKey_FieldNumber_ProofSystem,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(MsgUpdateVKey__storage_, proofSystem),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeEnum,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:GPBObjCClass(MsgUpdateVKey)
@@ -278,6 +312,18 @@ typedef struct MsgUpdateVKey__storage_ {
 }
 
 @end
+
+int32_t MsgUpdateVKey_ProofSystem_RawValue(MsgUpdateVKey *message) {
+  GPBDescriptor *descriptor = [MsgUpdateVKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:MsgUpdateVKey_FieldNumber_ProofSystem];
+  return GPBGetMessageRawEnumField(message, field);
+}
+
+void SetMsgUpdateVKey_ProofSystem_RawValue(MsgUpdateVKey *message, int32_t value) {
+  GPBDescriptor *descriptor = [MsgUpdateVKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:MsgUpdateVKey_FieldNumber_ProofSystem];
+  GPBSetMessageRawEnumField(message, field, value);
+}
 
 #pragma mark - MsgUpdateVKeyResponse
 

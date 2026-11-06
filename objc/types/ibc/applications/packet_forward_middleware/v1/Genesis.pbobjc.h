@@ -84,7 +84,6 @@ typedef GPB_ENUM(InFlightPacket_FieldNumber) {
   InFlightPacket_FieldNumber_RefundSequence = 9,
   InFlightPacket_FieldNumber_RetriesRemaining = 10,
   InFlightPacket_FieldNumber_Timeout = 11,
-  InFlightPacket_FieldNumber_Nonrefundable = 12,
 };
 
 /**
@@ -114,8 +113,6 @@ GPB_FINAL @interface InFlightPacket : GPBMessage
 @property(nonatomic, readwrite) int32_t retriesRemaining;
 
 @property(nonatomic, readwrite) uint64_t timeout;
-
-@property(nonatomic, readwrite) BOOL nonrefundable;
 
 @end
 

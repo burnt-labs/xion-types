@@ -305,10 +305,43 @@ struct MsgUpdateParamsResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgUpdateParamsResponseDefaultTypeInternal _MsgUpdateParamsResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR MsgRotateConsPubKey::MsgRotateConsPubKey(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.validator_address_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.new_pubkey_)*/ nullptr,
+    } {}
+struct MsgRotateConsPubKeyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MsgRotateConsPubKeyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MsgRotateConsPubKeyDefaultTypeInternal() {}
+  union {
+    MsgRotateConsPubKey _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgRotateConsPubKeyDefaultTypeInternal _MsgRotateConsPubKey_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR MsgRotateConsPubKeyResponse::MsgRotateConsPubKeyResponse(::_pbi::ConstantInitialized) {}
+struct MsgRotateConsPubKeyResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MsgRotateConsPubKeyResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MsgRotateConsPubKeyResponseDefaultTypeInternal() {}
+  union {
+    MsgRotateConsPubKeyResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MsgRotateConsPubKeyResponseDefaultTypeInternal _MsgRotateConsPubKeyResponse_default_instance_;
 }  // namespace v1beta1
 }  // namespace staking
 }  // namespace cosmos
-static ::_pb::Metadata file_level_metadata_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[14];
+static ::_pb::Metadata file_level_metadata_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[16];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_cosmos_2fstaking_2fv1beta1_2ftx_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -487,6 +520,26 @@ const ::uint32_t TableStruct_cosmos_2fstaking_2fv1beta1_2ftx_2eproto::offsets[] 
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::MsgRotateConsPubKey, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::MsgRotateConsPubKey, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::MsgRotateConsPubKey, _impl_.validator_address_),
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::MsgRotateConsPubKey, _impl_.new_pubkey_),
+    ~0u,
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::cosmos::staking::v1beta1::MsgRotateConsPubKeyResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
 };
 
 static const ::_pbi::MigrationSchema
@@ -505,6 +558,8 @@ static const ::_pbi::MigrationSchema
         {144, -1, -1, sizeof(::cosmos::staking::v1beta1::MsgCancelUnbondingDelegationResponse)},
         {152, 162, -1, sizeof(::cosmos::staking::v1beta1::MsgUpdateParams)},
         {164, -1, -1, sizeof(::cosmos::staking::v1beta1::MsgUpdateParamsResponse)},
+        {172, 182, -1, sizeof(::cosmos::staking::v1beta1::MsgRotateConsPubKey)},
+        {184, -1, -1, sizeof(::cosmos::staking::v1beta1::MsgRotateConsPubKeyResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -522,6 +577,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::cosmos::staking::v1beta1::_MsgCancelUnbondingDelegationResponse_default_instance_._instance,
     &::cosmos::staking::v1beta1::_MsgUpdateParams_default_instance_._instance,
     &::cosmos::staking::v1beta1::_MsgUpdateParamsResponse_default_instance_._instance,
+    &::cosmos::staking::v1beta1::_MsgRotateConsPubKey_default_instance_._instance,
+    &::cosmos::staking::v1beta1::_MsgRotateConsPubKeyResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037cosmos/staking/v1beta1/tx.proto\022\026cosmo"
@@ -609,29 +666,39 @@ const char descriptor_table_protodef_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[] P
     "*\001R\006params:J\322\264-\017cosmos-sdk 0.47\202\347\260*\tauth"
     "ority\212\347\260*$cosmos-sdk/x/staking/MsgUpdate"
     "Params\".\n\027MsgUpdateParamsResponse:\023\322\264-\017c"
-    "osmos-sdk 0.472\307\006\n\003Msg\022q\n\017CreateValidato"
-    "r\022*.cosmos.staking.v1beta1.MsgCreateVali"
-    "dator\0322.cosmos.staking.v1beta1.MsgCreate"
-    "ValidatorResponse\022k\n\rEditValidator\022(.cos"
-    "mos.staking.v1beta1.MsgEditValidator\0320.c"
-    "osmos.staking.v1beta1.MsgEditValidatorRe"
-    "sponse\022\\\n\010Delegate\022#.cosmos.staking.v1be"
-    "ta1.MsgDelegate\032+.cosmos.staking.v1beta1"
-    ".MsgDelegateResponse\022q\n\017BeginRedelegate\022"
-    "*.cosmos.staking.v1beta1.MsgBeginRedeleg"
-    "ate\0322.cosmos.staking.v1beta1.MsgBeginRed"
-    "elegateResponse\022b\n\nUndelegate\022%.cosmos.s"
-    "taking.v1beta1.MsgUndelegate\032-.cosmos.st"
-    "aking.v1beta1.MsgUndelegateResponse\022\244\001\n\031"
-    "CancelUnbondingDelegation\0224.cosmos.staki"
-    "ng.v1beta1.MsgCancelUnbondingDelegation\032"
-    "<.cosmos.staking.v1beta1.MsgCancelUnbond"
-    "ingDelegationResponse\"\023\312\264-\017cosmos-sdk 0."
-    "46\022}\n\014UpdateParams\022\'.cosmos.staking.v1be"
-    "ta1.MsgUpdateParams\032/.cosmos.staking.v1b"
-    "eta1.MsgUpdateParamsResponse\"\023\312\264-\017cosmos"
-    "-sdk 0.47\032\005\200\347\260*\001B.Z,github.com/cosmos/co"
-    "smos-sdk/x/staking/typesb\006proto3"
+    "osmos-sdk 0.47\"\367\001\n\023MsgRotateConsPubKey\022N"
+    "\n\021validator_address\030\001 \001(\tB!\322\264-\035cosmos.Va"
+    "lidatorAddressStringR\020validatorAddress\022M"
+    "\n\nnew_pubkey\030\002 \001(\0132\024.google.protobuf.Any"
+    "B\030\312\264-\024cosmos.crypto.PubKeyR\tnewPubkey:A\210"
+    "\240\037\000\350\240\037\000\202\347\260*\021validator_address\212\347\260*\036cosmos"
+    "-sdk/MsgRotateConsPubKey\"\035\n\033MsgRotateCon"
+    "sPubKeyResponse2\275\007\n\003Msg\022q\n\017CreateValidat"
+    "or\022*.cosmos.staking.v1beta1.MsgCreateVal"
+    "idator\0322.cosmos.staking.v1beta1.MsgCreat"
+    "eValidatorResponse\022k\n\rEditValidator\022(.co"
+    "smos.staking.v1beta1.MsgEditValidator\0320."
+    "cosmos.staking.v1beta1.MsgEditValidatorR"
+    "esponse\022\\\n\010Delegate\022#.cosmos.staking.v1b"
+    "eta1.MsgDelegate\032+.cosmos.staking.v1beta"
+    "1.MsgDelegateResponse\022q\n\017BeginRedelegate"
+    "\022*.cosmos.staking.v1beta1.MsgBeginRedele"
+    "gate\0322.cosmos.staking.v1beta1.MsgBeginRe"
+    "delegateResponse\022b\n\nUndelegate\022%.cosmos."
+    "staking.v1beta1.MsgUndelegate\032-.cosmos.s"
+    "taking.v1beta1.MsgUndelegateResponse\022\244\001\n"
+    "\031CancelUnbondingDelegation\0224.cosmos.stak"
+    "ing.v1beta1.MsgCancelUnbondingDelegation"
+    "\032<.cosmos.staking.v1beta1.MsgCancelUnbon"
+    "dingDelegationResponse\"\023\312\264-\017cosmos-sdk 0"
+    ".46\022}\n\014UpdateParams\022\'.cosmos.staking.v1b"
+    "eta1.MsgUpdateParams\032/.cosmos.staking.v1"
+    "beta1.MsgUpdateParamsResponse\"\023\312\264-\017cosmo"
+    "s-sdk 0.47\022t\n\020RotateConsPubKey\022+.cosmos."
+    "staking.v1beta1.MsgRotateConsPubKey\0323.co"
+    "smos.staking.v1beta1.MsgRotateConsPubKey"
+    "Response\032\005\200\347\260*\001B.Z,github.com/cosmos/cos"
+    "mos-sdk/x/staking/typesb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_deps[8] =
     {
@@ -648,13 +715,13 @@ static ::absl::once_flag descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eprot
 const ::_pbi::DescriptorTable descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto = {
     false,
     false,
-    4312,
+    4711,
     descriptor_table_protodef_cosmos_2fstaking_2fv1beta1_2ftx_2eproto,
     "cosmos/staking/v1beta1/tx.proto",
     &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_once,
     descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_deps,
     8,
-    14,
+    16,
     schemas,
     file_default_instances,
     TableStruct_cosmos_2fstaking_2fv1beta1_2ftx_2eproto::offsets,
@@ -3621,6 +3688,292 @@ const ::google::protobuf::Message::ClassData*MsgUpdateParamsResponse::GetClassDa
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_getter, &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_once,
       file_level_metadata_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[13]);
+}
+// ===================================================================
+
+class MsgRotateConsPubKey::_Internal {
+ public:
+  using HasBits = decltype(std::declval<MsgRotateConsPubKey>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(MsgRotateConsPubKey, _impl_._has_bits_);
+  static const ::google::protobuf::Any& new_pubkey(const MsgRotateConsPubKey* msg);
+  static void set_has_new_pubkey(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::google::protobuf::Any& MsgRotateConsPubKey::_Internal::new_pubkey(const MsgRotateConsPubKey* msg) {
+  return *msg->_impl_.new_pubkey_;
+}
+void MsgRotateConsPubKey::clear_new_pubkey() {
+  if (_impl_.new_pubkey_ != nullptr) _impl_.new_pubkey_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+MsgRotateConsPubKey::MsgRotateConsPubKey(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+}
+MsgRotateConsPubKey::MsgRotateConsPubKey(const MsgRotateConsPubKey& from) : ::google::protobuf::Message() {
+  MsgRotateConsPubKey* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.validator_address_){},
+      decltype(_impl_.new_pubkey_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.validator_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.validator_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_validator_address().empty()) {
+    _this->_impl_.validator_address_.Set(from._internal_validator_address(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.new_pubkey_ = new ::google::protobuf::Any(*from._impl_.new_pubkey_);
+  }
+
+  // @@protoc_insertion_point(copy_constructor:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+}
+inline void MsgRotateConsPubKey::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.validator_address_){},
+      decltype(_impl_.new_pubkey_){nullptr},
+  };
+  _impl_.validator_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.validator_address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+MsgRotateConsPubKey::~MsgRotateConsPubKey() {
+  // @@protoc_insertion_point(destructor:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void MsgRotateConsPubKey::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.validator_address_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.new_pubkey_;
+}
+void MsgRotateConsPubKey::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void MsgRotateConsPubKey::Clear() {
+// @@protoc_insertion_point(message_clear_start:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.validator_address_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.new_pubkey_ != nullptr);
+    _impl_.new_pubkey_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* MsgRotateConsPubKey::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 68, 2> MsgRotateConsPubKey::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(MsgRotateConsPubKey, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_MsgRotateConsPubKey_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(MsgRotateConsPubKey, _impl_.new_pubkey_)}},
+    // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MsgRotateConsPubKey, _impl_.validator_address_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+    {PROTOBUF_FIELD_OFFSET(MsgRotateConsPubKey, _impl_.validator_address_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+    {PROTOBUF_FIELD_OFFSET(MsgRotateConsPubKey, _impl_.new_pubkey_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Any>()},
+  }}, {{
+    "\52\21\0\0\0\0\0\0"
+    "cosmos.staking.v1beta1.MsgRotateConsPubKey"
+    "validator_address"
+  }},
+};
+
+::uint8_t* MsgRotateConsPubKey::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  if (!this->_internal_validator_address().empty()) {
+    const std::string& _s = this->_internal_validator_address();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cosmos.staking.v1beta1.MsgRotateConsPubKey.validator_address");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::new_pubkey(this),
+        _Internal::new_pubkey(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  return target;
+}
+
+::size_t MsgRotateConsPubKey::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string validator_address = 1 [json_name = "validatorAddress", (.cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
+  if (!this->_internal_validator_address().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_validator_address());
+  }
+
+  // .google.protobuf.Any new_pubkey = 2 [json_name = "newPubkey", (.cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.new_pubkey_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData MsgRotateConsPubKey::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    MsgRotateConsPubKey::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*MsgRotateConsPubKey::GetClassData() const { return &_class_data_; }
+
+
+void MsgRotateConsPubKey::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<MsgRotateConsPubKey*>(&to_msg);
+  auto& from = static_cast<const MsgRotateConsPubKey&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_validator_address().empty()) {
+    _this->_internal_set_validator_address(from._internal_validator_address());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_new_pubkey()->::google::protobuf::Any::MergeFrom(
+        from._internal_new_pubkey());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MsgRotateConsPubKey::CopyFrom(const MsgRotateConsPubKey& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cosmos.staking.v1beta1.MsgRotateConsPubKey)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool MsgRotateConsPubKey::IsInitialized() const {
+  return true;
+}
+
+void MsgRotateConsPubKey::InternalSwap(MsgRotateConsPubKey* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.validator_address_, lhs_arena,
+                                       &other->_impl_.validator_address_, rhs_arena);
+  swap(_impl_.new_pubkey_, other->_impl_.new_pubkey_);
+}
+
+::google::protobuf::Metadata MsgRotateConsPubKey::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_getter, &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_once,
+      file_level_metadata_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[14]);
+}
+// ===================================================================
+
+class MsgRotateConsPubKeyResponse::_Internal {
+ public:
+};
+
+MsgRotateConsPubKeyResponse::MsgRotateConsPubKeyResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+}
+MsgRotateConsPubKeyResponse::MsgRotateConsPubKeyResponse(const MsgRotateConsPubKeyResponse& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+  MsgRotateConsPubKeyResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse)
+}
+
+
+
+
+const ::google::protobuf::Message::ClassData MsgRotateConsPubKeyResponse::_class_data_ = {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::google::protobuf::Message::ClassData*MsgRotateConsPubKeyResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::google::protobuf::Metadata MsgRotateConsPubKeyResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_getter, &descriptor_table_cosmos_2fstaking_2fv1beta1_2ftx_2eproto_once,
+      file_level_metadata_cosmos_2fstaking_2fv1beta1_2ftx_2eproto[15]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1beta1
