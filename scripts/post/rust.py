@@ -264,25 +264,10 @@ pub mod types {
         
         # Fix Validators duplicate (enum conflicts with struct)
         if rs_file.name == 'cosmos.staking.v1beta1.rs':
-            # Rename the enum to ValidatorsEnum
-            content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorsEnum {', content)
-            # Update oneof reference from Validators to ValidatorsEnum
+            content = re.sub(r'pub enum Validators \{', 'pub enum ValidatorPolicyEnum {', content)
             content = re.sub(
-                r'oneof="stake_authorization::Validators"',
-                'oneof="stake_authorization::ValidatorsEnum"',
-                content
-            )
-            # Update Option<stake_authorization::Validators> to ValidatorsEnum (but keep struct Validators)
-            # This is tricky - we need to update the enum type, not the struct type
-            content = re.sub(
-                r'Option<stake_authorization::Validators>',
-                'Option<stake_authorization::ValidatorsEnum>',
-                content
-            )
-            # Update enum variant references that use the enum type
-            content = re.sub(
-                r'ValidatorsEnum::(AllowList|DenyList)\(Validators\)',
-                r'ValidatorsEnum::\1(Validators)',
+                r'stake_authorization::Validators\b',
+                'stake_authorization::ValidatorPolicyEnum',
                 content
             )
         

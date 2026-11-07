@@ -80,3 +80,37 @@ fn sdk_055_schema_additions_are_present() {
     assert!(SignMode::from_str_name("SIGN_MODE_TEXTUAL").is_none());
     assert!(SignMode::try_from(2).is_err());
 }
+
+#[test]
+fn staking_validator_policy_keeps_nested_message_and_wire_tags() {
+    use xion_types::types::cosmos_staking_v1beta1::{
+        stake_authorization::{ValidatorPolicyEnum, Validators},
+        StakeAuthorization,
+    };
+
+    for (policy, tag) in [
+        (
+            ValidatorPolicyEnum::AllowList(Validators {
+                address: vec!["v".into()],
+            }),
+            0x12,
+        ),
+        (
+            ValidatorPolicyEnum::DenyList(Validators {
+                address: vec!["v".into()],
+            }),
+            0x1a,
+        ),
+    ] {
+        let authorization = StakeAuthorization {
+            validators: Some(policy),
+            ..Default::default()
+        };
+        let expected = [tag, 0x03, 0x0a, 0x01, b'v'];
+        assert_eq!(authorization.encode_to_vec(), expected);
+        assert_eq!(
+            StakeAuthorization::decode(expected.as_slice()).unwrap(),
+            authorization
+        );
+    }
+}
