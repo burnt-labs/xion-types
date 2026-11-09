@@ -1,0 +1,35 @@
+name: Rust Crate Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "rust/**"
+      - "scripts/post/rust.py"
+      - ".github/workflows/test-rust.yaml"
+  pull_request:
+    paths:
+      - "rust/**"
+      - "scripts/post/rust.py"
+      - ".github/workflows/test-rust.yaml"
+
+jobs:
+  test:
+    name: Test & Check Rust Crate
+    runs-on: ubicloud-standard-4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Test and check crate without modifying tracked files
+        working-directory: rust
+        run: |
+          set -euo pipefail
+          cargo test --verbose
+          cargo check --verbose
+          git diff --exit-code -- .

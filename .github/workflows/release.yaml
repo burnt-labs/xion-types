@@ -102,6 +102,7 @@ jobs:
   # ─── Stage 2: Build proto-builder image once ────────────────────────
   build-proto-image:
     name: Build Proto Image
+    needs: resolve-sources
     runs-on: ubicloud-standard-4
     outputs:
       proto_version: ${{ steps.meta.outputs.proto_version }}
@@ -125,6 +126,41 @@ jobs:
         run: |
           set -euo pipefail
           docker save "localhost/proto-builder:${{ steps.meta.outputs.proto_version }}" -o proto-builder-image.tar
+
+      - name: Record generation provenance
+        env:
+          XION_SHA: ${{ needs.resolve-sources.outputs.xion_sha }}
+          CONTRACTS_SHA: ${{ needs.resolve-sources.outputs.contracts_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="localhost/proto-builder:${{ steps.meta.outputs.proto_version }}"
+          IMAGE_ID=$(docker image inspect "$IMAGE" --format '{{.Id}}')
+          docker run --rm "$IMAGE_ID" sh -c 'jq -n \
+            --arg buf "$(buf --version)" \
+            --arg protoc "$(protoc --version)" \
+            --arg prost "$(protoc-gen-prost --version)" \
+            --arg rustc "$(rustc --version)" \
+            --arg python "$(python3 --version)" \
+            "{buf: \$buf, protoc: \$protoc, protoc_gen_prost: \$prost, rustc: \$rustc, python: \$python}"' \
+            > generator-versions.json
+          jq -n \
+            --arg xion "$XION_SHA" \
+            --arg contracts "$CONTRACTS_SHA" \
+            --arg image "$IMAGE_ID" \
+            --arg archive_sha256 "$(sha256sum proto-builder-image.tar | cut -d ' ' -f 1)" \
+            --arg manifest_sha256 "$(sha256sum scripts/proto-sources.conf | cut -d ' ' -f 1)" \
+            --slurpfile tools generator-versions.json \
+            '{xion_commit: $xion, contracts_commit: $contracts, builder_image_id: $image,
+              builder_archive_sha256: $archive_sha256, source_manifest_sha256: $manifest_sha256,
+              rust_generators: $tools[0]}' > generation-provenance.json
+
+      - name: Upload generation provenance
+        uses: actions/upload-artifact@v7
+        with:
+          name: generation-provenance
+          path: generation-provenance.json
+          if-no-files-found: error
 
       - name: Upload Docker image artifact
         uses: actions/upload-artifact@v7
@@ -231,6 +267,12 @@ jobs:
             rsync -r --delete --exclude='.*' "$dir" "$lang/"
           done
           rm -rf _generated
+
+      - name: Download generation provenance
+        uses: actions/download-artifact@v8
+        with:
+          name: generation-provenance
+          path: .
 
       - name: Commit generated types
         id: commit
